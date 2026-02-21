@@ -1,0 +1,89 @@
+﻿capital = 107
+
+set_oob = "AOR_LNAD_YUG"
+
+set_research_slots = 3
+
+recruit_character = YUG_KING
+recruit_character = YUG_HANJIAN
+recruit_character = YUG_TITTO
+
+
+add_ideas = {
+	Great_Slavic_zeal
+	The_army_corps_of_Alexandria
+	Constitutional_debate
+}
+
+
+set_technology = {
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+ 
+	
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_antitank = 1
+ 
+	interwar_antiair = 1
+	superior_firepower = 1
+	basic_train = 1
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_submarine = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		coastal_defense_ships = 1
+	}
+}
+
+
+
+set_convoys = 10
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1935.5.3"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	CON_democratic = 40
+	Marxism = 10
+	Absolutism = 50
+}
+

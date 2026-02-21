@@ -1,0 +1,90 @@
+capital = 306
+
+oob = "GCL_AOR"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		#set_naval_#oob = "COL_1936_naval_mtg"
+	else = {
+		#set_naval_#oob = "COL_1936_naval_legacy"
+	}
+}
+
+add_ideas = GCL_the_Bannan
+add_ideas = GCL_the_Panama 
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+	tech_engineers = 1
+ 
+	interwar_antiair = 1
+ 
+	cv_early_fighter = 1
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+	early_destroyer = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+	}
+}
+
+create_country_leader = {
+	name = "Guillermo Valencia Castillo"
+	desc = "POLITICS_COLOMBIA_DESC"
+	picture = "POET.dds"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
+}
+
+recruit_character = COL_alfonso_lópez_pumarejo
+recruit_character = COL_mariano_ospina_pérez
+recruit_character = COL_gustavo_rojas_pinilla
+recruit_character = COL_david_de_vidal
+recruit_character = COL_isidoro_sotomayor
+recruit_character = COL_eduardo_poirier_escobar
+recruit_character = COL_luis_bernardo_andrade
+recruit_character = COL_luis_rodriguez
+recruit_character = COL_luis_acevedo
+recruit_character = COL_enrico_diaz_carias
+recruit_character = COL_guillermo_padilla_manrique
+recruit_character = COL_gabriel_paris_gordillo
+recruit_character = COL_mauricio_soto_gomez
+recruit_character = COL_salvador_tiaga_gonzalez
+recruit_character = COL_querista_sellor
+recruit_character = COL_camilo_daza_alvarez
+recruit_character = COL_manuel_quinones
+recruit_character = COL_german_olano_moreno
+recruit_character = COL_ruben_piedrahita_arango
+recruit_character = COL_jose_ellis_quinsado
+recruit_character = COL_m_e_rojas_de_moreno
+recruit_character = COL_raphael_hollmann
+recruit_character = COL_jorge_lopez_suyo
+
+set_politics = {
+	ruling_party = CON_democratic
+	last_election = "1935.3.31"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	CON_democratic = 50
+	Absolutism = 50
+}
+
+
+
+set_convoys = 10

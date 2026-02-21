@@ -1,0 +1,146 @@
+﻿capital = 378
+
+#oob = "USA_1936"
+
+starting_train_buffer = 5
+
+
+set_research_slots = 2
+set_stability = 0.85
+set_war_support = 0.9
+add_command_power = 20
+
+add_equipment_to_stockpile = {
+	type = support_equipment
+	amount = 500
+	producer = US2	
+}
+
+add_equipment_to_stockpile = {
+	type = artillery_equipment
+	amount = 200
+	producer = US2	
+}
+
+add_equipment_to_stockpile = {
+	type = motorized_equipment
+	amount = 500
+	producer = US2	
+}
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	early_armor_car = 1
+	independent_turret = 1
+	tracked_suspension = 1
+	great_war_light_chassis = 1
+	great_war_heavy_chassis = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	machine_equipment_weapons = 1
+
+	superior_firepower = 1
+	base_strike = 1
+	 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+
+	}
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		basic_carrier = 1
+		transport = 1
+	}
+}
+
+
+
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1915.5.19"
+	elections_allowed = no
+}
+
+set_popularities = {
+	Absolutism = 54
+	FRE_democratic = 26
+	CON_democratic = 10
+	AUT_democratic = 5
+	Fascism = 5
+}
+
+create_country_leader = {
+	name ="John_Joseph_Pershing"
+	desc = "John_Joseph_Pershing_desc"
+	picture = "gfx/leaders/US2/Joseph_Pershing.png"
+	expire = "1953.3.1"
+	ideology = despotism
+	traits = {
+		
+	}
+}
+
+create_country_leader = {
+	name ="Anarchy"
+	desc = "Anarchy_desc"
+	picture = "gfx/leaders/US2/Anarchy.png"
+	expire = "1953.3.1"
+	ideology = revengism
+	traits = {
+		
+	}
+}
+
+add_ideas = {
+
+}
+
+recruit_character = USA_john_pershing
+recruit_character = USA_john_pershing_1
+recruit_character = USA_john_pershing_a 
+
+
+###陆军装甲设计###
+create_equipment_variant = {
+	name = "AT1-斯科特"
+	type = light_tank_chassis_0 
+	parent_version = 0
+	modules = {
+		main_armament_slot = tank_small_cannon
+		turret_type_slot = tank_light_two_man_tank_turret
+		suspension_type_slot = tank_torsion_bar_suspension
+		armor_type_slot = tank_riveted_armor
+		engine_type_slot = tank_gasoline_engine
+	}
+}

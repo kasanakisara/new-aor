@@ -1,0 +1,87 @@
+﻿capital = 871
+
+set_cosmetic_tag = KSH_1_AUT_democratic
+
+##oob = ""
+recruit_character = KSH_Gustav_Noske
+recruit_character = KSH_Hermann_Ehrhardt
+recruit_character = KSH_Gehard_Ribach 
+recruit_character = KSH_Wlther_von_Luttwitz
+recruit_character = KSH_Werner_Eduard_Fritz_von_Blomberg
+
+set_research_slots = 3
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_mountaineers = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+}
+
+set_convoys = 20
+
+set_politics = {
+	ruling_party = AUT_democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	AUT_democratic = 50
+	Fascism = 15
+	Absolutism = 20
+	Anarcho = 15
+}
+
+create_country_leader = {
+	name = "Gustav Noske"
+	desc = "POLITICS_Gustav_Noske_DESC"
+	picture = "amcbj-ylqzs.dds"
+	expire = "1953.3.1"
+	ideology = authoritarianism
+	traits = {
+		
+	}
+}
+
+create_country_leader = {
+
+	name = "Paul Joseph Goebbels"
+	desc = "POLITICS_Paul_Joseph_Goebbels_DESC"
+	picture = "KSH_Paul_Joseph_Goebbels.dds"
+	expire = "1953.3.1"
+	ideology = strasser
+	traits = {
+
+	}
+}
+
+create_country_leader = {
+
+	name = "Ethel von Hohensolen"
+	desc = "POLITICS_Ethel_von_Hohensolen_DESC"
+	picture = "Ethel_von_Hohensolen.dds"
+	expire = "1953.1.1"
+	ideology = monarchism
+	traits = {
+		
+	}
+}
+set_country_flag = AOR_GER_flag_NOT_support_resolution
+
+add_ideas = {
+	Freedom_Corps
+	Compact_of_German_Confederation
+	trade_with_berlin
+	Decrease_in_living_standards
+}
+
+oob="KSH_1919"
+effect = {
+	country_lock_all_division_template = yes
+	}

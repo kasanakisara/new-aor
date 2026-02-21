@@ -1,0 +1,172 @@
+capital = 858
+oob = "NAU_AOR"
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	interwar_antiair = 1
+	tactical_bomber1 = 1
+	CAS1 = 1
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+	machine_equipment_weapons = 1
+	Old_howitzers = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+
+country_event = { days = 3 id = NAU.1 }
+set_variable  = {AOR_NAU_FORCES_choose = 2}
+
+set_variable  = {AOR_NAU_FORCES_P_JB = 4}
+set_variable  = {AOR_NAU_FORCES_P_SPD = 4}
+set_variable  = {AOR_NAU_FORCES_P_STLS = 3}
+set_variable  = {AOR_NAU_FORCES_P_KPD = 2}
+set_variable  = {AOR_NAU_FORCES_P_NAZI = 1}
+set_variable  = {AOR_NAU_FORCES_P_L = 2}
+
+set_variable  = {AOR_NAU_FORCES_M_JB = 4}
+set_variable  = {AOR_NAU_FORCES_M_SPD = 1}
+set_variable  = {AOR_NAU_FORCES_M_STLS = 3}
+set_variable  = {AOR_NAU_FORCES_M_KPD = 2}
+set_variable  = {AOR_NAU_FORCES_M_NAZI = 2}
+set_variable  = {AOR_NAU_FORCES_M_L = 3}
+
+
+
+
+
+#极高=5，高=4，中=3，低=2，极低=1
+
+set_research_slots = 2
+set_convoys = 30
+set_stability = 0.35
+set_set_war_support = 0.7
+
+
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+
+}
+set_popularities = {
+	Marxism = 22
+	Absolutism = 53
+	Fascism = 5
+	Special = 8
+	Anarcho = 5
+	SOC_democratic = 7
+}
+
+add_ideas = {
+	Chaotic_politics 
+	The_new_nest_of_militarism 
+	Imperial_General_Staff
+	Compact_of_German_Confederation_1
+	
+	closed_economy
+	service_by_requirement
+	war_economy
+}
+
+
+
+create_country_leader = {
+	name = "Maximilian von Baden"
+	desc = "POLITICS_Maximilian_von_Baden_DESC"
+	picture = "alp79-gzcm0.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+	}
+}
+
+
+
+add_equipment_to_stockpile = {
+    type = infantry_equipment
+    amount = 1732
+    producer = NAU
+}
+
+add_equipment_to_stockpile = {
+    type = artillery_equipment
+    amount = 423
+    producer = NAU
+}
+
+add_equipment_to_stockpile = {
+    type = support_equipment 
+    amount = 298
+    producer = NAU
+}
+
+NAU = {
+country_event = { days = 374 id = NAU.5 }
+}
+
+set_country_flag = AOR_GER_flag_NOT_support_resolution
+
+recruit_character = Erich_Ludendorff
+recruit_character = Paul_Hausser
+recruit_character = Gotthard_Heinrich
+recruit_character = Gerd_von_Rundstedt
+recruit_character = Karl_von_Einem
+recruit_character = Carl_Heinrich_von_Stulpnagel
+recruit_character = Maximilian_von_Baden
+recruit_character = Wilhelm_Groener
+recruit_character = Alexander_Kluck
+recruit_character = Moriz_von_Lyncker

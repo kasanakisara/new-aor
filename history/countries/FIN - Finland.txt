@@ -1,0 +1,113 @@
+﻿capital = 111
+
+#oob = "FIN_1936"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		#set_naval_#oob = "FIN_1936_naval_mtg"
+	else = {
+		#set_naval_#oob = "FIN_1936_naval_legacy"
+	}
+}
+
+set_research_slots = 3
+
+create_country_leader = {
+	name = "Kaarlo Juho Stahlberg"
+	desc = ""
+	picture = "au1gh-e7ypm.dds"
+	expire = "1965.1.1"
+	ideology = socialism
+	traits = {
+	appeaser
+	}
+}
+
+create_country_leader = {
+	name = "Carl Gustaf Emil Mannerheim"
+	desc = ""
+	picture = "GUSTAV.dds"
+	expire = "1965.1.1"
+	ideology = militarism
+	traits = {
+	royal_dictator
+	}
+}
+
+create_country_leader = {
+	name = "Pehr Evind Svinhufvud af Qvalstad"
+	desc = ""
+	picture = "righ.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+	royal_dictator
+	}
+}
+
+
+create_country_leader = {
+	name = "Juho Kusti Paasikivi"
+	desc = ""
+	picture = "origin.dds"
+	expire = "1965.1.1"
+	ideology = authoritarianism
+	traits = {
+	appeaser
+	}
+}
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+ 			
+	interwar_antiair = 1
+	tech_support = 1		
+	tech_recon = 1
+	tech_engineers = 1
+	basic_train = 1
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		early_heavy_cruiser = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_secondary_battery = 1
+		coastal_defense_ships = 1
+	}
+}
+
+set_convoys = 5
+
+
+
+set_politics = {
+	ruling_party = AUT_democratic
+	last_election = "1919.7.1"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	Absolutism = 15
+	Fascism = 0
+	Marxism = 15
+	AUT_democratic = 70
+}
+
+
+
+add_ideas = {
+	sisu
+	Great_War_Zone
+	An_unstable_republic
+}

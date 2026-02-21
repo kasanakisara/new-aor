@@ -1,0 +1,122 @@
+﻿capital = 446
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	gwtank = 1
+}
+
+set_convoys = 20
+
+country_lock_all_division_template = yes
+
+add_ideas ={
+	#EGY_Moving_towards_modernity
+	EGY_Crazy_1919
+	EGY_Puppets_puppetry
+	EGY_YesSir
+}
+add_dynamic_modifier = {
+	modifier = EGY_Towards_modernity
+}
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	CON_democratic = 20
+	ISL_democratic =15
+	FRE_democratic = 5
+	Fascism = 1
+	Absolutism = 59
+}
+
+create_country_leader = {
+	name = "Muhammad Naguib"
+	desc = ""
+	picture = GFX_portrait_Muhammad_Naguib
+	ideology = liberalism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Edmund Allenby"
+	desc = "Edmund_Allenby_desc"
+	picture = "Allenby.dds"
+	ideology = federalism
+	traits = {
+		EGY_general_of_old
+		EGY_Commissioner_for_today
+	}
+}
+
+create_country_leader = {
+	name = "Fuad I"
+	desc = "Fuad_I_desc"
+	picture = "Fuad.dds"
+	ideology = despotism
+	traits = {
+		EGY_The_ruler_of_the_country
+		EGY_Hidden_ambitions
+	}
+}
+
+create_country_leader = {
+	name = "Hosni al-Arabi"
+	desc = ""
+	picture = GFX_portrait_Hosni_al_Arabi
+	ideology = leninism
+	traits = {
+		#
+	}
+}
+
+country_event = { 
+	id = EGY.19
+	days = 94 # 1919.11.3
+}
+
+set_cosmetic_tag = EGY_UK # British EGY
+
+EGY = {
+	country_event = { days = 303 id = EGY.17 }
+	country_event = { days = 7 id = EGY.18 }
+}
+#迈向现代
+set_variable = {
+	EGY_Towards_modernity_1 = -0.2
+}
+set_variable = {
+	EGY_Towards_modernity_2 = 0.3
+}
+set_variable = {
+	EGY_Towards_modernity_3 = -0.1
+}
+set_variable = {
+	EGY_Towards_modernity_4 = -0.15
+}
+set_variable = {
+	EGY_Towards_modernity_5 = -0.25
+}
+set_variable = {
+	EGY_Towards_modernity_6 = -0.2
+}
+#埃及的好感度决议
+set_variable = {
+	EGY_DCS_1_variable_ENG = 5
+}
+set_variable = {
+	EGY_DCS_1_variable_FRA = 0
+}
+
+
+
+
+
+
+
+

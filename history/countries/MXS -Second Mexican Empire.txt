@@ -1,0 +1,65 @@
+capital = 277
+
+oob = "MXS_1919"
+
+recruit_character = MXS_Victoriano_huerta
+recruit_character = MXS_Aureliano_blanquet
+recruit_character = MXS_Felix_diaz_prieto
+recruit_character = MXS_Plutarco_lelias_calles
+recruit_character = MXS_Manuel_mondragon
+recruit_character = MXS_Bernardo_Reyes
+recruit_character = MXS_Pascual_Orozco
+
+set_research_slots = 2
+set_stability = 0.9
+set_war_support = 0.25
+
+
+add_ideas = MXS_backward_country
+add_ideas = MXS_useless_army
+add_ideas = MXS_Black_gold
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_recon = 1
+ 
+}
+
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1935.3.31"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	Absolutism = 62
+	FRE_democratic = 20
+	CON_democratic = 13
+	Anarcho = 5
+}
+
+create_country_leader = {
+	name = "Maximiliano I"
+	desc = "POLITICS_Mexican_DESC"
+	picture = "gfx/leaders/MXS/maximiliano.png"
+	expire = "1965.1.1"
+	ideology = monarchism
+	traits = { MXS_out_of_favor MXS_puppet_emperor }
+}
+create_country_leader = {
+	name = "Victoriano Huerta"
+	desc = "MXS_Victoriano_huerta_desc"
+	picture = "gfx/leaders/MXS/Victoriano_huerta_politic.png"
+	expire = "1965.1.1"
+	ideology = patriarch
+	traits = {  }
+}
+
+
+
+create_import = {
+		resource = steel
+		factories = 1
+		exporter = FRA
+}

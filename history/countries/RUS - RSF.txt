@@ -1,0 +1,329 @@
+#You don't want Russian party names? Just remove these lines
+set_party_name = {
+	ideology = Marxism
+	long_name = SOV_communism_party_russian_long
+	name = SOV_communism_party_russian
+}
+set_party_name = {
+	ideology = Fascism
+	long_name = SOV_fascism_party_russian_long
+	name = SOV_fascism_party_russian
+}
+
+capital = 219
+load_focus_tree = AOR_SOV
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+
+ 
+ 
+ 
+	tactical_bomber1 = 1
+ 
+	CAS1 = 1
+ 
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+	basic_train = 1
+	
+}
+
+add_equipment_to_stockpile = {
+	type = artillery_equipment_1
+	amount = 300
+	producer = RUS	
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+
+set_research_slots = 3
+
+set_trains = 40
+set_trucks = 80
+set_convoys = 60
+
+
+set_stability = 0.30
+set_war_support = 1.0
+
+set_politics = {
+	ruling_party = Marxism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	Marxism = 100
+}
+
+oob = "RUS_1919"
+
+add_ideas = {
+	comintern_aligned_nation
+	service_by_requirement
+	closed_economy
+	war_economy	
+	SOV_Backward_agricultural_country_0
+	SOV_Origin_of_revolution_0
+	SOV_Wartime_communism_0
+	SOV_Cheka_0
+	SOV_The_Red_Army_0
+	SOV_Destructive_strike
+}
+
+
+add_civil_war_target = ARU
+
+
+add_civil_war_target = ARR
+
+
+add_civil_war_target = ARN
+
+add_civil_war_target = IUS
+
+
+#斯大林和伏龙芝
+set_autonomy = { target = UKR autonomy_state = AOR_SOV_Closely_executed_alliance }
+UKR = { set_popularities = { Marxism = 100 } }
+
+set_autonomy = { target = GNR autonomy_state = AOR_SOV_Closely_executed_alliance }
+GNR = { set_popularities = { Marxism = 100 } }
+
+#三玉兹
+set_autonomy = { target = KAZ autonomy_state = AOR_SOV_Closely_executed_alliance }
+KAZ = {
+	set_popularities = { Marxism = 100 }
+	create_country_leader = {
+		name = "阿夫克先季耶夫斯基"
+		picture = "GFX_Portrait_Soviet_Generic_land_5"
+		ideology = leninism
+	}
+}		
+set_autonomy = { target = TAT autonomy_state = AOR_SOV_Closely_executed_alliance }
+TAT = {
+	set_popularities = { Marxism = 100 }
+	create_country_leader = {
+		name = "拉扎列维奇"
+		picture = "GFX_Portrait_Soviet_Generic_land_8"
+		ideology = leninism
+	}
+}
+
+set_autonomy = { target = MEL autonomy_state = AOR_SOV_Closely_executed_alliance }
+MEL = {
+	set_popularities = { Marxism = 100 }
+	create_country_leader = {
+		name = "瓦西里·伊凡诺维奇·恰巴耶夫"
+		picture = "GFX_Portrait_Soviet_Generic_land_7"
+		ideology = leninism
+	}
+}
+
+set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+TMS = {
+	set_popularities = { Marxism = 100 }
+	create_country_leader = {
+		name = "Ryskulov Turar Ryskulovich"
+		picture = "tms.dds"
+		ideology = leninism
+	}
+}
+declare_war_on = {
+	target = ARU
+	type = civil_war
+}
+declare_war_on = {
+	target = IUS
+	type = civil_war
+}
+declare_war_on = {
+	target = UPR
+	type = civil_war
+}
+create_faction = SOVIET_group
+
+add_to_faction = CHT
+ARN = {add_to_war = {
+    targeted_alliance = ARU
+    enemy = RUS
+     
+}}
+KHI = {add_to_war = {
+    targeted_alliance = ARU
+    enemy = RUS
+     
+}}
+TCG = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+	}
+}
+UZB = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+ARR = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+KYR = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+	}
+}
+CHT = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
+		 
+	}
+}
+TMS = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
+		 
+	}
+}
+TAJ = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+UKR = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
+		 
+	}
+}
+GNR = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
+		 
+	}
+}
+BSK = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+KAZ = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
+		 
+	}
+}
+VGE = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+URS = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+recruit_character = SOV_Lenin
+recruit_character = SOV_Stalin
+recruit_character = SOV_Trotsky
+recruit_character = SOV_Bukharin
+recruit_character = SOV_Voroshilov
+recruit_character = SOV_Kamenev
+recruit_character = SOV_Kalinin
+recruit_character = SOV_Zinoviev
+recruit_character = SOV_Kirov
+recruit_character = SOV_Sverdlov
+recruit_character = SOV_Zhukov
+recruit_character = SOV_Tuhachevsky
+recruit_character = SOV_pavel_pavlovich_lebedev
+recruit_character = SOV_sergey_sergeyevich_kamenev
+recruit_character = SOV_mikhail_vasilyevich_frunze
+recruit_character = SOV_jukums_vacietis
+recruit_character = SOV_yan_borisovich_gamarnik
+recruit_character = SOV_semyon_mikhailovich_budenny
+recruit_character = SOV_aleksandr_ignatyevich_sedyakin
+recruit_character = SOV_aleksey_alekseyevich_brusilov
+recruit_character = SOV_aleksandr_erlich_egorov
+recruit_character = SOV_ivan_panfilovich_belov
+recruit_character = SOV_ivan_naumovich_dubovy
+
+recruit_character = SOV_yeronim_petrovich_uborevich
+recruit_character = SOV_kliment_efremovich_voroshilov
+recruit_character = SOV_yukhim_opanasovich_shchadenko
+recruit_character = SOV_august_kork
+
+recruit_character = SOV_nikolai_dmitriyevich_kashirin
+recruit_character = SOV_vladimir_mikhailovich_gittis
+recruit_character = SOV_vasily_ivanovich_shorin
+recruit_character = SOV_vasily_konstantinovich_blucher
+recruit_character = SOV_mikhail_karlovich_levandovsky
+recruit_character = SOV_sergey_ivanovich_gusev
+recruit_character = SOV_semyon_konstantinovich_timoshenko
+recruit_character = SOV_boris_mikhailovich_shaposhnikov

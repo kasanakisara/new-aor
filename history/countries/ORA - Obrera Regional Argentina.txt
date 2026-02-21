@@ -1,0 +1,134 @@
+capital = 278
+
+oob = "ORA_AOR"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+ 
+ 
+ 
+	tactical_bomber1 = 1
+ 
+	CAS1 = 1
+ 
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+	
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+
+
+
+set_research_slots = 2
+set_convoys = 25
+set_stability = 0.45
+set_war_support = 0.4
+
+set_politics = {
+	ruling_party = Anarcho
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = no
+
+}
+set_popularities = {
+	SOC_democratic = 3
+	Anarcho = 97
+}
+
+add_ideas = {
+	ORA_a_group_without_leader
+	ORA_Absent_CORA
+	ORA_Spark
+}
+
+
+
+create_country_leader = {
+	name = "Simon_Radowitzky"	#Diego Abad de Santillán
+	desc = "POLITICS_SIMON_DESC"
+	picture = "FORA.dds"	#FORA.DDS
+	expire = "1965.1.1"
+	ideology = syndicalism
+	traits = {
+	ORA_die_or_no 
+	}
+}
+
+declare_war_on = {
+	target = ARG
+	type = civil_war
+}
+add_civil_war_target = ARG
+
+recruit_character = ORA_Xi_Meng_La_Duo_Wei_Ci_Ji
+recruit_character = ORA_Sai_Ba_Si_Di_An_Ma_Luo_Ta
+recruit_character = ORA_Jia_Bu_Li_Ai_La_La_Pei_Li_Ai
+recruit_character = ORA_Hu_An_Na_Lu_Ke_Bu_Ai_La
+recruit_character = ORA_Ai_Mi_Li_Ao_Luo_Pei_Ci_A_Lang_Ge
+recruit_character = ORA_He_Sai_Ma_Li_Ya_Bo_Lei_Luo
+recruit_character = ORA_An_Dong_Ni_Ao_Suo_Tuo
+recruit_character = ORA_Die_Ge_A_Ba_De_De_Sang_Di_Lan
+recruit_character = ORA_Fu_Ji_Ni_Ya_Bo_Er_Teng
+recruit_character = ORA_Sai_Wei_Li_Nuo_Di_Qiao_Wa_Ni
+recruit_character = ORA_Hua_Jin_Pei_Ni_Na
+recruit_character = ORA_Yi_Si_Mei_Er_Pei_De_Luo_Bi_Ni_Ya_Si
+recruit_character = ORA_Yue_Han_Ke_Li_Ge
+recruit_character = ORA_Ku_Er_Te_Gu_Si_Ta_Fu_Wei_Er_Ken_Si
+recruit_character = ORA_Fu_Luo_Lun_Xi_Ao_Sang_Qie_Si
+recruit_character = ORA_He_Mi_Ma_Ya_Bu_Lu_Ma_Na
+recruit_character = ORA_Pi_Ai_Er_Ji_Lu_Le
+recruit_character = ORA_Hu_An_An_Dong_Ni_Ao_Mo_Lan
+recruit_character = ORA_Sa_Er_Wa_Duo_Pu_La_Na_Si_Wei_Lei_La

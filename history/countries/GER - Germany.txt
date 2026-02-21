@@ -1,0 +1,193 @@
+capital = 840
+oob = "GER_AOR"
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+
+ 
+ 
+ 
+	tactical_bomber1 = 1
+ 
+	CAS1 = 1
+ 
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+	
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+effect = {
+country_lock_all_division_template = yes
+}
+
+set_research_slots = 4
+set_convoys = 50
+set_stability = 0.40
+recruit_character = GER_Albrecht
+recruit_character = GER_Fernando_von_bock
+recruit_character = GER_Friedrich_Fromm
+recruit_character = GER_Heinrich_von_gosler
+recruit_character = GER_Hans_von_bessel
+recruit_character = GER_Hans_von_plaisen
+recruit_character = GER_Kurt_student
+recruit_character = GER_Erich_von_manstein
+recruit_character = GER_Werner_von_fridge
+
+start_national_focus = AOR_GER_Politics_21
+
+set_variable = { GER_Comm_current_vote = 1 } 
+add_to_variable = { global.GER_variable_abs = 1} 
+
+add_to_array = { 
+	array = global.GERMAN_COMM_COUNTRY 
+	value = GER
+	}
+
+add_to_array = { 
+	array = global.GERMAN_COMM_COUNTRY 
+	value = RHI
+	}	
+
+set_country_flag = GER_Comm_pre
+set_country_flag = GER_TAG_ABS
+
+
+GER = {
+country_event = { days = 1249 id = event_GER.1 }
+}
+set_country_flag = AOR_GER_flag_NOT_support_resolution
+
+set_politics = {
+	ruling_party = AUT_democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+
+}
+set_popularities = {
+	AUT_democratic = 50
+	FRE_democratic = 10
+	Marxism = 40
+}
+
+add_ideas = {
+	Central_defense_force
+	An_unimportant_government
+	The_weight_of_defeat
+	Compact_of_German_Confederation
+	AOR_GER_idea_Ideological_opposition
+}
+
+
+create_country_leader = {
+	name = "Friedrich Ebert"
+	desc = "Friedrich_Ebert_DESC"
+	picture = gfx/leaders/GER/aaa.png
+	expire = "1965.1.1"
+	ideology = authoritarianism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Paul von Hindenburg"
+	desc = ""
+	picture = "ayipk-7ybyr.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Gustav Stresemann"
+	desc = ""
+	picture = "aiv9n-no5o5.dds"
+	expire = "1965.1.1"
+	ideology = liberalism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Walther Rathenau"
+	desc = ""
+	picture = "an3s6-p9ro9.dds"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Adolf Hitler"
+	desc = ""
+	picture = "aum51-irg52.dds"
+	expire = "1965.1.1"
+	ideology = NSDAP
+	traits = {
+	}
+}
+
+create_faction =  confederation_of_Deutschland
+add_to_faction = GER
+add_to_faction = SIL
+add_to_faction = KSH
+#add_to_faction = BAV
+#add_to_faction = NAU
+add_to_faction = MEK
+add_to_faction = PRE
+#add_to_faction = SHL
+add_to_faction = HAN
+#add_to_faction = WUR
+add_to_faction = SAX
+
+add_equipment_to_stockpile = {
+    type = infantry_equipment
+    amount = 2000
+    producer = GER
+}
+
+add_equipment_to_stockpile = {
+    type = artillery_equipment
+    amount = 300
+    producer = GER
+}
+
+add_equipment_to_stockpile = {
+    type = armored_car
+    amount = 1000
+    producer = GER
+}

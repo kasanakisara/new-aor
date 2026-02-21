@@ -1,0 +1,103 @@
+capital = 7
+
+oob = "BNL_AOR"
+
+set_research_slots = 3
+set_stability = 0.15
+set_war_support = 0.1
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1		
+	tech_recon = 1
+ 
+	interwar_antiair = 1
+ 
+ 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = { bicycle_infantry = 1 }
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_destroyer = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		basic_secondary_battery = 1
+		basic_cruiser_armor_scheme = 1
+		coastal_defense_ships = 1
+		mtg_transport = 1
+	}
+}
+
+set_autonomy = {
+		target = GML
+		autonomous_state = autonomy_integrated_puppet
+}
+
+
+
+set_politics = {
+	ruling_party = CON_democratic
+	last_election = "1919.4.26"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	CON_democratic = 45
+	FRE_democratic = 30
+	AUT_democratic = 15
+	Absolutism = 7
+	Marxism = 3
+}
+
+#领导人
+recruit_character = BNL_Wilhelmina_Helena_Pauline_Maria
+
+#将领
+recruit_character = BNL_cornelis_snijders
+recruit_character = BNL_willem_frederik_pop
+recruit_character = BNL_Izaak_Herman_Reijnders
+recruit_character = BNL_godfried_van_voorst_tot_voorst
+
+add_ideas = {
+	UK_help
+}
+
+BNL = {
+	country_event = { days = 3 id = BNL.1 }
+	news_event = { days = 401 id = AOR_news.11 }
+}
+
+

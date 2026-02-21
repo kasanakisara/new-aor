@@ -1,0 +1,469 @@
+capital = 282
+oob = "AOR_LAND_JAP"
+set_naval_oob = "AOR_JAP_naval"
+add_ideas = JAP_lixian
+add_ideas = JAP_junbu
+add_ideas = JAP_minzhi
+add_ideas = JAP_samo
+add_ideas = JAP_fanfa
+add_ideas = JAP_misao
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	early_armor_car = 1
+	independent_turret = 1
+	tracked_suspension = 1
+	great_war_light_chassis = 1
+	great_war_heavy_chassis = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	machine_equipment_weapons = 1
+	early_ship_hull_submarine = 1
+	tech_1908_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	tech_1909_ship_hull_light = 1
+	early_ship_hull_light_cruiser = 1
+	tech_1909_ship_hull_light_cruiser = 1
+	early_ship_hull_heavy_cruiser = 1
+	late_ship_hull_heavy_cruiser = 1
+	early_ship_hull_heavy = 1
+	tech_1909_crusier_battleship_hull = 1
+	tech_1906_ship_hull_heavy = 1
+	tech_1914_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+ 
+	superior_firepower = 1
+	base_strike = 1
+	 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+}
+
+set_stability = 0.6 #baseline, THE EMPEROR PROTECTS
+set_war_support = 0.8
+
+set_research_slots = 4
+set_fuel_ratio = 1.0
+add_ideas = {
+	limited_exports
+	limited_conscription
+	partial_economic_mobilisation
+
+}
+
+add_equipment_to_stockpile = {
+	type = support_equipment
+	amount = 1000
+	producer = JAP	
+}
+
+add_equipment_to_stockpile = {
+	type = artillery_equipment_1
+	amount = 300
+	producer = JAP
+}
+
+add_equipment_to_stockpile = {
+	type = fighter_equipment
+	amount = 100
+	producer = JAP	
+}
+
+create_country_leader = {
+	name = "Emperor_Taisho"
+	desc = "Emperor_Taisho_desc"
+	picture = "gfx/leaders/JAP/Emperor_Taisho.dds"
+	expire = "1965.1.1"
+	ideology = monarchism
+	traits = {
+	}
+}
+create_country_leader = {
+	name = "Emperor_Hirohito"
+	desc = "Emperor_Hirohito_desc"
+	picture = "gfx/leaders/JAP/Emperor_Hirohito.png"
+	expire = "1965.1.1"
+	ideology = monarchism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Tokonji_takejiro"
+	desc = "Tokonji_takejiro_desc"
+	picture = "gfx/leaders/JAP/Tokonji_takejiro.png"
+	expire = "1965.1.1"
+	ideology = authoritarianism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Ichiro_Hatoyama"
+	desc = "Ichiro_Hatoyama_desc"
+	picture = "gfx/leaders/JAP/Ichiro_Hatoyama.png"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
+}
+
+set_politics = {
+	ruling_party = AUT_democratic
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+
+}
+set_popularities = {
+	FRE_democratic = 15
+	CON_democratic = 30
+	AUT_democratic = 26
+	Fascism = 9
+	Absolutism = 20
+}
+puppet = KOR
+puppet = PYO
+
+give_guarantee = QID
+
+JAP = {
+news_event = {days = 3 id = AOR_news.46}
+country_event = { days = 1520 id = JAP.17 }
+}
+
+###海军舰艇设计###
+create_equipment_variant = {
+	name = "金剛級"				
+	type = battle_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_2
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bc_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_2
+		mid_1_custom_slot = ship_secondaries_2
+		mid_2_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_2
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "伊勢級"				
+	type = battleship_3
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_2
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_2
+		mid_1_custom_slot = ship_heavy_battery_2
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_2
+		rear_2_custom_slot = ship_anti_air_2
+	}
+}
+create_equipment_variant = {
+	name = "扶桑級"				
+	type = battleship_3
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_2
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_2
+		mid_1_custom_slot = ship_heavy_battery_2
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_2
+		rear_2_custom_slot = ship_anti_air_2
+	}
+}
+create_equipment_variant = {
+	name = "河内級"				
+	type = battleship_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_1 
+		mid_1_custom_slot = ship_heavy_battery_1 
+		mid_2_custom_slot = ship_secondaries_1
+		mid_3_custom_slot = ship_secondaries_1
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_torpedo_1
+	}
+}
+create_equipment_variant = {
+	name = "香取級"				
+	type = battleship_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_bb_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "薩摩級"				
+	type = battleship_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_bb_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_1
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "敷島級"				
+	type = battleship_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_bb_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "一番級"				
+	type = heavy_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_2
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_secondaries_2
+		mid_2_custom_slot = ship_medium_battery_1
+		rear_1_custom_slot = ship_secondaries_2
+		rear_2_custom_slot = ship_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "春日級"				
+	type = heavy_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_2
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_medium_battery_1
+		rear_1_custom_slot = ship_secondaries_1
+		rear_2_custom_slot = ship_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "出雲級"				
+	type = heavy_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_medium_battery_1
+		rear_1_custom_slot = ship_secondaries_1
+		rear_2_custom_slot = ship_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "淺閒級"				
+	type = heavy_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_medium_battery_1
+		rear_1_custom_slot = ship_secondaries_1
+		rear_2_custom_slot = ship_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "筑摩級"				
+	type = light_cruiser_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_medium_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_torpedo_1
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_light_medium_battery_2
+		rear_1_custom_slot = ship_light_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "音羽級"				
+	type = light_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_torpedo_1
+		mid_1_custom_slot = ship_light_medium_battery_1
+		mid_2_custom_slot = ship_secondaries_1
+		rear_1_custom_slot = ship_light_battery_2
+	}
+}
+create_equipment_variant = {
+	name = "桃級"				
+	type = destroyer_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = light_ship_engine_2
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		fixed_ship_torpedo_slot= ship_torpedo_2
+		front_1_custom_slot = ship_torpedo_2
+		mid_1_custom_slot = ship_anti_air_1
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_light_battery_2
+	}
+}
+create_equipment_variant = {
+	name = "枞級"				
+	type = destroyer_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = light_ship_engine_1
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		fixed_ship_torpedo_slot= ship_torpedo_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_depth_charge_1
+	}
+}
+create_equipment_variant = {
+	name = "隼級"				
+	type = destroyer_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = light_ship_engine_1
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		fixed_ship_torpedo_slot= ship_torpedo_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_depth_charge_1
+	}
+}
+create_equipment_variant = {
+	name = "L1級"				
+	type = submarine_2
+	parent_version = 0
+	modules = {
+		fixed_ship_torpedo_slot = ship_torpedo_sub_2
+		fixed_ship_battery_slot = empty
+		fixed_ship_anti_air_slot = empty
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = sub_ship_engine_2
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		front_1_custom_slot = empty
+		mid_1_custom_slot = empty
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_torpedo_sub_1
+	}
+}

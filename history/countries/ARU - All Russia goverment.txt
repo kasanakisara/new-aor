@@ -1,0 +1,137 @@
+capital = 571
+
+oob = "AOR_LAND_ARU" 
+set_convoys = 325
+
+recruit_character = ARU_KOL
+recruit_character = ARU_PP
+recruit_character = ARU_MKD
+recruit_character = ARU_FRG
+recruit_character = ARU_KOR
+recruit_character = ARU_GMS
+recruit_character = ARU_AMK
+recruit_character = ARU_PNK
+recruit_character = ARU_MGD
+recruit_character = ARU_KAP
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+
+ 
+ 
+ 
+	tactical_bomber1 = 1
+ 
+	CAS1 = 1
+ 
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+	
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+
+
+
+set_research_slots = 3
+set_convoys = 50
+set_stability = 0.75
+
+set_politics = {
+	ruling_party = Absolutism
+	last_election = "1934.6.3"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	AUT_democratic = 42
+	FRE_democratic = 3
+	Absolutism = 55
+}
+
+
+
+
+add_ideas = {
+	Imperial_Russian_Officer_Corps
+	People_s_hearts_are_scattered
+	White_Cossacks
+	Imperialist_support
+	Forced_conscript
+	Help_from_allies
+	war_economy
+	service_by_requirement
+}
+
+create_faction =  Russian_white_guard
+
+#puppet = UZB
+#puppet = KHI
+puppet = KYR
+
+add_to_faction = IUS
+add_to_faction = TCG
+add_to_faction = URS
+add_to_faction = UZB
+add_to_faction = KHI
+add_to_faction = KYR
+add_to_faction = ARN
+add_to_faction = ARR
+

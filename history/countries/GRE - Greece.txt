@@ -1,0 +1,128 @@
+﻿capital = 47
+
+#oob = "GRE_1936"
+
+###################
+#### 3D MODELS ####
+###################
+
+#Cosmetic tags used (3D models will look for these cosmetic tags when hooking themselves):
+#GRE_communism
+#GRE_democratic
+#GRE_fascism
+#GRE_neutrality
+set_cosmetic_tag = GRE
+set_research_slots = 3
+
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+ 
+	trench_warfare = 1
+ 
+ 
+	fuel_silos = 1
+	synth_oil_experiments = 1
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_secondary_battery = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		coastal_defense_ships = 1
+		pre_dreadnoughts = 1
+		mtg_transport = 1
+	}
+}
+
+	if = {
+		limit = { NOT = { has_dlc = "Battle for the Bosporus" } }
+		add_ideas = {
+			export_focus
+			limited_conscription
+			civilian_economy
+		}
+	}
+
+add_ideas = {
+	entente_member_nation
+	little_entente_nation
+	Great_ideals_are_close_at_hand
+	Kings_and_ministers
+	The_national_enthusiasm_of_the_military_headquarters
+	A_land_surrounded_by_mountains_and_seas
+	export_focus
+	limited_conscription
+	civilian_economy
+}
+
+set_convoys = 10
+
+create_country_leader = {
+	name = "Eleftherios Venizelos"
+	desc = "E_V_DESC"
+	picture = "az3xi-9jo5c.dds"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Alexandros A"
+	desc = ""
+	picture = "azz9t-ltmza.dds"
+	expire = "1965.1.1"
+	ideology = monarchism
+	traits = {
+	}
+}
+
+set_politics = {
+	ruling_party = CON_democratic
+	last_election = "1915.5.3"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	CON_democratic = 45
+	Fascism = 0
+	Marxism = 5
+	Absolutism = 50
+}
+
+set_stability = 0.8
+country_event = {
+	days = 360
+	id = GRE.1
+}
+oob="GRE"
+country_event = {
+	days = 1000
+	id = GRE.1
+}
+activate_mission = IST_fake_mission_countdown

@@ -1,0 +1,145 @@
+﻿capital = 66
+
+set_cosmetic_tag = SIL_1_FRE_democratic
+
+##oob = ""
+
+recruit_character = SIL_Erwin_von_Witzleben
+recruit_character = SIL_Hans_lammers
+recruit_character = SIL_Moritz_von_bissing
+recruit_character = SIL_Nikolaus_von_falkenhorst
+recruit_character = SIL_Richard_Von_Schobert
+
+set_research_slots = 3
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+ 
+ 
+	cv_early_fighter = 1
+	cv_naval_bomber1 = 1
+ 
+	tactical_bomber1 = 1
+	CAS1 = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+	fuel_silos = 1
+	fuel_refining = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		basic_battlecruiser = 1
+		early_carrier = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		basic_secondary_battery = 1
+		basic_heavy_armor_scheme = 1
+		mtg_transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+
+set_convoys = 20
+
+set_country_flag = AOR_GER_flag_NOT_support_resolution
+
+set_politics = {
+	ruling_party = FRE_democratic
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+
+}
+set_popularities = {
+	AUT_democratic = 30
+	CON_democratic = 10
+	FRE_democratic = 60
+}
+
+add_ideas = {
+	Captain's_first_mate
+	Czech_experience
+	Polish_question
+	Compact_of_German_Confederation
+}
+
+effect = {
+	country_lock_all_division_template = yes
+	}
+
+create_country_leader = {
+	name = "Philipp Scheidemann"
+	desc = "SIL_P_S_DESC"
+	picture = "avwp0-u8tjw.dds"
+	expire = "1965.1.1"
+	ideology = liberalism
+	traits = {
+	}
+}
+
+oob="SIL_1919"

@@ -1,0 +1,92 @@
+﻿capital = 284
+
+#oob = "NZL_1936"
+
+# Starting tech
+set_stability = 0.8
+set_war_support = 0.3
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+ 
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+ 
+ 
+	trench_warfare = 1
+	fleet_in_being = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		mtg_transport = 1
+	}
+}
+
+
+create_country_leader = {
+	name = "William_Macy"
+	desc = ""
+	picture = "a22xg-3amgh.dds"
+	expire = "1965.1.1"
+	ideology = federalism
+	traits = {
+	}
+}
+
+
+if = {
+	limit = { has_dlc = "Together for Victory" }
+
+	add_to_tech_sharing_group = commonwealth_research
+}
+
+
+set_politics = {
+	ruling_party = CON_democratic
+	last_election = "1935.11.27"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	CON_democratic = 60
+	SOC_democratic = 25
+	PAR_socialism = 15
+}
+
+set_convoys = 70
+
+set_cosmetic_tag = NZL_UK
+

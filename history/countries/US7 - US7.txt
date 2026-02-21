@@ -1,0 +1,100 @@
+﻿capital = 384
+
+#oob = "USA_1936"
+
+starting_train_buffer = 5
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		#set_naval_#oob = "USA_1936_naval_mtg"
+	else = {
+		#set_naval_#oob = "USA_1936_naval_legacy"
+	}
+}
+
+set_research_slots = 4
+set_stability = 0.55
+set_war_support = 0.95
+add_command_power = 20
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+ 
+	interwar_antiair = 1
+ 
+	cv_early_fighter = 1
+	cv_naval_bomber1 = 1
+	cv_CAS1 = 1
+ 
+	CAS1 = 1
+ 
+	superior_firepower = 1
+	base_strike = 1
+	 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+
+	}
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		basic_carrier = 1
+		transport = 1
+	}
+}
+
+
+
+set_politics = {
+	ruling_party = AUT_democratic
+	last_election = "1915.5.19"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	AUT_democratic = 40
+	CON_democratic = 30
+	FRE_democratic = 16
+	Absolutism = 14
+}
+
+create_country_leader = {
+	name = "William_Kissam_Vanderbilt"
+	desc = "William_Kissam_Vanderbilt_desc"
+	picture = "gfx/leaders/US7/William_Kissam_Vanderbilt.png"
+	expire = "1953.3.1"
+	ideology = oligarchy
+	traits = {
+		
+	}
+
+}
+
+

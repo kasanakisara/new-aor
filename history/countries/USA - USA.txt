@@ -1,0 +1,597 @@
+﻿capital = 361
+
+set_naval_oob = "AOR_USA_naval"
+load_oob = "AOR_USA_LAND_1919"
+starting_train_buffer = 5
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		#set_naval_oob = "USA_1936_naval_mtg"
+	else = {
+		#set_naval_oob = "USA_1936_naval_legacy"
+	}
+}
+
+set_research_slots = 4
+set_stability = 0.75
+set_war_support = 0.5
+add_command_power = 20
+set_variable = { var = senators_support value = 48 }
+set_variable = { var = senators_total value = 96 }
+set_variable = { var = representatives_support value = 218 }
+set_variable = { var = representatives_total value = 435 }
+set_variable = { var = quorum_low value = 39 }
+set_variable = { var = quorum_medium value = 49 }
+set_variable = { var = quorum_high value = 58 }
+USA_recalc_congress_icon_frames = yes
+USA = {
+	country_event = { id = usa.50 days = 2 }
+	country_event = { id = usa.51 days = 2 }
+}
+
+add_equipment_to_stockpile = {
+	type = support_equipment
+	amount = 300
+	producer = USA	
+}
+
+add_equipment_to_stockpile = {
+	type = artillery_equipment_1
+	amount = 100
+	producer = USA	
+}
+
+set_convoys = 20
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	early_armor_car = 1
+	independent_turret = 1
+	tracked_suspension = 1
+	great_war_light_chassis = 1
+	great_war_heavy_chassis = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	machine_equipment_weapons = 1
+	early_ship_hull_submarine = 1
+	tech_1908_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	tech_1909_ship_hull_light = 1
+	early_ship_hull_light_cruiser = 1
+	tech_1909_ship_hull_light_cruiser = 1
+	early_ship_hull_heavy_cruiser = 1
+	late_ship_hull_heavy_cruiser = 1
+	early_ship_hull_heavy = 1
+	tech_1909_crusier_battleship_hull = 1
+	tech_1919_crusier_battleship_hull = 1
+	tech_1906_ship_hull_heavy = 1
+	tech_1914_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+ 
+	superior_firepower = 1
+	base_strike = 1
+	 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+
+	}
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		basic_carrier = 1
+		transport = 1
+	}
+}
+
+
+
+set_politics = {
+	ruling_party = FRE_democratic
+	last_election = "1915.5.19"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	CON_democratic = 34 #迪克西党
+	FRE_democratic = 44 #扬基党
+	SOC_democratic = 10 #社
+	PAR_socialism = 4 #联邦统一党
+	AUT_democratic = 8 #迪克西-强硬派
+
+}
+
+create_country_leader = {
+	name = "Thomas_Woodrow_Wilson"
+	desc = "Thomas_Woodrow_Wilson_desc"
+	picture = "gfx/leaders/USA/Thomas_Woodrow_Wilson.png"
+	expire = "1953.3.1"
+	ideology = USA_federalism
+	traits = {
+		
+	}
+
+}
+create_country_leader = {
+	name = "Thomas_Woodrow_Wilson"
+	desc = "Thomas_Woodrow_Wilson_desc"
+	picture = "axm7x-nkh4s.dds"
+	expire = "1953.3.1"
+	ideology = USA_federalism
+	traits = {
+		
+	}
+
+}
+#create_country_leader = {
+	#name = "Warren_Gamaliel_Harding"
+	#desc = "Warren_Gamaliel_Harding_desc"
+	#picture = "gfx/leaders/USA/Harding.png"
+	#expire = "1945.1.1"
+	#ideology = USA_federalism
+	#traits = {
+		
+	#}
+	
+#}
+create_country_leader = {
+	name = "John Nance Garner III"
+	desc = ""
+	picture = "John_Nance_Garner_III.dds"
+	expire = "1953.3.1"
+	ideology = conservatism
+	traits = {
+		
+	}
+
+}
+create_country_leader = {
+	name = "Charles Evans Hughes"
+	desc = ""
+	picture = "axm7x-nkh4s.dds"
+	expire = "1953.3.1"
+	ideology = social_liberalism
+	traits = {
+		
+	}
+
+}
+create_country_leader = {
+	name = "Solomon Springhall"
+	desc = ""
+	picture = "axm7x-nkh4s.dds"
+	expire = "1953.3.1"
+	ideology = patriarch
+	traits = {
+		
+	}
+
+}
+create_country_leader = {
+	name = "Eugene Victor Debs"
+	desc = ""
+	picture = "axm7x-nkh4s.dds"
+	expire = "1953.3.1"
+	ideology = demsoc
+	traits = {
+		
+	}
+
+}
+add_ideas = {
+	USA_the_divided_nation
+	USA_sandaliren
+	USA_shiyouhuanying 
+	USA_kuangyezhidi
+	USA_busidexintuo
+	USA_zhixuchonggou_knights
+	USA_dazhanzhimo
+}
+
+set_variable = { var = wanla_quandouwanle }
+
+USA = {
+    news_event = {
+	days = 65 id = AOR_news.34
+	}
+
+	news_event = {
+	days = 95 id = AOR_news.35
+	}
+
+	news_event = {
+	days = 185 id = AOR_news.36
+	}
+
+	news_event = {
+	days = 390 id = AOR_news.37
+	}
+
+	news_event = {
+	days = 900 id = AOR_news.38
+	}
+}
+
+###内阁
+recruit_character = USA_Thomas_Riley_Marshall
+recruit_character = USA_Robert_Lansing
+recruit_character = USA_A_Mitchell_Palmer
+recruit_character = USA_Franklin_MacVeagh
+recruit_character = USA_Frankin_K_Ryan
+
+###陆军将领###
+recruit_character = USA_john_pershing
+recruit_character = USA_tasker_bliss
+recruit_character = USA_payton_march
+recruit_character = USA_hugh_l_scott
+recruit_character = USA_hunter_liggett
+recruit_character = USA_robert_l_hauser
+recruit_character = USA_charles_pelot_sumner
+recruit_character = USA_john_l_hines
+recruit_character = USA_andrew_w_brust
+recruit_character = USA_leonard_wood
+recruit_character = USA_f_c_answorth
+recruit_character = USA_george_barnett
+recruit_character = USA_john_a_lerchen
+recruit_character = USA_harry_a_eaton
+recruit_character = USA_robert_e_lee_bradley
+recruit_character = USA_edward_whittemore
+recruit_character = USA_william_l_seibert
+recruit_character = USA_brayton_brown
+recruit_character = USA_ora_e_hunt
+recruit_character = USA_j_w_hurd
+recruit_character = USA_charles_g_morton
+recruit_character = USA_malin_craig
+
+###海军将领###
+recruit_character = USA_Henry_T_Mayo
+recruit_character = USA_William_Soden_Sims
+recruit_character = USA_William_B_Fletcher
+recruit_character = USA_Hugh_Rodman
+recruit_character = USA_Albert_Gleaves
+recruit_character = USA_Joseph_Strauss
+recruit_character = USA_Charles_J_Badger
+recruit_character = USA_Austin_M_Knight
+recruit_character = USA_William_S_Cowles
+recruit_character = USA_James_H_Olive
+recruit_character = USA_Thomas_S_Rodgers
+
+###理论家
+#陆军
+recruit_character = USA_john_pershing_1
+recruit_character = USA_Leonard_Wood_1
+#海军
+recruit_character = USA_William_Soden_Sims_1 
+#空军
+recruit_character = USA_William_Mitchell_1 
+
+###军事部长
+#陆军
+recruit_character = USA_Newton_Deihl_Baker 
+recruit_character = USA_Leonard_Wood_a 
+#海军
+recruit_character = USA_William_Shepherd_Benson 
+recruit_character = USA_Frank_Friday_Fletcher
+recruit_character = USA_F_C_Answorth_n
+#空军
+recruit_character = USA_William_Mitchell
+
+###总司令
+#陆军
+recruit_character = USA_john_pershing_a 
+recruit_character = USA_tasker_bliss_a
+recruit_character = USA_payton_march_a
+#海军
+recruit_character = USA_Henry_T_Mayo_a
+recruit_character = USA_William_Shepherd_Benson_a
+recruit_character = USA_William_Soden_Sims_a
+#空军
+recruit_character = USA_William_Mitchell_a
+
+set_autonomy = {
+target = HSP
+autonomy_state = autonomy_puppet
+}
+
+###陆军装甲设计###
+create_equipment_variant = {
+	name = "ATL1-斯科特"
+	type = light_tank_chassis_0 
+	parent_version = 0
+	modules = {
+		main_armament_slot = tank_small_cannon
+		turret_type_slot = tank_light_two_man_tank_turret
+		suspension_type_slot = tank_torsion_bar_suspension
+		armor_type_slot = tank_riveted_armor
+		engine_type_slot = tank_gasoline_engine
+	}
+}
+create_equipment_variant = {
+	name = "ATH1-山姆"
+	type = heavy_tank_chassis_0
+	parent_version = 0
+	modules = {
+		main_armament_slot = tank_medium_cannon
+		turret_type_slot = tank_heavy_fixed_superstructure_turret
+		suspension_type_slot = tank_torsion_bar_suspension
+		armor_type_slot = tank_riveted_armor
+		engine_type_slot = tank_gasoline_engine
+	}
+}
+
+###海军舰艇设计###
+create_equipment_variant = {
+	name = "宪法级"				
+	type = battle_cruiser_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_3
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_2
+		mid_1_custom_slot = ship_heavy_battery_2
+		mid_2_custom_slot = ship_anti_air_1
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_2
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "独立级"				
+	type = battleship_3
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_2
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_2
+		mid_1_custom_slot = ship_heavy_battery_2
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_2
+		rear_2_custom_slot = ship_anti_air_2
+	}
+}
+create_equipment_variant = {
+	name = "乔治·华盛顿级"				
+	type = battleship_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_bb_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_heavy_battery_1 
+		mid_1_custom_slot = ship_heavy_battery_1 
+		mid_2_custom_slot = ship_secondaries_1
+		mid_3_custom_slot = ship_secondaries_1
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_torpedo_1
+	}
+}
+create_equipment_variant = {
+	name = "哥伦比亚级"				
+	type = battleship_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_heavy_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = heavy_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_bb_1
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = ship_secondaries_2
+		mid_3_custom_slot = ship_secondaries_2
+		rear_1_custom_slot = ship_heavy_battery_1
+		rear_2_custom_slot = ship_secondaries_1
+	}
+}
+create_equipment_variant = {
+	name = "特伦顿级"				
+	type = heavy_cruiser_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_2
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_2
+		fixed_ship_secondaries_slot = ship_secondaries_2
+		front_1_custom_slot = ship_secondaries_2
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_medium_battery_2
+		rear_1_custom_slot = ship_anti_air_2
+		rear_2_custom_slot = ship_depth_charge_1
+	}
+}
+create_equipment_variant = {
+	name = "萨拉托加级"				
+	type = heavy_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_2
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_secondaries_1
+		mid_1_custom_slot = ship_secondaries_2
+		mid_2_custom_slot = ship_medium_battery_1
+		rear_1_custom_slot = ship_secondaries_2
+		rear_2_custom_slot = ship_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "切斯特级"				
+	type = light_cruiser_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_medium_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_2
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_torpedo_1
+		mid_1_custom_slot = ship_secondaries_1
+		mid_2_custom_slot = ship_light_medium_battery_2
+		rear_1_custom_slot = ship_light_medium_battery_1
+	}
+}
+create_equipment_variant = {
+	name = "丹佛级"				
+	type = light_cruiser_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_medium_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = cruiser_ship_engine_1
+		fixed_ship_armor_slot = ship_armor_cruiser_1
+		fixed_ship_secondaries_slot = ship_secondaries_1
+		front_1_custom_slot = ship_torpedo_1
+		mid_1_custom_slot = ship_light_medium_battery_1
+		mid_2_custom_slot = ship_secondaries_1
+		rear_1_custom_slot = ship_light_battery_2
+	}
+}
+create_equipment_variant = {
+	name = "维克斯级"				
+	type = destroyer_2
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_battery_2
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = light_ship_engine_2
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		fixed_ship_torpedo_slot= ship_torpedo_2
+		front_1_custom_slot = ship_torpedo_2
+		mid_1_custom_slot = ship_anti_air_1
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_light_battery_2
+	}
+}
+create_equipment_variant = {
+	name = "班布里奇级"				
+	type = destroyer_1
+	parent_version = 0
+	modules = {
+		fixed_ship_battery_slot = ship_light_battery_1
+		fixed_ship_anti_air_slot = ship_anti_air_1
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = light_ship_engine_1
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		fixed_ship_torpedo_slot= ship_torpedo_1
+		mid_1_custom_slot = ship_torpedo_1
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_depth_charge_1
+	}
+}
+create_equipment_variant = {
+	name = "E级"				
+	type = submarine_2
+	parent_version = 0
+	modules = {
+		fixed_ship_torpedo_slot = ship_torpedo_sub_2
+		fixed_ship_battery_slot = empty
+		fixed_ship_anti_air_slot = empty
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = sub_ship_engine_2
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		front_1_custom_slot = empty
+		mid_1_custom_slot = empty
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_torpedo_sub_1
+	}
+}
+create_equipment_variant = {
+	name = "霍兰级"				
+	type = submarine_1
+	parent_version = 0
+	modules = {
+		fixed_ship_torpedo_slot = empty
+		fixed_ship_battery_slot = empty
+		fixed_ship_anti_air_slot = empty
+		fixed_ship_fire_control_system_slot = empty
+		fixed_ship_radar_slot = empty
+		fixed_ship_engine_slot = sub_ship_engine_1
+		fixed_ship_armor_slot = empty
+		fixed_ship_secondaries_slot = empty
+		front_1_custom_slot = empty
+		mid_1_custom_slot = empty
+		mid_2_custom_slot = empty
+		rear_1_custom_slot = ship_torpedo_sub_1
+	}
+}
+
+USA = {
+	country_event = { days =25 id = USA.10003 }
+	country_event = { days = 32 id = USA.10004 }
+	country_event = { days = 556 id = USA.10049 }
+	country_event = { days = 473 id = USA.10050 }
+	country_event = { days = 7 id = USA.10058 }
+	country_event = { days = 410 id = USA.10070 }
+	country_event = { days = 311 id = USA.10074 }
+	country_event = { days = 149 id = USA.10078 }
+	country_event = { days = 1 id = USA.10080 }
+	country_event = { days = 29 id = USA.10082 }
+	country_event = { days = 93 id = USA.10083 }
+	country_event = { days = 84 id = USA.10084 }
+	country_event = { days = 682 id = USA.10085 }
+	ountry_event = { days = 537 id = USA.10086 }
+}

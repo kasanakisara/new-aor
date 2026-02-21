@@ -1,0 +1,138 @@
+﻿capital = 65
+
+recruit_character = SAX_Friedrich_August
+recruit_character = SAX_Hans_Karl_Adolph_von_Carlowitz
+recruit_character = SAX_Max_von_Hausen
+recruit_character = SAX_Max_Leuthold
+recruit_character = SAX_Karl_Ludwig
+recruit_character = SAX_August_von_mackensen
+recruit_character = SAX_Gerd_von_Rundstedt
+recruit_character = SAX_Manfred
+recruit_character = SAX_Kruger
+recruit_character = SAX_Reinhardt
+recruit_character = SAX_gustav_adolf_scheel
+recruit_character = SAX_Paul_frolich
+
+set_cosmetic_tag = SAX_1
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	 
+ 
+	interwar_antiair = 1
+	
+ 
+ 
+ 
+	tactical_bomber1 = 1
+ 
+	CAS1 = 1
+ 
+	mobile_warfare = 1
+	trade_interdiction = 1
+	formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+ 
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		light_tank_chassis_0 = 1
+		light_tank_chassis_1 = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+
+
+
+set_research_slots = 3
+set_convoys = 50
+set_stability = 0.75
+
+set_country_flag = AOR_GER_flag_NOT_support_resolution
+
+set_politics = {
+	ruling_party = PAR_socialism
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+
+}
+set_popularities = {
+	PAR_socialism = 70
+	SOC_democratic = 10
+	Absolutism = 10
+	Marxism = 10
+}
+
+add_ideas = {
+	cliffs_and_tigers
+	exp_of_kautsky
+	Compact_of_German_Confederation
+}
+
+effect = {
+	country_lock_all_division_template = yes
+	}
+
+create_country_leader = {
+	name = "Karl Kautsky"
+	desc = "POLITICS_Karl_Kautsky_DESC"
+	picture = "auy2s-u2n48.dds"
+	expire = "1965.1.1"
+	ideology = socialism_mid
+	traits = {
+	}
+}
+
+#create_country_leader = {
+#	name = "Kurt Eisner"
+#	desc = "POLITICS_T_Liebknecht_DESC"
+#	picture = "gfx/leaders/SAX/Kurt_Eisner.png"
+#	expire = "1965.1.1"
+#	ideology = leninism
+#	traits = {
+#	}
+#}
+
+oob="SAX_1919"
+

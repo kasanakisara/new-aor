@@ -1,0 +1,68 @@
+﻿capital = 1023
+
+# Starting tech
+set_technology = {	
+	infantry_weapons = 1
+	Infantry_uniforms = 1
+	infantry_at = 1
+	Old_howitzers = 1
+	support_weapons = 1
+	tech_support = 1
+	basic_train = 1
+	Railroad_construction = 1
+	Port_foundation = 1
+	Urban_infrastructure = 1
+	Industrial_assembly_lines = 1
+	Resource_extraction = 1
+}
+
+
+load_oob = SWE_oob
+
+set_research_slots = 3
+set_convoys = 50
+set_stability = 0.5
+
+
+set_politics = {
+	ruling_party = SOC_democratic
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+
+}
+set_popularities = {
+	SOC_democratic = 65
+	Marxism = 35
+}
+
+country_lock_all_division_template = yes
+	
+add_ideas = {
+	A_lingering_alliance
+	Tiger_of_Silence
+	Let_the_ambitio_sleep
+	SWE_Left_Threat
+	export_focus
+	civilian_economy
+	volunteer_only
+}
+
+
+recruit_character = SWE_Haakon_VII_I
+recruit_character = SWE_Haakon_VII_II
+recruit_character = SWE_Emergency_Commitee_Leaders
+
+##Norweign Independence
+set_variable = { SWE_Norweign_Independence_value = 25 }
+set_variable = { SWE_Norweign_Independence_main_meter = 6 }
+set_variable = { SWE_Norweign_Independence_add = 3 }
+set_country_flag = SWE_Norweign_Independence_flag
+
+add_dynamic_modifier = { modifier = AOR_SWE_Norweign_Independence_dynamic_modifier }
+set_variable = { SWE_Norweign_Independence_stability_weekly = -0.05 }
+set_variable = { SWE_Norweign_Independence_stability_factor = -0.1 }
+set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.1 }
+
+country_event = { id = Tosca.1 days = 5 }
+country_event = { id = SWE.1 days = 1262 }
