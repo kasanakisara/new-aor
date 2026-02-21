@@ -5,6 +5,7 @@ tags={
 }
 name="NEO_AOR"
 replace_path="common/countries"
+replace_path="common/country_tags"
 replace_path="history/countries"
 replace_path="history/states"
 replace_path="map"
