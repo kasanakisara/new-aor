@@ -1,0 +1,69 @@
+division_template = { 
+	name = "陆军师" 
+	division_names_group = ITA_INF_01 
+	
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = { 
+		engineer = { x = 0 y = 0 }
+	}
+}
+
+division_template = { 
+	name = "混成旅" 
+	division_names_group = ITA_MNT_01 
+
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 1}
+		cavalry = { x = 2 y = 0 }
+	}
+	support = { 
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+
+	priority = 2 
+}
+division_template = { 
+	name = "骑兵旅" 
+	division_names_group = ITA_CAV_01 
+
+	regiments = { 
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 1 }
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 1 }
+	}
+	support = { 
+		artillery = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division= {	
+		name = "陆军第九混成旅"
+		location = 4083
+		division_template = "混成旅"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	division= {	
+		name = "陆军第六师"
+		location = 4083
+		division_template = "陆军师"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+	
+}

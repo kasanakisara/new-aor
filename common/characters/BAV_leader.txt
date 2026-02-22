@@ -1,0 +1,128 @@
+characters = {
+	BAV_Karl_Liebknecht={
+		name= Karl_Liebknecht
+		portraits={
+			civilian={
+				large="gfx/leaders/BAV/axcra-1w8mr.dds"
+			}
+			army = {
+				small = "gfx/interface/ideas/advisors/BAV_Karl_Liebknecht.png"
+			}
+		}
+		country_leader={
+			ideology = revolutionism
+			desc = "K_L_DESC"
+			traits={  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BAV_Karl_Liebknecht
+			available = {}
+			traits = {trait_Determined_international_fighters_2}
+			can_be_fired = no
+		}
+	}
+	BAV_Luksemburg={
+		name= Roza_Luksemburg
+		portraits={
+			civilian={
+				large="gfx/leaders/BAV/aea71-ho9ng.dds"
+			}
+			army = {
+				small = "gfx/interface/ideas/advisors/BAV_Luksemburg.png"
+			}
+		}
+		country_leader={
+			ideology = luxemburgism
+			desc = "BAV_R_L_DESC"
+			traits={  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token =BAV_Luksemburg
+			available = {}
+			traits = {trait_The_Eagles_of_Revolution_Forever_2}
+			can_be_fired = no
+		}
+	}
+	BAV_Bebel={
+		name= August_Bebel
+		portraits={
+			civilian={
+				large="gfx/leaders/BAV/Bebel_old.png"
+			}
+		}
+		country_leader={
+			ideology = REV_soc
+			desc = "BAV_BEBEL_DESC"
+			traits={German_workers_leaders Evergreen_leader Aftermath_of_resignation  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	
+	BAV_Mehring = {
+		name= Franz_Mehring
+		portraits={
+			civilian={
+				large="gfx/leaders/BAV/Mehring.png"
+			}
+			army = {
+				small = "gfx/interface/ideas/advisors/BAV_Mehring.png"
+			}
+		}
+		country_leader={
+			ideology = revolutionism
+			desc = "BAV_Mehring_DESC"
+			traits={Defend_revolution heart_exhausted}
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BAV_Mehring
+			available = { NOT = {has_country_leader = { ruling_only = yes name = Franz_Mehring }}}
+			traits = {Defend_revolution heart_exhausted}
+			can_be_fired = no
+		}
+	}
+	Eugen_Levine= { 
+		name = Eugen_Levine
+		portraits = {
+			army = {
+				large = GFX_portrait_Eugen_Levine
+				small = "gfx/interface/ideas/advisors/Eugen_Levine.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = Eugen_Levine
+			available = {}
+			traits = {forever_fighter}
+			can_be_fired = no
+		}
+	}
+
+	Eugen_Levine_army= { 
+		name = Eugen_Levine
+		portraits = {
+			army = {
+				large = GFX_portrait_Eugen_Levine
+				small = "gfx/interface/ideas/advisors/Eugen_Levine.png"
+			}
+		}
+		corps_commander = {
+			traits = {BAV_committed_revolutionary trait_reckless politically_connected harsh_leader}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+}

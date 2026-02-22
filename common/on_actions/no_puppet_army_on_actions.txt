@@ -1,0 +1,30 @@
+on_actions = {
+
+	on_startup = {
+		effect = {
+			every_possible_country = { add_ideas = geiwogun }
+		}
+	}
+
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_idea = geiwogun }
+				}
+				add_ideas = geiwogun
+			}
+		}
+	}
+
+	on_puppet = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_idea = geiwogun }
+				}
+				add_ideas = geiwogun
+			}
+		}
+	}
+}

@@ -1,0 +1,93 @@
+on_actions = {
+	on_daily_BAV = {
+		effect = {
+			if = {
+				limit = {
+					BAV = {
+						has_country_flag = two_ways_two_thoughts_focus
+						has_completed_focus = BAV_two_ways_two_thoughts_focus
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							BAV_Liebknecht > BAV_Luxemburg
+						}	
+					}
+					add_to_temp_variable = { BAV_different_choice_drift = BAV_Liebknecht }
+					subtract_from_temp_variable = { BAV_different_choice_drift = BAV_Luxemburg }
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							var = BAV_Luxemburg
+							value = BAV_Liebknecht
+							compare = greater_than_or_equals
+						}
+					}
+					add_to_temp_variable = { BAV_different_choice_drift = BAV_Luxemburg }
+					subtract_from_temp_variable = { BAV_different_choice_drift = BAV_Liebknecht }
+				}
+				multiply_temp_variable = {
+					BAV_different_choice_drift = 0.025
+				}
+				set_variable = {
+					BAV_different_choice_drift_daily = BAV_different_choice_drift
+				}
+				subtract_from_variable = {
+					BAV_different_choice = BAV_different_choice_drift_daily
+				}
+				clamp_temp_variable = {
+					var = BAV_different_choice
+					max = 100
+				}
+				clamp_temp_variable = {
+					var = BAV_different_choice
+					min = 0
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = two_ways_two_thoughts_focus
+					country_exists = BAV
+					check_variable = {
+						var = BAV_different_choice
+						value = 30
+						compare = greater_than_or_equals
+					}
+					BAV = {
+						not = {
+							has_idea = BAV_nice_balance_modifier
+						}
+					}
+				}
+				BAV = {
+					add_ideas = BAV_nice_balance_modifier
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = two_ways_two_thoughts_focus
+					country_exists = BAV
+					check_variable = {
+						BAV_different_choice < 30
+					}
+					BAV = {
+						has_idea = BAV_nice_balance_modifier
+					}
+				}
+				BAV = {
+					remove_ideas = BAV_nice_balance_modifier
+				}
+			}
+
+		}
+	}
+}
+
+	
+

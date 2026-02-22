@@ -1,0 +1,117 @@
+characters = {
+
+	###领导人###
+	
+	#夏尔·德·布罗克维尔
+	BEL_Charles_de_Broqueville={
+		name= Charles_de_Broqueville
+		portraits={
+			civilian={
+				large="gfx/leaders/BEL/Charles_de_Broqueville.png"
+			}
+		}
+		country_leader={
+			ideology = conservatism
+			desc = ""
+			traits={}
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	#亨利·卡尔东·德维亚尔 -司法部长
+	BEL_Henri_Cartonde_Wiart={
+		name= Henri_Cartonde_Wiart
+		portraits={
+			civilian={
+				large="gfx/leaders/BEL/a3w9r-ameki.dds"
+				small="gfx/interface/ideas/advisors/BEL_Henri_Cartonde_Wiart.png"
+			}
+		}
+		country_leader={
+			ideology = conservatism
+			desc = ""
+			traits={trait_loyal_graf}
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BEL_Henri_Cartonde_Wiart
+			available = {always = yes}
+			traits = {trait_loyal_graf}
+			can_be_fired = no
+		}
+	}
+	
+	####将领###
+	
+	#阿尔贝一世
+	BEL_Army_Albert_I ={
+		name= Army_Albert_I
+		portraits={
+			army={
+				large="gfx/leaders/BEL/a3c5e-ni5gi.dds"
+			}
+		}
+		field_marshal={
+			traits={politically_connected war_hero}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+
+
+	###内阁###
+	
+	#朱尔斯·伦金 -殖民地部长
+	BEL_Jules_Renkin ={
+		name= Jules_Renkin
+		portraits={
+			civilian={
+				small="gfx/interface/ideas/advisors/BEL_Jules_Renkin.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BEL_Jules_Renkin
+			traits = {silent_mule}
+			can_be_fired = no
+		}
+	}	
+	
+	#莱昂·德拉克洛瓦 -经济部长
+	BEL_Leon_Delacroix ={
+		name= Leon_Delacroix
+		portraits={
+			civilian={
+				small="gfx/interface/ideas/advisors/BEL_Leon_Delacroix.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BEL_Leon_Delacroix
+			traits = {financial_expert}
+			can_be_fired = no
+		}
+	}	
+	
+	#欧仁·贝恩斯 -外交部长
+	BEL_Eugene_Beyens ={
+		name= Eugene_Beyens
+		portraits={
+			civilian={
+				small="gfx/interface/ideas/advisors/BEL_Eugene_Beyens.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = BEL_Eugene_Beyens
+			traits = {smooth_talking_charmer}
+			can_be_fired = no
+		}
+	}
+}

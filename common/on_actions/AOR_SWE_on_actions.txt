@@ -1,0 +1,949 @@
+on_actions = {
+
+	on_weekly_SWE = {
+		effect = {
+			### 门户开放修正
+			if = {
+				limit = {
+					OR = {
+						has_idea = SWE_Open_the_door
+						has_idea = SWE_Thrid_Chioce
+					}
+				}
+
+				## 政府支出 -> 生活消费品
+				if = {
+					limit = { check_variable = { SWE_Government_Spending = 0 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_consumer_goods_factor = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 25 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_consumer_goods_factor = 0.25 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 50 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_consumer_goods_factor = 0.35 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 75 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_consumer_goods_factor = 0.45 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 100 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_consumer_goods_factor = 0.5 }
+				}
+				else = {
+					set_variable = { SWE_Trade_consumer_goods_factor = 0.75 }
+				}
+
+				## 政府支出 -> 国际市场开放度
+				if = {
+					limit = { check_variable = { SWE_Government_Spending = 0 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Market_Inclusion = -2.5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 25 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Market_Inclusion = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 50 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Market_Inclusion = 2.5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 75 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Market_Inclusion = 5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Government_Spending = 100 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Market_Inclusion = 7.5 }
+				}
+				else = {
+					add_to_variable = { SWE_Market_Inclusion = 8.5 }
+				}
+
+				## 国际市场开放度上界
+				if = {
+					limit = { check_variable = { SWE_Market_Inclusion > 100 } }
+					set_variable = { SWE_Market_Inclusion = 100 }
+				}
+
+				## 国际市场开放度 -> 本土工业发展度
+				if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 0 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Industry_Development = -2.5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Industry_Development = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 50 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Industry_Development = 2.5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Industry_Development = 5 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 100 compare = less_than_or_equals } }
+					add_to_variable = { SWE_Industry_Development = 7.5 }
+				}
+
+				## 本土工业发展度上下界
+				if = {
+					limit = { check_variable = { SWE_Industry_Development > 100 } }
+					set_variable = { SWE_Industry_Development = 100 }
+				}
+				if = {
+					limit = { check_variable = { SWE_Industry_Development < 0 } }
+					set_variable = { SWE_Industry_Development = 0 }
+				}
+
+				## 国际市场开放度 -> 建造速度
+				if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 0 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_construction_speed = -0.05 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_construction_speed = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 50 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_construction_speed = 0.15 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_construction_speed = 0.25 }
+				}
+				else_if = {
+					limit = { check_variable = { SWE_Market_Inclusion = 100 compare = less_than_or_equals } }
+					set_variable = { SWE_Trade_construction_speed = 0.45 }
+				}
+				else = {
+					set_variable = { SWE_Trade_construction_speed = 0.5 }
+				}
+			}
+
+			#### 联邦一梦 ####
+			if = {
+				limit = {
+					has_idea = SWE_The_Union_Dream
+				}
+
+				### 增长度修正 ###
+
+				set_variable = { SWE_Union_progress_value_add = 0 }
+
+				## 市场包容度 -> 增长度
+
+				if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 15 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.25 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 45 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.25 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 45 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.25 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 65 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.5 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.65 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Market_Inclusion = 85 compare = less_than_or_more }
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.75 }
+				}
+				else = {
+					add_to_variable = { SWE_Union_progress_value_add = 1 }
+				}
+
+				## 稳定度 -> 增长度
+
+				if = {
+					limit = {
+						has_stability < 0
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.5 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 0.2
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.25 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 0.35
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 0.5
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.25 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 0.65
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.5 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 0.75
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.65 }
+				}
+				else_if = {
+					limit = {
+						has_stability < 9
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.75 }
+				}
+				else = {
+					add_to_variable = { SWE_Union_progress_value_add = 1 }
+				}
+
+				##人民之家各议案修正
+				#移民
+				if = {
+					limit = {
+						NOT = {
+							has_completed_focus = SWE_Immigrant_Protection #未开放移民政策
+						}
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Immigrant = 0 } #移民问题尚未产生危机
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Immigrant = 1 } #移民问题产生少量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.5 } 
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Immigrant = 2 } #移民问题产生大量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Immigrant = 3 } #移民问题快爆了！
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.5 }
+				}
+				#劳动
+				if = {
+					limit = {
+						NOT = {
+							has_completed_focus = SWE_Maternity_Allowance #未开放政策
+						}
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Labor = 0 } #问题尚未产生危机
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Labor = 1 } #问题产生少量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.5 } 
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Labor = 2 } #问题产生大量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Labor = 3 } #问题快爆了！
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.5 }
+				}
+				#教育
+				else_if = {
+					limit = {
+						check_variable = { SWE_Education = 0 } #问题尚未产生危机
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Education = 1 } #问题产生少量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0.5 } 
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Education = 2 } #问题产生大量社会问题
+					}
+					add_to_variable = { SWE_Union_progress_value_add = 0 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Education = 3 } #问题快爆了！
+					}
+					add_to_variable = { SWE_Union_progress_value_add = -0.5 }
+				}
+
+				#加和
+				add_to_variable = { SWE_Union_progress_value = var:SWE_Union_progress_value_add }
+
+				#判断是否进步
+				if = {
+					limit = {
+						check_variable = { SWE_Union_progress_value > 100 }
+					}
+					add_to_variable = { SWE_Union_Stage = 1 }
+					add_to_variable = { SWE_Union_progress_value = -100 }
+					add_to_variable = { SWE_Union_stability_factor = 0.025 }
+					add_to_variable = { SWE_Union_war_support_factor = 0.025 }
+					add_to_variable = { SWE_Union_construction_speed = 0.025 }
+					add_to_variable = { SWE_Union_arms_speed = 0.025 }
+					add_to_variable = { SWE_Union_industrial_speed = 0.025 }
+					if = {
+						limit = {
+							check_variable = { SWE_Union_Stage < 12 }
+						}
+						add_to_variable = { SWE_Union_political_cost = -0.05 }
+					}
+				}
+			}
+
+			### 摄政危机 ###
+			if = {
+				limit = {
+					has_country_flag = SWE_Emergency_State
+				}
+
+				## 增幅初始化 ##
+				set_variable = { SWE_Regency_Economic_value_add = 0 }
+				set_variable = { SWE_Regency_Order_value_add = 0 }
+				set_variable = { SWE_Regency_Political_value_add = 0 }
+
+				## 民族精神你赢了 ##
+				if = {
+					limit = { has_idea = SWE_Regency_Military_Rule }
+					add_to_variable = { SWE_Regency_Order_value_add = 2.5 }
+				}
+				if = {
+					limit = { has_idea = SWE_Regency_LN_Recongnize }
+					add_to_variable = { SWE_Regency_Political_value_add = 2.5 }
+				}
+
+				## 稳定度的影响 ##
+				if = {
+					limit = { has_stability < 50 }
+					add_to_variable = { SWE_Regency_Order_value_add = -0.2 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.2 }
+				}
+				else_if = {
+					limit = { has_stability < 25 }
+					add_to_variable = { SWE_Regency_Order_value_add = -0.25 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.25 }
+				}
+				else_if = {
+					limit = { has_stability < 0 }
+					add_to_variable = { SWE_Regency_Order_value_add = -0.5 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.5 }
+				}
+
+				## 历史唯物主义你赢了 ##
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 20 }
+					}
+					add_to_variable = { SWE_Regency_Order_value_add = -0.5 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.5 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 40 }
+					}
+					add_to_variable = { SWE_Regency_Order_value_add = -0.25 }
+					add_to_variable = { SWE_Regency_Political_value_add = 0.25 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 60 }
+					}
+					add_to_variable = { SWE_Regency_Order_value_add = -0.2 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.2 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 80 }
+					}
+					add_to_variable = { SWE_Regency_Order_value_add = -0.1 }
+					add_to_variable = { SWE_Regency_Political_value_add = -0.1 }
+				}
+
+				## 加权 ##
+
+				add_to_variable = { SWE_Regency_Economic_value = var:SWE_Regency_Economic_value_add }
+				add_to_variable = { SWE_Regency_Order_value = var:SWE_Regency_Order_value_add }
+				add_to_variable = { SWE_Regency_Political_value = var:SWE_Regency_Political_value_add }
+
+				## 检测会不会崩溃 ##
+				if = {
+					OR = {
+						check_variable = { SWE_Regency_Economic_value < 20 }
+						check_variable = { SWE_Regency_Order_value < 20 }
+						check_variable = { SWE_Regency_Political_value < 20 }
+					}
+					#?#
+				}
+
+				## 上界 ##
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value > 100 }
+					}
+					set_variable = { SWE_Regency_Economic_value = 100 }
+				}
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value > 100 }
+					}
+					set_variable = { SWE_Regency_Order_value = 100 }
+				}
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value > 100 }
+					}
+					set_variable = { SWE_Regency_Political_value = 100 }
+				}
+
+				## 检测修正们 ##
+				set_variable = { SWE_Regency_Crisis_stability_factor = 0 }
+				set_variable = { SWE_Regency_Crisis_factory_efficency = 0 }
+				set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = 0 }
+				set_variable = { SWE_Regency_Crisis_conscription_factor = 0 }
+				set_variable = { SWE_Regency_Crisis_political_power_cost = 0 }
+				set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 0 }
+				# 经济 #
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 20 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.2 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.3 }
+					set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.25 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 40 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.175 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.25 }
+					set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.2 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 60 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.15 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.2 }
+					set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.15 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 80 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.1 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.15 }
+					set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Economic_value < 101 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.1 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.15 }
+					set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.1 }
+				}
+
+				# 秩序 #
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value < 20 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.3 }
+					set_variable = { SWE_Regency_Crisis_conscription_factor = -0.5 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value < 40 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.25 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.4 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value < 60 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.2 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.3 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value < 80 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.15 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.2 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Order_value < 101 }
+					}
+					set_variable = { SWE_Regency_Crisis_stability_factor = -0.1 }
+					set_variable = { SWE_Regency_Crisis_factory_efficency = -0.1 }
+				}
+
+				# 政权 #
+				if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value < 20 }
+					}
+					set_variable = { SWE_Regency_Crisis_political_power_cost = 0.5 }
+					set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 100 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value < 40 }
+					}
+					set_variable = { SWE_Regency_Crisis_political_power_cost = 0.4 }
+					set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 80 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value < 60 }
+					}
+					set_variable = { SWE_Regency_Crisis_political_power_cost = 0.3 }
+					set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 60 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value < 80 }
+					}
+					set_variable = { SWE_Regency_Crisis_political_power_cost = 0.2 }
+					set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 40 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { SWE_Regency_Political_value < 101 }
+					}
+					set_variable = { SWE_Regency_Crisis_political_power_cost = 0.1 }
+					set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 20 }
+				}
+				
+			}
+		}
+	}
+
+	on_monthly_SWE = {
+		effect = {
+			#人民之家
+			if = {
+				limit = {
+					has_country_flag = SWE_Folkhemmet_flag
+				}
+				add_political_power = -50
+				if = {
+					limit = {
+						has_idea = SWE_Ex_Folkhemmet
+					}
+					add_political_power = -75
+				}
+				if = {
+					limit = {
+						has_political_power < 0
+					}
+					remove_ideas = SWE_Folkhemmet
+					remove_ideas = SWE_Ex_Folkhemmet
+					add_ideas = SWE_Folkhemmet_debuff
+				}
+				if = {
+					limit = {
+						has_political_power > 0
+						has_idea = SWE_Folkhemmet_debuff
+					} 
+					remove_ideas = SWE_Folkhemmet_debuff
+					if = {
+						limit = { has_completed_focus = SWE_Everyone_has_Job }
+						add_ideas = SWE_Ex_Folkhemmet
+					}
+					else = {
+						add_ideas = SWE_Folkhemmet
+					}
+					
+				}
+			}
+
+			## 门户开放
+			if = {
+				limit = {
+					OR = {
+						has_idea = SWE_Open_the_door
+						has_idea = SWE_Third_Chioce
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { SWE_Industry_Development > 0 }
+					}
+						## 检测本土工业发展度
+					if = {
+						limit = { check_variable = { SWE_Industry_Development = 25 compare = less_than_or_equals } }
+						random_owned_controlled_state = {
+							limit = { is_core_of = SWE }
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = industrial_complex
+								level = 1
+								instant_build = yes 
+							}
+						}
+					}
+
+					else_if = {
+						limit = { check_variable = { SWE_Industry_Development = 75 compare = less_than_or_equals } }
+						random_owned_controlled_state = {
+							limit = { is_core_of = SWE }
+							add_extra_state_shared_building_slots = 2
+							add_building_construction = {
+								type = industrial_complex
+								level = 2
+								instant_build = yes 
+							}
+						}
+					}
+
+					else = {
+						random_owned_controlled_state = {
+							limit = { is_core_of = SWE }
+							add_extra_state_shared_building_slots = 3
+							add_building_construction = {
+								type = industrial_complex
+								level = 3
+								instant_build = yes 
+							}
+						}
+					}
+					
+					country_event = { id = SWE.25 }
+					add_to_variable = { SWE_Industry_Development = -15 }
+
+				}
+				else = {
+					country_event = { id = SWE.39 }
+				}
+
+				if = {
+					limit = {
+						check_variable = { SWE_Industry_Development < 0 }
+					}
+					set_variable = { SWE_Industry_Development = 0 }
+				}	
+
+			}
+		}
+	}
+
+	on_daily_SWE = {
+		effect = {
+			###### 挪威独立度增长决议 ######
+			if = {
+				limit = {
+					has_country_flag = SWE_Norweign_Independence_flag
+				}
+
+				#增加数值
+				set_variable = { SWE_Norweign_Independence_add = 0 }
+				add_to_variable = { SWE_Norweign_Independence_add = 1.5 }
+				#民族精神修正
+				if = { 
+					limit = {
+						has_idea = SWE_Eighty_Seventh_Orders
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = -2 }
+				}
+				if = { 
+					limit = {
+						has_idea = A_lingering_alliance
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = 2 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Left_Threat
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = 1 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Left_Threat_I
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = 0.75 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Left_Threat_II
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = 0.5 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Antisocialistisk_Speciallagen
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = -3.5 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_All_People_are_King
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = -1 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Beyond_Nationalism
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = -2.5 }
+				}
+				if = { 
+					limit = {
+						has_idea = SWE_Beyond_Nation
+					}
+					add_to_variable = { SWE_Norweign_Independence_add = -3 }
+				}
+
+
+				#马克思主义支持率对独立度修正
+				SWE_Marxism_effect_Norway_Independence_check = yes
+				
+				#增长下限
+				if = {
+					limit = {
+						check_variable = { SWE_Norweign_Independence_add = 0 compare = less_than_or_equals }
+					}
+					set_variable = { SWE_Norweign_Independence_add = 0.25 }
+				}
+
+				#数值更新
+				add_to_variable = { SWE_Norweign_Independence_value = SWE_Norweign_Independence_add }
+
+				#更新gui
+				SWE_update_ui_effect = yes
+
+
+				#修正更新
+				SWE_Norweign_Independence_value_check = yes
+
+
+				#上下限
+				if = {
+					limit = {
+						check_variable = { SWE_Norweign_Independence_value = 0 compare = less_than_or_equals }
+					}
+					set_variable = { SWE_Norweign_Independence_value = 0 }
+				}
+				if = {
+					limit = {
+						check_variable = { SWE_Norweign_Independence_value > 100 }
+					}
+					set_variable = { SWE_Norweign_Independence_value = 100 }
+				}
+
+				#判定是否触发挪威独立事件
+				if = {
+					limit = {
+						check_variable = { SWE_Norweign_Independence_value = 100 }
+						is_ai = no
+					}
+					set_variable = { SWE_Norweign_Independence_value = 0 }
+					remove_dynamic_modifiers = SWE_Norweign_Indepedence_modifier
+					country_event = { id = SWE.11 }
+				}
+
+			}
+
+			#### 联邦一梦 ####
+			if = {
+				limit = {
+					has_idea = SWE_The_Union_Dream
+				}
+				###任务修正###
+				if = { #新干线#
+					limit = {
+						check_variable = { SWE_Union_Stage > 0 }
+						check_variable = { SWE_Union_Stage < 3 }
+					}
+					if = {
+						limit = { NOT = { has_country_flag = SWE_has_Shinkansenn } }
+						add_ideas = SWE_Oslo_Stockholm_Shinkansenn
+					}
+					else = {
+						remove_ideas = SWE_Oslo_Stockholm_Shinkansenn
+					}
+				}
+				else = {
+					remove_ideas = SWE_Oslo_Stockholm_Shinkansenn
+				}
+				if = { #萨米议会#
+					limit = {
+						check_variable = { SWE_Union_Stage > 2 }
+						check_variable = { SWE_Union_Stage < 5 }
+					}
+					if = {
+						limit = {
+							NOT = { has_idea = SWE_Samitinget }
+						}
+						add_ideas = SWE_Samitinget_ongoing
+					}
+					else = {
+						remove_ideas = SWE_Samitinget_ongoing
+					}
+				}
+				else = {
+					remove_ideas = SWE_Samitinget_ongoing
+				}
+				if = { #书面挪威语#
+					limit = {
+						check_variable = { SWE_Union_Stage > 6 }
+						check_variable = { SWE_Union_Stage < 9 }
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = SWE_Norsk_Bokmaal
+							}
+						}
+						add_ideas = SWE_Norsk_Bokmaal_ongoing
+					}
+					else = {
+						remove_ideas = SWE_Norsk_Bokmaal_ongoing
+					}
+				}
+				else = {
+					remove_ideas = SWE_Norsk_Bokmaal_ongoing
+				}
+				if = { #北疆铁路计划#
+					limit = {
+						check_variable = { SWE_Union_Stage > 4 }
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = SWE_Northern_Plan_finish
+							}
+						}
+						add_ideas = SWE_NRP_ongoing
+					}
+					else = {
+						remove_ideas = SWE_NRP_ongoing
+					}
+				}
+				else = {
+					remove_ideas = SWE_NRP_ongoing
+				}
+
+			}
+
+			### 人民之家 ###
+
+			if = {
+				limit = {
+					tag = SWE
+					has_country_flag = SWE_Folkhemmet_flag
+					OR = {
+						check_variable = { SWE_National_debt = 0.8 compare = more_than_or_equals }
+						check_variable = { SWE_has_National_debt = 0.8 compare = more_than_or_equals }
+					}
+				}
+				add_ideas = SWE_High_national_debt
+			}
+			else = {
+				remove_ideas = SWE_High_national_debt
+			}
+			if = {
+				limit = {
+					tag = SWE
+					has_country_flag = SWE_Folkhemmet_flag
+					OR = {
+						check_variable = { SWE_National_debt = 0.2 compare = less_than_or_equals }
+						check_variable = { SWE_has_National_debt = 0.2 compare = less_than_or_equals }
+					}
+				}
+				add_ideas = SWE_Low_national_debt
+			}
+			else = {
+				remove_ideas = SWE_Low_national_debt
+			}
+
+			if = {
+				limit = {
+					check_variable = { SWE_National_debt < 0 }
+				}
+				set_variable = { SWE_National_debt = 0 }
+			}
+			if = {
+				limit = {
+					check_variable = { SWE_National_debt > 1.2 }
+				}
+				set_variable = { SWE_National_debt = 1.2 }
+			}
+			if = {
+				limit = {
+					check_variable = { SWE_has_National_debt < 0 }
+				}
+				set_variable = { SWE_has_National_debt = 0 }
+			}
+			if = {
+				limit = {
+					check_variable = { SWE_has_National_debt > 1.2 }
+				}
+				set_variable = { SWE_has_National_debt = 1.2 }
+			}
+
+		}
+
+	}
+}

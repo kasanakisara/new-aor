@@ -1,0 +1,98 @@
+﻿division_template = {
+	name = "Infanteri Division"	# represents first part of enlarged divisions
+	division_names_group = DEN_INF_01
+
+	regiments = {
+		Elite_infantry = { x = 0 y = 0 }
+		Elite_infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }		
+		artillery = { x = 0 y = 2}
+		artillery = { x = 1 y = 2}
+	}
+	support = {
+		engineer = { x = 0 y = 0}
+		artillery = { x = 0 y = 1 } 
+	}
+}
+division_template = {
+	name = "Binær Division"	
+	division_names_group = DEN_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }      # Recon Group ACs comp + cavalry
+	}
+}
+
+division_template = {
+	name = "Bornholm Division"	
+	division_names_group = DEN_INF_03
+
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Kavaleri Brigade"
+	division_names_group = DEN_CAV_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+	}
+}
+
+units = {
+	##### Kongelige Danske Overkommando #####
+	division = { 
+		name =  "西兰岛守备师"
+		location = 6287  
+		division_template = "Infanteri Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.4
+
+	}
+	division = { 
+		name = "日德兰守备师"
+		location = 3277  
+		division_template = "Binær Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.4
+	}
+	division = { 
+		name = "博恩霍尔姆岛守备队"
+		location = 6361  
+		division_template = "Bornholm Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+	}
+	division = {
+		name = "龙骑团"
+		location = 6287  
+		division_template = "Kavaleri Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.3
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "DEN"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+}

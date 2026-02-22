@@ -1,0 +1,626 @@
+technologies = {
+	Modern_electronics = {
+		research_speed_factor = 0.03
+		path = {
+			leads_to_tech = Modern_electronics2
+			research_cost_coeff = 1
+		}	
+		research_cost = 0.8
+		start_year = 1903
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Modern_electronics2 = {
+		land_reinforce_rate = 0.02
+		coordination_bonus = 0.01
+		path = {
+			leads_to_tech = Modern_electronics3 
+			research_cost_coeff = 1
+		}	
+		research_cost = 1
+		start_year = 1920
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Modern_electronics3 = {
+		land_reinforce_rate = 0.03
+		coordination_bonus = 0.01
+		path = {
+			leads_to_tech = Modern_electronics4 
+			research_cost_coeff = 1
+		}	
+		research_cost = 1.4
+		start_year = 1923
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Modern_electronics4 = {
+		land_reinforce_rate = 0.03
+		coordination_bonus = 0.02
+		path = {
+			leads_to_tech = Modern_electronics5 
+			research_cost_coeff = 1
+		}	
+		research_cost = 1
+		start_year = 1925
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Modern_electronics5 = {
+		land_reinforce_rate = 0.03
+		coordination_bonus = 0.02
+		path = {
+			leads_to_tech = Modern_electronics6 
+			research_cost_coeff = 1
+		}	
+		research_cost = 1.8
+		start_year = 1928
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 11 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Modern_electronics6 = {
+		enable_equipment_modules = { 
+			tank_radio_1
+			radio_navigation_1
+		}
+		research_cost = 2
+		start_year = 1930
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 13 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Classic_optics = {
+		research_speed_factor = 0.03
+		path = {
+			leads_to_tech = Classic_optics2 
+			research_cost_coeff = 1
+		}	
+
+		research_cost = 0.7
+		start_year = 1903
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Classic_optics2 = {
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+		cavalry = {
+			breakthrough = 0.02
+			soft_attack = 0.01
+		}
+		path = {
+			leads_to_tech = Infantry_sights 
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = Artillery_observation_technology 
+			research_cost_coeff = 1
+		}		
+
+		research_cost = 1.5
+		start_year = 1920
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Infantry_sights = {
+		infantry = {
+			breakthrough = 0.03
+			soft_attack = 0.02
+		}
+		cavalry = {
+			breakthrough = 0.01
+			soft_attack = 0.02
+		}
+		path = {
+			leads_to_tech = Infantry_sights2 
+			research_cost_coeff = 1
+		}	
+
+		research_cost = 1.5
+		start_year = 1924
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 7 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Infantry_sights2 = {
+		infantry = {
+			breakthrough = 0.02
+			soft_attack = 0.03
+		}
+		cavalry = {
+			breakthrough = 0.01
+			soft_attack = 0.02
+		}
+		research_cost = 2
+		start_year = 1928
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 11 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Artillery_observation_technology = {
+		artillery_brigade = {
+			reliability = 0.03
+			soft_attack = 0.01
+		}
+		path = {
+			leads_to_tech = Artillery_observation_technology2
+			research_cost_coeff = 1
+		}		
+
+		research_cost = 1.5
+		start_year = 1924
+
+		folder = {
+			name = electronics_folder
+			position = { x = 4 y = 7 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Artillery_observation_technology2 = {	
+		artillery_brigade = {
+			reliability = 0.04
+			soft_attack = 0.02
+		}
+		research_cost = 2
+		start_year = 1928
+
+		folder = {
+			name = electronics_folder
+			position = { x = 4 y = 11 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+
+	Hot_air_balloon = {
+		infantry = {
+			recon = 0.05
+		}
+		
+		path = {
+			leads_to_tech = Hot_air_balloon_reconnaissance
+			research_cost_coeff = 1
+		}
+
+		enable_equipments = { 
+			Hot_air_balloon_0
+		}
+		enable_subunits = {
+			Hot_air_balloon
+		}
+
+		research_cost = 0.7
+		start_year = 1910
+
+		folder = {
+			name = electronics_folder
+			position = { x = 5 y = 0 }
+		}
+
+		ai_will_do = {
+			factor = 30
+			
+			
+			modifier = {
+				factor = 3
+				date > "1921.1.1"
+			}
+		}
+
+		categories = {
+			Hot_air_balloon_tech
+		}
+	}
+
+	Hot_air_balloon_reconnaissance = {
+		infantry = {
+			recon = 0.05
+		}
+		path = {
+			leads_to_tech = airship
+			research_cost_coeff = 1
+		}
+
+		enable_equipments = { 
+			Hot_air_balloon_1
+		}
+
+		research_cost = 1
+		start_year = 1920
+
+		folder = {
+			name = electronics_folder
+			position = { x = 5 y = 2 }
+		}
+
+		ai_will_do = {
+			factor = 30			
+			modifier = {
+				factor = 3
+				date > "1924.1.1"
+			}
+		}
+
+		categories = {
+			Hot_air_balloon_tech
+		}
+	}
+
+	airship = {
+		infantry = {
+			recon = 0.10
+		}
+		air_mission_efficiency = 0.05
+		enable_equipments = { 
+			Hot_air_balloon_2
+		}
+
+		research_cost = 1.2
+		start_year = 1923
+
+		folder = {
+			name = electronics_folder
+			position = { x = 5 y = 4 }
+		}
+
+		ai_will_do = {
+			factor = 30			
+			modifier = {
+				factor = 3
+				date > "1926.1.1"
+			}
+		}
+
+		categories = {
+			Hot_air_balloon_tech
+		}
+	}
+
+	Gas_Preparation = {
+		path = {
+			leads_to_tech = Gas_Preparation1 
+			research_cost_coeff = 1
+		}	
+		path = {
+			leads_to_tech = Gas_Preparation2 
+			research_cost_coeff = 1
+		}	
+		path = {
+			leads_to_tech = Gas_Preparation3
+			research_cost_coeff = 1
+		}
+
+		custom_modifier_tooltip = unlock_Gas_Preparation
+
+		enable_tactic = tactic_prepare_gas_attack
+		enable_tactic = tactic_gas_retreat
+
+		research_cost = 0.7
+		start_year = 1915
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 0 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation1 = {
+		path = {
+			leads_to_tech = Gas_Preparation5
+			research_cost_coeff = 1
+		}
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+		research_cost = 0.7
+		start_year = 1921
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation2 = {
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+		path = {
+			leads_to_tech = Gas_Preparation4
+			research_cost_coeff = 1
+		}
+		research_cost = 0.7
+		start_year = 1922
+
+		folder = {
+			name = electronics_folder
+			position = { x = 4 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation3 = {
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+		path = {
+			leads_to_tech = Gas_Preparation6
+			research_cost_coeff = 1
+		}
+		research_cost = 0.7
+		start_year = 1922
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation4 = {
+		
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+		research_cost = 0.7
+		start_year = 1924
+
+		folder = {
+			name = electronics_folder
+			position = { x = 4 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation5 = {
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+
+		research_cost = 0.7
+		start_year = 1925
+
+		folder = {
+			name = electronics_folder
+			position = { x = 2 y = 8 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_Preparation6 = {
+		infantry = {
+			breakthrough = 0.05
+			soft_attack = 0.01
+		}
+
+		research_cost = 0.7
+		start_year = 1924
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+
+
+	Gas_mask = {
+		infantry = {
+			casualty_trickleback = 0.05
+			defence = 0.03
+		}
+		path = {
+			leads_to_tech = Gas_mask1
+			research_cost_coeff = 1
+		}
+		research_cost = 0.7
+		start_year = 1920
+
+		
+		custom_modifier_tooltip = unlock_Gas
+
+		enable_tactic = tactic_gas_attack
+		enable_tactic = tactic_gas_mask
+		enable_tactic = tactic_gas_mask_charge
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 0 }
+		}
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+	Gas_mask1 = {
+		infantry = {
+			casualty_trickleback = 0.05
+			defence = 0.03
+		}
+		research_cost = 0.7
+		start_year = 1920
+
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		categories = {
+			electronics
+		}
+	}
+}

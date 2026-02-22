@@ -1,0 +1,54 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			# Setup up a player array  #定义一个作用域
+			every_country = {
+				limit = { is_ai = no }
+				add_to_array = { # It will automatically add the scope
+					array = global.players
+				}
+			}
+		}
+	}
+	on_startup = { #埃及开局事件
+		effect = {
+			every_country = {
+				limit = { tag = EGY }
+				country_event = { id = EGY.6}
+				}
+			}
+		}
+	on_startup = { #消除流感
+		effect = {
+			every_country = {
+				limit = { 
+					has_idea = H1N1 
+					date > 1920.3.1
+				}
+				country_event = { 
+					id = SPA.1 
+					random_days = 15
+				}
+				if = {
+					limit = {
+						has_country_flag = H1N1_disappear
+					}
+					news_event = { 
+						id = AOR_news.71
+						days = 1
+			    	}
+				}
+			}
+		}
+	}
+	on_startup = { #协约国限制
+		effect = {
+			every_country = {
+				limit = {is_in_faction_with = ENG}
+				add_ideas = AOR_Entente_no_war
+			}
+		}
+	}
+}
+
+

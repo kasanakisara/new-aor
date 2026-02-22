@@ -1,0 +1,51 @@
+on_actions = {
+	on_weekly_FIN = {
+		effect = {
+		    if = {
+				limit = {
+                    original_tag = FIN
+					check_variable = { stability < 0.3 }
+				}
+			country_event = { id = Finland.1 }
+	    	}
+	    } 
+    }
+	on_weekly_FIN = {
+		effect = {
+		    if = {
+				limit = {
+                    original_tag = FIN
+					check_variable = { stability < 0.2 }
+				}
+			country_event = { id = Finland.2 }
+	    	}
+	    } 
+    }
+	on_weekly_FIN = {
+		effect = {
+		    if = {
+				limit = {
+					original_tag = FIN
+					surrender_progress > 0.6 
+					has_war_with = FIC
+				}
+			country_event = { id = Finland.3 }
+	    	}
+	    } 
+    }
+	on_weekly_FIN = {
+		effect = {
+			if = { FIC = { exists = no} }
+			country_event = { id = Finland.4 }
+	    }
+	}
+	on_weekly_FIC = {
+		effect = {
+			if = { FIN = { exists = no} }
+			country_event = { id = Finland.4 }
+	    }
+	}
+}
+
+	
+

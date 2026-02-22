@@ -1,0 +1,41 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = { is_ai = no }
+				country_event = { id = scriptpeaceconference.1 }
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_start_date < 1008.1.1 #不是eaw
+						has_start_date > 1961.1.1 #不是TNO
+						ENG = {
+							has_country_leader = { #不是PB
+								character = ENG_hrm_victoria
+								ruling_only = yes
+							}
+						}
+					}
+				}
+				set_global_flag = scriptpeaceconference_warsummary
+			}
+		}
+	}
+	on_capitulation = {
+		#ROOT为败方，FROM为胜方
+		effect = {
+			# 以下为战争结语gui
+			if = {
+				limit = {
+					has_global_flag = scriptpeaceconference_warsummary
+				}
+				set_global_flag = sp_warpeace_show_gui
+				FROM = { save_global_event_target_as = winning_country }
+				ROOT = { save_global_event_target_as = losing_country }
+				add_to_variable = { global.sp_warpeace_dirty = 1 }
+			}
+			# 以上为战争结语gui
+		}
+	}
+}

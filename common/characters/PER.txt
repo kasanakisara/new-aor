@@ -1,0 +1,60 @@
+characters = {
+	PER_ENG_instructor_theorist = {#英国军事顾问团
+		name = ENtheorist
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/advisors/ENG_instructor_theorist.png"
+			}
+		}
+		advisor = {
+			slot = theorist
+			idea_token = PER_ENG_instructor_theorist
+			allowed = { original_tag = PER }
+			available  = {
+				has_completed_focus = PER_British_instructor_55
+			}
+			traits = { AOR_PER_ENG_instructor }
+			cost = 120
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	PER_ENG_economy_theorist = {#英国经济顾问团
+		name = ENeconomy
+		portraits = {
+			civilian = {
+				small = "gfx/interface/ideas/advisors/EN_economy_theorist.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = PER_ENG_economy_theorist
+			allowed = { original_tag= PER }
+			available = {
+				has_completed_focus = PER_Hiring_UK_experts_40
+			}
+			traits = { AOR_PER_ENG_economy }
+			cost = 120
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	}
+	PER_National_Consultative_Assembly = { #全国协商议会
+		name = National_Consultative_Assembly
+		portraits = {
+			civilian = {
+				small = "gfx/interface/ideas/PER/advisors/National_Consultative_Assembly.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = PER_National_Consultative_Assembly
+			removal_cost = 100000000
+			can_be_fired = no
+			allowed = { original_tag= PER }
+			traits = { The_highest_authority }
+		}
+	}
+}

@@ -1,0 +1,119 @@
+characters = {
+	#威廉明娜
+	BNL_Wilhelmina_Helena_Pauline_Maria={
+		name= Wilhelmina_Helena_Pauline_Maria
+		portraits={
+			civilian={
+				large="gfx/leaders/BNL/arj09-2zg3m.dds"
+			}
+		}
+		country_leader={
+			ideology = conservatism
+			desc = "Wilhelmina_DESC"
+			traits={trait_a_welcome_leader }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	#科内利斯·斯尼德斯
+	BNL_cornelis_snijders={
+		advisor={
+			slot = high_command
+			idea_token = HOL_cornelis_snijders
+			allowed  = {
+				original_tag  = BNL
+			}
+			ledger  = army 
+			traits  = {
+				army_entrenchment_2 
+			}
+			cost = 100
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		name= cornelis_snijders
+		portraits={
+			army={
+				small="gfx/interface/ideas/advisors/"
+				large="gfx/leaders/BNL/cornelis_snijders.png"
+			}
+		}
+		field_marshal={
+			traits={ career_officer BNL_HOL_com}
+			skill=3
+			attack_skill=2
+			defense_skill=4
+			planning_skill=2
+			logistics_skill=1
+		}
+	}
+	
+	#威廉·弗里德里克·波普
+	BNL_willem_frederik_pop ={
+		name= willem_frederik_pop
+		portraits={
+			army={
+				large="gfx/leaders/BNL/willem_frederik_pop.png"
+			}
+		}
+		corps_commander={
+			traits={ career_officer BNL_HOL_com}
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+
+	#伊萨克·赫尔曼·雷因德斯
+	BNL_Izaak_Herman_Reijnders ={
+		name= Izaak_Herman_Reijnders
+		portraits={
+			army={
+				large="gfx/leaders/BNL/Izaak_Herman_Reijnders.png"
+			}
+		}
+		corps_commander={
+			traits={old_guard BNL_HOL_com}
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+		}
+	}
+	
+	#戈德弗里德·范·沃斯特·托特·沃斯特
+	BNL_godfried_van_voorst_tot_voorst={
+		name = godfried_van_voorst_tot_voorst
+		portraits={
+			army={
+				small="gfx/interface/ideas/advisors/"
+				large="gfx/leaders/BNL/godfried_van_voorst_tot_voorst.png"
+			}
+		}
+		corps_commander={
+			traits={ brilliant_strategist career_officer BNL_HOL_com}
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=2
+			legacy_id=-1
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = BNL_godfried_van_voorst_tot_voorst
+			ledger = army
+			allowed = {
+				original_tag = BNL
+			}
+			traits = {
+				military_theorist
+			}
+		}
+	}
+}

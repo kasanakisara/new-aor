@@ -1,0 +1,721 @@
+#old_guard 保守派
+#brilliant_strategist 天才战略家
+#inflexible_strategist 不灵活战略家
+#politically_connected 政治关联
+#war_hero 战争英雄
+#career_officer 职业军官
+#trait_cautious 谨慎
+#trait_trait_reckless 鲁莽
+#media_personality 媒体人物
+#harsh_leader 严厉指挥官
+#bearer_of_artillery #炮兵主义者
+
+#infantry_officer 步兵军官
+#cavalry_officer 骑兵军官
+#armor_officer 装甲军官
+#engineer_officer 工兵军官
+
+#irregulars_officer 非正规军领导者
+#militias_officer 民兵领导者
+
+#RUS_humble_Coordinator 谦逊的调解者
+#RUS_resprcted_military_leader 德高望重的红军领袖
+#RUS_tactical_master 精准捕捉战机的战术大师
+#RUS_army_theorist 军事理论家
+#RUS_Old_Imperial_officer 帝俄旧军官
+#RUS_politically_connected 政治关联
+#RUS_Guerrilla_style 游击作风
+#RUS_irregulars_officer 劳动革命榜样
+#RUS_militias_officer 军区组织大师
+
+characters = {
+	#列宁
+	SOV_Lenin = {
+		name = SOV_Lenin
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_Lenin
+				small = GFX_AOR_SOV_idea_lenin
+			}
+		}
+		country_leader={
+			ideology = leninism
+			desc = SOV_Lenin_desc
+			traits={ SOV_lenin_great_communist_mentor_1 }
+			expire = "1965.1.1.1"
+			id= -1
+		}
+	}
+	#托洛茨基
+	SOV_Trotsky = {
+		name = SOV_Trotsky
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_005
+			}
+			army = {
+				large = GFX_AOR_SOV_005
+			}
+		}
+		advisor={
+			cost = 120
+			slot = theorist
+			idea_token = SOV_Trotsky
+			ledger = army
+			allowed = { original_tag = RUS }
+			traits = {
+				SOV_Redarmy_theorist
+			}
+			available = {
+				has_completed_focus = AOR_SOV_SOV_Army_3
+			}
+		}
+		corps_commander = {
+			traits = {
+				war_hero
+				RUS_Resprcted_military_leader
+				RUS_Army_theorist
+				infantry_leader
+				trait_cautious
+				organizer
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 4
+			legacy_id = -1
+		}
+		
+	}
+	#斯大林
+	SOV_Stalin = {
+		name = SOV_Stalin
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_003
+			}
+			army = {
+				large = GFX_AOR_SOV_003
+			}
+		}
+		corps_commander = {
+			traits = {
+				RUS_politically_connected
+				infantry_officer
+				harsh_leader
+				organisational_leader #组织至上
+				trait_reckless
+			}
+			skill = 2
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	#布哈林
+	SOV_Bukharin = {
+		name = SOV_Bukharin
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_004
+			}
+		}
+	}
+	#伏罗希洛夫
+	SOV_Voroshilov = {
+		name = SOV_Voroshilov
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_006
+			}
+			army = {
+				large = GFX_AOR_SOV_006
+			}
+		}
+		corps_commander = {
+			traits = {
+				old_guard
+				trait_cautious
+				RUS_militias_officer
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = -1
+		}
+	}
+	#加米涅夫
+	SOV_Kamenev = {
+		name = SOV_Kamenev
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_007
+			}
+		}
+	}
+	#加里宁
+	SOV_Kalinin = {
+		name = SOV_Kalinin
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_008
+			}
+		}
+	}
+	#季诺维也夫
+	SOV_Zinoviev = {
+		name = SOV_Zinoviev
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_009
+			}
+		}
+	}
+	#基洛夫
+	SOV_Kirov = {
+		name = SOV_Kirov
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_012
+			}
+		}
+	}
+	#斯维尔德洛夫
+	SOV_Sverdlov = {
+		name = SOV_Sverdlov
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_013
+			}
+		}
+	}
+	#朱可夫
+	SOV_Zhukov = {
+		name = SOV_Zhukov
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_014
+			}
+			army = {
+				large = GFX_AOR_SOV_014
+			}
+		}
+		corps_commander = {
+			traits = {
+				RUS_irregulars_officer
+				inflexible_strategist
+				trait_cautious
+				infantry_officer
+			}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	#图哈切夫斯基
+	SOV_Tuhachevsky = {
+		name = SOV_Tuhachevsky
+		portraits = {
+			civilian = {
+				large = GFX_AOR_SOV_015
+			}
+			army = {
+				large = GFX_AOR_SOV_015
+			}
+		}
+		corps_commander = {
+			traits = {
+				RUS_army_theorist
+				organizer
+				brilliant_strategist
+				infantry_officer
+				trait_reckless
+			}
+			skill = 3
+			attack_skill = 4
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 1
+			legacy_id = -1
+		}
+	}
+	SOV_pavel_pavlovich_lebedev = {
+		name = "Pavel Pavlovich Lebedev"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_pavel_pavlovich_lebedev 
+				small = gfx_interface_ideas_pavel_pavlovich_lebedev 
+			}
+		}
+		field_marshal = {
+			traits = { RUS_Old_Imperial_officer }  # 沙俄旧军官
+			skill = 4
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 4
+			logistics_skill = 4
+		}
+	}
+	
+	SOV_sergey_sergeyevich_kamenev = {
+		name = "Sergey Sergeyevich Kamenev"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_sergey_sergeyevich_kamenev 
+				small = gfx_interface_ideas_sergey_sergeyevich_kamenev 
+			}
+		}
+		field_marshal = {
+			traits = { }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_mikhail_vasilyevich_frunze = {
+		name = "Mikhail Vasilyevich Frunze"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_mikhail_vasilyevich_frunze 
+				small = gfx_interface_ideas_mikhail_vasilyevich_frunze 
+			}
+		}
+		field_marshal = {
+			traits = { bearer_of_artillery }  # 炮兵指挥官
+			skill = 5
+			attack_skill = 5
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+		}
+	}
+	
+	# ... 其他将领的代码按照上面的格式继续编写 ...
+	SOV_jukums_vacietis = {
+		name = "Jukums Vācietis"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_jukums_vacietis 
+				small = gfx_interface_ideas_jukums_vacietis 
+			}
+		}
+		corps_commander = {
+			traits = { RUS_Old_Imperial_officer }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_yan_borisovich_gamarnik = {
+		name = "Yan Borisovich Gamarnik"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_yan_borisovich_gamarnik 
+				small = gfx_interface_ideas_yan_borisovich_gamarnik 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_semyon_mikhailovich_budenny = {
+		name = "Semyon Mikhailovich Budyonny"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_semyon_mikhailovich_budenny 
+				small = gfx_interface_ideas_semyon_mikhailovich_budenny 
+			}
+		}
+		corps_commander = {
+			traits = { cavalry_officer RUS_Old_Imperial_officer }
+			skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_aleksandr_ignatyevich_sedyakin = {
+		name = "Aleksandr Ignatyevich Sedyakin"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_aleksandr_ignatyevich_sedyakin 
+				small = gfx_interface_ideas_aleksandr_ignatyevich_sedyakin 
+			}
+		}
+		corps_commander = {
+			traits = { brilliant_strategist trait_reckless }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 2
+		}
+	}
+	
+	SOV_aleksey_alekseyevich_brusilov = {
+		name = "Aleksey Alekseyevich Brusilov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_aleksey_alekseyevich_brusilov 
+				small = gfx_interface_ideas_aleksey_alekseyevich_brusilov 
+			}
+		}
+		corps_commander = {
+			traits = { harsh_leader RUS_Old_Imperial_officer }
+			skill = 7
+			attack_skill = 7
+			defense_skill = 6
+			planning_skill = 4
+			logistics_skill = 4
+		}
+	}
+	SOV_aleksandr_erlich_egorov = {
+		name = "Aleksandr Erlich Egorov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_aleksandr_erlich_egorov 
+				small = gfx_interface_ideas_aleksandr_erlich_egorov 
+			}
+		}
+		corps_commander = {
+			traits = { career_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_ivan_panfilovich_belov = {
+		name = "Ivan Panfilovich Belov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_ivan_panfilovich_belov 
+				small = gfx_interface_ideas_ivan_panfilovich_belov 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_ivan_naumovich_dubovy = {
+		name = "Ivan Naumovich Dubovy"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_ivan_naumovich_dubovy 
+				small = gfx_interface_ideas_ivan_naumovich_dubovy 
+			}
+		}
+		field_marshal = {
+			traits = { }
+			skill = 4
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+		}
+	}
+	
+	SOV_ivan_fedorovich_fedko = {
+		name = "Ivan Fedorovich Fedko"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_ivan_fedorovich_fedko 
+				small = gfx_interface_ideas_ivan_fedorovich_fedko 
+			}
+		}
+		corps_commander = {
+			traits = { trait_reckless }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_ivars_smilga = {
+		name = "Ivars Smilga"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_ivars_smilga 
+				small = gfx_interface_ideas_ivars_smilga 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 4
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	SOV_yeronim_petrovich_uborevich = {
+		name = "Yeronim Petrovich Uborevich"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_yeronim_petrovich_uborevich 
+				small = gfx_interface_ideas_yeronim_petrovich_uborevich 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 4
+		}
+	}
+	
+	SOV_kliment_efremovich_voroshilov = {
+		name = "Kliment Efremovich Voroshilov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_kliment_efremovich_voroshilov 
+				small = gfx_interface_ideas_kliment_efremovich_voroshilov 
+			}
+		}
+		field_marshal = {
+			traits = { }
+			skill = 5
+			attack_skill = 4
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+	
+	SOV_yukhim_opanasovich_shchadenko = {
+		name = "Yukhim Opanasovich Shchadenko"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_yukhim_opanasovich_shchadenko 
+				small = gfx_interface_ideas_yukhim_opanasovich_shchadenko 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 5
+			logistics_skill = 4
+		}
+	}
+	
+	SOV_august_kork = {
+		name = "August Kork"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_august_kork 
+				small = gfx_interface_ideas_august_kork 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+	
+	SOV_nikolai_ivanovich_muralov = {
+		name = "Nikolai Ivanovich Muralov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_nikolai_ivanovich_muralov 
+				small = gfx_interface_ideas_nikolai_ivanovich_muralov 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
+		}
+	}
+	
+	SOV_nikolai_dmitriyevich_kashirin = {
+		name = "Nikolai Dmitriyevich Kashirin"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_nikolai_dmitriyevich_kashirin 
+				small = gfx_interface_ideas_nikolai_dmitriyevich_kashirin 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_vladimir_mikhailovich_gittis = {
+		name = "Vladimir Mikhailovich Gittis"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_vladimir_mikhailovich_gittis 
+				small = gfx_interface_ideas_vladimir_mikhailovich_gittis 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 2
+		}
+	}
+	SOV_vasily_ivanovich_shorin = {
+		name = "Vasily Ivanovich Shorin"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_vasily_ivanovich_shorin 
+				small = gfx_interface_ideas_vasily_ivanovich_shorin 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 4
+			attack_skill = 5
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_vasily_konstantinovich_blucher = {
+		name = "Vasily Konstantinovich Blucher"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_vasily_konstantinovich_blucher 
+				small = gfx_interface_ideas_vasily_konstantinovich_blucher 
+			}
+		}
+		field_marshal = {
+			traits = { }
+			skill = 5
+			attack_skill = 3
+			defense_skill = 6
+			planning_skill = 2
+			logistics_skill = 3
+		}
+	}
+	
+	SOV_mikhail_karlovich_levandovsky = {
+		name = "Mikhail Karlovich Levandovsky"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_mikhail_karlovich_levandovsky 
+				small = gfx_interface_ideas_mikhail_karlovich_levandovsky 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 4
+			logistics_skill = 3
+		}
+	}
+	
+	SOV_sergey_ivanovich_gusev = {
+		name = "Sergey Ivanovich Gusev"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_sergey_ivanovich_gusev 
+				small = gfx_interface_ideas_sergey_ivanovich_gusev 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_semyon_konstantinovich_timoshenko = {
+		name = "Semyon Konstantinovich Timoshenko"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_semyon_konstantinovich_timoshenko 
+				small = gfx_interface_ideas_semyon_konstantinovich_timoshenko 
+			}
+		}
+		corps_commander = {
+			traits = { cavalry_officer }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	
+	SOV_boris_mikhailovich_shaposhnikov = {
+		name = "Boris Mikhailovich Shaposhnikov"
+		portraits = {
+			army = {
+				large = gfx_leaders_SOV_boris_mikhailovich_shaposhnikov 
+				small = gfx_interface_ideas_boris_mikhailovich_shaposhnikov 
+			}
+		}
+		corps_commander = {
+			traits = { }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 1
+		}
+	}
+	# ... 继续编写剩余将领的代码 ...
+	
+	# ... 其他将领的代码按照上面的格式继续编写 ...
+	
+	
+	
+}

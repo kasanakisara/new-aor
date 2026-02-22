@@ -1,0 +1,156 @@
+on_actions = {
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					date > 1921.06.01
+					date < 1921.08.01
+				}
+				AUS = {
+					country_event = AOR_Depression.0
+				}
+			}
+			else_if = {
+				limit = {
+					original_tag = AUS
+					has_idea = Depression_calls_1
+					date > 1922.01.01
+					date < 1922.02.01
+				}
+				AUS = {
+					country_event = AOR_Depression.3
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1923.2.10
+				}
+				ROM = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1923.4.5
+				}
+				DEN = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1923.6.5
+				}
+				YUG = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.2.1
+				}
+				POL = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.7.15
+				}
+				ITA = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.8.1
+				}
+				FRA = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.8.1
+				}
+				OR = {
+					BNL = {
+						add_ideas = Depression_calls_1
+					}
+					BEL = {
+						add_ideas = Depression_calls_1
+					}
+					HOL = {
+						add_ideas = Depression_calls_1
+					}
+					LUX = {
+						add_ideas = Depression_calls_1
+					}
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.8.8
+				}
+				ENG = {
+					add_ideas = Depression_calls_1
+				}
+				USA = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1924.8.15
+					is_puppet_of = ENG
+					is_puppet_of = FRA
+				}
+				add_ideas = Depression_calls_1
+			}
+			else_if = {
+				limit = { 
+					date = 1924.8.20
+				}
+				SPA = {
+					add_ideas = Depression_calls_1
+				}
+				POR = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1925.3.15
+				}
+				GRE = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1925.4.1
+				}
+				JAP = {
+					add_ideas = Depression_calls_1
+				}
+			}
+			else_if = {
+				limit = { 
+					date = 1925.6.10
+				}
+				SWE = {
+					add_ideas = Depression_calls_1
+				}
+			}
+
+			else_if = {
+				limit = { 
+					date = 1925.6.10
+				}
+				NIC = {
+					add_ideas = Depression_calls_1
+				}
+			}
+		}
+	}
+}

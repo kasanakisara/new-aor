@@ -1,0 +1,154 @@
+﻿division_template = {
+	name = "边防旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+	}
+
+}
+
+division_template = {
+	name = "骑兵警卫团"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "山地旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "炮兵加强旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		artillery_brigade = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+
+}
+
+
+units = {
+	division= {	
+		name = "第1边防旅"
+		location = 10879 # Parana
+		division_template = "边防旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.6
+
+	}
+	division= {	
+		name = "第2边防旅"
+		location = 12853# Cordoba
+		division_template = "边防旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.6
+
+	}
+	division= {	
+		name = "第3边防旅"
+		location = 2150 # Salta
+		division_template = "边防旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.6
+
+	}
+	division= {	
+		name = "第4边防旅"
+		location = 12933 # Salta
+		division_template = "边防旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.6
+
+	}
+	
+	#####
+	
+	division= {	
+		name = "首都第1骑兵警卫团"
+		location = 10513 # Salta
+		division_template = "骑兵警卫团"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+
+	}
+	division= {	
+		name = "首都第2骑兵警卫团"
+		location = 10513 # Salta
+		division_template = "骑兵警卫团"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.8
+
+	}
+	
+	####
+	
+	division= {	
+		name = "第1山地旅“里约热内卢”"
+		location = 10980 # Salta
+		division_template = "山地旅"
+		start_experience_factor = 0.5
+		start_equipment_factor = 1
+
+	}
+	
+	###
+	
+	division= {	
+		name = "第1加强旅“库里蒂巴”"
+		location = 10447 # Salta
+		division_template = "炮兵加强旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.7
+
+	}
+	division= {	
+		name = "第2加强旅“纳塔尔”"
+		location = 12853 # Salta
+		division_template = "炮兵加强旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.7
+
+	}
+}
+
+

@@ -1,0 +1,55 @@
+﻿division_template = {
+	name = "警卫旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	
+
+}
+
+division_template = {
+	name = "地方步兵旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+	}
+	
+}
+
+units = {
+	division= {	
+		name = "蒙得维的亚第1警卫旅"
+		location = 10362 # Parana
+		division_template = "警卫旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.8
+
+	}
+	division= {	
+		name = "圣何塞第1旅"
+		location = 10362# Cordoba
+		division_template = "地方步兵旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.2
+
+	}
+	division= {	
+		name = "三十三人第1旅"
+		location = 10362 # Salta
+		division_template = "地方步兵旅"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.2
+
+	}
+
+}
+
+

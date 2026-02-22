@@ -1,0 +1,133 @@
+﻿####### Division Templates #######
+division_template = { 
+	name = "陆军师" 
+	division_names_group = ITA_INF_01 
+	
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = { 
+		engineer = { x = 0 y = 0 }
+	}
+}
+
+division_template = { 
+	name = "混成旅" 
+	division_names_group = ITA_MNT_01 
+
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 1}
+		cavalry = { x = 2 y = 0 }
+	}
+	support = { 
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+
+	priority = 2 
+}
+division_template = { 
+	name = "骑兵旅" 
+	division_names_group = ITA_CAV_01 
+
+	regiments = { 
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 1 }
+	}
+	support = { 
+		artillery = { x = 0 y = 0 }
+	}
+}
+
+####### OOB #######
+units = {
+	division= {	
+		name = "边防骑兵第一旅"
+		location = 1976
+		division_template = "骑兵旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "边防骑兵第二旅"
+		location = 1976
+		division_template = "骑兵旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "边防骑兵第三旅"
+		location = 1976
+		division_template = "骑兵旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "边防步兵混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西第一混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西第二混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西第三混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西第四混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西第五混成旅"
+		location = 1976
+		division_template = "混成旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西骑兵第一旅"
+		location = 1976
+		division_template = "骑兵旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+	division= {	
+		name = "陕西骑兵第二旅"
+		location = 1976
+		division_template = "骑兵旅"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+}

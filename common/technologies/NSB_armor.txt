@@ -1,0 +1,827 @@
+technologies = {
+	@1900 = 0
+	@1910 = 1
+	@1920 = 2
+	@1930 = 3
+	@1940 = 4
+	@1950 = 5
+	@1960 = 6
+
+tech_trucks = {
+
+		show_equipment_icon = yes
+
+		enable_subunits = {
+			mot_anti_tank_brigade
+			mot_artillery_brigade
+			mot_anti_air_brigade
+			motorized
+		}
+
+		enable_equipments = {
+			motorized_equipment_0
+		}
+
+		enable_equipment_modules = {
+		}
+
+		path = {
+			leads_to_tech = motorised_infantry
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = early_armor_car
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1900
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 4 y = 0 }
+		}
+
+		categories = {
+			motorized_equipment
+			mio_cat_tech_all_motorized_mechanized
+			infantry_tech
+		}
+
+		ai_will_do = {
+			factor = 1
+
+		}
+	}
+
+	motorised_infantry = {
+
+		enable_subunits = {
+			motorized
+		}
+
+		enable_equipments = {
+			motorized_equipment_1
+		}
+
+		path = {
+			leads_to_tech = mechanised_infantry
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 3 y = 2 }
+		}
+
+		ai_will_do = {
+			factor = 1
+
+		}
+	}
+
+
+	mechanised_infantry = {
+
+		enable_subunits = {
+			mechanized
+		}
+
+		enable_equipments = {
+			mechanized_equipment_1
+		}
+
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 6 y = 2 }
+		}
+		categories = {
+		}
+
+		ai_will_do = {
+			factor = 1
+
+		}
+
+	}
+
+	early_armor_car = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			wheeled_chassis_0
+		}
+		enable_equipment_modules = {
+			dependent_suspension
+			independent_suspension
+			wheeled_fixed_superstructure_turret
+			wheeled_open_combat_room
+			tank_wheeled_suspension
+			tank_half_track_suspension
+			tank_light_fixed_superstructure_turret
+			tank_light_open_combat_room
+			tank_medium_fixed_superstructure_turret
+			tank_medium_open_combat_room
+			tank_heavy_fixed_superstructure_turret
+			tank_heavy_open_combat_room
+		}
+		enable_subunits = {
+			armored_car
+		}
+		path = {
+			leads_to_tech = interwar_wheeled_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tracked_suspension
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = independent_turret
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1910
+
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 9 y = 2 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+
+	tracked_suspension = {
+		show_equipment_icon = yes
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			tank_torsion_bar_suspension
+			tank_christie_suspension
+			tank_bogie_suspension
+			tank_interleaved_suspension
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = great_war_heavy_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = great_war_light_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1905
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 16 y = 2 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+ 	interwar_wheeled_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			wheeled_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = imporve_wheeled_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1920
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 1 y = 6 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	imporve_wheeled_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			wheeled_chassis_2
+		}
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 1 y = 10 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	great_war_heavy_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			heavy_tank_chassis_0
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = interwar_heavy_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = great_war_super_heavy_chassis 
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1910
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 20 y = 2 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	great_war_super_heavy_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			super_heavy_tank_chassis_0
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1915
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 22 y = 4 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	interwar_heavy_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			heavy_tank_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = imporve_heavy_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = basic_medium_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1920
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 20 y = 6 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	great_war_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			light_tank_chassis_0
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = interwar_light_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = super_light_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1915
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 12 y = 4 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	independent_turret = {
+		show_equipment_icon = yes
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			wheeled_one_man_tank_turret
+			wheeled_two_man_tank_turret
+			tank_light_one_man_tank_turret
+			tank_light_two_man_tank_turret 
+			tank_light_three_man_tank_turret
+			tank_medium_one_man_tank_turret
+			tank_medium_two_man_tank_turret
+			tank_medium_three_man_tank_turret
+			tank_heavy_two_man_tank_turret
+			tank_heavy_three_man_tank_turret
+			tank_super_heavy_three_man_tank_turret
+			tank_super_heavy_four_man_tank_turret
+			tank_modern_tank_turret
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = multi_turret_design
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1915
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 3 y = 4 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	multi_turret_design = {
+		show_equipment_icon = yes
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			secondary_turret_hmg
+			secondary_turret_small_cannon
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 3 y = 8 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	interwar_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			light_tank_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = imporve_light_chassis
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = basic_medium_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1920
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 12 y = 6 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	super_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			super_light_tank_chassis_0
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = floating_light_tank
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = imporve_super_light_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1920
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 5 y = 6 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	imporve_super_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			super_light_tank_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = advanced_super_light_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 5 y = 8 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	advanced_super_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			super_light_tank_chassis_2
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 5 y = 10 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	floating_light_tank = {
+		show_equipment_icon = yes
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			amphibious_drive
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = amphibious_tank_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 8 y = 8 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	amphibious_tank_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			amphibious_tank_chassis_0
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 8 y = 12 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	imporve_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			light_tank_chassis_2
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		path = {
+			leads_to_tech = advanced_light_chassis
+			research_cost_coeff = 1
+		}
+		start_year = 1930
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 12 y = 10 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	advanced_light_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			light_tank_chassis_3
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 12 y = 12 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	imporve_heavy_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			heavy_tank_chassis_2
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		
+		path = {
+			leads_to_tech = advanced_heavy_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 20 y = 10 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	advanced_heavy_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			heavy_tank_chassis_3
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 20 y = 12 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	basic_medium_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			medium_tank_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = imporve_medium_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1925
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 16 y = 8 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	imporve_medium_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			medium_tank_chassis_2
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		path = {
+			leads_to_tech = inclined_armor
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = advanced_medium_chassis
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 1930
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 16 y = 10 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	advanced_medium_chassis = {
+		show_equipment_icon = yes
+		enable_equipments = {
+			medium_tank_chassis_3
+		}
+		enable_equipment_modules = {
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 16 y = 12 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+	inclined_armor = {
+		show_equipment_icon = yes
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			sloped_armor
+		}
+		enable_subunits = {
+		}
+		on_research_complete_limit = {
+		}
+		on_research_complete = {
+		}
+		research_cost = 2
+		start_year = 1935
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 18 y = 12 }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		categories = {
+		}
+	}
+}

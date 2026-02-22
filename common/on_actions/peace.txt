@@ -1,0 +1,99 @@
+on_actions = {
+    on_capitulation = {
+        effect = {
+            IF = {
+                limit = {
+                    ROOT = {
+                        original_tag = WRU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = GLC
+                            original_tag = ROM
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = WRU
+                }
+                ROM = {
+                    white_peace = WRU
+                    white_peace = UPR
+                    set_state_owner = 1045
+                    
+                }
+                GLC = {
+                    set_state_owner = 91
+                    set_state_owner = 89
+                }
+
+                UPR = {
+                    set_state_owner = 93
+                    set_state_owner = 199
+                }
+            }
+            else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = GLC
+                    }
+                    FROM = {
+                        original_tag = UPR
+                    }
+                }
+                every_country = {
+                    white_peace = UPR
+                }
+            }
+            else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+            else = {
+                
+            }
+        }
+    }
+}

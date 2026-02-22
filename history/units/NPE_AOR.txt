@@ -1,0 +1,62 @@
+﻿division_template = {
+	name = "国防山地旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "民兵旅"		
+	division_names_group = SPAN_INF_02
+
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+	
+
+}
+
+
+units = {
+	division= {	
+		name = "第一山地旅“图帕克·阿马鲁”"
+		location = 12997# Parana
+		division_template = "国防山地旅"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.9
+
+	}
+	division= {	
+		name = "利马国土防卫旅"
+		location = 12997# Cordoba
+		division_template = "民兵旅"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.5
+
+	}
+	
+	division= {	
+		name = "瓦拉斯国土防卫旅"
+		location = 12997# Cordoba
+		division_template = "民兵旅"
+		start_experience_factor = 0.05
+		start_equipment_factor = 0.5
+
+	}
+}
+
+

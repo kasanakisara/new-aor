@@ -1,0 +1,203 @@
+characters = {
+	SHL_Ernst_von_buseh = { #ernst_von_buseh
+		name = SHL_Ernst_von_buseh
+		portraits = {
+			army = {
+				large = gfx/leaders/SHL/SHL_Ernst_von_buseh.png
+				small = GFX_portrait_SHL_Ernst_von_buseh_small
+			}
+			civilian = {
+				large = gfx/leaders/SHL/SHL_Ernst_von_buseh.png
+				small = GFX_portrait_SHL_Ernst_von_buseh_small
+			}
+		}
+		corps_commander = {
+			traits = { infantry_officer armor_officer harsh_leader organizer adaptable }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = army_chief
+		    idea_token = SHL_Ernst_von_buseh
+			allowed = { original_tag = SHL }
+			traits = { army_chief_organizational_3 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Hans_valentin_hube = { #hans_valentin_hube
+		name = SHL_Hans_valentin_hube
+		portraits = {
+			army = {
+				large = gfx/leaders/SHL/SHL_Hans_valentin_hube.png
+				small = GFX_portrait_SHL_Hans_valentin_hube_small
+			}
+			civilian = {
+				large = gfx/leaders/SHL/SHL_Hans_valentin_hube.png
+				small = GFX_portrait_SHL_Hans_valentin_hube_small
+			}
+		}
+		corps_commander = {
+			traits = { trait_cautious infantry_officer organizer adaptable urban_assault_specialist combined_arms_expert guerilla_fighter }
+			skill = 2
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = high_command
+			ledger = army
+			idea_token = SHL_Hans_valentin_hube
+			allowed = { original_tag = SHL }
+			traits = { army_infantry_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Conrad_albrecht = { #conrad_albrecht
+		name = SHL_Conrad_albrecht
+		portraits = {
+			army = {
+				large = gfx/leaders/SHL/SHL_Conrad_albrecht.png
+				small = GFX_portrait_SHL_Conrad_albrecht_small
+			}
+			civilian = {
+				large = gfx/leaders/SHL/SHL_Conrad_albrecht.png
+				small = GFX_portrait_SHL_Conrad_albrecht_small
+			}
+		}
+		navy_leader = {
+			traits = { seawolf spotter lancer hunter_killer search_pattern_expert }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 3
+			maneuvering_skill = 2
+			coordination_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = high_command
+			ledger = navy
+			idea_token = SHL_Conrad_albrecht
+			allowed = { original_tag = SHL }
+			traits = { navy_amphibious_assault_3 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Erich_raeder = { #erich_raeder
+		name = SHL_Erich_raeder
+		portraits = {
+			army = {
+				large = gfx/leaders/SHL/SHL_Erich_raeder.png
+				small = gfx/interface/ideas/SHL_Erich_raeder.png
+			}
+			civilian = {
+				large = gfx/leaders/SHL/SHL_Erich_raeder_army.png
+				small = gfx/interface/ideas/SHL_Erich_raeder.png
+			}
+		}
+		navy_leader = {
+			traits = { seawolf superior_tactician spotter blockade_runner ironside }
+			skill = 2
+			attack_skill = 4
+			defense_skill = 4
+			maneuvering_skill = 3
+			coordination_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = SHL_Erich_raeder
+			available  = {
+			NOT = {
+				has_country_leader = { ruling_only = yes name = "Erich·Raeder" }
+				}
+			}
+			allowed = { original_tag = SHL }
+			traits = { staunch_aristocrat }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Wilhelm_swz = { #wilhelm_swz
+		name = SHL_Wilhelm_swz 
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SHL_Wilhelm_swz
+				small = gfx/interface/ideas/SHL_Wilhelm_swz.png
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = SHL_Wilhelm_swz
+			allowed = { original_tag = SHL }
+			traits = { ambitious_union_boss }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Wilhelm_koenen = { #wilhelm_koenen
+		name = SHL_Wilhelm_koenen
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SHL_Wilhelm_koenen
+				small = gfx/interface/ideas/SHL_Wilhelm_koenen.png
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = SHL_Wilhelm_koenen
+			allowed = { original_tag = SHL }
+			traits = { socialist_novelist }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	SHL_Karl_doenitz = { #karl_doenitz
+		name = SHL_Karl_doenitz
+		portraits = {
+			army = {
+				large = gfx/leaders/SHL/SHL_Karl_doenitz.png
+				small = GFX_portrait_SHL_Karl_doenitz_small
+			}
+			civilian = {
+				large = gfx/leaders/SHL/SHL_Karl_doenitz_2.png
+				small = GFX_portrait_SHL_Karl_doenitz_small
+			}
+		}
+		navy_leader = {
+			traits = { seawolf torpedo_expert lancer blockade_runner naval_lineage mine_layer lone_wolf search_pattern_expert navy_career_officer bold navy_media_personality gentlemanly }
+			skill = 2
+			attack_skill = 4
+			defense_skill = 3
+			maneuvering_skill = 3
+			coordination_skill = 3
+			legacy_id = -1
+		}
+	}
+	SHL_Kirill = { #kirill
+		name = SHL_Kirill
+		portraits = {
+			army = {
+				large = GFX_portrait_SHL_Kirill
+				small = GFX_portrait_SHL_Kirill_small
+			}
+		}
+		field_marshal = {
+			traits = { media_personality infantry_officer thorough_planner exiled_leader trait_GRE_stauch_monarchist BALTIC_ex_russian }
+			skill = 3
+			attack_skill = 4
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1
+		}
+	}
+}

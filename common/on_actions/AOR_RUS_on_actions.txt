@@ -1,0 +1,21 @@
+on_actions = {
+	on_weekly = {
+		effect = {
+			if = {
+                limit = {
+                    KYR = { surrender_progress > 0.2 }
+                    country_exists = KYR
+                    KYR = {
+                        NOT = {
+                            has_country_flag = KYR_surrender
+                        }
+                    }
+                }
+                KYR = {
+                    country_event = { id = KYR.1 }
+                    set_country_flag = KYR_surrender
+                }
+            }
+		}
+	}
+}

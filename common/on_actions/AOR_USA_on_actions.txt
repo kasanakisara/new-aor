@@ -1,0 +1,24 @@
+on_actions = {
+#合众国内战军事决议
+	on_daily_USA = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = USA_Civil_War_Military_Resolution_flag
+				}
+				add_to_variable = { USA_Reorganization_of_the_state_National_Guard = 0.2 }
+
+				if = {
+					limit = {
+						OR = {
+							check_variable = { USA_Reorganization_of_the_state_National_Guard = 100}
+							check_variable = { USA_Reorganization_of_the_state_National_Guard > 100}
+						}
+					}
+					USA_Civil_War_Military_check = yes
+				}
+				
+			}
+		}
+	}
+}

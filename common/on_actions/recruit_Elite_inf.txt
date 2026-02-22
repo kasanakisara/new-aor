@@ -1,0 +1,181 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				if = { 
+					limit = { num_of_controlled_states < 4 
+					NOT = {
+						original_tag = ORA
+						original_tag = CHT
+						original_tag = SAX
+						original_tag = SHL
+						#original_tag = MEK
+						original_tag = VAT
+						original_tag = NFL
+						original_tag = SPE
+						original_tag = NPE
+						original_tag = PAR
+						original_tag = URG
+						original_tag = MIA
+						original_tag = GUA
+						original_tag = HSP
+						original_tag = CHL
+					}
+					}
+					if = {
+						limit = { NOT = { has_template = "Common Militia" } }
+						division_template = {
+							priority = 0
+							name = "Common Militia"
+							regiments = {
+								infantry = { x = 0 y = 0 } 
+								infantry = { x = 0 y = 1 } 
+								infantry = { x = 1 y = 0 } 
+								infantry = { x = 1 y = 1 } 
+							}
+							support = {
+							}
+						}
+						random_controlled_state = {
+							limit = { is_capital = yes }
+							create_unit = {
+								division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							limit = { check varible = victory_points > 1 }
+							create_unit = {
+								division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+								owner = PREV
+								count = 1
+							}
+							
+						}
+					}
+				}
+				if = {
+					limit = { original_tag = FIN }
+					if = {
+						limit = { NOT = { has_template = "Nation Militia Elite" } }
+						division_template = {
+							priority = 0
+							name = "Nation Militia Elite"
+							regiments = {
+								infantry = { x = 0 y = 0 } 
+								infantry = { x = 0 y = 1 } 
+								infantry = { x = 1 y = 0 } 
+								infantry = { x = 1 y = 1 } 
+								infantry = { x = 1 y = 2 } 
+								infantry = { x = 0 y = 2 } 
+								artillery = { x = 2 y = 0 } 
+								artillery = { x = 2 y = 1 }
+								artillery = { x = 2 y = 2 } 
+							}
+							support = {
+								engineer = { x = 0 y = 0 }  
+							}
+						}
+						random_controlled_state = {
+							limit = { is_capital = yes }
+							create_unit = {
+								division = "name = \"National Militia 1st\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"National Militia 2nd\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"National Militia 2nd\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"National Militia 2nd\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+							create_unit = {
+								division = "name = \"National Militia 2nd\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+								count = 1
+							}
+
+						}
+					}
+				if = {
+					limit = { NOT = { has_template = "cavalery division" } }
+					division_template = {
+						priority = 0
+						name = "cavalery division"
+						regiments = {
+							cavalry = { x = 0 y = 0 }
+							cavalry = { x = 0 y = 1 }
+							cavalry = { x = 1 y = 0 }
+							cavalry = { x = 1 y = 1 }
+							cavalry = { x = 2 y = 0 }
+							cavalry = { x = 2 y = 1 }
+						}
+						support = {
+							recon = { x = 0 y = 0 }  
+						}
+					}
+						every_owned_state = {
+							limit = { 
+								victory_points > 39
+								victory_points < 50
+								}
+							create_unit = {
+								division = "name = \"Nation Militia Elite\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+								owner = PREV
+								count = 0
+								}
+							create_unit = {
+								division = "name = \"cavalery division\" division_template = \"cavalery division\" start_experience_factor = 0.1 start_equipment_factor = 1"
+								owner = PREV
+								count = 0
+							}
+	    	    		}
+						every_owned_state = {
+				    		limit = { 
+					    		victory_points > 50
+					    		}
+				    		create_unit = {
+				     			division = "name = \"Nation Militia Elite\" division_template = \"Nation Militia Elite\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+				    			owner = PREV
+				    			count = 0
+				    			}
+				        		create_unit = {
+				    			division = "name = \"cavalery division\" division_template = \"cavalery division\" start_experience_factor = 0.1 start_equipment_factor = 1"
+				    			owner = PREV
+				    			count = 0
+				    		}
+				    	}
+	      	    	}
+	  	    	}
+	      	}
+     	}
+    }
+}

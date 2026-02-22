@@ -1,0 +1,579 @@
+characters = {
+
+#####################################################将领######################################
+	CHI_duanqirui = { #段祺瑞
+		name = duanqirui
+		portraits = {
+			army = {
+				large = gfx/leaders/CHI/duanqirui.png
+				small = GFX_portrait_duanqirui_small
+			}
+			civilian = {
+				large = gfx/leaders/CHI/duanqirui.png
+				small = GFX_portrait_duanqirui_small
+			}
+		}
+		field_marshal = {
+			traits = {  career_officer old_guard inspirational_leader skilled_staffer bearer_of_artillery }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 1
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = military_high_command
+			idea_token = CHI_duanqirui
+
+			traits = { army_chief_morale_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	CHI_xushuzheng = { #徐树铮
+    	name = xushuzheng
+	    portraits = {
+	    	army = {
+	    		large = gfx/leaders/CHI/xushuzheng.png
+	    		small = GFX_portrait_xushuzheng_small
+	    	}
+	    	civilian = {
+	    		large = gfx/leaders/CHI/xushuzheng.png
+	    		small = GFX_portrait_xushuzheng_small
+	    	}
+	    }
+	    corps_commander = {
+    		traits = {  career_officer politically_connected organizer harsh_leader infantry_officer }
+	    	skill = 3
+	    	attack_skill = 4
+	    	defense_skill = 3
+	    	planning_skill = 2
+	    	logistics_skill = 3
+	    	legacy_id = -1
+	    }
+	      advisor = {
+	    	cost = 100
+	    	idea_token = CHI_xushuzheng
+	     	traits = { army_chief_organizational_2 }
+	    	ai_will_do = { factor = 1.000 }
+	    }
+    }
+	CHI_leyunpeng = { #勒云鹏
+	    name = leyunpeng
+	    portraits = {
+	    	army = {
+	    		large = gfx/leaders/CHI/leyunpeng.png
+	    		small = GFX_portrait_leyunpeng_small
+	    	}
+	    	civilian = {
+	      		large = gfx/leaders/CHI/leyunpeng.png
+	    		small = GFX_portrait_leyunpeng_small
+	    	}
+	    }
+	    corps_commander = {
+	    	traits = {  old_guard  }
+	    	skill = 2
+	    	attack_skill = 3
+	    	defense_skill = 2
+		    planning_skill = 1
+		    logistics_skill = 3
+		    legacy_id = -1
+	    }
+	    advisor = {
+	    	idea_token = CHI_leyunpeng
+
+	    	traits = { army_chief_organizational_1 }
+	    	ai_will_do = { factor = 1.000 }
+	    }
+    }
+	CHI_wuguangxin = { #吴光新
+	name = wuguangxin
+	portraits = {
+		army = {
+			large = gfx/leaders/CHI/wuguangxin.png
+			small = GFX_portrait_wuguangxin_small
+		}
+	}
+	corps_commander = {
+		traits = {  politically_connected bearer_of_artillery  }
+		skill = 1
+		attack_skill = 1
+		defense_skill = 2
+		planning_skill = 1
+		logistics_skill = 1
+		legacy_id = -1
+	}
+	advisor = {
+		idea_token = CHI_wuguangxin
+		allowed = { original_tag = CHI }
+		traits = { army_chief_organizational_1 }
+		ai_will_do = { factor = 1.000 }
+	}
+}
+CHI_duanzhigui = { #段芝贵
+name = duanzhigui
+portraits = {
+	army = {
+		large = gfx/leaders/CHI/duanzhigui.png
+		small = GFX_portrait_duanzhigui_small
+	}
+}
+corps_commander = {
+	traits = {  politically_connected old_guard substance_abuser  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+	legacy_id = -1
+    }
+}
+
+CHI_fuliangzuo = { #傅良佐
+name = fuliangzuo
+portraits = {
+	army = {
+		large = gfx/leaders/CHI/fuliangzuo.png
+		small = GFX_portrait_fuliangzuo_small
+	}
+}
+corps_commander = {
+	traits = { career_officer bearer_of_artillery  }
+	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 1
+	legacy_id = -1
+    }
+}
+
+CHI_luyongxiang = { #卢永祥
+name = CHI_luyongxiang
+portraits = {
+	army = {
+		large = gfx/leaders/CHI/CHI_luyongxiang.png
+		small = GFX_portrait_CHI_luyongxiang_small
+	}
+}
+corps_commander = {
+	traits = { career_officer politically_connected old_guard substance_abuser  }
+	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+	legacy_id = -1
+    }
+}
+
+CHI_zhangjingyao = { #张敬尧
+    name = CHI_zhangjingyao
+    portraits = {
+	army = {
+		large = gfx/leaders/CHI/zhangjingyao.png
+		small = GFX_portrait_zhangjingyao_small
+	}
+}
+corps_commander = {
+	traits = { trait_reckless bearer_of_artillery substance_abuser  }
+	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+	legacy_id = -1
+    }
+}
+
+	################################################顾问#################################################################
+
+	CHI_liangshiyi = { #梁士诒
+		name = liangshiyi
+		portraits = {
+			civilian = {
+				large = gfx/leaders/CHI/liangshiyi.png
+				small = gfx/interface/ideas/liangshiyi.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_liangshiyi
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { financial_expert }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_guweijun = { #顾维钧
+		name = guweijun
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CHI_guweijun
+				small = gfx/interface/ideas/guweijun.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_guweijun
+			traits = { Genius_New_Star_in_Diplomacy }
+			visible = { has_country_flag = wanxizhengfu  }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_luzhengxiang = { #陆徵祥
+		name = luzhengxiang
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CHI_luzhengxiang
+				small = gfx/interface/ideas/luzhengxiang.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_luzhengxiang
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Diplomatic_experts }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_wangjitang = { #王揖唐
+		name = wangjitang
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CHI_wangjitang
+				small = gfx/interface/ideas/wangjitang.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_wangjitang
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { prince_of_terror }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_caorulin = { #曹汝霖
+		name = caorulin
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CHI_caorulin
+				small = gfx/interface/ideas/caorulin.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_caorulin
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { silent_workhorse }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_zhushen = { #朱深
+		name = zhushen
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CHI_zhushen
+				small = gfx/interface/ideas/zhushen.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_zhushen
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Judicial_experts }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	CHI_fanyuanlian = { #范源濂
+		name = fanyuanlian
+		portraits = {
+			civilian = {
+				large = gfx/leaders/CHI/fanyuanlian.png
+				small = gfx/interface/ideas/fanyuanlian.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_fanyuanlian
+			visible = { has_country_flag = wanxizhengfu }
+			traits = { educational_experts }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_yuanxitao = { #袁希涛
+		name = yuanxitao
+		portraits = {
+			civilian = {
+				large = GFX_portrait_yuanxitao
+				small = gfx/interface/ideas/yuanxitao.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_yuanxitao
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Compulsory_Education_Promoters }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_tianwenlie = { #田文烈
+		name = tianwenlie
+		portraits = {
+			civilian = {
+				large = GFX_portrait_tianwenlie
+				small = gfx/interface/ideas/tianwenlie.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_tianwenlie
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Agricultural_and_commercial_experts }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_zhangguogan = { #张国淦
+		name = zhangguogan
+		portraits = {
+			civilian = {
+				large = GFX_portrait_zhangguogan
+				small = gfx/interface/ideas/zhangguogan.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_zhangguogan
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { upright_financial_official }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_zhuqiyin = { #朱启银
+		name = zhuqiyin
+		portraits = {
+			civilian = {
+				large = GFX_portrait_zhuqiyin
+				small = gfx/interface/ideas/zhuqiyin.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_zhuqiyin
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Architects_and_industrialists }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+	CHI_Zeng_Yujun = { #曾毓隽
+		name = Zeng_Yujun
+		portraits = {
+			civilian = {
+				large = gfx/leaders/CHI/Zeng_Yujun.png
+				small = gfx/interface/ideas/Zeng_Yujun.png
+			}
+		}
+		advisor = {
+			cost = 150
+			slot = political_advisor
+			idea_token = CHI_Zeng_Yujun
+			visible = { has_country_flag = wanxizhengfu  }
+			traits = { Quartermaster_General }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+    	CHI_zhangjian = { #张建
+    	name = zhangjian
+    	portraits = {
+     		civilian = {
+    			large = gfx/leaders/CHI/zhangjian.png
+       			small = gfx/interface/ideas/zhangjian.png
+    		}
+    	}
+    	advisor = {
+    		cost = 150
+    		slot = political_advisor
+	    	idea_token = CHI_zhangjian
+			visible = { has_country_flag = wanxizhengfu  }
+	    	traits = { Practitioner_of_saving_the_country_through_industry }
+	    	ai_will_do = { factor = 1.000 }
+	    }
+    }
+        CHI_lianghongzhi = { #梁弘志
+        name = lianghongzhi
+        portraits = {
+        	civilian = {
+	        	large = gfx/leaders/CHI/lianghongzhi.png
+    	    	small = gfx/interface/ideas/lianghongzhi.png
+        	}
+        }
+        advisor = {
+	        cost = 150
+        	slot = political_advisor
+        	idea_token = CHI_lianghongzhi
+			visible = { has_country_flag = wanxizhengfu  }
+        	traits = { editor }
+        	ai_will_do = { factor = 1.000 }
+        }
+    }
+	########leader#####
+	# 陆军将领 - 皖系
+
+
+
+
+
+# 西北边防军将领
+
+CHI_qu_tongfeng = {
+    name = "曲同丰"
+    portraits = {
+        army = {
+            large = gfx/leaders/CHI/qu_tongfeng.dds
+            small = gfx/interface/ideas/qu_tongfeng.dds
+        }
+    }
+    corps_commander = {
+        traits = { career_officer trait_cautious } # 职业军官，谨慎
+        skill = 2
+        attack_skill = 3
+        defense_skill = 2
+        planning_skill = 1
+        logistics_skill = 1
+    }
+}
+
+CHI_fan_zhongxiu = {
+    name = "樊钟秀"
+    portraits = {
+        army = {
+            large = gfx/leaders/CHI/fan_zhongxiu.dds
+            small = gfx/interface/ideas/fan_zhongxiu.dds
+        }
+    }
+    corps_commander = {
+        traits = { harsh_leader trait_reckless } # 严厉将领，鲁莽
+        skill = 2
+        attack_skill = 1
+        defense_skill = 3
+        planning_skill = 1
+        logistics_skill = 1
+    }
+}
+
+CHI_guo_jian = {
+    name = "郭坚"
+    portraits = {
+        army = {
+            large = gfx/leaders/CHI/guo_jian.dds
+            small = gfx/interface/ideas/guo_jian.dds
+        }
+    }
+    corps_commander = {
+        traits = { harsh_leader trait_reckless } # 严厉将领，鲁莽
+        skill = 2
+        attack_skill = 1
+        defense_skill = 1
+        planning_skill = 1
+        logistics_skill = 1
+    }
+}
+
+# 海军将领
+
+CHI_liu_guanxiong = {
+    name = "刘冠雄"
+    portraits = {
+        navy = {
+            large = gfx/leaders/CHI/liu_guanxiong.dds
+            small = gfx/interface/ideas/liu_guanxiong.dds
+        }
+    }
+    navy_leader = {
+        traits = { trait_reckless naval_lineage career_officer } # 鲁莽，海军血统，职业军官
+        skill = 2
+        attack_skill = 3
+        defense_skill = 1
+
+    }
+}
+
+CHI_sa_zhenbing = {
+    name = "萨镇冰"
+    portraits = {
+        navy = {
+            large = gfx/leaders/CHI/sa_zhenbing.dds
+            small = gfx/interface/ideas/sa_zhenbing.dds
+        }
+    }
+    navy_leader = {
+        traits = { career_officer naval_lineage } # 职业军官，海军血统
+        skill = 3
+        attack_skill = 3
+        defense_skill = 2
+
+    }
+}
+
+CHI_lin_jianzhang = {
+    name = "林建章"
+    portraits = {
+        navy = {
+            large = gfx/leaders/CHI/lin_jianzhang.dds
+            small = gfx/interface/ideas/lin_jianzhang.dds
+        }
+    }
+    navy_leader = {
+        traits = { career_officer naval_lineage blockade_runner } # 职业军官，海军血统，封锁穿行者
+        skill = 3
+        attack_skill = 1
+        defense_skill = 3
+
+    }
+}
+
+CHI_li_shijia = {
+    name = "李世甲"
+    portraits = {
+        navy = {
+            large = gfx/leaders/CHI/li_shijia.dds
+            small = gfx/interface/ideas/li_shijia.dds
+        }
+    }
+    navy_leader = {
+        traits = { career_officer naval_lineage seawolf } # 职业军官，海军血统，海狼
+        skill = 2
+        attack_skill = 3
+        defense_skill = 2
+
+    }
+}
+CHI_xu_zushan = {
+    name = "徐祖善"
+    portraits = {
+        navy = {
+            large = gfx/leaders/CHI/xu_zushan.dds
+            small = gfx/interface/ideas/xu_zushan.dds
+        }
+    }
+    navy_leader = {
+        traits = { career_officer naval_lineage seawolf chief_engineer } # 职业军官，海军血统，海狼，首席工程师
+        skill = 2
+        attack_skill = 1
+        defense_skill = 1
+    }
+}
+}
