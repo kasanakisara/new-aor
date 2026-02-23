@@ -1,0 +1,1188 @@
+focus_tree = {
+	id = AOR_SWE_focus_tree_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 200
+			tag = SWE
+		}
+	}
+	default = no
+	continuous_focus_position = {
+		x = 0
+		y = 1500
+	}
+	focus = {
+		id = AOR_SWE_Panic_and_Terror
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 23
+		y = 0
+
+		completion_reward = {
+			custom_effect_tooltip = SWE_Panic_and_Terror_tt
+		}
+
+	}
+	
+	focus = {
+		id = AOR_SWE_Authorize_military_rule
+		icon = GFX_goal_unknown
+		cost = 0.5
+		prerequisite = {
+			focus = AOR_SWE_Panic_and_Terror
+		}
+		x = 21
+		y = 1
+		completion_reward = {
+			add_command_power = -50
+			add_to_variable = { SWE_Regency_Order_value = 5 }
+			custom_effect_tooltip = SWE_Regency_Order_add_5_tt
+			add_ideas = SWE_Regency_Military_Rule
+		}
+
+	}
+	focus = {
+		id = AOR_SWE_Request_League_of_Nations_intervention
+		icon = GFX_goal_unknown
+		cost = 0.5
+		prerequisite = {
+			focus = AOR_SWE_Panic_and_Terror
+		}
+		x = 25
+		y = 1
+		completion_reward = {
+			add_to_variable = { SWE_Regency_Political_value = 5 }
+			custom_effect_tooltip = SWE_Regency_Political_add_5_tt
+			add_ideas = SWE_Regency_LN_Recongnize
+			custom_effect_tooltip = AOR_SWE_Request_League_of_Nations_intervention_tt
+		}
+
+	}
+	focus = {
+		id = AOR_SWE_Hold_Regency_conference
+		icon = GFX_goal_unknown
+		cost = 9
+		prerequisite = {
+			focus = AOR_SWE_Authorize_military_rule
+			focus = AOR_SWE_Request_League_of_Nations_intervention
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SWE_Regency_Order_III_tt
+				check_variable = { SWE_Regency_Order_value = 40 compare = more_than_or_equals }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SWE_Regency_Political_III_tt
+				check_variable = { SWE_Regency_Political_value = 40 compare = more_than_or_equals }
+			}
+		}
+		cancelable = no
+		x = 23
+		y = 2
+		select_effect = {
+			country_event = { id = SWE_Regency_Conference.1 }
+		}
+		completion_reward = {
+			custom_effect_tooltip = SWE_Regency_Conference_focus_tt
+		}
+
+	}
+	### 经济线由此开始 ###
+	focus = {
+		id = AOR_SWE_New_economic_reforms
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Hold_Regency_conference
+		}
+		allow_branch = {
+			has_completed_focus = AOR_SWE_Hold_Regency_conference
+		}
+		x = 23
+		y = 5
+
+	}
+	##经济左线开始##
+	focus = {
+		id = AOR_SWE_Tangible_hands
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_New_economic_reforms
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Marketism
+			focus = AOR_SWE_The_fresh_breeze_of_new_reforms
+		}
+		x = 16
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Purchase_of_foreign_factories
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Tangible_hands
+		}
+		x = 16
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Reviving_Federal_Agriculture
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Purchase_of_foreign_factories
+		}
+		x = 15
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Emergency_relief_program
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Purchase_of_foreign_factories
+		}
+		x = 17
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Increase_national_debt
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Reviving_Federal_Agriculture
+		}
+		x = 14
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Restart_Karlstard_Plan
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Reviving_Federal_Agriculture
+		}
+		prerequisite = {
+			focus = AOR_SWE_Emergency_relief_program
+		}
+		x = 16
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Northern_mining
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Emergency_relief_program
+		}
+		x = 18
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_the_shadow_of_Socialism
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Increase_national_debt
+		}
+		prerequisite = {
+			focus = AOR_SWE_Restart_Karlstard_Plan
+		}
+		prerequisite = {
+			focus = AOR_SWE_Northern_mining
+		}
+		x = 16
+		y = 10
+
+	}
+	##经济左线结束##
+	##经济中线开始##
+	focus = {
+		id = AOR_SWE_Marketism
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_New_economic_reforms
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Tangible_hands
+			focus = AOR_SWE_The_fresh_breeze_of_new_reforms
+		}
+		x = 23
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Comprehensive_liberalization
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Marketism
+		}
+		x = 23
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Abandoning_tariff_barriers
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_liberalization
+		}
+		x = 22
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Introduce_private_capital
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_liberalization
+		}
+		x = 24
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Lift_Supervision
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Abandoning_tariff_barriers
+		}
+		x = 21
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Liberated_reorganization
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Abandoning_tariff_barriers
+		}
+		prerequisite = {
+			focus = AOR_SWE_Introduce_private_capital
+		}
+		x = 23
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Printing_press_starts
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Introduce_private_capital
+		}
+		x = 25
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_the_market_s_hands
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Printing_press_starts
+		}
+		prerequisite = {
+			focus = AOR_SWE_Liberated_reorganization
+		}
+		prerequisite = {
+			focus = AOR_SWE_Lift_Supervision
+		}
+		x = 23
+		y = 10
+
+	}
+	##经济中线结束##
+	##经济右线开始##
+	focus = {
+		id = AOR_SWE_The_fresh_breeze_of_new_reforms
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_New_economic_reforms
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Marketism
+			focus = AOR_SWE_Tangible_hands
+		}
+		x = 30
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Introduction_of_foreign_capital
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_The_fresh_breeze_of_new_reforms
+		}
+		x = 30
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_More_comprehensive_foreign_control
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Introduction_of_foreign_capital
+		}
+		x = 29
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_More_Severe_working_conditions
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Introduction_of_foreign_capital
+		}
+		x = 31
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Promoting_Free_Trade
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_More_comprehensive_foreign_control
+		}
+		x = 28
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_World_Mines
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_More_comprehensive_foreign_control
+		}
+		prerequisite = {
+			focus = AOR_SWE_More_Severe_working_conditions
+		}
+		x = 30
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Efficiency_is_life
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_More_Severe_working_conditions
+		}
+		x = 32
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_for_money_for_life
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Promoting_Free_Trade
+		}
+		prerequisite = {
+			focus = AOR_SWE_World_Mines
+		}
+		prerequisite = {
+			focus = AOR_SWE_Efficiency_is_life
+		}
+		x = 30
+		y = 10
+
+	}
+	##经济右线结束##
+	### 经济线由此结束 ###
+	### 政治线由此开始 ###
+	## 政治左线由此开始 ##
+	focus = {
+		id = AOR_SWE_Continue_the_dual_monarchy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Hold_Regency_conference
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_The_Only_King
+		}
+		allow_branch = {
+			has_completed_focus = AOR_SWE_Hold_Regency_conference
+		}
+		x = 6
+		y = 3
+
+	}
+	#政治左线法国线开始#
+	focus = {
+		id = AOR_SWE_King_Knud
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Continue_the_dual_monarchy
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_King_Olaf
+			focus = AOR_SWE_King_Andreas
+		}
+		x = 2
+		y = 4
+
+	}
+	focus = {
+		id = AOR_SWE_Across_the_Strait
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_King_Knud
+		}
+		x = 2
+		y = 5
+
+	}
+	focus = {
+		id = AOR_SWE_Nordic_Policy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Across_the_Strait
+		}
+		x = 1
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Changes_in_the_wind
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Across_the_Strait
+		}
+		x = 3
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_The_glory_of_the_ancient_king
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Nordic_Policy
+		}
+		x = 1
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_the_east_front
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Changes_in_the_wind
+		}
+		x = 3
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_the_future_of_three_crown
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_The_glory_of_the_ancient_king
+		}
+		prerequisite = {
+			focus = AOR_SWE_the_east_front
+		}
+		x = 2
+		y = 8
+
+	}
+	#政治左线法国线结束#
+	#政治左线英国线开始#
+	focus = {
+		id = AOR_SWE_King_Andreas
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Continue_the_dual_monarchy
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_King_Olaf
+			focus = AOR_SWE_King_Knud
+		}
+		x = 10
+		y = 4
+
+	}
+	focus = {
+		id = AOR_SWE_Lord_of_the_Tower
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_King_Andreas
+		}
+		x = 10
+		y = 5
+
+	}
+	focus = {
+		id = AOR_SWE_Building_a_new_image
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Lord_of_the_Tower
+		}
+		x = 9
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Establishment_of_representative_system
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Lord_of_the_Tower
+		}
+		x = 11
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Deep_estrangement
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Building_a_new_image
+		}
+		x = 9
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Military_agreement_negotiations
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Establishment_of_representative_system
+		}
+		x = 11
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Retreating_into_the_cold_winter_s_aftermath
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Deep_estrangement
+		}
+		prerequisite = {
+			focus = AOR_SWE_Military_agreement_negotiations
+		}
+		x = 10
+		y = 8
+
+	}
+	#政治左线英国线结束#
+	#政治左线挪威线开始#
+	focus = {
+		id = AOR_SWE_King_Olaf
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Continue_the_dual_monarchy
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_King_Knud
+			focus = AOR_SWE_King_Andreas
+		}
+		x = 6
+		y = 4
+
+	}
+	focus = {
+		id = AOR_SWE_young_and_promising
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_King_Olaf
+		}
+		x = 6
+		y = 5
+
+	}
+	focus = {
+		id = AOR_SWE_Continuation_of_the_union_policy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_young_and_promising
+		}
+		x = 5
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_On_the_eve_of_the_stage
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_young_and_promising
+		}
+		x = 7
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Independent_Foreign_Policy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Continuation_of_the_union_policy
+		}
+		x = 5
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Federal_Community_of_Shared_Future
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_On_the_eve_of_the_stage
+		}
+		x = 7
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Federal_Burning
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Independent_Foreign_Policy
+		}
+		prerequisite = {
+			focus = AOR_SWE_Federal_Community_of_Shared_Future
+		}
+		x = 6
+		y = 8
+
+	}
+	#政治左线挪威线结束#
+	## 政治左线结束 ##
+	## 政治右线开始 ##
+	focus = {
+		id = AOR_SWE_The_Only_King
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Hold_Regency_conference
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Continue_the_dual_monarchy
+		}
+		allow_branch = {
+			has_completed_focus = AOR_SWE_Hold_Regency_conference
+		}
+		x = 41
+		y = 3
+
+	}
+	focus = {
+		id = AOR_SWE_Comprehensively_suppress_rebellious_sweetness
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_The_Only_King
+		}
+		x = 41
+		y = 4
+
+	}
+	#政治右线独立线开始#
+	focus = {
+		id = AOR_SWE_Pro_politics_in_front_of_the_screen
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensively_suppress_rebellious_sweetness
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Hiding_behind_the_scenes
+		}
+		x = 37
+		y = 5
+
+	}
+	focus = {
+		id = AOR_SWE_Obstacles_and_constraints
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Pro_politics_in_front_of_the_screen
+		}
+		x = 36
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Conditional_support
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Obstacles_and_constraints
+		}
+		x = 35
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_The_sound_of_winter_steps
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Obstacles_and_constraints
+		}
+		x = 37
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Open_military_bases
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Conditional_support
+		}
+		x = 35
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Military_boundary_talks
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_The_sound_of_winter_steps
+		}
+		x = 37
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Above_the_steel_cable
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Open_military_bases
+		}
+		prerequisite = {
+			focus = AOR_SWE_Military_boundary_talks
+		}
+		x = 36
+		y = 9
+
+	}
+	#政治右线独立线结束#
+	#政治右线做狗线开始#
+	focus = {
+		id = AOR_SWE_Hiding_behind_the_scenes
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensively_suppress_rebellious_sweetness
+		}
+		mutually_exclusive = {
+			focus = AOR_SWE_Pro_politics_in_front_of_the_screen
+		}
+		x = 45
+		y = 5
+
+	}
+	focus = {
+		id = AOR_SWE_London_is_the_Cabinet
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Hiding_behind_the_scenes
+		}
+		x = 47
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Eastern_Anti_Communist_Front
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_London_is_the_Cabinet
+		}
+		x = 46
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Baltic_Naval_Base
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Eastern_Anti_Communist_Front
+		}
+		x = 46
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Soothing_the_opposition
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_London_is_the_Cabinet
+		}
+		x = 48
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Confrontation_and_Overturning
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Soothing_the_opposition
+		}
+		x = 48
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_The_fantasy_of_riding_a_goose
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Baltic_Naval_Base
+		}
+		prerequisite = {
+			focus = AOR_SWE_Confrontation_and_Overturning
+		}
+		x = 47
+		y = 9
+
+	}
+	#政治右线做狗线结束#
+	#政治右线中线开始#
+	focus = {
+		id = AOR_SWE_The_new_kingdom
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Pro_politics_in_front_of_the_screen
+			focus = AOR_SWE_Hiding_behind_the_scenes
+		}
+		x = 41
+		y = 6
+
+	}
+	focus = {
+		id = AOR_SWE_Clear_the_old_union
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_The_new_kingdom
+		}
+		x = 41
+		y = 7
+
+	}
+	focus = {
+		id = AOR_SWE_Silence_and_permission
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Clear_the_old_union
+		}
+		x = 40
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_Appointing_a_new_cabinet
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Silence_and_permission
+		}
+		x = 40
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_Amend_the_constitution
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Clear_the_old_union
+		}
+		x = 42
+		y = 8
+
+	}
+	focus = {
+		id = AOR_SWE_A_monarch_in_a_vacant_position
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Amend_the_constitution
+		}
+		x = 42
+		y = 9
+
+	}
+	focus = {
+		id = AOR_SWE_return_to_the_old_days
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Appointing_a_new_cabinet
+		}
+		prerequisite = {
+			focus = AOR_SWE_A_monarch_in_a_vacant_position
+		}
+		x = 41
+		y = 10
+
+	}
+	#政治右线中线结束#
+	## 政治右线由此结束 ##
+	### 政治线由此结束 ###
+	### 奥兰危机分支由此开始 ###
+	focus = {
+		id = AOR_SWE_Throat_Crisis
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 20
+		y = 12
+		allow_branch = {
+			#has_completed_focus = AOR_SWE_Throat_Crisis
+		}
+
+	}
+	focus = {
+		id = AOR_SWE_Mobilize_the_army_for_war
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Throat_Crisis
+		}
+		x = 20
+		y = 13
+
+	}
+	focus = {
+		id = AOR_SWE_Strive_for_support_from_England_and_France
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Mobilize_the_army_for_war
+		}
+		x = 17
+		y = 14
+
+	}
+	focus = {
+		id = AOR_SWE_Mobilize_the_people_s_organizations
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Strive_for_support_from_England_and_France
+		}
+		x = 17
+		y = 15
+
+	}
+	focus = {
+		id = AOR_SWE_Send_a_delegation_to_negotiate
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Mobilize_the_army_for_war
+		}
+		x = 23
+		y = 14
+
+	}
+	focus = {
+		id = AOR_SWE_Demilitarization_Initiatives
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Send_a_delegation_to_negotiate
+		}
+		x = 24
+		y = 15
+
+	}
+	focus = {
+		id = AOR_SWE_The_land_of_despair
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Send_a_delegation_to_negotiate
+		}
+		x = 22
+		y = 15
+
+	}
+	focus = {
+		id = AOR_SWE_Comprehensive_confrontation
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Mobilize_the_people_s_organizations
+		}
+		prerequisite = {
+			focus = AOR_SWE_The_land_of_despair
+		}
+		prerequisite = {
+			focus = AOR_SWE_Demilitarization_Initiatives
+		}
+		x = 20
+		y = 16
+
+	}
+	focus = {
+		id = AOR_SWE_Comprehensive_mobilization
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_confrontation
+		}
+		x = 17
+		y = 17
+
+	}
+	focus = {
+		id = AOR_SWE_Cold_war_and_hot_fight
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_confrontation
+		}
+		x = 22
+		y = 17
+
+	}
+	focus = {
+		id = AOR_SWE_Defend_the_motherland
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_mobilization
+		}
+		x = 16
+		y = 18
+
+	}
+	focus = {
+		id = AOR_SWE_White_terror
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Comprehensive_mobilization
+		}
+		x = 18
+		y = 18
+
+	}
+	focus = {
+		id = AOR_SWE_Fight_for_a_free_world
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Cold_war_and_hot_fight
+		}
+		x = 22
+		y = 18
+
+	}
+	### 奥兰分支由此结束 ###
+	### 收尾分支由此开始 ###
+	focus = {
+		id = AOR_SWE_After_the_Storm
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 32
+		y = 15
+		allow_branch = {
+			#has_completed_focus = AOR_SWE_After_the_Storm
+		}
+	}
+	focus = {
+		id = AOR_SWE_Call_for_a_constitutional_assembly
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_After_the_Storm
+		}
+		x = 32
+		y = 16
+
+	}
+	focus = {
+		id = AOR_SWE_NEW_king_s_song
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Call_for_a_constitutional_assembly
+		}
+		x = 30
+		y = 17
+
+	}
+	focus = {
+		id = AOR_SWE_The_song_of_the_past
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_Call_for_a_constitutional_assembly
+		}
+		x = 34
+		y = 17
+
+	}
+	focus = {
+		id = AOR_SWE_Wait_for_fate_seize_fate
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_SWE_NEW_king_s_song
+		}
+		prerequisite = {
+			focus = AOR_SWE_The_song_of_the_past
+		}
+		x = 32
+		y = 18
+
+	}
+	### 收尾分支由此结束 ###
+}

@@ -1,0 +1,289 @@
+CHI_Reclaiming_outer_northwest_decision = {
+	CHI_Northwest_asking_for_support = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+		}
+
+		cost = 45
+
+		days_remove = 20
+
+		complete_effect = {
+			add_war_support = 0.05
+		}
+		fire_only_once = yes
+	}
+
+	CHI_Northwest_launch_attack_1 = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 30
+
+		days_remove = 25
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 287
+					num_provinces = 1
+					on_win = CHI_Northwest_decision.1
+					#on_lose = CHI_Northwest_decision.3
+					#on_cancel = CHI_Northwest_decision.4
+					#modifier = 0.1
+					#dig_in_factor = 0
+					#terrain_factor = 0
+				}	
+				defender = {
+					state = 917
+					num_provinces = 1
+					#on_win = CHI_Northwest_decision.3
+					#on_lose = CHI_Northwest_decision.2
+					#on_cancel = CHI_Northwest_decision.4
+				}
+			}
+		}
+	}
+	CHI_Northwest_launch_attack_2 = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 30
+
+		days_remove = 25
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 618
+					num_provinces = 1
+					on_win = CHI_Northwest_decision.2
+					#on_lose = CHI_Northwest_decision.3
+					#on_cancel = CHI_Northwest_decision.4
+					#modifier = 0.1
+					#dig_in_factor = 0
+					#terrain_factor = 0
+				}	
+				defender = {
+					state = 586
+					num_provinces = 1
+					#on_win = CHI_Northwest_decision.3
+					#on_lose = CHI_Northwest_decision.2
+					#on_cancel = CHI_Northwest_decision.4
+				}
+			}
+		}
+	}
+	CHI_Northwest_launch_attack_4 = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 30
+		ai_will_do = {
+			factor = 1000
+		}
+		days_remove = 25
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 329
+					num_provinces = 1
+					on_win = CHI_Northwest_decision.4
+					#on_lose = CHI_Northwest_decision.3
+					#on_cancel = CHI_Northwest_decision.4
+					#modifier = 0.1
+					#dig_in_factor = 0
+					#terrain_factor = 0
+				}	
+				defender = {
+					state = 654
+					num_provinces = 1
+					#on_win = CHI_Northwest_decision.3
+					#on_lose = CHI_Northwest_decision.2
+					#on_cancel = CHI_Northwest_decision.4
+				}
+			}
+		}
+	}
+	CHI_Northwest_launch_attack_5 = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 30
+		ai_will_do = {
+			factor = 1000
+		}
+		days_remove = 25
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 618
+					num_provinces = 1
+					on_win = CHI_Northwest_decision.5
+					#on_lose = CHI_Northwest_decision.3
+					#on_cancel = CHI_Northwest_decision.4
+					#modifier = 0.1
+					#dig_in_factor = 0
+					#terrain_factor = 0
+				}	
+				defender = {
+					state = 916
+					num_provinces = 1
+					#on_win = CHI_Northwest_decision.3
+					#on_lose = CHI_Northwest_decision.2
+					#on_cancel = CHI_Northwest_decision.4
+				}
+			}
+		}
+	}
+	CHI_Northwest_launch_attack_6 = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 30
+		ai_will_do = {
+			factor = 1000
+		}
+		days_remove = 25
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 618
+					num_provinces = 1
+					on_win = CHI_Northwest_decision.6
+					#on_lose = CHI_Northwest_decision.3
+					#on_cancel = CHI_Northwest_decision.4
+					#modifier = 0.1
+					#dig_in_factor = 0
+					#terrain_factor = 0
+				}	
+				defender = {
+					state = 920
+					num_provinces = 1
+					#on_win = CHI_Northwest_decision.3
+					#on_lose = CHI_Northwest_decision.2
+					#on_cancel = CHI_Northwest_decision.4
+				}
+			}
+		}
+	}
+}
+CHI_election_decison_cate = {
+	Deliver_speech_to_Congress = {
+		icon = GFX_decision_generic_political_rally
+
+		available = {
+			
+		}
+
+		cost = 35
+		ai_will_do = {
+			factor = 5
+		}
+		days_remove = 1
+		fire_only_once = no
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		
+		random_list = { 
+				99 = { 
+				add_to_variable = {
+					KMT_senate_seat_var = -5
+				}
+				hidden_effect = {
+					CHI_refresh_KMT  = yes
+				}
+				
+				add_to_variable = {
+					Prop_senate_seat_var = 5
+				}
+				hidden_effect = {
+					CHI_refresh_Prop  = yes
+				}
+				
+				}
+				1 = { 
+				add_political_power = -100 
+			} 
+		}		
+		}
+	}
+}
+CHI_contraled_state_decison = {
+	icon = GFX_decision_generic_nationalism
+	priority = 1
+	target_array = controlled_states
+	state_target = yes 
+	on_map_mode = map_and_decisions_view
+	cost = 0
+
+	target_trigger = {
+		FROM = {
+			is_fully_controlled_by = ROOT
+			NOT = { 
+				is_core_of = ROOT
+			}
+		}
+	}
+	visible = {
+		FROM = { 
+			NOT = { 
+				is_core_of = ROOT 
+			} 
+		}
+			tag = CHI
+			has_war = no
+		}
+	complete_effect = {
+		FROM = {
+			add_core_of = ROOT
+		}
+	}
+}   

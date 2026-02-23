@@ -1,0 +1,2192 @@
+ideas = {
+country= {
+	#屹立于世界民族之林
+	SOV_idea_Rise_in_the_changing_world = {
+		picture = soviet_german_friendship
+		modifier = {
+			stability_factor = 0.10
+			stability_weekly = 0.001
+			army_org_regain = 0.05
+			intelligence_agency_defense = 1.5
+			compliance_gain = 0.02
+		}
+	}
+	#革命起源地
+	SOV_Origin_of_revolution_0 ={
+		picture = SOV_soviet_hegemony
+		allowed = { tag = RUS }
+		modifier = {
+			Marxism_drift = 0.1
+			drift_defence_factor = 0.5
+		}
+		rule = { can_create_factions = yes }
+		rule = { can_guarantee_other_ideologies = yes }
+		
+	}
+	#战时共产主义
+	SOV_Wartime_communism_0 = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			political_power_cost = 0.8
+			consumer_goods_factor = -0.05
+			war_stability_factor = 0.5
+			war_support_weekly = -0.008
+			unit_upkeep_attrition_factor = -0.3
+			
+			#supply_consumption_factor = -0.10
+			#supply_factor = 0.3
+			#truck_attrition = -0.3
+		}
+	}
+	#战时共产主义的演变
+	SOV_Wartime_communism_1 = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			political_power_cost = 0.5
+			consumer_goods_factor = -0.05
+			supply_consumption_factor = -0.05
+			supply_factor = 0.10
+		}
+	}
+	#战时共产主义-削弱
+	SOV_Wartime_communism_2 = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			political_power_cost = 0.4
+			consumer_goods_factor = -0.05
+			war_stability_factor = 0.5
+			war_support_weekly = -0.004
+			unit_upkeep_attrition_factor = -0.3
+			
+			#supply_consumption_factor = -0.10
+			#supply_factor = 0.3
+			#truck_attrition = -0.3
+		}
+	}
+	#契卡
+	SOV_Cheka_0 = {
+		picture = SOV_AOR_003
+		allowed = { tag = RUS }
+		modifier = {
+			stability_factor = 0.05
+			operative_slot = 1
+			root_out_resistance_effectiveness_factor = 0.25
+			civilian_intel_to_others = -10
+			army_intel_to_others = -5
+			navy_intel_to_others = -5
+			airforce_intel_to_others = -5
+		}
+	}
+	#契卡
+	SOV_Cheka_1 = {
+		picture = SOV_AOR_003
+		allowed = { tag = RUS }
+		modifier = {
+			stability_factor = 0.05
+			operative_slot = 2
+			intel_network_gain_factor = 0.15
+			own_operative_capture_chance_factor = -0.1
+			root_out_resistance_effectiveness_factor = 0.25
+			civilian_intel_to_others = -10
+			army_intel_to_others = -5
+			navy_intel_to_others = -5
+			airforce_intel_to_others = -5
+		}
+	}
+	#红军
+	SOV_The_Red_Army_0 = {
+		picture = SOV_war_heroes
+		allowed = { tag = RUS }
+		modifier = {
+			experience_gain_army_unit = -0.5
+			army_attack_factor = 0.05
+			army_defence_factor = -0.05
+			army_speed_factor = -0.05
+			army_org_factor = -0.05
+			breakthrough_factor = -0.05
+			land_doctrine_cost_factor = 0.2
+		}
+	}
+	#苏维埃工农红军-初始
+	SOV_The_Red_Army_1 = {
+		picture = SOV_war_heroes
+		modifier = {
+		}
+	}
+	#苏维埃工农红军-绝对领导
+	SOV_The_Red_Army_2 = {
+		picture = SOV_war_heroes
+		modifier = {
+			command_power_gain_mult = 0.10
+			max_command_power = 50
+		}
+	}
+	#苏维埃工农红军-经验+5%
+	SOV_The_Red_Army_3 = {
+		picture = SOV_war_heroes
+		modifier = {
+			experience_gain_army_factor = 0.05
+		}
+	}
+	#苏维埃工农红军-组织度+4%
+	SOV_The_Red_Army_4 = {
+		picture = SOV_war_heroes
+		modifier = {
+			Army_org_factor = 0.10
+		}
+	}
+	#苏维埃工农红军-军事学院
+	SOV_The_Red_Army_5 = {
+		picture = SOV_war_heroes
+		modifier = {
+			experience_gain_factor = 0.05
+			experience_gain_infantry_combat_factor = 0.05
+			#experience_loss_factor = -0.05
+			#land_doctrine_cost_factor = -0.2
+		}
+	}
+	#苏维埃工农红军-陆军学说花费
+	SOV_The_Red_Army_6 = {
+		picture = SOV_war_heroes
+		modifier = {
+			experience_gain_army_factor = 0.05
+			land_doctrine_cost_factor = -0.2
+		}
+	}
+	#苏维埃工农红军-挖堑壕
+	SOV_The_Red_Army_7 = {
+		picture = SOV_war_heroes
+		modifier = {
+			max_dig_in = 5
+			dig_in_speed_factor = 0.05
+			max_dig_in_factor = 0.05
+		}
+	}
+	#苏维埃工农红军-隐蔽与伪装
+	SOV_The_Red_Army_8 = {
+		picture = SOV_war_heroes
+		modifier = {
+			breakthrough_factor = 0.05
+			cas_damage_reduction = 0.15
+		}
+	}
+	#苏维埃工农红军-两栖登陆
+	SOV_The_Red_Army_9 = {
+		picture = SOV_war_heroes
+		modifier = {
+			invasion_preparation = -0.15
+			naval_invasion_penalty = -0.05
+			amphibious_invasion = 0.10 #两栖登陆速度
+			#amphibious_invasion_defence = 0.05 #登陆防护
+			#transport_capacity = -0.05 #运输船需求
+		}
+	}
+	#苏维埃工农红军-+5%移速
+	SOV_The_Red_Army_10 = {
+		picture = SOV_war_heroes
+		modifier = {
+			army_speed_factor = 0.05
+		}
+	}
+	#苏维埃工农红军-苏维埃你工兵历程
+	SOV_The_Red_Army_11 = {
+		picture = SOV_war_heroes
+		modifier = {
+			breakthrough_factor = 0.05
+			army_artillery_defence_factor = 0.05
+		}
+	}
+	
+	#绝非浪漫之变革
+	SOV_Civil_war_0 = {
+		picture = SOV_AOR_001
+		allowed = { tag = RUS }
+		modifier = {
+			political_power_gain = 0.1
+			war_support_factor = 0.05
+		}
+		targeted_modifier = {
+			tag = ARN
+			defense_bonus_against = 0.05
+		}
+		targeted_modifier = {
+			tag = ARU
+			defense_bonus_against = 0.05
+		}
+		targeted_modifier = {
+			tag = ARR
+			defense_bonus_against = 0.05
+		}
+	}
+	#绝非浪漫之变革#斯大林线
+	SOV_Civil_war_stalin_1 = {
+		picture = SOV_AOR_001
+		allowed = { tag = RUS }
+		modifier = {
+			ai_focus_aggressive_factor = 0.5
+		}
+		targeted_modifier = {
+			tag = ARR
+			attack_bonus_against = 0.10
+			breakthrough_bonus_against = 0.10
+		}
+	}
+	#绝非浪漫之变革#伏龙芝线
+	SOV_Civil_war_Frunze_1 = {
+		picture = SOV_AOR_001
+		allowed = { tag = RUS }
+		modifier = {
+			ai_focus_aggressive_factor = 0.5
+		}
+		targeted_modifier = {
+			tag = ARN
+			attack_bonus_against = 0.10
+			breakthrough_bonus_against = 0.10
+		}
+	}
+	#暂时性的撤退
+	SOV_idea_Temporary_withdrawal = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			supply_consumption_factor = -0.05
+			army_org_regain = 0.05
+			army_speed_factor = 0.10
+		}
+	}
+	#冬季攻势
+	SOV_idea_Winter_offensive = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			ai_focus_aggressive_factor = 0.5
+			winter_attrition_factor = -0.15
+			out_of_supply_factor = -0.1
+			supply_node_range = 0.1
+		}
+	}
+	#对白匪的最后一刀
+	SOV_idea_the_last_offensive = {
+		picture = SPR_subvert_soviet_control
+		allowed = { tag = RUS }
+		modifier = {
+			war_support_factor = 0.05
+			ai_focus_aggressive_factor = 0.5
+		}
+		targeted_modifier = {
+			tag = ARU
+			attack_bonus_against = 0.10
+			breakthrough_bonus_against = 0.10
+		}
+	}
+	
+	#落后的农业国
+	SOV_Backward_agricultural_country_0 = {
+		picture = SOV_transformation_of_nature
+		allowed = { tag = RUS }
+		modifier = {
+			conscription_factor = -0.45
+			monthly_population = 0.25
+			stability_factor = 0.10
+			production_speed_buildings_factor = -0.15
+			production_factory_max_efficiency_factor = -0.15
+			production_factory_efficiency_gain_factor = -0.30
+			line_change_production_efficiency_factor = -0.30
+			research_speed_factor = -0.05
+		}
+	}
+	#落后的农业国
+	SOV_Backward_agricultural_country_1 = {
+		picture = SOV_transformation_of_nature
+		allowed = { tag = RUS }
+		modifier = {
+			conscription_factor = -0.3
+			monthly_population = 0.15
+			stability_factor = 0.10
+			production_speed_buildings_factor = -0.10
+			production_factory_max_efficiency_factor = -0.10
+			production_factory_efficiency_gain_factor = -0.20
+			line_change_production_efficiency_factor = -0.20
+			research_speed_factor = -0.05
+		}
+	}
+	#落后的农业国
+	SOV_Backward_agricultural_country_2 = {
+		picture = SOV_transformation_of_nature
+		allowed = { tag = RUS }
+		modifier = {
+			conscription_factor = -0.15
+			monthly_population = 0.05
+			stability_factor = 0.05
+			production_speed_buildings_factor = -0.05
+			production_factory_max_efficiency_factor = -0.50
+			production_factory_efficiency_gain_factor = -0.10
+			line_change_production_efficiency_factor = -0.10
+			research_speed_factor = -0.05
+		}
+	}
+	SOV_Industrialization_began_1 = {
+		picture = SOV_transformation_of_nature
+		allowed = { tag = RUS }
+		modifier = {
+			conscription_factor = -0.15
+			monthly_population = 0.05
+			stability_factor = 0.05
+
+		}
+	}
+	#列宁的批评
+	SOV_Lenin_criticism = {
+		picture = SOV_soviet_hegemony
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			political_power_cost = 0.3
+			war_stability_factor = -0.1
+			party_popularity_stability_factor = -0.05
+		}
+	}
+	#重建国家
+	SOV_rebuild_sov = {
+		picture = new_economic_policy
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.03
+			industry_free_repair_factor = 0.25
+			industry_repair_factor = 0.25
+		}
+	}
+	#抓白匪
+	SOV_remove_white = {
+		picture = SOV_conspiracy_in_the_academy_navy
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			political_power_factor = -0.25
+			stability_weekly = 0.001
+		}
+	}
+	#新理论的不确定性
+	SOV_idea_new_words = {
+		picture = por_nation_in_arms
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			attrition = 0.12
+			army_org_regain = -0.04
+			experience_gain_army = 0.1
+		}
+	}
+	#军事工业的毁灭性创伤
+	SOV_Destructive_strike = {
+		picture = FRA_factory_strikes
+		modifier = {
+			industrial_capacity_factory = -0.2
+			industrial_capacity_dockyard = -0.8
+			attrition = 0.08
+		}
+		research_bonus = {
+			industry = -0.2
+			naval_equipment = -0.4
+			air_equipment = -0.8
+		}
+	}
+	#军事工业的毁灭性创伤
+	SOV_Destructive_strike_recover_3 = {
+		picture = FRA_factory_strikes
+		modifier = {
+			industrial_capacity_factory = -0.15
+			industrial_capacity_dockyard = -0.6
+			attrition = 0.06
+		}
+		research_bonus = {
+			industry = -0.15
+			naval_equipment = -0.3
+			air_equipment = -0.6
+		}
+	}
+	#军事工业的毁灭性创伤
+	SOV_Destructive_strike_recover_2 = {
+		picture = FRA_factory_strikes
+		modifier = {
+			industrial_capacity_factory = -0.10
+			industrial_capacity_dockyard = -0.4
+			attrition = 0.04
+		}
+		research_bonus = {
+			industry = -0.10
+			naval_equipment = -0.2
+			air_equipment = -0.4
+		}
+	}
+	#军事工业的毁灭性创伤
+	SOV_Destructive_strike_recover_1 = {
+		picture = FRA_factory_strikes
+		modifier = {
+			industrial_capacity_factory = -0.05
+			industrial_capacity_dockyard = -0.2
+			attrition = 0.02
+		}
+		research_bonus = {
+			industry = -0.05
+			naval_equipment = -0.1
+			air_equipment = -0.2
+		}
+	}
+	#要求红军坚持政治任务
+	SOV_idea_Require_adhere_political_tasks = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			political_power_cost = 0.15
+			army_morale_factor = -0.04
+			war_support_weekly = 0.001
+			experience_gain_factor = 0.15
+			experience_gain_army_factor = 0.15
+		}
+	}
+	#在部队中阐述政治理念
+	SOV_idea_Expatiate_political_ideas = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			political_power_cost = 0.15
+			army_morale_factor = -0.04
+			stability_weekly = 0.001
+			experience_gain_factor = 0.15
+			experience_gain_army_factor = 0.15
+		}
+	}
+	SOV_economic_construction_1 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			drift_defence_factor = 0.5
+			local_building_slots_factor = 0.025
+			local_resources_factor = 0.025
+			consumer_goods_factor = 0.05
+		}
+	}
+	SOV_economic_construction_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			drift_defence_factor = 0.5
+			local_building_slots_factor = 0.075
+			local_resources_factor = 0.075
+			consumer_goods_factor = 0.05
+		}
+	}
+	SOV_economic_construction_3 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			drift_defence_factor = 0.5
+			local_building_slots_factor = 0.1
+			local_resources_factor = 0.1
+			consumer_goods_factor = 0.075
+			production_speed_industrial_complex_factor = 0.15
+		}
+	}
+	SOV_economic_construction_4 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			drift_defence_factor = 0.25
+			local_building_slots_factor = 0.15
+			local_resources_factor = 0.15
+			consumer_goods_factor = 0.075
+			production_speed_industrial_complex_factor = 0.25
+		}
+	}
+	SOV_Scrub_away_the_filth = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			stability_factor = -0.1
+			war_support_factor = -0.1
+			monthly_population = -0.15
+		}
+	}
+	SOV_Historical_filters = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			stability_factor = 0.05
+			subversive_activites_upkeep = -0.5
+			communist_drift = 0.01
+
+		}
+	}
+	SOV_Intra_party_democracy = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			political_power_factor = 0.15
+			political_advisor_cost_factor = -0.5
+			political_power_cost = -0.1
+			custom_modifier_tooltip = SOV_Intra_party_democracy_tt
+
+		}
+	}
+	SOV_tech_1 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			research_speed_factor = 0.1
+			custom_modifier_tooltip = SOV_tech_1_tt
+
+		}
+	}
+	SOV_tech_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			research_speed_factor = 0.15
+			custom_modifier_tooltip = SOV_tech_2_tt
+
+		}
+	}
+	SOV_tech_3 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			research_speed_factor = 0.15
+			custom_modifier_tooltip = SOV_tech_3_tt
+			mobilization_speed = 0.05
+			political_power_gain = 0.1
+
+		}
+	}
+	SOV_tech_4 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			research_speed_factor = 0.2
+			custom_modifier_tooltip = SOV_tech_4_tt
+			mobilization_speed = 0.05
+			political_power_gain = 0.1
+
+		}
+	}
+	SOV_real_de = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			Marxism_drift = 0.10
+			Absolutism_drift = -0.05
+			Fascism_drift = -0.05
+
+
+		}
+	}
+	SOV_real_de_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			Marxism_drift = 0.15
+			Absolutism_drift = -0.05
+			Fascism_drift = -0.05
+			political_power_factor = 0.15
+			trade_laws_cost_factor = -0.33
+			mobilization_laws_cost_factor = -0.33
+			
+			
+
+		}
+	}
+	SOV_Reform_education_system = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			custom_modifier_tooltip = SOV_tech_1_tt
+			civilian_factory_use = 3
+			materiel_manufacturer_cost_factor = -0.3
+			
+
+		}
+	}
+	SOV_Reform_education_system_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			custom_modifier_tooltip = SOV_tech_2_tt
+			civilian_factory_use = 1
+			materiel_manufacturer_cost_factor = -0.3
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_synthetic_refinery_factor = 0.25
+			
+
+		}
+	}
+	SOV_Labor_centered = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			custom_modifier_tooltip = SOV_tech_1_tt
+			consumer_goods_factor = -0.1
+			production_speed_infrastructure_factor = 0.2
+			surrender_limit = 0.1
+			local_resources_factor = 0.1
+			mobilization_laws_cost_factor = -0.33
+
+		}
+	}
+	SOV_Labor_centered_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			custom_modifier_tooltip = SOV_tech_1_tt
+			consumer_goods_factor = -0.1
+			production_speed_infrastructure_factor = 0.3
+			surrender_limit = 0.1
+			local_resources_factor = 0.15
+			mobilization_laws_cost_factor = -0.33
+			production_speed_arms_factory_factor = 0.1
+
+		}
+	}
+	SOV_Labor_centered_2 = {
+		picture = generic_communist_army
+		allowed = {
+			OR = {
+				has_government = Marxism
+			}
+		}
+		cancel = {
+			NOT = { has_government = Marxism }
+		}
+		modifier = {
+			custom_modifier_tooltip = SOV_tech_1_tt
+			research_speed_factor = 0.1
+			consumer_goods_factor = -0.1
+			production_speed_infrastructure_factor = 0.3
+			surrender_limit = 0.1
+			local_resources_factor = 0.15
+			mobilization_laws_cost_factor = -0.33
+			production_speed_arms_factory_factor = 0.1
+
+		}
+	}	
+	#迫在眉睫的危机1
+	PRC_present_danger1 = {
+		picture = PRC_present_danger
+		allowed = { original_tag = PRC }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+			political_power_cost = 1.0
+			stability_factor = -0.25
+			war_support_factor = -0.25
+			consumer_goods_factor = 0.5
+			}
+			
+	}
+
+	#迫在眉睫的危机2
+	PRC_present_danger2 = {
+		picture = PRC_present_danger
+		allowed = { original_tag = PRC }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+			political_power_cost = 0.3
+			stability_factor = -0.05
+			war_support_factor = -0.05
+			consumer_goods_factor = 0.15
+			}
+	}
+	
+	#迫在眉睫的危机3
+	PRC_present_danger3 = {
+		picture = PRC_present_danger
+		allowed = { original_tag = PRC }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+			political_power_cost = 0.2
+			consumer_goods_factor = 0.1
+			}
+	}
+	
+	#迫在眉睫的危机4
+	PRC_present_danger4 = {
+		picture = PRC_present_danger
+		allowed = { original_tag = PRC }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+			political_power_cost = 0.1
+			consumer_goods_factor = 0.05
+			}
+	}
+
+	#苏联的定向投资
+	PRC_sov_directional_investment = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			production_speed_infrastructure_factor = 0.1
+			consumer_goods_factor = -0.05
+		}
+	}
+
+	##########更换军事顾问##########
+	#苏联军事顾问——初始
+	PRC_sov_adviser_orginal = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = -0.1
+			max_dig_in = 1
+			max_planning = 0.05
+		}
+	}
+	#苏联军事顾问——李德
+	PRC_sov_adviser_lide = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			max_planning = 0.05
+			max_dig_in = 3
+		}
+	}
+	#苏联军事顾问——朱可夫
+	PRC_sov_adviser_zhukov = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.1
+			experience_gain_army_unit_factor = 0.05
+			experience_loss_factor = -0.05
+			supply_consumption_factor = -0.04
+		}
+	}
+	#苏联军事顾问——比留佐夫
+	PRC_sov_adviser_bizuoliufu = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			max_command_power = 20
+			max_planning = 0.1
+			planning_speed = 0.15
+		}
+	}
+	#苏联军事顾问——崔可夫
+	PRC_sov_adviser_cuikefu = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			army_speed_factor = 0.04
+			org_loss_when_moving = -0.1
+			attrition = -0.04
+		}
+	}
+	#苏联军事顾问——沃罗诺夫
+	PRC_sov_adviser_woluonofu = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			army_artillery_attack_factor = 0.1
+			army_artillery_defence_factor = 0.15
+		}
+	}
+
+	#苏联军事顾问——朱可夫——后期
+	PRC_sov_adviser_zhukov_achievements = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			supply_consumption_factor = -0.05
+		}
+	}
+	#苏联军事顾问——比留佐夫——后期
+	PRC_sov_adviser_bizuoliufu_achievements = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			max_planning = 0.05
+			planning_speed = 0.1
+		}
+	}
+	#苏联军事顾问比——崔可夫——后期
+	PRC_sov_adviser_cuikefu_achievements = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			army_speed_factor = 0.04
+			attrition = -0.04
+		}
+	}
+	#苏联军事顾问比——沃罗诺夫——后期
+	PRC_sov_adviser_woluonofu_achievements = {
+		picture = prc_gongchanguoji
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+		modifier = {
+			experience_gain_army_factor = 0.05
+			army_artillery_attack_factor = 0.05
+			army_artillery_defence_factor = 0.1
+		}
+	}
+
+	##########开发新疆##########
+	#开发新疆——为苏联代表准备盛大的欢迎仪式
+	PRC_ideas_Xinjiang_0 = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+	}
+	#开发新疆——全盘同意
+	PRC_ideas_tzxx_Xinjiang_1 = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.5
+				political_power_factor = -0.20
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.15
+				consumer_goods_factor = 0.15
+				trade_opinion_factor = 0.10
+				opinion_gain_monthly_same_ideology_factor = 0.50
+			}
+	}
+	#开发新疆——全盘拒绝
+	PRC_ideas_tzxx_Xinjiang_2 = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.1
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.05
+				opinion_gain_monthly_same_ideology_factor = -0.50
+			}
+	}
+	#开发新疆——决定逐条驳斥
+	PRC_ideas_tzxx_Xinjiang_3 = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.05
+			}
+	}
+
+	#开发新疆——苏联让步0——中共让步4
+	PRC_ideas_Xinjiang_304 = {
+		picture = tur_odpa
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.8
+				political_power_factor = -0.4
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.15
+				consumer_goods_factor = 0.04
+			}
+	}
+	#开发新疆——苏联让步1——中共让步3
+	PRC_ideas_Xinjiang_313 = {
+		picture = tur_odpa
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.6
+				political_power_factor = -0.3
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.12
+				consumer_goods_factor = 0.08
+			}
+	}
+	#开发新疆——苏联让步2——中共让步2
+	PRC_ideas_Xinjiang_322 = {
+		picture = tur_odpa
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.4
+				political_power_factor = -0.2
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.09
+				consumer_goods_factor = 0.12
+			}
+	}
+	#开发新疆——苏联让步3——中共让步1
+	PRC_ideas_Xinjiang_331 = {
+		picture = tur_odpa
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.2
+				political_power_factor = -0.1
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.06
+				consumer_goods_factor = 0.16
+			}
+	}
+	#开发新疆——苏联让步4——中共让步0
+	PRC_ideas_Xinjiang_340 = {
+		picture = tur_odpa
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = 0.1
+				political_power_factor = -0.05
+				research_speed_factor = 0.10
+				industrial_capacity_factory = 0.03
+				consumer_goods_factor = 0.2
+			}
+	}
+	#开发新疆——苏联代表掀桌子
+	PRC_ideas_Xinjiang_4 = {
+		picture = generic_local_self_management
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_factor = -0.2
+			}
+	}
+	
+	##########斯大林清洗##########
+	#开发新疆——斯大林赔偿——多
+	PRC_Xinjiang_stalin_partially_compensate_large = {
+		picture = SPR_seize_the_gold_reserves
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = -0.4
+				political_power_factor = 0.2
+				consumer_goods_factor = -0.2
+			}
+	}
+	#开发新疆——斯大林赔偿——少
+	PRC_Xinjiang_stalin_partially_compensate_small = {
+		picture = SPR_seize_the_gold_reserves
+		allowed = { original_tag = PRC }
+		cancel = { has_war_with = RUS }
+		allowed_civil_war = { has_government = communism }
+			modifier = {
+				political_power_cost = -0.2
+				political_power_factor = 0.1
+				consumer_goods_factor = -0.1
+			}
+	}
+	
+
+	##########一级建委##########
+	#建设委员会——1——初始
+	PRC_SCCC_1 = {
+		picture = SOV_second_five_year_plan
+		allowed = { original_tag = PRC }
+		available = { has_completed_focus = tzxx_PRC_Repair_Yanan_construction }
+		visible = {
+		NOT = { has_country_flag = PRC_SCCC_level_2_flag }
+		}
+		cost = 100
+		modifier = {
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	##########二级建委##########
+	#建设委员会——2——聘请苏联专家
+	PRC_SCCC_2_sov = {
+		picture = SOV_third_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		modifier = {
+			#原始数据
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+			#聘请苏联专家
+			production_speed_infrastructure_factor = 0.05
+			production_speed_rail_way_factor = 0.15
+			production_speed_supply_node_factor = 0.15
+			license_purchase_cost = -0.25
+		}
+		equipment_bonus = {
+			#聘请苏联专家
+			train_equipment = {
+				instant = yes
+				build_cost_ic = -0.2
+				reliability = 0.1
+			}
+		}
+	}
+	#建设委员会——2——培养本国专家
+	PRC_SCCC_2_prc = {
+		picture = SOV_third_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#培养本国专家
+			industry = 0.1
+		}
+		modifier = {
+			#原始数据
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+			#培养本国专家
+			production_speed_infrastructure_factor = 0.05
+			production_speed_rail_way_factor = 0.10
+			production_speed_supply_node_factor = 0.10
+		}
+		equipment_bonus = {
+			#培养本国专家
+			train_equipment = {
+				instant = yes
+				build_cost_ic = -0.1
+				reliability = 0.1
+			}
+		}
+	}
+	
+	##########三级建委##########
+	#国家建设委员会——3——苏联专家——重视民用工业
+	PRC_SCCC_3_sov_civ = {
+		picture = SOV_third_five_year_plan_civilian
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#聘请苏联专家
+			train_tech = 0.25
+		}
+		modifier = {
+			#聘请苏联专家
+			production_speed_rail_way_factor = 0.15
+			production_speed_supply_node_factor = 0.15
+			license_purchase_cost = -0.25
+			#重视民用工业
+			consumer_goods_factor = -0.05
+			production_speed_infrastructure_factor = 0.05
+			production_speed_industrial_complex_factor = 0.10
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	#国家建设委员会——3——苏联专家——重视军用工业
+	PRC_SCCC_3_sov_mil = {
+		picture = SOV_third_five_year_plan_military
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#聘请苏联专家
+			train_tech = 0.25
+		}
+		modifier = {
+			#聘请苏联专家
+			production_speed_rail_way_factor = 0.15
+			production_speed_supply_node_factor = 0.15
+			license_purchase_cost = -0.25
+			#重视军用工业
+			min_export = -0.15
+			production_speed_infrastructure_factor = 0.05
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.10
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	#国家建设委员会——3——培养本国专家——重视民用工业
+	PRC_SCCC_3_prc_civ = {
+		picture = SOV_third_five_year_plan_civilian
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#培养本国专家
+			train_tech = 0.1
+			industry = 0.1
+		}
+		modifier = {
+			#培养本国专家
+			production_speed_rail_way_factor = 0.10
+			production_speed_supply_node_factor = 0.10
+			#重视民用工业
+			consumer_goods_factor = -0.05
+			production_speed_infrastructure_factor = 0.05
+			production_speed_industrial_complex_factor = 0.10
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	#国家建设委员会——3——培养本国专家——重视军用工业
+	PRC_SCCC_3_prc_mil = {
+		picture = SOV_third_five_year_plan_military
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#培养本国专家
+			train_tech = 0.1
+			industry = 0.1
+		}
+		modifier = {
+			#培养本国专家
+			production_speed_rail_way_factor = 0.10
+			production_speed_supply_node_factor = 0.10
+			#重视军用工业
+			min_export = -0.15
+			production_speed_infrastructure_factor = 0.05
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.10
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	##########四级建委##########
+	#中华人民共和国国家基本建设委员会——4——苏联专家——重视民用工业——统筹全国资源
+	PRC_SCCC_4_sov_civ_final = {
+		picture = SOV_fourth_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#聘请苏联专家
+			train_tech = 0.25
+		}
+		modifier = {
+			#统筹全国资源
+			production_speed_infrastructure_factor = 0.10
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			local_resources_factor = 0.1
+			
+			#聘请苏联专家
+			production_speed_rail_way_factor = 0.15
+			production_speed_supply_node_factor = 0.15
+			license_purchase_cost = -0.25
+			#重视民用工业
+			consumer_goods_factor = -0.05
+			production_speed_industrial_complex_factor = 0.10
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+
+		}
+	}
+	#中华人民共和国国家基本建设委员会——4——苏联专家——重视军用工业——统筹全国资源
+	PRC_SCCC_4_sov_mil_final = {
+		picture = SOV_fourth_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#聘请苏联专家
+			train_tech = 0.25
+		}
+		modifier = {
+			#统筹全国资源
+			production_speed_infrastructure_factor = 0.10
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			local_resources_factor = 0.1
+			
+			#聘请苏联专家
+			production_speed_rail_way_factor = 0.15
+			production_speed_supply_node_factor = 0.15
+			license_purchase_cost = -0.25
+			#重视军用工业
+			min_export = -0.15
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.10
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+	#中华人民共和国国家基本建设委员会——4——培养本国专家——重视民用工业——统筹全国资源
+	PRC_SCCC_4_prc_civ_final = {
+		picture = SOV_fourth_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#培养本国专家
+			train_tech = 0.1
+			industry = 0.1
+		}
+		modifier = {
+			#统筹全国资源
+			production_speed_infrastructure_factor = 0.10
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			local_resources_factor = 0.1
+			#培养本国专家
+			production_speed_rail_way_factor = 0.10
+			production_speed_supply_node_factor = 0.10
+			#重视民用工业
+			consumer_goods_factor = -0.05
+			production_speed_industrial_complex_factor = 0.10
+			production_speed_arms_factory_factor = 0.05
+			production_speed_dockyard_factor = 0.05
+			
+		}
+	}
+	#中华人民共和国国家基本建设委员会——4——培养本国专家——重视军用工业——统筹全国资源
+	PRC_SCCC_4_prc_mil_final = {
+		picture = SOV_fourth_five_year_plan
+		allowed = { original_tag = PRC }
+		cost = 100
+		research_bonus = {
+			#培养本国专家
+			train_tech = 0.1
+			industry = 0.1
+		}
+		modifier = {
+			#统筹全国资源
+			production_speed_infrastructure_factor = 0.10
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			local_resources_factor = 0.1
+			#培养本国专家
+			production_speed_rail_way_factor = 0.10
+			production_speed_supply_node_factor = 0.10
+			#重视军用工业
+			min_export = -0.15
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.10
+			production_speed_dockyard_factor = 0.05
+		}
+	}
+
+	PRC_ideas_beishangkangrixianqiandui = {#北上抗日先遣队
+		picture = ast_volunteer_defence_corps
+		modifier = {
+			political_power_gain = 0.05
+			stability_factor = 0.05
+			war_support_weekly = 0.002
+		}
+	}
+
+	PRC_ideas_yonghuliuzhidan = {#拥护刘志丹
+		picture = PRC_liu_zhidan_small
+		cancel = { has_country_flag = PRC_liuzhidanxisheng }
+		modifier = {
+			offensive_war_stability_factor = 0.30
+			defensive_war_stability_factor = 0.30
+			war_support_weekly = 0.002
+			stability_weekly = 0.002
+		}
+	}
+
+	PRC_ideas_minzutuanjie_1 = {#民族团结
+		picture = citizen_militia_1
+		modifier = {
+			conscription_factor = 0.10
+			stability_factor = 0.05
+		}
+	}
+
+	PRC_ideas_minzutuanjie_2 = {#民族团结
+		picture = citizen_militia_2
+		modifier = {
+			conscription_factor = 0.15
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			army_org_regain = 0.10
+		}
+	}
+
+	PRC_ideas_SIK = {#新疆财政收入
+		picture = ITA_devaluated_lira
+		modifier = {
+			consumer_goods_factor = -0.05
+			cic_to_overlord_factor = 0.5
+			mic_to_overlord_factor = 1.0
+			extra_trade_to_overlord_factor = 0.5
+			master_ideology_drift = 0.05
+			autonomy_gain_trade_factor = -0.75
+			autonomy_manpower_share = -1
+		}
+	}
+	PRC_ideas_DongBeiJun_military_exercises = {#共同军事演习
+		picture = ETH_conservative_high_command
+		modifier = {
+			political_power_gain = 0.2
+			war_support_weekly = 0.001
+			experience_gain_army = 0.1
+			command_power_gain = 0.1
+			max_command_power = 20
+		}
+	}
+	PRC_ideas_xiushanyanan = {#修缮延安城建
+		picture = SOV_second_five_year_plan
+		modifier = {
+			political_power_cost = 0.05
+			consumer_goods_factor = 0.15
+		}
+	}
+	PRC_ideas_xianjisuweiaizhengfu_1 = { #县级苏维埃政府
+		picture = SOV_system_decentralization
+		modifier = {
+			political_power_cost = 0.25
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+		}
+	}
+	PRC_ideas_xianjisuweiaizhengfu_2 =  {#党和人民稳定的基石
+		picture = SOV_system_decentralization
+		modifier = {
+			political_power_cost = 0.3
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			offensive_war_stability_factor = 0.05
+			defensive_war_stability_factor = 0.05
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+		}
+	}
+	PRC_ideas_xianjisuweiaizhengfu_3 =  {#国务院
+		picture = SOV_system_decentralization
+		modifier = {
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			offensive_war_stability_factor = 0.05
+			defensive_war_stability_factor = 0.05
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.05
+		}
+	}
+	PRC_operational_system_0 = { #人民军队作战体系0(初始）
+		picture = gre_agricultural_communes
+		modifier = {
+			#补给消耗
+			supply_consumption_factor = -0.05
+			#携行补给
+			no_supply_grace = 24
+			
+		}
+	}
+	PRC_operational_system_1 = { #人民军队作战体系0(重新整顿红军作战理念体系）
+		picture = gre_agricultural_communes
+		modifier = {
+			#补给消耗
+			supply_consumption_factor = -0.05
+			#携行补给
+			no_supply_grace = 24
+			#核心领土补给耗尽惩罚
+			supply_combat_penalties_on_core_factor = -0.1
+			
+			#陆军组织度
+			army_org_factor = 0.04
+		}
+	}
+	PRC_operational_system_2 = { #人民军队作战体系0(现代后勤）
+		picture = gre_agricultural_communes
+		modifier = {
+			#补给消耗
+			supply_consumption_factor = -0.1
+			#携行补给
+			no_supply_grace = 48
+			#核心领土补给耗尽惩罚
+			supply_combat_penalties_on_core_factor = -0.1
+			
+			#陆军组织度
+			army_org_factor = 0.04
+
+			#部队维护费
+			unit_upkeep_attrition_factor = -0.2
+			#补给效率
+			supply_factor = 0.25
+			#补给车队损耗
+			truck_attrition = -0.25
+			
+		}
+	}
+	PRC_operational_system_3 = { #人民军队作战体系(军队组织体系现代化）
+		picture = gre_agricultural_communes
+		modifier = {
+			#补给消耗
+			supply_consumption_factor = -0.1
+			#携行补给
+			no_supply_grace = 48
+			#核心领土补给耗尽惩罚
+			supply_combat_penalties_on_core_factor = -0.1
+			
+			#陆军组织度
+			army_org_factor = 0.04
+
+			#部队维护费
+			unit_upkeep_attrition_factor = -0.2
+			#补给效率
+			supply_factor = 0.25
+			#补给车队损耗
+			truck_attrition = -0.25
+			
+			#特种部队补给消耗惩罚
+			special_forces_out_of_supply_factor = -0.10
+			
+			#机动作战经验花费
+			cat_mobile_warfare_cost_factor = -0.2
+			
+			#最大指挥点数乘数
+			max_command_power_mult = 0.1
+			
+			#陆军装备经验花费
+			land_equipment_upgrade_xp_cost = -0.1
+		}
+	}
+	PRC_operational_system_4 = { #人民军队作战体系(中国人民解放军）
+		picture = gre_agricultural_communes
+		modifier = {
+			#补给消耗
+			supply_consumption_factor = -0.1
+			#携行补给
+			no_supply_grace = 48
+			#核心领土补给耗尽惩罚
+			supply_combat_penalties_on_core_factor = -0.1
+			
+			#陆军组织度
+			army_org_factor = 0.04
+
+			#部队维护费
+			unit_upkeep_attrition_factor = -0.2
+			#补给效率
+			supply_factor = 0.25
+			#补给车队损耗
+			truck_attrition = -0.25
+			
+			#特种部队补给消耗惩罚
+			special_forces_out_of_supply_factor = -0.10
+			
+			#将领修正
+ 			army_leader_start_planning_level = 1
+ 			army_leader_start_logistics_level = 1
+			military_leader_cost_factor = -0.25
+			
+			#机动作战经验花费
+			cat_mobile_warfare_cost_factor = -0.4
+			
+			#最大指挥点数乘数
+			max_command_power_mult = 0.2
+			
+			#陆军装备经验花费
+			land_equipment_upgrade_xp_cost = -0.2
+		}
+	}
+	
+	
+	PRC_political_Army_0 = { #政治化的人民军队
+		picture = PRC_yirenminzhiming
+		modifier = {
+			surrender_limit = 0.10
+		}
+	}
+	PRC_political_Army_1 = { #政治化的人民军队
+		picture = PRC_yirenminzhiming
+		modifier = {
+			stability_factor = 0.05
+			drift_defence_factor = 0.10
+			surrender_limit = 0.10
+		}
+	}
+	PRC_political_Army_2 = { #政治化的人民军队
+		picture = PRC_yirenminzhiming
+		modifier = {
+			stability_factor = 0.10
+			drift_defence_factor = 0.20
+			surrender_limit = 0.20
+		}
+	}
+	PRC_political_Army_3 = { #政治化的人民军队
+		picture = PRC_yirenminzhiming
+		modifier = {
+			stability_factor = 0.15
+			drift_defence_factor = 0.30
+			surrender_limit = 0.30
+		}
+	}
+	PRC_political_Army_4 = { #永葆政治本色
+		picture = PRC_yirenminzhiming
+		modifier = {
+			stability_factor = 0.15
+			drift_defence_factor = 0.40
+			surrender_limit = 0.40
+			stability_weekly = 0.001
+		}
+	}
+	PRC_ideas_jianchawei = { #监察委员会
+		picture = citizen_militia_1
+		modifier = {
+			stability_factor = -0.1
+		}
+	}
+	PRC_ideas_junjiyanming = { #军纪严明
+		picture = citizen_militia_1
+		modifier = {
+			political_power_gain = 0.05
+			stability_weekly = 0.001
+		}
+	}
+	
+	PRC_maos_1 = { #毛泽东思想完整版
+		picture = PRC_maozedongsixiang
+		modifier = {
+			political_power_factor = 0.1
+			party_popularity_stability_factor = 0.1
+			research_speed_factor = 0.01
+		}
+	}
+	PRC_Attrac_intellectuals_1 = { #吸引全国知识分子
+		picture = chi_war_of_resistance
+		modifier = {
+			political_power_factor = -0.1
+			fascism_drift = 0.05
+			democratic_drift = 0.05
+			neutrality_drift = 0.05
+		}
+	}
+	PRC_Attrac_intellectuals_2 = { #吸引全国知识分子#整肃运动
+		picture = chi_war_of_resistance2
+		modifier = {
+			research_speed_factor = 0.01
+		}
+	}
+	PRC_Attrac_intellectuals_3 = { #吸引全国知识分子#党内异见
+		picture = chi_war_of_resistance3
+		modifier = {
+			political_power_factor = 0.1
+			research_speed_factor = 0.01
+			fascism_drift = -0.05
+			democratic_drift = -0.05
+			neutrality_drift = -0.05
+		}
+	}
+	PRC_navy_yuanyangqianting = { #远洋潜艇
+		picture = generic_coastal_navy
+		modifier = {
+			navy_max_range_factor = 0.25
+			naval_speed_factor = 0.10
+		}
+	}
+	PRC_air_point= {#新列宁号
+		picture = generic_air_research
+		allowed = {
+			original_tag = PRC
+		}
+		modifier = {
+			air_accidents_factor = 0.25
+			air_range_factor = 0.05
+		}
+		equipment_bonus = {
+			basic_small_airframe = {
+				reliability = 0.05
+			}
+		}
+	}
+	PRC_sov_air_point = {#苏联航空试点
+		picture = generic_air_research
+		allowed = {
+			original_tag = PRC
+			NOT = { has_war_with = sov }
+		}
+		modifier = {
+			air_range_factor = 0.05
+			air_accidents_factor = 0.15
+			license_purchase_cost = -0.25
+		}
+		equipment_bonus = {
+			basic_small_airframe = {
+				build_cost_ic = -0.10
+				reliability = 0.05
+			}
+		}
+	}
+	PRC_prc_air_point = {#自主研发
+		picture = generic_air_research
+		allowed = {
+			original_tag = PRC
+		}
+		modifier = {
+			air_range_factor = 0.05
+			air_accidents_factor = 0.05
+			license_purchase_cost = -0.25
+		}
+		equipment_bonus = {
+			basic_small_airframe = {
+				build_cost_ic = -0.05
+				reliability = 0.05
+			}
+		}
+	}
+	
+	PRC_pla_air = {#共和国的天空
+		picture = generic_air_research
+		allowed = {
+			original_tag = PRC
+		}
+		modifier = {
+			air_range_factor = 0.10
+			air_agility_factor = 0.05
+			air_superiority_efficiency = 0.1
+		}
+		equipment_bonus = {
+			air_equipment = {
+				build_cost_ic = -0.15
+				reliability = 0.10
+			}
+		}
+	}
+	PRC_pla_air_cas = {#空地协同一体化
+		picture = generic_air_research
+		allowed = {
+			original_tag = PRC
+		}
+		modifier = {
+			air_range_factor = 0.10
+			air_agility_factor = 0.05
+			air_superiority_efficiency = 0.1
+			army_bonus_air_superiority_factor = 0.1
+		}
+		equipment_bonus = {
+			air_equipment = {
+				build_cost_ic = -0.15
+				reliability = 0.10
+			}
+		}
+	}
+	PRC_buhovo_uranium_mines = {#金银滩原子城
+		picture = ast_all_in
+		allowed = {
+			original_tag = PRC
+		}
+		allowed_civil_war = {
+			always = yes
+		}
+		cancel = { 
+			has_war_with = BUL
+		}
+		modifier = {
+			production_speed_nuclear_reactor_factor = 0.1
+			nuclear_production_factor = 0.1
+		}
+		research_bonus = {
+			nuclear = 0.25
+		}
+	}
+	
+		PRC_sixiang_2 = {#向着科学进军
+			picture = socialist_science_focus
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+				drift_defence_factor = 0.25
+				foreign_subversive_activites = -0.25
+				communism_drift = 0.01
+			}
+		}
+	
+	general_ideas_autonomy_personal_union = { #共主联邦
+		picture = ITA_devaluated_lira
+		modifier = {
+			cic_to_overlord_factor = 0.5
+			mic_to_overlord_factor = 0.5
+			extra_trade_to_overlord_factor = 0.5
+			master_ideology_drift = 0.10
+			weekly_manpower = 1000
+		}
+	}
+	
+	PRC_SOV_fensuijiandieshentou = { #粉碎间谍渗透
+		picture = chi_war_of_resistance3
+		modifier = {
+			stability_factor = 0.1
+			fascism_drift = -0.15
+			democratic_drift = -0.15
+			neutrality_drift = -0.15
+		}
+	}
+	
+	PRC_dulizizhu_2 = { #三三制政府
+		picture = generic_production_bonus
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.01
+				political_power_gain = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+			}
+	}
+	
+	PRC_dulizizhu_3 = { #共建中国
+		picture = generic_production_bonus
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.2
+				consumer_goods_factor = -0.02
+				party_popularity_stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+			}
+	}
+	PRC_idea_luntongyizhanxian = { #论统一战线
+		picture = soviet_german_friendship
+			allowed = { original_tag = PRC }
+			cancel = { has_war_with = CHI }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.2
+				party_popularity_stability_factor = 0.05
+			}
+	}
+	
+	PRC_idea_lunlianhezhengfu = { #论联合政府
+		picture = soviet_german_friendship
+			allowed = { original_tag = PRC }
+			cancel = { has_war_with = CHI }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.5
+			}
+	}
+	
+	PRC_ideas_genjudiniudai_1 = { #中共根据地纽带
+		picture = soviet_german_friendship
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				weekly_manpower = 1000
+				extra_trade_to_overlord_factor = 0.5
+				production_lack_of_resource_penalty_factor = -0.1
+				production_factory_efficiency_gain_factor = 0.05
+				license_purchase_cost = -1.0
+			}
+	}
+	
+	PRC_ideas_genjudiniudai_2 = {
+		picture = soviet_german_friendship
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.5
+				weekly_manpower = 1000
+				trade_opinion_factor = 0.10
+				extra_trade_to_overlord_factor = 0.8
+				production_lack_of_resource_penalty_factor = -0.5
+			}
+	}
+
+	PRC_KMTjingjifengsuo_1 = {
+		picture = soviet_german_friendship
+			allowed = { original_tag = PRC }
+			removal_cost = -1
+			modifier = {
+				political_power_cost = -0.5
+				weekly_manpower = 1000
+				trade_opinion_factor = 0.10
+				extra_trade_to_overlord_factor = 0.25
+				production_lack_of_resource_penalty_factor = 0.5
+			}
+	}
+	PRC_ideas_bingjianzhandou = { #社会主义两大国并肩战斗
+		picture = jap_the_unthinkable_option
+		modifier = {
+			war_support_weekly = 0.002
+			stability_weekly = 0.002
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			master_ideology_drift = 0.10
+			weekly_manpower = 1000
+		}
+	}
+	PRC_ideas_daguimojunduiluomahua = { #大规模军队骡马化
+		picture = GFX_idea_generic_mountain_warfare
+		modifier = {
+			attrition = -0.05
+			supply_consumption_factor = -0.05
+		}
+	}
+	
+	PRC_ideas_shandizuozhanzhuanjia = { #山地作战专家
+		picture = generic_mountain_warfare
+		modifier = {
+			enemy_army_bonus_air_superiority_factor = -0.05
+			modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+			modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+			modifier_army_sub_unit_mountaineers_speed_factor = 0.1
+			modifier_army_sub_unit_mountaineers_max_org_factor = 0.1
+			special_forces_cap = 0.05
+			
+		}
+	}
+	PRC_ideas_bashenghongjun = { #八省红军
+		picture = MEX_politicised_army_2
+		modifier = {
+			coordination_bonus = 0.05
+			ai_focus_defense_factor = -0.2
+			modifier_army_sub_unit_militia_attack_factor = -0.20
+			modifier_army_sub_unit_militia_defence_factor = 0.20
+			modifier_army_sub_unit_militia_max_org_factor = 0.20
+		}
+	}
+	FEN_ideas_wujiakegui = { #无家可归的士兵
+
+		picture = chi_forced_conscription
+
+		modifier = {
+			stability_factor = -0.001
+			ai_focus_aggressive_factor = 1.0
+			ai_desired_divisions_factor = 1.0
+			disabled_ideas = 1
+		}
+	}
+	WLF_ideas_faqijingong = { #民兵动员法案
+		picture = chi_forced_conscription
+		modifier = {
+			stability_factor = -0.001
+			ai_focus_aggressive_factor = 0.5
+			modifier_army_sub_unit_militia_max_org_factor = 0.05
+		}
+	}
+	PRC_ideas_xiangyingkangri = { #响应抗日口号
+		picture = chi_forced_conscription
+		modifier = {
+			stability_weekly = 0.001
+			ai_focus_aggressive_factor = 0.5
+		}
+		targeted_modifier = {
+			tag = JAP
+			attack_bonus_against = 0.05
+		}
+	}
+	PRC_ideas_jiajuchongtu = { #加剧冲突
+		picture = chi_forced_conscription
+		modifier = {
+			war_support_factor = 0.05
+			ai_focus_aggressive_factor = 0.5
+		}
+		targeted_modifier = {
+			tag = CHI
+			attack_bonus_against = 0.10
+			defense_bonus_against = 0.05
+			breakthrough_bonus_against = 0.05
+		}
+	}
+	PRC_ideas_qudidiguozhuyixuanchaunjiguan = { #取缔帝国主义宣传
+		picture = chi_forced_conscription
+		modifier = {
+			stability_weekly = 0.01
+		}
+	}
+	PRC_ideas_hongsezhiziwulanfu = { #红色之子
+		picture = PRC_hongsezhizi
+		modifier = {
+			stability_factor = 0.20
+			weekly_manpower = 500
+			army_core_defence_factor = 0.20
+			army_core_attack_factor = 0.20
+		}
+	}
+	PRC_ideas_datongzhongmengjiaotongxian = { #打通中蒙交通线
+		picture = soviet_german_friendship
+		modifier = {
+			attrition = -0.2
+			supply_consumption_factor = -0.2
+		}
+	}
+	PRC_ideas_feifazhengfu = { #非法政府
+		picture = generic_disjointed_gov
+		modifier = {
+			war_support_weekly = -0.01
+		}
+	}
+	PRC_ideas_chongshesuweiaizhengfuyinghang = { #重设苏维埃政府银行
+		picture = SPR_seize_the_gold_reserves
+		modifier = {
+			industrial_capacity_factory = 0.05
+			war_support_factor = 0.05
+		}
+	}
+	PRC_ideas_renmingyinghang = { #人民银行
+		picture = SPR_seize_the_gold_reserves
+		modifier = {
+			industrial_capacity_factory = 0.1
+			war_support_factor = 0.1
+		}
+	}
+	PRC_ideas_kaifangmaoyi = { #开放贸易
+		picture = generic_exploit_mines
+		modifier = {
+			consumer_goods_factor = -0.03
+			production_speed_buildings_factor = 0.05
+			industrial_capacity_factory = 0.05
+			research_speed_factor = 0.03
+		}
+	}
+	
+	PRC_ideas_kaifangmaoyi = { #军官训练团
+		picture = generic_exploit_mines
+		modifier = {
+			consumer_goods_factor = -0.03
+			production_speed_buildings_factor = 0.05
+			industrial_capacity_factory = 0.05
+			research_speed_factor = 0.03
+		}
+	}
+	
+	PRC_supporting_independence_idea = { #东方红色大国的指引
+		picture = SPR_masters_of_our_own_fate
+		modifier = {
+			consumer_goods_factor = -0.03
+			industrial_capacity_factory = 0.05
+			communism_drift = 0.1
+			autonomy_gain = 3.0
+		}
+	}
+	PRC_surrender_limit = { #日本投降界限
+		picture = SPR_masters_of_our_own_fate
+		modifier = {
+			max_surrender_limit_offset = -0.5
+			war_support_factor = -1.0
+			surrender_limit	= -1.0
+		}
+	}
+	PRC_JAP_surrender_War_reparations = { #日本战争赔款
+		picture = SPR_masters_of_our_own_fate
+		cancel = { has_war_with = JAP }
+		modifier = {
+			consumer_goods_factor = -0.10
+			production_speed_buildings_factor = 0.10
+			industrial_capacity_factory = 0.10
+			industrial_capacity_dockyard = 0.10
+			research_speed_factor = 0.03
+		}
+	}
+	PRC_idea_Joint_Agricultural_Machinery_Industry_Committee = { #统筹联合农业工业机械委员会
+		picture = new_economic_policy
+		cancel = { has_war_with = PRC }
+		modifier = {
+			min_export = -0.04
+			production_lack_of_resource_penalty_factor = -0.04
+		}
+	}
+	PRC_idea_Economic_Cooperation_Organization = { #经济合作组织
+		picture = new_economic_policy
+		cancel = { has_war_with = PRC }
+		modifier = {
+			min_export = -0.08
+			trade_opinion_factor = 0.15
+			production_lack_of_resource_penalty_factor = -0.08
+		}
+	}
+	PRC_idea_Common_development_goals = { #共同发展目标
+		picture = new_economic_policy
+		cancel = { has_war_with = PRC }
+		modifier = {
+			min_export = -0.12
+			trade_opinion_factor = 0.3
+			production_lack_of_resource_penalty_factor = -0.12
+		}
+	}
+	
+	#反对新殖民主义运动
+	PRC_idea_Anti_neocolonialism_movement = {
+		picture = POL_ideology_drift_defence
+		modifier = {
+			operative_slot = 1
+			compliance_gain = 0.08
+			resistance_target = -0.05
+			boost_ideology_mission_factor = 1.0
+			operation_make_resistance_contacts_outcome = 0.2
+			operation_make_resistance_contacts_risk = -0.2
+			operation_make_resistance_contacts_cost = -0.5
+		}
+		}
+	}
+}

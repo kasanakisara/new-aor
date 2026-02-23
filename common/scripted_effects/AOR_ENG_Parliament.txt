@@ -1,0 +1,316 @@
+#英国下议院gui-计算党派支持率
+ENG_Calculate_partisan_support = {
+	set_variable = {
+		Liberal_Party_Support_rate_var = party_popularity_100@FRE_democratic
+	}
+	set_variable = {
+		conservative_Party_Support_rate_var = party_popularity_100@CON_democratic
+	}
+	set_variable = {
+		Labour_Party_Support_rate_var = party_popularity_100@SOC_democratic
+	}
+	set_variable = {
+		Sinn_Fein_Party_Support_rate_var = party_popularity_100@FRE_democratic
+	}
+	set_variable = {
+		total_partisan_support = 0
+	}
+	if = {
+		limit = {
+			not = {
+				has_country_flag = remove_Sinn_Fein_Party
+			}
+		}
+		add_to_variable = {
+			total_partisan_support = Sinn_Fein_Party_Support_rate_var
+		}
+	}
+	add_to_variable = {
+		total_partisan_support = Liberal_Party_Support_rate_var
+	}
+	add_to_variable = {
+		total_partisan_support = conservative_Party_Support_rate_var
+	}
+	add_to_variable = {
+		total_partisan_support = Labour_Party_Support_rate_var
+	}
+	#####
+	#自由党
+	set_variable = {
+		Liberal_Party_Support_rate_progress_var = Liberal_Party_Support_rate_var
+	}
+	divide_variable = {
+		var = Liberal_Party_Support_rate_progress_var 
+		value = total_partisan_support
+	}
+	multiply_variable = {
+		var = Liberal_Party_Support_rate_progress_var
+		value = 100
+	}
+	#保守党
+	set_variable = {
+		conservative_Party_Support_rate_progress_var = conservative_Party_Support_rate_var
+	}
+	divide_variable = {
+		var = conservative_Party_Support_rate_progress_var
+		value = total_partisan_support
+	}
+	multiply_variable = {
+		var = conservative_Party_Support_rate_progress_var
+		value = 100
+	}
+	set_variable = {
+		conservative_Party_Support_rate_progress_x = Liberal_Party_Support_rate_progress_var
+	}
+	multiply_variable = {
+		var = conservative_Party_Support_rate_progress_x
+		value = 10
+	}
+	add_to_variable = {
+		conservative_Party_Support_rate_progress_x = 300
+	}
+	#工党
+	set_variable = {
+		Labour_Party_Support_rate_progress_var = Labour_Party_Support_rate_var
+	}
+	divide_variable = {
+		var = Labour_Party_Support_rate_progress_var
+		value = total_partisan_support
+	}
+	multiply_variable = {
+		var = Labour_Party_Support_rate_progress_var
+		value = 100
+	}
+	set_variable = {
+		Labour_Party_Support_rate_progress_x = Liberal_Party_Support_rate_progress_var
+	}
+	add_to_variable = {
+		Labour_Party_Support_rate_progress_x = conservative_Party_Support_rate_progress_var
+	}
+	multiply_variable = {
+		var = Labour_Party_Support_rate_progress_x
+		value = 10
+	}
+	add_to_variable = {
+		Labour_Party_Support_rate_progress_x = 300
+	}
+	#新芬党
+	if = {
+		limit = {
+			not = {
+				has_country_flag = remove_Sinn_Fein_Party
+			}
+		}
+		set_variable = {
+			Sinn_Fein_Party_Support_rate_progress_var = Sinn_Fein_Party_Support_rate_var
+		}
+		divide_variable = {
+			var = Sinn_Fein_Party_Support_rate_progress_var
+			value = total_partisan_support
+		}
+		multiply_variable = {
+			var = Sinn_Fein_Party_Support_rate_progress_var
+			value = 100
+		}
+		set_variable = {
+			Sinn_Fein_Party_Support_rate_progress_x = Liberal_Party_Support_rate_progress_var
+		}
+		add_to_variable = {
+			Sinn_Fein_Party_Support_rate_progress_x = conservative_Party_Support_rate_progress_var
+		}
+		add_to_variable = {
+			Sinn_Fein_Party_Support_rate_progress_x = Labour_Party_Support_rate_progress_var
+		}
+		multiply_variable = {
+			var = Sinn_Fein_Party_Support_rate_progress_x
+			value = 10
+		}
+		add_to_variable = {
+			Sinn_Fein_Party_Support_rate_progress_x = 300
+		}
+	}
+	#席位计算
+	set_variable = {
+		nonpartisan_num_of_seat_var = 400
+	}
+	set_variable = {
+		Liberal_Party_num_of_seat_var = Liberal_Party_Support_rate_progress_var
+	}
+	multiply_variable = {
+		var = Liberal_Party_num_of_seat_var
+		value = 4
+	}
+	round_variable = Liberal_Party_num_of_seat_var
+	subtract_from_variable = {
+		nonpartisan_num_of_seat_var = Liberal_Party_num_of_seat_var
+	}
+	set_variable = {
+		conservative_Party_num_of_seat_var = conservative_Party_Support_rate_progress_var
+	}
+	multiply_variable = {
+		var = conservative_Party_num_of_seat_var
+		value = 4
+	}
+	round_variable = conservative_Party_num_of_seat_var
+	subtract_from_variable = {
+		nonpartisan_num_of_seat_var = conservative_Party_num_of_seat_var
+	}
+	set_variable = {
+		Labour_Party_num_of_seat_var = Labour_Party_Support_rate_progress_var
+	}
+	multiply_variable = {
+		var = Labour_Party_num_of_seat_var
+		value = 4
+	}
+	round_variable = Labour_Party_num_of_seat_var
+	subtract_from_variable = {
+		nonpartisan_num_of_seat_var = Labour_Party_num_of_seat_var
+	}
+	if = {
+		limit = {
+			not = {
+				has_country_flag = remove_Sinn_Fein_Party
+			}
+		}
+		set_variable = {
+			Sinn_Fein_Party_num_of_seat_var = Sinn_Fein_Party_Support_rate_progress_var
+		}
+		multiply_variable = {
+			var = Sinn_Fein_Party_num_of_seat_var
+			value = 4
+		}
+		round_variable = Sinn_Fein_Party_num_of_seat_var
+		subtract_from_variable = {
+			nonpartisan_num_of_seat_var = Sinn_Fein_Party_num_of_seat_var
+		}
+	}
+	else = {
+		set_variable = {
+			Sinn_Fein_Party_num_of_seat_var = 0
+		}
+	}
+	ENG_Seat_calculation = yes
+}
+
+#去除新芬党
+ENG_remove_Sinn_Fein_Party = {
+	set_country_flag = remove_Sinn_Fein_Party
+	set_variable = {
+		Liberal_Party_position_x = 388
+	}
+	set_variable = {
+		conservative_Party_position_x = 722
+	}
+	set_variable = {
+		Labour_Party_position_x = 1055
+	}
+	ENG_Calculate_partisan_support = yes
+}
+
+#席位计算
+ENG_Seat_calculation = {
+	set_temp_variable = {
+		##工党
+		red_total = ROOT.Labour_Party_num_of_seat_var
+	}
+	set_temp_variable = {
+		##自由党
+		yellow_total = ROOT.Liberal_Party_num_of_seat_var
+	}
+	set_temp_variable = {
+		##保守党
+		blue_total = ROOT.conservative_Party_num_of_seat_var
+	}
+	set_temp_variable = {
+		##新芬党
+		green_total = ROOT.Sinn_Fein_Party_num_of_seat_var
+	}
+	set_temp_variable = {
+		red_end = red_total
+	}
+	set_temp_variable = {
+		yellow_end = red_total
+	}
+	add_to_temp_variable = {
+		yellow_end = yellow_total
+	}
+	set_temp_variable = {
+		blue_end = yellow_end
+	}
+	add_to_temp_variable = {
+		blue_end = blue_total
+	}
+	set_temp_variable = {
+		green_end = blue_end
+	}
+	add_to_temp_variable = {
+		green_end = green_total
+	}
+	#数组
+	clear_array = ROOT.ENG_hounse_of_commons_window_array
+	resize_array = {
+		array = ENG_hounse_of_commons_window_array
+		value = 1
+		size = red_end
+	}
+	resize_array = {
+		array = ENG_hounse_of_commons_window_array
+		value = 2
+		size = yellow_end
+	}
+	resize_array = {
+		array = ENG_hounse_of_commons_window_array
+		value = 3
+		size = blue_end
+	}
+	resize_array = {
+		array = ENG_hounse_of_commons_window_array
+		value = 5
+		size = green_end
+	}
+	resize_array = {
+		array = ENG_hounse_of_commons_window_array
+		value = 7
+		size = 400
+	}
+}
+
+#加入历史议案
+ENG_add_to_his_motion_and_change_to_none = {
+	add_to_array = {
+		ENG_Parliament_past_motion = ENG_Parliament_num_of_motion_going
+	}
+	add_to_array = {
+		ENG_Parliament_past_motion_state^ENG_Parliament_past_motion_i = ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going
+	}
+	set_variable = {
+		ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going = 0
+	}
+	set_variable = {
+		ENG_Parliament_num_of_motion_going = 0
+	}
+}
+
+ENG_baerganmengyou = {
+	custom_effect_tooltip = ENG_baerganmengyou_tt
+	hidden_effect = {
+		ENG = {
+			add_opinion_modifier = {
+				target = ROM
+				modifier = womendebaerganmengyou
+			}
+			add_opinion_modifier = {
+				target = GRE
+		    	modifier = womendebaerganmengyou
+		    }
+			add_opinion_modifier = {
+				target = BUL
+				modifier = womendebaerganmengyou
+			}
+			add_opinion_modifier = {
+				target = SER
+				modifier = womendebaerganmengyou
+			}
+		}
+	}
+}

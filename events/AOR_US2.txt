@@ -1,0 +1,88 @@
+add_namespace = US2
+
+country_event = {
+	id = US2.1 
+	title = US2.1.t
+	desc = US2.1.d
+	picture = GFX_US2_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date > 1926.7.1
+    }
+
+    immediate = {
+    hidden_effect = {
+    US2 = {
+    set_cosmetic_tag = US2_1
+    add_popularity = { ideology = Fascism popularity = 0.10 }
+    add_popularity = { ideology = Special popularity = 0.20 }
+    transfer_state = 386
+    transfer_state = 385
+    transfer_state = 378
+    transfer_state = 379
+    transfer_state = 380
+    transfer_state = 924
+    transfer_state = 923
+    transfer_state = 925
+    transfer_state = 381
+    transfer_state = 387
+    transfer_state = 388
+    transfer_state = 1053
+    transfer_state = 1054
+    transfer_state = 1058
+    transfer_state = 1062
+
+    add_state_core = 386
+    add_state_core = 385
+    add_state_core = 378
+    add_state_core = 379
+    add_state_core = 380
+    add_state_core = 924
+    add_state_core = 923
+    add_state_core = 925
+    add_state_core = 381
+    add_state_core = 387
+    add_state_core = 388 
+    add_state_core = 1053 
+    add_state_core = 1054
+    add_state_core = 1058
+    add_state_core = 1062
+        }
+    }
+}
+
+    option = {
+		name = US2.1.a
+		#news_event = {id=AOR_news.105}
+        US2 = {
+        hidden_effect = {
+            US2 = {
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+            }
+        }
+    }
+}
+    option = {
+        name = US2.1.b
+		#news_event = {id=AOR_news.105}
+        US2 = {
+        hidden_effect = {
+            US2 = {
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                load_oob = "US2_Civilwar"
+                }
+            }
+            change_tag_from = ROOT
+        }
+	}
+}

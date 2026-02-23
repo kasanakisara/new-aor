@@ -1,0 +1,90 @@
+AOR_ORA_des_rebuild = {
+	AOR_ORA_xinjianmingong = {   
+		icon = GFX_decision_category_syn
+		cost = 30
+		days_remove = 120
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		modifier = {
+	   	}
+		remove_effect = {
+			509 = {
+				add_extra_state_shared_building_slots =1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	
+	AOR_ORA_xinjianmingong_2 = {   
+		icon = GFX_decision_category_syn
+		cost = 30
+		days_remove = 40
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		modifier = {
+	   	}
+		remove_effect = {
+			278 = {
+				add_extra_state_shared_building_slots =1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+	
+	AOR_kantanshiyou = {   
+		icon = GFX_decision_category_syn
+		cost = 30
+		days_remove = 28
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect= {
+			add_manpower = -100
+		}
+		remove_effect = {
+			512 = {
+			add_resource = {
+				type = oil
+				amount = 2
+			}
+		}
+			
+		}
+	}
+
+	AOR_yeliangangtie = {   
+		icon = GFX_decision_category_syn
+		cost = 30
+		days_remove = 28
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect= {
+			add_manpower = -100
+		}
+		remove_effect = {
+			511 = {
+			add_resource = {
+				type = steel
+				amount = 2
+			}
+		}
+			
+		}
+	}
+	
+}

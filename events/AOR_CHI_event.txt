@@ -1,0 +1,2137 @@
+﻿###########################
+add_namespace = CHI
+add_namespace = CHI_Northwest_decision
+add_namespace = CHI_test
+country_event = {
+	id = CHI.1
+	title = CHI.1.t
+	desc = CHI.1.d
+	picture = GFX_AOR_chi_speech
+	is_triggered_only = yes
+	option = {
+		name = CHI.1.a
+	}
+}
+
+country_event = {
+	id = CHI.2
+	title = CHI.2.t
+	desc = CHI.2.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	option = {
+		name = CHI.2.a
+	}
+}
+
+country_event = {
+	id = CHI.3
+	title = CHI.3.t
+	desc = CHI.3.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	option = {
+		name = CHI.3.a
+	}
+}
+
+#袁世凯死啦#联省,KMT,北京政府,直系军阀,四川军阀
+country_event = {
+	id = CHI.4
+	title = CHI.4.t
+	desc = CHI.4.d
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		CHI_civil_war_1 = yes
+		CHI_civil_war_2 = yes
+		hidden_effect = {
+		set_country_flag = wanxizhengfu
+		CHI = {
+		load_oob = "AOR_LAND_CHI_CENTRAL"
+		}
+		NAN = {
+		load_oob = "AOR_LAND_CHI_NAN"
+		set_cosmetic_tag = NAN_1
+		}
+		MON = {
+		load_focus_tree = new_chi_2
+        load_oob = "AOR_LAND_CHI_VAN"
+		set_cosmetic_tag = MON_WEST
+		}
+		UPC = {
+			set_cosmetic_tag = UPC_1
+		}
+		KMT = {
+			set_cosmetic_tag = KMT_1
+		}
+		DCD = {
+			set_cosmetic_tag = DCD_1
+		}
+	}
+}
+	option = {
+		name = CHI.4.a
+		add_political_power = 75
+		hidden_effect = {
+			load_focus_tree = new_chi_2
+		}
+		
+	}
+	option = {
+		name = CHI.4.b
+		add_political_power = 75
+		UPC = {
+			change_tag_from = ROOT
+			custom_effect_tooltip = lianshen.1.tt
+		}
+	}
+	option = {
+		name = CHI.4.c
+		hidden_effect = {
+		country_event = { id = CHI.40001 }
+		}
+	}
+}
+
+country_event = {
+	id = CHI.40001
+	title = CHI.40001.t
+	desc = CHI.40001.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = CHI.4.e
+		add_political_power = 75
+		KMT = {
+			change_tag_from = ROOT
+		}
+	}
+	option = {
+		name = CHI.4.f
+		add_political_power = 75
+		NAN = {
+			change_tag_from = ROOT
+		}
+	}
+	option = {
+		name = CHI.4.g
+		add_political_power = 75
+		DCD = {
+			change_tag_from = ROOT
+			set_cosmetic_tag = DCD_1
+		}
+	}
+}
+
+#三廿运动
+country_event = {
+	id = CHI.5
+	title = CHI.5.t
+	desc = CHI.5.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = CHI.5.a
+		hidden_effect = {
+			news_event = {id=AOR_news.49}
+		}
+	}
+}
+
+#国会事件
+country_event = {
+	id = CHI.6
+	title = CHI.6.t
+	desc = CHI.6.d
+	trigger = {
+		date > 1922.1.28
+		tag = CHI
+	}
+	immediate = { 
+		hidden_effect = {
+			CHI = {
+				delete_unit_template_and_units = {
+					division_template = "陆军师"
+					disband = yes 
+					}
+				delete_unit_template_and_units = {
+					division_template = "混成旅"
+					disband = yes 
+					}
+				delete_unit_template_and_units = {
+				    division_template = "骑兵旅"
+					disband = yes 
+					}
+			set_capital = { state = 614 }
+			}
+			MON = {
+			    set_cosmetic_tag = MON_WEST_1
+			    set_capital = { state = 621 }
+				608={set_demilitarized_zone=yes}
+			    transfer_state = 758
+			    transfer_state = 608
+			330= {
+				set_demilitarized_zone = NO
+			}
+
+			create_country_leader = {
+				name = "Duan_Qi_Rui"
+				desc = "Duan_Qi_Rui_desc"
+				picture = "gfx/leaders/CHI/Duan.png"
+				expire = "1965.1.1"
+				ideology = miliciagov
+				traits = {
+				}
+			}
+		}
+			CHI = {
+				set_cosmetic_tag = CHI_1
+			}		
+			dismantle_faction = yes
+		}
+	}
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	option = {
+		name = CHI.6.a
+		hidden_effect = {
+			news_event = {id=AOR_news.88}
+			country_event = { days = 220  id =CHI.13 }
+			KMT = {
+				load_oob = "AOR_LAND_CHI_KMT"
+				load_oob = "AOR_LAND_CHI_KMT"
+			}
+		}
+	}
+	option = {
+		name = CHI.6.b
+		hidden_effect = {
+			news_event = {id=AOR_news.88}
+			country_event = { days = 220  id =CHI.14 }
+			UPC = {
+				load_oob = "UPC_M_Nandu"
+				load_oob = "UPC_M_Nandu"
+				load_oob = "UPC_M_Nandu"
+			}
+		}
+	}
+	option = {
+		name = CHI.6.c
+		hidden_effect = {
+			news_event = {id=AOR_news.88}
+			country_event = { days = 220  id =CHI.14 }
+			KMT = {
+				load_oob = "AOR_LAND_CHI_KMT"
+				load_oob = "AOR_LAND_CHI_KMT"
+			}
+		}
+	}
+	option = {
+		name = CHI.6.e
+		hidden_effect = {
+			news_event = {id=AOR_news.88}
+			country_event = { days = 220  id =CHI.13 }
+			UPC = {
+				load_oob = "UPC_M_Nandu"
+				load_oob = "UPC_M_Nandu"
+				load_oob = "UPC_M_Nandu"
+			}
+		}
+	}
+}
+
+country_event = {
+	id = CHI.7
+	title = CHI.7.t
+	desc = CHI.7.d
+	picture = GFX_events_BNL_1
+	trigger = {
+		date > 1922.2.10
+		tag = CHI
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			DCD = {
+			    set_cosmetic_tag = DCD_2
+		    }
+			753 = { set_demilitarized_zone = yes }
+			906 = { set_demilitarized_zone = yes }
+			434 = { set_demilitarized_zone = yes }
+			908 = { set_demilitarized_zone = yes }
+			751 = { set_demilitarized_zone = yes }
+			605 = { set_demilitarized_zone = yes }
+		}
+	 }
+	#那就这样吧  
+	option = {
+		name = CHI.7.a
+	}
+}
+
+#军阀们被炸出来了！
+country_event = {
+	id = CHI.8
+	title = CHI.8.t
+	desc = CHI.8.d
+	picture = GFX_events_BNL_1
+	trigger = {
+		date > 1922.5.27
+		tag = CHI
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+
+	#那就这样吧  
+	option = {
+		name = CHI.8.a
+		hidden_effect = {
+			CHI_civil_war_3 = yes
+			country_event = {id = CHI.999 days=2}
+		}
+		news_event = {id=AOR_news.85}
+		
+	}
+}
+
+#大帅！！！！
+country_event = {
+	id = CHI.9
+	title = CHI.9.t
+	desc = CHI.9.d
+	picture = GFX_events_BNL_1
+	trigger = {
+		date > 1922.7.12
+		tag = CHI
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+	immediate = {
+		CHI_civil_war_4 = yes
+	}
+	#那就这样吧  
+	option = {
+		name = CHI.9.a
+		news_event = {id=AOR_news.86}
+	}
+}
+
+#四川省高校联赛！
+country_event = {
+	id = CHI.10
+	title = CHI.10.t
+	desc = CHI.10.d
+	picture = GFX_events_CHI_10
+	trigger = {
+		date > 1922.3.10
+		tag = DCD
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		hidden_effect = {
+			CHI_civil_war_5 = yes
+		}
+	}
+	fire_only_once = yes
+	#那就这样吧  
+	option = {
+		name = CHI.10.a
+		news_event = {id=AOR_news.87}
+		PRC = {
+			change_tag_from = ROOT
+		}
+		DCD = {
+			set_cosmetic_tag = DCD_ADJ
+		}
+		hidden_effect = {
+			DCD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_XI"
+				declare_war_on = {
+					target = CBS
+					type = civil_war
+					}
+				declare_war_on = {
+					target = XCD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			CBS = {
+				load_oob = "AOR_LAND_CHI_chuanjun_DONG"
+				declare_war_on = {
+					target = XCD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			XCD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_BIAN"
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			JLD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_JIA"
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+			PRC = {
+				load_oob = "AOR_LAND_CHI_chuanjun_GONG"
+				}
+		    }
+	    }
+
+	option = {
+		name = CHI.10.b
+		news_event = {id=AOR_news.87}
+		DCD = {
+			drop_cosmetic_tag = yes
+		}
+		hidden_effect = {
+			DCD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_XI"
+				declare_war_on = {
+					target = CBS
+					type = civil_war
+					}
+				declare_war_on = {
+					target = XCD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			CBS = {
+				load_oob = "AOR_LAND_CHI_chuanjun_DONG"
+				declare_war_on = {
+					target = XCD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			XCD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_BIAN"
+				declare_war_on = {
+					target = JLD
+					type = civil_war
+					}
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+		
+			JLD = {
+				load_oob = "AOR_LAND_CHI_chuanjun_JIA"
+				declare_war_on = {
+					target = PRC
+					type = civil_war
+					}
+				}
+			PRC = {
+				load_oob = "AOR_LAND_CHI_chuanjun_GONG"
+				}
+		    }
+		}
+	 }
+#联省宣言(联省改名）
+country_event = {
+	id = CHI.11
+	title = CHI.11.t
+	desc = CHI.11.d
+	trigger = {
+		date > 1922.8.31
+		tag = UPC
+	}
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			UPC = {
+				drop_cosmetic_tag = yes
+			}
+		}
+	}
+	option = {
+		name = CHI.11.a
+		news_event = {id=AOR_news.101}
+	}
+}
+#kmt宣言(kmt改名）
+country_event = {
+	id = CHI.12
+	title = CHI.12.t
+	desc = CHI.12.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1922.9.11
+		tag = KMT
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			KMT = {
+				drop_cosmetic_tag = yes
+			}
+		}
+	}
+	option = {
+		name = CHI.12.a
+		news_event = {id=AOR_news.104}
+	}
+}
+#央直合流(直系改名）
+country_event = {
+	id = CHI.13
+	title = CHI.13.t
+	desc = CHI.13.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		NAN = {
+			change_tag_from = ROOT
+		}
+		hidden_effect = {
+			CHI_civil_war_11 = yes
+		}
+		name = CHI.13.a
+		news_event = {id=AOR_news.96}
+	}
+}
+
+#央皖合流(皖系改名）
+country_event = {
+	id = CHI.14
+	title = CHI.14.t
+	desc = CHI.14.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		hidden_effect = {
+			CHI_civil_war_12 = yes
+		}
+		name = CHI.14.a
+		news_event = {id=AOR_news.207}
+	}
+}
+
+country_event = {
+	id = CHI.15 #乙末西征
+	title = CHI.15.t
+	desc = CHI.15.d
+	picture = GFX_AOR_chi_yimoxizheng
+	is_triggered_only = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = CHI.15.a
+		news_event = {id=AOR_news.129}
+		set_country_flag = unlock_CHI_Reclaiming_outer_northwest
+		set_country_flag = chi_waixibeizhanzheng
+	}
+}
+country_event = {
+	# 段祺瑞的决定
+	id = CHI.16 
+	title = CHI.16.t
+	desc = CHI.16.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		tag = CHI
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = CHI.16.a
+	}
+
+}
+
+country_event = {
+	# 东瀛的橄榄枝？
+	id = CHI.17 
+	title = CHI.17.t
+	desc = CHI.17.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		tag = CHI
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = CHI.17.a
+		complete_national_focus = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		add_offsite_building = { type = arms_factory level = 2 }
+	}
+	option = {
+		name = CHI.17.b
+		complete_national_focus = AOR_A_close_meeting_with_the_transportation_department
+		add_stability = 0.1
+		add_war_support = 0.05
+	}
+
+}
+
+country_event = {
+	# 给军官升级
+	id=CHI.18
+	title = CHI.18.t
+	desc = CHI.18.d
+	picture = GFX_AOR_chi_yimoxizheng
+	hidden = yes
+	trigger = {
+		tag = CHI
+		has_completed_focus = AOR_Establish_a_crash_course_for_military_officers
+	}
+    mean_time_to_happen = {
+		days = 140
+	}
+	fire_only_once = yes
+	option = {
+		name = CHI.18.a
+		random_army_leader = {
+			add_attack = 1
+			add_defense = 1
+		}
+		random_army_leader = {
+			add_attack = 1
+			add_defense = 1
+		}
+	}
+}
+
+country_event = {
+	# 外西北战争结束
+	id = CHI.19
+	title = CHI.19.t
+	desc = CHI.19.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	trigger = {
+		date > 1920.3.1
+		tag = CHI
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = CHI.19.a
+		set_country_flag = xibeizhanshijieshu
+	}
+}
+
+country_event = {
+	# 暂时的同盟
+	id = CHI.20
+	title = CHI.20.t
+	desc = CHI.20.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.20.a
+		add_stability = 0.05
+	}
+}
+country_event = {
+	# 拒绝合作
+	id = CHI.21
+	title = CHI.21.t
+	desc = CHI.21.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.21.a
+		add_stability = -0.1
+	}
+}
+
+country_event = {
+	# 四九城的两日
+	id = CHI.22
+	title = CHI.22.t
+	desc = CHI.22.d
+	picture = GFX_AOR_chi_yimoxizheng
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.23.a
+		country_event = { id = CHI.23 }
+		}
+	}	
+country_event = {
+	# 四九城的两日
+	id = CHI.23
+	title = CHI.23.t
+	desc = CHI.23.d
+	picture = GFX_AOR_chi_wangyejia	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.23.a
+		country_event = { id = CHI.24 }	
+	}
+}
+
+country_event = {
+	# 四九城的两日
+	id = CHI.24
+	title = CHI.24.t
+	desc = CHI.24.d
+	picture = GFX_AOR_chi_wangyejia		
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.24.a
+		country_event = { id = CHI.25 }
+		}
+	}
+
+country_event = {
+	# 四九城的两日
+	id = CHI.25	
+	title = CHI.25.t
+	desc = CHI.25.d
+	picture = GFX_AOR_chi_wangyejia		
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+    	name = CHI.25.a
+		add_stability = 0.01
+		add_political_power = 10
+		}
+	}
+
+country_event = {		
+	# 经济改革
+	id = CHI.26
+	title = CHI.26.t
+	desc = CHI.26.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.26.a
+		add_ideas = jiaotongxigaigefagan
+	}	
+	option = {
+		name = CHI.26.b
+		add_ideas = caizhengbugaigefangan
+	}	
+}
+country_event = {		
+	# 督军团
+	id = CHI.27
+	title = CHI.27.t
+	desc = CHI.27.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = CHI.27.b
+	}	
+}
+country_event = {		
+	# 好事多磨
+	id = CHI.28
+	title = CHI.28.t
+	desc = CHI.28.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = CHI.28.b
+		add_ideas = liangshiyi
+		add_ideas = zhuqiyin
+		add_offsite_building = { type = arms_factory level = 2 }
+		add_ideas = yujiaotonghuichubuhezuo
+	}	
+}
+
+country_event = {		
+	# 好事多磨
+	id = CHI.29
+	title = CHI.29.t
+	desc = CHI.29.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = CHI.29.a
+		add_stability = 0.1
+	}	
+}
+
+country_event = {		
+	# 好事多磨
+	id = CHI.30
+	title = CHI.30.t
+	desc = CHI.30.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = CHI.30.a
+		add_stability = -0.15
+	}	
+}
+
+country_event = {
+   # 皖直大战
+	id = CHI.31
+	title = CHI.31.t
+	desc = CHI.31.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1922.11.10
+		tag = NAN
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			set_victory_points = {
+                province = 7191
+                value = 15    
+            }
+			set_victory_points = {
+                province = 4137
+                value = 15    
+            }
+			set_victory_points = {
+                province = 12055
+                value = 10    
+            }
+			set_victory_points = {
+                province = 3881
+                value = 10    
+            }
+			set_victory_points = {
+                province = 13253
+                value = 7    
+            }
+			set_victory_points = {
+                province = 7609
+                value = 7    
+            }
+			set_victory_points = {
+                province = 9958
+                value = 3    
+            }
+			set_victory_points = {
+                province = 11991
+                value = 3    
+            }
+			MON ={
+			declare_war_on = { 
+				target = NAN
+				type = civil_war
+		    } 
+		}
+	}
+}
+	option = {
+		name = CHI.31.a
+		hidden_effect = {
+		news_event = {id=AOR_news.97}
+		}
+	}
+
+	option = {
+		name = CHI.31.b
+		hidden_effect = {
+		news_event = {id=AOR_news.97}
+		}
+		MON = {
+			load_oob = "AOR_LAND_CHI_VAN_2"
+			load_oob = "AOR_LAND_CHI_VAN_2"
+			load_oob = "AOR_LAND_CHI_VAN_2"
+		}
+	}
+}
+
+country_event = {		
+	# KMT大战UPC
+	id = CHI.32
+	title = CHI.32.t
+	desc = CHI.32.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		date > 1922.12.10
+		tag = KMT
+	}	
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			KMT ={
+			declare_war_on = { 
+				target = UPC
+				type = civil_war
+		    } 
+		}
+	}
+}
+	option = {
+		name = CHI.32.a
+		hidden_effect = {
+		news_event = {id=AOR_news.102}
+		}
+		UPC = {
+			if = {
+				limit ={
+					GUZ = {
+						controls_state = 907
+					}
+				}
+				UPC = {
+					annex_country = { 
+						target = GUZ
+						transfer_troops = yes }
+				}
+			}
+		}
+		KMT = {
+			add_ideas = CHI_gemingtongyizhixi
+		}
+	}	
+}
+
+country_event = {		
+	# 东北好果汁入关
+	id = CHI.33
+	title = CHI.33.t
+	desc = CHI.33.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		date > 1924.2.10
+		tag = MAN
+	}	
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			set_victory_points = {
+                province = 10433
+                value = 20    
+            }
+			set_victory_points = {
+                province = 1847
+                value = 7    
+            }
+			MAN ={
+			declare_war_on = { 
+				target = NAN
+				type = civil_war
+		    } 
+		}
+		    MAN ={
+			declare_war_on = { 
+				target = MON
+				type = civil_war
+			} 
+		}
+	}
+}
+	option = {
+		name = CHI.33.a
+		hidden_effect = {
+		news_event = {id=AOR_news.103}
+		}
+	}	
+}
+
+country_event = {		
+	# 南京胜利
+	id = CHI.34
+	title = CHI.34.t
+	desc = CHI.34.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		date > 1922.11.10
+		tag = NAN
+		NAN ={
+			owns_state = 330
+			owns_state = 610
+			owns_state = 611
+			owns_state = 621
+			owns_state = 330
+			owns_state = 610
+			owns_state = 611
+			owns_state = 621
+			owns_state = 876
+			owns_state = 612
+			owns_state = 756
+			owns_state = 600
+			owns_state = 899
+			owns_state = 897
+			owns_state = 898
+			owns_state = 595
+			owns_state = 596
+			owns_state = 895
+			owns_state = 894
+			owns_state = 892
+			owns_state = 749
+			owns_state = 606
+			owns_state = 597
+			owns_state = 757
+			owns_state = 880
+			owns_state = 877
+			owns_state = 614
+			owns_state = 878
+			owns_state = 608
+			owns_state = 758
+		}
+	}	
+	immediate = { 
+		hidden_effect = {
+			NAN ={
+			set_cosmetic_tag = NAN_2
+			}
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = CHI.34.a
+		hidden_effect = {
+		news_event = {id=AOR_news.110}
+		}
+        NAN = {
+			add_state_core = 330
+			add_state_core = 610
+			add_state_core = 611
+			add_state_core = 621
+			add_state_core = 330
+			add_state_core = 610
+			add_state_core = 611
+			add_state_core = 621
+			add_state_core = 876
+			add_state_core = 612
+			add_state_core = 756
+			add_state_core = 600
+			add_state_core = 899
+			add_state_core = 897
+			add_state_core = 898
+			add_state_core = 595
+			add_state_core = 596
+			add_state_core = 895
+			add_state_core = 894
+			add_state_core = 892
+			add_state_core = 749
+			add_state_core = 606
+			add_state_core = 597
+			add_state_core = 757
+			add_state_core = 880
+			add_state_core = 877
+			add_state_core = 614
+			add_state_core = 878
+			add_state_core = 608
+			add_state_core = 758
+		}
+	}	
+}
+
+country_event = {		
+	# 北京胜利
+	id = CHI.35
+	title = CHI.35.t
+	desc = CHI.35.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		date > 1922.11.10
+		tag = MON
+		MON ={
+			owns_state = 893
+			owns_state = 882
+			owns_state = 613
+			owns_state = 890
+			owns_state = 598
+			owns_state = 882
+			owns_state = 886
+			owns_state = 885
+			owns_state = 887
+			owns_state = 888
+			owns_state = 905
+			owns_state = 889
+			owns_state = 620
+			owns_state = 879
+			owns_state = 597
+			owns_state = 757
+			owns_state = 880
+			owns_state = 607
+			owns_state = 877
+			owns_state = 878
+			owns_state = 614
+			owns_state = 597
+			owns_state = 757
+			owns_state = 880
+			owns_state = 877
+			owns_state = 614
+			owns_state = 878
+			owns_state = 608
+			owns_state = 758
+		}
+	}	
+	immediate = { 
+		hidden_effect = {
+			MON ={
+			set_cosmetic_tag = MON_WEST_2
+			}
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = CHI.35.a
+		hidden_effect = {
+		news_event = {id=AOR_news.111}
+		}
+        MON = {
+			add_state_core = 893
+			add_state_core = 882
+			add_state_core = 613
+			add_state_core = 890
+			add_state_core = 598
+			add_state_core = 882
+			add_state_core = 886
+			add_state_core = 885
+			add_state_core = 887
+			add_state_core = 888
+			add_state_core = 905
+			add_state_core = 889
+			add_state_core = 620
+			add_state_core = 879
+			add_state_core = 597
+			add_state_core = 757
+			add_state_core = 880
+			add_state_core = 607
+			add_state_core = 877
+			add_state_core = 878
+			add_state_core = 614
+			add_state_core = 597
+			add_state_core = 757
+			add_state_core = 880
+			add_state_core = 877
+			add_state_core = 614
+			add_state_core = 878
+			add_state_core = 608
+			add_state_core = 758
+		}
+	}	
+}
+
+country_event = {		
+	# 东北好果汁南下南方
+	id = CHI.36
+	title = CHI.36.t
+	desc = CHI.36.d
+	picture = GFX_AOR_chi_yimoxizheng
+	trigger = {
+		date > 1924.6.10
+		tag = MAN
+	}	
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+            set_victory_points = {
+                province = 12062
+                value = 3    
+            }
+			MAN ={
+			declare_war_on = { 
+				target = KMT
+				type = civil_war
+		    } 
+		}
+		    MAN ={
+			declare_war_on = { 
+				target = UPC
+				type = civil_war
+			} 
+		}
+	}
+}
+	option = {
+		name = CHI.36.a
+	}	
+}
+
+country_event = {		
+	# 对南方的最后通牒
+	id = CHI.37
+	title = CHI.37.t
+	desc = CHI.37.d
+	picture = GFX_AOR_chi_yimoxizheng
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = CHI.37.a
+		hidden_effect = {
+			NAN = {
+				declare_war_on = { 
+					target = UPC
+					type = civil_war
+				} 
+
+			}
+			MON ={
+				declare_war_on = { 
+					target = UPC
+					type = civil_war
+				} 		
+			}
+        }
+	}	
+}
+
+country_event = {
+	# 对陕晋军阀的最后通牒
+	id = CHI.38
+	title = CHI.38.t
+	desc = CHI.38.d
+	picture = GFX_AOR_chi_yimoxizheng
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = CHI.38.a
+		if = {
+	        limit ={
+		        UPC = {
+			        controls_state = 608
+		    }
+	    }
+		    UPC = {
+	        annex_country = { 
+		        target = SHX 
+		        transfer_troops = no 
+	    }
+	        annex_country = { 
+		        target = MEN 
+		        transfer_troops = no 
+	        }
+        }
+    }
+	CHI_civil_war_7 = yes
+		country_event = { days = 90  id =CHI.39 }
+		}
+	option = {
+		name = CHI.38.b
+		country_event = { days = 90  id =CHI.39 }
+		if = {
+			limit ={
+				NAN = {
+					controls_state = 608
+				}
+			}
+			NAN = {
+			annex_country = { 
+				target = SHX 
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = MEN 
+				transfer_troops = no 
+			}
+		}
+	}  
+	    if = {
+		    limit ={
+			    MON = {
+				    controls_state = 608
+			    }
+		    }
+		    MON = {
+		    annex_country = { 
+			    target = SHX 
+			    transfer_troops = no 
+		    }
+		    annex_country = { 
+			    target = MEN 
+			    transfer_troops = no 
+		    }
+	    }
+    }
+	    if = {
+		    limit ={
+			    KMT = {
+				    controls_state = 608
+			    }
+		    }
+		    KMT = {
+		    annex_country = { 
+			    target = SHX 
+			    transfer_troops = no 
+		    }
+		    annex_country = { 
+			    target = MEN 
+			    transfer_troops = no 
+		    }
+	    }
+    }       
+        if = {
+	        limit ={
+		        UPC = {
+			        controls_state = 608
+		    }
+	    }
+		    UPC = {
+	        annex_country = { 
+		        target = SHX 
+		        transfer_troops = no 
+	    }
+	        annex_country = { 
+		        target = MEN 
+		        transfer_troops = no 
+	        }
+        }
+    }
+	}
+}
+
+country_event = {
+	# 对西北军阀的最后通牒
+	id = CHI.39
+	title = CHI.39.t
+	desc = CHI.39.d
+	picture = GFX_AOR_chi_yimoxizheng	
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		if = {
+	        limit ={
+		        UPC = {
+			        controls_state = 608
+		    }
+	    }
+		    UPC = {
+	        annex_country = { 
+		        target = SHX 
+		        transfer_troops = no 
+	    }
+	        annex_country = { 
+		        target = MEN 
+		        transfer_troops = no 
+	        }
+        }
+    }
+	CHI_civil_war_8 = yes
+		name = CHI.39.a
+		country_event = { days = 90  id =CHI.40 }
+		}
+	option = {
+		name = CHI.39.b
+		country_event = { days = 90  id =CHI.40 }
+		if = {
+			limit ={
+				NAN = {
+					controls_state = 608
+				}
+			}
+			NAN = {
+			annex_country = { 
+				target = XSM
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = QIN 
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = SIK 
+				transfer_troops = no 
+			}
+		}
+	}  
+	    if = {
+		    limit ={
+			    MON = {
+				    controls_state = 608
+			    }
+		    }
+		    MON = {
+			annex_country = { 
+				target = XSM
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = QIN 
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = SIK 
+				transfer_troops = no 
+			}
+	    }
+    }
+	    if = {
+		    limit ={
+			    KMT = {
+				    controls_state = 608
+			    }
+		    }
+		    KMT = {
+			annex_country = { 
+				target = XSM
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = QIN 
+				transfer_troops = no 
+			}
+			annex_country = { 
+				target = SIK 
+				transfer_troops = no 
+			}
+	    }
+    }       
+        if = {
+	        limit ={
+		        UPC = {
+			        controls_state = 608
+		    }
+	    }
+		    UPC = {
+	        annex_country = { 
+		        target = XSM
+		        transfer_troops = no 
+	    }
+	        annex_country = { 
+		        target = QIN 
+		        transfer_troops = no 
+	        }
+			annex_country = { 
+				target = SIK 
+				transfer_troops = no 
+			}
+        }
+    }
+		}
+	}
+
+	country_event = {
+		# 对川藏的最后通牒
+		id = CHI.40
+		title = CHI.40.t
+		desc = CHI.40.d
+		picture = GFX_AOR_chi_yimoxizheng	
+		is_triggered_only = yes	
+		fire_only_once = yes
+		option = {
+			CHI_civil_war_9 = yes
+			name = CHI.40.a
+			}
+		option = {
+			CHI_civil_war_9 = yes
+			name = CHI.40.b
+			}
+		}
+
+		country_event = { #南京政府统一全中国！
+		id = CHI.41
+		title = CHI.41.t
+		desc = CHI.41.d
+		picture = GFX_NAN_event_2
+		fire_only_once = yes
+		trigger = {
+			tag = NAN
+			date > 1922.12.10
+				NAN = {
+					owns_state = 884
+					owns_state = 615
+					owns_state = 883
+					owns_state = 622
+					owns_state = 896
+					owns_state = 744
+					owns_state = 601
+					owns_state = 616
+					owns_state = 754
+					owns_state = 283
+					owns_state = 909
+					owns_state = 752
+					owns_state = 604
+					owns_state = 329
+					owns_state = 618
+					owns_state = 617
+					owns_state = 760
+					owns_state = 287
+					owns_state = 322
+				} 
+			}
+
+		immediate = {
+            hidden_effect = {
+				set_victory_points = {
+                province = 1047
+                value = 20   
+                }
+			hidden_effect = {
+				set_victory_points = {
+                province = 4619
+                value = 15    
+                }
+		    }
+		}
+	}
+
+		option = {
+			CHI_civil_war_10 = yes
+			CHI = {
+			create_country_leader = {
+				name = "Feng_guo_zhang"
+				desc = "Feng_guo_zhang_desc"
+				picture = "gfx/leaders/NAN/Feng_guo_zhang.png"
+				expire = "1965.1.1"
+				ideology = authoritarianism
+				traits = {
+				}
+			}
+				change_tag_from = ROOT
+				annex_country = { 
+					target = NAN 
+					transfer_troops =YES 
+				}
+			}
+				NAN = {
+					add_state_core = 884
+					add_state_core = 615
+					add_state_core = 883
+					add_state_core = 622
+					add_state_core = 896
+					add_state_core = 744
+					add_state_core = 601
+					add_state_core = 616
+					add_state_core = 754
+					add_state_core = 283
+					add_state_core = 909
+					add_state_core = 752
+					add_state_core = 604
+					add_state_core = 329
+					add_state_core = 618
+					add_state_core = 617
+					add_state_core = 760
+					add_state_core = 287
+					add_state_core = 322
+			}
+			name=CHI.41.a
+			hidden_effect = {
+                news_event = {id=AOR_news.120}
+			}
+		}
+	}
+
+		country_event = { #北京政府统一全中国！
+		id = CHI.42
+		title = CHI.42.t
+		desc = CHI.42.d
+		picture = GFX_MON_event_2
+		fire_only_once = yes
+		trigger = {
+			tag = MON
+			date > 1922.12.10
+				MON = {
+					owns_state = 884
+					owns_state = 615
+					owns_state = 883
+					owns_state = 622
+					owns_state = 896
+					owns_state = 744
+					owns_state = 601
+					owns_state = 616
+					owns_state = 754
+					owns_state = 283
+					owns_state = 909
+					owns_state = 752
+					owns_state = 604
+					owns_state = 329
+					owns_state = 618
+					owns_state = 617
+					owns_state = 760
+					owns_state = 287
+					owns_state = 322
+				} 
+			}
+
+		immediate = {
+            hidden_effect = {
+				set_victory_points = {
+                province = 1047
+                value = 20   
+                }
+			hidden_effect = {
+				set_victory_points = {
+                province = 4619
+                value = 15    
+                }
+		    }
+		}
+	}
+
+		option = {
+			CHI_civil_war_10 = yes
+			CHI = {
+			create_country_leader = {
+				name = "Duan_Qi_Rui"
+				desc = "Duan_Qi_Rui_desc"
+				picture = "gfx/leaders/CHI/Duan.png"
+				expire = "1965.1.1"
+				ideology = miliciagov
+				traits = {
+				}
+			}
+				change_tag_from = ROOT
+				annex_country = { 
+					target = MON 
+					transfer_troops =YES 
+				}
+			}
+				MON = {
+					add_state_core = 884
+					add_state_core = 615
+					add_state_core = 883
+					add_state_core = 622
+					add_state_core = 896
+					add_state_core = 744
+					add_state_core = 601
+					add_state_core = 616
+					add_state_core = 754
+					add_state_core = 283
+					add_state_core = 909
+					add_state_core = 752
+					add_state_core = 604
+					add_state_core = 329
+					add_state_core = 618
+					add_state_core = 617
+					add_state_core = 760
+					add_state_core = 287
+					add_state_core = 322
+			}
+			name=CHI.42.a
+			hidden_effect = {
+                news_event = {id=AOR_news.119}
+			}
+		}
+	}
+
+#重庆英舰事件
+country_event = {
+	id = CHI.43
+	title = CHI.43.t
+	desc = CHI.43.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1920.7.1
+		tag = CHI
+	}
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = CHI.43.a
+		hidden_effect = {
+			news_event = {id = AOR_news.130}
+			news_event = { days = 30  id = AOR_news.52 }
+			news_event = { days = 60  id = AOR_news.48 }
+			news_event = { days = 90  id = AOR_news.50 }
+		}
+		add_manpower = -500
+	}
+}
+
+#黎元洪出逃！
+country_event = {
+	id = CHI.44
+	title = CHI.44.t
+	desc = CHI.44.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1922.4.10
+		tag = CHI
+	}
+	fire_only_once = yes
+	option = {
+		CHI = {
+			set_popularities = {
+				Absolutism = 56
+				AUT_democratic = 20
+				CON_democratic = 17
+				FRE_democratic = 3
+				SOC_democratic = 3
+				Special = 1
+				
+			}
+			set_party_name = {
+				ideology = Absolutism
+				long_name = "中华民国陆军部"
+				name = "中华民国陆军部"
+			}
+			set_politics = { ruling_party = Absolutism }
+			create_country_leader = {
+				name = "Wu_Pei_Fu"
+				desc = ""
+				picture = "gfx/leaders/CHI/Wu_Pei_Fu.dds"
+				expire = "1965.1.1"
+				ideology = miliciagov
+				traits = {
+				}
+			}
+			
+		}
+		name = CHI.44.a
+		hidden_effect = {
+            news_event = {id=AOR_news.143}
+		}
+	}
+}
+
+#甘肃发生大地震
+country_event = {
+	id = CHI.45
+	title = CHI.45.t
+	desc = CHI.45.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1920.12.10
+		tag = CHI
+	}
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = CHI.45.a
+		news_event = {id=AOR_news.89}
+		add_manpower = -100000
+	}
+}
+
+#西藏发生动乱
+country_event = {
+	id = CHI.46
+	title = CHI.46.t
+	desc = CHI.46.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1922.10.10
+		tag = TIB
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			TIB = {
+				add_popularity = { ideology = Special popularity = 0.20 }
+				322={set_demilitarized_zone=yes}
+			}
+		}
+	}
+	option = {
+		name = CHI.46.a
+		hidden_effect = {
+			news_event = {id=AOR_news.168}
+		}
+	}
+}
+
+#西藏达赖喇嘛·土登嘉措重新上台
+country_event = {
+	id = CHI.47
+	title = CHI.47.t
+	desc = CHI.47.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1923.2.1
+		tag = TIB
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			TIB = {
+				add_popularity = { ideology = Special popularity = 0.30 }
+				322={set_demilitarized_zone=no}
+			}
+		}
+	}
+	option = {
+		name = CHI.47.a
+		TIB = {
+			set_cosmetic_tag = TIB_Absolutism
+			hidden_effect = {
+				news_event = {id=AOR_news.169}
+			}
+	
+			create_country_leader = {
+				name = "The_13th_Dalai_Lama"
+				desc = ""
+				picture = "gfx/leaders/CHI/The_13th_Dalai_Lama.png"
+				expire = "1965.1.1"
+				ideology = sanminism
+				traits = {
+				}
+			}
+		}
+	}
+}
+
+#徐世昌代行大总统
+country_event = {
+	id = CHI.48
+	title = CHI.48.t
+	desc = CHI.48.d
+	picture = GFX_Portrait_of_Tirpitz
+	trigger = {
+		date > 1922.5.15
+		tag = CHI
+	}
+	fire_only_once = yes
+	option = {
+		CHI = {
+			set_politics = { ruling_party = AUT_democratic }
+			create_country_leader = {
+				name = "Xu_shi_chang"
+				desc = ""
+				picture = "gfx/leaders/CHI/Xu_shi_chang.png"
+				expire = "1965.1.1"
+				ideology = authoritarianism
+				traits = {
+				}
+			}
+			
+		}
+		name = CHI.48.a
+		hidden_effect = {
+			news_event = {id=AOR_news.177}
+		}
+	}
+}
+
+#还我军事区
+country_event = {
+	id = CHI.999
+	title = CHI.999.t
+	desc = CHI.999.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	immediate = {
+		CHI_civilwar_6 = yes
+	}
+	option = {
+		name = CHI.999.a
+	}
+}
+country_event = {
+	id = CHI_Northwest_decision.1
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		917 = {
+			set_state_owner_to = CHI
+		}
+		add_state_core = 917
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+country_event = {
+	id = CHI_Northwest_decision.2
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		586 = {
+			set_state_owner_to = CHI
+		}
+		add_state_core = 586
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+country_event = {
+	id = CHI_Northwest_decision.3
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		CHI = {
+			transfer_state = 918
+		}
+		add_state_core = 918
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+country_event = {
+	id = CHI_Northwest_decision.4
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		654 = {
+			set_state_owner_to = CHI
+		}
+		add_state_core = 654
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+country_event = {
+	id = CHI_Northwest_decision.5
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		916 = {
+			set_state_owner_to = CHI
+		}
+		add_state_core = 916
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+country_event = {
+	id = CHI_Northwest_decision.6
+	title = CHI.6.t
+	desc = CHI.6.desc
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		920 = {
+			set_state_owner_to = CHI
+		}
+		add_state_core = 920
+		add_to_variable = {
+			var = xibeizhanhshi
+			value = 1
+		}
+	}
+	option = {
+		name = CHI.6.a
+	}
+}
+
+# country_event = {
+# 	id = CHI_Northwest_decision.6
+# 	title = CHI.6.t
+# 	desc = CHI.6.desc
+# 	picture = GFX_Portrait_of_Tirpitz
+# 	fire_only_once = yes
+# 	is_triggered_only = yes
+# 	hidden = yes
+# 	immediate = {
+# 		has_complete
+# 	}
+# 	option = {
+# 		name = CHI.6.a
+# 	}
+# }
+
+
+
+######测试事件
+country_event = {
+	id = CHI_test.01
+	title = CHI_test.01.t
+	desc = CHI_test.01.desc
+	is_triggered_only = yes
+	option = {
+		name = CHI_test.01.a
+
+		load_focus_tree = Warlord_focus_tree
+		add_manpower = 1111
+	}
+}
+country_event = {
+	id = CHI_test.03
+	title = CHI_test.03.t
+	desc = CHI_test.03.desc
+	is_triggered_only = yes
+	option = {
+		name = CHI_test.03.a
+		add_to_variable = {
+			KMT_senate_seat_var=20
+		}
+	}
+}
+country_event = {
+	id = CHI_test.02
+	title = CHI_test.02.t
+	desc = CHI_test.02.desc
+	is_triggered_only = yes
+	option = {
+		log = "test 2 on "
+		name = CHI_test.02.a
+		CHI_civil_war_1 = yes
+		CHI_civil_war_2 = yes
+		CHI_civil_war_3 = yes
+		CHI_civil_war_4 = yes
+		CHI_civil_war_5 = yes
+		hidden_effect = {
+			country_event = {id = CHI.999 days=2}
+		}
+	}
+}
+country_event = {
+	id = CHI_test.04
+	title = CHI_test.02.t
+	desc = CHI_test.02.desc
+	is_triggered_only = yes
+	option = {
+		if = {
+			limit = {
+				has_ai
+			}
+		}
+		log = "test 2 on "
+		
+	}
+}
+
+country_event = {
+	# 《北望》（袁世凯收复外西北）
+	id = CHI.10000
+	title = CHI.10000.t
+	desc = CHI.10000.d
+	picture = GFX_AOR_chi_wangyejia	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.10000.a
+	}
+}
+
+country_event = {
+	# 《旗女》（袁世凯收复外西北）
+	id = CHI.10001
+	title = CHI.10001.t
+	desc = CHI.10001.d
+	picture = GFX_AOR_chi_wangyejia	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.10001.a
+		country_event = {
+			id = CHI.10002
+		}
+	}
+}
+
+country_event = {
+	# 《旗女2》（袁世凯收复外西北）
+	id = CHI.10002
+	title = CHI.10002.t
+	desc = CHI.10002.d
+	picture = GFX_AOR_chi_wangyejia	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CHI.10002.a
+	}
+}

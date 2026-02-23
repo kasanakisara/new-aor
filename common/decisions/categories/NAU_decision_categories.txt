@@ -1,0 +1,23 @@
+NAU_local_forces = {
+	icon = GFX_decision_category_sov_great_patriotic_war
+	scripted_gui = NAU_local_forces_decision_ui 
+	priority = 100
+	allowed = {
+		tag = NAU
+	}
+	visible = {
+		OR = {
+		 AND = {
+			tag = NAU
+			NOT = {has_country_flag = NAU.leader.dead}
+			has_country_flag = NAU_against_local_forces
+		 }
+		 AND = {
+			is_debug = yes
+			tag = NAU
+		 }
+		}
+		
+	}
+	
+}

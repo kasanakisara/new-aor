@@ -1,0 +1,489 @@
+focus_tree = {
+	id  = AOR_WUR_national_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = wur
+		}
+	}
+	continuous_focus_position = {
+		x = 55
+		y = 1800
+	}
+	default = no
+	focus = {
+		id = wur_Wurttemberg_Council
+		x = 6
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = wur.0.tt
+			hidden_effect = {
+				add_political_power = 100
+			}
+		}
+	}
+	focus = {
+		id = wur_id1
+		x = 6
+		y = 1
+		prerequisite = {
+			focus = wur_Wurttemberg_Council
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = wur.1.tt
+		}
+	}
+	focus = {
+		id = wur_id3
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = wur_Wurttemberg_Council
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.3.tt
+			hidden_effect = {
+				add_timed_idea = {
+					idea = Wur_repair
+					days = 180
+				}
+			}
+		}
+	}
+	focus = {
+		id = wur_id4
+		x = 11
+		y = 1
+		prerequisite = {
+			focus = wur_Wurttemberg_Council
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.4.tt
+		}
+	}
+	focus = {
+		id = wur_id5
+		x = 6
+		y = 2
+		prerequisite = {
+			focus = wur_id1
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.5.tt
+		}
+	}
+	focus = {
+		id = wur_id6
+		x = 6
+		y = 3
+		prerequisite = {
+			focus = wur_id5
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.6.tt
+		}
+	}
+	focus = {
+		id = wur_id7
+		x = 4
+		y = 4
+		prerequisite = {
+			focus = wur_id5
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.7.tt
+		}
+	}
+	focus = {
+		id = wur_id8
+		x = 8
+		y = 4
+		prerequisite = {
+			focus = wur_id5
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.8.tt
+		}
+	}
+	focus = {
+		id = wur_id9
+		x = 6
+		y = 5
+		prerequisite = {
+			focus = wur_id6
+		}
+		prerequisite = {
+			focus = wur_id8
+		}
+		prerequisite = {
+			focus = wur_id7
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.9.tt
+		}
+	}
+	focus = {
+		id = wur_id11
+		x = 6
+		y = 6
+		prerequisite = {
+			focus = wur_id9
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.11.tt
+		}
+	}
+	focus = {
+		id = wur_id12
+		x = 6
+		y = 7
+		prerequisite = {
+			focus = wur_id11
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.12.tt
+		}
+	}
+	focus = {
+		id = wur_id13
+		x = 6
+		y = 8
+		prerequisite = {
+			focus = wur_id12
+		}
+		prerequisite = {
+			focus = wur_id19
+		}
+		prerequisite = {
+			focus = wur_id25
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.13.tt
+		}
+	}
+	focus = {
+		id = wur_id14
+		x = 1
+		y = 2
+		prerequisite = {
+			focus = wur_id3
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.14.tt
+			add_ideas = roots_militia
+		}
+	}
+	focus = {
+		id = wur_id15
+		x = 1
+		y = 3
+		prerequisite = {
+			focus = wur_id14
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.15.tt
+			swap_ideas = {
+				remove_idea = roots_militia
+				add_idea = roots_militia_1
+			}
+		}
+	}
+	focus = {
+		id = wur_id16
+		x = 1
+		y = 4
+		prerequisite = {
+			focus = wur_id15
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.16.tt
+			add_command_power = -20
+			build_railway = {
+				path = {
+					9517
+					11499
+					3690
+					9655
+				}
+				level = 2
+			}
+		}
+	}
+	focus = {
+		id = wur_id17
+		x = 0
+		y = 5
+		prerequisite = {
+			focus = wur_id16
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.17.tt
+			show_ideas_tooltip = WUR.idea.1.tt
+		}
+	}
+	focus = {
+		id = wur_id18
+		x = 2
+		y = 5
+		prerequisite = {
+			focus = wur_id16
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.18.tt
+		}
+	}
+	focus = {
+		id = wur_id19
+		x = 1
+		y = 7
+		prerequisite = {
+			focus = wur_id18
+		}
+		prerequisite = {
+			focus = wur_id17
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.19.tt
+		}
+	}
+	focus = {
+		id = wur_id20
+		x = 11
+		y = 2
+		prerequisite = {
+			focus = wur_id4
+		}
+		prerequisite = {
+			focus = wur_id4
+		}
+		prerequisite = {
+			focus = wur_id4
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.20.tt
+		}
+	}
+	focus = {
+		id = wur_id21
+		x = 11
+		y = 3
+		prerequisite = {
+			focus = wur_id20
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.21.tt
+		}
+	}
+	focus = {
+		id = wur_id22
+		x = 11
+		y = 4
+		prerequisite = {
+			focus = wur_id21
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.22.tt
+		}
+	}
+	focus = {
+		id = wur_id23
+		x = 10
+		y = 5
+		prerequisite = {
+			focus = wur_id22
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.23.tt
+		}
+	}
+	focus = {
+		id = wur_id24
+		x = 12
+		y = 5
+		prerequisite = {
+			focus = wur_id22
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.24.tt
+		}
+	}
+	focus = {
+		id = wur_id25
+		x = 11
+		y = 7
+		prerequisite = {
+			focus = wur_id24
+		}
+		prerequisite = {
+			focus = wur_id23
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = wur.25.tt
+		}
+	}
+}

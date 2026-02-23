@@ -1,0 +1,21 @@
+add_namespace = NAN
+
+country_event = {
+	id = NAN.1 #直系收到邀请
+	title = NAN.1.t
+	desc = NAN.1.d
+	picture = GFX_report_event_polish_tanks_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NAN.1.a #tongyi
+		ai_chance = { factor = 2 }
+		country_event = { id = CHI.29}
+	}
+	option = {
+		name = NAN.1.b #拒绝
+		ai_chance = { factor = 8 }
+		country_event = { id = CHI.30 }
+	}
+}

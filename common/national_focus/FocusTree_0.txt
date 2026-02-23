@@ -1,0 +1,173 @@
+focus_tree = {
+	id = FocusTree_0
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = IRE
+		}
+	}
+	default = no
+	focus = {
+		id = newfocus_0
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 8
+		y = 0
+
+	}
+	focus = {
+		id = newfocus_1
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_0
+		}
+		x = 7
+		y = 1
+
+		complete_effect = {
+			add_political_power = 50
+		}
+
+	}
+	focus = {
+		id = newfocus_2
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_0
+		}
+		x = 9
+		y = 1
+
+		complete_effect = {
+			add_manpower = 10000
+			add_command_power = 20
+			if = {
+				limit = {
+					has_war_with = ENG
+				}
+				IRE = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 100
+						producer = FRA
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = newfocus_3
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_1
+		}
+		prerequisite = {
+			focus = newfocus_2
+		}
+		x = 8
+		y = 2
+
+		complete_effect = {
+			IRE = {
+				add_core_of = 1153
+			}
+		}
+	}
+	focus = {
+		id = newfocus_4
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_3
+		}
+		x = 5
+		y = 3
+		complete_effect = {
+			
+		}
+
+	}
+	focus = {
+		id = newfocus_5
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_3
+		}
+		x = 8
+		y = 3
+		complete_effect = {
+			
+		}
+
+	}
+	focus = {
+		id = newfocus_7
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_4
+		}
+		prerequisite = {
+			focus = newfocus_5
+		}
+		x = 6
+		y = 4
+		complete_effect = {
+			
+		}
+
+	}
+	focus = {
+		id = newfocus_6
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_3
+		}
+		x = 11
+		y = 3
+		complete_effect = {
+			
+		}
+
+	}
+	focus = {
+		id = newfocus_8
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_5
+		}
+		prerequisite = {
+			focus = newfocus_6
+		}
+		x = 10
+		y = 4
+		complete_effect = {
+			
+		}
+
+	}
+	focus = {
+		id = newfocus_9
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = newfocus_7
+		}
+		prerequisite = {
+			focus = newfocus_8
+		}
+		x = 8
+		y = 5
+		complete_effect = {
+			
+		}
+
+	}
+}

@@ -1,0 +1,141 @@
+AOR_ORA_committee = {
+
+	AOR_ORA_esc_mission = {
+		priority = 10000
+		icon = GFX_decision_category_syn
+		highlight_state_targets = { province = 11009 }
+		allowed  ={
+			tag = ORA
+		}
+		ai_will_do = {
+			factor = 100000
+		}
+		visible = {
+			tag = ORA
+		}        
+        available = { 
+            always = no
+        }
+        activation = {
+            NOT = {has_country_flag = SIMON.1 }
+        }
+		is_good = yes
+		fire_only_once = yes
+        selectable_mission = no
+        days_mission_timeout = 5
+		timeout_effect = {
+            ORA = {country_event = AOR_ORA_events.2
+			} 
+        }
+	}
+	AOR_ORA_hu_yv_zong_ba_gong_hu_yv_zong_ba_gong = {   
+		icon = GFX_decision_category_syn
+		cost = 50
+		days_remove = 60
+		fire_only_once = no
+		days_re_enable = 60
+		ai_will_do = {
+			factor = 1000
+		}
+		visible  ={
+			has_country_flag = unlock_AOR_ARG_burning 
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					ARG = {
+						has_idea = ARG_zong_ba_gong_jin_xing_shi
+					}
+				}
+				ARG = {
+				swap_ideas = {
+					remove_idea = ARG_zong_ba_gong_jin_xing_shi
+					add_idea = ARG_zong_ba_gong_jin_xing_shi_1
+					}
+				}
+			}
+			if = {
+				limit = {
+					ARG = {
+						has_idea = ARG_zong_ba_gong_jin_xing_shi_1
+					}
+				}
+				ARG = {
+				swap_ideas = {
+					remove_idea = ARG_zong_ba_gong_jin_xing_shi_1
+					add_idea = ARG_zong_ba_gong_jin_xing_shi_2
+					}
+				}
+			}
+			if = {
+				limit = {
+					ARG = {
+						has_idea = ARG_zong_ba_gong_jin_xing_shi_2
+					}
+				}
+				ARG = {
+				swap_ideas = {
+					remove_idea = ARG_zong_ba_gong_jin_xing_shi_2
+					add_idea = ARG_zong_ba_gong_jin_xing_shi_3
+					}
+				}
+			}
+		}
+	}
+	AOR_ORA_gong_ren_de_zan_mei_shi = {   
+		icon = GFX_decision_category_syn
+		cost = 50
+		days_remove = 28
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		visible = {
+		 has_country_flag = unlock_AOR_ORA_zhu_jiu_gang_tie
+		}
+		modifier = {
+			industrial_capacity_factory = 0.1
+	   	}
+		remove_effect = {
+			add_stability = 0.05
+		}
+	}
+	AOR_ORA_gong_tuan_de_zan_mei_shi = {   
+		icon = GFX_decision_category_syn
+		cost = 50
+		days_remove = 28
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		visible = {
+		 has_country_flag = unlock_AOR_ORA_zhu_jiu_gang_tie
+		}
+		modifier = {
+			political_power_cost = 0.1
+		}
+		remove_effect = {
+			add_manpower = 3500
+			
+		}
+	}
+	AOR_ORA_gong_hui_de_zan_mei_shi = {   
+		icon = GFX_decision_category_syn
+		cost = 50
+		days_remove =28
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		visible = {
+		 has_country_flag = unlock_AOR_ORA_zhu_jiu_gang_tie
+		} 
+		modifier = {
+			production_speed_buildings_factor = 0.1
+		}
+		remove_effect = {
+			add_stability = 0.05
+		}
+	}
+
+}

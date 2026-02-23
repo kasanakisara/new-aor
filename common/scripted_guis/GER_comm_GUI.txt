@@ -1,0 +1,29 @@
+scripted_gui = {
+	GER_comm_GUI = {
+		context_type = decision_category
+		window_name = "GER_comm_GUI_window"
+		visible = {
+			always = yes
+		}
+		properties = {
+			GER_country_flag = {
+				image = [THIS.GetFlag]
+			}
+			Socintern_GUI_Vote_Indicator = {
+				frame = This.GER_Comm_current_vote
+			}
+		}
+		triggers = {
+		}
+		dynamic_lists = {
+			GER_comm_flags = {
+				array = global.GERMAN_COMM_COUNTRY
+				idx = Ger_comm_idx
+				change_scope = yes
+				entry_container = GER_GUI_General_Assembly_Entry
+			}
+		}
+	}
+
+}
+

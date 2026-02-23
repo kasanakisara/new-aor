@@ -1,0 +1,482 @@
+PER_Northern_Reconstruction_decision_category = {#重建
+	gilan_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 25
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 420
+			has_completed_focus = PER_Northern_Reconstruction_2
+			420 = {is_demilitarized_zone = no }
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			420 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Azerbaijan_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 419
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			419 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Qom_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 266
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			266 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Mashhad_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 416
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			416 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	mazanrande_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 936
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			936 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	centre_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 937
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			937 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	khamseh_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 938
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			938 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	hamedan_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 417
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			417 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Semnan_Infrastructure_restoration = {
+		iocn = GFX_decision_Infrastructure_restoration
+		cost = 50
+		days_remove = 70
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 418
+			has_completed_focus = PER_Northern_Reconstruction_2
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		remove_effect = {
+			418 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Complete_reconstruction_1= { #重建任务    
+		activation = {                         
+			has_country_flag = unlock_AOR_PER_Northern_Reconstruction
+		}                                    
+		available = {                           
+			infrastructure > 20
+		}
+		
+		is_good = no #(决定任务进度条的颜色）                         
+	
+		days_mission_timeout = 800
+		timeout_effect = {                      
+			add_stability = -0.05
+			clr_country_flag = unlock_AOR_PER_Northern_Reconstruction    
+		}
+		complete_effect = {                    
+			add_stability = 0.05
+			clr_country_flag = unlock_AOR_PER_Northern_Reconstruction       
+		}
+	}
+}
+#1号工业案
+PER_Industrial_Development_Plan_No.1 = {
+	Azerbaijan_Industrial_Development = {#阿塞拜疆
+		iocn = GFX_decision_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 419
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			419 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Qom_Industrial_Development = {#库姆
+		iocn = GFX_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 266
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			266 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Mashhad_Industrial_Development = {#马什哈德
+		iocn = GFX_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 416
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			416 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	centre_Industrial_Development = {#中央——德黑兰
+		iocn = GFX_decision_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 937
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			937 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Arabistan_Industrial_Development = {#阿拉伯斯坦
+		iocn = GFX_decision_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 937
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			413 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	Fars_Industrial_Development = {#法尔斯
+		iocn = GFX_decision_Industrial_Development
+		cost = 30
+		days_remove = 40
+		allowed = {original_tag  = PER}
+		fire_only_once = yes
+		available = {
+			owns_state = 937
+			has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		is_good = yes
+		ai_will_do = {
+			factor = 100
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			412 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+PER_Fighting_inflation = {
+	PER_Eliminate_inflation_over = { #消除严重的通胀
+		icon = GFX_decision_Fighting_inflation
+		allowed = {original_tag  = PER}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 90
+		available = {
+			has_idea = PER_Fighting_inflation_1
+			has_completed_focus = PER_Fighting_inflation_16
+		}
+		visible = {
+			hidden_trigger = {
+				OR = {
+					has_idea = PER_Fighting_inflation_1
+					has_idea = PER_Fighting_inflation_2
+					has_idea = PER_Fighting_inflation_3
+					has_completed_focus = PER_Fighting_inflation_16
+				}
+			}
+		}
+		modifier = {  
+			civilian_factory_use = 1
+		}
+		remove_effect = {
+			PER_Fighting_inflation_666 = yes
+			clr_country_flag = unlock_AOR_PER_Fighting_inflation
+		}
+	}
+}
+PER_Agricultural_Jihad_Preliminary_jy = {
+	PER_Agricultural_Jihad_subsidy =  { #补贴政策
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 65
+		days_remove = 30
+
+		available = {
+			OR = {
+				PER_Agricultural_Jihad_Preliminary_1_trigger = yes
+				PER_Agricultural_Jihad_Preliminary_2_trigger = yes
+				PER_Agricultural_Jihad_Preliminary_3_trigger = yes	
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = PER_Restore_physical_land_rent_36
+			}
+		}
+		modifier = {  
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			PER_Agricultural_Jihad_Preliminary_777 = yes
+		}
+	}
+	PER_Agricultural_Jihad_technology =  { #向农民传授先进技术
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 160
+		days_remove = 80
+		available = {
+			OR = {
+				PER_Agricultural_Jihad_Preliminary_1_trigger = yes
+				PER_Agricultural_Jihad_Preliminary_2_trigger = yes
+				PER_Agricultural_Jihad_Preliminary_3_trigger = yes	
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = PER_Restore_physical_land_rent_36
+			}
+		}
+		remove_effect = {
+			PER_Agricultural_Jihad_Preliminary_777 = yes
+		}
+	}
+}

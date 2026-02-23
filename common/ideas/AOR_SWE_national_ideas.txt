@@ -1,0 +1,569 @@
+ideas = {
+
+	hidden_ideas = {
+		## 任务的修正们 ##
+		SWE_Oslo_Stockholm_Shinkansenn = {
+			modifier = {
+				civilian_factory_use = 5
+			}
+		}
+
+		SWE_Samitinget_ongoing = {
+			modifier = {
+				political_power_cost = 0.4
+			}
+		}
+
+		SWE_Norsk_Bokmaal_ongoing = {
+			modifier = {
+				political_power_cost = 0.4
+				stability_factor = -0.1
+			}
+		}
+
+		SWE_NRP_ongoing = {
+			modifier = {
+				civilian_factory_use = 15
+			}
+		}
+
+		SWE_Promoting_Universal_Suffrage = {
+			modifier = {
+				political_power_cost = 0.2
+			}
+		}
+
+		SWE_Promoting_Merging_Parliament = {
+			modifier = {
+				political_power_cost = 0.2
+			}
+		}
+
+		SWE_Promoting_Reduction_Civil_Servants = {
+			modifier = {
+				political_power_cost = 0.2
+			}
+		}
+		
+	}
+
+	country = {
+				
+		SWE_Left_Threat = {
+			picture = idea_SWE_Left_Threat
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.3
+				political_power_cost = 0.2
+				Marxism_drift = 0.1
+				custom_modifier_tooltip = SWE_modifier_add_localisation
+			}
+		}
+
+		SWE_Eighty_Seventh_Orders = {
+			picture = idea_SWE_Eighty_Seventh_Orders
+			allowed = { always = yes }
+			modifier = {
+				political_power_factor = 0.1
+				political_power_gain = 0.2
+				CON_democratic_drift = 0.2
+				SOC_democratic_drift = 0.2
+				custom_modifier_tooltip = SWE_modifier_down_localisation
+			}
+		}
+
+		SWE_K_Plan = {
+			picture = idea_SWE_K_Plan
+			allowed = { always = yes }
+			modifier = {
+				production_speed_buildings_factor = 0.25
+				consumer_goods_factor = 0.5
+				production_speed_industrial_complex_factor = 0.25
+				production_speed_infrastructure_factor = 0.25
+				local_building_slots_factor = 0.5
+			}
+		}
+
+		SWE_Encourage = { #刺激经济
+			picture = idea_SWE_Encourage
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		SWE_British = { #英国
+			picture = idea_SWE_British
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		SWE_Francais = { #法国
+			picture = idea_SWE_Francais
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		SWE_Further_Reform_Law = { 
+			picture = idea_SWE_Further_Reform_Law
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				consumer_goods_factor = -0.1
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+			}
+		}
+
+		SWE_Antisocialistisk_Speciallagen = {
+			picture = idea_SWE_Antisocialistisk_Speciallagen
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				Marxism_drift = -0.1
+				political_power_gain = 0.5
+				custom_modifier_tooltip = SWE_modifier_down_localisation
+			}
+		}
+		
+		SWE_All_People_are_King = {
+			picture = idea_SWE_All_People_are_King
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				consumer_goods_factor = -0.2
+				SOC_democratic_drift = 0.1
+				custom_modifier_tooltip = SWE_modifier_down_localisation
+			}
+		}
+
+		SWE_Liberte_Spirit = {
+			picture = idea_SWE_Liberte_Spirit
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				SOC_democratic_drift = 0.1
+				FRE_democratic_drift = 0.1
+			}
+		}
+
+		SWE_Beyond_Nationalism = {
+			picture = idea_SWE_Beyond_Nationalism
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				custom_modifier_tooltip = SWE_modifier_down_localisation
+			}
+		}
+
+		SWE_Beyond_Nation = {
+			picture = idea_
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.2
+				political_power_gain = 0.25
+				custom_modifier_tooltip = SWE_modifier_down_localisation
+			}
+		}
+
+		SWE_Left_Threat_I = {
+			picture = GFX_idea_SWE_Left_Threat_I
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.25
+				political_power_cost = 0.15
+				Marxism_drift = 0.1
+				custom_modifier_tooltip = SWE_modifier_add_localisation
+			}
+		}
+
+		SWE_Left_Threat_II = {
+			picture = GFX_idea_SWE_Left_Threat_II
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.25
+				political_power_cost = 0.1
+				Marxism_drift = 0.1
+				custom_modifier_tooltip = SWE_modifier_add_localisation
+			}
+		}
+
+		SWE_Hurt_of_Norway = {
+			picture = idea_SWE_Hurt_of_Norway
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.5
+				political_power_cost = 0.5
+				consumer_goods_expected_value = 0.5
+				Marxism_drift = 0.2
+				Fascism_drift = 0.2
+			}
+		}
+
+		SWE_Hurten_of_Norway = {
+			picture = idea_
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.5
+				political_power_cost = 0.5
+				consumer_goods_expected_value = 0.5
+				Marxism_drift = 0.2
+				Fascism_drift = 0.2
+			}
+		}
+
+		SWE_The_Union_Dream = {
+			picture = idea_SWE_The_Union_Dream
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.25
+				political_power_gain = 0.25
+				consumer_goods_expected_value = 0.25
+				stability_weekly = 0.025
+				FRE_democratic_drift = 0.2
+				SOC_democratic_drift = 0.2
+				drift_defence_factor = -0.2
+			}
+		}
+
+		SWE_Open_the_door = {
+			picture = idea_SWE_Open_the_door
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				consumer_goods_factor = -0.15
+				trade_opinion_factor = 0.25
+				production_speed_buildings_factor = 0.15
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+
+		SWE_Soviet_Trade = {
+			picture = idea_SWE_Soviet_Trade
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.15
+				drift_defence_factor = -0.2
+				production_speed_buildings_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
+			}
+		}
+
+		SWE_Soviet_Trade_soviet = {
+			picture = idea_SWE_Soviet_Trade_sweden
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.15
+				drift_defence_factor = -0.2
+				production_speed_buildings_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
+			}
+		}
+
+		SWE_Germany_Trade = {
+			picture = idea_SWE_Germany_Trade
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = 0.1
+				drift_defence_factor = -0.05
+				production_speed_arms_factory_factor = 0.2
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		SWE_Germany_Trade_sweden = {
+			picture = idea_SWE_Germany_Trade_sweden
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.1
+				drift_defence_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+			}
+		}
+
+		SWE_Regulation = {
+			picture = idea_SWE_Regulation
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				stability_factor = 0.025
+				production_factory_start_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		SWE_Third_Chioce = {
+			picture = idea_SWE_Third_Chioce
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.45
+				drift_defence_factor = -0.2
+				political_power_cost = 0.2
+				trade_opinion_factor = 0.5
+				opinion_gain_monthly_factor = 0.2
+				production_speed_buildings_factor = 0.25
+				production_speed_arms_factory_factor = 0.2
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.2
+			}
+		}
+
+		SWE_In_Revolution = {
+			picture = idea_SWE_In_Revolution
+			allowed = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = SWE_In_Revolution_tt
+			}
+		}
+
+		SWE_Folkhemmet = {
+			picture = idea_SWE_Folkhemmet
+			allowed = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = SWE_Folkhemmet_tt
+				political_power_cost = 0.1
+				consumer_goods_factor = 0.25
+				stability_factor = 0.1
+				stability_weekly = 0.01
+				conscription_factor = -0.2
+			}
+		}
+
+		SWE_Folkhemmet_debuff = {
+			picture = idea_SWE_Folkhemmet_debuff
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.2
+				consumer_goods_factor = 0.3
+				stability_factor = -0.15
+				stability_weekly = -0.05
+			}
+		}
+
+		SWE_Labor_Protection = {
+			picture = idea_SWE_Labor_Protection
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				consumer_goods_factor = 0.2
+				stability_factor = 0.15
+				production_factory_start_efficiency_factor = 0.25
+				industrial_capacity_factory = 0.25
+			}
+		}
+
+		SWE_Edu_Protection = {
+			picture = idea_SWE_Edu_Protection
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				consumer_goods_factor = 0.2
+				stability_factor = 0.15
+			}
+		}
+
+		SWE_Ex_Folkhemmet = {
+			picture = idea_SWE_Ex_Folkhemmet
+			allowed = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = SWE_Ex_Folkhemmet_tt
+				political_power_cost = 0.2
+				consumer_goods_factor = 0.35
+				stability_factor = 0.25
+				stability_weekly = 0.05
+				conscription_factor = -0.2
+			}
+		}
+
+		SWE_High_national_debt = {
+			picture = idea_
+			available = { always = yes }
+			modifier = {
+				political_power_gain = -0.25
+				stability_factor = -0.25
+				war_support_factor = -0.25
+			}
+		}
+
+		SWE_Low_national_debt = {
+			picture = idea_
+			available = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = -0.25
+				consumer_goods_factor = 0.45
+			}
+		}
+
+		SWE_Samitinget = {
+			picture = idea_
+			available = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.025
+				local_resources_factor = 0.1
+				conscription = 0.005
+			}
+		}
+
+		SWE_United_Norweign = {
+			picture = idea_SWE_United_Norweign
+			available = {
+				always = yes
+			}
+			modifier = {
+				research_speed_factor = 0.1
+				stability_factor = -0.05
+			}
+		}
+
+		SWE_Universal_Suffrage = {
+			picture = idea_
+			available = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.15
+				war_support_factor = 0.1
+			}
+		}
+
+		SWE_Merged_Parliament = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				political_power_gain = 0.2
+			}
+		}
+
+		SWE_Union_Inheritance_Law = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				custom_modifier_tooltip = SWE_Union_Inheritance_Law_tt
+			}
+		}
+
+		SWE_Reducted_Civil_Servants = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				political_power_cost = -0.2
+			}
+		}
+
+		SWE_Visible_Hand = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				political_power_factor = 0.1
+				political_power_gain = 0.3
+				political_power_cost = -0.2
+			}
+		}
+
+		SWE_Skagerrak_Arbitration = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = -0.25
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		SWE_Skagerrak_Strait_Reparations = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = 0.2
+				industrial_capacity_factory = -0.1
+			}
+		}
+
+		SWE_Regency_Council = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = -0.05
+			}
+		}
+
+		SWE_Regency_Emergency_Crisis = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				Marxism_drift = 0.1
+				Fascism_drift = 0.1
+				Absolutism_drift = 0.1
+				custom_modifier_tooltip = SWE_Regency_Emergency_Crisis_tt
+			}
+		}
+
+		SWE_Regency_Military_Rule = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.1
+				command_power_gain = -0.1
+				political_power_cost = 0.15
+				industrial_capacity_factory = -0.1
+				custom_modifier_tooltip = SWE_Regency_Order_add_25_modifier_tt
+			}
+		}
+
+		SWE_Regency_LN_Recongnize = {
+			picture = idea_
+			avaliable = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.1
+				custom_modifier_tooltip = SWE_Regency_Political_add_25_modifier_tt
+			}
+		}
+		
+		SWE_Regency_votes_debuff = {
+			picture = idea_
+			available = {
+				always = yes
+			}
+			modifier = {
+				custom_modifier_tooltip = SWE_Regency_votes_debuff_tt
+			}
+		}
+	}
+}

@@ -1,0 +1,337 @@
+focus_tree = {
+	id = EGY_country_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = EGY
+		}
+	}
+	continuous_focus_position = {
+		x = 2000
+		y = 2000
+	}
+	default = no
+	focus = {
+		id = EGY_looking_forword #向前看
+		icon = GFX_goal_unknown
+		cost = 1
+		x = 8
+		y = 0
+		completion_reward = {
+			add_political_power = 15
+			add_stability = 0.05
+		}
+
+	}
+	focus = {
+		id = EGY_Stabilize_the_situation #稳定局势
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = EGY_looking_forword
+		}
+		x = 6
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+			country_event = { id = EGY.7} #声音
+		}
+
+	}
+	focus = {
+		id = EGY_Reassure_the_population #安抚民众
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = EGY_looking_forword
+		}
+		x = 10
+		y = 1
+		completion_reward = {
+			add_political_power = 50
+		}
+
+	}
+	focus = {
+		id = EGY_fire #开火！
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = EGY_Stabilize_the_situation
+		}
+		prerequisite = {
+			focus = EGY_Reassure_the_population
+		}
+		x = 8
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919 #疯狂的20世纪
+				add_idea = EGY_Crazy_1919_0
+			}   
+			country_event = { id = EGY.10 }  #bloody_street #鲜红的街道
+		}
+
+	}
+	focus = {
+		id = EGY_tiktak #军靴作响
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_fire
+		}
+		x = 8
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919_0
+				add_idea = EGY_Crazy_1919_1
+			}
+			add_ideas = The_Lion_of_the_Circus
+			
+		}
+
+	}
+	focus = {
+		id = EGY_the_british_here #英国人来了
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = EGY_tiktak
+		}
+		x = 8
+		y = 4
+		completion_reward = {
+			country_event = { id = EGY.8 } #代表团抵达
+		}
+
+	}
+	focus = {
+		id = EGY_Obey_the_Voice_of_Independence #顺从独立之声
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_the_british_here
+		}
+		mutually_exclusive = {
+			focus = EGY_No_resistance_allowed
+		}
+		x = 5
+		y = 5
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919_1
+				add_idea = EGY_Crazy_1919_2
+			}
+		}
+
+	}
+	focus = {
+		id = EGY_Appeal_to_the_public #呼吁民众
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_Obey_the_Voice_of_Independence
+		}
+		x = 3
+		y = 6
+		completion_reward = {
+			country_event = { id = EGY.9 }
+			custom_effect_tooltip = EGY_Appeal_to_the_public_tt
+		}
+
+	}
+	focus = {
+		id = EGY_Publish_Announcement #发布公告
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_Obey_the_Voice_of_Independence
+		}
+		x = 7
+		y = 6
+		completion_reward = {
+			country_event = { id = EGY.11 }
+			custom_effect_tooltip = EGY_Publish_Announcement_tt
+		}
+
+	}
+	focus = {
+		id = EGY_No_resistance_allowed #不容一丝反抗
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_the_british_here
+		}
+		mutually_exclusive = {
+			focus = EGY_Obey_the_Voice_of_Independence
+		}
+		x = 13
+		y = 5
+		completion_reward = {
+			custom_effect_tooltip = EGY_No_resistance_allowed_tt
+		}
+
+	}
+	focus = {
+		id = EGY_Prepare_the_baton #备好警棍
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_No_resistance_allowed
+		}
+		x = 11
+		y = 6
+		completion_reward = {
+			country_event = { id = EGY.12 }
+			custom_effect_tooltip = EGY_Prepare_the_baton_tt			
+		}
+
+	}
+	focus = {
+		id = EGY_Rifle_loading #步枪上膛
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_No_resistance_allowed
+		}
+		x = 13
+		y = 6
+		completion_reward = {
+			country_event = { id = EGY.13 }
+			custom_effect_tooltip = EGY_Rifle_loading_tt			
+		}
+
+	}
+	focus = {
+		id = EGY_The_shackles_creaked #镣铐作响
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_No_resistance_allowed
+		}
+		x = 15
+		y = 6
+		completion_reward = {
+			country_event = { id = EGY.14 }
+			custom_effect_tooltip = EGY_The_shackles_creaked_tt	
+		}
+
+	}
+	focus = {
+		id = EGY_Violators_shall_bear_the_consequences_themselves 
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_Rifle_loading
+		}
+		prerequisite = {
+			focus = EGY_Prepare_the_baton
+		}
+		prerequisite = {
+			focus = EGY_The_shackles_creaked
+		}
+		x = 13
+		y = 7
+		completion_reward = {
+			country_event = { id = EGY.15 }
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919_1
+				add_idea = EGY_Crazy_1919_3
+			}
+			custom_effect_tooltip = EGY_Violators_shall_bear_the_consequences_themselves_tt	
+		}
+
+	}
+	focus = {
+		id = EGY_make_only_superficial_changes #改头换面
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = EGY_Appeal_to_the_public
+		}
+		prerequisite = {
+			focus = EGY_Publish_Announcement
+		}
+		x = 5
+		y = 7
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919_2
+				add_idea = EGY_Crazy_1919_4
+			}
+			custom_effect_tooltip = EGY_make_only_superficial_changes_tt	
+		}
+
+	}
+	focus = {
+		id = EGY_Hidden_killing_intent #暗藏杀机
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = EGY_make_only_superficial_changes
+		}
+		x = 5
+		y = 8
+		completion_reward = {
+			country_event = { id = EGY.16 } #铃声
+			swap_ideas = {
+				remove_idea = EGY_Crazy_1919_4
+				add_idea = EGY_Crazy_1919_5
+			}
+			custom_effect_tooltip = EGY_Hidden_killing_intent_tt	
+		}
+
+	}
+	focus = {
+		id = EGY_Thinking_about_our_future #思考我们的未来
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = EGY_Hidden_killing_intent
+			focus = EGY_Violators_shall_bear_the_consequences_themselves
+		}
+		x = 9
+		y = 9
+		completion_reward = {
+			add_ideas = Egypt_Spring
+			custom_effect_tooltip = EGY_Thinking_about_our_future_tt				
+		}
+
+	}
+	focus = {
+		id = EGY_The_Victory_of_Huafutuo
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = EGY_Thinking_about_our_future
+		}
+		x = 9
+		y = 10
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = EGY_Crazy_1919_5
+				}
+				swap_ideas = {
+					remove_idea = EGY_Crazy_1919_5
+					add_idea = EGY_Crazy_1919_6
+				}
+			}
+			if = {
+				limit = {
+					has_idea = EGY_Crazy_1919_3
+				}
+				swap_ideas = {
+					remove_idea = EGY_Crazy_1919_3
+					add_idea = EGY_Crazy_1919_7
+				}
+			}
+			custom_effect_tooltip = EGY_The_Victory_of_Huafutuo_tt
+			hidden_effect = {
+				load_focus_tree = EGY_country_focus_2
+			}		
+		}
+	}
+}

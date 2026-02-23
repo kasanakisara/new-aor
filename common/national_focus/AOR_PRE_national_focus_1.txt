@@ -1,0 +1,123 @@
+focus_tree={
+	country={
+		factor=0
+		modifier={
+			add=100
+			tag=PRE
+		}
+	}
+	default=no
+	focus={
+		id=PRE_The_Beginning_of_everything
+		x=5
+		y=0
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = {  id = per.1id }
+		}
+	}
+	focus={
+		id=PRE_Imperial_mbers
+		x=5
+		y=1
+		prerequisite={focus=PRE_The_Beginning_of_everything}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 100
+		}
+	}
+	focus={
+		id=PRE_old_rglow
+		x=5
+		y=2
+		prerequisite={focus=PRE_Imperial_mbers}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = {  id = per.1id }
+		}
+	}
+	focus={
+		id=PRE_regroup
+		x=5
+		y=3
+		prerequisite={focus=PRE_old_rglow}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas = 333
+		}
+	}
+	focus={
+		id=PRE_attract_junk_officers
+		x=5
+		y=4
+		prerequisite={focus=PRE_regroup}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = {  id = per.1id }
+			add_ideas = 111
+		}
+	}
+	focus={
+		id=PRE_question_of_the_free_Legion
+		x=5
+		y=5
+		prerequisite={focus=PRE_attract_junk_officers}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = {  id = per.1id }
+		}
+	}
+	focus={
+		id=PRE_the_two_headed_eagle_is_still_here
+		x=5
+		y=6
+		prerequisite={focus=PRE_question_of_the_free_Legion}
+		cost=1
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			load_focus_tree = per.1id
+
+		}
+	}
+}

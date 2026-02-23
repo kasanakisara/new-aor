@@ -1,0 +1,289 @@
+scripted_gui = {
+
+	AOR_nu_gui = {
+		context_type = player_context
+		window_name = "AOR_nationunion_gui_window"
+		visible = {
+			ROOT = {
+				has_country_flag = AOR_nu_gui_open
+			}
+		}
+		dynamic_lists = {
+			AOR_nationunion_grid = {
+				array = AOR_nationunion_main_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_nationunion_main_grid
+			}
+			AOR_nationunion_mini_grid = {
+				array = AOR_nationunion_mini_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_country_entry_mini
+			}
+			AOR_approve_country_grid = {
+				array = ROOT.AOR_approve_country_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_approve_country_entry
+			}
+			AOR_abstain_country_grid = {
+				array = ROOT.AOR_abstain_country_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_abstain_country_entry
+			}
+			AOR_disagree_country_grid = {
+				array = ROOT.AOR_disagree_country_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_disagree_country_entry
+			}
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = AOR_nu_gui_open
+				clear_array = AOR_nationunion_main_array
+				clear_array = AOR_nationunion_mini_array
+				clear_array = AOR_approve_country_array
+				clear_array = AOR_abstain_country_array
+				clear_array = AOR_disagree_country_array
+
+			}
+			AOR_nationunion_main_icon_click = {
+				set_temp_variable = { MainCountry_faction = v }
+				Get_AOR_Faction = yes
+
+			}
+			option_country_button_click = {
+				set_country_flag = AOR_option_country_gui_open
+				for_each_loop = {
+					array = global.AOR_nationunion_main_array
+					add_to_array = { ROOT.AOR_option_country_array = v }
+				}			
+			}
+			approve_button_click = {
+				AOR_vote_approve = yes
+			}
+			abstain_button_click = {
+				AOR_vote_abstain = yes
+			}
+			disagree_button_click = {
+				AOR_vote_disagree = yes
+			}
+
+		}
+		properties = {
+			AOR_nationunion_main_flag = {
+				image = "[GetMainNationFlag]"
+			}
+
+			AOR_nationunion_main_icon = {
+				image = "[GetMainNationIcon]"
+			}
+			country_flag = {
+				image = "[GetCurrentFlag]"
+			}
+			country_frame = {
+				image = "[GetCurrentFrame]"
+			}
+			country_flag_mini = {
+				image = "[GetCurrentFlagMini]"
+			}
+			option_country_flag = {
+				image = "[GetROOTOptionCountry]"
+			}
+			AOR_approve_country_flag_mini = {
+				image = "[GetApproveCountry]"
+			}
+			AOR_abstain_country_flag_mini = {
+				image = "[GetAbstainCountry]"
+			}
+			AOR_disagree_country_flag_mini = {
+				image = "[GetDisagreeCountry]"
+			}
+			option_country_button = {
+				frame = option_country_button_frame
+			}
+
+		}
+		triggers = {
+			approve_button_visible = {
+				ROOT = {
+					is_in_array = { global.AOR_nationunion_main_array = ROOT }
+				}
+			}
+			abstain_button_visible = {
+				ROOT = {
+					is_in_array = { global.AOR_nationunion_main_array = ROOT }
+				}
+			}
+			disagree_button_visible = {
+				ROOT = {
+					is_in_array = { global.AOR_nationunion_main_array = ROOT }
+				}
+			}
+			#AOR_approve_country_title_visible = {
+			#	ROOT = {
+			#		is_in_array = { global.AOR_nationunion_main_array = ROOT }
+			#	}
+			#}
+			#AOR_abstain_country_title_visible = {
+			#	ROOT = {
+			#		is_in_array = { global.AOR_nationunion_main_array = ROOT }
+			#	}
+			#}
+			#AOR_disagree_country_title_visible = {
+			#	ROOT = {
+			#		is_in_array = { global.AOR_nationunion_main_array = ROOT }
+			#	}
+			#}
+
+			option_choose_title_visible = {
+				not = {
+					ROOT = {
+						is_in_array = { global.AOR_nationunion_main_array = ROOT }
+					}	
+				}
+			}
+			option_country_flag_visible = {
+				not = {
+					ROOT = {
+						is_in_array = { global.AOR_nationunion_main_array = ROOT }
+					}	
+				}
+			}
+			option_country_button_visible = {
+				not = {
+					ROOT = {
+						is_in_array = { global.AOR_nationunion_main_array = ROOT }
+					}	
+				}
+			}
+			option_choose_desc_visible = {
+				not = {
+					ROOT = {
+						is_in_array = { global.AOR_nationunion_main_array = ROOT }
+					}	
+				}
+			}
+			option_country_button_click_enabled = {
+				not = {
+					has_country_flag = AOR_option_country_gui_open
+				}
+			}
+
+			approve_button_click_enabled = {
+				#not = {
+				#	check_variable = { global.AOR_Nationunion_event = 0 }
+				#}
+				AOR_has_voted = no
+			}
+			abstain_button_click_enabled = {
+				#not = {
+				#	check_variable = { global.AOR_Nationunion_event = 0 }
+				#}
+				AOR_has_voted = no
+			}
+			disagree_button_click_enabled = {
+				#not = {
+				#	check_variable = { global.AOR_Nationunion_event = 0 }
+				#}
+				AOR_has_voted = no
+			}
+
+
+		}
+
+	}
+	AOR_faction_gui = {
+		context_type = player_context
+		window_name = "AOR_faction_gui_window"
+		visible = {
+			ROOT = {
+				has_country_flag = AOR_faction_gui_open
+			}
+		}
+		dynamic_lists = {
+			AOR_faction_grid = {
+				array = AOR_faction_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_faction_entry
+			}
+		}
+		effects = {
+			button_close_click = {
+				clr_country_flag = AOR_faction_gui_open
+			}
+		}
+		triggers = {
+			major_country_overlay_visible = {
+				check_variable = { ROOT.AOR_Faction_leader = v }
+			}
+		}
+		properties = {
+			country_flag = {
+				image = "[GetCurrentFlagSmall]"
+			}
+		}
+
+
+
+	}
+	AOR_option_country_gui = {
+		context_type = player_context
+		window_name = "AOR_option_country_gui_window"
+		visible = {
+			ROOT = {
+				has_country_flag = AOR_option_country_gui_open
+			}
+		}
+		dynamic_lists = {
+			AOR_option_country_grid = {
+				array = AOR_option_country_array
+				index = idx
+				value = v
+				change_scope = no
+				entry_container = AOR_option_country_entry
+			}
+
+		}
+		effects = {
+			button_close_click = {
+				clr_country_flag = AOR_option_country_gui_open
+				clear_array = AOR_option_country_array
+			}
+			independent_button_click = {
+				clr_country_flag = AOR_option_country_gui_open
+				clear_array = AOR_option_country_array
+				set_variable = {
+					ROOT.AOR_nu_Support_country = ROOT
+				}
+			}
+			option_country_mini_click = {
+				set_variable = {
+					ROOT.AOR_nu_Support_country = v
+				}
+				set_variable = {
+					ROOT.option_country_button_frame = 2
+				}
+				clr_country_flag = AOR_option_country_gui_open
+				clear_array = AOR_option_country_array
+			}
+		}
+		properties = {
+			option_country_flag_mini = {
+				image = "[GetOptionCountry]"
+			}
+		}
+
+	}
+}
+

@@ -1,0 +1,89 @@
+###########################
+# Olympics Games
+###########################
+
+add_namespace = news_OLYMPICS
+
+
+news_event = {
+	id = news_OLYMPICS.1
+	title = news_OLYMPICS.1.t
+	desc = news_OLYMPICS.1.d
+	picture = GFX_news_1920_Olympic_Games
+    major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	    date > 1920.4.19
+		date < 1920.4.21
+	}
+
+    #1920比荷卢奥运会
+	option = {
+		name = news_OLYMPICS.1.a
+	    trigger = {
+	    NOT = {tag = BEL}
+		}
+	}
+	option = {
+		name = news_OLYMPICS.1.b
+	    trigger = {tag = BEL}
+	}
+}
+
+news_event = {
+	id = news_OLYMPICS.2
+	title = news_OLYMPICS.2.t
+	desc = news_OLYMPICS.2.d
+	picture = GFX_news_1924_Olympic_Games
+    major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	    date > 1920.5.6
+		date < 1920.5.8
+	}
+
+    #1924希腊奥运会
+	option = {
+		name = news_OLYMPICS.2.a
+	}
+}
+
+news_event = {
+	id = news_OLYMPICS.3
+	title = news_OLYMPICS.3.t
+	desc = news_OLYMPICS.3.d
+	picture = GFX_news_1928_Olympic_Games
+    major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	    date > 1920.5.16
+		date < 1920.5.18
+	}
+
+    #1928意大利奥运会
+	option = {
+		name = news_OLYMPICS.3.a
+	}
+}
+
+news_event = {
+	id = news_OLYMPICS.4
+	title = news_OLYMPICS.4.t
+	desc = news_OLYMPICS.4.d
+	picture = GFX_news_1932_Olympic_Games
+    major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	    date > 1920.5.16
+		date < 1920.5.18
+	}
+
+    #1932法国奥运会
+	option = {
+		name = news_OLYMPICS.4.a
+	}
+}

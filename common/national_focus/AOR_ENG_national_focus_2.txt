@@ -1,0 +1,440 @@
+# by Hacker， 24/06/10
+# Localisation at AOR_ENG_focus_l_simp_chinese.yml
+focus_tree = {
+	id = AOR_ENG_focus_tree_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = ENG
+		}
+	}
+	default = no
+	#暴雨之中，却不见黎明
+	focus = {
+		id = ENG_No_Dawn_in_Storm
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 21
+		y = 2
+
+	}
+	#是谁夺走了我们的面包
+	focus = {
+		id = ENG_Who_Catch_our_Bread
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_Dawn_in_Storm
+		}
+		x = 18
+		y = 3
+
+	}
+	#没有硝烟的战火
+	focus = {
+		id = ENG_The_War_without_Fire
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_Dawn_in_Storm
+		}
+		x = 21
+		y = 3
+
+	}
+	#叛徒们的囚歌
+	focus = {
+		id = ENG_The_Song_of_Prisoners
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_Dawn_in_Storm
+		}
+		x = 24
+		y = 3
+
+	}
+	#航路无头………
+	focus = {
+		id = ENG_No_End
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_The_War_without_Fire
+		}
+		prerequisite = {
+			focus = ENG_The_Song_of_Prisoners
+		}
+		prerequisite = {
+			focus = ENG_Who_Catch_our_Bread
+		}
+		x = 21
+		y = 4
+
+	}
+	#未来在我们手中
+	focus = {
+		id = ENG_Future_in_Hands
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_End
+		}
+		x = 21
+		y = 6
+
+	}
+	#紧急戒严令
+	focus = {
+		id = ENG_Emergency_Lockdown
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Future_in_Hands
+		}
+		x = 21
+		y = 7
+
+	}
+	#团结一致，向前看
+	focus = {
+		id = ENG_Unite_and_Look_Forward
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Emergency_Lockdown
+		}
+		x = 21
+		y = 9
+
+	}
+	#密谈
+	focus = {
+		id = ENG_Closted
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Unite_and_Look_Forward
+		}
+		x = 18
+		y = 10
+
+	}
+	#共同的目的
+	focus = {
+		id = ENG_Same_Purpose
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Closted
+		}
+		x = 19
+		y = 11
+
+	}
+	#自由的帝国意识
+	focus = {
+		id = ENG_Liberty_Emperial_Sense
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Unite_and_Look_Forward
+		}
+		x = 21
+		y = 11
+
+	}
+	#会会博纳·劳
+	focus = {
+		id = ENG_Meet_with_Bonar_Law
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Unite_and_Look_Forward
+		}
+		x = 24
+		y = 10
+
+	}
+	#箭在弦上，不得不发
+	focus = {
+		id = ENG_Its_time_to_do
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Meet_with_Bonar_Law
+		}
+		x = 23
+		y = 11
+
+	}
+	#不列颠之春
+	focus = {
+		id = ENG_Britain_Spring
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Its_time_to_do
+		}
+		prerequisite = {
+			focus = ENG_Same_Purpose
+		}
+		prerequisite = {
+			focus = ENG_Liberty_Emperial_Sense
+		}
+		x = 21
+		y = 12
+
+	}
+	#沉默的断头路
+	focus = {
+		id = ENG_Silent_Final_Road
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_End
+		}
+		x = 30
+		y = 6
+
+	}
+	#迫择再做张伯伦
+	focus = {
+		id = ENG_Must_be_Chamberlain
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Silent_Final_Road
+		}
+		x = 30
+		y = 8
+
+	}
+	#青年郎，上战场
+	focus = {
+		id = ENG_Teen_to_Battlefield
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Must_be_Chamberlain
+		}
+		x = 28
+		y = 9
+
+	}
+	#召集战时内阁
+	focus = {
+		id = ENG_Form_Wartime_Cabinet
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Must_be_Chamberlain
+		}
+		x = 30
+		y = 9
+
+	}
+	#《伯明翰宣言》
+	focus = {
+		id = ENG_Birmingham_Declaration
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Must_be_Chamberlain
+		}
+		x = 32
+		y = 9
+
+	}
+	#最终的下午茶
+	focus = {
+		id = ENG_Final_Tea
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Form_Wartime_Cabinet
+		}
+		prerequisite = {
+			focus = ENG_Teen_to_Battlefield
+		}
+		prerequisite = {
+			focus = ENG_Birmingham_Declaration
+		}
+		x = 30
+		y = 10
+
+	}
+	#为了国家
+	focus = {
+		id = ENG_For_Country
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Final_Tea
+		}
+		x = 28
+		y = 11
+
+	}
+	#统一至上
+	focus = {
+		id = ENG_For_United
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Final_Tea
+		}
+		x = 32
+		y = 11
+
+	}
+	#打破宁静的第一枪
+	focus = {
+		id = ENG_The_First_Gunshot
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_For_Country
+		}
+		prerequisite = {
+			focus = ENG_For_United
+		}
+		x = 30
+		y = 12
+
+	}
+	#“灯塔”的光芒
+	focus = {
+		id = ENG_Light_of_Lighthouse
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_No_End
+		}
+		x = 12
+		y = 6
+
+	}
+	#昔日恩怨
+	focus = {
+		id = ENG_Past_Grievances
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Light_of_Lighthouse
+		}
+		x = 12
+		y = 7
+
+	}
+	#非今日之罪
+	focus = {
+		id = ENG_Not_Crime_Now
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Past_Grievances
+		}
+		mutually_exclusive = {
+			focus = ENG_Target_for_All
+		}
+		x = 10
+		y = 8
+
+	}
+	#千夫所指
+	focus = {
+		id = ENG_Target_for_All
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Past_Grievances
+		}
+		mutually_exclusive = {
+			focus = ENG_Not_Crime_Now
+		}
+		x = 14
+		y = 8
+
+	}
+	#尴尬重逢
+	focus = {
+		id = ENG_Met_Again
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Not_Crime_Now
+			focus = ENG_Target_for_All
+		}
+		x = 12
+		y = 9
+
+	}
+	#前首相的遗志
+	focus = {
+		id = ENG_Will_of_former_PM
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Met_Again
+		}
+		x = 12
+		y = 10
+
+	}
+	#《和平宣言》
+	focus = {
+		id = ENG_Peace_Declaration
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Met_Again
+		}
+		x = 10
+		y = 10
+
+	}
+	#人前背后
+	focus = {
+		id = ENG_Front_and_Behind
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Met_Again
+		}
+		x = 14
+		y = 10
+
+	}
+	#我们的新形象
+	focus = {
+		id = ENG_Our_New_View
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Will_of_former_PM
+		}
+		prerequisite = {
+			focus = ENG_Front_and_Behind
+		}
+		prerequisite = {
+			focus = ENG_Peace_Declaration
+		}
+		x = 12
+		y = 11
+
+	}
+	#静一静，坐下谈谈！
+	focus = {
+		id = ENG_Quiet_and_Talk
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_Our_New_View
+		}
+		x = 12
+		y = 12
+
+	}
+}

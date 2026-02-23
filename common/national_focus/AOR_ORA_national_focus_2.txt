@@ -1,0 +1,187 @@
+focus_tree={
+	id = ORA_rebuild
+	country={
+		factor=0
+		modifier={
+			add=10
+			tag=ORA
+		}
+	}
+	default=no
+	focus={
+		id=ORA_Sunrise_of_victory
+		icon = GFX_goal_ORA_Sunrise_of_victory
+		x=7
+		y=0
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		custom_effect_tooltip = ORA.9.tt
+		hidden_effect = {
+			news_event = { id = AOR_news.3  }
+			set_stability = 0.75
+			set_war_support = 0.5
+			set_research_slots = 3
+			remove_ideas = ORA_gong_ren_shang_qian_xian
+			remove_ideas = ORA_gong_ren_shang_qian_xian_1
+			remove_ideas = ORA_gong_ren_shang_qian_xian_2
+			remove_ideas = ORA_gong_ren_shang_qian_xian_3
+			remove_ideas = ORA_gong_ren_shang_qian_xian_4
+			remove_ideas = ORA_Spark_1	
+		}
+		
+		}
+	}
+	focus={
+		id=ORA_undone
+		icon = GFX_goal_ORA_undone
+		x=7
+		y=1
+		prerequisite={focus=ORA_Sunrise_of_victory}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_political_power = 30
+		add_ideas = limited_exports
+		add_ideas = volunteer_only
+		}
+	}
+	focus={
+		id=ORA_De_war_status
+		icon = GFX_goal_ORA_De_war_status
+		x=5
+		y=2
+		prerequisite={focus=ORA_undone}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_stability = 0.1
+		add_political_power = 50
+		add_ideas = civilian_economy
+		}
+	}
+	focus={
+		id=ORA_home_rebuilding
+		icon = GFX_goal_ORA_home_rebuilding
+		x=5
+		y=3
+		prerequisite={focus=ORA_De_war_status}
+		cost=8
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		unlock_decision_category_tooltip = AOR_ORA_des_rebuild
+		set_country_flag = unlock_AOR_ORA_des_rebuild
+		}
+	}
+	focus={
+		id=ORA_revival_civilian_industry
+		icon = GFX_goal_ORA_revival_civilian_industry
+		x=5
+		y=4
+		prerequisite={focus=ORA_home_rebuilding}
+		cost=8
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_ideas = ORA_zhuzhongminsheng
+		}
+	}
+	focus={
+		id=ORA_Pacify_the_masses
+		icon = GFX_goal_ORA_Pacify_the_masses
+		x=9
+		y=2
+		prerequisite={focus=ORA_undone}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_political_power = -50
+		add_stability = 0.05
+		country_event = ORA.14
+		}
+	}
+	focus={
+		id=ORA_Wipe_out_reactionary_forces
+		icon = GFX_goal_ORA_Wipe_out_reactionary_forces
+		x=9
+		y=3
+		prerequisite={focus=ORA_Pacify_the_masses}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_timed_idea = { idea =  ORA_zhenyafangem  days = 56 }
+		country_event = ORA.15
+		}
+	}
+	focus={
+		id=ORA_worker_pickets
+		icon = GFX_goal_ORA_worker_pickets
+		x=9
+		y=4
+		prerequisite={focus=ORA_Wipe_out_reactionary_forces}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_manpower = -200
+		add_political_power = -30
+		create_intelligence_agency = yes
+		}
+	}
+	focus={
+		id=ORA_Look_forward_future
+		icon = GFX_goal_ORA_Look_forward_future
+		x=7
+		y=5
+		prerequisite={focus=ORA_revival_civilian_industry}
+		prerequisite={focus=ORA_worker_pickets}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		country_event = { days = 7 id = ORA.1 }
+		}
+	}
+}

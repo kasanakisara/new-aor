@@ -1,0 +1,133 @@
+#刷新变量
+Refresh_ENG_Lick_wounds_variables = {
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 1 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_EGY_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 2 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_AFR_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 3 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_RAJ_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 4 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_WAF_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 5 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_SAF_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 6 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_ASL_favorability_Var }
+	}
+	if = {
+		limit = { check_variable = { ENG_Commonwealth_country_favorability = 7 } }
+		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_NZL_favorability_Var }
+	}
+}
+#每月刷新变量
+Refresh_ENG_Lick_wounds_variables_monthly = {
+	#国民支持度
+	set_variable = { ENG_National_Support_Var_monthly = ENG_Current_Vitality_Var }
+	subtract_from_variable = { ENG_National_Support_Var_monthly = 50 }
+	divide_variable = { ENG_National_Support_Var_monthly = 20 }
+	add_to_variable = { ENG_National_Support_Var = ENG_National_Support_Var_monthly }
+	#当前元气
+	set_variable = { ENG_Current_Vitality_Var_monthly = ENG_National_Support_Var }
+	add_to_variable = { ENG_Current_Vitality_Var_monthly = ENG_Federal_Nexus_Var }
+	add_to_variable = { ENG_Current_Vitality_Var_monthly = ENG_British_authority_Var }
+	subtract_from_variable = { ENG_Current_Vitality_Var_monthly = 150 }
+	divide_variable = { ENG_Current_Vitality_Var_monthly = 100 }
+	add_to_variable = { ENG_Current_Vitality_Var = ENG_Current_Vitality_Var_monthly }
+	#联邦联结度
+	set_variable = { ENG_Federal_Nexus_Var_monthly = ENG_British_authority_Var }
+	subtract_from_variable = { ENG_Federal_Nexus_Var_monthly = ENG_Federal_Nexus_Var }
+	divide_variable = { ENG_Federal_Nexus_Var_monthly = 50 }
+	add_to_variable = { ENG_Federal_Nexus_Var = ENG_Federal_Nexus_Var_monthly }
+	#英国权威
+	set_variable = { ENG_British_authority_Var_monthly = ENG_EGY_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_AFR_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_RAJ_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_WAF_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_SAF_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_ASL_favorability_Var }
+	add_to_variable = { ENG_British_authority_Var_monthly = ENG_NZL_favorability_Var }
+	subtract_from_variable = { ENG_British_authority_Var_monthly = 370 }
+	divide_variable = { ENG_British_authority_Var_monthly = 100 }
+	add_to_variable = { ENG_British_authority_Var = ENG_British_authority_Var_monthly }
+	#
+	Compute_ENG_Lick_wounds_dynamic_modifier = yes
+}
+#计算动态修正
+Compute_ENG_Lick_wounds_dynamic_modifier = {
+	#动态修正
+	set_variable = { ENG_Lick_wounds_dynamic_modifier_Var_1 = ENG_Current_Vitality_Var }
+	subtract_from_variable = { ENG_Lick_wounds_dynamic_modifier_Var_1 = 50 }
+	divide_variable = { ENG_Lick_wounds_dynamic_modifier_Var_1 = 100 }
+	set_variable = { ENG_Lick_wounds_dynamic_modifier_Var_2 = ENG_Lick_wounds_dynamic_modifier_Var_1 }
+	set_variable = { ENG_Lick_wounds_dynamic_modifier_Var_3 = ENG_Lick_wounds_dynamic_modifier_Var_1 }
+	set_variable = { ENG_Lick_wounds_dynamic_modifier_Var_4 = ENG_Federal_Nexus_Var }
+	subtract_from_variable = { ENG_Lick_wounds_dynamic_modifier_Var_4 = 60 }
+	divide_variable = { ENG_Lick_wounds_dynamic_modifier_Var_4 = 100 }
+	clamp_temp_variable = {
+		var = ENG_Lick_wounds_dynamic_modifier_Var_1
+		max = 0.15
+		#min = 0
+	}
+	clamp_temp_variable = {
+		var = ENG_Lick_wounds_dynamic_modifier_Var_2
+		max = 0.2
+		#min = 0
+	}
+	clamp_temp_variable = {
+		var = ENG_Lick_wounds_dynamic_modifier_Var_3
+		max = 0.15
+		#min = 0
+	}
+	clamp_temp_variable = {
+		var = ENG_Lick_wounds_dynamic_modifier_Var_4
+		max = 0.25
+		#min = 0
+	}
+}
+#启动！
+Enable_ENG_Lick_wounds_effect = {
+	unlock_decision_category_tooltip = ENG_Lick_wounds_decision_categories
+	custom_effect_tooltip = Enable_ENG_Lick_wounds_effect_tt
+	set_country_flag = Enable_ENG_Lick_wounds
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = ENG_Lick_wounds_dynamic_modifier
+		}
+		Compute_ENG_Lick_wounds_dynamic_modifier = yes
+	}
+}
+
+
+#启动2c计划
+kailuo_kaipudun = {
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = wendingfeizhou
+				has_country_flag = chubanaiguoduwu
+			}
+			set_country_flag = wendingfeizhou 
+			set_country_flag = c_start
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = wendingfeizhou
+		}
+		set_country_flag = chubanaiguoduwu
+		mark_focus_tree_layout_dirty = yes
+	}
+	esle = {
+		set_country_flag = wendingfeizhou 
+	}
+}

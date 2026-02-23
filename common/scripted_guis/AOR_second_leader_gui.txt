@@ -1,0 +1,20 @@
+scripted_gui = {
+	AOR_second_leader_gui = {
+		context_type = selected_country_context
+		parent_window_token = selected_country_view_diplomacy
+		window_name = "AOR_second_leader_container"
+		
+		visible = {
+			has_country_flag = has_second_leader_flag
+		}
+	}
+	AOR_also_second_leader_gui = {
+		context_type = player_context
+		parent_window_name = countrypoliticsview
+		window_name = "AOR_second_leader_player_container"
+		
+		visible = {
+	    	has_country_flag = has_second_leader_flag
+		}
+	}
+}

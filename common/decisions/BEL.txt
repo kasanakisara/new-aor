@@ -1,0 +1,192 @@
+
+
+BEL_prepare = { 
+	Reorganization_the_Royal_Navy = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		allowed = {
+			original_tag = BEL
+		}
+
+		cost = 70
+
+		fire_only_once = yes
+		days_remove = 100
+		remove_effect = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
+			set_country_flag = BEL_navy
+		}
+
+	}
+
+	The_only_access_to_the_sea = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		allowed = {
+			original_tag = BEL
+		}
+		visible = {
+		has_country_flag = BEL_navy
+		}
+		cost = 50
+
+		fire_only_once = yes
+		days_remove = 80
+		remove_effect = {
+			295 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+				}		
+			}
+		}
+
+	}
+	
+	Radical_Naval_Studies = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		allowed = {
+			original_tag = BEL
+		}
+		visible = {
+		has_country_flag = BEL_navy
+		}
+		cost = 50
+
+		fire_only_once = yes
+		days_remove = 120
+		modifier = {
+         research_speed_factor = 0.05   
+        }  
+		remove_effect = {
+			add_tech_bonus = {
+			ahead_reduction = 1 
+			uses = 1
+			category = ss_tech
+			}
+		}
+
+	}
+	
+	
+	####
+	Why_we_fight = {
+		priority = 109
+		icon = GFX_decision_lu
+
+		allowed = {
+			original_tag = BEL
+		}
+
+		cost = 120
+
+		fire_only_once = yes
+		days_remove = 100
+		remove_effect = {
+			swap_ideas = {
+			remove_idea =  delicate_military
+			add_idea = weak_military	
+			}
+			add_war_support = 0.05
+			set_country_flag = BEL_grow_1
+		}
+	}
+	
+	Maximize_the_use_of = {
+		priority = 109
+		icon = GFX_decision_lu
+
+		allowed = {
+			original_tag = BEL
+		}
+		visible = {
+		has_country_flag = BEL_grow_1
+		}
+		cost = 120
+
+		fire_only_once = yes
+		days_remove = 100
+		remove_effect = {
+			swap_ideas = {
+			remove_idea = weak_military
+			add_idea = adequate_military			
+			}
+			army_experience = 10
+			set_country_flag = BEL_grow_2
+		}
+	}
+	
+	War_Plans_Department = {
+		priority = 109
+		icon = GFX_decision_lu
+
+		allowed = {
+			original_tag = BEL
+		}
+		visible = {
+		has_country_flag = BEL_grow_2
+		}
+		cost = 120
+
+		fire_only_once = yes
+		days_remove = 100
+		remove_effect = {
+			swap_ideas = {
+			remove_idea = adequate_military
+			add_idea = suitable_military			
+			}
+			add_command_power = 25
+			set_country_flag = BEL_grow_3
+		}
+	}
+	
+	Inclusion_of_wise_people = {
+		priority = 109
+		icon = GFX_decision_book
+
+		allowed = {
+			original_tag = BEL
+		}
+		visible = {
+		has_country_flag = BEL_grow_3
+		}
+		cost = 120
+
+		fire_only_once = yes
+		days_remove = 100
+		remove_effect = {
+			swap_ideas = {
+			remove_idea = suitable_military
+			add_idea = satisfying_military		
+			}
+			country_event = { id = BEL.2 }
+		}
+	}
+	
+	BEL_Belgian_Griffon = {
+		priority = 109
+		icon = GFX_decision_air
+
+		allowed = {
+			original_tag = BEL
+		}
+		cost = 35
+
+		fire_only_once = yes
+		days_remove = 50
+		remove_effect = {
+			air_experience = 10
+			add_manpower = 50
+		}
+	}
+}

@@ -1,0 +1,86 @@
+CAN_hounse_of_royal_effect = {
+    add_to_array = { parliament_member_array = 1 }
+	add_to_array = { parliament_member_array = 2 }
+	add_to_array = { parliament_member_array = 3 }
+	add_to_array = { parliament_member_array = 4 }
+
+    set_temp_variable = {  ##工党
+        red_total = CAN.party_popularity@REL_socialism
+    }
+    multiply_temp_variable = {
+        red_total = 170
+    }
+    round_temp_variable = pink_total
+
+
+
+    set_temp_variable = {  ##自由党
+        pink_total = CAN.party_popularity@FRE_democratic
+    }
+    multiply_temp_variable = {
+        pink_total = 170
+    }
+    round_temp_variable = red_total
+
+
+
+
+    set_temp_variable = {  ##保守党
+        blue_total = CAN.party_popularity@CON_democratic
+    }
+    multiply_temp_variable = {
+        blue_total = 170
+    }
+    round_temp_variable = blue_total
+
+    set_temp_variable = {
+        green_total = 170
+    }
+    subtract_from_temp_variable = {
+        green_total = red_total
+    }
+    subtract_from_temp_variable = {
+        green_total = pink_total
+    }
+    subtract_from_temp_variable = {
+        green_total = blue_total
+    }
+
+    
+
+	set_temp_variable = { red_end = red_total }
+
+	set_temp_variable = { blue_end = blue_total }
+	add_to_temp_variable = { blue_end = red_end }
+
+    set_temp_variable = { pink_end = pink_total }
+	add_to_temp_variable = { pink_end = blue_end }	
+
+    clear_array = CAN.CAN_hounse_of_commons_window_array
+
+    resize_array = {
+        array = CAN_hounse_of_commons_window_array
+        value = 1
+        size = red_end 
+    }
+
+    resize_array = {
+        array = CAN_hounse_of_commons_window_array
+        value = 2
+        size = blue_end
+    }
+
+    resize_array = {
+        array = CAN_hounse_of_commons_window_array
+        value = 3
+        size = pink_end
+    }
+
+    resize_array = {
+        array = CAN_hounse_of_commons_window_array
+        value = 4
+        size = 170
+    }
+
+
+}

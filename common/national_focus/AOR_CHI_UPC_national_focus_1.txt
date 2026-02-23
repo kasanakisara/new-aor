@@ -1,0 +1,732 @@
+focus_tree = {
+	id = CHI_UPC_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = UPC
+		}
+	}
+	default = no
+	focus = {
+		id = CHI_Flag_Independence_0
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 18
+		y = 0
+
+	completion_reward={
+		add_political_power = 50
+		country_event = {id=UPC.1}
+		}
+}
+	focus = {
+		id = CHI_cooperate_absolute_sincerity_1
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_Flag_Independence_0
+		}
+		mutually_exclusive = {
+			focus = CHI_jus_cause_enjoys_abundant_support_2
+		}
+		x = 9
+		y = 1
+
+	completion_reward={
+		country_event = {id=UPC.2}
+		}
+}
+	focus = {
+		id = CHI_UN_XHGZJS_3
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_cooperate_absolute_sincerity_1
+		}
+		x = 3
+		y = 2
+
+	completion_reward={
+		add_political_power = 25
+		country_event = {id=UPC.3}
+		}
+}
+	focus = {
+		id = CHI_UN_SLLXPJY_7
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_XHGZJS_3
+		}
+		x = 2
+		y = 3
+
+	completion_reward={
+		#立宪派加入
+		set_country_flag = UPC_lixian_join
+		custom_effect_tooltip = UPC_Constitutionalists_join_tt
+		country_event = {id=UPC.4}
+		recruit_character = UPC_jiangfangzhen
+		}
+}
+	focus = {
+		id = CHI_UN_XNTMHYS_8
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_XHGZJS_3
+		}
+		x = 4
+		y = 3
+
+	completion_reward={
+		#烤馒头加入
+		set_country_flag = UPC_KMT_join
+		custom_effect_tooltip = UPC_Confederate_join_tt
+		country_event = {id=UPC.5}
+		}
+}
+	focus = {
+		id = CHI_UN_CSJBDZY_9
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_SLLXPJY_7
+		}
+		prerequisite = {
+			focus = CHI_UN_XNTMHYS_8
+		}
+		x = 3
+		y = 4
+
+	completion_reward={
+		add_ideas =  UPC_Reorganized_Progressive_Party
+		}
+}
+	focus = {
+		id = CHI_UN_DZZCWZ_4
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_cooperate_absolute_sincerity_1
+		}
+		x = 7
+		y = 2
+
+	completion_reward={
+		army_experience =25
+		country_event = {id=UPC.6}
+		}
+}
+	focus = {
+		id = CHI_UN_TJYXGJG_10
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_DZZCWZ_4
+		}
+		x = 6
+		y = 3
+
+	completion_reward={
+		#粤湘桂军官加入
+		country_event = {id=UPC.7}
+		custom_effect_tooltip = UPC_7_tt
+		}
+}
+	focus = {
+		id = CHI_UN_JCSYGHP_11
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_DZZCWZ_4
+		}
+		x = 8
+		y = 3
+
+	completion_reward={
+		#北京共和派军官南渡
+		country_event = {id=UPC.8}
+		custom_effect_tooltip = UPC_8_tt
+		}
+}
+	focus = {
+		id = CHI_UN_LSGMJ_12
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_TJYXGJG_10
+		}
+		prerequisite = {
+			focus = CHI_UN_JCSYGHP_11
+		}
+		x = 7
+		y = 4
+
+	completion_reward={
+		hidden_effect = {
+			load_oob = UPC_Nandu
+		}
+		
+		custom_effect_tooltip = UPC_9_tt
+		}
+}
+	focus = {
+		id = CHI_UN_GGJBDDB_5
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_cooperate_absolute_sincerity_1
+		}
+		x = 11
+		y = 2
+
+	completion_reward={
+		custom_effect_tooltip = UPC_10_tt
+		add_stability = 0.05
+		}
+		
+}
+	focus = {
+		id = CHI_UN_JZNBKJF_13
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_GGJBDDB_5
+		}
+		x = 10
+		y = 3
+
+	completion_reward={
+		add_war_support = 0.05
+		}
+}
+	focus = {
+		id = CHI_UN_DHJDBJC_14
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_GGJBDDB_5
+
+		}
+		x = 12
+		y = 3
+
+	completion_reward={
+		#第二舰队及军官加入
+		custom_effect_tooltip = UPC_12_tt
+		}
+}
+	focus = {
+		id = CHI_UN_XQMZZYF_15
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_DHJDBJC_14
+		}
+		prerequisite = {
+			focus = CHI_UN_JZNBKJF_13
+		}
+		x = 11
+		y = 4
+
+	completion_reward={
+		add_popularity = {
+			ideology = SOC_democratic
+			popularity = 0.1
+		}
+		}
+}
+	focus = {
+		id = CHI_UN_JLHN_35
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_Flag_Independence_0
+		}
+		mutually_exclusive = {
+			focus = CHI_UN_JJHN_36
+		}
+		x = 13
+		y = 6
+
+	completion_reward={
+		country_event = {id=UPC.29}
+		}
+}
+	focus = {
+		id = CHI_UN_ZQMZXZB_6
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_cooperate_absolute_sincerity_1
+		}
+		x = 15
+		y = 2
+
+	completion_reward={
+		add_political_power = 100
+
+		}
+}
+	focus = {
+		id = CHI_UN_LHMZSYT_16
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_ZQMZXZB_6
+		}
+		x = 14
+		y = 3
+
+	completion_reward={
+		#民族实业家
+		set_country_flag = UPC_minzushiyejia_join
+		custom_effect_tooltip = UPC_14_tt
+		}
+}
+	focus = {
+		id = CHI_UN_YQNYZHQ_17
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_ZQMZXZB_6
+		}
+		x = 16
+		y = 3
+
+	completion_reward={
+		#华侨
+		custom_effect_tooltip = UPC_15_tt
+		set_country_flag = UPC_huaqiao_join
+		}
+}
+	focus = {
+		id = CHI_UN_CTWQCML_18
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_LHMZSYT_16
+		}
+		prerequisite = {
+			focus = CHI_UN_YQNYZHQ_17
+		}
+		x = 15
+		y = 4
+
+	completion_reward={
+		custom_effect_tooltip = UPC_16_tt
+		}
+}
+	focus = {
+		id = CHI_jus_cause_enjoys_abundant_support_2
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_Flag_Independence_0
+		}
+		mutually_exclusive = {
+			focus = CHI_cooperate_absolute_sincerity_1
+		}
+		x = 27
+		y = 1
+
+	completion_reward={
+		country_event = {id=UPC.17}
+		}
+}
+	focus = {
+		id = CHI_UN_FQNFDZB_19
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_jus_cause_enjoys_abundant_support_2
+		}
+		x = 21
+		y = 2
+
+	completion_reward={
+		add_command_power = 25
+		}
+}
+	focus = {
+		id = CHI_UN_LLDFSQP_20
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_FQNFDZB_19
+		}
+		x = 20
+		y = 3
+
+	completion_reward={
+		#实权将军
+		custom_effect_tooltip = UPC_19_tt
+		}
+}
+	focus = {
+		id = CHI_UN_XNGHZJP_21
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_FQNFDZB_19
+		}
+		x = 22
+		y = 3
+
+	completion_reward={
+		custom_effect_tooltip = UPC_20_tt
+		country_event = {id=UPC.20}
+		}
+}
+	focus = {
+		id = CHI_UN_KDJBDTM_22
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_LLDFSQP_20
+		}
+		prerequisite = {
+			focus = CHI_UN_XNGHZJP_21
+		}
+		x = 21
+		y = 4
+
+	completion_reward={
+		add_popularity = {
+			ideology = AUT_democratic
+			popularity = 0.1
+		}
+		}
+}
+	focus = {
+		id = CHI_UN_JJHN_36
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_Flag_Independence_0
+		}
+		mutually_exclusive = {
+			focus = CHI_UN_JLHN_35
+		}
+		x = 23
+		y = 6
+
+	completion_reward={
+		custom_effect_tooltip = UPC_31_tt
+		}
+}
+	focus = {
+		id = CHI_UN_LLHNSDD_23
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_jus_cause_enjoys_abundant_support_2
+		}
+		x = 25
+		y = 2
+
+	completion_reward={
+		add_war_support = 0.1
+		}
+}
+	focus = {
+		id = CHI_UN_FXJSXHB_24
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_LLHNSDD_23
+		}
+		x = 24
+		y = 3
+
+	completion_reward={
+		else_if = {
+			limit = {
+				KMT = {
+					Absolutism > 0.45
+				}
+			}
+			give_guarantee  = KMT
+			KMT = {
+				give_guarantee  = UPC
+			}
+		}
+	}
+}
+	focus = {
+		id = CHI_UN_LSJJSHJ_25
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_LLHNSDD_23
+		}
+		x = 26
+		y = 3
+
+	completion_reward={
+		#第二舰队
+		add_political_power = -50
+		custom_effect_tooltip = UPC_21_tt
+		}
+}
+	focus = {
+		id = CHI_UN_THZJFSJ_26
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_FXJSXHB_24
+		}
+		prerequisite = {
+			focus = CHI_UN_LSJJSHJ_25
+		}
+		x = 25
+		y = 4
+
+	completion_reward={
+		custom_effect_tooltip = UPC_22_tt
+		hidden_effect = {
+			load_oob = UPC_militiaman
+		}
+		}
+}
+	focus = {
+		id = CHI_UN_ZQFGDYZ_27
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_jus_cause_enjoys_abundant_support_2
+		}
+		x = 29
+		y = 2
+
+	completion_reward={
+		add_political_power = 200
+		}
+}
+	focus = {
+		id = CHI_UN_TTDWQTZ_28
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_ZQFGDYZ_27
+		}
+		x = 28
+		y = 3
+
+	completion_reward={
+		add_tech_bonus = {
+			bonus = 1.0 
+
+			uses = 1
+			category = artillery
+		}
+		add_tech_bonus = {
+			bonus = 1.0 
+
+			uses = 1
+			category = infantry_weapons
+		}
+		}
+}
+	focus = {
+		id = CHI_UN_JDDFJGW_29
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_ZQFGDYZ_27
+		}
+		x = 30
+		y = 3
+
+	completion_reward={
+		#法军
+		custom_effect_tooltip = UPC_23_tt
+		}
+}
+	focus = {
+		id = CHI_UN_JCHXCGH_30
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_TTDWQTZ_28
+		}
+		prerequisite = {
+			focus = CHI_UN_JDDFJGW_29
+		}
+		x = 29
+		y = 4
+
+	completion_reward={
+		#济派
+		custom_effect_tooltip = UPC_24_tt
+		custom_effect_tooltip = UPC_24_2_tt
+		hidden_effect = {
+			load_oob = UPC_Ji
+		}
+
+		}
+
+}
+	focus = {
+		id = CHI_UN_JNSTDTZ_31
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_jus_cause_enjoys_abundant_support_2
+		}
+		x = 33
+		y = 2
+
+	completion_reward={
+		#商团
+		set_country_flag = UPC_shangtuan_join
+		add_political_power = 100
+		custom_effect_tooltip = UPC_25_tt
+
+		}
+}
+	focus = {
+		id = CHI_UN_SBSTGWZ_32
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JNSTDTZ_31
+		}
+		x = 32
+		y = 3
+
+	completion_reward={
+		#商团将领
+
+		custom_effect_tooltip = UPC_26_tt
+		custom_effect_tooltip = UPC_26_2_tt
+		hidden_effect = {
+			load_oob = UPC_businessman
+		}
+		
+		}
+}
+	focus = {
+		id = CHI_UN_BZLQZYQ_33
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JNSTDTZ_31
+		}
+		x = 34
+		y = 3
+
+	completion_reward={
+		custom_effect_tooltip = UPC_27_tt
+		}
+}
+	focus = {
+		id = CHI_UN_YJYMZSW_34
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_SBSTGWZ_32
+		}
+		prerequisite = {
+			focus = CHI_UN_BZLQZYQ_33
+		}
+		x = 33
+		y = 4
+
+	completion_reward={
+		custom_effect_tooltip = UPC_28_tt
+		}
+}
+	focus = {
+		id = CHI_UN_QZXXGMD_37
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JLHN_35
+		}
+		x = 11
+		y = 7
+
+	completion_reward={
+		custom_effect_tooltip = UPC_30_tt
+		}
+}
+	focus = {
+		id = CHI_UN_DZSGBFX_38
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JLHN_35
+		}
+		x = 15
+		y = 7
+
+	completion_reward={
+		746 = {
+			add_building_construction = {
+				type = bunker
+				level =1
+				instant_build = yes 
+				province = 12350
+			}
+			add_building_construction = {
+				type = bunker
+				level =1
+				instant_build = yes 
+				province = 7159
+			}
+			add_building_construction = {
+				type = bunker
+				level =1
+				instant_build = yes 
+				province = 10377
+			}
+		}
+		
+		}
+}
+	focus = {
+		id = CHI_UN_DCGHYSA_39
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JJHN_36
+		}
+		x = 21
+		y = 7
+
+	completion_reward={
+		custom_effect_tooltip = UPC_32_tt
+		}
+}
+	focus = {
+		id = CHI_UN_YZZTFQB_40
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JJHN_36
+		}
+		x = 25
+		y = 7
+
+	completion_reward={
+		custom_effect_tooltip = UPC_33_tt
+		}
+}
+	focus = {
+		id = CHI_UN_NYGJCBJ_41
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = CHI_UN_JJHN_36
+			focus = CHI_UN_JLHN_35
+		}
+		x = 18
+		y = 7
+		completion_reward={
+			add_ideas = UPC_use_country_ready_money
+			}
+	}
+}

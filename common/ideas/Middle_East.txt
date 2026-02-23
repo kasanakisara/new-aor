@@ -1,0 +1,45 @@
+ideas = {
+	#也门
+	country = {
+		YEM_the_shiye = {
+			picture = GFX_idea_YEM_the_shiye
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = -0.1
+			drift_defence_factor = 0.3
+			war_support_factor = 0.20
+			}
+		}
+
+		YEM_the_yedelis = {
+			picture = GFX_idea_YEM_the_yedelis
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_arms_factory_factor = -0.1
+				production_speed_industrial_complex_factor = -0.15
+			}
+		}
+		#巴勒斯坦
+		PAL_jewish_immigrants = {#犹太移民
+			picture = GFX_idea_PAL_jewish_immigrants
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.15
+				WEEKLY_MANPOWER = 20
+				RESISTANCE_TICK_AUTO = 0.01
+				PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.02
+			}
+		}
+		PAL_Arab_Resistance = {#阿拉伯的反抗
+			picture = GFX_idea_PAL_Arab_Resistance
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.25
+				RESISTANCE_TICK_AUTO = 0.01
+				CONSCRIPTION_FACTOR = -0.3
+			}
+		}
+    }
+	
+}

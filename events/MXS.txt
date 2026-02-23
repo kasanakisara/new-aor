@@ -1,0 +1,357 @@
+###########################
+# German Events
+###########################
+
+add_namespace = MXS
+
+
+#墨西哥啦
+country_event = {
+	id = MXS.1
+	title = MXS.1.t
+	desc = MXS.1.d
+	picture = GFX_events_MXS_1
+
+	trigger = {
+	    date > 1921.6.1
+		tag = MXS
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		retire_country_leader = yes
+		add_ideas = MXS_broad_opposition
+		create_country_leader = {
+		name = "State of emergency"
+		desc = "POLITICS_emergency_DESC"
+		picture = "gfx/leaders/MXS/emergency.png"
+		expire = "1945.1.1"
+		ideology = miliciagov
+		}
+		news_event = { id = AOR_news.4 }
+	}	
+	option = {
+		name = MXS.1.a
+		
+    }
+}
+
+
+		
+#工团革命，老太婆来了
+country_event = {
+	id = MXS.2
+	title = MXS.2.t
+	desc = MXS.2.d
+	picture = GFX_events_MXS_2
+
+	trigger = {
+	    date > 1921.8.1
+		tag = MXS
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		retire_country_leader = yes
+		create_country_leader = {
+		name = "Carlota de México"
+		desc = "POLITICS_Carlota_DESC"
+		picture = "gfx/leaders/MXS/Charlotte.png"
+		expire = "1945.1.1"
+		ideology = despotism
+		}
+	}
+		
+	option = {
+		name = MXS.2.a
+		
+    }
+}
+
+#独立
+country_event = {
+	id = MXS.3
+	title = MXS.3.t
+	desc = MXS.3.d
+	picture = GFX_events_MXS_3
+
+	trigger = {
+	    date > 1922.7.1
+		tag = MXS
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		log = "[GetLogInfo] [From.GetName]MXS.3"
+		YUC = {
+				transfer_state = 474
+				add_state_core = 474
+				add_manpower = 10000
+				}
+				474= { set_demilitarized_zone = no }
+		PLM = {
+			
+				transfer_state = 484
+				add_state_core = 485
+				add_state_core = 476
+				add_state_core = 475
+				add_state_core = 474
+				add_state_core = 477
+				add_state_core = 277
+				add_state_core = 478
+				add_state_core = 479
+				add_state_core = 480
+				add_state_core = 481
+				add_state_core = 482
+				add_state_core = 931
+				add_state_core = 483
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 933
+				add_state_core = 934
+				add_state_core = 484
+				load_oob = PLM_Civilwar
+				add_ideas = {
+					MXS_Rebels
+				}
+		}
+		
+		SFM = {
+			transfer_state = 485
+			add_state_core = 485
+			add_state_core = 476
+			add_state_core = 475
+			add_state_core = 474
+			add_state_core = 477
+			add_state_core = 277
+			add_state_core = 478
+			add_state_core = 479
+			add_state_core = 480
+			add_state_core = 481
+			add_state_core = 482
+			add_state_core = 931
+			add_state_core = 483
+			add_state_core = 376
+			add_state_core = 377
+			add_state_core = 933
+			add_state_core = 934
+			add_state_core = 484
+			load_oob = SFM_Civilwar
+			add_ideas = {
+				MXS_Rebels
+			}
+	}
+
+	MNU = {
+		transfer_state = 377
+		transfer_state = 483
+		transfer_state = 482
+		add_state_core = 485
+		add_state_core = 476
+		add_state_core = 475
+		add_state_core = 482
+		add_state_core = 474
+		add_state_core = 477
+		add_state_core = 277
+		add_state_core = 478
+		add_state_core = 479
+		add_state_core = 480
+		add_state_core = 481
+		add_state_core = 482
+		add_state_core = 931
+		add_state_core = 483
+		add_state_core = 376
+		add_state_core = 377
+		add_state_core = 933
+		add_state_core = 934
+		add_state_core = 484
+		add_manpower = 10000
+		load_oob = MNU_Civilwar
+		create_faction = MXS_rev_alliance
+		add_to_faction = CGT
+		add_to_faction = PLM
+		add_ideas = {
+			MXS_Rebels
+		}
+		
+}
+CGT = {
+	transfer_state = 934
+	transfer_state = 933
+	
+	add_state_core = 485
+	add_state_core = 476
+	add_state_core = 475
+	add_state_core = 474
+	add_state_core = 477
+	add_state_core = 277
+	add_state_core = 478
+	add_state_core = 479
+	add_state_core = 480
+	add_state_core = 481
+	add_state_core = 482
+	add_state_core = 931
+	add_state_core = 483
+	add_state_core = 376
+	add_state_core = 377
+	add_state_core = 933
+	add_state_core = 934
+	add_state_core = 484
+	add_manpower = 10000
+	add_ideas = {
+		MXS_Rebels
+	}
+	load_oob = CGT_Civilwar
+	}
+	news_event = { id = AOR_news.5 }
+	
+}	
+		
+	option = {
+		name = MXS.3.a
+		MXS = {
+			leave_faction = yes
+			
+		}
+		FRA = {
+			end_puppet = MXS
+		}
+		SFM= {
+			declare_war_on = {
+				target = MXS
+				type = civil_war
+			}
+		}
+		MNU = {
+			declare_war_on = {
+				target = MXS
+				type = civil_war
+			}
+			set_cosmetic_tag = MNU_1
+		}
+		
+		
+    }
+}
+
+#打完了
+country_event = {
+	id = MXS.4
+	title = MXS.4.t
+	desc = MXS.4.d
+	picture = GFX_events_MXS_4
+
+	trigger = {
+	    date > 1925.1.1
+		tag = MXS
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+	
+
+	
+	option = {
+		name = MXS.4.b
+			MXS = { annex_country = {target = CGT }	}
+			MXS = { annex_country = {target = PLM }	}
+			485= { set_demilitarized_zone = no }
+			476= { set_demilitarized_zone = no }
+			475= { set_demilitarized_zone = no }
+			474= { set_demilitarized_zone = no }
+			477= { set_demilitarized_zone = no }
+			277= { set_demilitarized_zone = no }
+			478= { set_demilitarized_zone = no }
+			479= { set_demilitarized_zone = no }
+			480= { set_demilitarized_zone = no }
+			481= { set_demilitarized_zone = no }
+			482= { set_demilitarized_zone = no }
+			931= { set_demilitarized_zone = no }
+			483= { set_demilitarized_zone = no }
+			376= { set_demilitarized_zone = no }
+			377= { set_demilitarized_zone = no }
+			933= { set_demilitarized_zone = no }
+			934= { set_demilitarized_zone = no }
+			484= { set_demilitarized_zone = no }
+			remove_ideas = MXS_broad_opposition
+			country_event = { days = 700 id = MXS.5 }
+			news_event = { id = AOR_news.6 }
+			ai_chance = {
+			base = 100
+			}
+    }
+	
+	
+}
+
+#你怎么也死了
+
+country_event = {
+	id = MXS.5
+	title = MXS.5.t
+	desc = MXS.5.d
+	picture = GFX_events_MXS_5
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		retire_country_leader = yes
+		add_ideas = MXS_broad_opposition
+		create_country_leader = {
+		name = "State of emergency"
+		desc = "POLITICS_emergency_DESC"
+		picture = "gfx/leaders/MXS/emergency.png"
+		expire = "1945.1.1"
+		ideology = miliciagov
+		news_event = { id = AOR_news.9 }
+		}
+	}
+	option = {
+		name = MXS.5.a		
+		country_event = { days = 30 id = MXS.6 }
+    }
+	
+}
+
+country_event = {
+	id = MXS.6
+	title = MXS.6.t
+	desc = MXS.6.d
+	picture = GFX_events_MXS_6
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		retire_country_leader = yes
+		remove_ideas = MXS_broad_opposition
+		set_popularities = {
+				AUT_democratic = 30
+				CON_democratic = 30
+				SOC_democratic = 40
+				}
+		set_politics = {ruling_party = SOC_democratic}
+		set_cosmetic_tag = MXS_2
+		create_country_leader = {
+		name = "Álvaro Obregón"
+		desc = "POLITICS_Gil_DESC"
+		picture = "gfx/leaders/MXS/Obregón.png"
+		expire = "1945.1.1"
+		ideology = socialism
+		}
+	}
+	option = {
+		name = MXS.6.a		
+    }
+	
+}

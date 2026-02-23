@@ -1,0 +1,606 @@
+ideas = {
+	country = {
+	CAN_depression_1 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+
+			modifier = {
+				consumer_goods_factor = 0.30
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+			}
+		}
+		CAN_depression_2 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+
+			modifier = {
+				consumer_goods_factor = 0.20
+				industrial_capacity_factory = -0.20
+				industrial_capacity_dockyard = -0.20
+			}
+		}
+		CAN_depression_3 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+			}
+		}
+		CAN_depression_4 = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+
+			modifier = {
+				consumer_goods_factor = 0.10
+			}
+		}
+	CAN_conscription_crisis_AOR  = {
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = -0.05
+			war_support_factor = -0.15
+			}
+		}
+		CAN_war_money  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = -0.05
+			political_power_cost = 0.05
+			consumer_goods_factor = -0.05
+			industrial_capacity_factory = 0.1
+            production_speed_arms_factory_factor = 0.15
+			production_speed_industrial_complex_factor = -0.05
+			}
+		}
+		CAN_Unrest_in_manitoba  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = -0.05
+			monthly_population = -0.2
+			CON_democratic_drift = -0.01
+			}
+		}
+		CAN_instiutional_reform  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_cost = 0.15
+			monthly_population = 0.25
+			drift_defence_factor = 0.25
+			}
+		}
+		CAN_liberal_opposition  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = -0.05
+			political_power_cost = 0.15
+			drift_defence_factor = -0.5
+			}
+		}
+		CAN_commonwealth_economic_cooperation  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_gain = 0.05
+			global_building_slots_factor = 0.15
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_Protect_of_minorities = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.45
+	        non_core_manpower = 0.05
+			}
+		}
+		CAN_women_suffrage = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.45
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			conscription_factor = 0.05
+			}
+		}
+		CAN_increase_defense_budget = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = -0.08
+			army_org_factor = 0.05
+			industrial_capacity_factory = 0.05
+            production_speed_buildings_factor = 0.05
+			}
+		}
+		CAN_improve_local_industry = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			min_export = -0.2
+			industrial_capacity_factory = 0.08
+            production_speed_buildings_factor = 0.08
+			consumer_goods_factor = 0.05
+			}
+		}
+		CAN_Grain_trade_board = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_cost = 0.05
+			consumer_goods_factor = 0.02
+			global_building_slots_factor = 0.15
+			monthly_population = 0.8
+			}
+		}
+		CAN_Federal_grain_company = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			global_building_slots_factor = 0.15
+			monthly_population = 0.8
+			}
+		}
+		CAN_delegate_senate  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_gain = 0.5
+			resistance_target = -0.05
+			mobilization_speed = 0.25
+			drift_defence_factor = 0.25
+			}
+		}
+		CAN_encourage_fertillity  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			weekly_manpower = 100
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_socialist_prohibition  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_cost = 0.05
+			consumer_goods_factor = 0.05
+			global_building_slots_factor = 0.15
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_attract_immigrants = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			weekly_manpower = 250
+			}
+		}
+		CAN_United_canadaian_church  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.25
+			drift_defence_factor = 0.25
+			army_org_factor = 0.05
+			army_core_defence_factor = 0.05
+			}
+		}
+		CAN_laissez_faire_economy  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.25
+			global_building_slots_factor = 0.15
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_national_reconstruction  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.25
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+	        production_speed_industrial_complex_factor = 0.25
+			production_speed_infrastructure_factor = 0.25
+			}
+		}
+		CAN_Agricultural_aid  = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.3
+			global_building_slots_factor = 0.15
+			}
+		}
+		CAN_Dissolution_of_parliament = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			political_power_factor = 0.10
+			political_advisor_cost_factor = -0.1
+	theorist_cost_factor = -0.1
+	army_chief_cost_factor = -0.1
+	navy_chief_cost_factor = -0.1
+	air_chief_cost_factor = -0.1
+	high_command_cost_factor = -0.1
+			}
+		}
+		CAN_multi_culture = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.2
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			conscription_factor = 0.05
+			}
+		}
+		CAN_relief_for_women_and_children = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			consumer_goods_factor = 0.03
+			monthly_population = 0.45
+			}
+		}
+		CAN_lower_taxes = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			monthly_population = 0.25
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_worker_leader_system = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = 0.05
+			industrial_capacity_factory = 0.08
+            production_speed_buildings_factor = 0.08
+			}
+		}
+		CAN_dloe_out_unemployment_benefits  = {
+		allowed = { always = yes }
+			modifier = {
+			consumer_goods_factor = 0.02
+			monthly_population = 0.6
+			}
+		}
+		CAN_fight_monopoly  = {
+		allowed = { always = yes }
+			modifier = {
+			monthly_population = 0.25
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_production_cooperative = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = 0.05
+			industrial_capacity_factory = 0.025
+            production_speed_buildings_factor = 0.025
+			}
+		}
+		CAN_Agrarian_revolution = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = -0.05
+			global_building_slots_factor = 0.25
+			local_resources = 0.3
+			}
+		}
+		CAN_increase_voting_power = {
+		
+			allowed = { always = yes }
+			modifier = {
+			political_power_factor = -0.1
+			stability_factor = 0.05
+			}
+		}
+		CAN_fascist_militia = {
+		
+			allowed = { always = yes }
+			modifier = {
+			conscription = 0.005
+			}
+		}
+		CAN_militarism_is_resurgent = {
+		
+			allowed = { always = yes }
+			modifier = {
+			conscription = 0.02
+			war_support_factor = 0.05
+			}
+		}
+		CAN_send_out_RCMP = {
+		
+			allowed = { always = yes }
+			modifier = {
+			conscription = 0.005
+			resistance_growth = -0.15
+			resistance_target = -0.05
+			experience_gain_factor = 0.08
+			}
+		}
+		CAN_bicultural_country = {
+		
+			allowed = { 
+			always = yes
+		}
+			modifier = {
+			stability_factor = 0.05
+			conscription_factor = -0.05
+			monthly_population = 0.25
+			defensive_war_stability_factor = 0.25
+			}
+		}
+		CAN_aviation_sadety_act = {
+			allowed = {
+				always = yes
+			}
+
+			picture = generic_air_bonus
+
+			equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				cv_small_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				cv_small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				small_plane_naval_bomber_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				cv_small_plane_naval_bomber_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				medium_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				medium_plane_fighter_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				medium_plane_scout_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				large_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				large_plane_maritime_patrol_plane_airframe = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = 0.05
+				}
+			}
+			modifier = {
+			air_accidents = -0.8
+			air_mission_efficiency = 0.15
+			}
+		}
+		CAN_mass_production_weapon = {
+			
+			allowed = { always = yes }
+			modifier = {
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.25 instant = yes
+				}
+			}
+		}
+		CAN_halifax_training_camp = {
+		
+			allowed = { always = yes }
+			modifier = {
+			experience_gain_army = 0.12
+			experience_gain_navy = 0.12
+			experience_gain_air = 0.12
+			}
+			
+				}
+				CAN_Aircraft_production_company = {
+			
+			allowed = { always = yes }
+			modifier = {
+			}
+			equipment_bonus = {
+				transport_plane_equipment = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+		}
+			CAN_transport_fleet  = {
+			
+			allowed = { always = yes }
+			modifier = {
+			}
+			equipment_bonus = {
+				convoy = {
+					build_cost_ic = -0.25 instant = yes
+				}
+			}
+		}
+		CAN_victor_william_cavendish = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = 0.05
+			political_power_factor = 0.1
+			}
+		}
+		CAN_victor_william_cavendish_2 = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = -0.05
+			}
+		}
+		CAN_Julian_george_byng = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = -0.05
+			political_power_factor = -0.1
+			experience_gain_army = 0.06
+			army_core_attack_factor = 0.1
+			army_core_defence_factor = 0.1
+			}
+		}
+		CAN_prince_arthur_of_connaught = {
+		
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = 0.10
+			war_support_factor = 0.05
+			}
+		}
+		#魁北克
+		QBC_people_war = {
+		
+			allowed = { always = yes }
+			modifier = {
+			war_stability_factor = 0.05
+			}
+			targeted_modifier = { 
+				tag = CAN
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+				}
+
+			}
+			QBC_france_support = {
+		
+			allowed = { always = yes }
+			modifier = {
+		    weekly_manpower = 500
+			stability_factor = -0.05
+			}
+		}
+	}
+}

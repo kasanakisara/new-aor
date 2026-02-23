@@ -1,0 +1,154 @@
+defined_text = {
+	name = cold_war_loc_thing
+
+	### if you do changes to the file and the error log floods with "invalid idea" erors , just close and reopen the game and its fixed ###
+	### -durango ###
+	
+	text = {
+		trigger = {
+			NOT = { original_tag = ENG }
+			NOT = { original_tag = FRA }
+			has_idea = entente_member_nation
+		}
+		localization_key = nation_is_aligned_with_entente
+	}
+	
+	text = {
+		trigger = {
+			OR = {
+				original_tag = FRA
+				original_tag = ENG
+			}
+			has_idea = entente_member_nation
+		}
+		localization_key = entente_special_cold_war_text
+	
+	}
+	
+	text = {
+		trigger = {
+			NOT = { original_tag = ENG }
+			has_idea = british_commonwealth_nation 
+		}
+		localization_key = nation_is_aligned_with_ENG
+	}
+	
+	text = {
+		trigger = {
+			original_tag = ENG
+			has_idea = british_commonwealth_nation
+		}
+		localization_key = ENG_special_cold_war_text
+	
+	}
+
+	text = {
+		trigger = {
+			NOT = { original_tag = FRA }
+			has_idea = little_entente_nation 
+		}
+		localization_key = nation_is_aligned_with_FRA
+	}
+	
+	text = {
+		trigger = {
+			original_tag = FRA
+			has_idea = little_entente_nation
+		}
+		localization_key = FRA_special_cold_war_text
+	
+	}
+
+	text = {
+		trigger = {
+			NOT = { original_tag = RUS }
+			has_idea = comintern_aligned_nation 
+		}
+		localization_key = nation_is_aligned_with_comintern
+	}
+	
+	text = {
+		trigger = {
+			original_tag = RUS
+			has_idea = comintern_aligned_nation
+		}
+		localization_key = RUS_special_cold_war_text
+	
+	}
+
+	text = {
+		trigger = {
+			NOT = {
+				OR = {
+					has_idea = entente_member_nation
+					has_idea = british_commonwealth_nation
+					has_idea = little_entente_nation
+					has_idea = comintern_aligned_nation 
+				}
+			}
+		}
+		localization_key = nation_is_aligned_with_noone
+	}
+
+}
+
+defined_text = {
+	name = cold_war_delayed_loc_thing
+	text = {
+		trigger = {
+			OR = {
+				original_tag = ENG
+				original_tag = FRA
+			}
+			has_idea = entente_member_nation
+		}
+		localization_key = entente_special_cold_war_description
+	}
+	text = {
+		trigger = {
+			original_tag = ENG
+			has_idea = british_commonwealth_nation
+		}
+		localization_key = ENG_special_cold_war_description
+	}
+	text = {
+		trigger = {
+			original_tag = FRA
+			has_idea = little_entente_nation
+		}
+		localization_key = FRA_special_cold_war_description
+	}
+	text = {
+		trigger = {
+			original_tag = RUS
+			has_idea = comintern_aligned_nation
+		}
+		localization_key = RUS_special_cold_war_description
+	}
+}
+
+defined_text = {
+	name = GetAlignmentIcon
+	text = {
+		trigger = {
+			OR = {
+				tag = FRA
+				tag = ENG
+			}
+			NOT = { has_global_flag = AOR_entente_dissolved }
+		}
+		localization_key = GFX_alignment_icon_entente
+	}
+	text = { trigger = { tag = ENG } localization_key = GFX_alignment_icon_ENG }
+	text = { trigger = { tag = FRA } localization_key = GFX_alignment_icon_FRA }
+	text = { trigger = { tag = RUS } localization_key = GFX_alignment_icon_RUS }
+	#text = {
+	#	trigger = {
+	#		meta_trigger = {
+	#			text = { set_temp_variable = { country_alignment_icon = token:GFX_alignment_icon_[TAG] } }
+	#			TAG = "[FROM.GetTag]"
+	#		}
+	#	}
+	#	localization_key = "[?country_alignment_icon.GetTokenKey]"
+	#}
+}

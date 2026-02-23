@@ -1,0 +1,108 @@
+AOR_GER_finance_category = {
+#艾伯特的钱
+	priority = 10
+	icon = GFX_decision_category_generic_economy
+	allowed = {
+		tag = GER
+		always = yes
+	}
+	visible = {
+		tag = GER
+	}
+}
+Inherit_the_claim_of_the_territory_on_the_German_Empire_category = { #继承德意志帝国领土宣称
+	priority = 10
+	icon = GFX_decision_category_hol_gateway_to_europe
+	allowed = {
+		OR = {
+			tag = GER
+			
+			tag = NAU #法兰克福
+			tag = HAN #威斯特伐利亚
+			tag = BAV #巴伐利亚
+			tag = SIL #西里西亚
+			tag = KSH #波美拉尼亚
+			
+			tag = WUR #符腾堡
+			tag = SAX #萨克森
+			tag = PRE #普鲁士
+			tag = SHL #石勒苏益格-荷尔施泰因
+			tag = MEK #梅克伦堡
+		}
+	}
+	visible = {
+		OR = {
+			tag = GER
+			
+			tag = NAU #法兰克福
+			tag = HAN #威斯特伐利亚
+			tag = BAV #巴伐利亚
+			tag = SIL #西里西亚
+			tag = KSH #波美拉尼亚
+			
+			tag = WUR #符腾堡
+			tag = SAX #萨克森
+			tag = PRE #普鲁士
+			tag = SHL #石勒苏益格-荷尔施泰因
+			tag = MEK #梅克伦堡
+		}
+	}
+}
+
+AOR_Great_Northern_Strategic_Plan_category = {
+#大北方战略计划
+	priority = 80
+	icon = GFX_decision_category_usa_intervention_mandate
+	allowed = { always = no }
+	visible = {
+		tag = GER
+	}
+}
+
+AOR_Great_Army_Repoliticizate_category = {
+#军队重新政治化
+	priority = 110
+	icon = GFX_decision_category_ger_reichskommissariats
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		tag = GER
+		OR = {
+			has_completed_focus = AOR_GER_Army_10
+			is_debug = yes
+		}
+	}
+}
+
+GER_Military_Office_category = {
+#军队办公室
+	priority = 60
+	icon = GFX_decision_category_ger_reichskommissariats
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		tag = GER
+		OR = {
+			has_completed_focus = AOR_GER_Army_4
+			is_debug = yes
+		}
+	}
+}
+
+GER_National_Economic_Revitalization_category = {
+#国民经济振兴五年计划
+	priority = 60
+	icon = GFX_decision_category_ger_reichskommissariats
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		tag = GER
+		OR = {
+			has_completed_focus = AOR_GER_Industry_18
+			is_debug = yes
+		}
+	}
+}

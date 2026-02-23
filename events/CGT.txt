@@ -1,0 +1,226 @@
+#
+add_namespace = CGT
+#开大会
+country_event = {
+	id = CGT.1 
+	title = CGT.1.t
+	desc = CGT.1.d
+	picture = GFX_news_CGT_extinct
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		set_country_flag = CGT_war_on
+		name = CGT.1.a
+		log = "CGT.1"
+		#爆新闻
+		news_event = {id=AOR_news.59}
+		country_event = {id = CGT.2 days = 1}
+	}
+}
+country_event = {
+	id = CGT.2
+	title = CGT.2.t
+	desc = CGT.2.d
+	picture = GFX_news_CGT_extinct
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CGT.2.a
+		log = "CGT.2"
+		#爆新闻
+		news_event = {id=AOR_news.60}
+		PLM = {
+			dismantle_faction = Farmers_League
+			declare_war_on = {
+				target = SFM
+				type = civil_war
+			}
+		}
+		ai_chance = {
+			factor = 20
+		}
+	}
+	option = {
+		name = CGT.2.b
+		log = "CGT.2.b"
+		#爆新闻
+		news_event = {id=AOR_news.62}
+		SFM = {
+			annex_country = {
+				target = PLM
+
+				
+			}
+			country_event = {
+				id = CGT.5 days = 15
+			}
+		}
+		ai_chance = {
+			factor = 80
+		}
+	}
+
+}
+country_event = {
+ 	id = CGT.3
+ 	title = CGT.3.t
+ 	desc = CGT.3.d
+ 	picture = GFX_news_CGT_extinct
+ 	fire_only_once = yes
+ 	trigger = {
+		AND = {
+			NOT = {
+			AND = {
+				country_exists = MNU
+				country_exists = MXS
+			}
+		}
+		tag = CGT
+ 		PLM = {
+ 			NOT = {
+ 				OR = {
+ 					controls_province = 8097
+					controls_province = 12461
+ 				}
+ 			}
+ 		}
+	}
+		
+ 	}
+ 	option = {
+ 		name = CGT.3.a
+ 		#爆新闻
+ 		news_event = {id=AOR_news.61}
+ 		SFM = {
+			 annex_country = {
+				 target = PLM
+			 }
+			 country_event = {
+				 id = CGT.5 days = 15
+			 }
+		 }
+ 	}
+}
+country_event = {
+	id = CGT.4
+	title = CGT.4.t
+	desc = CGT.4.d
+	picture = GFX_news_CGT_extinct
+	fire_only_once = yes
+	trigger = {
+		AND = {
+			NOT = {
+				AND = {
+					country_exists = MNU
+					country_exists = MXS
+				}
+			}
+			tag = CGT
+			SFM = {
+				NOT = {
+					OR = {
+						controls_province = 1965
+					   controls_province = 10730
+					   controls_province = 10801
+					}
+				}
+			}
+		}
+		
+	}
+	option = {
+		name = CGT.4.a
+		#爆新闻
+		news_event = {id=AOR_news.61}
+		SFM = {
+			annex_country = {
+				target = PLM
+			}
+			country_event = {
+				id = CGT.5 days = 15
+			}
+		}
+		
+	}
+}
+country_event = {
+	id = CGT.5
+	title = CGT.5.t
+	desc = CGT.5.d
+	picture = GFX_news_CGT_extinct
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = CGT.5.a
+		#爆新闻
+		THIS = {
+			declare_war_on = {
+				target = CGT
+				type = civil_war
+			}
+		}
+		ai_chance = {
+			factor = 60
+		}
+		
+	}
+	option = {
+		name = CGT.5.b
+		#爆新闻
+
+		THIS = {
+			annex_country = {
+				target = CGT
+			}
+		}
+		ai_chance = {
+			factor = 40
+		}
+		
+	}
+}
+country_event = {
+	id = CGT.5
+	title = CGT.5.t
+	desc = CGT.5.d
+	picture = GFX_news_CGT_extinct
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = CGT_war_on
+		CGT = {
+			NOT = {
+				controls_province = 9814
+			}
+		}
+	}
+	option = {
+		name = CGT.5.a
+		#爆新闻
+		if = {
+			limit = {
+				country_exists = PLM
+			}
+			PLM = {
+				annex_country = {
+					target = CGT
+				}
+					
+				
+			}
+			
+		}
+		else = {
+			SFM = {
+				annex_country = {
+					target = CGT
+					
+					
+				}
+			}
+		}
+		
+		
+	}
+
+}

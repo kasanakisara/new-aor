@@ -1,0 +1,2608 @@
+add_namespace = USA
+
+#醒醒，美国人#
+country_event = {#西部的二次危机
+	id = USA.1
+	title = USA.1.t
+	desc = USA.1.d
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	trigger = {
+		date > 1926.3.1
+		tag = USA
+	}
+	immediate = {
+	hidden_effect = {
+		USA = {
+			remove_unit_leader = USA_john_pershing
+			remove_unit_leader = USA_john_pershing_1
+			remove_unit_leader = USA_john_pershing_a
+		}
+		386 = { set_demilitarized_zone = yes }
+		385 = { set_demilitarized_zone = yes }
+		378 = { set_demilitarized_zone = yes }
+		379 = { set_demilitarized_zone = yes }
+		380 = { set_demilitarized_zone = yes }
+		924 = { set_demilitarized_zone = yes }
+		923 = { set_demilitarized_zone = yes }
+		925 = { set_demilitarized_zone = yes }
+		381 = { set_demilitarized_zone = yes }
+		387 = { set_demilitarized_zone = yes }
+		388 = { set_demilitarized_zone = yes }
+		1053 = { set_demilitarized_zone = yes }
+		1054 = { set_demilitarized_zone = yes }
+		1058 = { set_demilitarized_zone = yes }
+		1062 = { set_demilitarized_zone = yes }
+
+	}
+}
+	mean_time_to_happen = {days = 1}
+	option = {
+		name = USA.1.a
+		hidden_effect = {
+		country_event = { days = 180  id = USA.2 }
+		news_event = {id=AOR_news.139}
+	    }
+	}
+}
+country_event = {
+	id = USA.2 #东部危机
+	title = USA.2.t
+	desc = USA.2.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	hidden_effect = {
+		396 = { set_demilitarized_zone = yes }
+		816 = { set_demilitarized_zone = yes }
+		369 = { set_demilitarized_zone = yes }
+		367 = { set_demilitarized_zone = yes }
+		370 = { set_demilitarized_zone = yes }
+	}
+}
+
+      
+	option = {
+		name = USA.2.a
+	    hidden_effect = {
+		country_event = { days =60  id = USA.3 }
+		}
+	}
+}
+country_event = {
+	id = USA.3 #南部危机
+	title = USA.3.t
+	desc = USA.3.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			363 = { set_demilitarized_zone = yes }
+			364 = { set_demilitarized_zone = yes }
+			365 = { set_demilitarized_zone = yes }
+			366 = { set_demilitarized_zone = yes }
+			371 = { set_demilitarized_zone = yes }
+			375 = { set_demilitarized_zone = yes }
+			932 = { set_demilitarized_zone = yes }
+		    }
+		}
+
+      
+	option = {
+		name = USA.3.a
+		country_event = { days =30  id = USA.4 }
+	}
+}
+country_event = {
+	id = USA.4 #第三次内战
+	title = USA.4.t
+	desc = USA.4.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	hidden_effect = {
+		USA = {
+			USA_civil_war_east =yes
+		}
+		USU = {
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+			load_oob = "USU_Civilwar"
+		}
+	    CSA = {
+			load_oob = "CSA_Civilwar_2"
+			load_oob = "CSA_Civilwar_2"
+			load_oob = "CSA_Civilwar_2"
+			load_oob = "CSA_Civilwar_2"
+			load_oob = "CSA_Civilwar_2"
+			load_oob = "CSA_Civilwar_2"
+		}
+		KOW = {
+			load_oob = "AOR_LAND_KOW"
+			load_oob = "AOR_LAND_KOW"
+			load_oob = "AOR_LAND_KOW"
+			load_oob = "AOR_LAND_KOW"
+			load_oob = "AOR_LAND_KOW"
+			load_oob = "AOR_LAND_KOW"
+		}
+	}
+}
+      
+	option = {
+		name = USA.4.a
+		news_event = {id=AOR_news.174}
+		USU = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			change_tag_from = ROOT
+		}
+		CSA = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		US2 = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		KOW = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = US2
+				type = civil_war
+			}
+		}
+    }
+	option = {
+		name = USA.4.b
+		news_event = {id=AOR_news.174}
+		USU = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+		}
+		CSA = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			change_tag_from = ROOT
+		}
+		US2 = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		KOW = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = US2
+				type = civil_war
+			}
+		}
+	}
+	option = {
+		name = USA.4.c
+		news_event = {id=AOR_news.174}
+		USU = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			change_tag_from = ROOT
+		}
+		CSA = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		US2 = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			change_tag_from = ROOT
+		}
+		KOW = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = US2
+				type = civil_war
+			}
+		}
+	}
+	option = {
+		name = USA.4.d
+		news_event = {id=AOR_news.174}
+		USU = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+		}
+		CSA = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		US2 = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		KOW = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = US2
+				type = civil_war
+			}
+			change_tag_from = ROOT
+		}
+	}
+	option = {
+		name = USA.4.e
+		news_event = {id=AOR_news.174}
+		USU = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+		}
+		CSA = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		US2 = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+		}
+		KOW = {	
+			declare_war_on = {
+				target = USA
+				type = civil_war
+		    }
+		    declare_war_on = {
+				target = CSA
+				type = civil_war
+			}
+		    declare_war_on = {
+				target = USU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = US2
+				type = civil_war
+			}
+		}
+	}
+}
+
+#################以下为科技类（除新闻之外，国家事件作废）##################
+#country_event = {
+	#USA.105 #铁
+#}
+#country_event = {
+	#USA.106 #卡内基之死
+#}
+#country_event = {
+	#USA.107 #卡内基被瓜分
+#}
+#country_event = {
+	#USA.108 #特斯拉
+#}
+#country_event = {
+	#USA.109 #电波
+#}
+#################科技类结束（除新闻之外，国家事件作废）##################
+#country_event = {
+	# USA.5 #什么调研（作废）
+#}
+#country_event = {
+	# USA.6 #什么调研（作废）
+#}
+#country_event = {
+	# USA.7 #什么调研（作废）
+#}
+#country_event = {
+	# USA.8 #什么调研（作废）
+#}
+
+country_event = {
+	id = USA.9 #西部大动乱（西部战争前夜）
+	title = USA.9.t
+	desc = USA.9.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			US2 = {
+				set_cosmetic_tag = US2_2
+				set_politics = { ruling_party = Special }
+				set_popularities = {
+					Special = 100
+				}
+				transfer_state = 378
+				transfer_state = 379
+				transfer_state = 380
+				transfer_state = 381
+				transfer_state = 382
+				transfer_state = 383
+				transfer_state = 384
+				transfer_state = 385
+				transfer_state = 386
+				transfer_state = 387
+				transfer_state = 388
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 923
+				transfer_state = 924
+				transfer_state = 925
+				transfer_state = 926
+				transfer_state = 1053
+				transfer_state = 1054
+				transfer_state = 1055
+				transfer_state = 1056
+				transfer_state = 1057
+				transfer_state = 1058
+				transfer_state = 1059
+				transfer_state = 1060
+				transfer_state = 1061
+				transfer_state = 1062
+			}
+				378 = { set_demilitarized_zone = yes }
+				379 = { set_demilitarized_zone = yes }
+				380 = { set_demilitarized_zone = yes }
+				381 = { set_demilitarized_zone = yes }
+				382 = { set_demilitarized_zone = yes }
+				383 = { set_demilitarized_zone = yes }
+				384 = { set_demilitarized_zone = yes }
+				385 = { set_demilitarized_zone = yes }
+				386 = { set_demilitarized_zone = yes }
+				387 = { set_demilitarized_zone = yes }
+				388 = { set_demilitarized_zone = yes }
+				389 = { set_demilitarized_zone = yes }
+				390 = { set_demilitarized_zone = yes }
+				923 = { set_demilitarized_zone = yes }
+				924 = { set_demilitarized_zone = yes }
+				925 = { set_demilitarized_zone = yes }
+				926 = { set_demilitarized_zone = yes }
+				1053 = { set_demilitarized_zone = yes }
+				1054 = { set_demilitarized_zone = yes }
+				1055 = { set_demilitarized_zone = yes }
+				1056 = { set_demilitarized_zone = yes }
+				1057 = { set_demilitarized_zone = yes }
+				1058 = { set_demilitarized_zone = yes }
+				1059 = { set_demilitarized_zone = yes }
+				1060 = { set_demilitarized_zone = yes }
+				1061 = { set_demilitarized_zone = yes }
+				1062 = { set_demilitarized_zone = yes }
+			}
+	    }
+
+      
+	option = {
+		name = USA.9.a
+	}
+}
+
+country_event = {
+	id = USA.10 #西部战争爆发
+	title = USA.10.t
+	desc = USA.10.d
+	picture = GFX_USA_event_10_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date > 1921.7.15
+	}
+      
+	option = {
+		name = USA.10.a
+		hidden_effect = {
+		news_event = {id=AOR_news.80}
+		USA_civil_war_west = yes
+		}
+		USA = {
+		swap_ideas={
+			 remove_idea = USA_kuangyezhidi2
+		     add_idea = USA_wuxunzhidi
+		    }
+		}
+    }
+
+	option = {
+		name = USA.10.b
+		hidden_effect = {
+		news_event = {id=AOR_news.80}
+		USA_civil_war_west = yes
+		}
+		USA = {
+		swap_ideas={
+			 remove_idea = USA_kuangyezhidi2
+		     add_idea = USA_wuxunzhidi
+		    }
+		}
+		US2 = {
+		change_tag_from = ROOT
+		}
+    }
+
+	option = {
+		name = USA.10.c
+		hidden_effect = {
+		news_event = {id=AOR_news.80}
+		USA_civil_war_west = yes
+		}
+		USA = {
+		swap_ideas={
+			 remove_idea = USA_kuangyezhidi2
+		     add_idea = USA_wuxunzhidi
+		    }
+		}
+		US1 = {
+			change_tag_from = ROOT
+			}
+    }
+
+	option = {
+		name = USA.10.e
+		hidden_effect = {
+		news_event = {id=AOR_news.80}
+		USA_civil_war_west = yes
+		}
+		USA = {
+		swap_ideas={
+			 remove_idea = USA_kuangyezhidi2
+		     add_idea = USA_wuxunzhidi
+		    }
+		}
+		US4 = {
+			change_tag_from = ROOT
+			}
+    }
+}
+
+
+country_event = {
+	id = USA.99 #南北5月冲突
+	title = USA.99.t
+	desc = USA.99.d
+	picture = GFX_USA_event_99_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1921.5.1
+	 }
+    option = { 
+        name = USA.99.a
+		375 = {
+			set_demilitarized_zone = yes
+		}
+		374 = {
+			set_demilitarized_zone = yes
+		}
+		922 = {
+			set_demilitarized_zone = yes
+		}
+		932 = {
+			set_demilitarized_zone = yes
+
+		    add_manpower = -20
+		}
+	}
+}
+
+
+country_event = {
+	id = USA.100 #南北战争！
+	title = USA.100.t
+	desc = USA.100.d
+	picture = GFX_USA_event_100_pic
+	trigger = {
+	    date > 1921.6.5
+		tag = USA
+	}
+    mean_time_to_happen = {days = 1}
+	fire_only_once = yes
+      
+	option = {
+		name = USA.100.a
+		USA_second_civil_war = yes
+	    }
+	option = {
+		name = USA.100.b
+		CSA = {
+			change_tag_from = ROOT
+		}
+		USA_second_civil_war = yes
+	 }
+}
+
+country_event = {
+	id = USA.101 #内战攻克亚特兰大
+	title = USA.101.t
+	desc = USA.101.d
+	picture = GFX_USA_event_101_pic
+	trigger = {
+		tag = CSA
+		USA = { 
+			has_war_with = CSA
+			owns_state = 365
+		}
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.101.a
+	}	
+}
+country_event = {
+	id = USA.102 #内战攻克新奥尔良
+	title = USA.102.t
+	desc = USA.102.d
+	picture = GFX_USA_event_102_pic
+	trigger = {
+		tag = CSA
+		USA = { 
+			has_war_with = CSA
+			owns_state = 371
+		}
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.102.a
+		hidden_effect = {
+			country_event = {
+				id = USA.10072
+				days = 7
+			}
+		}
+	}	
+}
+country_event = {
+	id = USA.103 #美国内战白热化（北方优势）
+	title = USA.103.t
+	desc = USA.103.d
+	picture = GFX_USA_event_103_pic
+	trigger = {
+		tag = USA
+		365 = { is_controlled_by = USA }
+		365 = { is_owned_by = CSA }
+		371 = { is_controlled_by = USA }
+		371 = { is_owned_by = CSA }
+		USA = { has_war_with = CSA }
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.103.a
+		hidden_effect = {
+			news_event = {id=AOR_news.157}	
+		}
+	}	
+}
+country_event = {
+	id = USA.104 #内战向维克斯堡进军！
+	title = USA.104.t
+	desc = USA.104.d
+	picture = GFX_USA_event_104_pic
+	trigger = {
+		tag = CSA
+		USA = { 
+			has_war_with = CSA
+			owns_state = 368
+		}
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.104.a
+	}	
+}
+
+country_event = {
+	id = USA.111 #美国内战北方胜利（北方）
+	title = USA.111.t
+	desc = USA.111.d
+	picture = GFX_USA_event_111_pic
+	trigger = {
+		date > 1921.6.19
+		tag = USA
+		USA ={
+			owns_state = 362
+			owns_state = 368
+			owns_state = 363
+			owns_state = 364
+			owns_state = 365
+			owns_state = 366
+			owns_state = 367
+			owns_state = 370
+			owns_state = 372
+			owns_state = 371
+			owns_state = 374
+			owns_state = 922
+			owns_state = 375
+		}
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.111.a
+		hidden_effect = {
+			news_event = {id=AOR_news.112}
+			country_event = {  days = 60 id = USA.112 }
+		}
+	}	
+}
+
+country_event = {
+	id = USA.112 #美国收复西部之战
+	title = USA.112.t
+	desc = USA.112.d
+	picture = GFX_USA_event_112_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		USA = {
+			USA_civil_war_west_1 = yes
+		}
+		CSA = {
+			USA_civil_war_west_1 = yes
+		}
+		name=USA.112.a
+	}
+}	
+
+country_event = {
+	id = USA.113 #哈定总统被炸飞！！！
+	title = USA.113.t
+	desc = USA.113.d
+	picture = GFX_USA_event_113_pic
+	trigger = {
+		date > 1922.6.19
+		tag = USA
+	}
+	is_triggered_only = No
+	fire_only_once = yes
+	option = {
+		name=USA.113.a
+		hidden_effect = {
+		news_event = {id=AOR_news.140}
+	}
+		create_country_leader = {#约翰·卡尔文·柯立芝
+		name = "John_Calvin_Coolidge"
+		desc = "John_Calvin_Coolidge_desc"
+		picture = "gfx/leaders/USA/John_Calvin_Coolidge.png"
+		expire = "1953.3.1"
+		ideology = USA_federalism
+		traits = {
+			
+		}
+	}
+	}	
+}
+
+
+country_event = {
+	id = USA.1000 #南北战争南方的火星兵！
+	title = USA.1000.t
+	desc = USA.1000.d
+	picture = GFX_USA_event_1000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1000.a
+		CSA = {country_event = {id = USA.1001 days = 30}}
+		CSA = {
+			add_manpower=100000
+			load_oob = "CSA_Civilwar_2"
+		}
+		log = "[GetLogInfo] [From.GetName]: event 刷兵啦！ "
+	}
+}
+country_event = {
+	id = USA.1001 #南北战争南方的火星兵！
+	title = USA.1001.t
+	desc = USA.1001.d
+	picture = GFX_USA_event_1001_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1001.a
+		CSA = {
+			add_manpower=100000
+			load_oob = "CSA_Civilwar_2"
+		}
+		CSA = {country_event = {id = USA.1002 days = 30}}
+		log = "[GetLogInfo] [From.GetName]: event 刷兵啦！ "
+	}
+}
+country_event = {
+	id = USA.1002 #南北战争南方的火星兵！
+	title = USA.1002.t
+	desc = USA.1002.d
+	picture = GFX_USA_event_1002_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1002.a
+		CSA = {
+			add_manpower=100000
+			load_oob = "CSA_Civilwar_2"
+		}
+		CSA = {country_event = {id = USA.1003 days = 30}}
+		log = "[GetLogInfo] [From.GetName]: event 刷兵啦！ "
+	}
+}
+country_event = {
+	id = USA.1003 #南北战争南方的火星兵！
+	title = USA.1003.t
+	desc = USA.1003.d
+	picture = GFX_USA_event_1004_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1003.a
+		CSA = {
+			add_manpower=30000
+			load_oob = "CSA_Civilwar_2"
+		}
+		CSA = {country_event = {id = USA.1004 days = 30}}
+		log = "[GetLogInfo] [From.GetName]: event 刷兵啦！ "
+	}
+}
+country_event = {
+	id = USA.1004 #南北战争南方的火星兵！
+	title = USA.1004.t
+	desc = USA.1004.d
+	picture = GFX_USA_event_1005_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1004.a
+		CSA = {
+			add_manpower=10000
+		}
+		log = "[GetLogInfo] [From.GetName]: event 刷兵啦！ "
+	}
+}
+
+country_event = {
+	id = USA.1005 #美国西部战争的火星兵！
+	title = USA.1005.t
+	desc = USA.1005.d
+	picture = GFX_USA_event_10000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1005.a
+		ai_chance = {
+			base = 50
+		}
+		if = {
+			limit = {
+				AND = {
+					country_exists = US1
+					country_exists = US2
+				}
+				
+			}
+
+			US2 = {
+				load_oob = "US2_Civilwar"
+				load_oob = "US2_Civilwar"
+				
+			}
+			US2 = {
+				country_event = {id = USA.1006 days = 90}
+			}
+		}
+
+	}
+	option = {
+		name=USA.1005.b
+		ai_chance = {
+			base = 50
+		}
+		if = {
+			limit = {
+				AND = {
+					country_exists = US1
+					country_exists = US2
+				}
+				
+			}
+
+			US1 = {
+				load_oob = "US1_Civilwar"
+				load_oob = "US1_Civilwar"
+				
+			}
+			US1 = {
+				country_event = {id = USA.1006 days = 90}
+			}
+		}
+
+	}
+}
+country_event = {
+	id = USA.1006 #美国西部战争的火星兵！
+	title = USA.1006.t
+	desc = USA.1006.d
+	picture = GFX_USA_event_10000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1006.a
+		ai_chance = {
+			base = 50
+		}
+		if = {
+			limit = {
+				AND = {
+					country_exists = US1
+				country_exists = US2
+				}
+				
+			}
+
+			US2 = {
+				load_oob = "US2_Civilwar"
+				load_oob = "US2_Civilwar"
+				country_event = {id = USA.1007 days = 90}
+
+			}
+		}
+
+	}
+	option = {
+		name=USA.1006.b
+		ai_chance = {
+			base = 50
+		}
+		if = {
+			limit = {
+				AND = {
+					country_exists = US1
+				country_exists = US2
+				}
+				
+			}
+
+			US1 = {
+				load_oob = "US1_Civilwar"
+				load_oob = "US1_Civilwar"
+				country_event = {id = USA.1007 days = 90}
+
+			}
+		}
+
+	}
+}
+country_event = {
+	id = USA.1007 #美国西部战争的火星兵！
+	title = USA.1007.t
+	desc = USA.1007.d
+	picture = GFX_USA_event_10000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1007.a
+		if = {
+			limit = {
+				AND = {
+					country_exists = US1
+				country_exists = US2
+				}
+				
+			}
+
+			US2 = {
+				annex_country = {
+					target = US1
+				}
+			}
+		}
+
+	}
+}
+
+country_event = {
+	id = USA.1008 #美国西部战争的火星兵！
+	title = USA.1008.t
+	desc = USA.1008.d
+	picture = GFX_USA_event_10000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1008.a
+		if = {
+			limit = {
+				AND = {
+
+				country_exists = US4
+				}
+				
+			}
+
+			US4 = {
+				load_oob = "US4_Civilwar"
+				load_oob = "US4_Civilwar"
+				load_oob = "US4_Civilwar"
+			}
+		}
+
+	}
+}
+country_event = {
+	id = USA.1009 #美国西部战争的火星兵！
+	title = USA.1009.t
+	desc = USA.1009.d
+	picture = GFX_USA_event_10000_pic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name=USA.1009.a
+		if = {
+			limit = {
+				AND = {
+					country_exists = US8
+				country_exists = US6
+				}
+				
+			}
+
+			US6 = {
+				load_oob = "US6_Civilwar"
+				load_oob = "US6_Civilwar"
+				create_faction = Against_the_Panxing_Union
+				add_to_faction = US8
+				white_peace = US8
+				
+
+			}
+			US8 = {
+				load_oob = "US8_Civilwar"
+				load_oob = "US6_Civilwar"
+				
+			}
+		}
+
+	}
+}
+
+
+
+###	1924 1924总统选举 1924 1924 ###
+country_event = {
+	id = USA.200 #自由主义总统
+	title = USA.200.t
+	desc = USA.200.d
+	picture = GFX_USA_event_200_pic
+	trigger = {
+		date > 1924.12.1
+		tag = USA
+	}
+	fire_only_once = yes
+	option = {
+		name=USA.200.a
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = FRE_democratic}
+		create_country_leader = {#詹姆斯·米德尔顿·考克斯
+			name = "James_Middleton_Cox"
+			desc = "James_Middleton_Cox_desc"
+			picture = "gfx/leaders/USA/James_Middleton_Cox.png"
+			expire = "1953.3.1"
+			ideology = USA_federalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.200.b
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = FRE_democratic}
+		create_country_leader = {#查尔斯·埃文斯·休斯
+			name = "Charles_Evans_Hughes"
+			desc = "Charles_Evans_Hughes_desc"
+			picture = "gfx/leaders/USA/Charles_Evans_Hughes.png"
+			expire = "1953.3.1"
+			ideology = USA_federalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.200.c
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = FRE_democratic}
+		create_country_leader = {#约翰·卡尔文·柯立芝
+			name = "John_Calvin_Coolidge"
+			desc = "John_Calvin_Coolidge_desc"
+			picture = "gfx/leaders/USA/John_Calvin_Coolidge.png"
+			expire = "1953.3.1"
+			ideology = USA_federalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.200.d
+		country_event = {id = USA.201 }
+	}
+}
+
+country_event = {
+	id = USA.201 #进步主义总统
+	title = USA.201.t
+	desc = USA.201.d
+	picture = GFX_USA_event_201_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.201.a
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = SOC_democratic}
+		create_country_leader = {#罗伯特.拉福莱特
+			name = "Robert_La_Follet"
+			desc = "Robert_La_Follet_desc"
+			picture = "gfx/leaders/USA/Robert_La_Follet.png"
+			expire = "1953.3.1"
+			ideology = social_liberalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.201.b
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = SOC_democratic}
+		create_country_leader = {#威廉·詹宁斯·布赖恩
+			name = "William_Jennings_Bryan"
+			desc = "William_Jennings_Bryan_desc"
+			picture = "gfx/leaders/USA/William_Jennings_Bryan.png"
+			expire = "1953.3.1"
+			ideology = social_liberalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.201.c
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = SOC_democratic}
+		create_country_leader = {#乔治·威廉·诺里斯
+			name = "George_William_Norris"
+			desc = "George_William_Norris_desc"
+			picture = "gfx/leaders/USA/George_William_Norris.png"
+			expire = "1953.3.1"
+			ideology = social_liberalism
+			traits = {
+				
+			}
+		}
+	}
+	option = {
+		name=USA.201.d
+		country_event = {id = USA.202 }
+	}
+}
+
+country_event = {
+	id = USA.202 #保守主义总统
+	title = USA.202.t
+	desc = USA.202.d
+	picture = GFX_USA_event_202_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.202.a
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = CON_democratic}
+		create_country_leader = {#阿尔弗雷德·伊曼纽尔·史密斯
+			name = "Alfred_Emmanuel_Smith"
+			desc = "Alfred_Emmanuel_Smith_desc"
+			picture = "gfx/leaders/USA/Alfred_Emmanuel_Smith.png"
+			expire = "1953.3.1"
+			ideology = conservatism
+			traits = {
+				
+			}
+		}
+	}
+}
+
+country_event = {
+	id = USA.203 #企业家总统
+	title = USA.203.t
+	desc = USA.203.d
+	picture = GFX_USA_event_203_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.203.a
+		news_event = {id = AOR_news.141}
+		set_politics = {ruling_party = FRE_democratic}
+		create_country_leader = {#欧文·扬
+			name = "Owen_Young"
+			desc = "Owen_Young_desc"
+			picture = "gfx/leaders/USA/Owen_Young.png"
+			expire = "1953.3.1"
+			ideology = market_liberalism
+			traits = {
+				
+			}
+		}
+	}
+}
+
+
+
+country_event = {
+	id = USA.10000 
+	title = USA.10000.t
+	desc = USA.10000.d
+	picture = GFX_USA_event_10000
+	fire_only_once = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10000.a
+		add_manpower=10000
+
+	}
+	
+}
+
+country_event = {
+	id = USA.10001 #必要
+	title = USA.10001.t
+	desc = USA.10001.d
+	picture = GFX_USA_event_10001_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10001.a
+	}
+}
+country_event = {
+	id = USA.10002 #坏牛仔
+	title = USA.10002.t
+	desc = USA.10002.d
+	picture = GFX_USA_event_10002_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10002.a
+		swap_ideas={
+			remove_idea = USA_kuangyezhidi
+			add_idea = USA_kuangyezhidi2
+	   }
+		382={
+			add_building_construction={
+				type=infrastructure
+				level=-1
+				instant_build=yes
+			}
+		}
+		380={
+			add_building_construction={
+				type=infrastructure
+				level=-1
+				instant_build=yes
+			}
+		}
+		custom_effect_tooltip = USA_ASanFrancisco
+		hidden_effect = {
+			news_event = {id=AOR_news.199}
+		}
+	}	
+}
+country_event = {
+	id = USA.10003 #飞翔的雄鹰（潘兴）1
+	title = USA.10003.t
+	desc = USA.10003.d
+	picture = GFX_USA_event_10003_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name=USA.10003.a
+	}	
+}
+country_event = {
+	id = USA.10004 #飞翔的雄鹰（潘兴）2
+	title = USA.10004.t
+	desc = USA.10004.d
+	picture = GFX_USA_event_10004_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name=USA.10004.a
+		hidden_effect = {
+		news_event = {id=AOR_news.200}
+		}
+	}	
+}
+country_event = {
+	id = USA.10005 #人数
+	title = USA.10005.t
+	desc = USA.10005.d
+	picture = GFX_USA_event_10005_pic
+	fire_only_once = yes
+
+		trigger = {
+			tag = USA
+	    	date = 1919.9.10
+	} 
+
+	option = {
+		name=USA.10005.a
+	}	
+}
+country_event = {
+	id = USA.10006 #南方一只仙人掌
+	title = USA.10006.t
+	desc = USA.10006.d
+	picture = GFX_USA_event_10006_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10006.a
+		hidden_effect = {
+		news_event = {id=AOR_news.197}
+		}
+	}	
+}
+country_event = {
+	id = USA.10007 #飞翔的雄鹰（潘兴）3
+    title = USA.10007.t
+    desc = USA.10007.d
+	picture = GFX_USA_event_10007_pic
+	fire_only_once = yes
+
+         trigger = {
+           tag = USA
+	       date = 1920.1.10
+    }
+    	
+    option = { 
+        name = USA.10007.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+			producer = USA	
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = -100
+			producer = USA	
+		}
+	
+	}
+}
+country_event = {
+	id = USA.10008 #他们来了
+    title = USA.10008.t
+    desc = USA.10008.d
+	picture = GFX_USA_event_10008_pic
+    is_triggered_only = yes
+	fire_only_once = yes
+    option = { 
+        name = USA.10008.a
+		add_manpower = -3
+	
+	}
+}
+country_event = {
+	id = USA.10009 #西部大动乱（西部战争前夜）(已转移至USA.9，USA.10009作废)
+	title = USA.10009.t
+    desc = USA.10009.d
+	picture = GFX_USA_event_10009_pic
+    is_triggered_only = yes
+	fire_only_once = yes
+
+    option = { 
+        name = USA.10009.a
+	}
+}
+country_event = {
+	id = USA.10010 #工作（斯特朗故事）
+    title = USA.10010.t
+    desc = USA.10010.d
+	picture = GFX_USA_event_10010_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1919.10.30
+	 }
+    option = { 
+        name = USA.10010.a
+		hidden_effect = {
+		news_event = { days = 1 id = AOR_news.217 }
+		country_event = { days = 7 id = USA.10031 }
+		}
+	}
+}
+country_event = {
+	id = USA.10011 #美国左翼文案 “写给厄尔的信”（1）（德布斯）
+    title = USA.10011.t
+    desc = USA.10011.d
+	picture = GFX_USA_event_10011_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1919.12.1
+	}
+	option = { 
+        name = USA.10011.a
+		country_event = USA.10012
+	}
+}
+country_event = {
+	id = USA.10012 #美国左翼文案 “写给厄尔的信”（2）（德布斯）
+    title = USA.10012.t
+    desc = USA.10012.d
+	picture = GFX_USA_event_10012_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+    option = { 
+        name = USA.10012.a
+	
+	}
+}
+country_event = {
+	id = USA.10013 #美国左翼文案 “写给厄尔的信”（3）（德布斯）
+    title = USA.10013.t
+    desc = USA.10013.d
+	picture = GFX_USA_event_10013_pic
+	trigger = {
+		tag = USA
+		tag = CSA
+		date = 1921.5.1
+    }
+	fire_only_once = yes
+    option = { 
+        name = USA.10013.a
+	}
+}
+country_event = {
+	id = USA.10014 #美国左翼文案 （德布斯故事） 1 
+    title = USA.10014.t
+    desc = USA.10014.d
+	picture = GFX_USA_event_10014_pic
+	trigger = {
+		tag = USA
+		tag = CSA
+    }
+	fire_only_once = yes
+    option = { 
+        name = USA.10014.a
+		country_event = { days = 2 id = USA.10015 }
+	
+	}
+}
+country_event = {
+	id = USA.10015 #美国左翼文案 拉福伊 
+    title = USA.10015.t
+    desc = USA.10015.d
+	picture = GFX_USA_event_10015_pic
+	trigger = {
+		tag = USA
+		tag = CSA
+    }
+	fire_only_once = yes
+    option = { 
+        name = USA.10015.a
+	}
+}
+country_event = {
+	id = USA.10016 #美国左翼文案 （拉福伊）（暂不用）
+    title = USA.10016.t
+    desc = USA.10016.d
+	picture = GFX_USA_event_10016_pic
+	trigger = {
+		tag = USA
+		tag = CSA
+    }
+	fire_only_once = yes
+    option = { 
+        name = USA.10016.a
+	
+	}
+}
+country_event = {
+	id = USA.10017 #美国左翼文案 厄尔 法国
+    title = USA.10017.t
+    desc = USA.10017.d
+	picture = GFX_USA_event_10017_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1922.7.1
+	 }
+    option = { 
+        name = USA.10017.a
+	
+	}
+}
+country_event = {
+	id = USA.10018 #提案(救济金)（威尔逊）
+	title = USA.10018.t
+	desc = USA.10018.d
+	picture = GFX_USA_event_10018_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10018.a
+	}	
+}
+country_event = {
+	id = USA.10019 #来源不明的文件（威尔逊）
+	title = USA.10019.t
+	desc = USA.10019.d
+	picture = GFX_USA_event_10019_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10019.a
+	}	
+}
+country_event = {
+	id = USA.10020 #来自哈德逊庄园的信（威尔逊）
+	title = USA.10020.t
+	desc = USA.10020.d
+	picture = GFX_USA_event_10020_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10020.a
+	}	
+}
+country_event = {
+	id = USA.10021 #复兴—革命（威尔逊）
+	title = USA.10021.t
+	desc = USA.10021.d
+	picture = GFX_USA_event_10021_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10021.a
+		hidden_effect = {
+		news_event = {id=AOR_news.201}
+		}
+	}	
+}
+country_event = {
+	id = USA.10022 #起诉(美国加征关税)
+	title = USA.10022.t
+	desc = USA.10022.d
+	picture = GFX_USA_event_10022_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10022.a
+		hidden_effect = {
+		news_event = {id=AOR_news.82}
+		}
+	}	
+}
+country_event = {
+	id = USA.10023 #美国众议院选举(1920)
+	title = USA.10023.t
+	desc = USA.10023.d
+	picture = GFX_USA_event_10023_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10023.a
+		hidden_effect = {
+		create_country_leader = {
+			name = "Thomas_Woodrow_Wilson"
+			desc = "Thomas_Woodrow_Wilson_desc"
+			picture = "gfx/leaders/USA/Thomas_Woodrow_Wilson.png"
+			expire = "1953.3.1"
+			ideology = USA_federalism
+			traits = {
+				
+			    }
+		    }
+		}
+	}	
+}
+country_event = {
+	id = USA.10024 #美国妇女提案(1921)
+	title = USA.10024.t
+	desc = USA.10024.d
+	picture = GFX_USA_event_10024_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10024.a
+		hidden_effect = {
+		news_event = AOR_news.189
+		}
+	}	
+}
+country_event = {
+	id = USA.10025 #美国政治活动权利的提案(1921)
+	title = USA.10025.t
+	desc = USA.10025.d
+	picture = GFX_USA_event_10025_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10025.a
+		set_country_flag = USA_Civil_War_Resolution_civilian_flag
+		set_country_flag = USA_Civil_War_Resolution_gravity_flag
+		set_country_flag = USA_Civil_War_Military_Resolution_flag
+	}	
+}
+country_event = {
+	id = USA.10026 #美国废除修正案(1921)
+	title = USA.10026.t
+	desc = USA.10026.d
+	picture = GFX_USA_event_10026_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10026.a
+	}	
+}
+country_event = {
+	id = USA.10027 #总统-白宫(1921)
+	title = USA.10027.t
+	desc = USA.10027.d
+	picture = GFX_USA_event_10027_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10027.a
+	}	
+}
+country_event = {
+	id = USA.10028 #美国军费提案(1920)
+	title = USA.10028.t
+	desc = USA.10028.d
+	picture = GFX_USA_event_10028_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10028.a
+	}	
+}
+country_event = {
+	id = USA.10029 #沃伦·盖玛利尔·哈定当选美国总统
+	title = USA.10029.t
+	desc = USA.10029.d
+	picture = GFX_USA_event_10029_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10029.a
+		hidden_effect = {
+		news_event = {id=AOR_news.81}
+		}
+	}	
+}
+country_event = {
+	id = USA.10030 #总统选举(1920)
+	title = USA.10030.t
+	desc = USA.10030.d
+	picture = GFX_USA_event_10030_pic
+	fire_only_once = yes
+
+		trigger = {
+			tag = USA
+	    	date = 1920.11.1
+	} 
+
+	option = {
+		name=USA.10030.a
+		hidden_effect = {
+        country_event = USA.10029
+	    }
+	}
+}
+country_event = {
+	id = USA.10031 #工作-加入骑士团（斯特朗故事）（劳动骑士团）
+    title = USA.10031.t
+    desc = USA.10031.d
+	picture = GFX_USA_event_10031_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+    option = { 
+        name = USA.10031.a
+	
+	}
+}
+country_event = {
+	id = USA.10032 #工作-加入骑士团2（斯特朗故事）（劳动骑士团）
+    title = USA.10032.t
+    desc = USA.10032.d
+	picture = GFX_USA_event_10032_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+    option = { 
+        name = USA.10032.a
+	
+	}
+}
+country_event = {
+	id = USA.10033 #采访比尔博
+	title = USA.10033.t
+	desc = USA.10033.d
+	picture = GFX_USA_event_10033_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10033.a
+		hidden_effect = {
+		news_event = {id=AOR_news.198}
+		}
+	}	
+}
+country_event = {
+	id = USA.10034 #飞翔的雄鹰（潘兴）（4）
+    title = USA.10034.t
+    desc = USA.10034.d
+	picture = GFX_USA_event_10034_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1920.7.1
+	 }
+    option = { 
+        name = USA.10034.a
+	
+	}
+}
+country_event = {
+	id = USA.10035 #白宫访客
+    title = USA.10035.t
+    desc = USA.10035.d
+	picture = GFX_USA_event_10035_pic
+	fire_only_once = yes
+         trigger = {
+           tag = USA
+	       date = 1921.8.1
+	 }
+    option = { 
+        name = USA.10035.a
+		set_capital = { state = 1049 }
+	}
+}
+country_event = {
+	id = USA.10036 #海关（劳动骑士团）
+	title = USA.10036.t
+	desc = USA.10036.d
+	picture = GFX_USA_event_10036_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date = 1920.10.1
+  }
+	option = {
+		name=USA.10036.a
+		add_manpower = -5
+	}	
+}
+
+country_event = {
+	id = USA.10037 #斯特朗的第1次任务（劳动骑士团）
+	title = USA.10037.t
+	desc = USA.10037.d
+	picture = GFX_USA_event_10037_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date = 1920.2.1
+  }
+	option = {
+		name=USA.10037.a
+	}	
+}
+
+country_event = {
+	id = USA.10038 #卡米拉(西部)
+	title = USA.10038.t
+	desc = USA.10038.d
+	picture = GFX_USA_event_10038_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date = 1921.3.1
+  }
+	option = {
+		name=USA.10038.a
+		add_manpower = -24
+	}	
+}
+
+country_event = {
+	id = USA.10039 #约翰(西部)
+	title = USA.10039.t
+	desc = USA.10039.d
+	picture = GFX_USA_event_10039_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date = 1921.4.1
+  }
+	option = {
+		name=USA.10039.a
+	}	
+}
+
+country_event = {
+	id = USA.10040 #雪线
+	title = USA.10040.t
+	desc = USA.10040.d
+	picture = GFX_USA_event_10040_pic
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+		date = 1920.1.1
+  }
+	option = {
+		name=USA.10040.a
+	}	
+}
+
+country_event = {
+	id = USA.10041 #哈定会见法国总理
+	title = USA.10041.t
+	desc = USA.10041.d
+	picture = GFX_USA_event_10041_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10041.a
+		hidden_effect = {
+			news_event = {id=AOR_news.202}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10042 #扬基党抨击迪克西党
+	title = USA.10042.t
+	desc = USA.10042.d
+	picture = GFX_USA_event_10042_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10042.a
+	}	
+}
+
+country_event = {
+	id = USA.10043 #劳动的合奏曲（劳动骑士团）
+	title = USA.10043.t
+	desc = USA.10043.d
+	picture = GFX_USA_event_10043_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10043.a
+	}	
+}
+
+country_event = {
+	id = USA.10044 #飞翔的雄鹰（潘兴）5
+	title = USA.10044.t
+	desc = USA.10044.d
+	picture = GFX_USA_event_10044_pic
+	fire_only_once = yes
+	trigger = {
+           tag = USA
+	       date = 1920.5.1
+	 }
+	option = {
+		name=USA.10044.a
+		country_event = { days = 3 id = USA.10045 }
+	}	
+}
+
+country_event = {
+	id = USA.10045 #飞翔的雄鹰（潘兴）5-白宫战情报告
+	title = USA.10045.t
+	desc = USA.10045.d
+	picture = GFX_USA_event_10045_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10045.a
+		custom_effect_tooltip = USA_AUSA.10045
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -200
+			producer = USA	
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10046 #美国的金鹰（摩根）
+	title = USA.10046.t
+	desc = USA.10046.d
+	picture = GFX_USA_event_10046_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10046.a
+	}	
+}
+
+country_event = {
+	id = USA.10047 #外交上的葬礼（退出协约国）
+	title = USA.10047.t
+	desc = USA.10047.d
+	picture = GFX_USA_event_10047_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10047.a
+	}	
+}
+
+country_event = {
+	id = USA.10048 #白宫紧急军事简报（第二次南北战争）
+	title = USA.10048.t
+	desc = USA.10048.d
+	picture = GFX_USA_event_10048_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10048.a
+	}	
+}
+
+country_event = {
+	id = USA.10049 #冰雪下的黄昏（威尔逊-哈定）
+	title = USA.10049.t
+	desc = USA.10049.d
+	picture = GFX_USA_event_10049_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10049.a
+		USA = {
+			create_country_leader={
+				name="Warren_Gamaliel_Harding"
+				desc="Warren_Gamaliel_Harding_desc"
+				picture="gfx/leaders/USA/Harding.png"
+				expire="1945.1.1"
+				ideology=USA_federalism
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10050 #风雪中的启程（斯特朗故事）
+	title = USA.10050.t
+	desc = USA.10050.d
+	picture = GFX_USA_event_10050_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10050.a
+		hidden_effect = {
+			country_event = {
+				days = 14
+				id = USA.10051
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10051 #档案的缘（斯特朗故事）
+	title = USA.10051.t
+	desc = USA.10051.d
+	picture = GFX_USA_event_10051_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10051.a
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = USA.10052
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10052 #自命不凡的背叛（斯特朗故事）
+	title = USA.10052.t
+	desc = USA.10052.d
+	picture = GFX_USA_event_10052_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10052.a
+	}	
+}
+
+country_event = {
+	id = USA.10053 #《标准生活1》（标准石油故事）
+	title = USA.10053.t
+	desc = USA.10053.d
+	picture = GFX_USA_event_10053_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10053.a
+		hidden_effect = {
+			country_event = {
+				id =  USA.10054
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10054 #《标准生活2》（标准石油故事）
+	title = USA.10054.t
+	desc = USA.10054.d
+	picture = GFX_USA_event_10054_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10054.a
+	}	
+}
+
+country_event = {
+	id = USA.10055 #西部的反击
+	title = USA.10055.t
+	desc = USA.10055.d
+	picture = GFX_USA_event_10055_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10055.a
+	}	
+}
+
+country_event = {
+	id = USA.10056 #西部特遣军的反击
+	title = USA.10056.t
+	desc = USA.10056.d
+	picture = GFX_USA_event_10056_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10056.a
+	}	
+}
+
+country_event = {
+	id = USA.10057 #欠债还钱
+	title = USA.10057.t
+	desc = USA.10057.d
+	picture = GFX_USA_event_10057_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10057.a
+	}	
+}
+
+country_event = {
+	id = USA.10058 #欠债还钱
+	title = USA.10058.t
+	desc = USA.10058.d
+	picture = GFX_USA_event_10058_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10058.a
+	}	
+}
+
+country_event = {
+	id = USA.10059 #1920年新年演说
+	title = USA.10059.t
+	desc = USA.10059.d
+	picture = GFX_USA_event_10059_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10059.a
+		country_event = {
+			id = USA.10060
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10060 #1920年新年演说
+	title = USA.10060.t
+	desc = USA.10060.d
+	picture = GFX_USA_event_10060_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10060.a
+	}	
+}
+
+country_event = {
+	id = USA.10061 #密西西比河的出征（劳动骑士团）
+	title = USA.10061.t
+	desc = USA.10061.d
+	picture = GFX_USA_event_10061_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10061.a
+		country_event = {
+			id = USA.10062
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10062 #密西西比河的远征（劳动骑士团）
+	title = USA.10062.t
+	desc = USA.10062.d
+	picture = GFX_USA_event_10062_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10062.a
+	}	
+}
+
+country_event = {
+	id = USA.10063 #灰雪中的面包（劳动骑士团）
+	title = USA.10063.t
+	desc = USA.10063.d
+	picture = GFX_USA_event_10063_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10063.a
+	}	
+}
+
+country_event = {
+	id = USA.10064 #密西西比河的远征2（劳动骑士团）
+	title = USA.10064.t
+	desc = USA.10064.d
+	picture = GFX_USA_event_10064_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10064.a
+		hidden_effect = {
+			country_event = {
+			    id = USA.10065
+			    days = 2
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10065 #密西西比河的远征3（劳动骑士团）
+	title = USA.10065.t
+	desc = USA.10065.d
+	picture = GFX_USA_event_10065_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10065.a
+			hidden_effect = {
+				country_event = {
+			    id = USA.10066
+			    days = 1
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10066 #密西西比河的远征4（劳动骑士团）
+	title = USA.10066.t
+	desc = USA.10066.d
+	picture = GFX_USA_event_10066_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10066.a
+		country_event = {
+			id = USA.10067
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10067 #密西西比河的远征4-1（劳动骑士团）
+	title = USA.10067.t
+	desc = USA.10067.d
+	picture = GFX_USA_event_10067_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10067.a
+		hidden_effect = {
+			country_event = {
+			    id = USA.10068
+			    days = 14
+		    }
+	    }
+	}	
+}
+
+country_event = {
+	id = USA.10068 #密西西比河的远征5（劳动骑士团）
+	title = USA.10068.t
+	desc = USA.10068.d
+	picture = GFX_USA_event_10068_pic
+	trigger = {
+		USA = {
+			has_war_with = CSA
+			controls_state = 368
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name=USA.10068.a
+		hidden_effect = {
+			country_event = {
+			    id = USA.10069
+			    days = 14
+		    }
+	    }
+	}	
+}
+
+country_event = {
+	id = USA.10069 #密西西比河的远征6（劳动骑士团）
+	title = USA.10069.t
+	desc = USA.10069.d
+	picture = GFX_USA_event_10069_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10069.a
+	}	
+}
+
+country_event = {
+	id = USA.10070 #档案和调动（斯特朗故事）
+	title = USA.10070.t
+	desc = USA.10070.d
+	picture = GFX_USA_event_10070_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10070.a
+		custom_effect_tooltip = USA_AUSA.10070
+		hidden_effect = {
+		country_event = {
+			id = USA.10071
+			days = 3
+		    }
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10071 #火车站的送别（斯特朗故事）
+	title = USA.10071.t
+	desc = USA.10071.d
+	picture = GFX_USA_event_10071_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10071.a
+	}	
+}
+
+country_event = {
+	id = USA.10072 #密西西比河的终点1（劳动骑士团）
+	title = USA.10072.t
+	desc = USA.10072.d
+	picture = GFX_USA_event_10072_pic
+	trigger = {
+		USA = {
+			date > 1922.6.18
+			controls_state = 371
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name=USA.10072.a
+		country_event = {
+			id = USA.10073
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10073 #密西西比河的终点2（劳动骑士团）
+	title = USA.10073.t
+	desc = USA.10073.d
+	picture = GFX_USA_event_10073_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10073.a
+		custom_effect_tooltip = USA_AUSA.10073
+	}	
+}
+
+country_event = {
+	id = USA.10074 #战舰与人
+	title = USA.10074.t
+	desc = USA.10074.d
+	picture = GFX_USA_event_10074_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10074.a
+		custom_effect_tooltip = USA_AUSA.10074
+	}	
+}
+
+country_event = {
+	id = USA.10075 #战舰的命运
+	title = USA.10075.t
+	desc = USA.10075.d
+	picture = GFX_USA_event_10075_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10075.a
+		hidden_effect = {
+			country_event = {
+			    id = USA.10076
+                days = 5
+			}
+		}
+	}	
+	option = {
+		name=USA.10075.b
+		hidden_effect = {
+			country_event = {
+			    id = USA.10077
+                days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	id = USA.10076 #战舰的命运（北方夺回）
+	title = USA.10076.t
+	desc = USA.10076.d
+	picture = GFX_USA_event_10076_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10076.a
+		custom_effect_tooltip = USA_AUSA.10076
+		hidden_effect ={
+		    USA = {
+                load_oob = AOR_USA_naval_1921
+		    }
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10077 #战舰的命运（南方夺回）
+	title = USA.10077.t
+	desc = USA.10077.d
+	picture = GFX_USA_event_10077_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10077.a
+		custom_effect_tooltip = USA_AUSA.10077
+		hidden_effect = {
+		    CSA = {
+			    load_oob = AOR_CSA_naval_1921
+		    }
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10078 #矿人1
+	title = USA.10078.t
+	desc = USA.10078.d
+	picture = GFX_USA_event_10078_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10078.a
+		country_event = {
+			id = USA.10079
+		}
+	}	
+}
+
+country_event = {
+	id = USA.10079 #矿人2
+	title = USA.10079.t
+	desc = USA.10079.d
+	picture = GFX_USA_event_10079_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10079.a
+	}	
+}
+
+country_event = {
+	id = USA.10080 #生而自由
+	title = USA.10080.t
+	desc = USA.10080.d
+	picture = GFX_USA_event_10080_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10080.a
+		hidden_effect = {
+		    country_event = {
+			    id = USA.10081
+			    days = 1
+		    }
+		}
+	}	
+}
+
+country_event = { 
+	id = USA.10081 #生而自由的他们
+	title = USA.10081.t
+	desc = USA.10081.d
+	picture = GFX_USA_event_10081_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		custom_effect_tooltip = USA_AUSA.10081
+		name=USA.10081.a
+	}	
+}
+
+country_event = { 
+	id = USA.10082 #来吾道夫先路
+	title = USA.10082.t
+	desc = USA.10082.d
+	picture = GFX_USA_event_10082_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10082.a
+	}	
+}
+
+country_event = { 
+	id = USA.10083 #大地的针线（迪格斯故事）
+	title = USA.10083.t
+	desc = USA.10083.d
+	picture = GFX_USA_event_10083_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10083.a
+	}	
+}
+
+country_event = { 
+	id = USA.10084 #花花公子扛大梁
+	title = USA.10084.t
+	desc = USA.10084.d
+	picture = GFX_USA_event_10084_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10084.a
+	}	
+}
+
+country_event = { 
+	id = USA.10085 #“本杰明·哈里森”号战列巡洋舰完成建造
+	title = USA.10085.t
+	desc = USA.10085.d
+	picture = GFX_USA_event_10085_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10085.a
+	}	
+	option = {
+		name=USA.10085.b
+	}
+}
+
+country_event = { 
+	id = USA.10086 #去丹佛（迪格斯故事）
+	title = USA.10086.t
+	desc = USA.10086.d
+	picture = GFX_USA_event_10086_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10086.a
+		hidden_effect = {
+			country_event = {
+				id = USA.10087
+				days = 1
+			}
+		}
+	}	
+}
+
+country_event = { 
+	id = USA.10087 #一位老人的演说（迪格斯故事）
+	title = USA.10087.t
+	desc = USA.10087.d
+	picture = GFX_USA_event_10087_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10087.a
+		hidden_effect = {
+			country_event = {
+				id = USA.10088
+				days = 2
+			}
+		}
+	}	
+}
+
+country_event = { 
+	id = USA.10088 #逃出升天（迪格斯故事）
+	title = USA.10088.t
+	desc = USA.10088.d
+	picture = GFX_USA_event_10088_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name=USA.10088.a
+	}	
+}

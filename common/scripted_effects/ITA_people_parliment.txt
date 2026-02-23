@@ -1,0 +1,48 @@
+ITA_people_parliment= {
+
+	set_variable = { ITA.CON_support_pie	= 0 }
+	set_variable = { ITA.Fre_support_pie	= 0 }
+	set_variable = { ITA.Soc_support_pie	= 0 }
+	set_variable = { ITA.Aut_support_pie	= 0 }
+	set_variable = { ITA.NFP_support_pie	= 0 }
+
+	set_variable = { ITA.CON_support_pie = ITA.CON_support  }
+	round_variable = ITA.CON_support_pie
+
+	set_variable = { ITA.Fre_support_pie = ITA.Fre_support } 
+	round_variable = ITA.Fre_support_pie
+	add_to_variable = { ITA.Fre_support_pie = ITA.CON_support_pie   }
+
+	set_variable = { ITA.Soc_support_pie = ITA.Soc_support } 
+	round_variable = ITA.Soc_support_pie
+	add_to_variable = { ITA.Soc_support_pie = ITA.Fre_support_pie  }
+	
+	set_variable = { ITA.Aut_support_pie = ITA.Aut_support } 
+	round_variable = ITA.Aut_support_pie
+	add_to_variable = { ITA.Aut_support_pie = ITA.Soc_support_pie  }
+
+	set_variable = { ITA.NFP_support_pie = ITA.NFP_support }
+	round_variable = ITA.NFP_support_pie
+	add_to_variable = { ITA.NFP_support_pie = ITA.Aut_support_pie  }
+
+}
+ITA_set_demoratic_support = {
+
+	set_variable = { ITA_democratic_support	= 0 }
+	et_variable = { ITA.CON_support_sum	= 0 }
+	set_variable = { ITA.Fre_support_sum	= 0 }
+	set_variable = { ITA.Soc_support_sum	= 0 }
+    
+	set_variable = { ITA.CON_support_sum = ITA.CON_support  }
+	round_variable = ITA.CON_support_sum
+
+	set_variable = { ITA.Fre_support_sum = ITA.Fre_support } 
+	round_variable = ITA.Fre_support_sum
+
+	set_variable = { ITA.Soc_support_sum = ITA.Soc_support } 
+	round_variable = ITA.Soc_support_sum
+	
+	add_to_variable = { ITA.Fre_support_sum = ITA.CON_support_sum  }
+	add_to_variable = { ITA.Soc_support_sum = ITA.Fre_support_sum  }
+	set_variable = { ITA_democratic_support	= ITA.Soc_support_sum }
+}

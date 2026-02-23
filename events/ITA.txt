@@ -1,0 +1,550 @@
+
+#解决混乱
+
+add_namespace = ITA
+add_namespace = generic
+
+country_event = {
+	id = generic.20
+	title = generic.20.t
+	desc = {
+		text = generic.20.d_friends
+		trigger = {
+			has_opinion = {
+				target = FROM
+				value = 150
+			}
+		}
+	}
+	desc = {
+		text = generic.20.d_enemies
+		trigger = {
+			NOT = { 
+				has_opinion = {
+					target = FROM
+					value = 150
+				}
+			}
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {
+		name = generic.20.a
+		trigger = {
+			NOT = { 
+				has_opinion = {
+					target = FROM
+					value = 150
+				}
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 2
+			}
+			modifier = {
+				is_in_faction = no
+				factor = 2
+			}
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 2
+			}
+			modifier = {
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+				factor = 0.5
+			}
+		}
+		effect_tooltip = { 
+			FROM = { puppet = ROOT }
+			if = {
+				limit = {
+					FROM = { is_in_faction = yes }
+				}
+				random_country = {
+					limit = { 
+						is_in_faction_with = FROM 
+						is_faction_leader = yes
+					}
+					add_to_faction = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = generic.21 hours = 6 } }
+		}
+	}
+
+	option = {
+		name = generic.20.b
+		trigger = {
+			has_opinion = {
+				target = FROM
+				value = 150
+			}
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {
+				threat > 20
+				factor = 2
+			}
+			modifier = {
+				is_in_faction = no
+				factor = 2
+			}
+			modifier = {
+				is_in_faction_with = FROM
+				factor = 2
+			}
+			modifier = {
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+				factor = 0.5
+			}
+		}
+		effect_tooltip = { 
+			FROM = { puppet = ROOT }
+			if = {
+				limit = {
+					FROM = { is_in_faction = yes }
+				}
+				random_country = {
+					limit = { 
+						is_in_faction_with = FROM 
+						is_faction_leader = yes
+					}
+					add_to_faction = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = generic.21 hours = 6 } }
+		}
+	}
+
+	option = {
+		name = generic.20.c
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+				factor = 2
+			}
+			modifier = {
+				threat < 20
+				factor = 2
+			}
+		}
+		effect_tooltip = { 
+			FROM = { 
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = generic.22 hours = 6 } }
+		}
+	}
+
+}
+country_event = {
+	id = generic.21
+	title = generic.21.t
+	desc = generic.21.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {
+		name = generic.21.a
+		ai_chance = {
+			factor = 1
+		}
+		ROOT = { puppet = FROM }
+		if = {
+			limit = {
+				ROOT = { is_in_faction = yes }
+			}
+			random_country = {
+				limit = { 
+					is_in_faction_with = ROOT 
+					is_faction_leader = yes
+				}
+				add_to_faction = FROM
+			}
+		}
+	}
+
+}
+
+#Denied puppet
+country_event = {
+	id = generic.22
+	title = generic.22.t
+	desc = generic.22.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = {
+		name = generic.22.a
+		ai_chance = {
+			factor = 1
+		}
+		ROOT = { 
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = ITA.0
+	title = ITA.0.t
+	desc = ITA.0.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.0.a
+		create_country_leader = {
+	name = "Gabriele d'Annunzio"
+	desc = "ITA_G_A_DESC"
+	picture = "gfx/leaders/ITA/Gabriele_d_Annunzio.png"	
+	expire = "1965.1.1"
+	ideology = nationalism
+	traits = {
+ }
+}
+		}
+option = { 
+        name = ITA.0.b
+		create_country_leader = {
+	name = "Luigi Federzoni"
+	desc = "ITA_G_A_DESC"
+	picture = "gfx/leaders/ITA/Luigi_Federzoni.png"	
+	expire = "1965.1.1"
+	ideology = nationalism
+	traits = {
+ }
+}
+		}
+    }
+	country_event = {
+	id = ITA.1
+	title = ITA.1.t
+	desc = ITA.1.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.1.a
+	create_country_leader = {
+	name = "Fillippo Tommaso Marinetti"
+	desc = "ITA_F_T__M_DESC"
+	picture = "gfx/leaders/ITA/Fillippo_Tommaso_Marinetti.png"	
+	expire = "1965.1.1"
+	ideology = nationalism
+	traits = {
+ }
+}
+		}
+		option = { 
+        name = ITA.1.b
+	create_country_leader = {
+	name = "Giovanni Papini"
+	desc = "ITA_F_T__M_DESC"
+	picture = "gfx/leaders/ITA/Giovanni_Papini.png"	
+	expire = "1965.1.1"
+	ideology = fascio
+	traits = {
+ }
+}
+		}
+	option = { 
+        name = ITA.1.c
+		trigger = {
+		has_country_flag = ITA_Robot_Marinetti
+	}
+	create_country_leader = {
+	name = "Great Mentor Marinetti"
+	desc = "ITA_R_F_T_M_DESC"
+	picture = "gfx/leaders/ITA/Great_Mentor_Marinetti.png"	
+	expire = "1965.1.1"
+	ideology = nationalism
+	traits = {
+ }
+}
+		}
+	}
+	country_event = {
+	id = ITA.2
+	title = ITA.2.t
+	desc = ITA.2.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.2.a
+		
+		}
+    }
+	country_event = {
+	id = ITA.3
+	title = ITA.3.t
+	desc = ITA.3.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.3.a
+		country_event = { id = AOR_news.19 }
+		}
+    }
+	country_event = {
+	id = ITA.4
+	title = ITA.4.t
+	desc = ITA.4.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.4.a
+		
+		}
+    }
+	country_event = {
+	id = ITA.5
+	title = ITA.5.t
+	desc = ITA.5.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.5.a
+		custom_effect_tooltip = "将解锁一系列权力斗争决议"
+		set_country_flag = ITA_Fascism_bop_decisions
+		add_ideas = ITA_fascist_party_division
+		}
+    }
+	country_event = {
+	id = ITA.6
+	title = ITA.6.t
+	desc = ITA.6.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.6.a
+		add_stability = -0.05
+		add_popularity = {
+		ideology = CON_democratic
+		popularity = -0.5
+		}
+		add_popularity = {
+		ideology = FRE_democratic
+		popularity = -0.5
+		}
+		add_popularity = {
+		ideology = SOC_democratic
+		popularity = -0.5
+		}
+		add_popularity = {
+		ideology = Marxism
+		popularity = -0.5
+		}
+		add_popularity = {
+		ideology = Fascism
+		popularity = 0.05
+		}
+		}
+    }
+	country_event = {
+	id = ITA.7
+	title = ITA.7.t
+	desc = ITA.7.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.7.a
+		add_stability = 0.05
+		add_popularity = {
+		ideology = Fascism
+		popularity = 0.05
+		}
+		}
+    }
+	country_event = {
+	id = ITA.8
+	title = ITA.8.t
+	desc = ITA.8.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.8.a
+		trigger = {
+		check_variable = { ITA.CON_support > ITA.fre_support }
+		check_variable = { ITA.CON_support > ITA.Soc_support }
+        }
+		set_politics = {
+        ruling_party = CON_democratic
+		}
+	}
+		option = { 
+        name = ITA.8.b
+		trigger = {
+		check_variable = { ITA.fre_support > ITA.CON_support }
+		check_variable = { ITA.fre_support > ITA.Soc_support }
+        }
+		set_politics = {
+        ruling_party = FRE_democratic
+		}
+	}
+		option = { 
+        name = ITA.8.c
+		trigger = {
+		check_variable = { ITA.Soc_support > ITA.fre_support }
+		check_variable = { ITA.Soc_support > ITA.CON_support }
+        }
+		set_politics = {
+        ruling_party = SOC_democratic
+		}
+	}
+		option = { 
+        name = ITA.8.e
+		trigger = {
+		NOT = {
+		OR = {
+		AND = {
+		check_variable = { ITA.CON_support > ITA.fre_support }
+		check_variable = { ITA.CON_support > ITA.Soc_support }
+		 }
+		AND = {
+		check_variable = { ITA.fre_support > ITA.CON_support }
+		check_variable = { ITA.fre_support > ITA.Soc_support }
+		 }
+		AND = {
+		check_variable = { ITA.Soc_support > ITA.fre_support }
+		check_variable = { ITA.Soc_support > ITA.CON_support }
+        }
+	}
+	}
+	}
+	country_event = { id = ITA.9 }
+	}
+}
+country_event = {
+	id = ITA.9
+	title = ITA.9.t
+	desc = ITA.9.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+        name = ITA.9.a
+		set_politics = {
+        ruling_party = CON_democratic
+		}
+		}
+		option = { 
+        name = ITA.9.b
+		set_politics = {
+        ruling_party = FRE_democratic
+		}
+		}
+		option = { 
+        name = ITA.9.c
+		set_politics = {
+        ruling_party = SOC_democratic
+		}
+		}
+    }
+
+	country_event = { #入侵利比亚（塞努西）
+		id = ITA.10
+		title = ITA.10.t
+		desc = ITA.10.d
+		picture = GFX_report_event_german_speech
+		fire_only_once = yes
+		trigger = {
+			tag = ITA
+			date > 1919.11.20
+		}
+		option = { 
+			name = ITA.10.a
+			news_event = {id=AOR_news.178}
+        ITA = {
+				declare_war_on = { 
+					target = LBA
+					type = take_state
+			    } 
+		}
+		ENG = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		EGY = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		SUD = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		FRA = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		CAR = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		TUN = {
+			declare_war_on = { 
+				target = LBA
+				type = take_state
+			} 
+		}
+		LBA = {
+			add_ideas = CHI_zuguoguangfuzhixi
+			load_oob = "AOR_LAND_LBA"
+			load_oob = "AOR_LAND_LBA"
+			load_oob = "AOR_LAND_LBA"
+		}
+		}
+	}

@@ -1,0 +1,147 @@
+#Add to scripted triggers if more levels of hyper inflation is added
+AOR_GER_inflation_clear_all = { #清除通货膨胀系统
+	clr_country_flag = {
+		AOR_GER_inflation_0
+		AOR_GER_inflation_1
+		AOR_GER_inflation_2
+		AOR_GER_inflation_3
+		AOR_GER_inflation_4
+		AOR_GER_inflation_5
+	}
+}
+
+AOR_GER_inflation_level_up = { #德国通货膨胀
+	custom_effect_tooltip = AOR_GER_inflation_level_up_tt
+	if = {
+		limit = { has_country_flag = AOR_GER_inflation_0 }
+		clr_country_flag = AOR_GER_inflation_0
+		set_country_flag = AOR_GER_inflation_1
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_1 }
+		clr_country_flag = AOR_GER_inflation_1
+		set_country_flag = AOR_GER_inflation_2
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_2 }
+		clr_country_flag = AOR_GER_inflation_2
+		set_country_flag = AOR_GER_inflation_3
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_3 }
+		clr_country_flag = AOR_GER_inflation_3
+		set_country_flag = AOR_GER_inflation_4
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_4 }
+		clr_country_flag = AOR_GER_inflation_4
+		set_country_flag = AOR_GER_inflation_5
+	}
+}
+
+AOR_GER_inflation_level_down = { #德国通货膨胀缓解
+	custom_effect_tooltip = AOR_GER_inflation_level_down_tt
+	if = {
+		limit = { has_country_flag = AOR_GER_inflation_5 }
+		clr_country_flag = AOR_GER_inflation_5
+		set_country_flag = AOR_GER_inflation_4
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_4 }
+		clr_country_flag = AOR_GER_inflation_4
+		set_country_flag = AOR_GER_inflation_3
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_3 }
+		clr_country_flag = AOR_GER_inflation_3
+		set_country_flag = AOR_GER_inflation_2
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_2 }
+		clr_country_flag = AOR_GER_inflation_2
+		set_country_flag = AOR_GER_inflation_1
+	}
+	else_if = {
+		limit = { has_country_flag = AOR_GER_inflation_1 }
+		clr_country_flag = AOR_GER_inflation_1
+		set_country_flag = AOR_GER_inflation_0
+	}
+}
+
+AOR_GER_Ideological_opposition_relieve_left = { #缓解意识形态冲突(左派）
+	if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition add_idea = AOR_GER_idea_Ideological_opposition_left_4 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_4 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_left_4 	add_idea = AOR_GER_idea_Ideological_opposition_left_3 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_3 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_left_3 add_idea = AOR_GER_idea_Ideological_opposition_left_2 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_2 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_left_2 add_idea = AOR_GER_idea_Ideological_opposition_left_1 }
+	}
+	else_if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_left_1 }
+}
+
+AOR_GER_Ideological_opposition_relieve_middle = { #缓解意识形态冲突(中间派）
+	if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition add_idea = AOR_GER_idea_Ideological_opposition_middle_4 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_4 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_middle_4 	add_idea = AOR_GER_idea_Ideological_opposition_middle_3 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_3 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_middle_3 add_idea = AOR_GER_idea_Ideological_opposition_middle_2 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_2 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_middle_2 add_idea = AOR_GER_idea_Ideological_opposition_middle_1 }
+	}
+	else_if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_middle_1 }
+}
+
+AOR_GER_Ideological_opposition_relieve_right = { #缓解意识形态冲突(右派）
+	if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition add_idea = AOR_GER_idea_Ideological_opposition_right_4 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_4 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_right_4 	add_idea = AOR_GER_idea_Ideological_opposition_right_3 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_3 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_right_3 add_idea = AOR_GER_idea_Ideological_opposition_right_2 }
+	}
+	else_if = {
+		limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_2 }
+		swap_ideas = { remove_idea = AOR_GER_idea_Ideological_opposition_right_2 add_idea = AOR_GER_idea_Ideological_opposition_right_1 }
+	}
+	else_if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_right_1 }
+}
+AOR_GER_Ideological_opposition_remove = {
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition } remove_ideas = AOR_GER_idea_Ideological_opposition }
+	
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_4 } remove_ideas = AOR_GER_idea_Ideological_opposition_left_4 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_3 } remove_ideas = AOR_GER_idea_Ideological_opposition_left_3 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_2 } remove_ideas = AOR_GER_idea_Ideological_opposition_left_2 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_left_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_left_1 }
+	
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_4 } remove_ideas = AOR_GER_idea_Ideological_opposition_middle_4 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_3 } remove_ideas = AOR_GER_idea_Ideological_opposition_middle_3 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_2 } remove_ideas = AOR_GER_idea_Ideological_opposition_middle_2 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_middle_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_middle_1 }
+	
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_4 } remove_ideas = AOR_GER_idea_Ideological_opposition_right_4 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_3 } remove_ideas = AOR_GER_idea_Ideological_opposition_right_3 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_2 } remove_ideas = AOR_GER_idea_Ideological_opposition_right_2 }
+	if = { limit = { has_idea = AOR_GER_idea_Ideological_opposition_right_1 } remove_ideas = AOR_GER_idea_Ideological_opposition_right_1 }
+}

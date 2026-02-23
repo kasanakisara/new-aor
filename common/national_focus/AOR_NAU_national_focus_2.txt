@@ -1,0 +1,471 @@
+focus_tree = {
+	id = NAU_FocusTree_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			tag = NAU 
+		}
+	}
+	default = no
+
+	shared_focus = NAU_ranshaodeshizhengting
+	shared_focus = NAU_jingjixian
+	
+
+	continuous_focus_position = { x = 50 y = 1500 }
+
+
+    #军事线
+	focus = { #改革军事
+		id = NAU_gaigejunshi
+		icon = GFX_NAU_gaigejunshi
+
+		x = 45
+		y = 0
+
+		cost = 10
+
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #新方法
+		id = NAU_xinfangfa
+		icon = GFX_NAU_xinfangfa
+
+		relative_position_id = NAU_gaigejunshi
+		x = -6
+		y = 1
+
+		mutually_exclusive = {
+			focus = NAU_laochuantong
+		}
+
+		prerequisite = {
+			focus = NAU_gaigejunshi
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #老传统
+		id = NAU_laochuantong
+		icon = GFX_NAU_laochuantong
+
+		relative_position_id = NAU_gaigejunshi
+		x = 6
+		y = 1
+
+		mutually_exclusive = {
+			focus = NAU_xinfangfa
+		}
+
+		prerequisite = {
+			focus = NAU_gaigejunshi
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #战争巨兽
+		id = NAU_zhanzhengjushou
+		icon = GFX_NAU_zhanzhengjushou
+
+		relative_position_id = NAU_gaigejunshi
+		x = -8
+		y = 2
+
+		prerequisite = {
+			focus = NAU_xinfangfa
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #职业军士
+		id = NAU_zhiyejunshi
+		icon = GFX_NAU_zhanzhengjushou
+
+		relative_position_id = NAU_gaigejunshi
+		x = -4
+		y = 2
+
+		prerequisite = {
+			focus = NAU_xinfangfa
+		}
+
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #募兵
+		id = NAU_mubing
+		icon = GFX_NAU_zhanzhengjushou
+
+		relative_position_id = NAU_gaigejunshi
+		x = 4
+		y = 2
+
+		prerequisite = {
+			focus = NAU_laochuantong
+		}
+
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #军种协调
+		id = NAU_junzhongxietiao
+		icon = GFX_NAU_zhanzhengjushou
+
+		relative_position_id = NAU_gaigejunshi
+		x = 8
+		y = 2
+
+		prerequisite = {
+			focus = NAU_laochuantong
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #特殊后勤部
+		id = NAU_teshuhouqinbu
+		icon = GFX_NAU_teshuhouqinbu
+
+		relative_position_id = NAU_gaigejunshi
+		x = -9
+		y = 3
+
+		prerequisite = {
+			focus = NAU_zhanzhengjushou
+		}
+
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #协调火炮
+		id = NAU_xietiaoguopao
+		icon = GFX_NAU_xietiaoguopao
+
+		relative_position_id = NAU_gaigejunshi
+		x = -6
+		y = 3
+
+		prerequisite = {
+			focus = NAU_zhanzhengjushou
+		}
+		prerequisite = {
+			focus = NAU_zhiyejunshi
+		}
+
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #暴风突击队的遗产
+		id = NAU_baofengtujiduideyichan
+		icon = GFX_NAU_baofengtujiduideyichan
+
+		relative_position_id = NAU_gaigejunshi
+		x = -3
+		y = 3
+
+		prerequisite = {
+			focus = NAU_zhiyejunshi
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #步兵坦克
+		id = NAU_bubingtanke
+		icon = GFX_NAU_bubingtanke
+
+		relative_position_id = NAU_gaigejunshi
+		x = 9
+		y = 3
+
+		prerequisite = {
+			focus = NAU_junzhongxietiao
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #新式武器
+		id = NAU_xinshiwuqi
+		icon = GFX_NAU_xinshiwuqi
+
+		relative_position_id = NAU_gaigejunshi
+		x = 6
+		y = 3
+
+		prerequisite = {
+			focus = NAU_mubing
+		}
+		prerequisite = {
+			focus = NAU_junzhongxietiao
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #一步不退
+		id = NAU_yibubutui
+		icon = GFX_NAU_yibubutui
+
+		relative_position_id = NAU_gaigejunshi
+		x = 3
+		y = 3
+
+		prerequisite = {
+			focus = NAU_mubing
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #装甲改良
+		id = NAU_zhuangjiagailiang
+		icon = GFX_NAU_zhuangjiagailiang
+
+		relative_position_id = NAU_gaigejunshi
+		x = -7
+		y = 4
+
+		prerequisite = {
+			focus = NAU_teshuhouqinbu
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #下放指挥
+		id = NAU_xiafangzhihui
+		icon = GFX_NAU_xiafangzhihui
+
+		relative_position_id = NAU_gaigejunshi
+		x = -5
+		y = 4
+
+		prerequisite = {
+			focus = NAU_baofengtujiduideyichan
+		}
+
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #改良炮兵
+		id = NAU_gailiangpaobing
+		icon = GFX_NAU_gailiangpaobing
+
+		relative_position_id = NAU_gaigejunshi
+		x = 5
+		y = 4
+
+		prerequisite = {
+			focus = NAU_yibubutui
+		}
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = { #空中炮艇
+		id = NAU_kongzhongpaoting
+		icon = GFX_NAU_zhuangjiagailiang
+
+		relative_position_id = NAU_gaigejunshi
+		x = 7
+		y = 4
+
+		prerequisite = {
+			focus = NAU_bubingtanke
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #突进！
+		id = NAU_tujin
+		icon = GFX_NAU_tujin
+
+		relative_position_id = NAU_gaigejunshi
+		x = -10
+		y = 5
+
+		prerequisite = {
+			focus = NAU_zhuangjiagailiang
+		}
+
+
+		completion_reward = {
+
+		}
+
+
+	}
+
+	focus = { #极端环境适应
+		id = NAU_jiduanhuanjingshiying
+		icon = GFX_NAU_jiduanhuanjingshiying
+
+		relative_position_id = NAU_gaigejunshi
+		x = -2
+		y = 5
+
+		prerequisite = {
+			focus = NAU_xiafangzhihui
+		}
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #高速支援
+		id = NAU_gaosuzhiyuan
+		icon = GFX_NAU_gaosuzhiyuan
+
+		relative_position_id = NAU_gaigejunshi
+		x = 10
+		y = 5
+
+		prerequisite = {
+			focus = NAU_kongzhongpaoting
+		}
+
+
+		completion_reward = {
+
+		}
+
+
+	}
+
+	focus = { #绵延进攻
+		id = NAU_mianyanjingong
+		icon = GFX_NAU_mianyanjingong
+
+		relative_position_id = NAU_gaigejunshi
+		x = 2
+		y = 5
+
+		prerequisite = {
+			focus = NAU_gailiangpaobing
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #小而精的军队
+		id = NAU_xiaoerjingdebudui
+		icon = GFX_NAU_xiaoerjingdebudui
+
+		relative_position_id = NAU_gaigejunshi
+		x = -6
+		y = 6
+
+		prerequisite = {
+			focus = NAU_jiduanhuanjingshiying
+		}
+		prerequisite = {
+			focus = NAU_tujin
+		}
+		prerequisite = {
+			focus = NAU_xietiaoguopao
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+
+	focus = { #不会重演
+		id = NAU_buhuichongyan
+		icon = GFX_NAU_buhuichongyan
+
+		relative_position_id = NAU_gaigejunshi
+		x = 6
+		y = 6
+
+		prerequisite = {
+			focus = NAU_mianyanjingong
+		}
+		prerequisite = {
+			focus = NAU_xinshiwuqi
+		}
+		prerequisite = {
+			focus = NAU_gaosuzhiyuan
+		}
+
+
+		completion_reward = {
+
+		}
+
+	}
+	
+}

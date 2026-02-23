@@ -1,0 +1,43 @@
+add_namespace = PAN
+add_namespace = news_PAN
+
+#开局介绍
+country_event = {
+	id = PAN.1
+	title = PAN.1.t
+	desc = PAN.1.d
+	picture = GFX_PAN_event
+	trigger = {
+	    date > 1919.8.1
+		tag = PAN
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = PAN.1.a
+	}
+}
+
+#被法吞并
+
+
+country_event = {
+	id = PAN.2
+	title = PAN.2.t
+	desc = PAN.2.d
+	picture = GFX_PAN_event
+	trigger = {
+	    date > 1923.10.1
+	}
+	hidden = yes
+    mean_time_to_happen = {days = 1}
+	set_variable = { global.se_AOR_event_picture_change = 7 }
+	fire_only_once = yes
+	option = {
+		name = PAN.1.a
+	}
+}
+
+
+

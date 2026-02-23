@@ -1,0 +1,789 @@
+add_namespace = JAP
+
+country_event = {
+	id = JAP.1   #朝鲜关东军暴乱
+	title = JAP.1.t
+	desc = JAP.1.d
+	picture = GFX_JAP_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1920.12.25
+		}
+	option = {
+		name = JAP.1.a
+		news_event = {id = AOR_news.142}
+		KOR = {
+			525={set_demilitarized_zone=yes}
+			852={set_demilitarized_zone=yes}
+		}
+		JAP = {
+			leave_faction = yes
+	    }
+	}
+}
+
+country_event = {
+	id = JAP.2   #大正天皇驾崩（昭和即位）
+	title = JAP.2.t
+	desc = JAP.2.d
+	picture = GFX_JAP_event_2
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1926.12.25
+		}
+	option = {
+		name = JAP.2.a
+		news_event = {id=AOR_news.134}
+		JAP = {
+		set_politics = {ruling_party = Absolutism }
+		add_popularity = { ideology = Absolutism popularity = 0.1 }
+		add_popularity = { ideology = CON_democratic  popularity = -0.1 }
+		add_popularity = { ideology = AUT_democratic  popularity = 0.1 }
+		add_popularity = { ideology = FRE_democratic popularity = -0.1 }
+		add_popularity = { ideology = Fascism popularity = 0.1 }
+		create_country_leader = {
+			name = "Emperor_Hirohito"
+			desc = "Emperor_Hirohito_desc"
+			picture = "gfx/leaders/JAP/Emperor_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = monarchism
+			traits = {
+			    }
+		    }
+	    }
+	}
+}
+
+country_event = {
+	id = JAP.3   #中日战争
+	title = JAP.3.t
+	desc = JAP.3.d
+	picture = GFX_JAP_event_3
+	is_triggered_only = yes	
+	fire_only_once = yes
+
+	option = {
+		name = JAP.3.a
+		news_event = {id=AOR_news.135}
+		JAP = {
+				load_oob = "AOR_LAND_M_JAP"
+				load_oob = "AOR_LAND_M_JAP"
+				load_oob = "AOR_LAND_M_JAP"
+			add_popularity = { ideology = Fascism popularity = 0.1 }
+			declare_war_on = { 
+				target = KMT
+				type = annex_everything
+			} 
+			declare_war_on = { 
+				target = UPC
+				type = annex_everything
+			} 
+		}
+		KMT = {
+			swap_ideas={
+				remove_idea = CHI_gemingtongyizhixi
+				add_idea = CHI_zuguoguangfuzhixi
+			}
+		}
+		UPC = {
+			swap_ideas={
+				remove_idea = CHI_gemingtongyizhixi
+				add_idea = CHI_zuguoguangfuzhixi
+			}
+		}
+	}
+}
+
+country_event = {
+	id = JAP.4   #中日战争（KMT-日方战败）（大胜）
+	title = JAP.4.t
+	desc = JAP.4.d
+	picture = GFX_JAP_event_4
+	trigger = {
+		date > 1924.2.10
+		tag = KMT
+		852 = { is_owned_by = KMT }
+		KMT = { has_war_with = JAP }
+	}
+	fire_only_once = yes
+	option = {
+		name = JAP.4.a
+		news_event = {id=AOR_news.137}
+		KMT = {
+			transfer_state = 745
+			transfer_state = 524
+			transfer_state = 743
+
+			add_state_core = 745
+			add_state_core = 524
+			add_state_core = 743
+
+			annex_country = { 
+				target = KOR
+				transfer_troops = no 
+			}
+		}
+		JAP = {
+			white_peace = KMT
+			add_popularity = { ideology = Absolutism popularity = -0.1 }
+			add_popularity = { ideology = AUT_democratic  popularity = -0.1 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.2 }
+			add_popularity = { ideology = Fascism popularity = -0.2 }
+		}
+		RUS = {
+			annex_country = { 
+				target = PRI
+				transfer_troops = no 
+			}
+		}
+		KOR = {
+			set_politics = {ruling_party = FRE_democratic }
+			set_cosmetic_tag = KOR_1
+			annex_country = { 
+				target = PYO 
+				transfer_troops = no 
+			}
+			transfer_state = 527
+			transfer_state = 818
+			transfer_state = 817
+			transfer_state = 820
+			transfer_state = 525
+			transfer_state = 819
+			transfer_state = 852
+			transfer_state = 619
+
+			create_faction = kmt_mingzhu_Union
+			add_to_faction = KMT
+			white_peace = KMT
+		}
+	}
+}
+
+country_event = {
+	id = JAP.5   #中日战争（KMT-日方战败）（小胜）
+	title = JAP.5.t
+	desc = JAP.5.d
+	picture = GFX_JAP_event_5
+	trigger = {
+		date > 1924.2.10
+		tag = JAP
+		#743 = { is_owned_by = KMT }
+		#745 = { is_owned_by = KMT }
+		408 = { is_controlled_by = KMT }
+		743 = { is_controlled_by = KMT }
+		745 = { is_controlled_by = KMT }
+		KMT = { has_war_with = JAP }
+	}
+	immediate = {
+		hidden_effect = {
+			PYO = {
+			declare_war_on = { 
+				target = JAP
+				type = annex_everything
+			} 
+		    add_ideas = CHI_zuguoguangfuzhixi
+			remove_ideas = Coach_Corps
+			create_faction = kmt_mingzhu_Union
+			add_to_faction = KMT
+			white_peace = KMT
+		}
+	}
+}
+	fire_only_once = yes
+	option = {
+		name = JAP.5.a
+		news_event = {id=AOR_news.175}
+		country_event = { days = 360 id = JAP.6 }
+	}
+}
+
+country_event = {
+	id = JAP.6   #中日战争（KMT-日方战败）（小胜）（结束）
+	title = JAP.6.t
+	desc = JAP.6.d
+	picture = GFX_JAP_event_6
+	is_triggered_only = yes	
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			PYO = {
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 525	
+						}
+					}
+				PYO = {
+					transfer_state = 525
+					add_state_core = 525
+				}
+			}
+			else_if = {
+				limit = {
+					KMT = {
+						owns_state = 852	
+					}
+				}
+			PYO = {
+				transfer_state = 525
+				add_state_core = 525
+			}
+		}
+				else_if = {
+					limit = { 
+						PYO = {
+							owns_state = 852	
+						}
+				}
+				PYO = {
+					transfer_state = 852
+					add_state_core = 852
+				}
+			}
+			else_if = {
+				limit = { 
+					KMT = {
+						owns_state = 852	
+					}
+			}
+			PYO = {
+				transfer_state = 852
+				add_state_core = 852
+			}
+		}
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 819	
+						}
+					}
+				PYO = {
+					transfer_state = 819
+					add_state_core = 819
+				}
+			}
+			else_if = {
+				limit = {
+					KMT = {
+						owns_state = 819	
+					}
+				}
+			PYO = {
+				transfer_state = 819
+				add_state_core = 819
+			}
+		}
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 619	
+						}
+				}
+				PYO = {
+					transfer_state = 619
+					add_state_core = 619
+				}
+			}
+			else_if = {
+				limit = {
+					KMT = {
+						owns_state = 619	
+					}
+			}
+			PYO = {
+				transfer_state = 619
+				add_state_core = 619
+			}
+		}
+	}
+		}
+	}
+	option = {
+		name = JAP.6.a
+		news_event = {id=AOR_news.146}
+		KMT = {
+			transfer_state = 745
+			transfer_state = 743
+
+			add_state_core = 745
+			add_state_core = 743
+		}
+		PYO = {
+			set_cosmetic_tag = PYO_FRE_democratic_2
+			transfer_state = 817
+			transfer_state = 818
+
+			add_state_core = 817
+			add_state_core = 818
+			set_capital = { state = 818 }
+		}
+		JAP = {
+			white_peace = KMT
+			add_popularity = { ideology = Absolutism popularity = -0.05 }
+			add_popularity = { ideology = AUT_democratic  popularity = -0.05 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.10 }
+			add_popularity = { ideology = Fascism popularity = -0.1 }
+		}
+		RUS = {
+			transfer_state = 560
+		}
+		PRI = {
+			give_military_access = KMT
+		}
+	}
+}
+
+country_event = {
+	id = JAP.7   #中日战争（UPC-日方战败）（大胜）
+	title = JAP.7.t
+	desc = JAP.7.d
+	picture = GFX_JAP_event_7
+	trigger = {
+		date > 1924.2.10
+		tag = JAP
+		UPC = {
+			has_war_with = JAP
+			owns_state = 852
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = JAP.7.a
+		news_event = {id=AOR_news.138}
+	UPC = {
+		    transfer_state = 745
+		    transfer_state = 524
+		    transfer_state = 743
+
+		    add_state_core = 745
+		    add_state_core = 524
+		    add_state_core = 743
+
+			annex_country = { 
+				target = KOR
+				transfer_troops = no 
+			}
+		}
+		JAP = {
+			white_peace = UPC
+			add_popularity = { ideology = Absolutism popularity = -0.1 }
+			add_popularity = { ideology = AUT_democratic  popularity = -0.1 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.2 }
+			add_popularity = { ideology = Fascism popularity = -0.2 }
+		}
+		RUS = {
+			annex_country = { 
+				target = PRI
+				transfer_troops = no 
+			}
+		}
+		KOR = {
+			set_politics = {ruling_party = FRE_democratic }
+			set_cosmetic_tag = KOR_1
+			annex_country = { 
+				target = PYO 
+				transfer_troops = no 
+			}
+			transfer_state = 527
+			transfer_state = 818
+			transfer_state = 817
+			transfer_state = 820
+			transfer_state = 525
+			transfer_state = 819
+			transfer_state = 852
+			transfer_state = 619
+
+			create_faction = upc_mingzhu_Union
+			add_to_faction = UPC
+			white_peace = UPC
+		}
+	}
+}
+
+country_event = {
+	id = JAP.8   #中日战争（UPC-日方战败）（小胜）
+	title = JAP.8.t
+	desc = JAP.8.d
+	picture = GFX_JAP_event_8
+	trigger = {
+		date > 1924.2.10
+		tag = JAP
+		408 = { is_controlled_by = UPC }
+		743 = { is_controlled_by = UPC }
+		745 = { is_controlled_by = UPC }
+		UPC = { has_war_with = JAP }
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			PYO = {
+			declare_war_on = { 
+				target = JAP
+				type = annex_everything
+			} 
+			add_ideas = CHI_zuguoguangfuzhixi
+			remove_ideas = Coach_Corps
+			create_faction = upc_mingzhu_Union
+			add_to_faction = UPC
+			white_peace = UPC
+		}
+	}
+}
+	option = {
+		name = JAP.8.a
+		news_event = {id=AOR_news.175}
+		country_event = { days = 360 id = JAP.9 }
+	}
+}
+
+country_event = {
+	id = JAP.9   #中日战争（UPC-日方战败）（小胜）（结束）
+	title = JAP.9.t
+	desc = JAP.9.d
+	picture = GFX_JAP_event_9
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			PYO = {
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 525	
+						}
+					}
+				PYO = {
+					transfer_state = 525
+					add_state_core = 525
+				}
+			}
+			else_if = {
+				limit = {
+					UPC = {
+						owns_state = 852	
+					}
+				}
+			PYO = {
+				transfer_state = 525
+				add_state_core = 525
+			}
+		}
+				else_if = {
+					limit = { 
+						PYO = {
+							owns_state = 852	
+						}
+				}
+				PYO = {
+					transfer_state = 852
+					add_state_core = 852
+				}
+			}
+			else_if = {
+				limit = { 
+					UPC = {
+						owns_state = 852	
+					}
+			}
+			PYO = {
+				transfer_state = 852
+				add_state_core = 852
+			}
+		}
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 819	
+						}
+					}
+				PYO = {
+					transfer_state = 819
+					add_state_core = 819
+				}
+			}
+			else_if = {
+				limit = {
+					UPC = {
+						owns_state = 819	
+					}
+				}
+			PYO = {
+				transfer_state = 819
+				add_state_core = 819
+			}
+		}
+				else_if = {
+					limit = {
+						PYO = {
+							owns_state = 619	
+						}
+				}
+				PYO = {
+					transfer_state = 619
+					add_state_core = 619
+				}
+			}
+			else_if = {
+				limit = {
+					UPC = {
+						owns_state = 619	
+					}
+			}
+			PYO = {
+				transfer_state = 619
+				add_state_core = 619
+			}
+		}
+	}
+		}
+	}
+	option = {
+		name = JAP.9.a
+		news_event = {id=AOR_news.147}
+		UPC = {
+			transfer_state = 745
+			transfer_state = 743
+
+			add_state_core = 745
+			add_state_core = 743
+		}
+		PYO = {
+			set_cosmetic_tag = PYO_FRE_democratic_2
+			transfer_state = 817
+			transfer_state = 818
+
+			add_state_core = 817
+			add_state_core = 818
+			set_capital = { state = 818 }
+		}
+		JAP = {
+			white_peace = UPC
+			add_popularity = { ideology = Absolutism popularity = -0.05 }
+			add_popularity = { ideology = AUT_democratic  popularity = -0.05 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.10 }
+			add_popularity = { ideology = Fascism popularity = -0.1 }
+		}
+		RUS = {
+			transfer_state = 560
+		}
+		PRI = {
+			give_military_access = UPC
+		}
+	}
+}
+
+country_event = {
+	id = JAP.10   #南满冲突（中日战争前兆）
+	title = JAP.10.t
+	desc = JAP.10.d
+	picture = GFX_JAP_event_10
+	is_triggered_only = yes	
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				annex_country = {
+						target = QID
+					}
+				transfer_state = 743
+			}
+			set_victory_points = {
+				province = 10000
+				value = 10    
+			}
+			set_victory_points = {
+				province = 1150
+				value = 10    
+			}
+			set_victory_points = {
+				province = 987
+				value = 3    
+			}
+		}
+	}
+
+	option = {
+		JAP = {
+			country_event = { days = 30  id = JAP.3 }
+			news_event = AOR_news.164
+			716={set_demilitarized_zone=yes}
+		}
+		name = JAP.1.a
+	}
+}
+
+country_event = {
+	id = JAP.11   #朝鲜关东军暴乱平息
+	title = JAP.11.t
+	desc = JAP.11.d
+	picture = GFX_JAP_event_11
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1921.2.25
+		}
+		immediate = {
+			hidden_effect = {
+				KOR = {
+					525={set_demilitarized_zone=NO}
+					852={set_demilitarized_zone=NO}
+				}
+				JAP = {
+					transfer_state = 852
+					transfer_state = 619
+					transfer_state = 819
+				}
+			}
+		}
+	option = {
+		name = JAP.11.a
+		news_event = {id = AOR_news.161}
+	}
+}
+
+country_event = {
+	id = JAP.12   #朝鲜爆发大规模暴乱！
+	title = JAP.12.t
+	desc = JAP.12.d
+	picture = GFX_JAP_event_12
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1921.4.25
+		}
+		immediate = {
+			hidden_effect = {
+				KOR = {
+					add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+					527={set_demilitarized_zone=yes}
+					820={set_demilitarized_zone=yes}
+					819={set_demilitarized_zone=yes}
+				}
+			}
+		}
+	option = {
+		name = JAP.12.a
+		news_event = {id = AOR_news.162}
+	}
+}
+
+country_event = {
+	id = JAP.13   #日本接管汉城
+	title = JAP.13.t
+	desc = JAP.13.d
+	picture = GFX_JAP_event_13
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1921.5.22
+		}
+		immediate = {
+			hidden_effect = {
+				JAP = {
+					transfer_state = 820
+					transfer_state = 525
+					817={set_demilitarized_zone=yes}
+				}
+			}
+		}
+	option = {
+		name = JAP.13.a
+		news_event = {id = AOR_news.163}
+		KOR = {
+			set_cosmetic_tag = KOR_JP_Absolutism_1
+		}
+	}
+}
+
+country_event = {
+	id = JAP.14   #日本米骚乱平息
+	title = JAP.14.t
+	desc = JAP.14.d
+	picture = GFX_JAP_event_14
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1919.11.15
+		}
+	option = {
+		name = JAP.14.a
+		news_event = {id = AOR_news.47}
+		swap_ideas={
+			remove_idea = JAP_misao
+			add_idea = JAP_misao2
+	   }
+	}
+}
+
+country_event = {
+	id = JAP.15   #日本坂本龙马去世
+	title = JAP.15.t
+	desc = JAP.15.d
+	picture = GFX_JAP_event_15
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1920.5.5
+		}
+	option = {
+		name = JAP.15.a
+		news_event = {id = AOR_news.165}
+	}
+}
+
+country_event = {
+	id = JAP.16   #朝鲜义军动乱加剧！
+	title = JAP.16.t
+	desc = JAP.16.d
+	picture = GFX_JAP_event_16
+	fire_only_once = yes
+	trigger = {
+		tag = JAP
+		date > 1923.8.15
+		}
+		immediate = {
+			hidden_effect = {
+				JAP = {
+					set_autonomy = {
+					target = PYO
+					autonomy_state = autonomy_free
+					}
+				}
+				PYO = {
+					load_oob = "AOR_LAND_M_PYO"
+					load_oob = "AOR_LAND_M_PYO"
+					load_oob = "AOR_LAND_M_PYO"
+				    remove_ideas = Flooded_guerrillas
+	                set_cosmetic_tag = PYO_FRE_democratic
+					set_politics = {ruling_party = FRE_democratic}
+					add_popularity = { ideology = FRE_democratic popularity = 0.5 }
+					transfer_state = 820
+					add_state_core = 820
+				}
+			}
+		}
+	option = {
+		name = JAP.16.a
+		news_event = {id = AOR_news.167}
+	}
+}
+
+country_event = {
+	id = JAP.17   #关东地区发生大地震！
+	title = JAP.17.t
+	desc = JAP.17
+	picture =GFX_JAP_event_17
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = JAP.17.a
+		JAP = {
+			add_manpower = -105000
+		}
+		hidden_effect = {
+			news_event = {id = AOR_news.225}
+		}
+	}
+}

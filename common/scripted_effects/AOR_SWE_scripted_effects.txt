@@ -1,0 +1,225 @@
+#帧数检测
+SWE_update_ui_effect = {
+	if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 0 }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 5 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 2 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 10 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 3 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 15 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 4 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 20 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 5 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 25 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 6 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 30 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 7 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 35 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 8 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 40 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 9 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 45 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 10 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 50 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 11 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 55 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 12 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 60 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 13 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 65 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 14 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 70 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 15 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 75 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 16 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 80 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 17 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 85 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 18 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 90 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 19 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 95 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_main_meter = 20 }
+	}
+	else = { # paranoia > 95
+		set_variable = { SWE_Norweign_Independence_main_meter = 21 }
+	}
+}
+
+#动态修正
+SWE_Norweign_Independence_value_check = {
+	if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 50 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.05 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.1 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 60 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.075 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.15 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.15 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 70 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.1 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.25 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.2 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 80 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.15 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.35 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.25 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value = 90 compare = less_than_or_equals }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.2 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.5 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.3 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SWE_Norweign_Independence_value < 100 }
+		}
+		set_variable = { SWE_Norweign_Independence_stability_weekly = -0.3 }
+		set_variable = { SWE_Norweign_Independence_stability_factor = -0.65 }
+		set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.45 }
+	}
+}
+
+#马克思主义支持度对挪威独立度修正
+SWE_Marxism_effect_Norway_Independence_check = {
+	set_temp_variable = { Marxism_num = party_popularity@Marxism }
+	if = {
+		limit = {
+			check_variable = { Marxism_num = 25 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 0.5 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 35 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 0.75 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 45 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 75 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 1.25 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 85 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 2 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 95 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 2.5 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { Marxism_num = 100 compare = less_than_or_equals }
+		}
+		add_to_variable = { SWE_Norweign_Independence_add = 3 }
+	}
+}

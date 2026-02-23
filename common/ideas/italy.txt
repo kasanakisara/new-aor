@@ -1,0 +1,834 @@
+ideas = {
+
+	country = {
+		
+		#阴暗的帝国之心
+		Dark_Heart_of_empire = {
+			
+			picture = idea_Dark_Heart_of_empire
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				war_support_factor = 0.2
+				war_stability_factor = 0.25
+				mobilization_speed = 0.25
+			}
+		}
+		#黑衫军威胁
+		ITA_Blackshirts_threat = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.1
+				conscription = -0.003
+				Fascism_drift = 0.05
+			}
+		}
+		#民主反对派
+		ITA_democratic_opposition = {
+		
+			picture = generic_democratic_drift_bonus
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.1
+				CON_democratic_drift = 0.02
+				FRE_democratic_drift = 0.02
+				SOC_democratic_drift = 0.02
+			}
+		}
+		#就业困难
+		ITA_employment_difficulties = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    stability_factor = -0.1
+			    drift_defence_factor = -0.25
+			}
+		}
+		#南部问题
+		ITA_Southern_issues = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		#民主反对派扩大
+		ITA_democratic_opposition_2 = {
+		
+			picture = generic_democratic_drift_bonus
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.1
+				political_power_factor = -0.15
+				CON_democratic_drift = 0.02
+				FRE_democratic_drift = 0.02
+				SOC_democratic_drift = 0.02
+			}
+		}
+		#不信任政府
+		ITA_stability_down = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				Absolutism_drift = -0.05
+			}
+		}
+		#煽动民众
+		ITA_incite_people = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				Fascism_drift = 0.05
+			}
+		}
+		#民主宣传
+		ITA_democratic_propaganda = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				CON_democratic_drift = 0.03
+				FRE_democratic_drift = 0.03
+				SOC_democratic_drift = 0.03
+			}
+		}
+		#扩大黑衫军
+		ITA_Expand_the_black_shirts = {
+		
+			picture = GFX_idea_ITA_Blackshirts_threat
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.15
+				conscription = -0.005
+				Fascism_drift = 0.1
+			}
+		}
+		#宣扬法西斯思潮
+		ITA_Propaganda_of_Fascism = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				Fascism_drift = 0.05
+		}
+	}
+	#发放救济金
+	ITA_distribute_relief_funds = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		#降低税收
+		ITA_lower_taxes = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		#国王的黑衫军
+		ITA_king_royal_black_shirts = {
+		
+			picture = GFX_idea_ITA_Blackshirts_threat
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				conscription = 0.005
+				Fascism_drift = 0.02
+			}
+		}
+		#安置军队
+		ITA_placement_of_troops = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		#掀起军队哗变
+		ITA_trigger_a_military_mutiny = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				army_org_factor = -0.8
+				army_attack_factor = -0.5
+				army_defence_factor = -0.5
+			}
+		}
+		#拉拢人民
+		ITA_attract_the_people = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.05
+				FRE_democratic_drift = 0.03
+			}
+		}
+		#法西斯党分裂
+		ITA_fascist_party_division = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.2
+				war_stability_factor = -0.15
+			}
+		}
+		#未来主义革命
+		ITA_futurism_revolution_ideas = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.5
+				stability_factor = -0.05
+				political_power_factor = -0.05
+				research_speed_factor = 0.04
+				local_building_slots_factor = 0.2
+				production_speed_buildings_factor = 0.1
+				consumer_goods_factor = 0.1
+			}
+		}
+		ITA_transform_blackshirt = {
+		
+			picture = GFX_idea_ITA_Blackshirts_threat
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				conscription = 0.015
+				drift_defence_factor = 0.25
+			}
+		}
+		ITA_police_country = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+		ITA_settle_a_situation = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_weekly = 0.003
+			}
+		}
+		ITA_fascist_education = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		ITA_new_land_reform = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    stability_factor = -0.05
+				local_building_slots_factor = 0.2
+				monthly_population = 0.4
+			}
+		}
+		ITA_futurism_revolution_2 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 1
+				stability_factor = -0.1
+				political_power_factor = -0.05
+				research_speed_factor = 0.08
+				local_building_slots_factor = 0.2
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		ITA_futurism_revolution_3 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 1
+				stability_factor = -0.2
+				research_speed_factor = 0.12
+				local_building_slots_factor = 0.2
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = 0.05
+				army_armor_attack_factor = 0.05
+				army_armor_defence_factor = 0.05
+			}
+		}
+		ITA_plan_of_staff = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			max_planning = 0.25
+			planning_speed = 0.2
+			army_org_factor = 0.06
+			experience_gain_army = 0.06
+			}
+		}
+		ITA_destory_Grreece = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+            targeted_modifier = { 
+				tag = GRE
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+				}
+			modifier = {
+			    army_org_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+		ITA_ensurig_employment = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.25
+				stability_factor = 0.1
+				research_speed_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		ITA_negate_Fascism = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.25
+                war_support_factor = 0.05
+				conscription = 0.005
+			}
+		}
+		ITA_national_pride = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+                war_support_factor = 0.05
+				army_core_attack_factor = 0.08
+				army_core_defence_factor = 0.08
+			}
+		}
+		ITA_army_reform = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription_factor = 0.04
+				army_org_factor = 0.02
+				army_morale_factor = 0.02
+			}
+		}
+		ITA_army_reform = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription_factor = 0.04
+				army_org_factor = 0.02
+				army_morale_factor = 0.02
+			}
+		}
+		ITA_army_reform_2 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription_factor = 0.08
+				army_org_factor = 0.04
+				army_morale_factor = 0.04
+			}
+		}
+		ITA_army_reform_3 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription_factor = 0.1
+				army_org_factor = 0.06
+				army_morale_factor = 0.06
+		        land_reinforce_rate = 0.01
+				army_core_attack_factor = 0.02
+				army_core_defence_factor = 0.02
+			}
+		}
+		ITA_army_reform_4 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription_factor = 0.12
+				army_org_factor = 0.06
+				army_morale_factor = 0.06
+		        land_reinforce_rate = 0.02
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+		ITA_re_staff_ment = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				experience_gain_army = 0.1
+			}
+		}
+		ITA_noble_council = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				political_power_factor = 0.1
+			}
+		}
+		ITA_unemployed_people_joining_the_military = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				conscription = 0.01
+				industrial_capacity_factory = -0.05
+				production_speed_buildings_factor = -0.05
+			}
+		}
+		ITA_smaller_opposition = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.05
+			}
+		}
+		ITA_Protecting_vatican = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.5
+				stability_factor = 0.05
+				research_speed_factor = -0.05
+				political_power_factor = 0.05
+			}
+		}
+		ITA_socitey_revolution_plan = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.25
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		ITA_socitey_revolution_plan_2 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.5
+				stability_factor = 0.05
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.04
+				industrial_capacity_factory = 0.04
+				conscription_factor = 0.02
+			}
+		}
+		ITA_socitey_revolution_plan_3 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    drift_defence_factor = 0.8
+				stability_factor = 0.05
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.08
+				industrial_capacity_factory = 0.08
+				conscription_factor = 0.04
+			}
+		}
+		ITA_democratic_reform = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.05
+				required_garrison_factor = -0.25
+				compliance_gain = 0.25
+			}
+		}
+		ITA_democratic_reform_2 = {
+			
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    stability_factor = 0.08
+				political_power_factor = 0.1
+				required_garrison_factor = -0.25
+				compliance_gain = 0.25
+				consumer_goods_factor = -0.05
+			}
+		}
+	}
+}	

@@ -1,0 +1,309 @@
+focus_tree={
+	id = USA_1
+	country={
+		factor=0
+		modifier={
+			add=10
+			tag=USA
+		}
+	}
+	default=no
+	focus={
+		id = USA_WhiteHouseReport
+		icon = GFX_goal_USA_WhiteHouseReport
+		x=11
+		y=0
+		cost=0
+		available={
+			date > 1919.8.2
+		}
+		bypass={
+			date > 1919.8.1
+		}
+		completion_reward={
+			custom_effect_tooltip = USA_AWhiteHouseReport
+		}
+	}
+	focus={
+		id=USA_challenge
+		icon=GFX_goal_USA_challenge
+		x=11
+		y=1
+		prerequisite={focus=USA_WhiteHouseReport}
+		cost=2.00
+		completion_reward={
+			add_political_power=50
+		country_event={
+			id = USA.10019
+			}
+		}
+	}
+	focus={
+		id=USA_SanFrancisco
+		icon=GFX_goal_USA_SanFrancisco
+		x=2
+		y=3
+		prerequisite={focus=USA_challenge}
+		cost=0.00
+		available={
+			date > 1919.8.27
+		}
+		completion_reward={
+			custom_effect_tooltip = USA_ASanFrancisco
+			hidden_effect = {
+			381 = { set_demilitarized_zone = yes }
+			387 = { set_demilitarized_zone = yes }
+			388 = { set_demilitarized_zone = yes }
+			country_event={
+				id = USA.10002
+			    }
+		    }
+		}
+	}
+	focus={
+		id=USA_Eagle
+		icon=GFX_goal_USA_Eagle
+		x=0
+		y=4
+		prerequisite={focus=USA_SanFrancisco}
+		mutually_exclusive={focus=USA_Watchman }
+		cost=2.00
+	}
+	focus={
+		id=USA_PlanOfOperation
+		icon=GFX_goal_USA_PlanOfOperation
+		x=0
+		y=5
+		prerequisite={focus=USA_Eagle}
+		cost=2.80
+		completion_reward={
+			add_timed_idea={
+				idea=USA_PlanOfOperationA
+				days=360
+			}
+			hidden_effect={
+				country_event={ 
+					id = USA.10056
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_Watchman
+		icon=GFX_goal_USA_Watchman
+		x=4
+		y=4
+		prerequisite={focus=USA_SanFrancisco}
+		mutually_exclusive={focus=USA_Eagle }
+		cost=2.00
+	}
+	focus={
+		id=USA_Railway
+		icon=GFX_goal_USA_Railway
+		x=4
+		y=5
+		prerequisite={focus=USA_Watchman}
+		cost=2.80
+		completion_reward={
+			add_timed_idea={
+				idea=USA_RailwayA
+				days=360
+			}
+			hidden_effect={
+				country_event={ 
+					id = USA.10055
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_West
+		icon=GFX_goal_USA_West
+		x=2
+		y=6
+		prerequisite={focus=USA_Railway focus=USA_PlanOfOperation }
+		cost=1.00
+		completion_reward={
+			add_stability=0.05
+			hidden_effect = {
+				381 = { set_demilitarized_zone = no }
+				387 = { set_demilitarized_zone = no }
+				388 = { set_demilitarized_zone = no }
+			}
+		}
+	}
+	focus={
+		id=USA_Detroit
+		icon=GFX_goal_USA_Detroit
+		x=11
+		y=3
+		prerequisite={focus=USA_challenge}
+		cost=0.00
+		available={
+			date > 1919.8.7
+		}
+		completion_reward={
+			custom_effect_tooltip = USA_ADetroit
+				hidden_effect = {
+			add_ideas=USA_GreatLakesA
+			country_event={
+				id = USA.10001
+			}
+			393 = { set_demilitarized_zone = yes }
+		  }
+		}
+	}
+	focus={
+		id=USA_Analysis
+		icon=GFX_goal_USA_Analysis
+		x=8
+		y=5
+		prerequisite={focus=USA_Detroit}
+		cost=2.00
+		completion_reward={
+			custom_effect_tooltip = USA_AAnalysis
+		}
+	}
+	focus={
+		id=USA_MartialLaw
+		icon=GFX_goal_USA_MartialLaw
+		x=11
+		y=5
+		prerequisite={focus=USA_Detroit}
+		cost=2.00
+		completion_reward={
+			hidden_effect = {
+				country_event={
+					id = USA.10043
+				}
+			country_event={ days = 7 id = USA.10008}
+		  	}
+		    add_timed_idea={
+				idea=USA_MartialLawA
+				days=180
+				}
+			custom_effect_tooltip = USA_AMartialLaw
+		}
+	}
+	focus={
+		id=USA_Appease
+		icon=GFX_goal_USA_Appease
+		x=14
+		y=5
+		prerequisite={focus=USA_Detroit}
+		cost=2.00
+		completion_reward={
+		    hidden_effect = {
+				country_event={
+					id = USA.10046
+				}
+		    }
+			add_timed_idea={
+				idea=USA_AppeaseA
+				days=180
+			}
+			custom_effect_tooltip = USA_AAppease
+		}
+	}
+	focus={
+		id=USA_EndTheCrisis
+		icon=GFX_goal_USA_EndTheCrisis
+		x=11
+		y=7
+		prerequisite={focus=USA_Analysis}
+		prerequisite={focus=USA_MartialLaw}
+		prerequisite={focus=USA_Appease}
+		cost=3.00
+		completion_reward={
+			custom_effect_tooltip = USA_AEndTheCrisis
+			add_manpower=-3000
+			hidden_effect={
+			swap_ideas={
+				remove_idea=USA_GreatLakesA
+				add_idea=USA_GreatLakes2A
+			}
+			393 = { 
+				set_demilitarized_zone = no 
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_victory_points = {
+                province = 6710
+                value = 15    
+            }
+		}
+			hidden_effect = {
+				news_event = {id=AOR_news.136}
+			}
+			
+		}
+	}
+	focus={
+		id=USA_IntelligenceStation
+		icon=GFX_goal_USA_IntelligenceStation
+		x=19
+		y=3
+		prerequisite={focus=USA_challenge}
+		cost=0.00
+		available={
+			date > 1919.8.23
+		}
+		completion_reward={
+		    custom_effect_tooltip = USA_AIntelligenceStation
+			hidden_effect = {
+			    country_event={
+				id = USA.10006
+			    }
+			}
+		}
+	}
+	focus={
+		id=USA_Criticize
+		icon=GFX_goal_USA_Criticize
+		x=19
+		y=5
+		prerequisite={focus=USA_IntelligenceStation}
+		cost=2.00
+		completion_reward={
+			 custom_effect_tooltip = USA_ACriticize
+			hidden_effect = {
+				country_event={
+				id = USA.10042
+				}
+			}
+
+			add_timed_idea={
+				idea=USA_CriticizeA
+				days=360
+			}
+		}
+	}
+	focus={
+		id=USA_NewYear
+		icon=GFX_goal_USA_NewYear
+		x=11
+		y=9
+		prerequisite={focus=USA_EndTheCrisis}
+		prerequisite={focus=USA_West}
+		prerequisite={focus=USA_Criticize}
+		cost=0.00
+		completion_reward={
+			hidden_effect={
+				load_focus_tree = USA_2
+				swap_ideas={
+				remove_idea=USA_GreatLakes2A
+				add_idea=USA_AmericanAnxietyA
+				}
+			}
+			custom_effect_tooltip = USA_ANewYear
+		}
+	}
+}

@@ -1,0 +1,383 @@
+add_namespace = AOR_GER_timeaxis
+
+#开启德意志国家委员会，请各邦国与会#
+country_event = {
+	id = AOR_GER_timeaxis.1
+	title = AOR_GER_timeaxis.1.t
+	desc = AOR_GER_timeaxis.1.desc
+	picture = GFX_AOR_GER_timeaxis.1_pic
+	is_triggered_only = yes
+	option = { #谢邀
+		trigger = {
+		 OR = {
+			has_idea = Compact_of_German_Confederation
+			has_idea = Compact_of_German_Confederation_1 
+			}
+			NOT = { tag = BAV }
+			NOT = { tag = GER }
+		}
+		ai_chance = {factor = 40}
+		name = AOR_GER_timeaxis.1.a
+		custom_effect_tooltip = AOR_GER_timeaxis.1.tt1
+		add_political_power = 5
+		add_command_power = 5
+		set_country_flag = AOR_GER_flag_attend_the_meeting
+	}
+	option = { #不会去的
+		trigger = {
+			has_idea = Compact_of_German_Confederation_1
+			NOT = { tag = BAV }
+		}
+		ai_chance = {factor = 60}
+		name = AOR_GER_timeaxis.1.c
+		custom_effect_tooltip = AOR_GER_timeaxis.1.tt3
+		add_political_power = -5
+		set_country_flag = AOR_GER_flag_not_attend_the_meeting
+	}
+	option = { #巴苏，可能去？
+		trigger = {
+			 tag = BAV
+		}
+		ai_chance = {factor = 60}
+		name = AOR_GER_timeaxis.1.e
+		custom_effect_tooltip = AOR_GER_timeaxis.1.tt4
+		add_political_power = 5
+		add_command_power = 5
+		custom_effect_tooltip = AOR_Bebel_Trust_0_10_tt
+		set_country_flag = AOR_GER_flag_attend_the_meeting
+		BAV = {set_country_flag = AOR_GER_BAV_flag_attend_the_meeting}
+		GER = {add_to_faction = bav}
+		GER = { country_event = AOR_GER_timeaxis.10}
+		set_cosmetic_tag = BAV_MEET
+		
+		subtract_from_variable = {
+			Bebel_Trust = 10
+			} 
+	}
+	option = { #巴苏，可能不去？
+		trigger = {
+			 tag = BAV
+		}
+		ai_chance = {factor = 40}
+		name = AOR_GER_timeaxis.1.f
+		custom_effect_tooltip = AOR_GER_timeaxis.1.tt3
+		add_political_power = -5
+		set_country_flag = AOR_GER_flag_not_attend_the_meeting
+		
+		custom_effect_tooltip = AOR_Bebel_Trust_3_tt
+		add_to_variable = {
+			Bebel_Trust = 3
+			} 
+	}
+	option = { #我们将履行作为中央政府的职责
+		trigger = {
+			tag = GER
+		}
+		ai_chance = {factor = 100}
+		name = AOR_GER_timeaxis.1.b
+		custom_effect_tooltip = AOR_GER_timeaxis.1.tt2
+		add_political_power = 15
+		add_command_power = 10
+	}
+}
+#所有邦国都已到会，可以开会了#
+country_event = {
+	id = AOR_GER_timeaxis.2
+	title = AOR_GER_timeaxis.2.t
+	desc = AOR_GER_timeaxis.2.desc
+	picture = GFX_AOR_GER_timeaxis.1_pic
+	trigger = {
+		NOT = {
+			has_country_flag = AOR_GER_MEETING_HAPPENED
+		}
+		tag = GER	
+		HAN = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+		SIL = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+		KSH = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+		SAX = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+		PRE = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+		MEK = { has_country_flag = AOR_GER_flag_attend_the_meeting }
+	}
+	option = { #先讨论邦联的通货膨胀问题
+		name = AOR_GER_timeaxis.2.a
+		ai_chance = { base = 10 }
+		custom_effect_tooltip = AOR_GER_timeaxis.2.tt1
+		set_global_flag = AOR_GER_g_flag_meet_1
+		set_country_flag= AOR_GER_MEETING_HAPPENED
+		every_country = {
+			limit = {
+				OR = {
+					tag = GER
+					tag = NAU #法兰克福
+					tag = HAN #威斯特伐利
+					tag = BAV #巴伐利亚
+					tag = SIL #西里西亚
+					tag = KSH #波美拉尼亚
+					tag = WUR #符腾堡
+					tag = SAX #萨克森
+					tag = PRE #普鲁士
+					tag = SHL #石勒苏益格荷尔施泰因
+					tag = MEK #梅克伦堡
+				}
+			}
+			country_event = { id = AOR_GER_timeaxis.3 days = 1 }
+		}
+	}
+	option = { #先讨论邦国贸易税率问题
+		name = AOR_GER_timeaxis.2.b
+		ai_chance = { base = 1 }
+		custom_effect_tooltip = AOR_GER_timeaxis.2.tt2
+		set_global_flag = AOR_GER_g_flag_meet_2
+		set_country_flag= AOR_GER_MEETING_HAPPENED
+		every_country = {
+			limit = {
+				OR = {
+					tag = GER
+					tag = NAU #法兰克福
+					tag = HAN #威斯特伐利
+					tag = BAV #巴伐利亚
+					tag = SIL #西里西亚
+					tag = KSH #波美拉尼亚
+					tag = WUR #符腾堡
+					tag = SAX #萨克森
+					tag = PRE #普鲁士
+					tag = SHL #石勒苏益格荷尔施泰因
+					tag = MEK #梅克伦堡
+				}
+			}
+			country_event = { id = AOR_GER_timeaxis.3 days = 1 }
+		}
+	}
+	option = { #先商讨合成氨技术军转民问题
+		name = AOR_GER_timeaxis.2.c
+		ai_chance = { base = 3 }
+		custom_effect_tooltip = AOR_GER_timeaxis.2.tt3
+		set_global_flag = AOR_GER_g_flag_meet_3
+		set_country_flag= AOR_GER_MEETING_HAPPENED		
+		every_country = {
+			limit = {
+				OR = {
+					tag = GER
+					tag = NAU #法兰克福
+					tag = HAN #威斯特伐利
+					tag = BAV #巴伐利亚
+					tag = SIL #西里西亚
+					tag = KSH #波美拉尼亚
+					tag = WUR #符腾堡
+					tag = SAX #萨克森
+					tag = PRE #普鲁士
+					tag = SHL #石勒苏益格荷尔施泰因
+					tag = MEK #梅克伦堡
+				}
+			}
+			country_event = { id = AOR_GER_timeaxis.3 days = 1 }
+		}
+	}
+}
+
+#关于国家委员会的运作模式#
+country_event = {
+	id = AOR_GER_timeaxis.3
+	title = AOR_GER_timeaxis.3.t
+	desc = AOR_GER_timeaxis.3.desc
+	picture = 1
+	is_triggered_only = yes
+	option = { #好的
+		name = AOR_GER_timeaxis.3.a
+		if = {
+			limit = {
+				has_global_flag = AOR_GER_g_flag_meet_1
+			}
+			set_country_flag = flag_attend_the_meeting_1
+		}
+		if = {
+			limit = {
+				has_global_flag = AOR_GER_g_flag_meet_2
+			}
+			set_country_flag = flag_attend_the_meeting_2
+		}
+		if = {
+			limit = {
+				has_global_flag = AOR_GER_g_flag_meet_3
+			}
+			set_country_flag = flag_attend_the_meeting_3
+		}
+	}
+}
+
+#调试#
+country_event = {
+	id = AOR_GER_timeaxis.4
+	title = AOR_GER_timeaxis.4.t
+	desc = AOR_GER_timeaxis.4.desc
+	picture = 1
+	is_triggered_only = yes
+	option = {
+		name = AOR_GER_timeaxis.4.a
+	}
+}
+
+#要求自治区述职述廉
+country_event = {
+	id = AOR_GER_timeaxis.5
+	title = AOR_GER_timeaxis.5.t
+	desc = AOR_GER_timeaxis.5.desc
+	picture = 1
+	is_triggered_only = yes
+	option = { #我们将同柏林政府站在一起
+		name = AOR_GER_timeaxis.5.a
+		custom_effect_tooltip = AOR_GER_timeaxis.5.tt1
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				has_completed_focus = AOR_GER_Politics_10 #支持理论自由
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_201 #搁置理论冲突
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = GER value > 79 }
+			}
+		}
+		FROM = {
+			country_event = {
+				id = AOR_GER_timeaxis.6
+				days = 1
+			}
+		}
+		add_political_power = 25
+		add_war_support = 0.05
+		add_ideas = AOR_GER_idea_autonomous_goal
+		set_country_flag = AOR_GER_flag_autonomous_goal
+	}
+	option = { #不欢迎你们
+		name = AOR_GER_timeaxis.5.b
+		custom_effect_tooltip = AOR_GER_timeaxis.5.tt2
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_24 #雄鹰的旗帜
+			}
+		}
+		FROM = {
+			country_event = {
+				id = AOR_GER_timeaxis.7
+				days = 1
+			}
+		}
+		add_political_power = -25
+		add_stability = 0.05
+	}
+}
+
+#对方同意
+country_event = {
+	id = AOR_GER_timeaxis.6
+	title = AOR_GER_timeaxis.6.t
+	desc = AOR_GER_timeaxis.6.desc
+	picture = 1
+	is_triggered_only = yes
+	option = {
+		name = AOR_GER_timeaxis.6.a
+		add_political_power = 20
+		add_stability = 0.02
+	}
+}
+
+#对方拒绝
+country_event = {
+	id = AOR_GER_timeaxis.7
+	title = AOR_GER_timeaxis.7.t
+	desc = AOR_GER_timeaxis.7.desc
+	picture = 1
+	is_triggered_only = yes
+	option = {
+		name = AOR_GER_timeaxis.7.a
+		add_political_power = -20
+		add_war_support = -0.02
+	}
+} 
+
+#谢德曼：艾伯特希望和解
+country_event = {
+	id = AOR_GER_timeaxis.8
+	title = AOR_GER_timeaxis.8.t
+	desc = AOR_GER_timeaxis.8.desc
+	picture = 1
+	is_triggered_only = yes
+	option = {
+		name = AOR_GER_timeaxis.8.a
+		ai_chance = { #赞成
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_201 #搁置理论冲突
+			}
+			modifier = {
+				factor = 3
+				has_opinion = { target = GER value > 79 }
+			}
+		}
+		add_political_power = 20
+		add_war_support = 0.1
+		GER = {
+			set_autonomy = { target = SIL autonomy_state = AOR_GER_autonomous_region }
+		}
+	}
+	option = { #拒绝
+		name = AOR_GER_timeaxis.8.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_24 #雄鹰的旗帜
+			}
+		}
+		add_political_power = 20
+		add_stability = 0.05
+	}
+}
+
+#谢德曼：艾伯特要求撤销西里西亚自治区
+country_event = {
+	id = AOR_GER_timeaxis.9
+	title = AOR_GER_timeaxis.9.t
+	desc = AOR_GER_timeaxis.9.desc
+	picture = 1
+	is_triggered_only = yes
+	option = {
+		name = AOR_GER_timeaxis.9.a
+		ai_chance = { #赞成
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_201 #搁置理论冲突
+			}
+			modifier = {
+				factor = 3
+				has_opinion = { target = GER value > 79 }
+			}
+		}
+		add_political_power = 20
+		add_ideas = AOR_GER_idea_Berlin_support
+		GER = {
+			set_autonomy = { target = SIL autonomy_state = AOR_GER_autonomous_region }
+		}
+	}
+	option = { #拒绝
+		name = AOR_GER_timeaxis.9.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_completed_focus = AOR_GER_Politics_24 #雄鹰的旗帜
+			}
+		}
+		add_political_power = 20
+		add_ideas = AOR_GER_idea_Berlin_NOT_support
+	}
+}

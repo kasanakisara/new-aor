@@ -1,0 +1,113 @@
+BAV_civil_war = {
+		if = {
+			limit = {
+				check_variable = {
+					var = BAV_different_choice
+					value = 30
+					compare = greater_than_or_equals
+				}		
+			}
+			remove_ideas = BAV_nice_balance_modifier
+			add_stability = 0.1
+		}
+		if = {
+			limit = { 
+				AND = {
+					check_variable = {
+						BAV_Luxemburg > BAV_Liebknecht
+					}
+					check_variable = {
+						BAV_different_choice < 10
+					}				
+				}
+			}
+			promote_character = BAV_Luksemburg
+			start_civil_war = {
+				ideology = Marxism
+				size = 0.4
+			}
+			random_country = {
+				limit = {
+					original_tag = BAV
+					has_war_with = ROOT
+					not = {
+						tag = ROOT
+					}
+				}
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Karl Liebknecht"
+					desc = "K_L_DESC"
+					picture = "gfx/leaders/BAV/axcra-1w8mr.dds"
+					expire = "1965.1.1"
+					ideology = revolutionism
+					traits = {
+					}
+				}
+
+				BAV_Karl_Liebknecht = {
+					set_nationality = {
+						target_country = PREV.PREV
+						character = BAV_Karl_Liebknecht
+					}
+				}
+				promote_character =BAV_Karl_Liebknecht
+			}
+		}
+		if = {
+			limit = { 
+				AND = {
+					check_variable = {
+						BAV_Liebknecht > BAV_Luxemburg
+					}
+					check_variable = {
+						BAV_different_choice < 10
+					}				
+				}
+			}
+			
+			start_civil_war = {
+				ideology = SOC_democratic
+				size = 0.4
+			}
+			random_country = {
+				limit = {
+					original_tag = BAV
+					has_war_with = root
+					not = {
+						tag = ROOT
+					}
+				}
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Róża Luksemburg"
+					desc = "BAV_R_L_DESC"
+					picture = "gfx/leaders/BAV/aea71-ho9ng.dds"
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+					}
+				}
+
+				BAV_Luksemburg = {
+					add_country_leader_role = {
+						country_leader = {
+							ideology = socialism
+							desc = "BAV_R_L_DESC"
+							traits={  }
+							expire="1965.1.1.1"
+							id=-1						
+						}
+					}
+					set_nationality = {
+						target_country = PREV.PREV
+						character = BAV_Luksemburg
+					}	
+				}
+				promote_character =BAV_Luksemburg
+			}
+		}
+
+	
+
+}

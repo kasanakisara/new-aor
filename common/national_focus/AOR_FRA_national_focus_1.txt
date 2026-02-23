@@ -1,0 +1,850 @@
+focus_tree = {
+	id = AOR_FRA_focus_tree_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = FRA
+		}
+	}
+	default = no
+	continuous_focus_position={
+		x = 500
+		y = 2500
+	}
+	focus = {
+		id = AOR_FRA_after_the_war #大战之后
+		icon = GFX_goal_AOR_FRA_after_the_war
+		cost = 0.00
+		x = 16
+		y = 0
+
+		completion_reward={
+			add_stability = 0.05
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_sorrowful_passing  #悲痛的已逝
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_after_the_war
+		}
+		x = 10
+		y = 1
+
+		completion_reward={
+			add_popularity = {
+				ideology = SOC_democratic
+				popularity = -0.15
+			}
+		}
+
+	}
+	focus = {
+		id =  AOR_FRA_Compassionate_towards_the_living #怜悯生者
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_The_sorrowful_passing
+		}
+		x = 8
+		y = 2
+
+		completion_reward={
+			add_political_power = -50
+			add_war_support = -0.2
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Clearing_war_debts #清算战争债务
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_Compassionate_towards_the_living
+		}
+		x = 8
+		y = 3
+
+		completion_reward={
+			add_political_power = -100
+			add_offsite_building = { type = industrial_complex level = -1 }
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Mourning_for_the_deceased #哀悼死者
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_The_sorrowful_passing
+		}
+		x = 12
+		y = 2
+
+		completion_reward={
+			add_political_power = -100
+			add_stability = 0.05
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Clean_up_the_battlefield #清扫战场
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_Mourning_for_the_deceased
+		}
+		x = 12
+		y = 3
+
+		completion_reward={
+			army_experience = 10
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_Future_of_Waves #浪潮的将来
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_after_the_war
+		}
+		x = 22
+		y = 1
+
+		completion_reward={
+			add_stability =  0.05
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Anti_German_Movement #排德运动
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_The_Future_of_Waves
+		}
+		x = 20
+		y = 2
+
+		completion_reward={
+			add_political_power = -50
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Rhine_Pearl #莱茵明珠
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_Anti_German_Movement
+		}
+		x = 20
+		y = 3
+
+		completion_reward={
+			add_political_power = 50
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_agreement_and_progress #协约并进
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_The_Future_of_Waves
+		}
+		x = 24
+		y = 2
+
+		completion_reward={
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = AOR_FRA_harboring_ulterior_motives #心怀鬼胎
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_FRA_The_agreement_and_progress
+		}
+		x = 24
+		y = 3
+
+		completion_reward={
+			add_political_power = -250
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_New_Future_of_the_Republic #共和国的新未来
+		icon = GFX_goal_AOR_FRA_The_New_Future_of_the_Republic
+		cost = 1
+		prerequisite = {
+			focus = AOR_FRA_Clearing_war_debts
+		}
+		prerequisite = {
+			focus = AOR_FRA_Clean_up_the_battlefield
+		}
+		prerequisite = {
+			focus = AOR_FRA_Rhine_Pearl
+		}
+		prerequisite = {
+			focus = AOR_FRA_harboring_ulterior_motives
+		}
+		x = 16
+		y = 5
+
+		completion_reward={
+			add_stability = 0.15
+			add_political_power = 500
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_World_Domination #世界争霸
+		icon = GFX_goal_unknown
+		cost = 7
+		prerequisite = {
+			focus = AOR_FRA_The_bright_place_of_progress
+		}
+		relative_position_id = AOR_FRA_The_bright_place_of_progress
+		x = -3
+		y = 1
+
+		available = {
+			has_completed_focus = AOR_FRA_The_bright_place_of_progress
+		}	
+
+		completion_reward={
+			add_political_power = 45
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_a_thousand_things_wait_to_be_done #百废待兴
+		icon = GFX_goal_AOR_FRA_a_thousand_things_wait_to_be_done
+		cost = 2
+		prerequisite = {
+			focus = AOR_FRA_The_New_Future_of_the_Republic
+		}
+		x = 16
+		y = 6
+
+		completion_reward={
+			country_event = { id = FRA.1 }
+			add_political_power = 10
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Unite_as_one #团结一心
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = AOR_FRA_a_thousand_things_wait_to_be_done
+		}
+		x = 10
+		y = 7
+
+		completion_reward={
+			country_event = { id = FRA.2 }
+			add_stability = 0.05
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Middle_on_the_road #上道居中
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = AOR_FRA_Unite_as_one
+		}
+		x = 8
+		y = 8
+
+		completion_reward={
+			country_event = { id = FRA.3 }
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes 
+				}
+			}
+		}
+	}
+			
+		
+
+	
+	focus = {
+		id = AOR_FRA_Sweeping_the_Left_Wing #清扫左翼
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_FRA_Middle_on_the_road
+		}
+		x = 7
+		y = 9
+
+		completion_reward={
+			add_popularity = {
+				ideology = marxism
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = SOC_democratic
+				popularity = 0.15
+			}
+		}
+	}
+	focus = {
+		id = AOR_FRA_Reorganize_the_National_Alliance #重组国民联盟
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = AOR_FRA_Unite_as_one
+		}
+		x = 12
+		y = 8
+
+		completion_reward={
+			country_event = { id = FRA.4 }
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Invite_Millerand #邀请米勒兰
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_FRA_Reorganize_the_National_Alliance
+		}
+		x = 11
+		y = 9
+
+		
+
+		completion_reward={
+			country_event = { id = FRA.5 }
+			add_stability = 0.05
+		}
+
+	}
+	focus = { 
+		id = AOR_FRA_Differentiated_SFIO #分化sfio
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_FRA_Reorganize_the_National_Alliance
+		}
+		x = 13
+		y = 9
+
+		completion_reward={
+			add_stability = -0.05
+			add_popularity = {
+				ideology = Marxism
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = SOC_democratic
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = FRE_democratic
+				popularity = 0.1
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Overthrow_the_traitors #打倒工贼
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = AOR_FRA_a_thousand_things_wait_to_be_done
+		}
+		x = 22
+		y = 7
+
+		
+
+		completion_reward={
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes 
+				}
+				
+			}
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes 
+				}
+				
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_Pearl_of_Return #回归的明珠
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_FRA_Overthrow_the_traitors
+		}
+		x = 20
+		y = 8
+
+		completion_reward={
+			add_stability = 0.05
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes 
+				}
+				
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Rebuilted_consciousness #重铸的意识
+		icon = GFX_goal_unknown
+		cost = 7
+		prerequisite = {
+			focus = AOR_FRA_The_Pearl_of_Return
+		}
+		x = 19
+		y = 9
+
+		completion_reward={
+			add_ideas = AOR_FRA_Rebuilted_consciousness
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Interactions_from_all_directions
+		icon = GFX_goal_unknown
+		cost = 7
+		prerequisite = {
+			focus = AOR_FRA_The_Pearl_of_Return
+		}
+		x = 21
+		y = 9
+
+		completion_reward={
+			add_ideas = AOR_FRA_Interactions_from_all_directions
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_old_wilderness
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_FRA_Overthrow_the_traitors
+		}
+		x = 24
+		y = 8
+
+		completion_reward={
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				
+				add_building_construction = {
+					type = infrastructure 
+					level = 1
+					instant_build = yes 
+				}
+				
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Transforming_military_attire_into_workwear
+		icon = GFX_goal_unknown
+		cost = 7
+		prerequisite = {
+			focus = AOR_FRA_The_old_wilderness
+		}
+		x = 23
+		y = 9
+
+		completion_reward={
+			add_idea = AOR_FRA_Transforming_Military_Attire_Into_Workwear
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Remaking_factory
+		icon = GFX_goal_unknown
+		cost = 7
+		prerequisite = {
+			focus = AOR_FRA_The_old_wilderness
+		}
+		x = 25
+		y = 9
+
+		completion_reward={
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure 
+					level = 1
+					instant_build = yes 
+				}
+				
+				
+			}
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure 
+					level = 1
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+				
+				
+			}
+			random_state  = {
+				
+				limit = {
+					
+					is_core_of = FRA
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure 
+					level = 2
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes 
+				}
+				
+				
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_The_Revival_of_France
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_FRA_Rebuilted_consciousness
+		}
+		prerequisite = {
+			focus = AOR_FRA_Interactions_from_all_directions
+		}
+		prerequisite = {
+			focus = AOR_FRA_Transforming_military_attire_into_workwear
+		}
+		prerequisite = {
+			focus = AOR_FRA_Remaking_factory
+		}
+		x = 22
+		y = 10
+
+		completion_reward={
+			add_ideas = AOR_FRA_The_Revival_of_France
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Liquidation_of_Germany #对德清算
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+		focus = AOR_FRA_The_bright_place_of_progress
+		}
+		relative_position_id = AOR_FRA_The_bright_place_of_progress
+		x = 3
+		y = 1
+
+		available = {
+			is_in_faction_with = ENG
+		}
+
+		completion_reward={
+			add_political_power = 50
+			country_event = { id = FRA.6 }
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Convene_a_compensation_conference
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Liquidation_of_Germany
+		}
+		relative_position_id = AOR_FRA_Liquidation_of_Germany
+		x = 0
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Claiming_mineral_resources
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Convene_a_compensation_conference
+		}
+		relative_position_id = AOR_FRA_Convene_a_compensation_conference
+		x = -1
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Increase_the_demand_for_compensation
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Convene_a_compensation_conference
+		}
+		relative_position_id = AOR_FRA_Convene_a_compensation_conference
+		x = 1
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_An_eye_for_an_eye_a_tooth_for_a_tooth
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Claiming_mineral_resources
+		}
+		prerequisite = {
+			focus = AOR_FRA_Increase_the_demand_for_compensation
+		}
+		relative_position_id = AOR_FRA_Convene_a_compensation_conference
+		x = 0
+		y = 2
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Wooing_members_of_the_treaty
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_World_Domination 
+		}
+		relative_position_id = AOR_FRA_World_Domination
+		x = 0
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Encourage_Arab_issues
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Wooing_members_of_the_treaty
+		}
+		relative_position_id = AOR_FRA_Wooing_members_of_the_treaty
+		x = -1
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Stirring_Ireland
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Wooing_members_of_the_treaty
+		}
+		relative_position_id = AOR_FRA_Wooing_members_of_the_treaty
+		x = 1
+		y = 1
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Rooster_stands_proudly_at_the_top_of_the_world
+		icon = GFX_goal_unknown
+		cost = 7
+		always = no
+		prerequisite = {
+			focus = AOR_FRA_Encourage_Arab_issues
+		}
+		prerequisite = {
+			focus = AOR_FRA_Stirring_Ireland
+		}
+		relative_position_id = AOR_FRA_Wooing_members_of_the_treaty
+		x = 0
+		y = 2
+
+		completion_reward={
+			
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_Overthrow_the_extreme_right_wing #打倒极右翼
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_FRA_Middle_on_the_road
+		}
+		x = 9
+		y = 9
+
+		completion_reward={
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = CON_democratic
+				popularity = 0.1
+			}
+		}
+
+	}
+	focus = {
+		id = AOR_FRA_United_France #团结的法兰西
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = AOR_FRA_Sweeping_the_Left_Wing
+		}
+		prerequisite = {
+			focus = AOR_FRA_Overthrow_the_extreme_right_wing
+		}
+		prerequisite = {
+			focus = AOR_FRA_Invite_Millerand
+		}
+		prerequisite = {
+			focus = AOR_FRA_Differentiated_SFIO
+		}
+		x = 10
+		y = 10
+
+		completion_reward={
+			add_political_power = 100
+			add_stability = 0.1
+		}
+
+	}
+	
+	focus = {
+		id = AOR_FRA_The_bright_place_of_progress #前进的光明之处
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_FRA_United_France
+		}
+		prerequisite = {
+			focus = AOR_FRA_The_Revival_of_France
+		}
+		x = 16
+		y = 11
+
+		completion_reward={
+			add_stability = 0.1
+		}
+
+	}
+}
+	
+	
+
+
+

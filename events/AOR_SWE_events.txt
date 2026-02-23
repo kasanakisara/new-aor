@@ -1,0 +1,1397 @@
+add_namespace = SWE
+add_namespace = Tosca
+add_namespace = NOR_Axis
+add_namespace = SWE_Haakon_Death
+add_namespace = SWE_Folkhemmet
+add_namespace = SWE_Regency_Conference
+
+country_event = {
+    id = SWE.1 #哈康之死
+    title = SWE.1.t
+    desc = SWE.1.d
+    #picture = GFX_SWE.1_pic
+    is_triggered_only = yes
+    option = {
+        name = SWE.1.a
+        hidden_effect = {
+            remove_ideas = SWE_Eighty_Seventh_Orders
+            remove_ideas = SWE_K_Plan
+            remove_ideas = SWE_Left_Threat
+            remove_ideas = SWE_Left_Threat_I
+            remove_ideas = SWE_Left_Threat_II
+            remove_ideas = SWE_Antisocialistisk_Speciallagen
+            remove_ideas = SWE_The_Union_Dream
+            remove_ideas = SWE_In_Revolution
+            remove_ideas = SWE_Visible_Hand
+            remove_ideas = SWE_Reducted_Civil_Servants
+            remove_ideas = SWE_Merged_Parliament
+            remove_ideas = SWE_Universal_Suffrage
+            clr_country_flag = SWE_Folkhemmet_flag
+            country_event = { id = SWE_Haakon_Death.1 days = 5 }
+            news_event = { id = AOR_news.90 }
+            add_ideas = SWE_Regency_Council
+            kill_country_leader = yes
+            set_politics = {
+                ruling_party = AUT_democratic
+            }
+            set_country_leader_ideology = authoritarianism
+            add_country_leader_role = {
+                character = SWE_Emergency_Commitee_Leaders
+                promote_leader = yes
+                country_leader = {
+                    ideology = authoritarianism
+                    traits = { }
+                }
+            }
+        }
+        custom_effect_tooltip = SWE_Haakon_Death_tt
+        ## 第二阶段完工后删除这段代码 ##
+        custom_effect_tooltip = SWE_Warning_Imcompleted_tt
+        ## 第二阶段完工后删除这段代码 ##
+    }
+}
+
+country_event = {
+    id = SWE.2 #鲁普雷希特登基——永久废弃
+    title = SWE.2.t
+    desc = SWE.2.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.2.a
+    }
+}
+
+country_event = {
+    id = SWE.3 #请求贸易协定
+    title = SWE.3.t
+    desc = SWE.3.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.3.a
+        ai_will_do = {
+            factor = 0.5
+        }
+        if = {
+            limit = {
+                tag = ENG
+            }
+            SWE = {
+                country_event = { id = SWE.4 } #英国同意
+            }
+        }
+        else = {
+            SWE = {
+                country_event = { id = SWE.5 } #法国同意
+            }
+        }
+    }
+    option = {
+        name = SWE.3.b
+        ai_will_do = {
+            factor = 0.5
+        }
+        if = {
+            limit = {
+                tag = ENG
+            }
+            SWE = {
+                country_event = { id = SWE.6 } #英国拒绝
+            }
+        }
+        else = {
+            SWE = {
+                country_event = { id = SWE.7 } #法国拒绝
+            }
+        }
+    }
+}
+
+country_event = {
+    id = SWE.4 #请求贸易协定-准许-英国
+    title = SWE.4.t
+    desc = SWE.4.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.4.a
+        add_timed_idea = {
+            idea = SWE_British
+            days = 365
+        }
+    }
+}
+
+country_event = {
+    id = SWE.5 #请求贸易协定-准许-英国
+    title = SWE.5.t
+    desc = SWE.5.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.5.a
+        add_timed_idea = {
+            idea = SWE_Francais
+            days = 365
+        }
+    }
+}
+
+country_event = {
+    id = SWE.6 #请求贸易协定-否决-英国
+    title = SWE.6.t
+    desc = SWE.6.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.6.a
+    }
+}
+
+country_event = {
+    id = SWE.7 #请求贸易协定-否决-法国
+    title = SWE.7.t
+    desc = SWE.7.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.7.a
+    }
+}
+
+country_event = {
+    id = SWE.8 #全面深化改革
+    title = SWE.8.t
+    desc = SWE.8.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.8.a
+        add_political_power = 50
+    }
+}
+
+country_event = {
+    id = SWE.9 #向人民宣传
+    title = SWE.9.t
+    desc = SWE.9.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.9.a
+        add_stability = 0.05
+    }
+}
+
+country_event = {
+    id = SWE.10 #焚毁禁书
+    title = SWE.10.t
+    desc = SWE.10.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.10.a
+        add_stability = 0.05
+    }
+}
+
+country_event = {
+    id = SWE.11 #挪威独立的前置
+    title = SWE.11.t
+    desc = SWE.11.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.11.a
+        hidden_effect = {
+            country_event = { id = SWE.12 days = 7 }
+        }
+        custom_effect_tooltip = SWE_11_tt
+        clr_country_flag = SWE_Norweign_Independence_flag
+    }
+}
+
+country_event = {
+    id = SWE.12 #挪威独立
+    title = SWE.12.t
+    desc = SWE.12.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.12.a
+        hidden_effect = {
+            NOR = {
+                every_state = {
+                    limit = { is_core_of = NOR }
+                    NOR = {
+                        transfer_state = PREV
+                    }
+                }
+    
+                set_politics = {
+                    ruling_party = SOC_democratic
+                    last_election = "1814.10.10"
+                    election_frequency = 72
+                    elections_allowed = yes
+                }
+                set_popularities = {
+                    SOC_democratic = 54
+                    Marxism = 30
+                    fascism = 16
+                }
+    
+                create_country_leader = {
+                    name = "Haakon VII"
+                    desc = ""
+                    picture = "gfx/leaders/SWE/a4buu-9y80q.dds"
+                    expire = "1965.1.1"
+                    ideology = meliorism
+                    traits = {
+                    }
+                }
+                load_focus_tree = AOR_SWE_nothing_focus_tree_1
+    
+                add_ideas = SWE_Hurten_of_Norway
+            }
+    
+            add_ideas = SWE_Hurt_of_Norway
+            remove_ideas = SWE_Eighty_Seventh_Orders
+            remove_ideas = A_lingering_alliance
+            remove_ideas = SWE_Left_Threat
+            remove_ideas = SWE_Left_Threat_I
+            remove_ideas = SWE_Left_Threat_II
+            remove_ideas = SWE_Antisocialistisk_Speciallagen
+            remove_ideas = SWE_All_People_are_King
+            remove_ideas = SWE_Beyond_Nationalism
+            remove_ideas = SWE_K_Plan
+            remove_ideas = SWE_Beyond_Nation
+            remove_ideas = SWE_Liberte_Spirit
+            remove_ideas = SWE_Encourage
+            remove_ideas = SWE_Further_Reform_Law
+            remove_ideas = Let_the_ambitio_sleep
+            remove_ideas = Tiger_of_Silence
+            
+            remove_dynamic_modifier = AOR_SWE_Norweign_Independence_dynamic_modifier
+
+            clear_variable = SWE_Norweign_Independence_value
+            clear_variable = SWE_Norweign_Independence_stability_weekly
+            clear_variable = SWE_Norweign_Independence_stability_factor
+            clear_variable = SWE_Norweign_Independence_stability_power_cost
+            clear_variable = SWE_Norweign_Independence_add
+            clear_variable = SWE_Norweign_Independence_main_meter
+
+            set_politics = {
+                ruling_party = FRE_democratic
+                last_election = "1919.11.7"
+                election_frequency = 72
+                elections_allowed = yes
+            }
+
+            set_popularities = {
+                FRE_democratic = 54
+                Marxism = 30
+                Fascism = 16
+            }
+
+            create_country_leader = {
+                name = "Hjalmar Branting"
+                desc = ""
+                picture = "gfx/leaders/SWE/Hjalmar Branting.dds"
+                expire = "1965.1.1"
+                ideology = liberalism
+                traits = {
+                }
+            }
+
+            load_focus_tree = AOR_SWE_nothing_focus_tree_1
+            delete_unit_template_and_units = {
+                division_template = "联邦军"
+                disband = yes 
+            }
+            load_oob = SWE_Norweign_Independence_oob
+            
+        }
+        custom_effect_tooltip = SWE_Norweign_Independence_boom_tt
+        
+    }
+}
+
+country_event = {
+    id = SWE.13 #和右翼的茶会
+    title = SWE.13.t
+    desc = SWE.13.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.13.a
+        add_political_power = 50
+        add_popularity = { ideology = AUT_democratic popularity = 0.1 }
+    }
+}
+
+country_event = {
+    id = SWE.14 #拘禁左翼领导人
+    title = SWE.14.t
+    desc = SWE.14.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.14.a
+        add_stability = -0.25
+        add_manpower = -10000
+    }
+}
+
+country_event = {
+    id = SWE.15 #大审判
+    title = SWE.15.t
+    desc = SWE.15.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.15.a
+        add_stability = 0.15
+        add_manpower = -50000
+        remove_ideas = SWE_Left_Threat_II
+    }
+}
+
+country_event = {
+    id = SWE.16 #议会的喧闹
+    title = SWE.16.t
+    desc = SWE.16.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.16.a
+        add_stability = 0.2
+        add_popularity = { ideology = FRE_democratic popularity = 0.15 } 
+        add_popularity = { ideology = CON_democratic popularity = 0.25 } 
+        add_popularity = { ideology = AUT_democratic popularity = 0.2 } 
+    }
+}
+
+country_event = {
+    id = SWE.17 #联邦一梦
+    title = SWE.17.t
+    desc = SWE.17.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.17.a
+        add_political_power = 250
+        hidden_effect = {
+            remove_ideas = A_lingering_alliance
+            remove_ideas = SWE_Liberte_Spirit
+            remove_ideas = SWE_All_People_are_King
+            remove_ideas = SWE_Beyond_Nation
+            remove_ideas = SWE_Eighty_Seventh_Orders
+            remove_ideas = SWE_Antisocialistisk_Speciallagen
+            remove_ideas = SWE_Further_Reform_Law
+            add_ideas = SWE_The_Union_Dream
+            add_ideas = SWE_In_Revolution
+            add_dynamic_modifier = { modifier = AOR_SWE_Union_dynamic_modifier }
+		}
+        set_variable = { SWE_Union_progress_value = 5 }
+        set_variable = { SWE_Union_Stage = 1 }
+        set_variable = { SWE_Union_political_cost = 0.5 }
+        set_variable = { SWE_Union_stability_factor = 0.05 }
+        set_variable = { SWE_Union_war_support_factor = 0.05 }
+        set_variable = { SWE_Union_construction_speed = 0.05 }
+        set_variable = { SWE_Union_industrial_speed = 0.05 }
+        set_variable = { SWE_Union_arms_speed = 0.05 }
+        clear_variable = SWE_Norweign_Independence_value
+        clear_variable = SWE_Norweign_Independence_stability_weekly
+        clear_variable = SWE_Norweign_Independence_stability_factor
+        clear_variable = SWE_Norweign_Independence_stability_power_cost
+        clear_variable = SWE_Norweign_Independence_add
+        clear_variable = SWE_Norweign_Independence_main_meter
+        clr_country_flag = SWE_Norweign_Independence_flag
+        custom_effect_tooltip = SWE_Union_GUI_Enable_tt
+    }
+}
+
+country_event = {
+    id = SWE.18 #第八十七号命令
+    title = SWE.18.t
+    desc = SWE.18.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.18.a
+    }
+}
+
+country_event = {
+    id = NOR_Axis.1 #挪威人上街游行
+    title = NOR_Axis.1.t
+    desc = NOR_Axis.1.d
+    is_triggered_only = yes
+    option = {
+        name = NOR_Axis.1.a
+        add_to_variable = { SWE_Norweign_Independence_value = 5 }
+        custom_effect_tooltip = SWE_Norweign_Independence_add_localisation
+
+    }
+}
+
+country_event = {
+    id = NOR_Axis.2 #挪威人大规模示威
+    title = NOR_Axis.2.t
+    desc = NOR_Axis.2.d
+    is_triggered_only = yes
+    option = {
+        name = NOR_Axis.2.a
+        add_to_variable = { SWE_Norweign_Independence_value = 8.5 }
+        custom_effect_tooltip = SWE_Norweign_Independence_add_localisation
+
+    }
+}
+
+country_event = {
+    id = NOR_Axis.3 #对哈康的刺杀
+    title = NOR_Axis.3.t
+    desc = NOR_Axis.3.d
+    is_triggered_only = yes
+    option = {
+        name = NOR_Axis.3.a
+        add_to_variable = { SWE_Norweign_Independence_value = 15 }
+        custom_effect_tooltip = SWE_Norweign_Independence_add_localisation
+
+    }
+}
+
+country_event = {
+    id = SWE.19  #北境岐旅 I
+    title = SWE.19.t
+    desc = SWE.19.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.19.a
+        hidden_effect = {
+            country_event = { id = SWE.20 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE.20  #北境岐旅 II
+    title = SWE.20.t
+    desc = SWE.20.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.20.a
+        hidden_effect = {
+            country_event = { id = SWE.21 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE.21  #北境岐旅 III
+    title = SWE.21.t
+    desc = SWE.21.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.21.a
+    }
+}
+
+country_event = {
+    id = SWE.22 #苏联贸易协定
+    title = SWE.22.t
+    desc = SWE.22.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.22.a #同意
+        add_ideas = SWE_Soviet_Trade_soviet
+        SWE = {
+            country_event = { id = SWE.23 }
+        }
+        ai_will_do = {
+            factor = 0.5
+        }
+    }
+    option = {
+        name = SWE.22.b #反对
+        SWE = {
+            country_event = { id = SWE.24 }
+        }
+        add_political_power = -50
+        ai_will_do = {
+            factor = 0.5
+        }
+    }
+}
+
+country_event = {
+    id = SWE.23 #苏联贸易协定-同意
+    title = SWE.23.t
+    desc = SWE.23.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.23.a
+        add_ideas = SWE_Soviet_Trade
+    }
+}
+
+country_event = {
+    id = SWE.24 #苏联贸易协定-否决
+    title = SWE.24.t
+    desc = SWE.24.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.24.a
+        add_political_power = -50
+    }
+}
+
+country_event = {
+    id = SWE.25 #门户开放-一个月
+    title = SWE.25.t
+    desc = SWE.25.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.25.a
+        add_political_power = 20
+    }
+}
+
+country_event = {
+    id = SWE.26 #请求贸易协定-柏林/法兰克福/巴伐利亚/CSA
+    title = SWE.26.t
+    desc = SWE.26.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.26.a #同意
+        ai_will_do = {
+            factor = 0.75
+        }
+        SWE = {
+            country_event = { id = SWE.27 }
+        }
+    }
+    option = {
+        name = SWE.26.b #不同意
+        ai_will_do = {
+            factor = 0.25
+        }
+        SWE = {
+            country_event = { id = SWE.28 }
+        }
+        add_political_power = -25
+    }
+}
+
+country_event = {
+    id = SWE.27 #请求贸易协定-柏林/法兰克福/巴伐利亚/CSA - 同意
+    title = SWE.27.t
+    desc = SWE.27.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.27.a
+        FROM = {
+            add_ideas = SWE_Germany_Trade
+        }
+        add_ideas = SWE_Germany_Trade_sweden
+        add_to_variable = { SWE_Market_Inclusion = 15 }
+        custom_effect_tooltip = SWE_Trade_decision_tt
+    }
+}
+
+country_event = {
+    id = SWE.28 #请求贸易协定-柏林/法兰克福/巴伐利亚/CSA - 否决
+    title = SWE.28.t
+    desc = SWE.28.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.28.a
+        add_political_power = -25
+    }
+}
+
+country_event = {
+    id = SWE.29 #第三种选择
+    title = SWE.29.t
+    desc = SWE.29.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.29.a
+        add_political_power = 100
+    }
+}
+
+country_event = {
+    id = SWE.30 #人人有所业
+    title = SWE.30.t
+    desc = SWE.30.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.30.a
+        add_stability = 0.1
+        add_political_power = 300
+    }
+}
+
+country_event = {
+    id = SWE.31 #重建新政府
+    title = SWE.31.t
+    desc = SWE.31.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.31.a
+        add_political_power = 100
+        complete_national_focus = SWE_Rebuild_New_World
+    }
+}
+
+country_event = {
+    id = SWE.32 #将权力回归人民——全面普选
+    title = SWE.32.t
+    desc = SWE.32.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.32.a
+        add_political_power = 100
+        hidden_effect = {
+            add_ideas = SWE_Promoting_Universal_Suffrage
+        }
+    }
+}
+
+country_event = {
+    id = SWE.33 #将权力回归人民——全面普选之完成
+    title = SWE.33.t
+    desc = SWE.33.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.33.a
+        add_political_power = 100
+        add_ideas = SWE_Universal_Suffrage
+        hidden_effect = {
+            remove_ideas = SWE_Promoting_Universal_Suffrage
+        }
+    }
+}
+
+country_event = {
+    id = SWE.34 #推动一院
+    title = SWE.34.t
+    desc = SWE.34.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.34.a
+        add_political_power = -100
+    }
+}
+
+country_event = {
+    id = SWE.35 #推动一院之完成
+    title = SWE.35.t
+    desc = SWE.35.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.35.a
+        add_political_power = 100
+        add_ideas = SWE_Merged_Parliament
+    }
+}
+
+country_event = {
+    id = SWE.36 #新继承法
+    title = SWE.36.t
+    desc = SWE.36.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.36.a
+        hidden_effect = {
+            add_ideas = SWE_Union_Inheritance_Law
+        }
+        custom_effect_tooltip = SWE_Inheritance_Law_tt
+    }
+}
+
+country_event = {
+    id = SWE.37 #裁人
+    title = SWE.37.t
+    desc = SWE.37.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.37.a
+        add_stability = -0.2
+    }
+}
+
+country_event = {
+    id = SWE.38 #裁完了
+    title = SWE.38.t
+    desc = SWE.38.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.38.a
+        add_ideas = SWE_Reducted_Civil_Servants
+    }
+}
+
+country_event = {
+    id = SWE.39 #你门户开放了个啥！look into my eyes!
+    title = SWE.39.t
+    desc = SWE.39.d
+    is_triggered_only = yes
+    option = {
+        name = SWE.39.a
+        add_political_power = -100
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.1 #教育状态恶化-迫在眉睫的贪污问题
+    title = SWE_Folkhemmet.1.t
+    desc = SWE_Folkhemmet.1.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.1.a
+        set_variable = { SWE_Education = 2 }
+        custom_effect_tooltip = SWE_Folkhemmet_unlock_education_crisis_tt
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.2 #开放移民政策-造成了一定的社会冲突
+    title = SWE_Folkhemmet.2.t
+    desc = SWE_Folkhemmet.2.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.2.a
+        set_variable = { SWE_Immigrant = 1 }
+        hidden_effect = {
+            country_event = { id = SWE_Folkhemmet.3 days = 5 }
+        }
+        custom_effect_tooltip = SWE_Folkhemmet_worse_immigrant_crisis_tt
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.3 #移民政策恶化-必须尽快解决穆斯林和基督徒的冲突
+    title = SWE_Folkhemmet.3.t
+    desc = SWE_Folkhemmet.3.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.3.a
+        set_variable = { SWE_Immigrant = 2 }
+        custom_effect_tooltip = SWE_Folkhemmet_unlock_immigrant_crisis_tt
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.4 #劳动政策恶化-必须尽快确保福利
+    title = SWE_Folkhemmet.4.t
+    desc = SWE_Folkhemmet.4.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.4.a
+        set_variable = { SWE_Labor = 2 }
+        custom_effect_tooltip = SWE_Folkhemmet_unlock_labor_crisis_tt
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.5 #劳动保护法通过-工人福利有保障了-太伟大了哈康陛下
+    title = SWE_Folkhemmet.5.t
+    desc = SWE_Folkhemmet.5.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.5.a
+        set_variable = { SWE_Labor = 0 }
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.6 #义务教育法一锤定音
+    title = SWE_Folkhemmet.6.t
+    desc = SWE_Folkhemmet.6.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.6.a
+        set_variable = { SWE_Education = 0 }
+    }
+}
+
+country_event = {
+    id = SWE_Folkhemmet.7 #人民之家计划失败
+    title = SWE_Folkhemmet.7.t
+    desc = SWE_Folkhemmet.7.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Folkhemmet.7.a
+        add_political_power = -250
+        clr_country_flag = SWE_Folkhemmet_flag
+    }
+}
+
+country_event = {
+    id = Tosca.1 #自新大陆
+    title = Tosca.1.t
+    desc = Tosca.1.d
+    is_triggered_only = yes
+    option = {
+        name = Tosca.1.a
+        hidden_effect = {
+            country_event = { id = Tosca.2 days = 5 }
+        }
+
+    }
+}
+
+country_event = {
+    id = Tosca.2 #混乱的间隙
+    title = Tosca.2.t
+    desc = Tosca.2.d
+    is_triggered_only = yes
+    option = {
+        name = Tosca.2.a
+        hidden_effect = {
+            country_event = { id = Tosca.3 days = 10 }
+        }
+
+    }
+}
+
+country_event = {
+    id = Tosca.3 #托斯卡之吻
+    title = Tosca.3.t
+    desc = Tosca.3.d
+    is_triggered_only = yes
+    option = {
+        name = Tosca.3.a
+        hidden_effect = {
+            country_event = { id = Tosca.4 days = 2 }
+            country_event = { id = AOR_news.84 }
+        }
+
+    }
+}
+
+country_event = {
+    id = Tosca.4 #再见，海因里希
+    title = Tosca.4.t
+    desc = Tosca.4.d
+    is_triggered_only = yes
+    option = {
+        name = Tosca.4.a
+        hidden_effect = {
+            country_event = { id = Tosca.5 days = 7 }
+        }
+        add_manpower = -1
+    }
+}
+
+country_event = {
+    id = Tosca.5 #今夜无战事
+    title = Tosca.5.t
+    desc = Tosca.5.d
+    is_triggered_only = yes
+    option = {
+        name = Tosca.5.a
+    }
+}
+
+country_event = {
+    id = SWE_Haakon_Death.1 #为联邦梦送葬
+    title = SWE_Haakon_Death.1.t
+    desc = SWE_Haakon_Death.1.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Haakon_Death.1.a
+        hidden_effect = {
+            remove_ideas = SWE_All_People_are_King
+            remove_ideas = SWE_Beyond_Nationalism
+            remove_ideas = SWE_Beyond_Nation
+            remove_ideas = SWE_Liberte_Spirit
+            country_event = { id = SWE_Haakon_Death.2 days = 5 }
+            set_popularities = {
+                SOC_democratic = 10
+                AUT_democratic = 15
+                Marxism = 30
+                Fascism = 25
+                Absolutism = 20
+            }
+        }
+        custom_effect_tooltip = SWE_Haakon_I_tt
+    }
+}
+
+country_event = {
+    id = SWE_Haakon_Death.2 #崩溃的股市
+    title = SWE_Haakon_Death.2.t
+    desc = SWE_Haakon_Death.2.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Haakon_Death.2.a
+        hidden_effect = {
+            remove_ideas = SWE_Encourage
+            remove_ideas = SWE_Further_Reform_Law
+            remove_ideas = SWE_Open_the_door
+            remove_ideas = SWE_Third_Choice
+            remove_ideas = SWE_Folkhemmet
+            remove_ideas = SWE_Ex_Folkhemmet
+            remove_ideas = SWE_Folkhemmet_debuff
+            remove_ideas = SWE_Soviet_Trade
+            remove_ideas = SWE_Germany_Trade_sweden
+            remove_ideas = SWE_Regulation
+            remove_dynamic_modifier = { modifier = AOR_SWE_Trade_dynamic_modifier }
+            remove_dynamic_modifier = { modifier = AOR_SWE_Union_dynamic_modifier }
+            remove_dynamic_modifier = { modifier = AOR_SWE_Folkhemmet_dynamic_modifier }
+            country_event = { id = SWE_Haakon_Death.3 days = 5 }
+        }
+        custom_effect_tooltip = SWE_Haakon_II_tt
+    }
+}
+
+country_event = {
+    id = SWE_Haakon_Death.3 #混乱序幕
+    title = SWE_Haakon_Death.3.t
+    desc = SWE_Haakon_Death.3.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Haakon_Death.3.a
+        hidden_effect = {
+            load_focus_tree = AOR_SWE_focus_tree_2
+            set_country_flag = SWE_Emergency_State
+            add_ideas = SWE_Regency_Emergency_Crisis
+            complete_national_focus = AOR_SWE_Panic_and_Terror
+            set_variable = { SWE_Regency_Economic_value = 30 }
+            set_variable = { SWE_Regency_Order_value = 30 }
+            set_variable = { SWE_Regency_Political_value = 30 }
+            set_variable = { SWE_Regency_Crisis_stability_factor = -0.425 }
+            set_variable = { SWE_Regency_Crisis_factory_efficency = -0.25 }
+            set_variable = { SWE_Regency_Crisis_production_speed_buildings_factor = -0.2 }
+            set_variable = { SWE_Regency_Crisis_conscription_factor = -0.5 }
+            set_variable = { SWE_Regency_Crisis_political_power_cost = 0.4 }
+            set_variable = { SWE_Regency_Crisis_decision_political_power_cost = 80 }
+            country_event = { id = SWE_Haakon_Death.4 days = 7 }
+            add_dynamic_modifier = { modifier = AOR_SWE_Regency_Crisis_dynamic_modifier }
+        }
+        custom_effect_tooltip = SWE_Haakon_III_tt
+    }
+}
+
+country_event = {
+    id = SWE_Haakon_Death.4 #苏俄入侵芬马克-SWE侧
+    title = SWE_Haakon_Death.4.t
+    desc = SWE_Haakon_Death.4.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Haakon_Death.4.a
+        hidden_effect = {
+            news_event = { id = AOR_news.241 }
+            SCR = {
+                transfer_state = 967
+                every_state = {
+                    limit = {
+                        is_owned_by = SWE
+                    }
+                    add_core_of = SCR
+                }
+            }
+        }
+        custom_effect_tooltip = SWE_Fenmark_tt
+    }
+}
+
+
+country_event = {
+    id = SWE_Regency_Conference.1 #王政会议-开场
+    title = SWE_Regency_Conference.1.t
+    desc = SWE_Regency_Conference.1.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Regency_Conference.1.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.2 days = 7 }
+            set_country_flag = SWE_Regency_Conferenceing #语法？不熟
+            set_variable = { SWE_Regency_Olaf_votes = 0 } #奥拉夫
+            set_variable = { SWE_Regency_Piggy_votes = 0 } #白猪
+            set_variable = { SWE_Regency_Andreas_votes = 0 } #安德烈亚斯
+            set_variable = { SWE_Regency_Knud_votes = 0 } #克努德
+            set_variable = { SWE_Regency_Abstension_votes = 0 } #弃权票
+            set_country_flag = SWE_Regency_Conference_I #会议形势
+        }
+        custom_effect_tooltip = SWE_Regency_Conference_opening_tt
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.2 #王政会议-对手戏 双派之争
+    title = SWE_Regency_Conference.2.t
+    desc = SWE_Regency_Conference.2.d
+    is_triggered_only = yes
+    immediate = {
+        add_to_variable = { SWE_Regency_Olaf_votes = 2 }
+        add_to_variable = { SWE_Regency_Piggy_votes = 2 }
+    }
+    option = { #联邦派 - 2票中立倾向奥拉夫
+        name = SWE_Regency_Conference.2.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.3 days = 7 }
+            add_to_variable = { SWE_Regency_Olaf_votes = 2 }
+        }
+    }
+
+    option = { #一王派 - 2票中立倾向白猪
+        name = SWE_Regency_Conference.2.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.3 days = 7 }
+            add_to_variable = { SWE_Regency_Piggy_votes = 2 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.3 #王政会议-雄狮姿态
+    title = SWE_Regency_Conference.3.t
+    desc = SWE_Regency_Conference.3.d
+    is_triggered_only = yes
+    option = { #未定 - 英方票数未定
+        name = SWE_Regency_Conference.3.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.4 days = 7 }
+        }
+    }
+
+    option = { #倾向希腊 - 英方票数倾向安德烈亚斯
+        name = SWE_Regency_Conference.3.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.4 days = 7 }
+            add_to_variable = { SWE_Regency_Andreas_votes = 1 }
+            set_country_flag = SWE_eng_andreas
+        }
+    }
+
+    option = { #倾向一王派 - 英方票数倾向白猪
+        name = SWE_Regency_Conference.3.c
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.4 days = 7 }
+            add_to_variable = { SWE_Regency_Piggy_votes = 1 }
+            set_country_flag = SWE_eng_piggy
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.4 #王政会议-共和之位
+    title = SWE_Regency_Conference.4.t
+    desc = SWE_Regency_Conference.4.d
+    is_triggered_only = yes
+    option = { #未定 - 法方票数未定
+        name = SWE_Regency_Conference.4.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.5 days = 7 }
+        }
+    }
+
+    option = { #倾向丹麦 - 法方票数倾向克努德
+        name = SWE_Regency_Conference.4.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.5 days = 7 }
+            add_to_variable = { SWE_Regency_Knud_votes = 1 }
+            set_country_flag = SWE_fra_knud
+        }
+    }
+
+    option = { #倾向联邦派 - 法方票数倾向奥拉夫
+        name = SWE_Regency_Conference.4.c
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.5 days = 7 }
+            add_to_variable = { SWE_Regency_Olaf_votes = 1 }
+            set_country_flag = SWE_fra_olaf
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.5 #王政会议-共匪闹事
+    title = SWE_Regency_Conference.5.t
+    desc = SWE_Regency_Conference.5.d
+    is_triggered_only = yes
+    option = { #出重拳 - 中立2票数弃权 邀请王室准备
+        name = SWE_Regency_Conference.5.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.7 days = 7 }
+            add_to_variable = { SWE_Regency_Abstension_votes = 2 }
+        }
+    }
+
+    option = { #赶出去 - 无票数变化 会议形势进入针锋相对 旧王派准备
+        name = SWE_Regency_Conference.5.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.6 days = 7 }
+            clr_country_flag = SWE_Regency_Conference_I
+            set_country_flag = SWE_Regency_Conference_II
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.6 #王政会议-旧王派闹事
+    title = SWE_Regency_Conference.6.t
+    desc = SWE_Regency_Conference.6.d
+    is_triggered_only = yes
+    option = { #出重拳 - 中立票数1白猪1联邦 邀请王室准备
+        name = SWE_Regency_Conference.6.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.13 days = 7 }
+            add_to_variable = { SWE_Regency_Olaf_votes = 1 }
+            add_to_variable = { SWE_Regency_Piggy_votes = 1 }
+        }
+    }
+
+    option = { #不赶了 - 中立票数1弃权 会议形势进入口诛笔伐
+        name = SWE_Regency_Conference.6.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.11 days = 7 }
+            clr_country_flag = SWE_Regency_Conference_II
+            set_country_flag = SWE_Regency_Conference_III
+            add_to_variable = { SWE_Regency_Abstension_votes = 1 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.11 #王政会议-一王派分裂
+    title = SWE_Regency_Conference.11.t
+    desc = SWE_Regency_Conference.11.d
+    is_triggered_only = yes
+    option = { #强而有力 - 一王派如如不动 会议形势进入剑拔弩张
+        name = SWE_Regency_Conference.6.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 7 }
+            clr_country_flag = SWE_Regency_Conference_III
+            set_country_flag = SWE_Regency_Conference_II
+        }
+    }
+
+    option = { #英国佬？ - 一王派1票数倾向安德烈亚斯
+        name = SWE_Regency_Conference.6.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 7 }
+            add_to_variable = { SWE_Regency_Andreas_votes = 1 }
+            add_to_variable = { SWE_Regency_Piggy_votes = -1 }
+        }
+    }
+
+    option = { #无能为力 - 一王派1票数弃权
+        name = SWE_Regency_Conference.6.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 7 }
+            add_to_variable = { SWE_Regency_Abstension_votes = 1 }
+            add_to_variable = { SWE_Regency_Piggy_votes = -1 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.7 #王政会议-王室出访
+    title = SWE_Regency_Conference.7.t
+    desc = SWE_Regency_Conference.7.d
+    is_triggered_only = yes
+    option = { #招待丹麦人 - 中立2票数倾向克努德
+        name = SWE_Regency_Conference.7.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 14 }
+            add_to_variable = { SWE_Regency_Knud_votes = 2 }
+        }
+    }
+
+    option = { #招待希腊人 - 中立2票数倾向安德烈亚斯
+        name = SWE_Regency_Conference.7.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 14 }
+            add_to_variable = { SWE_Regency_Andreas_votes = 2 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.13 #王政会议-王室出访，但是差点坏结局
+    title = SWE_Regency_Conference.13.t
+    desc = SWE_Regency_Conference.13.d
+    is_triggered_only = yes
+    option = { #招待丹麦人 - 中立2票数倾向克努德
+        name = SWE_Regency_Conference.13.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 7 }
+            add_to_variable = { SWE_Regency_Knud_votes = 2 }
+        }
+    }
+
+    option = { #招待希腊人 - 中立2票数倾向安德烈亚斯
+        name = SWE_Regency_Conference.13.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.12 days = 7 }
+            add_to_variable = { SWE_Regency_Andreas_votes = 2 }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.12 #王政会议-国联之议
+    title = SWE_Regency_Conference.12.t
+    desc = SWE_Regency_Conference.12.d
+    is_triggered_only = yes
+    option = { #维持现状 - 英法不变
+        name = SWE_Regency_Conference.12.a
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.8 days = 7 }
+        }
+    }
+
+    option = { #不干涉为干涉 - 英法弃权
+        name = SWE_Regency_Conference.12.b
+        hidden_effect = {
+            country_event = { id = SWE_Regency_Conference.8 days = 7 }
+            add_to_variable = { SWE_Regency_Abstension_votes = 2 }
+            if = { 
+                limit = {
+                    has_country_flag = SWE_eng_andreas
+                }
+                add_to_variable = { SWE_Regency_Andreas_votes = -1 }
+            }
+            if = { 
+                limit = {
+                    has_country_flag = SWE_eng_piggy
+                }
+                add_to_variable = { SWE_Regency_Piggy_votes = -1 }
+            }
+            if = { 
+                limit = {
+                    has_country_flag = SWE_fra_olaf
+                }
+                add_to_variable = { SWE_Regency_Olaf_votes = -1 }
+            }
+            if = { 
+                limit = {
+                    has_country_flag = SWE_fra_knud
+                }
+                add_to_variable = { SWE_Regency_Knud_votes = -1 }
+            }
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.8 #王政会议-最终决断？
+    title = SWE_Regency_Conference.8.t
+    desc = SWE_Regency_Conference.8.d
+    is_triggered_only = yes
+    option = { #计算！
+        name = SWE_Regency_Conference.8.a
+        #未定票数尽数归于弃权
+        set_temp_variable = { SWE_temp_Abstension = 12 }
+        subtract_from_variable = { SWE_temp_Abstension = var:SWE_Regency_Olaf_votes }
+        subtract_from_variable = { SWE_temp_Abstension = var:SWE_Regency_Piggy_votes }
+        subtract_from_variable = { SWE_temp_Abstension = var:SWE_Regency_Knud_votes }
+        subtract_from_variable = { SWE_temp_Abstension = var:SWE_Regency_Andreas_votes }
+        subtract_from_variable = { SWE_temp_Abstension = var:SWE_Regency_Abstension_votes }
+        add_to_variable = { SWE_Regency_Abstension_votes = var:SWE_temp_Abstension }
+        if = {
+            limit = {
+                check_variable = { SWE_Regency_Abstension_votes < 4 }
+                NOT = {
+                    has_country_flag = SWE_Regency_Conference_III
+                }
+            }
+            country_event = { id = SWE_Regency_Conference.10 days = 7 } #HE
+        }
+        else = {
+            country_event = { id = SWE_Regency_Conference.9 days = 7 } #BE
+        }
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.9 #王政会议-打断双腿！
+    title = SWE_Regency_Conference.9.t
+    desc = SWE_Regency_Conference.9.d
+    is_triggered_only = yes
+    option = {
+        name = SWE_Regency_Conference.9.a
+        #条件：未达成有效结果且会议形势：针锋相对
+        trigger = {
+            check_variable = { SWE_Regency_Abstension_votes > 3 }
+            has_country_flag = SWE_Regency_Conference_II
+        }
+        #内战 SRC下场 根据票数各方吃buff/debuff
+    }
+
+    option = {
+        name = SWE_Regency_Conference.9.b
+        #条件：会议形势：口诛笔伐
+        trigger = {
+            has_country_flag = SWE_Regency_Conference_III
+        }
+        #超大号内战 贝尔纳多特归来 根据票数各方吃buff/debuff
+    }
+}
+
+country_event = {
+    id = SWE_Regency_Conference.10 #王政会议-新王决裁
+    title = SWE_Regency_Conference.10.t
+    desc = SWE_Regency_Conference.10.d
+    is_triggered_only = yes
+    option = { #条件：达成有效结果！
+        name = SWE_Regency_Conference.9.a
+        #谁是君主？
+        if = {
+            limit = { #安德烈亚斯
+                check_variable = { SWE_Regency_Andreas_votes > SWE_Regency_Piggy_votes }
+                check_variable = { SWE_Regency_Andreas_votes > SWE_Regency_Knud_votes }
+                check_variable = { SWE_Regency_Andreas_votes > SWE_Regency_Olaf_votes }
+            }
+            complete_national_focus = AOR_SWE_Continue_the_dual_monarchy
+            complete_national_focus = AOR_SWE_King_Andreas
+            set_variable = { SWE_votes = var:SWE_Regency_Andreas_votes }
+            #但是要吃debuff
+        #注：白猪要打内战就不吃这款了
+        add_ideas = SWE_Regency_votes_debuff
+        multiply_variable = {
+            var = SWE_votes
+            value = 0.08
+        }
+        add_to_variable = { SWE_votes = -0.86 }
+        add_dynamic_modifier = { modifier = AOR_SWE_Regency_votes_debuff_modifier }
+        }
+        else_if = {
+            limit = { #克努德
+                check_variable = { SWE_Regency_Knud_votes > SWE_Regency_Andreas_votes }
+                check_variable = { SWE_Regency_Knud_votes > SWE_Regency_Piggy_votes }
+                check_variable = { SWE_Regency_Knud_votes > SWE_Regency_Olaf_votes }
+            }
+            complete_national_focus = AOR_SWE_Continue_the_dual_monarchy
+            complete_national_focus = AOR_SWE_King_Knud
+            set_variable = { SWE_votes = var:SWE_Regency_Knud_votes }
+            #但是要吃debuff
+        #注：白猪要打内战就不吃这款了
+        add_ideas = SWE_Regency_votes_debuff
+        multiply_variable = {
+            var = SWE_votes
+            value = 0.08
+        }
+        add_to_variable = { SWE_votes = -0.86 }
+        add_dynamic_modifier = { modifier = AOR_SWE_Regency_votes_debuff_modifier }
+        }
+        else_if = {
+            limit = { #奥拉夫
+                check_variable = { SWE_Regency_Olaf_votes > SWE_Regency_Andreas_votes }
+                check_variable = { SWE_Regency_Olaf_votes > SWE_Regency_Piggy_votes }
+                check_variable = { SWE_Regency_Olaf_votes > SWE_Regency_Knud_votes }
+            }
+            complete_national_focus = AOR_SWE_Continue_the_dual_monarchy
+            complete_national_focus = AOR_SWE_King_Olaf
+            set_variable = { SWE_votes = var:SWE_Regency_Olaf_votes }
+            #但是要吃debuff
+        #注：白猪要打内战就不吃这款了
+        add_ideas = SWE_Regency_votes_debuff
+        multiply_variable = {
+            var = SWE_votes
+            value = 0.08
+        }
+        add_to_variable = { SWE_votes = -0.86 }
+        add_dynamic_modifier = { modifier = AOR_SWE_Regency_votes_debuff_modifier }
+        }
+        else_if = {
+            limit = { #白猪
+                check_variable = { SWE_Regency_Piggy_votes > SWE_Regency_Andreas_votes }
+                check_variable = { SWE_Regency_Piggy_votes > SWE_Regency_Olaf_votes }
+                check_variable = { SWE_Regency_Piggy_votes > SWE_Regency_Knud_votes }
+            }
+            complete_national_focus = AOR_SWE_The_Only_King
+            set_variable = { SWE_votes = var:SWE_Regency_Piggy_votes }
+        }
+        
+    }
+}

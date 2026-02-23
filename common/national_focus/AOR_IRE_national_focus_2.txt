@@ -1,0 +1,422 @@
+focus_tree = {
+	id = AOR_IRE_national_focus_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = IRE
+		}
+	}
+	default = no
+	#库丘林在召唤
+	focus = {
+		id = IRE_Cuchulainn
+		icon = GFX_goal_unknown
+		cost = 0.00
+		x = 20
+		y = 2
+
+	}
+	#砸开仓库
+	focus = {
+		id = IRE_warehouse
+		icon = GFX_goal_unknown
+		cost = 2.10
+		prerequisite = {
+			focus = IRE_Cuchulainn
+		}
+		x = 13
+		y = 3
+
+		completion_reward = {
+			send_equipment = {
+				equipment = infantry_equipment_1
+				amount = 500
+				target = IRE
+			}
+		}
+	}
+	#重量不重质
+	focus = {
+		id = IRE_Weightnot
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_warehouse
+		}
+		x = 10
+		y = 5
+		completion_reward = {
+			add_ideas = IRE_Weightnot
+		}
+	}
+	#紧急工厂转化
+	focus = {
+		id = IRE_EmergencyFactoryConversion
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Weightnot
+		}
+		x = 8
+		y = 6
+		completion_reward = {
+			add_ideas = IRE_EmergencyFactoryConversion
+		}
+	}
+	#牺牲在流水线
+	focus = {
+		id = IRE_Sacrifice
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Weightnot
+		}
+		x = 12
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = IRE_EmergencyFactoryConversion
+				add_idea = IRE_EmergencyFactoryConversion_1
+			}
+		}
+	}
+	#还不够
+	focus = {
+		id = IRE_NotEnoughYet
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Sacrifice
+		}
+		x = 12
+		y = 7
+		completion_reward = {
+			add_ideas = IRE_NotEnoughYet
+		}
+	}
+	#一战攻成万古枯
+	focus = {
+		id = IRE_Battle
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_NotEnoughYet
+		}
+		x = 12
+		y = 8
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = IRE_NotEnoughYet
+				add_idea = IRE_NotEnoughYet_1
+			}
+		}
+	}
+	#后勤生命线
+	focus = {
+		id = IRE_Logistics
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_warehouse
+		}
+		x = 16
+		y = 5
+		completion_reward = {
+			add_ideas = IRE_Logistics
+		}
+	}
+	#我们擅铺枕木
+	focus = {
+		id = IRE_Sleepers
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Logistics
+		}
+		x = 16
+		y = 6
+		completion_reward = {
+			
+		}
+	}
+	#隐蔽运输线
+	focus = {
+		id = IRE_Transportation
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Sleepers
+		}
+		x = 16
+		y = 7
+		completion_reward = {
+			
+		}
+	}
+	#家家户户皆仓库
+	focus = {
+		id = IRE_Household
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Transportation 
+		}
+		x = 16
+		y = 8
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	#动员部队
+	focus = {
+		id = IRE_Mobilize
+		icon = GFX_goal_unknown
+		cost = 2.10
+		prerequisite = {
+			focus = IRE_Cuchulainn
+		}
+		x = 28
+		y = 3
+		completion_reward = {
+			add_manpower = 5000
+		}
+	}
+	#御敌于千里之外
+	focus = {
+		id = IRE_Defend
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Mobilize
+		}
+		mutually_exclusive = {
+			focus = IRE_Desperate
+		}
+		x = 23
+		y = 5
+		completion_reward = {
+			add_ideas = IRE_Defend
+		}
+	}
+	#广筑海防
+	focus = {
+		id = IRE_CoastalDefense
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Defend
+		}
+		x = 23
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = IRE_Defend
+				add_idea = IRE_Defend_1
+			}
+		}
+	}
+	#压制上头情绪
+	focus = {
+		id = IRE_Suppress
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_CoastalDefense
+		}
+		x = 21
+		y = 8
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = IRE_Defend_1
+				add_idea = IRE_Defend_2
+			}
+		}
+	}
+	#寸止海边
+	focus = {
+		id = IRE_Beach
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_CoastalDefense
+		}
+		x = 25
+		y = 8
+		completion_reward = {
+			add_timed_idea = {
+				days = 30
+				idea = IRE_Beach
+			}
+		}
+	}
+	#点到为止
+	focus = {
+		id = IRE_Motions
+		icon = GFX_goal_unknown
+		cost = 2.00
+		prerequisite = {
+			focus = IRE_Suppress
+		}
+		prerequisite = {
+			focus = IRE_Beach
+		}
+		mutually_exclusive = {
+			focus = IRE_Revenge
+		}
+		x = 23
+		y = 10
+		completion_reward = {
+			
+		}
+	}
+	#索命于须臾之间
+	focus = {
+		id = IRE_Desperate
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Mobilize
+		}
+		mutually_exclusive = {
+			focus = IRE_Defend
+		}
+		x = 33
+		y = 5
+		completion_reward = {
+			add_ideas = IRE_Desperate
+		}
+	}
+	#参透、暗杀、偷袭
+	focus = {
+		id = IRE_Comprehension
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Desperate
+		}
+		x = 33
+		y = 6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = IRE_Desperate
+				add_idea = IRE_Desperate_1
+			}
+		}
+	}
+	#火上浇油
+	focus = {
+		id = IRE_Adding
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Comprehension
+		}
+		x = 31
+		y = 8
+		completion_reward = {
+			add_ideas = IRE_Adding
+		}
+	}
+	#海的那边是敌人
+	focus = {
+		id = IRE_Sea
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_Comprehension
+		}
+		x = 35
+		y = 8
+		completion_reward = {
+			add_ideas = IRE_Sea
+		}
+	}
+	#为了复仇
+	focus = {
+		id = IRE_Revenge
+		icon = GFX_goal_unknown
+		cost = 2.00
+		prerequisite = {
+			focus = IRE_Adding
+		}
+		prerequisite = {
+			focus = IRE_Sea
+		}
+		mutually_exclusive = {
+			focus = IRE_Motions
+		}
+		x = 33
+		y = 10
+		completion_reward = {
+			
+		}
+	}
+	#我们需要更多
+	focus = {
+		id = IRE_WeNeedMore
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_EmergencyFactoryConversion
+		}
+		x = 8
+		y = 7
+		completion_reward = {
+			
+		}
+	}
+	#枪支充足，尽管取用
+	focus = {
+		id = IRE_Guns
+		icon = GFX_goal_unknown
+		cost = 1.00
+		prerequisite = {
+			focus = IRE_WeNeedMore
+		}
+		x = 8
+		y = 8
+		completion_reward = {
+			send_equipment = {
+				equipment = artillery_equipment_1
+				amount = 20
+				target = IRE
+			}
+		}
+	}
+	#坚实的大后方
+	focus = {
+		id = IRE_Rear
+		icon = GFX_goal_unknown
+		cost = 2.00
+		prerequisite = {
+			focus = IRE_Guns
+		}
+		prerequisite = {
+			focus = IRE_Battle
+		}
+		prerequisite = {
+			focus = IRE_Household 
+		}
+		x = 12
+		y = 10
+		completion_reward = {
+			
+		}
+	}
+	#我们是凯尔特人的猛犬
+	focus = {
+		id = IRE_Dog
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = IRE_Rear
+			focus = IRE_Motions
+			focus = IRE_Revenge
+		}
+		x = 23
+		y = 12		
+		completion_reward = {
+		}
+	}
+}

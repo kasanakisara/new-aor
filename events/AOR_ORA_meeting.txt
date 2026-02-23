@@ -1,0 +1,568 @@
+add_namespace = ORA
+
+country_event = {
+	id = ORA.1 #大会开幕
+    picture = GFX_ORA.1
+    title = ORA.1.t
+    desc = ORA_1.d
+    fire_only_once = yes
+	is_triggered_only = yes
+	hidden = no
+    option = { 
+        name = ORA.1.a
+		country_event = { days = 2 id = ORA.2 }
+		custom_effect_tooltip = ORA.5.tt
+		set_country_flag = { flag = ORA_rad value = 0 }
+		set_country_flag = { flag = ORA_mid value = 0 }
+		set_country_flag = { flag = ORA_ref value = 0 }
+	}
+}
+
+country_event = {
+	id = ORA.2 #CORA
+    picture = GFX_ORA.1
+    title = ORA.2.t
+    desc = ORA.2.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.2.a
+		country_event = { days = 2 id = ORA.3 }
+		set_party_name = { ideology = Marxism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA共产派" } 
+		set_party_name = { ideology = PAR_socialism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA温和派" } 
+		set_party_name = { ideology = Anarcho  long_name = "阿根廷地区工人联合会(FORA)" name = "FORA" } 
+		custom_effect_tooltip = ORA.6.tt
+		modify_country_flag = {
+			flag = ORA_rad
+			value = 1
+		}
+		hidden_effect = {
+		set_popularities = {
+				Anarcho = 65
+				Marxism = 20
+				PAR_socialism = 10
+				SOC_democratic = 5
+				}
+		remove_ideas = ORA_Absent_CORA
+		}
+	}
+	
+	option = { 
+        name = ORA.2.b
+		country_event = { days = 2 id = ORA.3 }
+		set_party_name = { ideology = Marxism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA共产派" } 
+		set_party_name = { ideology = PAR_socialism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA温和派" } 
+		set_party_name = { ideology = Anarcho  long_name = "阿根廷地区工人联合会(FORA)" name = "FORA" } 
+		custom_effect_tooltip = ORA.7.tt
+		modify_country_flag = {
+			flag = ORA_mid
+			value = 1
+		}
+		hidden_effect = {
+		set_popularities = {
+				Anarcho = 65
+				Marxism = 20
+				PAR_socialism = 10
+				SOC_democratic = 5
+				}
+		remove_ideas = ORA_Absent_CORA
+		}
+	}
+	
+	option = { 
+        name = ORA.2.c
+		country_event = { days = 2 id = ORA.3 }
+		set_party_name = { ideology = Marxism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA共产派" } 
+		set_party_name = { ideology = PAR_socialism  long_name = "阿根廷地区工人共产党(CORA)" name = "CORA温和派" } 
+		set_party_name = { ideology = Anarcho  long_name = "阿根廷地区工人联合会(FORA)" name = "FORA" } 
+		custom_effect_tooltip = ORA.8.tt
+		modify_country_flag = {
+			flag = ORA_ref
+			value = 1
+		}
+		hidden_effect = {
+		set_popularities = {
+				Anarcho = 65
+				Marxism = 20
+				PAR_socialism = 10 
+				SOC_democratic = 5
+				}
+		remove_ideas = ORA_Absent_CORA 
+		}
+	}
+}
+
+country_event = {
+	id = ORA.3 #总工会
+    picture = GFX_ORA.1
+    title = ORA.3.t
+    desc = ORA.3.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.3.a
+		country_event = { days = 2 id = ORA.4 }
+		custom_effect_tooltip = ORA.6.tt
+		modify_country_flag = {
+			flag = ORA_rad
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.3.b
+		country_event = { days = 2 id = ORA.4 }
+		custom_effect_tooltip = ORA.7.tt
+		modify_country_flag = {
+			flag = ORA_mid
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.3.c
+		country_event = { days = 2 id = ORA.4 }
+		custom_effect_tooltip = ORA.8.tt
+		modify_country_flag = {
+			flag = ORA_ref
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = ORA.4 #农民
+    picture = GFX_ORA.1
+    title = ORA.4.t
+    desc = ORA.4.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.4.a
+		country_event = { days = 2 id = ORA.5 }
+		custom_effect_tooltip = ORA.6.tt
+		modify_country_flag = {
+			flag = ORA_rad
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.4.b
+		country_event = { days = 2 id = ORA.5 }
+		custom_effect_tooltip = ORA.7.tt
+		modify_country_flag = {
+			flag = ORA_mid
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.4.c
+		country_event = { days = 2 id = ORA.5}
+		custom_effect_tooltip = ORA.8.tt
+		modify_country_flag = {
+			flag = ORA_ref
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = ORA.5 #军队
+    picture = GFX_ORA.1
+    title = ORA.5.t
+    desc = ORA.5.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.5.a
+		country_event = { days = 2 id = ORA.7 }
+		custom_effect_tooltip = ORA.6.tt
+		modify_country_flag = {
+			flag = ORA_rad
+			value = 1
+		}
+		hidden_effect = {
+		delete_unit_template_and_units = {
+		division_template = "工人武装赤卫队"
+		disband = yes 
+			}
+		delete_unit_template_and_units = {
+		division_template = "学生武装力量"
+		disband = yes 
+			}
+		}
+	}
+	 option = { 
+        name = ORA.5.b
+		country_event = { days = 2 id = ORA.7 }
+		custom_effect_tooltip = ORA.7.tt
+		modify_country_flag = {
+			flag = ORA_mid
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.5.c
+		country_event = { days = 2 id = ORA.7 }
+		custom_effect_tooltip = ORA.8.tt
+		modify_country_flag = {
+			flag = ORA_ref
+			value = 1
+		}
+		hidden_effect = {
+		delete_unit_template_and_units = {
+		division_template = "工人武装赤卫队"
+		disband = yes 
+			}
+		delete_unit_template_and_units = {
+		division_template = "学生武装力量"
+		disband = yes 
+			}
+		load_oob = ORA_meeting
+		}
+		
+		
+	}
+}
+
+country_event = {
+	id = ORA.7 #法院
+    picture = GFX_ORA.1
+    title = ORA.7.t
+    desc = ORA.7.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.7.a
+		country_event = { days = 2 id = ORA.8 }
+		custom_effect_tooltip = ORA.6.tt
+		modify_country_flag = {
+			flag = ORA_rad
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.7.b
+		country_event = { days = 2 id = ORA.8 }
+		custom_effect_tooltip = ORA.7.tt
+		modify_country_flag = {
+			flag = ORA_mid
+			value = 1
+		}
+	}
+	 option = { 
+        name = ORA.7.c
+		country_event = { days = 2 id = ORA.8 }
+		custom_effect_tooltip = ORA.8.tt
+		modify_country_flag = {
+			flag = ORA_ref
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = ORA.8 #革命
+    picture = GFX_ORA.1
+    title = ORA.8.t
+    desc = ORA.8.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.8.a
+		hidden_effect = {
+		country_event = { days = 2 id = ORA.13 }
+		country_event = { days = 7 id = ORA.114514 }
+		}
+	}
+	 option = { 
+        name = ORA.8.b
+		hidden_effect = {
+		country_event = { days = 2 id = ORA.13 }
+		country_event = { days = 7 id = ORA.114514 }
+		}
+	}
+	 option = { 
+        name = ORA.8.c
+		hidden_effect = {
+		country_event = { days = 2 id = ORA.13 }
+		country_event = { days = 7 id = ORA.114514 }
+		}
+	}
+}
+
+country_event = {
+	id = ORA.13 #梦
+    picture = GFX_ORA.1
+    title = ORA.13.t
+    desc = ORA.13.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.13.a
+	}
+
+}
+
+
+country_event = {
+	id = ORA.114514
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = ORA_rad
+					value > 2
+				}
+			}
+			country_event = ORA.9
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = ORA_mid
+					value > 2
+				}
+			}
+			country_event = ORA.10
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = ORA_ref
+					value > 2
+				}
+			}
+			country_event = ORA.11
+		}
+
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = ORA_rad
+					value < 3
+				}
+				has_country_flag = {
+					flag = ORA_mid
+					value < 3
+				}
+				has_country_flag = {
+					flag = ORA_ref
+					value < 3
+				}
+			}
+			country_event = ORA.12
+		}
+	}
+}
+
+country_event = {
+	id = ORA.9 #激进派来咯！！！！
+    picture = GFX_ORA.1
+    title = ORA.9.t
+    desc = ORA.9.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.9.a
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Antonio Soto"
+		desc = "POLITICS_Antonio_Soto_DESC"
+		picture = "FORA_4.dds"
+		expire = "1945.1.1"
+		ideology = syndicalism
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_rad
+			set_country_flag = ORA_radical_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_rad
+			}
+		}
+	}
+
+
+
+country_event = {
+	id = ORA.10 #温和派来咯！！！！
+    picture = GFX_ORA.1
+    title = ORA.10.t
+    desc = ORA.10.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.10.a
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Diego Abad de Santillán"
+		desc = "POLITICS_Diego_Abad_de_Santillán_DESC"
+		picture = "FORA_3.dds"
+		expire = "1945.1.1"
+		ideology = new_ten
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_mid
+			set_country_flag = ORA_middle_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_mid
+
+			}
+	}
+
+}
+
+country_event = {
+	id = ORA.11 #改革派来咯！！！！
+    picture = GFX_ORA.1
+    title = ORA.11.t
+    desc = ORA.11.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.11.a
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Simón Radowitzky"
+		desc = "POLITICS_Diego_Simon_Radowitzky_DESC"
+		picture = "FORA_2.dds"
+		expire = "1945.1.1"
+		ideology = new_ref 
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_ref
+			set_country_flag = ORA_reform_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_ref
+			}
+	}
+
+}
+
+country_event = {
+	id = ORA.12 #妈的不选咯！！！！
+    picture = GFX_ORA.1
+    title = ORA.12.t
+    desc = ORA.12.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.12.a
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Antonio Soto"
+		desc = "POLITICS_Antonio_Soto_DESC"
+		picture = "FORA_4.dds"
+		expire = "1945.1.1"
+		ideology = syndicalism
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_rad
+			set_country_flag = ORA_radical_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_rad
+			}
+	}
+	option = { 
+        name = ORA.12.b
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Diego Abad de Santillán"
+		desc = "POLITICS_Diego_Abad_de_Santillán_DESC"
+		picture = "FORA_3.dds"
+		expire = "1945.1.1"
+		ideology = new_ten
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_mid
+			set_country_flag = ORA_middle_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_mid
+			}
+	}
+	option = { 
+        name = ORA.12.c
+		hidden_effect = {
+		kill_ideology_leader = Anarcho
+		}
+		create_country_leader = {
+		name = "Simón Radowitzky"
+		desc = "POLITICS_Diego_Simon_Radowitzky_DESC"
+		picture = "FORA_2.dds"
+		expire = "1945.1.1"
+		ideology = new_ref
+			}
+		hidden_effect = {
+			set_cosmetic_tag = ORA_ref
+			set_country_flag = ORA_reform_win
+			set_country_flag = ORA_meeting_ending
+			load_focus_tree = ORA_ref
+			}
+	}
+
+}
+
+country_event = {
+	id = ORA.14 #小市民的经历
+    picture = GFX_ORA.14_pic
+    title = ORA.14.t
+    desc = ORA.14.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.14.a
+	}
+
+}
+
+country_event = {
+	id = ORA.15 #布宜诺斯艾利斯暴动
+    picture = GFX_ORA.15_pic
+    title = ORA.15.t
+    desc = ORA.15.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.15.a
+	}
+
+}
+
+country_event = {
+	id = ORA.16 #智利-阿连德
+    picture = GFX_ORA.16_pic
+    title = ORA.16.t
+    desc = ORA.16.d
+    is_triggered_only = yes
+    fire_only_once = yes
+	hidden = no
+    option = { 
+        name = ORA.16.a
+		custom_effect_tooltip = ORA.EVENT16.tt
+	}
+
+}

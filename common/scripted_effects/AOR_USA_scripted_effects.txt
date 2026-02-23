@@ -1,0 +1,58 @@
+#USA变量检测
+
+USA_Civil_War_Military_check = {
+    set_variable = { USA_Reorganization_of_the_state_National_Guard = 0 }
+    division_template={
+        name="国民警卫队"
+        regiments={
+            infantry = {x=0 y=0}
+            infantry = {x=0 y=1}
+            infantry = {x=0 y=2}
+            infantry = {x=0 y=3}
+            infantry = {x=1 y=0}
+            infantry = {x=1 y=1}
+            infantry = {x=1 y=2}
+            infantry = {x=1 y=3}
+        }
+    }
+    random_state = {
+        limit = {
+            is_owned_and_controlled_by = USA
+        }
+        create_unit = {
+            division = "国民警卫队"
+            division_template = "国民警卫队"
+            owner = USA
+            start_experience_factor=0.2
+            start_equipment_factor=1
+        }
+        create_unit = {
+            division = "国民警卫队"
+            division_template = "国民警卫队"
+            owner = USA
+            start_experience_factor=0.2
+            start_equipment_factor=1
+        }
+        create_unit = {
+            division = "国民警卫队"
+            division_template = "国民警卫队"
+            owner = USA
+            start_experience_factor=0.2
+            start_equipment_factor=1
+        }
+        create_unit = {
+            division = "国民警卫队"
+            division_template = "国民警卫队"
+            owner = USA
+            start_experience_factor=0.2
+            start_equipment_factor=1
+        }
+        create_unit = {
+            division = "国民警卫队"
+            division_template = "国民警卫队"
+            owner = USA
+            start_experience_factor=0.2
+            start_equipment_factor=1
+        }
+    }
+}

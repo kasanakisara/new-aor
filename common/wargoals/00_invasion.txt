@@ -1,0 +1,321 @@
+wargoal_types = {
+
+	take_state = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		allowed = {
+
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		generate_base_cost = 200
+		generate_per_state_cost = 50
+
+		take_states_limit = 5
+		take_states_cost = -20
+
+		expire = 60
+
+		threat = 2
+	}
+
+	take_state_focus = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		generate_base_cost = 200
+		generate_per_state_cost = 50
+
+		take_states_limit = 5
+		take_states_cost = -20
+
+		expire = 730
+
+		threat = 2
+	}
+
+	puppet_wargoal_focus = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		allowed = {
+			always = no
+		}
+
+		puppet = {
+			always = yes
+		}
+
+		generate_base_cost = 200
+		generate_per_state_cost = 50
+
+		puppet_cost = -50
+
+		expire = 730
+
+		threat = 2
+	}
+
+	take_claimed_state = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = take_claimed_state
+
+		take_states = {
+			is_claimed_by = ROOT
+			is_owned_by = PREV
+			is_controlled_by = PREV
+		}
+
+		generate_base_cost = 125
+		generate_per_state_cost = 10
+
+		take_states_limit = 5
+		take_states_cost = -50
+
+
+		threat = 0.15
+	}
+
+	take_core_state = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = take_core_state
+
+		allowed = {
+			#always = no
+		}
+
+		take_states = {
+			is_core_of = ROOT
+			is_owned_by = PREV
+			is_controlled_by = PREV
+		}
+
+		generate_base_cost = 125
+		generate_per_state_cost = 0
+
+		take_states_limit = 5
+		take_states_cost = -80
+
+
+		threat = 0.1
+	}
+
+	annex_everything = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = annex_everything
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		#take_states_limit = 1
+		#take_states_cost = -50 		#50% cheaper warcost for states
+
+		threat = 0.5
+	}
+
+	civil_war = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = civil_war
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		threat = 1
+		take_states_threat_factor = 0.1
+		take_states_cost = -75
+	}
+
+	topple_government = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		force_government_cost = -50
+
+		threat = 0.5
+	}
+
+	liberate_wargoal = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		allowed = {
+			always = no
+		}
+
+		liberate = {
+			always = yes
+		}
+
+		generate_base_cost = 200
+		generate_per_state_cost = 50
+
+		puppet_cost = -50
+
+		expire = 730
+
+		threat = 2
+	}
+
+	independence_wargoal = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = independence_wargoal
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+
+		}
+
+		#take_states_limit = 1
+		#take_states_cost = -50 		#50% cheaper warcost for states
+
+		threat = 0
+	}
+	
+	
+	world_revolution = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = world_revolution
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+			always = yes
+		}
+		puppet = {
+			always = yes
+		}
+		generate_base_cost = 25
+		take_states_limit = 1000
+		take_states_cost = -50 		#50% cheaper warcost for states
+
+		threat = 0.5
+	}
+	
+	Ger_civil_war_bav = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = Ger_civil_war_bav
+		allowed = {
+			always = no
+		}
+		
+		take_states = {
+			always = yes
+		}
+		
+		puppet = {
+			always = no
+		}
+		generate_base_cost = 25
+		generate_per_state_cost = 10
+
+		take_states_limit = 1000
+		take_states_cost = -50
+
+
+		threat = 0.05
+	}	
+	
+	America_revolution = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = America_revolution
+
+		allowed = {
+			always = no
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+			always = no
+		}
+		puppet = {
+			always = yes
+		}
+		generate_base_cost = 25
+		take_states_limit = 1000
+		take_states_cost = -100000
+
+		threat = 0.5
+	}
+}

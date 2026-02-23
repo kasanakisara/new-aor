@@ -1,0 +1,21 @@
+PSR_666 = {
+	custom_effect_tooltip = tooltip_white_line
+	effect_tooltip = { release = PSR }
+	PSR = {
+		420 = { #吉兰
+			add_core_of = PSR
+			add_claim_by = ROOT
+			transfer_state_to = PSR
+		}
+	}
+	every_state = {
+		limit = {
+			is_claim_or_core_of_ROOT = yes
+			NOT = { is_claimed_by = PSR }
+			NOT = { is_core_of = PSR }
+		}
+		PER = {
+			add_claim_by = PSR
+		}
+	}
+}

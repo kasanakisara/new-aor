@@ -1,0 +1,2479 @@
+focus_tree = {
+	id = AOR_SOV_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RUS
+		}
+	}
+	default = no
+	continuous_focus_position = {
+		x = 50
+		y = 1300
+	}
+	##########################################################军事线
+	#人民的军队
+	focus = {
+		id = AOR_SOV_SOV_Army_1
+		icon = GFX_AOR_Eric_new_074
+		cost = 5
+		x = 26
+		y = 0
+		available = {
+			date > 1919.10.1
+		}
+		completion_reward = {
+			remove_ideas = SOV_The_Red_Army_0
+			effect_tooltip = {
+				add_dynamic_modifier = {
+					modifier = AOR_RUS_RedArmy_dynamic_modifier_show
+				}
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = AOR_RUS_RedArmy_dynamic_modifier
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_army_attack_factor = 0.05
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_army_defence_factor = -0.05
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_army_org_factor = -0.05
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_army_speed_factor = -0.05
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_breakthrough_factor = -0.05
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_experience_gain_army_factor = -0.25
+				}
+				add_to_variable = {
+					AOR_RUS_RedArmy_land_doctrine_cost_factor = 0.2
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_command_power = 40
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	#绝对领导
+	focus = {
+		id = AOR_SOV_SOV_Army_2
+		icon = GFX_AOR_Eric_new_091
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_1
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_command_power = 40
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_2
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_command_power_gain_mult = 0.1
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_max_command_power = 50
+			}
+		}
+	}
+	#红色的凹透镜
+	focus = {
+		id = AOR_SOV_SOV_Army_3
+		icon = GFX_AOR_Eric_new_089
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_1
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_country_leader_trait = SOV_lenin_party_army_leader
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = SOV_Trotsky
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_3
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+		}
+	}
+	#万千阳光的汇聚
+	focus = {
+		id = AOR_SOV_SOV_Army_4
+		icon = GFX_AOR_Eric_new_009
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_3
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_SOV_Army_3
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_3
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+		}
+	}
+	#重新整顿作战理念体系
+	focus = {
+		id = AOR_SOV_SOV_Army_5
+		icon = GFX_AOR_Eric_new_068
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_4
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_SOV_SOV_Army_4
+		completion_reward = {
+			every_army_leader = {
+				add_logistics = 1
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_6
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_land_doctrine_cost_factor = -0.2
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	#红军的复员
+	focus = {
+		id = AOR_SOV_SOV_Army_6
+		icon = GFX_AOR_Eric_new_056
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_1
+		}
+		x = 1
+		y = 3
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#重燃火焰
+	focus = {
+		id = AOR_SOV_SOV_Army_7
+		icon = GFX_AOR_Eric_new_048
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_4
+			focus = AOR_SOV_SOV_Army_12
+		}
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_6
+		}
+		x = 0
+		y = 1
+		available = {
+			OR = {
+				any_country = {
+					has_war_with = RUS
+					is_major = yes
+				}
+				AND = {
+					has_stability > 0.8
+					has_war_support > 0.5
+				}
+			}
+		}
+		relative_position_id = AOR_SOV_SOV_Army_6
+		completion_reward = {
+			remove_ideas = 1
+			custom_effect_tooltip = SOV_war_economy_stability_tt
+			if = {
+				limit = {
+					has_war = no
+				}
+				add_stability = -0.15
+			}
+			else = {
+				custom_effect_tooltip = SOV_war_economy_stability_war_tt
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = war_economy
+					}
+					NOT = {
+						has_idea = tot_economic_mobilisation
+					}
+				}
+				add_ideas = war_economy
+			}
+			random_controlled_state = {
+				limit = {
+					arms_factory > 1
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	#人民平等的永恒支持者
+	#focus = {
+	#	id = AOR_SOV_SOV_Army_8
+	##	icon = GFX_AOR_Eric_new_093
+	#	cost = 5.00
+	#	prerequisite = {
+	#		focus = AOR_SOV_SOV_Army_7
+	#	}
+	#	x = -1
+	#	y = 2
+	#	relative_position_id = AOR_SOV_SOV_Army_7
+	#	completion_reward = {
+	#		add_political_power = 25
+	#	}
+	#}
+	#人民财富的永恒守护者
+	#focus = {
+	#	id = AOR_SOV_SOV_Army_9
+	#	icon = GFX_AOR_Eric_new_094
+	#	cost = 5.00
+	#	prerequisite = {
+	#		focus = AOR_SOV_SOV_Army_7
+	#	}
+	#	x = 1
+	#	y = 2
+	#	relative_position_id = AOR_SOV_SOV_Army_7
+	#	completion_reward = {
+	#		add_political_power = 25
+	#	}
+	#}
+	#结束红军的使命
+	#focus = {
+	#	id = AOR_SOV_SOV_Army_10
+	#	icon = GFX_AOR_Eric_new_019
+	#	cost = 5.00
+	#	prerequisite = {
+	#		focus = AOR_SOV_SOV_Army_8
+	#	}
+	#	prerequisite = {
+	#		focus = AOR_SOV_SOV_Army_9
+	#	}
+	#	x = 0
+	#	y = 3
+	#	relative_position_id = AOR_SOV_SOV_Army_7
+	#	completion_reward = {
+	#		add_political_power = 25
+	#	}
+	#}
+	#维持政治任务
+	focus = {
+		id = AOR_SOV_SOV_Army_11
+		icon = GFX_AOR_Eric_new_067
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_1
+		}
+		x = 4
+		y = 2
+		relative_position_id = AOR_SOV_SOV_Army_1
+		available = {
+			has_civil_war = no
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_Require_adhere_political_tasks
+				days = 360
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_3
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+		}
+	}
+	#坚持阐述政治理念
+	focus = {
+		id = AOR_SOV_SOV_Army_12
+		icon = GFX_AOR_Eric_new_065
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_11
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_11
+		available = {
+			NOT = {
+				has_idea = SOV_idea_Require_adhere_political_tasks
+			}
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_Expatiate_political_ideas
+				days = 180
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_4
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_army_org_factor = 0.1
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_attack_factor = 0.2
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_defence_factor = 0.2
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_max_org_factor = 0.2
+			}
+			set_technology = {
+				SOV_Political_commissioners = 1
+			}
+		}
+	}
+	#人民民主的永恒捍卫者
+	focus = {
+		id = AOR_SOV_SOV_Army_13
+		icon = GFX_AOR_Eric_new_096
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_12
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_12
+		available = {
+			NOT = {
+				has_idea = SOV_idea_Expatiate_political_ideas
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#人民专政的永恒执行者
+	focus = {
+		id = AOR_SOV_SOV_Army_14
+		icon = GFX_AOR_Eric_new_095
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_12
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_12
+		available = {
+			NOT = {
+				has_idea = SOV_idea_Expatiate_political_ideas
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#永葆人民军队政治本色
+	focus = {
+		id = AOR_SOV_SOV_Army_15
+		icon = GFX_AOR_Eric_new_097
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_13
+		}
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_14
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_SOV_SOV_Army_12
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_3
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+		}
+	}
+	#时代，前进
+	focus = {
+		id = AOR_SOV_SOV_Army_16
+		icon = GFX_AOR_Eric_new_090
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_5
+		}
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_15
+		}
+		x = 2
+		y = 7
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					SOV_tactic_masterful_assault = 1
+					popup = no
+				}
+			}
+			custom_effect_tooltip = SOV_tactic_masterful_assault_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_3
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_experience_gain_army_factor = 0.05
+			}
+		}
+	}
+	#分离重工业人民委员部
+	focus = {
+		id = AOR_SOV_SOV_Army_17
+		icon = GFX_AOR_Eric_new_022
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_1
+		}
+		x = -8
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_1
+		available = {
+			controls_state = 219
+			controls_state = 195
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 2
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 2
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_RUS_recover_Destructive_strike = yes
+		}
+	}
+	#机械工程人民委员部
+	focus = {
+		id = AOR_SOV_SOV_Army_18
+		icon = GFX_AOR_Eric_new_088
+		cost = 0
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_17
+		}
+		x = -3
+		y = 1
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_17
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 1
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					arms_factory > 1
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_RUS_recover_Destructive_strike = yes
+		}
+	}
+	#现代战争发展的趋向
+	focus = {
+		id = AOR_SOV_SOV_Army_19
+		icon = GFX_AOR_Eric_new_066
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_18
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_18
+		available = {
+			#has_tech = basic_small_airframe
+		}
+		completion_reward = {
+			add_political_power = 10
+			army_experience = 25
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+		}
+	}
+	#先进战争武器
+	focus = {
+		id = AOR_SOV_SOV_Army_20
+		icon = GFX_AOR_Eric_new_071
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_19
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#步兵战术的支撑者
+	focus = {
+		id = AOR_SOV_SOV_Army_21
+		icon = GFX_AOR_Eric_new_069
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_18
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_SOV_Army_18
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#白话写旧词、新瓶装旧酒
+	focus = {
+		id = AOR_SOV_SOV_Army_22
+		icon = GFX_AOR_Eric_new_029
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_18
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_18
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#战争唯一的主角
+	focus = {
+		id = AOR_SOV_SOV_Army_23
+		icon = GFX_AOR_Eric_new_070
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_22
+		}
+		x = 1
+		y = 3
+		relative_position_id = AOR_SOV_SOV_Army_18
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏联工兵历程
+	focus = {
+		id = AOR_SOV_SOV_Army_24
+		icon = GFX_AOR_Eric_new_079
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_17
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_17
+		available = {
+			has_civil_war = no
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_new_words
+				days = 365
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_command_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			army_experience = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_11
+				}
+			}
+		}
+	}
+	#军事理工学院
+	focus = {
+		id = AOR_SOV_SOV_Army_25
+		icon = GFX_AOR_Eric_new_078
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_17
+		}
+		x = 0
+		y = 1
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_17
+		completion_reward = {
+			add_research_slot = 1
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_RUS_recover_Destructive_strike = yes
+		}
+	}
+	#两栖登陆演习
+	focus = {
+		id = AOR_SOV_SOV_Army_26
+		icon = GFX_AOR_Eric_new_086
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_24
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_24
+		available = {
+			NOT = {
+				has_idea = SOV_idea_new_words
+			}
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_new_words
+				days = 365
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_9
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_naval_invasion_penalty = -0.05
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_invasion_preparation = -0.15
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_amphibious_invasion = -0.1
+			}
+		}
+	}
+	#隐蔽与迷惑
+	focus = {
+		id = AOR_SOV_SOV_Army_27
+		icon = GFX_AOR_Eric_new_087
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_24
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_24
+		available = {
+			NOT = {
+				has_idea = SOV_idea_new_words
+			}
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_new_words
+				days = 365
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_8
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_breakthrough_factor = 0.05
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_cas_damage_reduction = 0.15
+			}
+		}
+	}
+	#毋临渴而掘井
+	focus = {
+		id = AOR_SOV_SOV_Army_28
+		icon = GFX_AOR_Eric_new_032
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_24
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_SOV_Army_24
+		available = {
+			NOT = {
+				has_idea = SOV_idea_new_words
+			}
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_new_words
+				days = 365
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_7
+				}
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_max_dig_in = 5
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_dig_in_speed_factor = 0.05
+			}
+			add_to_variable = {
+				AOR_RUS_RedArmy_max_dig_in_factor = 0.05
+			}
+		}
+	}
+	#国之重器
+	focus = {
+		id = AOR_SOV_SOV_Army_29
+		icon = GFX_AOR_Eric_new_072
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_26
+			focus = AOR_SOV_SOV_Army_27
+			focus = AOR_SOV_SOV_Army_28
+		}
+		prerequisite = {
+			focus = AOR_SOV_SOV_Army_25
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_SOV_Army_25
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	########################################政治线
+	#列宁的党
+	focus = {
+		id = AOR_SOV_Politics_1
+		icon = GFX_AOR_Eric_new_026
+		cost = 5
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_26
+			focus = AOR_SOV_Politics_18
+		}
+		x = 16
+		y = 0
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		select_effect = {
+			SOV_Lenin = {
+				set_portraits = {
+					civilian = {
+						large = GFX_AOR_SOV_Lenin
+						small = GFX_AOR_SOV_idea_lenin
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+			SOV_Lenin = {
+				set_portraits = {
+					civilian = {
+						large = GFX_AOR_SOV_Lenin
+						small = GFX_AOR_SOV_idea_lenin
+					}
+				}
+			}
+		}
+	}
+	#历史的过滤器
+	focus = {
+		id = AOR_SOV_Politics_2
+		icon = GFX_AOR_Eric_new_098
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_18
+			focus = AOR_SOV_Politics_1
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_18
+		completion_reward = {
+			add_political_power = -25
+			add_ideas = SOV_Historical_filters
+			swap_ideas = {
+				remove_idea = SOV_Cheka_0
+				add_idea = SOV_Cheka_1
+			}
+		}
+	}
+	#党内民主
+	focus = {
+		id = AOR_SOV_Politics_3
+		icon = GFX_AOR_Eric_new_111
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_1
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_SOV_Politics_18
+		completion_reward = {
+			add_ideas = SOV_Intra_party_democracy
+			add_political_power = 50
+			hidden_effect = {
+				set_country_flag = SOV_Intra_party_democracy_on
+			}
+		}
+	}
+	#斩开乱麻
+	focus = {
+		id = AOR_SOV_Politics_4
+		icon = GFX_AOR_Eric_new_112
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_2
+			focus = AOR_SOV_Politics_3
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_2
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#历史赋予的使命
+	focus = {
+		id = AOR_SOV_Politics_5
+		icon = GFX_AOR_Eric_new_113
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_4
+		}
+		x = 2
+		y = 3
+		relative_position_id = AOR_SOV_Politics_18
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#组织生活正常化
+	focus = {
+		id = AOR_SOV_Politics_6
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_1
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_SOV_Politics_26
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#内政外交委员会
+	focus = {
+		id = AOR_SOV_Politics_7
+		icon = GFX_AOR_Eric_new_119
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_26
+			focus = AOR_SOV_Politics_1
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_26
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#荣誉、威望与崇高
+	focus = {
+		id = AOR_SOV_Politics_8
+		icon = GFX_AOR_Eric_new_118
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_6
+			focus = AOR_SOV_Politics_7
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_6
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_Cheka_0
+				add_idea = SOV_Cheka_1
+			}
+		}
+	}
+	#终结媾和阴影
+	focus = {
+		id = AOR_SOV_Politics_9
+		icon = GFX_AOR_Eric_new_041
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_8
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_8
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#马克思列宁主义
+	focus = {
+		id = AOR_SOV_Politics_10
+		icon = GFX_AOR_Eric_new_027
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_5
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_9
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_1
+		}
+		x = 0
+		y = 4
+		relative_position_id = AOR_SOV_Politics_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#忠于人民
+	focus = {
+		id = AOR_SOV_Politics_11
+		icon = GFX_AOR_Eric_new_092
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_5
+			focus = AOR_SOV_Politics_10
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_12
+			focus = AOR_SOV_Politics_13
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_5
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#忠于无产阶级专政
+	focus = {
+		id = AOR_SOV_Politics_12
+		icon = GFX_AOR_Eric_new_052
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_10
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_11
+			focus = AOR_SOV_Politics_13
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#忠于意识形态
+	focus = {
+		id = AOR_SOV_Politics_13
+		icon = GFX_AOR_Eric_new_084
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_9
+			focus = AOR_SOV_Politics_10
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_12
+			focus = AOR_SOV_Politics_11
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_9
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏维埃人民纪律委员会
+	focus = {
+		id = AOR_SOV_Politics_14
+		icon = GFX_AOR_Eric_new_124
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_12
+		}
+		x = -1
+		y = 2
+		relative_position_id = AOR_SOV_Politics_12
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏维埃契卡监察委员会
+	focus = {
+		id = AOR_SOV_Politics_15
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_12
+		}
+		x = 2
+		y = 2
+		relative_position_id = AOR_SOV_Politics_12
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#有限基层自治
+	focus = {
+		id = AOR_SOV_Politics_16
+		icon = GFX_AOR_Eric_new_100
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_14
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_14
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#人民坚强的战斗堡垒
+	focus = {
+		id = AOR_SOV_Politics_17
+		icon = GFX_AOR_Eric_new_107
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_14
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_15
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_SOV_Politics_12
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#总结历史教训
+	focus = {
+		id = AOR_SOV_Politics_18
+		icon = GFX_AOR_Eric_new_024
+		cost = 5
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_1
+			focus = AOR_SOV_Politics_26
+		}
+		x = 10
+		y = 0
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = SOV_economic_construction_1
+			custom_effect_tooltip = SOV_economic_add_tt
+		}
+	}
+	#捍卫一国建成社会主义
+	focus = {
+		id = AOR_SOV_Politics_19
+		icon = GFX_AOR_Eric_new_105
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_18
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_18
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_economic_construction_1
+				add_idea = SOV_economic_construction_2
+			}
+		}
+	}
+	#洗刷污秽
+	focus = {
+		id = AOR_SOV_Politics_20
+		icon = GFX_AOR_Eric_new_104
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_19
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_19
+		completion_reward = {
+			add_political_power = 300
+			add_manpower = -8675
+			add_timed_idea = {
+				idea = SOV_Scrub_away_the_filth
+				days = 180
+			}
+			custom_effect_tooltip = SOV_economic_add_tt
+		}
+	}
+	#允许商品流转
+	focus = {
+		id = AOR_SOV_Politics_21
+		icon = GFX_AOR_Eric_new_080
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_19
+		}
+		x = -3
+		y = 2
+		relative_position_id = AOR_SOV_Politics_18
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+			if = {
+				limit = {
+					has_idea = SOV_Wartime_communism_0
+				}
+				remove_ideas = SOV_Wartime_communism_0
+			}
+			if = {
+				limit = {
+					has_idea = SOV_Wartime_communism_1
+				}
+				remove_ideas = SOV_Wartime_communism_1
+			}
+			if = {
+				limit = {
+					has_idea = SOV_Wartime_communism_2
+				}
+				remove_ideas = SOV_Wartime_communism_2
+			}
+		}
+	}
+	#改善国家贸易环境
+	focus = {
+		id = AOR_SOV_Politics_22
+		icon = GFX_AOR_Eric_new_013
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_21
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_20
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_economic_construction_2
+				add_idea = SOV_economic_construction_3
+			}
+			swap_ideas = {
+				remove_idea = closed_economy
+				add_idea = limited_exports
+			}
+		}
+	}
+	#利用资本主义
+	focus = {
+		id = AOR_SOV_Politics_23
+		icon = GFX_AOR_Eric_new_101
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_22
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_22
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_economic_construction_3
+				add_idea = SOV_economic_construction_4
+			}
+			custom_effect_tooltip = SOV_economic_add_tt
+		}
+	}
+	#摈弃新经济政策
+	focus = {
+		id = AOR_SOV_Politics_24
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_23
+			focus = AOR_SOV_Politics_11
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_32
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_23
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+		}
+	}
+	#新“过渡时期”
+	focus = {
+		id = AOR_SOV_Politics_25
+		icon = GFX_AOR_Eric_new_115
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_24
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_24
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+		}
+	}
+	#俄国革命之滥觞
+	focus = {
+		id = AOR_SOV_Politics_26
+		icon = GFX_AOR_Eric_new_019
+		cost = 5
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_1
+			focus = AOR_SOV_Politics_18
+		}
+		x = 22
+		y = 0
+		available = {
+			has_civil_war = no
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#战时共产主义的演变
+	focus = {
+		id = AOR_SOV_Politics_27
+		icon = GFX_AOR_Eric_new_110
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_7
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_26
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_7
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+			remove_ideas = SOV_Wartime_communism_0
+			add_ideas = SOV_Wartime_communism_1
+		}
+	}
+	#反对派系政治
+	focus = {
+		id = AOR_SOV_Politics_28
+		icon = GFX_AOR_Eric_new_109
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_27
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_Politics_27
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#社会主义原始积累
+	focus = {
+		id = AOR_SOV_Politics_29
+		icon = GFX_AOR_Eric_new_094
+		cost = 0
+		prerequisite = {
+			focus = AOR_SOV_Politics_28
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_28
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#世界社会主义联盟
+	focus = {
+		id = AOR_SOV_Politics_30
+		icon = GFX_AOR_Eric_new_048
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_26
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Politics_26
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#强化执行委员会
+	focus = {
+		id = AOR_SOV_Politics_31
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_30
+		}
+		x = 1
+		y = 2
+		relative_position_id = AOR_SOV_Politics_30
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#工业化进步的基石
+	focus = {
+		id = AOR_SOV_Politics_32
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_13
+			focus = AOR_SOV_Politics_29
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_Politics_24
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_29
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+		}
+	}
+	#工农业集体化
+	focus = {
+		id = AOR_SOV_Politics_33
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_32
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_32
+		completion_reward = {
+			AOR_RUS_National_industrialization = yes
+		}
+	}
+	###一切权力属于苏维埃###
+	focus = {
+		id = AOR_SOV_Politics_34
+		icon = GFX_AOR_Eric_new_108
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_25
+			focus = AOR_SOV_Politics_17
+			focus = AOR_SOV_Politics_33
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_17
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#枯骨生肉
+	focus = {
+		id = AOR_SOV_Politics_35
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_25
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_25
+		completion_reward = {
+			add_ideas = SOV_Industrialization_began_1
+			custom_effect_tooltip = SOV_Industrialization_began_tt
+		}
+	}
+	#苏俄最高国民经济会议
+	focus = {
+		id = AOR_SOV_Politics_36
+		icon = GFX_AOR_Eric_new_120
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_34
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_34
+		completion_reward = {
+		}
+	}
+	#绝非浪漫之变革
+	focus = {
+		id = AOR_SOV_Politics_37
+		icon = GFX_AOR_Eric_new_114
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_33
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Politics_33
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#整合全联盟铁路
+	focus = {
+		id = AOR_SOV_Politics_38
+		icon = GFX_AOR_Eric_new_014
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_36
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_SOV_Politics_36
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#第一个五年计划
+	focus = {
+		id = AOR_SOV_Politics_39
+		icon = GFX_AOR_Eric_new_106
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_36
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_Politics_36
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#召开全俄苏维埃代表大会
+	focus = {
+		id = AOR_SOV_Politics_40
+		icon = GFX_AOR_Eric_new_123
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_36
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_36
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#国民基建计划
+	focus = {
+		id = AOR_SOV_Politics_41
+		icon = GFX_AOR_Eric_new_083
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_36
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Politics_36
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#整合全联盟冶炼工业
+	focus = {
+		id = AOR_SOV_Politics_42
+		icon = GFX_AOR_Eric_new_085
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_36
+		}
+		x = 4
+		y = 1
+		relative_position_id = AOR_SOV_Politics_36
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#于世界变局中崛起
+	focus = {
+		id = AOR_SOV_Politics_43
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_38
+			focus = AOR_SOV_Politics_42
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_40
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_39
+		}
+		prerequisite = {
+			focus = AOR_SOV_Politics_41
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Politics_40
+		completion_reward = {
+			add_ideas = SOV_idea_Rise_in_the_changing_world
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_RUS_National_industrialization = yes
+		}
+	}
+	#共产国际
+	focus = {
+		id = AOR_SOV_Politics_44
+		icon = GFX_AOR_Eric_new_073
+		cost = 5
+		x = 12
+		y = 0
+		available = {
+			date > 1920.1.1
+		}
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#欧洲迎接的曙光
+	focus = {
+		id = AOR_SOV_Politics_45
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_44
+		}
+		x = -6
+		y = 1
+		relative_position_id = AOR_SOV_Politics_44
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#亚欧大陆的腹地
+	focus = {
+		id = AOR_SOV_Politics_46
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_44
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_Politics_44
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#位置独特的中国
+	focus = {
+		id = AOR_SOV_Politics_47
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_44
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Politics_44
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#孤悬海外的大陆岛
+	focus = {
+		id = AOR_SOV_Politics_48
+		icon = GFX_AOR_Eric_new_122
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_Politics_44
+		}
+		x = 6
+		y = 1
+		relative_position_id = AOR_SOV_Politics_44
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	###############################################苏联海空军
+	#维持海军设计局
+	focus = {
+		id = AOR_SOV_navy_air_army_1
+		icon = GFX_AOR_Eric_new_033
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_17
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_navy_air_army_10
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_17
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#邀请外国投资港口
+	focus = {
+		id = AOR_SOV_navy_air_army_2
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_1
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#维持俄国“存在”舰队
+	focus = {
+		id = AOR_SOV_navy_air_army_3
+		icon = GFX_AOR_Eric_new_077
+		cost = 0
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_2
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_2
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#发展外国贸易
+	focus = {
+		id = AOR_SOV_navy_air_army_4
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_2
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_2
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#军民两用造船厂
+	focus = {
+		id = AOR_SOV_navy_air_army_5
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_3
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_3
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#怀抱无垠之海
+	focus = {
+		id = AOR_SOV_navy_air_army_6
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_5
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_5
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#设计局专业化
+	focus = {
+		id = AOR_SOV_navy_air_army_7
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_1
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#协调国有资本运作
+	focus = {
+		id = AOR_SOV_navy_air_army_8
+		icon = GFX_AOR_Eric_new_011
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_2
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_7
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#保守学派
+	focus = {
+		id = AOR_SOV_navy_air_army_9
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_7
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_7
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#削减海军投入
+	focus = {
+		id = AOR_SOV_navy_air_army_10
+		icon = GFX_AOR_Eric_new_006
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_17
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_navy_air_army_1
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_17
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#国家设计总局
+	focus = {
+		id = AOR_SOV_navy_air_army_11
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_10
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#大力发展民用船业
+	focus = {
+		id = AOR_SOV_navy_air_army_12
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_10
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#锚定外贸契机
+	focus = {
+		id = AOR_SOV_navy_air_army_13
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_10
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏维埃真正的“红海军”
+	focus = {
+		id = AOR_SOV_navy_air_army_14
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_12
+		}
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_13
+		}
+		x = 1
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#向海权时代迈步
+	focus = {
+		id = AOR_SOV_navy_air_army_15
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_14
+		}
+		x = 1
+		y = 3
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#新锐海军学派
+	focus = {
+		id = AOR_SOV_navy_air_army_16
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_11
+		}
+		x = -1
+		y = 3
+		relative_position_id = AOR_SOV_navy_air_army_10
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#拥抱时代
+	focus = {
+		id = AOR_SOV_navy_air_army_17
+		icon = GFX_AOR_Eric_new_076
+		cost = 5
+		x = 35
+		y = 0
+		available = {
+			OR = {
+				has_civil_war = no
+				has_completed_focus = AOR_SOV_SOV_Army_17
+			}
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			AOR_RUS_recover_Destructive_strike = yes
+		}
+	}
+	#新式兵种
+	focus = {
+		id = AOR_SOV_navy_air_army_18
+		icon = GFX_AOR_Eric_new_121
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_17
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_SOV_navy_air_army_17
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#俄国航空工业的起点
+	focus = {
+		id = AOR_SOV_navy_air_army_19
+		icon = GFX_AOR_Eric_new_075
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_18
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_18
+		completion_reward = {
+			AOR_RUS_recover_Destructive_strike = yes
+		}
+	}
+	#发展航空工业
+	focus = {
+		id = AOR_SOV_navy_air_army_20
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_19
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#列宁号
+	focus = {
+		id = AOR_SOV_navy_air_army_21
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_20
+		}
+		x = -3
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#自给自足的铝工业
+	focus = {
+		id = AOR_SOV_navy_air_army_22
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_19
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#专业飞行训练
+	focus = {
+		id = AOR_SOV_navy_air_army_23
+		icon = GFX_AOR_Eric_new_017
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_19
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏维埃空军现代化
+	focus = {
+		id = AOR_SOV_navy_air_army_24
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_23
+		}
+		x = 2
+		y = 2
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#苏维埃云上英雄
+	focus = {
+		id = AOR_SOV_navy_air_army_25
+		icon = GFX_AOR_Eric_new_039
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_21
+		}
+		prerequisite = {
+			focus = AOR_SOV_navy_air_army_24
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_SOV_navy_air_army_19
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	########################################教育线
+	#教育人民委员会
+	focus = {
+		id = AOR_SOV_tech_1
+		icon = GFX_AOR_Eric_new_099
+		cost = 0
+		x = 46
+		y = 0
+		available = {
+			date > 1920.1.1
+		}
+		relative_position_id = AOR_SOV_SOV_Army_1
+		completion_reward = {
+			add_ideas = SOV_tech_1
+			custom_effect_tooltip = SOV_tech_1_e_tt
+		}
+	}
+	#非宗教
+	focus = {
+		id = AOR_SOV_tech_2
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_1
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_tech_1
+				add_idea = SOV_tech_2
+			}
+			#此处应有事件
+			country_event = {
+				id = SOV.1
+			}
+		}
+	}
+	#尖锐批判形式主义
+	focus = {
+		id = AOR_SOV_tech_3
+		icon = GFX_AOR_Eric_new_004
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_2
+		}
+		x = -2
+		y = 3
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_tech_2
+				add_idea = SOV_tech_3
+			}
+			country_event = SOV.3 #形式主义的终结
+		}
+	}
+	#真正民主
+	focus = {
+		id = AOR_SOV_tech_4
+		icon = GFX_AOR_Eric_new_093
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_1
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_real_de
+				}
+				swap_ideas = {
+					remove_idea = SOV_real_de
+					add_idea = SOV_real_de_2
+				}
+
+			}
+			else = {
+				add_ideas = SOV_real_de
+			}
+			
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = Fascism
+				popularity = -0.1
+			}
+			
+			add_popularity = {
+				ideology = CON_democratic
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = FRE_democratic
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = Absolutism
+				popularity = -0.1
+			}
+		}
+	}
+	#社会主义
+	focus = {
+		id = AOR_SOV_tech_5
+		icon = GFX_AOR_Eric_new_117
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_1
+		}
+		x = 2
+		y = 3
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_real_de
+				}
+				swap_ideas = {
+					remove_idea = SOV_real_de
+					add_idea = SOV_real_de_2
+				}
+
+			}
+			else = {
+				add_ideas = SOV_real_de
+			}
+			
+			country_event = {id = SOV.2}
+		}
+	}
+	#统一劳动学校规程
+	focus = {
+		id = AOR_SOV_tech_6
+		icon = GFX_Eric_Draft_German_Constitution
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_4
+		}
+		prerequisite = {
+			focus = AOR_SOV_tech_5
+		}
+		prerequisite = {
+			focus = AOR_SOV_tech_3
+		}
+		x = 0
+		y = 4
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_tech_3
+				add_idea = SOV_tech_4
+			}
+			add_research_slot = 1
+		}
+	}
+	#教育体制改革
+	focus = {
+		id = AOR_SOV_tech_7
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_6
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_tech_11
+		}
+		x = -1
+		y = 5
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			add_ideas = SOV_Reform_education_system
+			custom_effect_tooltip = SOV_Reform_education_system_tt
+			add_tech_bonus = {
+				name = SOV_electronics 
+				category  = electronics 
+				uses = 1
+				bonus = 1.5
+			}
+		}
+	}
+	#正确解释教师作用
+	focus = {
+		id = AOR_SOV_tech_8
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_7
+		}
+		x = -3
+		y = 6
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			custom_effect_tooltip = SOV_teacher_good_tt
+			swap_ideas = {
+				remove_idea = SOV_Reform_education_system
+				add_idea = SOV_Reform_education_system_2
+			}
+		}
+	}
+	#学制调整
+	focus = {
+		id = AOR_SOV_tech_9
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_8
+		}
+		x = -3
+		y = 7
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	#防止脱离生活实际
+	focus = {
+		id = AOR_SOV_tech_10
+		icon = GFX_AOR_Eric_new_102
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_7
+			focus = AOR_SOV_tech_11
+		}
+		x = 0
+		y = 6
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			country_event = {id = SOV.4}
+			add_manpower = 12500
+		}
+	}
+	#以劳动为中心
+	focus = {
+		id = AOR_SOV_tech_11
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_6
+		}
+		mutually_exclusive = {
+			focus = AOR_SOV_tech_7
+		}
+		x = 1
+		y = 5
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			add_ideas = SOV_Labor_centered
+			add_offsite_building = { type = industrial_complex level = 3 }
+			custom_effect_tooltip = SOV_Labor_centered_tt
+		}
+	}
+	#贯彻教育原则
+	focus = {
+		id = AOR_SOV_tech_12
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_11
+		}
+		x = 1
+		y = 7
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_Labor_centered_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_Labor_centered_2
+					add_idea = SOV_Labor_centered_3
+				}
+			}
+			else = {
+				add_ideas = SOV_Labor_centered_2
+			}
+			
+		}
+	}
+	#才思泉涌的创造性
+	focus = {
+		id = AOR_SOV_tech_13
+		icon = GFX_AOR_Eric_new_002
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_11
+		}
+		x = 3
+		y = 7
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = SOV_Labor_centered_2
+				}
+				swap_ideas = {
+					remove_idea = SOV_Labor_centered_2
+					add_idea = SOV_Labor_centered_3
+				}
+			}
+			else = {
+				add_ideas = SOV_Labor_centered_2
+			}
+			add_tech_bonus = {
+				name = SOV_industry
+				category  = industry
+				uses = 1
+				bonus = 1
+			}
+			add_tech_bonus = {
+				name = SOV_excavation_tech
+				category  = excavation_tech
+				uses = 1
+				bonus = 1
+			}
+		}
+	}
+	#属于苏维埃人民的创新
+	focus = {
+		id = AOR_SOV_tech_14
+		icon = GFX_AOR_Eric_new_046
+		cost = 5
+		prerequisite = {
+			focus = AOR_SOV_tech_9
+			focus = AOR_SOV_tech_12
+			focus = AOR_SOV_tech_13
+		}
+		prerequisite = {
+			focus = AOR_SOV_tech_10
+		}
+		x = 0
+		y = 8
+		relative_position_id = AOR_SOV_tech_1
+		completion_reward = {
+			custom_effect_tooltip = SOV_tech_end
+			add_research_slot = 1
+			add_tech_bonus = {
+				name = SOV_construction_tech 
+				category  = construction_tech 
+				uses = 2
+				bonus = 2
+			}
+		}
+	}
+}

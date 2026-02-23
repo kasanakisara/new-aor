@@ -1,0 +1,141 @@
+### debug决议 ###
+BAV_debug = {
+    BAV_bebel_si = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            country_event = {id = BAV.3}
+        }
+    }
+
+    BAV_start_alarm = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            set_country_flag = BAV.RUS.mention
+			mark_focus_tree_layout_dirty = yes
+			complete_national_focus = BAV_Knock_the_alarm_bell
+        }
+    }
+
+    BAV_focus_1 = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            load_focus_tree = BAV_1
+        }
+    }
+
+    BAV_focus_2 = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            load_focus_tree = BAV_2
+        }
+    }
+
+    BAV_focus_3 = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            load_focus_tree = BAV_3
+        }
+    }
+
+    BAV_trust_100_yes = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+           add_to_variable = {Bebel_Trust = 100}
+        }
+    }
+
+   BAV_trust_0_yes = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+           subtract_from_variable = {Bebel_Trust = 100}
+        }
+    }
+
+   BAV_trust_50_yes = {
+        available = {
+            is_debug = yes
+            tag = BAV
+        }
+        visible = {
+            is_debug = yes
+            tag = BAV
+        }
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+           set_variable = {Bebel_Trust = 50}
+        }
+    }
+
+}

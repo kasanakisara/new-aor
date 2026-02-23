@@ -1,0 +1,410 @@
+ideas = {
+	# MILITARY
+
+	tank_manufacturer = { 
+		
+		designer = yes
+		
+		renault_bel = {
+			picture = renault
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { fast_tank_manufacturer }
+			
+			modifier = {
+				# Renault FT
+			}
+		}
+
+		vickers_armstrong_bel = {
+			picture = generic_tank_manufacturer_2
+		
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { medium_tank_manufacturer }
+			
+			modifier = {
+				
+			}
+		}
+	}
+
+	aircraft_manufacturer = {
+	
+		designer = yes
+		
+		avions_fairey = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		renard = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	
+	naval_manufacturer = { 
+		
+		designer = yes
+		
+		cockerill = { 
+			picture = generic_naval_manufacturer_1
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+						
+			traits = { naval_manufacturer }
+		}
+	}
+
+	materiel_manufacturer = {
+		
+		designer = yes
+		
+		fn_herstol = {
+			
+			picture = generic_infantry_equipment_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+			
+			
+			traits = { infantry_equipment_manufacturer }
+		}
+	}
+
+	country = {
+
+		#洪水退去
+		flood_away = {
+			
+			picture = idea_flood_away
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				ai_focus_defense_factor = 0.5
+				production_speed_buildings_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+
+		#自由的代价
+		price_for_freedom = {
+			
+			picture = GFX_idea_price_for_freedom
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				conscription = -0.005
+				war_support_factor = -0.5
+				stability_factor = 0.05
+				consumer_goods_factor = 0.10
+				production_speed_arms_factory_factor = -0.30
+			}
+		}
+		
+		#阿尔贝一世-表面
+		Albert_I = {
+			
+			picture = idea_Albert_I
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				custom_modifier_tooltip = BEL.idea.1.tt
+				
+			}
+		}
+	
+		#玉米贸易
+		Maize_Trade = {
+			
+			picture = idea_Maize_Trade
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				trade_opinion_factor = 0.25
+				min_export = 0.1
+			}
+		}
+		
+		#基础教育
+		Primary_ducation_Academy = {
+			
+			picture = idea_Primary_ducation_Academy
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		
+		#索尔维会议的余波#
+		
+		Aftermath_of_Solvay_Conference = {
+			
+			picture = idea_Primary_ducation_Academy
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				research_speed_factor = 0.07
+			}
+		}
+		
+		motherland_is_burning = {
+			
+			picture = idea_motherland_is_burning
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+		
+		motherland_is_burning_1 = {
+			
+			picture = idea_motherland_is_burning
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				experience_loss_factor = 0.1
+			}
+		}
+		#以下五个同为国策用，开局添加第一个即可
+		delicate_military = {
+			picture = idea_delicate_military
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_regain = -0.2
+				training_time_army_factor = +0.2
+				land_reinforce_rate = -0.2
+				army_attack_factor = -0.2
+				army_strength_factor = -0.1
+			}
+		}
+		weak_military = {
+			picture = idea_weak_military
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_regain = -0.15
+				training_time_army_factor = +0.15
+				land_reinforce_rate = -0.15
+				army_attack_factor = -0.15
+			}
+		}
+		adequate_military = {
+			picture = idea_adequate_military
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_regain = -0.1
+				training_time_army_factor = +0.1
+				land_reinforce_rate = -0.1
+				army_attack_factor = -0.1
+			}
+		}
+		suitable_military = {
+			picture = idea_suitable_military
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_regain = -0.05
+				training_time_army_factor = +0.05
+				land_reinforce_rate = -0.05
+				army_attack_factor = -0.05
+				army_strength_factor = +0.02
+			}
+		}
+		satisfying_military = {
+			picture = idea_satisfying_military
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_regain = +0.05
+				training_time_army_factor = -0.05
+				land_reinforce_rate = +0.05
+				army_attack_factor = +0.1
+				army_strength_factor = +0.05
+			}
+		}
+		
+	}
+	
+	hidden_ideas = {
+				
+		#阿尔贝一世-实际
+		Albert_I_real = {
+			
+			picture = idea_Albert_I
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				
+			}
+		}
+	}
+
+}

@@ -1,0 +1,56 @@
+scripted_gui = {
+	AOR_leaders_button = {
+		window_name = "hounse_of_commons_button_0"
+		context_type = player_context
+		visible = {
+			tag = ENG
+		}
+		effects = {
+			hounse_of_commons_button_1_click = {
+				AOR_ENG_hounse_of_commons_window = yes
+				
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = open_hounse_of_commons_window
+						}
+					}
+					set_country_flag = open_hounse_of_commons_window
+				}
+				else = {
+					clr_country_flag = open_hounse_of_commons_window
+				}
+			}
+		}
+	}
+
+	AOR_hounse_of_commons_window = {
+		window_name = "ENG_hounse_of_commons_window"
+		context_type = player_context
+
+		visible = {
+			has_country_flag = open_hounse_of_commons_window
+		}
+
+		effects = {
+			ENG_hounse_of_commons_tuichu_button_click = {
+				clr_country_flag = open_hounse_of_commons_window
+			}
+		}
+
+		dynamic_lists = {
+			ENG_hounse_of_common_MP = {
+				array = ENG_hounse_of_commons_window_array
+				index = i
+				value = v
+				entry_container = ENG_hounse_of_common_MP_entry
+			}
+		}
+
+		properties = {
+			ENG_hounse_of_common_MP_icon = {
+				frame = ENG_hounse_of_commons_window_array^i
+			}
+		}
+	}
+}

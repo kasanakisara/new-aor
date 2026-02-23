@@ -1,0 +1,224 @@
+ideas = {
+	hidden_ideas = {
+		FRA_ideas_dependent_country_tdc = {
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_remove = {
+				multiply_variable = {
+					var_FRA_dependent_country_Monopoly_tradeCost = 2
+				}
+				multiply_variable = {
+					var_FRA_dependent_country_Forced_productionCost = 2
+				}
+				multiply_variable = {
+					var_FRA_dcseofc_cost = 2
+				}
+			}
+		}
+		FRA_ideas_dependent_country_cod = {
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_remove = {
+				multiply_variable = {
+					var_FRA_dependent_country_Monopoly_tradeDaysremove = 2
+				}
+				multiply_variable = {
+					var_FRA_dependent_country_Forced_productionDaysremove = 2
+				}
+				multiply_variable = {
+					var_FRA_dcseofc_Daysremove = 2
+				}
+				multiply_variable = {
+					var_FRA_dccod_Daysremove = 2
+				}
+				multiply_variable = {
+					var_FRA_dcsma_Daysremove = 2
+				}
+				multiply_variable = {
+					var_FRA_dctdc_Daysremove = 2
+				}
+				divide_variable = {
+					var_FRA_dependent_country_Monopoly_tradeCost = 2
+				}
+				divide_variable = {
+					var_FRA_dependent_country_Forced_productionCost = 2
+				}
+				divide_variable = {
+					var_FRA_dcseofc_cost = 2
+				}
+			}
+		}
+	}
+	country = {
+		AOR_FRA_The_Third_Republic = { #第三共和国
+			picture = GFX_AOR_goal_FRA_The_Third_Republic
+
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.1
+				FRE_democratic_drift = 0.01
+				CON_democratic_drift = 0.01
+			}
+		}
+
+		AOR_FRA_The_Shadow_of_the_world_war = { #世界大战的胜利者
+			picture = GFX_AOR_goal_FRA_The_shadow_of_the_world_war
+
+			modifier = {
+				war_support_factor = -0.5
+				training_time_army_factor = 0.5
+				experience_gain_army_factor = -0.75
+				experience_gain_navy_factor = -0.75
+				experience_gain_air_factor = -0.75
+			}
+		}
+
+		AOR_FRA_A_Growing_Social_Crisis = { #愈演愈烈的社会危机
+			picture = GFX_AOR_goal_FRA_A_Growing_Social_Crisis
+
+			modifier = {
+				stability_factor = -0.1
+				consumer_goods_factor = 0.35
+				industrial_capacity_factory = -0.15
+				production_speed_buildings_factor = -0.05
+				Marxism_drift = 0.01
+				Absolutism_drift = 0.01
+				custom_modifier_tooltip = FRA_Social_Crisis_I_tt
+				
+			}
+		}
+
+		AOR_FRA_A_Growing_Social_Crisis_I = { #迫在眉睫的社会危机
+			picture = GFX_AOR_goal_FRA_A_Growing_Social_Crisis
+
+			modifier = {
+				stability_factor = -0.15
+				consumer_goods_factor = 0.4
+				industrial_capacity_factory = -0.2
+				production_speed_buildings_factor = -0.1
+				Marxism_drift = 0.05
+				Absolutism_drift = 0.05
+				custom_modifier_tooltip = FRA_Social_Crisis_II_tt
+			}
+		}
+
+		AOR_FRA_A_Growing_Social_Crisis_II = { #迫在眉睫的社会危机-二阶段
+			picture = GFX_AOR_goal_FRA_A_Growing_Social_Crisis
+
+			modifier = {
+				stability_factor = -0.2
+				consumer_goods_factor = 0.45
+				industrial_capacity_factory = -0.25
+				production_speed_buildings_factor = -0.15
+				Marxism_drift = 0.05
+				Absolutism_drift = 0.05
+				custom_modifier_tooltip = FRA_Social_Crisis_III_tt
+			}
+		}
+
+		AOR_FRA_A_Growing_Social_Crisis_III = { #濒临崩溃的社会危机
+			picture = GFX_AOR_goal_FRA_A_Growing_Social_Crisis
+
+			modifier = {
+				stability_factor = -0.25
+				consumer_goods_factor = 0.5
+				industrial_capacity_factory = -0.3
+				production_speed_buildings_factor = -0.2
+				Marxism_drift = 0.1
+				Absolutism_drift = 0.1
+				custom_modifier_tooltip = FRA_Social_Crisis_IV_tt
+			}
+		}
+
+		AOR_FRA_A_Growing_Social_Crisis_IV = { #完全崩溃的社会危机
+			picture = GFX_AOR_goal_FRA_A_Growing_Social_Crisis
+
+			modifier = {
+				stability_factor = -0.35
+				consumer_goods_factor = 0.55
+				industrial_capacity_factory = -0.35
+				production_speed_buildings_factor = -0.35
+				Marxism_drift = 0.15
+				Absolutism_drift = 0.15
+				custom_modifier_tooltip = FRA_Social_Crisis_V_tt
+			}
+		}
+
+		AOR_FRA_World_owner = { #世界共主
+			picture = GFX_AOR_goal_FRA_World_owner
+
+			modifier = {
+				compliance_growth = 0.02
+				trade_laws_cost_factor = -0.3
+				resistance_growth = -0.03
+				trade_opinion_factor = 0.5
+
+			}
+		}
+
+		AOR_FRA_Transforming_Military_Attire_Into_Workwear = { #拖下戎装，穿上工装
+			picture = GFX_AOR_goal_FRA_Transforming_Military_Attire_Into_Workwear
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				stability_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		AOR_FRA_Rebuilted_consciousness = { #重塑的意识
+			picture = GFX_AOR_goal_FRA_Rebuilted_consciousness
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				industrial_capacity_factory = 0.05
+				local_building_slots_factor = 0.05
+				political_power_factor = 0.1
+				stability_weekly = 0.01
+			}
+		}
+		AOR_FRA_Interactions_from_all_directions = { #四方的往来
+			picture = GFX_AOR_goal_FRA_Interactions_from_all_directions
+
+			modifier = {
+				trade_opinion_factor = 0.1
+				political_power_factor = 0.1
+				drift_defence_factor = -0.05
+			}
+		}
+		AOR_FRA_The_Revival_of_France = { #复兴的法兰西
+			picture = GFX_AOR_goal_FRA_The_Revival_of_France
+
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.2
+				industrial_concern_cost_factor =-0.1
+				mobilization_laws_cost_factor = -0.1
+				trade_laws_cost_factor  = -0.1
+				economy_cost_factor = -0.1
+				political_advisor_cost_factor = -0.1
+				theorist_cost_factor = -0.1
+			}
+		}
+
+		AOR_FRA_Millerand_President = { #叛徒总统
+
+		#picture = GFX_idea_AOR_FRA_Millerand_President
+
+			modifier = {
+				stability_factor = -0.2
+				political_power_factor = -0.1
+				FRE_democratic_drift = -0.02
+				SOC_democratic_drift = -0.02
+			}
+		}
+	}
+}

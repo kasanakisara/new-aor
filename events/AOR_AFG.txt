@@ -1,0 +1,25 @@
+add_namespace = AFG
+
+country_event = {
+	id = AFG.1 #阿富汗战争再起
+	title = AFG.1.t
+	desc = AFG.1.d
+	picture = GFX_AFG_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = AFG
+		date > 1919.10.20
+    }
+
+
+    option = {
+		name = AFG.1.a
+		news_event = {id=AOR_news.222}
+            AFG = {
+                declare_war_on = { 
+                    target = AFK
+                    type = civil_war
+                }
+		    }
+        }
+    }

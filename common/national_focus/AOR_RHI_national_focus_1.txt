@@ -1,0 +1,174 @@
+focus_tree = {
+	##莱茵兰国策树
+	id = AOR_RHI_national_focus_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = rhi
+		}
+	}
+	default = no
+	#混乱
+	focus = {
+		id = rhi_confusion
+		icon = GFX_goal_unknown
+		cost = 2.00
+		x = 3
+		y = 0
+		completion_reward={
+		custom_effect_tooltip = RHI.1.tt
+		hidden_effect = {
+		add_stability =0.05
+		add_political_power = 150
+		every_controlled_state={
+			damage_building = {
+    			type = infrastructure
+    			damage = 1
+				}
+		}
+		}
+		}
+
+	}
+	#高卢
+	focus = {
+		id = rhi_France
+		icon = GFX_goal_unknown
+		cost = 5.00
+		prerequisite = {
+			focus = rhi_confusion
+		}
+		x = 1
+		y = 1
+		completion_reward={
+		custom_effect_tooltip = RHI.2.tt
+		hidden_effect = {
+		swap_ideas = {
+				remove_idea = comprehensive_investments
+				add_idea = comprehensive_investments_1
+			}
+		}
+		}
+
+	}
+	#工人
+	focus = {
+		id = rhi_workers
+		icon = GFX_goal_unknown
+		cost = 5.00
+		prerequisite = {
+			focus = rhi_confusion
+		}
+		x = 3
+		y = 1
+		completion_reward={
+			custom_effect_tooltip = RHI.3.tt
+			hidden_effect = {
+			swap_ideas = {
+				remove_idea = rejection
+				add_idea = rejection_1
+		}
+		add_timed_idea = {
+    			idea = AOR_RHI_compromise_with_workers
+   				days = 180
+				}
+				}
+			}
+	}
+	#教会
+	focus = {
+		id = rhi_church
+		icon = GFX_goal_unknown
+		cost = 5.00
+		prerequisite = {
+			focus = rhi_confusion
+		}
+		x = 5
+		y = 1
+		completion_reward={
+			custom_effect_tooltip = RHI.4.tt
+			hidden_effect = {
+		swap_ideas = {
+				remove_idea = problem_of_jesus
+				add_idea = problem_of_jesus_1
+			}
+			}
+		}
+	}
+	#妥协
+	focus = {
+		id = rhi_compromise
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = rhi_France
+		}
+		prerequisite = {
+			focus = rhi_workers
+		}
+		prerequisite = {
+			focus = rhi_church
+		}
+		x = 2
+		y = 2
+		completion_reward={
+			custom_effect_tooltip = RHI.5.tt
+			hidden_effect = {
+		swap_ideas = {
+				remove_idea = rejection_1
+				add_idea = rejection_2
+			}
+			}
+		}
+	}
+	#重启
+	focus = {
+		id = rhi_restart
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = rhi_workers
+		}
+		prerequisite = {
+			focus = rhi_church
+		}
+		prerequisite = {
+			focus = rhi_France
+		}
+		x = 4
+		y = 2
+		completion_reward={
+			custom_effect_tooltip = RHI.6.tt
+			hidden_effect = {
+			add_ideas = AOR_RHI_resurrected_Ruhrgebiet
+			}
+		}
+
+	}
+	#秩序
+	focus = {
+		id = rhi_order
+		icon = GFX_goal_unknown
+		cost = 5.00
+		prerequisite = {
+			focus = rhi_compromise
+		}
+		prerequisite = {
+			focus = rhi_restart
+		}
+		x = 3
+		y = 3
+		completion_reward={
+		custom_effect_tooltip = RHI.7.tt
+		hidden_effect = {
+		swap_ideas = {
+			
+				remove_idea = rejection_2
+				add_idea = rejection_3
+			}
+			add_ideas = AOR_RHI_New_onder
+			}
+		}
+	}
+}

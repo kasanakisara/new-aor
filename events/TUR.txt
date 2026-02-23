@@ -1,0 +1,590 @@
+add_namespace = TUR
+country_event = {
+	id = TUR.1
+	title = TUR.1.t
+	desc = TUR.1.d
+	picture = GFX_events_TUR_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+    #那就这样吧  	
+	option = {
+		name = TUR.1.a
+		TUR = {
+			declare_war_on = {
+				target = GRE
+				type = take_claimed_state
+			}
+		}
+		news_event = {id = AOR_news.29}
+	}
+}
+country_event = {
+	id = TUR.2
+	title = TUR.2.t
+	desc = TUR.2.d
+	picture = GFX_events_TUR_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+    #那就这样吧  	
+		option = {
+			
+		name = TUR.2.a
+		add_popularity = { ideology = Marxism popularity = 0.34 }
+		set_politics = {ruling_party = Marxism}
+		set_cosmetic_tag = TUR_MAX_1
+		remove_ideas = Humiliation_before_death
+		remove_ideas = The_storm_is_gathering
+		
+    }
+}
+country_event = {#侵略成功
+	id = TUR.3
+	title = TUR.3.t
+	desc = TUR.3.d
+	picture = GFX_events_TUR_3
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	trigger = {
+		has_war_with = GRE
+		controls_state   = 343
+		controls_state  = 797
+		GRE = {NOT = {has_idea = Take_the_initiative_to_attack}}
+		TUR = {NOT = { has_idea = revenge }}
+	}
+    #那就这样吧  	
+	immediate = {
+		clr_country_flag = prepare_war_baergan
+		hidden_effect = {
+			news_event = AOR_news.41
+		}
+	}
+	option = {
+		name = TUR.3.a
+		transfer_state = 797
+		transfer_state =  340
+		transfer_state =  341
+		every_country = {
+			limit = { has_war_with = TUR }
+			white_peace = TUR
+		}
+		GRE = {
+			country_event = {days = 45 id = GRE.5}
+		}
+	}
+}
+country_event = {#希腊人被打退了！
+	id = TUR.4
+	title = TUR.4.t
+	desc = TUR.4.d
+	picture = GFX_events_TUR_4
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	trigger = {
+		has_war_with = GRE
+		TUR = {NOT = { has_idea = revenge }
+	}
+		controls_state   = 343
+		controls_state  = 797
+		controls_state  = 184
+		GRE = {has_idea =  Take_the_initiative_to_attack}
+	}
+    #那就这样吧  	
+	
+	immediate = {
+		clr_country_flag = prepare_war_baergan
+		hidden_effect = {
+			news_event = AOR_news.44
+		}
+	}
+	option = {
+		name = TUR.4.a
+		every_country = {
+			limit = { tag = GRE}
+			white_peace = TUR
+		}
+		GRE = {
+			country_event = {days = 45 id = GRE.5}
+		}
+	}
+}
+country_event = {#土耳其宣战
+	id = TUR.5
+	title = TUR.5.t
+	desc = TUR.5.d
+	picture = GFX_events_TUR_5
+	fire_only_once = yes
+	is_triggered_only = yes
+    #那就这样吧  	
+	option = {
+		name = TUR.5.a
+		news_event = {id = AOR_news.347}
+		add_ideas = {
+			revenge
+		}
+		TUR = {
+			declare_war_on = {
+				target = GRE
+				type = take_claimed_state
+				}
+				country_event = {days = 5 id = TUR.6}
+		}
+	}
+}
+
+country_event = {
+	id = TUR.6 #库尔德起义
+	title = TUR.6.t
+	desc = TUR.6.d
+	picture = GFX_AOR_news_178
+
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	trigger = {
+	    tag = TUR
+	    has_war_with = GRE
+	}
+	
+	timeout_days = 7
+#哦，糟糕..
+    option = { 
+		name = TUR.6.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			TUR = {
+				declare_war_on = {
+					target = annex_everything
+				}
+			}
+			KUR = {
+				transfer_state = 352
+				transfer_state = 353
+				transfer_state = 800
+				add_manpower = 10000
+				declare_war_on = {
+					target = TUR
+					type = annex_everything
+				}
+				if = {
+					limit = { NOT = { has_template = "Common Militia" } }
+					division_template = {
+						priority = 0
+						name = "Common Militia"
+						regiments = {
+							infantry = { x = 0 y = 0 } 
+							infantry = { x = 0 y = 1 } 
+							infantry = { x = 1 y = 0 } 
+							infantry = { x = 1 y = 1 } 
+						}
+						support = {}
+					}
+					random_controlled_state = {
+						create_unit = {
+							division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+							owner = PREV
+							count = 1
+						}
+					}
+				}
+			}
+			country_event = {days = 5 id = TUR.7}
+			news_event = { id = AOR_news_TUR_KUR}
+		}
+	}
+}
+
+#战争不利，苏丹被政变
+country_event = {
+	id = TUR.7
+	title = TUR.7.t
+	desc = TUR.7.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+    #那就这样吧  	
+	option = {
+		name = TUR.7.a
+		#33%塔拉特帕夏
+		ai_chance = {
+			base = 33
+		}
+		add_popularity = { ideology = Absolutism popularity = 0.20 }
+		add_popularity = { ideology = Marxism popularity = 0.20 }
+		set_politics = {ruling_party = Absolutism}
+		country_event = {days = 6 id = TUR.8}
+		news_event = { id = AOR_news_TUR_TAL}#塔拉特帕夏政变
+	}
+	#34%恩维尔
+	option = {
+	name = TUR.7.b
+	ai_chance = {
+		base = 34
+	}
+	add_popularity = { ideology = AUT_democratic popularity = 0.20 }
+	add_popularity = { ideology = Marxism popularity = 0.20 }
+	set_politics = {ruling_party = AUT_democratic}
+	country_event = {days = 6 id = TUR.8}
+	news_event = { id = AOR_news_TUR_ENV}#恩维尔帕夏政变
+	}
+	option = {
+		name = TUR.7.c
+		ai_chance = {
+			base = 33
+		}
+	add_popularity = { ideology = Fascism popularity = 0.20 }
+	add_popularity = { ideology = Marxism popularity = 0.20 }
+	set_politics = {ruling_party = Fascism}
+	country_event = {days = 6 id = TUR.8}
+	news_event = { id = AOR_news_TUR_ENV}#杰马尔帕夏政变
+		}
+
+}
+
+country_event = { #苏丹的去与留？
+	id = TUR.8
+	title = TUR.8.t
+	desc = TUR.8.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+    #杀了那鸟皇帝！
+	option = {
+		name = TUR.8.a
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.05
+		add_war_support = 0.1
+	}
+	#他可是皇亲国戚啊...
+	option = {
+	name = TUR.7.b
+	ai_chance = {
+		base = 50
+	}
+	add_ideas = TUR_SOLTAN_MUHMUD
+	set_cosmetic_tag = TUR_SOLTAN_ALIVE
+	}
+}
+
+add_namespace = AOR_TUR_events
+country_event = { #
+	id = AOR_TUR_events.1
+	title = AOR_TUR_events.1.t
+	desc = AOR_TUR_events.1.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.1.a
+		ai_chance = {
+			base = 50
+		}
+		add_to_variable = {
+			var:global.AOR_turkish_straits_game_Progressbar_var = 5
+		}
+		add_to_variable = {
+			var:global.AOR_turkish_straits_game_antiside_var = -5
+		}
+		custom_effect_tooltip = AOR_Turkish_Straits_race_turkish_leaning_tt
+		ENG = { country_event = { id = AOR_TUR_events.2 } }
+	}
+	option = {
+		name = AOR_TUR_events.1.b
+		ai_chance = {
+			base = 50
+		}
+		add_command_power = 5
+		swap_ideas = {
+			remove_idea = TUR_treaty_mudros_idea
+			add_idea = TUR_treaty_mudros_1_idea
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.2
+	title = AOR_TUR_events.2.t
+	desc = AOR_TUR_events.2.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.2.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.3
+	title = AOR_TUR_events.3.t
+	desc = AOR_TUR_events.3.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.3.a
+		ai_chance = {
+			base = 1
+		}
+		hidden_effect = {
+			country_event = { id = AOR_TUR_events.9 days = 30 }
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.4
+	title = AOR_TUR_events.4.t
+	desc = AOR_TUR_events.4.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.4.a
+		ai_chance = {
+			base = 1
+		}
+		add_manpower = -1
+		kill_ideology_leader = Marxism
+		promote_character = TUR_Ethem_Nejat
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.5
+	title = AOR_TUR_events.5.t
+	desc = AOR_TUR_events.5.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.5.a
+		ai_chance = {
+			base = 1
+		}
+		355 = {
+			set_demilitarized_zone = yes
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1350
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.6
+	title = AOR_TUR_events.6.t
+	desc = AOR_TUR_events.6.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.6.a
+		ai_chance = {
+			base = 1
+		}
+		retire_country_leader = yes
+		promote_character = TUR_Damat_Ferid_Pasha
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.7
+	title = AOR_TUR_events.7.t
+	desc = AOR_TUR_events.7.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.7.a
+		ai_chance = {
+			base = 1
+		}
+		set_party_name = {
+			ideology = Absolutism
+			name = TUR_Absolutism_TBMM_party
+			long_name = TUR_Absolutism_TBMM_party_long
+		}
+		promote_character = TUR_Mustapha_Kemal_Pasha
+		hidden_effect = {
+			country_event = { id = AOR_TUR_events.8 days = 15 }
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_events.8
+	title = AOR_TUR_events.8.t
+	desc = AOR_TUR_events.8.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.8.a
+		ai_chance = {
+			base = 1
+		}
+		set_cosmetic_tag = TUR_provisional
+		custom_effect_tooltip = AOR_TUR_turn_neutral_tt
+		hidden_effect = {
+			remove_ideas = entente_member_nation
+			remove_ideas = british_commonwealth_nation
+			set_popularities = {
+				Absolutism = 100
+			}
+			load_focus_tree = AOR_TUR_Kemal
+			country_event = { id = AOR_TUR_events.10 days = 60 }
+		}
+		set_politics = {
+			ruling_party = Absolutism
+			elections_allowed = no
+		}
+	}
+}
+country_event = { #executing Talat
+	id = AOR_TUR_events.9
+	title = AOR_TUR_events.9.t
+	desc = AOR_TUR_events.9.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.9.a
+		ai_chance = {
+			base = 1
+		}
+		add_manpower = -1
+		kill_ideology_leader = Fascism
+		promote_character = TUR_Ahmed_Djemal_Pasha
+	}
+}
+country_event = { #elections
+	id = AOR_TUR_events.10
+	title = AOR_TUR_events.10.t
+	desc = AOR_TUR_events.10.d
+	picture = GFX_events_GRE_5
+	immediate = {
+		hidden_effect = {
+			set_popularities = {
+				Marxism = 35
+				AUT_democratic = 40
+				Fascism = 25
+			}
+			set_party_name = {
+				ideology = Marxism
+				name = TUR_TICSF_party
+				long_name = TUR_TICSF_party_long
+			}
+			set_party_name = {
+				ideology = AUT_democratic
+				name = TUR_CHP_party
+				long_name = TUR_CHP_party_long
+			}
+			set_party_name = {
+				ideology = Fascism
+				name = TUR_TF_party
+				long_name = TUR_TF_party_long
+			}
+			TUR_Mustapha_Kemal_Pasha = {
+				add_country_leader_role = {
+					country_leader = {
+						expire = "1940.01.01"
+						ideology = authoritarianism
+						traits = {
+						}
+						id = -1
+					}
+					promote_leader = yes
+				}
+			}
+			promote_character = TUR_Ismail_Enver_Pasha
+			promote_character = TUR_Sefik_Husnu
+		}
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.10.a
+		ai_chance = {
+			base = 1
+		}
+		set_cosmetic_tag = TUR_red_republic
+		set_politics = {
+			ruling_party = Marxism
+			elections_allowed = no
+		}
+	}
+	option = {
+		name = AOR_TUR_events.10.b
+		ai_chance = {
+			base = 1
+		}
+		set_cosmetic_tag = TUR_republic
+		set_politics = {
+			ruling_party = AUT_democratic
+			elections_allowed = no
+		}
+	}
+	option = {
+		name = AOR_TUR_events.10.c
+		ai_chance = {
+			base = 1
+		}
+		set_cosmetic_tag = TUR_fascist_regime
+		set_politics = {
+			ruling_party = Fascism
+			elections_allowed = no
+		}
+	}
+}
+country_event = { #communists
+	id = AOR_TUR_events.11
+	title = AOR_TUR_events.11.t
+	desc = AOR_TUR_events.11.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_events.11.a
+		ai_chance = {
+			base = 1
+		}
+		set_party_name = {
+			ideology = Marxism
+			name = TUR_TICSF_party
+			long_name = TUR_TICSF_party_long
+		}
+		add_popularity = {
+			ideology = Marxism
+			popularity = 0.03
+		}
+		add_war_support = -0.075
+		add_manpower = -320
+	}
+}

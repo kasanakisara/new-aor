@@ -1,0 +1,225 @@
+ideas = {
+
+    #舆论
+	public_opinion = {
+		law = yes
+		use_list_view = yes
+	
+	    #鸦雀无声
+		Silent = {
+		    
+			level = 1
+		
+		    modifier = {
+		        political_power_gain = -1.00
+			    stability_factor = 0.1
+			    drift_defence_factor = 0.5
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+		
+		#官方审查
+		Official_review = {
+		    
+			level = 2
+		
+		    modifier = {
+		        political_power_gain = -0.50
+			    stability_factor = 0.05
+			    drift_defence_factor = 0.25
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+		
+		#有限发言
+		Limited_statements = {
+		    
+			level = 3
+			
+			cancel_if_invalid = no
+			
+		}
+		
+		#保障发言
+		Guaranteed_statements = {
+		    
+			level = 4
+		
+		    modifier = {
+		        political_power_gain = 0.50
+			    stability_factor = -0.05
+			    drift_defence_factor = -0.25
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+		
+		#畅所欲言
+		Speak_one_s_mind = {
+		
+		    level = 5
+		
+		    modifier = {
+		        political_power_gain = 1.00
+			    stability_factor = -0.1
+			    drift_defence_factor = -0.5
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+    }
+	
+	#劳动
+	labor = {
+		law = yes
+		use_list_view = yes
+					
+		#福报奴隶
+		Blessed_slaves = {
+		
+		    level = 5
+		
+		    modifier = {
+		        industrial_capacity_factory = 0.1
+			    consumer_goods_factor = -0.1
+			    stability_factor = -0.2
+			    communism_drift = 0.03
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+		
+		#容忍剥削
+		Tolerance_of_exploitation = {
+		    
+		    level = 4
+		
+		    modifier = {
+		        industrial_capacity_factory = 0.05
+			    stability_factor = -0.05
+		    }
+		
+		    cancel_if_invalid = no
+			
+		}
+		
+		#虚假的劳动法
+		False_labor_laws = {
+		    
+		    level = 3
+		
+		    cancel_if_invalid = no
+		}
+		
+		#八小时工作制
+		Eight-hour_working_hour = {
+		    
+		    level = 2
+		
+		    modifier = {
+		        industrial_capacity_factory = 0.05
+			    stability_factor = 0.05
+				consumer_goods_factor = 0.05
+		    }
+		
+		    cancel_if_invalid = no
+		}
+		
+		#一周四天工作制
+		Four-day_workday = {
+		
+		    level = 1
+		
+		    modifier = {
+		        industrial_capacity_factory = 0.05
+			    stability_factor = 0.2
+				consumer_goods_factor = 0.1
+		    }
+		
+		    cancel_if_invalid = no
+		}
+	}
+	
+	#福利
+	welfare = {
+		law = yes
+		use_list_view = yes
+		
+		#老天保佑
+		God_forbid = {
+		
+		    level = 1
+		
+		    modifier = {
+		        consumer_goods_factor = -0.15
+			    conscription = -0.01
+				stability_factor = -0.15
+		    }
+		
+		    cancel_if_invalid = no
+		
+		}
+		
+		#勉勉强强
+		Barely = {
+		
+		    level = 2
+		
+		    modifier = {
+		        consumer_goods_factor = -0.05
+			    conscription = -0.005
+				stability_factor = -0.1
+		    }
+		
+		    cancel_if_invalid = no
+		
+		}
+		
+		#基本保障
+		Basic_coverage = {
+		
+		    level = 3
+		
+		    cancel_if_invalid = no
+		
+		}
+		
+		#全民保险
+		Universal_insurance = {
+		
+		    level = 4
+		
+		    modifier = {
+		        consumer_goods_factor = 0.1
+			    conscription = 0.005
+				stability_factor = 0.05
+		    }
+		
+		    cancel_if_invalid = no
+		
+		}
+		
+		#无忧无虑
+		carefree = {
+		
+		    level = 5
+		
+		    modifier = {
+		        consumer_goods_factor = 0.25
+			    conscription = 0.005
+				stability_factor = 0.2
+				weekly_manpower = 500
+		    }
+		
+		    cancel_if_invalid = no
+		
+		}
+	}
+}

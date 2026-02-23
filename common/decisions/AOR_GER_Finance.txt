@@ -1,0 +1,299 @@
+AOR_GER_finance_category = {  #德国金融体系
+
+	AOR_GER_German_hard_times = { #德意志“艰苦岁月”
+        icon = generic_operation
+		ai_will_do = { factor = 100 }
+		
+		fire_only_once = yes
+		
+		days_remove = 30 days_re_enable = 1
+		
+		visible = { always = yes }
+		
+	    modifier = {
+			command_power_gain = -0.05
+		}
+		remove_effect = {
+		    custom_effect_tooltip = "AOR_GER_German_hard_times_tt"
+			set_country_flag = AOR_GER_flag_finance
+		}
+		complete_effect = {
+		}
+		
+	}
+    AOR_GER_Monthly_financial_revenue = { #月度财政收入
+        available = {
+		}
+		cost = 0
+		icon = GFX_decision_category_generic_economy
+		
+        fire_only_once = no 
+        is_good = yes
+		days_mission_timeout = 28
+		days_remove  = 0
+		available = { NOT = { is_debug = yes } }
+		activation = {
+			NOT = {
+				has_country_flag = AOR_GER_inflation_5
+			}
+		}
+		cancel_trigger = {
+			has_country_flag = AOR_GER_inflation_5
+		}
+		timeout_effect = {
+			custom_effect_tooltip = "AOR_GER_finance_tt"
+			
+			add_to_variable = { AOR_GER_gold_quantity = AOR_GER_gold_revenue }
+            random = {
+                chance = 50
+                add_to_variable = { AOR_GER_gold_revenue = 10 }
+            }
+		}
+    }
+    AOR_GER_Reduce_inflation = { #降低通货膨胀
+        available = {
+		}
+		cost = 100
+		icon = GFX_decision_category_gre_investment_decisions
+        fire_only_once = no 
+        is_good = yes
+		days_remove  = 0 days_re_enable = 1
+		available = {
+			NOT = { has_country_flag = AOR_GER_Economic_collapse }
+		}
+		modifier = {
+			stability_weekly = -0.002
+		}
+		days_remove = 180
+		remove_effect = {
+			AOR_GER_inflation_level_down = yes
+			custom_effect_tooltip = AOR_GER_Newline_tt
+		}
+    }
+	
+	#物价平稳奖励
+	AOR_GER_inflation_effect_0 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_0 } }
+		visible = { has_country_flag = AOR_GER_inflation_0 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_0 }
+		timeout_effect = {
+			add_political_power = 20
+			add_stability = 0.01
+		}
+	}
+	#良性通货膨胀奖励
+	AOR_GER_inflation_effect_1 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_1 } }
+		visible = { has_country_flag = AOR_GER_inflation_1 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_1 }
+		timeout_effect = {
+			add_political_power = 10
+            random = {
+                chance = 50
+                add_to_variable = { AOR_GER_gold_revenue = 5 }
+            }
+			add_to_variable = { AOR_GER_gold_revenue = 10 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_10_tt
+		}
+	}
+	#民众担忧物价上涨
+	AOR_GER_inflation_effect_2 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_2 } }
+		visible = { has_country_flag = AOR_GER_inflation_2 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_2 }
+		timeout_effect = {
+			if = {
+				limit = {
+					has_political_power > 0
+				}
+				add_political_power = -10
+			}
+		}
+	}
+	#企业忧心忡忡
+	AOR_GER_inflation_effect_3 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_3 } }
+		visible = { has_country_flag = AOR_GER_inflation_3 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_3 }
+		timeout_effect = {
+			if = {
+				limit = {
+					has_political_power > 0
+				}
+				add_political_power = -25
+			}
+			add_to_variable = { AOR_GER_gold_revenue = -10 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_reduce_10_tt
+		}
+	}
+	#秩序严重混乱
+	AOR_GER_inflation_effect_4 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_4 } }
+		visible = { has_country_flag = AOR_GER_inflation_4 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_4 }
+		timeout_effect = {
+			if = {
+				limit = {
+					has_political_power > 0
+				}
+				add_political_power = -50
+			}
+			add_stability = -0.01
+			add_to_variable = { AOR_GER_gold_revenue = -20 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_reduce_20_tt
+		}
+	}
+	#国家经济崩溃
+	AOR_GER_inflation_effect_5 = {
+		icon = generic_construction
+		available = { NOT = { has_country_flag = AOR_GER_inflation_5 } }
+		visible = { has_country_flag = AOR_GER_inflation_5 }
+		days_mission_timeout = 90
+		is_good = yes
+		activation = { has_country_flag = AOR_GER_inflation_5 }
+		modifier = {
+			
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_political_power > 0
+				}
+				add_political_power = -75
+			}
+			add_stability = -0.03
+			add_to_variable = { AOR_GER_gold_revenue = -30 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_reduce_30_tt
+		}
+	}
+	
+	
+	
+	#debug
+   #调试_提高通货膨胀 = {
+   #    available = {
+	#	}
+	#	cost = 0
+	#	icon = GFX_decision_category_gre_investment_decisions
+   #    fire_only_once = no 
+   #    is_good = yes
+	#	days_remove  = 0 days_re_enable = 1
+	#	available = {
+	#		is_debug = yes
+	#	}
+	#	complete_effect = {
+	#		AOR_GER_inflation_level_up = yes
+	#	}
+   #}
+   #调试_降低通货膨胀 = {
+   #    available = {
+	#	}
+	#	cost = 0
+	#	icon = GFX_decision_category_gre_investment_decisions
+   #    fire_only_once = no 
+   #    is_good = yes
+	#	days_remove  = 0 days_re_enable = 1
+	#	available = {
+	#		is_debug = yes
+	#	}
+	#	complete_effect = {
+	#		AOR_GER_inflation_level_down = yes
+	#	}
+   #}
+	#在不莱梅修建基建
+	AOR_GER_build_infrastructure = {
+		icon = generic_construction
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_build_infrastructure_tt #汉诺威地区拥有比原先更高一级的基础设施等级
+				any_owned_state = {
+					has_state_flag = AOR_GER_build_infrastructure
+					check_variable = { infrastructure_goal = infrastructure_level }
+				}
+			}
+		}
+		visible = {
+			has_country_flag = AOR_GER_flag_build_infrastructure
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				has_state_flag = AOR_GER_build_infrastructure
+			}
+		}
+		
+		days_mission_timeout = 360
+		is_good = no
+		activation = { #当某个地方拥有flag时，激活此次建设任务
+			any_owned_state = {
+				has_state_flag = AOR_GER_build_infrastructure
+			}
+		}
+		timeout_effect = {
+			59 = {
+				limit = {
+					has_state_flag = AOR_GER_build_infrastructure
+				}
+				clr_state_flag = AOR_GER_build_infrastructure
+				clear_variable = infrastructure_goal
+			}
+			add_resource = {  
+				type = steel
+				amount = 1
+				state = 59
+			}
+			clr_country_flag = AOR_GER_flag_build_infrastructure
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			add_political_power = -50
+			add_stability = -0.08
+			add_war_support = -0.03
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			remove_ideas = AOR_GER_idea_directional_investment
+		}
+		
+		complete_effect = {
+			59 = {
+				limit = {
+					has_state_flag = AOR_GER_build_infrastructure
+				}
+				clr_state_flag = AOR_GER_build_infrastructure
+				clear_variable = infrastructure_goal
+			}
+			add_resource = {  
+				type = steel
+				amount = 5
+				state = 59
+			}
+			build_railway = {
+				path = { 6521 3326 }
+			}
+			
+			clr_country_flag = AOR_GER_flag_build_infrastructure
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			add_political_power = 25
+			add_stability = 0.02
+			add_war_support = 0.03
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			remove_ideas = AOR_GER_idea_directional_investment
+		}
+	}
+	
+}

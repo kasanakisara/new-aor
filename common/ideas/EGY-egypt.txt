@@ -1,0 +1,458 @@
+ideas = {
+	
+	country = {
+		EGY_Moving_towards_modernity = {#迈向现代
+			picture = GFX_idea_EGY_Moving_towards_modernity
+			allowed = { always = yes }
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.15
+				industrial_capacity_factory = -0.25
+				research_speed_factor = -0.2
+			}
+		}
+		The_Lion_of_the_Circus = {#马戏团的雄狮
+		picture = GFX_idea_The_Lion_of_the_Circus
+		allowed = { always = yes }
+		modifier = {
+			political_power_gain = 0.05
+			}
+		}
+		EGY_Crazy_1919 = {#疯狂的20世纪
+			picture = GFX_idea_EGY_Crazy_1919
+			allowed = { always = yes }
+			modifier = {
+				STABILITY_FACTOR = -0.2
+				political_power_factor = -0.1
+				resistance_growth = 0.05
+				custom_modifier_tooltip = EGY_Crazy_1919_tt
+			}
+		}
+		EGY_Crazy_1919_0 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = -0.15
+			political_power_factor = -0.25
+			resistance_growth = 0.05
+			}
+		}
+		EGY_Crazy_1919_1 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = -0.10
+			political_power_factor = -0.25
+			resistance_growth = 0.05
+			}
+		}
+		EGY_Crazy_1919_2 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = -0.10
+			political_power_factor = -0.2
+			resistance_growth = 0.05
+			}
+		}
+		EGY_Crazy_1919_3 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = 0.2
+			political_power_factor = -0.4
+			resistance_growth = 0.15
+			}
+		}
+		EGY_Crazy_1919_4 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = -0.1
+			political_power_factor = -0.15
+			resistance_growth = 0.05
+			}
+		}
+		EGY_Crazy_1919_5 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = -0.05
+			political_power_factor = -0.15
+			resistance_growth = 0.05
+			}
+		}
+		EGY_Crazy_1919_6 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			political_power_factor = -0.1
+			}
+		}
+		EGY_Crazy_1919_7 = {#疯狂的20世纪
+		picture = GFX_idea_EGY_Crazy_1919
+		allowed = { always = yes }
+		modifier = {
+			STABILITY_FACTOR = 0.25
+			political_power_factor = -0.35
+			resistance_growth = 0.1
+			}
+		}
+		EGY_Puppets_puppetry = {#木偶戏的木偶
+			picture = GFX_idea_EGY_Puppets_puppetry
+			allowed = { always = yes }
+			modifier = {
+				consumer_goods_factor = -0.05
+				custom_modifier_tooltip = EGY_Puppets_puppetry_tt
+			}
+		}
+		EGY_YesSir = {#好的，甘！你真他马是个天才，你的智商绝对超过他马的250！
+		#我他妈真是个天才，装这个的图标注册了另一个
+			picture = GFX_idea_EGY_YesSir
+			allowed = { always = yes }
+			modifier = {
+				custom_modifier_tooltip = EGY_YesSir_tt
+			}
+		}
+		###################！！！！！苏丹！！！！！############
+		SUD_Under_boots ={#军靴之下
+			picture = GFX_idea_SUD_Under_boots
+			allowed = { always = yes }
+			modifier = {
+			}
+		}
+		SUD_Mahdi_Legacy = {#马赫迪的遗产
+			picture = GFX_idea_SUD_Mahdi_Legacy
+			allowed = { always = yes }
+			modifier = {
+				STABILITY_FACTOR = -0.25
+				resistance_growth = 0.05
+			}
+		}
+	}
+	
+	# MILITARY
+	political_advisor = {
+	
+		EGY_democratic_guy = {
+			
+			picture = generic_political_advisor_arab_1
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { democratic_reformer }
+
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		EGY_communist_guy = {
+			
+			picture = generic_political_advisor_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { communist_revolutionary }
+
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		EGY_fascist_guy = {
+			
+			picture = generic_political_advisor_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { fascist_demagogue }
+
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		EGY_pot = {
+
+			picture = generic_political_advisor_arab_2
+
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { prince_of_terror }
+		}
+
+		EGY_coi = {
+
+			picture = generic_political_advisor_arab_1
+				
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { captain_of_industry }
+		}
+
+		EGY_stc = {
+
+			picture = generic_political_advisor_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { smooth_talking_charmer }
+		}
+	}
+
+	army_chief = {
+
+		EGY_aco2 = {
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}		
+			
+			traits = { army_chief_organizational_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_acd2 = {
+
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { army_chief_defensive_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	air_chief = {
+
+		EGY_acr = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { air_chief_reform_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_acgs = {
+
+			picture = generic_air_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { air_chief_ground_support_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+	}
+
+	navy_chief = {
+
+		EGY_nccr = {
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+					
+			traits = { navy_chief_commerce_raiding_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_ncm = {
+
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+					
+			traits = { navy_chief_maneuver_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+
+	high_command = {
+
+		EGY_ar = {
+			ledger = army
+			
+			picture = generic_army_arab_1
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { army_regrouping_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		EGY_ai2 = {
+			ledger = army
+
+			picture = generic_army_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { army_infantry_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_aa2 = {
+			ledger = army
+
+			picture = generic_army_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { army_armored_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_acas = {
+			ledger = air
+
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { air_close_air_support_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		EGY_ncs = {
+			ledger = navy
+
+			picture = generic_navy_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { navy_capital_ship_2 }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}	
+
+	theorist = {
+		EGY_mt = {
+			ledger = army
+			
+			picture = generic_army_arab_1
+
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { military_theorist }
+		}
+		
+		EGY_nt = {
+			ledger = navy
+
+			picture = generic_navy_arab_3
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { naval_theorist }
+		}	
+
+		EGY_awt = {
+			ledger = air
+
+			picture = generic_air_arab_2
+			
+			allowed = {
+				original_tag = EGY
+			}
+			
+			traits = { air_warfare_theorist }
+		}
+
+	}
+	
+}

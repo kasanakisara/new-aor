@@ -1,0 +1,270 @@
+
+
+guiTypes = {
+	containerWindowType = {
+		name = "CC_ui_window"
+		position = { x = 500 y = 500 }
+		size = { width =1500 height= 840 }
+		moveable = yes
+		background = {
+			position = { x = -10 y = 0 }
+			name = "Background2"
+			quadTextureSprite = "GFX_tiled_window2_1b_border"
+		}
+		containerWindowType = {
+			name = "biankuang2"
+			position = { x = -100 y = -55 }	
+			size = { width=1000 height=420 }
+			#background = {
+			#	name = "Background2"
+			#	quadTextureSprite = "GFX_tiled_window_1b_border"
+			#}
+			iconType = {
+				position = { x= 60 y = 70 }
+				name = "CC_lunkuo"
+				quadTextureSprite ="GFX_CC_lunkuo" 
+				scale = 0.5
+			} 
+			buttonType = {
+				position = { x= 60 y = 70 }
+				name = "CC_nanfei"
+				quadTextureSprite ="GFX_CC_nanfei" 
+				scale = 0.5
+			} 
+			buttonType = {
+				position = { x= 60 y = 70 }
+				name = "CC_dongfei"
+				quadTextureSprite ="GFX_CC_dongfei"
+				scale = 0.5
+			} 
+			buttonType = {
+				position = { x= 60 y = 70 }
+				name = "CC_sudan"
+				quadTextureSprite ="GFX_CC_sudan" 
+				scale = 0.5
+			} 
+			buttonType = {
+				position = { x= 60 y = 70 }
+				name = "CC_aiji"
+				quadTextureSprite ="GFX_CC_aiji" 
+				scale = 0.5
+			} 
+			buttonType = {
+				name = "exit_btn"
+		    	spriteType = "GFX_exit_btn"
+				orientation = UPPER_RIGHT
+		  		scale = 1.1 
+			} 
+			buttonType = {
+				position = { x= 60 y = 70 }
+				name = "CC_zhongfei"
+				quadTextureSprite ="GFX_CC_zhongfei" 
+				scale = 0.5
+			} 
+
+		}  
+		containerWindowType = {
+			name = "anniu"
+			position = { x =630 y = 450 }	
+			size = { width=1000 height=420 }
+			buttonType = {
+				name = "CC_tuijingongcheng"
+				quadTextureSprite = "GFX_button_148x34"
+				position = { x=0 y=50 }
+				buttonText = "措施：推进工程"
+				font = "hoi_16mbs"
+			}
+			buttonType = {
+				name = "CC_yanxianchanye"
+				quadTextureSprite = "GFX_button_148x34"
+				position = { x=0 y=100 }
+				buttonText = "措施：发展沿线产业"
+				font = "hoi_16mbs"
+			}
+			buttonType = {
+				name = "CC_tansuoyanxian"
+				quadTextureSprite = "GFX_button_148x34"
+				position = { x=0 y=200 }
+				buttonText = "措施：探索沿线"
+				font = "hoi_16mbs"
+			}
+			buttonType = {
+				name = "CC_anfugongrentuzhu"
+				quadTextureSprite = "GFX_button_148x34"
+				position = { x=0 y=250 }
+				buttonText = "措施：安抚工人与土著"
+				font = "hoi_16mbs"
+			}
+			icontype = {
+				position = { x=-30 y=0 }
+				name = "baodongsuo1"
+				spriteType = "GFX_CC_baodongsuo"
+				scale = 0.3
+			}
+			icontype = {
+				position = { x=-30 y=150 }
+				name = "baodongsuo2"
+				spriteType = "GFX_CC_baodongsuo"
+				scale = 0.3
+			}
+		} 
+		instantTextboxType = {
+			name = "CC_zhengfu_xinxin"
+			position = { x = 937 y = 30}
+			font = "hoi_36header"
+			text = "政府信心"
+			maxWidth = 350
+			maxHeight = 250 
+			format = left
+		}
+		icontype = {
+			position = { x = 700 y = 70}
+			name = "jindutiao"
+			spriteType = "GFX_warscore_progressbar"
+		}
+		
+		containerWindowType = {
+			name = "fazhan"
+			position = { x = 0 y = 0 }	
+			size = { width=310 height=108 }
+			background = {
+				position = { x = 105 y = 658 }	
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_border"
+			}
+			
+		}
+		
+
+		icontype = {
+			position = { x=845 y=250 }
+			name = "fanrong_nanfei"
+			spriteType = "GFX_CC_fanrong_nanfei"
+		}
+		icontype = {
+			position = { x=845 y=250 }
+			name = "fanrong_zhongfei"
+			spriteType = "GFX_CC_fanrong_zhongfei"
+		}
+		icontype = {
+			position = { x=845 y=250 }
+			name = "fanrong_aiji" 
+			spriteType = "GFX_CC_fanrong_aiji"
+		}
+		icontype = {
+			position = { x=845 y=250 }
+			name = "fanrong_sudan"
+			spriteType = "GFX_CC_fanrong_sudan"
+		}
+		icontype = {
+			position = { x=845 y=250 }
+			name = "fanrong_dongfei"
+			spriteType = "GFX_CC_fanrong_dongfei"
+		}
+		instantTextboxType = { 
+			name = "jianshejindu"
+			position = { x = 830 y = 220 }
+			font = "hoi_36header"
+			text = "jianshejindu"
+			maxWidth = 350 
+			maxHeight = 250 
+			format = center
+		}
+		instantTextboxType = { 
+			name = "dangqianjianshe"
+			position = { x = 650 y = 130 }
+			font = "hoi_36header"
+			text = "jianshechengdu"
+			maxWidth = 350 
+			maxHeight = 250 
+			format = center
+		}
+		buttonType = {
+			position = { x=0 y=640 }
+			name = "bagong"
+			spriteType = "GFX_CC_youbaodong"
+		}
+		buttonType = {
+			position = { x=0 y=640 }
+			name = "wubagong"
+			spriteType = "GFX_CC_wubaodong"
+			#pdx_tooltip_delayed = "CC_zhengchang"
+			pdx_tooltip = "CC_zhengchang"
+		}
+		buttonType = {
+			name = "CC_tiaoshi"
+			quadTextureSprite = "GFX_button_148x34"
+			position = { x=1350 y=800 }
+			buttonText = "调试"
+			font = "hoi_16mbs"
+		}
+		buttonType = {
+			position = { x= 160 y = -580 }
+			name = "CC_nanfei_big"
+			quadTextureSprite ="GFX_CC_nanfei" 
+			scale = 0.80
+		} 
+		buttonType = {
+			position = { x= -158 y = -400 } 
+			name = "CC_dongfei_big"
+			quadTextureSprite ="GFX_CC_dongfei"
+			scale = 1
+		} 
+		buttonType = {
+			position = { x= 95 y = -50 } 
+			name = "CC_sudan_big"
+			quadTextureSprite ="GFX_CC_sudan" 
+			scale = 0.8
+		} 
+		buttonType = {
+			position = { x= -58 y = 70 }
+			name = "CC_aiji_big"
+			quadTextureSprite ="GFX_CC_aiji" 
+			scale = 1
+		} 
+		buttonType = {
+			position = { x= -20 y = -620 }
+			name = "CC_zhongfei_big"
+			quadTextureSprite ="GFX_CC_zhongfei" 
+			scale = 1
+		} 
+		
+		
+
+		containerWindowType = {
+			name = "pie_aiji"
+			position = { x = 900 y = 500 }	
+			size = { width=310 height=108 }
+			scale = 0.6
+			iconType = {
+				name = "pie_chart_po_aiji"
+				quadTextureSprite = "GFX_pie_yellow"
+				alwaystransparent = yes
+				frame = 0
+			}
+			iconType = {
+				name = "pie_chart_wu_aiji"
+				quadTextureSprite = "GFX_pie_grey"
+				alwaystransparent = yes
+				frame = 0
+			}
+			iconType = {
+				name = "pie_chart_you_aiji"
+				quadTextureSprite = "GFX_pie_green"
+				alwaystransparent = yes
+				frame = 0
+			}
+			
+		}
+		iconType = {
+			position = { x = 880 y = 480 }	
+			name = "pie_chart_kuang"
+			quadTextureSprite = "GFX_small_pol_piechart_frame"
+			alwaystransparent = yes
+			frame = 0
+			scale = 3.3
+		}
+		
+	}
+}
+       

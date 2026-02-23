@@ -1,0 +1,22 @@
+add_namespace = AOR_superevent
+
+news_event = {
+	id = AOR_superevent.1
+	title = AOR_superevent.1.t
+	desc = AOR_superevent.1.d
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_superevent.1.a
+			clear_variable = global.supernews_event_id 
+			set_variable = { global.supernews_event_id = 1 }
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = supernews_opened
+			}
+			play_song = "superevent_1"
+	}
+}
+

@@ -1,0 +1,184 @@
+AOR_RUS_RedArmy_dynamic_modifier_show = {
+	enable = { always = yes }
+    icon = GFX_idea_SOV_war_heroes
+	
+		army_attack_factor = 0.05
+		
+		army_defence_factor = -0.05
+		army_org_factor = -0.05
+		army_speed_factor = -0.05
+		breakthrough_factor = -0.05
+		
+		experience_gain_army_factor = -0.25
+		land_doctrine_cost_factor = 0.2
+}
+
+AOR_RUS_RedArmy_dynamic_modifier = {
+	enable = { always = yes }
+    icon = GFX_idea_SOV_war_heroes
+	
+
+	#军队影响
+	#全体陆军
+	army_attack_factor =  AOR_RUS_RedArmy_army_attack_factor
+	army_defence_factor =  AOR_RUS_RedArmy_army_defence_factor
+	army_org_factor =  AOR_RUS_RedArmy_army_org_factor
+	army_morale_factor =  AOR_RUS_RedArmy_army_morale_factor
+	army_speed_factor =  AOR_RUS_RedArmy_army_speed_factor
+	breakthrough_factor =  AOR_RUS_RedArmy_breakthrough_factor
+	
+	
+	#登陆速度
+	invasion_preparation = AOR_RUS_RedArmy_invasion_preparation
+	#登陆准备时间
+	naval_invasion_penalty =  AOR_RUS_RedArmy_naval_invasion_penalty
+	#入侵惩罚
+	amphibious_invasion =  AOR_RUS_RedArmy_amphibious_invasion
+	#堑壕值
+	dig_in_speed =  AOR_RUS_RedArmy_dig_in_speed
+	dig_in_speed_factor =  AOR_RUS_RedArmy_dig_in_speed_factor
+    max_dig_in =  AOR_RUS_RedArmy_max_dig_in
+    max_dig_in_factor =  AOR_RUS_RedArmy_max_dig_in_factor
+	#陆军经验乘数
+	experience_gain_army_factor =  AOR_RUS_RedArmy_experience_gain_army_factor
+	#将领经验获取
+	experience_gain_factor =  AOR_RUS_RedArmy_experience_gain_factor
+	#战斗中获取的步兵经验
+	experience_gain_infantry_combat_factor =  AOR_RUS_RedArmy_experience_gain_infantry_combat_factor
+	#有经验的士兵的损失
+	experience_loss_factor =  AOR_RUS_RedArmy_experience_loss_factor
+	#陆军学说花费
+	land_doctrine_cost_factor =  AOR_RUS_RedArmy_land_doctrine_cost_factor
+	#近地支援机轰炸减免
+	cas_damage_reduction = AOR_RUS_RedArmy_cas_damage_reduction
+	#增援率
+	land_reinforce_rate =  AOR_RUS_RedArmy_land_reinforce_rate
+	#陆军损耗与补给消耗
+	attrition =  AOR_RUS_RedArmy_attrition
+	supply_consumption_factor =  AOR_RUS_RedArmy_supply_consumption_factor
+	#骑兵
+	cavalry_attack_factor =  AOR_RUS_RedArmy_cavalry_attack_factor
+	cavalry_defence_factor =  AOR_RUS_RedArmy_cavalry_defence_factor
+	#摩托化
+	motorized_attack_factor =  AOR_RUS_RedArmy_motorized_attack_factor
+	motorized_defence_factor =  AOR_RUS_RedArmy_motorized_defence_factor
+	#机械化
+	mechanized_attack_factor =  AOR_RUS_RedArmy_mechanized_attack_factor
+	mechanized_defence_factor =  AOR_RUS_RedArmy_mechanized_defence_factor
+	#炮兵
+	army_artillery_attack_factor =  AOR_RUS_RedArmy_army_artillery_attack_factor
+	army_artillery_defence_factor =  AOR_RUS_RedArmy_army_artillery_defence_factor
+	#计划
+	max_planning =  AOR_RUS_RedArmy_max_planning
+	planning_speed =  AOR_RUS_RedArmy_planning_speed
+	#移动中的组织度损失
+	org_loss_when_moving =  AOR_RUS_RedArmy_org_loss_when_moving
+	#指挥点数
+	command_power_gain =  AOR_RUS_RedArmy_command_power_gain
+	command_power_gain_mult =  AOR_RUS_RedArmy_command_power_gain_mult
+	max_command_power =  AOR_RUS_RedArmy_max_command_power
+	#特种部队
+	special_forces_cap =  AOR_RUS_RedArmy_special_forces_cap
+	#适宜人口
+	conscription =  AOR_RUS_RedArmy_conscription
+	
+	#宪兵队
+	modifier_army_sub_unit_military_police_attack_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_attack_factor
+	modifier_army_sub_unit_military_police_defence_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_defence_factor
+	modifier_army_sub_unit_military_police_speed_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_speed_factor
+	modifier_army_sub_unit_military_police_max_org_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_military_police_max_org_factor
+	
+	modifier_army_sub_unit_marine_attack_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_marine_attack_factor
+	modifier_army_sub_unit_marine_defence_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_marine_defence_factor
+	modifier_army_sub_unit_marine_speed_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_marine_speed_factor
+	modifier_army_sub_unit_marine_max_org_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_marine_max_org_factor
+	
+	modifier_army_sub_unit_engineer_max_org_factor =  AOR_RUS_RedArmy_modifier_army_sub_unit_engineer_max_org_factor
+	
+	
+	
+	#非工业影响
+	#政治点数
+	political_power_cost = AOR_RUS_RedArmy_political_power_cost
+	political_power_gain = AOR_RUS_RedArmy_political_power_gain
+	political_power_factor = AOR_RUS_RedArmy_political_power_factor
+	
+	#工厂产出系数
+	industrial_capacity_factory = AOR_RUS_RedArmy_industrial_capacity_factory
+	#海军船坞产出
+	industrial_capacity_dockyard = AOR_RUS_RedArmy_industrial_capacity_dockyard
+	
+	#建造速度
+	production_speed_buildings_factor = AOR_RUS_RedArmy_production_speed_buildings_factor
+	#基建建造系数
+	production_speed_infrastructure_factor = AOR_RUS_RedArmy_production_speed_infrastructure_factor
+	#民工建造速度
+	production_speed_industrial_complex_factor = AOR_RUS_RedArmy_production_speed_industrial_complex_factor
+	#军工建造速度
+	production_speed_arms_factory_factor = AOR_RUS_RedArmy_production_speed_arms_factory_factor
+	
+	#地区最大工业值
+	global_building_slots_factor = AOR_RUS_global_building_slots_factor
+	
+	#消费品系数
+	consumer_goods_factor = AOR_RUS_RedArmy_consumer_goods_factor
+	#最小出口
+	min_export = AOR_RUS_min_export
+	
+	#稳定度
+	stability_factor = AOR_RUS_RedArmy_stability_factor
+	stability_weekly = AOR_RUS_RedArmy_stability_weekly
+	#战争支持度
+	war_support_factor = AOR_RUS_RedArmy_war_support_factor
+	war_support_weekly = AOR_RUS_RedArmy_war_support_weekly
+	
+	#每周人力
+	weekly_manpower = AOR_RUS_RedArmy_weekly_manpower
+	monthly_population = AOR_RUS_RedArmy_monthly_population
+	
+	#科研速率
+	research_speed_factor = AOR_RUS_RedArmy_research_speed_factor
+	
+	#最大生产效率
+	production_factory_max_efficiency_factor = AOR_RUS_RedArmy_production_factory_max_efficiency_factor
+	#工厂产能增加系数
+	production_factory_efficiency_gain_factor = AOR_RUS_RedArmy_production_factory_efficiency_gain_factor
+	#换线影响系数
+	line_change_production_efficiency_factor = AOR_RUS_RedArmy_line_change_production_efficiency_factor
+	
+	#本地资源系数
+	local_resources_factor = AOR_RUS_RedArmy_local_resources_factor
+	
+	#油生产系数
+	fuel_gain_factor_from_states = AOR_RUS_RedArmy_fuel_gain_factor_from_states
+	#炼油厂石油转化率
+	production_oil_factor = AOR_RUS_RedArmy_production_oil_factor
+	
+	#贸易关系加成
+	trade_opinion_factor = AOR_RUS_RedArmy_trade_opinion_factor
+	#同意识形态关系每月增加
+	opinion_gain_monthly_same_ideology_factor = AOR_RUS_RedArmy_opinion_gain_monthly_same_ideology_factor
+	
+	#民转军效率
+	conversion_cost_civ_to_mil_factor = AOR_RUS_RedArmy_conversion_cost_civ_to_mil_factor
+	#军转民效率
+	conversion_cost_mil_to_civ_factor = AOR_RUS_RedArmy_conversion_cost_mil_to_civ_factor
+	
+	#工厂维修系数
+	industry_repair_factor = AOR_RUS_RedArmy_industry_repair_factor
+	#工厂被轰炸系数
+	industry_air_damage_factor = AOR_RUS_RedArmy_industry_air_damage_factor
+	
+	#路上要塞建造速度
+	production_speed_bunker_factor = AOR_RUS_RedArmy_production_speed_bunker_factor
+	#海岸要塞建造速度
+	production_speed_coastal_bunker_factor = AOR_RUS_RedArmy_production_speed_coastal_bunker_factor
+
+}
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+scripted_gui = {
+	CAN_hounse_of_commons_window = {
+		window_name = "CAN_hounse_of_commons_window"
+		context_type = decision_category
+         visible = {
+			always = yes
+		}
+
+		effects = {
+		}
+
+		dynamic_lists = {
+		CAN_parliament_desc_grid = {
+				array = parliament_member_array
+				index = parliament_member_index
+				change_scope = no
+				entry_container = parliament_member_entry
+			}
+			CAN_hounse_of_royal_gridbox = {
+				array = CAN_hounse_of_commons_window_array
+				index = i
+				value = v
+				entry_container = CAN_parliament_member_entry
+			}
+		}
+
+		properties = {
+		 CAN_parliament_member_icon = {
+				frame = CAN_hounse_of_commons_window_array^i
+			}
+			CAN_parliament_desc_icon = {
+				frame = v
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+
+refresh_pie_chart_aiji = {
+	set_variable = {
+		CC_pie_you_aiji = 60
+	}
+	set_variable = {
+		CC_pie_wu_aiji = 75
+	}
+	set_variable = {
+		CC_pie_po_aiji = 0
+	} 
+	#clear_variable = CC_pie_you
+	#clear_variable = CC_pie_wu
+	#clear_variable = CC_pie_po
+	clear_variable = CC_pie_zonghe_aiji
+
+	add_to_variable = { CC_pie_zonghe_aiji = CC_pie_you_aiji }
+	add_to_variable = { CC_pie_zonghe_aiji = CC_pie_wu_aiji }
+	add_to_variable = { CC_pie_zonghe_aiji = CC_pie_po_aiji }
+
+	divide_variable = { CC_pie_you_aiji = CC_pie_zonghe_aiji }
+	multiply_variable = { CC_pie_you_aiji = 100 }
+	round_variable = CC_pie_you_aiji
+	
+	divide_variable = { CC_pie_wu_aiji = CC_pie_zonghe_aiji }
+	multiply_variable = { CC_pie_wu_aiji = 100 }
+	round_variable = CC_pie_wu_aiji
+	add_to_variable = { CC_pie_wu_aiji = CC_pie_you_aiji }
+
+
+}

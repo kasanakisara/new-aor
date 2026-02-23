@@ -1,0 +1,59 @@
+###########################
+# German Events
+###########################
+
+add_namespace = PRI
+
+
+#滨海州合作政府
+country_event = {
+	id = PRI.1
+	title = PRI.1.t
+	desc = PRI.1.d
+	picture = GFX_events_PRI_1
+
+	trigger = {
+	    date > 1923.5.1
+		tag = JAP
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PRI.1.a
+		hidden_effect = {
+			news_event = { id = AOR_news.25 }
+			PRI = {
+				transfer_state = 408
+				transfer_state = 409
+				transfer_state = 560
+				transfer_state = 912
+				transfer_state = 910
+				transfer_state = 914
+				
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 560
+				add_state_core = 912
+				add_state_core = 910
+				add_state_core = 914
+				
+				add_manpower = 10000
+				}
+			JAP = {
+       				  puppet = PRI
+					}
+			PRI = {
+			set_politics = {ruling_party = AUT_democratic}
+			set_popularities = {
+				AUT_democratic = 50
+				FRE_democratic = 15
+				Absolutism = 35
+				}
+			}
+        } 
+    }
+}

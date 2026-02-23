@@ -1,0 +1,803 @@
+ideas = {
+
+	country = {
+		
+		#自由军团
+		Freedom_Corps = {
+			
+			picture = idea_Freedom_Corps
+			
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				conscription = 0.005
+				army_org_regain = 0.05
+				war_support_factor = 0.15
+			}
+			
+			visible = {
+				always = yes
+			}
+		}
+		#与柏林的贸易
+		trade_with_berlin = {
+			
+			picture = GFX_idea_trade_with_berlin
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				trade_opinion_factor = 0.5
+				production_speed_buildings_factor = 0.05
+			}
+		} 
+		#生活将没
+		Decrease_in_living_standards = {
+			picture = GFX_idea_Decrease_in_living_standards
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				stability_factor = -0.1
+				war_support_factor = -0.1
+			}
+		}
+		#自由军团(追加）
+		Freedom_Corps_2 = {
+
+			picture = idea_Freedom_Corps
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				conscription = 0.01
+				army_org_regain = 0.05
+				war_support_factor = 0.15
+			}
+		}
+		#军队哗变
+		Army_mutiny = {
+			 
+			picture = idea_Army_mutiny
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				stability_weekly = -0.005
+				political_power_cost = 0.5
+				army_org_factor = -0.3
+                army_morale_factor = -0.45
+			}
+		}
+		#无政府主义游行示威
+		Anarchists_march_and_demonstrate = {
+
+			picture = idea_Anarchists_march_and_demonstrate
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				stability_weekly = -0.01
+				required_garrison_factor = 0.3
+				stability_factor = -0.3
+				war_support_factor = -0.5
+				production_speed_buildings_factor = -0.2
+			}
+		}
+		#保守派的反对
+		Conservative_opposition = {
+
+			picture = idea_Conservative_opposition
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				stability_factor = -0.2
+				political_power_cost = 1
+			}
+		}
+		#革命，自由军团！
+		revolutionize_Freedom_Corps = {
+
+			picture = idea_revolutionize_Freedom_Corps
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				stability_factor = -0.4
+				war_support_factor = -0.45
+				army_org_factor = -0.25
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.2
+			}
+		}
+
+		#雄鹰计划
+		KSH_plan_of_eagle_1 = {
+
+			picture = idea_KSH_plan_of_eagle_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+
+		#猛虎计划
+		KSH_plan_of_tiger_1 = {
+
+			picture = ides_KSH_plan_of_tiger_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+			}
+		}
+
+		#德拉贡计划
+		KSH_plan_of_dragon_1 = {
+
+			picture = idea_KSH_plan_of_dragon_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		#幕后之人
+		KSH_muhouzhiren = {
+
+			picture = idea_KSH_muhouzhiren
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_factor = 0.05
+				fascism_drift = 0.01
+			}
+		}
+
+		#《国家人民报》
+		KSH_guojiarenminbao = {
+
+			picture = idea_KSH_guojiarenminbao
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				political_power_factor = 0.05
+				fascism_drift = 0.05
+			}
+		}
+
+		#国家人民军
+		KSH_guojiarenminjun = {
+
+			picture = idea_KSH_guojiarenminjun
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				war_support_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+
+		#革命，自由军团(追加1）
+		KSH_geming_ziyoujuntuan_1 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.45
+				army_org_factor = -0.25
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.15
+			}
+		} 
+
+		#革命，自由军团(追加2）
+		KSH_geming_ziyoujuntuan_2 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_2
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.45
+				army_org_factor = -0.25
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.10
+			}
+		} 
+
+		#革命，自由军团(追加3）
+		KSH_geming_ziyoujuntuan_3 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_3
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.45
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.10
+			}
+		}
+
+		#波美拉尼亚劳工阵线
+		KSH_bomeilaniyalaogongzhenxian = {
+
+			picture = idea_KSH_bomelaniyalaogongzhenxian
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = 0.1
+				mobilization_speed = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+			}
+		}
+
+		#革命，自由军团(追加4）
+		KSH_geming_ziyoujuntuan_4 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_4
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.4
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.05
+			}
+		}
+
+		#雄鹰计划(追加2）
+		KSH_plan_of_eagle_2 = {
+
+			picture = idea_KSH_plan_of_eagle_2
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_arms_factory_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+			}
+		}
+
+		#波美拉尼亚劳工阵线(追加1）
+		KSH_bomeilaniyalaogongzhenxian_1 = {
+
+			picture = idea_KSH_bomelaniyalaogongzhenxian_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = 0.1
+				mobilization_speed = 0.1
+				production_speed_buildings_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+			}
+		}
+
+		#革命，自由军团(追加5）
+		KSH_geming_ziyoujuntuan_5 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_5
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.05
+			}
+		}
+
+		#革命，自由军团(追加6）
+		KSH_geming_ziyoujuntuan_6 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_6
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.05
+			}
+		}
+		#生活将没(追加1)
+		Decrease_in_living_standards_1 = {
+			picture = GFX_idea_Decrease_in_living_standards_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.04
+				stability_factor = -0.07
+				war_support_factor = -0.1
+			}
+		}
+		#革命，自由军团(追加7）
+		KSH_geming_ziyoujuntuan_7 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.05
+			}
+		}
+		#雄鹰计划(追加3）
+		KSH_plan_of_eagle_3 = {
+
+			picture = idea_KSH_plan_of_eagle_3
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_arms_factory_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+		#雄鹰计划(追加4）
+		KSH_plan_of_eagle_4 = {
+
+			picture = idea_KSH_plan_of_eagle_4
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+		#雄鹰计划(追加5）
+		KSH_plan_of_eagle_5 = {
+
+			picture = idea_KSH_plan_of_eagle_5
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+				production_speed_dockyard_factor = 0.05
+			}
+		}
+		#波罗的海的贸易
+		KSH_boluodihaidemaoyi = {
+
+			picture = idea_KSH_boluodihaidemaoyi
+
+			allowed = {
+				always = yes 
+			}
+
+			modifier = {
+				production_speed_dockyard_factor = 0.05
+				trade_opinion_factor = 5
+			}
+		}
+		#生活将没(追加2)
+		Decrease_in_living_standards_2 = {
+			picture = GFX_idea_Decrease_in_living_standards_2
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.02
+				stability_factor = -0.04
+				war_support_factor = -0.1
+			}
+		}
+		#革命，自由军团(追加7）
+		KSH_geming_ziyoujuntuan_7 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+			}
+		}
+		#革命，自由军团(追加8）
+		KSH_geming_ziyoujuntuan_8 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_8
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.25
+			}
+		}
+		#革命，自由军团(追加9）
+		KSH_geming_ziyoujuntuan_9 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_9
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.3
+				army_org_factor = -0.1
+				army_morale_factor = -0.25
+			}
+		}
+		#自由军团(追加3）
+		Freedom_Corps_3 = {
+
+			picture = idea_Freedom_Corps
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				conscription = 0.01
+				army_org_regain = 0.1
+				army_org_factor  = 0.05
+				war_support_factor = 0.15
+			}
+		}
+		#崭新的波美拉尼亚
+		KSH_zhanxindebomeilaniya = {
+
+			picture = idea_zhanxindebomeilaniya
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+			}
+		}
+		#崭新的波美拉尼亚(追加1)
+		KSH_zhanxindebomeilaniya_1 = {
+
+			picture = idea_zhanxindebomeilaniya_1
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				fascism_drift = 0.05
+			}
+		}
+		##革命，自由军团(追加10）
+		KSH_geming_ziyoujuntuan_10 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.3
+				army_org_factor = -0.2
+				army_morale_factor = -0.35
+				production_speed_buildings_factor = -0.05
+			}
+		}
+		dazaqiangshao = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.1
+				INDUSTRIAL_CAPACITY_FACTOR = -0.1
+			}
+		}
+		tanwufubaidehouguo = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR = -0.1
+				INDUSTRIAL_CAPACITY_FACTOR = -0.1
+			}
+		}
+		yitihua = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				fascism_drift = 0.001
+			}
+		}
+		gaishitaibao = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				war_support_factor = 0.1
+				DRIFT_DEFENCE_FACTOR = 0.2
+				fascism_drift = 0.002
+			}
+		}
+		xin_xiongyingjihua = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				consumer_goods_factor = -0.03
+				PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+				INDUSTRIAL_CAPACITY_FACTOR = 0.05
+				PRODUCTION_FACTORY_MAX_EFFICIENCY = 0.05
+			}
+		}
+		minzugemingweidui = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				DRIFT_DEFENCE_FACTOR = 0.2
+				ARMY_INFANTRY_ATTACK_FACTOR = 0.05
+				war_support_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+		jinghua = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = -0.2
+				political_power_factor = -0.05
+			}
+	    }	
+		My_glory_is_loyalty = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				ARMY_INFANTRY_DEFENCE_FACTOR = 0.05
+				ARMY_ORG_REGAIN = 0.05
+			}
+	    }
+		xin_xiongyingjihua_1 = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				consumer_goods_factor = -0.03
+				PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.1
+				INDUSTRIAL_CAPACITY_FACTOR = 0.1
+				PRODUCTION_FACTORY_MAX_EFFICIENCY = 0.05
+			}
+		}
+		Formation_of_Goebbels_Youth_Army = {
+
+			picture = idea_KSH_geming_ziyoujuntuan_7
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				DIG_IN_SPEED_FACTOR = 0.05
+				research_speed_factor = 0.05
+				MOBILIZATION_SPEED = 0.2
+			}
+		}
+		KSH_bomeilaniyalaogongzhenxian_2 = {
+
+			picture = idea_KSH_bomelaniyalaogongzhenxian
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = 0.1
+				mobilization_speed = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+				INDUSTRIAL_CAPACITY_FACTOR = 0.05
+
+			}
+		}
+		the_National_Publicity_Department = {
+
+			picture = idea_KSH_bomelaniyalaogongzhenxian
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+		}
+	}
+		KSH_zujianzongcanmoubu = {
+			 
+			 picture = idea_KSH_zujianzongcanmoubu
+
+			 allowed = {
+				always = yes
+			}
+
+			modifier = {
+				army_org_factor = 0.05
+				army_infantry_attack_factor = 0.1
+				planning_speed = 0.1
+			}
+		}
+		KSH_sidedingjunshixueyuan = {
+
+			picture = idea_KSH_sidedingjunshixueyuan
+
+			allowed = {
+				always = yes
+			}
+			modifier = {
+				experience_loss_factor = -0.05
+				experience_gain_army_factor = 0.2
+				max_planning = 0.1
+			}
+		}
+		KSH_xinrenminjun = {
+
+			picture = idea_KSH_xinrenminjun
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				war_support_factor = 0.2
+				army_org_factor = 0.1
+				army_morale_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+	}
+}

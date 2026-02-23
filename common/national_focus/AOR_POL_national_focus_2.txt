@@ -1,0 +1,313 @@
+focus_tree = {
+	id = aor_pol_national_focus_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = POL
+		}
+	}
+	default = no
+	focus = {
+		id = we_should_protect_her
+		icon = GFX_goal_unknown
+		cost = 2
+		x = 6
+		y = 0
+		completion_reward={
+			activate_targeted_decision = {
+				target = POL
+				decision = AOR_pol_we_should_protect_her
+			}
+		}
+
+	}
+	focus = {
+		id = focus_on_build_industy
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = we_should_protect_her
+		}
+		x = 6
+		y = 1
+		completion_reward={
+			add_ideas = quanmindashengchan
+		}
+	}
+	focus = {
+		id = Mainly_military_industry_system
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = focus_on_build_industy
+		}
+		mutually_exclusive = {
+			focus = Mainly_civilian_system
+		}
+		x = 4
+		y = 2
+		completion_reward={
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				
+			}
+		}
+	}
+	focus = {
+		id = Mainly_civilian_system
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = focus_on_build_industy
+		}
+		mutually_exclusive = {
+			focus = Mainly_military_industry_system
+		}
+		x = 8
+		y = 2
+		completion_reward={
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = Opening_up_military_production_lines
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = Mainly_military_industry_system
+			focus = Mainly_civilian_system
+		}
+		mutually_exclusive = {
+			focus = Open_up_the_introduction_of_civilian_foreign_investment
+		}
+		x = 4
+		y = 3
+		completion_reward={
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = quanmindashengchan
+				add_idea = quanmindashengchan_1
+			}
+		}
+	}
+	focus = {
+		id = Open_up_the_introduction_of_civilian_foreign_investment
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = Mainly_military_industry_system
+			focus = Mainly_civilian_system
+		}
+		mutually_exclusive = {
+			focus = Opening_up_military_production_lines
+		}
+		x = 8
+		y = 3
+		completion_reward={
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = quanmindashengchan
+				add_idea = quanmindashengchan_2
+			}
+		}
+	}
+	focus = {
+		id = National_industry_relies_on
+		icon = GFX_goal_unknown
+		cost = 10.00
+		prerequisite = {
+			focus = Opening_up_military_production_lines
+			focus = Open_up_the_introduction_of_civilian_foreign_investment
+		}
+		mutually_exclusive = {
+			focus = Fully_invested_in_international_division_of_labor
+		}
+		x = 4
+		y = 4
+		completion_reward={
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = bolanminzugongye
+		}
+	}
+	focus = {
+		id = Fully_invested_in_international_division_of_labor
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = Opening_up_military_production_lines
+			focus = Open_up_the_introduction_of_civilian_foreign_investment
+		}
+		mutually_exclusive = {
+			focus = National_industry_relies_on
+		}
+		x = 8
+		y = 4
+		completion_reward={
+			807 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = capacity_dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_ideas = shijieshengchandeyihuan
+		}
+	}
+	focus = {
+		id = all_roads_lead_to_poland
+		icon = GFX_goal_unknown
+		cost = 20
+		prerequisite = {
+			focus = National_industry_relies_on
+			focus = Fully_invested_in_international_division_of_labor
+		}
+		x = 6
+		y = 5
+		completion_reward={
+			every_state  = {
+				limit = {
+						is_controlled_by = POL
+					}
+				add_building_construction = {
+					type = instance
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+			limit = {
+				NOT = { has_idea = quanmindashengchan_2 } 
+				}
+			remove_ideas = quanmindashengchan_1
+			}
+			else = {
+			remove_ideas = quanmindashengchan_2
+				}
+		}
+	}
+	focus = {
+		id = Forcing_farmers_to_enter_the_factory
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = all_roads_lead_to_poland
+		}
+		mutually_exclusive = {
+			focus = landlords_hand
+		}
+		x = 4
+		y = 6
+		completion_reward={
+			add_manpower = 16542
+			add_victory_points = {
+				province = 3544
+				value = 5   
+			}
+			add_victory_points = {
+				province = 9427
+				value = 5
+			}
+			10 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			88 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			add_popularity = {
+				ideology = AGR_socialism
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = landlords_hand
+		icon = GFX_goal_unknown
+		cost = 10
+		prerequisite = {
+			focus = all_roads_lead_to_poland
+		}
+		mutually_exclusive = {
+			focus = Forcing_farmers_to_enter_the_factory
+		}
+		x = 8
+		y = 6
+		completion_reward={
+			add_victory_points = {
+				province = 3544
+				value = 5   
+			}
+			add_victory_points = {
+				province = 9427
+				value = 5
+			}
+			10 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			88 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = AGR_socialism
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = polanes_new_life
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = Forcing_farmers_to_enter_the_factory
+			focus = landlords_hand
+		}
+		x = 6
+		y = 7
+		completion_reward={
+			country_event = { id = AOR_POL_events.8 }
+			hidden_effect = {
+			load_focus_tree = aor_pol_national_focus_3
+			}
+		}
+	}
+}

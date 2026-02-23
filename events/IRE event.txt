@@ -1,0 +1,175 @@
+add_namespace = IRE
+
+country_event = {
+	id = IRE.1 #爱尔兰要求独立
+	title = IRE.1.t
+	desc = IRE.1.d
+	picture = GFX_Portrait_of_Tirpitz
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+
+	trigger = {
+		tag = ENG
+		date > 1920.3.1
+	}
+     
+	option = {
+		name = IRE.1.a
+		custom_effect_tooltip = aierlanduli
+		hidden_effect = {
+			country_event = {
+				id = IRE.2
+				days = 10
+			}
+	    	113 = { set_demilitarized_zone = yes }
+	    	119 = { set_demilitarized_zone = yes }
+	    	134 = { set_demilitarized_zone = yes }
+	    	135 = { set_demilitarized_zone = yes }
+		}
+	}
+}
+country_event = {
+	id = IRE.2 #爱尔兰要求独立
+	title = IRE.2.t
+	desc = IRE.2.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+      
+	option = {
+		name = IRE.2.a #准许他们独立 
+		ai_chance = { base = 30 }
+		custom_effect_tooltip = zhunxuduli
+		hidden_effect = {
+			country_event = { id = IRE.3 }
+			IRE = {
+	        	transfer_state = 113
+	        	transfer_state = 119
+	        	transfer_state = 134
+        		transfer_state = 135
+			}
+		}
+	}
+	option = {
+		name = IRE.2.b #准许他们独立 
+		ai_chance = { base = 60 }
+		custom_effect_tooltip = zhunxuduli_2
+		hidden_effect = {
+			country_event = { id = IRE.3 }
+			IRE = {
+	        	transfer_state = 113
+	        	transfer_state = 134
+        		transfer_state = 135
+			}
+		}
+	}
+	option = {
+		name = IRE.2.c #我说不行！ 
+		ai_chance = { base = 6 }
+		custom_effect_tooltip = zhunxuduli_3
+		ENG = {	add_to_war = IRE }
+		hidden_effect = {
+			country_event = { id = IRE.3 }
+			IRE = {
+	        	transfer_state = 113
+	        	transfer_state = 119
+	        	transfer_state = 134
+        		transfer_state = 135
+			}
+		}
+	}
+}
+country_event = {
+	id = IRE.3 #切换国家
+	title = IRE.3.t
+	desc = IRE.3.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+      
+	option = {
+		name = IRE.3.a #日不落万岁！
+		trigger = { is_ai = no }
+		add_war_support = 0.1
+		hidden_effect = {
+	    	113 = { set_demilitarized_zone = no }
+	    	119 = { set_demilitarized_zone = no }
+	    	134 = { set_demilitarized_zone = no }
+	    	135 = { set_demilitarized_zone = no }
+		}
+	}
+	option = {
+		name = IRE.3.b #夺回属于爱尔兰的荣耀！
+		trigger = { is_ai = no }
+		IRE = { change_tag_from = ENG }
+		hidden_effect = {
+	    	113 = { set_demilitarized_zone = no }
+	    	119 = { set_demilitarized_zone = no }
+	    	134 = { set_demilitarized_zone = no }
+	    	135 = { set_demilitarized_zone = no }
+		}
+	}
+}
+country_event = {
+	id = IRE.4 #北爱尔兰问题
+	title = IRE.4.t
+	desc = IRE.4.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+      
+	option = {
+		name = IRE.4.a 
+		add_war_support = 0.1
+		create_wargoal = {
+			type = take_core_state
+			target = ENG
+		}
+	}
+}
+country_event = {
+	id = IRE.5 #北爱尔兰问题
+	title = IRE.5.t
+	desc = IRE.5.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+      
+	option = {
+		name = IRE.5.a  
+		trigger = {
+			113 = {
+			    is_controlled_by = IRE
+			}
+		}
+		add_war_support = 0.1
+		custom_effect_tooltip = xuanzhan  #如果英国法西斯上台可能产生严重后果
+		hidden_effect = {
+			ENG = {
+	    		create_wargoal = {
+		    		type = puppet_wargoal_focus
+		    		target = IRE
+		    	}
+			}
+			if = {
+				limit = {
+					ENG = {
+						has_government = fascism
+					}
+				}
+				effect = {
+			    	DECLARE_WAR_RELATIVE_FORCE_FACTOR = 0.8
+				}
+			}
+		}
+    }
+}
+country_event = {
+	id = IRE.6 #爱尔兰重建
+	title = IRE.6.t
+	desc = IRE.6.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+      
+	option = {
+		name = IRE.6.a 
+		add_war_support = 0.1
+		add_stability = 0.1
+	}
+}

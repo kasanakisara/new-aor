@@ -1,0 +1,30 @@
+scripted_gui = { 
+	AOR_spheres_of_influence_gui = {
+		window_name = "AOR_spheres_of_influence_gui_window"
+		context_type = country_mapicon
+		mapmode = spheres_of_influence_map
+		
+		visible = { 
+			always = yes
+		}
+		
+		mapicon_targets = {
+			target_array = global.countries
+			target_trigger = {
+				FROM = {
+					OR = {
+						original_tag = ENG
+						original_tag = RUS
+						original_tag = FRA
+					}
+				}
+			}
+		}
+		
+		properties = {
+			alignment_icon = {
+				image = "[FROM.GetAlignmentIcon]"
+			}
+		}
+	}
+}

@@ -1,0 +1,948 @@
+AOR_Deutschland_National_Committee_category = {  #国家委员会
+
+	AOR_GER_Invition_attend_the_meeting = { #邀请各邦国参会
+        icon = generic_operation
+		ai_will_do = { factor = 100 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { tag = GER}
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		    custom_effect_tooltip = "我们将邀请各邦国参会，开启我们第一次决议"
+			set_global_flag = AOR_GER_flag_Invition_attend_the_meeting
+		}
+		complete_effect = {
+				GER = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				BAV = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				NAU = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				HAN = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				SIL = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				KSH = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				WUR = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				SAX = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				PRE = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				SHL = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+				MEK = {
+					country_event = {
+						id = AOR_GER_timeaxis.1
+						days = 1
+					}
+				}
+		}
+	}
+	agree_country_number_test = { #同意国家数调试
+        icon = generic_operation
+		ai_will_do = { base = 1 }
+		days_re_enable = 1
+		visible = { is_debug = yes }
+		complete_effect = {
+			GER = {
+				add_to_variable = { GER_support_country_quantity = 2 }
+			}
+		}
+	}
+	AOR_GER_Invition_change_front_1 = { #改变态度-同意
+        icon = generic_operation
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				tag = WUR
+				has_country_flag = flag_attend_the_meeting_1				
+				factor = 100 
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_1
+				factor = 100  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_1
+				factor = 100  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_1
+				factor = 100  
+			}
+			modifier = {
+				tag = WUR 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 100  
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 100  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 100  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 100  
+			}
+			modifier = {
+				tag = WUR 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 100  
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 100  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 100  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 100  
+			}
+		}
+		cost = 5
+		days_re_enable = 60
+		visible = {
+			has_country_flag =  AOR_GER_flag_NOT_support_resolution
+			OR = {
+				has_country_flag = flag_attend_the_meeting_1
+				has_country_flag = flag_attend_the_meeting_2	
+				has_country_flag = flag_attend_the_meeting_3
+			}
+		}
+		complete_effect = {
+			clr_country_flag = AOR_GER_flag_NOT_support_resolution
+			set_country_flag = AOR_GER_flag_support_resolution
+			if = {
+				limit = {
+					tag = NAU #法兰克福
+				}
+				set_country_flag = AOR_NAU_flag_support_resolution
+				clr_country_flag = AOR_NAU_flag_not_support_resolution
+			}
+			if = {
+				limit = {
+					tag = HAN #威斯特伐利亚
+				}
+				set_country_flag = AOR_HAN_flag_support_resolution				
+				clr_country_flag = AOR_HAN_flag_not_support_resolution
+			}
+			if = {
+				limit = {
+					tag = BAV #巴伐利亚
+				}
+				set_country_flag = AOR_BAV_flag_support_resolution				
+				clr_country_flag = AOR_BAV_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = SIL #西里西亚
+				}
+				set_country_flag = AOR_SIL_flag_support_resolution				
+				clr_country_flag = AOR_SIL_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = KSH #波美拉尼亚
+				}
+				set_country_flag = AOR_KSH_flag_support_resolution				
+				clr_country_flag = AOR_KSH_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = WUR #符腾堡
+				}
+				set_country_flag = AOR_WUR_flag_support_resolution				
+				clr_country_flag = AOR_WUR_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = SAX #萨克森
+				}
+				set_country_flag = AOR_SAX_flag_support_resolution				
+				clr_country_flag = AOR_SAX_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = PRE #普鲁士
+				}
+				set_country_flag = AOR_PRE_flag_support_resolution				
+				clr_country_flag = AOR_PRE_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = SHL #石勒苏益格-荷尔施泰因
+				}
+				set_country_flag = AOR_SHL_flag_support_resolution				
+				clr_country_flag = AOR_SHL_flag_not_support_resolution				
+			}
+			if = {
+				limit = {
+					tag = MEK #梅克伦堡
+				}
+				set_country_flag = AOR_MEK_flag_support_resolution
+				clr_country_flag = AOR_MEK_flag_not_support_resolution				
+			}
+			GER = {
+				add_to_variable = { GER_support_country_quantity = 1 }
+			}
+		}
+	}
+	AOR_GER_Invition_change_front_2 = { #改变态度-不同意
+        icon = generic_operation
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				tag = WUR 
+				has_country_flag = flag_attend_the_meeting_1				
+				factor = 0  
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_1				
+				factor = 0  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_1				
+				factor = 0  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_1				
+				factor = 0  
+			}
+			modifier = {
+				tag = WUR 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 0  
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 0  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 0  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_2				
+				factor = 0  
+			}
+			modifier = {
+				tag = WUR 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 0  
+			}
+			modifier = {
+				tag = BAV 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 0  
+			}
+			modifier = {
+				tag = NAU 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 0  
+			}
+			modifier = {
+				tag = SHL 
+				has_country_flag = flag_attend_the_meeting_3				
+				factor = 0  
+			}
+		}
+		cost = 5
+		days_re_enable = 60
+		visible = {
+			has_country_flag =  AOR_GER_flag_support_resolution
+			OR = {
+				has_country_flag = flag_attend_the_meeting_1
+				has_country_flag = flag_attend_the_meeting_2
+				has_country_flag = flag_attend_the_meeting_3
+			}
+		}
+		complete_effect = {
+			clr_country_flag = AOR_GER_flag_support_resolution
+			set_country_flag =  AOR_GER_flag_NOT_support_resolution
+			if = {
+				limit = {
+					tag = NAU #法兰克福
+				}
+				clr_country_flag = AOR_NAU_flag_support_resolution				
+				set_country_flag = AOR_NAU_flag_not_support_resolution
+			}
+			if = {
+				limit = {
+					tag = HAN #威斯特伐利亚
+				}
+				clr_country_flag = AOR_HAN_flag_support_resolution				
+				set_country_flag = AOR_HAN_flag_not_support_resolution
+			}
+			if = {
+				limit = {
+					tag = BAV #巴伐利亚
+				}
+				set_country_flag = AOR_BAV_flag_not_support_resolution				
+				clr_country_flag = AOR_BAV_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = SIL #西里西亚		
+				}
+				set_country_flag = AOR_SIL_flag_not_support_resolution				
+				clr_country_flag = AOR_SIL_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = KSH #波美拉尼亚
+				}
+				set_country_flag = AOR_KSH_flag_not_support_resolution				
+				clr_country_flag = AOR_KSH_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = WUR #符腾堡
+				}
+				set_country_flag = AOR_WUR_flag_not_support_resolution				
+				clr_country_flag = AOR_WUR_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = SAX #萨克森
+				}
+				set_country_flag = AOR_SAX_flag_not_support_resolution				
+				clr_country_flag = AOR_SAX_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = PRE #普鲁
+				}
+				set_country_flag = AOR_PRE_flag_not_support_resolution				
+				clr_country_flag = AOR_PRE_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = SHL #石勒苏益格-荷尔施泰因
+				}
+				set_country_flag = AOR_SHL_flag_not_support_resolution				
+				clr_country_flag = AOR_SHL_flag_support_resolution
+			}
+			if = {
+				limit = {
+					tag = MEK #梅克伦堡
+				}
+				set_country_flag = AOR_MEK_flag_not_support_resolution				
+				clr_country_flag = AOR_MEK_flag_support_resolution
+			}
+			GER = {
+				add_to_variable = { GER_support_country_quantity = -1 }
+			}
+		}
+	}
+	#讨论遏制通货膨胀问题
+	AOR_GER_Invition_meeting_1 = {
+		icon = generic_construction
+		available = {
+			tag = GER
+			tag = NAU #法兰克福
+			tag = HAN #威斯特伐利亚
+			tag = BAV #巴伐利亚
+			tag = SIL #西里西亚
+			tag = KSH #波美拉尼亚
+			tag = WUR #符腾堡
+			tag = SAX #萨克森
+			tag = PRE #普鲁士
+			tag = SHL #石勒苏益格-荷尔施泰因
+			tag = MEK #梅克伦堡
+		}
+		activation = {
+			has_country_flag = flag_attend_the_meeting_1
+		}
+		fire_only_once = yes
+		visible = {
+			OR = {
+				tag = GER
+				tag = NAU #法兰克福
+				tag = HAN #威斯特伐利亚
+				tag = BAV #巴伐利亚
+				tag = SIL #西里西亚
+				tag = KSH #波美拉尼亚
+				tag = WUR #符腾堡
+				tag = SAX #萨克森
+				tag = PRE #普鲁士
+				tag = SHL #石勒苏益格-荷尔施泰因
+				tag = MEK #梅克伦堡
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 100
+
+		timeout_effect = {
+			clr_country_flag = AOR_GER_MEETING_HAPPENED
+			country_event = { id = AOR_GER_timeaxis.2 }
+			if = { #傻子才不同意
+				limit = {
+					has_country_flag = AOR_GER_flag_NOT_support_resolution
+				}
+				add_political_power = -20
+				clr_country_flag = flag_attend_the_meeting_1
+			}
+			if = { #同意
+				limit = {
+					has_country_flag = AOR_GER_flag_support_resolution
+				}
+				custom_effect_tooltip = "邦国需要花费75点政治点数、以换取一年的修正或其他增益。"
+				add_political_power = -75
+				add_timed_idea = {
+					idea = AOR_GER_Curb_inflation
+					#每日政治点+0.15
+					#稳定度+5%
+					#每周稳定度+0.1%
+					#部队维护费-10%
+					days = 365
+				}
+				clr_country_flag = flag_attend_the_meeting_1
+			}
+			GER = {
+				if = {
+					limit = {
+						tag = GER
+					}
+					custom_effect_tooltip = "每一个同意的邦国都将为柏林政府提供25点政治点数、73天的修正或其他增益。"
+					set_temp_variable = { GER_temp1 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp1 = 25 }
+					set_variable = { GER_support_country_gain = GER_temp1 }
+					add_political_power = var:GER_temp1
+					
+					set_temp_variable = { GER_temp2 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp2 = 73 }
+					add_timed_idea = {
+						idea = AOR_GER_idea_under_discussion 
+						days = var:GER_temp2
+					}					
+					#add_to_temp_variable
+					#subtract_from_temp_variable
+					#multiply_temp_variable
+					#divide_temp_variable
+					#modulo_temp_variable
+					#round_temp_variable
+					#clamp_temp_variable
+				}
+				clr_country_flag = flag_attend_the_meeting_1
+			}
+		}
+	}
+	#讨论邦国贸易税率问题
+	AOR_GER_Invition_meeting_2 = {
+		icon = generic_construction
+		available = {
+			tag = GER
+			tag = NAU #法兰克福
+			tag = HAN #威斯特伐利亚
+			tag = BAV #巴伐利亚
+			tag = SIL #西里西亚
+			tag = KSH #波美拉尼亚
+			tag = WUR #符腾堡
+			tag = SAX #萨克森
+			tag = PRE #普鲁士
+			tag = SHL #石勒苏益格-荷尔施泰因
+			tag = MEK #梅克伦堡
+		}
+		activation = {
+			has_country_flag = flag_attend_the_meeting_2
+		}
+		fire_only_once = yes
+		visible = {
+			OR = {
+				tag = GER
+				tag = NAU #法兰克福
+				tag = HAN #威斯特伐利亚
+				tag = BAV #巴伐利亚
+				tag = SIL #西里西亚
+				tag = KSH #波美拉尼亚
+				tag = WUR #符腾堡
+				tag = SAX #萨克森
+				tag = PRE #普鲁士
+				tag = SHL #石勒苏益格-荷尔施泰因
+				tag = MEK #梅克伦堡
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 100
+
+		timeout_effect = {
+			clr_country_flag = AOR_GER_MEETING_HAPPENED
+			country_event = { id = AOR_GER_timeaxis.2 }
+			if = { #不同意
+				limit = {
+					has_country_flag = AOR_GER_flag_NOT_support_resolution
+				}
+				add_political_power = -25
+				clr_country_flag = flag_attend_the_meeting_2
+			}
+			if = { #同意
+				limit = {
+					has_country_flag = AOR_GER_flag_support_resolution
+				}
+				custom_effect_tooltip = "邦国需要花费75点政治点数、以换取一年的修正或其他增益，若决议未得到通过，则返还政治点数。"
+				add_political_power = -75
+				add_timed_idea = {
+					idea = AOR_GER_idea_trade
+					#消费品工厂-3%
+					#贸易关系修正+30%
+					#最小出口资源-10%
+					days = 365
+				}
+				clr_country_flag = flag_attend_the_meeting_2
+			}
+			GER = {
+				if = {
+					limit = {
+						tag = GER
+					}
+					custom_effect_tooltip = "柏林需要用100点政治点数开启决议，而每一个同意的邦国都将为柏林政府提供25点政治点数、73天的修正或其他增益。若少于5个邦国支持柏林的决议，付出的政治点数将作废。"
+					set_temp_variable = { GER_temp1 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp1 = 25 }
+					set_variable = { GER_support_country_gain = GER_temp1 }
+					add_political_power = var:GER_temp1					
+					set_temp_variable = { GER_temp2 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp2 = 73 }
+					add_timed_idea = {
+						idea = AOR_GER_idea_trade 
+						days = var:GER_temp2
+					}					
+					#add_to_temp_variable
+					#subtract_from_temp_variable
+					#multiply_temp_variable
+					#divide_temp_variable
+					#modulo_temp_variable
+					#round_temp_variable
+					#clamp_temp_variable
+				}
+				clr_country_flag = flag_attend_the_meeting_2
+			}
+		}
+	}
+	#讨论邦国贸易税率问题
+	AOR_GER_Invition_meeting_3 = {
+		icon = generic_construction
+		available = {
+			tag = GER
+			tag = NAU #法兰克福
+			tag = HAN #威斯特伐利亚
+			tag = BAV #巴伐利亚
+			tag = SIL #西里西亚
+			tag = KSH #波美拉尼亚
+			tag = WUR #符腾堡
+			tag = SAX #萨克森
+			tag = PRE #普鲁士
+			tag = SHL #石勒苏益格-荷尔施泰因
+			tag = MEK #梅克伦堡
+		}
+		activation = {
+			has_country_flag = flag_attend_the_meeting_3
+		}
+		fire_only_once = yes
+		visible = {
+			OR = {
+				tag = GER
+				tag = NAU #法兰克福
+				tag = HAN #威斯特伐利亚
+				tag = BAV #巴伐利亚
+				tag = SIL #西里西亚
+				tag = KSH #波美拉尼亚
+				tag = WUR #符腾堡
+				tag = SAX #萨克森
+				tag = PRE #普鲁士
+				tag = SHL #石勒苏益格-荷尔施泰因
+				tag = MEK #梅克伦堡
+			}
+		}
+		is_good = yes
+		days_mission_timeout = 100
+
+		timeout_effect = {
+			clr_country_flag = AOR_GER_MEETING_HAPPENED
+			country_event = { id = AOR_GER_timeaxis.2 }
+			if = { #不同意
+				limit = {
+					has_country_flag = AOR_GER_flag_NOT_support_resolution
+				}
+				add_political_power = -25
+				clr_country_flag = flag_attend_the_meeting_3
+			}
+			if = { #同意
+				limit = {
+					has_country_flag = AOR_GER_flag_support_resolution
+				}
+				custom_effect_tooltip = "邦国需要花费75点政治点数、以换取一年的修正或其他增益，若决议未得到通过，则返还政治点数。"
+				add_political_power = -75
+				add_timed_idea = {
+					idea = AOR_GER_idea_synthetic_ammonia
+					#消费品工厂-3%
+					#贸易关系修正+30%
+					#最小出口资源-10%
+					days = 365
+				}
+				clr_country_flag = flag_attend_the_meeting_3
+			}
+			GER = {
+				if = {
+					limit = {
+						tag = GER
+					}
+					custom_effect_tooltip = "柏林需要用100点政治点数开启决议，而每一个同意的邦国都将为柏林政府提供25点政治点数、73天的修正或其他增益。若少于5个邦国支持柏林的决议，付出的政治点数将作废。"
+					set_temp_variable = { GER_temp1 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp1 = 25 }
+					set_variable = { GER_support_country_gain = GER_temp1 }
+					add_political_power = var:GER_temp1					
+					set_temp_variable = { GER_temp2 = GER_support_country_quantity }
+					multiply_temp_variable = { GER_temp2 = 73 }
+					add_timed_idea = {
+						idea = AOR_GER_idea_synthetic_ammonia 
+						days = var:GER_temp2
+					}
+					
+					#add_to_temp_variable
+					#subtract_from_temp_variable
+					#multiply_temp_variable
+					#divide_temp_variable
+					#modulo_temp_variable
+					#round_temp_variable
+					#clamp_temp_variable
+					
+					clr_country_flag = flag_attend_the_meeting_3
+				}
+			}
+		}
+	}
+
+}
+
+#军队重新政治化
+AOR_Great_Army_Repoliticizate_category = {
+	Army_Repoliticizate_1 = {
+		available = {
+			tag = GER
+			has_completed_focus = AOR_GER_Army_10
+		}
+		visible = {
+			OR = {
+				is_debug = yes
+				has_ideas = AOR_GER_idea_Deutschland_army_1
+			}
+		}
+		cost = 75
+		days_remove = 120
+		days_re_enable = 1
+		remove_effect = {
+			army_experience = 5
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Deutschland_army_1
+				add_idea = AOR_GER_idea_Deutschland_army_2
+			}
+		}
+	}
+	Army_Repoliticizate_2 = {
+		available = {
+			tag = GER
+			has_completed_focus = AOR_GER_Army_10
+		}
+		visible = {
+			OR = {
+				is_debug = yes
+				has_ideas = AOR_GER_idea_Deutschland_army_2
+			}
+		}
+		cost = 75
+		days_remove = 120
+		days_re_enable = 1
+		remove_effect = {
+			army_experience = 15
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Deutschland_army_2
+				add_idea = AOR_GER_idea_Deutschland_army_3
+			}
+		}
+	}
+	Army_Repoliticizate_3 = {
+		available = {
+			tag = GER
+			has_completed_focus = AOR_GER_Army_10
+		}
+		visible = {
+			OR = {
+				is_debug = yes
+				has_ideas = AOR_GER_idea_Deutschland_army_3
+			}
+		}
+		cost = 75
+		days_remove = 120
+		days_re_enable = 1
+		remove_effect = {
+			army_experience = 25
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Deutschland_army_3
+				add_idea = AOR_GER_idea_Deutschland_army_4
+			}
+		}
+	}
+}
+
+#大北方战略计划
+AOR_Great_Northern_Strategic_Plan_category = {
+
+	Great_Northern_Strategic_Plan = {
+
+		visible = {
+			always  = no
+		}
+
+	}
+
+}
+
+#军队办公室
+GER_Military_Office_category = {
+	GER_Military_Office_1 = {
+        available = {
+			has_completed_focus = AOR_GER_Industry_18
+			has_army_experience > 60
+		}
+		cost = 0
+		icon = GFX_endgame_score_button
+        activation = { }
+		visible = { tag = PRC }
+        fire_only_once = no 
+        is_good = yes
+        days_remove = 180
+		days_re_enable = 3
+		cancel_trigger = { }
+	    modifier = {
+			political_power_cost = 0.15
+			research_speed_factor = 0.05
+			refit_ic_cost = -0.25
+			production_lack_of_resource_penalty_factor = -0.1
+		}
+		complete_effect = {
+			army_experience = -60
+		}
+        remove_effect = {
+			add_tech_bonus = {
+				bonus = 0.3
+				uses = 2
+				category = infantry_tech
+				category = infantry_weapons
+				category = artillery
+				category = support_tech
+				category = motorized_equipment
+				category = cat_armored_cars
+				category = armor
+				category = cat_special_forces_generic
+			}
+		}
+	}
+}
+
+#国民经济振兴五年计划
+GER_National_Economic_Revitalization_category = {
+	
+	#经济恢复阶段
+	GER_National_Economic_Revitalization = {
+		available = {
+			tag = GER
+			num_of_controlled_factories > 30
+		}
+		
+		is_good = yes
+		days_mission_timeout = 365
+		activation = {
+			has_completed_focus = AOR_GER_Industry_18
+		}
+		timeout_effect = {
+			add_political_power = 15
+			set_country_flag = AOR_GER_flag_Revitalization_1
+			every_state = {
+				limit = {
+					OR = {
+						state = 1
+						state = 2
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	#经济发展阶段
+	GER_National_Economic_Revitalization_1 = {
+		available = {
+			tag = GER
+			num_of_controlled_factories > 40
+		}
+		
+		is_good = yes
+		days_mission_timeout = 365
+		activation = {
+			has_country_flag = AOR_GER_Industry_18
+		}
+		timeout_effect = {
+			add_political_power = 15
+			clr_country_flag = AOR_GER_flag_Revitalization_1
+			set_country_flag = AOR_GER_flag_Revitalization_2
+			every_state = {
+				limit = {
+					OR = {
+						state = 1
+						state = 2
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 252 254 }
+				#limit = {
+				#	free_building_slots = {
+				#		building = arms_factory
+				#		size > 1
+				#		include_locked = yes
+				#	}
+				#}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	#结束五年计划
+	GER_National_Economic_Revitalization_2 = {
+		available = {
+			tag = GER
+			num_of_controlled_factories > 40
+		}
+		
+		is_good = yes
+		days_mission_timeout = 365
+		activation = {
+			has_country_flag = AOR_GER_Industry_18
+		}
+		timeout_effect = {
+			add_political_power = 15
+			clr_country_flag = AOR_GER_flag_Revitalization_2
+			set_country_flag = AOR_GER_flag_Revitalization_3
+			every_state = {
+				limit = {
+					state = 1
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			every_state = {
+				limit = {
+					state = 1
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 252 254 }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 252 254 }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}

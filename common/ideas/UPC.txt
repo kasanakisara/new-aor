@@ -1,0 +1,279 @@
+ideas = {
+	# MILITARY
+
+	tank_manufacturer = { 
+		
+		designer = yes
+		
+		renault_bel = {
+			picture = renault
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { fast_tank_manufacturer }
+			
+			modifier = {
+				# Renault FT
+			}
+		}
+
+		vickers_armstrong_bel = {
+			picture = generic_tank_manufacturer_2
+		
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { medium_tank_manufacturer }
+			
+			modifier = {
+				
+			}
+		}
+	}
+
+	aircraft_manufacturer = {
+	
+		designer = yes
+		
+		avions_fairey = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		renard = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	
+	naval_manufacturer = { 
+		
+		designer = yes
+		
+		cockerill = { 
+			picture = generic_naval_manufacturer_1
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+						
+			traits = { naval_manufacturer }
+		}
+	}
+
+	materiel_manufacturer = {
+		
+		designer = yes
+		
+		fn_herstol = {
+			
+			picture = generic_infantry_equipment_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+			
+			
+			traits = { infantry_equipment_manufacturer }
+		}
+	}
+
+	country = {
+
+		#武人干政
+		UPC_Military_intervene_government = {
+			
+			picture = GFX_idea_UPC_Military_intervene_government
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			political_power_gain = -0.2
+			stability_factor = -0.2
+			command_power_gain_mult = -0.15
+			max_command_power = -30
+			}
+		}
+		
+		#央地关系：自治
+		UPC_Central_place_1 = {
+			
+			picture = GFX_idea_UPC_Central_place_1
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			conscription_factor = -0.15
+			production_speed_buildings_factor = -0.15
+			production_factory_max_efficiency_factor = -0.15
+			production_factory_efficiency_gain_factor = -0.15
+			}
+		}
+		
+		#三督治下
+		UPC_Under_three_governors = {
+			
+			picture = GFX_idea_Under_three_governors
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			political_advisor_cost_factor = 0.15
+			mobilization_laws_cost_factor = 0.3
+			trade_laws_cost_factor = 0.3
+			economy_cost_factor = 0.3
+			theorist_cost_factor = 0.3
+			army_chief_cost_factor = 0.3
+			navy_chief_cost_factor = 0.3
+			air_chief_cost_factor = 0.3
+			high_command_cost_factor = 0.3
+			}
+		}
+		
+		#刚起步的基础教育体系
+		UPC_basic_education_system = {
+			
+			picture = GFX_idea_UPC_basic_education_system
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			research_speed_factor = -0.15
+			}
+		}
+		
+		#菩萨总统
+		UPC_Bodhisattva_president = {
+			
+			picture = GFX_idea_Bodhisattva_president
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			stability_factor = 0.1
+			}
+		}
+		UPC_Reorganized_Progressive_Party = {
+			
+			picture = GFX_idea_UPC_Reorganized_Progressive_Party
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				drift_defence_factor = 0.1
+			}
+		}
+		UPC_use_country_ready_money = {
+			
+			picture = GFX_idea_UPC_use_country_ready_money
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_expected_value = -0.05
+			}
+		}
+	}
+		
+}

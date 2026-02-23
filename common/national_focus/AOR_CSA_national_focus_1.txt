@@ -1,0 +1,413 @@
+focus_tree={
+	id = CSA_1
+	country={
+		factor=0
+		modifier={
+			add=10
+			tag=CSA
+		}
+	}
+	default=no
+	focus={
+		id=CSA_Declaration_of_Independence
+		icon=GFX_goal_CSA_Declaration_of_Independence
+		x=9
+		y=0
+		cost=0.5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 50
+			country_event={
+				id = CSA.1
+			}
+		}
+	}
+	focus={
+		id=CSA_Reorganize_the_flag_and_drum
+		icon=GFX_goal_CSA_Reorganize_the_flag_and_drum
+		x=9
+		y=1
+		prerequisite={focus=CSA_Declaration_of_Independence}
+		cost=1
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			set_cosmetic_tag = CSA_CON_democratic
+			add_political_power = 100
+		}
+	}
+	focus={
+		id=CSA_Take_charge_of_one
+		icon=GFX_goal_CSA_Take_charge_of_one
+		x=2
+		y=3
+		prerequisite={focus=CSA_Rise_again}
+		mutually_exclusive={focus=CSA_Unite_as_one_city }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Dixie_Goes_Again
+				add_idea = Dixie_Goes_Again_1
+			}
+		}
+	}
+	focus={
+		id=CSA_Rise_again
+		icon=GFX_goal_CSA_Rise_again
+		x=9
+		y=2
+		prerequisite={focus=CSA_Reorganize_the_flag_and_drum}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas = Fire_Cactus
+			CSA = {
+				set_politics = {ruling_party = CON_democratic }
+				create_country_leader = {
+					name = "John_Nance_Garner_III"
+					desc = "John_Nance_Garner_III_DESC"
+					picture = "gfx/leaders/CSA/Gamaliel_Harding.png"
+					expire = "1965.1.1"
+					ideology = Jeffersonian
+					traits = {
+						
+					}
+				}
+			}
+		}
+	}
+	focus={
+		id=CSA_Unite_as_one_city
+		icon=GFX_goal_CSA_Unite_as_one_city
+		x=16
+		y=3
+		prerequisite={focus=CSA_Rise_again}
+		mutually_exclusive={focus=CSA_Take_charge_of_one }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Dixie_Goes_Again
+				add_idea = Dixie_Goes_Again_2
+			}
+		}
+	}
+	focus={
+		id=CSA_Free_command_of_the_gun
+		icon=GFX_goal_CSA_Free_command_of_the_gun
+		x=4
+		y=4
+		prerequisite={focus=CSA_Take_charge_of_one}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea =Armament_of_the_Union
+				add_idea = Armament_of_the_Union_1
+			}
+		}
+	}
+	focus={
+		id=CSA_only_one_sound
+		icon=GFX_goal_CSA_only_one_sound
+		x=0
+		y=4
+		prerequisite={focus=CSA_Take_charge_of_one}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -50
+			add_popularity = { ideology = CON_democratic popularity = 0.1 }
+		}
+	}
+	focus={
+		id=CSA_The_Way_of_Neutrality
+		icon=GFX_goal_CSA_The_Way_of_Neutrality
+		x=7
+		y=4
+		prerequisite={focus=CSA_Rise_again}
+		mutually_exclusive={focus=CSA_Involuntarily }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 100
+			swap_ideas={
+				remove_idea = Oil_Heaven
+				add_idea = Oil_Heaven_1
+			}
+		}
+	}
+	focus={
+		id=CSA_Involuntarily
+		icon=GFX_goal_CSA_Involuntarily
+		x=11
+		y=4
+		prerequisite={focus=CSA_Rise_again}
+		mutually_exclusive={focus=CSA_The_Way_of_Neutrality }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Oil_Heaven
+				add_idea = Oil_Heaven_3
+			}
+		}
+	}
+	focus={
+		id=CSA_Labor_people
+		icon=GFX_goal_CSA_Labor_people
+		x=7
+		y=5
+		prerequisite={focus=CSA_The_Way_of_Neutrality}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 300
+			swap_ideas={
+				remove_idea = Oil_Heaven_1
+				add_idea = Oil_Heaven_2
+			}
+		}
+	}
+	focus={
+		id=CSA_Can_turns_into_bullet
+		icon=GFX_goal_CSA_Can_turns_into_bullet
+		x=11
+		y=5
+		prerequisite={focus=CSA_Involuntarily}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Oil_Heaven_3
+				add_idea = Oil_Heaven_4
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus={
+		id=CSA_Unity_and_solidarity
+		icon=GFX_goal_CSA_Unity_and_solidarity
+		x=18
+		y=4
+		prerequisite={focus=CSA_Unite_as_one_city}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Dixie_Goes_Again_2
+				add_idea = Dixie_Goes_Again_3
+			}
+			add_popularity = { ideology = SOC_democratic popularity = 0.05 }
+			add_popularity = { ideology = AUT_democratic popularity = 0.05 }
+			add_popularity = { ideology = FRE_democratic popularity = -0.05 }
+		}
+	}
+	focus={
+		id=CSA_Extinguish_the_flames
+		icon=GFX_goal_CSA_Extinguish_the_flames
+		x=14
+		y=4
+		prerequisite={focus=CSA_Unite_as_one_city}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -100
+			swap_ideas={
+				remove_idea = Imprison_in_the_dark
+				add_idea = Imprison_in_the_dark_1
+			}
+		}
+	}
+	focus={
+		id=CSA_Reform_the_militia_system
+		icon=GFX_goal_CSA_Reform_the_militia_system
+		x=4
+		y=5
+		prerequisite={focus=CSA_Free_command_of_the_gun}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea =Armament_of_the_Union_1
+				add_idea = Armament_of_the_Union_2
+			}
+		}
+	}
+	focus={
+		id=CSA_Measures_for_Black_People
+		icon=GFX_goal_CSA_Measures_for_Black_People
+		x=0
+		y=5
+		prerequisite={focus=CSA_only_one_sound}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Imprison_in_the_dark
+				add_idea = Imprison_in_the_dark_3
+			}
+		}
+	}
+	focus={
+		id=CSA_And_throw_it_into_the_trench
+		icon=GFX_goal_CSA_And_throw_it_into_the_trench
+		x=14
+		y=5
+		prerequisite={focus=CSA_Extinguish_the_flames}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = Imprison_in_the_dark_1
+				add_idea = Imprison_in_the_dark_2
+			}
+		}
+	}
+	focus={
+		id=CSA_All_the_people_are_soldiers
+		icon=GFX_goal_CSA_All_the_people_are_soldiers
+		x=18
+		y=5
+		prerequisite={focus=CSA_Unity_and_solidarity}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea =Armament_of_the_Union
+				add_idea = Armament_of_the_Union_3
+			}
+		}
+	}
+	focus={
+		id=CSA_Lord_listen_to_our_prayers
+		icon=GFX_goal_CSA_Lord_listen_to_our_prayers
+		x=9
+		y=6
+		prerequisite={focus=CSA_Measures_for_Black_People focus=CSA_And_throw_it_into_the_trench}
+		prerequisite={focus=CSA_Reform_the_militia_system focus=CSA_All_the_people_are_soldiers}
+		prerequisite={focus=CSA_Labor_people focus=CSA_Can_turns_into_bullet}
+		cost=100
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+}

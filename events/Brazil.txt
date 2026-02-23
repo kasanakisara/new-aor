@@ -1,0 +1,314 @@
+add_namespace = BRA
+
+
+country_event = {
+	id = BRA.0
+	title = BRA.0.t
+	desc = BRA.0.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+		date > 1922.2.1
+		tag = BRA
+	}
+	mean_time_to_happen = { days = 1}
+	fire_only_once = yes
+	option = { 
+        name = BRA.0.a
+		news_event = { id = AOR_news.156 }
+		kill_country_leader = yes
+		create_country_leader = {
+		name = "State of emergency"
+		desc = "POLITICS_emergency_DESC"
+		picture = "gfx/leaders/BRA/emergency.png"
+		expire = "1945.1.1"
+		ideology = miliciagov
+		}
+            }
+		}
+
+country_event = {
+	id = BRA.1
+	title = BRA.1.t
+	desc = BRA.1.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+		date > 1922.3.1
+		tag = BRA
+	}
+	mean_time_to_happen = { days = 1}
+	fire_only_once = yes
+	option = { 
+		BRA = {
+			add_popularity = { ideology = CON_democratic  popularity = 0.05 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.05 }
+			add_popularity = { ideology = AUT_democratic popularity = 0.1 }
+		}
+		498={set_demilitarized_zone=yes}
+		499={set_demilitarized_zone=yes}
+		505={set_demilitarized_zone=yes}
+		496={set_demilitarized_zone=yes}
+		 name = BRA.1.a
+		}
+	}
+
+country_event = {
+	id = BRA.2 #巴西内战爆发
+	title = BRA.2.t
+	desc = BRA.2.d
+	picture = GFX_report_event_german_speech
+
+	trigger = {
+		date > 1922.4.1
+		tag = BRA
+	}
+	mean_time_to_happen = { days = 1}
+	fire_only_once = yes		
+	option = { 
+		name = BRA.2.a
+		news_event = { id = AOR_news.21 }
+		BR1 = {
+	    	transfer_state = 280
+	    	transfer_state = 504
+	    	transfer_state = 496
+			transfer_state = 505
+			add_state_core = 280
+			add_state_core = 504
+			add_state_core = 496
+			add_state_core = 505
+			load_oob = "BR1_1919_land"	
+			load_oob = "BR1_1919_land"    	
+		}
+		BR2 = {
+	    	transfer_state = 499
+			transfer_state = 498
+			add_state_core = 499
+			add_state_core = 498
+			load_oob = "BR2_1919_land"
+			load_oob = "BR2_1919_land"
+			load_oob = "BR2_1919_land"
+			load_oob = "BR2_1919_land"
+		}
+		BR3 = {
+			transfer_state = 488
+			add_state_core = 488
+			transfer_state = 495
+			add_state_core = 495
+			transfer_state = 969
+			add_state_core = 969
+			load_oob = "BR3_1919_land"
+			load_oob = "BR3_1919_land"
+			load_oob = "BR3_1919_land"
+			load_oob = "BR3_1919_land"
+		}
+		
+		BRA = {
+		declare_war_on = {
+			target = BR1
+			type = civil_war
+			}
+		declare_war_on = {
+			target = BR2
+			type = civil_war
+			}
+		declare_war_on = {
+			target = BR3
+			type = civil_war
+			}
+		}
+		
+		BR1 = {
+		declare_war_on = {
+			target = BR2
+			type = civil_war
+			}
+		declare_war_on = {
+			target = BR3
+			type = civil_war
+			}
+		}
+		
+		BR2 = {
+		declare_war_on = {
+			target = BR3
+			type = civil_war
+			}
+		}
+		
+		BRA = {
+			set_autonomy = {
+				target = URG
+				autonomy_state = autonomy_free
+			}
+		}
+
+		FRA = {
+			set_country_flag = FRA_neizhanbairehua
+		}
+	}
+}
+
+country_event = {
+	id = BRA.3 #乌拉圭爆发大规模高乔人动乱
+	title = BRA.3.t
+	desc = BRA.3.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+		date > 1922.5.1
+		tag = BRA
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			URG = {
+				300={set_demilitarized_zone=yes}
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.3.a
+		country_event = { days = 45  id = BRA.4 }
+		news_event = { id = AOR_news.180 }
+		}
+
+	option = { 
+		name = BRA.3.b
+		country_event = { days = 45  id = BRA.5 }
+		news_event = { id = AOR_news.180 }
+		}
+	}
+
+country_event = {
+	id = BRA.4 #乌拉圭北高乔人完全夺取乌拉圭
+	title = BRA.4.t
+	desc = BRA.4.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			URG = {
+				set_politics = {ruling_party = Fascism}
+				add_popularity = { ideology = Fascism popularity = 0.3 }
+				add_popularity = { ideology = Special popularity = 0.2 }
+				add_popularity = { ideology = AGR_socialism popularity = 0.1 }
+				set_cosmetic_tag = URG_Fascism
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.4.a
+		country_event = { days = 60  id = BRA.8 }
+		news_event = { id = AOR_news.181 }
+	    }
+    }
+
+country_event = {
+	id = BRA.5 #乌拉圭北高乔人被乌拉圭政府驱赶
+	title = BRA.5.t
+	desc = BRA.5.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			URG = {
+				300={set_demilitarized_zone=NO}
+			}
+			BR4 = {
+				load_oob = "BR4_1919_land"	
+				load_oob = "BR4_1919_land" 
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.5.a
+		news_event = { id = AOR_news.182 }
+		}
+	}
+
+country_event = {
+	id = BRA.6 #“圣地”组织崛起！
+	title = BRA.6.t
+	desc = BRA.6.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+		date > 1922.5.20
+		tag = BRA
+	}
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+            BR4 = {
+				load_oob = "BR4_1919_land"	
+				load_oob = "BR4_1919_land" 
+				transfer_state = 502
+				transfer_state = 503
+				add_state_core = 502
+				add_state_core = 503
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.6.a
+		country_event = { days = 60  id = BRA.7 }
+		news_event = { id = AOR_news.183 }
+		}
+	}
+
+country_event = {
+	id = BRA.7 #“圣地”组织向巴西进军！
+	title = BRA.7.t
+	desc = BRA.7.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			BR4 = {
+				load_oob = "BR4_1919_land"	
+				load_oob = "BR4_1919_land" 
+			declare_war_on = {
+				target = BRA
+				type = civil_war
+				}
+			declare_war_on = {
+				target = BR2
+				type = civil_war
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.7.a
+		news_event = { id = AOR_news.184 }
+		}
+	}
+
+country_event = {
+	id = BRA.8 #乌拉圭高乔政权与“圣地”组织爆发冲突
+	title = BRA.8.t
+	desc = BRA.8.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			URG = {
+			declare_war_on = {
+				target = BR4
+				type = civil_war
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = BRA.8.a
+		news_event = { id = AOR_news.185 }
+		}
+	}

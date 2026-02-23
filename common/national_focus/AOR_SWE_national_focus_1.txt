@@ -1,0 +1,1008 @@
+focus_tree = {
+	id = AOR_SWE_focus_tree_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 30
+			tag = SWE
+		}
+	}
+	default = no
+	continuous_focus_position = {
+		x = 2000
+		y = 500
+	}
+	focus = {
+		id = SWE_Eighty_Seventh_Order
+		icon = GFX_goal_SWE_Eighty_Seventh_Order
+		cost = 1.00
+		x = 9
+		y = 1
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = SWE_Eighty_Seventh_Orders
+			country_event = { id = SWE.18 }
+		}
+
+	}
+	focus = {
+		id = SWE_Karlstard_Plan
+		icon = GFX_goal_SWE_Karlstard_Plan
+		cost = 1.00
+		prerequisite = {
+			focus = SWE_Eighty_Seventh_Order
+		}
+		x = 6
+		y = 2
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = SWE_K_Plan
+			custom_effect_tooltip = SWE_Karlstard_Plan_decision
+			set_country_flag = SWE_K_Plan_flag
+			add_to_variable = { SWE_Norweign_Independence_value = -10 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Encourage_Capital
+		icon = GFX_goal_SWE_Encourage_Capital
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Karlstard_Plan
+		}
+		x = 3
+		y = 3
+		completion_reward = {
+			add_timed_idea = {
+				idea = SWE_Encourage
+				days = 300
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Found_of_British
+		icon = GFX_goal_SWE_Found_of_British
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Encourage_Capital
+		}
+		mutually_exclusive = {
+			focus = SWE_Found_of_France
+		}
+		x = 1
+		y = 4
+		completion_reward = {
+			ENG = {
+				country_event = { id = SWE.3 }
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Found_of_France
+		icon = GFX_goal_SWE_Found_of_France
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Encourage_Capital
+		}
+		mutually_exclusive = {
+			focus = SWE_Found_of_British
+		}
+		x = 5
+		y = 4
+		completion_reward = {
+			FRA = {
+				country_event = { id = SWE.3 }
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Further_Reform
+		icon = GFX_goal_SWE_Further_Reform
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Found_of_France
+			focus = SWE_Found_of_British
+		}
+		available = {
+			industrial_complex > 49
+		}
+		x = 3
+		y = 5
+		completion_reward = {
+			country_event = { id = SWE.8 }
+        	add_ideas = SWE_Further_Reform_Law
+		}
+
+	}
+	focus = {
+		id = SWE_IndustryArea_Oslo
+		icon = GFX_goal_SWE_IndustryArea_Oslo
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Further_Reform
+		}
+		x = 3
+		y = 6
+		completion_reward = {
+			110 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_IndustryArea_Bergen
+		icon = GFX_goal_SWE_IndustryArea_Bergen
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Further_Reform
+		}
+		x = 5
+		y = 6
+		completion_reward = {
+			142 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Develop_North
+		icon = GFX_goal_SWE_Develop_North
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Further_Reform
+		}
+		x = 1
+		y = 6
+		completion_reward = {
+			666 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 16
+				}
+			}
+			144 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = oil
+					amount = 6
+				}
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+			967 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+			country_event = { id = SWE.19 }
+		}
+
+	}
+	focus = {
+		id = SWE_Oslo_Exhibition
+		icon = GFX_goal_SWE_Oslo_Exhibition
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_IndustryArea_Oslo
+		}
+		prerequisite = {
+			focus = SWE_IndustryArea_Bergen
+		}
+		prerequisite = {
+			focus = SWE_Develop_North
+		}
+		x = 3
+		y = 7
+		completion_reward = {
+			add_political_power = 200
+			hidden_effect = { news_event = { id = AOR_news.70 } }
+			custom_effect_tooltip = SWE_Oslo_news_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Antisocialistisk_Speciallag
+		icon = GFX_goal_SWE_Antisocialistisk_Speciallag
+		cost = 1.00
+		prerequisite = {
+			focus = SWE_Eighty_Seventh_Order
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 12
+		y = 2
+		completion_reward = {
+			add_ideas = SWE_Antisocialistisk_Speciallagen
+			custom_effect_tooltip = SWE_Antisocialistisk_Speciallag_decision
+			add_to_variable = { SWE_Norweign_Independence_value = -15 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Proganda_to_People
+		icon = GFX_goal_SWE_Proganda_to_People
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Antisocialistisk_Speciallag
+		}
+		prerequisite = {
+			focus = SWE_Karlstard_Plan
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+			add_political_power = 100
+			add_to_variable = { SWE_Norweign_Independence_value = -5 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+			country_event = { id = SWE.9 }
+		}
+
+	}
+	focus = {
+		id = SWE_All_People_are_King
+		icon = GFX_goal_SWE_All_People_are_King
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Proganda_to_People
+		}
+		x = 8
+		y = 4
+		completion_reward = {
+			add_ideas = SWE_All_People_are_King
+		}
+
+	}
+	focus = {
+		id = SWE_Liberte_Spirit
+		icon = GFX_goal_SWE_Liberte_Spirit
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Proganda_to_People
+		}
+		x = 10
+		y = 4
+		completion_reward = {
+			add_ideas = SWE_Liberte_Spirit
+		}
+
+	}
+	focus = {
+		id = SWE_Beyond_Nationalism
+		icon = GFX_goal_SWE_Beyond_Nationalism
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Liberte_Spirit
+		}
+		prerequisite = {
+			focus = SWE_All_People_are_King
+		}
+		x = 9
+		y = 5
+		completion_reward = {
+			add_ideas = SWE_Beyond_Nationalism
+		}
+
+	}
+	focus = {
+		id = SWE_Our_Responsibility
+		icon = GFX_goal_SWE_Our_Responsibility
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Beyond_Nationalism
+		}
+		x = 9
+		y = 7
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SWE_Beyond_Nationalism
+				add_idea = SWE_Beyond_Nation
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Abolish_Left_Party
+		icon = GFX_goal_SWE_Abolish_Left_Party
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Antisocialistisk_Speciallag
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 15
+		y = 3
+		completion_reward = {
+			add_popularity = { ideology = Marxism popularity = -0.2 }
+			add_popularity = { ideology = SOC_democratic popularity = -0.1 }
+			swap_ideas = {
+				remove_idea = SWE_Left_Threat
+				add_idea = SWE_Left_Threat_I
+			}
+			add_to_variable = { SWE_Norweign_Independence_value = -15 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Publications_Supervision
+		icon = GFX_goal_SWE_Publications_Supervision
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Abolish_Left_Party
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 13
+		y = 4
+		completion_reward = {
+			add_popularity = { ideology = Marxism popularity = -0.1 }
+			country_event = { id = SWE.10 }
+			add_to_variable = { SWE_Norweign_Independence_value = -15 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Rope_Right
+		icon = GFX_goal_SWE_Rope_Right
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Publications_Supervision
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 13
+		y = 5
+		completion_reward = {
+			add_popularity = { ideology = AUT_democratic popularity = 0.1 }
+			country_event = { id = SWE.13 }
+			add_to_variable = { SWE_Norweign_Independence_value = -10 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Restrictions_on_Gatherings
+		icon = GFX_goal_SWE_Restrictions_on_Gatherings
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Abolish_Left_Party
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 17
+		y = 4
+		completion_reward = {
+			add_popularity = { ideology = Marxism popularity = -0.05 }
+			swap_ideas = {
+				remove_idea = SWE_Left_Threat_I
+				add_idea = SWE_Left_Threat_II
+			}
+			add_to_variable = { SWE_Norweign_Independence_value = -7.5 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Imprisoned_Left_Leaders
+		icon = GFX_goal_SWE_Imprisoned_Left_Leaders
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Restrictions_on_Gatherings
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 17
+		y = 5
+		completion_reward = {
+			country_event = { id = SWE.14 }
+			add_popularity = { ideology = Marxism popularity = -0.2 }
+			add_to_variable = { SWE_Norweign_Independence_value = -12.5 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_The_Trial
+		icon = GFX_goal_SWE_The_Trial
+		cost = 2.00
+		prerequisite = {
+			focus = SWE_Imprisoned_Left_Leaders
+		}
+		prerequisite = {
+			focus = SWE_Rope_Right
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 15
+		y = 6
+		completion_reward = {
+			country_event = { id = SWE.15 }
+			add_popularity = { ideology = Marxism popularity = party_popularity@Marxism }
+			add_to_variable = { SWE_Norweign_Independence_value = -15 }
+            custom_effect_tooltip = SWE_Norweign_Independence_effect_localisation
+		}
+
+	}
+	focus = {
+		id = SWE_Restructuring_Parliament
+		icon = GFX_goal_SWE_Restructuring_Parliament
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_The_Trial
+		}
+		ai_will_do = {
+            add = 1
+            modifier = {
+                NOT = {
+					has_completed_focus = SWE_Restructuring_Parliament
+				}
+                add = 1000
+            }
+        }
+		x = 15
+		y = 7
+		completion_reward = {
+			country_event = { id = SWE.16 }
+			hidden_effect = {
+				remove_ideas = SWE_Antisocialistisk_Speciallagen
+				add_timed_idea = {
+					idea = SWE_Antisocialistisk_Speciallagen
+					days = 180
+				}
+			}
+			custom_effect_tooltip = SWE_Restruct_Parliament_tt
+		}
+
+	}
+	focus = {
+		id = SWE_The_Dream
+		icon = GFX_goal_SWE_The_Dream
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Our_Responsibility
+		}
+		prerequisite = {
+			focus = SWE_Restructuring_Parliament
+		}
+		prerequisite = {
+			focus = SWE_Oslo_Exhibition
+		}
+		x = 9
+		y = 8
+		completion_reward = {
+			country_event = { id = SWE.17 }
+			custom_effect_tooltip = SWE_Viva_la_Union_tt
+			clr_country_flag = SWE_Norweign_Independence_flag
+			add_to_variable = { SWE_Norweign_Independence_value = -50 }
+			hidden_effect = {
+				country_event = { id = SWE.1 days = 663 }
+				country_event = { id = SWE.31 days = 5 }
+				retire_country_leader = SWE_haakon_VII_I
+				add_country_leader_role = {
+					character = SWE_Haakon_VII_II  # Must be recruited
+					promote_leader = yes  # Makes the character be promoted to leader of the party
+					country_leader = {
+						ideology = meliorism
+						traits = { The_King_belong_Union }
+					}
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Beautiful_New_World
+		icon = GFX_goal_SWE_Beautiful_New_World
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_The_Dream
+		}
+		available = {
+			has_completed_focus = SWE_Rebuild_New_World
+		}
+		x = 4
+		y = 9
+		completion_reward = {
+			add_ideas = SWE_Open_the_door
+			set_variable = { SWE_Government_Spending = 20 }
+			set_variable = { SWE_Market_Inclusion = 20 }
+			set_variable = { SWE_Industry_Development = 15 }
+			unlock_decision_category_tooltip = SWE_Trade_decision_categories
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = AOR_SWE_Trade_dynamic_modifier }
+				set_variable = { SWE_Trade_consumer_goods_factor = 0.25 }
+				set_variable = { SWE_Trade_construction_speed = 0.2 }
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Trade_With_Soviet
+		icon = GFX_goal_SWE_Trade_With_Soviet
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Beautiful_New_World
+		}
+		x = 3
+		y = 10
+		completion_reward = {
+			RUS = {
+				country_event = { id = SWE.22 }
+			}
+			add_to_variable = { SWE_Market_Inclusion = 10 }
+			custom_effect_tooltip = SWE_Market_Inclusion_add_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Trade_with_Deutschland
+		icon = GFX_goal_SWE_Trade_with_Deutschland
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Beautiful_New_World
+		}
+		bypass = {
+			date > 1923.1.1
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_not_civilwar_tt
+				AOR_GER_not_civilwar = yes
+			}
+		}
+		x = 5
+		y = 10
+		completion_reward = {
+			hidden_effect = {
+				GER = {
+					country_event = { id = SWE.26 }
+				}
+				NAU = {
+					country_event = { id = SWE.26 }
+				}
+				BAV = {
+					country_event = { id = SWE.26 }
+				}
+			}
+			add_to_variable = { SWE_Market_Inclusion = 10 }
+			custom_effect_tooltip = SWE_Trade_with_Germany_tt
+			custom_effect_tooltip = SWE_Market_Inclusion_add_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Trade_with_CSA
+		icon = GFX_goal_SWE_Trade_with_CSA
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Trade_With_Soviet
+		}
+		bypass = {
+			date > 1923.1.1
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_USA_civilwar_I
+				AOR_USA_civilwar_I = yes
+			}
+		}
+		x = 3
+		y = 11
+		completion_reward = {
+			hidden_effect = {
+				CSA = {
+					country_event = { id = SWE.26 }
+				}
+			}
+			add_to_variable = { SWE_Market_Inclusion = 5 }
+			custom_effect_tooltip = SWE_CSA_Trade_tt
+			custom_effect_tooltip = SWE_Market_Inclusion_add_tt
+		}
+
+	}
+	focus = {
+		id = SWE_National_Regulation
+		icon = GFX_goal_SWE_National_Regulation
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Trade_with_Deutschland
+		}
+		x = 5
+		y = 11
+		completion_reward = {
+			add_timed_idea = {
+				idea = SWE_Regulation
+				days = 180
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Provide_Third_Choice
+		icon = GFX_goal_SWE_Provide_Third_Choice
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_National_Regulation
+		}
+		prerequisite = {
+			focus = SWE_Trade_with_CSA
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SWE_Union_Dream_III_tt
+				check_variable = { SWE_Union_Stage = 3 compare = more_than_or_equals }
+			}
+		}
+		x = 4
+		y = 12
+		completion_reward = {
+			country_event = { id = SWE.29 }
+			swap_ideas = {
+				add_idea = SWE_Third_Chioce
+				remove_idea = SWE_Open_the_door
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Rebuild_New_World
+		icon = GFX_goal_SWE_Rebuild_New_World
+		cost = 5.00
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = SWE_The_Dream
+		}
+		x = 9
+		y = 9
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = SWE_Rebuild_New_World
+				}
+				custom_effect_tooltip = SWE_Parliament_choice_yet_tt
+			}
+			else = {
+				custom_effect_tooltip = SWE_Parliament_not_yet_choice_tt
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Welfare_New_Society
+		icon = GFX_goal_SWE_Welfare_New_Society
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_The_Dream
+		}
+		available = {
+			has_completed_focus = SWE_Rebuild_New_World
+		}
+		x = 14
+		y = 9
+		completion_reward = {
+			add_ideas = SWE_Folkhemmet
+			unlock_decision_category_tooltip = SWE_Folkhemmet_decision_categories
+			set_variable = { SWE_Education = 1 }
+			set_variable = { SWE_National_debt = 0.25 }
+			set_variable = { SWE_has_National_debt = 0.1 }
+			set_variable = { SWE_Folkhemmet_industrial_capacity = 0.2 }
+			set_variable = { SWE_Folkhemmet_factory_efficency = 0.2 }
+			set_variable = { SWE_Folkhemmet_consumer_goods = 0.125 }
+			hidden_effect = {
+				set_country_flag = SWE_Folkhemmet_flag
+				add_dynamic_modifier = { modifier = AOR_SWE_Folkhemmet_dynamic_modifier }
+				country_event = { id = SWE_Folkhemmet.1 days = 5 }
+			}
+		}
+
+	}
+	focus = {
+		id = SWE_Return_Power
+		icon = GFX_goal_SWE_Return_Power
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Rebuild_New_World
+		}
+		x = 8
+		y = 10
+		completion_reward = {
+			country_event = { id = SWE.32 }
+		}
+
+	}
+	focus = {
+		id = SWE_Merge_Parliament
+		icon = GFX_goal_SWE_Merge_Parliament
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Rebuild_New_World
+		}
+		x = 10
+		y = 10
+		completion_reward = {
+			country_event = { id = SWE.34 }
+		}
+
+	}
+	focus = {
+		id = SWE_Amendment_Law_Inheritance
+		icon = GFX_goal_SWE_Amendment_Law_Inheritance
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Return_Power
+		}
+		x = 8
+		y = 11
+		completion_reward = {
+			country_event = { id = SWE.36 }
+		}
+
+	}
+	focus = {
+		id = SWE_Reduction_Civil_Servants
+		icon = GFX_goal_SWE_Reduction_Civil_Servants
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Merge_Parliament
+		}
+		x = 10
+		y = 11
+		completion_reward = {
+			country_event = { id = SWE.37 }
+		}
+
+	}
+	focus = {
+		id = SWE_Hand_Could_Saw
+		icon = GFX_goal_SWE_Hand_Could_Saw
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Reduction_Civil_Servants
+		}
+		prerequisite = {
+			focus = SWE_Amendment_Law_Inheritance
+		}
+		available = {
+			has_idea = SWE_Reducted_Civil_Servants
+			has_idea = SWE_Merged_Parliament
+			has_idea = SWE_Universal_Suffrage
+			custom_trigger_tooltip = {
+				tooltip = SWE_Union_Dream_III_tt
+				check_variable = { SWE_Union_Stage = 3 compare = more_than_or_equals }
+			}
+		}
+		x = 9
+		y = 12
+		completion_reward = {
+			hidden_effect = {
+				remove_ideas = SWE_Reducted_Civil_Servants
+				remove_ideas = SWE_Merged_Parliament
+				remove_ideas = SWE_Universal_Suffrage
+				add_ideas = SWE_Visible_Hand
+			}
+			custom_effect_tooltip = SWE_Hand_Could_Saw_effect_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Maternity_Allowance
+		icon = GFX_goal_SWE_Maternity_Allowance
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Welfare_New_Society
+		}
+		available = {
+			has_idea = SWE_Folkhemmet
+		}
+		x = 13
+		y = 10
+		completion_reward = {
+			set_variable = { SWE_Labor = 0 }
+			custom_effect_tooltip = SWE_unlock_Labor_policy_tt
+			hidden_effect = { country_event = { id = SWE_Folkhemmet.4 days = 5 } }
+		}
+
+	}
+	focus = {
+		id = SWE_Immigrant_Protection
+		icon = GFX_goal_SWE_Immigrant_Protection
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Welfare_New_Society
+		}
+		available = {
+			has_idea = SWE_Folkhemmet
+		}
+		x = 15
+		y = 10
+		completion_reward = {
+			set_variable = {
+				var = SWE_Immigrant
+				value = 0
+			}
+			country_event = { id = SWE_Folkhemmet.2 }
+			custom_effect_tooltip = SWE_unlock_Immigrant_policy_tt
+		}
+
+	}
+	focus = {
+		id = SWE_People_University
+		icon = GFX_goal_SWE_People_University
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Maternity_Allowance
+		}
+		available = {
+			has_idea = SWE_Folkhemmet
+		}
+		x = 13
+		y = 11
+		completion_reward = {
+			set_variable = { SWE_Education = 0 }
+			country_event = { id = SWE_Folkhemmet.6 }
+        	add_ideas = SWE_Edu_Protection
+			custom_effect_tooltip = SWE_Education_crisis_solve_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Labor_Protection
+		icon = GFX_goal_SWE_Labor_Protection
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Immigrant_Protection
+		}
+		available = {
+			has_idea = SWE_Folkhemmet
+		}
+		x = 15
+		y = 11
+		completion_reward = {
+			set_variable = { SWE_Labor = 1 }
+        	add_ideas = SWE_Labor_Protection
+			country_event = { id = SWE_Folkhemmet.5 }
+			custom_effect_tooltip = SWE_Labor_crisis_solve_tt
+		}
+
+	}
+	focus = {
+		id = SWE_Everyone_has_Job
+		icon = GFX_goal_SWE_Everyone_has_Job
+		cost = 5.00
+		prerequisite = {
+			focus = SWE_Labor_Protection
+		}
+		available = {
+            has_idea = SWE_Folkhemmet
+			custom_trigger_tooltip = {
+				tooltip = SWE_Union_Dream_III_tt
+				check_variable = { SWE_Union_Stage = 3 compare = more_than_or_equals }
+			}
+		}
+		prerequisite = {
+			focus = SWE_People_University
+		}
+		x = 14
+		y = 12
+		completion_reward = {
+			hidden_effect = {
+				swap_ideas = {
+					add_idea = SWE_Ex_Folkhemmet
+					remove_idea = SWE_Folkhemmet
+				}
+			}
+			custom_effect_tooltip = SWE_Ex_Folkhemmet_change_tt
+			country_event = { id = SWE.30 }
+		}
+
+	}
+	focus = {
+		id = SWE_Beautiful_World
+		icon = GFX_goal_unknown
+		cost = 20.00
+		prerequisite = {
+			focus = SWE_Hand_Could_Saw
+		}
+		prerequisite = {
+			focus = SWE_Everyone_has_Job
+		}
+		prerequisite = {
+			focus = SWE_Provide_Third_Choice
+		}
+		available = {
+			has_government = SOC_democratic
+		}
+		x = 9
+		y = 13
+		completion_reward = {
+			custom_effect_tooltip = SWE_Finally_Revolution_tt
+		}
+
+	}
+}

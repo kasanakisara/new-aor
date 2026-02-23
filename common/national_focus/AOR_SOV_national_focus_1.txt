@@ -1,0 +1,782 @@
+focus_tree = {
+	id = AOR_SOV
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RUS
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 1300 }
+	##########################################################内战线
+	#绝非浪漫的变革
+	focus = {
+		id = AOR_SOV_Civil_war_1
+		icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 0
+		y = 0
+		allow_branch = {
+			NOT = { has_completed_focus = AOR_SOV_Civil_war_20 } 
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = SOV_Civil_war_0
+				days = 90
+			}
+			
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				create_intelligence_agency = {
+					name = "全俄肃清反革命及怠工非常委员会"
+					icon = GFX_intelligence_agency_logo_generic_9
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				create_operative_leader = {
+					name = "帕维尔·瓦西里耶维奇·马卡洛夫"
+					GFX = GFX_portrait_PRC_hanbuerge
+					traits = { operative_infiltrator operative_safe_cracker }
+					bypass_recruitment = no
+					available_to_spy_master = yes
+					nationalities = { RUS ANU ARR }
+				}
+			}
+			hidden_effect = {
+				country_event = {id = SOV_Steel.1 days = 15}
+			}
+			
+		}
+
+	}
+	#挥剑察里津
+	focus = {
+		id = AOR_SOV_Civil_war_2
+		icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_1
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_1
+		available = {
+			country_exists = ARR
+			ARR = { has_war_with = ROOT }
+		}
+		bypass = {
+			NOT = {country_exists = ARR}
+			NOT = {ARR = { has_war_with = ROOT } }
+		}
+		completion_reward = {
+			add_political_power = 5
+			add_command_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_intel = {
+					target = ARR
+					civilian_intel = 25
+					army_intel = 25
+					navy_intel = 25
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_decryption = {
+					target = ARR
+					ratio = 0.5
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			custom_effect_tooltip = AOR_GER_Civil_war_longer_tt
+			hidden_effect = {
+			modify_timed_idea = {
+				idea = SOV_Civil_war_0
+				days = 90
+				}
+		  	}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = SOV_Civil_war_stalin_1
+				days = 120
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			UKR = {
+				division_template = {
+					name = "苏维埃民兵旅"
+					division_names_group = SOV_AOR_01
+					priority = 0
+					regiments = {
+						militia = { x = 0 y = 0 } militia = { x = 1 y = 0 }
+						militia = { x = 0 y = 1 } militia = { x = 1 y = 1 }
+						militia = { x = 0 y = 2 } militia = { x = 1 y = 2 }
+					}
+					support = {
+						Mortarsupport = { x = 0 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+				}
+			}
+		}
+
+	}
+	#暂时性的撤退
+	focus = {
+		id = AOR_SOV_Civil_war_3
+		icon = GFX_AOR_Eric_new_056
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_2
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_2
+		available = {
+			NOT = { has_full_control_of_state = 219}
+		}
+		completion_reward = {
+			add_command_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = SOV_idea_Temporary_withdrawal
+				days = 120
+			}
+			add_to_variable = { AOR_RUS_RedArmy_army_speed_factor = 0.05 }
+		}
+	}
+	#支持斯大林
+	focus = {
+		id = AOR_SOV_Civil_war_4
+		icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_2
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_2
+		completion_reward = {
+		}
+
+	}
+	#执行紧密的联盟
+	focus = {
+		id = AOR_SOV_Civil_war_5
+		icon = GFX_AOR_Eric_new_057
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_6
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Civil_war_2
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_category_tooltip = AOR_RUS_Soviet_union_category
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = AOR_RUS_Soviet_union_20
+		}
+
+	}
+	#荡平黑海
+	focus = {
+		id = AOR_SOV_Civil_war_6
+		icon = GFX_AOR_Eric_new_049
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_2
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_2
+		available = {
+			OR = {
+				NOT = { country_exists = ARR }
+				ARR = {
+					OR = {
+						has_capitulated = yes
+						surrender_progress > 0.6
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			every_state = {
+				limit = {
+					is_core_of = ARR
+				}
+				ARR = { remove_core_of = PREV }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = AOR_RUS_Soviet_union_31
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = AOR_RUS_Soviet_union_3
+		}
+
+	}
+	#俄罗斯富饶之地
+	focus = {
+		id = AOR_SOV_Civil_war_7
+		icon = GFX_AOR_Eric_new_058
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_6
+		}
+		x = 2
+		y = 3
+		relative_position_id = AOR_SOV_Civil_war_2
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_category_tooltip = AOR_RUS_Develop_North_and_south_category
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = RUS_Deliver_supplies_to_Moscow_0
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = RUS_Relieve_wartime_communism
+		}
+
+	}
+	#向着暖池进军
+	focus = {
+		id = AOR_SOV_Civil_war_8
+		icon = GFX_AOR_Eric_new_051
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_1
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_1
+		available = {
+			country_exists = ARN
+			ARN = { has_war_with = ROOT }
+		}
+		completion_reward = {
+			add_political_power = 5
+			add_command_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_intel = {
+					target = ARN
+					civilian_intel = 25
+					army_intel = 25
+					navy_intel = 25
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_decryption = {
+					target = ARN
+					ratio = 0.5
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_Civil_war_longer_tt
+			hidden_effect = {
+			modify_timed_idea = {
+				idea = SOV_Civil_war_0
+				days = 90
+				}
+		  	}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = SOV_Civil_war_Frunze_1
+				days = 120
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			GNR = {
+				division_template = {
+					name = "苏维埃民兵旅"
+					division_names_group = SOV_AOR_01
+					priority = 0
+					regiments = {
+						militia = { x = 0 y = 0 } militia = { x = 1 y = 0 }
+						militia = { x = 0 y = 1 } militia = { x = 1 y = 1 }
+						militia = { x = 0 y = 2 } militia = { x = 1 y = 2 }
+					}
+					support = {
+						Mortarsupport = { x = 0 y = 0 }
+					}
+				}
+				capital_scope = {
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+					create_unit = { division = "name = \"\" division_template = \"苏维埃民兵旅\" start_experience_factor = 0.2 start_equipment_factor = 0.1"  owner = UKR }
+				}
+			}
+		}
+
+	}
+	#荡平巴伦支海
+	focus = {
+		id = AOR_SOV_Civil_war_9
+		icon = GFX_AOR_Eric_new_050
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_8
+		}
+		x = 2
+		y = 2
+		relative_position_id = AOR_SOV_Civil_war_1
+		available = {
+			OR = {
+				NOT = { country_exists = ARN }
+				ARN = {
+					OR = {
+						has_capitulated = yes
+						surrender_progress > 0.6
+					}
+				}
+			}
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = ARN
+				}
+				ARN = { remove_core_of = PREV }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			ENG = { country_event = { days = 1 id = AOR_SOV_timeaxis.1008 } }
+			hidden_effect = {
+			#展示事件组
+			effect_tooltip = {
+				#如果他们接受
+				custom_effect_tooltip = if_they_accept_tt
+				RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10081 } }
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_political_power = 25
+				add_war_support = 0.05
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 2000 producer = ENG
+				}
+
+				#如果他们拒绝
+				custom_effect_tooltip = if_they_reject_tt
+				RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10082 } }
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				custom_effect_tooltip = AOR_SOV_Civil_war_9_tt
+				ENG = {
+					add_war_support = 0.02
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				ENG = {
+					add_political_power = -120
+					add_stability = -0.10
+					add_war_support = -0.15
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_ideas = partial_economic_mobilisation
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					remove_ideas = ENG_pioneer_of_interventionism
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = RUS
+						expire = 0
+					}
+				}
+			}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+			}
+		}
+
+	}
+	#扩大主席团
+	focus = {
+		id = AOR_SOV_Civil_war_10
+		icon = GFX_AOR_Eric_new_054
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_8
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_8
+		completion_reward = {
+		}
+
+	}
+	#红军军事学院
+	focus = {
+		id = AOR_SOV_Civil_war_11
+		icon = GFX_AOR_Eric_new_042
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_10
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Civil_war_10
+		available = {
+		}
+		completion_reward = {
+			every_army_leader = {
+				add_planning = 1
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_The_Red_Army_1
+					add_idea = SOV_The_Red_Army_5
+				}
+			}
+			add_to_variable = { AOR_RUS_RedArmy_experience_gain_factor = 0.05 }
+			add_to_variable = { AOR_RUS_RedArmy_experience_gain_infantry_combat_factor = 0.05 }
+			#add_to_variable = { AOR_RUS_RedArmy_experience_loss_factor = -0.05 }
+			#add_to_variable = { AOR_RUS_RedArmy_land_doctrine_cost_factor = -0.20 }
+		}
+
+	}
+	#北冰洋千里暖流
+	focus = {
+		id = AOR_SOV_Civil_war_12
+		icon = GFX_AOR_Eric_new_060
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_9
+		}
+		x = 3
+		y = 3
+		relative_position_id = AOR_SOV_Civil_war_1
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_category_tooltip = AOR_RUS_Develop_North_and_south_category
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = RUS_Deliver_supplies_to_Moscow_1
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = RUS_Relieve_wartime_communism
+			
+		}
+
+	}
+	#战机的时空变化
+	focus = {
+		id = AOR_SOV_Civil_war_13
+		icon = GFX_AOR_Eric_new_059
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_1
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Civil_war_1
+		available = {
+			OR = {
+				ARR = {
+					surrender_progress > 0.3
+				}
+				ARN = {
+					surrender_progress > 0.3
+				}
+				ARU = {
+					surrender_progress > 0.3
+				}
+			}
+		}
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+			add_war_support = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				upgrade_intelligence_agency = upgrade_form_department
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 400
+				producer = SOV
+			}
+		}
+
+	}
+	#凌冬已至
+	focus = {
+		id = AOR_SOV_Civil_war_14
+		icon = GFX_AOR_Eric_new_064
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_6
+			focus = AOR_SOV_Civil_war_9
+		}
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_13
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_13
+		available = {
+			date > 1919.11.1
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_idea_Winter_offensive
+				days = 120
+			}
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_intel = {
+					target = ARU
+					civilian_intel = 25
+					army_intel = 25
+					navy_intel = 25
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_decryption = {
+					target = ARU
+					ratio = 0.5
+				}
+			}
+		}
+
+	}
+	#对白匪的最后一刀
+	focus = {
+		id = AOR_SOV_Civil_war_15
+		icon = GFX_AOR_Eric_new_030
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_14
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_SOV_Civil_war_14
+		bypass = {
+			NOT = { country_exists = ARN }
+		}
+		completion_reward = {
+			add_political_power = 5
+			army_experience = 10
+			add_timed_idea = {
+				idea = SOV_idea_the_last_offensive
+				days = 120
+			}
+		}
+
+	}
+	#进军中亚
+	focus = {
+		id = AOR_SOV_Civil_war_16
+		icon = GFX_AOR_Eric_new_062
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_15
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_15
+		completion_reward = {
+			every_state = {
+				limit ={
+					is_fully_controlled_by = RUS
+				}
+				add_dynamic_modifier = {
+					modifier = RUS_Soviet_supply
+					scope = RUS
+				}
+			}
+			
+		}
+
+	}
+	#处理农村白匪问题
+	focus = {
+		id = AOR_SOV_Civil_war_17
+		icon = GFX_AOR_Eric_new_081
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_15
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_15
+		completion_reward = {
+			add_political_power = 25
+			add_timed_idea = {
+				idea = SOV_remove_white
+				days = 360
+			}
+		}
+
+	}
+	#进军远东
+	focus = {
+		id = AOR_SOV_Civil_war_18
+		icon = GFX_AOR_Eric_new_061
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_15
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_15
+		completion_reward = {
+			every_state = {
+				limit ={
+					is_fully_controlled_by = RUS
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = RUS_Soviet_supply
+					scope = RUS
+				}
+			}
+		}
+	#终止苏俄内战
+	focus = {
+		id = AOR_SOV_Civil_war_19
+		icon = GFX_AOR_Eric_new_047
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_17
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_17
+		completion_reward = {
+			army_experience = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			swap_ruler_traits = {
+				remove = SOV_lenin_great_communist_mentor_1
+				add = SOV_lenin_great_communist_mentor_2
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_SOV_Civil_war_19_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = SOV_rebuild_sov
+				days = 365
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			modify_timed_idea = {
+				idea = SOV_remove_white
+				days = 180
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					NOT = { country_exists = ARN }
+				}
+				every_state = {
+					limit = {
+						is_core_of = ARN
+					}
+					ARN = { remove_core_of = PREV }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { country_exists = ARR }
+				}
+				every_state = {
+					limit = {
+						is_core_of = ARR
+					}
+					ARR = { remove_core_of = PREV }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { country_exists = ARU }
+				}
+				every_state = {
+					limit = {
+						is_core_of = ARU
+					}
+					ARU = { remove_core_of = PREV }
+				}
+			}
+		}
+
+	}
+	#联盟委员会的终点
+	focus = {
+		id = AOR_SOV_Civil_war_20
+		icon = GFX_AOR_Eric_new_103
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_SOV_Civil_war_19
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_SOV_Civil_war_19
+		available = {
+			has_global_flag = RUS_flag_Soviet_union
+		}
+		completion_reward = {
+			set_global_flag = AOR_USSR_formed_global_flag
+			load_focus_tree = AOR_SOV_2
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_country_leader_trait = SOV_lenin_founder_of_alliance
+			custom_effect_tooltip = AOR_SOV_Civil_war_20_tt1
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			hidden_effect = {
+				
+				news_event = { id = AOR_news.1 days = 1 }
+				every_state = {
+					limit = {
+						CONTROLLER = {
+							OR = {
+								is_subject_of = RUS
+								has_autonomy_state = AOR_SOV_Closely_executed_alliance
+							}
+							original_tag = RUS
+						}
+					}
+					RUS = { add_state_core = PREV }
+				}
+				every_other_country = {
+					limit ={
+						has_autonomy_state = AOR_SOV_Closely_executed_alliance
+					}
+					RUS = {
+						annex_country = {
+							target = PREV
+							transfer_troops = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = FIN_The_civil_war_is_over
+					}
+					FIC = {
+						set_cosmetic_tag = FIC_Finland_Soviet
+					}
+					set_autonomy = { 
+						target = FIC 
+						autonomy_state = AOR_SOV_Closely_executed_alliance
+					}
+				}
+			}
+		}
+
+	}
+
+
+}

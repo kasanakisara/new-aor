@@ -1,0 +1,146 @@
+focus_tree = {
+    id = DEN_easter_crisis_tree
+    country = {
+		factor = 0
+		modifier = {
+			add = 9
+			tag = DEN
+		}
+    }
+
+    # 复活节危机核心国策
+    focus = {
+        id = DEN_easter_crisis #复活节危机
+        icon = GFX_focus_DEN_constitutional_crisis
+        x = 8
+        y = 0
+        cost = 2
+        bypass = { has_country_flag = den_easter_crisis_resolved }
+        available = {
+            original_tag = DEN
+        }
+        completion_reward = {
+            custom_effect_tooltip = tt_den_easter_crisis_legacy
+            set_country_flag = den_easter_crisis_resolved
+        }
+    }
+
+    # 国王妥协路线
+    focus = {
+        id = DEN_royal_compromise
+        icon = GFX_focus_DEN_king_christian
+        x = 2
+        y = 2
+        cost = 70
+        prerequisite = { focus = DEN_easter_crisis }
+        available = {
+            has_government = democratic
+            NOT = { has_government = communism }
+        }
+        completion_reward = {
+            add_stability = 0.15
+            add_political_power = -100  # 君主权力受限的政治代价
+            set_rule = { can_appoint_ruling_party = no }
+            custom_effect_tooltip = tt_den_schleswig_referendum
+            add_ideas = den_constitutional_monarchy
+        }
+    }
+
+    # 议会胜利路线
+    focus = {
+        id = DEN_parliamentary_victory
+        icon = GFX_focus_DEN_democratic_reform
+        x = 8
+        y = 2
+        cost = 70
+        prerequisite = { focus = DEN_easter_crisis }
+        available = {
+            has_government = democratic
+            ruling_party = democratic
+        }
+        completion_reward = {
+            add_democratic_drift = 0.2
+            add_political_power = 150
+            remove_ideas = royal_prerogative
+            if = {
+                limit = { NOT = { has_law = elections_held_regularly } }
+                enact_law = elections_held_regularly
+            }
+        }
+    }
+
+    # 军事干预路线（非历史）
+    focus = {
+        id = DEN_military_intervention
+        icon = GFX_focus_generic_military_takeover
+        x = 14
+        y = 2
+        cost = 70
+        prerequisite = { focus = DEN_easter_crisis }
+        available = {
+            army_experience > 30
+            NOT = { has_government = democratic }
+        }
+        completion_reward = {
+            custom_effect_tooltip = tt_den_civil_war_risk
+           # start_civil_war = {
+               # ideology = fascism
+               # size = 0.3
+               # keep_unit_leaders = yes
+           # }
+            add_army_experience = 50
+            add_war_support = 0.15
+            if = {
+                limit = { has_war = no }
+                random_owned_state = {
+                    limit = { is_capital = no }
+                    start_building_construction = {
+                        type = arms_factory
+                        level = 1
+                        instant_build = yes
+                    }
+                }
+            }
+        }
+    }
+
+    # 后续国策分支
+    focus = {
+        id = DEN_northern_schleswig_integration
+        icon = GFX_focus_generic_territory_claims
+        x = 8
+        y = 4
+        cost = 70
+        prerequisite = { focus = DEN_parliamentary_victory }
+        available = {
+            controls_state = 58  # 确保控制石勒苏益格北部
+        }
+        completion_reward = {
+            add_manpower = 20000
+            add_state_core = 58
+            add_construction_speed = 0.15
+        }
+    }
+}
+
+# 相关事件建议
+event = {
+    id = den_easter_crisis.1
+    title = den_easter_crisis.1.t
+    desc = den_easter_crisis.1.d
+    picture = GFX_report_event_denmark_parliament
+
+    trigger = {
+        tag = DEN
+        has_country_flag = den_easter_crisis_resolved
+    }
+
+    option = {
+        name = den_easter_crisis.1.a  # "宪法危机终告解决"
+        add_stability = 0.10
+        if = {
+            limit = { has_completed_focus = DEN_royal_compromise }
+            add_popularity = { ideology = democratic value = 0.1 }
+        }
+    }
+}

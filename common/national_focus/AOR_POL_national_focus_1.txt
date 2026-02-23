@@ -1,0 +1,397 @@
+focus_tree = {
+	id = aor_pol_national_focus_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 11
+			tag = POL
+		}
+	}
+	default = no
+	focus = {
+		id = Restarting_the_Constituent_Assembly #重启制宪大会
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 9
+		y = 0
+		completion_reward={
+			country_event = { id = AOR_POL_events.1 }
+		}
+
+	}
+	focus = {
+		id = Maintain_the_supreme_authority_of_the_conference #维护大会至高权威
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Restarting_the_Constituent_Assembly
+		}
+		mutually_exclusive = {
+			focus = Finding_a_new_way_out
+		}
+		x = 4
+		y = 1
+		completion_reward={
+			add_stability = 0.2
+			add_popularity = {
+				ideology = Absolutism
+				popularity = -0.05
+			}
+		}
+	}
+	focus = {
+		id = Start_elections #开始选举
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = Maintain_the_supreme_authority_of_the_conference
+		}
+		x = 4
+		y = 2
+		completion_reward={
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = Chopin_s_Ninth_Revolution #肖邦的第九革命
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = Start_elections
+		}
+		mutually_exclusive = {
+			focus = The_Victory_of_the_Paris_Government
+			focus = Polishing_the_Crown
+		}
+		x = 1
+		y = 3
+		completion_reward={
+			country_event = { id = AOR_POL_events.2 }
+			remove_ideas = pending
+			add_popularity = {
+				ideology = FRE_democratic
+				popularity = 0.15
+			}
+		}
+	}
+	focus = {
+		id = The_Victory_of_the_Paris_Government #巴黎政府的胜利
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = Start_elections
+		}
+		mutually_exclusive = {
+			focus = Chopin_s_Ninth_Revolution
+			focus = Polishing_the_Crown
+		}
+		x = 4
+		y = 3
+		completion_reward={
+			remove_ideas = pending
+			country_event = { id = AOR_POL_events.3 }
+			add_popularity = {
+				ideology = CON_democratic
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = Democratic_countries_in_Eastern_Europe #民主国家
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = The_Victory_of_the_Paris_Government
+		}
+		x = 4
+		y = 4
+		completion_reward={
+			add_popularity = {
+				ideology = CON_democratic
+				popularity = 0.05
+			}
+			set_politics = {
+		    	ruling_party = CON_democratic
+			}
+			add_ideas = Democratic_countries_1
+			create_country_leader = {
+				name = "Roman Stanisław Dmowski"
+	            desc = ""
+             	picture = "gfx/leaders/POL/Dmowski.png"
+            	expire = "1965.1.1"
+            	ideology = conservatism
+             	traits = {
+	                }
+			}
+		}
+	}
+	focus = {
+		id = Polishing_the_Crown #擦亮王冠
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = Start_elections
+		}
+		mutually_exclusive = {
+			focus = The_Victory_of_the_Paris_Government
+			focus = Chopin_s_Ninth_Revolution
+		}
+		x = 7
+		y = 3
+		completion_reward={
+			remove_ideas = pending
+			add_popularity = {
+				ideology = Absolutism
+				popularity = -0.05
+			}
+			country_event = { id = AOR_POL_events.4 }
+		}
+	}
+	focus = {
+		id = The_Birth_of_Kingdom #王国的诞生
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Polishing_the_Crown
+		}
+		x = 7
+		y = 4
+		completion_reward={
+			retire_ideology_leader = Absolutism
+			add_ideas = wangquan
+			add_popularity = {
+				ideology = Absolutism
+				popularity = -0.05
+			}
+			create_country_leader = {
+				name = "Peter Dmitryevich Sviatopolk Millsky"
+	            desc = ""
+             	picture = "gfx/leaders/POL/Millsky.png"  #缺头像
+            	expire = "1965.1.1"
+            	ideology = monarchism
+             	traits = {
+	                }
+				}
+			}
+		}
+	focus = {
+		id = Finding_a_new_way_out #找寻出路
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = Restarting_the_Constituent_Assembly
+		}
+		mutually_exclusive = {
+			focus = Maintain_the_supreme_authority_of_the_conference
+		}
+		x = 13
+		y = 1
+		completion_reward={
+			add_popularity = {
+				ideology = Absolutism
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = Bisusky_s_urgent_telegram #毕苏斯基的急电
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Finding_a_new_way_out
+		}
+		mutually_exclusive = {
+			focus = hero_soilder
+			focus = The_Voice_of_Farmers
+		}
+		x = 10
+		y = 2
+		completion_reward={
+			country_event = { id = AOR_POL_events.5 }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
+		}
+	}
+	focus = {
+		id = Poles_Poland #波兰人的波兰
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Bisusky_s_urgent_telegram
+		}
+		x = 10
+		y = 4
+		completion_reward={
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			remove_ideas = pending
+			set_politics = {
+				ruling_party = fascism
+			}
+			create_country_leader = {
+				name = "Jozef Klemens Pilsudski"
+	            desc = ""
+             	picture = "gfx/leaders/POL/Pilsudski.png"  #缺头像
+            	expire = "1965.1.1"
+            	ideology = nationalism
+             	traits = {
+	                }
+			}
+			add_ideas = {minzugongheguo}
+			add_ideas = {deguobuzheng}
+		}
+	}
+	focus = {
+		id = hero_soilder #英雄士兵
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Finding_a_new_way_out
+		}
+		mutually_exclusive = {
+			focus = Bisusky_s_urgent_telegram
+			focus = The_Voice_of_Farmers
+		}
+		x = 13
+		y = 2
+		completion_reward={
+			country_event = { id = AOR_POL_events.6 }
+			add_popularity = {
+				ideology = Absolutism
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = break_off_a_conference #中断会议
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = hero_soilder
+		}
+		x = 13
+		y = 4
+		completion_reward={
+			add_stability = 0.1
+			remove_ideas = pending
+			add_ideas = deguobuzheng
+			add_ideas = ducaigongheguo
+			retire_ideology_leader = Absolutism
+			create_country_leader = {
+				name = "Wladyslaw Eugeniusz Sikorski"
+	            desc = ""
+             	picture = "gfx/leaders/POL/214E1F6B53BAF2EC4D303C73C7D77211.png"
+            	expire = "1965.1.1"
+            	ideology = despotism
+             	traits = {
+	                }
+				}
+		}
+	}
+	focus = {
+		id = Free_Countries_in_Eastern_Europe #自由东欧国家
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Chopin_s_Ninth_Revolution
+		}
+		x = 1
+		y = 4
+		completion_reward={
+			add_ideas = ziyougongheguo
+			add_popularity = {
+				ideology = FRE_democratic
+				popularity = 0.15
+			}
+			set_politics = {
+				ruling_party = FRE_democratic
+			}
+			create_country_leader = {
+				name = "Ignacy Jan Paderewski"
+	            desc = ""
+             	picture = "gfx/leaders/POL/JAn.png"
+            	expire = "1965.1.1"
+            	ideology = liberalism
+             	traits = {
+	                }
+			}
+		}
+	}
+	focus = {
+		id = Poland_is_not_yet_extinct #波兰还没灭亡
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = Free_Countries_in_Eastern_Europe
+			focus = Democratic_countries_in_Eastern_Europe
+			focus = The_Birth_of_Kingdom
+			focus = Poles_Poland
+			focus = break_off_a_conference
+			focus = Polish_Revolution
+		}
+		x = 10
+		y = 6
+		completion_reward={
+			add_stability = 0.01
+			hidden_effect = {
+			load_focus_tree = aor_pol_national_focus_2
+			}
+		}
+	}
+	focus = {
+		id = The_Voice_of_Farmers #人民的呼声
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Finding_a_new_way_out
+		}
+		mutually_exclusive = {
+			focus = Bisusky_s_urgent_telegram
+			focus = hero_soilder
+		}
+		x = 16
+		y = 2
+		completion_reward={
+			country_event = { id = AOR_POL_events.7 }
+			add_popularity = {
+				ideology = AUT_democratic
+				popularity = 0.15
+			}
+		}
+	}
+	focus = {
+		id = Polish_Revolution #波兰式革命
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = The_Voice_of_Farmers
+		}
+		x = 16
+		y = 4
+		completion_reward={
+			remove_ideas = pending
+			add_ideas = deguobuzheng
+			add_ideas = nongmingonggeguo
+			add_popularity = {
+				ideology = AUT_democratic
+				popularity = 0.1
+			}
+			set_politics = {
+				ruling_party = AUT_democratic
+			}
+			create_country_leader = {
+				name = "Wincenty Witos"
+	            desc = ""
+             	picture = "gfx/leaders/POL/Witos.png"
+            	expire = "1965.1.1"
+            	ideology = limited 
+             	traits = {
+	                }
+			}
+		}
+	}
+}

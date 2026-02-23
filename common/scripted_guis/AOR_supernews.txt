@@ -1,0 +1,21 @@
+scripted_gui = {
+	supernews_main_container = {
+		window_name = AOR_supernews_main_container
+		context_type = player_context
+
+		visible = {
+				is_ai = no
+				has_country_flag = supernews_opened
+				}
+		effects = {
+				supernews_exit_btn_click = {
+					clr_country_flag = supernews_opened
+					}
+				}
+		properties = {
+				supernews_picture = {
+					image = "[AOR_supernews_getpicture]"
+				}
+			}
+	}
+}

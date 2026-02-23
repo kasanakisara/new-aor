@@ -1,0 +1,2219 @@
+CHI_refresh = {
+	if = {
+		limit = {
+			check_variable = {
+				KMT_senate_seat_var > KMT_senate_seat_var_standard
+			}
+		}
+		log = "KMT大了！"
+		set_variable = {
+			KMT_temp_add_senate_seat_var = KMT_senate_seat_var
+		}
+		subtract_from_variable = {
+			KMT_temp_add_senate_seat_var = KMT_senate_seat_var_standard
+		}
+		log = "[?KMT_temp_add_senate_seat_var]"
+		log = "[?KMT_senate_seat_var_standard]"
+		divide_variable = {
+			KMT_temp_add_senate_seat_var = 2
+		}
+		log = "[?KMT_temp_add_senate_seat_var]"
+		set_variable = {
+			KMT_temp_add_senate_seat_var_real = KMT_temp_add_senate_seat_var
+		}
+		round_variable = KMT_temp_add_senate_seat_var
+		log = "[?KMT_temp_add_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = KMT_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = KMT_temp_add_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					KMT_temp_add_senate_seat_var > KMT_temp_add_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						ProP_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				KMT_senate_seat_var < KMT_senate_seat_var_standard
+			}
+		}
+		log = "KMT小了"
+		set_variable = {
+			KMT_temp_less_senate_seat_var = KMT_senate_seat_var
+		}
+		subtract_from_variable = {
+			KMT_temp_less_senate_seat_var = KMT_senate_seat_var_standard
+		}
+		log = "[?KMT_temp_less_senate_seat_var]"
+		log = "[?KMT_senate_seat_var_standard]"
+		divide_variable = {
+			KMT_temp_less_senate_seat_var = 2
+		}
+		log = "[?KMT_temp_less_senate_seat_var]"
+		set_variable = {
+			KMT_temp_less_senate_seat_var_real = KMT_temp_less_senate_seat_var
+		}
+		round_variable = KMT_temp_less_senate_seat_var
+		log = "[?KMT_temp_less_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = KMT_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = KMT_temp_less_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					KMT_temp_less_senate_seat_var < KMT_temp_less_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						ProP_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				SOCP_senate_seat_var > SOCP_senate_seat_var_standard
+			}
+		}
+		log = "SOCP大了！"
+		set_variable = {
+			SOCP_temp_add_senate_seat_var = SOCP_senate_seat_var
+		}
+		subtract_from_variable = {
+			SOCP_temp_add_senate_seat_var = SOCP_senate_seat_var_standard
+		}
+		log = "[?SOCP_temp_add_senate_seat_var]"
+		log = "[?SOCP_senate_seat_var_standard]"
+		divide_variable = {
+			SOCP_temp_add_senate_seat_var = 2
+		}
+		log = "[?SOCP_temp_add_senate_seat_var]"
+		set_variable = {
+			SOCP_temp_add_senate_seat_var_real = SOCP_temp_add_senate_seat_var
+		}
+		round_variable = SOCP_temp_add_senate_seat_var
+		log = "[?SOCP_temp_add_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = SOCP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = SOCP_temp_add_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					SOCP_temp_add_senate_seat_var > SOCP_temp_add_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						ProP_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				SOCP_senate_seat_var < SOCP_senate_seat_var_standard
+			}
+		}
+		log = "SOCP小了！"
+		set_variable = {
+			SOCP_temp_less_senate_seat_var = SOCP_senate_seat_var
+		}
+		subtract_from_variable = {
+			SOCP_temp_less_senate_seat_var = SOCP_senate_seat_var_standard
+		}
+		log = "[?SOCP_temp_less_senate_seat_var]"
+		log = "[?SOCP_senate_seat_var_standard]"
+		divide_variable = {
+			SOCP_temp_less_senate_seat_var = 2
+		}
+		log = "[?SOCP_temp_less_senate_seat_var]"
+		set_variable = {
+			SOCP_temp_less_senate_seat_var_real = SOCP_temp_less_senate_seat_var
+		}
+		round_variable = SOCP_temp_less_senate_seat_var
+		log = "[?SOCP_temp_less_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					ProP_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = SOCP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = SOCP_temp_less_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					SOCP_temp_less_senate_seat_var < SOCP_temp_less_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						ProP_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Prop_senate_seat_var > Prop_senate_seat_var_standard
+			}
+		}
+		log = "错误所在：[?Prop_senate_seat_var_standard]"
+		log = "Prop大了！"
+		set_variable = {
+			Prop_temp_add_senate_seat_var = Prop_senate_seat_var
+		}
+		subtract_from_variable = {
+			Prop_temp_add_senate_seat_var = Prop_senate_seat_var_standard
+		}
+		log = "[?Prop_temp_add_senate_seat_var]"
+		log = "[?Prop_senate_seat_var_standard]"
+		divide_variable = {
+			Prop_temp_add_senate_seat_var = 2
+		}
+		log = "[?Prop_temp_add_senate_seat_var]"
+		set_variable = {
+			Prop_temp_add_senate_seat_var_real = Prop_temp_add_senate_seat_var
+		}
+		round_variable = Prop_temp_add_senate_seat_var
+		log = "[?Prop_temp_add_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = Prop_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = Prop_temp_add_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					Prop_temp_add_senate_seat_var > Prop_temp_add_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			Prop_senate_seat_var_standard = Prop_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				Prop_senate_seat_var < Prop_senate_seat_var_standard
+			}
+		}
+		log = "Prop小了！"
+		set_variable = {
+			Prop_temp_less_senate_seat_var = Prop_senate_seat_var
+		}
+		subtract_from_variable = {
+			Prop_temp_less_senate_seat_var = Prop_senate_seat_var_standard
+		}
+		log = "[?Prop_temp_less_senate_seat_var]"
+		log = "[?Prop_senate_seat_var_standard]"
+		divide_variable = {
+			Prop_temp_less_senate_seat_var = 2
+		}
+		log = "[?Prop_temp_less_senate_seat_var]"
+		set_variable = {
+			Prop_temp_less_senate_seat_var_real = Prop_temp_less_senate_seat_var
+		}
+		round_variable = Prop_temp_less_senate_seat_var
+		log = "[?Prop_temp_less_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_senate_seat_var = Prop_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					UNP_senate_seat_var_standard = Prop_temp_less_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					Prop_temp_less_senate_seat_var < Prop_temp_less_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_senate_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			Prop_senate_seat_var_standard = Prop_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				UNP_senate_seat_var > UNP_senate_seat_var_standard
+			}
+		}
+		log = "UNP大了！"
+		set_variable = {
+			UNP_temp_add_senate_seat_var = UNP_senate_seat_var
+		}
+		subtract_from_variable = {
+			UNP_temp_add_senate_seat_var = UNP_senate_seat_var_standard
+		}
+		log = "[?UNP_temp_add_senate_seat_var]"
+		log = "[?UNP_senate_seat_var_standard]"
+		divide_variable = {
+			UNP_temp_add_senate_seat_var = 2
+		}
+		log = "[?UNP_temp_add_senate_seat_var]"
+		set_variable = {
+			UNP_temp_add_senate_seat_var_real = UNP_temp_add_senate_seat_var
+		}
+		round_variable = UNP_temp_add_senate_seat_var
+		log = "[?UNP_temp_add_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					Prop_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_senate_seat_var = UNP_temp_add_senate_seat_var
+				}
+				subtract_from_variable = {
+					Prop_senate_seat_var_standard = UNP_temp_add_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					UNP_temp_add_senate_seat_var > UNP_temp_add_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						Prop_senate_seat_var = 1
+					}
+					add_to_variable = {
+						Prop_senate_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				UNP_senate_seat_var < UNP_senate_seat_var_standard
+			}
+		}
+		log = "UNP小了！"
+		set_variable = {
+			UNP_temp_less_senate_seat_var = UNP_senate_seat_var
+		}
+		subtract_from_variable = {
+			UNP_temp_less_senate_seat_var = UNP_senate_seat_var_standard
+		}
+		log = "[?UNP_temp_less_senate_seat_var]"
+		log = "[?UNP_senate_seat_var_standard]"
+		divide_variable = {
+			UNP_temp_less_senate_seat_var = 2
+		}
+		log = "[?UNP_temp_less_senate_seat_var]"
+		set_variable = {
+			UNP_temp_less_senate_seat_var_real = UNP_temp_less_senate_seat_var
+		}
+		round_variable = UNP_temp_less_senate_seat_var
+		log = "[?UNP_temp_less_senate_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					Prop_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					KMT_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_senate_seat_var = UNP_temp_less_senate_seat_var
+				}
+				subtract_from_variable = {
+					Prop_senate_seat_var_standard = UNP_temp_less_senate_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					UNP_temp_less_senate_seat_var < UNP_temp_less_senate_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_senate_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						SOCP_senate_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_senate_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						Prop_senate_seat_var = -1
+					}
+					add_to_variable = {
+						Prop_senate_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				KMT_Representatives_seat_var > KMT_Representatives_seat_var_standard
+			}
+		}
+		log = "KMT大了！"
+		set_variable = {
+			KMT_temp_add_Representatives_seat_var = KMT_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			KMT_temp_add_Representatives_seat_var = KMT_Representatives_seat_var_standard
+		}
+		log = "[?KMT_temp_add_Representatives_seat_var]"
+		log = "[?KMT_Representatives_seat_var_standard]"
+		divide_variable = {
+			KMT_temp_add_Representatives_seat_var = 2
+		}
+		log = "[?KMT_temp_add_Representatives_seat_var]"
+		set_variable = {
+			KMT_temp_add_Representatives_seat_var_real = KMT_temp_add_Representatives_seat_var
+		}
+		round_variable = KMT_temp_add_Representatives_seat_var
+		log = "[?KMT_temp_add_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = KMT_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = KMT_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					KMT_temp_add_Representatives_seat_var > KMT_temp_add_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						ProP_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				KMT_Representatives_seat_var < KMT_Representatives_seat_var_standard
+			}
+		}
+		log = "KMT众议院小了"
+		set_variable = {
+			KMT_temp_less_Representatives_seat_var = KMT_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			KMT_temp_less_Representatives_seat_var = KMT_Representatives_seat_var_standard
+		}
+		log = "[?KMT_temp_less_Representatives_seat_var]"
+		log = "[?KMT_Representatives_seat_var_standard]"
+		divide_variable = {
+			KMT_temp_less_Representatives_seat_var = 2
+		}
+		log = "[?KMT_temp_less_Representatives_seat_var]"
+		set_variable = {
+			KMT_temp_less_Representatives_seat_var_real = KMT_temp_less_Representatives_seat_var
+		}
+		round_variable = KMT_temp_less_Representatives_seat_var
+		log = "[?KMT_temp_less_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = KMT_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = KMT_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					KMT_temp_less_Representatives_seat_var < KMT_temp_less_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						ProP_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				SOCP_Representatives_seat_var > SOCP_Representatives_seat_var_standard
+			}
+		}
+		log = "SOCP大了！"
+		set_variable = {
+			SOCP_temp_add_Representatives_seat_var = SOCP_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			SOCP_temp_add_Representatives_seat_var = SOCP_Representatives_seat_var_standard
+		}
+		log = "[?SOCP_temp_add_Representatives_seat_var]"
+		log = "[?SOCP_Representatives_seat_var_standard]"
+		divide_variable = {
+			SOCP_temp_add_Representatives_seat_var = 2
+		}
+		log = "[?SOCP_temp_add_Representatives_seat_var]"
+		set_variable = {
+			SOCP_temp_add_Representatives_seat_var_real = SOCP_temp_add_Representatives_seat_var
+		}
+		round_variable = SOCP_temp_add_Representatives_seat_var
+		log = "[?SOCP_temp_add_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = SOCP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = SOCP_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					SOCP_temp_add_Representatives_seat_var > SOCP_temp_add_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						ProP_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				SOCP_Representatives_seat_var < SOCP_Representatives_seat_var_standard
+			}
+		}
+		log = "SOCP众议院小了"
+		set_variable = {
+			SOCP_temp_less_Representatives_seat_var = SOCP_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			SOCP_temp_less_Representatives_seat_var = SOCP_Representatives_seat_var_standard
+		}
+		log = "[?SOCP_temp_less_Representatives_seat_var]"
+		log = "[?SOCP_Representatives_seat_var_standard]"
+		divide_variable = {
+			SOCP_temp_less_Representatives_seat_var = 2
+		}
+		log = "[?SOCP_temp_less_Representatives_seat_var]"
+		set_variable = {
+			SOCP_temp_less_Representatives_seat_var_real = SOCP_temp_less_Representatives_seat_var
+		}
+		round_variable = SOCP_temp_less_Representatives_seat_var
+		log = "[?SOCP_temp_less_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					ProP_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					ProP_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = SOCP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = SOCP_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					SOCP_temp_less_Representatives_seat_var < SOCP_temp_less_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						ProP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						ProP_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Prop_Representatives_seat_var > Prop_Representatives_seat_var_standard
+			}
+		}
+		log = "Prop大了！"
+		set_variable = {
+			Prop_temp_add_Representatives_seat_var = Prop_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			Prop_temp_add_Representatives_seat_var = Prop_Representatives_seat_var_standard
+		}
+		log = "[?Prop_temp_add_Representatives_seat_var]"
+		log = "[?Prop_Representatives_seat_var_standard]"
+		divide_variable = {
+			Prop_temp_add_Representatives_seat_var = 2
+		}
+		log = "[?Prop_temp_add_Representatives_seat_var]"
+		set_variable = {
+			Prop_temp_add_Representatives_seat_var_real = Prop_temp_add_Representatives_seat_var
+		}
+		round_variable = Prop_temp_add_Representatives_seat_var
+		log = "[?Prop_temp_add_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = Prop_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = Prop_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					Prop_temp_add_Representatives_seat_var > Prop_temp_add_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			Prop_Representatives_seat_var_standard = Prop_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				Prop_Representatives_seat_var < Prop_Representatives_seat_var_standard
+			}
+		}
+		log = "Prop众议院小了"
+		set_variable = {
+			Prop_temp_less_Representatives_seat_var = Prop_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			Prop_temp_less_Representatives_seat_var = Prop_Representatives_seat_var_standard
+		}
+		log = "[?Prop_temp_less_Representatives_seat_var]"
+		log = "[?Prop_Representatives_seat_var_standard]"
+		divide_variable = {
+			Prop_temp_less_Representatives_seat_var = 2
+		}
+		log = "[?Prop_temp_less_Representatives_seat_var]"
+		set_variable = {
+			Prop_temp_less_Representatives_seat_var_real = Prop_temp_less_Representatives_seat_var
+		}
+		round_variable = Prop_temp_less_Representatives_seat_var
+		log = "[?Prop_temp_less_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					UNP_Representatives_seat_var = Prop_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					UNP_Representatives_seat_var_standard = Prop_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					Prop_temp_less_Representatives_seat_var < Prop_temp_less_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						UNP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						UNP_Representatives_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			Prop_Representatives_seat_var_standard = Prop_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				UNP_Representatives_seat_var > UNP_Representatives_seat_var_standard
+			}
+		}
+		log = "UNP大了！"
+		set_variable = {
+			UNP_temp_add_Representatives_seat_var = UNP_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			UNP_temp_add_Representatives_seat_var = UNP_Representatives_seat_var_standard
+		}
+		log = "[?UNP_temp_add_Representatives_seat_var]"
+		log = "[?UNP_Representatives_seat_var_standard]"
+		divide_variable = {
+			UNP_temp_add_Representatives_seat_var = 2
+		}
+		log = "[?UNP_temp_add_Representatives_seat_var]"
+		set_variable = {
+			UNP_temp_add_Representatives_seat_var_real = UNP_temp_add_Representatives_seat_var
+		}
+		round_variable = UNP_temp_add_Representatives_seat_var
+		log = "[?UNP_temp_add_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					Prop_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_Representatives_seat_var = UNP_temp_add_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					Prop_Representatives_seat_var_standard = UNP_temp_add_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					UNP_temp_add_Representatives_seat_var > UNP_temp_add_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = 1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						Prop_Representatives_seat_var = 1
+					}
+					add_to_variable = {
+						Prop_Representatives_seat_var_standard = 1
+					}
+				}
+			}
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				UNP_Representatives_seat_var < UNP_Representatives_seat_var_standard
+			}
+		}
+		log = "UNP众议院小了"
+		set_variable = {
+			UNP_temp_less_Representatives_seat_var = UNP_Representatives_seat_var
+		}
+		subtract_from_variable = {
+			UNP_temp_less_Representatives_seat_var = UNP_Representatives_seat_var_standard
+		}
+		log = "[?UNP_temp_less_Representatives_seat_var]"
+		log = "[?UNP_Representatives_seat_var_standard]"
+		divide_variable = {
+			UNP_temp_less_Representatives_seat_var = 2
+		}
+		log = "[?UNP_temp_less_Representatives_seat_var]"
+		set_variable = {
+			UNP_temp_less_Representatives_seat_var_real = UNP_temp_less_Representatives_seat_var
+		}
+		round_variable = UNP_temp_less_Representatives_seat_var
+		log = "[?UNP_temp_less_Representatives_seat_var]"
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					Prop_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		random_list = {
+			33 = {
+				subtract_from_variable = {
+					KMT_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					KMT_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					SOCP_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+			33 = {
+				subtract_from_variable = {
+					Prop_Representatives_seat_var = UNP_temp_less_Representatives_seat_var
+				}
+				subtract_from_variable = {
+					Prop_Representatives_seat_var_standard = UNP_temp_less_Representatives_seat_var
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					UNP_temp_less_Representatives_seat_var < UNP_temp_less_Representatives_seat_var_real
+				}
+			}
+			random_list = {
+				33 = {
+					add_to_variable = {
+						KMT_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						KMT_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						SOCP_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						SOCP_Representatives_seat_var_standard = -1
+					}
+				}
+				33 = {
+					add_to_variable = {
+						Prop_Representatives_seat_var = -1
+					}
+					add_to_variable = {
+						Prop_Representatives_seat_var_standard = -1
+					}
+				}
+			}
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+		set_variable = {
+			KMT_senate_seat_var_standard = KMT_senate_seat_var
+		}
+		set_variable = {
+			SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+		}
+		set_variable = {
+			ProP_senate_seat_var_standard = ProP_senate_seat
+		}
+		set_variable = {
+			UNP_senate_seat_var_standard = UNP_senate_seat_var
+		}
+		set_variable = {
+			KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+		}
+		set_variable = {
+			SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+		}
+		set_variable = {
+			ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+		}
+		set_variable = {
+			UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+		}
+	}
+	set_variable = {
+		KMT_senate_seat_var_standard = KMT_senate_seat_var
+	}
+	set_variable = {
+		SOCP_senate_seat_var_standard = SOCP_senate_seat_var
+	}
+	set_variable = {
+		ProP_senate_seat_var_standard = ProP_senate_seat
+	}
+	set_variable = {
+		UNP_senate_seat_var_standard = UNP_senate_seat_var
+	}
+	set_variable = {
+		KMT_Representatives_seat_var_standard = KMT_Representatives_seat
+	}
+	set_variable = {
+		SOCP_Representatives_seat_var_standard = SOCP_Representatives_seat_var
+	}
+	set_variable = {
+		ProP_Representatives_seat_var_standard = ProP_Representatives_seat_var
+	}
+	set_variable = {
+		UNP_Representatives_seat_var_standard = UNP_Representatives_seat_var
+	}
+}

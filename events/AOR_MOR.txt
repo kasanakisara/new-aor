@@ -1,0 +1,122 @@
+add_namespace = MOR
+
+country_event = {
+	id = MOR.1 #乌里阿勒格武装暴动
+	title = MOR.1.t
+	desc = MOR.1.d
+	picture = GFX_MOR_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = DCD
+		date > 1920.6.1
+    }
+    immediate = {
+        hidden_effect = {
+        290={set_demilitarized_zone=yes}
+        }
+    }
+    option = {
+		name = MOR.1.a
+        country_event = { days = 330  id = MOR.2 }
+	}
+}
+
+country_event = {
+	id = MOR.2 #乌里阿勒格武装暴动加剧
+	title = MOR.2.t
+	desc = MOR.2.d
+	picture = GFX_MOR_event_2
+	fire_only_once = yes
+    is_triggered_only = yes
+    immediate = {
+        hidden_effect = {
+        RFR= {
+            978={set_demilitarized_zone=yes}
+            transfer_state = 290
+            add_state_core = 290
+        }
+    }
+}
+    option = {
+		name = MOR.1.a
+        country_event = { days = 170  id = MOR.3 }
+        news_event = {id=AOR_news.186}
+	}
+}
+
+country_event = {
+	id = MOR.3 #里夫共和国成立！
+	title = MOR.3.t
+	desc = MOR.3.d
+	picture = GFX_MOR_event_2
+	fire_only_once = yes
+    is_triggered_only = yes
+    immediate = {
+        hidden_effect = {
+        RFR= {
+         set_cosmetic_tag = RFR
+         978={set_demilitarized_zone=NO}
+         290={set_demilitarized_zone=NO}
+         transfer_state = 978
+         add_state_core = 978
+        }
+    }
+}
+    option = {
+		name = MOR.3.a
+        country_event = { days = 45  id = MOR.4 }
+        news_event = {id=AOR_news.187}
+	}
+}
+
+country_event = {
+	id = MOR.4 #法西联军向里夫进军
+	title = MOR.4.t
+	desc = MOR.4.d
+	picture = GFX_MOR_event_2
+	fire_only_once = yes
+    is_triggered_only = yes
+    immediate = {
+        hidden_effect = {
+            FRA = {
+                declare_war_on = { 
+                    target = RFR
+                    type = annex_everything
+                } 
+            }
+            DAH = {
+                declare_war_on = { 
+                    target = RFR
+                    type = annex_everything
+                } 
+            }
+            TUN = {
+                declare_war_on = { 
+                    target = RFR
+                    type = annex_everything
+                } 
+            }
+            MOR = {
+                declare_war_on = { 
+                    target = RFR
+                    type = annex_everything
+                } 
+            }
+            SPR = {
+                declare_war_on = { 
+                    target = RFR
+                    type = annex_everything
+                } 
+            }
+        }
+    }
+    option = {
+		name = MOR.4.a
+        news_event = {id=AOR_news.188}
+        RFR = {
+            load_oob = "AOR_LAND_RFR"
+            load_oob = "AOR_LAND_RFR"
+            load_oob = "AOR_LAND_RFR"
+        }
+	}
+}

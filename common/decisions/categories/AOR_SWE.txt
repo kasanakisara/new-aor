@@ -1,0 +1,57 @@
+SWE_Norweign_Independence_decision_categories = {
+	scripted_gui = SWE_Norweign_Independence_ui
+	priority = 100
+	visible = {
+		has_country_flag = SWE_Norweign_Independence_flag
+	}
+	allowed = {
+		tag = SWE
+	}
+}
+
+SWE_Trade_decision_categories = {
+	priority = 90
+	picture = GFX_SWE_Open_the_door_decision_pic
+	visible = {
+		OR = {
+			has_idea = SWE_Open_the_door
+			has_idea = SWE_Third_Chioce
+		}
+	}
+	visible_when_empty = yes
+}
+
+SWE_Union_decision_categories = {
+	scripted_gui = AOR_SWE_Union_decision_gui
+	priority = 110
+	visible = {
+		has_idea = SWE_The_Union_Dream
+	}
+	visible_when_empty = yes
+}
+
+SWE_Folkhemmet_decision_categories = {
+	priority = 90
+	picture = GFX_SWE_Folkhemmet_decision_pic
+	visible = {
+		has_country_flag = SWE_Folkhemmet_flag
+	}
+	visible_when_empty = yes
+}
+
+SWE_Regency_Crisis_decision_categories = {
+	priority = 110
+	scripted_gui = AOR_SWE_Regency_Crisis_decision_gui
+	visible = {
+		has_country_flag = SWE_Emergency_State
+	}
+	visible_when_empty = yes
+}
+
+SWE_Regency_Conference_decision_categories = {
+	priority = 90
+	visible = {
+		has_country_flag = SWE_Regency_Conferenceing
+	}
+	visible_when_empty = yes
+}

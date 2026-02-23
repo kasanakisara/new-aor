@@ -1,0 +1,31 @@
+add_namespace = AUT
+
+country_event = {
+	id = AUT.1
+	title = AUT.1.t
+	desc = AUT.1.d
+	picture = GFX_AOR_AUT
+	is_triggered_only = yes
+	option = {
+		name = AUT.1.a #同意
+		hidden_effect = {
+			CHI = {
+				country_event = { id = CHI.20 }
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	option = {
+		name = AUT.2.a #拒绝
+		hidden_effect = {
+			CHI = {
+				country_event = { id = CHI.21 }
+			}
+		}
+		ai_will_do = {
+			factor = 8
+		}
+	}
+}

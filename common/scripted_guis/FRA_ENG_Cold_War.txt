@@ -1,0 +1,28 @@
+scripted_gui = {
+	FRA_ENG_Cold_War_button = {
+		context_type = player_context
+		window_name = "FRA_ENG_Cold_War_button"
+		visible = {
+			always = yes
+		}
+		properties ={
+	    }
+		effects = {
+			FRA_ENG_Cold_War_button_click = {
+				set_country_flag = FRA_ENG_Cold_War_1
+			}
+		}
+	}
+	FRA_ENG_Cold_War = {
+		context_type = player_context
+		window_name = "FRA_ENG_Cold_War"
+		visible = {
+			has_country_flag = FRA_ENG_Cold_War_1
+		}
+		properties ={
+	    }
+		effects = {
+		}
+	}
+}
+

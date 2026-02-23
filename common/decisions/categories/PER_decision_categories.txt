@@ -1,0 +1,56 @@
+PER_Northern_Reconstruction_decision_category = {#北方重建
+	icon = GFX_decision_Infrastructure_restoration
+	picture = GFX_decision_Infrastructure_restoration_B
+	allowed = {original_tag  = PER}
+	visible = {
+		has_country_flag = unlock_AOR_PER_Northern_Reconstruction
+	}
+	priority = 100
+	visible_when_empty = no
+}
+PER_Industrial_Development_Plan_No.1 = {#1号工业案#########需优化################
+	icon = GFX_decision_Infrastructure_restoration
+	picture = "GFX_decision_Industrial_Development_B"
+	allowed = {original_tag  = PER}
+	visible = {
+		has_completed_focus = PER_Industrial_Development_Plan_No.1_13
+	}
+	priority = 90
+	visible_when_empty = no
+}
+PER_Fighting_inflation = {#对抗通胀
+	icon = GFX_decision_Fighting_inflation
+	picture = GFX_decision_Fighting_inflation_B
+	scripted_gui = PER_Fighting_inflation_ui_window
+	allowed = {original_tag  = PER }
+	visible = {
+		OR = {
+		has_idea = PER_Fighting_inflation_1
+		has_idea = PER_Fighting_inflation_2
+		has_idea = PER_Fighting_inflation_3
+		}
+		has_country_flag = unlock_AOR_PER_Fighting_inflation
+	}
+	priority = 95
+	visible_when_empty = no
+}
+PER_Agricultural_Jihad_Preliminary_jy = {#农业圣战
+	icon = GFX_Agricultural_Jihad_Preliminary_jy
+	picture = GFX_decision_Agricultural_Jihad_Preliminary_jy_B
+	scripted_gui = PER_Agricultural_Jihad_Preliminary_ui_window
+	visible = {
+		OR = {
+			has_idea =PER_Great_Famine
+			has_idea =PER_Great_Famine_1
+			has_idea =PER_Great_Famine_2
+			has_idea =PER_Great_Famine_3
+			has_idea =PER_Great_Famine_4
+			has_idea =PER_Agricultural_Jihad_Preliminary_1
+			has_idea =PER_Agricultural_Jihad_Preliminary_2
+			has_idea =PER_Agricultural_Jihad_Preliminary_3
+		}
+		has_country_flag = unlock_AOR_PER_Agricultural_Jihad_Preliminary
+	}
+	priority = 90
+	visible_when_empty = yes
+}

@@ -1,0 +1,298 @@
+ideas = {
+	country = {
+		PER_Anglo_Iranian_agreement = {#英伊协定
+			picture = GFX_idea_PER_Anglo_Iranian_agreement
+			allowed = { always = yes }
+			modifier = {
+				political_power_gain = -0.1
+                TRAINING_TIME_ARMY_FACTOR = 0.2
+                LOCAL_RESOURCES_FACTOR = -0.25
+                political_advisor_cost_factor = 0.33
+                ARMY_ADVISOR_COST_FACTOR = 0.3
+				production_speed_buildings_factor = 0.1
+				cic_to_overlord_factor = 0.1
+			}
+		}
+		#军队民族精神
+		PER_Few_troops = {#乌合之众
+			picture = GFX_idea_PER_Few_troops
+			allowed = { always = yes }
+			modifier = {
+				ARMY_ORG_FACTOR = -0.3
+				ARMY_ATTACK_FACTOR = -0.5
+				ARMY_DEFENCE_FACTOR = -0.5
+				army_morale_factor = -0.3
+				land_reinforce_rate = -0.01
+				attrition = 0.5
+			}
+		}
+		PER_Few_troops_2 = { #兵微将乏
+			picture = GFX_idea_PER_Few_troops_1
+			allowed = { always = yes }
+			modifier = {
+				ARMY_ORG_FACTOR = -0.25
+				ARMY_ATTACK_FACTOR = -0.45
+				ARMY_DEFENCE_FACTOR = -0.45
+				army_morale_factor = -0.1
+				attrition = 0.2
+			}
+		}
+		PER_Few_troops_3_1 = { #哥萨克主导
+			picture = GFX_idea_PER_Few_troops_2
+			allowed = { always = yes }
+			modifier = {
+				ARMY_ORG_FACTOR = -0.20
+				ARMY_ATTACK_FACTOR = -0.40
+				ARMY_DEFENCE_FACTOR = -0.40
+				army_morale_factor = -0.05
+				attrition = 0.2
+				army_speed_factor = 0.05
+			}
+		}
+		PER_Few_troops_3_2 = { #洋枪队主导
+			picture = GFX_idea_PER_Few_troops_3
+			allowed = { always = yes }
+			modifier = {
+				ARMY_ORG_FACTOR = -0.20
+				ARMY_ATTACK_FACTOR = -0.40
+				ARMY_DEFENCE_FACTOR = -0.40
+				army_morale_factor = -0.05
+				attrition = 0.2
+				army_infantry_attack_factor = 0.05
+			}
+		}
+		PER_Few_troops_3_3 = { #宪兵队主导
+			picture = GFX_idea_PER_Few_troops_4
+			allowed = { always = yes }
+			modifier = {
+				ARMY_ORG_FACTOR = -0.20
+				ARMY_ATTACK_FACTOR = -0.40
+				ARMY_DEFENCE_FACTOR = -0.40
+				army_morale_factor = -0.05
+				attrition = 0.2
+				out_of_supply_factor = -0.05
+			}
+		}
+		PER_Headquarters_General_Staff = {#总参谋部
+			picture = GFX_idea_PER_Headquarters_General_Staff
+			allowed = { always = yes }
+			modifier = {
+				theorist_cost_factor = -0.05
+				army_chief_cost_factor = -0.05
+				navy_chief_cost_factor = -0.05
+				air_chief_cost_factor = -0.05
+				high_command_cost_factor = 0.1
+			}
+		}
+		#饥荒民族精神
+		PER_Great_Famine = {#饿莩载道
+			picture = GFX_idea_PER_Great_Famine
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.2
+				industrial_capacity_dockyard = -0.1
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.5
+			}
+		}
+		PER_Great_Famine_1 = {#饿殍满道
+			picture = GFX_idea_PER_Great_Famine_1
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.2
+				industrial_capacity_dockyard = -0.1
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.3
+			}
+		}
+		PER_Great_Famine_2= {#凶年恶岁
+			picture = GFX_idea_PER_Great_Famine_2
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.15
+				industrial_capacity_dockyard = -0.1
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.1
+			}
+		}
+		PER_Land_confiscation_by_corrupt_officials = {#没收贪官土地
+			picture = GFX_idea_PER_Land_confiscation_by_corrupt_officials
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.05
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.2
+			}
+		}
+		#文化民族精神
+		PER_Illiterate_people = {#目不识丁
+			picture = GFX_idea_PER_Illiterate_people
+			allowed = { always = yes }
+			modifier = {
+				RESEARCH_SPEED_FACTOR = -0.15
+			}
+		}
+		PER_Illiterate_people_2 = {#不通文墨
+			picture = GFX_idea_PER_Illiterate_people_1
+			allowed = { always = yes }
+			modifier = {
+				RESEARCH_SPEED_FACTOR = -0.12
+			}
+		}
+		PER_rebellious_tribe = {	#叛逆的部落
+			picture = GFX_idea_PER_rebellious_tribe
+			allowed = { always = yes }
+			modifier = {
+				STABILITY_FACTOR = -0.1
+				consumer_goods_factor = 0.2
+			}
+		}
+		PER_rebellious_tribe_1 = {	#不满的部落
+			picture = GFX_idea_PER_rebellious_tribe_1
+			allowed = { always = yes }
+			modifier = {
+				STABILITY_FACTOR = -0.1
+			}
+		}
+		#国家建设民族精神
+		PER_Infrastructure_restoration_1 = {	#基础设施重建1
+			picture = GFX_idea_PER_Infrastructure_restoration
+			allowed = { always = yes }
+			modifier = {
+				production_speed_infrastructure_factor = 0.02
+			}
+		}
+		PER_Infrastructure_restoration_2 = {	#民间
+			picture = GFX_idea_PER_Infrastructure_restoration
+			allowed = { always = yes }
+			modifier = {
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+		PER_Infrastructure_restoration_3 = {	#英企
+			picture = GFX_idea_PER_Infrastructure_restoration
+			allowed = { always = yes }
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+		PER_ume_oduction = {	#恢复生产
+			picture = GFX_idea_PER_ume_oduction
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+		PER_Resettlement_Plan = {  #安置计划
+			picture = GFX_idea_PER_Resettlement_Plan
+			allowed = { always = yes }
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				consumer_goods_factor = 0.2
+			}
+		}
+		PER_National_Advisory_Committee = {  #国家咨询委员会
+			picture = GFX_idea_PER_Resettlement_Plan
+			allowed = { always = yes }
+			modifier = {
+				political_power_gain = 0.1
+				political_advisor_cost_factor = -0.05
+			}
+		}
+		PER_Hanging_buying_selling_officials = {#绞杀
+		picture = GFX_idea_PER_Hanging_buying_selling_officials
+		allowed = { always = yes }
+		modifier = {
+			political_power_gain = 0.2
+			}
+		}
+	}
+	#隐藏的idea
+	hidden_ideas = {
+		PER_Fighting_inflation_1 = {#通胀民族精神
+			picture = GFX_Fighting_inflation_lvl1_1
+			modifier = {
+				line_change_production_efficiency_factor = -0.1
+				industrial_capacity_factory = -0.1
+				production_factory_max_efficiency_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.1
+				consumer_goods_factor = 0.2
+			}
+		}
+		PER_Fighting_inflation_2 = {
+			picture = GFX_Fighting_inflation_lvl2_1
+			modifier = {
+				line_change_production_efficiency_factor = -0.2
+				industrial_capacity_factory = -0.2
+				production_factory_max_efficiency_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.2
+				consumer_goods_factor = 0.3
+			}
+		}
+		PER_Fighting_inflation_3 = {
+			picture = GFX_Fighting_inflation_lvl3_1
+			modifier = {
+				line_change_production_efficiency_factor = -0.3
+				industrial_capacity_factory = -0.3
+				production_factory_max_efficiency_factor = -0.3
+				production_factory_efficiency_gain_factor = -0.3
+				consumer_goods_factor = 0.4
+			}
+		}
+		PER_Fighting_inflation_4 = {#通胀民族精神（正）
+			picture = GFX_Fighting_inflation_lvl4_1
+			modifier = {
+				line_change_production_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				consumer_goods_factor = -0.1
+			}
+		}
+		#农业民族精神
+		PER_Great_Famine_3= {#凶年恶岁2
+			picture = GFX_idea_PER_Great_Famine_1
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.10
+				industrial_capacity_dockyard = -0.05
+				industrial_capacity_factory = -0.05
+			}
+		}
+		PER_Great_Famine_4= {
+			picture = GFX_idea_PER_Great_Famine_1
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.05
+			}
+		}
+		PER_Agricultural_Jihad_Preliminary_1={ #积谷防饥
+			picture = GFX_idea_Agricultural_Jihad_Preliminary_1
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.01
+				war_support_weekly = 0.01
+				line_change_production_efficiency_factor = 0.01
+				consumer_goods_factor = -0.10
+			}
+		}
+		PER_Agricultural_Jihad_Preliminary_2={
+			picture = GFX_idea_Agricultural_Jihad_Preliminary_2
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.03
+				war_support_weekly = 0.01
+				line_change_production_efficiency_factor = 0.03
+				consumer_goods_factor = -0.20
+			}
+		}
+		PER_Agricultural_Jihad_Preliminary_3={
+			picture = GFX_idea_Agricultural_Jihad_Preliminary_3
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.05
+				war_support_weekly = 0.01
+				line_change_production_efficiency_factor = 0.05
+				consumer_goods_factor = -0.30
+			}
+		}
+	}
+}

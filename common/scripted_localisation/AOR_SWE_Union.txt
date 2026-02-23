@@ -1,0 +1,435 @@
+defined_text = {
+    name = SWE_Union_quote
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 1 }
+            }
+		}
+        localization_key = SWE_Union_quote_1
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 2 }
+            }
+        }
+        localization_key = SWE_Union_quote_2
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 3 }
+            }
+        }
+        localization_key = SWE_Union_quote_3
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 4 }
+            }
+        }
+        localization_key = SWE_Union_quote_4
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 5 }
+            }
+        }
+        localization_key = SWE_Union_quote_5
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 6 }
+            }
+        }
+        localization_key = SWE_Union_quote_6
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 7 }
+            }
+        }
+        localization_key = SWE_Union_quote_7
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 8 }
+            }
+        }
+        localization_key = SWE_Union_quote_8
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 9 }
+            }
+        }
+        localization_key = SWE_Union_quote_9
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 10 }
+            }
+        }
+        localization_key = SWE_Union_quote_10
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 11 }
+            }
+        }
+        localization_key = SWE_Union_quote_11
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 12 }
+            }
+        }
+        localization_key = SWE_Union_quote_12
+    }
+}
+
+defined_text = {
+    name = SWE_Union_ideas_tt
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 1 }
+            }
+		}
+        localization_key = SWE_Union_idea_1
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 2 }
+            }
+        }
+        localization_key = SWE_Union_idea_2
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 3 }
+            }
+        }
+        localization_key = SWE_Union_idea_3
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 4 }
+            }
+        }
+        localization_key = SWE_Union_idea_4
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 5 }
+            }
+        }
+        localization_key = SWE_Union_idea_5
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 6 }
+            }
+        }
+        localization_key = SWE_Union_idea_6
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 7 }
+            }
+        }
+        localization_key = SWE_Union_idea_7
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 8 }
+            }
+        }
+        localization_key = SWE_Union_idea_8
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 9 }
+            }
+        }
+        localization_key = SWE_Union_idea_9
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 10 }
+            }
+        }
+        localization_key = SWE_Union_idea_10
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 11 }
+            }
+        }
+        localization_key = SWE_Union_idea_11
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                check_variable = { SWE_Union_Stage = 12 }
+            }
+        }
+        localization_key = SWE_Union_idea_12
+    }
+}
+
+defined_text = {
+    name = SWE_Immigrant_policy #移民政策状态
+
+    text = {
+        trigger = {
+            NOT = {
+                has_completed_focus = SWE_Immigrant_Protection #未开放移民政策
+            }
+        }
+        localization_key = SWE_policy_nothing
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Immigrant = 0 } #移民问题尚未产生危机
+        }
+        localization_key = SWE_policy_no_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Immigrant = 1 } #移民问题产生少量社会问题
+        }
+        localization_key = SWE_policy_few_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Immigrant = 2 } #移民问题产生大量社会问题
+        }
+        localization_key = SWE_policy_many_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Immigrant = 3 } #移民问题快爆了！
+        }
+        localization_key = SWE_policy_great_crisis
+    }
+}
+
+defined_text = {
+    name = SWE_Labor_policy #劳动政策状态
+
+    text = {
+        trigger = {
+            NOT = {
+                has_completed_focus = SWE_Maternity_Allowance #未开放劳动政策
+            }
+        }
+        localization_key = SWE_policy_nothing
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                has_completed_focus = SWE_Labor_Protection #通过劳动保护法
+                check_variable = { SWE_Labor = 0 } #劳动问题尚未产生危机
+            }
+        }
+        localization_key = SWE_policy_no_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Labor = 1 } #劳动问题产生少量社会问题
+        }
+        localization_key = SWE_policy_few_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Labor = 2 } #劳动问题产生大量社会问题
+        }
+        localization_key = SWE_policy_many_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Labor = 3 } #劳动问题快爆了！
+        }
+        localization_key = SWE_policy_great_crisis
+    }
+}
+
+defined_text = {
+    name = SWE_Edu_policy #教育政策状态
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Education = 0 } #教育问题尚未产生危机
+        }
+        localization_key = SWE_policy_no_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Education = 1 } #教育问题产生少量社会问题
+        }
+        localization_key = SWE_policy_few_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Education = 2 } #教育问题产生大量社会问题
+        }
+        localization_key = SWE_policy_many_problem
+    }
+
+    text = {
+        trigger = {
+            check_variable = { SWE_Education = 3 } #教育问题快爆了！
+        }
+        localization_key = SWE_policy_great_crisis
+    }
+}
+
+defined_text = { #GUI底板
+    name = SWE_Union_gui_getpicture
+    
+    text = {trigger = {check_variable = { SWE_Union_Stage = 1 }}localization_key = GFX_SWE_Union_gui_1}
+    text = {trigger = {check_variable = { SWE_Union_Stage = 2 }}localization_key = GFX_SWE_Union_gui_2}
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 3 }
+        }
+        localization_key = GFX_SWE_Union_gui_3
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 4 }
+        }
+        localization_key = GFX_SWE_Union_gui_4
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 5 }
+        }
+        localization_key = GFX_SWE_Union_gui_5
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 6 }
+        }
+        localization_key = GFX_SWE_Union_gui_6
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 7 }
+        }
+        localization_key = GFX_SWE_Union_gui_7
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 8 }
+        }
+        localization_key = GFX_SWE_Union_gui_8
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 9 }
+        }
+        localization_key = GFX_SWE_Union_gui_9
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 10 }
+        }
+        localization_key = GFX_SWE_Union_gui_10
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 11 }
+        }
+        localization_key = GFX_SWE_Union_gui_11
+    }
+    text = {
+        trigger = {
+            check_variable = { SWE_Union_Stage = 12 }
+        }
+        localization_key = GFX_SWE_Union_gui_12
+    }
+
+    text = {
+        trigger = {
+            #general
+        }
+        localization_key = GFX_SWE_Union_gui_entry
+    }
+
+}
+
+defined_text = {
+    name = SWE_Union_gui_info_tt
+
+    text = {
+        trigger = {
+            NOT = {
+                has_country_flag = SWE_open_Union_gui_flag
+            }
+        }
+        localization_key = AOR_SWE_Union_gui_info_open_tt
+    }
+
+    text = {
+        trigger = {
+            has_country_flag = SWE_open_Union_gui_flag
+        }
+        localization_key = AOR_SWE_Union_gui_info_close_tt
+    }
+}

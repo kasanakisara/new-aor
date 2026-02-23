@@ -1,0 +1,21 @@
+add_namespace = SPA
+country_event = {
+
+	id = SPA.1
+	title = SPA.1.t
+	desc = SPA.1.d
+	picture = GFX_events_SPA_1
+	is_triggered_only = yes
+	fire_only_once = yes
+    #那就这样吧  
+	immediate = {
+		news_event = { id = AOR_news.32 }
+		}	
+	option = {
+		name = SPA.1.a
+		remove_ideas = H1N1		
+		hidden_effect = {
+			set_country_flag = H1N1_disappear
+		}
+    }
+}

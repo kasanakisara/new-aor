@@ -1,0 +1,46 @@
+### debug决议 ###
+AR_common_manpower = {
+    get_manpower = {
+
+    }
+    get_new_unit = {
+
+    }
+    get_guns = {
+        
+    }
+}
+
+
+
+AOR_ARU_decision_categories = {
+	AOR_ARU_CALL_PETER_BOY = { #彼得留啦参加内战！
+		
+		icon = GFX_decision_category_sov_great_patriotic_war
+		
+		cost = 30
+		days_remove = 14
+		
+		fire_only_once = yes
+		days_re_enable = 7
+
+		visible = {
+			tag = ARU
+		}
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				add = 10
+				CAU = { is_neighbor_of = RUS }
+			}
+		}
+
+		complete_effect = {  
+			manpower = -5000
+		}
+		remove_effect = {
+            ARU = { add_to_faction = CAU }
+		}
+	}
+}

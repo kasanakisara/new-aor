@@ -1,0 +1,46 @@
+add_namespace = MON
+
+country_event = {#北京政府占领满洲
+	id = MON.1 
+	title = MON.1.t
+	desc = MON.1.d
+	picture = GFX_KMT_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = MON
+		date > 1924.2.10
+        MON = {
+            owns_state = 714
+            owns_state = 761
+            owns_state = 913
+            owns_state = 873
+            owns_state = 717
+            owns_state = 715
+            owns_state = 891
+            owns_state = 328
+            owns_state = 716
+            owns_state = 875
+            owns_state = 874
+        }
+    }
+
+
+    option = {
+		name = MON.1.a
+		news_event = {id=AOR_news.115}
+        country_event = { days = 30  id = CHI.37 }
+		MON = {
+            add_state_core = 714
+            add_state_core = 761
+            add_state_core = 913
+            add_state_core = 873
+            add_state_core = 717
+            add_state_core = 715
+            add_state_core = 891
+            add_state_core = 328
+            add_state_core = 716
+            add_state_core = 875
+            add_state_core = 874
+		}
+	}
+}

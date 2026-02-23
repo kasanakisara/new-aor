@@ -1,0 +1,70 @@
+ideas = {
+
+	country = {
+		tag = FIN
+		
+		#西苏
+		sisu = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.25
+				attrition = -0.1
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+			}
+		}
+
+		#大战地带
+		Great_War_Zone = {
+			
+			picture = idea_Great_War_Zone
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    weekly_manpower = 500
+				Marxism_drift = 0.05
+			    Absolutism_drift = 0.05
+			}
+		}
+		
+		#不稳的共和国
+		An_unstable_republic = {
+			
+			picture = idea_An_unstable_republic
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+				war_support_factor = -0.1
+				stability_factor = -0.3
+				stability_weekly = -0.05
+				training_time_factor = -0.25
+			}
+		}
+	}
+}

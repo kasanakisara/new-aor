@@ -1,0 +1,714 @@
+focus_tree = {
+	id = BAV_2
+	country={
+		factor=0
+		modifier={
+			add=100
+			tag=BAV
+		}
+	}
+	continuous_focus_position = { x = 500 y = 3000 }
+	default=no
+	#领袖寄拉！
+	focus={
+		id=BAV_The_pioneer_has_passed_away
+		icon = GFX_goal_BAV_The_pioneer_has_passed_away
+		x=8
+		y=0
+		cost=0
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		bypass = {
+			tag=BAV
+			has_country_flag = BAV.belel.dead
+		}
+		completion_reward={
+			custom_effect_tooltip = BAV.focus.bebel.dd.tt
+		}
+	}	
+	#传递接力棒
+	focus={
+		id=BAV_Baton_transmission
+		icon = GFX_goal_BAV_Baton_transmission
+		x=8
+		y=1
+		prerequisite={focus=BAV_The_pioneer_has_passed_away}
+		cost=1
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = -0.01
+			add_political_power = -5
+			custom_effect_tooltip = BAV.focus.9.tt
+			country_event = {days = 3 id = BAV.15 }
+			hidden_effect = {news_event = AOR_news.31}
+			custom_effect_tooltip = BAV.focus.bebel.d.tt
+		}
+	}
+	#斩断历史
+	focus={
+		id=BAV_Cut_off_history
+		icon = GFX_goal_BAV_Cut_off_history
+		x=7
+		y=2
+		prerequisite={focus=BAV_Baton_transmission}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_war_support = 0.05
+			add_political_power = 50
+			add_popularity = { ideology = SOC_democratic popularity = -0.1	 }
+			custom_effect_tooltip = BAV.focus.10.tt
+			hidden_effect = {
+			set_division_force_allow_recruiting ={
+			division_template ="巴伐利亚驻兵"
+			force_allow_recruiting = yes
+				}
+			}
+			country_lock_all_division_template = no
+		}
+	}
+	#和统符腾堡
+	focus={
+		id=BAV_Friends_from_the_North
+		icon = GFX_goal_BAV_Friends_from_the_North
+		x=5
+		y=4
+		prerequisite={focus=BAV_The_sacred_flame_will_not_extinguish}
+		mutually_exclusive = { focus = BAV_enemies_from_the_North }
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 50
+			add_stability = 0.05
+			country_event = BAV.14
+			custom_effect_tooltip = BAV.focus.fri.wur.tt
+		}
+	}
+
+	#宣战符腾堡
+	focus={
+		id=BAV_enemies_from_the_North
+		icon = GFX_goal_BAV_enemies_from_the_North
+		x=7
+		y=4
+		prerequisite={focus=BAV_The_sacred_flame_will_not_extinguish}
+		mutually_exclusive = { focus = BAV_Friends_from_the_North }
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_popularity = { ideology = Marxism popularity = 0.05 }
+			add_war_support = 0.05
+			BAV = {create_wargoal = { target = WUR type = Ger_civil_war_bav } }
+			custom_effect_tooltip = BAV.focus.ene.wur.tt
+		}
+	}
+
+	#和统萨克森
+	focus={
+		id=BAV_Friends_from_the_SAX
+		icon = GFX_goal_BAV_Friends_from_the_SAX
+		x=11
+		y=4
+		prerequisite={focus=BAV_The_sacred_flame_will_not_extinguish}
+		mutually_exclusive = { focus = BAV_enemies_from_the_SAX }
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available = { 
+			country_exists = SAX
+			SAX = { Marxism > 0.8}
+			
+			custom_trigger_tooltip = {
+				tooltip = BAV.SAX.REV.tt
+				check_variable = { Bebel_Trust > 79 }
+			}
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			SAX = { country_event = BAV.21 }
+			add_political_power = 50
+			add_stability = 0.05
+			
+		}
+	}
+
+	#宣战萨克森
+	focus={
+		id=BAV_enemies_from_the_SAX
+		icon = GFX_goal_BAV_enemies_from_the_SAX
+		x=9
+		y=4
+		prerequisite={focus=BAV_The_sacred_flame_will_not_extinguish}
+		mutually_exclusive = { focus = BAV_Friends_from_the_SAX }
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available = {
+			OR = {
+				has_global_flag = NAU.BERN
+				country_exists = SAX
+				
+			}
+		}
+		bypass = {
+			NOT = {country_exists = SAX}
+			NOT = {has_global_flag = NAU.BERN}
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_popularity = { ideology = Marxism popularity = 0.05 }
+			add_war_support = 0.1
+			add_ideas = BAV_Crush_revisionism_1
+		}
+	}
+
+	#包围革命
+	focus={
+		id=BAV_Focusing_on_the_inside
+		icon = GFX_goal_BAV_Focusing_on_the_inside
+		x=9
+		y=2
+		prerequisite={focus=BAV_Baton_transmission}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = 0.05
+			add_political_power = 50
+			add_popularity = { ideology = PAR_socialism popularity = -0.15	 }
+			if = {
+			limit = {
+				NOT = { has_idea = Extreme_democratic_rampant_5 } 
+
+			}
+			remove_ideas = Extreme_democratic_rampant_4
+		}
+			else = {
+			remove_ideas = Extreme_democratic_rampant_5
+			}
+			
+			
+		}
+	}
+	#革命之火
+	focus={
+		id=BAV_The_sacred_flame_will_not_extinguish
+		icon = GFX_goal_BAV_The_sacred_flame_will_not_extinguish
+		x=8
+		y=3
+		prerequisite={focus=BAV_Cut_off_history}
+		prerequisite={focus=BAV_Focusing_on_the_inside}
+		cost=1
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			set_cosmetic_tag = BAV_WUR_1
+			add_ideas = {
+				BAV_The_sacred_flame_will_not_extinguish
+			}
+			
+		}
+	}
+	#革命之心
+	focus={
+		id=BAV_The_Revolutionary_Heart_of_Germany
+		icon = GFX_goal_BAV_The_Revolutionary_Heart_of_Germany
+		x=8
+		y=5
+		prerequisite={focus=BAV_The_sacred_flame_will_not_extinguish}
+		prerequisite={focus=BAV_Friends_from_the_SAX focus = BAV_enemies_from_the_SAX}
+		prerequisite={focus=BAV_Friends_from_the_North focus = BAV_enemies_from_the_North}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_political_power = 50
+		custom_effect_tooltip = BAV.focus.11.tt
+		custom_effect_tooltip = BAV.focus.12.tt
+
+		hidden_effect = {
+			add_state_core= 50
+			add_state_core = 841
+			add_state_core = 860
+			add_state_core = 837
+
+		WUR = {
+			every_unit_leader = {
+			add_timed_unit_leader_trait = {
+					trait = BAV_labor_reform_1
+					days = 365
+				}
+			}
+		}
+		WUR = {
+				random_unit_leader= {
+					set_nationality = ROOT
+				 } 
+				}
+
+		random_list = { 
+			50 = { 
+				WUR = {
+				 random_unit_leader= {
+					set_nationality = ROOT
+				 } 
+				}
+			} 
+			50 = { }
+		}
+
+		random_list = { 
+			50 = { 
+				WUR = {
+				 random_unit_leader= {
+					set_nationality = ROOT
+				 } 
+				}
+			} 
+			50 = { }
+		}
+			}
+
+		}
+	}
+	#思想革命
+	focus={
+		id=BAV_Ideological_revolution
+
+		icon = GFX_goal_BAV_Ideological_revolution
+
+		x=12
+		y=6
+		prerequisite={focus=BAV_The_Revolutionary_Heart_of_Germany}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = {id = bav.51 days = 0}
+			 swap_ideas = {
+			   remove_idea = BAV_The_sacred_flame_will_not_extinguish
+			   add_idea = BAV_Ideological_revolution_1
+			 }
+		}
+	}
+	#人民工业模式
+	focus={
+		id=BAV_Common_industrial_model
+		icon = GFX_goal_BAV_Common_industrial_model
+		x=4
+		y=6
+		prerequisite={focus=BAV_The_Revolutionary_Heart_of_Germany}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = BAV.50
+		}
+	}
+		#轻轻敲醒沉睡的心灵 慢慢张开你的眼睛
+	focus={
+		id=BAV_Knock_the_alarm_bell
+		icon = GFX_goal_BAV_Knock_the_alarm_bell
+		x=8
+		y=7
+		prerequisite={focus=BAV_The_Revolutionary_Heart_of_Germany}
+		cost=0
+		ai_will_do={
+			factor=1
+		}
+		allow_branch = {
+				has_country_flag = BAV.RUS.mention
+		}
+		bypass = {
+				has_country_flag = BAV.RUS.mention
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			custom_effect_tooltip = BAV.focus.bell.tt
+		}
+	}
+
+	#土地民有
+	focus={
+		id=BAV_Land_nership
+		icon = GFX_goal_BAV_Land_nership
+		x=3
+		y=7
+		prerequisite={focus=BAV_Common_industrial_model}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_manpower = -425
+			add_stability = -0.1
+			custom_effect_tooltip = BAV.focus.13.tt
+			swap_ideas = {
+			 remove_idea =BAV_Peoples_Commune
+			 add_idea = BAV_Peoples_Commune_1
+			}
+			hidden_effect = {
+			53 = {add_extra_state_shared_building_slots = 1}
+			863 = {add_extra_state_shared_building_slots = 1}
+		    861 = {add_extra_state_shared_building_slots = 1}
+			50 = {add_extra_state_shared_building_slots = 1}
+			837 = {add_extra_state_shared_building_slots = 1}
+			860 = {add_extra_state_shared_building_slots = 1}
+			841 = {add_extra_state_shared_building_slots = 1}
+			}
+			#别沉迷于你妈给随机区域加基建了
+			random_owned_controlled_state =  {
+				add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes 
+				}
+			}
+			random_owned_controlled_state =  {
+				add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes 
+				}
+			}
+
+		}
+	}
+	#工业重组
+	focus= {
+		id=BAV_Industrial_estructuring
+		icon = GFX_goal_BAV_Industrial_estructuring
+		x=5
+		y=7
+		prerequisite={focus=BAV_Common_industrial_model}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_manpower = -62
+			861 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes 
+			}
+			}
+			861 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes 
+			}
+		}
+	}
+	}
+	#时代新星
+	focus={
+		id=BAV_shining_new_stars_of_the_times
+		icon = GFX_goal_BAV_shining_new_stars_of_the_times
+		x=4
+		y=8
+		prerequisite={focus=BAV_Industrial_estructuring}
+		prerequisite={focus=BAV_Land_nership}
+		cost=6
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		custom_effect_tooltip = BAV.focus.14.tt
+		hidden_effect = {
+		remove_ideas = BAV_labor_liberal_females_1
+		remove_ideas = BAV_pour_fire
+		remove_ideas = BAV_Peoples_Commune_1
+			if = {
+			limit = {
+				NOT = { has_idea = BAV_product_by_democracy } 
+
+			}
+			remove_ideas = BAV_product_in_command
+			}
+				else = {
+			remove_ideas = BAV_product_by_democracy
+			}
+		}
+			if = {
+			limit = {
+				NOT = { has_country_flag = BAV_product_in_command_flag } 
+
+			}
+			add_ideas = BAV_shining_new_stars_of_the_times_demo #民主化生产的闪耀
+			}
+				else = {
+			add_ideas = BAV_shining_new_stars_of_the_times_comm #指令化生产的闪耀
+			}
+		}
+	}
+	#倍倍尔之梦
+	focus={
+		id=BAV_Peipeier_deal
+		icon = GFX_goal_BAV_Peipeier_deal
+		x=11
+		y=7
+		prerequisite={focus=BAV_Ideological_revolution
+}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			
+			if = {
+			limit = {
+				NOT = { has_idea = BAV_Ideological_revolution_3 } 
+
+			}
+				remove_ideas = BAV_Spartacist_bureaucracy
+				swap_ideas = {
+				remove_idea = BAV_Ideological_revolution_1
+				add_idea = BAV_Ideological_revolution_2
+				}
+			}
+				else = {
+				remove_ideas = BAV_Spartacist_bureaucracy
+				swap_ideas = {
+				remove_idea = BAV_Ideological_revolution_3
+				add_idea = BAV_Ideological_revolution_4
+				}
+			}
+		}
+	}
+	#列宁的再拓展
+	focus={
+		id=BAV_Lenin_rther_xpansion
+		icon = GFX_goal_BAV_Lenin_rther_xpansion
+		x=13
+		y=7
+		prerequisite={focus=BAV_Ideological_revolution}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+			limit = {
+				NOT = { has_idea = BAV_Ideological_revolution_2 } 
+
+			}
+				swap_ideas = {
+				remove_idea = BAV_Ideological_revolution_1
+				add_idea = BAV_Ideological_revolution_3
+				}
+			}
+				else = {
+				swap_ideas = {
+				remove_idea = BAV_Ideological_revolution_2
+				add_idea = BAV_Ideological_revolution_4
+				}
+			}
+		}
+	}
+	#粉碎修正主义
+	focus={
+		id=BAV_Crush_revisionism
+		icon = GFX_goal_BAV_Crush_revisionism
+		x=12
+		y=8
+		prerequisite={focus=BAV_Peipeier_deal}
+		prerequisite={focus=BAV_Lenin_rther_xpansion}
+		cost=6
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas = {
+				remove_idea = BAV_Ideological_revolution_4
+				add_idea = BAV_Ideological_revolution_5
+			}
+		}
+	}
+	#提拔青年才俊
+	focus={
+		id=BAV_Full_f_itality
+		icon = GFX_goal_BAV_Full_f_itality
+		x=8
+		y=9
+		prerequisite={focus=BAV_Knock_the_alarm_bell}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		 custom_effect_tooltip = BAV.focus.15.tt
+		 custom_effect_tooltip = BAV.focus.16.tt
+		 hidden_effect = {
+		 recruit_character = Wilhelm_Pieck
+		 recruit_character = Ernst_Thalmann
+		 create_field_marshal = {
+			name = "卡尔·李卜克内西"
+			portrait_path = "gfx/leaders/BAV/axcra-1w8mr.dds" 
+			traits = {BAV_committed_revolutionary}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+				}
+		 }
+			add_ideas = {
+				BAV_New_Officer_Corps
+			}
+		}
+	}
+	#一！二！一！
+	focus={
+		id=BAV_1_2_1
+		icon = GFX_goal_BAV_1_2_1
+		x=6
+		y=10
+		prerequisite={focus=BAV_Full_f_itality}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			custom_effect_tooltip = BAV_121_TT
+			swap_ideas = {
+				remove_idea = BAV_New_Officer_Corps
+				add_idea = BAV_New_Officer_Corps_2
+			}
+			hidden_effect = {
+				load_oob = "BAV_121"
+			}
+	    }
+    }
+	#纪律的重要性
+	focus={
+		id=BAV_The_lmportance_of_discipline
+		icon = GFX_goal_BAV_The_lmportance_of_discipline
+		x=10
+		y=10
+		prerequisite={focus=BAV_Full_f_itality}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = BAV.16
+			if = {
+			limit = {
+				NOT = { has_idea = Roving_style_5 } 
+
+			}
+			   remove_ideas = Roving_style_4
+			}
+				else = {
+				remove_ideas = Roving_style_5
+			}
+			add_ideas = BAV_commissar
+		}
+	}
+	#新德意志人民军
+	focus={
+		id=BAV_The_new_germany_people_army
+		icon = GFX_goal_BAV_The_new_germany_people_army
+		x=8
+		y=11
+		prerequisite={focus=BAV_The_lmportance_of_discipline}
+		prerequisite={focus=BAV_1_2_1}
+		cost=7
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas = {
+				remove_idea = BAV_New_Officer_Corps_2
+				remove_idea= BAV_commissar
+				add_idea =BAV_The_new_germany_people_army
+			}
+		}
+	}
+
+	}

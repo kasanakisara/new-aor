@@ -1,0 +1,155 @@
+ideas = {
+	country = {
+		
+		#白俄反对派
+		White_Russian_opposition = {
+		
+			picture = idea_White_Russian_opposition
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    stability_factor = -0.15
+				political_power_gain = -1
+				conscription = -0.005
+			}
+		}
+		
+		#帝国主义的桥头堡
+		The_bridgehead_of_imperialism = {
+			
+			picture = idea_The_bridgehead_of_imperialism
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+			          always = yes
+			}
+
+			modifier = {
+			    army_org_factor = 0.05
+				forced_surrender_limit = 0.1
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05 
+			}
+		}
+	everyone_panic = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				stability_weekly = -0.003
+				political_power_cost = 0.5
+			}
+		}
+	political_cooperation = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				political_power_gain = 0.5
+			}
+		}
+	further_military_cooperation = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				army_org_regain = 0.1
+				attrition=0.15
+			}
+		}
+	research_cooperation = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+	industry_cooperation = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.10
+			}
+		}	
+	deep_friendship = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always=yes
+			}
+			
+			cancel={
+			always = no
+			}
+			modifier = {
+				political_power_gain=0.1
+			}
+		}
+	}
+}

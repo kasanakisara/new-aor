@@ -1,0 +1,539 @@
+CHI_refresh_KMT = {
+	set_variable = {
+		CHI_refresh_all = 249
+	}
+	round_variable = CHI_refresh_all
+	log = "随机出来的[?CHI_refresh_all]"
+	add_to_variable = {
+		CHI_refresh_all_change = KMT_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = SOCP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = UNP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = Prop_senate_seat_var
+	}
+
+
+	subtract_from_variable = {
+		CHI_refresh_all =  CHI_refresh_all_change
+	}
+	set_variable = {
+		CHI_refresh_all_change = CHI_refresh_all
+	}
+	log = "[?CHI_refresh_all_change]"
+	divide_variable = {
+		CHI_refresh_all_change = 3
+	}
+	log = "[?CHI_refresh_all_change]"
+	set_variable = {
+		CHI_refresh_all_change_real = CHI_refresh_all_change
+	}
+	round_variable = CHI_refresh_all_change
+	log = "[?CHI_refresh_all_change]"
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change < CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = 1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change > CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = -1
+				}
+			}
+		}
+	}
+}
+CHI_refresh_SOCP = {
+	set_variable = {
+		CHI_refresh_all = 249
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = KMT_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = SOCP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = UNP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = Prop_senate_seat_var
+	}
+
+
+	subtract_from_variable = {
+		CHI_refresh_all =  CHI_refresh_all_change
+	}
+	set_variable = {
+		CHI_refresh_all_change = CHI_refresh_all
+	}
+	log = "[?CHI_refresh_all_change]"
+	divide_variable = {
+		CHI_refresh_all_change = 3
+	}
+	log = "[?CHI_refresh_all_change]"
+	set_variable = {
+		CHI_refresh_all_change_real = CHI_refresh_all_change
+	}
+	round_variable = CHI_refresh_all_change
+	log = "[?CHI_refresh_all_change]"
+	random_list = {
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change < CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = 1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change > CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = -1
+				}
+			}
+		}
+	}
+}
+CHI_refresh_UNP = {
+	set_variable = {
+		CHI_refresh_all = 249
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = KMT_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = SOCP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = UNP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = Prop_senate_seat_var
+	}
+
+
+	subtract_from_variable = {
+		CHI_refresh_all =  CHI_refresh_all_change
+	}
+	set_variable = {
+		CHI_refresh_all_change = CHI_refresh_all
+	}
+	log = "[?CHI_refresh_all_change]"
+	divide_variable = {
+		CHI_refresh_all_change = 3
+	}
+	log = "[?CHI_refresh_all_change]"
+	set_variable = {
+		CHI_refresh_all_change_real = CHI_refresh_all_change
+	}
+	round_variable = CHI_refresh_all_change
+	log = "[?CHI_refresh_all_change]"
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				Prop_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change < CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = 1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change > CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					Prop_senate_seat_var = -1
+				}
+			}
+		}
+	}
+}
+CHI_refresh_Prop = {
+	set_variable = {
+		CHI_refresh_all = 249
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = KMT_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = SOCP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = UNP_senate_seat_var
+	}
+	add_to_variable = {
+		CHI_refresh_all_change = Prop_senate_seat_var
+	}
+
+
+	subtract_from_variable = {
+		CHI_refresh_all =  CHI_refresh_all_change
+	}
+	set_variable = {
+		CHI_refresh_all_change = CHI_refresh_all
+	}
+	log = "[?CHI_refresh_all_change]"
+	divide_variable = {
+		CHI_refresh_all_change = 3
+	}
+	log = "[?CHI_refresh_all_change]"
+	set_variable = {
+		CHI_refresh_all_change_real = CHI_refresh_all_change
+	}
+	round_variable = CHI_refresh_all_change
+	log = "[?CHI_refresh_all_change]"
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	random_list = {
+		33 = {
+			add_to_variable = {
+				SOCP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				UNP_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+		33 = {
+			add_to_variable = {
+				KMT_senate_seat_var = CHI_refresh_all_change
+			}
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change < CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = 1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = 1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				CHI_refresh_all_change > CHI_refresh_all_change_real
+			}
+		}
+		random_list = {
+			33 = {
+				add_to_variable = {
+					SOCP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					UNP_senate_seat_var = -1
+				}
+			}
+			33 = {
+				add_to_variable = {
+					KMT_senate_seat_var = -1
+				}
+			}
+		}
+	}
+}
+

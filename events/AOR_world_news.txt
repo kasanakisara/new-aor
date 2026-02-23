@@ -1,0 +1,3457 @@
+add_namespace = AOR_news
+###############################################
+
+news_event = { #苏维埃宣告成立(RUS-SOV) - NewsEvents_SOV_timeaxis.1
+	id = AOR_news.1
+	title = NewsEvents_SOV_timeaxis.1.t
+	desc = NewsEvents_SOV_timeaxis.1.desc
+	picture = 1
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.a
+		trigger = {
+			NOT = {
+				OR = {
+					TAG = RUS
+					is_subject_of = RUS
+				}
+			}
+		}
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.b
+		trigger = { TAG = CHI }
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.c
+		trigger = {
+			OR = {
+				TAG = ENG
+				TAG = FRA
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.d
+		trigger = { TAG = POL }
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.e
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.f
+		trigger = { TAG = RUS }
+	}
+	option = {
+		name = NewsEvents_SOV_timeaxis.1.g
+		trigger = { has_goverment = Marxism }
+	}
+}
+
+news_event = { ##比荷卢选举陷入僵局
+	id = AOR_news.2 
+	title = AOR_news.2.t
+	desc = AOR_news.2.d
+	major = yes
+	
+	picture = GFX_AOR_news.2_pic
+	is_triggered_only = yes
+
+      
+	option = {
+		name = AOR_news.2.a
+
+	}
+
+}
+
+news_event = { ##阿工团成立
+	id = AOR_news.3  
+	title = AOR_news.3.t
+	desc = AOR_news.3.d
+	major = yes
+	
+	picture = GFX_AOR_news.3_pic
+	is_triggered_only = yes
+
+      
+	option = {
+		name =	AOR_news.3.a
+	trigger = {
+	    has_government = Anarcho
+		}
+	}
+	option = {
+		name = AOR_news.3.b
+	trigger = {
+	    has_government = Marxism
+		}
+	}
+	option = {
+		name = AOR_news.3.c
+	trigger = {
+	    NOT = {
+				has_government = Marxism
+				has_government = Anarcho
+				}
+		}
+	}
+
+}
+
+news_event = { ##墨西哥皇帝没辣
+	id = AOR_news.4  
+	title = AOR_news.4.t
+	desc =  AOR_news.4.d
+	major = yes
+	
+	picture = GFX_AOR_news.4_pic
+	is_triggered_only = yes
+
+      
+	option = {
+		name = AOR_news.4.a
+	}
+
+}
+
+news_event = {  ##墨西哥皇后来啦！
+	id = AOR_news.5 
+	title = AOR_news.5.t 
+	desc = AOR_news.5.d 
+	picture = GFX_AOR_news.5_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = AOR_news.5.a
+		trigger = {
+	    has_government = Anarcho
+		}
+		}
+	option = { 
+        name = AOR_news.5.b
+		trigger = {
+	    NOT = {
+				has_government = Anarcho
+				}
+			}
+		}
+}
+	
+news_event = {  ##老太婆赢了！
+	id = AOR_news.6
+	title = AOR_news.6.t
+	desc = AOR_news.6.d
+	picture = GFX_AOR_news.6_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = AOR_news.6.a
+		
+		}
+}
+
+news_event = {  ##南部安人赢了！
+	id = AOR_news.7
+	title = AOR_news.7.t
+	desc = AOR_news.7.d
+	picture = GFX_AOR_news.7_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = AOR_news.7.a
+		trigger = {
+	    has_government = Anarcho
+		}
+	}
+	option = { 
+        name = AOR_news.7.b
+		trigger = {
+	    NOT = {
+				has_government = Anarcho
+				}
+			}
+		}
+}
+
+news_event = {  ##北部安人赢了！
+	id = AOR_news.8
+	title = AOR_news.8.t
+	desc = AOR_news.8.d
+	picture = GFX_AOR_news.8_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	option = { 
+        name = AOR_news.8.a
+		trigger = {
+	    has_government = Anarcho
+		}
+		}
+	option = { 
+        name = AOR_news.8.b
+		trigger = {
+	    NOT = {
+				has_government = Anarcho
+				}
+			}
+		}
+} 
+
+news_event = {  ##老太婆也死了
+	id = AOR_news.9
+	title = AOR_news.9.t
+	desc = AOR_news.9.d
+	picture = GFX_AOR_news.9_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = AOR_news.9.a
+		
+	}
+}
+
+news_event = {  ##德意志阵营解散 - news_GER.1
+	id = AOR_news.10
+	title = news_GER.1.t
+	desc = news_GER.1.d
+	picture = GFX_news_german_disintegrated
+    major = yes
+	is_triggered_only = yes
+
+    #德意志人又开始了  
+	option = {
+		name = news_GER.1.a
+		add_war_support = 0.01
+        hidden_effect = {
+			set_variable = { global.se_AOR_event_picture_change = 2 }
+			MEK = {
+			    set_cosmetic_tag = MEK_Absolutism
+			}
+			PRE = {
+				set_cosmetic_tag = PRE_Absolutism
+			} 
+			KSH= {
+				set_cosmetic_tag = KSH_AUT_democratic
+			}
+			SIL = {
+				set_cosmetic_tag = SIL_Absolutism
+			}
+    	}
+	}
+}
+
+news_event = { #1920比荷卢奥运会
+	id = AOR_news.11
+	title = AOR_news.11.t
+	desc = AOR_news.11.d
+	picture = GFX_AOR_news.11_pic
+	is_triggered_only = yes
+    major = yes
+
+	option = {
+		name = AOR_news.11.a
+	trigger = {
+	    NOT = {tag = BEL}
+		}
+	}
+	option = {
+		name = news_OLYMPICS.1.b
+	trigger = {tag = BEL}
+	}
+}
+
+news_event = { #1924巴黎奥运会
+	id = AOR_news.12
+	title = AOR_news.12.t
+	desc = AOR_news.12.d
+	picture = GFX_AOR_news.12_pic
+	is_triggered_only = yes
+    major = yes
+    
+	option = {
+		name = AOR_news.12.a
+	}
+}
+
+news_event = { #电视被发明
+	id = AOR_news.13
+	title = AOR_news.13.t
+	desc = AOR_news.13.d
+	picture = GFX_AOR_news.13_pic
+	is_triggered_only = yes
+    major = yes
+	trigger = {
+	    date > 1925.10.2
+		date < 1925.10.4
+		tag = ENG
+	}
+    
+	option = {
+		name = AOR_news.13.a
+	}
+}
+
+news_event = { #青霉素被发现
+	id = AOR_news.14
+	title = AOR_news.14.t
+	desc = AOR_news.14.d
+	picture = GFX_AOR_news.14_pic
+	is_triggered_only = yes
+    major = yes
+	trigger = {
+	    date > 1920.9.14
+		date < 1920.9.16
+		tag = ENG
+	}
+    
+	option = {
+		name = AOR_news.14.a
+	}
+}
+
+news_event = { #中美洲建立
+	id = AOR_news.15
+	title = AOR_news.15.t
+	desc = AOR_news.15.d
+	picture = GFX_AOR_news.15_pic
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	option = { 
+        name = AOR_news.15.a
+		
+	}
+	option = { 
+        name = AOR_news.15.b
+		
+	}
+}
+
+
+
+news_event = { #挪威-瑞典内战新闻 - SWE.1
+    id = AOR_news.17
+    title = SWE.destruction.t
+    desc = SWE.destruction.d
+	picture = GFX_AOR_news_17_picture
+    is_triggered_only = yes
+    hidden = no
+    major = yes
+
+    option = {
+        name = SWE.destruction.a
+    }
+}
+
+news_event = { #阿瑟·米恩上台，前总理退休
+	id = AOR_news.18
+	title = AOR_news.18.t
+	desc = AOR_news.18.d
+	picture = GFX_AOR_news.18_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.18.a
+	}
+}
+
+news_event = { #加拿大1921年大选
+	id = AOR_news.19
+	title = AOR_news.19.t
+	desc = AOR_news.19.d
+	picture = GFX_AOR_news.19_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.19.a
+	}
+}
+
+
+news_event = { #魁北克起义
+	id = AOR_news.20
+	title = AOR_news.20.t
+	desc = AOR_news.20.d
+	picture = GFX_AOR_news.20_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.20.a
+	}
+}
+
+
+news_event = { #巴西内战
+	id = AOR_news.21
+	title = AOR_news.21.t
+	desc = AOR_news.21.d
+	picture = GFX_AOR_news.21_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.21.a
+	}
+}
+
+news_event = { #埃及独立
+	id = AOR_news.22
+	title = AOR_news.22.t
+	desc = AOR_news.22.d
+	picture = GFX_AOR_news.22_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.22.a
+	}
+}
+
+news_event = { #南非总理逝世
+	id = AOR_news.23
+	title = AOR_news.23.t
+	desc = AOR_news.23.d
+	picture = GFX_AOR_news.23_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.23.a
+	}
+}
+
+news_event = { #南非工团
+	id = AOR_news.24
+	title = AOR_news.24.t
+	desc = AOR_news.24.d
+	picture = GFX_AOR_news.24_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.24.a
+	}
+}
+
+news_event = { #滨海州合作政府
+	id = AOR_news.25
+	title = AOR_news.25.t
+	desc = AOR_news.25.d
+	picture = GFX_AOR_news.25_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.25.a
+	}
+}
+
+news_event = { #菲律宾革命
+	id = AOR_news.26
+	title = AOR_news.26.t
+	desc = AOR_news.26.d
+	picture = GFX_AOR_news.26_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.26.a
+	}
+}
+
+news_event = { #菲律宾革命被平息
+	id = AOR_news.27
+	title = AOR_news.27.t
+	desc = AOR_news.27.d
+	picture = GFX_AOR_news.27_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.27.a
+	}
+}
+
+news_event = { #芬兰陷入对峙
+	id = AOR_news.28
+	title = AOR_news.28.t
+	desc = AOR_news.28.d
+	picture = GFX_AOR_news.28_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.28.a
+	}
+}
+
+news_event = { #希土战争开战
+	id = AOR_news.29
+	title = AOR_news.29.t
+	desc = AOR_news.29.d
+	picture = GFX_AOR_news.29_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.29.a
+	}
+}
+
+news_event = { #袁世凯逝世
+	id = AOR_news.30
+	title = AOR_news.30.t
+	desc = AOR_news.30.d
+	picture = GFX_AOR_news.30_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.30.a
+	}
+}
+
+news_event = { #倍倍尔逝世
+	id = AOR_news.31
+	title = AOR_news.31.t
+	desc = AOR_news.31.d
+	picture = GFX_AOR_news.31_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.31.a
+		trigger = {has_government = Marxism}
+	}
+	option = {
+		name = AOR_news.31.b
+		trigger = {
+			NOT = 	{
+			has_government = Marxism
+			}
+			NOT = 	{
+			has_government = Anarcho
+			}
+		}
+	}
+	option = {
+		name = AOR_news.31.e
+		trigger = {has_government = Anarcho}
+	}
+}
+news_event = { #叙利亚起义寄辣！
+	id = AOR_news.32
+	title = AOR_news.32.t
+	desc = AOR_news.32.d
+	picture = GFX_AOR_news.32_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.32.a
+	}
+}
+news_event = { #叙利亚1920打输了，1922再打一次！
+	id = AOR_news.33
+	title = AOR_news.33.t
+	desc = AOR_news.33.d
+	picture = GFX_AOR_news.33_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.33.a
+	}
+}
+news_event = { #好的铁！
+	id = AOR_news.34
+	title = AOR_news.34.t
+	desc = AOR_news.34.d
+	picture = GFX_AOR_news.34_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.34.a
+	}
+}
+news_event = { #卡内基寄！
+	id = AOR_news.35
+	title = AOR_news.35.t
+	desc = AOR_news.35.d
+	picture = GFX_AOR_news.35_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.35.a
+	}
+}
+news_event = { #卡内基公司也寄！
+	id = AOR_news.36
+	title = AOR_news.36.t
+	desc = AOR_news.36.d
+	picture = GFX_AOR_news.36_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.36.a
+	}
+}
+news_event = { #特斯拉！！
+	id = AOR_news.37
+	title = AOR_news.37.t
+	desc = AOR_news.37.d
+	picture = GFX_AOR_news.37_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.37.a
+	}
+}
+news_event = { #电波！！
+	id = AOR_news.38
+	title = AOR_news.38.t
+	desc = AOR_news.38.d
+	picture = GFX_AOR_news.38_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.38.a
+	}
+}
+news_event = { #君堡！！！
+	id = AOR_news.39
+	title = AOR_news.39.t
+	desc = AOR_news.39.d
+	picture = GFX_AOR_news.39_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.39.a
+	}
+}
+news_event = { #伊斯坦布尔！！！
+	id = AOR_news.40
+	title = AOR_news.40.t
+	desc = AOR_news.40.d
+	picture = GFX_AOR_news.40_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.40.a
+	}
+}
+news_event = { #收复！！！
+	id = AOR_news.41
+	title = AOR_news.41.t
+	desc = AOR_news.41.d
+	picture = GFX_AOR_news.41_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.41.a
+	}
+}
+news_event = { #收复！！！
+	id = AOR_news.42
+	title = AOR_news.42.t
+	desc = AOR_news.42.d
+	picture = GFX_AOR_news.42_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.42.a
+	}
+}
+news_event = { #收复！！！
+	id = AOR_news.43
+	title = AOR_news.43.t
+	desc = AOR_news.43.d
+	picture = GFX_AOR_news.43_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.43.a
+	}
+}
+news_event = { #收复！！！
+	id = AOR_news.44
+	title = AOR_news.44.t
+	desc = AOR_news.44.d
+	picture = GFX_AOR_news.44_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.44.a
+	}
+}
+
+news_event = { #米骚乱扩大化
+	id = AOR_news.46
+	title = AOR_news.46.t
+	desc = AOR_news.46.d
+	picture = GFX_AOR_news.46_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.46.a
+	}
+}
+
+
+news_event = { #日本米骚乱平息
+	id = AOR_news.47
+	title = AOR_news.47.t
+	desc = AOR_news.47.d
+	picture = GFX_AOR_news.47_pic
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = AOR_news.47.a
+	}
+}
+
+news_event = { #英日提议将青岛划给日本，法国支持中国，学生经济会议
+	id = AOR_news.48
+	title = AOR_news.48.t
+	desc = AOR_news.48.d
+	picture = GFX_AOR_news.48_pic
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.48.a
+	}
+}
+
+news_event = { #三廿运动！（ 中国爆发大规模抗议！）
+	id = AOR_news.49
+	title = AOR_news.49.t
+	desc = AOR_news.49.d
+	picture = GFX_AOR_news.49_pic
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = AOR_news.49.a
+	}
+}
+
+news_event = { #三廿初步胜利
+	id = AOR_news.50
+	title = AOR_news.50.t
+	desc = AOR_news.50.d
+	picture = GFX_AOR_news.50_pic
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.50.a
+		QID = {
+			transfer_state = 743
+		}
+	}
+}
+
+news_event = { #中共一大
+	id = AOR_news.51
+	title = AOR_news.51.t
+	desc = AOR_news.51.d
+	picture = GFX_AOR_news.51_pic
+	major = yes
+	trigger = {
+	    date > 1920.6.31
+		date < 1920.7.2
+	}
+	immediate = {
+	}
+	option = {
+		name = AOR_news.51.a
+	}
+}
+
+news_event = { #抗英义勇军
+	id = AOR_news.52
+	title = AOR_news.52.t
+	desc = AOR_news.52.d
+	picture = GFX_AOR_news.52_pic
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.52.a
+	}
+}
+
+news_event = { #京汉铁路工人大罢工被镇压
+	id = AOR_news.53
+	title = AOR_news.53.t
+	desc = AOR_news.53.d
+	picture = GFX_AOR_news.53_pic
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = AOR_news.53.a
+	}
+}
+
+news_event = { #捷克经济崩溃！！！
+	id = AOR_news.310
+	title = AOR_news.310.t
+	desc = AOR_news.310.d
+	picture = GFX_AOR_news.310_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.310.a
+	}
+}
+
+news_event = { #托马斯！！！
+	id = AOR_news.311
+	title = AOR_news.311.t
+	desc = AOR_news.311.d
+	picture = GFX_AOR_news.310_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.311.a
+	}
+}
+
+news_event = { #血洗议会！！！
+	id = AOR_news.312
+	title = AOR_news.312.t
+	desc = AOR_news.312.d
+	picture = GFX_AOR_news.312_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.312.a
+	}
+}
+
+news_event = { #工人革命！！！
+	id = AOR_news.314
+	title = AOR_news.314.t
+	desc = AOR_news.314.d
+	picture = GFX_AOR_news.314_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.314.a
+	}
+}
+
+news_event = { #捷克经济继续崩！！！！
+	id = AOR_news.313
+	title = AOR_news.313.t
+	desc = AOR_news.313.d
+	picture = GFX_AOR_news.313_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.313.a
+	}
+}
+
+news_event = { #卷土重来！！！
+	id = AOR_news.347
+	title = AOR_news.347.t
+	desc = AOR_news.347.d
+	picture = GFX_AOR_news.347_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.347.a
+	}
+}
+
+news_event = { #大南斯拉夫成立！！！
+	id = AOR_news.348
+	title = AOR_news.348.t
+	desc = AOR_news.348.d
+	picture = GFX_AOR_news.348_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.348.a
+	}
+}
+
+news_event = { #东罗马赢得巴尔干战争！！！
+	id = AOR_news.349
+	title = AOR_news.349.t
+	desc = AOR_news.349.d
+	picture = GFX_AOR_news.349_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.349.a
+	}
+}
+
+news_event = { #东罗马输掉巴尔干战争！！！
+	id = AOR_news.350
+	title = AOR_news.350.t
+	desc = AOR_news.350.d
+	picture = GFX_AOR_news.350_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.350.a
+	}
+}
+
+news_event = { #共和国希腊赢得巴尔干战争！！！
+	id = AOR_news.351
+	title = AOR_news.351.t
+	desc = AOR_news.351.d
+	picture = GFX_AOR_news.351_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.351.a
+	}
+}
+
+news_event = { #共和国希腊输掉巴尔干战争！！！
+	id = AOR_news.352
+	title = AOR_news.352.t
+	desc = AOR_news.352.d
+	picture = GFX_AOR_news.352_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.352.a
+	}
+}
+
+news_event = { #法老陵墓！！！
+	id = AOR_news.353
+	title = AOR_news.353.t
+	desc = AOR_news.353.d
+	picture = GFX_AOR_news.353_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.353.a
+	}
+}
+
+news_event = { #图坦卡蒙的奇迹！！！
+	id = AOR_news.354
+	title = AOR_news.354.t
+	desc = AOR_news.354.d
+	picture = GFX_AOR_news.354_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.354.a
+		trigger = {
+			NOT = {
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = AOR_news.354.b
+		trigger = { TAG = ENG }
+	}
+}
+
+
+news_event = { #VKPD成立
+	id = AOR_news.54
+	title = AOR_news.54.t
+	desc = AOR_news.54.d
+	picture = GFX_AOR_news.54_pic
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.54.a
+	}
+}
+
+news_event = { #李线
+	id = AOR_news.55
+	title = AOR_news.55.t
+	desc = AOR_news.55.d
+	picture = GFX_AOR_news.55_pic
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.55.a
+	}
+}
+
+news_event = { #卢线
+	id = AOR_news.56
+	title = AOR_news.56.t
+	desc = AOR_news.56.d
+	picture = GFX_AOR_news.56_pic
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.56.a
+	}
+}
+
+news_event = { #德意志社会主义联邦成立
+	id = AOR_news.57
+	title = AOR_news.57.t
+	desc = AOR_news.57.d
+	picture = GFX_AOR_news.57_pic
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = AOR_news.57.a
+		trigger = {
+				has_government = Marxism
+		}
+	}
+	option = {
+		name = AOR_news.57.b
+		trigger = {
+		NOT = {
+				has_government = Marxism
+			}
+		}
+	}
+}
+
+news_event = { #米老鼠！！！！
+	id = AOR_news.58
+	title = AOR_news.58.t
+	desc = AOR_news.58.d
+	picture = GFX_AOR_news.58_pic
+	major = yes
+	trigger = {
+	    date > 1928.11.27
+		date < 1928.11.29
+		tag = USA
+	}
+	option = {
+		name = AOR_news.58.a
+	}
+}
+news_event = { #墨西哥开大会！！！！
+	id = AOR_news.59
+	title = AOR_news.59.t
+	desc = AOR_news.59.d
+	picture = GFX_AOR_news.59_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.58.a
+	}
+}
+news_event = { #墨西哥内战再起
+	id = AOR_news.60
+	title = AOR_news.60.t
+	desc = AOR_news.60.d
+	picture = GFX_AOR_news.60_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.60.a
+	}
+}
+news_event = { #墨西哥内战终息
+	id = AOR_news.61
+	title = AOR_news.61.t
+	desc = AOR_news.61.d
+	picture = GFX_AOR_news.61_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.61.a
+	}
+}
+
+news_event = { #澳大利亚1919选举
+	id = AOR_news.590
+	title = AOR_news.590.t
+	desc = AOR_news.590.d
+	picture = GFX_AOR_news.590_pic
+	major = yes
+	trigger = {
+	    date > 1919.12.12
+		date < 1919.12.14
+		tag = AST
+	}
+	option = {
+		name = AOR_news.59.a
+	}
+}
+
+news_event = { #澳大利亚联盟
+	id = AOR_news.600
+	title = AOR_news.600.t
+	desc = AOR_news.600.d
+	picture = GFX_AOR_news.600_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.600.a
+	}
+}
+news_event = { #澳大利亚工党
+	id = AOR_news.610
+	title = AOR_news.610.t
+	desc = AOR_news.610.d
+	picture = GFX_AOR_news.610_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.610.a
+	}
+}
+
+news_event = { #澳大利亚警察罢工
+	id = AOR_news.62
+	title = AOR_news.62.t
+	desc = AOR_news.62.d
+	picture = GFX_AOR_news.62_pic
+	major = yes
+	trigger = {
+	    date > 1923.11.1
+		date < 1923.11.2
+		tag = AST
+	}
+	mean_time_to_happen = { days = 1}
+	option = {
+		name = AOR_news.62.a
+	}
+}
+
+
+news_event = { #新西兰新领导人
+	id = AOR_news.63
+	title = AOR_news.63.t
+	desc = AOR_news.63.d
+	picture = GFX_AOR_news.63_pic
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_news.63.a
+	}
+}
+news_event = { #老美内战寄！
+	id = AOR_news.64
+	title = AOR_news.64.t
+	desc = AOR_news.64.d
+	picture = GFX_AOR_news.64_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.64.a
+	}
+}
+news_event = { #民国新时代
+	id = AOR_news.65
+	title = AOR_news.65.t
+	desc = AOR_news.65.d
+	picture = GFX_AOR_news.65_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.65.a
+	}
+	option = {
+		name = AOR_news.65.b
+	}
+}
+news_event = { #庚申新年
+	id = AOR_news.66
+	title = AOR_news.66.t
+	desc = AOR_news.66.d
+	picture = GFX_AOR_news.66_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.66.a
+	}
+}
+
+news_event = { #北石荷公投-丹
+	id = AOR_news.67
+	title = AOR_news.67.t
+	desc = AOR_news.67.d
+	picture = GFX_AOR_news.67_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.67.a
+	}
+}
+
+news_event = { #北石荷公投-德
+	id = AOR_news.68
+	title = AOR_news.68.t
+	desc = AOR_news.68.d
+	picture = GFX_AOR_news.68_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.68.a
+	}
+}
+
+news_event = { #奥斯陆博览会
+	id = AOR_news.70
+	title = AOR_news.70.t
+	desc = AOR_news.70.d
+	picture = GFX_AOR_news.70_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		trigger = {
+			NOT = {
+				TAG = SWE
+			}
+		}
+		name = AOR_news.70.a
+	}
+
+	option = {
+		trigger = {
+			TAG = SWE
+		}
+		name = AOR_news.70.b
+	}
+}
+
+news_event = { #西班牙大流感消失
+	id = AOR_news.71
+	title = AOR_news.71.t
+	desc = AOR_news.71.d
+	picture = GFX_AOR_news.71_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.71.a
+	}
+}
+
+news_event = { #纽芬兰给加
+	id = AOR_news.72
+	title = AOR_news.72.t
+	desc = AOR_news.72.d
+	picture = GFX_AOR_news.72_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.72.a
+	}
+}
+
+news_event = { #纽芬兰给英
+	id = AOR_news.73
+	title = AOR_news.73.t
+	desc = AOR_news.73.d
+	picture = GFX_AOR_news.73_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.73.a
+	}
+}
+
+news_event = { #老美西部内战
+	id = AOR_news.80
+	title = AOR_news.80.t
+	desc = AOR_news.80.d
+	picture = GFX_AOR_news.80_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.80.a
+	}
+}
+
+news_event = { #沃伦·盖玛利尔·哈定当选美国总统
+	id = AOR_news.81
+	title = AOR_news.81.t
+	desc = AOR_news.81.d
+	picture = GFX_AOR_news.81_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.81.a
+	}
+}
+
+news_event = { #美国宣布提高关税
+	id = AOR_news.82
+	title = AOR_news.82.t
+	desc = AOR_news.82.d
+	picture = GFX_AOR_news.82_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.82.a
+	}
+}
+
+news_event = { #美国重新调整经济计划
+	id = AOR_news.83
+	title = AOR_news.83.t
+	desc = AOR_news.83.d
+	picture = GFX_AOR_news.83_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.83.a
+	}
+}
+
+news_event = {#奥斯陆枪击案
+	id = AOR_news.84
+	title = AOR_news.84.t
+	desc = AOR_news.84.d
+	picture = GFX_AOR_news.84_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.84.a
+	}
+}
+
+news_event = {# 中国军阀炸开了
+	id = AOR_news.85
+	title = AOR_news.85.t
+	desc = AOR_news.85.d
+	picture = GFX_AOR_news.85_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.85.a
+	}
+}
+
+news_event = {# 中国张作霖
+	id = AOR_news.86
+	title = AOR_news.86.t
+	desc = AOR_news.86.d
+	picture = GFX_AOR_news.86_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.86.a
+	}
+}
+
+news_event = {# 中国四川军阀开赛
+	id = AOR_news.87
+	title = AOR_news.87.t
+	desc = AOR_news.87.d
+	picture = GFX_AOR_news.87_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.87.a
+	}
+}
+
+news_event = {# 中国国会陷入骚乱
+	id = AOR_news.88
+	title = AOR_news.88.t
+	desc = AOR_news.88.d
+	picture = GFX_AOR_news.88_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.88.a
+	}
+}
+
+news_event = {# 中国甘肃发生大地震
+	id = AOR_news.89
+	title = AOR_news.89.t
+	desc = AOR_news.89.d
+	picture = GFX_AOR_news.89_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.89.a
+	}
+}
+
+news_event = {#哈康之死
+	id = AOR_news.90
+	title = AOR_news.90.t
+	desc = AOR_news.90.d
+	picture = GFX_AOR_news.90_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.90.a
+	}
+}
+
+news_event = {#波兰进军东欧
+	id = AOR_news.91
+	title = AOR_news.91.t
+	desc = AOR_news.91.d
+	picture = GFX_AOR_news.91_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.91.a
+	}
+}
+
+news_event = {#东欧战区进行大改组
+	id = AOR_news.92
+	title = AOR_news.92.t
+	desc = AOR_news.92.d
+	picture = GFX_AOR_news.92_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.92.a
+	}
+}
+
+news_event = {#东欧战区进行小改组
+	id = AOR_news.93
+	title = AOR_news.93.t
+	desc = AOR_news.93.d
+	picture = GFX_AOR_news.93_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.93.a
+	}
+}
+
+news_event = {#东欧战区进行改革
+	id = AOR_news.94
+	title = AOR_news.94.t
+	desc = AOR_news.94.d
+	picture = GFX_AOR_news.94_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.94.a
+	}
+}
+
+news_event = {#东欧战区解体
+	id = AOR_news.95
+	title = AOR_news.95.t
+	desc = AOR_news.95.d
+	picture = GFX_AOR_news.95_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.95.a
+	}
+}
+
+news_event = {#冯国璋公开支持保定政府
+	id = AOR_news.96
+	title = AOR_news.96.t
+	desc = AOR_news.96.d
+	picture = GFX_AOR_news.96_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.96.a
+	}
+}
+
+news_event = {#中国内战全面爆发(直皖大战)
+	id = AOR_news.97
+	title = AOR_news.97.t
+	desc = AOR_news.97.d
+	picture = GFX_AOR_news.97_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.97.a
+	}
+}
+
+news_event = {#东欧战区爆发红色革命
+	id = AOR_news.98
+	title = AOR_news.98.t
+	desc = AOR_news.98.d
+	picture = GFX_AOR_news.98_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.98.a
+	}
+}
+
+news_event = {#红色东斯拉夫成立！
+	id = AOR_news.99
+	title = AOR_news.99.t
+	desc = AOR_news.99.d
+	picture = GFX_AOR_news.99_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.98.a
+	}
+}
+
+news_event = {#东欧波罗的诸国灭亡
+	id = AOR_news.100
+	title = AOR_news.100.t
+	desc = AOR_news.100.d
+	picture = GFX_AOR_news.100_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.100.a
+	}
+}
+
+news_event = {#中国华南宣布成立广州政府
+	id = AOR_news.101
+	title = AOR_news.101.t
+	desc = AOR_news.101.d
+	picture = GFX_AOR_news.101_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.101.a
+	}
+}
+
+news_event = {#昆明政府与广州政府爆发战争
+	id = AOR_news.102
+	title = AOR_news.102.t
+	desc = AOR_news.102.d
+	picture = GFX_AOR_news.102_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.102.a
+	}
+}
+
+news_event = {#奉天政府进入山海关
+	id = AOR_news.103
+	title = AOR_news.103.t
+	desc = AOR_news.103.d
+	picture = GFX_AOR_news.103_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.103.a
+	}
+}
+
+news_event = {#中国西南宣布成立昆明政府
+	id = AOR_news.104
+	title = AOR_news.104.t
+	desc = AOR_news.104.d
+	picture = GFX_AOR_news.104_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.104.a
+	}
+}
+
+news_event = {#中国红军统一四川
+	id = AOR_news.105
+	title = AOR_news.105.t
+	desc = AOR_news.105.d
+	picture = GFX_AOR_news.105_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.105.a
+	}
+}
+
+news_event = {#昆明政府统一中国华南
+	id = AOR_news.106
+	title = AOR_news.106.t
+	desc = AOR_news.106.d
+	picture = GFX_AOR_news.106_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.106.a
+	}
+}
+
+news_event = {#广州政府统一中国华南
+	id = AOR_news.107
+	title = AOR_news.107.t
+	desc = AOR_news.107.d
+	picture = GFX_AOR_news.107_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.107.a
+	}
+}
+
+news_event = {#中国昆明政府宣布北伐
+	id = AOR_news.108
+	title = AOR_news.108.t
+	desc = AOR_news.108.d
+	picture = GFX_AOR_news.108_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.108.a
+	}
+}
+
+news_event = {#中国广州政府宣布北伐
+	id = AOR_news.109
+	title = AOR_news.109.t
+	desc = AOR_news.109.d
+	picture = GFX_AOR_news.109_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.109.a
+	}
+}
+
+news_event = {#南京政府在大战中获胜！
+	id = AOR_news.110
+	title = AOR_news.110.t
+	desc = AOR_news.110.d
+	picture = GFX_AOR_news.110_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.110.a
+	}
+}
+
+news_event = {#北京政府在大战中获胜！
+	id = AOR_news.111
+	title = AOR_news.111.t
+	desc = AOR_news.111.d
+	picture = GFX_AOR_news.111_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.111.a
+	}
+}
+
+news_event = {#美国内战北方胜利！
+	id = AOR_news.112
+	title = AOR_news.112.t
+	desc = AOR_news.112.d
+	picture = GFX_AOR_news.112_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.112.a
+	}
+}
+
+news_event = {#国民革命政府统一中国南北！
+	id = AOR_news.113
+	title = AOR_news.113.t
+	desc = AOR_news.113.d
+	picture = GFX_AOR_news.113_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.113.a
+	}
+}
+
+news_event = {#联省革命政府统一中国南北！
+	id = AOR_news.114
+	title = AOR_news.114.t
+	desc = AOR_news.114.d
+	picture = GFX_AOR_news.114_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.114.a
+	}
+}
+
+news_event = {#北京政府占领满洲
+	id = AOR_news.115
+	title = AOR_news.115.t
+	desc = AOR_news.115.d
+	picture = GFX_AOR_news.115_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.115.a
+	}
+}
+
+news_event = {#南京政府占领满洲
+	id = AOR_news.116
+	title = AOR_news.116.t
+	desc = AOR_news.116.d
+	picture = GFX_AOR_news.116_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.116.a
+	}
+}
+
+news_event = {#国民革命政府统一全中国！
+	id = AOR_news.117
+	title = AOR_news.117.t
+	desc = AOR_news.117.d
+	picture = GFX_AOR_news.117_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.117.a
+	}
+}
+
+news_event = {#联省革命政府统一全中国！
+	id = AOR_news.118
+	title = AOR_news.118.t
+	desc = AOR_news.118.d
+	picture = GFX_AOR_news.118_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.118.a
+	}
+}
+
+news_event = {#北京政府统一全中国！
+	id = AOR_news.119
+	title = AOR_news.119.t
+	desc = AOR_news.119.d
+	picture = GFX_AOR_news.119_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.119.a
+	}
+}
+
+news_event = {#南京政府统一全中国！
+	id = AOR_news.120
+	title = AOR_news.120.t
+	desc = AOR_news.120.d
+	picture = GFX_AOR_news.120_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.120.a
+	}
+}
+
+news_event = {#北京政府消灭华南广州政权
+	id = AOR_news.121
+	title = AOR_news.121.t
+	desc = AOR_news.121.d
+	picture = GFX_AOR_news.121_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.121.a
+	}
+}
+
+news_event = {#南京政府消灭华南广州政权
+	id = AOR_news.122
+	title = AOR_news.122.t
+	desc = AOR_news.122.d
+	picture = GFX_AOR_news.122_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.122.a
+	}
+}
+
+news_event = {#北京政府消灭华南国民党政权
+	id = AOR_news.123
+	title = AOR_news.123.t
+	desc = AOR_news.123.d
+	picture = GFX_AOR_news.123_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.123.a
+	}
+}
+
+news_event = {#南京政府消灭华南国民党政权
+	id = AOR_news.124
+	title = AOR_news.124.t
+	desc = AOR_news.124.d
+	picture = GFX_AOR_news.124_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.124.a
+	}
+}
+
+news_event = {#国民革命政府占领满洲
+	id = AOR_news.125
+	title = AOR_news.125.t
+	desc = AOR_news.125.d
+	picture = GFX_AOR_news.125_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.125.a
+	}
+}
+
+news_event = {#联省革命政府占领满洲
+	id = AOR_news.126
+	title = AOR_news.126.t
+	desc = AOR_news.126.d
+	picture = GFX_AOR_news.126_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.126.a
+	}
+}
+
+news_event = {#冯玉祥支持昆明共和
+	id = AOR_news.127
+	title = AOR_news.127.t
+	desc = AOR_news.127.d
+	picture = GFX_AOR_news.127_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.127.a
+	}
+}
+
+news_event = {#冯玉祥支持广州共和
+	id = AOR_news.128
+	title = AOR_news.128.t
+	desc = AOR_news.128.d
+	picture = GFX_AOR_news.128_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.128.a
+	}
+}
+
+news_event = {#中国宣布出兵中亚
+	id = AOR_news.129
+	title = AOR_news.129.t
+	desc = AOR_news.129.d
+	picture = GFX_AOR_news.129_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.129.a
+	}
+}
+
+news_event = {#英国舰船炮击中国重庆
+	id = AOR_news.130
+	title = AOR_news.130.t
+	desc = AOR_news.130.d
+	picture = GFX_AOR_news.130_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.130.a
+	}
+}
+
+news_event = {#中国云南发生政变！
+	id = AOR_news.131
+	title = AOR_news.131.t
+	desc = AOR_news.131.d
+	picture = GFX_AOR_news.131_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.131.a
+	}
+}
+
+news_event = {#中国国民政府占领四川
+	id = AOR_news.132
+	title = AOR_news.132.t
+	desc = AOR_news.132.d
+	picture = GFX_AOR_news.132_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.132.a
+	}
+}
+
+news_event = {#中国广州政府占领四川
+	id = AOR_news.133
+	title = AOR_news.133.t
+	desc = AOR_news.133.d
+	picture = GFX_AOR_news.133_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.133.a
+	}
+}
+
+news_event = {#大正天皇驾崩！
+	id = AOR_news.134
+	title = AOR_news.134.t
+	desc = AOR_news.134.d
+	picture = GFX_AOR_news.134_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.134.a
+	}
+}
+
+
+news_event = {#中日战争爆发！
+	id = AOR_news.135
+	title = AOR_news.135.t
+	desc = AOR_news.135.d
+	picture = GFX_AOR_news.135_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.135.a
+	}
+}
+
+
+news_event = {#底特律大暴动被平息
+	id = AOR_news.136
+	title = AOR_news.136.t
+	desc = AOR_news.136.d
+	picture = GFX_AOR_news.136_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.136.a
+	}
+}
+
+news_event = {#日本与中国国民政府签订和平协议（大胜）
+	id = AOR_news.137
+	title = AOR_news.137.t
+	desc = AOR_news.137.d
+	picture = GFX_AOR_news.137_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.137.a
+	}
+}
+news_event = {#日本与中国联省政府签订和平协议（大胜）
+	id = AOR_news.138
+	title = AOR_news.138.t
+	desc = AOR_news.138.d
+	picture = GFX_AOR_news.138_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.138.a
+	}
+}
+
+news_event = {#美国西部再次陷入危机
+	id = AOR_news.139
+	title = AOR_news.139.t
+	desc = AOR_news.139.d
+	picture = GFX_AOR_news.139_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.139.a
+	}
+}
+
+news_event = {#美国哈定总统被刺杀身亡！！！
+	id = AOR_news.140
+	title = AOR_news.140.t
+	desc = AOR_news.140.d
+	picture = GFX_AOR_news.140_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.140.a
+	}
+}
+
+news_event = {#美国1924总统大选结果出炉
+	id = AOR_news.141
+	title = AOR_news.141.t
+	desc = AOR_news.141.d
+	picture = GFX_AOR_news.141_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.141.a
+	}
+}
+
+news_event = {#日本关东军发生暴动
+	id = AOR_news.142
+	title = AOR_news.142.t
+	desc = AOR_news.142.d
+	picture = GFX_AOR_news.142_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.142.a
+	}
+}
+
+news_event = {#中国总统黎元洪出逃！
+	id = AOR_news.143
+	title = AOR_news.143.t
+	desc = AOR_news.143.d
+	picture = GFX_AOR_news.143_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.143.a
+	}
+}
+
+news_event = {#美国联盟国政府赢得内战！
+	id = AOR_news.144
+	title = AOR_news.144.t
+	desc = AOR_news.144.d
+	picture = GFX_AOR_news.144_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.144.a
+	}
+}
+
+news_event = {#中国云贵内战结束
+	id = AOR_news.145
+	title = AOR_news.145.t
+	desc = AOR_news.145.d
+	picture = GFX_AOR_news.145_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.145.a
+	}
+}
+
+news_event = {#日本与中国国民政府签订和平协议（小胜）
+	id = AOR_news.146
+	title = AOR_news.146.t
+	desc = AOR_news.146.d
+	picture = GFX_AOR_news.146_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.146.a
+	}
+}
+
+news_event = {#日本与中国联省政府签订和平协议（小胜）
+	id = AOR_news.147
+	title = AOR_news.147.t
+	desc = AOR_news.147.d
+	picture = GFX_AOR_news.147_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.147.a
+	}
+}
+
+news_event = {#中国四川红军南下进攻华南
+	id = AOR_news.148
+	title = AOR_news.148.t
+	desc = AOR_news.148.d
+	picture = GFX_AOR_news.148_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.148.a
+	}
+}
+
+news_event = {#中国四川红军统一中国华南！
+	id = AOR_news.149
+	title = AOR_news.149.t
+	desc = AOR_news.149.d
+	picture = GFX_AOR_news.149_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.149.a
+	}
+}
+
+news_event = {#中国山西宣布服从联省革命
+	id = AOR_news.150
+	title = AOR_news.150.t
+	desc = AOR_news.150.d
+	picture = GFX_AOR_news.150_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.150.a
+	}
+}
+
+news_event = {#中国山西宣布服从国民革命（陈其美）
+	id = AOR_news.151
+	title = AOR_news.151.t
+	desc = AOR_news.151.d
+	picture = GFX_AOR_news.151_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.151.a
+	}
+}
+
+news_event = {#中国山西宣布服从南京政府
+	id = AOR_news.152
+	title = AOR_news.152.t
+	desc = AOR_news.152.d
+	picture = GFX_AOR_news.152_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.152.a
+	}
+}
+
+news_event = {#中国山西宣布服从北京政府
+	id = AOR_news.153
+	title = AOR_news.153.t
+	desc = AOR_news.153.d
+	picture = GFX_AOR_news.153_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.153.a
+	}
+}
+
+news_event = {#广州政府消灭四川红军
+	id = AOR_news.154
+	title = AOR_news.154.t
+	desc = AOR_news.154.d
+	picture = GFX_AOR_news.154_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.154.a
+	}
+}
+
+news_event = {#陈宦总督统一四川
+	id = AOR_news.155
+	title = AOR_news.155.t
+	desc = AOR_news.155.d
+	picture = GFX_AOR_news.155_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.155.a
+	}
+}
+
+news_event = {#巴西总统死亡
+	id = AOR_news.156
+	title = AOR_news.156.t
+	desc = AOR_news.156.d
+	picture = GFX_AOR_news.156_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.156.a
+	}
+}
+
+news_event = {#美国内战白热化（北方）
+	id = AOR_news.157
+	title = AOR_news.157.t
+	desc = AOR_news.157.d
+	picture = GFX_AOR_news.157_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.157.a
+	}
+}
+
+news_event = {#美国内战白热化（南方）
+	id = AOR_news.158
+	title = AOR_news.158.t
+	desc = AOR_news.158.d
+	picture = GFX_AOR_news.158_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.158.a
+	}
+}
+
+news_event = {#阿拉伯王国解体！
+	id = AOR_news.159
+	title = AOR_news.159.t
+	desc = AOR_news.159.d
+	picture = GFX_AOR_news.159_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.159.a
+	}
+}
+
+news_event = {#中国四川政府宣布南下
+	id = AOR_news.160
+	title = AOR_news.160.t
+	desc = AOR_news.160.d
+	picture = GFX_AOR_news.160_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.160.a
+	}
+}
+
+news_event = {#朝鲜关东军暴乱平息
+	id = AOR_news.161
+	title = AOR_news.161.t
+	desc = AOR_news.161.d
+	picture = GFX_AOR_news.161_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.161.a
+	}
+}
+
+news_event = {#朝鲜爆发大规模暴乱！
+	id = AOR_news.162
+	title = AOR_news.162.t
+	desc = AOR_news.162.d
+	picture = GFX_AOR_news.162_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.162.a
+	}
+}
+
+news_event = {#日本接管汉城
+	id = AOR_news.163
+	title = AOR_news.163.t
+	desc = AOR_news.163.d
+	picture = GFX_AOR_news.163_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.163.a
+	}
+}
+
+news_event = {#日本占领青岛，并在南满与中国发生冲突
+	id = AOR_news.164
+	title = AOR_news.164.t
+	desc = AOR_news.164.d
+	picture = GFX_AOR_news.164_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.164.a
+	}
+}
+
+news_event = {#日本坂本龙马去世
+	id = AOR_news.165
+	title = AOR_news.165.t
+	desc = AOR_news.165.d
+	picture = GFX_AOR_news.165_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.165.a
+	}
+}
+
+news_event = {#中俄签订边境备忘录协定
+	id = AOR_news.166
+	title = AOR_news.166.t
+	desc = AOR_news.166.d
+	picture = GFX_AOR_news.166_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.166.a
+	}
+}
+
+news_event = {#朝鲜义军动乱加剧！
+	id = AOR_news.167
+	title = AOR_news.167.t
+	desc = AOR_news.167.d
+	picture = GFX_AOR_news.167_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.167.a
+	}
+}
+
+news_event = {#中国西藏发生动乱
+	id = AOR_news.168
+	title = AOR_news.168.t
+	desc = AOR_news.168.d
+	picture = GFX_AOR_news.168_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.168.a
+	}
+}
+
+news_event = {#西藏达赖喇嘛·土登嘉措重新上台
+	id = AOR_news.169
+	title = AOR_news.169.t
+	desc = AOR_news.169.d
+	picture = GFX_AOR_news.169_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.169.a
+	}
+}
+
+news_event = {#国民革命政府战胜南京政府！
+	id = AOR_news.170
+	title = AOR_news.170.t
+	desc = AOR_news.170.d
+	picture = GFX_AOR_news.170_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.170.a
+	}
+}
+news_event = {#国民革命政府战胜北京政府！
+	id = AOR_news.171
+	title = AOR_news.171.t
+	desc = AOR_news.171.d
+	picture = GFX_AOR_news.171_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.171.a
+	}
+}
+
+news_event = {#联省革命政府战胜南京政府！
+	id = AOR_news.172
+	title = AOR_news.172.t
+	desc = AOR_news.172.d
+	picture = GFX_AOR_news.172_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.169.a
+	}
+}
+
+news_event = {#联省革命政府战胜北京政府！
+	id = AOR_news.173
+	title = AOR_news.173.t
+	desc = AOR_news.173.d
+	picture = GFX_AOR_news.173_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.173.a
+	}
+}
+
+news_event = {#美国第三次内战爆发！
+	id = AOR_news.174
+	title = AOR_news.174.t
+	desc = AOR_news.174.d
+	picture = GFX_AOR_news.174_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.174.a
+	}
+}
+
+news_event = {#朝鲜义军南下
+	id = AOR_news.175
+	title = AOR_news.175.t
+	desc = AOR_news.175.d
+	picture = GFX_AOR_news.175_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.175.a
+	}
+}
+
+news_event = {#中国云贵内战全面爆发
+	id = AOR_news.176
+	title = AOR_news.176.t
+	desc = AOR_news.176.d
+	picture = GFX_AOR_news.176_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.176.a
+	}
+}
+
+news_event = {#徐世昌代行中国大总统
+	id = AOR_news.177
+	title = AOR_news.177.t
+	desc = AOR_news.177.d
+	picture = GFX_AOR_news.177_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.177.a
+	}
+}
+
+news_event = {#意大利进攻利比亚诸部落
+	id = AOR_news.178
+	title = AOR_news.178.t
+	desc = AOR_news.178.d
+	picture = GFX_AOR_news.178_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.178.a
+	}
+}
+
+news_event = {#利比亚诸部落被协约国击败
+	id = AOR_news.179
+	title = AOR_news.179.t
+	desc = AOR_news.179.d
+	picture = GFX_AOR_news.179_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.179.a
+	}
+}
+
+news_event = {#乌拉圭爆发大规模高乔人动乱
+	id = AOR_news.180
+	title = AOR_news.180.t
+	desc = AOR_news.180.d
+	picture = GFX_AOR_news.180_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.180.a
+	}
+}
+
+news_event = {#乌拉圭北高乔人完全夺取乌拉圭
+	id = AOR_news.181
+	title = AOR_news.181.t
+	desc = AOR_news.181.d
+	picture = GFX_AOR_news.181_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.181.a
+	}
+}
+
+news_event = {#乌拉圭北高乔人被乌拉圭政府驱赶
+	id = AOR_news.182
+	title = AOR_news.182.t
+	desc = AOR_news.182.d
+	picture = GFX_AOR_news.182_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.182.a
+	}
+}
+
+news_event = {#“圣地”组织崛起！
+	id = AOR_news.183
+	title = AOR_news.183.t
+	desc = AOR_news.183.d
+	picture = GFX_AOR_news.183_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.183.a
+	}
+}
+
+news_event = {#“圣地”组织向巴西进军！
+	id = AOR_news.184
+	title = AOR_news.184.t
+	desc = AOR_news.184.d
+	picture = GFX_AOR_news.184_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.184.a
+	}
+}
+
+news_event = {#乌拉圭高乔政权与“圣地”组织爆发冲突
+	id = AOR_news.185
+	title = AOR_news.185.t
+	desc = AOR_news.185.d
+	picture = GFX_AOR_news.185_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.185.a
+	}
+}
+
+news_event = {#乌里阿勒格武装暴动加剧
+	id = AOR_news.186
+	title = AOR_news.186.t
+	desc = AOR_news.186.d
+	picture = GFX_AOR_news.186_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.186.a
+	}
+}
+
+news_event = {#里夫共和国成立！
+	id = AOR_news.187
+	title = AOR_news.187.t
+	desc = AOR_news.187.d
+	picture = GFX_AOR_news.187_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.187.a
+	}
+}
+
+news_event = {#法西联军向里夫进军
+	id = AOR_news.188
+	title = AOR_news.188.t
+	desc = AOR_news.188.d
+	picture = GFX_AOR_news.188_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.188.a
+	}
+}
+
+news_event = {#美国通过妇女法案
+	id = AOR_news.189
+	title = AOR_news.189.t
+	desc = AOR_news.189.d
+	picture = GFX_AOR_news.189_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.189.a
+	}
+}
+
+news_event = {#威尔逊宣布《美丽国家计划》
+	id = AOR_news.190
+	title = AOR_news.190.t
+	desc = AOR_news.190.d
+	picture = GFX_AOR_news.190_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.190.a
+	}
+}
+
+news_event = {#劳动骑士团参与美国内战
+	id = AOR_news.191
+	title = AOR_news.191.t
+	desc = AOR_news.191.d
+	picture = GFX_AOR_news.191_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.191.a
+	}
+}
+
+news_event = { #瑞典入侵奥兰
+	id = AOR_news.192
+	title = AOR_news.192.t
+	desc = AOR_news.192.d
+	picture = GFX_AOR_news.192_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.192.a
+	}
+}
+
+news_event = { #芬兰内战爆发
+	id = AOR_news.193
+	title = AOR_news.193.t
+	desc = AOR_news.193.d
+	picture = GFX_AOR_news.193_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.193.a
+	}
+}
+
+news_event = { #芬兰内战结束-红方胜利
+	id = AOR_news.194
+	title = AOR_news.194.t
+	desc = AOR_news.194.d
+	picture = GFX_AOR_news.194_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.194.a
+	}
+}
+
+news_event = { #芬兰内战结束-白方胜利
+	id = AOR_news.195
+	title = AOR_news.194.t
+	desc = AOR_news.195.d
+	picture = GFX_AOR_news.194_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.195.a
+	}
+}
+
+news_event = { #芬兰内战白热化
+	id = AOR_news.196
+	title = AOR_news.196.t
+	desc = AOR_news.196.d
+	picture = GFX_AOR_news.196_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.196.a
+	}
+}
+
+news_event = { #约翰·南斯·加纳发动新闻攻势
+	id = AOR_news.197
+	title = AOR_news.197.t
+	desc = AOR_news.197.d
+	picture = GFX_AOR_news.197_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.197.a
+	}
+}
+
+news_event = { #西奥多·比尔博发表反美言论
+	id = AOR_news.198
+	title = AOR_news.198.t
+	desc = AOR_news.198.d
+	picture = GFX_AOR_news.198_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.198.a
+	}
+}
+
+news_event = { #美国西部动乱愈演愈烈
+	id = AOR_news.199
+	title = AOR_news.199.t
+	desc = AOR_news.199.d
+	picture = GFX_AOR_news.199_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.199.a
+	}
+}
+
+news_event = { #美国西部信息连接疑似被人为切断
+	id = AOR_news.200
+	title = AOR_news.200.t
+	desc = AOR_news.200.d
+	picture = GFX_AOR_news.200_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.200.a
+	}
+}
+
+news_event = { #老洛克菲勒会见美国总统
+	id = AOR_news.201
+	title = AOR_news.201.t
+	desc = AOR_news.201.d
+	picture = GFX_AOR_news.201_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.201.a
+	}
+}
+
+news_event = { #法国总理在巴拿马会见美国总统
+	id = AOR_news.202
+	title = AOR_news.202.t
+	desc = AOR_news.202.d
+	picture = GFX_AOR_news.202_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.202.a
+	}
+}
+
+news_event = { #美国公布新一轮反布尔什维克计划
+	id = AOR_news.203
+	title = AOR_news.203.t
+	desc = AOR_news.203.d
+	picture = GFX_AOR_news.203_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.203.a
+	}
+}
+
+news_event = { #法国批判英国在爱尔兰问题上的举措
+	id = AOR_news.204
+	title = AOR_news.204.t
+	desc = AOR_news.204.d
+	picture = GFX_AOR_news.204_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.204.a
+	}
+}
+
+news_event = { #法国通过法案，授权向爱尔兰出售武器
+	id = AOR_news.205
+	title = AOR_news.205.t
+	desc = AOR_news.205.d
+	picture = GFX_AOR_news.205_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.205.a
+	}
+}
+
+news_event = { #协约国解散
+	id = AOR_news.206
+	title = AOR_news.206.t
+	desc = AOR_news.206.d
+	picture = GFX_AOR_news.206_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.206.a
+	}
+}
+
+news_event = {#段祺瑞吞并保定政府
+	id = AOR_news.207
+	title = AOR_news.207.t
+	desc = AOR_news.207.d
+	picture = GFX_AOR_news.207_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.207.a
+	}
+}
+
+news_event = {#美国退出协约国
+	id = AOR_news.208
+	title = AOR_news.208.t
+	desc = AOR_news.208.d
+	picture = GFX_AOR_news.208_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.208.a
+	}
+}
+news_event = {#波罗的-白俄罗斯军管区局势逐渐动荡
+	id = AOR_news.209
+	title = AOR_news.209.t
+	desc = AOR_news.209.d
+	picture = GFX_AOR_news.209_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.209.a
+	}
+}
+news_event = {#波兰消灭加利西亚分裂势力
+	id = AOR_news.210
+	title = AOR_news.210.t
+	desc = AOR_news.210.d
+	picture = GFX_AOR_news.210_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.210.a
+	}
+}
+news_event = {#石勒苏益格-荷尔施泰因公投入德
+	id = AOR_news.211
+	title = AOR_news.211.t
+	desc = AOR_news.211.d
+	picture = GFX_AOR_news.211_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.211.a
+	}
+}
+news_event = {#石勒苏益格-荷尔施泰因公投入丹
+	id = AOR_news.212
+	title = AOR_news.212.t
+	desc = AOR_news.212.d
+	picture = GFX_AOR_news.212_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.212.a
+	}
+}
+news_event = {#石勒苏益格-荷尔施泰因公投作废
+	id = AOR_news.213
+	title = AOR_news.213.t
+	desc = AOR_news.213.d
+	picture = GFX_AOR_news.213_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.213.a
+	}
+}
+news_event = {#丹麦与南石荷爆发战争
+	id = AOR_news.214
+	title = AOR_news.214.t
+	desc = AOR_news.214.d
+	picture = GFX_AOR_news.214_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.214.a
+	}
+}
+
+news_event = {#丹麦赢得石勒苏益格-荷尔施泰因战争
+	id = AOR_news.215
+	title = AOR_news.215.t
+	desc = AOR_news.215.d
+	picture = GFX_AOR_news.215_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.215.a
+		hidden_effect = {
+			transfer_state = 58
+		}
+	}
+}
+
+news_event = {#南石荷赢得石勒苏益格-荷尔施泰因战争
+	id = AOR_news.216
+	title = AOR_news.216.t
+	desc = AOR_news.216.d
+	picture = GFX_AOR_news.216_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.216.a
+	}
+}
+
+news_event = {#摩根图书馆遭爆破
+	id = AOR_news.217
+	title = AOR_news.217.t
+	desc = AOR_news.217.d
+	picture = GFX_AOR_news.217_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.217.a
+	}
+}
+
+news_event = {#美国北方少数党派全力支持联邦政府
+	id = AOR_news.218
+	title = AOR_news.218.t
+	desc = AOR_news.218.d
+	picture = GFX_AOR_news.218_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.218.a
+	}
+}
+
+news_event = {#美国北方少数党派与联邦政府妥协
+	id = AOR_news.219
+	title = AOR_news.219.t
+	desc = AOR_news.219.d
+	picture = GFX_AOR_news.219_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.219.a
+	}
+}
+
+news_event = {#乌克兰人民共和国灭亡
+	id = AOR_news.220
+	title = AOR_news.220.t
+	desc = AOR_news.220.d
+	picture = GFX_AOR_news.220_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.220.a
+	}
+}
+
+news_event = {#美国华尔街发生大爆炸！
+	id = AOR_news.221
+	title = AOR_news.221.t
+	desc = AOR_news.221.d
+	picture = GFX_AOR_news.221_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.221.a
+	}
+}
+
+news_event = {#阿富汗战争再起
+	id = AOR_news.222
+	title = AOR_news.222.t
+	desc = AOR_news.222.d
+	picture = GFX_AOR_news.222_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.222.a
+	}
+}
+
+news_event = {#阿富汗战争-阿曼努拉政权赢得胜利
+	id = AOR_news.223
+	title = AOR_news.223.t
+	desc = AOR_news.223.d
+	picture = GFX_AOR_news.223_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.223.a
+	}
+}
+
+news_event = {#阿富汗战争-纳斯鲁拉政权的胜利
+	id = AOR_news.224
+	title = AOR_news.224.t
+	desc = AOR_news.224.d
+	picture = GFX_AOR_news.224_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.224.a
+	}
+}
+
+news_event = {#日本关东地区发生大地震！
+	id = AOR_news.225
+	title = AOR_news.225.t
+	desc = AOR_news.225.d
+	picture = GFX_AOR_news.225_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.225.a
+	}
+}
+
+news_event = {#红色德国夺取莱茵兰！
+	id = AOR_news.226
+	title = AOR_news.226.t
+	desc = AOR_news.226.d
+	picture = GFX_AOR_news.226_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.226.a
+	}
+}
+
+news_event = {  #匈牙利进攻三一共和国
+	id = AOR_news.227
+	title = AOR_news.227.t
+	desc = AOR_news.227.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.227.a
+	}
+}
+
+news_event = {  #克罗地亚傀儡政府的成立
+	id = AOR_news.228
+	title = AOR_news.228.t
+	desc = AOR_news.228.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.228.a
+	}
+}
+
+news_event = {  #匈牙利宣布与克罗地亚组成联邦
+	id = AOR_news.229
+	title = AOR_news.229.t
+	desc = AOR_news.229.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.229.a
+		trigger = {
+			tag = HUN
+		}
+	}
+
+	option = {
+		name = AOR_news.229.b
+		trigger = {
+			NOT = {
+				tag = HUN
+			}
+		}
+	}
+}
+
+news_event = {  #蒂撒连任，匈牙利督政府成立
+	id = AOR_news.230
+	title = AOR_news.230.t
+	desc = AOR_news.230.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.230.a
+	}
+}
+
+news_event = {  #卡罗伊胜出，匈牙利资产阶级获胜
+	id = AOR_news.231
+	title = AOR_news.231.t
+	desc = AOR_news.231.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.231.a
+	}
+}
+
+news_event = {  #共博士胜出，马扎尔民族共和国
+	id = AOR_news.232
+	title = AOR_news.232.t
+	desc = AOR_news.232.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.232.a
+	}
+}
+
+news_event = {  #贝伦胜出，匈牙利民主共和国
+	id = AOR_news.233
+	title = AOR_news.233.t
+	desc = AOR_news.233.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.233.a
+	}
+}
+
+news_event = {  #萨博胜出，匈牙利农民共和国
+	id = AOR_news.234
+	title = AOR_news.234.t
+	desc = AOR_news.234.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.234.a
+	}
+}
+
+news_event = {  #匈牙利介入达尔马提亚问题
+	id = AOR_news.235
+	title = AOR_news.235.t
+	desc = AOR_news.235.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.235.a
+	}
+}
+
+news_event = {  #匈克和解
+	id = AOR_news.236
+	title = AOR_news.236.t
+	desc = AOR_news.236.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.236.a
+	}
+}
+
+news_event = {  #蒂撒伯爵宣布举行首次大选
+	id = AOR_news.237
+	title = AOR_news.237.t
+	desc = AOR_news.237.d
+	picture = GFX_AOR_news.15_pic
+	is_triggered_only = yes 
+	major = yes
+
+	option = {
+		name = AOR_news.237.a
+	}
+}
+
+news_event = {#红色德国彻底夺取莱茵兰！
+	id = AOR_news.238
+	title = AOR_news.238.t
+	desc = AOR_news.238.d
+	picture = GFX_AOR_news.238_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.238.a
+	}
+}
+
+news_event = {#红色德国与法国爆发全面战争！（二战）
+	id = AOR_news.239
+	title = AOR_news.239.t
+	desc = AOR_news.239.d
+	picture = GFX_AOR_news.239_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.239.a
+	}
+}
+
+news_event = {#第二次世界大战扩大化（二战）
+	id = AOR_news.240
+	title = AOR_news.240.t
+	desc = AOR_news.240.d
+	picture = GFX_AOR_news.240_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.240.a
+	}
+}
+
+news_event = {#苏联入侵芬马克
+	id = AOR_news.241
+	title = AOR_news.241.t
+	desc = AOR_news.241.d
+	picture = GFX_AOR_news.241_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.241.a
+	}
+}
+
+news_event = {#波兰清算委员会与波兰政府开战
+	id = AOR_news.242
+	title = AOR_news.242.t
+	desc = AOR_news.242.d
+	picture = GFX_AOR_news.242_pic
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = AOR_news.242.a
+	}
+}

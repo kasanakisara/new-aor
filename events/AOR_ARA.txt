@@ -1,0 +1,279 @@
+add_namespace = ARA
+
+#酋长会议事件链
+country_event = {#大会即将召开
+	id = ARA.1 
+    picture = GFX_ARA_events.1
+    title = ARA.1.t
+    desc = ARA.1.d
+    fire_only_once = yes
+	hidden = no
+	trigger = {
+		date > 1919.9.20
+		tag = ARA
+	}
+    mean_time_to_happen = {
+		days = 1
+	}
+    immediate = { hidden_effect = { country_event = { id = ARA.2 days = 20 } } } 
+    option = { 
+        name = ARA.1.a
+	}
+}
+country_event = {#大会召开
+	id = ARA.2 
+    picture = GFX_ARA_events.2
+    title = ARA.2.t
+    desc = ARA.2.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.3 days = 10 } } } 
+    option = { 
+        name = ARA.2.a
+	}
+}
+country_event = {#意见不合
+	id = ARA.3 
+    picture = GFX_ARA_events.2
+    title = ARA.3.t
+    desc = ARA.3.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.4 days = 5 } } } 
+    option = { 
+        name = ARA.3.a
+	}
+}
+country_event = {#威胁
+	id = ARA.4 
+    picture = GFX_ARA_events.2
+    title = ARA.4.t
+    desc = ARA.4.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.5 days = 5} } } 
+    option = { 
+        name = ARA.4.a
+	}
+}
+country_event = {#威胁2
+	id = ARA.5 
+    picture = GFX_ARA_events.2
+    title = ARA.5.t
+    desc = ARA.5.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.6 days = 5} } } 
+    option = { 
+        name = ARA.5.a
+	}
+}
+country_event = {#代表离场
+	id = ARA.6 
+    picture = GFX_ARA_events.6
+    title = ARA.6.t
+    desc = ARA.6.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.7 days = 5} } } 
+    option = { 
+        name = ARA.6.a
+	}
+}
+country_event = {#失去联系
+	id = ARA.7 
+    picture = GFX_ARA_events.7
+    title = ARA.7.t
+    desc = ARA.7.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = ARA.8 days = 20} } } 
+    option = { 
+        name = ARA.7.a
+	}
+}
+country_event = {#落幕，王国解体
+	id = ARA.8 
+    picture = GFX_ARA_events.8
+    title = ARA.8.t
+    desc = ARA.8.d
+    is_triggered_only = yes
+	hidden = no
+    immediate = { 
+        hidden_effect = {
+            SAU = { #沙特老爷
+                set_political_party = {
+                    ideology = Absolutism
+                    popularity = 100
+                }
+	       	    add_state_core = 292
+	    	    add_state_core = 950
+                add_state_core = 678
+	    	    transfer_state = 292
+	    	    transfer_state = 950
+                transfer_state = 678
+                load_oob = "AOR_LAND_SUA_nejd"
+		    }
+            ARA = {#汉志
+                load_oob = "AOR_LAND_hejaz"
+                set_cosmetic_tag = ARA_hejaz_1 
+                leave_faction = yes
+                set_party_name = {
+                    ideology = Absolutism
+                    long_name = "哈希姆家族"
+                    name = "哈希姆家族"
+                }
+            }
+            YEM = {transfer_state = 959}#也门消灭伊德里斯
+            JSR = {#舍迈尔
+
+                set_political_party = {
+                    ideology = Absolutism
+                    popularity = 100
+                }
+                add_state_core = 956
+                add_state_core = 958
+                add_state_core = 962
+                add_state_core = 963
+                transfer_state = 956
+                transfer_state = 958
+                transfer_state = 962
+                transfer_state = 963
+                load_oob = "AOR_LAND_JSR_nejd"
+            }
+            PAL = {transfer_state = 455}
+        }
+    } 
+    option = { 
+        name = ARA.8.a
+        hidden_effect = {
+            news_event = {id=AOR_news.159}
+        }
+        
+	}
+}
+country_event = {#汉志的反应（沙漠战争）
+	id = ARA.9
+    picture = GFX_ARA_events.9
+    title = ARA.9.t
+    desc = ARA.9.d
+    fire_only_once = yes
+	hidden = no
+	trigger = {
+		tag = ARA
+        SAU = {has_war_together_with = JSR }
+	}
+	hidden = no
+    option = { #旁观
+        name = ARA.9.a
+        ai_will_do = {
+			factor = 85
+		}
+	}
+    option = { #进攻沙特
+        name = ARA.9.b
+        ARA = {
+            declare_war_on = {
+                target = SAU
+                ype = annex_everything
+            }
+        }
+        ai_will_do = {
+			factor = 10
+		}
+	}
+    option = { #进攻拉希德
+        name = ARA.9.
+        ARA = {
+            declare_war_on = {
+                target = JSR
+                ype = annex_everything
+            }
+        }
+        ai_will_do = {
+			factor = 5
+		}
+	}
+}
+#######################沙漠战争！##############################
+country_event = {#盖西姆冲突
+	id = DesertWar.1
+    picture = GFX_DesertWar_events.1
+    title = DesertWar.1.t
+    desc = DesertWar.1.d
+    fire_only_once = yes
+    trigger = {
+		OR ={
+            tag = SAU
+            tag = JSR
+        }
+	}
+    mean_time_to_happen = {
+		days = 5
+	}
+	hidden = no
+    immediate = { hidden_effect = { country_event = { id = DesertWar.2 days = 40} } } 
+    option = { 
+        name = DesertWar.1.a
+	}
+}
+country_event = {#内志战争！
+	id = DesertWar.2
+    picture = GFX_DesertWar_events.2
+    title = DesertWar.2.t
+    desc = DesertWar.2.d
+    fire_only_once = yes
+    trigger = {
+        tag = SAU
+	}
+	hidden = no
+    immediate = { 
+        hidden_effect = {
+            SAU = {
+                declare_war_on = {
+                    target = JSR
+                    type = annex_everything
+                }
+            }
+        } 
+    } 
+    option = { 
+        name = DesertWar.2.a
+	}
+}
+country_event = {#消灭汉志
+	id = DesertWar.3
+    picture = GFX_DesertWar_events.3
+    title = DesertWar.3.t
+    desc = DesertWar.3.d
+    fire_only_once = yes
+    trigger = {
+        OR = {
+            AND = {
+                tag = JSR
+                owns_state = 292
+                has_country_flag = AOR_nejd_war_winner
+            }
+            AND = {
+                tag = SAU
+                owns_state = 962
+                has_country_flag = AOR_nejd_war_winner
+            }
+        }
+	}
+    mean_time_to_happen = {
+		days = 180
+	}
+	hidden = no
+    immediate = {
+        hidden_effect = { 
+            declare_war_on = {
+                target = ARA
+                type = annex_everything
+            }
+        }
+    } 
+    option = { 
+        name = DesertWar.3.a
+	}
+}

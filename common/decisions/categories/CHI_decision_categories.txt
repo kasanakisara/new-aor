@@ -1,0 +1,31 @@
+CHI_Reclaiming_outer_northwest_decision = {
+	icon = GFX_decision_category_generic_communism
+	priority = 100
+	scripted_gui = CHI_Northwest_desicion
+	allowed = {
+		original_tag = CHI
+	}
+	visible = {
+		has_country_flag = unlock_CHI_Reclaiming_outer_northwest
+	}
+}
+
+CHI_election_decison_cate = {
+	scripted_gui = AOR_ROC_election_window
+	picture = GFX_decision_CHI_election
+	priority = 500
+	visible_when_empty = yes
+	allowed = {
+		tag = CHI
+	}
+	visible = {
+	}
+	
+}
+CHI_contraled_state_decison = {
+	priority = 100
+	icon = GFX_decision_category_spr_the_seeds_of_revolution
+	visible = {
+		tag = CHI
+	}
+}

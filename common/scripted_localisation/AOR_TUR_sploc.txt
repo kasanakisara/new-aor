@@ -1,0 +1,46 @@
+defined_text = {
+    name = Get_AOR_Turksih_Straits_game_outcome
+    text = {
+        trigger = {
+            check_variable = {
+                var:global.AOR_turkish_straits_game_Progressbar_var < 20
+            }
+        }
+        localization_key = AOR_turkish_straits_game_GRE_totally
+    }
+    text = {
+        trigger = {
+            check_variable = {
+                var:global.AOR_turkish_straits_game_Progressbar_var < 45
+            }
+        }
+        localization_key = AOR_turkish_straits_game_GRE_partially
+    }
+    text = {
+        trigger = {
+            check_variable = {
+                var:global.AOR_turkish_straits_game_Progressbar_var < 55
+            }
+        }
+        localization_key = AOR_turkish_straits_game_balance
+    }
+    text = {
+        trigger = {
+            check_variable = {
+                var:global.AOR_turkish_straits_game_Progressbar_var < 80
+            }
+        }
+        localization_key = AOR_turkish_straits_game_TUR_partially
+    }
+    text = {
+        trigger = {
+            check_variable = {
+                var:global.AOR_turkish_straits_game_Progressbar_var < 101
+            }
+        }
+        localization_key = AOR_turkish_straits_game_TUR_totally
+    }
+    text = {
+        localization_key = AOR_turkish_straits_game_error
+    }
+}

@@ -1,0 +1,195 @@
+add_namespace = BUL
+
+country_event = { #绿色国际计划
+	id = BUL.1
+	title = BUL.1.t
+	desc = BUL.1.d
+	picture = BUL.1.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.1.a #鲍里斯同意
+		ai_chance = {
+			base = 20
+		}
+		country_event = BUL.6
+	}
+
+	option = {
+		name = BUL.1.b #鲍里斯否决
+		ai_chance = {
+			base = 40
+		}
+		country_event = BUL.2
+	}
+
+}
+#————————鲍里斯否决路线
+country_event = { #鲍里斯否决
+	id = BUL.2
+	title = BUL.2.t
+	desc = BUL.2.d
+	picture = BUL.2.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.2.a
+		country_event = BUL.3
+	}
+}
+
+country_event = { #保加利亚军队政变
+	id = BUL.3
+	title = BUL.3.t
+	desc = BUL.3.d
+	picture = BUL.3.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.3.a #土地改革
+		country_event = BUL.4
+	}
+
+}
+
+country_event = { #与匈牙利军事同盟
+	id = BUL.4
+	title = BUL.4.t
+	desc = BUL.4.d
+	picture = BUL.4.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.4.a
+	}
+}
+#鲍里斯同意路线————————
+country_event = { #农业改革计划
+	id = BUL.5
+	title = BUL.5.t
+	desc = BUL.5.d
+	picture = BUL.5.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.5.a
+		country_event = BUL.6
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = BUL.5.b
+		country_event = BUL.7
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+country_event = { #土地改革完成
+	id = BUL.6
+	title = BUL.6.t
+	desc = BUL.6.d
+	picture = BUL.6.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.6.a
+		country_event = BUL.7
+		country_event = BUL.4
+	}
+}
+
+country_event = { #换了首相
+	id = BUL.7
+	title = BUL.7.t
+	desc = BUL.7.d
+	picture = BUL.7.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.7.a #安德烈-利亚普切夫
+		ai_chance = {
+			base = 40
+		}
+		country_event = BUL.8
+	}
+
+	option = {
+		name = BUL.7.b #社民工党
+		ai_chance = {
+			base = 40
+		}
+		country_event = BUL.9
+	}
+
+	option = {
+		name = BUL.7.c #民进联盟
+		ai_chance = {
+			base = 10
+		}
+		country_event = BUL.10
+	}
+}
+
+
+country_event = { #安德烈-利亚普切夫
+	id = BUL.8
+	title = BUL.8.t
+	desc = BUL.8.d
+	picture = BUL.8.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.8.a
+		country_event = BUL.4
+	}
+}
+
+country_event = { #社民工党
+	id = BUL.9
+	title = BUL.9.t
+	desc = BUL.9.d
+	picture = BUL.9.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.9.a
+		country_event = BUL.4
+	}
+}
+
+country_event = { #民进联盟
+	id = BUL.10
+	title = BUL.10.t
+	desc = BUL.10.d
+	picture = BUL.10.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = BUL.10.a
+		country_event = BUL.4
+	}
+}

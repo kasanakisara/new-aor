@@ -1,0 +1,98 @@
+add_namespace = GLC
+
+country_event = {
+	id = GLC.1 #波兰清算委员会消灭加利西亚势力
+	title =GLC.1.t
+	desc = GLC.1.d
+	picture = GFX_GLC_event_1_pic
+	fire_only_once = yes
+	trigger = {
+		tag = GLC
+        GLC = {
+            owns_state = 1046
+            owns_state = 1040
+        }
+    }
+
+
+    option = {
+		name = GLC.1.a
+		news_event = {
+			id = AOR_news.210
+		}
+		POL = {
+			set_autonomy = {
+				target = GLC
+				autonomy_state = autonomy_free
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				days = 30
+				id = GLC.2
+		    }
+		}
+	}
+}
+
+country_event = {
+	id = GLC.2 #波兰清算委员会的最终命运
+	title =GLC.2.t
+	desc = GLC.2.d
+	picture = GFX_GLC_event_2_pic
+	is_triggered_only = yes
+    fire_only_once = yes
+	immediate = {
+	hidden_effect = {
+		GLC = {
+            leave_faction=yes
+		}
+        POL = {
+            leave_faction=yes
+		}
+	}
+}
+
+    option = {
+		name = GLC.2.a
+		if = { #波兰清算委员会与政府合并
+			limit ={
+				POL = {
+					has_government = Fascism
+				}
+			}
+			POL = {
+				annex_country = { 
+					target = GLC
+					transfer_troops = yes 
+				}
+				annex_country = { 
+					target = KKW
+					transfer_troops = yes 
+				}
+			}
+		}
+		else_if = { #波兰清算委员会与政府开战
+			limit ={
+				POL = {
+					Fascism < 0.1
+					not = {
+						has_government = Fascism
+					}
+				}
+			}
+			news_event = {
+				id = AOR_news.242
+			}
+		    GLC = {
+				declare_war_on = { 
+					target = POL
+					type = civil_war
+		        } 
+			}
+		}
+		else = { #测试
+			add_political_power = 100
+		}
+	}
+}

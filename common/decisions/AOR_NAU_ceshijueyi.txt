@@ -1,0 +1,77 @@
+
+AOR_NAU_ceshiguoce = {
+	NAU_zairuguoceshu = {
+
+		icon = GFX_AOR_ENG_anfudangdiminzhonng
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+		complete_effect = {
+			load_focus_tree = {
+				tree = NAU_FocusTree_1
+			}
+		}
+
+	}
+
+	NAU_zairujunzhengfu = {
+		
+		icon = GFX_AOR_ENG_tuxigonghejun
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+		complete_effect = {
+			set_country_flag = NAU_junzhengfu
+			mark_focus_tree_layout_dirty = yes
+			clr_country_flag = NAU_zuoxian
+			clr_country_flag = NAU_faxisi
+			
+		}
+	}
+
+	NAU_zairuzuoyi = {
+		icon = GFX_AOR_ENG_qianfadaibuling
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+
+		complete_effect = {
+			set_country_flag = NAU_zuoxian
+			mark_focus_tree_layout_dirty = yes
+			clr_country_flag = NAU_junzhengfu
+			clr_country_flag = NAU_faxisi
+		}
+
+		
+	}
+
+	NAU_zairuyouyi = {
+		icon = GFX_AOR_ENG_qianfadaibuling
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+
+		complete_effect = {
+			set_country_flag = NAU_faxisi
+			mark_focus_tree_layout_dirty = yes
+			clr_country_flag = NAU_junzhengfu
+			clr_country_flag = NAU_zuoxian
+		}
+	}
+}

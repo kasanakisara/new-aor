@@ -1,0 +1,498 @@
+ideas = {
+	country = { 
+		ENG_huifuyuanqi = { #恢复元气（空）
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_bujianliming
+
+			removal_cost = -1
+
+			modifier = {
+			}
+		}
+
+		ENG_huifuyuanqi_2 = { #恢复元气（第二个）
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_shiyelangchao
+
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = -0.05
+				production_factory_max_efficiency_factor = 0.025
+			}
+		}
+
+		ENG_wendingguojia = { #稳定国家
+			allowed = {
+				always = yes
+			}
+			
+			picture = GFX_ENG_shikezhunbeizhe
+
+			removal_cost = -1
+
+			modifier = {
+				drift_defence_factor = 0.5
+			}
+		}
+
+		ENG_wendingfeizhou = { #稳定非洲
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_yanlizhenya
+
+			removal_cost = -1
+			
+			modifier = {
+				resistance_target = 0.1
+				compliance_growth = 0.1
+			}
+		}
+
+		ENG_zhongquanjidi = { #重拳击敌
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_zhongquanjidi
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.1
+				mobilization_speed = 0.2
+				army_morale_factor = 0.05
+			}
+		}
+
+		ENG_shiyelangchao_1 = { #天色渐亮
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_shiyelangchao
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.05
+				political_power_cost = 0.1
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		ENG_zhanshishengchan = {#战时生产
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_zhanshishengchan
+
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.05
+				equipment_bonus = {
+					infantry_equipment = {
+						build_cost_ic = -0.05
+						instant = yes
+					}
+				}
+			}
+		}
+
+		ENG_zhaojizhaobing = { #召集老兵
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_zhaojizhaobing
+
+			removal_cost = -1
+
+			modifier = {
+				weekly_manpower = 300
+			}
+		}
+
+		ENG_shengchan = { #圣战
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_zhongquanjidi
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = 0.1
+				mobilization_speed = 0.2
+				army_morale_factor = 0.05
+				war_support_factor = 0.05
+				army_attack_factor = 0.1
+			}
+		}
+		ENG_baoyuqingxieerxia = { #暴雨倾泻而下
+			allowed = {
+				always = yes
+			}
+
+			picture = GFX_ENG_baoyuqingxieerxia
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.25
+				stability_factor = -0.2
+				stability_weekly = -0.05
+				production_speed_industrial_complex_factor = -0.25
+				production_speed_naval_base_factor = -0.25
+				production_speed_rail_way_factor = -0.25
+				political_advisor_cost_factor = 1
+				tank_manufacturer_cost_factor = 1
+				naval_manufacturer_cost_factor = 1
+				aircraft_manufacturer_cost_factor = 1
+				materiel_manufacturer_cost_factor = 1
+				industrial_concern_cost_factor = 1
+				production_speed_buildings_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.15
+			    DRIFT_DEFENCE_FACTOR = -0.25
+			}
+		}
+		ENG_yinglianbangbuduigexin = { #英联邦部队革新
+	    	allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yinglianbangbuduigexin
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				experience_gain_army_factor = 0.1
+				experience_loss_factor = -0.1
+	    	}
+		}
+		ENG_yinglianbangbuduigexin_1 = { #英联邦部队革新
+	    	allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yinglianbangbuduigexin
+
+	    	 removal_cost = -1
+
+	    	modifier = {
+	    		experience_gain_army_factor = 0.15
+				supply_consumption_factor = 0.1
+				unit_artillery_brigade_design_cost_factor = -0.6
+	    		experience_loss_factor = -0.1
+				hidden_modifier = {
+					CIVILIAN_FACTORY_USE = 3
+				}
+	    	}
+	    }
+		ENG_yinglianbangbuduigexin_2 = { #英联邦部队革新
+	    	allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yinglianbangbuduigexin
+
+	     	removal_cost = -1
+
+	    	modifier = {
+	    		experience_gain_army_factor = 0.15
+				supply_consumption_factor = 0.1
+				unit_artillery_brigade_design_cost_factor = -0.6
+	    		experience_loss_factor = -0.1
+				army_attack_factor = 0.05
+	    	}
+	    }
+		ENG_ribuluodiguo = { #日不落帝国
+	    	allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_ribuluodiguo
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				RESISTANCE_TICK_AUTO = -0.15
+				stability_factor = 0.15
+				production_speed_buildings_factor = 0.05
+				production_speed_arms_factory_factor = 0.12
+				production_speed_industrial_complex_factor = 0.12
+				industrial_capacity_dockyard = 0.15
+	    	}
+	    }
+		ENG_zhunbeibukebimianzhizhan = { #zhunbeibukebimianzhizhan
+    		allowed = {
+    			always = yes
+    		}
+
+	    	picture = GFX_ENG_zhunbeibukebimianzhizhan
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				production_speed_arms_factory_factor = 0.05
+				stability_factor = -0.1
+				OPERATIVE_SLOT = 1
+			}
+    	}
+		ENG_baerganjingjihezuo = { #巴尔干经济合作
+	    	allowed = {
+		    	always = yes
+	    	}
+
+	    	picture = GFX_ENG_baerganjingjihezuo
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				consumer_goods_factor = -0.05
+			    production_speed_infrastructure_factor = 0.1
+				min_export = 0.1
+	    	}
+	    }
+		ENG_shouxiangguangbo = { #首相广播
+	    	allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_shouxiangguangbo
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				war_support_factor = 0.15
+				political_power_gain = 0.2
+	    	}
+	    }
+		ENG_daluyiwu = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_daluyiwu
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				war_support_factor = 0.10
+				production_speed_arms_factory_factor = 0.1
+	    	}
+		}
+		ENG_daluyiwu_2 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_daluyiwu
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				war_support_factor = 0.10
+				production_speed_arms_factory_factor = 0.1
+				send_volunteer_size = 1
+	    	}
+		}
+		ENG_shinianguize = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_shinianguize
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				production_speed_bunker_factor = 0.3
+				production_speed_coastal_bunker_factor =0.3
+				production_speed_anti_air_building_factor = 0.3
+
+	    	}
+		}
+		ENG_lujunrongyao = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_lujunrongyao
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				military_leader_cost_factor = -0.50
+
+	    	}
+		}
+		ENG_lujunrongyao_2 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_lujunrongyao
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				military_leader_cost_factor = -0.50
+				command_power_gain = 0.15
+				max_command_power = 30
+
+	    	}
+		}
+		ENG_xinruishiguan = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_xinruishiguan
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				army_org_factor = 0.1
+
+	    	}
+		}
+		ENG_xinruishiguan_2 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_xinruishiguan
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				army_org_factor = 0.1
+				army_leader_start_attack_level=1
+				army_leader_start_defense_level=1
+
+	    	}
+		}
+		ENG_yuanzhengjunchangbeihua = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yuanzhengjunchangbeihua
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+
+	    	}
+		}
+		ENG_yuanzhengjunchangbeihua_2 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yuanzhengjunchangbeihua
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				training_time_army_factor = -0.2
+
+	    	}
+		}
+		ENG_yuanzhengjunchangbeihua_3 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_yuanzhengjunchangbeihua
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				training_time_army_factor = -0.2
+				planning_speed = 0.2
+
+	    	}
+		}
+		ENG_haiwaizhujun = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_haiwaizhujun
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				non_core_manpower = 0.1
+
+	    	}
+		}
+		ENG_haiwaizhujun_2 = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_haiwaizhujun
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				non_core_manpower = 0.1
+				planning_speed = 0.2
+
+	    	}
+		}
+		ENG_diguobianjiang = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_diguobianjiang
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				autonomy_gain = -1
+
+	    	}
+		}
+		ENG_huangjiahaijunderongyao = {
+			allowed = {
+	    		always = yes
+	    	}
+
+	    	picture = GFX_ENG_huangjiahaijunderongyao
+
+	    	removal_cost = -1
+
+	    	modifier = {
+				positioning = 0.10
+				navy_capital_ship_attack_factor = 0.1
+				naval_doctrine = 0.15
+				experience_gain_battle_cruiser_training_factor = 0.1
+				NAVAL_EQUIPMENT_UPGRADE_XP_COST = 0.1
+
+	    	}
+		}
+	}
+}

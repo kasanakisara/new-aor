@@ -1,0 +1,817 @@
+AOR_EGY_DCS_1_category = {
+	EGY_DCS_1_ENG_d1 = {
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			num_of_civilian_factories_available_for_projects = 1
+		}
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		days_remove = 180
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = 20
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = 50
+		}
+	}
+	EGY_DCS_1_ENG_d2 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		days_remove = 180
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			num_of_military_factories > 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				ROOT = {
+					random_owned_state = {
+						limit = {
+							arms_factory > 0
+						}
+						remove_building = {
+							type = arms_factory
+							level = 1
+						}
+						set_state_flag = EGY_DCS_1_ENG_d2_state_flag
+					}
+				}
+			}
+		}
+		modifier = {
+			custom_modifier_tooltip = EGY_DCS_1_ENG_d2_cmt
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = 20
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = 50
+			hidden_effect = {
+				ROOT = {
+					every_owned_state = {
+						limit = {
+							has_state_flag = EGY_DCS_1_ENG_d2_state_flag
+						}
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+						clr_state_flag = EGY_DCS_1_ENG_d2_state_flag
+					}
+				}
+			}
+		}
+	}
+	egy_dcs_eng_3 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		available = {
+			has_equipment = {
+    			infantry_equipment > 99
+			}
+		}
+		cost = 0
+		days_re_enable = 30
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+    			amount = 100
+    			target = ENG
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = 5
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+		}
+	}
+	egy_dcs_eng_4 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			any_owned_state = {
+				industrial_complex > 0
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = 25
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = 75
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					industrial_complex > 0
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			ENG = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+	egy_dcs_eng_5 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			any_owned_state = {
+				arms_factory > 0
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = 25
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = 75
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					arms_factory > 0
+				}
+				remove_building = {
+					type = arms_factory
+					level = 1
+				}
+			}
+			ENG = {
+				add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}
+			}
+		}
+	}
+	egy_dcs_eng_6 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_eng_6_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_ENG
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = -10
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_political_power = 25
+		}
+	}
+	egy_dcs_eng_7 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_eng_6_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_ENG
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			hidden_trigger = {
+				check_variable = {
+					egy_dcs_eng_7_limit < 2
+				}
+			}
+		}
+		days_remove = 30
+		days_re_enable = 45
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = -10
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = -25
+			hidden_effect = {
+				if = {
+					limit = {
+						EGY = {
+							NOT = {
+								has_variable = egy_dcs_eng_7_limit
+							}
+						}
+					}
+					EGY = {
+						set_variable = {
+							egy_dcs_eng_7_limit = 0
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = EGY_Towards_modernity_tt
+			EGY = {
+				add_to_variable = {
+					EGY_Towards_modernity_2 = -0.05
+					tooltip = consumer_goods_factor_tt
+				}
+				add_to_variable = {
+					egy_dcs_eng_7_limit = 1
+				}
+			}
+		}
+	}
+	egy_dcs_eng_8 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_eng_8_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_ENG
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = -25
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = -25
+		}
+		days_re_enable = 180
+		days_remove = 45
+		remove_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+	}
+	egy_dcs_eng_9 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_eng_8_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_ENG
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_ENG = -25
+					tooltip = EGY_DCS_1_variable_ENG_tooltip
+				}
+			}
+			add_political_power = -25
+		}
+		days_re_enable = 180
+		days_remove = 45
+		remove_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+		}
+	}
+	egy_dcs_eng_10 = {
+		visible = {
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_eng_10_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_ENG
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		days_remove = 30
+		remove_effect = {
+			army_experience = 5
+		}
+	}
+	egy_dcs_change_to_fra = {
+		cost = 0
+		priority = 100
+		visible = {
+			has_country_flag = EGY_can_change_FRA
+			NOT = {
+				has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+			}
+		}
+		remove_effect = {
+			set_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+	}
+	egy_dcs_change_to_eng = {
+		cost = 0
+		priority = 100
+		visible = {
+			has_country_flag = EGY_can_change_FRA
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		remove_effect = {
+			clr_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+	}
+	egy_dcs_fra_1 = {
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			num_of_civilian_factories_available_for_projects = 1
+		}
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		days_remove = 180
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = 20
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = 50
+		}
+	}
+	egy_dcs_fra_2 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		days_remove = 180
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			num_of_military_factories > 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				ROOT = {
+					random_owned_state = {
+						limit = {
+							arms_factory > 0
+						}
+						remove_building = {
+							type = arms_factory
+							level = 1
+						}
+						set_state_flag = EGY_DCS_1_ENG_d2_state_flag
+					}
+				}
+			}
+		}
+		modifier = {
+			custom_modifier_tooltip = EGY_DCS_1_ENG_d2_cmt
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = 20
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = 50
+			hidden_effect = {
+				ROOT = {
+					every_owned_state = {
+						limit = {
+							has_state_flag = EGY_DCS_1_ENG_d2_state_flag
+						}
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+						clr_state_flag = EGY_DCS_1_ENG_d2_state_flag
+					}
+				}
+			}
+		}
+	}
+	egy_dcs_fra_3 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		available = {
+			has_equipment = {
+    			infantry_equipment > 99
+			}
+		}
+		days_re_enable = 30
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+    			amount = 100
+    			target = FRA
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = 5
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+		}
+	}
+	egy_dcs_fra_4 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			any_owned_state = {
+				industrial_complex > 0
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = 25
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = 75
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					industrial_complex > 0
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			FRA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+	}
+	egy_dcs_fra_5 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			any_owned_state = {
+				arms_factory > 0
+			}
+		}
+		remove_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = 25
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = 75
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					arms_factory > 0
+				}
+				remove_building = {
+					type = arms_factory
+					level = 1
+				}
+			}
+			FRA = {
+				add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}
+			}
+		}
+	}
+	egy_dcs_fra_6 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_fra_6_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_FRA
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = -10
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+		}
+		remove_effect = {
+			add_political_power = 25
+		}
+	}
+	egy_dcs_fra_7 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_fra_6_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_FRA
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			hidden_trigger = {
+				check_variable = {
+					egy_dcs_eng_7_limit < 2
+				}
+			}
+		}
+		days_remove = 30
+		days_re_enable = 45
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = -10
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = -25
+			hidden_effect = {
+				if = {
+					limit = {
+						EGY = {
+							NOT = {
+								has_variable = egy_dcs_eng_7_limit
+							}
+						}
+					}
+					EGY = {
+						set_variable = {
+							egy_dcs_eng_7_limit = 0
+						}
+					}
+				}
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = EGY_Towards_modernity_tt
+			EGY = {
+				add_to_variable = {
+					EGY_Towards_modernity_2 = -0.05
+					tooltip = consumer_goods_factor_tt
+				}
+				add_to_variable = {
+					egy_dcs_eng_7_limit = 1
+				}
+			}
+		}
+	}
+	egy_dcs_fra_8 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_fra_8_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_FRA
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = -25
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = -25
+		}
+		days_re_enable = 180
+		days_remove = 45
+		remove_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+	}
+	egy_dcs_fra_9 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_fra_8_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_FRA
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		complete_effect = {
+			EGY = {
+				add_to_variable = {
+					EGY_DCS_1_variable_FRA = -25
+					tooltip = EGY_DCS_1_variable_FRA_tooltip
+				}
+			}
+			add_political_power = -25
+		}
+		days_re_enable = 180
+		days_remove = 45
+		remove_effect = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+		}
+	}
+	egy_dcs_fra_10 = {
+		visible = {
+			has_country_flag = AOR_EGY_DCS_1_category_fra_mode
+		}
+		cost = 0
+		icon = GFX_decision_category_eng_concessions_to_the_trade_unions
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = egy_dcs_fra_10_ctt
+				check_variable = {
+					var = EGY_DCS_1_variable_FRA
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		days_remove = 30
+		remove_effect = {
+			army_experience = 5
+		}
+	}
+	test_run_time = {
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			every_country = {
+				limit = {
+					NOT = {
+						OR = {
+							tag = ENG
+							tag = FRA
+							tag = EGY
+						}
+					}
+				}
+				BHU = {
+					annex_country = {
+						target = PREV
+					}
+					every_owned_state = {
+						add_core_of = BHU
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = ENG
+						tag = FRA
+					}
+				}
+				every_owned_state = {
+					limit = {
+						NOT = {
+							is_core_of = PREV
+						}
+					}
+					transfer_state_to = BHU
+					add_core_of = BHU
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+# List of names and logos for intelligence agencies
+# available trigger will determine if the logo is in the list of available logos or not
+# names is a list of names. Can be a localization entry, or the name directly. A random name will be picked from them.
+
+intelligence_agency = {
+
+	picture = GFX_intelligence_agency_logo_ORA
+	names = { "流动工人纠察队" }
+	
+	default = { tag = ORA }
+	available = { original_tag = ORA }
+}
+
+intelligence_agency = {
+
+	picture = ""
+	names = { "联邦安全局" }
+
+	default = {
+			AND = {
+				tag = SWE
+				NOT = { SWE = { has_idea = Tiger_of_Silence } }
+			}
+	}
+	available = {
+			AND = {
+				original_tag = SWE
+				NOT = { SWE = { has_idea = Tiger_of_Silence } }
+			}
+	}
+}

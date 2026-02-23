@@ -1,0 +1,751 @@
+focus_tree = {
+	id = AOR_PER_national_focus_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = PER
+		}
+	}
+	default = no
+	focus = { #国殇
+		id = PER_a_national_martyr_0
+		icon = GFX_goal_unknown
+		x = 35
+		y = 0
+		cost = 1
+		available = {always = no}
+		completion_reward={
+			custom_effect_tooltip = PER_national_martyr_tt
+		}
+	}
+	focus = { #北方重建计划
+		id = PER_Northern_Reconstruction_2
+		icon = GFX_goal_unknown
+		x = 14
+		y = 1
+		cost = 2
+		available = {has_completed_focus = PER_Conference_on_Postwar_Issues_1  }
+		completion_reward = {
+			add_stability = 0.02
+			unlock_decision_tooltip = PER_Northern_Reconstruction
+			set_country_flag = unlock_AOR_PER_Northern_Reconstruction#重建标记
+		}
+	}
+	focus = { #初步政府改革
+		id = PER_Preliminary_government_reform_6
+		icon = GFX_goal_unknown
+		cost = 5
+		x = 60
+		y = 1
+		cost = 2
+		available = {has_completed_focus = PER_Conference_on_Postwar_Issues_1  }
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	focus = { #基础设施重建 ##########第二阶段移除###########
+		id = PER_Infrastructure_restoration_7
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = PER_Northern_Reconstruction_2
+		}
+		x = 10
+		y = 2
+		completion_reward = {
+			add_ideas =  PER_Infrastructure_restoration_1
+		}
+	}
+	focus = { #民间施工队  ############第二阶段移除###########
+		id = PER_civil_construction_team_22
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = PER_Infrastructure_restoration_7
+		}
+		mutually_exclusive = {
+			focus = PER_UK_companies_23
+		}
+		x = 9
+		y = 3
+		completion_reward = {
+			add_political_power = 20
+			swap_ideas = {
+				add_idea =  PER_Infrastructure_restoration_2
+				remove_idea = PER_Infrastructure_restoration_1
+			}
+		}
+	}
+	focus = { #英国企业   ###############第二阶段移除###########
+		id = PER_UK_companies_23
+		icon = GFX_goal_unknown
+		cost = 1
+		prerequisite = {
+			focus = PER_Infrastructure_restoration_7
+		}
+		mutually_exclusive = {
+			focus = PER_civil_construction_team_22
+		}
+		x = 11
+		y = 3
+		completion_reward = {
+			add_political_power = -20
+			swap_ideas = {
+				add_idea =  PER_Infrastructure_restoration_3
+				remove_idea = PER_Infrastructure_restoration_1
+			}
+		}
+	}
+	focus = { #接收俄资工厂
+		id = PER_receive_Russian_funded_factories_8
+		icon = GFX_goal_unknown
+		prerequisite = {
+			focus = PER_Northern_Reconstruction_2
+		}
+		x = 14
+		y = 2
+		cost = 3
+		completion_reward = {
+			419 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			416 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			938 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {#恢复生产
+		id = PER_ume_oduction_29
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_receive_Russian_funded_factories_8
+		}
+		x = 14
+		y = 3
+		completion_reward = {
+			add_timed_idea = {idea = PER_ume_oduction days = 60 }
+		}
+	}
+	focus = {#损失统计
+		id = PER_Loss_statistics_9
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_Northern_Reconstruction_2
+		}
+		x = 17
+		y = 2
+		completion_reward = {
+			country_event = {id = per.6 }
+		}
+	}
+	focus = {#安置百姓
+		id = PER_Resettlement_Plan_33
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Loss_statistics_9
+		}
+		x = 17
+		y = 3
+		completion_reward = {
+			add_timed_idea = { idea = PER_Resettlement_Plan days = 90 }
+			add_political_power = 30
+			add_stability = 0.1
+		}
+	}
+	focus = {#战后问题会议
+		id = PER_Conference_on_Postwar_Issues_1
+		icon = GFX_goal_unknown
+		prerequisite = {
+			focus = PER_a_national_martyr_0
+		}
+		cost = 4
+		x = 35
+		y = 1
+		select_effect = {
+			country_event = { id = per.1 random =5 }
+			
+		}
+		completion_reward= {
+			custom_effect_tooltip = PER_Conference_on_Postwar_Issues_tt
+		}
+	}
+	focus = {#发动农业圣战
+		id = PER_Agricultural_Jihad_Preliminary_0
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_Conference_on_Postwar_Issues_1
+		}
+		x = 23
+		y = 2
+		completion_reward = {
+			country_event = {id = per.7 }
+			unlock_decision_tooltip = PER_Agricultural_Jihad_Preliminary_jy
+			set_country_flag = unlock_AOR_PER_Agricultural_Jihad_Preliminary#农业标记
+		}
+	}
+	focus = {#税制改革
+		id = PER_tax_reform_10
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_Agricultural_Jihad_Preliminary_0
+		}
+		x = 21
+		y = 3
+		completion_reward = {
+			add_stability = 0.01
+			add_political_power = 20
+		}
+	}
+	focus = {#土地问题
+		id = PER_Land_issues_11
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Agricultural_Jihad_Preliminary_0
+		}
+		x = 25
+		y = 3
+		completion_reward = {
+			country_event= {id= per.8}
+		}
+	}
+	focus = {#稳中求进
+		id = PER_pursue_progress_while_ensuring_stabilits_4
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Conference_on_Postwar_Issues_1
+		}
+		x = 35
+		y = 2
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 20
+		}
+	}
+	focus = {#传播立宪思想
+		id = PER_Promotion_of_Constitutional_Thought_12
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 28
+		y = 3
+		completion_reward = {
+			add_popularity = { ideology = ISL_democratic  popularity = 0.1 }
+			add_stability = 0.05
+			add_political_power = 25
+		}
+	}
+	focus = {#1号工业发展案
+		id = PER_Industrial_Development_Plan_No.1_13
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 31
+		y = 3
+		completion_reward={
+			unlock_decision_tooltip = PER_Industrial_Development_Plan_No.1
+		}
+	}
+	focus = {#发展高等教育
+		id = PER_higher_education_14
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 34
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+				add_idea =  PER_Illiterate_people_2
+				remove_idea = PER_Illiterate_people
+			}
+		}
+	}
+	focus = {#改革经书教育
+		id = PER_Scripture_education_15
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 36
+		y = 3
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = 0.02
+			add_political_power = 20
+		}
+	}
+	focus = {#对抗通胀
+		id = PER_Fighting_inflation_16
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 39
+		y = 3
+		completion_reward = {
+			country_event= {id= per.10}
+			unlock_decision_tooltip = PER_Eliminate_inflation
+			set_country_flag = unlock_AOR_PER_Fighting_inflation#通胀标记
+		}
+	}
+	focus = {#安抚反英情绪
+		id = PER_Appease_anti_British_sentiment_17
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_pursue_progress_while_ensuring_stabilits_4
+		}
+		x = 43
+		y = 3
+		completion_reward = {
+			add_war_support = -0.05
+			add_stability = 0.05
+		}
+	}
+	focus = {#发动对贪污的圣战
+		id = PER_jihad_of_Corruption_Preliminary_5
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = PER_Conference_on_Postwar_Issues_1
+		}
+		x = 48
+		y = 2
+		completion_reward = {
+			add_stability = 0.02
+			add_political_power = 20
+			country_event = {id = per.11 }
+		}
+	}
+	focus = {#政府领域的重拳
+		id = PER_Heavy_fists_government_sector_18
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_jihad_of_Corruption_Preliminary_5
+		}
+		x = 46
+		y = 3
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 30
+		}
+	}
+	focus = {#军事领域的重拳
+		id = PER_Heavy_fists_military_field_19
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_jihad_of_Corruption_Preliminary_5
+		}
+		x = 50
+		y = 3
+		completion_reward = {
+			swap_ideas = {
+			add_idea =  PER_Few_troops_2
+			remove_idea = PER_Few_troops
+			}
+		}
+	}
+	focus = {#混乱的政府机构
+		id = PER_Chaotic_government_institutions_20
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Preliminary_government_reform_6
+		}
+		x = 56
+		y = 2
+		completion_reward = {
+			country_event = {id =per.12 } 
+		}
+	}
+	focus = {#省级机构改革
+		id = PER_Reform_Provincial_Administrative_Institutions_46
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Chaotic_government_institutions_20
+		}
+		x = 56
+		y = 3
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {#国家咨询委员会
+		id = PER_National_Advisory_Committee_49
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Chaotic_government_institutions_20
+		}
+		x = 59
+		y = 3
+		completion_reward = {
+			add_ideas = PER_National_Advisory_Committee
+		}
+	}
+	focus = {#军队评估
+		id = PER_Military_evaluation_21
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = PER_Preliminary_government_reform_6
+		}
+		x = 64
+		y = 2
+		completion_reward = {
+			country_event = {id =per.13 } 
+		}
+	}
+	focus = {#哥萨克
+		id = PER_Cossack_50
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Military_evaluation_21
+		}
+		available = {has_completed_focus = PER_Heavy_fists_military_field_19  }
+		mutually_exclusive = {
+			focus = PER_Gendarmerie_51
+			focus = PER_with_foreign_guns_52
+		}
+		x = 62
+		y = 3
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				add_idea =  PER_Few_troops_3_1
+				remove_idea = PER_Few_troops_2
+			}
+		}
+	}
+	focus = {#宪兵队
+		id = PER_Gendarmerie_51
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Military_evaluation_21
+		}
+		available = {has_completed_focus = PER_Heavy_fists_military_field_19  }
+		mutually_exclusive = {
+			focus = PER_Cossack_50
+			focus = PER_with_foreign_guns_52
+		}
+		x = 65
+		y = 3
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				add_idea =  PER_Few_troops_3_3
+				remove_idea = PER_Few_troops_2
+			}
+		}
+	}
+	focus = {#洋枪队
+		id = PER_with_foreign_guns_52
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Military_evaluation_21
+		}
+		available = {has_completed_focus = PER_Heavy_fists_military_field_19  }
+		mutually_exclusive = {
+			focus = PER_Gendarmerie_51
+			focus = PER_Cossack_50
+		}
+		x = 68
+		y = 3
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				add_idea =  PER_Few_troops_3_2
+				remove_idea = PER_Few_troops_2
+			}
+		}
+	}
+	focus = {#消除杂税
+		id = PER_Comprehensive_elimination_miscellaneous_taxes_35
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_tax_reform_10
+		}
+		x = 21
+		y = 4
+		completion_reward = {
+			swap_ideas = {
+				add_idea =  PER_Great_Famine_1
+				remove_idea = PER_Great_Famine
+			}
+		}
+	}
+	focus = {#恢复实物地租
+		id = PER_Restore_physical_land_rent_36
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Comprehensive_elimination_miscellaneous_taxes_35
+		}
+		x = 21
+		y = 5
+		completion_reward = {
+			custom_effect_tooltip = PER_Restore_physical_land_rent_tt
+			swap_ideas = {
+				add_idea =  PER_Great_Famine_2
+				remove_idea = PER_Great_Famine_1
+			}
+		}
+	}
+	focus = {#土地买卖法规
+		id = PER_Land_Purchase_Sale_Regulations_37
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Land_issues_11
+		}
+		x = 24
+		y = 4
+		completion_reward = {
+			add_political_power = 20
+			add_stability = 0.02
+		}
+	}
+	focus = {#没收贪官的土地
+		id = PER_Land_confiscation_by_corrupt_officials_38
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = PER_Land_issues_11
+		}
+		x = 26
+		y = 4
+		completion_reward = {
+			add_ideas = PER_Land_confiscation_by_corrupt_officials
+		}
+	}
+	focus = {#军工业发展
+		id = PER_Military_industry_39
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		x = 30
+		y = 4
+		completion_reward= {
+			937 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {#民工业发展
+		id = PER_Civil_industry_40
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Industrial_Development_Plan_No.1_13
+		}
+		x = 32
+		y = 4
+		completion_reward={
+			937 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {#聘请英国经济专家
+		id = PER_Hiring_UK_experts_40
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = PER_Fighting_inflation_16
+		}
+		x = 37
+		y = 4
+		completion_reward= {
+			custom_effect_tooltip = PER_UK_experts_tt
+		}
+	}
+	focus = {#物价调控
+		id = PER_Price_control_41
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Fighting_inflation_16
+		}
+		x = 39
+		y = 4
+		completion_reward= {
+			PER_Fighting_inflation_666 = yes
+			custom_effect_tooltip = PER_Price_control_tt
+		}
+	}
+	focus = {#供给管理
+		id = PER_supply_management_42
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Fighting_inflation_16
+		}
+		x = 41
+		y = 4
+		completion_reward= {
+			PER_Fighting_inflation_666 = yes
+			custom_effect_tooltip = PER_Price_control_tt
+		}
+	}
+	focus = {#对买官卖官的绞杀
+		id = PER_Hanging_buying_selling_officials_45
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_Heavy_fists_military_field_19
+		}
+		prerequisite = {
+			focus = PER_Heavy_fists_government_sector_18
+		}
+		x = 48
+		y = 4
+		completion_reward = {
+			add_ideas = PER_Hanging_buying_selling_officials
+		}
+		
+	}
+	focus = {#部落官员问题
+		id = PER_The_issue_nomadic_tribal_officials_47
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_Reform_Provincial_Administrative_Institutions_46
+		}
+		x = 56
+		y = 4
+		completion_reward={
+			swap_ideas= {
+				add_idea = PER_rebellious_tribe_1
+				remove_idea = PER_rebellious_tribe
+			}
+		}
+	}
+	focus = {#建立总参谋部
+		id = PER_Headquarters_General_Staff_53
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = PER_with_foreign_guns_52
+			focus = PER_Gendarmerie_51
+			focus = PER_Cossack_50
+		}
+		x = 65
+		y = 4
+		completion_reward={
+			add_ideas = PER_Headquarters_General_Staff
+		}
+	}
+	focus = {#精英学院
+		id = PER_Dar_ol_Fonoun_54
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = PER_Military_evaluation_21
+		}
+		x = 70
+		y = 3
+		completion_reward={
+			army_experience = 10
+			add_tech_bonus = {
+				name = land
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {#英国教官
+		id = PER_British_instructor_55
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = PER_Dar_ol_Fonoun_54
+		}
+		x = 70
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = PER_British_instructor_tt
+		}
+	}
+
+	focus = {
+		id = get_ready_battle_45
+		icon = GFX_goal_unknown
+		cost = 2
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				date > 1922.3.10
+			}
+		}
+		available = {date > 1922.4.1}
+		x = 35
+		y = 6
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			custom_effect_tooltip = PER_get_ready_battle_tt
+		}
+	}
+}

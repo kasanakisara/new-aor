@@ -1,0 +1,469 @@
+guiTypes = {#开关
+	containerWindowType = {
+		name = "ENG_Parliament_BUTTON_WINDOW"
+		position = { x = 0 y = -240 }
+		Orientation = LOWER_RIGHT
+		Origo = LOWER_RIGHT
+		size = { width = 100 height= 100 }
+		buttonType = { 
+			name = "ENG_Parliament_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_ENG_Parliament_button"
+			buttonFont = "hoi_24header"
+			pdx_tooltip = "ENG_Parliament_button_desc"
+		}
+	}
+}
+
+@party_leader_titlt_y = 150
+@party_leader_y = 250
+@party_Support_rate_text_y = 500
+@party_Support_rate_y = 600
+
+guiTypes = {#详细面板
+	containerWindowType = {
+		name = "ENG_Parliament"
+		position = { x = 0 y = 0 }
+		Orientation = center
+		Origo = center
+		size = { width = 1600 height= 900 }
+		moveable = yes
+		background = {
+			name = "blackground"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+#标题
+		instantTextboxType = {
+			name = "ENG_Parliament_titile"
+			position = { x = 0 y = 25 }
+			orientation = left_up
+			font = "hoi_36header"
+			text = "ENG_Parliament_titile_text"
+			format = centre
+			maxWidth = 1600
+			maxHeight = 50
+		}
+#下议院详情按钮
+		buttonType = {
+            name = "Details_of_the_House_of_Commons_button"
+            position = { x = 400 y = 80 }
+            quadTextureSprite = "GFX_event_option_entry"
+			buttonText = "Details_of_the_House_of_Commons"
+			buttonFont = "hoi_24header"
+            clicksound = click_close
+        }
+#下议院详情
+#议案
+		iconType = {
+			name ="ENG_Parliament_icon_of_motion"
+			position = { x = 680 y = 480 }
+		}
+		instantTextboxType = {
+			name = "ENG_Parliament_name_of_motion"
+			position = { x = 820 y = 500 }
+			orientation = left_up
+			font = "hoi_36header"
+			text = "ENG_Parliament_name_of_motion"
+			format = left
+			maxWidth = 480
+			maxHeight = 50
+		}
+		instantTextboxType = {
+			name = "ENG_Parliament_desc_of_motion"
+			position = { x = 700 y = 620 }
+			orientation = left_up
+			font = "hoi_20bs"
+			text = "ENG_Parliament_desc_of_motion"
+			format = left
+			maxWidth = 600
+			maxHeight = 200
+			scrollbartype = "standardtext_slider"
+		}
+		instantTextboxType = {
+			name = "ENG_Parliament_state_of_motion"
+			position = { x = 820 y = 540 }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "ENG_Parliament_state_of_motion"
+			format = left
+			maxWidth = 240
+			maxHeight = 50
+		}
+		instantTextboxType = {
+			name = "ENG_Parliament_support_people_of_motion"
+			position = { x = 1060 y = 540 }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "ENG_Parliament_support_people_of_motion"
+			format = left
+			maxWidth = 240
+			maxHeight = 50
+		}
+		buttonType = {
+            name = "OPEN_hitory_motion_window"
+            position = { x = 800 y = 830 }
+            quadTextureSprite = "GFX_event_option_entry"
+			buttonText = "OPEN_hitory_motion_window"
+			buttonFont = "hoi_24header"
+            clicksound = click_close
+        }
+#席位
+	gridboxtype = {
+		name = "ENG_hounse_of_common_MP"
+		position = {
+			x = 330
+			y = 0
+		}
+		slotsize = {
+			width = 25
+			height = 25
+		}
+		max_slots_horizontal = 40
+		max_slots_vertical = 10
+		add_horizontal = no
+	}
+#党派席位标题
+	instantTextboxType = {
+		name = "Party_seats_titile"
+		position = { x = 300 y = 500 }
+		orientation = left_up
+		font = "hoi_36header"
+		text = "Party_seats_titile_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#自由党席位
+	instantTextboxType = {
+		name = "Liberal_Party_seats_titile"
+		position = { x = 300 y = 550 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "Liberal_Party_seats_titile_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#保守党席位
+	instantTextboxType = {
+		name = "conservative_Party_seats_titile"
+		position = { x = 300 y = 610 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "conservative_Party_seats_titile_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#工党席位
+	instantTextboxType = {
+		name = "Labour_Party_seats_titile"
+		position = { x = 300 y = 670 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "Labour_Party_seats_titile_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#新芬党席位
+	instantTextboxType = {
+		name = "Sinn_Fein_Party_seats_titile"
+		position = { x = 300 y = 730 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "Sinn_Fein_Party_seats_titile_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#政府稳定度
+	instantTextboxType = {
+		name = "Government_stability_text"
+		position = { x = 300 y = 800 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "Government_stability_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+	#民意支持率
+	instantTextboxType = {
+		name = "Public_support_text"
+		position = { x = 300 y = 830 }
+		orientation = left_up
+		font = "hoi_24header"
+		text = "Public_support_text"
+		format = left
+		maxWidth = 500
+		maxHeight = 50
+	}
+
+
+#不列颠首相推举按钮
+		buttonType = {
+            name = "Electe_the_Prime_Minister_of_Britain_button"
+            position = { x = 848 y = 80 }
+            quadTextureSprite = "GFX_event_option_entry"
+			buttonText = "Electe_the_Prime_Minister_of_Britain"
+			buttonFont = "hoi_24header"
+            clicksound = click_close
+        }
+#首相
+	#自由党
+		instantTextboxType = {
+			name = "Liberal_Party_title"
+			position = { x = 388 y = @party_leader_titlt_y }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "Liberal_Party_title"
+			format = centre
+			maxWidth = 156
+			maxHeight = 100
+		}
+		iconType = {
+			name ="leader_icon_of_Liberal_Party"
+			position = { x = 388 y = @party_leader_y }
+			pdx_tooltip = "leader_of_Liberal_Party_desc"
+			pdx_tooltip_delayed = "leader_of_Liberal_Party_desc_delayed"
+		}
+		instantTextboxType = {
+			name = "Liberal_Party_Support_rate_text"
+			position = { x = 300 y = @party_Support_rate_text_y }
+			orientation = left_up
+			font = "hoi_18mbs"
+			text = "Liberal_Party_Support_rate_text"
+			format = left
+			maxWidth = 156
+			maxHeight = 80
+		}
+		iconType = {
+			name ="Liberal_Party_Support_rate"
+			position = { x = 300 y = @party_Support_rate_y }
+			spriteType = "GFX_ENG_yelow_progress"
+		}
+	#保守党
+		instantTextboxType = {
+			name = "conservative_Party_title"
+			position = { x = 722 y = @party_leader_titlt_y }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "conservative_Party_title"
+			format = centre
+			maxWidth = 156
+			maxHeight = 100
+		}
+		iconType = {
+			name ="leader_icon_of_conservative_Party"
+			position = { x = 722 y = @party_leader_y }
+			pdx_tooltip = "leader_of_conservative_Party_desc"
+			pdx_tooltip_delayed = "leader_of_conservative_Party_desc_delayed"
+		}
+		instantTextboxType = {
+			name = "conservative_Party_Support_rate_text"
+			position = { x = 300 y = @party_Support_rate_text_y }
+			orientation = left_up
+			font = "hoi_18mbs"
+			text = "conservative_Party_Support_rate_text"
+			format = left
+			maxWidth = 156
+			maxHeight = 80
+		}
+		iconType = {
+			name ="conservative_Party_Support_rate"
+			position = { x = 300 y = @party_Support_rate_y }
+			spriteType = "GFX_ENG_blue_progress"
+		}
+	#工党
+		instantTextboxType = {
+			name = "Labour_Party_title"
+			position = { x = 1055 y = @party_leader_titlt_y }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "Labour_Party_title"
+			format = centre
+			maxWidth = 156
+			maxHeight = 100
+		}
+		iconType = {
+			name ="leader_icon_of_Labour_Party"
+			position = { x = 1055 y = @party_leader_y }
+			pdx_tooltip = "leader_of_Labour_Party_desc"
+			pdx_tooltip_delayed = "leader_of_Labour_Party_desc_delayed"
+		}
+		instantTextboxType = {
+			name = "Labour_Party_Support_rate_text"
+			position = { x = 300 y = @party_Support_rate_text_y }
+			orientation = left_up
+			font = "hoi_18mbs"
+			text = "Labour_Party_Support_rate_text"
+			format = left
+			maxWidth = 156
+			maxHeight = 80
+		}
+		iconType = {
+			name ="Labour_Party_Support_rate"
+			position = { x = 300 y = @party_Support_rate_y }
+			spriteType = "GFX_ENG_pink_progress"
+		}
+	#新芬党
+		instantTextboxType = {
+			name = "Sinn_Fein_Party_title"
+			position = { x = 1097 y = @party_leader_titlt_y }
+			orientation = left_up
+			font = "hoi_30header"
+			text = "Sinn_Fein_Party_title"
+			format = centre
+			maxWidth = 156
+			maxHeight = 100
+		}
+		iconType = {
+			name ="leader_icon_of_Sinn_Fein_Party"
+			position = { x = 1097 y = @party_leader_y }
+			pdx_tooltip = "leader_of_Sinn_Fein_Party_desc"
+			pdx_tooltip_delayed = "leader_of_Sinn_Fein_Party_desc_delayed"
+		}
+		instantTextboxType = {
+			name = "Sinn_Fein_Party_Support_rate_text"
+			position = { x = 1097 y = @party_Support_rate_text_y }
+			orientation = left_up
+			font = "hoi_18mbs"
+			text = "Sinn_Fein_Party_Support_rate_text"
+			format = left
+			maxWidth = 156
+			maxHeight = 80
+		}
+		iconType = {
+			name ="Sinn_Fein_Party_Support_rate"
+			position = { x = 300 y = @party_Support_rate_y }
+			spriteType = "GFX_ENG_green_progress"
+		}
+	#底部文字
+		instantTextboxType = {
+			name = "Electe_the_Prime_Minister_of_Britain_titile"
+			position = { x = 0 y = -200 }
+			orientation = LOWER_LEFT
+			font = "hoi_33"
+			text = "Electe_the_Prime_Minister_of_Britain_titile_text"
+			format = centre
+			maxWidth = 1600
+			maxHeight = 200
+		}
+#关闭
+		buttonType = {
+		name = "close_button"
+		position = { x = -40 y = 8 }
+		quadTextureSprite = "GFX_profile_button_close"
+		shortcut = "ESCAPE"
+		Orientation = "UPPER_RIGHT"
+		pdx_tooltip = "CLOSE"
+		}
+	}
+#其它
+	#席位
+	containerWindowType = {
+		name = "ENG_hounse_of_common_MP_entry"
+		position = {
+			x = 0
+			y = 0
+		}
+		icontype = {
+			name = "ENG_hounse_of_common_MP_icon"
+			position = {
+				x = -20
+				y = 170
+			}
+			spriteType = "GFX_ENG_House_of_Commons_ICON"
+			Orientation = center
+			Origo = center
+			scale = 0.17
+		}
+	}
+}
+guiTypes = {#历史议案
+	containerWindowType = {
+		name = "ENG_Parliament_hitory_motion_window"
+		position = { x = 0 y = 0 }
+		Orientation = center
+		Origo = center
+		moveable = yes
+		size = { width = 450 height= 450 }
+		background = {
+			name = "ENG_Parliament_past_motion_list_blackground"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+		instantTextboxType = {
+			name = "ENG_Parliament_title_of_history_motion"
+			position = { x = 0 y = 30 }
+			orientation = left_up
+			font = "hoi_36header"
+			text = "ENG_Parliament_title_of_history_motion"
+			format = center
+			maxWidth = 450
+			maxHeight = 50
+		}
+		containerWindowType = {
+			name = "ENG_Parliament_past_motion_list_container"
+			size = { width = 450 height = 310 }
+			verticalScrollbar = "right_vertical_slider"
+			position = { x = 0 y = 100 }
+			background = {
+				name = "ENG_Parliament_past_motion_list_blackground"
+				spriteType = "GFX_tiled_plain_bg"
+			}
+			gridboxtype = {
+				name = "ENG_Parliament_past_motion_list"
+				position = { x = 0 y = 0 }
+				size = { width = 430 height = 310 }
+				slotsize = { width = 430 height = 70 }
+				max_slots_horizontal = 1 
+				add_horizontal = no
+			}
+		}
+		#关闭
+		buttonType = {
+			name = "close_button"
+			position = { x = -40 y = 8 }
+			quadTextureSprite = "GFX_profile_button_close"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			pdx_tooltip = "CLOSE"
+		}
+	}
+	#议案
+	containerWindowType = {
+		name = "ENG_Parliament_ord"
+		position = { x = 20 y = 10 }
+		size = { width = 400 height = 66 }
+		iconType = {
+			name ="ENG_Parliament_icon_of_history_motion"
+			pdx_tooltip = "ENG_Parliament_history_motion_name_desc"
+			position = { x = 0 y = 0 }
+			scale = 0.55
+		}
+		instantTextboxType = {
+			name = "history_motion_name"
+			position = { x = 70 y = 0 }
+			font = "hoi_24header"
+			text = "ENG_Parliament_history_motion_name"
+			pdx_tooltip = "ENG_Parliament_history_motion_name_desc"
+			maxWidth = 334
+			format = left
+			#alwaystransparent = yes
+			multiline = yes
+			maxHeight = 40
+			vertical_alignment = center
+		}
+		instantTextboxType = {
+			name = "history_motion_STATE"
+			position = { x = 70 y = 30 }
+			orientation = left_up
+			font = "hoi_22typewriter"
+			text = "history_motion_STATE"
+			format = left
+			maxWidth = 334
+			maxHeight = 50
+		}
+	}
+}

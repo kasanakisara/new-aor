@@ -1,0 +1,474 @@
+ideas = {
+	country = {
+	
+		Wur_repair = {
+            picture =Wur_repair
+			allowed = { always = yes }
+
+            modifier = {
+                industry_repair_factor = 0.15
+            }
+        }
+	
+		ORA_a_group_without_leader = {
+			picture = ORA_a_group_without_leader
+			allowed = { always = yes }
+			modifier = {
+			political_power_gain = -0.3
+			planning_speed = -0.05
+			mobilization_speed = -0.05
+			}
+		}
+		ORA_Absent_CORA = {
+			picture = ORA_Absent_CORA
+			allowed = { always = yes }
+			modifier = {
+			stability_factor = -0.1
+			}
+		}
+	    ORA_Spark = {
+			picture = ORA_Spark
+			allowed = { always = yes }
+			modifier = {
+			join_faction_tension = 20
+			surrender_limit = 0.35
+			army_org_factor = -0.05
+			experience_gain_army_factor = 0.05
+			
+			}
+		}
+		ORA_Spark_1 = {
+			picture = ORA_Spark_1
+			allowed = { always = yes }
+			modifier = {
+				army_defence_factor = 0.1 #陆军防御
+			join_faction_tension = 2
+			surrender_limit = 0.2
+			}
+		}
+		ORA_gong_ren_shang_qian_xian = {
+			picture = ARG_gong_ren_shang_qian_xian_pic
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = -0.15 #工厂产出
+				ai_focus_aggressive_factor = 0.15 #ai修正:专注进攻的值
+				monthly_population = 0.15 #月度人力
+				recon_factor = 0.5 #陆军侦查
+			}
+		}
+		ORA_gong_ren_shang_qian_xian_1 = {
+			picture = ARG_gong_ren_shang_qian_xian_pic_1
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = -0.2 #工厂产出
+				ai_focus_aggressive_factor = 0.15 #ai修正:专注进攻的值
+				monthly_population = 0.15 #月度人力
+				recon_factor = 0.5 #陆军侦查
+			}
+		}
+		ORA_gong_ren_shang_qian_xian_2 = {
+			picture = ARG_gong_ren_shang_qian_xian_pic_2
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = -0.25 #工厂产出
+				ai_focus_aggressive_factor = 0.15 #ai修正:专注进攻的值
+				monthly_population = 0.15 #月度人力
+				recon_factor = 0.5 #陆军侦查
+			}
+		}
+		ORA_gong_ren_shang_qian_xian_3 = {
+			picture = ARG_gong_ren_shang_qian_xian_pic_3
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = -0.3 #工厂产出
+				ai_focus_aggressive_factor = 0.15 #ai修正:专注进攻的值
+				monthly_population = 0.15 #月度人力
+				recon_factor = 0.5 #陆军侦查
+			}
+		}
+		ORA_gong_hui_ling_dao = {
+			picture =gong_hui_ling_dao_pic
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				political_power_cost = 0.1
+			}
+		}
+		AOR_ORA_Workers_autonomy = {
+			picture = AOR_ORA_Workers_autonomy
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				political_power_cost = 0.1
+			}
+		}
+		AOR_ORA_xin_da_lu_mo_shi = {
+			picture = AOR_ORA_xin_da_lu_mo_shi
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = -0.1
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				political_power_cost = 0.2
+			}
+		}
+		ORA_lian_he_zheng_fu = {
+			picture = ORA_lian_he_zheng_fu 
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.05
+				war_support_factor = 0.05
+				
+			}
+		}
+		ORA_kerduowadhm = {
+			picture = ORA_kerduowadhm
+			allowed = { always = yes }
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR = 0.05				
+			}
+		}
+		ORA_pansasidhx = {
+			picture = GFX_ORA_kerduowadhm
+			allowed = { always = yes }
+			modifier = {
+				PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+				SUPPLY_CONSUMPTION_FACTOR = -0.05
+				CONSUMER_GOODS_FACTOR = -0.05			
+			}
+		}
+		ORA_hongxingbao = {
+			picture = GFX_ORA_hongxingbao
+			allowed = { always = yes }
+			modifier = {
+				POLITICAL_POWER_GAIN = 0.2	
+				MOBILIZATION_SPEED = 0.4	
+			}
+		}
+		ORA_qingbaozuzhi = {
+				 modifier = {
+					OPERATIVE_SLOT = 1
+					ENCRYPTION_FACTOR = 0.5
+				}
+	    }
+		ORA_renminzhengzhiju = {
+			picture = GFX_ORA_renminzhengzhiju
+			allowed = { always = yes }
+			modifier = {
+				political_advisor_cost_factor = -0.15
+				industrial_concern_cost_factor = -0.15
+				ARMY_ADVISOR_COST_FACTOR = -0.15	
+			}
+		}
+		ORA_zaijiaoyuyundo = {
+			picture = GFX_ORA_zaijiaoyuyundo
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.01
+				production_speed_buildings_factor = 0.025
+				industrial_capacity_factory = 0.025
+			}
+		}
+		ORA_zaijiaoyuyundo_2 = {
+			picture = GFX_ORA_zaijiaoyuyundo_2
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.02
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+		ORA_zaijiaoyuyundo_3 = {
+			picture = GFX_ORA_zaijiaoyuyundo_3
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = -0.01
+				production_speed_buildings_factor = 0.025
+				industrial_capacity_factory = 0.025
+				production_factory_max_efficiency_factor = 0.03
+				consumer_goods_factor = -0.02
+			}
+		}
+		ORA_zaijiaoyuyundo_4 = {
+			picture = GFX_ORA_zaijiaoyuyundo_4
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.05
+				production_speed_buildings_factor = 0.05
+				RESEARCH_SPEED_FACTOR = 0.05
+				consumer_goods_factor = -0.01
+			}
+		}
+		ORA_zaijiaoyuyundo_5 = {
+			picture = GFX_ORA_zaijiaoyuyundo_5
+			allowed = { always = yes }
+			modifier = {
+				CONSCRIPTION_FACTOR = 0.05
+				production_speed_buildings_factor = 0.05
+				RESEARCH_SPEED_FACTOR = 0.05
+				consumer_goods_factor = -0.01
+			}
+		}
+		ORA_wuchangjiejizhili = {
+			picture = GFX_ORA_wuchangjiejizhili
+			allowed = { always = yes }
+			modifier = {
+				production_factory_max_efficiency_factor = 0.10
+				PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR = -0.05
+				consumer_goods_factor = 0.02
+			}
+		}
+		ORA_yindaonongye = {
+			picture = GFX_ORA_yindaonongye
+			allowed = { always = yes }
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				STABILITY_FACTOR = -0.01
+				consumer_goods_factor = -0.01
+			}
+		}
+		ORA_gongyefazhangju = {
+			picture = GFX_ORA_yindaonongye
+			allowed = { always = yes }
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+		}
+		ORA_gonghuizhiquan = {
+			modifier = {
+				OPERATIVE_SLOT = 1
+				}
+			}
+		ORA_gemingxianzhang = {
+			picture = GFX_ORA_gemingxianzhang
+			allowed = { always = yes }
+			modifier = {
+				war_support_factor = 0.05
+				political_power_cost = -0.25
+				political_power_factor = 0.2
+			}
+		}
+		ORA_xietiaogonghui = {
+			picture = GFX_ORA_xietiaogonghui
+			allowed = { always = yes }
+			modifier = {
+				political_power_factor = -0.05
+				LINE_CHANGE_PRODUCTION_EFFICIENCY_FACTOR = 0.1
+				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.015
+			}
+		}
+		ORA_renmingzhiguo = {
+			picture = GFX_ORA_renmingzhiguo
+			allowed = { always = yes }
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR = 0.05
+				political_power_gain = 0.05
+			}
+		}
+		ORA_zhuzhongminsheng = {
+			picture = GFX_ORA_zhuzhongminsheng
+			allowed = { always = yes }
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+		
+		ORA_zhenyafangem = {
+			picture = GFX_ORA_zhenyafangem
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				stability_weekly = 0.001
+				compliance_growth = 0.15
+			}
+		}
+		ORA_qingbaozuzhi = {
+			picture = GFX_ORA_zhenyafangem
+			allowed = { always = yes }
+			modifier = {
+				political_power_cost = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				stability_weekly = 0.001
+				compliance_growth = 0.15
+			}
+		}
+		ORA_Face_Attack = {
+			picture = GFX_ORA_Face_Attack
+			allowed = { always = yes }
+			modifier = {
+				army_attack_factor = 0.2
+				army_defence_factor = 0.2
+			}
+		}
+		ORA_Gross_Plan = {
+			picture = GFX_ORA_Gross_Plan
+			allowed = { always = yes }
+			modifier = {
+				max_planning = 0.2
+			}
+		}
+
+###################################美洲宣言的奇妙冒险##################################
+
+		#Orginal ideas
+		ORA_america_shout= {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1				
+			}
+		}
+
+		#只点了渔业国策
+		ORA_america_shout_II= {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				production_speed_dockyard_factor = 0.1		
+			}
+		}
+
+		#点了渔业国策和集体劳动
+		ORA_america_shout_III = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				production_speed_dockyard_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		#只点了集体劳动
+		ORA_america_shout_IV = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		#只点了重建秩序
+		ORA_america_shout_V = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1		
+				compliance_growth = 0.05
+			}
+		}
+
+		#点了重建秩序和渔业
+		ORA_america_shout_VI= {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				production_speed_dockyard_factor = 0.1
+				compliance_growth = 0.05
+			}
+		}
+
+		#点了重建秩序、渔业和集体劳动
+		ORA_america_shout_VII = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				production_speed_dockyard_factor = 0.1
+				industrial_capacity_factory = 0.1
+				compliance_growth = 0.05
+			}
+		}
+
+		#点了重建秩序和集体劳动
+		ORA_america_shout_VIII = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				industrial_capacity_factory = 0.1
+				compliance_growth = 0.05
+			}
+		}
+
+		#点了新官僚机构
+		ORA_america_shout_VVI = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.2
+				production_speed_dockyard_factor = 0.1
+				industrial_capacity_factory = 0.1
+				compliance_growth = 0.05
+			}
+		}
+
+		#点了新思想
+		ORA_america_shout_X = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.1
+				production_speed_dockyard_factor = 0.1
+				industrial_capacity_factory = 0.1
+				compliance_growth = 0.05
+				Anarcho_drift = 0.05
+				Marxism_drift = 0.05
+			}
+		}
+
+		#上面这俩都点了
+		ORA_america_shout_XI = {
+			picture = GFX_ORA_america_shout
+			allowed = { always = yes }
+			modifier = {
+				stability_weekly = 0.001
+				war_support_weekly = 0.001	
+				political_power_gain = 0.2
+				production_speed_dockyard_factor = 0.1
+				industrial_capacity_factory = 0.1
+				compliance_growth = 0.05
+				Anarcho_drift = 0.05
+				Marxism_drift = 0.05
+			}
+		}
+		
+	}
+}

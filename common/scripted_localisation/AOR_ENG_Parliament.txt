@@ -1,0 +1,272 @@
+#自由党
+defined_text = {
+	name = Leader_Icon_of_Liberal_Party
+	text = {
+		localization_key = GFX_ENG_Leader_of_the_Liberal_Party
+	}
+}
+
+defined_text = {
+	name = leader_name_of_Liberal_Party
+	text = {
+		localization_key = leader_name
+	}
+}
+
+defined_text = {
+	name = Leader_of_Liberal_Party_desc
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+defined_text = {
+	name = Leader_of_Liberal_Party_desc_delayed
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+#保守党
+defined_text = {
+	name = Leader_icon_of_conservative_Party
+	text = {
+		localization_key = GFX_ENG_Leader_of_the_Conservative_Party
+	}
+}
+
+defined_text = {
+	name = leader_name_of_conservative_Party
+	text = {
+		localization_key = leader_name
+	}
+}
+
+defined_text = {
+	name = Leader_of_conservative_Party_desc
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+defined_text = {
+	name = Leader_of_conservative_Party_desc_delayed
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+#工党
+defined_text = {
+	name = Leader_icon_of_Labour_Party
+	text = {
+		localization_key = GFX_ENG_Labour_leader
+	}
+}
+
+defined_text = {
+	name = leader_name_of_Labour_Party
+	text = {
+		localization_key = leader_name
+	}
+}
+
+defined_text = {
+	name = Leader_of_Labour_Party_desc
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+defined_text = {
+	name = Leader_of_Labour_Party_desc_delayed
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+#新芬党
+defined_text = {
+	name = Leader_icon_of_Sinn_Fein_Party
+	text = {
+		localization_key = GFX_ENG_Sinn_Fein_leader
+	}
+}
+
+defined_text = {
+	name = leader_name_of_Sinn_Fein_Party
+	text = {
+		localization_key = leader_name
+	}
+}
+
+defined_text = {
+	name = Leader_of_Sinn_Fein_Party_desc
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+defined_text = {
+	name = Leader_of_Sinn_Fein_Party_desc_delayed
+	text = {
+		localization_key = this_is_a_sentence
+	}
+}
+
+#议案
+#议案图标
+defined_text = {
+	name = ENG_Parliament_Icon_of_motion
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 1
+			}
+		}
+		localization_key = GFX_ENG_this_is_an_icon
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 0
+			}
+		}
+		localization_key = GFX_ENG_this_is_an_icon
+	}
+}
+
+#议案名称
+defined_text = {
+	name = ENG_Parliament_Name_of_motion
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 1
+			}
+		}
+		localization_key = ENG_Parliament_teast_motion
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 0
+			}
+		}
+		localization_key = ENG_Parliament_no_motion
+	}
+}
+
+#议案简述
+defined_text = {
+	name = ENG_Parliament_Desc_of_motion
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 1
+			}
+		}
+		localization_key = ENG_Parliament_teast_motion_desc
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_num_of_motion_going = 0
+			}
+		}
+		localization_key = ENG_Parliament_no_motion_desc
+	}
+}
+
+#通过与否
+defined_text = {
+	name = ENG_Parliament_support_state_of_motion
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going = 1
+			}
+		}
+		localization_key = ENG_Parliament_passage_success
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going = -1
+			}
+		}
+		localization_key = ENG_Parliament_passage_fail
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going = 0
+			}
+		}
+		localization_key = ENG_Parliament_passage_stalled
+	}
+}
+
+#历史议案
+#名称
+defined_text = {
+	name = ENG_Parliament_history_motion_Name
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_past_motion_id = 1
+			}
+		}
+		localization_key = ENG_Parliament_teast_motion
+	}
+}
+
+#介绍
+defined_text = {
+	name = ENG_Parliament_history_motion_name_Desc
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_past_motion_id = 1
+			}
+		}
+		localization_key = ENG_Parliament_teast_motion_desc
+	}
+}
+
+#议案图标
+defined_text = {
+	name = ENG_Parliament_Icon_of_history_motion
+	text = {
+		localization_key = GFX_ENG_this_is_an_icon
+	}
+}
+
+#通过与否
+defined_text = {
+	name = history_motion_state
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_past_motion_state^ENG_Parliament_past_motion_i = 1
+			}
+		}
+		localization_key = ENG_Parliament_passage_success
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_past_motion_state^ENG_Parliament_past_motion_i = -1
+			}
+		}
+		localization_key = ENG_Parliament_passage_fail
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ENG_Parliament_past_motion_state^ENG_Parliament_past_motion_i = 0
+			}
+		}
+		localization_key = ENG_Parliament_passage_stalled
+	}
+}

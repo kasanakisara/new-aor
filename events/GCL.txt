@@ -1,0 +1,98 @@
+add_namespace = GCL
+
+country_event = {
+	id = GCL.1 #大哥伦比亚骚乱
+	title = GCL.1.t
+	desc = GCL.1.d
+	picture = GFX_GCL_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = GCL
+		date = 1924.10.1
+    }
+	option = {
+		name=GCL.1.a
+		493 = {
+			set_demilitarized_zone = yes
+		}
+		306 = {
+			set_demilitarized_zone = yes
+		}
+		486 = {
+			set_demilitarized_zone = yes
+		}
+		489 = {
+			set_demilitarized_zone = yes
+		}
+		307 = {
+			set_demilitarized_zone = yes
+		}
+		305 = {
+			set_demilitarized_zone = yes
+		}
+		490 = {
+			set_demilitarized_zone = yes
+		}
+		add_manpower = -10000
+	}
+}
+
+country_event = {
+	id = GCL.2 #大哥伦比亚解体
+	title = GCL.2.t
+	desc = GCL.2.d
+	picture = GFX_GCL_event_2
+	fire_only_once = yes
+	trigger = {
+		tag = GCL
+		date = 1924.12.1
+    }
+	option = {
+		GCL = {
+			add_popularity = { ideology = Absolutism popularity = -0.3 }
+			add_popularity = { ideology = CON_democratic  popularity = -0.1 }
+			add_popularity = { ideology = AUT_democratic  popularity = 0.1 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.2 }
+			add_popularity = { ideology = Marxism popularity = 0.1 }
+			}
+		ECU = {
+		    set_politics = {ruling_party = CON_democratic }
+			add_popularity = { ideology = CON_democratic  popularity = 0.3 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.3 }
+			add_popularity = { ideology = Absolutism popularity = 0.2 }
+			transfer_state = 305
+			transfer_state = 490
+		}
+		VEN = {
+		    set_politics = {ruling_party = CON_democratic }
+			add_popularity = { ideology = Absolutism popularity = 0.3 }
+			add_popularity = { ideology = CON_democratic  popularity = 0.2 }
+			add_popularity = { ideology = FRE_democratic popularity = 0.2 }
+			transfer_state = 489
+			transfer_state = 307
+			transfer_state = 488
+		}
+		name=GCL.2.a
+		493 = {
+			set_demilitarized_zone = no
+		}
+		306 = {
+			set_demilitarized_zone = no
+		}
+		486 = {
+			set_demilitarized_zone = no
+		}
+		489 = {
+			set_demilitarized_zone = no
+		}
+		307 = {
+			set_demilitarized_zone = no
+		}
+		305 = {
+			set_demilitarized_zone = no
+		}
+		490 = {
+			set_demilitarized_zone = no
+		}
+	}
+}

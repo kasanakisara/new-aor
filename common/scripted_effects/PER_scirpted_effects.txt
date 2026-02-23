@@ -1,0 +1,83 @@
+PER_Fighting_inflation_666 = {#通胀效果
+	hidden_effect = {
+		if = {
+			limit = { 
+				has_idea = PER_Fighting_inflation_3
+			}
+			swap_ideas = {
+				remove_idea = PER_Fighting_inflation_3
+				add_idea = PER_Fighting_inflation_2
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Fighting_inflation_2
+			}
+			swap_ideas = {
+				remove_idea = PER_Fighting_inflation_2
+				add_idea = PER_Fighting_inflation_1
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Fighting_inflation_1
+			}
+			swap_ideas = {
+				remove_idea = PER_Fighting_inflation_1
+				add_idea = PER_Fighting_inflation_4
+			} 
+			clr_country_flag = unlock_AOR_PER_Fighting_inflation
+		}
+	}
+}
+
+PER_Agricultural_Jihad_Preliminary_777 = { #农业效果
+	hidden_effect = {
+		if = {
+			limit = { 
+				has_idea = PER_Great_Famine_2
+			}
+			swap_ideas = {
+				remove_idea = PER_Great_Famine_2
+				add_idea = PER_Great_Famine_3
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Great_Famine_3
+			}
+			swap_ideas = {
+				remove_idea = PER_Great_Famine_3
+				add_idea = PER_Great_Famine_4
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Great_Famine_4
+			}
+			swap_ideas = {
+				remove_idea = PER_Great_Famine_4
+				add_idea = PER_Agricultural_Jihad_Preliminary_1
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Agricultural_Jihad_Preliminary_1
+			}
+			swap_ideas = {
+				remove_idea = PER_Agricultural_Jihad_Preliminary_1
+				add_idea = PER_Agricultural_Jihad_Preliminary_2
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PER_Agricultural_Jihad_Preliminary_2
+			}
+			swap_ideas = {
+				remove_idea = PER_Agricultural_Jihad_Preliminary_2
+				add_idea = PER_Agricultural_Jihad_Preliminary_3
+			}
+			clr_country_flag = unlock_AOR_PER_Agricultural_Jihad_Preliminary#农业标记
+		}
+	}
+}

@@ -1,0 +1,463 @@
+focus_tree = {
+	id = NAU_FocusTree_0
+	country = {
+		factor = 0
+		modifier = {
+			add = 30
+			tag = NAU
+		}
+	}
+	#巴登还没死
+	continuous_focus_position = { x = 1500  y = 2000 } 
+
+	focus = {
+		id = NAU_Convening_the_Military_Headquarters_Conference #召开军部大会
+		icon = GFX_goal_NAU_Convening_the_Military_Headquarters_Conference
+		cost = 1
+		x = 7
+		y = 0
+
+		completion_reward={
+			army_experience = 10
+			add_command_power = 5
+			add_political_power = 5
+			custom_effect_tooltip = NAU.5.tt
+			country_event = { id = NAU.2 }
+		}
+
+	}
+	focus = {
+		id = NAU_Fight_against_local_forces #打击地方势力
+		icon = GFX_goal_NAU_Fight_against_local_forces
+		cost = 1
+		prerequisite = {
+			focus = NAU_Convening_the_Military_Headquarters_Conference
+		}
+		x = 7
+		y = 1
+		completion_reward={
+			add_political_power = -50
+			add_stability = 0.05
+			custom_effect_tooltip = NAU.1.tt
+			custom_effect_tooltip = NAU.2.tt
+			set_country_flag = NAU_against_local_forces
+			
+		#合理，不用解除注释，勿动
+		#	add_to_variable  = {AOR_NAU_FORCES_P_SPD = -1}
+		#	add_to_variable  = {AOR_NAU_FORCES_P_STLS = -1}
+		#	add_to_variable  = {AOR_NAU_FORCES_P_KPD = -1}
+		#	add_to_variable = {AOR_NAU_FORCES_P_L = -1}
+		#
+		#	add_to_variable  = {AOR_NAU_FORCES_M_STLS = -1}
+		#	add_to_variable = {AOR_NAU_FORCES_M_L = -1}
+		}
+
+	}
+	focus = {
+		id = NAU_Expand_Frankfurt_market #扩展法兰克福市场
+		icon = GFX_goal_NAU_Expand_Frankfurt_market
+		cost = 5
+		prerequisite = {
+			focus = NAU_Fight_against_local_forces
+		}
+		x = 4
+		y = 2
+		completion_reward={
+			54 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+				IF = {
+					limit = { has_dlc = "Arms Against Tyranny" }
+
+					NAU = { add_cic = 1250 }
+								
+					NAU = {
+						add_equipment_subsidy = {
+							cic = 100  
+							equipment_type = infantry_equipment 
+							seller_tags = { HAN }  			
+						}
+					}
+					
+					
+				}
+
+			custom_effect_tooltip = NAU.BLANK.tt
+			if = {
+				limit = {
+					NOT = {has_ideas = limit_exports }
+				}	
+				add_ideas = limited_exports
+			}
+		}
+	}
+
+	focus = {
+		id = NAU_Create_a_cult_of_personality #制造个人崇拜
+		icon = GFX_goal_NAU_Create_a_cult_of_personality
+		cost = 5
+		prerequisite = {
+			focus = NAU_Fight_against_local_forces
+		}
+		x = 6
+		y = 2
+		completion_reward={
+			add_stability = 0.1
+			add_war_support = 0.05
+			custom_effect_tooltip = NAU.7.tt
+			custom_effect_tooltip = NAU.3.tt
+			add_country_leader_trait = Commander_of_the_General
+			add_to_variable = {AOR_NAU_FORCES_P_JB = 1}
+		}
+
+	}
+	focus = {
+		id = NAU_The_prince_s_speech #亲王的演讲
+		icon = GFX_goal_NAU_The_prince_s_speech
+		cost = 3
+		prerequisite = {
+			focus = NAU_Create_a_cult_of_personality
+		}
+		x = 5
+		y = 3
+		completion_reward={
+			country_event = { id = NAU.3 }
+			custom_effect_tooltip = NAU.3.tt
+			add_to_variable = {AOR_NAU_FORCES_P_JB = 1}
+		}
+
+	}
+	focus = {
+		id = NAU_Military_Training #军队整训
+		icon = GFX_goal_NAU_Military_Training
+		cost = 4
+		prerequisite = {
+			focus = NAU_Fight_against_local_forces
+		}
+		x = 8
+		y = 2
+		completion_reward={
+			army_experience = 15
+			custom_effect_tooltip = NAU.8.tt
+			add_ideas = { A_professional_army_with_high_standards }
+			custom_effect_tooltip = NAU.4.tt
+			add_to_variable = {AOR_NAU_FORCES_M_JB = 1}		
+		}
+
+	}
+	focus = {
+		id = NAU_An_attack_on_the_center #贯彻精神
+		icon = GFX_goal_NAU_An_attack_on_the_center
+		cost = 3
+		prerequisite = {
+			focus = NAU_Military_Training
+		}
+		x = 9
+		y = 3
+		completion_reward={
+			swap_ideas = {
+				add_idea  = A_professional_army_with_high_standards_1
+				remove_idea = A_professional_army_with_high_standards
+			}
+			custom_effect_tooltip = NAU.6.tt
+			add_to_variable = {AOR_NAU_FORCES_M_L = 1}		
+		}
+
+	}
+	focus = {
+		id = NAU_Integrated_economic_control 
+		icon = GFX_goal_NAU_Integrated_economic_control
+		cost = 5
+		prerequisite = {
+			focus = NAU_Dismiss_the_die_hards
+		}
+		prerequisite = {
+			focus = NAU_Implement_the_merger_of_enterprises
+		}
+		prerequisite = {
+			focus = NAU_Recall_the_command_of_the_army
+		}		
+		x = 7
+		y = 5
+		completion_reward={
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			swap_ruler_traits = { remove = Commander_of_the_General add = Commander_of_the_General_1 }
+		}
+
+	}
+	focus = {
+		id = NAU_The_Prince_s_iron_fist #亲王的铁拳
+		icon = GFX_goal_NAU_The_Prince_s_iron_fist
+		cost = 3
+		prerequisite = {
+			focus = NAU_Fight_against_local_forces
+		}
+		x = 10
+		y = 2
+		completion_reward={
+			add_manpower = -7320
+			add_stability = -0.17
+			country_event = { id = NAU.4 }
+			custom_effect_tooltip = NAU.10.tt
+			custom_effect_tooltip = NAU.9.tt
+			add_to_variable = {AOR_NAU_FORCES_M_STLS = -1}	
+			add_to_variable = {AOR_NAU_FORCES_M_KPD = -1}	
+		}
+
+	}
+	focus = {
+		id = NAU_Implement_the_merger_of_enterprises #实行企业兼并
+		icon = GFX_goal_NAU_Implement_the_merger_of_enterprises
+		cost = 5
+		prerequisite = {
+			focus = NAU_Expand_Frankfurt_market
+		}
+		x = 3
+		y = 4
+		completion_reward={
+				add_offsite_building = { type = industrial_complex level = 2 }
+				add_offsite_building = { type = arms_factory level = 1 }
+				random_owned_controlled_state = {	
+					add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes 
+					}
+			}
+				IF = {
+					limit = { has_dlc = "Arms Against Tyranny" }
+
+					NAU = { add_cic = 1750 }
+					
+				}
+		}
+
+	}
+	focus = {
+		id = NAU_Dismiss_the_die_hards #辞退顽固派
+		icon = GFX_goal_NAU_Dismiss_the_die_hards
+		cost = 6
+		prerequisite = {
+			focus = NAU_The_Prince_s_iron_fist
+		}
+		x = 11
+		y = 4
+		completion_reward={
+			add_stability = 0.1
+			custom_effect_tooltip = NAU.12.tt
+			custom_effect_tooltip = NAU.11.tt
+			add_to_variable = {AOR_NAU_FORCES_M_L = -1}	
+		}
+
+	}
+	focus = {
+		id = NAU_Recall_the_command_of_the_army #回收统兵权
+		icon = GFX_goal_NAU_Recall_the_command_of_the_army
+		cost = 5
+		prerequisite = {
+			focus = NAU_The_prince_s_speech
+		}
+		prerequisite = {
+			focus = NAU_An_attack_on_the_center
+		}
+		x = 7
+		y = 4
+		completion_reward={
+			add_manpower = 5975
+			custom_effect_tooltip = NAU_create_four_Imperial_Division_tt
+			custom_effect_tooltip = NAU_create_FAKE_Division_tt
+
+			hidden_effect = {
+			load_oob = NAU_AOR_fake	
+			load_oob = NAU_laobing
+
+		}
+	}
+}
+	focus = {
+		id = NAU_Attack_Berlin #进攻柏林
+		icon = GFX_goal_NAU_Attack_Berlin
+		cost = 5
+		prerequisite = {
+			focus = NAU_Integrated_economic_control
+		}
+		x = 7
+		y = 6
+		completion_reward={
+				start_border_war = {
+				change_state_after_war = yes
+				defender  = {
+					state = 59
+					num_provinces = 2
+					on_win = NAU_border_conflict.2
+					on_lose = NAU_border_conflict.3
+					on_cancel = NAU_border_conflict.4
+				}
+							
+				attacker= {
+					state = 60
+					num_provinces = 2
+					on_win = NAU_border_conflict.3
+					on_lose = NAU_border_conflict.2
+					on_cancel = NAU_border_conflict.4
+					modifier = 0.4
+       				dig_in_factor = 0
+        			terrain_factor = 0.2
+				}
+			}
+		}
+
+	}
+	
+	focus = {
+		id = NAU_Attack_HAN #进攻HAN
+		icon = GFX_goal_NAU_Attack_HAN
+		cost = 5
+		prerequisite = {
+			focus = NAU_Integrated_economic_control
+		}
+		x = 5
+		y = 6
+		completion_reward={
+				start_border_war = {
+				change_state_after_war = yes
+				defender={
+					state = 57
+					num_provinces = 2
+					on_win = NAU_border_conflict.2
+					on_lose = NAU_border_conflict.3
+					on_cancel = NAU_border_conflict.4
+				}
+							
+				attacker= {
+					state = 856
+					num_provinces = 2
+					on_win = NAU_border_conflict.3
+					on_lose = NAU_border_conflict.2
+					on_cancel = NAU_border_conflict.4
+					modifier = 0.4
+       				dig_in_factor = 0
+        			terrain_factor = 0
+				}
+			}
+		}
+
+	}
+
+	focus = {
+		id = NAU_Attack_BAV #进攻BAV
+		icon = GFX_goal_NAU_Attack_BAV
+		cost = 5
+		prerequisite = {
+			focus = NAU_Integrated_economic_control
+		}
+		x = 9
+		y = 6
+		completion_reward={
+				start_border_war = {
+				change_state_after_war = yes
+				defender={
+					state = 53
+					num_provinces = 2
+					on_win = NAU_border_conflict.2
+					on_lose = NAU_border_conflict.3
+					on_cancel = NAU_border_conflict.4
+				}
+							
+				attacker= {
+					state = 54
+					num_provinces = 2
+					on_win = NAU_border_conflict.3
+					on_lose = NAU_border_conflict.2
+					on_cancel = NAU_border_conflict.4
+					modifier = 0.4
+       				dig_in_factor = 0
+        			terrain_factor = 0
+				}
+			}
+		}
+
+	}
+
+	focus = {
+		id = NAU_Attack_SAX #进攻SAX
+		icon = GFX_goal_NAU_Attack_SAX
+		cost = 5
+		prerequisite = {
+			focus = NAU_Integrated_economic_control
+		}
+		x = 6
+		y = 7
+		completion_reward={
+				start_border_war = {
+				change_state_after_war = yes
+				defender={
+					state = 842
+					num_provinces = 2
+					on_win = NAU_border_conflict.2
+					on_lose = NAU_border_conflict.3
+					on_cancel = NAU_border_conflict.4
+				}
+							
+				attacker= {
+					state = 60
+					num_provinces = 2
+					on_win = NAU_border_conflict.3
+					on_lose = NAU_border_conflict.2
+					on_cancel = NAU_border_conflict.4
+					modifier = 0.4
+       				dig_in_factor = 0
+        			terrain_factor = 0
+				}
+			}
+		}
+
+	}
+
+	focus = {
+		id = NAU_Attack_WUR #进攻WUR
+		icon = GFX_goal_NAU_Attack_WUR
+		cost = 5
+		prerequisite = {
+			focus = NAU_Integrated_economic_control
+		}
+		x = 8
+		y = 7
+		completion_reward={
+				start_border_war = {
+				change_state_after_war = yes
+				defender={
+					state = 837
+					num_provinces = 2
+					on_win = NAU_border_conflict.2
+					on_lose = NAU_border_conflict.3
+					on_cancel = NAU_border_conflict.4
+				}
+							
+				attacker= {
+					state = 54
+					num_provinces = 2
+					on_win = NAU_border_conflict.3
+					on_lose = NAU_border_conflict.2
+					on_cancel = NAU_border_conflict.4
+					modifier = 0.4
+       				dig_in_factor = 0
+        			terrain_factor = 0
+				}
+			}
+		}
+
+	}
+
+}

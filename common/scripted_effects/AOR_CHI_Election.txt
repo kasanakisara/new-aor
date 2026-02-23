@@ -1,0 +1,130 @@
+#席位计算
+CHI_Seat_calculation = {
+	#参议院
+
+	
+
+	set_temp_variable = {
+		yellow_total = ROOT.ProP_senate_seat_var
+	}
+	set_temp_variable = {
+		red_total = ROOT.SOCP_senate_seat_var
+	}
+	set_temp_variable = {
+		blue_total = ROOT.KMT_senate_seat_var
+	}
+	set_temp_variable = {
+		grey_total = ROOT.UNP_senate_seat_var
+	}
+	set_temp_variable = {
+		yellow_end = yellow_total
+	}
+	set_temp_variable = {
+		red_end = yellow_end
+	}
+	add_to_temp_variable = {
+		red_end = red_total
+	}
+	set_temp_variable = {
+		blue_end = red_end
+	}
+	add_to_temp_variable = {
+		blue_end = blue_total
+	}
+	set_temp_variable = {
+		grey_end = blue_end
+	}
+	add_to_temp_variable = {
+		grey_end = grey_total
+	}
+	#数组
+	clear_array = ROOT.ROC_senate_frame_arry
+	resize_array = {
+		array = ROC_senate_frame_arry
+		value = 1
+		size = yellow_end
+	}
+	resize_array = {
+		array = ROC_senate_frame_arry
+		value = 2
+		size = red_end
+	}
+	resize_array = {
+		array = ROC_senate_frame_arry
+		value = 3
+		size = blue_end
+	}
+	resize_array = {
+		array = ROC_senate_frame_arry
+		value = 4
+		size = grey_end
+	}
+	resize_array = {
+		array = ROC_senate_frame_arry
+		value = 5
+		size = 274
+	}
+	#众议院
+	set_temp_variable = {
+		yellow_total = ROOT.ProP_Representatives_seat_var
+	}
+	set_temp_variable = {
+		red_total = ROOT.SOCP_Representatives_seat_var
+	}
+	set_temp_variable = {
+		blue_total = ROOT.KMT_Representatives_seat_var
+	}
+	set_temp_variable = {
+		grey_total = ROOT.UNP_Representatives_seat_var
+	}
+	set_temp_variable = {
+		yellow_end = yellow_total
+	}
+	set_temp_variable = {
+		red_end = yellow_end
+	}
+	add_to_temp_variable = {
+		red_end = red_total
+	}
+	set_temp_variable = {
+		blue_end = red_end
+	}
+	add_to_temp_variable = {
+		blue_end = blue_total
+	}
+	set_temp_variable = {
+		grey_end = blue_end
+	}
+	add_to_temp_variable = {
+		grey_end = grey_total
+	}
+	#数组
+	clear_array = ROOT.ROC_Representatives_frame_arry
+	resize_array = {
+		array = ROC_Representatives_frame_arry
+		value = 1
+		size = yellow_end
+	}
+	resize_array = {
+		array = ROC_Representatives_frame_arry
+		value = 2
+		size = red_end
+	}
+	resize_array = {
+		array = ROC_Representatives_frame_arry
+		value = 3
+		size = blue_end
+	}
+	resize_array = {
+		array = ROC_Representatives_frame_arry
+		value = 4
+		size = grey_end
+	}
+	resize_array = {
+		array = ROC_Representatives_frame_arry
+		value = 5
+		size = 596
+	}
+}
+
+

@@ -1,0 +1,344 @@
+focus_tree = {
+	id = AOR_SIL_national_focus_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SIL
+		}
+	}
+	default = no
+	continuous_focus_position = {
+		x = 50
+		y = 1500
+	}
+	focus = {
+		id = SIL_Laying_foundations_of_liberal
+		icon = GFX_focus_generic_improve_the_administration
+		cost = 10
+		x = 7
+		y = 0
+		completion_reward = {
+			custom_effect_tooltip = SIL.1.tt
+			add_popularity = {
+				ideology = CON_democratic
+				popularity = 0.05
+			}
+			add_political_power = 120
+		}
+	}
+	focus = {
+		id = SIL_Strengthen_judiciary
+		icon = GFX_focus_generic_court
+		cost = 6
+		prerequisite = {
+			focus = SIL_Laying_foundations_of_liberal
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SIL.2.tt
+			add_timed_idea = {
+				idea = AOR_SIL_Strengthen_judiciary
+				days = 150
+			}
+		}
+	}
+	focus = {
+		id = SIL_Guiding_power
+		icon = GFX_focus_SWI_neutrality_on_the_move
+		cost = 4
+		prerequisite = {
+			focus = SIL_Strengthen_judiciary
+		}
+		x = 1
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = SIL.20.tt
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = SIL_Expansion_University_Breslau
+		icon = GFX_goal_tfv_generic_tech_sharing
+		cost = 10
+		prerequisite = {
+			focus = SIL_Guiding_power
+		}
+		x = 1
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = SIL.3.tt
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = SIL_Equality_progress
+		icon = GFX_goal_continuous_increase_nu
+		cost = 2
+		prerequisite = {
+			focus = SIL_Strengthen_judiciary
+		}
+		x = 4
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = SIL.4.tt
+			country_event = {
+				id = AOR_SIL_events.1
+			}
+		}
+	}
+	focus = {
+		id = SIL_Concurrent_legislature
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 6
+		prerequisite = {
+			focus = SIL_Laying_foundations_of_liberal
+		}
+		x = 10
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = SIL.5.tt
+			add_timed_idea = {
+				idea = AOR_SIL_Concurrent_legislature
+				days = 150
+			}
+		}
+	}
+	focus = {
+		id = SIL_if_there_is_no_rule
+		icon = GFX_focus_ger_revive_kaiserreich
+		cost = 8
+		prerequisite = {
+			focus = SIL_Strengthen_judiciary
+			focus = SIL_Concurrent_legislature
+		}
+		x = 7
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = SIL.6.tt
+			add_ideas = AOR_SIL_change_government
+		}
+	}
+	focus = {
+		id = SIL_then_no_peace
+		icon = GFX_goal_generic_attack_allies
+		cost = 10
+		prerequisite = {
+			focus = SIL_if_there_is_no_rule
+		}
+		x = 7
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = SIL.7.tt
+			remove_ideas = AOR_SIL_change_government
+		}
+	}
+	focus = {
+		id = SIL_forever_in_faith
+		icon = GFX_goal_generic_demand_territory
+		cost = 2
+		prerequisite = {
+			focus = SIL_Concurrent_legislature
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = SIL.8.tt
+			country_event = {
+				id = AOR_SIL_events.2
+			}
+		}
+	}
+	focus = {
+		id = SIL_Authority_of_ballot
+		icon = GFX_focus_POL_complete_april_constitution
+		cost = 2
+		prerequisite = {
+			focus = SIL_then_no_peace
+		}
+		prerequisite = {
+			focus = SIL_forever_in_faith
+		}
+		prerequisite = {
+			focus = SIL_Equality_progress
+		}
+		x = 7
+		y = 5
+		completion_reward = {
+			custom_effect_tooltip = SIL.9.tt
+			country_event = {
+				id = AOR_SIL_events.3
+			}
+			elections_allowed = no
+		}
+	}
+	focus = {
+		id = SIL_You_re_all_against_it
+		icon = GFX_focus_generic_annex_country
+		cost = 8
+		prerequisite = {
+			focus = SIL_Authority_of_ballot
+		}
+		x = 5
+		y = 6
+		completion_reward = {
+			custom_effect_tooltip = SIL.10.tt
+			add_political_power = -50
+			add_popularity = {
+				ideology = AUT_democratic
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SIL_Antagonism_but_not_resistance
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		cost = 8
+		prerequisite = {
+			focus = SIL_You_re_all_against_it
+		}
+		x = 5
+		y = 7
+		completion_reward = {
+			custom_effect_tooltip = SIL.11.tt
+			set_party_name = {
+				ideology = AUT_democratic
+				long_name = 德意志社会民主党-民主派
+				name = 德意志社会民主党-民主派
+			}
+			set_party_name = {
+				ideology = CON_democratic
+				long_name = 德意志社会民主党-民主派
+				name = 德意志社会民主党-民主派
+			}
+			set_party_name = {
+				ideology = FRE_democratic
+				long_name = 德意志社会民主党-民主派
+				name = 德意志社会民主党-民主派
+			}
+		}
+	}
+	focus = {
+		id = SIL_Constitutional_principle
+		icon = GFX_focus_ITA_corpo_volontari_della_liberta
+		cost = 10
+		prerequisite = {
+			focus = SIL_Authority_of_ballot
+		}
+		x = 9
+		y = 6
+		completion_reward = {
+			custom_effect_tooltip = SIL.12.tt
+			add_political_power = -50
+			add_popularity = {
+				ideology = AUT_democratic
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SIL_Hold_interpretation
+		icon = GFX_focus_generic_strike_at_democracy1
+		cost = 8
+		prerequisite = {
+			focus = SIL_Constitutional_principle
+		}
+		x = 9
+		y = 7
+		completion_reward = {
+			custom_effect_tooltip = SIL.13.tt
+			add_ideas = AOR_SIL_Hold_interpretation
+		}
+	}
+	focus = {
+		id = SIL_Megali_Idea
+		icon = GFX_goal_support_democracy
+		cost = 10
+		prerequisite = {
+			focus = SIL_Hold_interpretation
+		}
+		prerequisite = {
+			focus = SIL_Antagonism_but_not_resistance
+		}
+		x = 7
+		y = 8
+		completion_reward = {
+			custom_effect_tooltip = SIL.14.tt
+		}
+	}
+	focus = {
+		id = SIL_guard_comm
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		cost = 4
+		prerequisite = {
+			focus = SIL_Concurrent_legislature
+		}
+		x = 13
+		y = 2
+		completion_reward = {
+			custom_effect_tooltip = SIL.15.tt
+			add_stability = -0.05
+			add_popularity = {
+				ideology = Marxism
+				popularity = -0.1
+			}
+		}
+	}
+	focus = {
+		id = SIL_Arm_people
+		icon = GFX_goal_continuous_reduce_training_time
+		cost = 10
+		prerequisite = {
+			focus = SIL_guard_comm
+		}
+		x = 13
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = SIL.16.tt
+			add_manpower = 3000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = SIL
+			}
+		}
+	}
+	focus = {
+		id = SIL_Democratic_United_Germany
+		icon = GFX_goal_generic_propaganda
+		cost = 10
+		x = 7
+		y = 9
+		prerequisite = {
+			focus = SIL_Megali_Idea
+		}
+		completion_reward = {
+			custom_effect_tooltip = SIL.17.tt
+			custom_effect_tooltip = SIL.18.tt
+			add_ideas = AOR_SIL_Democratic_United_Germany
+			remove_ideas = AOR_SIL_Hold_interpretation
+		}
+	}
+	focus = {
+		id = SIL_go_for_ger
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		cost = 0
+		prerequisite = {
+			focus = SIL_Democratic_United_Germany
+		}
+		available = {
+			date > 1923.4.1
+			NOT = {
+				has_idea = Compact_of_German_Confederation
+			}
+		}
+		x = 7
+		y = 10
+		completion_reward = {
+			custom_effect_tooltip = SIL.19.tt
+			add_to_faction = GER
+		}
+	}
+}

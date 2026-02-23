@@ -1,0 +1,385 @@
+add_namespace = MIA
+
+
+#老登爆金币
+country_event = {
+	id = MIA.1
+	title = MIA.1.t
+	desc = MIA.1.d
+	picture = GFX_MIA_event_1
+	trigger = {
+	    date > 1920.3.20
+		tag = MIA
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.1.a
+		MIA ={
+		release = NIC
+		release = HON
+		release = ELS
+		}
+		NIC = {
+		set_politics = {ruling_party = AUT_democratic}
+		create_country_leader = {
+		name = "Schmuel Zmurri"
+		desc = "POLITICS_Schmuel_Zmurri_DESC"
+		picture = "gfx/leaders/NIC/Schmuel_Zmurri.png"
+		expire = "1945.1.1"
+		ideology = patriarch
+			}
+			add_manpower = 10000
+			if = {
+			 NOT = { has_template = "Common Militia" } }
+				division_template = {
+				priority = 0
+				name = "Common Militia"
+				regiments = {
+				infantry = { x = 0 y = 0 } 
+				infantry = { x = 0 y = 1 } 
+				infantry = { x = 1 y = 0 } 
+				infantry = { x = 1 y = 1 } 
+							}
+				support = {
+							}
+						}
+						random_controlled_state = {
+							limit = { is_capital = yes }
+							create_unit = {
+								division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+								owner = PREV
+								count = 1
+							}
+						}
+		}
+		
+		HON = {
+		set_politics = {ruling_party = CON_democratic}
+		create_country_leader = {
+		name = "Anastasio “Tacho” Somoza García"
+		desc = "POLITICS_Somoza_García_DESC"
+		picture = "gfx/leaders/HON/Anastasio_“Tacho”_Somoza_García.png"
+		expire = "1945.1.1"
+		ideology = conservatism
+			}
+				add_manpower = 10000
+				if = {
+				 NOT = { has_template = "Common Militia" } }
+					division_template = {
+					priority = 0
+					name = "Common Militia"
+					regiments = {
+					infantry = { x = 0 y = 0 } 
+					infantry = { x = 0 y = 1 } 
+					infantry = { x = 1 y = 0 } 
+					infantry = { x = 1 y = 1 } 
+								}
+					support = {
+								}
+							}
+							random_controlled_state = {
+								limit = { is_capital = yes }
+								create_unit = {
+									division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+									owner = PREV
+								}
+								create_unit = {
+									division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+									owner = PREV
+								}
+								create_unit = {
+									division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+									owner = PREV
+								}
+								create_unit = {
+									division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+									owner = PREV
+								}
+								create_unit = {
+									division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+									owner = PREV
+								}
+								create_unit = {
+									division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+									owner = PREV
+									count = 1
+								}
+							}
+		}
+		
+		ELS = {
+		set_politics = {ruling_party = AGR_socialism}
+		create_country_leader = {
+		name = "Augusto César Sandino"
+		desc = "POLITICS_Augusto_César_Sandino_DESC"
+		picture = "gfx/leaders/ELS/Augusto_César_Sandino.png"
+		expire = "1945.1.1"
+		ideology = revoway
+			}
+			add_manpower = 10000
+			if = {
+			 NOT = { has_template = "Common Militia" } }
+				division_template = {
+				priority = 0
+				name = "Common Militia"
+				regiments = {
+				infantry = { x = 0 y = 0 } 
+				infantry = { x = 0 y = 1 } 
+				infantry = { x = 1 y = 0 } 
+				infantry = { x = 1 y = 1 } 
+							}
+				support = {
+							}
+						}
+						random_controlled_state = {
+							limit = { is_capital = yes }
+							create_unit = {
+								division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+								owner = PREV
+								count = 1
+							}
+						}
+		}
+		
+		NIC = {
+		declare_war_on = {
+			target = HON
+			type = civil_war
+			}
+		declare_war_on = {
+			target = ELS
+			type = civil_war
+			}
+		}
+		
+		HON = {
+		declare_war_on = {
+			target = ELS
+			type = civil_war
+			}
+		}
+		
+		NIC = {
+		country_event = MIA.2
+		}
+		
+		NIC = {
+		 annex_country = MIA
+		}
+		
+	}
+
+}
+#不许打架!!!
+country_event = {
+	id = MIA.2
+	title = MIA.2.t
+	desc = MIA.2.d
+	picture = GFX_MIA_event_2
+	is_triggered_only = yes
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.2.a
+		312= { set_demilitarized_zone = yes }
+		314= { set_demilitarized_zone = yes }
+		317= { set_demilitarized_zone = yes }	
+	}
+}
+
+#老子赢了！
+country_event = {
+	id = MIA.3
+	title = MIA.3.t
+	desc = MIA.3.d
+	picture = GFX_MIA_event_3
+	trigger = {
+	    date > 1921.8.20
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.3.a
+			annex_country = {target =HON }	
+			annex_country = {target =ELS }	
+			set_cosmetic_tag = MIA_NIC	
+			add_state_core = 312
+			add_state_core = 314 
+			add_state_core = 317
+		}
+	}	
+
+#成勾了！
+country_event = {
+	id = MIA.4
+	title = MIA.4.t
+	desc = MIA.4.d
+	picture = GFX_MIA_event_4
+	trigger = {
+	    date > 1921.9.20
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.4.a
+			annex_country = {target = PAN }		
+			add_state_core	= 685		
+			
+			FRA = {
+			set_autonomy = {
+				target = NIC
+				autonomy_state = autonomy_colony 
+				}
+						
+			}
+			set_politics = {ruling_party = AUT_democratic}
+			set_cosmetic_tag = MIA_NIC	
+			set_popularities = {
+				AUT_democratic = 100
+				}
+		}
+	}
+
+#我要危地马拉！
+country_event = {
+	id = MIA.5
+	title = MIA.5.t
+	desc = MIA.5.d
+	picture = GFX_MIA_event_5
+	trigger = {
+	    date > 1922.5.10
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.5.a
+			annex_country = {target = GUA }	
+			add_state_core = 313
+	}
+}
+
+#我要哥斯达黎加！
+country_event = {
+	id = MIA.6
+	title = MIA.6.t
+	desc = MIA.6.d
+	picture = GFX_MIA_event_6
+	trigger = {
+	    date > 1923.5.10
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.6.a
+			annex_country = {target = COS }			
+			add_state_core = 316
+	}
+}
+
+#我要巴拿马！
+country_event = {
+	id = MIA.7
+	title = MIA.7.t
+	desc = MIA.7.d
+	picture = GFX_MIA_event_7
+	trigger = {
+	    date > 1924.4.10
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.7.a
+	transfer_state = 304
+	add_state_core = 304
+	}
+}
+
+#终于写完了，累死我了！！！！！！！
+country_event = {
+	id = MIA.8
+	title = MIA.8.t
+	desc = MIA.8.d
+	picture = GFX_MIA_event_8
+	trigger = {
+	    date > 1925.8.1
+		tag = NIC
+	}
+    mean_time_to_happen = {days = 1}
+	
+	fire_only_once = yes
+	option = {
+		name = MIA.8.a
+		set_politics = {ruling_party = special}
+		create_country_leader = {
+		name = "Schmuel Zmurri"
+		desc = "POLITICS_Schmuel_Zmurri_DESC"
+		picture = "Schmuel_Zmurri.dds"
+		expire = "1945.1.1"
+		ideology = Megacorp
+			}
+		set_cosmetic_tag = MIA_NIC_2
+		set_popularities = {
+				AUT_democratic = 30
+				special = 70
+				}
+		news_event = { id =AOR_news.15 }
+		}
+	}
+
+
+
+
+

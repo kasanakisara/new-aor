@@ -1,0 +1,170 @@
+add_namespace = NSH
+
+
+#北石勒苏益格公投
+country_event = {
+	id = NSH.1
+	title = NSH.1.t
+	desc = NSH.1.d
+	picture = GFX_events_NSH_1
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		tag = NSH
+		date > 1920.2.1
+		}
+
+	option = {  #北石勒苏益格公投入丹
+		name = NSH.1.a
+		news_event = { id = AOR_news.67 }
+		country_event = { days= 30 id = NSH.2 }
+
+		DEN = { 
+			transfer_state = 839 
+			add_state_core = 839
+		}
+
+		ai_chance = {
+			base = 99
+		}
+    }
+	option = { #北石勒苏益格公投入德（这不太可能）
+		name = NSH.1.b 
+		news_event = { id = AOR_news.68 }
+		country_event = { days= 30 id = NSH.2 }
+
+		GER = {
+			transfer_state = 839 
+			add_state_core = 839
+		}		
+
+		ai_chance = {
+			base = 1
+		}
+    }
+}
+
+#南石勒苏益格公投
+country_event = {
+	id = NSH.2
+	title = NSH.2.t
+	desc = NSH.2.d
+	picture = GFX_events_NSH_2
+	is_triggered_only = yes	
+	fire_only_once = yes
+	hidden = yes
+
+	option = {  #南石勒苏益格公投入德
+		name = NSH.2.a
+		DEN = { country_event = { id = NSH.3 } }
+		news_event = { id = AOR_news.211 }
+		GER = {
+			add_state_core = 58
+			add_state_core = 1043
+		}	
+		SHL = {
+			add_state_core = 58
+			add_state_core = 1043
+		}	
+		58 = { set_demilitarized_zone = yes }
+		1043 = { set_demilitarized_zone = yes }
+
+		ai_chance = {
+			base = 70
+		}
+    }
+	option = { #南石勒苏益格公投入丹 （这不太可能）
+		name = NSH.2.b 
+		news_event = { id = AOR_news.212 }
+		SHL = { country_event = { id = NSH.4 } }
+
+		DEN = {
+			add_state_core = 58
+			add_state_core = 1043
+		}
+		if = {
+			limit ={
+				DEN = {
+					controls_state = 839
+				}
+			}
+			839 = { set_demilitarized_zone = yes }
+		}
+		58 = { set_demilitarized_zone = yes }
+		1043 = { set_demilitarized_zone = yes }
+
+		ai_chance = {
+			base = 5
+		}
+    }
+	option = { #石勒苏益格-荷尔施泰因公投作废
+	name = NSH.2.c
+	news_event = { id = AOR_news.213 }
+	ai_chance = {
+		base = 5
+		}
+	}
+}
+
+#丹麦对南石勒苏益格的想法
+country_event = {
+	id = NSH.3
+	title = NSH.3.t
+	desc = NSH.3.d
+	picture = GFX_events_NSH_3
+	is_triggered_only = yes	
+	fire_only_once = yes
+
+	option = {#认了
+		name = NSH.3.a
+		SHL = { 
+			set_cosmetic_tag = SHL_2_Marxism
+			transfer_state = 58 
+			transfer_state = 1043
+		}
+
+		58 = { set_demilitarized_zone = no }
+		839 = { set_demilitarized_zone = no }
+		1043 = { set_demilitarized_zone = no }
+
+		ai_chance = {
+			base = 75
+		}
+    }
+}
+
+country_event = { #丹麦走了王政路线 对南石勒苏益格发动边战
+	id = NSH.4
+	title = NSH.4.t
+	desc = NSH.4.d
+	picture = GFX_events_NSH_4
+	is_triggered_only = yes	
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {#
+		name = NSH.4.a
+		news_event = { id = AOR_news.214 }
+		start_border_war = { #进攻方丹麦 防守方南石勒苏益格
+    		change_state_after_war = no
+    		attacker = {
+      		  state = 839
+    		    num_provinces = 4
+    		    on_win = AOR_news.215
+    		    on_lose = AOR_news.216
+  			  }
+				
+    		defender = {
+        		state = 58
+       		 	num_provinces = 4
+      		  	on_win = AOR_news.216
+        		on_lose = AOR_news.215
+    		}
+		}
+    }
+}
+
+

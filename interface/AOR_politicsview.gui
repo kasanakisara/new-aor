@@ -1,0 +1,53 @@
+guiTypes = {
+    containerWindowType = {
+		name = "AOR_subideology_container"
+		position = { x = 300 y = 150 }
+		instantTextboxType = {
+			name = "ruling_party_name"
+			position = { x = -115 y = 92 }
+			font = "hoi_16mbs"
+			text = "ruling_party_name"
+			maxWidth = 110
+			maxHeight = 80
+			fixedsize = yes
+			format = centre
+			#alwaystransparent = yes
+		}
+		instantTextboxType = {
+			name = "subideology_name"
+			position = { x = 26 y = 38 }
+			font = "hoi_18mbs"
+			text = "[GetRulingIdeologySubtype]"
+			pdx_tooltip = "[GetRulingIdeologySubtype]"
+			maxWidth = 200
+			maxHeight = 20
+			fixedsize = yes
+			format = centre
+			#alwaystransparent = yes
+		}
+		iconType = {
+			name = "faction_icon"
+			quadTextureSprite ="GFX_faction_icon_generic"
+			position = { x = -282 y = 150 }
+		}
+	}
+}
+
+guiTypes = {#外交界面
+    containerWindowType = {
+		name = "AOR_Diplomacy_Ideology"
+		position = { x = 365 y = 133 }
+		instantTextboxType = {
+			name = "subideology_name"
+			position = { x = -102 y = 12 }
+			font = "hoi_16mbs"
+			text = "[GetRulingIdeologySubtype]"
+			pdx_tooltip = "[GetRulingIdeologySubtype]"
+			maxWidth = 155
+			maxHeight = 20
+			fixedsize = yes
+			format = left
+			alwaystransparent = yes
+		}
+	}
+}

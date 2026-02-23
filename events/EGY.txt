@@ -1,0 +1,368 @@
+###########################
+# German Events
+###########################
+
+add_namespace = EGY
+
+
+#独立!反他娘的
+country_event = {
+	id = EGY.1
+	title = EGY.1.t
+	desc = EGY.1.d
+	picture = GFX_events_EGY_1
+
+	trigger = {
+	    date > 1922.1.1
+		tag = EGY
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		hidden_effect = {
+			news_event = { id = AOR_news.22 }
+			retire_country_leader = yes
+			set_politics = {ruling_party = ISL_democratic}
+			create_country_leader = {
+				name = "Saad Zaghloul"
+				desc = "POLITICS_Saad_Zaghloul_DESC"
+				picture = "gfx/leaders/EGY/Zaghloul.png"
+				expire = "1945.1.1"
+				ideology = constitutionalism
+				traits = {
+					EGY_Egyptian_Independence_Leader EGY_be_eaten_up_with_diseases		
+				}
+			}
+			set_popularities = {
+				Absolutism = 50
+				CON_democratic = 25
+				ISL_democratic = 20
+				FRE_democratic = 5
+			}
+		}
+	}	
+	option = {
+		name = EGY.1.a
+    }
+}
+
+#走了
+country_event = {
+	id = EGY.2
+	title = EGY.2.t
+	desc = EGY.2.d
+	picture = GFX_events_EGY_1
+
+	trigger = {
+	    date > 1924.11.1
+		tag = EGY
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		retire_country_leader = yes
+		name = EGY.2.a
+		set_politics = {
+		ruling_party = CON_democratic
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+		}
+		create_country_leader = {
+		name = "Edmund Allenby"
+		desc = ""
+		picture = "Allenby.dds"
+		ideology = federalism
+		traits = {
+			#
+			}
+		}
+		ai_chance = {
+			base = 50
+			}
+    }
+	
+	#那就这样吧  
+	option = {
+		retire_country_leader = yes
+		name = EGY.2.b
+		set_politics = {
+		ruling_party = Absolutism
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+		}
+		ai_chance = {
+			base = 50
+		}
+    }
+}
+
+
+#新的
+country_event = {
+	id = EGY.3
+	title = EGY.3.t
+	desc = EGY.3.d
+	picture = GFX_events_EGY_1
+
+	trigger = {
+	    date > 1926.1.1
+		tag = EGY
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		retire_country_leader = yes
+		set_politics = {ruling_party = ISL_democratic}
+		create_country_leader = {
+		name = "Ismail Sidky Pasha"
+		desc = "POLITICS_Pasha_DESC"
+		picture = "gfx/leaders/EGY/Pasha.png"
+		expire = "1945.1.1"
+		ideology = constitutionalism
+		}
+	}	
+	option = {
+		name = EGY.3.a
+		
+    }
+}
+country_event = {
+	id = EGY.4
+	title = EGY.4.t
+	desc = EGY.4.d
+	picture = GFX_events_EGY_4
+
+	trigger = {
+	    date > 1922.11.26
+		tag = EGY
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+
+	option = {
+		name = EGY.4.a
+		news_event = AOR_news.354
+    }
+}
+country_event = {
+	id = EGY.5
+	title = EGY.5.t
+	desc = EGY.5.d
+	picture = GFX_events_EGY_5
+
+	trigger = {
+	    date > 1922.2.16
+		tag = EGY
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+
+	option = {
+		name = EGY.5.a
+		news_event = AOR_news.353
+    }
+}
+country_event = {
+	id = EGY.6
+	title = EGY.6.t
+	desc = EGY.6.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.6.a
+    }
+}
+
+country_event = {
+	id = EGY.7 #声音
+	title = EGY.7.t
+	desc = EGY.7.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.7.a
+    }
+}
+
+country_event = {
+	id = EGY.8 #代表团抵达
+	title = EGY.8.t
+	desc = EGY.8.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.8.a
+    }
+}
+
+country_event = {
+	id = EGY.9 #安抚民众
+	title = EGY.9.t
+	desc = EGY.9.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.9.a
+    }
+}
+
+country_event = {
+	id = EGY.10 #鲜红的街道
+	title = EGY.10.t
+	desc = EGY.10.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.10.a
+		add_manpower = -172
+    }
+}
+
+country_event = {
+	id = EGY.11 #《埃及告民众书》
+	title = EGY.11.t
+	desc = EGY.11.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.11.a
+    }
+}
+
+country_event = {
+	id = EGY.12 #《警务防卫条例》
+	title = EGY.12.t
+	desc = EGY.12.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.12.a
+    }
+}
+
+country_event = {
+	id = EGY.13 #训练营的一天
+	title = EGY.13.t
+	desc = EGY.13.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.13.a
+    }
+}
+
+country_event = {
+	id = EGY.14 #秘密抓捕
+	title = EGY.14.t
+	desc = EGY.14.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.14.a
+    }
+}
+
+country_event = {
+	id = EGY.15 #用鲜血维护的稳定
+	title = EGY.15.t
+	desc = EGY.15.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.15.a
+    }
+}
+
+country_event = {
+	id = EGY.16 #铃声
+	title = EGY.16.t
+	desc = EGY.16.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.16.a
+    }
+}
+
+country_event = {
+	id = EGY.17 #独立的希望
+	title = EGY.17.t
+	desc = EGY.17.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.17.a
+		complete_national_focus = EGY_The_Victory_of_Huafutuo
+    }
+}
+
+country_event = {
+	id = EGY.18 #书信（其一）
+	title = EGY.18.t
+	desc = EGY.18.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = EGY.18.a
+    }
+}
+
+country_event = {
+	id = EGY.19 #总之有用，别瞎几把删！
+	title = EGY.19.t
+	desc = EGY.19.d
+	is_triggered_only = yes
+	#fire_only_once = yes
+	#trigger = {
+	#	tag = EGY
+	#	date = 1919.11.3
+	#}
+
+	option = {
+		name = EGY.19.a
+		hidden_effect = {
+			set_country_flag = EGY_can_change_FRA
+		}
+    }
+}
+
+
+
+
+
+

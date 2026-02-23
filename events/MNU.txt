@@ -1,0 +1,186 @@
+add_namespace = MNU
+
+country_event = {
+	id = MNU.1 
+	title = MNU.1.t
+	desc = MNU.1.d
+	picture = GFX_news_MNU_extinct
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = MNU.1.a
+		log = "[GetLogInfo] [From.GetName]MNU.1"
+		set_cosmetic_tag = MNU_2
+		PLM = {
+			transfer_state = 377
+			transfer_state = 376
+			transfer_state = 482
+			transfer_state = 931
+			leave_faction = yes
+			set_cosmetic_tag = PLM_AGR
+			set_politics = { 
+				
+				ruling_party = AGR_socialism 
+				elections_allowed = no
+			}
+			set_popularities = {
+				AGR_socialism =  42 
+				SOC_democratic =  20 
+				AUT_democratic =  15 
+				Absolutism =  12 
+				FRE_democratic =  7 
+				Anarcho =  4
+				}
+			declare_war_on = {
+				target = MNU
+				type  = civil_war 
+			}
+			create_faction = Farmers_League
+			add_to_faction = SFM
+		}
+
+		dismantle_faction =  yes
+		
+	}
+
+}
+
+country_event = {
+	id = MNU.7
+	title = MNU.7.t
+	desc = MNU.7.d
+	picture = GFX_events_MXS_7
+    trigger = {
+		MXS = {
+			NOT = {
+				OR = {
+					controls_province  =1965
+					controls_province  = 12810
+				}
+				
+			}
+		}
+	}
+	fire_only_once = yes
+	immediate = {
+		news_event ={ id = AOR_news.8 days = 1}
+	}
+	option = {
+		name = MNU.7.a
+		log = "[GetLogInfo] [From.GetName]MNU.7.a"
+		MNU = {
+			transfer_state = 377
+			transfer_state =376
+			transfer_state =931
+			transfer_state =482
+			transfer_state =483
+			transfer_state =480
+			transfer_state =481
+			transfer_state =479
+			transfer_state =478
+			transfer_state =277
+			annex_country = {
+				target = MXS
+			}
+			country_event = {id = MNU.1}
+		}
+		SFM = {
+			transfer_state = 477
+			transfer_state =485
+			transfer_state =476
+			transfer_state =475
+
+
+		}
+		every_country = {
+				white_peace = CGT
+				white_peace = PLM
+				white_peace = SFM
+				white_peace = MNU
+			}
+    }
+	
+}
+#第二次，临时政府胜利
+country_event = {
+	id = MNU.8
+	title = MNU.8.t
+	desc = MNU.8.d
+	picture = GFX_events_MXS_8
+    trigger = {
+		NOT = {country_exists = MXS}
+		MNU = {
+				OR = {
+					controls_province  =1965
+					controls_province  = 4956
+					controls_province  = 12835
+				}	
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = MNU.8.a
+		log = "[GetLogInfo] [From.GetName]MNU.8.a"
+		PLM = {
+			transfer_state =483
+			transfer_state =481
+			transfer_state =480
+		}
+		SFM = {
+			transfer_state =479
+			transfer_state =478
+			transfer_state =277
+		}
+		CGT = {
+			country_event = {
+				id = CGT.1 days=1
+			}
+		}
+
+    }
+	
+}
+#第二次，农民军胜利
+country_event = {
+	id = MNU.8
+	title = MNU.8.t
+	desc = MNU.8.d
+	picture = GFX_events_MXS_8
+    trigger = {
+		NOT = {country_exists = MXS}
+		MNU = {
+			NOT = {
+				OR = {
+					controls_province  =1965
+					controls_province  = 4956
+					controls_province  = 12835
+				}
+				
+			}
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = MNU.8.a
+		log = "[GetLogInfo] [From.GetName]MNU.8.a"
+		PLM = {
+			transfer_state =483
+			transfer_state =481
+			transfer_state =480
+		}
+		SFM = {
+			transfer_state =479
+			transfer_state =478
+			transfer_state =277
+		}
+		CGT = {
+			country_event = {
+				id = CGT.1 days=1
+			}
+		}
+
+    }
+	
+}

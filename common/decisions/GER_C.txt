@@ -1,0 +1,838 @@
+GER_comm = {  #国家委员会
+
+	GER_Invition_attend_the_meeting = { #邀请各邦国参会
+        icon = generic_operation
+		ai_will_do = { factor = 1000 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { tag = GER}
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		    custom_effect_tooltip = "我们将邀请各邦国参会，开启我们第一次决议"
+			set_global_flag = AOR_GER_flag_Invition_attend_the_meeting
+		}
+		complete_effect = {  
+				BAV = {
+					country_event = {
+						id = G_C.9
+						days = 7
+					}
+				}
+				NAU = {
+					country_event = {
+						id = G_C.8
+						days = 15
+					}
+				}
+				HAN = {
+					country_event = {
+						id = G_C.4
+						days = 2
+					}
+				}
+				SIL = {
+					country_event = {
+						id = G_C.1
+						days = 1
+					}
+				}
+				KSH = {
+					country_event = {
+						id = G_C.2
+						days = 1
+					}
+				}
+				WUR = {
+					country_event = {
+						id = G_C.10
+						days = 7
+					}
+				}
+				SAX = {
+					country_event = {
+						id = G_C.5
+						days = 2
+					}
+				}
+				PRE = {
+					country_event = {
+						id = G_C.6
+						days = 4
+					}
+				}
+				SHL = {
+					country_event = {
+						id = G_C.7
+						days = 10
+					}
+				}
+				MEK = {
+					country_event = {
+						id = G_C.3
+						days = 0
+					}
+				}
+		}			
+			remove_effect  ={
+				set_country_flag = GER_c_start
+			}	
+
+	}
+	
+	GER_yes = { #同意
+        icon = generic_operation
+
+		ai_will_do = { 
+			factor = 1 
+			
+			modifier={ #遏制通货膨胀
+				factor = 100
+				OR = {
+					AND = { #除梅克伦堡之外的tag都同意
+						has_global_flag = GER_q.1
+						NOT = {original_tag = MEK}
+					}
+				}
+			}	
+		}
+		
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { 
+			NOT = {original_tag = GER}
+			
+		}
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_YES }
+		 }
+
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 2 } 
+			set_country_flag = GER_TAG_YES
+			add_to_variable = { global.GER_variable_yes = 1} 
+
+
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_NO
+				}
+				add_to_variable = { global.GER_variable_no = -1} 
+				clr_country_flag = GER_TAG_NO
+			}
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_ABS
+				}
+				add_to_variable = { global.GER_variable_abs = -1} 
+				clr_country_flag = GER_TAG_ABS
+			}
+		}
+	}
+
+	GER_no = { #反对
+        icon = generic_operation
+
+		ai_will_do = { factor = 1 }
+
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { 
+			NOT = {original_tag = GER} 
+			
+		}
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_NO }
+		 }
+
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 3 } 
+			set_country_flag = GER_TAG_NO
+			add_to_variable = { global.GER_variable_no = 1} 
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_ABS
+				}
+				add_to_variable = { global.GER_variable_abs = -1} 
+				clr_country_flag = GER_TAG_ABS
+			}
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_YES
+				}
+				add_to_variable = { global.GER_variable_yes = -1} 
+				clr_country_flag = GER_TAG_YES
+			}
+		}
+	}
+
+	GER_abs = { #弃权
+        icon = generic_operation
+
+		ai_will_do = { 
+			factor = 1
+		
+			modifier={ #遏制通货膨胀
+				factor = 100
+				OR = {
+					AND = { #梅克伦堡
+						has_global_flag = GER_q.1
+						original_tag = MEK
+					}
+				}
+			}	
+		}
+
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { NOT = {original_tag = GER} }
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_ABS }
+		 }
+
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 1 } 
+			set_country_flag = GER_TAG_ABS
+			add_to_variable = { global.GER_variable_abs = 1} 			
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_NO
+				}
+				add_to_variable = { global.GER_variable_no = -1} 
+				clr_country_flag = GER_TAG_NO
+			}
+			if = {
+				limit = {
+					has_country_flag = GER_TAG_YES
+				}
+				add_to_variable = { global.GER_variable_yes = -1} 
+				clr_country_flag = GER_TAG_YES
+			}
+		}
+	}
+
+
+
+
+	GER_GER_yes = { #柏林同意
+        icon = generic_operation
+
+		ai_will_do = { 
+			factor = 1 
+			
+			modifier={ #遏制通货膨胀
+				factor = 100
+				OR = {
+					AND = { #除梅克伦堡之外的tag都同意
+						has_global_flag = GER_q.1
+						NOT = {original_tag = MEK}
+					}
+				}
+			}	
+		}
+		
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { original_tag = GER }
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_YES }
+		 }
+		
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 2 } 
+			add_to_variable = { global.GER_variable_yes = 1} 
+				if = {
+					limit = {
+						RHI = { has_country_flag = GER_Comm_pre }
+					}
+					RHI = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								RHI = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						RHI = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						RHI = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				if = {
+					limit = {
+						SHG = { has_country_flag = GER_Comm_pre }
+					}
+					SHG = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								SHG = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						SHG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						SHG = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				if = {
+					limit = {
+						NAG = { has_country_flag = GER_Comm_pre }
+					}
+					NAG = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								NAG = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						NAG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						NAG = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				if = {
+					limit = {
+						BAG = { has_country_flag = GER_Comm_pre }
+					}
+					BAG = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								BAG = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						BAG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						BAG = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				if = {
+					limit = {
+						WUG = { has_country_flag = GER_Comm_pre }
+					}
+					WUG = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								WUG = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						WUG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						WUG = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				if = {
+					limit = {
+						NUG = { has_country_flag = GER_Comm_pre }
+					}
+					NUG = { set_variable = { GER_Comm_current_vote = 2 } }
+								add_to_variable = { global.GER_variable_yes = 1} 
+								NUG = { set_country_flag = GER_TAG_YES }
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						NUG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						NUG = {clr_country_flag = GER_TAG_NO}
+					}
+				}
+				
+				set_country_flag = GER_TAG_YES
+			
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_NO
+					}
+					add_to_variable = { global.GER_variable_no = -1} 
+					clr_country_flag = GER_TAG_NO
+				}
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_ABS
+					}
+					add_to_variable = { global.GER_variable_abs = -1} 
+					clr_country_flag = GER_TAG_ABS
+				}
+
+		}
+	}
+
+	GER_GER_no = { #柏林反对
+        icon = generic_operation
+
+		ai_will_do = { factor = 1 }
+
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { original_tag = GER }
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_NO }
+		 }
+
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 3 }
+			add_to_variable = { global.GER_variable_no = 1}  
+				if = {
+					limit = {
+						RHI = { has_country_flag = GER_Comm_pre }
+					}
+					RHI = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1}  
+								RHI = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						RHI = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						RHI = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						SHG = { has_country_flag = GER_Comm_pre }
+					}
+					SHG = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1}  
+								SHG = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						SHG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						SHG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						NAG = { has_country_flag = GER_Comm_pre }
+					}
+					NAG = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1} 
+								 NAG = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						NAG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						NAG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						BAG = { has_country_flag = GER_Comm_pre }
+					}
+					BAG = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1}  
+								BAG = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						BAG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						BAG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						WUG = { has_country_flag = GER_Comm_pre }
+					}
+					WUG = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1}  
+								WUG = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						WUG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						WUG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						NUG = { has_country_flag = GER_Comm_pre }
+					}
+					NUG = { set_variable = { GER_Comm_current_vote = 3 } }
+								add_to_variable = { global.GER_variable_no = 1}  
+								NUG = { set_country_flag = GER_TAG_NO }
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_ABS}
+					}
+						add_to_variable = { global.GER_variable_abs = -1} 
+						NUG = {clr_country_flag = GER_TAG_ABS}
+					}
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						NUG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+
+				set_country_flag = GER_TAG_NO
+			
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_YES
+					}
+					add_to_variable = { global.GER_variable_yes = -1} 
+					clr_country_flag = GER_TAG_YES
+				}
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_ABS
+					}
+					add_to_variable = { global.GER_variable_abs = -1} 
+					clr_country_flag = GER_TAG_ABS
+				}				
+
+		}
+	}
+
+	GER_GER_abs = { #柏林弃权
+        icon = generic_operation
+
+		ai_will_do = { factor = 1 }
+
+		fire_only_once = no
+		days_remove = 0	
+		days_re_enable = 0
+
+		visible = { original_tag = GER }
+		available = { 
+			has_global_flag = GER_v_start
+			NOT = {has_country_flag = GER_TAG_ABS }
+		 }
+
+		cost = 5
+
+		complete_effect = {  
+			set_variable = { GER_Comm_current_vote = 1 } 
+			add_to_variable = { global.GER_variable_abs = 1}  
+				if = {
+					limit = {
+						RHI = { has_country_flag = GER_Comm_pre }
+					}
+					RHI = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1}  
+								RHI = { set_country_flag = GER_TAG_ABS }
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						RHI = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						RHI = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						RHI = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						SHG = { has_country_flag = GER_Comm_pre }
+					}
+					SHG = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1}  
+								SHG = { set_country_flag = GER_TAG_ABS }
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						SHG = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						SHG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						SHG = {clr_country_flag = GER_TAG_YES}
+					}					
+				}
+				if = {
+					limit = {
+						NAG = { has_country_flag = GER_Comm_pre }
+					}
+					NAG = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1} 
+								NAG = { set_country_flag = GER_TAG_ABS } 
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						NAG = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						NAG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						NAG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						BAG = { has_country_flag = GER_Comm_pre }
+					}
+					BAG = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1}  
+								BAG = { set_country_flag = GER_TAG_ABS }
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						BAG = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						BAG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						BAG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						WUG = { has_country_flag = GER_Comm_pre }
+					}
+					WUG = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1}  
+								WUG = { set_country_flag = GER_TAG_ABS }
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						WUG = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						WUG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						WUG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+				if = {
+					limit = {
+						NUG = { has_country_flag = GER_Comm_pre }
+					}
+					NUG = { set_variable = { GER_Comm_current_vote = 1 } }
+								add_to_variable = { global.GER_variable_abs = 1}  
+								NUG = { set_country_flag = GER_TAG_ABS }
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_NO}
+					}
+						add_to_variable = { global.GER_variable_no = -1} 
+						NUG = {clr_country_flag = GER_TAG_NO}
+					}
+					if = {
+					limit = {
+						NUG = {has_country_flag = GER_TAG_YES}
+					}
+						add_to_variable = { global.GER_variable_yes = -1} 
+						NUG = {clr_country_flag = GER_TAG_YES}
+					}
+				}
+
+				set_country_flag = GER_TAG_ABS
+			
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_NO
+					}
+					add_to_variable = { global.GER_variable_no = -1} 
+					clr_country_flag = GER_TAG_NO
+				}
+				if = {
+					limit = {
+						has_country_flag = GER_TAG_YES
+					}
+					add_to_variable = { global.GER_variable_yes = -1} 
+					clr_country_flag = GER_TAG_YES
+				}
+
+		}
+	}
+
+	GER_q_inflation = { #共同遏制邦联通货膨胀问题
+        icon = generic_operation
+
+		ai_will_do = { factor = 100 }
+
+		fire_only_once = yes
+		days_remove = 30
+
+		visible = { original_tag = GER }
+		available = { 
+			NOT = {has_country_flag = GER_q_has_1 }
+			has_country_flag = GER_c_start
+		 }
+
+		cost = 5
+
+		complete_effect = {
+			set_global_flag =  GER_q.1
+			set_country_flag = GER_q_has_1
+			set_global_flag = GER_v_start
+			
+			every_country = { 
+				limit = {
+					has_country_flag = GER_Comm_pre
+					Not = {original_tag  = GER}
+				} 
+				country_event = {days = 1 id = G_C.19} 
+			}	
+		}
+		remove_effect = {  
+			custom_effect_tooltip = GER_q_t.check
+			custom_effect_tooltip = GER_q_t.1
+			clr_global_flag =  GER_q.1
+			clr_country_flag = GER_q_has_1
+			custom_effect_tooltip = GER_q_t.t
+			if = {   #提案成功
+				limit = {
+					check_variable = { global.GER_variable_yes > global.GER_variable_no }
+				}
+				every_country = {
+					limit = {
+						has_country_flag = GER_Comm_pre
+					} 
+					country_event = {days = 1 id = G_C.16} 
+				}
+
+			}
+			if = {   #提案失败
+				limit = {
+					check_variable = { global.GER_variable_no > global.GER_variable_yes }
+				}
+				every_country = {
+					limit = {
+						has_country_flag = GER_Comm_pre
+					}
+					country_event = {days = 1 id = G_C.17} 
+				}
+			}
+			if = {   #提案失败-同意反对相等
+				limit = {
+					check_variable = { global.GER_variable_no = global.GER_variable_yes }
+				}
+				every_country = {
+					limit = {
+						has_country_flag = GER_Comm_pre
+					}
+					country_event = {days = 1 id = G_C.17 } 
+				}
+			}
+
+		}
+	}
+
+}

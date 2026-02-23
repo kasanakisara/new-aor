@@ -1,0 +1,90 @@
+defined_text = {
+	name = congress_change
+	text = {
+		trigger = { has_country_flag = congress_230 }
+		localization_key = "congress_change_1"
+	}
+	text = {
+		trigger = { has_country_flag = parliament }
+		localization_key = "congress_change_2"
+	}
+	text = {
+		localization_key = "congress_change_3"
+	}
+}
+defined_text = {
+	name = political_past_num
+	text = {
+		trigger = { has_country_flag = past_60 }
+		localization_key = "political_past_num_1"
+	}
+	text = {
+		trigger = { has_country_flag = past_70 }
+		localization_key = "political_past_num_2"
+	}
+	text = {
+		localization_key = "political_past_num_3"
+	}
+}
+defined_text = {
+	name = government_support_return
+	text = {
+		trigger = { 
+			check_variable = { this.government_support < 0.1 }
+		}
+		localization_key = "government_support_return_1"
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { this.government_support = 0.1 }
+				check_variable = { this.government_support > 0.1 }
+			}
+			check_variable = { this.government_support < 0.3 }
+		}
+		localization_key = "government_support_return_2"
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { this.government_support = 0.3 }
+				check_variable = { this.government_support > 0.3 }
+			}
+			check_variable = { this.government_support < 0.6 }
+		}
+		localization_key = "government_support_return_3"
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { this.government_support = 0.6 }
+				check_variable = { this.government_support > 0.6 }
+			}
+			check_variable = { this.government_support < 1 }
+		}
+		localization_key = "government_support_return_4"
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { this.government_support = 1 }
+				check_variable = { this.government_support > 1 }
+			}
+			check_variable = { this.government_support < 2 }
+		}
+		localization_key = "government_support_return_5"
+	}
+	text = {
+		trigger = { 
+			OR = {
+				check_variable = { this.government_support = 2 }
+				check_variable = { this.government_support > 2 }
+			}
+		}
+		localization_key = "government_support_return_6"
+	}
+	text = {
+		localization_key = "government_support_return_7"
+	
+	}
+}

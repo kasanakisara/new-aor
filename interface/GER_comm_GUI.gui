@@ -1,0 +1,87 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "GER_comm_GUI_window"
+		position = { x = 0 y = -440}
+		size = { width=100%% height=100%%}
+
+		iconType = {
+			name ="背景板1"
+			spriteType = "GFX_AOR_GER_Background_2_BAV"
+			position = { x = 10 y = 5 }
+			alwaystransparent = yes
+
+		}
+		iconType = {
+			name ="背景板2"
+			spriteType = "GFX_GER_Background_3_GER"
+			position = { x = 10 y = 300 }
+		}
+		instantTextboxType = {
+			name ="当前委员会正在讨论的提案"
+			position = { x = 10 y = 310 }
+			font = "hoi_20bs"
+			text = "AOR_DNC_ommittee_Current_proposals"
+			maxWidth = 470
+			maxHeight = 500
+			format = center
+			pdx_tooltip = GER_P_C_tt_desc_pdx
+		}
+
+		instantTextboxType = {
+			name ="GER_P_C"
+			position = { x = 10 y =345 }
+			font = "hoi_20bs"
+			text = [GER_P_C_tt_desc]
+			maxWidth = 470
+			maxHeight = 500
+			format = center
+			pdx_tooltip = GER_P_C_tt_desc_pdx
+		}
+
+		instantTextboxType = {
+			name ="GER_V_C"
+			position = { x = 10 y = 380 }
+			font = "hoi_20bs"
+			text = "GER_V_desc_t"
+			maxWidth = 470
+			maxHeight = 500
+			format = center
+			pdx_tooltip = GER_V_desc_pdx_t
+		}
+
+		gridBoxType = {
+			name =  "GER_comm_flags"
+			position = {x = -160  y = 0 }
+			size = { width = 100% height = 100%}
+			slotsize = {
+				width = 80	
+				height = 90
+			}
+			max_slots_horizontal =  5
+			add_horizontal = yes
+		}
+	}
+	
+
+	
+	containerWindowType = {
+		name = "GER_GUI_General_Assembly_Entry"
+		position = { x = 0 y = 0 }
+		size = { width=100%% height=100%%}
+		
+		iconType = {
+			name = "GER_country_flag"
+			quadTextureSprite = "GFX_flag_medium"
+			pdx_tooltip = GER_country_flag_desc_tt
+			position = { x = 0 y = 30 }
+		}	
+		iconType = {
+			name = "Socintern_GUI_Vote_Indicator"
+			quadTextureSprite = "GFX_GER_GUI_vote_strip"
+			position = { x = 4 y = 77 }
+			pdx_tooltip = GER_country_flag_desc_tt
+			}
+		}		
+
+}

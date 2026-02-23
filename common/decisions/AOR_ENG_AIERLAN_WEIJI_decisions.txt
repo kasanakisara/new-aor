@@ -1,0 +1,115 @@
+
+AOR_ENG_AIERLAN_decision_category = {
+	AOR_ENG_anfudangdiminzhong = {
+
+		icon = GFX_AOR_ENG_anfudangdiminzhonng
+
+		cost = 50
+		days_remove = 14
+
+		fire_only_once = no
+		days_re_enable = 60
+
+		available = { #测试版本，后续检测会写成变量
+			has_political_power > 49
+		}
+
+		modifier = {
+			compliance_growth = 0.02
+		}
+	}
+
+	AOR_ENG_tuxigonghejun = {
+		
+		icon = GFX_AOR_ENG_tuxigonghejun
+
+		cost = 0
+		days_remove = 14
+
+		fire_only_once = no
+		days_re_enable = 60
+
+		available = {
+			command_power > 19
+		}
+
+		complete_effect = {
+			command_power = -20
+			manpower = -100
+		}
+
+		remove_effect = {
+			set_resistance = -0.05
+		}
+	}
+
+	AOR_ENG_qianfadaibuling = {
+		icon = GFX_AOR_ENG_qianfadaibuling
+
+		cost = 20
+		days_remove = 30
+
+		fire_only_once = no
+		days_re_enable = 60
+
+		available = { 
+			has_political_power > 30
+		}
+
+		modifier = {
+			resistance_decay = 0.05
+		}
+
+		remove_effect = {
+			add_stability = -0.05
+		}
+	}
+
+	AOR_ENG_zanshijieyan = {
+		icon = GFX_AOR_ENG_zanshijieyan
+
+		cost = 50
+		days_remove = 45
+
+		fire_only_once = no
+		days_re_enable = 60
+
+		available = { 
+			has_political_power > 49
+			command_power > 29
+		}
+
+		modifier = {
+			compliance_growth = -0.02
+		}
+
+		complete_effect = {
+			command_power = -30
+		}
+
+		remove_effect = {
+			set_resistance = -0.15
+			add_stability = -0.1
+		}
+	}
+	
+	AOR_ENG_ceshi = {
+	    cost = 0
+	   
+	    fire_only_once = yes
+        days_re_enable = 60
+		
+		available = {
+		   always = yes
+		}
+
+        complete_effect = {
+			135 = {
+			   add_dynamic_modifier = {
+			      modifier = AOR_ENG_gonghejunyundong
+			   }
+			}
+		}		
+	
+	}
+}

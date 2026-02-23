@@ -1,0 +1,385 @@
+focus_tree = {
+	id = SAX_politic_5
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			tag = SAX
+		}
+	}
+	continuous_focus_position = { x = 1400 y = 2000 }
+	default = no
+	focus = {
+		id = continue_New_Democracy_Experiment
+		icon = GFX_goal_continue_New_Democracy_Experiment
+		cost = 5
+		x = 8
+		y = 0
+		completion_reward={
+		custom_effect_tooltip = SAX.1.tt
+		 
+			add_political_power = 150
+			swap_ideas = {
+				remove_idea = exp_of_kautsky
+				add_idea = exp_of_kautsky_1
+			}
+		}
+	}
+
+	focus = {
+		id = Class_harmony
+		icon = GFX_goal_Class_harmony
+		cost = 10
+		prerequisite = {
+			focus = continue_New_Democracy_Experiment
+		}
+		x = 5
+		y = 1
+		completion_reward={
+		custom_effect_tooltip = SAX.2.tt
+		 
+			add_ideas = Class_harmony
+			}
+		}
+	
+	focus = {
+		id = Strengthening_social_security
+		icon = GFX_goal_Strengthening_social_security
+		cost = 10
+		prerequisite = {
+			focus = Class_harmony
+		}
+		x = 4
+		y = 2
+		completion_reward={
+		custom_effect_tooltip = SAX.3.tt
+		 
+		if = {
+		 limit = {
+			NOT = {has_idea = Class_harmony_1 }
+		 }
+		swap_ideas = {
+				remove_idea = Class_harmony
+				add_idea = Class_harmony_1
+			}
+		}
+		else = {
+		swap_ideas = {
+				remove_idea = Class_harmony_1
+				add_idea = Class_harmony_2
+			}
+		}
+		}
+	}
+
+	focus = {
+		id = Increase_welfare_expenses
+		icon = GFX_goal_Increase_welfare_expenses
+		cost = 3
+		prerequisite = {
+			focus = Strengthening_social_security
+		}
+		x = 4
+		y = 3
+		completion_reward={
+		custom_effect_tooltip = SAX.4.tt
+		 
+		add_political_power = -50
+		add_stability =0.05
+		add_popularity = {
+				ideology = SOC_democratic
+				popularity = 0.05
+			}	
+		   }
+		}
+
+	
+	focus = {
+		id = Improve_the_treatment_of_workers
+		icon = GFX_goal_Improve_the_treatment_of_workers
+		cost = 10
+		prerequisite = {
+			focus = Class_harmony
+		}
+		x = 6
+		y = 2
+		completion_reward={
+			custom_effect_tooltip = SAX.5.tt
+			 
+		if = {
+		 limit = {
+			NOT = {has_idea = Class_harmony_1 }
+		 }
+		swap_ideas = {
+				remove_idea = Class_harmony
+				add_idea = Class_harmony_1
+			}
+		}
+		else = {
+		swap_ideas = {
+				remove_idea = Class_harmony_1
+				add_idea = Class_harmony_2
+			}
+		}
+		}
+		}
+		
+
+	
+	focus = {
+		id = Appease_capitalists
+		icon = GFX_goal_Appease_capitalists
+		cost = 3
+		prerequisite = {
+			focus = Improve_the_treatment_of_workers
+		}
+		x = 6
+		y = 3
+		completion_reward={
+		custom_effect_tooltip = SAX.6.tt
+		 
+		add_political_power = -50
+		add_stability =0.05
+		}
+			
+		}
+
+	
+	focus = {
+		id = Cooperation_rather_than_struggle
+		icon = GFX_goal_Cooperation_rather_than_struggle
+		cost = 4
+		prerequisite = {
+			focus = Increase_welfare_expenses
+		}
+		prerequisite = {
+			focus = Appease_capitalists
+		}
+		x = 5
+		y = 4
+		completion_reward={
+			custom_effect_tooltip = SAX.7.tt
+			 
+			add_war_support = -0.05
+			add_stability = 0.05
+			add_political_power = 50
+			add_popularity = {
+				ideology = Marxism
+				popularity = -0.1
+			}
+			}
+		}
+
+	
+	focus = {
+		id = Establishing_Cooperatives
+		icon = GFX_goal_Establishing_Cooperatives
+		cost = 5
+		prerequisite = {
+			focus = continue_New_Democracy_Experiment
+		}
+
+		x = 11
+		y = 1
+		completion_reward={
+		custom_effect_tooltip = SAX.8.tt
+		 
+			country_event = AOR_SAX_events.1
+			}
+		}
+
+	
+	focus = {
+		id = Government_intervention_in_the_market
+		icon = GFX_goal_Government_intervention_in_the_market
+		cost = 10
+		prerequisite = {
+			focus = Establishing_Cooperatives
+		}
+		x = 10
+		y = 2
+		completion_reward={
+			custom_effect_tooltip = SAX.9.tt
+			 
+			add_ideas = Government_intervention_in_the_market
+		}
+		}
+
+	
+	focus = {
+		id = profit_sharing
+		icon = GFX_goal_profit_sharing
+		cost = 10
+		prerequisite = {
+			focus = Government_intervention_in_the_market
+		}
+		x = 10
+		y = 3
+		completion_reward={
+			custom_effect_tooltip = SAX.10.tt
+			 
+			add_political_power = 150
+			add_ideas = profit_sharing
+		}
+		}
+
+	
+	focus = {
+		id = State_owned_chemical_plant
+		icon = GFX_goal_State_owned_chemical_plant
+		cost = 10
+		prerequisite = {
+			focus = Establishing_Cooperatives
+		}
+		x = 12
+		y = 2
+		completion_reward={
+			custom_effect_tooltip = SAX.11.tt
+			 
+			random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			}
+		  }
+		
+		}
+
+	
+	focus = {
+		id = Establishing_a_state_owned_farm
+		icon = GFX_goal_Establishing_a_state_owned_farm
+		cost = 10
+		prerequisite = {
+			focus = State_owned_chemical_plant
+		}
+		x = 12
+		y = 3
+		completion_reward={
+		custom_effect_tooltip = SAX.12.tt
+		 
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		}
+
+	
+	focus = {
+		id = Peace_rather_than_violence
+		icon = GFX_goal_Peace_rather_than_violence
+		cost = 4
+		prerequisite = {
+			focus = profit_sharing
+		}
+		prerequisite = {
+			focus = Establishing_a_state_owned_farm
+		}
+		x = 11
+		y = 4
+		completion_reward={
+			custom_effect_tooltip = SAX.13.tt
+			 
+			add_war_support = -0.05
+			add_stability = 0.05
+			add_political_power = 50
+			add_popularity = {
+				ideology = AUT_democratic
+				popularity = -0.1
+			}
+		 }
+		}
+
+	
+	focus = {
+		id = The_government_of_all_the_people
+		icon = GFX_goal_The_government_of_all_the_people
+		cost =10
+		prerequisite = {
+			focus = Cooperation_rather_than_struggle
+		}
+		prerequisite = {
+						focus = Peace_rather_than_violence
+		}
+		x = 8
+		y = 5
+		completion_reward={
+		custom_effect_tooltip = SAX.14.tt
+		 
+			add_ideas = The_government_of_all_the_people
+		  }
+		}
+
+	
+	focus = {
+		id = Guiding_the_People
+		icon = GFX_goal_Guiding_the_People
+		cost = 5
+		prerequisite = {
+			focus = The_government_of_all_the_people
+		}
+		x = 6
+		y = 6
+		completion_reward={
+		custom_effect_tooltip = SAX.15.tt
+		 
+			add_ideas = Guiding_the_People
+		   }
+		}
+	
+	focus = {
+		id = protect_the_people
+		icon = GFX_goal_protect_the_people
+		cost = 5
+		prerequisite = {
+			focus = The_government_of_all_the_people
+		}
+		x = 10
+		y = 6
+		completion_reward={
+			custom_effect_tooltip = SAX.16.tt
+			 
+			add_ideas = protect_the_people
+		   }
+		}
+	
+	focus = {
+		id = The_Victory_of_Democracy
+		icon = GFX_goal_The_Victory_of_Democracy
+		cost = 10
+		prerequisite = {
+			focus = Guiding_the_People
+		}
+		prerequisite = {
+			focus = protect_the_people
+		}
+		x = 8
+		y = 7
+		completion_reward={
+		custom_effect_tooltip = SAX.18.tt
+		 
+		add_stability = 0.05
+			add_political_power = 150
+			
+			
+			custom_effect_tooltip = SAX.19.tt
+			hidden_effect = {
+				remove_ideas = protect_the_people
+			remove_ideas = Guiding_the_People
+			remove_ideas = The_government_of_all_the_people
+			remove_ideas = profit_sharing
+			remove_ideas = Government_intervention_in_the_market
+			add_ideas = The_Victory_of_Democracy
+			}
+			
+			
+		}
+
+	}
+}

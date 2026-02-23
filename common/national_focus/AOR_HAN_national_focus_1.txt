@@ -1,0 +1,349 @@
+focus_tree = {
+	id = HAN.1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = han
+		}
+	}
+	continuous_focus_position = {
+		x = 1400
+		y = 2000
+	}
+	default = no
+	focus = {
+		id = HAN_qi_shi_gu_lai_xi
+		x = 4
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.1.tt
+			add_country_leader_trait = HAN_The_Age_of_Rage
+		}
+	}
+	focus = {
+		id = HAN_continue_set_sail_and_set_sail
+		x = 4
+		y = 1
+		prerequisite = {
+			focus = HAN_qi_shi_gu_lai_xi
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.2.tt
+		}
+	}
+	focus = {
+		id = HAN_Dortmund_Brewery
+		x = 4
+		y = 2
+		prerequisite = {
+			focus = HAN_continue_set_sail_and_set_sail
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.3.tt
+			add_ideas = HAN_Dortmund_Brewery
+		}
+	}
+	focus = {
+		id = HAN_Emden_Armory
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HAN_continue_set_sail_and_set_sail
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.4.tt
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 250
+				producer = HAN
+			}
+		}
+	}
+	focus = {
+		id = HAN_Increase_the_throughput_of_Wilhelmshaven
+		x = 8
+		y = 2
+		prerequisite = {
+			focus = HAN_continue_set_sail_and_set_sail
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.5.tt
+			853 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			853 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HAN_Berlin_Economic_Assistance
+		x = 4
+		y = 3
+		prerequisite = {
+			focus = HAN_Dortmund_Brewery
+		}
+		prerequisite = {
+			focus = HAN_Dortmund_Brewery
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.6.tt
+			add_ideas = HAN_Assistance_from_Berlin
+		}
+	}
+	focus = {
+		id = HAN_Franc_Mark_Pound
+		x = 4
+		y = 4
+		prerequisite = {
+			focus = HAN_Berlin_Economic_Assistance
+		}
+		prerequisite = {
+			focus = HAN_Wilhelmshaven_Dunkirk_Agreement
+		}
+		prerequisite = {
+			focus = HAN_Trade_in_the_English_Channel
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.7.tt
+			remove_ideas = HAN_Wilhelmshaven_Dunkirk_Agreement
+			remove_ideas = HAN_Assistance_from_Berlin
+			add_ideas = HAN_Franc_Mark_Pound
+		}
+	}
+	focus = {
+		id = HAN_Trade_in_the_English_Channel
+		x = 8
+		y = 3
+		prerequisite = {
+			focus = HAN_Increase_the_throughput_of_Wilhelmshaven
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.8.tt
+			country_event = {
+				id = HAN.1
+			}
+		}
+	}
+	focus = {
+		id = HAN_Wilhelmshaven_Dunkirk_Agreement
+		x = 0
+		y = 3
+		prerequisite = {
+			focus = HAN_Emden_Armory
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.9.tt
+			add_ideas = HAN_Wilhelmshaven_Dunkirk_Agreement
+		}
+	}
+	focus = {
+		id = HAN_Action_in_the_Shadow
+		x = 4
+		y = 5
+		prerequisite = {
+			focus = HAN_Franc_Mark_Pound
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.10.tt
+			add_opinion_modifier = {
+				target = NAU
+				modifier = relationship_with_FEA_111
+			}
+		}
+	}
+	focus = {
+		id = HAN_Trade_with_the_South
+		x = 2
+		y = 6
+		prerequisite = {
+			focus = HAN_Action_in_the_Shadow
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.11.tt
+		}
+	}
+	focus = {
+		id = HAN_A_vague_attitude
+		x = 6
+		y = 6
+		prerequisite = {
+			focus = HAN_Action_in_the_Shadow
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.12.tt
+			add_opinion_modifier = {
+				target = GER
+				modifier = GER_xinei
+			}
+		}
+	}
+	focus = {
+		id = HAN_Secret_treaty
+		x = 4
+		y = 7
+		prerequisite = {
+			focus = HAN_Trade_with_the_South
+		}
+		prerequisite = {
+			focus = HAN_A_vague_attitude
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.13.tt
+			diplomatic_relation = {
+				country = NAU
+				relation = non_aggression_pact
+				active = yes
+			}
+			give_guarantee = NAU
+			NAU = {
+				give_guarantee = HAN
+			}
+		}
+	}
+	focus = {
+		id = HAN_Move_towards_the_opposition
+		x = 4
+		y = 8
+		prerequisite = {
+			focus = HAN_Secret_treaty
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.14.tt
+		}
+	}
+	focus = {
+		id = HAN_Showdown_with_Berlin
+		x = 4
+		y = 9
+		prerequisite = {
+			focus = HAN_Move_towards_the_opposition
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			date > 1923.4.1
+			NOT = {
+				has_idea = Compact_of_German_Confederation
+			}
+		}
+		available_if_capitulated = yes
+		search_filters = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = HAN.15.tt
+			add_to_faction = NAU
+		}
+	}
+}

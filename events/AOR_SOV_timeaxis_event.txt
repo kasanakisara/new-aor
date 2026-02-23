@@ -1,0 +1,402 @@
+add_namespace = AOR_SOV_timeaxis
+add_namespace = KYR
+
+#响应邻国起义#
+country_event = {
+	id = AOR_SOV_timeaxis.1
+	title = AOR_SOV_timeaxis.1.t
+	desc = AOR_SOV_timeaxis.1.desc
+	picture = 1
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = { #赞成
+		name = AOR_SOV_timeaxis.1.a
+		custom_effect_tooltip = "调试"
+		add_political_power = 25
+		add_war_support = 0.05
+		FROM = { add_to_faction = ROOT }
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1001 days = 1 } }
+	}
+	option = {
+		name = AOR_SOV_timeaxis.1.b
+		custom_effect_tooltip = "调试"
+		add_political_power = 75
+		add_stability = 0.05
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1002 days = 1 } }
+	}
+	option = {
+		name = AOR_SOV_timeaxis.1.c
+		custom_effect_tooltip = "调试"
+		add_stability = 0.10
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1003 days = 1 } }
+	}
+}
+
+#对方赞成#
+country_event = {
+	id = AOR_SOV_timeaxis.1001
+	title = AOR_SOV_timeaxis.1001.t
+	desc = AOR_SOV_timeaxis.1001.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1001.a
+	}
+}
+#对方拒绝#
+country_event = {
+	id = AOR_SOV_timeaxis.1002
+	title = AOR_SOV_timeaxis.1002.t
+	desc = AOR_SOV_timeaxis.1002.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1002.a
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1004 days = 1 } }
+	}
+}
+#对方希望折中#
+country_event = {
+	id = AOR_SOV_timeaxis.1003
+	title = AOR_SOV_timeaxis.1003.t
+	desc = AOR_SOV_timeaxis.1003.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1003.a
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1005 days = 1 } }
+	}
+	option = {
+		name = AOR_SOV_timeaxis.1003.b
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1006 days = 1 } }
+	}
+	option = {
+		name = AOR_SOV_timeaxis.1003.c
+		FROM = { country_event = { id = AOR_SOV_timeaxis.1007 days = 1 } }
+	}
+}
+#苏俄尊重我们的立场#
+country_event = {
+	id = AOR_SOV_timeaxis.1004
+	title = AOR_SOV_timeaxis.1004.t
+	desc = AOR_SOV_timeaxis.1004.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1004.a
+	}
+}
+#苏俄言辞激烈的批评#
+country_event = {
+	id = AOR_SOV_timeaxis.1005
+	title = AOR_SOV_timeaxis.1005.t
+	desc = AOR_SOV_timeaxis.1005.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1005.a
+		add_political_power = -50
+		add_stability = -0.05
+		add_timed_ideas = {
+			idea = SOV_Lenin_criticism
+			days = 365
+		}
+	}
+}
+#苏俄尊重我们的立场#
+country_event = {
+	id = AOR_SOV_timeaxis.1006
+	title = AOR_SOV_timeaxis.1006.t
+	desc = AOR_SOV_timeaxis.1006.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1006.a
+		add_political_power = 25
+	}
+}
+
+#苏俄送来了帮助#
+country_event = {
+	id = AOR_SOV_timeaxis.1007
+	title = AOR_SOV_timeaxis.1007.t
+	desc = AOR_SOV_timeaxis.1007.desc
+	is_triggered_only = yes
+	#fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.1007.a
+		add_political_power = 25
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 2000
+			producer = RUS
+		}
+	}
+}
+
+
+
+
+country_event = { ##苏俄夺取了终年不冻港
+	id = AOR_SOV_timeaxis.1008
+	title = AOR_SOV_timeaxis.1008.t
+	desc = AOR_SOV_timeaxis.1008.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		ai_chance = { base = 10 }
+		name = AOR_SOV_timeaxis.1008.a
+		add_war_support = 0.02
+		custom_effect_tooltip = AOR_GER_Newline_tt
+		RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10081 } }
+	}
+	option = {
+		ai_chance = { base = 0 }
+		name = AOR_SOV_timeaxis.1008.b
+		remove_ideas = ENG_pioneer_of_interventionism
+		add_political_power = -120
+		add_stability = -0.10
+		add_war_support = -0.15
+		custom_effect_tooltip = AOR_GER_Newline_tt
+		RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10082 } }
+		custom_effect_tooltip = AOR_GER_Newline_tt
+		FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+	}
+}
+
+country_event = { ##英国人默认了
+	id = AOR_SOV_timeaxis.10081
+	title = AOR_SOV_timeaxis.10081.t
+	desc = AOR_SOV_timeaxis.10081.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.10081.a
+		add_political_power = 25
+		add_war_support = 0.05
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 2500 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = paijipao_0
+			amount = 200 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 200 producer = ENG
+		}
+	}
+}
+country_event = { ##苏俄：英国人进行战争动员
+	id = AOR_SOV_timeaxis.10082
+	title = AOR_SOV_timeaxis.10082.t
+	desc = AOR_SOV_timeaxis.10082.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.10082.a
+		add_political_power = 25
+		add_war_support = 0.05
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 2500 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = paijipao_0
+			amount = 200 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100 producer = ENG
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 200 producer = ENG
+		}
+		#展示，无效果
+		effect_tooltip = {
+			ENG = {
+				add_political_power = -120
+				add_stability = -0.10
+				add_war_support = -0.15
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_ideas = partial_economic_mobilisation
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				remove_ideas = ENG_pioneer_of_interventionism
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = RUS
+					expire = 0
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+		}
+	}
+}
+country_event = { ##法国：英国人进行战争动员
+	id = AOR_SOV_timeaxis.10083
+	title = AOR_SOV_timeaxis.10083.t
+	desc = AOR_SOV_timeaxis.10083.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_SOV_timeaxis.10083.a
+	}
+	option = {
+		name = AOR_SOV_timeaxis.10083.b
+	}
+	option = {
+		name = AOR_SOV_timeaxis.10083.c
+	}
+}
+
+
+country_event = {
+	id = KYR.1 ##阿拉什三顾求和
+	title = KYR.1.t
+	desc = KYR.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = KYR.1.a
+		hidden_effect = {
+			RUS = {
+				country_event = { id = AOR_SOV_timeaxis.10084 days = 2}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = AOR_SOV_timeaxis.10084 ##阿拉什三顾求和-第一次不理
+	title = AOR_SOV_timeaxis.10084.t
+	desc = AOR_SOV_timeaxis.10084.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_SOV_timeaxis.10084.a
+		hidden_effect = {
+			RUS = {
+				country_event = { id = AOR_SOV_timeaxis.10085 days = 2}
+			}
+		}
+	}
+}
+country_event = {
+	id = AOR_SOV_timeaxis.10085 ##阿拉什三顾求和-第二次理
+	title = AOR_SOV_timeaxis.10085.5
+	desc = AOR_SOV_timeaxis.10085.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = RUS.10085.a
+		hidden_effect = {
+			RUS = {
+				country_event = { id = KYR.2 days = 2 }
+			}
+			KYR = {
+				country_event = { id = KYR.2 days = 2 }
+			}
+		}
+	}
+}
+country_event = {
+	id = KYR.2 ##阿拉什三顾求和-和了
+	title = KYR.2.t
+	desc = KYR.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = KYR.2.a
+		RUS = {
+			white_peace = KYR
+			country_event = { id = KYR.3 days = 2 }
+		}
+		
+	}
+}
+
+country_event = {
+	id = KYR.3 ##阿拉什三顾求和-土耳其斯坦整合
+	title = KYR.3.t
+	desc = KYR.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = KYR.3.a
+		set_country_flag = RUS_flag_soviet_union_1
+		add_command_power = 5
+		add_political_power = 10
+		custom_effect_tooltip = AOR_GER_Newline_tt
+		custom_effect_tooltip = AOR_RUS_Soviet_union_1_tt
+		hidden_effect = {
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = UZB
+						is_core_of = TAJ
+						is_core_of = KYR
+						is_core_of = TMS
+					}
+					OR = {
+						is_controlled_by = RUS
+						CONTROLLER = { is_subject_of = RUS }
+					}
+				}
+				TAJ = {
+					transfer_state = PREV
+				}
+			}
+			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
+			TAJ = { RUS = { RUS_give_gun_licences = yes } }
+		}
+		
+		custom_effect_tooltip = AOR_GER_Newline_tt
+		TAJ = {
+			set_cosmetic_tag =  RUS_cosmetic_tag_tuerqisitan
+			division_template = {
+				name = "人民军队"
+				priority = 1
+				regiments = {
+				irregular_infantry = { x = 0 y = 0 }
+				irregular_infantry = { x = 0 y = 1 }
+				irregular_infantry = { x = 0 y = 2 }
+				irregular_infantry = { x = 0 y = 3 }
+				irregular_infantry = { x = 0 y = 4 }
+				}
+				support = {
+					Mortarsupport = { x = 0 y = 0 }
+				}
+			}
+		}
+		hidden_effect = {
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = UZB
+						is_core_of = TAJ
+						is_core_of = KYR
+						is_core_of = TMS
+					}
+				}
+				TAJ = { add_state_core = PREV }
+			}
+			TAJ = {
+				set_popularities = { Marxism = 100 }
+			}
+		}
+		
+	}
+}
+

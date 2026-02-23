@@ -1,0 +1,1097 @@
+ideas = {
+	# MILITARY
+
+	tank_manufacturer = { 
+		
+		designer = yes
+		
+		renault_bel = {
+			picture = renault
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { fast_tank_manufacturer }
+			
+			modifier = {
+				# Renault FT
+			}
+		}
+
+		vickers_armstrong_bel = {
+			picture = generic_tank_manufacturer_2
+		
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { medium_tank_manufacturer }
+			
+			modifier = {
+				
+			}
+		}
+	}
+
+	aircraft_manufacturer = {
+	
+		designer = yes
+		
+		avions_fairey = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { light_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		renard = {
+			picture = generic_air_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				air_equipment = 0.15
+			}
+			
+			traits = { medium_aircraft_manufacturer }
+			
+			equipment_bonus = {
+				# Tipsy B, firefly, fairey fox
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	
+	naval_manufacturer = { 
+		
+		designer = yes
+		
+		cockerill = { 
+			picture = generic_naval_manufacturer_1
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+						
+			traits = { naval_manufacturer }
+		}
+	}
+
+	materiel_manufacturer = {
+		
+		designer = yes
+		
+		fn_herstol = {
+			
+			picture = generic_infantry_equipment_manufacturer_2
+
+			
+			allowed = {
+				original_tag = BEL
+			}
+			
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+			
+			
+			traits = { infantry_equipment_manufacturer }
+		}
+	}
+
+	country = {
+
+		
+		AOR_Reclaiming_outer_northwest = {
+			
+			picture = GFX_idea_AOR_Reclaiming_outer_northwest
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.5
+				army_core_attack_factor = 0.5
+				army_org_factor  = 0.2
+			}
+		}
+
+
+		
+		
+		AOR_CHI_Military_aid_from_the_Allies = {
+			
+			picture = GFX_idea_CHI_Military_aid_from_the_Allies
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				custom_modifier_tooltip = CHI.2.tt
+			}
+		}
+		
+		
+		AOR_CHI_debt_of_the_northwest_war = {
+			
+			picture = GFX_idea_AOR_CHI_debt_of_the_northwest_war
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		
+		#对华公约
+		CHI_Convention_on_China = {
+			
+			picture = GFX_idea_CHI_Convention_on_China
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			custom_modifier_tooltip = CHI.trade.1.tt
+			custom_modifier_tooltip = CHI.trade.2.tt
+			}
+		}
+		
+		AOR_CHI_Northwest_joint_command = {
+			
+			picture = GFX_idea_AOR_CHI_Northwest_joint_command
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_morale_factor = 0.05
+				command_power_gain = 0.1
+				max_command_power = 15
+			} 
+		}
+		
+		#封建经济
+		
+		CHI_feudal_economy = {
+			
+			picture = GFX_idea_CHI_feudal_economy
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = -0.15
+				stability_factor = 0.1
+				war_support_factor = -0.15
+			}
+		}
+		
+		
+		#官僚资本
+		CHI_bureaucrat_capital = {
+			picture = GFX_idea_CHI_bureaucrat_capital
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor =0.15
+				political_advisor_cost_factor = 0.25
+			}
+		}
+		
+		#地方割据
+			CHI_Territorial_separation = {
+			picture = GFX_idea_CHI_Territorial_separation
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_buildings_factor = -0.6
+				political_power_factor = -0.1
+				conscription_factor = -0.3
+			}
+		}
+		
+		#兵为将有
+		CHI_soldiers_will_ready = {
+			picture = GFX_idea_CHI_soldiers_will_ready
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				command_power_gain_mult = -0.15
+				max_command_power = -30
+				
+			}
+		}
+		
+		#旧式军队
+		CHI_Old_army = {
+			picture = GFX_idea_CHI_Old_army 
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_attack_factor = -0.3
+				army_defence_factor = -0.3
+				army_org_factor = -0.3
+				army_morale_factor = -0.3
+			}
+		}
+		
+		#教育匮乏
+		CHI_Lack_of_education = {
+			picture = GFX_idea_CHI_Lack_of_education
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				research_speed_factor = -0.2
+				industrial_capacity_factory = -0.2
+			}
+		}
+		
+		#萌芽中的民族意识
+		CHI_budding_national_consciousness = {
+			
+			picture = GFX_idea_CHI_budding_national_consciousness
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_attack_factor =-0.15
+				army_core_defence_factor = -0.15
+			}
+		}
+	
+		#无保障的社会
+		CHI_insecure_society = {
+			
+			picture = GFX_idea_CHI_insecure_society
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				stability_weekly = -0.001
+				consumer_goods_factor = -0.05
+				conscription_factor = -0.1
+			}
+		}
+
+		#扶倾济弱的社会
+		CHI_care_society = {
+			
+			picture = GFX_idea_CHI_care_society
+					
+			allowed = {
+				always = yes
+			}
+					
+			visible = {
+				always = yes
+			}
+		
+			modifier = {
+				conscription_factor = -0.1
+			}
+		}
+
+		CHI_mengjixiongfu = {
+
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			available = {
+				NOT = {
+					has_country_flag = xibeizhanshijieshu
+				}
+			}
+			modifier = {
+				war_support_factor = 0.1
+				command_power_gain = 0.2
+				experience_gain_army = 0.2
+				army_speed_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = -0.05
+				custom_modifier_tooltip = CHI_mengjixiongfu_tt
+			}
+		}
+
+		CHI_zhengdunshehuidangdangwu = {
+
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				political_power_gain = -0.1
+				party_popularity_stability_factor = 0.1
+			}
+		}
+		CHI_zhengdunshehuidangdangwu_2 = {
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				political_power_gain = -0.2
+				party_popularity_stability_factor = 0.15
+			}
+
+		}
+		CHI_mengjixiongfu_l = {
+
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			available = {
+				NOT = {
+					has_country_flag = xibeizhanshijieshu
+				}
+			}
+			modifier = {
+				war_support_factor = 0.1
+				command_power_gain = 0.2
+				experience_gain_army = 0.3
+				army_speed_factor = 0.2
+				army_attack_factor = 0.1
+				army_defence_factor = -0.1
+				custom_modifier_tooltip = CHI_mengjixiongfu_tt
+			}
+			targeted_modifier = {
+				tag = RUS
+				justify_war_goal_time = -0.5
+			}
+
+		}
+		CHI_mengjixiongfu_r = {
+
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			available = {
+				NOT = {
+					has_country_flag = xibeizhanshijieshu
+				}
+			}
+			modifier = {
+				war_support_factor = 0.1
+				command_power_gain = 0.2
+				experience_gain_army = 0.1
+				army_speed_factor = 0.05
+				army_defence_factor = 0.05
+				custom_modifier_tooltip = CHI_mengjixiongfu_tt
+			}
+		}
+
+		CHI_beiyanggaige_1 = {
+
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				experience_gain_army = 0.25
+				army_org_factor = -0.15
+				army_attack_factor = -0.15
+				army_defence_factor = -0.15
+				attrition = 0.15
+				army_org_regain = -0.15
+				stability_factor = -0.05
+				war_support_factor = -0.1
+				consumer_goods_factor = 0.05
+			}
+			on_remove = {
+				# remove_ideas = Beiyang_afterglow
+				# add_ideas = CHI_gaigebeiyang
+			}
+		}
+
+		CHI_gaigebeiyang = {
+			picture = GFX_idea_CHI_insecure_society
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				land_doctrine_cost_factor = 0.5
+				naval_doctrine_cost_factor = 0.75
+				air_doctrine_cost_factor = 0.75
+				army_org_factor = 0.15
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				breakthrough_factor = 0.05
+				experience_loss_factor = -0.1
+				experience_gain_army = 0.05
+			}
+		}
+
+		Financial_and_tax_crisis = {
+			
+			picture = GFX_idea_Financial_and_tax_crisis
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				stability_factor = -0.15
+				consumer_goods_factor = 0.25
+				conscription_factor = -0.3
+				political_power_factor = -0.15
+			}
+		}
+		
+		Northwest_Joint_Command_Headquarters = {
+				
+			picture = GFX_idea_Northwest_Joint_Command_Headquarters
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				max_command_power = 15
+				command_power_gain = 0.1
+				army_org_regain = 0.05
+			}
+		}
+	
+		Beiyang_afterglow = {
+				
+			picture = GFX_idea_Northwest_Joint_Command_Headquarters
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				LAND_DOCTRINE_COST_FACTOR = 0.5
+				NAVAL_DOCTRINE_COST_FACTOR = 0.75
+				AIR_DOCTRINE_COST_FACTOR = 0.75
+				ARMY_ORG_FACTOR = 0.1
+				ARMY_INFANTRY_ATTACK_FACTOR = 0.05
+				ARMY_INFANTRY_DEFENCE_FACTOR = 0.05
+				EXPERIENCE_LOSS_FACTOR = -0.1
+				XP_GAIN_ARMY = 0.03
+	
+			}
+		}	
+		junguansuchengban = {
+				
+			picture = GFX_idea_junguansuchengban
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				experience_gain_army = 0.1
+				experience_gain_infantry_training_factor = 0.25
+	
+			}
+		}
+		qingqifanpanmengguguizu = {
+				
+			picture = GFX_idea_mengguniudai
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				stability_weekly = -0.007
+				monthly_population = -100
+			}
+		}
+		mengguniudai = {
+				
+			picture = GFX_idea_mengguniudai
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				stability_factor = 0.05
+				CAVALRY_ATTACK_FACTOR = 0.1
+				cavalry_defence_factor = 0.1
+				supply_consumption_factor = -0.05
+			}
+		}
+		xiyuanjiekuan = {
+				
+			picture = GFX_idea_xiyuanjiekuan
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				stability_factor = -0.1
+				consumer_goods_factor = -0.25
+				production_speed_buildings_factor = 0.15
+			}
+		}
+		riwanhezuo = {
+				
+			picture = GFX_idea_riwanhezuo
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				stability_factor = -0.1
+				production_speed_arms_factory_factor = 0.15
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+				ARMY_INTEL_TO_OTHERS = 0.2
+				civilian_intel_to_others = 0.35
+			}
+		}
+		jiaotongyinhangdaikuan = {
+							
+			picture = GFX_idea_riwanhezuo
+			
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		jiaotongxigaigefagan = {
+							
+			picture = GFX_idea_riwanhezuo
+			
+			visible = {
+				always = yes
+			}
+			cancel = {
+				has_war = yes
+			}
+	
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.2
+				production_speed_rail_way_factor = 0.2
+			}
+		}
+		caizhengbugaigefangan = {
+							
+			picture = GFX_idea_riwanhezuo
+
+			cancel = {
+				has_war = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			on_remove = {
+				if = {
+					limit = {
+						has_war = no
+					}
+					add_timed_idea = {
+						idea = tongyijijinfenhong
+						days = 150
+					}
+				}
+			}
+	
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = -0.05
+				production_speed_arms_factory_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_air_base_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+
+			}
+		}
+
+		tongyijijinfenhong = {
+							
+			picture = GFX_idea_riwanhezuo
+			
+			visible = {
+				always = yes
+			}
+
+			on_remove = {
+				add_stability = 0.05
+				add_stability = 0.1
+			}
+	
+			modifier = {
+				consumer_goods_factor = 0.2
+				stability_factor = 0.1
+			}
+		}
+		yujiaotonghuichubuhezuo = {
+							
+			picture = GFX_idea_yujiaotonghuichubuhezuo
+			
+			visible = {
+				always = yes
+			}
+	
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+				political_power_gain = -0.1
+			}
+		}
+
+		#群雄割据
+		CHI_quxionggeju = {
+
+			picture = GFX_idea_CHI_quxionggeju
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_factor = -0.15
+				surrender_limit = 0.2
+				mobilization_laws_cost_factor = 0.15
+	            trade_laws_cost_factor = 0.15
+	            economy_cost_factor = 0.15
+			}
+		}
+
+		#军阀经济
+		CHI_junfanjingji = {
+
+			picture = GFX_idea_CHI_junfanjingji
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			war_support_factor = 0.1
+			consumer_goods_factor = 0.2
+			research_speed_factor = -0.2
+			industrial_capacity_factory = -0.2
+			production_speed_buildings_factor = -0.5
+			}
+		}
+
+		#南满工业
+		CHI_nanmangongye = {
+
+			picture = GFX_idea_CHI_nanmangongye
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			drift_defence_factor = -0.2
+			opinion_gain_monthly_factor = 0.2
+			min_export = 0.2
+			local_resources_factor = 0.1
+			line_change_production_efficiency_factor = 0.1
+			}
+		}
+
+		#长江工业带
+		CHI_changjianggongyedai = {
+
+			picture = GFX_idea_CHI_nanmangongye
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			industrial_capacity_factory = 0.05
+			production_factory_max_efficiency_factor = 0.1
+			production_speed_buildings_factor = 0.1
+			consumer_goods_factor = -0.1
+			drift_defence_factor = -0.2
+			}
+		}
+
+        #金融龙头-海关大户
+        CHI_Budding_national_capitalism = {
+			
+	       picture = GFX_idea_UPC_Budding_national_capitalism
+	
+	        allowed = {
+		      always = yes
+	       }
+	
+	        visible = {
+		        always = yes
+	        }
+
+	        modifier = {
+			stability_factor = -0.1
+	        trade_opinion_factor = 0.2
+	        local_resources_factor = 0.2
+	        min_export = 0.1
+	        industrial_capacity_dockyard = -0.1
+	        consumer_goods_factor = -0.1
+	        }
+        }
+
+		#山巅经济
+		CHI_shandianjingji = {
+
+			picture = GFX_idea_CHI_nanmangongye
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			research_speed_factor = -1
+			consumer_goods_factor = 0.5
+			mobilization_laws_cost_factor = 1
+			trade_laws_cost_factor  = 1
+			economy_cost_factor = 1
+			political_advisor_cost_factor = 1
+			production_speed_buildings_factor = -0.8
+			industrial_capacity_factory = -0.7
+			conscription_factor = -0.5
+			}
+		}
+		
+		#汉人驻军
+		CHI_hanrenzhujun = {
+
+			picture = GFX_idea_CHI_hanrenzhujun
+
+			allowed = {
+				always = yes
+			}
+			
+			visible = {
+				always = yes
+			}
+
+			modifier = {
+			stability_factor = -0.3
+			war_support_factor = -0.2
+			supply_consumption_factor = 0.2
+			army_org_factor = -0.1
+			}
+		}
+
+		#兵荒马乱之地
+		CHI_binhuangmaluan = {
+
+			picture = GFX_idea_CHI_binhuangmaluan
+		
+			allowed = {
+				always = yes
+			}
+					
+			visible = {
+				always = yes
+			}
+		
+			modifier = {
+			stability_factor = -0.3
+			war_support_factor = -0.2
+			supply_consumption_factor = 0.2
+			army_org_factor = -0.1
+			}
+		}
+
+		#云贵雄师
+		CHI_yunguixiongshi = {
+
+			picture = CHI_yunguixiongshi
+		
+			allowed = {
+				always = yes
+			}
+					
+			visible = {
+				always = yes
+			}
+		
+			modifier = {
+			stability_factor = -0.1
+			war_support_factor = -0.2
+			army_org_factor = 0.05
+	        army_morale_factor = 0.1
+	        supply_consumption_factor = -0.1
+			recon_factor = 0.05
+			}
+		}
+
+		#云贵雄师(1)
+		CHI_yunguixiongshi_1 = {
+
+			picture = CHI_yunguixiongshi_1
+		
+			allowed = {
+				always = yes
+			}
+					
+			visible = {
+				always = yes
+			}
+		
+			modifier = {
+			stability_factor = 0.1
+			war_support_factor = 0.1
+			army_org_factor = 0.05
+	        army_morale_factor = 0.1
+	        supply_consumption_factor = -0.1
+			recon_factor = 0.05
+			}
+		}
+
+		#革命统一之心
+		CHI_gemingtongyizhixi = {
+
+			picture = GFX_idea_CHI_gemingtongyizhixi
+				
+			allowed = {
+				always = yes
+			}
+							
+			visible = {
+				always = yes
+			}
+				
+			modifier = {
+				ai_focus_aggressive_factor = 1
+				breakthrough_factor = 0.05
+				army_org_factor = 0.05
+				resistance_target = -0.5
+				compliance_growth = 0.5
+				hidden_modifier = {
+					no_supply_grace = 3600
+					supply_consumption_factor = -0.5
+				}
+			}
+		}
+        #祖国光复之心
+		CHI_zuguoguangfuzhixi = {
+
+            picture = GFX_idea_CHI_zuguoguangfuzhixi
+	
+            allowed = {
+	        always = yes
+            }
+				
+            visible = {
+	        always = yes
+            }
+	
+            modifier = {
+				ai_focus_aggressive_factor = 1
+				defensive_war_stability_factor = 0.1
+				mobilization_speed = 0.5
+	            army_core_attack_factor = 0.2
+	            army_core_defence_factor = 0.2
+				army_org_factor = 0.05
+				targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.2
+				defense_bonus_against = 0.2
+			}
+				hidden_modifier = {
+					no_supply_grace = 3600
+					supply_consumption_factor = -0.5
+				}
+			}
+		}
+	}
+}

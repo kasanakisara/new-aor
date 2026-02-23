@@ -1,0 +1,201 @@
+
+defined_text = { # Country
+	name = GetCurrentFlag
+	text = {
+		localization_key = [?var:AOR_nationunion_main_array^idx.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetAORMainCountryName
+
+	text = {
+		localization_key = [?var:AOR_nationunion_main_array^idx.GetName]
+	}
+}
+defined_text = { # Country
+	name = GetAORFactionMenberName
+
+	text = {
+		localization_key = [?var:ROOT.AOR_faction_array^idx.GetName]
+	}
+}
+defined_text = { # Country
+	name = GetAORMainCountryFactionName
+	text = {
+		localization_key = [?var:AOR_nationunion_main_array^idx.GetFactionName]
+	}
+}
+defined_text = { # Country
+	name = GetAORMainCountryFactionNameBox
+	text = {
+		localization_key = [?var:ROOT.AOR_faction_array^idx.GetFactionName]
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentFlagSmall
+
+	text = {
+		localization_key = [?var:ROOT.AOR_faction_array^idx.GetFlag]
+	}
+}
+
+defined_text = { # Country
+	name = GetCurrentFlagMini
+
+	text = {
+		localization_key = [?var:AOR_nationunion_mini_array^idx.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetOptionCountry
+
+	text = {
+		localization_key = [?var:AOR_option_country_array^idx.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetROOTOptionCountry
+
+	text = {
+		localization_key = [?var:ROOT.AOR_nu_Support_country.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetOptionChooseDesc
+	text = {
+		trigger = {
+			check_variable = {
+				ROOT.AOR_nu_Support_country = ROOT
+			}
+		}
+		localization_key = "AOR_Option_Choose_Independent"
+	}
+	text = {
+		trigger = {
+			has_variable = ROOT.AOR_nu_Support_country
+		}
+		localization_key = "[?var:ROOT.AOR_nu_Support_country.GetName]"
+	}
+	text = {
+		localization_key = "AOR_has_not_decided_yet"
+	}
+
+}
+
+defined_text = { # Country
+	name = GetApproveCountry
+	text = {
+		localization_key = [?var:global.AOR_approve_country_array^idx.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetAbstainCountry
+	text = {
+		localization_key = [?var:global.AOR_abstain_country_array^idx.GetFlag]
+	}
+}
+defined_text = { # Country
+	name = GetDisagreeCountry
+	text = {
+		localization_key = [?var:global.AOR_disagree_country_array^idx.GetFlag]
+	}
+}
+
+
+
+
+
+
+defined_text = { # Country
+	name = GetCurrentFrame
+	text = {
+		trigger = {
+			ROOT = {
+				tag = var:AOR_nationunion_main_array^idx
+			}
+		}
+		localization_key = "GFX_country_frame_2"
+	}
+	text = {
+		localization_key = "GFX_country_frame_1"
+	}
+
+}
+
+
+defined_text = { # NationFlag
+	name = GetMainNationFlag
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = ENG }				
+		}
+		localization_key = "GFX_AOR_nu_flag_ENG"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = FRA }		
+		}
+		localization_key = "GFX_AOR_nu_flag_FRA"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = USA }				
+		}
+		localization_key = "GFX_AOR_nu_flag_USA"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = SOV }				
+		}
+		localization_key = "GFX_AOR_nu_flag_SOV"
+	}
+
+}
+defined_text = { # NationIcon
+	name = GetMainNationIcon
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = ENG }				
+		}
+		localization_key = "GFX_AOR_nu_icon_ENG"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = FRA }		
+		}
+		localization_key = "GFX_AOR_nu_icon_FRA"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = USA }				
+		}
+		localization_key = "GFX_AOR_nu_icon_USA"
+	}
+	text = {
+		trigger = {
+			check_variable = { AOR_nationunion_main_array^idx = SOV }				
+		}
+		localization_key = "GFX_AOR_nu_icon_SOV"
+	}
+
+}
+
+defined_text = { # NationIcon
+	name = GetAORnuEvent
+	text = {
+		trigger = {
+			check_variable = { global.AOR_Nationunion_event = 1 }				
+		}
+		localization_key = "AOR_Nationunion_event_1"
+	}
+	text = {
+		localization_key = "AOR_Nationunion_event_0"
+	}
+
+}
+
+
+
+
+

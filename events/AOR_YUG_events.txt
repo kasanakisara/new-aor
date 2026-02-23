@@ -1,0 +1,257 @@
+add_namespace = YUG
+
+country_event = { #全国制宪会议
+	id = YUG.1
+	title = YUG.1.t
+	desc = YUG.1.d
+	picture = YUG.1.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.1.a #大会在冲突中闭幕
+		ai_chance = {
+			base = 20
+		}
+		country_event = YUG.6
+	}
+
+	option = {
+		name = YUG.1.b #大会冲突不断导致暂停
+		ai_chance = {
+			base = 40
+		}
+		country_event = YUG.2
+	}
+
+	option = {
+		name = YUG.1.c #波斯尼亚危机→军部
+		ai_chance = {
+			base = 20
+		}
+		country_event = YUG.4
+	}
+}
+
+country_event = { #危机路线
+	id = YUG.2
+	title = YUG.2.t
+	desc = YUG.2.d
+	picture = YUG.2.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.2.a
+	}
+}
+
+country_event = { #亚历山大统治
+	id = YUG.3
+	title = YUG.3.t
+	desc = YUG.3.d
+	picture = YUG.3.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.3.a #土地改革
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = YUG.3.b #号召成立斯拉夫联盟
+		country_event = YUG.5
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+country_event = { #军队胜利，国王被架空
+	id = YUG.4
+	title = YUG.4.t
+	desc = YUG.4.d
+	picture = YUG.4.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.4.a
+		country_event = YUG.5
+	}
+}
+
+country_event = { #两大军事集团形成
+	id = YUG.5
+	title = YUG.5.t
+	desc = YUG.5.d
+	picture = YUG.5.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.5.a
+	}
+}
+
+country_event = { #统一路线-众多政党成立
+	id = YUG.6
+	title = YUG.6.t
+	desc = YUG.6.d
+	picture = YUG.6.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.6.a
+		country_event = YUG.7
+	}
+}
+
+country_event = { #南斯拉夫新一轮大选
+	id = YUG.7
+	title = YUG.7.t
+	desc = YUG.7.d
+	picture = YUG.7.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.7.a #双民联盟
+		ai_chance = {
+			base = 40
+		}
+		country_event = YUG.8
+	}
+
+	option = {
+		name = YUG.7.a1 #民族激进党
+		ai_chance = {
+			base = 40
+		}
+		country_event = YUG.9
+	}
+
+	option = {
+		name = YUG.7.a2 #穆斯林组织
+		ai_chance = {
+			base = 10
+		}
+		country_event = YUG.10
+	}
+
+	option = {
+		name = YUG.7.a3 #南斯拉夫工人党
+		ai_chance = {
+			base = 10
+		}
+		country_event = YUG.11
+	}
+}
+
+
+country_event = { #双民联盟获胜
+	id = YUG.8
+	title = YUG.8.t
+	desc = YUG.8.d
+	picture = YUG.8.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.8.a
+	}
+}
+
+country_event = { #民族激进党
+	id = YUG.9
+	title = YUG.9.t
+	desc = YUG.9.d
+	picture = YUG.9.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.9.a
+	}
+}
+
+country_event = { #穆斯林组织
+	id = YUG.10
+	title = YUG.10.t
+	desc = YUG.10.d
+	picture = YUG.10.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.10.a
+		add_political_power = 25
+	}
+}
+
+country_event = { #南斯拉夫工人党
+	id = YUG.11
+	title = YUG.11.t
+	desc = YUG.11.d
+	picture = YUG.11.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.11.a
+	}
+}
+
+country_event = { #达尔马提亚问题
+	id = YUG.DAL
+	title = YUG.DAL.t
+	desc = YUG.DAL.d
+	picture = YUG.DAL.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = YUG.DAL.a #意大利是我们的朋友
+		ai_chance = {
+			base = 40
+		}
+		add_claim_by = 804
+		add_claim_by = 872
+		remove_core_of = 163
+		set_country_flag = YUG_cooperate_with_ITA
+	}
+
+	option = {
+		name = YUG.DAL.b #不理会，我们不会和意大利合作，南斯拉夫要独吞达尔马提亚
+		ai_chance = {
+			base = 30
+		}
+		add_war_support = 0.1
+		set_country_flag = YUG_swallow_DAL
+	}
+
+	option = {
+		name = YUG.DAL.c #意大利狼心不可不防
+		ai_chance = {
+			base = 30
+		}
+		give_guarantee = DAL
+		set_country_flag = YUG_no_ITA
+	}
+}

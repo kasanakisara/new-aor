@@ -1,0 +1,49 @@
+scripted_gui = {
+	country_information_window = {
+        window_name ="country_information_window" 
+        context_type = player_context
+        visible = {
+            NOT = {
+                has_country_flag = start_game
+            }
+        }
+        effects = {
+            country_information_button_1_click = {
+                set_country_flag = country_information_button_1
+                clr_country_flag = country_information_button_2
+                clr_country_flag = country_information_button_3
+                clr_country_flag = country_information_button_4
+            }
+            country_information_button_2_click = {
+                set_country_flag = country_information_button_2
+                clr_country_flag = country_information_button_1
+                clr_country_flag = country_information_button_3
+                clr_country_flag = country_information_button_4
+            }
+            country_information_button_3_click = {
+                set_country_flag = country_information_button_3
+                clr_country_flag = country_information_button_1
+                clr_country_flag = country_information_button_2
+                clr_country_flag = country_information_button_4
+            }
+            country_information_button_4_click = {
+                set_country_flag = country_information_button_4
+                clr_country_flag = country_information_button_1
+                clr_country_flag = country_information_button_3
+                clr_country_flag = country_information_button_2
+            }
+            close_button_click = {
+                clr_country_flag = country_information_button_1
+                clr_country_flag = country_information_button_2
+                clr_country_flag = country_information_button_3
+                clr_country_flag = country_information_button_4
+                set_country_flag = start_game
+            }
+		}
+        properties = {
+            picture = {
+                image = [country_information_image]
+            }
+        }
+    }
+}

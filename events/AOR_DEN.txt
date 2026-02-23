@@ -1,0 +1,458 @@
+add_namespace = DEN
+add_namespace = denmark_trade_deal
+
+country_event = {
+	id = DEN.1 #otto 你觉着你是职业政客吗 我觉着我是
+	title = DEN.1.t
+	desc = DEN.1.d
+	picture = GFX_DEN_event_1
+	fire_only_once = yes
+	trigger = {
+    }
+
+
+    option = {
+		name = DEN.1.a
+        retire_country_leader = yes
+        recruit_character = Otto_Liebe
+        set_politics = {
+            ruling_party = CON_democratic
+        }
+        set_country_flag = has_recruit_Otto_Liebe
+	}
+}
+
+###原版的贸易事件###
+country_event = { #ENG or GER gets an offer from DEN for a trade deal
+	id = denmark_trade_deal.1
+	title = denmark_trade_deal.1.t
+	desc = denmark_trade_deal.1.desc
+	picture = GFX_report_event_generic_stock_traders
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = denmark_trade_deal.1.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 5
+				has_government = FROM
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 0
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 24
+				} 
+			}
+		}	
+		effect_tooltip = {
+			ROOT = {
+				add_ideas = DEN_danish_produce_export_ns
+			}
+			FROM = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			}
+		}
+
+		unlock_decision_tooltip = DEN_increase_trade_with_denmark
+		unlock_decision_tooltip = DEN_cancel_trade_with_denmark
+
+		FROM = { country_event = { id = denmark_trade_deal.2 days = 1 } }
+	}
+
+	option = { #Decline
+		name = denmark_trade_deal.1.b
+		ai_chance = {
+			base = 1
+		}
+		FROM = { country_event = { id = denmark_trade_deal.3 days = 1 } }
+	}
+}
+country_event = { #ENG/GER has accepted our trade proposal!
+	id = denmark_trade_deal.2
+	title = denmark_trade_deal.2.t
+	desc = denmark_trade_deal.2.desc
+	picture = GFX_report_event_generic_stock_traders
+
+	is_triggered_only = yes
+
+	option = { #Yaaaas
+		name = denmark_trade_deal.2.a
+		ROOT = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			DEN_trade_deal_effects = yes
+		}
+		FROM = {
+			add_ideas = DEN_danish_produce_export_ns
+			set_country_flag = has_danish_produce_basic_flag
+		}
+		custom_effect_tooltip = war_will_cancel_deal_tt
+		unlock_decision_tooltip = DEN_cancel_trade_with_country
+		hidden_effect = {
+			FROM = {
+				set_country_flag = DEN_danish_trading_partner_flag
+			}
+		}
+	}
+}
+country_event = { #ENG/GER declined our trade proposal
+	id = denmark_trade_deal.3
+	title = denmark_trade_deal.3.t
+	desc = denmark_trade_deal.3.desc
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = { #Damnit!
+		name = denmark_trade_deal.3.a
+	}
+}
+
+country_event = { #ENG/GER wants to increase trade
+	id = denmark_trade_deal.4
+	title = denmark_trade_deal.4.t
+	desc = denmark_trade_deal.4.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Yaaaas
+		name = denmark_trade_deal.4.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 5
+				has_government = FROM
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 49
+				} 
+			}
+		}	
+		effect_tooltip = {
+			ROOT = { add_offsite_building = { type = industrial_complex level = 1 }}
+			FROM = {
+				swap_ideas = {
+					remove_idea = DEN_danish_produce_export_ns
+					add_idea = DEN_danish_produce_export_ns_improved
+				}
+			}
+		}
+		custom_effect_tooltip = war_will_cancel_deal_tt
+		FROM = { country_event = { id = denmark_trade_deal.5 hours = 6 } }
+	}
+
+	option = { #Naaaw we good
+		name = denmark_trade_deal.4.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = FROM
+					value < 0
+				}
+			}
+		}
+		FROM = { country_event = { id = denmark_trade_deal.6 hours = 6 } }
+	}
+}
+
+country_event = { #DEN accepted to increase trade
+	id = denmark_trade_deal.5
+	title = denmark_trade_deal.2.t #deliberate
+	desc = denmark_trade_deal.5.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Yaaaas
+		name = denmark_trade_deal.2.a #deliberate
+		ROOT = {
+			swap_ideas = {
+				remove_idea = DEN_danish_produce_export_ns
+				add_idea = DEN_danish_produce_export_ns_improved
+			}
+			set_country_flag = has_danish_produce_improved_flag
+		}
+		FROM = { add_offsite_building = { type = industrial_complex level = 1 }}
+		custom_effect_tooltip = war_will_cancel_deal_tt
+	}
+}
+
+country_event = { #DEN declined to increase trade
+	id = denmark_trade_deal.6
+	title = denmark_trade_deal.3.t #deliberate
+	desc = denmark_trade_deal.6.desc
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = { #Damnit!
+		name = denmark_trade_deal.6.a
+	}
+}
+
+country_event = { #ENG/GER/DEN canceled our trade deal
+	id = denmark_trade_deal.7
+	title = denmark_trade_deal.7.t
+	desc = denmark_trade_deal.7.desc
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = { #DEN receives bad news
+		name = denmark_trade_deal.7.a
+		trigger = {
+			FROM = {
+				OR = {
+					original_tag = ENG
+					original_tag = GER
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				FROM = {
+					has_idea = DEN_danish_produce_export_ns
+				}
+			}
+			custom_effect_tooltip = DEN_remove_one_offmap_civ_tt
+			hidden_effect = {
+				DEN = {	add_offsite_building = { type = industrial_complex level = -1 }}
+			}
+			FROM = { remove_ideas = DEN_danish_produce_export_ns }
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_idea = DEN_danish_produce_export_ns_improved
+				}
+			}
+			custom_effect_tooltip = DEN_remove_two_offmap_civ_tt
+			hidden_effect = {
+				DEN = {	add_offsite_building = { type = industrial_complex level = -2 }}
+			}
+			FROM = { remove_ideas = DEN_danish_produce_export_ns_improved}
+		}
+		hidden_effect = {
+			FROM = {
+				clr_country_flag = DEN_danish_trading_partner_flag
+			}
+		}
+	}
+	option = { #ENG/GER receives bad news
+		name = denmark_trade_deal.7.b
+		trigger = {
+			FROM = {
+				original_tag = DEN
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_idea = DEN_danish_produce_export_ns
+				}
+			}
+			ROOT = { remove_ideas = DEN_danish_produce_export_ns }
+			custom_effect_tooltip = DEN_loses_one_offmap_civ_tt
+			hidden_effect = {
+				DEN = {	add_offsite_building = { type = industrial_complex level = -1 }}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					has_idea = DEN_danish_produce_export_ns_improved
+				}
+			}
+			ROOT = { remove_ideas = DEN_danish_produce_export_ns_improved}
+			custom_effect_tooltip = DEN_loses_two_offmap_civ_tt
+			hidden_effect = {
+				DEN = {	add_offsite_building = { type = industrial_complex level = -2 }}
+			}
+		}
+		hidden_effect = {
+			ROOT = {
+				clr_country_flag = DEN_danish_trading_partner_flag
+			}
+		}
+	}
+}
+
+country_event = { #Cancel Danish Produce Trade
+	id = denmark_trade_deal.8
+	title = denmark_trade_deal.8.t 
+	desc = denmark_trade_deal.8.desc
+	picture = GFX_report_event_DEN_danish_troops
+
+	is_triggered_only = yes
+
+	option = { #Denmark has become a subject
+		name = denmark_trade_deal.8.a
+		trigger = {
+			DEN = {
+				is_subject = yes
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_basic_flag
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { original_tag = DEN}
+					}
+				}
+				DEN = {	add_offsite_building = { type = industrial_complex level = -1 }}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns } #The Idea is removed seperately
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_improved_flag
+					}
+				}
+				DEN = {	add_offsite_building = { type = industrial_complex level = -2 }}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns_improved } #The Idea is removed seperately
+			}
+		}
+		hidden_effect = { #Remove offsite factories if tag is DEN
+			if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_basic_flag
+					}
+					ROOT = { original_tag = DEN	}
+				}
+				ROOT = {	add_offsite_building = { type = industrial_complex level = -1 }}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_improved_flag
+					}
+					ROOT = { original_tag = DEN }
+				}
+				ROOT = {	add_offsite_building = { type = industrial_complex level = -2 }}
+			}
+		}
+	}
+	option = { #Trading Partner's answer in case of war
+		name = denmark_trade_deal.8.b
+		trigger = {
+			NOT = { original_tag = DEN }
+			DEN = {
+				is_subject = no
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_basic_flag
+					}
+				}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns } #The Idea is removed seperately
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_improved_flag
+					}
+				}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns_improved } #The Idea is removed seperately
+			}
+		}
+	}
+	option = { #Danish answer in case of war
+		name = denmark_trade_deal.8.c
+		trigger = {
+			original_tag = DEN
+			DEN = {
+				is_subject = no
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = { 
+			if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_basic_flag
+					}
+				}
+				ROOT = {	add_offsite_building = { type = industrial_complex level = -1 }}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns } #The Idea is removed seperately
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_improved_flag
+					}
+				}
+				ROOT = {	add_offsite_building = { type = industrial_complex level = -2 }}
+				FROM = { remove_ideas = DEN_danish_produce_export_ns_improved } #The Idea is removed seperately
+			}
+		}
+		hidden_effect = { #Remove offsite factories if tag is DEN
+			if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_basic_flag
+					}
+					ROOT = {
+						original_tag = DEN
+					}
+				}
+				DEN = {	add_offsite_building = { type = industrial_complex level = -1 }}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						has_country_flag = has_danish_produce_improved_flag
+					}
+					ROOT = {
+						original_tag = DEN
+					}
+				}
+				DEN = {	add_offsite_building = { type = industrial_complex level = -2 }}
+			}
+		}
+	}
+}

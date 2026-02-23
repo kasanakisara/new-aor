@@ -1,0 +1,1408 @@
+focus_tree = {
+	id = AOR_TUR
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TUR
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 1300 }
+	#苦涩残局
+	focus = {
+		id = AOR_TUR_bitter_remains
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 0
+		y = 0
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	#镇压联进委残部
+	focus = {
+		id = AOR_TUR_crackdown_Ittihadists
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_bitter_remains
+		}
+		x = -0
+		y = 1
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+			add_political_power = 5
+		}
+
+	}
+	#申请调整条款
+	focus = {
+		id = AOR_TUR_apply_refined_treaty
+		#icon = GFX_AOR_Eric_new_056
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_bitter_remains
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+			add_political_power = -15
+			country_event = { id = AOR_TUR_events.1 }
+		}
+	}
+	#重整国民经济
+	focus = {
+		id = AOR_TUR_salvage_economy
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_bitter_remains
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+			add_political_power = -35
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			unlock_decision_tooltip = TUR_loan_from_entente_decision
+		}
+	}
+	#对德引渡条款
+	focus = {
+		id = AOR_TUR_GER_prisoner_exchange
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_crackdown_Ittihadists
+		}
+		x = -0
+		y = 2
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+			add_war_support = -0.02
+			add_manpower = 126
+			country_event = { id = AOR_TUR_events.3 }
+		}
+	}
+	#安卡拉工人救济处
+	focus = {
+		id = AOR_TUR_Ankara_worker_rescues
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_salvage_economy
+		}
+		x = -4
+		y = 2
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+		}
+	}
+	#集中征税举措
+	focus = {
+		id = AOR_TUR_focused_taxation
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_salvage_economy
+		}
+		x = -2
+		y = 2
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+		}
+	}
+	#秘密接触苏维埃
+	focus = {
+		id = AOR_TUR_approach_Lenin_sultanate
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_apply_refined_treaty
+		}
+		x = 2
+		y = 2
+		relative_position_id = AOR_TUR_bitter_remains
+		mutually_exclusive = {
+			focus = AOR_TUR_reward_for_loyalty
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.03
+			}
+			add_command_power = 50
+			add_political_power = 25
+		add_to_variable = {
+			var:global.AOR_turkish_straits_game_Progressbar_var = -1
+		}
+		add_to_variable = {
+			var:global.AOR_turkish_straits_game_antiside_var = 1
+		}
+		custom_effect_tooltip = AOR_Turkish_Straits_race_greek_leaning_tt
+		}
+	}
+	#凭效忠以获利
+	focus = {
+		id = AOR_TUR_reward_for_loyalty
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_apply_refined_treaty
+		}
+		x = 4
+		y = 2
+		relative_position_id = AOR_TUR_bitter_remains
+		mutually_exclusive = {
+			focus = AOR_TUR_approach_Lenin_sultanate
+		}
+		completion_reward = {
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_Progressbar_var = 3
+			}
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_antiside_var = -3
+			}
+			custom_effect_tooltip = AOR_Turkish_Straits_race_turkish_leaning_tt
+			add_popularity = {
+				ideology = Marxism
+				popularity = -0.02
+			}
+			country_event = { id = AOR_TUR_events.4 }
+		}
+	}
+	#签署最终判决
+	focus = {
+		id = AOR_TUR_sign_serves_treaty
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Ankara_worker_rescues
+		}
+		prerequisite = {
+			focus = AOR_TUR_focused_taxation
+		}
+		prerequisite = {
+			focus = AOR_TUR_GER_prisoner_exchange
+		}
+		prerequisite = {
+			focus = AOR_TUR_approach_Lenin_sultanate
+			focus = AOR_TUR_reward_for_loyalty
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+		}
+	}
+	#屏息敛声......
+	focus = {
+		id = AOR_TUR_all_voices_silent
+		#icon = GFX_AOR_Eric_new_055
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_sign_serves_treaty
+		}
+		x = 0
+		y = 4
+		relative_position_id = AOR_TUR_bitter_remains
+		completion_reward = {
+		}
+	}
+}
+focus_tree = {
+	id = AOR_TUR_Kemal
+	country = {
+		factor = 0
+		modifier = {
+			add = 1
+			tag = TUR
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 2000 }
+	#首届大国民议会
+	focus = {
+		id = AOR_TUR_Kemal_First_TBMM
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 4
+		y = 0
+		completion_reward = {
+		}
+
+	}
+	#确立世俗化路线
+	focus = {
+		id = AOR_TUR_Kemal_endoctrine_pluralism
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_First_TBMM
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#重组教育部
+	focus = {
+		id = AOR_TUR_Kemal_reorganize_education
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_endoctrine_pluralism
+		}
+		x = -2
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#“国家誓言”
+	focus = {
+		id = AOR_TUR_Kemal_misak_i_milli
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_First_TBMM
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#反殖民主义经济斗争
+	focus = {
+		id = AOR_TUR_Kemal_anticolonial_econ
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_First_TBMM
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#颁布《特别税法》
+	focus = {
+		id = AOR_TUR_Kemal_Tekalifi_Milliye_Emirleri
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_anticolonial_econ
+		}
+		x = 1
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#设立安卡拉财政部
+	focus = {
+		id = AOR_TUR_Kemal_establish_finance_department
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_anticolonial_econ
+		}
+		x = 3
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#第二届大国民议会
+	focus = {
+		id = AOR_TUR_Kemal_second_TBMM
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_reorganize_education
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_misak_i_milli
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_Tekalifi_Milliye_Emirleri
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_establish_finance_department
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#第二次土耳其革命
+	focus = {
+		id = AOR_TUR_Kemal_second_Turkish_revolution
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_TBMM
+		}
+		x = -6
+		y = 4
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_stabilize_regime
+		}
+	}
+	#履行国际主义义务
+	focus = {
+		id = AOR_TUR_Kemal_international_duty
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_Turkish_revolution
+		}
+		x = -10
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#打破地缘孤立
+	focus = {
+		id = AOR_TUR_Kemal_break_geopolitic_isolation
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_international_duty
+		}
+		x = -11
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#求教巴伐利亚经验
+	focus = {
+		id = AOR_TUR_Kemal_seek_Bavarian_exp
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_international_duty
+		}
+		x = -9
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#重拾大战同盟
+	focus = {
+		id = AOR_TUR_Kemal_realign_World_War_allies
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_break_geopolitic_isolation
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_seek_Bavarian_exp
+		}
+		x = -10
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#统一工农党意识形态
+	focus = {
+		id = AOR_TUR_Kemal_unite_party_ideology
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_Turkish_revolution
+		}
+		x = -7
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#彻底清除军国主义
+	focus = {
+		id = AOR_TUR_Kemal_cleanse_militarist_scum
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_unite_party_ideology
+		}
+		x = -7
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#整合凯末尔共和派
+	focus = {
+		id = AOR_TUR_Kemal_integrate_Kemalist_republicans
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_cleanse_militarist_scum
+		}
+		x = -8
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#自由党人的命运
+	focus = {
+		id = AOR_TUR_Kemal_fate_of_liberals
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_cleanse_militarist_scum
+		}
+		x = -6
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#宣告成立土耳其社会主义共和国
+	focus = {
+		id = AOR_TUR_Kemal_proclaim_socialist_republic
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_integrate_Kemalist_republicans
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_fate_of_liberals
+		}
+		x = -7
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#坚定领导革命
+	focus = {
+		id = AOR_TUR_Kemal_leading_revolution
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_proclaim_socialist_republic
+		}
+		x = -8
+		y = 9
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_revolutionary_youth
+		}
+	}
+	#第三国际的南线先锋
+	focus = {
+		id = AOR_TUR_Kemal_south_flank_internationale
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_leading_revolution
+		}
+		x = -10
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#精简先锋党组织
+	focus = {
+		id = AOR_TUR_Kemal_cutdown_party_cadres
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_leading_revolution
+		}
+		x = -8
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#凯末尔-社会主义理论
+	focus = {
+		id = AOR_TUR_Kemal_socialist_Kemalism
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_cutdown_party_cadres
+		}
+		x = -8
+		y = 11
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#革命者永远年轻
+	focus = {
+		id = AOR_TUR_Kemal_revolutionary_youth
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_proclaim_socialist_republic
+		}
+		x = -6
+		y = 9
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_leading_revolution
+		}
+	}
+	#第三国际的忠诚支部
+	focus = {
+		id = AOR_TUR_Kemal_loyal_section_internationale
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_revolutionary_youth
+		}
+		x = -4
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#扩大青年参政
+	focus = {
+		id = AOR_TUR_Kemal_expand_youth_league
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_revolutionary_youth
+		}
+		x = -6
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#土耳其式布尔什维主义
+	focus = {
+		id = AOR_TUR_Kemal_Turkish_bolshevism
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_expand_youth_league
+		}
+		x = -6
+		y = 11
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#施行土地革命
+	focus = {
+		id = AOR_TUR_Kemal_land_revolution
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_Turkish_revolution
+		}
+		x = -4
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#颁布《帝国主义代理人法》
+	focus = {
+		id = AOR_TUR_Kemal_anti_imperialist_laws
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_land_revolution
+		}
+		x = -5
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#规训工会组织
+	focus = {
+		id = AOR_TUR_Kemal_control_trade_unions
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_land_revolution
+		}
+		x = -3
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#试行国家无神论
+	focus = {
+		id = AOR_TUR_Kemal_testing_aethiesm
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_Turkish_revolution
+		}
+		x = -2
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#利用世俗民粹主义
+	focus = {
+		id = AOR_TUR_Kemal_use_pluralist_populism
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_testing_aethiesm
+		}
+		x = -1
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#构建农村集体
+	focus = {
+		id = AOR_TUR_Kemal_form_farming_collectives
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_anti_imperialist_laws
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_control_trade_unions
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_use_pluralist_populism
+		}
+		x = -3
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#走向国家稳定
+	focus = {
+		id = AOR_TUR_Kemal_stabilize_regime
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_second_TBMM
+		}
+		x = 6
+		y = 4
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_second_Turkish_revolution
+		}
+	}
+	#采纳《反社会主义法》
+	focus = {
+		id = AOR_TUR_Kemal_anti_socialist_law
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_stabilize_regime
+		}
+		x = 2
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#利用社会民主党
+	focus = {
+		id = AOR_TUR_Kemal_use_social_democrats
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_anti_socialist_law
+		}
+		x = 1
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_Milli_Istihbarat_Teskilati
+		}
+	}
+	#组建国家情报局
+	focus = {
+		id = AOR_TUR_Kemal_Milli_Istihbarat_Teskilati
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_anti_socialist_law
+		}
+		x = 3
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_use_social_democrats
+		}
+	}
+	#通过民法典
+	focus = {
+		id = AOR_TUR_Kemal_pass_civil_code
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_use_social_democrats
+			focus = AOR_TUR_Kemal_Milli_Istihbarat_Teskilati
+		}
+		x = 2
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#颁布《姓氏法》
+	focus = {
+		id = AOR_TUR_Kemal_surnames_code
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_pass_civil_code
+		}
+		x = 1
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#重组最高法院
+	focus = {
+		id = AOR_TUR_Kemal_form_supreme_court
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_pass_civil_code
+		}
+		x = 3
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#梅尔辛-塞浦路斯危机
+	focus = {
+		id = AOR_TUR_Kemal_Tarsos_crisis
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_stabilize_regime
+		}
+		x = 6
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#惩办进步共和党
+	focus = {
+		id = AOR_TUR_Kemal_punish_progressive_republicans
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_Tarsos_crisis
+		}
+		x = 5
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_end_THF_dominance
+		}
+	}
+	#清洗联进委元老
+	focus = {
+		id = AOR_TUR_Kemal_purge_Ittihadist_elders
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_punish_progressive_republicans
+		}
+		x = 4
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#终结一党专政
+	focus = {
+		id = AOR_TUR_Kemal_end_THF_dominance
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_Tarsos_crisis
+		}
+		x = 7
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_punish_progressive_republicans
+		}
+	}
+	#确立责任内阁制
+	focus = {
+		id = AOR_TUR_Kemal_weaken_president
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_end_THF_dominance
+		}
+		x = 8
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#实现国家誓言
+	focus = {
+		id = AOR_TUR_Kemal_ratify_national_oath
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_punish_progressive_republicans
+			focus = AOR_TUR_Kemal_end_THF_dominance
+		}
+		x = 6
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#重拾民族纯净政策
+	focus = {
+		id = AOR_TUR_Kemal_national_purification
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_ratify_national_oath
+		}
+		x = 5
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#通过《刑法典》
+	focus = {
+		id = AOR_TUR_Kemal_penal_code
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_national_purification
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_form_supreme_court
+		}
+		x = 4
+		y = 9
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#索取特拉布宗
+	focus = {
+		id = AOR_TUR_Kemal_demand_Trabzon
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_ratify_national_oath
+		}
+		x = 7
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#介入库尔德-亚美尼亚矛盾
+	focus = {
+		id = AOR_TUR_Kemal_interfere_Lurds_Armenians
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_demand_Trabzon
+		}
+		x = 8
+		y = 9
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#农地再分配方案
+	focus = {
+		id = AOR_TUR_Kemal_redistribute_farmlands
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_ratify_national_oath
+		}
+		x = 6
+		y = 9
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#告别哈里发制
+	focus = {
+		id = AOR_TUR_Kemal_abolish_Caliphate
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_penal_code
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_redistribute_farmlands
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_interfere_Lurds_Armenians
+		}
+		x = 5
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_first_multiparty_elections
+		}
+	}
+	#首次举行多党选举
+	focus = {
+		id = AOR_TUR_Kemal_first_multiparty_elections
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_penal_code
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_redistribute_farmlands
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_interfere_Lurds_Armenians
+		}
+		x = 7
+		y = 10
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_abolish_Caliphate
+		}
+	}
+	#寻求外交承认
+	focus = {
+		id = AOR_TUR_Kemal_diplomatic_recognition
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_stabilize_regime
+		}
+		x = 10
+		y = 5
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#罗马-安卡拉条约
+	focus = {
+		id = AOR_TUR_Kemal_rome_ankara_pact
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_diplomatic_recognition
+		}
+		x = 9
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#安塔利亚交易
+	focus = {
+		id = AOR_TUR_Kemal_antalya_trade
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_rome_ankara_pact
+		}
+		x = 9
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#人口互换提议
+	focus = {
+		id = AOR_TUR_Kemal_population_exchange
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_diplomatic_recognition
+		}
+		x = 11
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#叙土勘界与领土交换
+	focus = {
+		id = AOR_TUR_Kemal_draw_Syrian_border
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_diplomatic_recognition
+		}
+		x = 13
+		y = 6
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#国内和平，世界和平
+	focus = {
+		id = AOR_TUR_Kemal_peace_policy
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_population_exchange
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_draw_Syrian_border
+		}
+		x = 12
+		y = 7
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+	}
+	#欧陆共和盟友
+	focus = {
+		id = AOR_TUR_Kemal_ally_France
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_peace_policy
+		}
+		x = 11
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_ally_Soviet
+		}
+	}
+	#苏土战略合作协议
+	focus = {
+		id = AOR_TUR_Kemal_ally_Soviet
+		#icon = GFX_AOR_Eric_new_053
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_peace_policy
+		}
+		x = 13
+		y = 8
+		relative_position_id = AOR_TUR_Kemal_First_TBMM
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_ally_France
+		}
+	}
+
+	#合并财政部与经济事务部
+	focus = {
+		id = AOR_TUR_Kemal_integrate_economy_departments
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 20
+		y = 0
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_Samsun_econ_conference
+		}
+	}
+	#组建计划委员会
+	focus = {
+		id = AOR_TUR_Kemal_planning_board
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_integrate_economy_departments
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#鼓励生产合作社
+	focus = {
+		id = AOR_TUR_Kemal_encourage_production_coop
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_planning_board
+		}
+		x = -6
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#成立消费合作社
+	focus = {
+		id = AOR_TUR_Kemal_form_consumer_coop
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_planning_board
+		}
+		x = -3
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#指导国营工业
+	focus = {
+		id = AOR_TUR_Kemal_directing_state_industries
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_planning_board
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#组织国民经济会议
+	focus = {
+		id = AOR_TUR_Kemal_national_economic_forum
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_encourage_production_coop
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_form_consumer_coop
+		}
+		x = -6
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#小型国企租让制
+	focus = {
+		id = AOR_TUR_Kemal_renting_small_businesses
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_encourage_production_coop
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_form_consumer_coop
+		}
+		x = -4
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#俄土合办企业
+	focus = {
+		id = AOR_TUR_Kemal_russian_investments
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_directing_state_industries
+		}
+		prerequisite = {
+			focus = AOR_TUR_Kemal_form_consumer_coop
+		}
+		x = -2
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#三位一体劳动模式
+	focus = {
+		id = AOR_TUR_Kemal_triple_labour_organisation
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_directing_state_industries
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_integrate_economy_departments
+		completion_reward = {
+		}
+	}
+	#召开萨姆松经济大会
+	focus = {
+		id = AOR_TUR_Kemal_Samsun_econ_conference
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 22
+		y = 0
+		completion_reward = {
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_Kemal_integrate_economy_departments
+		}
+	}
+	#国家主义经济模式
+	focus = {
+		id = AOR_TUR_Kemal_economic_statism
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_Samsun_econ_conference
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#成立农业信贷银行
+	focus = {
+		id = AOR_TUR_Kemal_agrarian_loan_bank
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_economic_statism
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#整合工矿业银行
+	focus = {
+		id = AOR_TUR_Kemal_merge_industry_bank
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_economic_statism
+		}
+		x = 3
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#入股私人商业银行
+	focus = {
+		id = AOR_TUR_Kemal_invest_private_banks
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_economic_statism
+		}
+		x = 6
+		y = 2
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#废除封建什一税
+	focus = {
+		id = AOR_TUR_Kemal_abolish_feudal_taxation
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_agrarian_loan_bank
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#收回铁路主权
+	focus = {
+		id = AOR_TUR_Kemal_retake_railways
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_merge_industry_bank
+		}
+		x = 2
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#制定《工业鼓励法》
+	focus = {
+		id = AOR_TUR_Kemal_encourage_industry
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_merge_industry_bank
+		}
+		x = 4
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+	#培育土族资产阶级
+	focus = {
+		id = AOR_TUR_Kemal_nurture_Turkish_capital
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_Kemal_invest_private_banks
+		}
+		x = 6
+		y = 3
+		relative_position_id = AOR_TUR_Kemal_Samsun_econ_conference
+		completion_reward = {
+		}
+	}
+}

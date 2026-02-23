@@ -1,0 +1,743 @@
+CAN_french_crisis = {
+CAN_political_concession = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		
+		}
+		visible = {
+		check_variable = { CAN.unity > 99 }
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = no
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		custom_effect_tooltip = "民族团结度将会提升百分之二"
+		add_to_variable = { 
+	    var = CAN.unity
+	    value = 2
+         }
+		
+	}
+}
+CAN_advance_common_good = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		
+		}
+		visible = {
+		check_variable = { CAN.unity > 99 }
+		}
+		cost = 10
+		days_remove = 8
+		fire_only_once = no
+		
+		ai_will_do = {
+			base = 60
+		}
+		
+		complete_effect = {
+		custom_effect_tooltip = "民族团结度将会提升百分之四"
+		add_to_variable = { 
+	    var = CAN.unity
+	    value = 4
+         }
+		
+	}
+}
+CAN_call_out_the_police = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		
+		}
+		visible = {
+		}
+		cost = 5
+		days_remove = 15
+		fire_only_once = no
+		
+		ai_will_do = {
+			base = 60
+		}
+		
+		complete_effect = {
+		custom_effect_tooltip = "叛乱度将会下降百分之二"
+		subtract_from_variable = { 
+	    var = CAN.rebellion
+	    value = 2
+        }
+		
+	}
+}
+
+CAN_rebellion_up = {
+
+		icon = PUM_decision
+		
+
+		available = {
+             always = no
+		}
+
+		visible = {
+		    
+		}
+		
+		activation = {
+		owns_state = 466
+			check_variable = { 61 > CAN.unity }
+			has_country_flag = CAN_french_crisis
+		}
+		fire_only_once = no
+		
+		days_mission_timeout = 15
+		is_good = no
+		
+		cancel_trigger = {
+			always = no
+		}
+		
+		complete_effect = {
+		}
+		
+		selectable_mission = no
+		
+		
+		cancel_effect = {
+			
+		}
+		
+		
+		timeout_effect = {
+		if = {
+	    limit = {
+		check_variable = { 61 > CAN.unity }
+		check_variable = { 40 < CAN.unity  }
+	}
+	custom_effect_tooltip = "叛乱度度将会增长百分之二"
+	add_to_variable = { 
+	    var = CAN.rebellion
+	    value = 2
+         }
+}
+if = {
+	    limit = {
+		check_variable = { 41 > CAN.unity }
+		check_variable = { 20 < CAN.unity }
+	}
+	custom_effect_tooltip = "叛乱度度将会增长百分之四"
+	add_to_variable = { 
+	    var = CAN.rebellion
+	    value = 4
+         }
+}
+if = {
+	    limit = {
+		check_variable = { 21 > CAN.unity }
+		check_variable = { 0 < CAN.unity }
+	}
+	custom_effect_tooltip = "叛乱度度将会增长百分之六"
+	add_to_variable = { 
+	    var = CAN.rebellion
+	    value = 6
+         }
+}
+if = {
+	    limit = {
+		check_variable = { 1 > CAN.unity }
+	}
+	custom_effect_tooltip = "叛乱度度将会增长百分之十"
+	add_to_variable = { 
+	    var = CAN.rebellion
+	    value = 10
+         }
+}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	CAN_unity_down = {
+
+		icon = PUM_decision
+		
+
+		available = {
+             always = no
+		}
+
+		visible = {
+		    
+		}
+		
+		activation = {
+		owns_state = 466
+			has_country_flag = CAN_french_crisis
+		}
+		fire_only_once = no
+		
+		days_mission_timeout = 15
+		is_good = no
+		
+		cancel_trigger = {
+			always = no
+		}
+		
+		complete_effect = {
+		}
+		
+		selectable_mission = no
+		
+		
+		cancel_effect = {
+			
+		}
+		
+		
+		timeout_effect = {
+		if = {
+	    limit = {
+		has_stability > 0.79
+		has_stability < 1
+	}
+	custom_effect_tooltip = "民族团结度将会下降百分之二"
+	subtract_from_variable = { 
+	    var = CAN.unity
+	    value = 2
+        }
+}
+if = {
+	    limit = {
+		has_stability > 0.59
+		has_stability < 0.8
+	}
+	custom_effect_tooltip = "民族团结度将会下降百分之四"
+	subtract_from_variable = { 
+	    var = CAN.unity
+	    value = 4
+        }
+}
+if = {
+	    limit = {
+		has_stability > 0.39
+		has_stability < 0.6
+	}
+	custom_effect_tooltip = "民族团结度将会下降百分之六"
+	subtract_from_variable = { 
+	    var = CAN.unity
+	    value = 6
+        }
+}
+if = {
+	    limit = {
+		has_stability > 0.19
+		has_stability < 0.4
+	}
+	custom_effect_tooltip = "民族团结度将会下降百分之八"
+	subtract_from_variable = { 
+	    var = CAN.unity
+	    value = 8
+      }
+   }
+   if = {
+	    limit = {
+		has_stability > 0
+		has_stability < 0.2
+	}
+	custom_effect_tooltip = "民族团结度将会下降百分之十"
+	subtract_from_variable = { 
+	    var = CAN.unity
+	    value = 10
+      }
+   }
+}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+CAN_walk_468 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		468 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+	}
+		visible = {
+       has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_468
+			clr_country_flag = CAN_walking
+			468 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_466 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		466 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_466
+			clr_country_flag = CAN_walking
+			466 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_682 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		682 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_682
+			clr_country_flag = CAN_walking
+			682 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_465 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		465 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		has_country_flag = CAN_468
+	}
+		visible = {
+         has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_465
+			clr_country_flag = CAN_walking
+			465 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_464 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		464 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		has_country_flag = CAN_465
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_464
+			clr_country_flag = CAN_walking
+			464 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_683 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		683 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		has_country_flag = CAN_682
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_683
+			clr_country_flag = CAN_walking
+			683 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_467 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		467 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_682
+		has_country_flag = CAN_683
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_467
+			clr_country_flag = CAN_walking
+			467 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_469 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		469 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_470
+		has_country_flag = CAN_467
+		has_country_flag = CAN_472
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_469
+			clr_country_flag = CAN_walking
+			469 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_472 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		472 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_469
+		has_country_flag = CAN_470
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_472
+			clr_country_flag = CAN_walking
+			472 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_470 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		470 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_469
+		has_country_flag = CAN_471
+		has_country_flag = CAN_472
+		has_country_flag = CAN_473
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_470
+			clr_country_flag = CAN_walking
+			470 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_473 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		473 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_471
+		has_country_flag = CAN_470
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_473
+			clr_country_flag = CAN_walking
+			473 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_471 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		471 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		OR = {
+		has_country_flag = CAN_472
+		has_country_flag = CAN_470
+		has_country_flag = CAN_473
+		}
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+	set_country_flag = CAN_471
+			clr_country_flag = CAN_walking
+			471 = { set_demilitarized_zone = no }
+	}
+}
+CAN_walk_463 = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+		463 = { is_demilitarized_zone = yes }
+		NOT = {
+		has_country_flag = CAN_walking
+		}
+		has_country_flag = CAN_471
+	}
+		visible = {
+        has_country_flag = CAN_Adrien_arcand
+		}
+		cost = 5
+		days_remove = 8
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+		add_political_power = 10
+		set_country_flag = CAN_walking
+	}
+	remove_effect = {
+			clr_country_flag = CAN_walking
+			463 = { set_demilitarized_zone = no }
+	}
+}
+}	
+CAN_commonwealth_joint_defence_committee = {
+CAN_farmer_weapons = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+			has_equipment = { infantry_equipment > 499 }
+		}
+		visible = {
+			
+		}
+		fire_only_once = no
+		ai_will_do = {
+			base = 20
+		}
+		cost = 30
+		
+		complete_effect = {
+		add_equipment_to_stockpile = {
+		type = infantry_equipment
+		amount = -500
+		}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"加拿大民间武装\" division_template = \"加拿大民间武装\" start_experience_factor = 0.6"
+						owner = ROOT
+						count = 1
+					}
+				}
+		}
+	}
+	CAN_speed_work = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+
+		}
+		visible = {
+			
+		}
+		fire_only_once = no
+		ai_will_do = {
+			base = 5
+		}
+		cost = 50
+		days_remove = 180
+		
+		modifier = {
+			industrial_capacity_factory = 0.1
+            production_speed_buildings_factor = 0.1
+		}
+		}
+		CAN_army_impove = {
+		icon = GFX_decision_generic_political_rally
+		available = {
+
+		}
+		visible = {
+			
+		}
+		fire_only_once = no
+		ai_will_do = {
+			base = 5
+		}
+		cost = 65
+		days_remove = 180
+		
+		modifier = {
+		max_planning = 0.25
+		planning_speed = 0.15
+		army_org_factor = 0.05
+		}
+		}
+}

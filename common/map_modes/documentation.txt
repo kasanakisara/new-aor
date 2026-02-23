@@ -1,0 +1,70 @@
+
+scripted_map_modes = {
+  	spheres_of_influence_map = {
+		top = {
+			type = country
+			
+				color = {
+					FROM = {
+						set_temp_variable = { alpha = 50.0 }
+						set_temp_variable = { thickness = 8.0 }
+						if = {
+							limit = {
+								has_idea = entente_member_nation 
+							}
+							set_temp_variable = { red = 0 }
+							set_temp_variable = { green = 0 }
+							set_temp_variable = { blue = 0.75 }
+						}
+						else_if = {
+							limit = {
+								has_idea = comintern_aligned_nation 
+							}
+							set_temp_variable = { red = 0.42 }
+							set_temp_variable = { green = 0 }
+							set_temp_variable = { blue = 0 }
+						}
+						else_if = {
+							limit = {
+								has_idea = little_entente_nation 
+							}
+							set_temp_variable = { red = 0.22 }
+							set_temp_variable = { green = 0.44 }
+							set_temp_variable = { blue = 0.89 }
+						}
+						else_if = {
+							limit = {
+								has_idea = british_commonwealth_nation 
+							}
+							set_temp_variable = { red = 0.79 }
+							set_temp_variable = { green = 0.22 }
+							set_temp_variable = { blue = 0.36 }
+						}
+						else = {
+							set_temp_variable = { red = 0.65 }
+							set_temp_variable = { green = 0.65 }
+							set_temp_variable = { blue = 0.65 }
+						}
+					}
+				}
+			thickness = no
+  		}
+  	
+		bottom = {
+			type = country
+			
+				color = {
+					set_temp_variable = { alpha = 0.2 }
+					set_temp_variable = { thickness = 1.0 }
+				}
+				
+				thickness = yes
+		}
+  	
+		far_text = faction
+		near_text = state
+
+		update_daily = yes
+ 
+    }
+}

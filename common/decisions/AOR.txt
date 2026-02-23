@@ -1,0 +1,43 @@
+AOR_political_action = {
+
+	AOR_Patriotic_education = {   
+		icon =  generic_political_discourse
+		cost = 25
+		days_remove = 180
+		fire_only_once = no
+		days_re_enable = 120
+		available = {}
+		modifier = {
+		political_power_cost = 0.15
+        defensive_war_stability_factor = 0.1
+		war_support_weekly = 0.002
+        }
+	}
+	AOR_Improve_workers_conditions = {   
+		icon =  generic_political_discourse
+		cost = 25
+		days_remove = 180
+		fire_only_once = no
+		days_re_enable = 120
+		available = {}
+		modifier = {
+            consumer_goods_factor = 0.05
+	    	industrial_capacity_factory = 0.05
+        }
+	}
+	AOR_Invest_scientific_development = {   
+		icon =  generic_political_discourse
+		cost = 100
+		days_remove = 180
+		fire_only_once = no
+		days_re_enable = 120
+		available = {
+		has_war = no
+		}
+		modifier = {
+            consumer_goods_factor = 0.05
+		    political_power_cost = 0.1
+		    research_speed_factor = 0.1
+        }
+	}
+}

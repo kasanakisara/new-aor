@@ -1,0 +1,103 @@
+add_namespace = HAN
+
+#开局介绍
+country_event = {
+	id = HAN.1
+	title = HAN.1.t
+	desc = HAN.1.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+
+      
+	option = {
+		name = HAN.1.a
+		
+	}
+}
+
+#转fxs
+country_event = {
+	id = HAN.2
+	title = HAN.2.t
+	desc = HAN.2.d
+	picture = GFX_Portrait_of_Tirpitz
+	is_triggered_only = yes
+
+      
+	option = {
+		name = HAN.2.a
+		kill_country_leader = yes
+		set_popularities = {
+				CON_democratic = 10
+				Fascism = 40
+				Absolutism = 43
+				Special = 7
+				}
+		set_politics = {ruling_party = Fascism}
+		create_country_leader = {
+		name = "Wilhelm Canaris"
+		desc = "POLITICS_Canaris_DESC"
+		picture = "gfx/leaders/HAN/aoaur-ko96e.dds"
+		expire = "1965.1.1"
+		ideology = NSDAP
+		traits = {
+				}
+			}
+		remove_ideas = Compact_of_German_Confederation
+		add_ideas = Compact_of_German_Confederation_1
+		load_focus_tree = HAN_2
+	}
+}
+
+#法兰克福不靠谱，还得看我威斯特伐利亚#
+country_event = {
+	id = HAN.3
+	title = HAN.3.t
+	desc = HAN.3.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = HAN.3.a
+		ai_chance = { factor = 10 }	
+			create_faction = Pact_of_Steel
+		}
+	}
+
+country_event = {
+	id = HAN.4
+	title = HAN.4.t
+	desc = HAN.4.d
+	picture = GFX_report_event_polish_tanks_01
+	is_triggered_only = yes
+	option = {
+		name = HAN.4.a
+		trigger = {
+			NAU = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Eduard Bernstein"
+				}
+			}
+		OR = {
+			NAU = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Karl Radek"
+						}
+					}
+		    	}
+			}
+			declare_war_on = {
+				target = GER
+				type = civil_war
+			}
+			declare_war_on = {
+				target = NAU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BAV
+				type = civil_war
+			}
+		}
+	}

@@ -1,0 +1,180 @@
+###########################
+# German Events
+###########################
+
+add_namespace = PHI
+
+
+#菲律宾革命
+country_event = {
+	id = PHI.1
+	title = PHI.1.t
+	desc = PHI.1.d
+	picture = GFX_events_PHI_1
+
+	trigger = {
+	    date > 1922.3.1
+		tag = PHI
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PHI.1.a
+		news_event = { id = AOR_news.26 }
+		PHR = {
+				transfer_state = 623
+				transfer_state = 624
+				transfer_state = 628
+				transfer_state = 625
+				transfer_state = 626
+				transfer_state = 627
+				
+				add_state_core = 623
+				add_state_core = 624
+				add_state_core = 628
+				add_state_core = 625
+				add_state_core = 626
+				add_state_core = 627
+				
+				add_manpower = 10000
+				}
+				
+				623 = {set_demilitarized_zone = yes }
+				624 = {set_demilitarized_zone = yes }
+				628 = {set_demilitarized_zone = yes }
+				625 = {set_demilitarized_zone = yes }
+				626 = {set_demilitarized_zone = yes }
+				627 = {set_demilitarized_zone = yes }
+				327 = {set_demilitarized_zone = yes }
+		
+			SPA= {
+		country_event = PHI.2
+		}
+		
+    }
+}
+
+#西班牙滚蛋
+country_event = {
+	id = PHI.2
+	title = PHI.2.t
+	desc = PHI.2.d
+	picture = GFX_events_PHI_2
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PHI.2.a
+		hidden_effect = {
+		
+		SPA = {
+			set_autonomy = {
+			target = PHI
+			autonomy_state = autonomy_free
+			}
+		}
+		FRA= {
+		country_event = PHI.3
+		}
+	}
+		
+    }
+}
+
+#法国爷来啦！
+country_event = {
+	id = PHI.3
+	title = PHI.3.t
+	desc = PHI.3.d
+	picture = GFX_events_PHI_3
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PHI.3.a
+		CAM = {
+		 add_manpower = -500
+		}
+		
+		hidden_effect = {
+			JAP = {
+			country_event = { days = 3 id =PHI.4 }
+			}
+		}
+		
+    }
+}
+
+#日本人收到！
+country_event = {
+	id = PHI.4
+	title = PHI.4.t
+	desc = PHI.4.d
+	picture = GFX_events_PHI_4
+	trigger = {
+	    date > 1922.10.1
+		tag = PHI
+	}
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PHI.4.a
+		
+		hidden_effect = {
+		news_event = { id = AOR_news.27 }
+		FRA = {
+		annex_country = {target = PHI}
+		annex_country = {target = PHR}
+		}
+		JAP = {
+		transfer_state = 623
+		transfer_state = 327
+		}
+		623 = {set_demilitarized_zone = NO }
+		626 = {set_demilitarized_zone = NO }
+		627 = {set_demilitarized_zone = NO }
+		327 = {set_demilitarized_zone = NO }
+		}
+    }
+}
+
+country_event = {
+	id = PHI.5
+	title = PHI.5.t
+	desc = PHI.5.d
+	picture = GFX_events_PHI_5
+	trigger = {
+	    date > 1922.5.1
+		tag = PHI
+	}
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = PHI.5.a
+
+		hidden_effect = {
+		PHR = {
+		declare_war_on = {
+			target = PHI
+			type = annex_everything
+		        } 
+		    }
+		}
+    }
+}

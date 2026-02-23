@@ -1,0 +1,1153 @@
+focus_tree={
+	id = Chinese_warlords
+	country={
+		factor=0
+		modifier={
+			add=10
+			OR = {
+				tag = FUJ
+				tag = ANH
+				tag = ZHE
+				tag = JIZ
+				tag = CBS
+		    	tag = DCD
+		     	tag = JLD
+		     	tag = MEN
+		     	tag = SHX
+		    	tag = SIK
+		    	tag = XCD
+		    	tag = XSM
+		}
+			
+
+		}
+	}
+	continuous_focus_position={
+		x=2500
+		y=1000
+	}
+	default=no
+	focus={
+    icon=AOR_unkown
+		id=warlords_safety_for_the_people
+		
+		x=8
+		y=0
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 150
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Dancing_Together
+		x=3
+		y=1
+		prerequisite={focus=warlords_safety_for_the_people}
+		mutually_exclusive={focus=warlords_Appoint_people_with_favoritism }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CHI_quxionggeju
+				add_idea = CBS_junshenzhengquan
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Stable_Provincial_Council
+		x=0
+		y=2
+		prerequisite={focus=warlords_Dancing_Together}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan
+				add_idea = CBS_junshenzhengquan1
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Jointly_wielding_power_with_local_gentry
+		
+		x=3
+		y=2
+		prerequisite={focus=warlords_Dancing_Together}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability  = 0.05
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Buying_Beiyang_generals
+		x=6
+		y=2
+		prerequisite={focus=warlords_Dancing_Together}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -75
+			army_experience = 30
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Appoint_people_with_favoritism
+		x=13
+		y=1
+		prerequisite={focus=warlords_safety_for_the_people}
+		mutually_exclusive={focus=warlords_Dancing_Together }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CHI_quxionggeju
+				add_idea = CBS_junfazhengquan
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Dissolve_the_Provincial_Council
+		x=10
+		y=2
+		prerequisite={focus=warlords_Appoint_people_with_favoritism}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CBS_junfazhengquan
+				add_idea = CBS_junfazhengquan1
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Establish_a_trusted_government
+		x=13
+		y=2
+		prerequisite={focus=warlords_Appoint_people_with_favoritism}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = -0.05
+			add_war_support = 0.1
+			add_political_power = 200
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Clean_the_Beiyang_generals
+		x=16
+		y=2
+		prerequisite={focus=warlords_Appoint_people_with_favoritism}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = -0.05
+			add_political_power = 100
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Military_and_political_unity
+		x=8
+		y=3
+		prerequisite={focus=warlords_Stable_Provincial_Council focus=warlords_Jointly_wielding_power_with_local_gentry focus=warlords_Dissolve_the_Provincial_Council focus=warlords_Establish_a_trusted_government focus=warlords_Clean_the_Beiyang_generals focus=warlords_Buying_Beiyang_generals }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas = CBS_junzhengtongyi
+
+			if = {
+				limit = {
+					has_idea = CBS_junshenzhengquan1
+				}
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan1
+				add_idea = CBS_junshenzhengquan2
+			}
+		}
+			if = {
+				limit = {
+					has_idea = CBS_junfazhengquan1
+				}
+			swap_ideas={
+				remove_idea = CBS_junfazhengquan1
+				add_idea = CBS_junfazhengquan2
+			}
+		}
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Build_accumulate_king
+		x=3
+		y=4
+		prerequisite={focus=warlords_Military_and_political_unity}
+		mutually_exclusive={focus=warlords_Preemptive }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = CBS_junfazhengquan2
+				}
+				swap_ideas={
+					remove_idea = CBS_junfazhengquan2
+					add_idea = CBS_junfazhengquan8
+				}
+			}
+			if = {
+				limit = {
+					has_idea = CBS_junshenzhengquan2
+				}
+				swap_ideas={
+					remove_idea = CBS_junshenzhengquan2
+					add_idea = CBS_junshenzhengquan3
+				}
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Reform_taxation
+		x=1
+		y=5
+		prerequisite={focus=warlords_Build_accumulate_king}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = CBS_junshenzhengquan3
+				}
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan3
+				add_idea = CBS_junshenzhengquan4
+			}
+		}
+
+		    if = {
+			    limit = {
+			    	has_idea = CBS_junshenzhengquan5
+		    	}
+		    swap_ideas={
+			    remove_idea = CBS_junshenzhengquan5
+			    add_idea = CBS_junshenzhengquan4
+		    }
+	    }
+
+	    	if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan6
+			}
+		    swap_ideas={
+			    remove_idea = CBS_junshenzhengquan6
+			    add_idea = CBS_junshenzhengquan4
+		    }
+	    }
+
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan8
+			}
+		swap_ideas={
+			remove_idea = CBS_junfazhengquan8
+			add_idea = CBS_junfazhengquan8
+		}
+	}
+
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan10
+			}
+		swap_ideas={
+			remove_idea =  CBS_junfazhengquan10
+			add_idea = CBS_junfazhengquan8
+		}
+	}
+
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan11
+		}
+		swap_ideas={
+			remove_idea = CBS_junfazhengquan11
+			add_idea = CBS_junfazhengquan8
+		}
+	}
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Increase_education_funding
+		x=5
+		y=5
+		prerequisite={focus=warlords_Build_accumulate_king}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan3
+			}
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan3
+				add_idea = CBS_junshenzhengquan5
+			}
+		}
+		    if = {
+			    limit = {
+			    	has_idea = CBS_junshenzhengquan4
+	     	}
+		    swap_ideas={
+			    remove_idea = CBS_junshenzhengquan4
+			    add_idea = CBS_junshenzhengquan5
+		    }
+	    }
+		    if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan6
+		    }
+		    swap_ideas={
+			        remove_idea = CBS_junshenzhengquan6
+			        add_idea = CBS_junshenzhengquan5
+		    }
+	    }
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Control_opium_cultivation
+		x=1
+		y=6
+		prerequisite={focus=warlords_Reform_taxation}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas =  CBS_shouguankongdeyapian
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_New_Teacher_Textbooks
+		x=5
+		y=6
+		prerequisite={focus=warlords_Increase_education_funding}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		    if = {
+			    limit = {
+			    	has_idea = CBS_junshenzhengquan4
+	     	}
+		    swap_ideas={
+			    remove_idea = CBS_junshenzhengquan4
+			    add_idea = CBS_junshenzhengquan6
+		    }
+	    }
+		    if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan5
+		    }
+		    swap_ideas={
+			        remove_idea = CBS_junshenzhengquan5
+			        add_idea = CBS_junshenzhengquan6
+		    }
+	    }
+		    if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan7
+		    }
+		    swap_ideas={
+				    remove_idea = CBS_junshenzhengquan7
+				    add_idea = CBS_junshenzhengquan6
+		    }
+	    }
+
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan9
+		 }
+		swap_ideas={
+			remove_idea = CBS_junfazhengquan9
+			add_idea = CBS_junfazhengquan11
+		}
+	}
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan10
+		}
+		swap_ideas={
+				remove_idea = CBS_junfazhengquan10
+				add_idea = CBS_junfazhengquan11
+		}
+	}
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan12
+		}
+		swap_ideas={
+				remove_idea = CBS_junfazhengquan12
+				add_idea = CBS_junfazhengquan11
+		}
+	}
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Supporting_local_enterprises
+		x=1
+		y=7
+		prerequisite={focus=warlords_Control_opium_cultivation}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			    if = {
+			        limit = {
+				        has_idea = CBS_junshenzhengquan4
+		        }
+		            swap_ideas={
+			            remove_idea = CBS_junshenzhengquan4
+			            add_idea = CBS_junshenzhengquan7
+		        }
+	        }
+			if = {
+				    limit = {
+				        has_idea = CBS_junshenzhengquan5
+		        }
+		        swap_ideas={
+			            remove_idea = CBS_junshenzhengquan5
+			            add_idea = CBS_junshenzhengquan7
+		        }
+	        }
+				if = {
+					limit = {
+						has_idea = CBS_junshenzhengquan6
+				}
+				swap_ideas={
+						remove_idea = CBS_junshenzhengquan6
+						add_idea = CBS_junshenzhengquan7
+				}		
+			}
+
+			if = {
+				limit = {
+					has_idea = CBS_junfazhengquan9
+			}
+				swap_ideas={
+					remove_idea = CBS_junfazhengquan9
+					add_idea = CBS_junfazhengquan12
+			}
+		}
+		if = {
+				limit = {
+					has_idea = CBS_junfazhengquan10
+			}
+			swap_ideas={
+					remove_idea = CBS_junfazhengquan10
+					add_idea = CBS_junfazhengquan12
+			}
+		}
+			if = {
+				limit = {
+					has_idea = CBS_junfazhengquan11
+			}
+			swap_ideas={
+					remove_idea = CBS_junfazhengquan11
+					add_idea = CBS_junfazhengquan12
+			}		
+		}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Establishing_Provincial_Universities
+		x=5
+		y=7
+		prerequisite={focus=warlords_New_Teacher_Textbooks}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_research_slot = 1
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Preemptive
+		x=13
+		y=4
+		prerequisite={focus=warlords_Military_and_political_unity}
+		mutually_exclusive={focus=warlords_Build_accumulate_king }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = CBS_junshenzhengquan2
+			}
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan2
+				add_idea = CBS_junshenzhengquan9
+			}
+		}
+		    if = {
+			    limit = {
+				    has_idea = CBS_junfazhengquan2
+		    }
+		    swap_ideas={
+			    remove_idea = CBS_junfazhengquan2
+			    add_idea = CBS_junfazhengquan3
+		    }
+	    }		
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Pre_tax_collection
+		x=11
+		y=5
+		prerequisite={focus=warlords_Preemptive}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = -0.1
+			add_political_power = 300
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Limited_education_investment
+		x=15
+		y=5
+		prerequisite={focus=warlords_Preemptive}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+			    limit = {
+					has_idea = CBS_junshenzhengquan9
+				}
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan9
+				add_idea = CBS_junshenzhengquan10
+			}
+		}
+
+		    if = {
+	    		limit = {
+			        has_idea = CBS_junfazhengquan6
+			    }
+		    swap_ideas={
+			    remove_idea = CBS_junfazhengquan6
+			    add_idea = CBS_junfazhengquan4
+		    }
+	    }
+	}
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Official_Opium_Industry
+		x=11
+		y=6
+		prerequisite={focus=warlords_Pre_tax_collection}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas = CBS_guanyingyapianzhongzhi
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Returning_to_traditional_education
+		x=15
+		y=6
+		prerequisite={focus=warlords_Limited_education_investment}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+				 has_idea = CBS_junshenzhengquan10
+				 }
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan10
+				add_idea = CBS_junshenzhengquan11
+			}
+		}
+
+		    if = {
+		     	limit = {
+		    	 has_idea = CBS_junfazhengquan4
+			    }
+		    swap_ideas={
+			    remove_idea = CBS_junfazhengquan4
+			    add_idea = CBS_junfazhengquan5
+		    }
+    	}
+	}
+ }
+	focus={
+    icon=AOR_unkown
+		id=warlords_Official_Office_for_Enterprise_Collection
+		x=11
+		y=7
+		prerequisite={focus=warlords_Official_Opium_Industry}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+	    	if = {
+	    		limit = {
+			    	has_idea = CBS_junshenzhengquan9
+			}
+	    	swap_ideas={
+			    remove_idea = CBS_junshenzhengquan9
+			    add_idea = CBS_junshenzhengquan12
+		    }
+	    }
+
+	    	if = {
+			    limit = {
+			    	has_idea = CBS_junfazhengquan5
+		}
+	    	swap_ideas={
+			    remove_idea = CBS_junfazhengquan5
+			    add_idea = CBS_junfazhengquan6
+		    }
+	    }
+
+			add_offsite_building = { 
+				type = industrial_complex
+				level = 3 
+				}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Introducing_advanced_drawings
+		x=15
+		y=7
+		prerequisite={focus=warlords_Returning_to_traditional_education}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_tech_bonus = {
+				bonus = 1.0 
+				ahead_reduction = 1 
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Sit_idly_by_to_see_success_or_failure
+		x=3
+		y=9
+		prerequisite={focus=warlords_Make_a_Name_for_Oneself}
+		mutually_exclusive={focus=warlords_Zhuolu_Zhongyuan }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability  = 0.05
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Initiate_unified_negotiations
+		x=3
+		y=10
+		prerequisite={focus=warlords_Sit_idly_by_to_see_success_or_failure}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Joining_the_British_camp
+		x=9
+		y=10
+		prerequisite={focus=warlords_Zhuolu_Zhongyuan}
+		mutually_exclusive={focus=warlords_Seeking_support_from_France focus=warlords_Accepting_Japanese_aid }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Seeking_support_from_France
+		x=12
+		y=10
+		prerequisite={focus=warlords_Zhuolu_Zhongyuan}
+		mutually_exclusive={focus=warlords_Joining_the_British_camp focus=warlords_Accepting_Japanese_aid }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Accepting_Japanese_aid
+		x=15
+		y=10
+		prerequisite={focus=warlords_Zhuolu_Zhongyuan}
+		mutually_exclusive={focus=warlords_Joining_the_British_camp focus=warlords_Seeking_support_from_France }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Zhuolu_Zhongyuan
+		x=12
+		y=9
+		prerequisite={focus=warlords_Make_a_Name_for_Oneself}
+		mutually_exclusive={focus=warlords_Sit_idly_by_to_see_success_or_failure }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Provincial_Army
+		x=22
+		y=0
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		mutually_exclusive={focus=warlords_Loyal_Army }
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CHI_Old_army
+				add_idea = CBS_shenglijundui
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Loyal_Army
+		x=29
+		y=0
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		mutually_exclusive={focus=warlords_Provincial_Army }
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CHI_Old_army
+				add_idea = CBS_zhongchengjundui
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Expand_military_academy
+		x=20
+		y=1
+		prerequisite={focus=warlords_Provincial_Army}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Introducing_new_weapons
+		x=24
+		y=1
+		prerequisite={focus=warlords_Provincial_Army}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_tech_bonus = {
+				bonus = 0.5 
+				ahead_reduction = 1 
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.5 
+				ahead_reduction = 1 
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				ahead_reduction = 1 
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Improving_the_quality_of_soldiers
+		x=22
+		y=2
+		prerequisite={focus=warlords_Expand_military_academy}
+		prerequisite={focus=warlords_Introducing_new_weapons}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea =  CBS_shenglijundui
+				add_idea = CBS_shenglijundui1
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_A_fierce_general_will_strike_upon_death
+		x=27
+		y=1
+		prerequisite={focus=warlords_Loyal_Army}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CHI_soldiers_will_ready
+				add_idea = CBS_laozuxinjiang
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Quantity_is_better_than_quality
+		x=31
+		y=1
+		prerequisite={focus=warlords_Loyal_Army}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = CBS_junfazhengquan6
+				}
+			swap_ideas={
+				remove_idea = CBS_junfazhengquan6
+				add_idea = CBS_junfazhengquan7
+			}
+		}
+		    if = {
+			    limit = {
+				    has_idea = CBS_junshenzhengquan7
+			    }
+			swap_ideas={
+				remove_idea = CBS_junshenzhengquan7
+				add_idea = CBS_junshenzhengquan8
+			}
+		}
+
+		if = {
+			limit = {
+				has_idea = CBS_junfazhengquan12
+			}
+		swap_ideas={
+			remove_idea = CBS_junfazhengquan12
+			add_idea = CBS_junfazhengquan13
+		}
+	}
+	    if = {
+		    limit = {
+			    has_idea = CBS_junshenzhengquan12
+		    }
+	    swap_ideas={
+		    remove_idea = CBS_junshenzhengquan12
+		    add_idea = CBS_junshenzhengquan13
+	    }
+    }
+  }
+}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Everyone_can_be_a_soldier
+		x=29
+		y=2
+		prerequisite={focus=warlords_A_fierce_general_will_strike_upon_death}
+		prerequisite={focus=warlords_Quantity_is_better_than_quality}
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = CBS_zhongchengjundui
+				add_idea = CBS_zhongchengjundui1
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Provincial_Weapon_Factory
+		x=24
+		y=2
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Procurement_of_overseas_weapons
+		x=27
+		y=2
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+    icon=AOR_unkown
+		id=warlords_Make_a_Name_for_Oneself
+		x=8
+		y=8
+		prerequisite={focus=warlords_Supporting_local_enterprises focus=warlords_Establishing_Provincial_Universities focus=warlords_Official_Office_for_Enterprise_Collection focus=warlords_Introducing_advanced_drawings }
+		cost=10
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_war_support = 0.05
+		}
+	}
+}

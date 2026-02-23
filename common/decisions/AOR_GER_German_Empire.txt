@@ -1,0 +1,661 @@
+Inherit_the_claim_of_the_territory_on_the_German_Empire_category = {
+	#德国金融体系
+	Inherit_the_claim_of_the_territory_on_the_German_Empire = {
+		#继承德意志帝国
+		icon = generic_operation
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		available = {
+			date > 1923.4.1
+		}
+		visible = {
+			date > 1923.4.1
+			OR = {
+				tag = GER
+				tag = HAN					#威斯特伐利亚
+				tag = SIL					#西里西亚
+				tag = KSH					#波美拉尼亚
+				tag = WUR					#符腾堡
+				tag = PRE					#普鲁士
+				tag = MEK					#梅克伦堡
+				tag = BAV
+				tag = SAX
+				tag = NAU
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ""
+			set_golbal_flag = AOR_GER_flag_GER_unification
+			add_political_power = 25
+			add_war_support = 0.05
+			every_state = {
+				limit = {
+					OR = {
+						is_controlled_by = BAV
+						is_controlled_by = GER
+						is_controlled_by = SAX
+						is_controlled_by = PRE
+						is_controlled_by = NAU
+						is_controlled_by = RHI
+						is_controlled_by = SHL
+						is_controlled_by = KSH
+						is_controlled_by = SIL
+						is_controlled_by = HAN
+						is_controlled_by = WUR
+						is_controlled_by = MEK
+					}
+				}
+				ROOT = {
+					add_state_core = PREV
+				}
+			}
+		}
+	}
+	Coralizate_native_land_of_the_German_Empire = {
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			OR = {
+				tag = GER
+				tag = SIL
+			}
+		}
+		visible = {
+			OR = {
+				is_debug = yes
+				tag = GER
+				tag = SIL
+			}
+		}
+		target_root_trigger = {
+			original_tag = ROOT
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					is_core_of = ROOT
+				}
+				is_controlled_by = ROOT
+				OR = {
+					state = 85					#但泽
+					state = 807					#格丁尼亚
+					state = 188					#梅梅尔
+					state = 86					#波兹南
+					state = 762					#卡托维兹
+					state = 28					#阿尔萨斯洛林
+					state = 8					#卢森堡
+					state = 836					#马尔梅迪
+					state = 839					#北石荷
+				}
+			}
+		}
+		days_remove = 1
+		modifier = {
+			political_power_cost = 0.25
+		}
+		remove_effect = {
+			FROM = {
+				remove_claim_by = ROOT
+				add_core_of = ROOT
+			}
+		}
+	}
+	#统一南石荷
+	Unify_SHL = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		fire_only_once = yes
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+					tag = BAV					#巴伐利亚
+					tag = NAU					#法兰克福
+					tag = SAX					#萨克森
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SHL
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			annex_country = {
+				target = SHL
+			}
+		}
+	}
+	war_SHL = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+					tag = GER
+					tag = HAN					#威斯特伐利亚
+					tag = SIL					#西里西亚
+					tag = KSH					#波美拉尼亚
+					tag = WUR					#符腾堡
+					tag = PRE					#普鲁士
+					tag = MEK					#梅克伦堡
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SHL
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = SHL
+				type = annex_everything
+			}
+		}
+	}
+	Unify_SAX = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = SAX
+				OR = {
+					tag = BAV
+					tag = GER
+					tag = NAU
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SAX
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = SAX
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = SAX
+					}
+				}
+			}
+		}
+	}
+	war_SAX = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+					tag = HAN					#威斯特伐利亚
+					tag = SIL					#西里西亚
+					tag = KSH					#波美拉尼亚
+					tag = WUR					#符腾堡
+					tag = PRE					#普鲁士
+					tag = MEK					#梅克伦堡
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SAX
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = SAX
+				type = annex_everything
+			}
+		}
+	}
+	Unify_MEK = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = MEK
+				OR = {
+					tag = SAX
+					tag = GER
+					tag = KSH
+					tag = NAU
+					tag = SIL					#西里西亚
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = MEK
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = MEK
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = MEK
+					}
+				}
+			}
+		}
+	}
+	war_MEK = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+					tag = HAN					#威斯特伐利亚
+					tag = BAV
+					tag = WUR					#符腾堡
+					tag = PRE					#普鲁士
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = MEK
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = MEK
+				type = annex_everything
+			}
+		}
+	}
+	Unify_SIL = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = SIL
+				OR = {
+					tag = SAX
+					tag = GER
+					tag = KSH
+					tag = NAU
+					tag = MEK					#西里西亚
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SIL
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = SIL
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = SIL
+					}
+				}
+			}
+		}
+	}
+	war_SIL = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+					tag = HAN					#威斯特伐利亚
+					tag = BAV
+					tag = WUR					#符腾堡
+					tag = PRE					#普鲁士
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SIL
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = SIL
+				type = annex_everything
+			}
+		}
+	}
+	Unify_KSH = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = KSH
+				OR = {
+					tag = SAX
+					tag = GER
+					tag = KSH
+					tag = NAU
+					tag = MEK					#西里西亚
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = KSH
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = KSH
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = KSH
+					}
+				}
+			}
+		}
+	}
+	war_KSH = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = SHL
+				has_global_flag = new_German_Confederation
+				OR = {
+					tag = HAN					#威斯特伐利亚
+					tag = BAV
+					tag = WUR					#符腾堡
+					tag = PRE					#普鲁士
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = KSH
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = KSH
+				type = annex_everything
+			}
+		}
+	}
+	Unify_HAN = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = HAN
+				OR = {
+					tag = GER
+					tag = NAU 
+				#西里西亚
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = HAN
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = HAN
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = HAN
+					}
+				}
+			}
+		}
+	}
+	war_HAN = {
+		icon = generic_operation
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				has_global_flag = new_German_Confederation
+				country_exists = SHL
+				OR = {
+			#威斯特伐利亚
+					tag = BAV
+					tag = GER
+				#普鲁士
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = HAN
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			declare_war_on = {
+				target = HAN
+				type = annex_everything
+			}
+		}
+	}
+	Unify_SIL = {
+		icon = generic_operation
+		ai_will_do = {
+			factor = 5
+		}
+		allowed = {
+			always = no
+		}
+		visible = {
+			AND = {
+				country_exists = SIL
+				OR = {
+					tag = SAX
+					tag = GER
+					tag = KSH
+					tag = NAU
+					tag = MEK				#西里西亚
+				}
+			}
+		}
+		available = {
+			OR = {
+				AND = {
+					date > 1923.5.1
+					has_war = no
+					country_exists = SIL
+				}
+				is_debug = yes
+			}
+		}
+		cost = 10
+		complete_effect = {
+			random_list = {
+				60 = {
+					annex_country = {
+						target = SIL
+					}
+				}
+				40 = {
+					declare_war_on = {
+						target = SIL
+					}
+				}
+			}
+		}
+	}
+}

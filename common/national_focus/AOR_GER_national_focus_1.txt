@@ -1,0 +1,2911 @@
+focus_tree = {
+	id = AOR_GER
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GER
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 1200 }
+	##########政治线##########
+	###自由民主线###
+	focus = { #完成共和国宪法
+		id = AOR_GER_Politics_1
+		icon = GFX_AOR_GER_Politics_1
+		cost = 10.00
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_21
+		}
+		x = 5
+		y = 0
+		ai_will_do = {
+			base = 0
+		}
+		available = {	
+			custom_trigger_tooltip = {
+				tooltip = GER.1.tt
+				always = no
+				}
+		}
+		allow_branch = {
+			NOT = {
+				OR = {
+					has_completed_focus = AOR_GER_Politics_21
+					has_completed_focus = AOR_GER_Politics_39
+				}
+			}
+		}
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			AOR_GER_Ideological_opposition_relieve_left = yes
+			add_country_leader_trait = the_absentee_president
+			create_field_marshal = {
+				name = "弗里德里希·艾伯特"
+				portrait_path = ""
+				traits = { organizer politically_connected career_officer trait_reckless }
+				skill = 1 attack_skill = 1 defense_skill = 1 planning_skill = 1 logistics_skill = 2
+			}
+		}
+
+	}
+	focus = { #德国自由思想的养料
+		id = AOR_GER_Politics_2
+		icon = GFX_AOR_GER_Politics_2
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_1
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_GER_Politics_1
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #群己权界
+		id = AOR_GER_Politics_3
+		icon = GFX_AOR_GER_Politics_3
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_2
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_2
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #国家总理
+		id = AOR_GER_Politics_4
+		icon = GFX_AOR_GER_Politics_4
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_1
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Politics_1
+		completion_reward = {
+			add_political_power = 25
+			create_country_leader = {
+				name = "菲利普·谢德曼"
+				picture = ""
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = { resolute_social_democrat }
+			}
+		}
+
+	}
+	focus = { #最高立法权
+		id = AOR_GER_Politics_5
+		icon = GFX_AOR_GER_Politics_5
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_4
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_4
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #德意志最高法院
+		id = AOR_GER_Politics_6
+		icon = GFX_AOR_GER_Politics_6
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_Politics_1
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_1
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #自由民主的坚强后盾
+		id = AOR_GER_Politics_7
+		icon = GFX_AOR_GER_Politics_7
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_6
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_5
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_GER_Politics_1
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #维持共和国自治现状
+		id = AOR_GER_Politics_8
+		icon = GFX_AOR_GER_Politics_8
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_1
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Politics_1
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #地方公民有限自治
+		id = AOR_GER_Politics_9
+		icon = GFX_AOR_GER_Politics_9
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_8
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_8
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #支持理论自由
+		id = AOR_GER_Politics_10
+		icon = GFX_AOR_GER_Politics_10
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_9
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_201
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_8
+		completion_reward = {
+			add_political_power = 25
+			add_ideas = AOR_GER_idea_Freedom_of_theory
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #星空与道德律
+		id = AOR_GER_Politics_11
+		icon = GFX_AOR_GER_Politics_11
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_Politics_7
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_3
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_10
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_7
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #深入人心的民主共和
+		id = AOR_GER_Politics_12
+		icon = GFX_AOR_GER_Politics_12
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_Politics_10
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_10
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+	focus = { #德式民主始源地
+		id = AOR_GER_Politics_13
+		icon = GFX_AOR_GER_Politics_13
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_11
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_12
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_12
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_left = yes
+		}
+
+	}
+
+	#民主线共用国策
+	focus = { #德意志宪法草案
+		id = AOR_GER_Politics_14
+		icon = GFX_AOR_GER_Politics_14
+		cost = 5.00
+		available = {
+			OR = {
+				has_completed_focus = AOR_GER_Politics_1
+				has_completed_focus = AOR_GER_Politics_21
+			}
+		}
+		x = 12
+		y = 1
+		ai_will_do = {
+			base = 10
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = AOR_GER_Politics_39
+			}
+		}
+		offset = {
+			x = -8
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_21
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_stability = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_draft_constitution
+		}
+
+	}
+	focus = { #妇女选举权
+		id = AOR_GER_Politics_15
+		icon = GFX_AOR_GER_Politics_15
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_14
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Politics_14
+		available = {
+			has_political_power > 50
+		}
+		completion_reward = {
+			add_political_power = -50
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_war_support = 0.03
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_Women_right_of_vote
+		}
+
+	}
+	focus = { #国家力量的凝聚
+		id = AOR_GER_Politics_16
+		icon = GFX_AOR_GER_Politics_16
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_15
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_GER_Politics_15
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Women_right_of_vote
+				add_idea = AOR_GER_idea_equal_between_Men_and_Women
+			}
+		}
+
+	}
+	focus = { #平民受教育的权力
+		id = AOR_GER_Politics_17
+		icon = GFX_AOR_GER_Politics_17
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_14 
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Politics_14
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_100_tt
+				check_variable = { AOR_GER_gold_quantity > 99 }
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOR_GER_gold_100_tt
+			add_to_variable = { AOR_GER_gold_quantity = -100 }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_war_support = 0.04
+			add_research_slot = 1
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_civilians_right_to_education
+		}
+
+	}
+	focus = { #继承社会保障体系
+		id = AOR_GER_Politics_18
+		icon = GFX_AOR_GER_Politics_18
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_17
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_GER_Politics_17
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_100_tt
+				check_variable = { AOR_GER_gold_quantity > 99 }
+			}
+		}
+		completion_reward = {
+			add_political_power = 120
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_gold_100_tt
+			add_to_variable = { AOR_GER_gold_quantity = -100 }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_civilians_right_to_education
+				add_idea = AOR_GER_idea_social_security_system
+			}
+		}
+	}
+#	focus = { #新兴大学哲学体系
+#		id = AOR_GER_Politics_19
+#		icon = GFX_goal_tfv_generic_tech_sharing
+#		cost = 5.00
+#		prerequisite = {
+#			focus = AOR_GER_Politics_17
+#		}
+#		x = 1
+#		y = 2
+#		relative_position_id = AOR_GER_Politics_17
+#		completion_reward = {
+#			add_political_power = 25
+#			custom_effect_tooltip = AOR_GER_Newline_tt
+#			add_research_slot = 1
+#			custom_effect_tooltip = AOR_GER_Newline_tt
+#			custom_effect_tooltip = available_designer
+#			show_ideas_tooltip = krupp
+#		}
+#
+#	}
+	focus = { #全德意志人的目标
+		id = AOR_GER_Politics_20
+		icon = GFX_AOR_GER_Politics_20
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_Politics_16
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_18
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_202
+		completion_reward = {
+			remove_ideas = AOR_GER_idea_equal_between_Men_and_Women
+			remove_ideas = AOR_GER_idea_social_security_system
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_draft_constitution
+				add_idea = AOR_GER_idea_constitution
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = { modifier = AOR_GER_industry_dynamic_modifier }
+					}
+				}
+				#开启动态修正
+				hidden_effect = {
+					add_dynamic_modifier = { modifier = AOR_GER_industry_dynamic_modifier }
+					force_update_dynamic_modifier = yes
+				}
+				#民用工业+5%
+				add_to_variable = { AOR_GER_industry_production_speed_industrial_complex_factor = 0.05 }
+				custom_effect_tooltip = AOR_GER_Industry_1_tt
+				custom_effect_tooltip = AOR_GER_Newline_tt
+			}
+
+			#建造速度+5%
+			add_to_variable = { AOR_GER_industry_production_speed_buildings_factor = 0.05 }
+			custom_effect_tooltip = AOR_GER_industry_production_speed_buildings_5_tt
+
+		}
+
+	}
+	focus = { #搁置理论纷争
+		id = AOR_GER_Politics_201
+		icon = GFX_AOR_GER_Politics_201
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_14
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_10
+			focus = AOR_GER_Politics_24
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_14
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+		}
+
+	}
+	focus = { #专注和平发展
+		id = AOR_GER_Politics_202
+		icon = GFX_AOR_GER_Politics_202
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_201
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_201
+		completion_reward = {
+		}
+
+	}
+
+	###中央集权线###
+	focus = { #把权力集中在柏林
+		id = AOR_GER_Politics_21
+		icon = GFX_AOR_GER_Politics_21
+		cost = 10.00
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_1
+			focus = AOR_GER_Politics_39
+		}
+		x = 19
+		y = 0
+		allow_branch = {
+			NOT = {
+				OR = {
+					has_completed_focus = AOR_GER_Politics_1
+					has_completed_focus = AOR_GER_Politics_39
+				}
+			}
+		}
+		offset = {
+			x = -8
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_21
+			}
+		}
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "阿勃韦尔"
+				icon = GFX_intelligence_agency_logo_generic_1
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			mark_focus_tree_layout_dirty = yes
+			add_country_leader_trait = AOR_GER_Despotism
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #德意志国家媒体委员会
+		id = AOR_GER_Politics_22
+		icon = GFX_AOR_GER_Politics_22
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_21
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Politics_21
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_National_Media_Commission
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			upgrade_intelligence_agency = upgrade_form_department
+		}
+
+	}
+	focus = { #整合联邦出版社
+		id = AOR_GER_Politics_23
+		icon = GFX_AOR_GER_Politics_23
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_22
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_22
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_National_Media_Commission
+				add_idea = AOR_GER_idea_Integrate_Federal_Press
+			}
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #雄鹰的旗帜
+		id = AOR_GER_Politics_24
+		icon = GFX_AOR_GER_Politics_24
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_23
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_27
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_201
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_23
+		completion_reward = {
+			add_ideas = AOR_GER_idea_Eagle_flag
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #调和自由民主间的矛盾
+		id = AOR_GER_Politics_25
+		icon = GFX_AOR_GER_Politics_25
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_24
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_24
+		completion_reward = {
+			add_political_power = 75
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #确保基层军官忠诚
+		id = AOR_GER_Politics_26
+		icon = GFX_AOR_GER_Politics_26
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_21
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_21
+		completion_reward = {
+			add_stability = 0.05
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+			upgrade_intelligence_agency = upgrade_passive_defense
+		}
+
+	}
+	focus = { #国防委员会
+		id = AOR_GER_Politics_27
+		icon = GFX_AOR_GER_Politics_27
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_26
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_26
+		completion_reward = {
+			add_political_power = 25
+			add_ideas = AOR_GER_idea_national_defense_committee
+		}
+
+	}
+	focus = { #削减自治区权力
+		id = AOR_GER_Politics_28
+		icon = GFX_AOR_GER_Politics_28
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_26
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_34
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_GER_Politics_26
+		completion_reward = {
+			add_ideas = AOR_GER_idea_Reduce_power_autonomous_1
+		}
+
+	}
+	focus = { #“大北方”战略计划
+		id = AOR_GER_Politics_29
+		icon = GFX_AOR_GER_Politics_29
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_27
+			focus = AOR_GER_Politics_28
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Politics_27
+		completion_reward = {
+			add_political_power = 25
+			unlock_decision_tooltip = {
+				decision = Great_Northern_Strategic_Plan
+				show_effect_tooltip = yes
+			}
+		}
+
+	}
+	focus = { #完成政府集权
+		id = AOR_GER_Politics_30
+		icon = GFX_AOR_GER_Politics_30
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_36
+			focus = AOR_GER_Politics_35
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_29
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_29
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #安抚菲利普·谢德曼
+		id = AOR_GER_Politics_31
+		icon = GFX_AOR_GER_Politics_31
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_21
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_33
+		}
+		x = 4
+		y = 1
+		relative_position_id = AOR_GER_Politics_21
+		completion_reward = {
+			SIL = {
+				country_event = {
+					id = AOR_GER_timeaxis.8
+					days = 1
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_they_will_accept_tt	
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_political_power = 25
+			effect_tooltip = {
+				custom_effect_tooltip = if_they_accept_tt
+				GER = {
+					set_autonomy = { target = SIL autonomy_state = AOR_GER_autonomous_region }
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #支持基层自由民主
+		id = AOR_GER_Politics_32
+		icon = GFX_AOR_GER_Politics_32
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_31
+		}
+		x = 0
+		y = 2
+		available = {
+			SIL = {
+				is_subject_of = GER
+			}
+		}
+		relative_position_id = AOR_GER_Politics_31
+		completion_reward = {
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+			every_country = {
+				limit = {
+					OR = {
+						tag = GER
+						tag = SIL
+					}
+				}
+				PREV = {
+					add_ideas = AOR_GER_idea_Grassroots_mass_autonomous_organizations
+				}
+			}
+		}
+
+	}
+	focus = { #踢开谢德曼
+		id = AOR_GER_Politics_33
+		icon = GFX_AOR_GER_Politics_33
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_21
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_31
+		}
+		x = 6
+		y = 1
+		relative_position_id = AOR_GER_Politics_21
+		completion_reward = {
+			SIL = {
+				country_event = {
+					id = AOR_GER_timeaxis.9
+					days = 1
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_they_will_accept_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_political_power = -75
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_stability = -0.10
+			effect_tooltip = {
+				custom_effect_tooltip = if_they_accept_tt
+				add_ideas = AOR_GER_idea_Berlin_support
+				custom_effect_tooltip = if_they_reject_tt
+				add_ideas = AOR_GER_idea_Berlin_NOT_support
+			}
+			AOR_GER_Ideological_opposition_remove = yes
+		}
+
+	}
+	focus = { #撤销西里西亚自治区
+		id = AOR_GER_Politics_34
+		icon = GFX_AOR_GER_Politics_34
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_33
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_28
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_33
+		completion_reward = {
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+			add_timed_idea = {
+				days = 365
+				idea = AOR_GER_idea_Integrated_Autonomous_Region
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			annex_country = { target = SIL transfer_troops = yes }
+		}
+
+	}
+	focus = { #联通奥德河贸易网
+		id = AOR_GER_Politics_35
+		icon = GFX_AOR_GER_Politics_35
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_34
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_34
+		completion_reward = {
+			add_political_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_opinion_modifier = { target = CZE modifier = HUN_trade_deal_with_germany }
+			reverse_add_opinion_modifier = { target = CZE modifier = HUN_trade_deal_with_germany }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_opinion_modifier = { target = SIL modifier = HUN_trade_deal_with_germany }
+			reverse_add_opinion_modifier = { target = SIL modifier = HUN_trade_deal_with_germany }
+
+		}
+
+	}
+	focus = { #要求自治区述职
+		id = AOR_GER_Politics_36
+		icon = GFX_AOR_GER_Politics_36
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_28
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_32
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_28
+		completion_reward = {
+			add_political_power = 25
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = MEK
+						tag = KSH
+						tag = SIL
+						tag = SHL
+						tag = SAX
+						tag = PRE
+					}
+				}
+				PREV = {
+					country_event = {
+						id = AOR_GER_timeaxis.5
+						days = 1
+					}
+				}
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = if_they_accept_tt
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = MEK
+							tag = KSH
+							tag = SIL
+							tag = SHL
+							tag = SAX
+							tag = PRE
+							tag = POL
+						}
+					}
+					PREV = {
+						add_ideas = AOR_GER_idea_autonomous_goal
+					}
+				}
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Reduce_power_autonomous_1
+				add_idea = AOR_GER_idea_Reduce_power_autonomous_2
+			}
+		}
+
+	}
+	focus = { #统一思潮
+		id = AOR_GER_Politics_37
+		icon = GFX_AOR_GER_Politics_37
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_Politics_25
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_30
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_25
+		completion_reward = {
+			AOR_GER_Ideological_opposition_relieve_middle = yes
+		}
+
+	}
+	focus = { #重拾德意志国际地位
+		id = AOR_GER_Politics_38
+		icon = GFX_Eric_the_big_power
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_Politics_13
+			focus = AOR_GER_Politics_37
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_20
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_20
+		completion_reward = {
+		    set_major = yes
+			custom_effect_tooltip = AOR_GER_Newline_tt
+		}
+
+	}
+
+	#独裁线
+	focus = { #组建国务委员会
+		id = AOR_GER_Politics_39
+		icon = GFX_AOR_Eric_new_043
+		cost = 10.00
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_21
+		}
+		allow_branch = {
+				always = no
+			}
+		x = 32
+		y = 0
+		ai_will_do = {
+			base = 0
+		}
+		allow_branch = {
+			NOT = {
+				OR = {
+					has_completed_focus = AOR_GER_Politics_1
+					has_completed_focus = AOR_GER_Politics_21
+				}
+			}
+		}
+		offset = {
+			x = -28
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_39
+			}
+		}
+		available= {
+			always = no
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			mark_focus_tree_layout_dirty = yes
+			AOR_GER_Ideological_opposition_relieve_right = yes
+			create_field_marshal = {
+				name = "弗里德里希·艾伯特"
+				portrait_path = ""
+				traits = { organizer politically_connected career_officer trait_reckless }
+				skill = 1 attack_skill = 1 defense_skill = 1 planning_skill = 1 logistics_skill = 2
+			}
+		}
+
+	}
+	focus = { #安抚中上层军官
+		id = AOR_GER_Politics_401
+		icon = GFX_focus_generic_infiltration
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_39
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_GER_Politics_39
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #严苛财政紧缩
+		id = AOR_GER_Politics_40
+		icon = GFX_goal_generic_consumer_goods
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_39
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_39
+		completion_reward = {
+			add_political_power = 25
+			add_country_leader_trait = strict_austerity_adherent
+		}
+
+	}
+	focus = { #提高税率
+		id = AOR_GER_Politics_41
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_40
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Politics_40
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #发行德意志政府国债
+		id = AOR_GER_Politics_42
+		icon = GFX_focus_hol_the_foundations_of_defense
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_40
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_40
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #掌控国家媒体
+		id = AOR_GER_Politics_43
+		icon = GFX_PRC8_qudidiguozhuyixuanchuanjiguan
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_39
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Politics_39
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #引导国民需求低迷化
+		id = AOR_GER_Politics_44
+		icon = GFX_focus_mex_privatisation
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_43
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_43
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #组织全国工人罢工
+		id = AOR_GER_Politics_45
+		icon = GFX_focus_ITA_corpo_volontari_della_liberta
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_41
+			focus = AOR_GER_Politics_42
+			focus = AOR_GER_Politics_44
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_42
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #重新组建议会
+		id = AOR_GER_Politics_46
+		icon = GFX_Eric_Establishment_of_the_State_Council
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_39
+		}
+		x = 5
+		y = 1
+		relative_position_id = AOR_GER_Politics_39
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #虚位总理
+		id = AOR_GER_Politics_47
+		icon = GFX_Eric_Prime_Minister
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_46
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_GER_Politics_46
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_stability = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #调整政府支出
+		id = AOR_GER_Politics_48
+		icon = GFX_AOR_Eric_new_011
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_46
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Politics_46
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #精英大学教育
+		id = AOR_GER_Politics_49
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_48
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_48
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #请求外国援助
+		id = AOR_GER_Politics_50
+		icon = GFX_Eric_democratic_state
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #号召全德意志工人
+		id = AOR_GER_Politics_51
+		icon = GFX_focus_ITA_workers_unions
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #紧急组织最高工委会
+		id = AOR_GER_Politics_52
+		icon = GFX_Eric_Emergency_Organization_Committee
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #镇压共产主义
+		id = AOR_GER_Politics_53
+		icon = GFX_Eric_Smash_communism
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_54
+		}
+		x = 4
+		y = 1
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #向共产党让步
+		id = AOR_GER_Politics_54
+		icon = GFX_focus_por_workers_of_iberia
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Politics_53
+		}
+		x = 6
+		y = 1
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+		}
+
+	}
+	focus = { #禁止共产主义
+		id = AOR_GER_Politics_55
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_53
+			focus = AOR_GER_Politics_54
+		}
+		x = 5
+		y = 2
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_stability = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+			add_ideas = FRA_communism_banned
+		}
+
+	}
+	focus = { #索取工业区掌控权
+		id = AOR_GER_Politics_56
+		icon = GFX_focus_POL_reassert_silesian_claims
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_45
+		}
+		x = -2
+		y = 2
+		relative_position_id = AOR_GER_Politics_45
+		completion_reward = {
+			add_political_power = 25
+			SIL = {
+				add_political_power = 25
+			}
+		}
+
+	}
+	focus = { #恢复秩序
+		id = AOR_GER_Politics_57
+		icon = GFX_focus_BUL_destroy_the_zveno
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_51
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_51
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #撤销地方自治
+		id = AOR_GER_Politics_58
+		icon = GFX_focus_generic_annex_country
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_57
+		}
+		prerequisite = {
+			focus = AOR_GER_Politics_56
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_57
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #德意志工人的“领袖”
+		id = AOR_GER_Politics_59
+		icon = GFX_AOR_Eric_new_031
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Politics_52
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Politics_52
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+	focus = { #统一人民的祖国
+		id = AOR_GER_Politics_60
+		icon = GFX_AOR_Eric_new_044
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_Politics_58
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Politics_58
+		completion_reward = {
+		    set_major = yes
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_Ideological_opposition_relieve_right = yes
+		}
+
+	}
+
+	##########建国线##########
+	focus = { #德意志命运垂下的绳索
+		id = AOR_GER_fate_1
+		icon = GFX_focus_ger_revive_kaiserreich
+		cost = 10.00
+		x = 16
+		y = 9
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10000
+				date > 1923.1.1
+			}
+		}
+		available = {
+			date > 1923.1.1
+		}
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					is_in_faction = yes	
+					is_faction_leader = yes
+				}
+				dismantle_faction = yes
+			}
+			if = {
+				limit = {
+					is_in_faction = yes
+					is_faction_leader = no
+				}
+				leave_faction = yes
+			}
+			AOR_GER_Ideological_opposition_remove = yes			
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			set_rule = { can_join_factions = yes }
+		}
+	}
+	focus = { #坚定自由
+		id = AOR_GER_fate_3
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_1
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_fate_12
+			focus = AOR_GER_fate_20
+		}
+		x = 11
+		y = 10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10000
+				date > 1923.1.1
+			}
+		}
+		available = {
+			date > 1923.1.1
+			has_completed_focus = AOR_GER_Politics_1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = "德意志共同体"
+			}
+			every_other_country = {
+				limit = {
+					has_country_flag =  AOR_GER_flag_autonomous_goal
+				}
+				GER = { add_to_faction = PREV }
+			}
+		}
+
+	}
+	focus = { #寻求东方盟友
+		id = AOR_GER_fate_4
+		icon = GFX_AOR_Eric_new_002
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_3
+		}
+		x = 9
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #寻求北方盟友
+		id = AOR_GER_fate_5
+		icon = GFX_focus_generic_scandinavian_alliance
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_3
+		}
+		x = 11
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #强化议会
+		id = AOR_GER_fate_6
+		icon = GFX_Eric_Establishment_of_the_State_Council
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_fate_3
+		}
+		x = 13
+		y = 11
+		available = {
+			has_country_leader = {
+				name = "菲利普·谢德曼"
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #捍卫自由民主的壁垒
+		id = AOR_GER_fate_7
+		icon = GFX_Eric_deep_democratic_republic
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_4
+			focus = AOR_GER_fate_5
+		}
+		prerequisite = {
+			focus = AOR_GER_fate_6
+		}
+		x = 11
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #重启大德意志计划
+		id = AOR_GER_fate_8
+		icon = GFX_AOR_Eric_new_041
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_7
+		}
+		x = 11
+		y = 13
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #欧洲唯一的避风港
+		id = AOR_GER_fate_9
+		icon = GFX_AOR_Eric_new_006
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_3
+		}
+		x = 15
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #吸引难民与移民
+		id = AOR_GER_fate_10
+		icon = GFX_AOR_Eric_new_019
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_3
+			focus = AOR_GER_fate_12
+		}
+		x = 17
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #政府督导群众自治
+		id = AOR_GER_fate_11
+		icon = GFX_AOR_Eric_new_002
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_10
+		}
+		x = 17
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #中央政府
+		id = AOR_GER_fate_12
+		icon = GFX_AOR_Eric_new_035
+		cost = 10.00
+		prerequisite = {
+			focus = AOR_GER_fate_1
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_fate_3
+			focus = AOR_GER_fate_20
+		}
+		x = 21
+		y = 10
+		ai_will_do = {
+			base = 1000
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10000
+				date > 1923.1.1
+			}
+		}
+		available = {
+			date > 1923.1.1
+			has_completed_focus = AOR_GER_Politics_21
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = "国防委员会"
+			}
+			every_other_country = {
+				limit = {
+					has_country_flag =  AOR_GER_flag_autonomous_goal
+				}
+				GER = { add_to_faction = PREV }
+			}
+		}
+
+	}
+	focus = { #强化政府权威
+		id = AOR_GER_fate_13
+		icon = GFX_Eric_Strengthen_government_authority
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_fate_12
+		}
+		x = 21
+		y = 11
+		completion_reward = {
+			add_political_power = 75
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				days = 365
+				idea = AOR_GER_idea_Strengthen_government_authority
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_fate_13_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			every_other_country = {
+				limit = {
+					is_in_faction_with = GER
+				}
+				add_timed_idea = {
+					days = 365
+					idea = AOR_GER_idea_Strengthen_government_authority
+				}
+			}
+		}
+
+	}
+	focus = { #平定边疆
+		id = AOR_GER_fate_14
+		icon = GFX_AOR_Eric_new_008
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_12
+		}
+		x = 19
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = MEK
+						tag = KSH
+						tag = SIL
+						tag = SHL
+						tag = SAX
+						tag = PRE
+					}
+					NOT = { has_war_with = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+		}
+
+	}
+	focus = { #最高委员会
+		id = AOR_GER_fate_15
+		icon = GFX_AOR_Eric_new_009
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_13
+		}
+		x = 21
+		y = 12
+		completion_reward = {
+			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_national_defense_committee
+				add_idea = AOR_GER_idea_holy_national_defense_committee
+			}
+			
+		}
+
+	}
+	focus = { #“影子”总统
+		id = AOR_GER_fate_16
+		icon = GFX_AOR_Eric_new_002
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_13
+		}
+		x = 23
+		y = 12
+		available = {
+			has_country_leader = {
+				name = "Friedrich Ebert"
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #列强重生
+		id = AOR_GER_fate_17
+		icon = GFX_AOR_Eric_new_038
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_15
+		}
+		prerequisite = {
+			focus = AOR_GER_fate_14
+		}
+		x = 21
+		y = 13
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #军队荣耀传承
+		id = AOR_GER_fate_18
+		icon = GFX_focus_generic_monarchy_2
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_12
+			focus = AOR_GER_fate_20
+		}
+		x = 24
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+			add_ideas = POL_legion_of_merit
+		}
+
+	}
+	focus = { #取缔议会
+		id = AOR_GER_fate_20
+		icon = GFX_Eric_germany_standard_bearer
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_1
+		}
+		allow_branch = {
+				always = no
+			}
+		mutually_exclusive = {
+			focus = AOR_GER_fate_12
+			focus = AOR_GER_fate_3
+		}
+		x = 30
+		y = 10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10000
+				date > 1923.1.1
+			}
+		}
+		available = {
+			date > 1923.1.1
+			has_country_leader = {
+				name = "Friedrich Ebert"
+				ruling_only = yes
+			}
+			has_completed_focus = AOR_GER_Politics_39
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = "德意志国家同盟"
+			}
+			every_other_country = {
+				limit = {
+					has_country_flag =  AOR_GER_flag_autonomous_goal
+				}
+				GER = { add_to_faction = PREV }
+			}
+		}
+
+	}
+	focus = { #防御西方
+		id = AOR_GER_fate_21
+		icon = GFX_Eric_democratic_state
+		cost = 5.00
+		allow_branch = {
+		always = no
+		}
+		prerequisite = {
+			focus = AOR_GER_fate_12
+			focus = AOR_GER_fate_20
+		}
+		x = 27
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #旧日恩怨
+		id = AOR_GER_fate_22
+		icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_21
+		}
+		x = 25
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+			every_other_country = {
+				limit ={
+					is_major = yes
+					OR = {
+						tag = ENG
+						tag = FRA
+					}
+				}
+				GER = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+		}
+
+	}
+	focus = { #雪耻法国之轭
+		id = AOR_GER_fate_23
+		icon = GFX_focus_attack_france
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_fate_21
+		}
+		x = 27
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #平定波罗的海
+		id = AOR_GER_fate_24
+		icon = GFX_AOR_Eric_new_017
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_21
+		}
+		x = 29
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #阶级合作
+		id = AOR_GER_fate_25
+		icon = GFX_focus_generic_royal_wedding
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_20
+		}
+		x = 30
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #德意志信念的铁壁
+		id = AOR_GER_fate_26
+		icon = GFX_AOR_Eric_new_007
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_20
+		}
+		x = 32
+		y = 11
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #共筑德意志的未来
+		id = AOR_GER_fate_27
+		icon = GFX_AOR_Eric_new_018
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_25
+		}
+		x = 31
+		y = 12
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #终结耻辱回忆
+		id = AOR_GER_fate_28
+		icon = GFX_AOR_Eric_new_023
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_fate_23
+			focus = AOR_GER_fate_22
+		}
+		prerequisite = {
+			focus = AOR_GER_fate_27
+		}
+		x = 29
+		y = 13
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+
+	##########工业线##########
+	focus = { #艰苦历程
+		id = AOR_GER_Industry_1
+		icon = GFX_Eric_hard_journey
+		cost = 5.00
+		x = 35
+		y = 0
+		offset = {
+			x = -25
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_1
+			}
+		}
+		offset = {
+			x = -22
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_21
+			}
+		}
+		offset = {
+			x = -28
+			y = 0
+			trigger = { 
+					has_completed_focus = AOR_GER_Politics_39
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		completion_reward = {
+			add_political_power = 25
+			#开启动态修正
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = AOR_GER_industry_dynamic_modifier }
+				force_update_dynamic_modifier = yes
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#民用工业+5%
+			add_to_variable = { AOR_GER_industry_production_speed_industrial_complex_factor = 0.05 }
+			custom_effect_tooltip = AOR_GER_Industry_1_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#获取少量财政盈余
+			add_to_variable = { AOR_GER_gold_revenue = 10 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_10_tt
+		}
+
+	}
+	focus = { #削减养老福利
+		id = AOR_GER_Industry_2
+		icon = GFX_AOR_Eric_new_024
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_not_has_Excessive_inflation = yes
+		}
+		completion_reward = {
+			#消费品-2%
+			add_to_variable = { AOR_GER_industry_consumer_goods_factor = -0.01 }
+			custom_effect_tooltip = AOR_GER_Industry_consumer_goods_reduce_2_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#稳定度-5%
+			add_to_variable = { AOR_GER_industry_stability_factor = -0.05 }
+			custom_effect_tooltip = AOR_GER_industry_stability_factor_reduce_5_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#获取少量财政盈余
+			add_to_variable = { AOR_GER_gold_revenue = 30 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_30_tt
+			
+		}
+
+	}
+	focus = { #削减失业金
+		id = AOR_GER_Industry_3
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_not_has_Excessive_inflation = yes
+		}
+		completion_reward = {
+			#消费品-2%
+			add_to_variable = { AOR_GER_industry_consumer_goods_factor = -0.01 }
+			custom_effect_tooltip = AOR_GER_Industry_consumer_goods_reduce_2_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#稳定度-5%
+			add_to_variable = { AOR_GER_industry_stability_factor = -0.05 }
+			custom_effect_tooltip = AOR_GER_industry_stability_factor_reduce_5_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#获取少量财政盈余
+			add_to_variable = { AOR_GER_gold_revenue = 20 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_20_tt
+		}
+
+	}
+	focus = { #残疾人康复委员会
+		id = AOR_GER_Industry_4
+		icon = GFX_focus_generic_self_management
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_2
+			focus = AOR_GER_Industry_3
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Industry_2
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#月度人口+10%
+			add_to_variable = { AOR_GER_industry_monthly_population = 0.10 }
+			custom_effect_tooltip = AOR_GER_industry_monthly_population_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = AOR_GER_idea_Disability_Rehabilitation_Committee
+				days = 730
+			}
+		}
+
+	}
+	focus = { #以工代赈
+		id = AOR_GER_Industry_5
+		icon = GFX_focus_generic_hydroelectric_energy
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_4
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_4
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_500_tt
+				check_variable = { AOR_GER_gold_quantity > 499 }
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOR_GER_gold_500_tt
+			add_to_variable = { AOR_GER_gold_quantity = -500 }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+
+			custom_effect_tooltip = AOR_GER_Industry_5_tt2
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#消费品-1% 稳定度+5%
+			add_to_variable = { AOR_GER_industry_consumer_goods_factor = -0.005 }
+			add_to_variable = { AOR_GER_industry_stability_factor = 0.05 }
+			custom_effect_tooltip = AOR_GER_Industry_5_tt1
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_directional_investment
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = {
+				decision = AOR_GER_build_infrastructure
+				show_effect_tooltip = yes
+			}
+			set_country_flag = AOR_GER_flag_build_infrastructure
+			59 = {
+				set_state_flag = AOR_GER_build_infrastructure
+				set_variable = { infrastructure_goal = infrastructure_level }
+				add_to_variable = { infrastructure_goal = 1 }
+			}
+		}
+
+	}
+	focus = { #走向“深蓝”
+		id = AOR_GER_Industry_6
+		icon = GFX_focus_generic_refit_civilian_ships
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_5
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_GER_Industry_5
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_200_tt
+				check_variable = { AOR_GER_gold_quantity > 199 }
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = tp_tech
+				category = naval_equipment
+				category = ship_modules_tech
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_gold_200_tt
+			add_to_variable = { AOR_GER_gold_quantity = -200 }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_equipment_to_stockpile = { type = convoy amount = 50 producer = GER }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			every_owned_state = {
+				limit ={
+					is_fully_controlled_by = ROOT
+					OR = {
+						state = 59
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = { #走向“葱郁”
+		id = AOR_GER_Industry_7
+		icon = GFX_focus_generic_land_reclamation
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_5
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Industry_5
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_200_tt
+				check_variable = { AOR_GER_gold_quantity > 199 }
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_GER_gold_200_tt
+			add_to_variable = { AOR_GER_gold_quantity = -200 }
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			every_owned_state = {
+				limit ={
+					is_fully_controlled_by = ROOT
+					OR = {
+						state = 64
+					}
+				}
+				ETH_upgrade_state_category = yes 
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {  
+					type = steel
+					amount = 5
+				}
+			}
+		}
+
+	}
+	focus = { #德国马克贬值
+		id = AOR_GER_Industry_8
+		icon = GFX_Eric_depreciation
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_not_has_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			AOR_GER_inflation_level_up = yes
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				idea = AOR_GER_idea_Deutschmark_depreciation
+				days = 365
+			}
+		}
+
+	}
+	focus = { #减轻债务桎梏
+		id = AOR_GER_Industry_9
+		icon = GFX_AOR_Eric_new_033
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_12
+		}
+		x = 4
+		y = 3
+		relative_position_id = AOR_GER_Industry_1
+		completion_reward = {
+			add_political_power = 25
+			AOR_GER_inflation_level_up = yes
+		}
+
+	}
+	focus = { #寻求英国支持
+		id = AOR_GER_Industry_10
+		icon = GFX_focus_chi_british_cooperation
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Industry_11
+		}
+		x = 5
+		y = 1
+		ai_will_do = {
+			base = 0
+		}
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #寻求美国帮助
+		id = AOR_GER_Industry_11
+		icon = GFX_focus_chi_mission_to_the_us
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		mutually_exclusive = {
+			focus = AOR_GER_Industry_10
+		}
+		x = 7
+		y = 1
+		ai_will_do = {
+			base = 0
+		}
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #商讨以半成品偿还债务
+		id = AOR_GER_Industry_12
+		icon = GFX_AOR_Eric_new_022
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_GER_Industry_10
+			focus = AOR_GER_Industry_11
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Industry_10
+		available = {
+			invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #重建邦国经贸纽带
+		id = AOR_GER_Industry_13
+		icon = GFX_Eric_Rebuild_trade_system
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		x = 9
+		y = 1
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #重组中央银行
+		id = AOR_GER_Industry_14
+		icon = GFX_AOR_Eric_new_005
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_13
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_GER_Industry_13
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #吸引外商投资
+		id = AOR_GER_Industry_15
+		icon = GFX_focus_generic_concessions
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_13
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Industry_13
+		available = {
+			AOR_GER_Can_invest_in_Excessive_inflation = yes
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #财务相对自由
+		id = AOR_GER_Industry_16
+		icon = GFX_Eric_financial_freedom
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_12
+			focus = AOR_GER_Industry_15
+		}
+		prerequisite = {
+			focus = AOR_GER_Industry_14
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_14
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #建设委员会
+		id = AOR_GER_Industry_17
+		icon = GFX_focus_spa_save_the_alcazar
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_1
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Industry_1
+		available = {
+			invest_in_Excessive_inflation = yes
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_gold_quantity_large_than_100_tt
+				check_variable = { AOR_GER_gold_quantity > 99 }
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = AOR_GER_Industry_17_tt1
+			add_to_variable = { production_speed_infrastructure_factor = 0.05 }
+			add_to_variable = { production_speed_industrial_complex_factor = 0.05 }
+			add_to_variable = { production_speed_arms_factory_factor = 0.05 }
+
+		}
+
+	}
+	focus = { #国民经济振兴五年计划
+		id = AOR_GER_Industry_18
+		icon = GFX_Eric_five_year_plan
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_17
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_17
+		available = {
+			invest_in_Excessive_inflation = yes
+		}	
+		completion_reward = {
+			add_political_power = 25
+
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			#建造速度+5%
+			add_to_variable = { AOR_GER_industry_production_speed_buildings_factor = 0.05 }
+			custom_effect_tooltip = AOR_GER_industry_production_speed_buildings_5_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			
+			# 国民经济振兴五年计划
+			unlock_decision_tooltip = {
+				decision = GER_National_Economic_Revitalization
+				show_effect_tooltip = yes
+			}
+		}
+
+	}
+	focus = { #德意志“英雄母亲”
+		id = AOR_GER_Industry_19
+		icon = GFX_focus_generic_population_growth
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_22
+			focus = AOR_GER_Industry_16
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_GER_Industry_16
+		completion_reward = {
+			add_ideas = AOR_GER_idea_Subsidized_birth
+		}
+
+	}
+	focus = { #德意志自己的市场
+		id = AOR_GER_Industry_20
+		icon = GFX_AOR_Eric_new_037
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_16
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_GER_Industry_16
+		completion_reward = {
+			add_political_power = 25
+		}
+
+	}
+	focus = { #支付残疾保险
+		id = AOR_GER_Industry_21
+		icon = GFX_AOR_Eric_new_001
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_16
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Industry_16
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.1
+		}
+
+	}
+	focus = { #统一地方财政税收
+		id = AOR_GER_Industry_22
+		icon = GFX_focus_generic_court
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_8
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_GER_Industry_8
+		completion_reward = {
+			add_political_power = 25
+			add_to_variable = { AOR_GER_global_building_slots_factor = 0.05 }
+			custom_effect_tooltip = AOR_GER_global_building_slots_factor_10_tt
+		}
+
+	}
+	focus = { #准备工业扩张
+		id = AOR_GER_Industry_23
+		icon = GFX_AOR_Eric_new_034
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_22
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_22
+		completion_reward = {
+			add_equipment_to_stockpile = { type = train_equipment amount = 25 producer = GER }
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = train_tech
+				category = industry
+				category = electronics
+			}
+		}
+
+	}
+	focus = { #德意志工业规划新阶段
+		id = AOR_GER_Industry_24
+		icon = GFX_AOR_Eric_new_014
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_6
+			focus = AOR_GER_Industry_7
+		}
+		prerequisite = {
+			focus = AOR_GER_Industry_20
+		}
+		prerequisite = {
+			focus = AOR_GER_Industry_23
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_23
+		available = {
+			has_country_flag = AOR_GER_flag_Revitalization_3
+		}
+		completion_reward = {
+			add_to_variable = { AOR_GER_industry_production_factory_max_efficiency_factor = 0.05 }
+			add_to_variable = { AOR_GER_industry_production_factory_efficiency_gain_factor = 0.05 }
+			add_to_variable = { AOR_GER_industry_line_change_production_efficiency_factor = 0.010 }
+			custom_effect_tooltip = AOR_GER_Industry_24_tt
+		}
+
+	}
+	focus = { #德意志经济奇迹
+		id = AOR_GER_Industry_25
+		icon = GFX_AOR_Eric_new_020
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Industry_24
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Industry_24
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.05
+			add_war_support = 0.05
+			custom_effect_tooltip = AOR_GER_Industry_25_tt
+			add_to_variable = { AOR_GER_industry_consumer_goods_factor = -0.025 }
+			add_to_variable = { AOR_GER_industry_production_speed_buildings_factor = 0.05 }
+			add_to_variable = { AOR_GER_industry_industrial_capacity_factory = 0.10 }
+			add_to_variable = { AOR_GER_min_export = -0.05 }
+		}
+
+	}
+
+	##########军事线##########
+	focus = { #德意志军队传承
+		id = AOR_GER_Army_1
+		icon = GFX_focus_ger_return_of_the_kaiser
+		cost = 5.00
+		x = 16
+		y = 0
+		ai_will_do = {
+			base = 10
+		}
+		relative_position_id = AOR_GER_Industry_1
+		completion_reward = {
+			army_experience = 5
+			add_ideas = AOR_GER_idea_Deutschland_army_0
+		}
+
+	}	
+	focus = { #军队非政治化
+		id = AOR_GER_Army_2
+		icon = GFX_focus_ITA_peasants_rise
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_1
+		}
+		x = 0
+		y = 1
+		ai_will_do = {
+			base = 1
+		}
+		relative_position_id = AOR_GER_Army_1
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = -0.05
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Deutschland_army_0
+				add_idea = AOR_GER_idea_Deutschland_army_1
+			}
+		}
+
+	}
+	focus = { #严格预算
+		id = AOR_GER_Army_3
+		icon = GFX_focus_SWI_issue_war_bonds
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_2
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_GER_Army_2
+		completion_reward = {
+			#获取少量财政盈余
+			add_to_variable = { AOR_GER_gold_revenue = 30 }
+			custom_effect_tooltip = AOR_GER_gold_revenue_30_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+		}
+
+	}
+	focus = { #秘密重整军备
+		id = AOR_GER_Army_4
+		icon = GFX_2PRC_liyongziyuan
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_2
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_GER_Army_2
+		completion_reward = {
+			add_ideas = HUN_secret_rearmament
+		}
+
+	}
+	focus = { #设立军队办公室
+		id = AOR_GER_Army_5
+		icon = GFX_focus_POL_beck_ribbentrop
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_4
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Army_4
+		completion_reward = {
+			add_political_power = -10
+			army_experience = 5
+			unlock_decision_tooltip = {
+				decision = GER_Military_Office_1
+				show_effect_tooltip = yes
+			}
+		}
+
+	}
+	focus = { #秘密仿制外国步枪
+		id = AOR_GER_Army_6
+		icon = GFX_AOR_Eric_new_021
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_5
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Army_5
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 3
+				uses = 1
+				category = artillery
+				category = infantry_weapons
+			}
+		}
+
+	}
+	focus = { #纸上谈兵的可怕性
+		id = AOR_GER_Army_7
+		icon = GFX_Eric_horror_of_paper_based_warfare
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_5
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Army_5
+		completion_reward = {
+			add_political_power = 25
+			add_ideas = AOR_GER_idea_talk_about_stratagems_on_paper
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = infantry_tech
+				category = infantry_weapons
+				category = artillery
+				category = support_tech
+				category = motorized_equipment
+				category = cat_armored_cars
+				category = armor
+				category = cat_special_forces_generic
+			}
+		}
+
+	}
+	focus = { #“有学历的军官”
+		id = AOR_GER_Army_8
+		icon = GFX_focus_POL_sanation_right
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_7
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Army_7
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_talk_about_stratagems_on_paper
+				add_idea = AOR_GER_idea_officer_with_degree
+			}
+		}
+
+	}
+	focus = { #颁布国防法案
+		id = AOR_GER_Army_9
+		icon = GFX_AOR_Eric_new_040
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_15
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Army_15
+		completion_reward = {
+			army_experience = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			country_lock_all_division_template = yes
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = SOV_war_economy_stability_tt
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					has_war = no
+				}
+				add_stability = -0.1
+			}
+			else = {
+				custom_effect_tooltip = SOV_war_economy_stability_war_tt
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					NOT = { has_idea = war_economy }
+					NOT = { has_idea = tot_economic_mobilisation }
+				}
+				add_ideas = war_economy
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			random_controlled_state = {
+				limit = {
+					arms_factory > 1
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = { #政治化的德意志国防军
+		id = AOR_GER_Army_10
+		icon = GFX_focus_ger_oppose_hitler
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_4
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Army_4
+		completion_reward = {
+			add_political_power = 120
+			add_war_support = 0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			unlock_decision_tooltip = {
+				decision = Army_Repoliticizate_1
+				show_effect_tooltip = yes
+			}
+		}
+	}
+	focus = { #整顿军队军纪
+		id = AOR_GER_Army_12
+		icon = GFX_Eric_Rectify_military_discipline
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_10
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_GER_Army_10
+		completion_reward = {
+			add_command_power = -20
+			add_political_power = -80
+			add_stability = 0.05
+			add_war_support = -0.05
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_timed_idea = {
+				days = 120
+				idea = AOR_GER_idea_restrict_discipline
+			}
+		}
+
+	}
+	focus = { #士兵心中的“撒旦”
+		id = AOR_GER_Army_13
+		icon = GFX_AOR_Eric_new_030
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_12
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Army_12
+		available = {
+			has_political_power > 25
+		}
+		completion_reward = {
+			army_experience = 15
+			add_ideas = AOR_GER_idea_army_strict_in_discipline
+		}
+
+	}
+	focus = { #重建参谋部
+		id = AOR_GER_Army_14
+		icon = GFX_Eric_Reconstruction_GER_staff
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_10
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_GER_Army_10
+		completion_reward = {
+			army_experience = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_ideas = AOR_GER_idea_general_staff
+		}
+
+	}
+	focus = { #重获新生的国防军
+		id = AOR_GER_Army_15
+		icon = GFX_Eric_reborn_National_Defense_Force
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_GER_Army_10
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_GER_Army_10
+		available = {
+			has_idea = AOR_GER_idea_Deutschland_army_4
+		}
+		completion_reward = {
+			add_political_power = 25
+			swap_ideas = {
+				remove_idea = AOR_GER_idea_Deutschland_army_4
+				add_idea = AOR_GER_idea_Deutschland_army_5
+			}
+		}
+
+	}
+}

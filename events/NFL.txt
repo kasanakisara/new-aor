@@ -1,0 +1,36 @@
+add_namespace = NFL
+
+country_event = {
+	id = NFL.1
+	title = NFL.1.t
+	desc = NFL.1.d
+	picture = GFX_events_NFL_1
+	fire_only_once = yes
+	trigger = {
+	    date > 1921.5.1
+		tag = NFL
+	}
+	mean_time_to_happen = { days = 1}
+    #英国
+	option = {
+		name = NFL.1.a
+		ENG = {
+		  annex_country ={	
+		  target = NFL
+		  }
+		add_ideas = Fishing_ground
+		}
+		news_event = {id = AOR_news.73}
+	}
+	#加拿大
+	option = {
+		name = NFL.1.b
+		CAN = {
+		  annex_country ={	
+		  target = NFL
+		  }
+		add_ideas = Fishing_ground
+		}
+		news_event = {id = AOR_news.72}
+	}
+}

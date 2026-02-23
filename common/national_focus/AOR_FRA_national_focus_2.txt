@@ -1,0 +1,1589 @@
+focus_tree = {
+	id = AOR_FRA_focus_tree_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 50
+			tag = FRA
+		}
+	}
+	default = no
+	continuous_focus_position={
+		x = 500
+		y = 2500
+	}
+	focus = {
+		id = AOR_FRA_Traitor_President #叛徒总统
+		icon = GFX_goal_AOR_FRA_Traitor_President
+		x = 15
+		y = 0
+		
+		cost = 0
+
+		available = {
+			always = no
+		}
+		
+		completion_reward = {
+			country_event = {
+				id = FRA.11
+				days = 7
+			}
+		}
+		
+	}
+	focus = {
+		id = AOR_FRA_Carry_forward_the_old_cabinet #提携旧内阁
+		icon = GFX_goal_AOR_FRA_Carry_forward_the_old_cabinet
+		relative_position_id = AOR_FRA_Traitor_President
+		prerequisite = { focus =  AOR_FRA_Traitor_President }
+		mutually_exclusive = { focus = AOR_FRA_Out_of_the_old_shadows }
+		x = -1
+		y = 1
+		cost = 0
+		available = {
+			always = no
+		}
+		completion_reward = {	
+			country_event = {
+				id = FRA.12
+				days = 7
+			}
+		}
+	}
+	focus = {
+		id = AOR_FRA_Out_of_the_old_shadows #走出旧阴影
+		icon = GFX_goal_AOR_FRA_Out_of_the_old_shadows
+		relative_position_id = AOR_FRA_Traitor_President
+		prerequisite = { focus =  AOR_FRA_Traitor_President }
+		mutually_exclusive = { focus = AOR_FRA_Carry_forward_the_old_cabinet }
+		x = 1
+		y = 1
+		cost = 0
+		available = {
+			always = no
+		}
+		completion_reward = {	
+			country_event = {
+				id = FRA.12
+				days = 7
+			}
+		}
+	}
+	focus = {
+		id = AOR_FRA_Shackles #枷锁缠身
+		icon = GFX_goal_AOR_FRA_Shackles
+		relative_position_id = AOR_FRA_Traitor_President
+		prerequisite = {
+			focus = AOR_FRA_Carry_forward_the_old_cabinet 
+			focus = AOR_FRA_Out_of_the_old_shadows
+		}
+		
+		x = 0
+		y = 2
+
+		cost = 0
+
+		always = no
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			add_ideas = AOR_FRA_Millerand_President
+			set_variable = { FRA_Political_Stability = 50 }
+			set_variable = { FRA_AD_power = 15.17 }
+			set_variable = { FRA_SOC_power = 12.40 }
+			set_variable = { FRA_SFIO_power = 11.09 }
+			set_variable = { FRA_Radicial_power = 14.03 }
+			set_variable = { FRA_other_party_power = 47.31 }
+		}
+	}
+	###################################################市场和社会（经济线）################################
+	focus = {
+		id = AOR_FRA_market_and_society #市场和社会
+		icon = GFX_goal_AOR_FRA_market_and_society
+		relative_position_id = AOR_FRA_Shackles
+		prerequisite = { focus = AOR_FRA_Shackles }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 1
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_new_ideas #新思路，新想法
+		icon = GFX_goal_AOR_FRA_new_ideas
+		relative_position_id = AOR_FRA_market_and_society
+		prerequisite = { focus = AOR_FRA_market_and_society }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			hidden_effect = {
+				country_event = {
+					id = FRA_Social_Crisis.2
+					days = 2
+				}
+			}
+		}
+	}
+	focus = {
+		id = AOR_FRA_Gold_is_restricted #限购黄金
+		icon = GFX_goal_AOR_FRA_Gold_is_restricted
+		relative_position_id = AOR_FRA_new_ideas
+		prerequisite = { focus = AOR_FRA_new_ideas }
+		
+		
+		x = -1
+		y = 1
+
+		cost = 2
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Raise_tariffs #提高关税
+		icon = GFX_goal_AOR_FRA_Raise_tariffs
+		relative_position_id = AOR_FRA_new_ideas
+		prerequisite = { focus = AOR_FRA_new_ideas }
+		
+		
+		x = 1
+		y = 1
+
+		cost = 2
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Grants_of_relief_and_subsidies #发放救济和补贴
+		icon = GFX_goal_AOR_FRA_Grants_of_relief_and_subsidies
+		relative_position_id = AOR_FRA_Gold_is_restricted
+		prerequisite = { focus = AOR_FRA_Gold_is_restricted }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 2
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Make_concessions_to_trade_unions #对工会让步
+		icon = GFX_goal_AOR_FRA_Make_concessions_to_trade_unions
+		relative_position_id = AOR_FRA_Gold_is_restricted
+		prerequisite = { focus = AOR_FRA_Grants_of_relief_and_subsidies }
+		
+		
+		x = 0
+		y = 2
+
+		cost = 2	
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Fostering_local_businesses #扶植本土企业
+		icon = GFX_goal_AOR_FRA_Fostering_local_businesses
+		relative_position_id = AOR_FRA_Raise_tariffs
+		prerequisite = { focus = AOR_FRA_Raise_tariffs }
+		
+		x = 0
+		y = 1
+
+		cost = 2
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Build_CNR #筹建CNR
+		icon = GFX_goal_AOR_FRA_Build_CNR
+		relative_position_id = AOR_FRA_Fostering_local_businesses
+		prerequisite = { focus = AOR_FRA_Fostering_local_businesses }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 2
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_With_the_power_of_money #以货币的力量
+		icon = GFX_goal_AOR_FRA_With_the_power_of_money
+		relative_position_id = AOR_FRA_Build_CNR
+		prerequisite = { focus = AOR_FRA_Build_CNR }
+		prerequisite = { focus = AOR_FRA_Make_concessions_to_trade_unions }
+		
+		
+		x = -1
+		y = 1
+
+		cost = 5
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	##################################################################################
+	#####################################北部重建计划##################################
+	focus = {
+		id = AOR_FRA_Northern_Reconstruction_Plan #北部重建计划
+		icon = GFX_goal_AOR_FRA_Northern_Reconstruction_Plan
+		relative_position_id = AOR_FRA_With_the_power_of_money
+		prerequisite = { focus = AOR_FRA_With_the_power_of_money }
+		
+		
+		
+		x = 0
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Reshaping_the_civil_industry #再塑民用工业
+		icon = GFX_goal_AOR_FRA_Reshaping_the_civil_industry
+		relative_position_id = AOR_FRA_Northern_Reconstruction_Plan
+		prerequisite = { focus = AOR_FRA_Northern_Reconstruction_Plan }
+		
+		
+		
+		x = -2
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Consumer_goods_come_first #消费品先行
+		icon = GFX_goal_AOR_FRA_Consumer_goods_come_first
+		relative_position_id = AOR_FRA_Reshaping_the_civil_industry
+		prerequisite = { focus = AOR_FRA_Reshaping_the_civil_industry }
+		
+		
+		
+		x = -1
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Develop_electric_power_enterprises #发展电力企业
+		icon = GFX_goal_AOR_FRA_Develop_electric_power_enterprises
+		relative_position_id = AOR_FRA_Reshaping_the_civil_industry
+		prerequisite = { focus = AOR_FRA_Reshaping_the_civil_industry }
+		
+		
+		
+		x = 1
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Renovation_of_the_Northern_Railway_network #修整北部铁路网
+		icon = GFX_goal_AOR_FRA_Renovation_of_the_Northern_Railway_network
+		relative_position_id = AOR_FRA_Consumer_goods_come_first
+		prerequisite = { focus = AOR_FRA_Consumer_goods_come_first }
+		
+		
+		
+		x = 0
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Promote_the_construction_of_the_Rhone_dam #推动罗纳河大坝建设
+		icon = GFX_goal_AOR_FRA_Promote_the_construction_of_the_Rhone_dam
+		relative_position_id = AOR_FRA_Develop_electric_power_enterprises
+		prerequisite = { focus = AOR_FRA_Develop_electric_power_enterprises }
+		
+		
+		
+		x = 0
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Reshaping_the_military_industry #重构军用工业
+		icon = GFX_goal_AOR_FRA_Reshaping_the_military_industry
+		relative_position_id = AOR_FRA_Northern_Reconstruction_Plan
+		prerequisite = { focus = AOR_FRA_Northern_Reconstruction_Plan }
+		
+		
+		
+		x = 1
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Promote_the_development_of_new_technologies #推动新技术发展
+		icon = AOR_FRA_Promote_the_development_of_new_technologies
+		relative_position_id = AOR_FRA_Reshaping_the_military_industry
+		prerequisite = { focus = AOR_FRA_Reshaping_the_military_industry }
+		
+		
+		
+		x = 0
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Line_of_Defense_Plan #“防线”计划
+		icon = AOR_FRA_Line_of_Defense_Plan
+		relative_position_id = AOR_FRA_Promote_the_development_of_new_technologies
+		prerequisite = { focus = AOR_FRA_Promote_the_development_of_new_technologies }
+		
+		
+		
+		x = 0
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Happy_and_harmonious_France #幸福和谐的法兰西
+		icon = AOR_FRA_Happy_and_harmonious_France
+		relative_position_id = AOR_FRA_Line_of_Defense_Plan
+		prerequisite = { focus = AOR_FRA_Line_of_Defense_Plan }
+		prerequisite = { focus = AOR_FRA_Promote_the_construction_of_the_Rhone_dam }
+		prerequisite = { focus = AOR_FRA_Renovation_of_the_Northern_Railway_network }
+		
+		x = -2
+		y = 1
+
+		cost = 0
+
+	
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	####################################################################################################
+	#####################################世界和联盟######################################################
+	focus = {
+		id = AOR_FRA_The_world_and_the_Union #世界各联盟
+		icon = GFX_goal_AOR_FRA_The_world_and_the_Union
+		relative_position_id = AOR_FRA_Shackles
+		prerequisite = { focus = AOR_FRA_Shackles }
+	
+	
+		x = -10
+		y = 1
+
+		cost = 2
+
+
+
+	
+		available = {
+			custom_trigger_tooltip = {
+				has_completed_focus = AOR_FRA_With_the_power_of_money
+				tooltip = FRA_Millerand_finish_tt
+			}
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_A_trip_to_Athens #雅典之行
+		icon = GFX_goal_AOR_FRA_A_trip_to_Athens
+		relative_position_id = AOR_FRA_The_world_and_the_Union
+		prerequisite = { focus = AOR_FRA_The_world_and_the_Union }
+	
+	
+		x = 0
+		y = 1
+
+		cost = 5
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Continental_strategy #欧陆战略
+		icon = AOR_FRA_Continental_strategy
+		relative_position_id = AOR_FRA_A_trip_to_Athens
+		prerequisite = { focus = AOR_FRA_A_trip_to_Athens }
+	
+	
+		x = -3
+		y = 1
+
+		cost = 5
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_The_Commonwealth_of_Fate #命运多殇之联邦
+		icon = AOR_FRA_The_Commonwealth_of_Fate
+		relative_position_id = AOR_FRA_Continental_strategy
+		prerequisite = { focus = AOR_FRA_Continental_strategy }
+	
+	
+		x = -1
+		y = 1
+
+		cost = 5
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Warsaw_talks #华沙会谈
+		icon = AOR_FRA_Warsaw_talks
+		relative_position_id = AOR_FRA_Continental_strategy
+		prerequisite = { focus = AOR_FRA_Continental_strategy }
+	
+	
+		x = 1
+		y = 1
+
+		cost = 5
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Colonial_inspections #殖民地视察
+		icon = AOR_FRA_Colonial_inspections
+		relative_position_id =  AOR_FRA_A_trip_to_Athens
+		prerequisite = { focus =  AOR_FRA_A_trip_to_Athens }
+	
+	
+		x = 4
+		y = 1
+
+		cost = 5
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Visit_Greater_Syria #视察大叙利亚
+		icon = AOR_FRA_Visit_Greater_Syria
+		relative_position_id =  AOR_FRA_Colonial_inspections
+		prerequisite = { focus =  AOR_FRA_Colonial_inspections }
+	
+	
+		x = -3
+		y = 1
+
+		cost = 4
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Visit_to_Algeria #视察阿尔及利亚
+		icon = AOR_FRA_Visit_to_Algeria
+		relative_position_id =  AOR_FRA_Colonial_inspections
+		prerequisite = { focus =  AOR_FRA_Colonial_inspections }
+	
+	
+		x = -1.5
+		y = 1
+
+		cost = 4
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Visit_Indochina #视察印度支那
+		icon = AOR_FRA_Visit_Indochina
+		relative_position_id =  AOR_FRA_Colonial_inspections
+		prerequisite = { focus =  AOR_FRA_Colonial_inspections }
+	
+	
+		x = 1.5
+		y = 1
+
+		cost = 4
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Visit_to_Panama #视察巴拿马
+		icon = AOR_FRA_Visit_to_Panama
+		relative_position_id =  AOR_FRA_Colonial_inspections
+		prerequisite = { focus =  AOR_FRA_Colonial_inspections }
+	
+	
+		x = 3
+		y = 1
+
+		cost = 4
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_Convene_a_meeting_of_the_Alliance #召开同盟会议
+		icon = AOR_FRA_Convene_a_meeting_of_the_Alliance
+		relative_position_id = AOR_FRA_A_trip_to_Athens
+		prerequisite = { focus =  AOR_FRA_The_Commonwealth_of_Fate }
+		prerequisite = { focus =  AOR_FRA_Warsaw_talks }
+		prerequisite = { focus =  AOR_FRA_Visit_Greater_Syria }
+		prerequisite = { focus =  AOR_FRA_Visit_to_Algeria }
+		prerequisite = { focus =  AOR_FRA_Visit_Indochina }
+		prerequisite = { focus =  AOR_FRA_Visit_to_Panama }
+	
+		x = 0
+		y = 3
+
+		cost = 1
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	 focus = { 
+		id = AOR_FRA_New_European_League #新欧陆同盟
+		icon = AOR_FRA_New_European_League
+		relative_position_id = AOR_FRA_Convene_a_meeting_of_the_Alliance
+		prerequisite = { focus = AOR_FRA_Convene_a_meeting_of_the_Alliance }
+		
+	
+		x = 0
+		y = 1
+
+		cost = 0
+
+
+
+	
+		available = {
+		
+		}
+
+		bypass = {
+			has_completed_focus = AOR_FRA_Convene_a_meeting_of_the_Alliance
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+ 	}
+	######################################################################################################
+	############################################议会和政府#################################################
+	focus = {
+		id = AOR_FRA_Parliament_and_government #议会和政府
+		icon = GFX_goal_AOR_FRA_Parliament_and_government
+		relative_position_id = AOR_FRA_Shackles
+		prerequisite = { focus = AOR_FRA_Shackles }
+		
+		
+		x = 12
+		y = 1
+
+		cost = 2
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Internal_rectification_of_party_affairs #内整党务
+		icon = GFX_goal_AOR_FRA_Internal_rectification_of_party_affairs
+		relative_position_id = AOR_FRA_Parliament_and_government
+		prerequisite = { focus = AOR_FRA_Parliament_and_government }
+		
+		
+		x = -4
+		y = 1
+
+		cost = 5
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Revise_the_Programme #修订纲领
+		icon = AOR_FRA_Revise_the_Programme
+		relative_position_id = AOR_FRA_Internal_rectification_of_party_affairs
+		prerequisite = { focus = AOR_FRA_Internal_rectification_of_party_affairs }
+		
+		
+		x = -1.5
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Solidarity_labor_mutual_support #团结，劳动，互相支援
+		icon = AOR_FRA_Solidarity_labor_mutual_support
+		relative_position_id = AOR_FRA_Revise_the_Programme
+		prerequisite = { focus = AOR_FRA_Revise_the_Programme }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Dispel_the_ghost_speech #驱散幽灵演说
+		icon = AOR_FRA_Dispel_the_ghost_speech
+		relative_position_id = AOR_FRA_Solidarity_labor_mutual_support
+		prerequisite = { focus = AOR_FRA_Solidarity_labor_mutual_support }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Unification_Alliance #统合联盟
+		icon = AOR_FRA_Unification_Alliance
+		relative_position_id = AOR_FRA_Internal_rectification_of_party_affairs
+		prerequisite = { focus = AOR_FRA_Internal_rectification_of_party_affairs }
+		
+		
+		x = 2.5
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Attract_the_Radical_Party #吸引激进党
+		icon = AOR_FRA_Attract_the_Radical_Party
+		relative_position_id = AOR_FRA_Unification_Alliance
+		prerequisite = { focus = AOR_FRA_Unification_Alliance }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Calm_the_militaristic_passions #平息军国激情
+		icon = AOR_FRA_Calm_the_militaristic_passions
+		relative_position_id = AOR_FRA_Attract_the_Radical_Party
+		prerequisite = { focus = AOR_FRA_Attract_the_Radical_Party }
+		mutually_exclusive = { focus = AOR_FRA_Appeasement_of_retired_generals }
+		
+		x = -1
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Appeasement_of_retired_generals #安抚退役将校
+		icon = AOR_FRA_Appeasement_of_retired_generals
+		relative_position_id = AOR_FRA_Attract_the_Radical_Party
+		prerequisite = { focus = AOR_FRA_Attract_the_Radical_Party }
+		mutually_exclusive = { focus = AOR_FRA_Calm_the_militaristic_passions }
+		
+		x = 1
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_It_is_no_longer_just_an_alliance #不再仅是联盟
+		icon = AOR_FRA_It_is_no_longer_just_an_alliance
+		relative_position_id = AOR_FRA_Attract_the_Radical_Party
+		prerequisite = { 
+			focus = AOR_FRA_Appeasement_of_retired_generals 
+			focus = AOR_FRA_Calm_the_militaristic_passions
+		}
+		prerequisite = { focus = AOR_FRA_Dispel_the_ghost_speech }
+		
+		x = -2
+		y = 2
+
+		cost = 5
+
+	
+
+	
+		available = {
+		
+		}	
+
+		bypass = {
+		
+		}
+	
+	
+
+		completion_reward = {	
+		
+		}
+	}
+	focus = {
+		id = AOR_FRA_Except_for_the_work_thief #外除工贼
+		icon = AOR_FRA_Except_for_the_work_thief
+		relative_position_id = AOR_FRA_Parliament_and_government
+		prerequisite = { focus = AOR_FRA_Parliament_and_government }
+		
+		
+		x = 4
+		y = 1
+
+		cost = 5
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Suppression_of_strikes #镇压罢工
+		icon = AOR_FRA_Suppression_of_strikes
+		relative_position_id = AOR_FRA_Except_for_the_work_thief
+		prerequisite = { focus = AOR_FRA_Except_for_the_work_thief }
+		
+		
+		x = -1.5
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Bullet_the_colony #弹压殖民地
+		icon = AOR_FRA_Bullet_the_colony
+		relative_position_id = AOR_FRA_Suppression_of_strikes
+		prerequisite = { focus = AOR_FRA_Suppression_of_strikes }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Not_in_the_defense #不再辩护
+		icon = AOR_FRA_Not_in_the_defense
+		relative_position_id = AOR_FRA_Bullet_the_colony
+		prerequisite = { focus = AOR_FRA_Bullet_the_colony }
+		mutually_exclusive = { focus = AOR_FRA_A_public_apology }
+		
+		x = -1.5
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_A_public_apology #公开道歉
+		icon = AOR_FRA_A_public_apology
+		relative_position_id = AOR_FRA_Bullet_the_colony
+		prerequisite = { focus = AOR_FRA_Bullet_the_colony }
+		mutually_exclusive = { focus = AOR_FRA_Not_in_the_defense }
+		
+		x = 1.5
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Intervention_in_SFIO #介入SFIO大会
+		icon = AOR_FRA_Intervention_in_SFIO
+		relative_position_id = AOR_FRA_Except_for_the_work_thief
+		prerequisite = { focus = AOR_FRA_Except_for_the_work_thief }
+		
+		
+		x = 2
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Co_opt_separatist_factions #拉拢分离派别
+		icon = AOR_FRA_Co_opt_separatist_factions
+		relative_position_id = AOR_FRA_Intervention_in_SFIO
+		prerequisite = { focus = AOR_FRA_Intervention_in_SFIO }
+		
+		
+		x = 0
+		y = 1
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Eliminate_the_shadow_of_the_three_traitors #消弭“三叛徒”阴影
+		icon = AOR_FRA_Eliminate_the_shadow_of_the_three_traitors
+		relative_position_id = AOR_FRA_Intervention_in_SFIO
+		prerequisite = { focus = AOR_FRA_Intervention_in_SFIO }
+		
+		
+		x = 0
+		y = 2
+
+		cost = 4
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_No_rubber_stamps_required #无需橡皮图章
+		icon = AOR_FRA_No_rubber_stamps_required
+		relative_position_id = AOR_FRA_Eliminate_the_shadow_of_the_three_traitors
+		prerequisite = { focus = AOR_FRA_Eliminate_the_shadow_of_the_three_traitors }
+		prerequisite = {
+			focus = AOR_FRA_Not_in_the_defense
+			focus = AOR_FRA_A_public_apology
+		}	
+		
+		
+		x = -1.5
+		y = 1
+
+		cost = 5
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+	focus = {
+		id = AOR_FRA_Cut_the_shackles #斩断枷锁
+		icon = AOR_FRA_Cut_the_shackles
+		relative_position_id = AOR_FRA_No_rubber_stamps_required
+		prerequisite = { focus = AOR_FRA_No_rubber_stamps_required }
+		prerequisite = { focus = AOR_FRA_It_is_no_longer_just_an_alliance }
+		
+		
+		
+		x = -4
+		y = 1
+
+		cost = 10
+
+		
+
+		
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+		
+		
+
+		completion_reward = {	
+			
+		}
+	}
+}
+

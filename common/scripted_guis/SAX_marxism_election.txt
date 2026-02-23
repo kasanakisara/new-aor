@@ -1,0 +1,61 @@
+scripted_gui = {
+
+	SAX_marxism_election = {
+		context_type = decision_category
+		window_name = "SAX_marxism_election"
+		
+		triggers = {
+		
+		 SAX_leader_wolf_visible = {
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+         leader_frame_wolf_visible = {
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+			leader_frame_liebknecht_visible = {
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+         SAX_leader_liebknecht_visible = { 
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+			SAX_country_flag_visible = {
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+			SAX_leader_wolf_support_visible = {
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+         SAX_leader_liebknecht_support_visible = { 
+				NOT = {
+					has_country_flag = SAX_election_over_Marxism
+				}
+			}
+			SAX_leader_wolf_win_visible = {
+			has_country_flag = SAX_Friedrich_wolf_win
+					has_country_flag_visible = SAX_election_over_Marxism
+			}
+			SAX_leader_theodor_win_visible = {
+			has_country_flag = SAX_Theodor Liebknecht_win
+					has_country_flag = SAX_election_over_Marxism
+			}
+			SAX_over_frame_visible = {
+					has_country_flag = SAX_election_over_Marxism
+			}
+         SAX_leader_position_visible = { 
+					has_country_flag = SAX_election_over_Marxism
+			}
+		}
+	}
+}
+

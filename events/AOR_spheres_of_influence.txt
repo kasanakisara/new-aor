@@ -1,0 +1,38 @@
+
+add_namespace = AOR_spheres
+add_namespace = AOR_spheres_comintern
+add_namespace = AOR_spheres_entente
+add_namespace = AOR_spheres_commonwealth
+add_namespace = AOR_spheres_paris
+
+country_event = {
+	id = AOR_spheres_entente.1 #协约国正式解散
+	title = AOR_spheres_entente.1.t
+	desc = AOR_spheres_entente.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_spheres_entente.1.a
+		set_global_flag = AOR_entente_dissolved
+		hidden_effect = {
+			every_country = {
+				if = {
+					limit = {
+						has_idea = entente_member_nation
+					}
+					remove_ideas = entente_member_nation
+				}
+			}
+			ENG = {
+				add_ideas = british_commonwealth_nation
+			}
+			FRA = {
+				add_ideas = little_entente_nation
+			}
+		}
+		ENG = {
+			dismantle_faction = yes
+		}
+	}
+}

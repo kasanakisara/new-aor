@@ -1,0 +1,190 @@
+
+guiTypes = {#详细面板
+	containerWindowType = {
+		name = "AOR_Presidentof_ROC_general_election"
+		position = { x = 0 y = 0 }
+		Orientation = center
+		Origo = center
+		size = { width = 1600 height= 900 }
+		moveable = yes
+		background = {
+			name = "blackground"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+#标题
+		iconType = {
+			name ="ROC_general_election_titile"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_ROC_general_election_titile"
+			alwaystransparent = yes
+		}
+#席位
+		gridboxtype = {
+			name = "ROC_Representatives_diag_container"
+			position = { x = 50 y = 200 }
+			size = { width = 100%% height = 100%% }
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		gridboxtype = {
+			name = "ROC_senate_diag_container"
+			position = { x = 200 y = 430 }
+			size = { width = 100%% height = 100%% }
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+#头像及席位
+		iconType = {
+			name ="KMT_leader_pic"
+			position = { x = -480 y = 160 }
+			spriteType = "GFX_leader_pic"
+			pdx_tooltip = "KMT_leader_pic_tt"
+			Orientation = "UPPER_RIGHT"
+		}
+		instantTextboxType = {
+			name = "KMT_party_desc"
+			position = { x = -480 y = 375 }
+			Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "KMT_party_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 315
+		}
+		iconType = {
+			name ="SOCP_leader_pic"
+			position = { x = -220 y = 160 }
+			spriteType = "GFX_leader_pic"
+			pdx_tooltip = "SOCP_leader_pic_tt"
+			Orientation = "UPPER_RIGHT"
+		}
+		instantTextboxType = {
+			name = "SOCP_party_desc"
+			position = { x = -220 y = 375 }
+			Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "SOCP_party_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 315
+		}
+		iconType = {
+			name ="ProP_leader_pic"
+			position = { x = -480 y = 475 }
+			spriteType = "GFX_leader_pic"
+			pdx_tooltip = "ProP_leader_pic_tt"
+			Orientation = "UPPER_RIGHT"
+		}
+		instantTextboxType = {
+			name = "ProP_party_desc"
+			position = { x = -480 y = 690 }
+			Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "ProP_party_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 315
+		}
+		iconType = {
+			name ="UNP_leader_pic"
+			position = { x = -220 y = 475 }
+			spriteType = "GFX_leader_pic"
+			pdx_tooltip = "UNP_leader_pic_tt"
+			Orientation = "UPPER_RIGHT"
+		}
+		instantTextboxType = {
+			name = "UNP_party_desc"
+			position = { x = -220 y = 690 }
+			Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "UNP_party_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 315
+		}
+#关闭
+		buttonType = {
+			name = "close_button"
+			position = { x = -40 y = 8 }
+			quadTextureSprite = "GFX_profile_button_close"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			pdx_tooltip = "CLOSE"
+		}
+	}
+#模板
+	containerWindowType = {
+		name = "ROC_Representatives_container"
+		position = { x = 0 y = 0 }
+		iconType = { 
+			name = "ROC_Representatives_seat_nme"
+			quadTextureSprite = "GFX_CHI_seat_icon"
+			pdx_tooltip = "ROC_Representatives_seat_tt"
+		}
+	}
+	containerWindowType = {
+		name = "ROC_senate_container"
+		position = { x = 0 y = 0 }
+		iconType = { 
+			name = "ROC_senate_seat_nme"
+			quadTextureSprite = "GFX_CHI_seat_icon"
+			pdx_tooltip = "ROC_senate_seat_tt"
+		}
+	}
+}
+
+
+guiTypes = {#详细面板
+	containerWindowType = {
+		name = "AOR_ROC_election_window"
+		position = { x = 0 y = 0 }
+		Orientation = center
+		Origo = center
+		size = { width = 510 height= 400 }
+		moveable = yes
+		background = {
+			name = "blackground"
+			spriteType = "GFX_tiled_plain_bg"
+		}
+		instantTextboxType = {
+			name = "AOR_ROC_election_window_titile"
+			position = { x = 0 y = 25 }
+			orientation = left_up
+			font = "hoi_36header"
+			text = "AOR_ROC_election_window_titile"
+			format = centre
+			maxWidth = 510
+			maxHeight = 100
+		}
+		instantTextboxType = {
+			name = "AOR_ROC_senate_SEAT_desc"
+			position = { x = 60 y = 180 }
+			#Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "AOR_ROC_senate_SEAT_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 400
+		}
+		instantTextboxType = {
+			name = "AOR_ROC_Representatives_SEAT_desc"
+			position = { x = -200 y = 180 }
+			Orientation = "UPPER_RIGHT"
+			font = "hoi_20b"
+			text = "AOR_ROC_Representatives_SEAT_desc"
+			format = left
+			maxWidth = 200
+			maxHeight = 400
+		}
+		buttonType = {
+            name = "AOR_ROC_election_window_BUTTON"
+            position = { x = 79 y = 320 }
+            quadTextureSprite = "GFX_event_option_entry"
+			buttonText = "AOR_ROC_election_window_BUTTON"
+			buttonFont = "hoi_24header"
+            clicksound = click_close
+        }
+	}
+}

@@ -1,0 +1,1215 @@
+AOR_RUS_union_Committee_category = {  #最高主席团
+
+	AOR_RUS_union_Committee_1 = { #常务决策
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	AOR_RUS_union_Committee_2 = { #党内民主问题
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	AOR_RUS_union_Committee_3 = { #落实党员组织生活
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	AOR_RUS_union_Committee_4 = { #听从民彝
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	AOR_RUS_union_Committee_5 = { #民主主义者向马克思主义者过渡的必经之路
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	AOR_RUS_union_Committee_6 = { #于舆论层面觉醒人的价值
+        icon = GFX_decision_category_generic_communism
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		visible = { always = yes }
+	    modifier = {
+			political_power_gain = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+}
+
+AOR_RUS_Soviet_union_category = { #建立苏维埃联盟
+	
+	AOR_RUS_Soviet_union_31 = { #奥尔忠尼启则发起高加索内战
+		ai_will_do = { base = 50 }
+		cost = 10
+		available = {
+			#has_completed_focus = AOR_SOV_Civil_war_6
+			CAU = { is_neighbor_of = RUS }
+			country_exists = CAU
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		days_remove = 1
+		remove_effect = {
+			CSU = {
+				transfer_state = 232
+				transfer_state = 229
+				transfer_state = 821
+				add_manpower = 10000
+					declare_war_on = {
+						target = CAU
+						type = civil_war
+					}
+					if = {
+						limit = { NOT = { has_template = "Common Militia" } }
+						division_template = {
+							priority = 0
+							name = "Common Militia"
+							regiments = {
+								infantry = { x = 0 y = 0 } 
+								infantry = { x = 0 y = 1 } 
+								infantry = { x = 1 y = 0 } 
+								infantry = { x = 1 y = 1 } 
+							}
+							support = {}
+						}
+						random_controlled_state = {
+							limit = { is_capital = yes }
+							create_unit = {
+								division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+								owner = PREV
+							}
+							create_unit = {
+								division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+								owner = PREV
+								count = 20
+							}
+						}
+					}
+			}
+			add_to_faction = CSU
+			ARU = {
+				add_to_faction = CAU
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_3 = { #联合高加索人民建立苏维埃政权
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			OR = {
+				any_state = {
+					is_core_of = CAU
+					is_controlled_by = RUS
+				}
+				CSU = {
+					has_goverment = marxism
+				}
+			}
+			CSU = {
+				OR = {
+					has_capitulated = no
+					exists = yes
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_3
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_3_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						is_core_of = CAU
+						#NOT = { state = 354 }
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of = RUS }
+						}
+					}
+					CAU = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = CSU autonomy_state = AOR_SOV_Closely_executed_alliance }
+				CSU = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			CSU = { set_cosmetic_tag =  RUS_cosmetic_tag_gaojiasuo }
+			hidden_effect = {
+				CSU = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_4 = { #联合阿尔泰人民建立苏维埃政权
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			any_state = {
+				is_core_of = ALT
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_4
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_4_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						is_core_of = ALT
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of = RUS }
+						}
+					}
+					ALT = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = ALT autonomy_state = AOR_SOV_Closely_executed_alliance }
+				ALT = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			ALT = { set_cosmetic_tag =  RUS_cosmetic_tag_aertai }
+			hidden_effect = {
+				ALT = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_5 = { #在科米建立地方苏维埃政权
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			any_state = {
+				OR = {
+					state = 262
+					state = 397
+					state = 581
+				}
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_5
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_5_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						OR = {
+							state = 262
+							state = 397
+							state = 581
+						}
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of = RUS }
+						}
+					}
+					KOM = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = KOM autonomy_state = AOR_SOV_Closely_executed_alliance }
+				KOM = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			KOM = { set_cosmetic_tag = RUS_cosmetic_tag_kemi }
+			hidden_effect = {
+				KOM = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_6 = { #在涅涅茨建立地方苏维埃政权
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			any_state = {
+				state = 825
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_6
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_6_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						state = 825
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of = RUS }
+						}
+					}
+					NEN = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = NEN autonomy_state = AOR_SOV_Closely_executed_alliance }
+				NEN = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			NEN = { set_cosmetic_tag =  RUS_cosmetic_tag_nienieci }
+			hidden_effect = {
+				NEN = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_7 = { #特许组建乌拉尔战区
+		ai_will_do = { base = 100 }
+		available = {
+			any_state = {
+				OR = {
+					state = 651
+					state = 573
+					state = 398
+					state = 652
+					state = 652
+				}
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_7_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						OR = {
+							state = 651
+							state = 573
+							state = 398
+							state = 652
+							state = 582
+						}
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of = RUS }
+						}
+					}
+					BSK = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = BSK autonomy_state = AOR_SOV_Closely_executed_alliance }
+				BSK = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			BSK = { set_cosmetic_tag =  RUS_cosmetic_tag_wulaer }
+			hidden_effect = {
+				every_state = {
+					limit ={
+						OR = {
+							state = 652
+							state = 582
+						}
+					}
+					BSK = {
+						add_state_core = PREV
+					}
+				}
+			}
+			hidden_effect = {
+				BSK = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_8 = { #特许组建伏尔加战区
+		ai_will_do = { base = 100 }
+		available = {
+			any_state = {
+				OR = {
+					state = 651
+					state = 573
+					state = 398
+					state = 250
+					state = 256
+					state = 249
+					state = 833
+					state = 251
+					state = 400
+					state = 399
+				}
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_8_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						OR = {
+							state = 829
+							state = 410
+							state = 251
+							state = 239
+							state = 255
+							state = 250
+							state = 249
+							state = 256
+							state = 833
+							state = 401
+							state = 400
+							state = 399
+						}
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of RUS }
+						}
+					}
+					VGE = {
+						transfer_state = PREV
+						add_state_core = PREV
+					}
+				}
+				set_autonomy = { target = VGE autonomy_state = AOR_SOV_Closely_executed_alliance }
+				VGE = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			VGE = { set_cosmetic_tag =  RUS_cosmetic_tag_fuerjia }
+			hidden_effect = {
+				VGE = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_9 = { #为南方盟友移交控制区
+		ai_will_do = { base = 100 }
+		
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		target_root_trigger = { 
+			original_tag = RUS
+		}
+		target_trigger = {
+			FROM = {
+				is_core_of = UKR
+				is_controlled_by = ROOT
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		complete_effect = {
+			add_command_power = 2
+			add_political_power = 3
+			if = {
+				limit = {
+					NOT = { UKR = { is_subject_of = RUS } }
+				}
+				UKR = {
+					transfer_state = FROM
+				}
+				set_autonomy = { target = UKR autonomy_state = AOR_SOV_Closely_executed_alliance }
+				hidden_effect = {
+					UKR = { set_popularities = { Marxism = 100 } }
+				}
+			}
+			if = {
+				limit = {
+					UKR = { is_subject_of = RUS }
+				}
+				UKR = {
+					transfer_state = FROM
+				}
+			}
+		}
+	}
+	AOR_RUS_Soviet_union_10 = { #为北方盟友移交控制区
+		ai_will_do = { base = 100 }
+		
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		available = {
+			NOT = { has_country_flag = RUS_flag_Soviet_union }
+		}
+		target_root_trigger = { 
+			original_tag = RUS
+		}
+		target_trigger = {
+			FROM = {
+				is_core_of = GNR
+				is_controlled_by = ROOT
+				NOT = { state = 825 }
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		complete_effect = {
+			add_command_power = 2
+			add_political_power = 3
+			if = {
+				limit = {
+					NOT = { GNR = { is_subject_of = RUS } }
+				}
+				GNR = {
+					transfer_state = FROM
+				}
+				set_autonomy = { target = GNR autonomy_state = AOR_SOV_Closely_executed_alliance }
+				hidden_effect = {
+					GNR = { set_popularities = { Marxism = 100 } }
+				}
+			}
+			if = {
+				limit = {
+					GNR = { is_subject_of = RUS }
+				}
+				GNR = {
+					transfer_state = FROM
+				}
+			}
+		}
+	}
+	AOR_RUS_Soviet_union_11 = { #响应邻国武装起义夺取政权
+		ai_will_do = { base = 100 }
+		target_root_trigger = { 
+			original_tag = RUS
+		}
+		target_trigger = {
+			FROM = {
+				has_government = Marxism
+				has_war = yes
+				is_neighbor_of = RUS
+				NOT = {
+					OR = {
+						is_subject_of = ARU
+						is_subject_of = RUS
+						has_war_with = RUS
+						is_in_faction_with = RUS
+					}
+				}
+			}
+		}
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		complete_effect = {
+			add_political_power = 25
+			add_war_support = 0.01
+			FROM = { country_event = { id = AOR_SOV_timeaxis.1 days = 1 } }
+		}
+	}
+	
+	
+	AOR_RUS_Soviet_union_12= { #建立布里亚特自治共和国
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			any_state = {
+				OR = {
+					state = 564
+					state = 566
+				}
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		fire_only_once = yes
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_12
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_12_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						OR = {
+							state = 564
+							state = 566
+						}
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of RUS }
+						}
+					}
+					BYA = {
+						transfer_state = PREV
+					}
+				}
+				set_autonomy = { target = BYA autonomy_state = AOR_SOV_Closely_executed_alliance }
+				BYA = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			BYA = { set_cosmetic_tag =  RUS_cosmetic_tag_buliyate }
+			hidden_effect = {
+				BYA = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	AOR_RUS_Soviet_union_13= { #建立远东特区
+		ai_will_do = { base = 100 }
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			any_state = {
+				is_core_of = FER
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		fire_only_once = yes
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		complete_effect = {
+			set_country_flag = RUS_flag_soviet_union_13
+			add_command_power = 5
+			add_political_power = 10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			custom_effect_tooltip = AOR_RUS_Soviet_union_13_tt
+			hidden_effect = {
+				every_state = {
+					limit ={
+						is_core_of = FER
+						OR = {
+							is_controlled_by = RUS
+							CONTROLLER = { is_subject_of RUS }
+						}
+					}
+					FER = {
+						transfer_state = PREV
+					}
+				}
+				set_autonomy = { target = FER autonomy_state = AOR_SOV_Closely_executed_alliance }
+				FER = { RUS = { RUS_give_gun_licences = yes } }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			FER = { set_cosmetic_tag =  RUS_cosmetic_tag_yuandong }
+			hidden_effect = {
+				FER = { set_popularities = { Marxism = 100 } }
+			}
+		}
+	}
+	
+	AOR_RUS_Soviet_union_20= { #成立苏联
+		ai_will_do = { base = 100 }
+		icon = GFX_decision_category_SOV_civil_puppet_interaction
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_5
+			ARU = { exists = no }
+			ARR = { exists = no }
+			ARN = { exists = no }
+			CAU = { exists = no }
+			has_country_flag = RUS_flag_soviet_union_1
+			#has_country_flag = RUS_flag_soviet_union_3
+			has_country_flag = RUS_flag_soviet_union_4
+			has_country_flag = RUS_flag_soviet_union_5
+			has_country_flag = RUS_flag_soviet_union_6
+			has_country_flag = RUS_flag_soviet_union_12
+			has_country_flag = RUS_flag_soviet_union_13
+			GNR = { has_full_control_of_state = 213 }
+			GNR = { has_full_control_of_state = 214 }
+			GNR = { has_full_control_of_state = 215 }
+			UKR = { has_full_control_of_state = 202 }
+			UKR = { has_full_control_of_state = 203 }
+			UKR = { has_full_control_of_state = 192 }
+			UKR = { has_full_control_of_state = 193 }
+			UKR = { has_full_control_of_state = 197 }
+			UKR = { has_full_control_of_state = 198 }
+			UKR = { has_full_control_of_state = 221 }
+			UKR = { has_full_control_of_state = 228 }
+			UKR = { has_full_control_of_state = 227 }
+			UKR = { has_full_control_of_state = 259 }
+		}
+		#visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_political_power = 120
+			add_stability = 0.05
+			add_war_support = 0.10
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			annex_country = {
+				target = GNR
+				transfer_troops = YES
+			}
+			annex_country = {
+				target = URS
+				transfer_troops = YES
+			}
+			add_core_of = 407
+			add_core_of = 652
+			add_core_of = 406
+			add_core_of = 214
+			add_core_of = 215
+			add_core_of = 213
+			add_core_of = 404 
+			add_core_of = 583
+			add_core_of = 590
+			add_core_of = 588
+			add_core_of = 920
+			add_core_of = 587
+			add_core_of = 584
+			#看着玩的，实际不生效
+			effect_tooltip = {
+				custom_effect_tooltip = AOR_GER_Newline_tt
+			}
+			set_country_flag = RUS_flag_Soviet_union
+			set_global_flag = RUS_flag_Soviet_union
+			set_cosmetic_tag =  RUS_cosmetic_tag_Soviet_union
+			
+			
+		}
+	}
+	SOV_DEBUG_D = {
+		visible = {
+			is_debug = yes
+		}
+		available  = {
+			is_debug = yes
+		}
+		complete_effect = {
+			load_focus_tree = AOR_SOV_2
+		}
+	}
+	
+	AOR_RUS_Soviet_union_21 = { #拆分土耳其斯坦
+		visible = { always = no }
+		available = {
+			any_state = {
+				limit = {
+					is_core_of = KAZ
+					is_controlled_by = RUS
+				}
+			}
+		}
+		complete_effect = {
+		
+			#哈萨克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = KAZ
+						#state = 402 state = 404 state = 406 state = 407 state = 583 state = 586 state = 587 state = 588 state = 589 state = 590 state = 920 state = 916 state = 918
+					}
+				}
+				KAZ = { transfer_state = PREV }
+			}
+			set_autonomy = { target = KAZ autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#乌兹别克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = UZB
+						#state = 823 state = 831 state = 585 state = 830 state = 405
+					}
+				}
+				UZB = { transfer_state = PREV }
+			}
+			set_autonomy = { target = UZB autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#吉尔吉斯斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = KYR
+						#state = 732 state = 917
+					}
+				}
+				KYR = { transfer_state = PREV }
+			}
+			set_autonomy = { target = KYR autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#塔吉克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = TAJ
+						#state = 742 state = 919
+					}
+				}
+				TAJ = { transfer_state = PREV }
+			}
+			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#土库曼斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = TMS
+						#state = 584 state = 832
+					}
+				}
+				TMS = { transfer_state = PREV }
+			}
+			set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+		}
+		
+	}
+}
+
+AOR_RUS_Develop_North_and_south_category = {  #整合北方和南方
+
+	Develop_North_arctic_ocean = { #恢复与北冰洋之间的交通要道
+        icon = GFX_decision_category_hol_secret_staff_talks
+		ai_will_do = { factor = 1 }
+		priority = 10
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		cost = 30
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_12
+			FROM = {
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = {
+			always = yes
+			#has_completed_focus = AOR_SOV_Civil_war_12
+		}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		target_root_trigger = { 
+			original_tag = RUS
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					state = 213
+					state = 214
+					state = 215
+				}
+			}
+		}
+		remove_effect = {
+			add_command_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			add_political_power = 5
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			FROM = {
+				if = {
+					limit = {
+						state = 213
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1 instant_build = yes
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 6181
+						level = 1 instant_build = yes
+					}
+					213 = { set_state_flag = RUS_flag_Develop_North }
+				}
+				if = {
+					limit = {
+						state = 214
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = infrastructure
+						level = 1 instant_build = yes
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 9213
+						level = 1 instant_build = yes
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 3338
+						level = 1 instant_build = yes
+					}
+					214 = { set_state_flag = RUS_flag_Develop_North }
+				}
+				if = {
+					limit = {
+						state = 215
+					}
+					ETH_upgrade_state_category = yes
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 11175
+						level = 1 instant_build = yes
+					}
+					215 = { set_state_flag = RUS_flag_Develop_North }
+				}
+			}
+		}
+	}
+	RUS_Deliver_supplies_to_Moscow_0 = { #向莫斯科运送补给
+        icon = GFX_decision_category_SOV_merge_designers
+		ai_will_do = { factor = 1 }
+		priority = 9
+		fire_only_once = yes
+		cost = 50
+		
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_12
+			213 = { has_state_flag = RUS_flag_Develop_North }
+			214 = { has_state_flag = RUS_flag_Develop_North }
+			215 = { has_state_flag = RUS_flag_Develop_North }
+		}
+		visible = {
+			always = yes
+			#has_completed_focus = AOR_SOV_Civil_war_12
+		}
+		complete_effect = {
+			every_state = {
+				limit = { OR = { state = 213 state = 214 state = 215 } }
+				THIS = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex 
+						level = 1
+						instant_build = yes
+					}
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_resource = { type = steel amount = 2 state = THIS }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					can_build_railway = {
+						start_state = 195
+						target_state = 213
+						build_only_on_allied = yes
+					}
+				}
+				build_railway = {				
+					start_state = 195
+					target_state = 213
+					build_only_on_allied = yes
+				}
+			}
+			set_country_flag = RUS_flag_have_Developed_north_area
+		}
+	}
+	
+	Develop_south_russia = { #恢复与南方之间的交通要道
+        icon = GFX_decision_category_hol_secret_staff_talks
+		ai_will_do = { factor = 1 }
+		fire_only_once = yes
+		days_remove = 30
+		days_re_enable = 1
+		cost = 25
+		priority = 8
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_7
+			FROM = {
+				OR = {
+					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
+				}
+			}
+		}
+		visible = {
+			always = yes
+			#has_completed_focus = AOR_SOV_Civil_war_12
+		}
+		
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		target_root_trigger = { 
+			original_tag = RUS
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					#从上到下依次排列
+					state = 265
+					state = 245
+					state = 218
+					state = 238
+					state = 237
+					state = 235
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				#米哈伊洛夫卡
+				if = {
+					limit = {
+						state = 265
+					}
+					ETH_upgrade_state_category = yes
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 487
+						level = 1 instant_build = yes
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					build_railway = {
+						path = { 487 11485 }
+					}
+					265 = { set_state_flag = RUS_flag_Develop_South }
+				}
+				#米列罗夫
+				if = {
+					limit = {
+						state = 245
+					}
+					ETH_upgrade_state_category = yes
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 11459
+						level = 1 instant_build = yes
+					}
+					245 = { set_state_flag = RUS_flag_Develop_South }
+				}
+				#罗斯托夫
+				if = {
+					limit = {
+						state = 218
+					}
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = naval_base province = 9417
+						level = 3 instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker province = 9417
+						level = 3 instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker province = 9417
+						level = 3 instant_build = yes
+					}
+					218 = { set_state_flag = RUS_flag_Develop_South }
+				}
+				if = {
+					limit = {
+						state = 238
+					}
+					ETH_upgrade_state_category = yes
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = supply_node province = 3587
+						level = 1 instant_build = yes
+					}
+					238 = { set_state_flag = RUS_flag_Develop_South }
+				}
+				
+				if = {
+					limit = {
+						state = 237
+					}
+					ETH_upgrade_state_category = yes
+					custom_effect_tooltip = AOR_GER_Newline_tt
+					add_building_construction = {
+						type = infrastructure
+						level = 1 instant_build = yes
+					}
+					add_building_construction = {
+						type = supply_node province = 3726
+						level = 1 instant_build = yes
+					}
+					237 = { set_state_flag = RUS_flag_Develop_South }
+				}
+				
+				if = {
+					limit = {
+						state = 235
+					}
+					ETH_upgrade_state_category = yes
+					add_building_construction = {
+						type = supply_node province = 714
+						level = 1 instant_build = yes
+					}
+					235 = { set_state_flag = RUS_flag_Develop_South }
+				}
+			}
+		}
+	}
+	RUS_Deliver_supplies_to_Moscow_1 = { #向莫斯科运送南方补给
+        icon = GFX_decision_category_SOV_merge_designers
+		ai_will_do = { factor = 1 }
+		priority = 7
+		fire_only_once = yes
+		cost = 50
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_7
+			265 = { has_state_flag = RUS_flag_Develop_South }
+			245 = { has_state_flag = RUS_flag_Develop_South }
+			218 = { has_state_flag = RUS_flag_Develop_South }
+			238 = { has_state_flag = RUS_flag_Develop_South }
+			237 = { has_state_flag = RUS_flag_Develop_South }
+			235 = { has_state_flag = RUS_flag_Develop_South }
+		}
+		visible = {
+			always = yes
+			#has_completed_focus = AOR_SOV_Civil_war_12
+		}
+		complete_effect = {
+			every_state = {
+				limit = { OR = { state = 265 state = 245 state = 218 state = 238 state = 237 state = 235 } }
+				THIS = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex 
+						level = 1
+						instant_build = yes
+					}
+				}
+				custom_effect_tooltip = AOR_GER_Newline_tt
+				add_resource = { type = steel amount = 2 state = THIS }
+			}
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			if = {
+				limit = {
+					can_build_railway = {
+						start_state = 219
+						target_state = 218
+						build_only_on_allied = yes
+					}
+				}
+				build_railway = {				
+					start_state = 219
+					target_state = 218
+					build_only_on_allied = yes
+				}
+			}
+			set_country_flag = RUS_flag_have_Developed_south_area
+		}
+	}
+	RUS_Relieve_wartime_communism = { #缓解战时共产主义带来的影响
+        icon = GFX_decision_category_SOV_permanent_revolution
+		ai_will_do = { factor = 100 }
+		priority = 6
+		fire_only_once = yes
+		available = {
+			has_completed_focus = AOR_SOV_Civil_war_7
+			has_country_flag = RUS_flag_have_Developed_north_area
+			has_completed_focus = AOR_SOV_Civil_war_12
+			has_country_flag = RUS_flag_have_Developed_south_area
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			add_political_power = 50
+			add_command_power = 25
+			add_stability = 0.05
+			add_war_support = 0.1
+			custom_effect_tooltip = AOR_GER_Newline_tt
+			swap_ideas = {
+				remove_idea = SOV_Wartime_communism_0
+				add_idea = SOV_Wartime_communism_2
+			}
+		}
+	}
+}

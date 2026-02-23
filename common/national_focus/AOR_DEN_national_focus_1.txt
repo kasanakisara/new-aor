@@ -1,0 +1,206 @@
+focus_tree = {
+	id = DEN_focus_tree_1
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = DEN
+		}
+	}
+	default = no
+	focus = {
+		id = DEN_Continuing_the_policy_of_neutrality
+		icon = GFX_goal_unknown
+		cost = 2
+		x = 8
+		y = 0
+		completion_reward={
+			add_political_power = 75
+			add_stability = 0.05
+			swap_ideas = {
+				remove_idea = serious_neutral_stance
+				add_idea = DEN_declaration_of_neutrality
+			}
+		}
+	}
+	focus = {
+		id = DEN_Deepen_trade_with_the_UK
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Continuing_the_policy_of_neutrality
+		}
+		x = 6
+		y = 1
+
+		available = {
+			NOT = {
+				has_war_with = ENG
+			}
+			is_subject = no
+			ENG = {
+				exists = yes
+			}
+		}
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
+	
+		completion_reward = {
+            #加友好度
+			add_opinion_modifier = { target = ENG modifier = Den_deepen_trade_with_uk }
+			add_resource = {
+    			type = steel
+    			amount = 5
+    			state = 1047
+			}
+			ENG = { country_event = { id = denmark_trade_deal.1 days = 1 } }
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				ROOT = {
+					add_offsite_building = { type = industrial_complex level = 1 }
+					DEN_trade_deal_effects = yes					
+				}
+				ENG = {
+					add_ideas = DEN_danish_produce_export_ns
+				}
+			}
+			custom_effect_tooltip = war_will_cancel_deal_tt
+			unlock_decision_category_tooltip = DEN_trade_deal_category
+		}
+	}
+	focus = {
+		id = DEN_Deepen_trade_with_Germany
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Continuing_the_policy_of_neutrality
+		}
+		x = 10
+		y = 1
+
+		completion_reward={
+            #加友好度
+			add_opinion_modifier = { target = GER modifier = Den_deepen_trade_with_ger }
+			add_resource = {
+    			type = steel
+    			amount = 3
+    			state = 1047
+			}
+		}
+
+	}
+	focus = {
+		id = DEN_Developing_Social_Economy
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Deepen_trade_with_the_UK
+		}
+		prerequisite = {
+			focus = DEN_Deepen_trade_with_Germany
+		}
+		x = 8
+		y = 2
+
+		completion_reward={
+            add_stability = 0.05
+			399={
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			6364={
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = DEN_Developing_a_social_security_system
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Developing_Social_Economy
+		}
+		x = 6
+		y = 3
+		completion_reward={
+            add_stability = 0.1
+			add_war_support = 0.05
+		}
+
+	}
+	focus = {
+		id = DEN_Expand_the_export_of_agricultural_products
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Developing_Social_Economy
+		}
+		x = 10
+		y = 3
+
+		completion_reward={
+            #看看有没有社会发展之类的
+            #事件？
+			add_ideas = DEN_expand_Export
+		}
+
+	}
+	focus = {
+		id = DEN_Establish_a_social_welfare_system
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Developing_a_social_security_system
+		}
+		x = 6
+		y = 4
+
+		completion_reward={
+            add_stability = 0.1
+            add_political_power = 100
+		}
+
+	}
+	focus = {
+		id = DEN_Promote_agricultural_technology
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Expand_the_export_of_agricultural_products
+		}
+		x = 10
+		y = 4
+
+		completion_reward={
+            country_event = { id = DEN.first.1 days = 1}
+		}
+
+	}
+	focus = {
+		id = DEN_Towards_the_New_Year
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = DEN_Establish_a_social_welfare_system
+		}
+		prerequisite = {
+			focus = DEN_Promote_agricultural_technology
+		}
+		x = 8
+		y = 5
+
+		completion_reward={
+			load_focus_tree = DEN_easter_crisis_tree
+		}
+	}
+}

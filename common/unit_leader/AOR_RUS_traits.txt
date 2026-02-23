@@ -1,0 +1,155 @@
+#苏俄将领特质
+leader_traits = {
+	#谦逊的调解者
+	RUS_Humble_Coordinator= {
+		type = { land navy }
+		trait_type = personality_trait
+		field_marshal_modifier = {
+			land_reinforce_rate = 0.02
+		}
+		modifier = {
+			army_morale_factor = 0.04	#组织度回复
+		}
+		logistics_skill_factor = 1
+	}
+	#德高望重的红军领袖
+	RUS_Resprcted_military_leader = {
+		type = { land navy }
+		trait_type = personality_trait
+		modifier = {
+			pocket_penalty = -0.1		#包围惩罚
+			out_of_supply_factor = -0.1	#非战斗补给消耗惩罚
+		}
+		logistics_skill_factor = 1
+	}
+	#精准捕捉战机的战术大师
+	RUS_Tactical_master = {
+		type = { land navy }
+		trait_type = personality_trait
+		
+		#override_effect_tooltip = RUS_Tactical_master_movement
+		
+		modifier = {
+			no_supply_grace = 24
+			org_loss_when_moving = -0.1	#移动组织度损失
+			river_crossing_factor = -0.15
+			desert = {
+				movement = 0.05
+			}
+			forest = {
+				movement = 0.05
+			}
+			hills = {
+				movement = 0.05
+			}
+			mountain = {
+				movement = 0.05
+			}
+			plains = {
+				movement = 0.05
+			}
+			urban = {
+				movement = 0.05
+			}
+			jungle = {
+				movement = 0.05
+			}
+			marsh = {
+				movement = 0.05
+			}
+		}
+		attack_skill_factor = 1
+	}
+	#军事理论家
+	RUS_Army_theorist = {
+		type = { land navy }
+		trait_type = personality_trait
+		modifier = {
+			planning_skill = 1
+			experience_gain_factor = 0.12	#等级提升速度快
+			attrition = 0.08				#损耗较高
+		}
+		planning_skill_factor = 1
+	}
+	#帝俄旧军官
+	RUS_Old_Imperial_officer = {
+		type = { land navy }
+		trait_type = personality_trait
+		modifier = {
+			army_org_regain = 0.04		#受过专业军事训练
+			planning_speed = 0.04		#起码纸上谈兵的能力很强
+		}
+		defense_skill_factor = 1
+	}
+	#游击作风
+	RUS_Guerrilla_style = {
+		type = { land navy }
+		trait_type = personality_trait
+		modifier = {
+			max_dig_in = 5
+			winter_attrition_factor = -0.25	#损耗较低
+			army_attack_factor = -0.30		#作战能力差
+			army_defence_factor = 0.15		#作战能力差
+			hills = {
+				movement = 0.2
+			}
+			mountain = {
+				movement = 0.2
+			}
+		}
+		unit_trigger = {
+			division_has_majority_template = militia
+		}
+		defense_skill_factor = 1
+	}
+	#政治关联者
+	RUS_politically_connected = { 
+		type = { land navy }
+		trait_type = personality_trait
+		modifier = {
+			experience_gain_factor = -0.05	#升级速度较慢
+		}
+		planning_skill_factor = 1
+		logistics_skill_factor = 1
+	}
+	#劳动革命榜样
+	RUS_irregulars_officer = {
+		type = land
+		trait_type = personality_trait
+		unit_type = {
+			type = irregular_infantry
+		}
+		modifier = {
+			modifier_army_sub_unit_irregular_infantry_attack_factor = 0.10
+			modifier_army_sub_unit_irregular_infantry_max_org_factor = 0.05
+		}
+		unit_trigger = {
+			division_has_majority_template = irregular_infantry
+		}
+		defense_skill_factor = 1
+		logistics_skill_factor = 1
+	}
+	#军区组织大师
+	RUS_militias_officer = { 
+		type = land
+		trait_type = personality_trait
+		allowed = {
+		}
+		unit_type = {
+			type = militia
+		}
+		modifier = {
+			no_supply_grace = 24
+			modifier_army_sub_unit_militia_defence_factor = 0.05
+			modifier_army_sub_unit_militia_speed_factor = 0.05
+			modifier_army_sub_unit_militia_max_org_factor = 0.05
+		}
+		unit_trigger = {
+			division_has_majority_template = militia
+		}
+		defense_skill_factor = 1
+		logistics_skill_factor = 1
+	}
+
+
+}

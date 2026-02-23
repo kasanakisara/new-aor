@@ -1,0 +1,138 @@
+
+
+add_namespace = CAN
+
+country_event = {
+	id = CAN.0
+	title = CAN.0.t
+	desc = CAN.0.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+	    date > 1920.7.1
+		tag = CAN
+	}
+	mean_time_to_happen = {days = 1}
+	fire_only_once = yes
+	option = { 
+        name = CAN.0.a
+		news_event = { id = AOR_news.18 }
+		remove_ideas = CAN_instiutional_reform
+		set_party_name = { 
+	    ideology = CON_democratic
+		long_name = CAN_CON_democratic_party_2
+		name = CAN_CON_democratic_party_2
+		}
+		create_country_leader = {
+		name = "Arthur·Meighen"
+		desc = ""
+		picture = gfx/leaders/CAN/Arthur_Meighen.png
+		expire = "1965.1.1"
+		ideology = federalism
+		traits = { }
+			}
+	}
+ }
+ 
+ 
+country_event = {
+	id = CAN.1
+	title = CAN.1.t
+	desc = CAN.1.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+	    date > 1921.7.1
+		tag = CAN
+	}
+	mean_time_to_happen = {days = 1}
+	fire_only_once = yes
+	option = { 
+        name = CAN.1.b
+		news_event = { id = AOR_news.19 }
+		add_popularity = {
+		ideology = FRE_democratic
+		popularity = 0.45
+		}
+		set_politics = {
+        ruling_party = FRE_democratic
+		}
+		ai_chance = {
+			base = 35
+			}
+	}
+		
+	option = { 
+		name = CAN.1.c
+		news_event = { id = AOR_news.19 }
+		add_popularity = {
+		ideology = SOC_democratic
+		popularity = 0.55
+		}
+		set_politics = {
+        ruling_party = SOC_democratic
+		}
+        name = CAN.1.c
+		create_country_leader = {
+		name = "Henry Wise Wood"
+		desc = ""
+		picture = "gfx/leaders/CAN/Henry_Wise_Wood.png"
+		expire = "1953.3.1"
+		ideology = socialism
+		traits = { CAN_wood_trait }
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+		option = { 
+        name = CAN.1.e
+		news_event = { id = AOR_news.19 }
+		add_popularity = {
+		ideology = AUT_democratic
+		popularity = 1
+		}
+		set_politics = {
+        ruling_party = AUT_democratic
+		}
+		create_country_leader = {
+		name = "Arthur·Meighen"
+		desc = ""
+		picture = gfx/leaders/CAN/Arthur_Meighen.png
+		expire = "1965.1.1"
+		ideology = patriarch
+		traits = {  }
+		}
+		ai_chance = {
+			base = 45
+		}
+	}
+
+}
+
+country_event = {
+	id = CAN.2
+	title = CAN.2.t
+	desc = CAN.2.d
+	picture = GFX_report_event_german_speech
+	trigger = {
+	    date > 1921.1.1
+		tag = CAN
+	}
+	mean_time_to_happen = {days = 1}
+	fire_only_once = yes
+	immediate = {
+		news_event = { id = AOR_news.20 }	
+		release = QBC
+		CAN = {
+			declare_war_on = {
+				target = QBC
+				type = civil_war
+			}
+		}
+	}
+	option = { 
+        name = CAN.2.a
+	}
+ }
+
+		
+			

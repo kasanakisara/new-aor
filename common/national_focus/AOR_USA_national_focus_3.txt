@@ -1,0 +1,779 @@
+focus_tree={
+	id = USA_3
+	country={
+		factor=0
+		modifier={
+			add=10
+			tag=USA
+		}
+	}
+	continuous_focus_position={
+		x=100
+		y=2000
+	}
+	default=no
+	focus={
+		id=USA_Take_office_immediately
+		icon=GFX_goal_USA_Take_office_immediately
+		x=10
+		y=0
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event={
+				id = USA.10027
+			}
+		}
+	}
+	focus={
+		id=USA_Goddess_flag
+		icon=GFX_goal_USA_Goddess_flag
+		x=4
+		y=1
+		prerequisite={focus=USA_Take_office_immediately}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -50
+		}
+	}
+	focus={
+		id=USA_Continuing_Beauty
+		icon=GFX_goal_USA_Continuing_Beauty
+		x=10
+		y=1
+		prerequisite={focus=USA_Take_office_immediately}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 100
+			remove_ideas = USA_jinjizhuangtai
+		}
+	}
+	focus={
+		id=USA_Friends_of_the_Republic
+		icon=GFX_goal_USA_Friends_of_the_Republic
+		x=16
+		y=1
+		prerequisite={focus=USA_Take_office_immediately}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -50
+		}
+	}
+	focus={
+		id=USA_Women
+		icon=GFX_goal_USA_Women
+		x=4
+		y=2
+		prerequisite={focus=USA_Goddess_flag}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_shiyouhuanying
+				add_idea = USA_shiyouhuanying1
+			}
+			country_event={
+				id = USA.10024
+			}
+		}
+	}
+	focus={
+		id=USA_Dealing_with_anger
+		icon=GFX_goal_USA_Dealing_with_anger
+		x=8
+		y=2
+		prerequisite={focus=USA_Continuing_Beauty}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event={
+				id = USA.10033
+			}
+			add_political_power = -50
+		}
+	}
+	focus={
+		id=USA_Military_Reform
+		icon=GFX_goal_USA_Military_Reform
+		x=12
+		y=2
+		prerequisite={focus=USA_Continuing_Beauty}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = USA_sandaliren1
+			}
+			swap_ideas={
+				remove_idea = USA_sandaliren1
+				add_idea = USA_sandaliren2
+			}
+		}
+		    if = {
+			    limit = {
+				    has_idea = USA_sandaliren3
+		    }
+		    swap_ideas={
+			    remove_idea = USA_sandaliren3
+			    add_idea = USA_sandaliren4
+		    }
+	    }
+	}
+}
+	focus={
+		id=USA_Panama_Tour
+		icon=GFX_goal_USA_Panama_Tour
+		x=16
+		y=2
+		prerequisite={focus=USA_Friends_of_the_Republic}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			country_event = { 
+				id = USA.10041
+			}
+			swap_ideas={
+				remove_idea =  USA_dazhanzhimo4
+				add_idea =  USA_dazhanzhimo5
+			}
+		}
+	}
+	focus={
+		id=USA_Perfect_ending_year_1
+		icon=GFX_goal_USA_Perfect_ending_year_1
+		x=10
+		y=3
+		prerequisite={focus=USA_Women}
+		prerequisite={focus=USA_Dealing_with_anger}
+		prerequisite={focus=USA_Military_Reform}
+		prerequisite={focus=USA_Panama_Tour}
+		cost=1
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+	focus={
+		id=USA_Shocking_waves_rise_with_the_wind
+		icon=GFX_goal_USA_Shocking_waves_rise_with_the_wind
+		x=10
+		y=5
+		prerequisite={focus=USA_Perfect_ending_year_1}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available={
+			date > 1921.6.18
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_war_support = 0.05
+			country_event={
+				id = USA.10025
+			}
+			set_country_flag = USA_Civil_War_Resolution_civilian_flag
+			set_country_flag = USA_Civil_War_Resolution_gravity_flag
+			set_country_flag = USA_Civil_War_Military_Resolution_flag
+			set_variable = { USA_Reorganization_of_the_state_National_Guard = 5 }
+			custom_effect_tooltip = USA_AShocking_waves_rise_with_the_wind
+		}
+	}
+	focus={
+		id=USA_pause_button_for_everything
+		icon=GFX_goal_USA_pause_button_for_everything
+		x=10
+		y=6
+		prerequisite={focus=USA_Shocking_waves_rise_with_the_wind}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			if = {
+				limit = {
+					has_idea = USA_sandaliren2
+			}
+			swap_ideas={
+				remove_idea = USA_sandaliren2
+				add_idea = USA_zhiliposui
+			}
+		}
+		    if = {
+			    limit = {
+				    has_idea = USA_sandaliren4
+		    }
+		    swap_ideas={
+			    remove_idea = USA_sandaliren4
+			    add_idea = USA_zhiliposui
+		    }
+	    }
+		country_event={
+			id = USA.10026
+		}
+	}
+}
+	focus={
+		id=USA_neutrality_of_the_enterprise
+		icon=GFX_goal_USA_neutrality_of_the_enterprise
+		x=0
+		y=7
+		prerequisite={focus=USA_pause_button_for_everything}
+		mutually_exclusive={focus=USA_Welcome_Mellon_joining }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_stability = 0.05
+		}
+	}
+	focus={
+		id=USA_Welcome_Mellon_joining
+		icon=GFX_goal_USA_Welcome_Mellon_joining
+		x=6
+		y=7
+		prerequisite={focus=USA_pause_button_for_everything}
+		mutually_exclusive={focus=USA_neutrality_of_the_enterprise }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_ideas = partial_economic_mobilisation
+		}
+	}
+	focus={
+		id=USA_Let_s_face_the_storm
+		icon=GFX_goal_USA_Let_s_face_the_storm
+		x=14
+		y=7
+		prerequisite={focus=USA_pause_button_for_everything}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_the_divided_nation3
+				add_idea = USA_the_divided_nation4
+			}
+		}
+	}
+	focus={
+		id=USA_Hold_France
+		icon=GFX_goal_USA_Hold_France
+		x=20
+		y=7
+		prerequisite={focus=USA_pause_button_for_everything}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = -100
+			swap_ideas={
+				remove_idea =  USA_dazhanzhimo5
+				add_idea =  USA_dazhanzhimo6
+			}
+			FRA = {
+				country_event = {
+					id = FRA_USA.1
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_supply_of_consumer_goods
+		icon=GFX_goal_USA_supply_of_consumer_goods
+		x=0
+		y=8
+		prerequisite={focus=USA_neutrality_of_the_enterprise}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+			    remove_idea = USA_shiyouhuanying1
+			    add_idea = USA_shiyouhuanying2
+		    }
+		}
+	}
+	focus={
+		id=USA_Ensure_sales_channels
+		icon=GFX_goal_USA_Ensure_sales_channels
+		x=0
+		y=9
+		prerequisite={focus=USA_supply_of_consumer_goods}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+			    remove_idea = USA_shiyouhuanying2
+			    add_idea = USA_shiyouhuanying3
+		    }
+			hidden_effect = {
+					country_event = {
+						id = USA.10063
+					}
+					country_event = {
+						id = USA.10064
+						days = 3
+					}
+			}
+		}
+	}
+	focus={
+		id=USA_Emergency_production_conversion
+		icon=GFX_goal_USA_Emergency_production_conversion
+		x=4
+		y=8
+		prerequisite={focus=USA_Welcome_Mellon_joining}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+			    remove_idea = USA_shiyouhuanying1
+			    add_idea = USA_shiyouhuanying4
+		    }
+			if = {
+				limit = {
+					has_idea = USA_busidexintuo1
+				}
+				swap_ideas={
+					remove_idea = USA_busidexintuo1
+					add_idea = USA_busidexintuo3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = USA_busidexintuo2
+				}
+				swap_ideas={
+					remove_idea = USA_busidexintuo2
+					add_idea = USA_busidexintuo5
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_Add_military_industry
+		icon=GFX_goal_USA_Add_military_industry
+		x=4
+		y=9
+		prerequisite={focus=USA_Emergency_production_conversion}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+			    remove_idea = USA_shiyouhuanying4
+			    add_idea = USA_shiyouhuanying5
+		    }
+			if = {
+				limit = {
+					has_idea = USA_busidexintuo3
+				}
+				swap_ideas={
+					remove_idea = USA_busidexintuo3
+					add_idea = USA_busidexintuo4
+				}
+			}
+			if = {
+				limit = {
+					has_idea = USA_busidexintuo5
+				}
+				swap_ideas={
+					remove_idea = USA_busidexintuo5
+					add_idea = USA_busidexintuo6
+				}
+			}
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_Launch_a_lobbying_group
+		icon=GFX_goal_USA_Launch_a_lobbying_group
+		x=8
+		y=8
+		prerequisite={focus=USA_Welcome_Mellon_joining}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			add_political_power = 100
+			add_timed_idea={
+				idea = USA_zanshidexuanchuan
+				days = 720
+            }
+		}
+	}
+	focus={
+		id=USA_Mr_Knight
+		icon=GFX_goal_USA_Mr_Knight
+		x=8
+		y=9
+		prerequisite={focus=USA_Launch_a_lobbying_group}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			custom_effect_tooltip = USA_AMr_Knight
+			if = {
+				limit = {
+					has_idea = USA_zhixuchonggou_knights
+				}
+				swap_ideas={
+					remove_idea = USA_zhixuchonggou_knights
+					add_idea = USA_zhixuchonggou_knights3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = USA_zhixuchonggou_knights1
+				}
+				swap_ideas={
+					remove_idea = USA_zhixuchonggou_knights1
+					add_idea = USA_zhixuchonggou_knights2
+				}
+			}
+			hidden_effect = {
+			USA = {
+                load_oob = AOR_LAND_KOW_USA_civil_war
+					else_if = {
+						limit = {
+							USA = {
+								owns_state = 373	
+							}
+						}
+					USA = {
+						country_event = {
+							id = USA.10061
+						}
+						country_event = {
+							id = USA.10064
+							days = 3
+						}
+					}
+				}
+				news_event={
+					id = AOR_news.191
+				}
+			}
+		}
+	}
+}
+
+	focus={
+		id=USA_walks_to_the_stage
+		icon=GFX_goal_USA_walks_to_the_stage
+		x=12
+		y=8
+		prerequisite={focus=USA_Let_s_face_the_storm}
+		mutually_exclusive={focus=USA_Adhere_to_the_unity }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			hidden_effect = {
+				news_event = {
+				id = AOR_news.218
+				}
+			}
+			swap_ideas={
+				remove_idea = USA_the_divided_nation4
+				add_idea = USA_the_divided_nation5
+			}
+		}
+	}
+	focus={
+		id=USA_Emergency_conscription_law
+		icon=GFX_goal_USA_Emergency_conscription_law
+		x=12
+		y=9
+		prerequisite={focus=USA_walks_to_the_stage}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_the_divided_nation5
+				add_idea = USA_the_divided_nation6
+			}
+			add_ideas = extensive_conscription
+		}
+	}
+	focus={
+		id=USA_War_Production_Management_Law
+		icon=GFX_goal_USA_War_Production_Management_Law
+		x=12
+		y=10
+		prerequisite={focus=USA_Emergency_conscription_law}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_the_divided_nation6
+				add_idea = USA_the_divided_nation7
+			}
+		}
+	}
+	focus={
+		id=USA_Adhere_to_the_unity
+		icon=GFX_goal_USA_Adhere_to_the_unity
+		x=16
+		y=8
+		prerequisite={focus=USA_Let_s_face_the_storm}
+		mutually_exclusive={focus=USA_walks_to_the_stage }
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			hidden_effect = {
+				news_event = {
+				id = AOR_news.219
+				}
+			}
+			swap_ideas={
+				remove_idea = USA_the_divided_nation4
+				add_idea = USA_the_divided_nation8
+			}
+		}
+	}
+	focus={
+		id=USA_Free_play_arrest_traitors
+		icon=GFX_goal_USA_Free_play_arrest_traitors
+		x=16
+		y=9
+		prerequisite={focus=USA_Adhere_to_the_unity}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_the_divided_nation8
+				add_idea = USA_the_divided_nation9
+			}
+		}
+	}
+	focus={
+		id=USA_Encourage_joining_the_militia
+		icon=GFX_goal_USA_Encourage_joining_the_militia
+		x=16
+		y=10
+		prerequisite={focus=USA_Free_play_arrest_traitors}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			swap_ideas={
+				remove_idea = USA_the_divided_nation9
+				add_idea = USA_the_divided_nation10
+			}
+		}
+	}
+	focus={
+		id=USA_We_need_helmets
+		icon=GFX_goal_USA_We_need_helmets
+		x=20
+		y=8
+		prerequisite={focus=USA_Hold_France}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			FRA = {
+				country_event = {
+					id = FRA_USA.2
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_Overseas_Fleet_Escort
+		icon=GFX_goal_USA_Overseas_Fleet_Escort
+		x=20
+		y=9
+		prerequisite={focus=USA_We_need_helmets}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+			FRA = {
+				country_event = {
+					id = FRA_USA.3
+				}
+			}
+		}
+	}
+	focus={
+		id=USA_Everything_for_freedom
+		icon=GFX_goal_USA_Everything_for_freedom
+		x=10
+		y=12
+		prerequisite={focus=USA_Overseas_Fleet_Escort}
+		prerequisite={focus=USA_Ensure_sales_channels focus=USA_Add_military_industry focus=USA_Mr_Knight focus=USA_War_Production_Management_Law focus=USA_Encourage_joining_the_militia }
+		cost=100
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+}

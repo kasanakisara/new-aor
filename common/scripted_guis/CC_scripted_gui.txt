@@ -1,0 +1,164 @@
+scripted_gui = {
+
+	CC_ui = {
+		context_type = player_context
+		window_name = "CC_ui_window"
+		visible = {
+			TAG = ENG
+			has_country_flag = CC
+		}
+		
+		properties = {
+			jindutiao = {
+				frame = 5000
+			}
+			fanrong_nanfei = {
+				frame = 100
+			}
+			fanrong_aiji = {
+				frame = 100
+			} 
+			fanrong_sudan = {
+				frame = 100
+			} 
+			fanrong_dongfei = {
+				frame = 1000
+			} 
+			fanrong_zhongfei = {
+				frame = 1000
+			} 
+
+			pie_chart_you_aiji = {
+				frame = CC_pie_you_aiji
+			}
+			pie_chart_wu_aiji = {
+				frame = CC_pie_wu_aiji
+			}
+			pie_chart_po_aiji = {
+				frame = 100
+			}
+		}
+		effects = {
+###################关闭按钮###############################
+			exit_btn_click = { 
+				clr_country_flag = CC		
+			}
+
+			CC_tiaoshi_click = {
+				if = {
+					limit = {
+						check_variable = {
+							CC_aiji_baodong = 1
+						}
+					}
+					set_variable = {
+						CC_aiji_baodong = 0
+					}
+				}
+				else = {
+					set_variable = {
+						CC_aiji_baodong = 1
+					}
+				}
+				refresh_pie_chart_type_2 = yes
+			}
+			CC_aiji_click = {
+				set_variable = {
+					CC_choose_section = 1
+				}
+			}
+			CC_sudan_click = {
+				set_variable = {
+					CC_choose_section = 2
+				}
+			}
+			CC_dongfei_click = {
+				set_variable = {
+					CC_choose_section = 3
+				}
+			}
+			CC_zhongfei_click = {
+				set_variable = {
+					CC_choose_section = 4
+				}
+			}
+			CC_nanfei_click = {
+				set_variable = {
+					CC_choose_section = 5
+				}
+			}
+		}
+		triggers = {
+			fanrong_nanfei_visible = {
+				check_variable = {
+					CC_choose_section = 5
+				}
+			}
+			fanrong_zhongfei_visible = {
+				check_variable = {
+					CC_choose_section = 4
+				}
+			}
+			fanrong_dongfei_visible = {
+				check_variable = {
+					CC_choose_section = 3
+				}
+			}
+			fanrong_sudan_visible = {
+				check_variable = {
+					CC_choose_section = 2
+				}
+			}
+			fanrong_aiji_visible = {
+				check_variable = {
+					CC_choose_section = 1
+				}
+			}
+			wubagong_visible = {
+				CC_dikuaibaodong = yes
+			}
+			baodongsuo1_visible = {
+				CC_dikuaibaodong = no
+			}
+			baodongsuo2_visible = {
+				CC_dikuaibaodong = no
+			}
+			CC_nanfei_big_visible = {
+				check_variable = {
+					CC_choose_section = 5
+				}
+			}
+			CC_zhongfei_big_visible = {
+				check_variable = {
+					CC_choose_section = 4
+				}
+			}
+			CC_dongfei_big_visible = {
+				check_variable = {
+					CC_choose_section = 3
+				}
+			}
+			CC_sudan_big_visible = {
+				check_variable = {
+					CC_choose_section = 2
+				}
+			}
+			CC_aiji_big_visible = {
+				check_variable = {
+					CC_choose_section = 1
+				}
+			}
+		
+		}
+	}
+	pie_aiji = {
+		context_type = player_context
+		window_name = "pie_aiji_ui"
+		visible = {
+			check_variable = {
+				CC_choose_section = 1
+			}
+		}
+	}
+}
+

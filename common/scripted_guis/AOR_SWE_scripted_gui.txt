@@ -1,0 +1,80 @@
+scripted_gui = {
+
+	SWE_Norweign_Independence_ui = { #挪威独立运动
+		context_type = decision_category
+		window_name = "AOR_SWE_Norweign_Independence_gui"
+
+		properties = {
+			
+			SWE_Norweign_Independence_meter = {
+				frame = var:SWE_Norweign_Independence_main_meter
+			}
+
+			SWE_Norweign_Independence_needle = {
+				frame = var:SWE_Norweign_Independence_main_meter
+			}
+		}
+	}
+
+	AOR_SWE_Union_decision_gui = { #联邦一梦-决议
+		context_type = decision_category
+		window_name = "AOR_SWE_Union_decision_gui"
+
+		visible = {
+			has_idea = SWE_The_Union_Dream
+		}
+
+		effects = {
+			AOR_SWE_Union_gui_info_click = {
+				if = {
+					limit = { ROOT = { has_country_flag = SWE_open_Union_gui_flag } }
+					clr_country_flag = SWE_open_Union_gui_flag
+				}
+				else = {
+					set_country_flag = SWE_open_Union_gui_flag
+				}
+			}
+		}
+	}
+
+	AOR_SWE_Union_gui = { #联邦一梦-界面
+		context_type = player_context
+		window_name = "AOR_SWE_Union_gui"
+
+		visible = {
+			ROOT = {
+				has_country_flag = SWE_open_Union_gui_flag
+			}
+		}
+
+		properties = {
+			SWE_Union_GUI_background_entry = { image = "[SWE_Union_gui_getpicture]" }
+		}
+	}
+
+	AOR_SWE_Regency_Crisis_decision_gui = { #摄政危机
+		context_type = decision_category
+		window_name = "AOR_SWE_Regency_Crisis_decision_gui"
+
+		visible = {
+			ROOT = {
+				has_country_flag = SWE_Emergency_State
+			}
+		}
+
+		properties = {
+			AOR_Regency_Economic_progress_bar = {
+				frame = var:SWE_Regency_Economic_value
+			}
+
+			AOR_Regency_Order_progress_bar = {
+				frame = var:SWE_Regency_Order_value
+			}
+
+			AOR_Regency_Political_progress_bar = {
+				frame = var:SWE_Regency_Political_value
+			}
+		}
+	}
+	
+}

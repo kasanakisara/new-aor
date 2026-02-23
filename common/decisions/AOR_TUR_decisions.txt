@@ -1,0 +1,24 @@
+AOR_ottoman_ruins_category = {
+	TUR_loan_from_entente_decision = {
+		fire_only_once = yes
+		visible = {
+			original_tag = TUR
+			has_completed_focus = AOR_TUR_salvage_economy
+	   	}
+		complete_effect = {
+			add_stability = -0.02
+			add_timed_idea = {
+				idea = TUR_loans_from_entente_idea
+				days = 90
+			}
+		}
+	   	remove_effect = {
+			swap_ideas = {
+				remove_idea = TUR_complete_econ_collapse_idea
+				add_idea = TUR_national_econ_collapse_idea
+			}
+		}
+	   	cost = 20
+	   	days_remove = 45
+	}
+}

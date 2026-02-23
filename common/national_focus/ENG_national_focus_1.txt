@@ -1,0 +1,783 @@
+focus_tree = {
+	id = ENG_National_focus_1
+	country = {
+
+		factor = 0
+
+		modifier = {
+			add = 1000
+			tag = ENG
+		} 
+
+	}
+	continuous_focus_position = { x = 3000 y = 2000 }
+	default = no
+
+	#新年之夜
+	focus = {
+		id = ENG_xinnianzhiye
+		icon = gfx_xinnianzhiye
+		cost = 0.00
+		x = 12
+		y = 0
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_xinnianzhiye_tt
+		}
+
+	}
+	
+	#向旧有的秩序宣战
+	focus = {
+		id = ENG_xiangjiuyouzhixvxuanzhan
+		icon = gfx_xiangjiuyouzhixvxuanzhan
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_xinnianzhiye
+		}
+		x = 4
+		y = 1
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_xiangjiuyouzhixvxuanzhan_tt
+		}
+
+	}
+
+	#《帝国联邦经济恢复法案》
+	focus = {
+		id = ENG_diguolianbangjingjihuifufaan
+		icon = gfx_diguolianbangjingjihuifufaan
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_xiangjiuyouzhixvxuanzhan
+		}
+		x = 2
+		y = 2
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_diguolianbangjingjihuifufaan_tt
+		}
+
+	}
+
+	#企业的新权利
+	focus = {
+		id = ENG_qiyedexinquanli
+		icon = gfx_qiyedexinquanli
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_diguolianbangjingjihuifufaan
+		}
+		x = 0
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_qiyedexinquanli_tt
+		}
+
+	}
+
+	#走出街头，走向工厂
+	focus = {
+		id = ENG_zouchujietou_zouxianggongchang
+		icon = gfx_zouchujietou_zouxianggongchang
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_diguolianbangjingjihuifufaan
+		}
+		x = 3
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_zouchujietou_zouxianggongchang_tt
+		}
+
+	}
+
+	#便将旧世界的灰尘扫除
+	focus = {
+		id = ENG_bianjiangjiushijiehuichensaochu
+		icon = gfx_bianjiangjiushijiehuichensaochu
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_zouchujietou_zouxianggongchang
+		}
+		prerequisite = {
+			focus = ENG_qiyedexinquanli
+		}
+		x = 2
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_bianjiangjiushijiehuichensaochu_tt
+		}
+
+	}
+
+	#黄金的新价格
+	focus = {
+		id = ENG_huangjindexinjiag
+		icon = gfx_huangjindexinjiag
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_xiangjiuyouzhixvxuanzhan
+		}
+		x = 6
+		y = 2
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_huangjindexinjiag_tt
+		}
+
+	}
+
+	#更包容的市场
+	focus = {
+		id = ENG_gengbaorongdeshichang
+		icon = gfx_gengbaorongdeshichang
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_huangjindexinjiag
+		}
+		x = 6
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_gengbaorongdeshichang_tt
+		}
+
+	}
+
+	#抓住新机遇
+	focus = {
+		id = ENG_zhuazhuxinjiyv
+		icon = gfx_zhuazhuxinjiyv
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_huangjindexinjiag
+		}
+		x = 9
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_zhuazhuxinjiyv_tt
+		}
+
+	}
+
+	#重申企业家精神
+	focus = {
+		id = ENG_chongshenqiyejiajingshen
+		icon = gfx_chongshenqiyejiajingshen
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_gengbaorongdeshichang
+		}
+		prerequisite = {
+			focus = ENG_zhuazhuxinjiyv
+		}
+		x = 7
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_chongshenqiyejiajingshen_tt
+		}
+
+	}
+
+	#胜利踏入新道路
+	focus = {
+		id = ENG_shenglitaruxindaolu
+		icon = gfx_shenglitaruxindaolu
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_bianjiangjiushijiehuichensaochu
+		}
+		prerequisite = {
+			focus = ENG_chongshenqiyejiajingshen
+		}
+		x = 5
+		y = 5
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_shenglitaruxindaolu_tt
+		}
+
+	}
+
+	#机轮电气所驱之方舟
+	focus = {
+		id = ENG_jilundianqisuoqvzhifangzhou
+		icon = gfx_jilundianqisuoqvzhifangzhou
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_shenglitaruxindaolu
+		}
+		x = 7
+		y = 6
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_jilundianqisuoqvzhifangzhou_tt
+		}
+
+	}
+
+	#捍卫永远的同盟
+	focus = {
+		id = ENG_hanweiyibuzailaogudetongmeng
+		icon = gfx_hanweiyongyuantongmeng
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_xinnianzhiye
+		}
+		x = 17
+		y = 1
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_hanweiyibuzailaogudetongmeng_tt
+		}
+
+	}
+
+	#世界，铁幕之下
+	focus = {
+		id = ENG_shijietiemuzhixia
+		icon = gfx_shijietiemuzhixia
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_hanweiyibuzailaogudetongmeng
+		}
+		x = 13
+		y = 2
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_shijietiemuzhixia_tt
+		}
+
+	}
+
+	#旧时同盟
+	focus = {
+		id = ENG_jiushitongmeng
+		icon = gfx_jiushitongmeng
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_shijietiemuzhixia
+		}
+		x = 13
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_jiushitongmeng_tt
+		}
+
+	}
+
+	#建设万千所望之理想国
+	focus = {
+		id = ENG_jianshewanqiansuowangzhilixiangguo
+		icon = gfx_jianshewanqiansuowangzhilixiangguo
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_jiushitongmeng
+		}
+		x = 11
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_jianshewanqiansuowangzhilixiangguo_tt
+		}
+
+	}
+
+	#将旧世界予以重塑
+	focus = {
+		id = ENG_jiangjiushijieyvyichongsu
+		icon = gfx_jiangjiushijieyvyichongsu
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_jiushitongmeng
+		}
+		x = 14
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_jiangjiushijieyvyichongsu_tt
+		}
+
+	}
+
+	#巴别塔将直入天际
+	focus = {
+		id = ENG_babietajiangzhirutianji
+		icon = gfx_babietajiangzhirutianji
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_jianshewanqiansuowangzhilixiangguo
+		}
+		prerequisite = {
+			focus = ENG_jiangjiushijieyvyichongsu
+		}
+		x = 12
+		y = 5
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_babietajiangzhirutianji_tt
+		}
+
+	}
+
+	#首次帝国联邦大会
+	focus = {
+		id = ENG_shoucidiguolianbangdahui
+		icon = gfx_shoucidiguolianbangdahui
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_shijietiemuzhixia
+		}
+		x = 17
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_shoucidiguolianbangdahui_tt
+		}
+
+	}
+
+	#保护我们最亲近之人
+	focus = {
+		id = ENG_baohuwomenzuiqinjinzhiren
+		icon = gfx_baohuwomenzuiqinjinzhiren
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_shoucidiguolianbangdahui
+		}
+		x = 16
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_baohuwomenzuiqinjinzhiren_tt
+		}
+
+	}
+
+	#修补旧时代破碎竖琴
+	focus = {
+		id = ENG_xiufuposunshuaijiuzhijvjian
+		icon = gfx_xiubujiushidaiposuishuqin
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_hanweiyibuzailaogudetongmeng
+		}
+		x = 21
+		y = 2
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_xiufuposunshuaijiuzhijvjian_tt
+		}
+
+	}
+
+	#万民所向
+	focus = {
+		id = ENG_wanminsuoxiang
+		icon = gfx_wanminsuoxiang
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_xiufuposunshuaijiuzhijvjian
+		}
+		x = 21
+		y = 3
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_wanminsuoxiang_tt
+		}
+
+	}
+
+	#爱尔兰人民崭新福祉
+	focus = {
+		id = ENG_aierlanrenminzhanxinfuzhi
+		icon = gfx_aierlanrenminzhanxinfuzhi
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_wanminsuoxiang
+		}
+		x = 19
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_aierlanrenminzhanxinfuzhi_tt
+		}
+
+	}
+
+	#让我们在风雨中同舟共济
+	focus = {
+		id = ENG_rangwomenzaifengyvzhongtongzhougongji
+		icon = gfx_rangwomenzaifengyvzhongtongzhougongji
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_baohuwomenzuiqinjinzhiren
+		}
+		x = 17
+		y = 5
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_rangwomenzaifengyvzhongtongzhougongji_tt
+		}
+
+	}
+
+	#新时代的基石
+	focus = {
+		id = ENG_xinshidaidejishi
+		icon = gfx_xinshidaidejishi
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_wanminsuoxiang
+		}
+		x = 23
+		y = 4
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_xinshidaidejishi_tt
+		}
+
+	}
+
+	#胜利的喜悦
+	focus = {
+		id = ENG_shenglidexiyue
+		icon = gfx_shenglidexiyue
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_aierlanrenminzhanxinfuzhi
+		}
+		prerequisite = {
+			focus = ENG_xinshidaidejishi
+		}
+		x = 22
+		y = 5
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_shenglidexiyue_tt
+		}
+
+	}
+
+	#吾等作此间唯一舵手
+	focus = {
+		id = ENG_wudengzuoweicijianweiyiduoshou
+		icon = gfx_wudengzuocijianweiyiduoshou
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_babietajiangzhirutianji
+		}
+		prerequisite = {
+			focus = ENG_rangwomenzaifengyvzhongtongzhougongji
+		}
+		prerequisite = {
+			focus = ENG_shenglidexiyue
+		}
+		x = 17
+		y = 6
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_wudengzuoweicijianweiyiduoshou_tt
+		}
+
+	}
+
+	#便就此驾驭时代巨浪
+	focus = {
+		id = ENG_bianjiujiayushidaijulang
+		icon = gfx_jilundianqisuoqvzhifangzhou
+		cost = 0.00
+		prerequisite = {
+			focus = ENG_jilundianqisuoqvzhifangzhou
+		}
+		prerequisite = {
+			focus = ENG_wudengzuoweicijianweiyiduoshou
+		}
+		x = 12
+		y = 7
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_bianjiujiayushidaijulang_tt
+		}
+
+	}
+
+	#暴雨之中，却不见黎明
+	focus = {
+		id = ENG_baoyuzhizhong_quebujianliming
+		icon = GFX_ENG_baoyuzhizhong_quebujianliming
+		cost = 3
+		prerequisite = {
+			focus = ENG_bianjiujiayushidaijulang
+		}
+		x = 12
+		y = 8.5
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_baoyuzhizhong_quebujianliming_tt
+			add_stability = -0.03
+			add_political_power = -25
+			add_war_support = 0.05
+			country_event = {
+				id = ENG.1
+			}
+
+			hidden_effect = {
+				remove_ideas = ENG_the_beautiful_of_market
+				remove_ideas = ENG_Imperial_Federal_Economic_Recovery_Act
+			}
+		}
+	}
+
+	#是谁夺走了我们的面包
+	focus = {
+		id = ENG_shisheiduozoulewmdemianbao
+		icon = GFX_ENG_shisheiduozoulewmdemianbao
+		cost = 2
+		prerequisite = {
+			focus = ENG_baoyuzhizhong_quebujianliming
+		}
+		x = 7
+		y = 10
+
+		completion_reward = {
+			country_event = {
+				id = ENG.2
+			}
+			add_ideas = ENG_shiyelangchao
+		}
+	}
+
+	#没有硝烟的战火
+	focus = {
+		id = ENG_meiyouxiaoyandezhanhuo
+		icon = GFX_ENG_meiyouxiaoyandezhanhuo
+		cost = 2
+
+		prerequisite = {
+			focus = ENG_baoyuzhizhong_quebujianliming
+		}
+
+		x = 12
+		y = 10
+
+		completion_reward = {
+			country_event = {
+				id = ENG.3
+			}
+			add_war_support = 0.05
+			add_political_power = 25
+		}
+	}
+
+	#叛徒们的囚歌
+	focus = {
+		id = ENG_pantumendeqiuge
+		icon = GFX_ENG_pantumendeqiuge
+		cost = 1
+
+		prerequisite = {
+			focus = ENG_baoyuzhizhong_quebujianliming
+		}
+
+		x = 17.5
+		y = 10
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_pantumendeqiuge_tt
+			country_event = {
+				id = ENG.4
+			}
+			add_war_support = 0.1
+		}
+	}
+
+	#航路无头......
+	focus = {
+		id = ENG_hangluwutou
+		icon = GFX_ENG_hangluwutou
+		cost = 2
+
+		prerequisite = {
+			focus = ENG_shisheiduozoulewmdemianbao
+		}
+
+		prerequisite = {
+			focus = ENG_meiyouxiaoyandezhanhuo
+		}
+
+		prerequisite = {
+			focus = ENG_pantumendeqiuge
+		}
+
+		x = 12
+		y = 11.5
+
+		completion_reward = {
+			country_event = {
+				id = ENG.5
+			}
+			add_stability = -0.05
+		}
+	}
+
+	#以武力制服他们
+	focus = {
+		id = ENG_yiwulizhifutamen
+		icon = GFX_ENG_yiwulizhifutamen
+		cost = 4
+
+		prerequisite = {
+			focus = ENG_hangluwutou
+		}
+
+		x = 8
+		y = 13
+
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			country_event = {
+				id = ENG.6
+			}
+			add_timed_idea = {
+				idea = ENG_zhongquanjidi
+				days = 120
+			}
+		}
+	}
+
+	#取缔一切保障
+	focus = {
+		id = ENG_qudiyiqiebaozhang
+		icon = GFX_ENG_qudiyiqiebaozhang
+		cost = 2
+
+		prerequisite = {
+			focus = ENG_hangluwutou
+		}
+
+		x = 16
+		y = 13
+
+		completion_reward = {
+			add_war_support = 0.1
+			remove_ideas = ENG_the_help_from_brother
+			country_event = {
+				id = ENG.7
+			}
+		}
+	}
+
+	#爱尔兰人，永世为奴
+	focus = {
+		id = ENG_aierlanren_yongshiweinu
+		icon = GFX_ENG_aierlanren_yongshiweinu
+		cost = 3
+
+		prerequisite = {
+			focus = ENG_qudiyiqiebaozhang
+		}
+
+		prerequisite = {
+			focus = ENG_yiwulizhifutamen
+		}
+
+		x = 12
+		y = 14.5
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_shiyelangchao
+				add_idea = ENG_shiyelangchao_1
+			}
+			country_event = {
+				id = ENG.8
+			}
+		}
+	}
+
+	#重回战时状态
+	focus = {
+		id = ENG_chonghuizhanshizhuangtai
+		icon = GFX_ENG_chonghuizhanshizhuangtai
+		cost = 4
+
+		prerequisite = {
+			focus = ENG_aierlanren_yongshiweinu
+		}
+
+		x = 9
+		y = 16
+
+		completion_reward = {
+			add_war_support = 0.05
+			add_ideas = ENG_zhanshishengchan
+		}
+	}
+
+	#军队随时待命
+	focus = {
+		id = ENG_junduisuishidaiming
+		icon = GFX_ENG_junduisuishidaiming
+		cost = 1
+
+		prerequisite = {
+			focus = ENG_aierlanren_yongshiweinu
+		}
+
+		x = 15
+		y = 16
+
+		completion_reward = {
+			add_stability = -0.5
+			add_war_support = 0.1
+			add_ideas = ENG_zhaojizhaobing
+		}
+	}
+
+	#打破宁静的第一枪
+	focus = {
+		id = ENG_daponingjiangdediyiqiang
+		icon = GFX_ENG_daponingjiangdediyiqiang
+		cost = 1
+
+		prerequisite = {
+			focus = ENG_junduisuishidaiming
+		}
+
+		prerequisite = {
+			focus = ENG_chonghuizhanshizhuangtai
+		}
+
+		x = 12
+		y = 18
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_daponingjiangdediyiqiang_tt
+			add_stability = 0.05
+			add_war_support = 0.05
+			country_event = {
+				id = ENG.9
+			}
+			
+			hidden_effect = {
+				remove_ideas = ENG_zhongquanjidi
+				add_timed_idea = {
+					idea = ENG_shengchan
+					days = 120
+				}
+			}
+		}
+	}
+
+
+}

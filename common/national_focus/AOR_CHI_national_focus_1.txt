@@ -1,0 +1,411 @@
+focus_tree={
+	id = CHI_1
+	country={
+		factor=0
+		modifier={
+			add=100
+			tag=chi
+		}
+	}
+	continuous_focus_position = { x = 1000  y = 1500 }
+	default=no
+	focus={
+		id=CHI_Congress_speech
+		icon=GFX_goal_CHI_Congress_speech
+		x=5
+		y=0
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_stability = 0.05
+		country_event = { id = CHI.1 }
+		}
+	}
+	focus={
+		id=CHI_Anti_russian_propaganda
+		icon=GFX_goal_CHI_Anti_russian_propaganda
+		x=0
+		y=1
+		prerequisite={focus=CHI_Congress_speech}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_war_support = 0.1
+		country_event = {
+			id = CHI.10001
+		}
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Young_Volunteer_Army
+		id=CHI_Young_Volunteer_Army
+		x=5
+		y=1
+		prerequisite={focus=CHI_Congress_speech}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		custom_effect_tooltip = CHI.1.tt
+		country_event = {
+			id = CHI.10000
+		}
+		hidden_effect = {	
+		load_oob = CHI_volunteer
+			}
+		}
+	
+	}	
+	focus={
+        icon=GFX_goal_CHI_Manipulate_Congress
+		id=CHI_Manipulate_Congress
+		x=10
+		y=1
+		prerequisite={focus=CHI_Congress_speech}
+		cost=3
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_political_power = 50
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Reclaiming_outer_northwest
+		id=CHI_Reclaiming_outer_northwest
+		x=5
+		y=2
+		prerequisite={focus=CHI_Young_Volunteer_Army}
+		prerequisite={focus=CHI_Anti_russian_propaganda}
+		prerequisite={focus=CHI_Manipulate_Congress}
+		cost=0
+		ai_will_do={
+			factor=1
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = chi_waixibeizhanzheng
+		}	
+		available_if_capitulated=yes
+
+		completion_reward={
+		unlock_decision_category_tooltip = CHI_Reclaiming_outer_northwest_decision
+		add_timed_idea = { idea = AOR_Reclaiming_outer_northwest  days = 150 }
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_international_aid
+		id=CHI_international_aid
+		x=1
+		y=3
+		prerequisite={focus=CHI_Reclaiming_outer_northwest}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_equipment_to_stockpile = {
+		type = infantry_equipment
+		amount = 500
+				}
+		add_ideas = AOR_CHI_Military_aid_from_the_Allies		
+		hidden_effect = {
+		add_offsite_building = { 
+			type = arms_factory 
+			level = 3 
+	    	}
+	    }
+    }
+}
+	focus={
+        icon=GFX_goal_CHI_Northwest_joint_command
+		id=CHI_Northwest_joint_command
+		x=5
+		y=3
+		prerequisite={focus=CHI_Reclaiming_outer_northwest}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_ideas = AOR_CHI_Northwest_joint_command
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Mobilize_workers_help_in_war
+		id=CHI_Mobilize_workers_help_in_war
+		x=9
+		y=3
+		prerequisite={focus=CHI_Reclaiming_outer_northwest}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		custom_effect_tooltip = CHI.3.tt
+		hidden_effect = {
+			build_railway = {
+				path = { 10424 7048 4612 12448 4655 12612 7749 7752 4801 }
+				level = 1
+				}
+			}
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_war_bond
+		id=CHI_war_bond
+		x=3
+		y=4
+		prerequisite={focus=CHI_Northwest_joint_command}
+		prerequisite={focus=CHI_international_aid}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_timed_idea = { idea = AOR_CHI_debt_of_the_northwest_war  days = 120 }
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Hold_down_south
+		id=CHI_Hold_down_south
+		x=7
+		y=4
+		prerequisite={focus=CHI_Northwest_joint_command}
+		prerequisite={focus=CHI_Mobilize_workers_help_in_war}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		add_manpower = 5000
+		add_war_support = 0.05
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Yuan_is_dying
+		id=CHI_Yuan_is_dying
+		x=5
+		y=5
+		prerequisite={focus=CHI_war_bond}
+		prerequisite={focus=CHI_Hold_down_south}
+		cost=0
+		allow_branch = {
+			has_country_flag = yuan_done
+		}
+		available = {
+			always = no
+		}
+
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		country_event = { id = CHI.2 }
+		}
+	}
+	focus={
+        icon=GFX_goal_CHI_Year_of_Gengshen
+		id=CHI_Year_of_Gengshen
+		x=5
+		y=6
+		prerequisite={focus=CHI_Yuan_is_dying}
+		cost=0
+		ai_will_do={
+			factor=1
+		}
+		available = {
+			custom_trigger_tooltip = {
+			tooltip = yuan.2.tt
+			has_country_flag = chi.new.year
+			}
+		}
+		bypass = {
+		has_country_flag = chi.new.year
+			}
+		available_if_capitulated=yes
+		search_filters={
+		}
+		completion_reward={
+		}
+	}
+
+##林有为出来受死！！#
+	focus={
+        icon= GFX_goal_CHI_Yuan_triping
+		id=CHI_Yuan_triping
+		x=5
+		y=5
+		prerequisite={focus=CHI_war_bond}
+		prerequisite={focus=CHI_Hold_down_south}
+		cost=0
+		allow_branch = {
+			not = {has_country_flag = yuan_done}
+		}
+		available = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = CHI_war_bond
+					}
+					OR = {
+						NOT = {
+							has_completed_focus = CHI_Hold_down_south
+						}
+					}
+				}
+				has_country_flag = nianguangjiangjin
+			}
+			if = {
+				limit = {
+					has_completed_focus = CHI_war_bond
+				}
+				AND = {
+					has_completed_focus = CHI_Hold_down_south
+				}
+				has_country_flag = wobuxiangrangnidian
+			}
+		}
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		country_event = { id = CHI.6 }
+		}
+	}
+	
+	focus={
+        icon=GFX_goal_CHI_Assess_s
+		id=CHI_Assess_s
+		x=2
+		y=6
+		prerequisite={focus=CHI_Yuan_triping}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.1.tt
+		}
+	}
+	
+	focus={
+        icon=GFX_goal_CHI_we_win
+		id=CHI_we_win
+		x=5
+		y=6
+		prerequisite={focus=CHI_Yuan_triping}
+		cost=4
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.2.tt
+		}
+	}
+	
+	focus={
+        icon=GFX_goal_CHI_we_win
+		id=CHI_stop
+		x=8
+		y=6
+		prerequisite={focus=CHI_Yuan_triping}
+		cost=5
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.3.tt
+		} 
+	}
+	
+	focus={
+        icon=GFX_goal_CHI_we_win
+		id=CHI_forward
+		x = 5
+		y = 8
+		prerequisite={focus=CHI_ask_for_loan}
+		prerequisite={focus=CHI_hold_on}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.4.tt
+		} 
+	}  
+	focus={
+		icon=GFX_goal_CHI_we_win
+		id = CHI_ask_for_loan
+		x = 3
+		y = 7
+		prerequisite={focus=CHI_stop}
+		prerequisite={focus=CHI_we_win}
+		prerequisite={focus=CHI_Assess_s}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.5.tt
+		} 
+	} 
+	focus={
+		icon=GFX_goal_CHI_we_win
+		id = CHI_hold_on
+		x = 7
+		y = 7
+		prerequisite={focus=CHI_stop}
+		prerequisite={focus=CHI_we_win}
+		prerequisite={focus=CHI_Assess_s}
+		cost=2
+		ai_will_do={
+			factor=1
+		}
+		available_if_capitulated=yes
+		completion_reward={
+		custom_effect_tooltip = FAKE.6.tt
+		} 
+	} 
+}

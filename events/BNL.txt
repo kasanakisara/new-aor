@@ -1,0 +1,234 @@
+###########################
+# German Events
+###########################
+
+add_namespace = BNL
+
+
+#不干了！
+country_event = {
+	id = BNL.1000
+	title = BNL.1000.t
+	desc = BNL.1000.d
+	picture = GFX_events_BNL_1
+
+	trigger = {
+	    date > 1922.5.10
+		tag = BNL
+	}
+	
+	mean_time_to_happen = { days = 1}
+	
+	fire_only_once = yes
+	immediate = {
+
+	swap_ideas = {
+			remove_idea = Benelux_Governing_in_Netherlands
+			add_idea = Benelux_GG			
+		}
+	set_global_flag = Benelux_GG_AOR
+	8= { set_demilitarized_zone = yes }
+	34= { set_demilitarized_zone = yes }
+	836= { set_demilitarized_zone = yes }
+	6= { set_demilitarized_zone = yes }
+	35= { set_demilitarized_zone = yes }
+	36= { set_demilitarized_zone = yes }
+	7= { set_demilitarized_zone = yes }
+	}
+    #那就这样吧  
+	option = {
+		name = BNL.1000.a
+		 	news_event = { id = AOR_news.2  }
+    }
+}
+
+
+
+country_event = {
+	id = BNL.1
+	title = BNL.1.t
+	desc = BNL.1.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.1.a
+		add_political_power = 1
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BNL.2
+	title = BNL.2.t
+	desc = BNL.2.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.2.a
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.3
+			}
+		}
+	}
+	option = {
+		name = BNL.2.b
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.3
+			}
+		}
+	}
+	option = {
+		name = BNL.2.c
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.3
+			}
+		}
+	}
+	option = {
+		name = BNL.2.e
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BNL.3
+	title = BNL.3.t
+	desc = BNL.3.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.3.a
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.4
+			}
+		}
+	}
+	option = {
+		name = BNL.3.b
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.4
+			}
+		}
+	}
+	option = {
+		name = BNL.3.c
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.4
+			}
+		}
+	}
+	option = {
+		name = BNL.3.e
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.4
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BNL.4
+	title = BNL.4.t
+	desc = BNL.4.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.4.a
+		add_ideas= Apparent_equality
+		add_ideas= The_Benelux_Constitution
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.5
+			}
+		}
+	}
+
+}
+
+
+country_event = {
+	id = BNL.5
+	title = BNL.5.t
+	desc = BNL.5.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.5.a
+		add_ideas = Benelux_Governing_in_Netherlands
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.6
+			}
+		}
+	}
+	option = {
+		name = BNL.5.B
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.6
+			}
+		}
+	}
+	option = {
+		name = BNL.5.C
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BNL.6
+			}
+		}
+	}	
+}
+
+
+country_event = {
+	id = BNL.6
+	title = BNL.6.t
+	desc = BNL.6.d
+	picture = GFX_BNL.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BNL.6.a
+		add_political_power = 25
+	}
+	
+}

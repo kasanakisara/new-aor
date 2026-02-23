@@ -1,0 +1,86 @@
+###########################
+# German Events
+###########################
+
+add_namespace = event_GER
+
+
+#德意志阵营解散
+country_event = {
+	id = event_GER.1
+	title = event_GER.1.t
+	desc = event_GER.1.d
+	picture = GFX_events_german_disintegrated
+	is_triggered_only = yes
+	fire_only_once = yes
+
+    #那就这样吧  
+	option = {
+		name = event_GER.1.a
+		dismantle_faction = yes
+		hidden_effect = {
+			news_event = {
+				id = AOR_news.10
+			}
+			add_ideas = Depression_calls_1
+			RHI = {
+				transfer_state = 42
+				transfer_state = 859
+				transfer_state = 850
+				add_state_core = 42
+				add_state_core = 859
+				add_state_core = 850
+				add_manpower = 10000
+				set_politics = {
+					ruling_party = FRE_democratic
+					last_election = "1919.1.1"
+					election_frequency = 48
+					elections_allowed = yes
+				
+				}
+				set_popularities = {
+					FRE_democratic = 90
+					Fascism = 00
+					Marxism = 10
+				}
+				recruit_character = RHI_E_D
+				        	}
+			FRA = {puppet = RHI}
+		 42 = { 
+			add_core_of = RHI
+			set_demilitarized_zone = no 
+			}
+		 51 = { 
+			add_core_of = RHI
+			set_demilitarized_zone = no 
+			}
+		 859 = { 
+			add_core_of = RHI
+			set_demilitarized_zone = no 
+			}
+		 850 = {
+			 add_core_of = RHI
+			set_demilitarized_zone = no 
+			}
+			PRE = { remove_ideas = Compact_of_German_Confederation}
+			SHL = { remove_ideas = Compact_of_German_Confederation_1}
+			HAN = { remove_ideas = Compact_of_German_Confederation_1}
+			HAN = { remove_ideas = Compact_of_German_Confederation}
+			BAV = { remove_ideas = Compact_of_German_Confederation_1}
+			WUR = { remove_ideas = Compact_of_German_Confederation_1}
+			MEK = { remove_ideas = Compact_of_German_Confederation}
+			NAU = { remove_ideas = Compact_of_German_Confederation_1}
+			set_global_flag = new_German_Confederation
+			set_global_flag = GERMAN_disintegrated
+			HAN = {
+			 clr_cosmetic_tag = HAN_1
+			}
+			SAX = {
+			 clr_cosmetic_tag = SAX_1
+			}
+			NAU = {
+			country_event = { days = 14 id = NAU.36 }
+			}
+        } 
+    }
+}

@@ -1,0 +1,939 @@
+focus_tree = {
+	id =new_chi_2
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CHI
+		}
+	}
+	default = no
+	focus = {
+		id = AOR_Gathering_in_Anfu_Hutong
+		icon = GFX_goal_unknown
+		cost = 4
+		x = 11
+		y = 0
+
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+		}
+
+	}
+	focus = {
+		id = AOR_Northwest_Defense_Law
+		icon = GFX_goal_unknown
+		cost = 2
+
+		available = {
+			has_completed_focus = AOR_Memorandum_of_Understanding_on_Northwest_Affairs_between_China_and_the_Soviet_Union
+		}
+		x = 33
+		y = 0
+		completion_reward = {
+			add_political_power = -50
+			army_experience = -10
+			custom_effect_tooltip = AOR_shengchengsangexibeibianfangjun_tt
+		}
+
+	}
+	focus = {
+		id = AOR_Northwest_War
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Gathering_in_Anfu_Hutong
+		}
+		x = 4
+		y = 1
+		completion_reward = {
+			add_ideas = CHI_mengjixiongfu
+		}
+	}
+	focus = {
+		id = AOR_Pursue_with_victory
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Northwest_War
+		}
+		mutually_exclusive = {
+			focus = AOR_Save_the_fruits_of_the_battle
+		}
+		x = 2
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_mengjixiongfu
+				add_idea = CHI_mengjixiongfu_l
+			}
+		}
+	}
+	focus = {
+		id = AOR_Save_the_fruits_of_the_battle
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Northwest_War
+		}
+		mutually_exclusive = {
+			focus = AOR_Pursue_with_victory
+		}
+		x = 6
+		y = 2
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = CHI_mengjixiongfu
+				add_idea = CHI_mengjixiongfu_r
+			}
+		}
+	}
+	focus = {
+		id = AOR_If_you_dont_catch_me_I_ll_rush_north
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Pursue_with_victory
+			focus = AOR_Save_the_fruits_of_the_battle
+		}
+
+		available = {
+			check_variable = {
+				xibeizhanhshi < 3
+			}
+		}
+
+		x = 4
+		y = 3
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = -0.1
+			army_experience = -30
+			#if = {
+				#limit = {
+					#917 = {
+						#is_owned_by = CHI
+					#}
+				#}
+				#917 = {
+					#transfer_state_to = RUS
+				#}
+			#}
+			#if = {
+				#limit = {
+					#586 = {
+						#is_owned_by = CHI
+					#}
+				#}
+				#586 = {
+					#transfer_state_to = RUS
+				#}
+			#}
+			#if = {
+				#limit = {
+					#918 = {
+						#is_owned_by = CHI
+					#}
+				#}
+				#918 = {
+					#transfer_state_to = RUS
+				#}
+			#}
+			if = {
+				limit = {
+					654 = {
+						is_owned_by = CHI
+					}
+				}
+				654 = {
+					transfer_state_to = RUS
+				}
+			}
+			#if = {
+				#limit = {
+					#916 = {
+						#is_owned_by = CHI
+					#}
+				#}
+				#916 = {
+					#transfer_state_to = RUS
+				#}
+			#}
+			if = {
+				limit = {
+					920 = {
+						is_owned_by = CHI
+				    }
+				}
+				920 = {
+					transfer_state_to = RUS
+				}
+			}
+		}
+	}
+	focus = {
+		id = AOR_Chasing_after_the_downfall_and_heading_north_drinking_horses_and_spreading_the_power_of_barbarians
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Pursue_with_victory
+			focus = AOR_Save_the_fruits_of_the_battle
+		}
+		available = {
+			check_variable = {
+				xibeizhanhshi > 4 
+			}
+		}
+		x = 0
+		y = 3
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.1
+			army_experience = 30
+			country_event = { id = CHI.22}
+		}
+	}
+	focus = {
+		id = AOR_Take_it_as_soon_as_you_see_it_s_good_and_put_it_in_your_bag_for_safety
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Pursue_with_victory
+			focus = AOR_Save_the_fruits_of_the_battle
+		}
+
+		available = {
+			check_variable = {
+				xibeizhanhshi = 3
+			}
+			check_variable = {
+				xibeizhanhshi = 4
+			}
+		}
+
+		x = 7
+		y = 3
+
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 10
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							917 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					917 = {
+						add_claim_by = CHI
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							586 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					586 = {
+						add_claim_by = CHI
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							918 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					918 = {
+						add_claim_by = CHI
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							654 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					654 = {
+						add_claim_by = CHI
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							916 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					916 = {
+						add_claim_by = CHI
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							920 = {
+								is_owned_by = CHI
+							}
+						}
+					}
+					920 = {
+						add_claim_by = CHI
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = AOR_Take_shelter_from_the_sharp_edge_he_will_report_in_the_future
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_If_you_dont_catch_me_I_ll_rush_north
+			focus = AOR_Take_it_as_soon_as_you_see_it_s_good_and_put_it_in_your_bag_for_safety
+		}
+		x = 6
+		y = 4
+		completion_reward = {
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = AOR_bridge_the_gap
+		icon = GFX_goal_unknown
+		cost = 3
+		select_effect = {
+			modifier = {
+				political_power_cost = -0.1		
+			}							
+		}
+		prerequisite = {
+			focus = AOR_Gathering_in_Anfu_Hutong
+		}
+		mutually_exclusive = {
+			focus = AOR_Unbreakable_and_unstoppable
+		}
+		x = 10
+		y = 1
+		completion_reward = {
+			add_stability = -0.1
+			country_event = CHI.16
+		}
+	}
+	focus = {
+		id = AOR_Negotiating_conditions_with_the_Central_Department
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_bridge_the_gap
+		}
+		x = 9
+		y = 2
+		completion_reward = {
+			add_political_power = -25
+			AUT = {
+				country_event = { id = AUT.1 }
+			}
+		}
+	}
+	focus = {
+		id = AOR_Meeting_with_Wu_Ziyu
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_bridge_the_gap
+		}
+		x = 11
+		y = 2
+		completion_reward = {
+			add_political_power = -50
+			NAN = {
+				country_event = { id = NAN.1}
+			}
+		}
+	}
+	focus = {
+		id = Internal_Tripartite_Coordinati_on_Meeting_within_Beiyang
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Negotiating_conditions_with_the_Central_Department
+		}
+		prerequisite = {
+			focus = AOR_Meeting_with_Wu_Ziyu
+		}
+		x = 10
+		y = 3
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = AOR_the_last_try_to_organize_beiyang
+		icon = GFX_goal_unknown
+		cost = 2
+        select_effect = {
+			modifier = {
+				political_power_gain = 0.2
+			}
+		}
+		prerequisite = {
+			focus = Internal_Tripartite_Coordinati_on_Meeting_within_Beiyang
+		}
+		x = 10
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = AOR_the_last_try_to_organize_beiyang
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = AOR_Unbreakable_and_unstoppable
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Gathering_in_Anfu_Hutong
+		}
+		mutually_exclusive = {
+			focus = AOR_bridge_the_gap
+		}
+		x = 15
+		y = 1		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+
+	}
+	focus = {
+		id = AOR_Xu_Shuzheng_s_Northwest_Mission
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_Unbreakable_and_unstoppable
+		}
+		x = 14
+		y = 2
+		completion_reward = {
+			add_war_support = 0.05
+			add_command_power = 20
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = AOR_Jin_Yunpeng_s_Military_Reform
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_Unbreakable_and_unstoppable
+		}
+		x = 16
+		y = 2
+		completion_reward = {
+			add_timed_idea = {
+				idea = CHI_beiyanggaige_1
+				days = 150
+			}
+		}
+	}
+	focus = {
+		id = AOR_Attract_the_First_Fleet_of_the_Navy
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Xu_Shuzheng_s_Northwest_Mission
+		}
+		prerequisite = {
+			focus = AOR_Jin_Yunpeng_s_Military_Reform
+		}
+		x = 15
+		y = 3
+		completion_reward = {
+			add_political_power = -25
+			navy_experience = 10
+			custom_effect_tooltip = AOR_Attract_the_First_Fleet_of_the_Navy_tt 
+		}
+	}
+	focus = {
+		id = The_concept_of_Tuchun
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_Attract_the_First_Fleet_of_the_Navy
+		}
+		x = 15
+		y = 4
+		completion_reward = {
+			country_event = { id = CHI.27 }
+		}
+	}
+	focus = {
+		id = AOR_Reorganize_the_party_affairs_of_the_Socialist_Party
+		icon = GFX_goal_unknown
+		cost = 5
+		prerequisite = {
+			focus = AOR_Gathering_in_Anfu_Hutong
+		}
+		x = 19
+		y = 1
+		completion_reward = {
+			add_stability = 0.05
+			add_timed_idea = {
+				idea = CHI_zhengdunshehuidangdangwu
+				days = 140
+			}
+		}
+	}
+	focus = {
+		id = AOR_Encore_influential_individuals_with_real_power
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Reorganize_the_party_affairs_of_the_Socialist_Party
+		}
+		x = 18
+		y = 2
+		available = {
+			has_idea = CHI_zhengdunshehuidangdangwu
+		}
+		completion_reward = {
+			add_political_power = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = CHI_zhengdunshehuidangdangwu
+					add_idea = CHI_zhengdunshehuidangdangwu_2
+				}	
+			}
+			hidden_effect = {
+				remove_ideas = CHI_zhengdunshehuidangdangwu
+				add_timed_idea = {
+					idea = CHI_zhengdunshehuidangdangwu_2
+					days = 140
+				}
+			}
+		}
+	}
+	focus = {
+		id = AOR_Unify_the_ideology_within_the_party
+		icon = GFX_goal_unknown
+		cost = 3
+		available = {
+			NOT = {
+				has_idea = CHI_zhengdunshehuidangdangwu_2
+			}
+		}
+		prerequisite = {
+			focus = AOR_Reorganize_the_party_affairs_of_the_Socialist_Party
+		}
+		x = 20
+		y = 2
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = AOR_Recruit_talents_from_the_wilderness
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Encore_influential_individuals_with_real_power
+		}
+		prerequisite = {
+			focus = AOR_Unify_the_ideology_within_the_party
+		}
+		x = 19
+		y = 3
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = AOR_The_government_has_planted_confidants
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Recruit_talents_from_the_wilderness
+		}
+		x = 18
+		y = 4
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = Promulgate_the_Party_Ban_Law
+		icon = GFX_goal_unknown
+		cost = 3
+		available = {
+			date > 1921.8.1
+		}
+		prerequisite = {
+			focus = AOR_Recruit_talents_from_the_wilderness
+		}
+		x = 20
+		y = 4
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = Promulgate_the_Party_Ban_Law_tt
+		}
+	}
+	focus = {
+		id = AOR_To_seek_skin_from_a_tiger
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Gathering_in_Anfu_Hutong
+		}
+		x = 25
+		y = 1
+		completion_reward = {
+			country_event = { id = CHI.17 }
+			add_stability = -0.05
+			custom_effect_tooltip = AOR_To_seek_skin_from_a_tiger_tt
+		}
+	}
+	focus = {
+		id = AOR_A_close_meeting_with_the_transportation_department
+		icon = GFX_goal_unknown
+		cost = 0.00
+		prerequisite = {
+			focus = AOR_To_seek_skin_from_a_tiger
+		}
+		mutually_exclusive = {
+			focus = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		}
+
+		available = {
+			always = no
+		}
+
+		x = 23
+		y = 2
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = Socialization_TO_Socialization
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_A_close_meeting_with_the_transportation_department
+		}
+		x = 22
+		y = 3
+		completion_reward = {
+			add_political_power = -25
+			country_event = { id = CHI.28 }
+		}
+	}
+	focus = {
+		id = AOR_Economic_reform_plan
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_A_close_meeting_with_the_transportation_department
+		}
+		x = 24
+		y = 3
+		completion_reward = {
+			add_political_power = -75
+			country_event = { id = CHI.26 }
+		}
+	}
+	focus = {
+		id = AOR_Bank_of_Communications_s_Generous_Disdain_Relief
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = Socialization_TO_Socialization
+		}
+		prerequisite = {
+			focus = AOR_Economic_reform_plan
+		}
+		x = 23
+		y = 4
+		completion_reward = {
+			add_timed_idea = {
+				idea = jiaotongyinhangdaikuan
+				days = 210
+			}
+		}
+	}
+	focus = {
+		id = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		icon = GFX_goal_unknown
+		cost = 0.00
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = AOR_To_seek_skin_from_a_tiger
+		}
+		mutually_exclusive = {
+			focus = AOR_A_close_meeting_with_the_transportation_department
+		}
+		x = 27
+		y = 2
+		completion_reward = {			
+		}
+	}
+	focus = {
+		id = AOR_Anhui_Fengtian_Secret_Covenant
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		}
+		x = 26
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = AOR_Anhui_Fengtian_Secret_Covenant_tt
+			add_political_power = 50
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = AOR_Japan_Anhui_Friendship_and_Mutual_Aid_Agreement
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		}
+		x = 28
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = AOR_Japan_Anhui_Friendship_and_Mutual_Aid_Agreement_tt
+			add_ideas = riwanhezuo
+			add_offsite_building = { type = arms_factory level = 1 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = AOR_Financial_Suggestions_from_Guisan_Nishihara
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_Anhui_Fengtian_Secret_Covenant
+		}
+		prerequisite = {
+			focus = AOR_Japan_Anhui_Friendship_and_Mutual_Aid_Agreement
+		}
+		x = 27
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = AOR_Financial_Suggestions_from_Guisan_Nishihara_tt
+			add_timed_idea = {
+				idea = xiyuanjiekuan
+				days = 210
+			}
+		}
+	}
+	focus = {
+		id = AOR_engage_in_arms_expansion
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_Northwest_Defense_Law
+		}
+		x = 33
+		y = 1
+		completion_reward = {
+			606 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+			757 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}				
+		}			
+	}
+	focus = {
+		id = AOR_Establish_a_crash_course_for_military_officers
+		icon = GFX_goal_unknown
+		cost = 3
+		prerequisite = {
+			focus = AOR_engage_in_arms_expansion
+		}
+		x = 33
+		y = 2
+		completion_reward = {
+			add_timed_idea = {
+				idea = junguansuchengban
+				days = 140
+			}
+			country_event = { id = CHI.18 }
+		}
+	}
+	focus = {
+		id = AOR_Mongolian_State_of_Emergency_Act
+		icon = GFX_goal_unknown
+		cost = 4
+		prerequisite = {
+			focus = AOR_Establish_a_crash_course_for_military_officers
+		}
+		x = 33
+		y = 3
+		completion_reward = {
+			custom_effect_tooltip = AOR_Mongolian_State_of_Emergency_Act_tt
+			add_stability = -0.05
+			add_war_support = 0.05
+			
+		}
+	}
+	focus = {
+		id = AOR_A_white_blade_never_lets_go
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_Mongolian_State_of_Emergency_Act
+		}
+		x = 31
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = AOR_A_white_blade_never_lets_go_tt
+			add_timed_idea = {
+				idea = qingqifanpanmengguguizu
+				days = 35
+			}
+		}
+	}
+	focus = {
+		id = AOR_Success_in_the_first_battle_victory_in_the_court
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_Chasing_after_the_downfall_and_heading_north_drinking_horses_and_spreading_the_power_of_barbarians
+		}
+		x = 0
+		y = 4
+		completion_reward = {
+			add_war_support = 0.1
+			army_experience = 25
+		}
+	}
+	focus = {
+		id = AOR_Memorandum_of_Understanding_on_Northwest_Affairs_between_China_and_the_Soviet_Union
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_Success_in_the_first_battle_victory_in_the_court
+			focus = AOR_Take_shelter_from_the_sharp_edge_he_will_report_in_the_future
+		}
+		x = 3
+		y = 5
+		completion_reward = {
+			news_event = {id = AOR_news.166}
+			RUS = {
+				transfer_state = 930
+			}
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = AOR_Stable_Jingzhao
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = The_concept_of_Tuchun
+		}
+		x = 15
+		y = 5
+		completion_reward = {
+			army_experience = 5
+			custom_effect_tooltip = AOR_Stable_Jingzhao_tt
+		}
+	}
+	focus = {
+		id = AOR_Interception_of_aid_from_foreign_powers
+		icon = GFX_goal_unknown
+		cost = 2
+		prerequisite = {
+			focus = AOR_The_government_has_planted_confidants
+		}
+		x = 18
+		y = 5
+		completion_reward = {
+			add_political_power = -50
+			unlock_decision_category_tooltip = AOR_Interception_of_aid_from_foreign_powers
+		}
+	}
+	focus = {
+		id = AOR_Influence_Congress
+		icon = GFX_goal_demand_sudetenland
+		cost = 2
+		prerequisite = {
+			focus = Promulgate_the_Party_Ban_Law
+		}
+		available = {
+			has_completed_focus = AOR_A_close_meeting_with_the_transportation_department
+			has_completed_focus = AOR_Close_talks_between_Japan_Anhui_and_Fengtian
+		}
+		x = 20
+		y = 5
+		completion_reward = {
+			add_political_power = -50
+			add_to_variable = {
+				var = SOCP_Representatives_seat_var
+				value = 25
+			}
+
+		}
+	}
+	focus = {
+		id = AOR_CLEAR_cage_to_exchange_birds
+		icon = GFX_goal_unknown
+		cost = 2
+		available = {
+			NOT = {
+				has_idea = qingqifanpanmengguguizu
+			}
+		}
+		prerequisite = {
+			focus = AOR_Mongolian_State_of_Emergency_Act
+		}
+		x = 35
+		y = 4
+		completion_reward = {
+			custom_effect_tooltip = AOR_CLEAR_cage_to_exchange_birds_tt
+			add_ideas = mengguniudai
+		}
+	}
+}

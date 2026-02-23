@@ -1,0 +1,262 @@
+#波斯事件
+
+add_namespace = per
+
+
+#国殇
+country_event = { 
+	id = per.0
+	title = per.0.t
+	desc = per.0.d
+	picture = ""
+	trigger = {
+		date > 1919.8.1
+		tag = PER
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+	option = { 
+		name = per.0.a  #多灾多难
+		complete_national_focus = PER_a_national_martyr_0
+	}
+}
+#战后问题会议事件链
+country_event = {  #战后会议召开
+	id = per.1
+	title = per.1.t
+	desc = per.1.d
+	picture = ""
+	is_triggered_only = yes 
+	trigger = {
+		tag = PER
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = { hidden_effect = { country_event = { id = per.2 days = 4 } } } 
+	option = { 
+		name = per.1.a  #大会开始
+	}
+}
+country_event = {  #对于战后国内形势的讨论
+	id = per.2
+	title = per.2.t
+	desc = per.2.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.3 days = 4 } } } 
+	option = { 
+		name = per.2.a
+	}
+}
+country_event = {  #关于重建工作的讨论
+	id = per.3
+	title = per.3.t
+	desc = per.3.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.4 days = 4 } } } 
+	option = { 
+		name = per.3.a
+	}
+}
+country_event = {  #关于下一步行动的争吵
+	id = per.4
+	title = per.4.t
+	desc = per.4.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.5 days = 4 } } } 
+	option = { 
+		name = per.4.a
+	}
+}
+country_event = {  #大会结束！
+	id = per.5
+	title = per.5.t
+	desc = per.5.d
+	picture = ""
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 15
+	}
+	option = { 
+		name = per.5.a
+		complete_national_focus = PER_Preliminary_government_reform_6
+		complete_national_focus = PER_Northern_Reconstruction_2
+		complete_national_focus = PER_Conference_on_Postwar_Issues_1
+	}
+}
+#战后问题会议结束
+
+country_event = {  #损失统计的结果
+	id = per.6
+	title = per.6.t
+	desc = per.6.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.6.a
+	}
+}
+country_event = {  #农业部
+	id = per.7
+	title = per.7.t
+	desc = per.7.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.8 days = 8 } } } 
+	option = { 
+		name = per.7.a
+	}
+}
+country_event = { #农业部拟定对抗饥荒的方案
+	id = per.8
+	title = per.8.t
+	desc = per.8.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.8.a
+	}
+}
+country_event = { #波斯的土地问题
+	id = per.9
+	title = per.9.t
+	desc = per.9.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.9.a
+	}
+}
+country_event = { #通胀委员会
+	id = per.10
+	title = per.10.t
+	desc = per.10.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.10.a
+	}
+}
+country_event = { #贪腐圣战
+	id = per.11
+	title = per.11.t
+	desc = per.11.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.11.a
+	}
+}
+country_event = { #政府机构的混乱
+	id = per.12
+	title = per.12.t
+	desc = per.12.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.12.a
+	}
+}
+country_event = { #军队现状
+	id = per.13
+	title = per.13.t
+	desc = per.13.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.13.a
+	}
+}
+#吉兰苏维埃事件链
+country_event = { #勘探团队的报告
+	id = per.14
+	title = per.14.t
+	desc = per.14.d
+	picture = ""
+	trigger = {
+		date > 1919.8.18
+		tag = PER
+	}
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.15 days = 4 } } } 
+	option = { 
+		name = per.14.a
+	}
+}
+country_event = { #施工队的报告
+	id = per.15
+	title = per.15.t
+	desc = per.15.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.16 days = 4 } } } 
+	option = { 
+		name = per.15.a
+	}
+}
+country_event = { #是游击队
+	id = per.16
+	title = per.16.t
+	desc = per.16.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.17 days = 4 } } } 
+	option = { 
+		name = per.16.a
+	}
+}
+country_event = { #俄语的小册子
+	id = per.17
+	title = per.17.t
+	desc = per.17.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { country_event = { id = per.18 days = 4 } } } 
+	option = { 
+		name = per.17.a
+	}
+}
+country_event = { #吉兰已不在我们掌控中
+	id = per.18
+	title = per.18.t
+	desc = per.18.d
+	picture = ""
+	is_triggered_only = yes
+	option = { 
+		name = per.18.a
+	}
+}
+country_event = { #俄国赤色异教徒登陆恩泽利
+	id = per.19
+	title = per.19.t
+	desc = per.19.d
+	picture = ""
+	trigger = {
+		date > 1920.5.2
+		tag = PER
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+	immediate = { hidden_effect = { country_event = { id = per.20 days = 30 } } } 
+	option = { 
+		name = per.19.a
+	}
+}
+country_event = { #波斯苏维埃共和国宣告成立
+	id = per.20
+	title = per.20.t
+	desc = per.20.d
+	picture = ""
+	is_triggered_only = yes
+	immediate = { hidden_effect = { PSR_666 = YES 420 = { set_demilitarized_zone = no } } } 
+	option = { 
+		name = per.20.a
+	}
+}

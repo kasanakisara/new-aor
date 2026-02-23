@@ -1,0 +1,435 @@
+﻿add_namespace = Finland
+
+country_event = {
+	id = Finland.1 #芬兰对峙
+	title = fin.break.t
+	desc = fin.break.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	fire_only_once = yes
+	mean_time_to_happen = { days = 0 }
+	trigger = {
+	    tag = FIN
+	    check_variable = { stability < 0.3 }
+		NOT = {
+			has_country_flag = FIN_civilwar
+		}
+	}
+	
+	timeout_days = 7
+
+    option = { 
+		name = it_begins
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			FIC = {
+				add_ideas = Great_War_Zone
+				transfer_state = 111
+				transfer_state = 146
+				add_state_core = 111
+				add_state_core = 146
+				add_manpower = 10000
+				if = {
+					limit = { NOT = { has_template = "Common Militia" } }
+					division_template = {
+						priority = 0
+						name = "Common Militia"
+						regiments = {
+							infantry = { x = 0 y = 0 } 
+							infantry = { x = 0 y = 1 } 
+							infantry = { x = 1 y = 0 } 
+							infantry = { x = 1 y = 1 } 
+						}
+						support = {}
+					}
+					random_controlled_state = {
+						limit = { is_capital = yes }
+						create_unit = {
+							division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+							owner = PREV
+							count = 1
+						}
+					}
+				}
+				set_country_flag = FIN_civilwar
+			}
+			FIN = {
+				set_capital = {
+					state = 147
+				}
+				division_template = {
+					priority = 0
+					name = "Common Militia"
+					regiments = {
+						infantry = { x = 0 y = 0 } 
+						infantry = { x = 0 y = 1 } 
+						infantry = { x = 1 y = 0 } 
+						infantry = { x = 1 y = 1 } 
+					}
+					support = {}
+				}
+				random_controlled_state = {
+					limit = { is_capital = yes }
+					create_unit = {
+						division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = PREV
+						count = 1
+					}
+				}
+				set_politics = {
+					ruling_party = Absolutism
+					last_election = "1919.7.1"
+					election_frequency = 36
+					elections_allowed = no
+				}
+				set_popularities = {
+					Absolutism = 85
+					Fascism = 0
+					Marxism = 0
+					AUT_democratic = 15
+				}
+				delete_unit_template_and_units = {
+					division_template = "Nation Militia Elite"
+					disband = yes 
+				}
+				delete_unit_template_and_units = {
+					division_template = "cavalery division"
+					disband = yes 
+				}
+				set_country_flag = FIN_civilwar
+			}
+			SWE = {
+				country_event = { id = Finland.5  days = 5 }
+			}
+			news_event = { id = AOR_news.28 }
+		}
+	}
+}
+		
+
+
+country_event = {
+		id = Finland.2 #芬兰内战
+		title = fin.civil.t
+		desc = fin.civil.d
+		picture = GFX_report_event_chinese_soldiers_fighting
+	
+		fire_only_once = yes
+		mean_time_to_happen = { days = 1 }
+	
+		trigger = {
+			tag = FIN
+			check_variable = { stability < 0.2 }
+			has_country_flag = FIN_civilwar
+		}
+		
+		timeout_days = 7
+	
+
+		option = { 
+			name = bring_it_on_commy
+			ai_chance = { factor = 30 }
+			hidden_effect = {
+				FIC = {
+					declare_war_on = {
+						target = FIN
+						type = civil_war
+					}
+					111 = {
+						create_unit = {
+							division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.5"
+							owner = FIC
+							count = 10
+						}
+					}
+				}
+				FIN = {
+					remove_ideas = An_unstable_republic
+					set_politics = {
+						ruling_party = Absolutism
+						last_election = "1919.7.1"
+						election_frequency = 36
+						elections_allowed = no
+					}
+					set_popularities = {
+						Absolutism = 85
+						Fascism = 0
+						Marxism = 0
+						AUT_democratic = 15
+					}
+					147 = {
+						create_unit = {
+							division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+							owner = FIN
+							count = 7
+						}
+					}
+				}
+				news_event = { id = AOR_news.193 }	
+		}
+	}
+        
+		option = { 
+			name = Long_live_the_proletariat
+			ai_chance = { factor = 70 }
+			FIC = { change_tag_from = FIN }
+			hidden_effect = {
+				FIC = {
+					declare_war_on = {
+						target = FIN
+						type = civil_war
+					}
+					111 = {
+						create_unit = {
+							division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+							owner = PREV
+							count = 10
+						}
+					}	
+				}
+				FIN = {
+					remove_ideas = An_unstable_republic
+					set_politics = {
+						ruling_party = Absolutism
+						last_election = "1919.7.1"
+						election_frequency = 36
+						elections_allowed = no
+					}
+					set_popularities = {
+						Absolutism = 85
+						Fascism = 0
+						Marxism = 0
+						AUT_democratic = 15
+					}
+					147 = {
+						create_unit = {
+							division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+							owner = PREV
+							count = 8
+						}
+				    }	
+				}
+				news_event = { id = AOR_news.193 }		
+			}
+		}
+    }
+	
+
+country_event = {
+	id = Finland.3 #白热化
+	title = Finland.3.t
+	desc = Finland.3.d
+	picture = GFX_report_event_chinese_soldiers_fighting 
+
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+
+		trigger = {
+			original_tag = FIN
+			surrender_progress > 0.2 
+			has_war_with = FIC
+			has_country_flag = FIN_civilwar
+		}
+
+		timeout_days = 7
+
+	option = { 
+		name = Kolchak_may_help_us 
+    	ai_chance = { add = 8 }
+	   	ARU = { add_to_faction = FIN }
+	    	FIN = {
+				add_to_war = {
+					targeted_alliance = ARU
+					enemy = RUS
+				}
+	    	}
+	    	RUS = { add_to_faction = FIC }
+	     	FIC = {
+       		add_to_war = {
+					targeted_alliance = RUS
+					enemy = ARU
+				}
+	    	}
+			news_event = { id = AOR_news.196 }
+	    }
+	option = { 
+		name = Russians_are_always_our_biggest_enemy
+        ai_chance = { add = 2 }
+	    	FIN = {
+	        	147 = {
+	        		create_unit = {
+						division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+						owner = PREV
+						count = 2
+	    			}
+	        	}
+            }
+        }
+    }
+country_event = {
+	id = Finland.4 #内战结束的事件
+	title = Finland.4.t
+	desc = Finland.4.d
+	picture = GFX_report_event_chinese_soldiers_fighting 
+
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+
+		trigger = {
+			OR = {
+				FIN = { exists = no }
+				FIC = { exists = no } 
+			}
+			OR = {
+				tag = FIN
+				tag = FIC
+			}
+			has_country_flag = FIN_civilwar
+		}
+    	option = {
+	    	name = The_civil_war_is_over 
+            ai_chance = { factor = 80 }
+			RUS = { set_country_flag = FIN_The_civil_war_is_over }
+			set_country_flag = The_civil_war_is_over
+			add_stability = 0.1
+			add_political_power = 30
+			clr_country_tag = FIN_civilwar
+			if = {
+				limit = { FIC = { exists = yes } }
+				news_event = { id = AOR_news.194 }
+			}
+			else = {
+				news_event = { id = AOR_news.195 }
+			}
+			if = {
+				limit = {
+					has_global_flag = AOR_USSR_formed_global_flag
+				}
+				set_cosmetic_tag = FIC_Finland_Soviet
+				RUS = {
+					set_autonomy = { 
+						target = FIC 
+						autonomy_state = AOR_SOV_Closely_executed_alliance
+					}
+				}
+			}
+        }
+}
+
+country_event = {
+	id = Finland.5 #瑞典入侵奥兰
+	title = Finland.5.t
+	desc = Finland.5.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+	is_triggered_only = yes
+	option = {
+		name = Finland.5.a
+		SWE = {
+			transfer_state = 145
+		}
+		145 = {
+			set_demilitarized_zone = no
+		}
+		hidden_effect = {
+			news_event = { id = AOR_news.192 }
+		}
+		custom_effect_tooltip = AOR_news_192_tt
+	}
+}
+
+country_event = {
+	id = Finland.6 #红芬兰打不过了
+	title = Finland.6.t
+	desc = Finland.6.d
+	picture = GFX_report_event_chinese_soldiers_fighting 
+
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+
+		trigger = {
+			original_tag = FIC
+			surrender_progress > 0.2 
+			has_war_with = FIN
+			has_country_flag = FIN_civilwar
+		}
+
+		timeout_days = 7
+
+	option = { 
+		name = RUSSIANS_may_help_us 
+    	ai_chance = { add = 9 }
+	   	ARU = { add_to_faction = FIN }
+	    	FIN = {
+				add_to_war = {
+					targeted_alliance = ARU
+					enemy = RUS
+				}
+	    	}
+	    	RUS = { add_to_faction = FIC }
+	     	FIC = {
+       		add_to_war = {
+					targeted_alliance = RUS
+					enemy = ARU
+				}
+	    	}
+			news_event = { id = AOR_news.196 }
+	    }
+	option = { 
+		name = Russians_are_always_our_biggest_enemy
+        ai_chance = { add = 1 }
+	    	FIC = {
+	        	random_controlled_state = {
+					limit = {
+						is_capital = yes
+					}
+					PREV = {
+	        		create_unit = {
+						division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+						owner = PREV
+						count = 2
+	    			}
+	        	}
+				}
+            }
+        }
+    }

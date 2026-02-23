@@ -1,0 +1,115 @@
+AOR_turkish_straits_game_category = {
+	IST_debug_leaning_FRA = {
+
+		icon = GFX_AOR_ENG_anfudangdiminzhonng
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			set_variable = {
+				var:global.AOR_turkish_straits_game_Progressbar_var = 0
+			}
+			set_variable = {
+				var:global.AOR_turkish_straits_game_antiside_var = 100
+			}
+		}
+
+	}
+
+	IST_debug_leaning_ENG = {
+
+		icon = GFX_AOR_ENG_anfudangdiminzhonng
+
+		cost = 0
+		days_remove = 0
+
+		fire_only_once = no
+		days_re_enable = 0
+
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			set_variable = {
+				var:global.AOR_turkish_straits_game_Progressbar_var = 100
+			}
+			set_variable = {
+				var:global.AOR_turkish_straits_game_antiside_var = 0
+			}
+		}
+
+	}
+
+	IST_fake_mission_countdown = {
+		allowed = {
+			always = no
+		}
+
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes 
+
+		days_mission_timeout = 365
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout IST_fake_mission_countdown"
+			custom_effect_tooltip = IST_fake_mission_countdown_tt
+		}
+	}
+	
+	TUR_diplomatic_petitioning_decision = {
+		visible = {
+			original_tag = TUR
+	   	}
+		complete_effect = {
+		}
+	   	remove_effect = {
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_Progressbar_var = 0.5
+			}
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_antiside_var = -0.5
+			}
+			custom_effect_tooltip = AOR_Turkish_Straits_race_turkish_leaning_tt
+		}
+	   	cost = 15
+	   	days_remove = 30
+	}
+	
+	TUR_present_bloody_evidence_decision = {
+		visible = {
+			original_tag = TUR
+	   	}
+		complete_effect = {
+			add_manpower = -75
+			add_stability = -0.01
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.005
+			}
+		}
+	   	remove_effect = {
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_Progressbar_var = 2
+			}
+			add_to_variable = {
+				var:global.AOR_turkish_straits_game_antiside_var = -2
+			}
+			custom_effect_tooltip = AOR_Turkish_Straits_race_turkish_leaning_tt
+		}
+	   	cost = 20
+	   	days_remove = 45
+	}
+}

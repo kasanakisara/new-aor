@@ -1,0 +1,767 @@
+
+#解决混乱
+
+add_namespace = SAX
+
+
+country_event = {
+	id = SAX.0
+	title = SAX.0.t
+	desc = SAX.0.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = SAX.0.a
+		
+		}
+    }
+country_event = {
+	id = SAX.1
+	title = SAX.1.t
+	desc = SAX.1.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	option = { 
+        name = SAX.1.a
+		create_country_leader = {
+					name = "Fallen govement"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/SAX_fallen_goverment.png
+					expire = "1965.1.1"
+					ideology = authoritarianism
+					traits = {
+						
+					}
+				}
+		set_politics = {
+        ruling_party = AUT_democratic
+		}
+		country_event = { days = 15 id = SAX.2 }
+		}
+
+    }
+	
+	country_event = {
+	id = SAX.2
+	title = SAX.2.t
+	desc = SAX.2.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.2.a
+		create_country_leader = {
+					name = "重生委员会"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/SAX_reborn.png
+					expire = "1965.1.1"
+					ideology = authoritarianism
+					traits = {
+						
+					}
+				}
+				country_event = { id = SAX.3 }
+		}
+    }
+	news_event = {
+	id = SAX.3
+	title = SAX.3.t
+	desc = SAX.3.d
+	picture = GFX_news_event_001
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	
+	option = { 
+        name = SAX_3.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.4
+	title = SAX.4.t
+	desc = SAX.4.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.4.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.5
+	title = SAX.5.t
+	desc = SAX.5.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.5.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.6
+	title = SAX.6.t
+	desc = SAX.6.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.6.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.7
+	title = SAX.7.t
+	desc = SAX.7.d
+	picture = GFX_news_event_001
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.7.a
+		set_country_flag = SAX_Marxism_election_flag
+		hidden_effect = {
+		kill_country_leader = yes
+		set_politics = {
+        ruling_party = marxism
+		}
+		remove_ideas = exp_of_kautsky
+		set_variable = { 
+	    var = SAX.wolf
+	    value = 2
+}
+		set_variable = { 
+	    var = SAX.liebknecht
+	    value = 4
+}
+clamp_variable = {
+    var = SAX.wolf
+    min = 0
+	max = 100
+}
+clamp_variable = {
+    var = SAX.liebknecht
+    min = 0
+	max = 100
+}
+		}
+	}
+		option = { 
+        name = SAX.7.b
+		hidden_effect = {
+		complete_national_focus = SAX_kautsky_back
+		remove_ideas = SAX_red_guerilla
+		remove_ideas = SAX_for_welfare_of_the_workers
+		}
+	}
+    }
+	country_event = {
+	id = SAX.8
+	title = SAX.8.t
+	desc = SAX.8.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.8.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.9
+	title = SAX.9.t
+	desc = SAX.9.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.9.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.10
+	title = SAX.10.t
+	desc = SAX.10.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.10.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.11
+	title = SAX.11.t
+	desc = SAX.11.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.11.a
+		
+		}
+    }
+	country_event = {
+	id = SAX.12
+	title = SAX.12.t
+	desc = SAX.12.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	
+	option = { 
+        name = SAX.12.a
+		
+		}
+		option = { 
+        name = SAX.12.b
+		declare_war_on = { 
+		target = SAX
+		type = civil_war
+		 }
+		}
+    }
+	country_event = {
+	id = SAX.13 #协约国联合制裁
+	title = SAX.13.t
+	desc = SAX.13.d
+	picture = GFX_report_event_german_speech
+	
+	
+	trigger = {
+	OR = {
+	AND = {
+	tag = GER 
+	    GER = { 
+		has_army_manpower = { size > 150000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = SIL
+	    SIL = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = MEK
+	    MEK = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = KSH
+	    KSH = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = WUR
+	    WUR = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = SHL
+	    SHL = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = PRE 
+	    PRE = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = HAN
+	    HAN = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+	}
+		AND = {
+		tag = SAX
+		SAX = { 
+		has_army_manpower = { size > 50000 }
+		is_ai = no
+		}
+		 date < 1923.1.1
+    }
+}
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SAX.13.a
+		if = {
+			limit = {
+				tag = GER
+			}
+			custom_effect_tooltip = GER_punishment_berlin_tt
+		}
+		else = {
+			custom_effect_tooltip = GER_punishment_tt
+		}
+		add_ideas = SAX_punishment
+	}
+		
+}
+	country_event = {
+	id = SAX.14 #解除制裁
+	title = SAX.14.t
+	desc = SAX.14.d
+	picture = GFX_report_event_german_speech
+	
+	
+	trigger = {
+	OR = {
+	AND = {
+	tag = GER 
+		GER = { 
+		has_army_manpower = { size < 150000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = SIL
+		SIL = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = MEK
+		MEK = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = KSH
+		KSH = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = WUR
+		WUR = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = SHL
+		SHL = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = PRE
+		PRE = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = HAN
+		HAN = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+	AND = {
+	tag = SAX
+		SAX = { 
+		has_army_manpower = { size < 50000 }
+		has_idea = SAX_punishment
+		is_ai = no
+		}
+	}
+    
+}
+		
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SAX.14.a
+		remove_ideas = SAX_punishment
+		}
+		
+    }
+	country_event = {
+	id = SAX.15
+	title = SAX.15.t
+	desc = SAX.15.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	option = { 
+        name = SAX.15.a
+		add_popularity = {
+		ideology = AUT_democratic
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = AUT_democratic
+		}
+	  create_country_leader = {
+	name = "karl·Rudolf·Heinze"
+	desc = ""
+	picture = gfx/leaders/SAX/heinze.png
+	expire = "1965.1.1"
+	ideology = authoritarianism
+	traits = {
+	}
+}
+		}
+    option = { 
+        name = SAX.15.b
+		add_popularity = {
+		ideology = CON_democratic
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = CON_democratic
+		}
+	  create_country_leader = {
+	name = "Wilhelm·bunger"
+	desc = ""
+	picture = gfx/leaders/SAX/bunger.png
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
+}
+		}
+	option = { 
+        name = SAX.15.c
+		add_popularity = {
+		ideology = FRE_democratic
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = FRE_democratic
+		}
+	   create_country_leader = {
+					name = "wihelm Cuno"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/TROUS.png
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						
+					}
+				}
+		}
+		option = { 
+        name = SAX.15.e
+		country_event = { id = SAX.20}
+		}
+    }
+	country_event = {
+	id = SAX.16
+	title = SAX.16.t
+	desc = SAX.16.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	option = { 
+        name = SAX.16.a
+		SAX = { 
+		transfer_state = 807
+	    transfer_state = 86
+		}
+		}
+    option = { 
+        name = SAX.16.b
+		ai_chance = {
+		base = 0
+		}
+		declare_war_on = { 
+		target = SAX
+		type = civil_war 
+		 }
+		}
+    }
+	country_event = {
+	id = SAX.17
+	title = SAX.17.t
+	desc = SAX.17.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	
+	option = { 
+        name = SAX.17.a
+		add_popularity = {
+		ideology = PAR_socialism
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = PAR_socialism
+		}
+	   create_country_leader = {
+					name = "Erich· Zeigner"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/Zeigner.png
+					expire = "1965.1.1"
+					ideology = councilism
+					traits = {
+						
+					}
+				}
+		}
+    option = { 
+        name = SAX.17.b
+		add_popularity = {
+		ideology = PAR_socialism
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = PAR_socialism
+		}
+	   create_country_leader = {
+					name = "Robert·Richard·Lipinski"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/robert.png
+					expire = "1965.1.1"
+					ideology = councilism
+					traits = {
+						
+					}
+				}
+		}
+	option = { 
+        name = SAX.17.c
+		add_popularity = {
+		ideology = PAR_socialism
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = PAR_socialism
+		}
+	   create_country_leader = {
+					name = "Rudolf·Breitscheid"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/Rudolf_Breitscheid.png
+					expire = "1965.1.1"
+					ideology = councilism
+					traits = {
+						
+					}
+				}
+		}
+		option = { 
+        name = SAX.17.e
+		add_popularity = {
+		ideology = SOC_democratic
+		popularity = 0.65
+		}
+			set_politics = {
+        ruling_party = SOC_democratic
+		}
+	   create_country_leader = {
+					name = "Johann Georg"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/johann_georg.png
+					expire = "1965.1.1"
+					ideology = demsoc
+					traits = {
+						
+					}
+				}
+		}
+	}
+	country_event = {
+	id = SAX.18
+	title = SAX.18.t
+	desc = SAX.18.d
+	picture = GFX_news_event_germany_victory
+	
+	
+	fire_only_once = yes
+	
+	trigger = {
+		SAX = { 
+		owns_state = 66
+		owns_state = 840
+		owns_state = 871
+		owns_state = 61
+		owns_state = 858
+		owns_state = 50
+		owns_state = 52
+		owns_state = 853
+		owns_state = 58
+		}
+		original_tag = SAX
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = SAX.18.a
+		
+		}
+}
+country_event = {
+	id = SAX.19
+	title = SAX.19.t
+	desc = SAX.19.d
+	picture = GFX_report_event_german_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+	has_country_leader = { ruling_only = yes name = "Karl Kautsky" }
+	date > 1923.1.1
+	tag = SAX
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SAX.19.a
+		add_country_leader_trait = old_figurehead
+		}
+	option = { 
+        name = SAX.19.b
+		create_country_leader = {
+					name = "Wilhelm Buck"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/wilhelm_buck.png
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						
+					}
+				}
+		}
+		
+		option = { 
+        name = SAX.19.c
+		create_country_leader = {
+					name = "Georg Grandnauer"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = gfx/leaders/SAX/georg_grandnauer.png
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						
+					}
+				}
+		}
+    }
+	country_event = {
+	id = SAX.20
+	title = SAX.20.t
+	desc = SAX.20.d
+	picture = GFX_report_event_german_speech
+	
+     is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SAX.20.a
+		
+		}
+		option = { 
+        name = SAX.20.b
+		country_event = { id = SAX.17 }
+		}
+    } 
+
+	
+		
+			

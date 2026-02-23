@@ -1,0 +1,1569 @@
+add_namespace = BAV
+add_namespace = BAV_L
+#倍倍尔的教导#
+country_event = {
+	id = BAV.1
+	title = BAV.1.t
+	desc = BAV.1.d
+	picture = GFX_BAV.1_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.1.a
+		add_political_power = 1
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		set_country_flag = BAV.bb.come
+		  add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#一场噩梦#
+country_event = {
+	id = BAV.2
+	title = BAV.2.t
+	desc = BAV.2.d
+	picture = GFX_BAV.2_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.2.a
+	}
+}
+
+#倍倍尔逝世#
+country_event = {
+	id = BAV.3
+	title = BAV.3.t
+	desc = BAV.3.d
+	picture = GFX_BAV.3_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.3.a
+		kill_country_leader = yes
+		promote_character = {
+			character = BAV_Mehring
+			ideology = revolutionism
+		}
+		hidden_effect = {
+			load_focus_tree = BAV_2
+			set_country_flag = BAV.belel.dead
+			complete_national_focus = BAV_The_pioneer_has_passed_away
+		}
+	}
+}
+
+#共产国际的电报#
+country_event = {
+	id = BAV.4
+	title = BAV.4.t
+	desc = BAV.4.d
+	picture = GFX_BAV.4_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.4.a
+	}
+}
+
+#卢森堡的见闻#
+country_event = {
+	id = BAV.6
+	title = BAV.6.t
+	desc = BAV.6.d
+	picture = GFX_BAV.16_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.6.a
+	}
+}
+
+#妇女的解放 
+country_event = {
+	id = BAV.7
+	title = BAV.7.t
+	desc = BAV.7.d
+	picture = GFX_BAV.11_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.7.a
+	}
+}
+
+#李卜克内西的一日
+country_event = {
+	id = BAV.8
+	title = BAV.8.t
+	desc = BAV.8.d
+	picture = GFX_BAV.17_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.8.a
+	}
+}
+
+#检测180天后修正德国革命创伤
+country_event = {
+	id = BAV.9
+	title = BAV.9.t
+	desc = BAV.9.d
+	picture = GFX_BAV.9_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					has_idea = BAV_a_deep_cut_from_revolution_2
+				}
+			}
+			swap_ideas = {
+				remove_idea = BAV_a_deep_cut_from_revolution
+				add_idea = BAV_a_deep_cut_from_revolution_1
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = BAV_a_deep_cut_from_revolution_2
+				add_idea = BAV_a_deep_cut_from_revolution_3
+			}
+		}
+	}
+	option = {
+		name = BAV.9.a
+	}
+}
+
+#会址
+country_event = {
+	id = BAV.10
+	title = BAV.10.t
+	desc = BAV.10.d
+	picture = GFX_BAV.10_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.10.a
+	}
+}
+
+#巴伐利亚-符腾堡苏维埃+南石荷苏维埃！！！！！！！！！！！！！
+country_event = {
+	id = BAV.11
+	title = BAV.11.t
+	desc = BAV.11.d
+	picture = GFX_BAV.11_pic
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = GERMAN_disintegrated
+		original_tag = BAV
+	}
+	option = {
+		name = BAV.11.a
+		ai_chance = {
+			base= 10
+		}
+		create_faction = German_Revolutionary_League
+		BAV = {
+			add_to_faction = SHL
+		}
+	}
+}
+
+#柏林政府+波美+西里西亚
+country_event = {
+	id = BAV.12
+	title = BAV.12.t
+	desc = BAV.12.d
+	picture = GFX_AOR_telegram_pic
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = GERMAN_disintegrated
+		original_tag = GER
+	}
+	option = {
+		name = BAV.12.a
+		ai_chance = {
+			base= 10
+		}
+		create_faction = new_German_Confederation
+		GER = {
+			add_to_faction = SIL
+		}
+		GER = {
+			add_to_faction = KSH
+		}
+	}
+}
+
+#对法兰克福和柏林，统统宣战！！！！！！！！(拉狄克除外 ）
+country_event = {
+	id = BAV.13
+	title = BAV.13.t
+	desc = BAV.13.d
+	picture = GFX_BAV.13_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV.13.a
+		trigger = {
+			NAU = {
+				not = {
+					has_country_leader = {
+						ruling_only = yes
+						name = "Karl Radek"
+					}
+				}
+				OR = {
+					not = {
+						has_country_leader = {
+							ruling_only = yes
+							name = "Eduard Bernstein"
+						}
+					}
+				}
+			}
+		}
+		declare_war_on = {
+			target = GER
+			type = civil_war
+		}
+		declare_war_on = {
+			target = NAU
+			type = civil_war
+		}
+	}
+	option = {
+		name = BAV.13.b
+		trigger = {
+			NAU = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Karl Radek"
+				}
+			}
+		}
+		declare_war_on = {
+			target = GER
+			type = civil_war
+		}
+		declare_war_on = {
+			target = HAN
+			type = civil_war
+		}
+		NAU = {
+			give_military_access = BAV
+		}
+		BAV = {
+			give_military_access = NAU
+		}
+	}
+
+	option = {
+		name = BAV.13.c
+		trigger = {
+			NAU = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Eduard Bernstein"
+				}
+			}
+		}
+		declare_war_on = {
+			target = GER
+			type = civil_war
+		}
+		declare_war_on = {
+			target = HAN
+			type = civil_war
+		}
+	}
+}
+
+#给符腾堡的信
+country_event = {
+	id = BAV.14
+	title = BAV.14.t
+	desc = BAV.14.d
+	picture = GFX_BAV.cafe_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.14.a
+		WUR = { 
+			country_event = {
+				days = 1
+				id = BAV.19
+			}
+		}
+		
+	}
+}
+
+#欧根·莱文
+country_event = {
+	id = BAV.15
+	title = BAV.15.t
+	desc = BAV.15.d
+	picture = GFX_BAV.7_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.15.a
+		remove_trait = {
+					character = Eugen_Levine
+					slot = political_advisor
+					trait = forever_fighter
+				}
+		add_trait = {
+					character = Eugen_Levine
+					slot = political_advisor
+					trait = forever_fighter_1
+			   }
+	}
+}
+
+#纪律的重要性(缺少文案）
+country_event = {
+	id = BAV.16
+	title = BAV.16.t
+	desc = BAV.16.d
+	picture = GFX_BAV.13_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.16.a
+	}
+}
+
+#战鼓渐进
+country_event = {
+	id = BAV.17
+	title = BAV.17.t
+	desc = BAV.17.d
+	picture = GFX_BAV.2_pic
+	mean_time_to_happen = {
+		days = 1
+	}
+	trigger = {
+		date > 1922.12.1
+		tag = BAV
+	}
+	fire_only_once = yes
+	option = {
+		name = BAV.17.a
+		hidden_effect = {
+			set_country_flag = BAV.RUS.mention
+			mark_focus_tree_layout_dirty = yes
+			complete_national_focus = BAV_Knock_the_alarm_bell
+		}
+	}
+}
+
+#给符腾堡的信-同意
+country_event = {
+	id = BAV.18
+	title = BAV.18.t
+	desc = BAV.18.d
+	picture = GFX_BAV.cafe_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.18.a
+		annex_country = {
+			target = WUR
+			transfer_troops = yes
+		}
+		custom_effect_tooltip = BAV.focus.ene.wur.3.tt
+	}
+}
+
+#给符腾堡的信-符腾堡视角
+country_event = {
+	id = BAV.19
+	title = BAV.19.t
+	desc = BAV.19.d
+	picture = GFX_BAV.19_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.19.a  #同意
+		ai_chance = {
+			factor = 50
+			modifier={
+				factor = 1.4
+				WUR = { Marxism > 0.5 }
+			}
+			modifier={
+				factor = 1.3
+				BAV = { 
+					check_variable = {
+						Bebel_Trust > 50
+					}
+				} 
+			}
+		}
+		BAV = { 
+			country_event = {
+				days = 7
+				id = BAV.18
+			}
+		}
+	}
+
+	option = {
+		name = BAV.19.b  #拒绝
+		ai_chance = {
+			factor = 50
+		}	
+		BAV = { 
+			country_event = {
+				days = 7
+				id = BAV.20 
+			}
+		}
+		BAV = {will_lead_to_war_with = WUR}
+	}
+}
+
+#给符腾堡的信-拒绝
+country_event = {
+	id = BAV.20
+	title = BAV.20.t
+	desc = BAV.20.d
+	picture = GFX_BAV.13_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.20.a
+		BAV = {create_wargoal = { target = WUR type = Ger_civil_war_bav } }
+		custom_effect_tooltip = BAV.focus.ene.wur.2.tt
+	}
+}
+
+#煽动萨克森起义
+country_event = {
+	id = BAV.21
+	title = BAV.21.t
+	desc = BAV.21.d
+	picture = GFX_BAV.21_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.21.a
+		set_politics = { ruling_party = Marxism } 
+		SAX = {set_cosmetic_tag = BAV_SAX_1}
+		BAV = {	
+			set_autonomy = { 
+				target = SAX 
+				autonomy_state = AOR_SOV_Closely_executed_alliance
+			}
+		}
+	}
+}
+
+#这就是民主
+country_event = {
+	id = BAV.50
+	title = BAV.50.t
+	desc = BAV.50.d
+	picture = GFX_BAV.50_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.50.a
+	}
+}
+
+#####思想革命！非梦
+country_event = {
+	id = BAV.51
+	title = BAV.51.t
+	desc = BAV.51.d
+	picture = GFX_BAV.51_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.51.a
+		hidden_effect = {
+			country_event = {
+				days = 1
+				id = BAV.53
+			}
+		}
+	}
+}
+
+#德意志社会主义联邦成立
+country_event = {
+	id = BAV.52
+	title = BAV.52.t
+	desc = BAV.52.d
+	picture = GFX_BAV.52_pic
+	trigger = {
+		BAV = {
+			has_war = no
+		}
+		tag = BAV
+		owns_state = 840
+		owns_state = 858
+		NOT = {
+			country_exists = NAU
+			country_exists = GER
+			country_exists = SIL
+			country_exists = SAX
+			country_exists = HAN
+			
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = BAV.52.a
+		set_cosmetic_tag = BAV_GER_1
+		news_event = {
+			id = AOR_news.57
+		}
+		hidden_effect = {
+			country_event = { id = BAV.66 days = 7 }
+			country_event = { id = BAV.59 days = 14 }
+		}
+		SHL = {
+			set_cosmetic_tag = SHL_1_Marxism
+		}
+	}
+}
+
+#####思想革命！非梦
+country_event = {
+	id = BAV.53
+	title = BAV.53.t
+	desc = BAV.53.d
+	picture = GFX_BAV.53_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.53.a
+	}
+}
+
+#####法兰克福已入我手
+country_event = {
+	id = BAV.54
+	title = BAV.54.t
+	desc = BAV.54.d
+	picture = GFX_BAV.54_pic
+	trigger = {
+		tag = BAV
+		has_war_with = NAU
+		858 = {
+			is_controlled_by = BAV
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = BAV.54.a
+	}
+}
+
+#####柏林已入我手
+country_event = {
+	id = BAV.55
+	title = BAV.55.t
+	desc = BAV.55.d
+	picture = GFX_BAV.55_pic
+	trigger = {
+		tag = BAV
+		has_war_with = GER
+		840 = {
+			is_controlled_by = BAV
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = BAV.55.a
+	}
+}
+
+#####战后-倍倍尔广场
+country_event = {
+	id = BAV.56
+	title = BAV.56.t
+	desc = BAV.56.d
+	picture = GFX_BAV.56_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.56.a
+	}
+}
+
+#####战后-台尔曼的家
+country_event = {
+	id = BAV.57
+	title = BAV.57.t
+	desc = BAV.57.d
+	picture = GFX_BAV.57_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.57.a
+	}
+}
+
+#####战后-梅林去撸猫
+country_event = {
+	id = BAV.58
+	title = BAV.58.t
+	desc = BAV.58.d
+	picture = GFX_BAV.58_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.58.a
+	}
+}
+
+#####南石荷与南德商谈-1
+country_event = {
+	id = BAV.59
+	title = BAV.59.t
+	desc = BAV.59.d
+	picture = GFX_BAV.59_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.59.a
+		hidden_effect = {
+			country_event = { id = BAV.60 days = 2 }
+		}
+	}
+}
+
+#####南石荷与南德商谈-2
+country_event = {
+	id = BAV.60
+	title = BAV.60.t
+	desc = BAV.60.d
+	picture = GFX_BAV.60_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.60.a
+		country_event = {
+			days = 1
+			id = BAV.61
+		}
+		annex_country = {
+			target = SHL
+			transfer_troops = yes
+		}
+	}
+}
+
+#####柏林社民党商谈-1
+country_event = {
+	id = BAV.61
+	title = BAV.61.t
+	desc = BAV.61.d
+	picture = GFX_BAV.61_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.61.a
+		country_event = {
+			id = BAV.62
+		}
+	}
+}
+
+#####柏林社民党商谈-2
+country_event = {
+	id = BAV.62
+	title = BAV.62.t
+	desc = BAV.62.d
+	picture = GFX_BAV.62_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.62.a
+		country_event = {
+			days = 3
+			id = BAV.63
+		}
+	}
+}
+
+#####组建VKPD
+country_event = {
+	id = BAV.63
+	title = BAV.63.t
+	desc = BAV.63.d
+	picture = GFX_BAV.63_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.63.a
+		hidden_effect = {
+			news_event = AOR_news.54
+		}
+		country_event = {
+			days = 4
+			id = BAV.64
+		}
+	}
+}
+
+#####未来路线选择-1
+country_event = {
+	id = BAV.64
+	title = BAV.64.t
+	desc = BAV.64.d
+	picture = GFX_BAV.64_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.64.a
+		country_event = {
+			id = BAV.65
+		}
+	}
+}
+
+#####未来路线选择-2
+country_event = {
+	id = BAV.65
+	title = BAV.65.t
+	desc = BAV.65.d
+	picture = GFX_BAV.65_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.65.a
+		hidden_effect = {
+			news_event = AOR_news.55
+			country_event = {
+				days = 7
+				id = BAV.70
+			}
+		}
+	}
+	option = {
+		name = BAV.65.b
+		hidden_effect = {
+			news_event = AOR_news.56
+			country_event = {
+				days = 7
+				id = BAV.71
+			}
+		}
+	}
+}
+
+#####梅克伦堡接受整合
+country_event = {
+	id = BAV.66
+	title = BAV.66.t
+	desc = BAV.66.d
+	picture = GFX_BAV.66_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = BAV.66.a
+		annex_country = {
+			target = MEK
+			transfer_troops = yes
+		}
+	}
+}
+
+country_event = {
+	id = BAV.67	#美国左翼文案 “写给德国梅林的信”
+	title = BAV.67.t
+	desc = BAV.67.d
+	fire_only_once = yes
+	picture = GFX_BAV.23_pic
+	trigger = {
+		tag = BAV
+		date > 1922.5.10
+	}
+	option = {
+		name = BAV.67.a
+		custom_effect_tooltip = BAV_LETTER.hd.2.tt
+	}
+}
+
+country_event = {
+	id = BAV.68	#统一战争
+	title = BAV.68.t
+	desc = BAV.68.d
+	fire_only_once = yes
+	trigger = {
+		tag = BAV
+		owns_state = 840
+		owns_state = 858
+		NOT = {
+			country_exists = NAU
+			country_exists = GER
+		}
+	}
+	option = {
+		set_country_flag = WGR_Marxism
+		name = BAV.68.a
+		declare_war_on = {
+			target = HAN
+			type = civil_war
+		}
+		if = {
+			limit = {
+				country_exists = SAX
+			}
+			SAX = {
+				add_to_war = {
+					targeted_alliance = HAN
+					enemy = BAV
+				}
+			}
+			
+		}
+		if = {
+			limit = {
+				country_exists = SIL
+			}
+			SIL = {
+				add_to_war = {
+					targeted_alliance = HAN
+					enemy = BAV
+				}
+			}
+			
+		}
+		if = {
+			limit = {
+				country_exists = KSH
+			}
+			KSH = {
+				add_to_war = {
+					targeted_alliance = HAN
+					enemy = BAV
+				}
+			}
+			
+		}
+		if = {
+			limit = {
+				country_exists = NSH
+			}
+			NSH = {
+				add_to_war = {
+					targeted_alliance = HAN
+					enemy = BAV
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BAV.69	#吞并红色法兰克福
+	title = BAV.69.t
+	desc = BAV.69.d
+	fire_only_once = yes
+	trigger = {
+		tag = BAV
+		NOT = {
+		    country_exists = GER
+		}
+		NAU = { has_government = Marxism }
+	}
+	option = {
+		name = BAV.69.a
+		BAV = { annex_country = { target = NAU } }
+		NAU = {
+		   transfer_units_fraction= {
+			target = BAV
+			size = 1
+		   }
+		}
+	}
+}
+
+country_event = {
+	id = BAV.70	#李卜克内西
+	title = BAV.70.t
+	desc = BAV.70.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = BAV.70.a
+		hidden_effect = {
+		kill_country_leader = YES
+		}
+		promote_character = {
+			character = BAV_Karl_Liebknecht
+			ideology = revolutionism
+		}
+	}
+}
+
+country_event = {
+	id = BAV.71	#罗莎卢森堡
+	title = BAV.71.t
+	desc = BAV.71.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = BAV.71.a
+		hidden_effect = {
+		kill_country_leader = YES
+		}
+		promote_character = {
+			character = BAV_Luksemburg
+			ideology = luxemburgism
+		}
+	}
+}
+country_event = {
+	id = BAV.72	#夺取莱茵兰，二战在即
+	title = BAV.72.t
+	desc = BAV.72.d
+	fire_only_once = yes
+	trigger = {
+		tag = BAV
+		date > 1925.4.15
+		BAV = {
+		owns_state = 840
+		}
+	}
+	option = {
+		name = BAV.72.a
+		BAV = {
+			transfer_state = 859
+			hidden_effect = {
+				news_event = {
+				id = AOR_news.226
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BAV.73	#彻底夺取莱茵兰，二战在即
+	title = BAV.73.t
+	desc = BAV.73.d
+	fire_only_once = yes
+	trigger = {
+		tag = BAV
+		date > 1925.6.15
+	}
+	option = {
+		name = BAV.73.a
+		BAV = {
+			transfer_state = 42
+			transfer_state = 850
+			hidden_effect = {
+				country_event = {
+					id = BAV.74
+					days = 180
+				}
+				news_event = {
+					id = AOR_news.238
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BAV.74	#第二次世界大战爆发（德法冲突-德法二战线）
+	title = BAV.74.t
+	desc = BAV.74.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = BAV.74.a
+		FRA = {
+			declare_war_on = { 
+				target = BAV
+				type = take_claimed_state 
+			} 
+			hidden_effect = {
+				country_event = {
+					id = BAV.75
+					days = 30
+				}
+				news_event = {
+				id = AOR_news.239
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = BAV.75	#第二次世界大战扩大化
+	title = BAV.75.t
+	desc = BAV.75.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+	name = BAV.75.a
+		POL = {
+			declare_war_on = { 
+				target = BAV
+				type = take_claimed_state 
+			} 
+		}
+		PRE = {
+			declare_war_on = { 
+				target = BAV
+				type = take_claimed_state 
+			} 
+		}
+		RUS = {
+			declare_war_on = { 
+				target = POL
+				type = take_claimed_state 
+			} 
+		}
+		RUS = {
+			declare_war_on = { 
+				target = PRE
+				type = take_claimed_state 
+			} 
+		}
+		hidden_effect = {
+			news_event = {
+				id = AOR_news.240
+				}	
+		    }
+		}
+	}
+	
+	
+
+#倍倍尔要来了，李和莱文搬桌子#
+country_event = {
+	id = BAV_L.1
+	title = BAV_L.1.t
+	desc = BAV_L.1.d
+	picture = GFX_AOR_GER_timeaxis.3_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.1.a
+		custom_effect_tooltip = BAV.focus.L.1.tt
+		add_political_power = 1
+		custom_effect_tooltip = AOR_Bebel_Trust_1_tt
+		add_to_variable = {
+			Bebel_Trust = 1
+			} 
+	}
+}
+
+#李来通知莱文去管军事#
+country_event = {
+	id = BAV_L.2
+	title = BAV_L.2.t
+	desc = BAV_L.2.d
+	picture = GFX_BAV.7_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.2.a
+		add_political_power = 10
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#交易所刚开，被抓了#
+country_event = {
+	id = BAV_L.3
+	title = BAV_L.3.t
+	desc = BAV_L.3.d
+	picture = GFX_BAV.8_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.3.a
+		custom_effect_tooltip = BAV.focus.L.3.tt
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#老工人喝咖啡#
+country_event = {
+	id = BAV_L.4
+	title = BAV_L.4.t
+	desc = BAV_L.4.d
+	picture = GFX_BAV.9_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.4.a
+		custom_effect_tooltip = AOR_Bebel_Trust_10_tt
+		add_to_variable = {
+			Bebel_Trust = 10
+			} 
+	}
+}
+
+#夫妻吵架#
+country_event = {
+	id = BAV_L.5
+	title = BAV_L.5.t
+	desc = BAV_L.5.d
+	picture = GFX_BAV.11_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.5.a
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#重建军队#
+country_event = {
+	id = BAV_L.6
+	title = BAV_L.6.t
+	desc = BAV_L.6.d
+	picture = GFX_BAV.12_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.6.a
+		custom_effect_tooltip = AOR_Bebel_Trust_7_tt
+		add_to_variable = {
+			Bebel_Trust = 7
+			} 
+	}
+}
+
+#打击极端民主#
+country_event = {
+	id = BAV_L.7
+	title = BAV_L.7.t
+	desc = BAV_L.7.d
+	picture = GFX_BAV.13_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.7.a
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#整顿流寇#
+country_event = {
+	id = BAV_L.8
+	title = BAV_L.8.t
+	desc = BAV_L.8.d
+	picture = GFX_BAV.14_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.8.a
+		custom_effect_tooltip = AOR_Bebel_Trust_10_tt
+		add_to_variable = {
+			Bebel_Trust = 10
+			} 
+	}
+}
+
+#旧官僚#
+country_event = {
+	id = BAV_L.9
+	title = BAV_L.9.t
+	desc = BAV_L.9.d
+	picture = GFX_BAV.15_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.9.a
+		custom_effect_tooltip = AOR_Bebel_Trust_17_tt
+		add_to_variable = {
+			Bebel_Trust = 17
+			} 
+	}
+}
+
+#倍找卢#
+country_event = {
+	id = BAV_L.10
+	title = BAV_L.10.t
+	desc = BAV_L.10.d
+	picture = GFX_BAV.16_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.10.a
+		set_country_flag = BEBEL.TRUST.GO.L
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#倍找李#
+country_event = {
+	id = BAV_L.11
+	title = BAV_L.11.t
+	desc = BAV_L.11.d
+	picture = GFX_BAV.17_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.11.a
+		set_country_flag = BEBEL.TRUST.GO.LI
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 
+	}
+}
+
+#老头很伤感#
+country_event = {
+	id = BAV_L.12
+	title = BAV_L.12.t
+	desc = BAV_L.12.d
+	picture = GFX_BAV.18_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.12.a
+		set_country_flag = BEBEL.TRUST.GO.LI
+	}
+}
+
+#列宁写信#
+country_event = {
+	id = BAV_L.13
+	title = BAV_L.13.t
+	desc = BAV_L.13.d
+	picture = GFX_BAV.19_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.13.a
+		custom_effect_tooltip = BAV_LETTER.ll.tt
+		custom_effect_tooltip = AOR_Bebel_Trust_5_tt
+		add_to_variable = {
+			Bebel_Trust = 5
+			} 		
+		hidden_effect = {
+			country_event = { days = 3 id = BAV_L.14  }
+		}
+	}
+}
+
+#考茨基写信#
+country_event = {
+	id = BAV_L.14
+	title = BAV_L.14.t
+	desc = BAV_L.14.d
+	picture = GFX_BAV.20_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.14.a
+		custom_effect_tooltip = BAV_LETTER.kk.tt
+		hidden_effect = {
+			country_event = { days = 7 id = BAV_L.15  }
+			country_event = { days = 70 id = BAV_L.17  }
+		}
+	}
+}
+
+#潘涅库克写信#
+country_event = {
+	id = BAV_L.15
+	title = BAV_L.15.t
+	desc = BAV_L.15.d
+	picture = GFX_BAV.21_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.15.a
+		custom_effect_tooltip = BAV_LETTER.ap.tt
+		add_political_power = 5
+	}
+}
+
+#艾伯特写信#
+country_event = {
+	id = BAV_L.16
+	title = BAV_L.16.t
+	desc = BAV_L.16.d
+	picture = GFX_BAV.22_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.16.a
+		custom_effect_tooltip = BAV_LETTER.ee.tt
+	}
+}
+
+#热狗写信#
+country_event = {
+	id = BAV_L.17
+	title = BAV_L.17.t
+	desc = BAV_L.17.d
+	picture = GFX_BAV.23_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.17.a
+		custom_effect_tooltip = BAV_LETTER.hd.tt
+		
+	}
+}
+
+#倍倍尔晕倒#
+country_event = {
+	id = BAV_L.18
+	title = BAV_L.18.t
+	desc = BAV_L.18.d
+	picture = GFX_BAV.3_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.18.a
+		
+	}
+}
+
+#建设抽到军工#
+country_event = {
+	id = BAV_L.200
+	title = BAV_L.200.t
+	desc = BAV_L.200.d
+	picture = GFX_BAV.6_pic
+	is_triggered_only = yes
+	hidden = no
+	option = {
+		name = BAV_L.200.a
+		random_owned_controlled_state = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes 
+							#province = {limit_to_victory_point = yes}
+						}
+		} 
+	}
+}
+
+#建设抽到民工#
+country_event = {
+	id = BAV_L.201
+	title = BAV_L.201.t
+	desc = BAV_L.201.d
+	picture = GFX_BAV.6_pic
+	is_triggered_only = yes
+	hidden = no
+	option = {
+		name = BAV_L.201.a
+					random_owned_controlled_state = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+							instant_build = yes 
+							#province = {limit_to_victory_point = yes}
+						}
+					} 
+	}
+}
+
+
+#建设抽到基础设施#
+country_event = {
+	id = BAV_L.202
+	title = BAV_L.202.t
+	desc = BAV_L.202.d
+	picture = GFX_BAV.6_pic
+	is_triggered_only = yes
+	hidden = no
+	option = {
+		name = BAV_L.202.a
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes 
+							#province = {limit_to_victory_point = yes}
+						}
+					}
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes 
+							#province = {limit_to_victory_point = yes}
+						}
+					}
+	}
+}
+
+#建设抽到空军基地#
+country_event = {
+	id = BAV_L.203
+	title = BAV_L.203.t
+	desc = BAV_L.203.d
+	picture = GFX_BAV.6_pic
+	is_triggered_only = yes
+	hidden = no
+	option = {
+		name = BAV_L.203.a
+					random_owned_controlled_state = {
+						add_building_construction = {
+							type = air_base
+							level = 1
+							instant_build = yes 
+						}
+					}
+	}
+}
+
+#建设抽到要塞#
+country_event = {
+	id = BAV_L.204
+	title = BAV_L.204.t
+	desc = BAV_L.204.d
+	picture = GFX_BAV.6_pic
+	is_triggered_only = yes
+	hidden = no
+	option = {
+		name = BAV_L.204.a
+					53 = {
+						add_building_construction = {
+							type = bunker
+							level = 1
+							instant_build = yes 
+							province = 6540
+						}
+					}
+					53 = {
+						add_building_construction = {
+							type = bunker
+							level = 1
+							instant_build = yes 
+							province = 3299
+						}
+					}
+					53 = {
+						add_building_construction = {
+							type = bunker
+							level = 1
+							instant_build = yes 
+							province = 571
+						}
+					}
+					53 = {
+						add_building_construction = {
+							type = bunker
+							level = 1
+							instant_build = yes 
+							province = 586
+						}
+					}
+	}
+}
+
+
+#梅林和倍倍尔下午茶-其一#
+country_event = {
+	id = BAV_L.205
+	title = BAV_L.205.t
+	desc = BAV_L.205.d
+	picture = GFX_BAV.cafe_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.205.a
+		custom_effect_tooltip = AOR_Bebel_Trust_15_tt
+		add_political_power = 5
+		add_to_variable = {
+				Bebel_Trust = 15
+		}
+		custom_effect_tooltip = AOR_Bebel_Trust_coffee_1_tt
+		hidden_effect = {
+			set_country_flag = BAV_COFFEE
+		}
+	}
+}
+
+#梅林和倍倍尔下午茶-其二#
+country_event = {
+	id = BAV_L.206
+	title = BAV_L.206.t
+	desc = BAV_L.206.d
+	picture = GFX_BAV.cafe_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = no
+	option = {
+		name = BAV_L.206.a
+		custom_effect_tooltip = AOR_Bebel_Trust_15_tt
+		add_political_power = 5
+		add_to_variable = {
+				Bebel_Trust = 15
+		}
+	}
+}

@@ -1,0 +1,169 @@
+ideas = {
+
+	country = {
+	    #乔治五世
+		george_v = {
+			
+			allowed = {
+				original_tag = ENG
+			}
+
+			allowed_civil_war = {
+				NOT ={
+					has_government = communism
+				}
+				NOT = {
+					any_other_country = {
+						original_tag = ENG
+						has_government = democratic 
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = 0.05
+			}
+			
+			traits = { popular_figurehead }
+			
+
+		}
+
+        #卫道士
+        ENG_guard = {
+			
+		    picture = idea_ENG_guard
+			
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				drift_defence_factor = 0.5
+			}
+			
+			rule = {
+			      can_create_factions = yes
+			  }
+		    
+			visible = {
+			      always = yes
+			  }
+		}	  
+		
+		#干涉主义急先锋
+		ENG_pioneer_of_interventionism = {
+		    
+			picture = idea_ENG_pioneer_of_interventionism
+			
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				send_volunteer_size = 10 
+				send_volunteers_tension = -1
+				lend_lease_tension = -1
+			}
+			
+			visible = {
+			      always = yes
+			  }
+		}
+			  
+		#大战的记忆 
+		ENG_Memories_of_the_War = {
+		    
+			picture = idea_ENG_Memories_of_the_War
+			
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources = -0.1 
+				war_support_factor = -0.1
+				consumer_goods_factor = 0.05
+			}
+			
+			visible = {
+			      always = yes
+			  }
+		}
+			  
+		#日将落帝国
+		ENG_The_sun_will_set_on_the_empire = {
+		
+		    picture = idea_ENG_The_sun_will_set_on_the_empire
+			
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				compliance_gain = -0.5
+				resistance_damage_to_garrison_on_our_occupied_states = -0.25
+				root_out_resistance_effectiveness_factor = -0.50
+			}
+			
+			visible = {
+			      always = yes
+			  }
+		}
+
+		#市场之美
+		ENG_the_beautiful_of_market = {
+
+			picture = GFX_idea_ENG_the_beautiful_of_market
+
+			allowed = {
+				always = yes
+			}
+
+			modirier = {
+				stability_factor = 0.05
+				trade_laws_cost_factor = 0.25
+				trade_opinion_factor = 0.5
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		#《帝国联邦经济恢复法案》
+		ENG_Imperial_Federal_Economic_Recovery_Act = {
+
+			picture = GFX_idea_ENG_Imperial_Federal_Economic_Recovery_Act
+
+			allwoed = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		#兄弟之助
+		ENG_the_help_from_brother = {
+			
+			picture = GFX_idea_ENG_the_help_from_brother
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.10
+				political_power_factor = 0.05
+			}
+		}
+    }    
+}

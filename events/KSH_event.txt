@@ -1,0 +1,922 @@
+add_namespace = KSH
+
+country_event = {
+	id = KSH.1  ##美丽的波美拉尼亚
+	title = KSH.1.t
+	desc = KSH.1.d
+
+	picture = GFX_goal_KSH.1
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.1.a
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = KSH.2  ##伟大的自由军团
+	title = KSH.2.t
+	desc = KSH.2.d
+
+	picture = GFX_galo_KSH.2
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.2.a
+		add_war_support = 0.1
+	}
+}
+
+country_event = {
+	id = KSH.3  ##古斯塔夫的演讲
+	title = KSH.3.t
+	desc = KSH.3.d
+
+	picture = GFX_goal_KSH.3
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.3.a
+	}
+}
+
+country_event = {
+	id = KSH.4  ##自由军团归来
+	title = KSH.4.t
+	desc = KSH.4.d
+
+	picture = GFX_goal_KSH.4
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.4.a
+		custom_effect_tooltip = KSH_2_tt
+		hidden_effect = {
+			create_unit = {
+				division = "name = \"1\"
+				division_template = \"1\"
+				start_experience_factor = 0.1
+				start_equipment_factor = 3"
+				owner = ROOT
+			}
+		}
+	}
+}
+
+country_event = {
+	id = KSH.5  ##军队哗变
+	title = KSH.5.t
+	desc = KSH.5.d
+
+	picture = GFX_goal_KSH.5
+
+	is_triggered_only = yes 
+	fire_only_once = yes
+
+	option = {
+		name = KSH.5.a
+		add_ideas = Army_mutiny
+		hidden_effect = {
+			country_event = { days = 3 id = KSH.6 }
+		}
+	}
+}
+
+country_event = {
+	id = KSH.6  ##无政府主义者示威游行
+	title = KSH.6.t
+	desc = KSH.6.d
+
+	picture = KSH.6.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.6.a
+		add_ideas = Anarchists_march_and_demonstrate
+		hidden_effect = {
+			country_event = { days = 4 id = KSH.7 }
+		}
+	}
+}
+
+country_event = {
+	id = KSH.7  ##保守派反对
+	title = KSH.7.t
+	desc = KSH.7.d
+
+	picture = KSH.7.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.7.a
+		add_ideas = Conservative_opposition
+	}
+}
+
+country_event = {
+	id = KSH.8  ##变革中的波美拉尼亚
+	title = KSH.8.t
+	desc = KSH.8.d
+
+	picture = KSH.8.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.8.a
+		country_event = {
+			id = KSH.9
+		}
+	}
+}
+
+country_event = {
+	id = KSH.9   ##最终选择
+	title = KSH.9.t
+	desc = KSH.9.d
+
+	picture = KSH.9.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.9.a
+		hidden_effect = {
+			set_country_flag = xiongyingjihua
+		}
+	}
+
+	option = {
+		name = KSH.9.b
+		hidden_effect = {
+			set_country_flag = menghujihua
+		}
+	}
+
+	option = {
+		name = KSH.9.c
+		hidden_effect = {
+			set_country_flag = delagongjihua
+		}
+	}
+}
+
+country_event = {
+	id = KSH.10  ##雄鹰计划
+	title = KSH.10.t
+	desc = KSH.10.d
+
+	picture = KSH.10.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.10.a
+		hidden_effect = {
+			clr_global_flag = xiongyingjihua
+		}
+	}
+}
+
+country_event = {
+	id = KSH.11  ##猛虎计划
+	title = KSH.11.t
+	desc = KSH.11.d
+
+	picture = KSH.11.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.11.a
+		hidden_effect ={
+			clr_global_flag = menghujihua
+		}
+	}
+}
+
+country_event = {
+	id = KSH.12   ##德拉贡计划
+	title = KSH.12.t
+	desc = KSH.12.d
+
+	picture = KSH.12.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.12.a
+		hidden_effect = {
+			clr_global_flag = delagongjihua
+		}
+	}
+}
+
+country_event = {
+	id = KSH.13 ##一个晴朗的上午
+	title = KSH.13.t
+	desc = KSH.13.d 
+
+	picture = KSH.13.p 
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.13.a 
+	}
+}
+
+country_event = {
+	id = KSH.14 ##动员人民
+	title = KSH.14.t
+	desc = KSH.14.d 
+
+	picture = KSH.14.p 
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.14.a
+	}
+}
+
+country_event = {
+	id = KSH.15  ##农民之乐
+	title = KSH.15.t
+	desc = KSH.15.d 
+
+	picture = KSH.15.p 
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.15.a
+	}
+}
+
+country_event = {
+	id = KSH.16  ##“团结”计划
+	title = KSH.16.t
+	desc = KSH.16.d
+
+	picture = KSH.16.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.16.a
+		set_country_flag = tuanjiegongcheng
+	}
+}
+
+country_event = {
+	id = KSH.17   ##血与土计划
+	title = KSH.17.t
+	desc = KSH.17.d
+
+	picture = KSH.17.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.17.a
+		set_country_flag = xueyutu
+	}
+}
+
+country_event = {
+	id = KSH.18   ##新天鹅堡工程
+	title = KSH.18.t
+	desc = KSH.18.d
+
+	picture = KSH.18.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.18.a
+		set_country_flag = xintianebao
+	}
+}
+
+country_event = {
+	id = KSH.19   ##新德意志计划
+	title = KSH.19.t
+	desc = KSH.19.d
+
+	picture = KSH.19.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.19.a
+		set_country_flag = xindeyizhi
+	}
+}
+
+country_event = {
+	id = KSH.20  ##人民公路计划
+	title = KSH.20.t
+	desc = KSH.20.d
+
+	picture = KSH.20.p 
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.20.a
+		set_country_flag = renmin
+	}
+}
+
+country_event = {
+	id = KSH.21 ##建设中的戈林
+	title = KSH.21.t
+	desc = KSH.21.d
+
+	picture = KSH.21.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.21.a
+	}
+}
+
+country_event = {
+	id = KSH.22 ##德国巨匠计划
+	title = KSH.22.t
+	desc = KSH.22.d
+
+	picture = KSH.22.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.22.a
+		set_country_flag = deguojujiang
+	}
+}
+
+country_event = {
+	id = KSH.23 ##瓦尔基里方案
+	title = KSH.23.t
+	desc = KSH.23.d
+
+	picture = KSH.23.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.23.a
+		set_country_flag = waerjili
+	}
+}
+
+country_event = {
+	id = KSH.24 ##维斯瓦工程
+	title = KSH.24.t
+	desc = KSH.24.d
+
+	picture = KSH.24.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.24.a
+		set_country_flag = weisiwa
+	}
+}
+
+country_event = {
+	id = KSH.25 ##波罗的海计划
+	title = KSH.25.t
+	desc = KSH.25.d
+
+	picture = KSH.25.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.25.a
+		set_country_flag = boluodihai
+	}
+}
+
+country_event = {
+	id = KSH.26 ##驱逐柏林商人
+	title = KSH.26.t
+	desc = KSH.26.d
+
+	picture = KSH.26.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.26.a
+	}
+}
+
+country_event = {
+	id = KSH.27  ##国家人民军进入自由军团
+	title = KSH.27.t
+	desc = KSH.27.d
+
+	picture = KSH.27.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.27.a
+	}
+}
+
+country_event = {
+	id = KSH.28  ##崭新的自由军团！
+	title = KSH.28.t
+	desc = KSH.28.d
+
+	picture = KSH.28.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.28.a
+		swap_ideas = {
+			remove_idea = Freedom_Corps_2
+			add_idea = Freedom_Corps_3
+		}
+
+	}
+}
+
+country_event = {
+	id = KSH.29  ##意志的胜利！
+	title = KSH.29.t
+	desc = KSH.29.d
+
+	picture = KSH.29.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.29.a
+		}
+
+	
+}
+
+country_event = {
+	id = KSH.30  ##帝国会谈
+	title = KSH.30.t
+	desc = KSH.30.d
+
+	picture = KSH.30.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.30.a
+		}
+}
+country_event = {
+	id = KSH.31  ##最终命令
+	title = KSH.31.t
+	desc = KSH.31.d
+
+	picture = KSH.31.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.31.a
+		add_political_power = -25
+		country_event = {
+			days = 1
+			id = KSH.48
+		}
+	}
+}
+country_event = {
+	id = KSH.32  ##打砸抢烧
+	title = KSH.32.t
+	desc = KSH.32.d
+
+	picture = KSH.32.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.32.a
+		add_ideas = dazaqiangshao
+		}
+}
+country_event = {
+	id = KSH.33  ##在各地的国家民众党人
+	title = KSH.33.t
+	desc = KSH.33.d
+
+	picture = KSH.33.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.33.a
+		}
+}
+country_event = {
+	id = KSH.34  ##来自东方的援助
+	title = KSH.34.t
+	desc = KSH.34.d
+
+	picture = KSH.40.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.34.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = PUS
+		}
+	}
+}
+country_event = {
+	id = KSH.54  ##法兰克福的一箱箱货物
+	title = KSH.35.t
+	desc = KSH.35.d
+
+	picture = KSH.35.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.35.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = NAU
+		}
+	}
+}
+country_event = {
+	id = KSH.53  ##包围斯德丁
+	title = KSH.36.t
+	desc = KSH.36.d
+
+	picture = KSH.36.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.36.a
+		}
+}
+country_event = {
+	id = KSH.35  ##古斯塔夫之死
+	title = KSH.35.t
+	desc = KSH.35.d
+
+	picture = KSH.35.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.35.a
+		kill_country_leader = yes
+		set_party_name = { 
+			ideology = neutrality 
+			long_name = GER_neutrality_party_kaiserreich_long 
+			name = ziyoujuntuandahui 
+		}
+	}
+}
+country_event = {
+	id = KSH.36  ##斯德丁战役
+	title = KSH.36.t
+	desc = KSH.36.d
+
+	picture = KSH.36.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.36.a
+		country_event = { 
+			days = 10
+			id = KSH.37 
+		}
+	}
+}
+
+country_event = {
+	id = KSH.37  ##斯德丁10天
+	title = KSH.37.t
+	desc = KSH.37.d
+
+	picture = KSH.37.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.37.a
+		country_event = { 
+			days = 20
+			id = KSH.38
+		}
+	}
+}
+country_event = {
+	id = KSH.38  ##斯德丁30天
+	title = KSH.38.t
+	desc = KSH.38.d
+
+	picture = KSH.38.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.38.a
+		country_event = { 
+			days = 25
+			id = KSH.38
+		}
+	}
+}
+country_event = {
+	id = KSH.39  ##斯德丁55天
+	title = KSH.39.t
+	desc = KSH.39.d
+
+	picture = KSH.39.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.39.a
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = KSH.40
+			}
+		}
+	}
+}
+country_event = {
+	id = KSH.40  ##长刀之夜
+	title = KSH.40.t
+	desc = KSH.40.d
+
+	picture = KSH.40.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.40.a
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = KSH.40
+			}
+		}
+	}
+}
+country_event = {
+	id = KSH.41  ##新秩序
+	title = KSH.41.t
+	desc = KSH.41.d
+
+	picture = KSH.41.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.41.a
+		62 = { set_demilitarized_zone = no }
+		63 = { set_demilitarized_zone = no }
+		870 = { set_demilitarized_zone = no }
+		}
+}
+country_event = {
+	id = KSH.42  ##胜利党代会
+	title = KSH.42.t
+	desc = KSH.42.d
+
+	picture = KSH.42.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.42.a
+		}
+}
+country_event = {
+	id = KSH.43  ##民族万岁
+	title = KSH.43.t
+	desc = KSH.43.d
+
+	picture = KSH.43.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.43.a
+		}
+}
+country_event = {
+	id = KSH.44  ##民族一体化
+	title = KSH.44.t
+	desc = KSH.44.d
+
+	picture = KSH.44.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.44.a
+		}
+}
+country_event = {
+	id = KSH.45  ##前进前进
+	title = KSH.45.t
+	desc = KSH.45.d
+
+	picture = KSH.45.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.45.a
+		}
+}
+country_event = {
+	id = KSH.46  ##第二次长刀之夜
+	title = KSH.46.t
+	desc = KSH.46.d
+
+	picture = KSH.46.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.46.a
+		}
+}
+country_event = {
+	id = KSH.47  ##民族一体化
+	title = KSH.47.t
+	desc = KSH.47.d
+
+	picture = KSH.47.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.47.a
+		}
+}
+
+country_event  = {
+	id = KSH.48  ##戈林逃跑了
+	title = KSH.48.t
+	desc = KSH.48.d
+
+	picture = KSH.48.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+
+	option = {
+		name = KSH.48.a
+		add_political_power = -50
+		hidden_effect = {
+			country_event = {
+				days = 7
+				id = KSH.49
+			}
+		}
+	}
+}
+
+country_event = {
+	id = KSH.49   ##雄鹰计划结束了？
+	title = KSH.49.t
+	desc = KSH.49.d
+
+	picture = KSH.49.p
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.49.a
+		add_ideas = tanwufubaidehouguo
+		hidden_effect = {
+			country_event = {
+				days = 35
+				id = KSH.50
+			}
+		}
+	}
+}
+
+country_event = {
+	id = KSH.50    ##自由军团“消失”
+	title = KSH.50.t
+	desc = KSH.50.t
+
+	picture = KSH.50.p
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.50.a
+		add_stability = -0.05
+	}
+}
+country_event = {
+	id = KSH.51    ##革命永无止境
+	title = KSH.51.t
+	desc = KSH.51.t
+
+	picture = KSH.51.p
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.51.a
+	}
+}
+country_event = {
+	id = KSH.52    ##为民族劳动
+	title = KSH.52.t
+	desc = KSH.52.t
+
+	picture = KSH.52.p
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = KSH.52.a
+	}
+}

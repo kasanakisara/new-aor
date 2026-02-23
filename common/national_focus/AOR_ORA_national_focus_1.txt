@@ -1,0 +1,153 @@
+focus_tree = {
+	id = ORA_civil_war 
+	country = {
+		factor = 0
+		modifier = {
+			add = 1500
+			tag = ORA
+		}
+	}
+	default = no
+	focus = {
+		id = ORA_strike_going_on
+		icon = GFX_goal_ORA_strike_going_on
+		cost = 2.00
+		x = 5
+		y = 0
+		completion_reward = {	
+			country_event = { id = AOR_ORA_events.1 }
+			
+			hidden_effect = {
+				country_event = { days = 30 id = AOR_ORA_events.3 }
+			}
+			add_ideas = ORA_gong_ren_shang_qian_xian
+			set_country_flag = unlock_AOR_ARG_burning
+			ARG = { 
+				add_ideas = ARG_zong_ba_gong_jin_xing_shi
+			}
+			unlock_decision_tooltip = AOR_ORA_hu_yv_zong_ba_gong_hu_yv_zong_ba_gong
+		}
+	}
+	focus = {
+		id = ORA_the_blood_debt
+		icon = GFX_goal_ORA_the_blood_debt
+		cost = 2.00
+		prerequisite = {
+			focus = ORA_strike_going_on
+		}
+		x = 5
+		y = 1
+		completion_reward = {	
+			add_political_power = 50
+			509 = {
+				add_extra_state_shared_building_slots =2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes 
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes 
+				}
+			}
+			add_manpower = -50
+		}
+	}
+	focus = {
+		id = ORA_Go_to_barricade
+		icon = GFX_goal_ORA_Go_to_barricade
+		cost = 2.00
+		prerequisite = {
+			focus = ORA_the_blood_debt
+		}
+		x = 5
+		y = 2
+		completion_reward = {	
+			add_manpower = 500
+			ARG = {
+				country_event = AOR_ARG_events.1
+			}
+			country_event = AOR_ORA_events.4
+			swap_ideas = {
+				remove_idea = ORA_Spark
+				add_idea = ORA_Spark_1
+			}
+		}
+	}
+	focus = {
+		id = ORA_Union_leader
+		icon = GFX_goal_ORA_Union_leader
+		cost = 4.00
+		prerequisite = {
+			focus = ORA_Go_to_barricade
+		}
+		x = 3
+		y = 3
+		completion_reward = {	
+			add_political_power = 25
+			add_ideas = ORA_gong_hui_ling_dao
+		}
+	}
+	focus = {
+		id = ORA_Workers_autonomy
+		icon = GFX_goal_ORA_Workers_autonomy
+		cost = 4.00
+		prerequisite = {
+			focus = ORA_Go_to_barricade
+		}
+		x = 7
+		y = 3
+		completion_reward = {	
+			add_political_power = 25
+			add_ideas =AOR_ORA_Workers_autonomy
+		}
+	}
+	focus = {
+		id = ORA_Steel_and_hymns
+		icon = GFX_goal_ORA_Steel_and_hymns
+		cost = 1.00
+		prerequisite = {
+			focus = ORA_Workers_autonomy
+		}
+		prerequisite = {
+			focus = ORA_Union_leader
+		}
+		x = 5
+		y = 4
+		completion_reward = {	
+			add_political_power = 25
+			custom_effect_tooltip = ORA.1.tt
+			ARG = {
+				country_event = AOR_ORA_events.5
+			}
+			set_country_flag = unlock_AOR_ORA_zhu_jiu_gang_tie
+			custom_effect_tooltip = ORA.10.tt
+			hidden_effect = {
+			remove_ideas = AOR_ORA_Workers_autonomy
+			remove_ideas = ORA_gong_hui_ling_dao
+			add_ideas = AOR_ORA_xin_da_lu_mo_shi
+			}
+		}
+	}
+	focus = {
+		id = ORA_daybreak
+		icon = GFX_goal_ORA_daybreak
+		cost = 4.00
+		prerequisite = {
+			focus = ORA_Steel_and_hymns
+		}
+		available = {
+			has_war = no
+		}
+		x = 5
+		y = 5
+		completion_reward = {	
+			country_event = AOR_ORA_events.6
+			hidden_effect = {
+			load_focus_tree = ORA_rebuild
+			}
+		}
+	}
+}

@@ -1,0 +1,86 @@
+add_namespace = MEN
+
+country_event = {#冯玉祥支持共和(昆明)
+	id = MEN.1 
+	title = MEN.1.t
+	desc = MEN.1.d
+	picture = GFX_MEN_event_1
+	fire_only_once = yes
+    is_triggered_only = yes
+    immediate = {
+    hidden_effect = {
+        MEN ={
+        load_oob = "AOR_LAND_CHI_MEN"
+        set_cosmetic_tag = MEN_1
+        set_party_name = {
+            ideology = Absolutism
+            long_name = "国民军"
+            name = "国民军"
+        }
+        declare_war_on = { 
+            target = NAN
+            type = civil_war
+        } 
+        declare_war_on = { 
+            target = MON
+            type = civil_war
+        } 
+    }
+}
+}
+    option = {
+		name = MEN.1.a
+        news_event = {id=AOR_news.127}
+        MEN = {
+            add_ideas = CHI_gemingtongyizhixi
+        }
+        KMT = {
+            create_faction = kmt_mingzhu_Union
+            add_to_faction = MEN
+            white_peace = MEN
+        }
+    }
+}
+
+country_event = {#冯玉祥支持共和(广州)
+	id = MEN.2 
+	title =MEN.2.t
+	desc = MEN.2.d
+	picture = GFX_MEN_event_2
+	fire_only_once = yes
+    is_triggered_only = yes
+    immediate = {
+    hidden_effect = {
+        MEN ={
+        load_oob = "AOR_LAND_CHI_MEN"
+        set_cosmetic_tag = MEN_2
+        set_party_name = {
+            ideology = Absolutism
+            long_name = "国民军"
+            name = "国民军"
+        }
+        declare_war_on = { 
+            target = NAN
+            type = civil_war
+        } 
+        declare_war_on = { 
+            target = MON
+            type = civil_war
+        } 
+    }
+}
+}
+    option = {
+		name = MEN.2.a
+        news_event = {id=AOR_news.128}
+        MEN = {
+            add_ideas = CHI_gemingtongyizhixi
+        }
+        UPC = {
+            create_faction = upc_mingzhu_Union
+            add_to_faction = MEN
+            white_peace = MEN
+        }
+	}
+}
+

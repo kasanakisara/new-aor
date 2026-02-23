@@ -1,0 +1,328 @@
+ITA_AMBITIOIN = {
+	sing_our_victory = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_full_control_of_state = 451
+			has_full_control_of_state = 663
+			has_full_control_of_state = 662
+			has_full_control_of_state = 449
+			has_full_control_of_state = 971
+			has_full_control_of_state = 970
+			has_full_control_of_state = 972
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			}
+		}
+
+
+	ask_for_what_i_desrve = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_war = no
+			time < 1925.1.1
+			time > 1920.1.1
+			DAL = {
+				exists = yes
+			}
+			HUN= {
+				is_in_faction = no
+			}
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_claim_by = 163
+			set_country_flag = ITA_WANT_WANT
+			HUN = country_event = {
+				id = HUN.DAL 
+				days = 1
+				random_hours = 12
+			}
+			YUG = {
+				country_event = {
+				id = YUG.DAL 
+				days = 1
+				random_hours = 12
+				}
+	  	    }
+		}			
+	}
+
+	ask_for_what_i_desrve_FIGHT_WITH_YUG = {
+		priority = 109
+		icon = GFX_decision_ship
+		
+		available = {
+			original_tag = ITA
+			has_war = no
+			time < 1925.1.1
+			DAL = {
+				exists = yes	
+			}
+			HUN= {
+				is_in_faction = no
+				}
+			}
+	    visible = {
+			YUG = { has_country_flag = YUG_cooperate_with_ITA }
+		}
+		
+		cost = 0
+		
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = { 342 }
+				defender = { 157 }
+			}
+			YUG = {
+				annex_country = DAL
+				transfer_troops = yes
+			}
+		}
+	}
+
+	ask_for_what_i_desrve_FIGHT_WITHout_YUG = {
+		priority = 109
+		icon = GFX_decision_ship
+		
+		available = {
+			original_tag = ITA
+			has_war = no
+			time < 1925.1.1
+			DAL = {
+				exists = yes	
+			}
+			HUN= {
+				is_in_faction = no
+			}
+		}
+	    visible = {
+			YUG = { has_country_flag = YUG_swallow_DAL }
+		}
+		
+		cost = 0
+		
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = yes
+					attacker = { 342 }
+					defender = { 157 }
+				}
+				YUG = {
+					annex_country = DAL
+					transfer_troops = yes
+				}
+			}
+		}
+
+
+	wash_away_the_shame = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_war = no
+			time > 1921.1.1
+			num_divisions_in_states = {
+				count > 5
+				states = { 550 559 }
+			}
+			country_exists = ETH
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			give_guarantee = ALB
+			declare_war_on = {
+				target = ETH
+				type = civil_war
+			}
+			set_country_flag = ITA_ETH_WAR
+			add_war_support = 0.05
+			}
+	}
+
+	greater_italiano = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_war = no
+			country_exists = ALB
+			has_full_control_of_state = 271
+			has_guaranteed = ALB
+		}
+		visible = {
+			has_country_flag = ITA_ETH_WAR
+			time > 1923.1.1
+		}
+			
+
+		cost = 300
+
+		fire_only_once = yes
+		days_remove = 70
+		remove_effect = {
+			annex_country = {
+				target = ALB
+				transfer_troops = yes
+		}
+		add_claim_by = 805
+
+	}
+}
+
+	try_me_greeks = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			ITA = {
+			has_war = no
+			has_full_control_of_state = 44
+			country_exists = GRE
+			num_divisions_in_states = {
+				count > 5
+				states = { 44 342 }
+			}
+		}
+		}
+		visible = {
+			time > 1924.1.1
+		}
+			
+
+		cost = 5
+
+		fire_only_once = yes
+		days_remove = 1
+		remove_effect = {
+		start_border_war = {
+			change_state_after_war = yes
+			attacker = { 44 }
+			defender = { 805 }
+		}
+		start_border_war = {
+			change_state_after_war = no
+			attacker = { 342 }
+			defender = { 339 }
+		}
+	}
+}
+
+	trieste = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_war = no
+		}
+		visible = {
+			time > 1924.2.1
+		}
+			
+
+		cost = 5
+
+		fire_only_once = yes
+		days_remove = 1
+		remove_effect = {
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = { 869 }
+				defender = { 843 }
+			}
+			start_border_war = {
+				change_state_after_war = yes
+				attacker = { 159 }
+				defender = { 39 }
+			}
+			start_border_war = {
+				change_state_after_war = no
+				attacker = { 869 }
+				defender = { 153 }
+			}
+	}
+}
+
+no_more_marios = {
+	priority = 109
+	icon = GFX_decision_ship
+
+	available = {
+		original_tag = ITA
+		has_war = no
+	}
+	visible = {
+		time > 1922.2.1
+	}
+		
+
+	cost = 200
+
+	fire_only_once = yes
+	days_remove = 100
+	remove_effect = {
+		add_core_of = 847
+		annex_country = SMA
+		transfer_troops = yes
+	}
+}
+
+	roma_and_roma = {
+		priority = 109
+		icon = GFX_decision_ship
+
+		available = {
+			original_tag = ITA
+			has_war = no
+			has_full_control_of_state = 805
+			country_exists = GRE
+
+		}
+		visible = {
+			time > 1924.2.1
+		}
+			
+		cost = 5
+
+		fire_only_once = yes
+		days_remove = 1
+		remove_effect = {
+			declare_war_on = {
+				target = GRE
+				type = civil_war
+			}
+		}
+	}
+}

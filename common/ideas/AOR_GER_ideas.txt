@@ -1,0 +1,514 @@
+ideas = {
+	country = {
+	
+	#德国马克贬值
+	AOR_GER_idea_Deutschmark_depreciation = {
+		picture = SPR_seize_the_gold_reserves
+		allowed = { original_tag = GER }
+		modifier = {
+			min_export = 0.05
+			consumer_goods_factor = -0.05
+			
+			production_speed_infrastructure_factor = 0.05
+			production_speed_industrial_complex_factor = 0.05
+			production_speed_arms_factory_factor = 0.05
+		}
+	}
+	#残疾人康复委员会
+	AOR_GER_idea_Disability_Rehabilitation_Committee = {
+		picture = political_appointments_naval_academy_spirit
+		allowed = { original_tag = GER }
+		modifier = {
+			weekly_manpower = 500
+			war_support_weekly = 0.001
+		}
+	}
+	#补贴生育
+	AOR_GER_idea_Subsidized_birth = {
+		picture = ITA_battaglie_per_la_nascite
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_gain = 0.1
+			monthly_population = 0.25
+		}
+	}
+	#基础设施建造定向投资
+	AOR_GER_idea_directional_investment = {
+		picture = ITA_battaglie_per_la_nascite
+		allowed = { original_tag = GER }
+		modifier = {
+			production_speed_infrastructure_factor = 0.1
+			consumer_goods_factor = -0.05
+		}
+	}
+	#德意志宪法草案
+	AOR_GER_idea_draft_constitution = {
+		picture = Eric_draft_constitution
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_cost = 0.25
+			stability_factor = 0.05
+			war_support_factor = -0.05
+		}
+	}
+	#妇女选举权
+	AOR_GER_idea_Women_right_of_vote = {
+		picture = SOV_fascist_womens_movement
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_gain = 0.1
+		}
+	}
+	#男女平等
+	AOR_GER_idea_equal_between_Men_and_Women = {
+		picture = SOV_fascist_womens_movement
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_gain = 0.1
+			monthly_population = -0.10
+			conscription = 0.01
+		}
+	}
+	#平民受教育的权利
+	AOR_GER_idea_civilians_right_to_education = {
+		picture = generic_research_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			research_speed_factor = 0.03
+			stability_factor = 0.05
+		}
+	}
+	#德意志社会保障体系
+	AOR_GER_idea_social_security_system = {
+		picture = generic_research_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			research_speed_factor = 0.03
+			stability_factor = 0.05
+			political_power_gain = 0.05
+			conscription = 0.005
+		}
+	}
+	#德意志宪法
+	AOR_GER_idea_constitution = {
+		picture = Eric_constitution
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = 0.10
+			war_support_factor = 0.05
+			political_power_gain = 0.15
+			monthly_population = -0.10
+			conscription = 0.02
+			research_speed_factor = 0.05
+		}
+	}
+	
+	#德意志国家媒体委员会
+	AOR_GER_idea_National_Media_Commission = {
+		picture = usa_magic
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_cost = 0.05
+			stability_factor = 0.05
+		}
+	}
+	#整合联邦出版社
+	AOR_GER_idea_Integrate_Federal_Press = {
+		picture = usa_magic
+		allowed = { original_tag = GER }
+		modifier = {
+			political_power_cost = 0.15
+			stability_factor = 0.05
+			master_ideology_drift = 0.1
+		}
+	}
+	#基层群众自治组织
+	AOR_GER_idea_Grassroots_mass_autonomous_organizations = {
+		picture = can_defence_of_canada_regulations_democratic
+		allowed = { original_tag = GER }
+		modifier = {
+			democratic_drift = 0.05
+			party_popularity_stability_factor = 0.05
+		}
+	}
+	
+	#意识形态反对派
+	AOR_GER_idea_Ideological_opposition = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+			stability_weekly = -0.002
+		}
+	}
+	#意识形态反对派
+	AOR_GER_idea_Ideological_opposition_left_4 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+			stability_weekly = -0.001
+		}
+	}
+	#意识形态反对派
+	AOR_GER_idea_Ideological_opposition_left_3 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+		}
+	}
+	#意识形态反对派
+	AOR_GER_idea_Ideological_opposition_left_2 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+			stability_weekly = 0.001
+		}
+	}
+	#意识形态反对派
+	AOR_GER_idea_Ideological_opposition_left_1 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+			stability_weekly = 0.002
+		}
+	}
+	
+	
+	#政府反对派
+	AOR_GER_idea_Ideological_opposition_middle_4 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.20
+		}
+	}
+	#政府反对派
+	AOR_GER_idea_Ideological_opposition_middle_3 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+		}
+	}
+	#政府反对派
+	AOR_GER_idea_Ideological_opposition_middle_2 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.10
+		}
+	}
+	#政府反对派
+	AOR_GER_idea_Ideological_opposition_middle_1 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.05
+		}
+	}
+	
+	
+	
+	#共和主义反对派
+	AOR_GER_idea_Ideological_opposition_right_4 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.15
+			war_support_factor = 0.05
+			stability_weekly = -0.002
+		}
+	}
+	#共和主义反对派
+	AOR_GER_idea_Ideological_opposition_right_3 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.10
+			war_support_factor = 0.05
+			stability_weekly = -0.002
+		}
+	}
+	#共和主义反对派
+	AOR_GER_idea_Ideological_opposition_right_2 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.05
+			war_support_factor = 0.10
+			stability_weekly = -0.001
+		}
+	}
+	#共和主义反对派
+	AOR_GER_idea_Ideological_opposition_right_1 = {
+		picture = generic_democratic_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_weekly = -0.001
+			war_support_factor = 0.10
+		}
+	}
+	
+	#国防委员会
+	AOR_GER_idea_national_defense_committee = {
+		picture = soviet_german_friendship
+		allowed = { original_tag = GER }
+		modifier = {
+			unit_upkeep_attrition_factor = -0.2
+			surrender_limit = 0.10
+		}
+	}
+	#最高委员会
+	AOR_GER_idea_holy_national_defense_committee = {
+		picture = soviet_german_friendship
+		allowed = { original_tag = GER }
+		modifier = {
+			unit_upkeep_attrition_factor = -0.2
+			surrender_limit = 0.10
+			command_power_gain = 0.1
+			max_command_power_mult = 0.2
+		}
+	}
+	
+	#降低通货膨胀
+	AOR_GER_idea_under_discussion = {
+		picture = ger_rebuild_the_nation
+		cancel = { has_war_with = GER }
+		modifier = {
+			political_power_gain = 0.15
+			stability_factor = 0.5
+			stability_weekly = 0.001
+			unit_upkeep_attrition_factor = -0.1
+		}
+	}
+	#重建邦国贸易体系
+	AOR_GER_idea_trade = {
+		picture = ger_rebuild_the_nation
+		cancel = { has_war_with = GER }
+		modifier = {
+			consumer_goods_factor = -0.03
+			trade_opinion_factor = 0.3
+			min_export = -0.1
+		}
+	}
+	#合成氨技术军转民
+	AOR_GER_idea_synthetic_ammonia = {
+		picture = ger_rebuild_the_nation
+		cancel = { has_war_with = GER }
+		modifier = {
+			political_power_gain = 0.05
+			conversion_cost_mil_to_civ_factor = 0.5
+			production_speed_industrial_complex_factor = 0.1
+		}
+	}
+	#削减自治区权力
+	AOR_GER_idea_Reduce_power_autonomous_1 = {
+		picture = ITA_devaluated_lira
+		cancel = { has_war_with = GER }
+		modifier = {
+			subjects_autonomy_gain = -0.2
+		}
+	}
+	#削减自治区权力
+	AOR_GER_idea_Reduce_power_autonomous_2 = {
+		picture = ITA_devaluated_lira
+		allowed = { original_tag = GER }
+		cancel = { has_war_with = GER }
+		modifier = {
+			subjects_autonomy_gain = -0.2
+			autonomy_gain_warscore_factor = -0.5
+			can_master_build_for_us = 1
+			cic_to_overlord_factor = 0.25
+			mic_to_overlord_factor = 0.25
+		}
+	}
+	#联合邦国一体化
+	AOR_GER_idea_autonomous_goal = {
+		picture = generic_flexible_foreign_policy2
+		cancel = { has_war_with = GER }
+		modifier = {
+			defensive_war_stability_factor = 0.1
+			min_export = -0.10
+			production_lack_of_resource_penalty_factor = -0.10
+		}
+	}
+	#强化政府权威
+	AOR_GER_idea_Strengthen_government_authority = {
+		picture = new_economic_policy
+		modifier = {
+			party_popularity_stability_factor = 0.05
+			stability_weekly = 0.002
+		}
+	}
+	#柏林的注视
+	AOR_GER_idea_Berlin_support = {
+		picture = generic_oppression
+		cancel = { has_war = yes }
+		modifier = {
+			party_popularity_stability_factor = 0.05
+			stability_weekly = 0.001
+		}
+	}
+	#不受政府支持
+	AOR_GER_idea_Berlin_NOT_support = {
+		picture = generic_oppression
+		cancel = { has_war = yes }
+		modifier = {
+			stability_factor = -0.15
+		}
+	}
+	#整合自治区
+	AOR_GER_idea_Integrated_Autonomous_Region = {
+		picture = generic_oppression
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = -0.05
+			political_power_factor = -0.1
+		}
+	}
+	#支持理论自由
+	AOR_GER_idea_Freedom_of_theory = {
+		picture = generic_neutrality_drift_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = 0.10
+			communism_acceptance = 20
+			democratic_acceptance = 20
+			fascism_acceptance = 20
+			eutrality_acceptance = 20
+		}
+	}
+	#雄鹰的旗帜
+	AOR_GER_idea_Eagle_flag = {
+		picture = triumphant_will
+		allowed = { original_tag = GER }
+		modifier = {
+			war_support_factor = 0.05
+			mobilization_speed = 0.5
+			weekly_manpower = 500
+		}
+	}
+	
+	#德意志军队传承
+	AOR_GER_idea_Deutschland_army_0 = {
+		picture = Eric_germany_army
+		allowed = { original_tag = GER }
+		modifier = {
+			war_support_factor = 0.05
+			surrender_limit = 0.10
+		}
+	}
+	#军队非政治化
+	AOR_GER_idea_Deutschland_army_1 = {
+		picture = Eric_germany_army_depoliticization
+		allowed = { original_tag = GER }
+		modifier = {
+			army_org_factor = -0.3
+			industrial_capacity_factory = 0.05
+			
+			war_support_factor = -0.05
+			land_reinforce_rate = -0.03
+			consumer_goods_factor = -0.03
+			surrender_limit = -0.20
+			drift_defence_factor = -0.60
+			
+		}
+	}
+	#重新政治化的防卫军
+	AOR_GER_idea_Deutschland_army_2 = {
+		picture = Eric_germany_army_inheritance
+		allowed = { original_tag = GER }
+		modifier = {
+			war_support_factor = 0.05
+			army_org_factor = -0.3
+			land_reinforce_rate = -0.03
+			drift_defence_factor = -0.60
+		}
+	}
+	#重新政治化的防卫军
+	AOR_GER_idea_Deutschland_army_3 = {
+		picture = Eric_germany_army_inheritance
+		allowed = { original_tag = GER }
+		modifier = {
+			war_support_factor = 0.05
+			surrender_limit = 0.10
+			army_org_factor = -0.2
+			land_reinforce_rate = -0.02
+			drift_defence_factor = -0.40
+		}
+	}
+	#重新政治化的防卫军
+	AOR_GER_idea_Deutschland_army_4 = {
+		picture = Eric_germany_army_inheritance
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			surrender_limit = 0.20
+			army_org_factor = -0.1
+			land_reinforce_rate = -0.01
+			drift_defence_factor = -0.20
+		}
+	}
+	#重获新生的国防军
+	AOR_GER_idea_Deutschland_army_5 = {
+		picture = Eric_germany_army_inheritance
+		allowed = { original_tag = GER }
+		modifier = {
+			stability_factor = 0.10
+			war_support_factor = 0.05
+			surrender_limit = 0.30
+		}
+	}
+	#重新整顿军纪
+	AOR_GER_idea_restrict_discipline = {
+		picture = citizen_militia_1
+		modifier = {
+			political_power_cost = 0.2
+			stability_factor = -0.1
+			army_org_factor = -0.1
+		}
+	}
+	#纪律严明的德国军队
+	AOR_GER_idea_army_strict_in_discipline = {
+		picture = citizen_militia_1
+		modifier = {
+			political_power_gain = 0.05
+			stability_factor = 0.05
+			army_org_factor = 0.05
+			stability_weekly = 0.001
+		}
+	}
+	#纸上谈兵
+	AOR_GER_idea_talk_about_stratagems_on_paper = {
+		picture = citizen_militia_1
+		modifier = {
+			army_morale_factor = -0.04
+			max_planning = 0.05
+			army_speed_factor = 0.05
+		}
+	}
+	#有学历的军官
+	AOR_GER_idea_officer_with_degree = {
+		picture = citizen_militia_1
+		modifier = {
+			army_morale_factor = 0.04
+			max_planning = 0.10
+			army_speed_factor = 0.05
+		}
+	}
+	#总参谋部
+	AOR_GER_idea_general_staff = {
+		picture = citizen_militia_1
+		modifier = {
+			army_org_factor = 0.05
+			planning_speed = 0.25
+		}
+	}
+
+}
+}

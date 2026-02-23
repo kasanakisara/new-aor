@@ -1,0 +1,203 @@
+
+#解决混乱
+
+add_namespace = SHL
+
+
+country_event = {
+	id = SHL.0
+	title = SHL.0.t
+	desc = SHL.0.d
+	picture = GFX_report_event_german_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+	date > 1919.11.1
+	tag = SHL
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SHL.0.a
+		
+		}
+	option = { 
+        name = SHL.0.b
+		custom_effect_tooltip = "埃里希·雷德尔的影响力将会上升"
+		add_to_variable = { 
+	    var = SHL.raeder
+	    value = 2
+         }
+		}
+    }
+	country_event = {
+	id = SHL.1
+	title = SHL.1.t
+	desc = SHL.1.d
+	picture = GFX_report_event_german_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+	date > 1919.12.1
+	tag = SHL
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SHL.1.a
+		
+		}
+	option = { 
+        name = SHL.1.b
+		custom_effect_tooltip = "埃里希·雷德尔的影响力将会上升"
+		add_to_variable = { 
+	    var = SHL.raeder
+	    value = 2
+         }
+		}
+    }
+	country_event = {
+	id = SHL.2
+	title = SHL.2.t
+	desc = SHL.2.d
+	picture = GFX_report_event_german_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+	date > 1920.1.1
+	tag = SHL
+	check_variable = { SHL.raeder > 3 }
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SHL.2.a
+		
+		}
+	option = { 
+        name = SHL.2.b
+		add_to_variable = { 
+	    var = SHL.raeder
+	    value = 2
+         }
+		}
+    }
+	country_event = {
+	id = SHL.3
+	title = SHL.3.t
+	desc = SHL.3.d
+	picture = GFX_report_event_german_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+	date > 1920.2.1
+	tag = SHL
+	check_variable = { SHL.raeder > 5 }
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { 
+        name = SHL.3.a
+create_corps_commander = {
+	   name = "Kirill"
+	portrait_path = "gfx/leaders/SHL/SHL_Kirill.png"
+	traits = { media_personality infantry_officer thorough_planner exiled_leader trait_GRE_stauch_monarchist BALTIC_ex_russian }
+	skill = 2
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	   name = "Friedrich·von·Schleswig"
+	portrait_path = "gfx/leaders/SHL/SHL_friedrich.png"
+	traits = { media_personality infantry_officer thorough_planner exiled_leader trait_GRE_stauch_monarchist BALTIC_ex_russian }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+set_country_flag = erich_raeder
+		}
+		option = { 
+        name = SHL.3.b
+create_corps_commander = {
+	   name = "Kirill"
+	portrait_path = "gfx/leaders/SHL/SHL_Kirill.png"
+	traits = { media_personality infantry_officer thorough_planner exiled_leader trait_GRE_stauch_monarchist BALTIC_ex_russian }
+	skill = 2
+	attack_skill = 4
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	   name = "Friedrich·von·Schleswig"
+	portrait_path = "gfx/leaders/SHL/SHL_friedrich.png"
+	traits = { media_personality infantry_officer thorough_planner exiled_leader trait_GRE_stauch_monarchist BALTIC_ex_russian }
+	skill = 2
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+set_country_flag = karl_doenitz
+		}
+	
+    }
+	country_event = {
+	id = SHL.4
+	title = SHL.4.t
+	desc = SHL.4.d
+	picture = GFX_news_event_germany_victory
+	
+	
+	fire_only_once = yes
+	
+	trigger = {
+		SHL = { 
+		has_completed_focus = SHL_there_is_no_god_and_master
+		has_completed_focus = SHL_railway_build
+		}
+		original_tag = SHL
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = SHL.4.a
+		load_focus_tree = SHL_2
+		}
+
+}
+	
+	
+
+
+	
+		
+			

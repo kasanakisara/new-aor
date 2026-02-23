@@ -1,0 +1,77 @@
+scripted_gui = {
+	AOR_Presidentof_ROC_general_election = {
+		window_name = "AOR_Presidentof_ROC_general_election"
+		visible = {
+			tag = CHI
+			has_country_flag = AOR_Presidentof_ROC_general_election_visble
+		}
+		properties = {
+			ROC_senate_seat_nme = {
+				x = ROC_senate_steat_x^seat_idx
+				y = ROC_senate_seat_y^seat_idx
+				frame = ROC_senate_frame_arry^seat_idx
+			}
+			ROC_Representatives_seat_nme = {
+				x = ROC_Representatives_seat_x^seat_idx
+				y = ROC_Representatives_seat_y^seat_idx
+				frame = ROC_Representatives_frame_arry^seat_idx
+			}
+			KMT_leader_pic = {
+				image = "[KMT_leader_pic]"
+			}
+			SOCP_leader_pic = {
+				image = "[SOCP_leader_pic]"
+			}
+			ProP_leader_pic = {
+				image = "[ProP_leader_pic]"
+			}
+			UNP_leader_pic = {
+				image = "[UNP_leader_pic]"
+			}
+		}
+		dynamic_lists = {
+			ROC_senate_diag_container = {
+				array = ROC_senate_steat_x
+				change_scope = no
+				entry_container = ROC_senate_container
+				index = seat_idx
+			}
+			ROC_Representatives_diag_container = {
+				array = ROC_Representatives_seat_x
+				change_scope = no
+				entry_container = ROC_Representatives_container
+				index = seat_idx
+			}
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = AOR_Presidentof_ROC_general_election_visble
+			}
+		}
+	}
+}
+scripted_gui = {
+	AOR_ROC_election_window = {
+		context_type = decision_category
+		window_name = "AOR_ROC_election_window"
+		visible = {
+			tag = CHI
+		}
+		effects = {
+			AOR_ROC_election_window_BUTTON_click = {
+				CHI_Seat_calculation = yes
+				if = {
+					limit = {
+						not = {
+							has_country_flag = AOR_Presidentof_ROC_general_election_visble
+						}
+					}
+					set_country_flag = AOR_Presidentof_ROC_general_election_visble
+				}
+				else = {
+					clr_country_flag = AOR_Presidentof_ROC_general_election_visble
+				}
+			}
+		}
+	}
+}

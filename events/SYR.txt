@@ -1,0 +1,140 @@
+add_namespace = SYR
+country_event = {
+
+	id = SYR.1
+	title = SYR.1.t
+	desc = SYR.1.d
+	picture = GFX_events_SAF_1
+	is_triggered_only = yes
+	fire_only_once = yes
+    #那就这样吧  
+	immediate = {
+		news_event = { id = AOR_news.32 }
+		}	
+	option = {
+		name = SYR.1.a
+		
+    }
+}
+country_event = {
+	id = SYR.2
+	title = SYR.2.t
+	desc = SYR.2.d
+	picture = GFX_events_SYR_2
+	fire_only_once = yes
+	trigger = {
+	    date > 1922.6.10
+		tag = SYR
+	}
+    #那就这样吧  	
+	option = {
+		news_event = { id = AOR_news.33}
+		name = SYR.2.a
+		FRA = {end_puppet = SYR}
+		SYR = {add_ideas = { Proxy_war } 
+}
+		SYI = {
+
+				transfer_state = 553
+				add_state_core = 676
+				add_state_core = 677
+				add_state_core = 680
+				add_state_core = 344
+				add_state_core = 350
+				add_state_core = 553
+				add_manpower = 10000
+
+				}
+		
+		SYI = {
+			declare_war_on = {
+				target = SYR
+				type = civil_war
+				}
+			}
+		SYI = {load_oob = "SYI_1922"}
+		OIC = {
+			transfer_state = 344			
+			add_state_core = 344
+			add_state_core = 350
+
+			add_manpower = 10000
+		}
+		
+
+		OIC = {
+			declare_war_on = {
+				target = SYR
+				type = civil_war
+				}
+			}
+		OIC = {load_oob = "OIC_1922"}
+		KUR = {
+			transfer_state = 350			
+			add_state_core = 344
+			add_state_core = 350
+	
+			add_manpower = 10000
+		}
+	
+			
+		KUR = {
+			declare_war_on = {
+				target = SYR
+				type = civil_war
+				}
+			}
+		KUR = {load_oob = "KUR_1922"}
+ 	}
+}
+country_event = {
+
+	id = SYR.2023
+	title = SYR.2023.t
+	desc = SYR.2023.d
+	picture = GFX_events_SAF_1
+	is_triggered_only = yes
+	fire_only_once = yes
+    #那就这样吧  
+	option = {
+		name = SYR.2023.a
+		SYI = {
+
+			transfer_state = 553
+			add_state_core = 676
+			add_state_core = 677
+			add_state_core = 680
+			add_state_core = 344
+			add_state_core = 350
+			every_state = {
+				add_core_of = SYI
+			}
+			add_manpower = 20231010
+
+			}
+		SYI = {
+			add_ideas = {
+			FUCK_YOU_COLONIST
+			}
+		}
+		SYI = {
+			declare_war_on = {
+				target = ENG
+				type = civil_war
+				}
+		}
+		SYI = {
+			declare_war_on = {
+				target = USA
+				type = civil_war
+				}
+		}
+		SYI = {
+			declare_war_on = {
+				target = SYR
+				type = civil_war
+			}
+		}
+		SYI = {load_oob = "SYI_1922"}
+    }
+}

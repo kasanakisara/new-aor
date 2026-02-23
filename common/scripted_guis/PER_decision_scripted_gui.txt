@@ -1,0 +1,23 @@
+#路径：common\scripted_guis
+
+scripted_gui = {
+	#.gui文件的name去掉
+	PER_Fighting_inflation_ui_window = {
+		#decision_category决议gui
+		context_type = decision_category
+		#.gui文件的name
+		window_name = "PER_Fighting_inflation"
+	}
+	PER_Agricultural_Jihad_Preliminary_ui_window = {
+		context_type = decision_category
+		window_name = "PER_Agricultural_Jihad_Preliminary"
+		triggers = {
+			JIHAD_text_name_visible = {
+				has_completed_focus = PER_Agricultural_Jihad_Preliminary_0
+			}
+			PER_Agricultural_Jihad_Preliminary_visible = {
+				has_completed_focus = PER_Agricultural_Jihad_Preliminary_0
+			}
+		}
+	}
+}

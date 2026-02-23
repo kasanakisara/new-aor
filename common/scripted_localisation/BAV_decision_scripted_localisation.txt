@@ -1,0 +1,53 @@
+
+defined_text = { # Country
+	name = GetBAVdcEffect
+	text = {
+		trigger = {
+			check_variable = {
+				BAV_different_choice < 10
+			}
+		}
+		localization_key = "BAV_danger_cohesiveness"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				BAV_different_choice < 20
+			}
+			check_variable = {
+				var = BAV_different_choice
+				value = 10
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "BAV_low_cohesiveness"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				BAV_different_choice < 30
+			}
+			check_variable = {
+				var = BAV_different_choice
+				value = 20
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "BAV_normal_cohesiveness"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = BAV_different_choice
+				value = 30
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = "BAV_nice_cohesiveness"
+	}
+}
+
+
+
+
+

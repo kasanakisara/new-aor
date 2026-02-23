@@ -1,0 +1,189 @@
+add_namespace = SHX
+
+country_event = {#阎锡山支持联省共和(广州)
+	id = SHX.1 
+	title = SHX.1.t
+	desc = SHX.1.d
+	picture = GFX_SHX_event_1
+    trigger = {
+        tag = SHX
+		date > 1922.12.10
+        UPC = {
+            owns_state = 893
+        }
+    }
+	fire_only_once = yes
+    immediate = {
+    hidden_effect = {
+        SHX ={
+        set_cosmetic_tag = SHX_1_Absolutism
+        declare_war_on = { 
+            target = NAN
+            type = civil_war
+        } 
+        declare_war_on = { 
+            target = MON
+            type = civil_war
+                } 
+            }
+        }
+    }
+    option = {
+		name = SHX.1.a
+        news_event = {id=AOR_news.150}
+        UPC = {
+            create_faction = upc_mingzhu_Union
+            add_to_faction = UPC
+            white_peace = UPC
+        }
+    }
+}
+
+country_event = {#阎锡山支持陈其美国民政府
+	id = SHX.2
+	title = SHX.2.t
+	desc = SHX.2.d
+	picture = GFX_SHX_event_2
+    trigger = {
+        tag = SHX
+		date > 1922.12.10
+        KMT = {
+            AUT_democratic > 0.15
+            owns_state = 893
+        }
+    }
+	fire_only_once = yes
+    immediate = {
+    hidden_effect = {
+        SHX ={
+        set_cosmetic_tag = SHX_2_Absolutism
+        declare_war_on = { 
+            target = NAN
+            type = civil_war
+        } 
+        declare_war_on = { 
+            target = MON
+            type = civil_war
+                } 
+            }
+        }
+    }
+    option = {
+		name = SHX.2.a
+        news_event = {id=AOR_news.151}
+        UPC = {
+            create_faction = kmt_mingzhu_Union
+            add_to_faction = KMT
+            white_peace = KMT
+        }
+    }
+}
+
+country_event = {#阎锡山支持南京政府
+	id = SHX.3 
+	title = SHX.3.t
+	desc = SHX.3.d
+	picture = GFX_SHX_event_3
+    trigger = {
+        tag = SHX
+		date > 1922.12.10
+        NAN = {
+            owns_state = 716
+        }
+    }
+	fire_only_once = yes
+    immediate = {
+    hidden_effect = {
+        SHX ={
+        set_cosmetic_tag = SHX_3_Absolutism
+        declare_war_on = { 
+            target = MAN
+            type = civil_war
+        } 
+            }
+        }
+    }
+    option = {
+		name = SHX.3.a
+        news_event = {id=AOR_news.152}
+        UPC = {
+            create_faction = Zhiyang_Union
+            add_to_faction = NAN
+            white_peace = NAN
+        }
+    }
+}
+
+country_event = {#阎锡山支持北京政府
+	id = SHX.4 
+	title = SHX.4.t
+	desc = SHX.4.d
+	picture = GFX_SHX_event_4
+    trigger = {
+        tag = SHX
+		date > 1922.12.10
+        MON = {
+            owns_state = 716
+        }
+    }
+	fire_only_once = yes
+    immediate = {
+    hidden_effect = {
+        SHX ={
+        set_cosmetic_tag = SHX_3_Absolutism
+        declare_war_on = { 
+            target = MAN
+            type = civil_war
+        } 
+            }
+        }
+    }
+    option = {
+		name = SHX.4.a
+        news_event = {id=AOR_news.153}
+        UPC = {
+            create_faction = Beiyang_Union
+            add_to_faction = MON
+            white_peace = MON
+        }
+    }
+}
+
+country_event = {#阎锡山加入陈其美国民政府
+	id = SHX.5 
+	title = SHX.5.t
+	desc = SHX.5.d
+	picture = GFX_SHX_event_5
+    trigger = {
+        tag = SHX
+		date > 1922.12.10
+        KMT = {
+            AUT_democratic > 0.15
+            owns_state = 714
+            owns_state = 761
+            owns_state = 913
+            owns_state = 873
+            owns_state = 717
+            owns_state = 715
+            owns_state = 891
+            owns_state = 328
+            owns_state = 716
+            owns_state = 875
+            owns_state = 874
+        }
+    }
+	fire_only_once = yes
+
+    option = {
+		name = SHX.5.a
+        news_event = {id=AOR_news.153}
+        KMT = {
+            annex_country = {
+				target = SHX
+			}
+            add_state_core = 884
+			add_state_core = 615
+			add_state_core = 883
+        }
+    }
+}

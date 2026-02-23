@@ -1,0 +1,170 @@
+add_namespace = PRC
+
+country_event = {#红军统一四川
+	id = PRC.1 
+	title = PRC.1.t
+	desc = PRC.1.d
+	picture = GFX_PRC_event_1
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		date > 1922.3.10
+        PRC = {
+            owns_state = 906
+            owns_state = 908
+            owns_state = 753
+            owns_state = 751
+            owns_state = 434
+            owns_state = 605
+        }
+    }
+
+
+    option = {
+		name = PRC.1.a
+		news_event = {id=AOR_news.105} #红军统一四川
+		PRC = {
+            set_popularities = {
+                Marxism = 50
+                AUT_democratic = 17
+                FRE_democratic = 11
+                Absolutism = 10
+                SOC_democratic = 7
+                AGR_socialism = 5
+            }
+
+            set_capital = { state = 753 }
+            add_state_core = 906
+            add_state_core = 908
+            add_state_core = 753
+            add_state_core = 751
+            add_state_core = 434
+			}
+	    }
+    }
+
+    country_event = {#红军南下打游击
+	id = PRC.2 
+	title = PRC.2.t
+	desc = PRC.2.d
+	picture = GFX_PRC_event_2
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+        date > 1922.3.10
+        PRC = {
+            owns_state = 906
+            owns_state = 908
+            owns_state = 753
+            owns_state = 751
+            owns_state = 434
+            owns_state = 605
+        }
+        UPC = {
+            controls_state = 750
+            controls_state = 907
+            controls_state = 748
+            controls_state = 603
+            controls_state = 325
+            controls_state = 609
+            controls_state = 755
+            controls_state = 747
+        }
+    }
+
+
+    option = {
+		name = PRC.2.a
+        country_event = { days = 60  id = PRC.3 }
+		#news_event = {id=AOR_news.105}
+		PRC = {
+            325={set_demilitarized_zone=yes}
+            609={set_demilitarized_zone=yes}
+            755={set_demilitarized_zone=yes}
+            747={set_demilitarized_zone=yes}
+			}
+	    }
+    }
+
+country_event = {#红军南下云贵
+	id = PRC.3 
+	title = PRC.3.t
+	desc = PRC.3.d
+	picture = GFX_PRC_event_3
+    is_triggered_only = yes
+	fire_only_once = yes
+
+    option = {
+		name = PRC.3.a
+		news_event = {id=AOR_news.148}
+		PRC = {
+                declare_war_on = { 
+                    target = UPC
+                    type = civil_war
+                } 
+            load_oob = "AOR_LAND_CHI_chuanjun_M_GONG"
+            load_oob = "AOR_LAND_CHI_chuanjun_M_GONG"
+            load_oob = "AOR_LAND_CHI_chuanjun_M_GONG"
+            load_oob = "AOR_LAND_CHI_chuanjun_M_GONG"
+            load_oob = "AOR_LAND_CHI_chuanjun_M_GONG"
+            add_ideas = CHI_gemingtongyizhixi
+			}
+        UPC = {
+            add_ideas = CHI_gemingtongyizhixi
+        }
+	}
+    option = {
+		name = PRC.3.b
+		news_event = {id=AOR_news.148}
+		PRC = {
+                declare_war_on = { 
+                    target = UPC
+                    type = civil_war
+                } 
+            add_ideas = CHI_gemingtongyizhixi
+			}
+	    }
+        UPC = {
+            add_ideas = CHI_gemingtongyizhixi
+        }
+    }
+
+country_event = {#红军统一云贵
+	id = PRC.4 
+	title = PRC.4.t
+	desc = PRC.4.d
+	picture = GFX_PRC_event_4
+	fire_only_once = yes
+	trigger = {
+		tag = PRC
+		date > 1922.12.10
+        PRC = {
+            owns_state = 750
+            owns_state = 907
+            owns_state = 748
+            owns_state = 603
+            owns_state = 325
+            owns_state = 609
+            owns_state = 755
+            owns_state = 747
+        }
+    }
+
+
+    option = {
+		name = PRC.4.a
+		news_event = {id=AOR_news.149}
+		PRC = {
+            set_cosmetic_tag = PRC_1_Marxism
+            white_peace = UPC
+            add_state_core = 750
+            add_state_core = 907
+            add_state_core = 748
+            add_state_core = 603
+            add_state_core = 325
+            add_state_core = 609
+            add_state_core = 755
+            add_state_core = 747
+			}
+	    }
+    }

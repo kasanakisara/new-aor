@@ -1,0 +1,40 @@
+add_namespace = AST
+
+country_event = {
+	id = AST.1
+	title = AST.1.t
+	desc = AST.1.d
+	picture = GFX_events_AST_1
+	fire_only_once = yes
+	trigger = {
+	    date > 1922.5.10
+		tag = AST
+	}
+	mean_time_to_happen = { days = 1}
+    #国民党-乡村党组成联盟	
+	option = {
+		name = AST.1.a
+		retire_country_leader = yes
+		create_country_leader = {
+		name = "STANLY_BRUCE"
+		desc = ""
+		picture = "gfx/leaders/AST/STANLY_BRUCE.dds"
+		expire = "1945.1.1"
+		ideology = federalism
+		}
+		news_event = {id = AOR_news.60}
+	}
+	#工党	
+	option = {
+		name = AST.1.b
+		set_politics = { ruling_party = SOC_democratic }
+		create_country_leader = {
+		name = "Matthew_Charlton"
+		desc = ""
+		picture = "gfx/leaders/AST/MC.png"
+		expire = "1945.1.1"
+		ideology = socialism_right
+		}
+		news_event = {id = AOR_news.610}
+	}
+}

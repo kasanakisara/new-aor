@@ -1,0 +1,110 @@
+AOR_RUS_modifier_timed_ideas = { #延长内战ideas
+	if = {
+		limit = { has_idea = SOV_Civil_war_0 }
+		modify_timed_idea = { idea = SOV_Civil_war_0 days = 90 }
+	}
+	if = {
+		limit = { has_idea = SOV_Civil_war_stalin_1 }
+		modify_timed_idea = { idea = SOV_Civil_war_stalin_1 days = 90 }
+	}
+	if = {
+		limit = { has_idea = SOV_Civil_war_Frunze_1 }
+		modify_timed_idea = { idea = SOV_Civil_war_Frunze_1 days = 90 }
+	}
+}
+
+AOR_RUS_National_industrialization = { #落后的农业国
+	if = {
+		limit = { has_idea = SOV_Backward_agricultural_country_2 }
+		remove_ideas = SOV_Backward_agricultural_country_2
+	}
+	if = {
+		limit = { has_idea = SOV_Backward_agricultural_country_1 }
+		swap_ideas = {
+			remove_idea = SOV_Backward_agricultural_country_1
+			add_idea = SOV_Backward_agricultural_country_2
+		}
+	}
+	if = {
+		limit = { has_idea = SOV_Backward_agricultural_country_0 }
+		swap_ideas = {
+			remove_idea = SOV_Backward_agricultural_country_0
+			add_idea = SOV_Backward_agricultural_country_1
+		}
+	}
+}
+
+RUS_give_gun_licences = {
+	if = {
+		limit = {
+			has_tech = infantry_weapons
+		}
+		if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			create_production_license = {
+				target = PREV
+				equipment = {
+					type = infantry_equipment_0
+				}
+				cost_factor = 0
+			}
+		}
+		PREV = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 200
+				producer = ROOT
+			}
+		}
+	}
+	
+	esle_if = {
+		limit = {
+			has_tech = infantry_weapons1
+		}
+		if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			create_production_license = {
+				target = PREV
+				equipment = {
+					type = infantry_equipment_1
+				}
+				cost_factor = 0
+			}
+		}
+		PREV = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 200
+				producer = ROOT
+			}
+		}
+	}
+}
+AOR_RUS_recover_Destructive_strike = { #军事工业的毁灭性创伤
+	if = {
+		limit = { has_idea = SOV_Destructive_strike_recover_1 }
+		remove_ideas = SOV_Destructive_strike_recover_1
+	}
+	if = {
+		limit = { has_idea = SOV_Destructive_strike_recover_2 }
+		swap_ideas = {
+			remove_idea = SOV_Destructive_strike_recover_2
+			add_idea = SOV_Destructive_strike_recover_1
+		}
+	}
+	if = {
+		limit = { has_idea = SOV_Destructive_strike_recover_3 }
+		swap_ideas = {
+			remove_idea = SOV_Destructive_strike_recover_3
+			add_idea = SOV_Destructive_strike_recover_2
+		}
+	}
+	if = {
+		limit = { has_idea = SOV_Destructive_strike }
+		swap_ideas = {
+			remove_idea = SOV_Destructive_strike
+			add_idea = SOV_Destructive_strike_recover_3
+		}
+	}
+}

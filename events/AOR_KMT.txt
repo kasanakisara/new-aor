@@ -1,0 +1,807 @@
+add_namespace = KMT
+
+country_event = {#昆明政府政变
+	id = KMT.1
+	title = KMT.1.t
+	desc = KMT.1.d
+	picture = GFX_KMT_event_1
+	trigger = {
+		date > 1920.8.31
+		tag = KMT
+	}
+	fire_only_once = yes
+	immediate = {
+        hidden_effect = {
+            KMT = {
+                set_politics = {ruling_party = FRE_democratic }
+                create_country_leader = {
+                    name = "Cai_e"
+                    desc = "Cai_e_desc"
+                    picture = "gfx/leaders/KMT/Cai_e.png"
+                    expire = "1965.1.1"
+                    ideology = liberalism
+                    traits = {
+                    }
+                }
+                325={set_demilitarized_zone=yes}
+                #603={set_demilitarized_zone=yes}
+                #748={set_demilitarized_zone=yes}
+                #907={set_demilitarized_zone=yes}
+                #750={set_demilitarized_zone=yes}
+            }
+            GUZ = {
+                set_cosmetic_tag = JIN_Absolutism
+                transfer_state = 750
+                transfer_state = 603
+                transfer_state = 907
+                transfer_state = 748
+    
+                add_state_core = 750
+                add_state_core = 603
+                add_state_core = 907
+                add_state_core = 748
+            }
+        }
+	}
+	option = {
+		name = KMT.1.a
+        country_event = { days = 470  id = KMT.2 }
+        news_event = {id=AOR_news.131}
+        KMT = {
+            set_cosmetic_tag = KMT_4
+            load_oob = "AOR_LAND_CHI_M_KMT"
+            add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+            add_popularity = { ideology = CON_democratic popularity = 0.1 }
+            add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+        }
+	}
+
+    option = {
+		name = KMT.1.b
+        country_event = { days = 470  id = KMT.7 }
+        news_event = {id=AOR_news.131}
+        KMT = {
+            set_cosmetic_tag = KMT_4
+            add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+            add_popularity = { ideology = CON_democratic popularity = 0.1 }
+            add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+        }
+	}
+
+    option = {
+		name = KMT.1.c
+        country_event = { days = 470  id = KMT.10 }
+        news_event = {id=AOR_news.131}
+        KMT = {
+            set_cosmetic_tag = KMT_4
+            add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+            add_popularity = { ideology = CON_democratic popularity = 0.1 }
+            add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+        }
+	}
+}
+
+country_event = {#云贵内战（孙中山主导）
+	id = KMT.2
+	title = KMT.2.t
+	desc =  KMT.2.d
+	picture = GFX_KMT_event_2
+    is_triggered_only = yes
+	#trigger = {
+		#date > 1921.12.05
+		#tag = KMT
+	#}
+	fire_only_once = yes
+	immediate = {
+        hidden_effect = {
+            KMT = {
+                create_country_leader = {
+                    name = "Sun_zhong_shan"
+                    desc = "Sun_zhong_shan_desc"
+                    picture = "gfx/leaders/KMT/sun.dds"
+                    expire = "1965.1.1"
+                    ideology = sanminism
+                    traits = {
+                    }
+                }
+                swap_ideas={
+				remove_idea = CHI_yunguixiongshi
+				add_idea = CHI_yunguixiongshi_1
+			}
+            }
+            GUZ = {
+                declare_war_on = { 
+                    target = KMT
+                    type = civil_war
+                } 
+            }
+        }
+	}
+	option = {
+		name = KMT.2.a
+        news_event = {id=AOR_news.176}
+        KMT = {
+        add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+        add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+        }
+	}
+}
+
+country_event = {#昆明政府统一南方
+	id = KMT.3 
+	title = KMT.3.t
+	desc = KMT.3.d
+	picture = GFX_KMT_event_3
+	fire_only_once = yes
+	trigger = {
+		tag = KMT
+		date > 1922.12.10
+        KMT = {
+            SOC_democratic > 0.18
+            owns_state = 901
+            owns_state = 593
+            owns_state = 592
+            owns_state = 919
+            owns_state = 904
+            owns_state = 900
+            owns_state = 594
+            owns_state = 902
+            owns_state = 599
+            owns_state = 903
+            owns_state = 759
+            owns_state = 591
+            owns_state = 602
+            owns_state = 746
+        }
+    }
+
+
+    option = {
+		name = KMT.3.a
+		news_event = {id=AOR_news.106}
+        country_event = { days = 90  id = KMT.4 }
+		KMT = {
+            set_cosmetic_tag = KMT_6
+			swap_ideas={
+				remove_idea = CHI_insecure_society
+				add_idea = CHI_care_society
+			}
+            set_party_name = { ideology = Absolutism long_name = KMT_Absolutism_party_1 name = KMT_Absolutism_party_1 }
+            add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+            add_popularity = { ideology = CON_democratic popularity = 0.1 }
+            add_popularity = { ideology = SOC_democratic popularity = 0.2 }
+            add_state_core = 901
+            add_state_core = 593
+            add_state_core = 592
+            add_state_core = 919
+            add_state_core = 904
+            add_state_core = 900
+            add_state_core = 594
+            add_state_core = 902
+            add_state_core = 599
+            add_state_core = 903
+            add_state_core = 759
+            add_state_core = 591
+            add_state_core = 602
+            add_state_core = 746
+		}
+	}
+}
+
+    country_event = {
+        id = KMT.4 #中国昆明政府宣布北伐
+        title = KMT.4.t
+        desc = KMT.4.d
+        picture = GFX_KMT_event_4
+        is_triggered_only = yes
+        fire_only_once = yes
+
+        immediate = { 
+            hidden_effect = {
+                KMT = {
+                set_cosmetic_tag = KMT_2
+                load_oob = "AOR_LAND_CHI_KMT"
+                load_oob = "AOR_LAND_CHI_KMT"
+                load_oob = "AOR_LAND_CHI_KMT"
+                declare_war_on = { 
+                    target = NAN
+                    type = civil_war
+                } 
+                declare_war_on = { 
+                    target = MON
+                    type = civil_war
+                }
+            }
+        }
+    }
+
+        option = {
+            name=KMT.4.a
+            set_capital = { state = 592 }
+            country_event = { days = 90  id = MEN.1 }
+            country_event = { days = 180  id = DCD.2 }
+            news_event = {id=AOR_news.108}
+            KMT = {
+            set_politics = {ruling_party = SOC_democratic}
+            add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+            create_country_leader = {
+                name = "Sun_zhong_shan"
+                desc = "Sun_zhong_shan_desc"
+                picture = "gfx/leaders/KMT/sun.dds"
+                expire = "1965.1.1"
+                ideology = newdemism
+                traits = {
+                    }
+                }
+            }
+        }
+    }
+
+        country_event = {#国民革命政府统一南北
+        id = KMT.5 
+        title = KMT.5.t
+        desc = KMT.5.d
+        picture = GFX_KMT_event_5
+        fire_only_once = yes
+        trigger = {
+            tag = KMT
+            date > 1922.12.10
+            KMT = {
+                owns_state = 876
+                owns_state = 612
+                owns_state = 756
+                owns_state = 600
+                owns_state = 899
+                owns_state = 897
+                owns_state = 898
+                owns_state = 595
+                owns_state = 596
+                owns_state = 895
+                owns_state = 894
+                owns_state = 892
+                owns_state = 749
+                owns_state = 606
+                owns_state = 893
+                owns_state = 882
+                owns_state = 613
+                owns_state = 890
+                owns_state = 598
+                owns_state = 882
+                owns_state = 886
+                owns_state = 885
+                owns_state = 887
+                owns_state = 888
+                owns_state = 905
+                owns_state = 889
+                owns_state = 620
+                owns_state = 879
+                owns_state = 714
+                owns_state = 761
+                owns_state = 913
+                owns_state = 873
+                owns_state = 717
+                owns_state = 715
+                owns_state = 891
+                owns_state = 328
+                owns_state = 716
+                owns_state = 875
+                owns_state = 874
+                owns_state = 880
+                owns_state = 757
+                owns_state = 597
+                owns_state = 607
+                owns_state = 877
+                owns_state = 614
+                owns_state = 878
+                owns_state = 608
+                owns_state = 758
+                owns_state = 610
+                owns_state = 621
+                owns_state = 611
+                owns_state = 330
+            }
+        }
+
+        immediate = {
+            hidden_effect = {
+				set_victory_points = {
+                province = 1047
+                value = 20   
+                }
+			hidden_effect = {
+				set_victory_points = {
+                province = 4619
+                value = 15    
+                }
+		    }
+		}
+	}
+    
+    
+        option = {
+            name = KMT.5.a
+            news_event = {id=AOR_news.113}
+            country_event = { days = 60  id = CHI.38 }
+            country_event = { days = 90  id = JAP.10 }
+            set_capital = { state = 893 }
+            set_victory_points = {
+                province = 11913
+                value = 30    
+            }
+            set_victory_points = {
+                province = 9843
+                value = 20    
+            }
+            KMT = {
+                add_state_core = 876
+                add_state_core = 612
+                add_state_core = 756
+                add_state_core = 600
+                add_state_core = 899
+                add_state_core = 897
+                add_state_core = 898
+                add_state_core = 595
+                add_state_core = 596
+                add_state_core = 895
+                add_state_core = 894
+                add_state_core = 892
+                add_state_core = 749
+                add_state_core = 606
+                add_state_core = 893
+                add_state_core = 882
+                add_state_core = 613
+                add_state_core = 890
+                add_state_core = 598
+                add_state_core = 882
+                add_state_core = 886
+                add_state_core = 885
+                add_state_core = 887
+                add_state_core = 888
+                add_state_core = 905
+                add_state_core = 889
+                add_state_core = 620
+                add_state_core = 879
+                add_state_core = 714
+                add_state_core = 761
+                add_state_core = 913
+                add_state_core = 873
+                add_state_core = 717
+                add_state_core = 715
+                add_state_core = 891
+                add_state_core = 328
+                add_state_core = 716
+                add_state_core = 875
+                add_state_core = 874
+                add_state_core = 880
+                add_state_core = 757
+                add_state_core = 597
+                add_state_core = 607
+                add_state_core = 877
+                add_state_core = 614
+                add_state_core = 878
+                add_state_core = 608
+                add_state_core = 758
+                add_state_core = 610
+                add_state_core = 621
+                add_state_core = 611
+                add_state_core = 330
+            }
+        }
+    }
+
+    country_event = {
+        id = KMT.6 #国民革命政府统一全国
+        title = KMT.6.t
+        desc = KMT.6.d
+        picture = GFX_KMT_event_6
+        fire_only_once = yes
+        trigger = {
+            tag = KMT
+            date > 1922.12.10
+                KMT = {
+                    owns_state = 884
+                    owns_state = 615
+                    owns_state = 883
+                    owns_state = 622
+                    owns_state = 896
+                    owns_state = 744
+                    owns_state = 601
+                    owns_state = 616
+                    owns_state = 754
+                    owns_state = 283
+                    owns_state = 909
+                    owns_state = 752
+                    owns_state = 604
+                    owns_state = 329
+                    owns_state = 618
+                    owns_state = 617
+                    owns_state = 760
+                    owns_state = 287
+                    owns_state = 906
+                    owns_state = 605
+                    owns_state = 751
+                    owns_state = 753
+                    owns_state = 434
+                    owns_state = 908
+                    owns_state = 322
+                } 
+            }
+
+        option = {
+            CHI_civil_war_10 = yes
+            set_province_name = {
+                id = 11913
+                name = "南京"
+            }
+            set_province_name = {
+                id = 9843
+                name = "北平"
+            }
+            KMT = {
+                set_cosmetic_tag = KMT_3
+                add_state_core = 884
+                add_state_core = 615
+                add_state_core = 883
+                add_state_core = 622
+                add_state_core = 896
+                add_state_core = 744
+                add_state_core = 601
+                add_state_core = 616
+                add_state_core = 754
+                add_state_core = 283
+                add_state_core = 909
+                add_state_core = 752
+                add_state_core = 604
+                add_state_core = 329
+                add_state_core = 618
+                add_state_core = 617
+                add_state_core = 760
+                add_state_core = 287
+                add_state_core = 906
+                add_state_core = 605
+                add_state_core = 751
+                add_state_core = 753
+                add_state_core = 434
+                add_state_core = 908
+                add_state_core = 322
+                }
+            name=KMT.6.a
+            news_event = {id=AOR_news.117}
+            }
+        }
+
+
+    # # # # #国 民 政 府 路 线 分 支 # # # # #
+        country_event = {#云贵内战（廖仲恺主导）
+        id = KMT.7
+        title = KMT.7.t
+        desc =  KMT.7.d
+        picture = GFX_KMT_event_7
+        is_triggered_only = yes
+        #trigger = {
+           #date > 1921.12.05
+            #tag = KMT
+        #}
+        fire_only_once = yes
+        immediate = {
+            hidden_effect = {
+                KMT = {
+                    create_country_leader = {
+                        name = "Sun_zhong_shan"
+                        desc = "Sun_zhong_shan_desc"
+                        picture = "gfx/leaders/KMT/sun.dds"
+                        expire = "1965.1.1"
+                        ideology = sanminism
+                        traits = {
+                        }
+                    }
+                    swap_ideas={
+                    remove_idea = CHI_yunguixiongshi
+                    add_idea = CHI_yunguixiongshi_1
+                }
+            }
+                GUZ = {
+                    declare_war_on = { 
+                        target = KMT
+                        type = civil_war
+                    } 
+                }
+            }
+        }
+        option = {
+            name = KMT.7.a
+            news_event = {id=AOR_news.176}
+            KMT = {
+            add_popularity = { ideology = FRE_democratic popularity = 0.05 }
+            add_popularity = { ideology = SOC_democratic popularity = 0.05 }
+            add_popularity = { ideology = AGR_socialism popularity = 0.1 }
+            }
+        }
+    }
+    
+    country_event = {#昆明政府统一南方（廖仲恺主导）
+        id = KMT.8 
+        title = KMT.8.t
+        desc = KMT.8.d
+        picture = GFX_KMT_event_8
+        fire_only_once = yes
+        trigger = {
+            tag = KMT
+            date > 1922.12.10
+            KMT = {
+                AGR_socialism > 0.08
+                owns_state = 901
+                owns_state = 593
+                owns_state = 592
+                owns_state = 919
+                owns_state = 904
+                owns_state = 900
+                owns_state = 594
+                owns_state = 902
+                owns_state = 599
+                owns_state = 903
+                owns_state = 759
+                owns_state = 591
+                owns_state = 602
+                owns_state = 746
+            }
+        }
+    
+        option = {
+            name = KMT.8.a
+            news_event = {id=AOR_news.106}
+            country_event = { days = 90  id = KMT.9 }
+            KMT = {
+                set_cosmetic_tag = KMT_6
+                swap_ideas={
+                    remove_idea = CHI_insecure_society
+                    add_idea = CHI_care_society
+                }
+                set_party_name = { ideology = Absolutism long_name = KMT_Absolutism_party_1 name = KMT_Absolutism_party_1 }
+                add_popularity = { ideology = FRE_democratic popularity = 0.1 }
+                add_popularity = { ideology = SOC_democratic popularity = 0.1 }
+                add_popularity = { ideology = AGR_socialism popularity = 0.15 }
+                add_state_core = 901
+                add_state_core = 593
+                add_state_core = 592
+                add_state_core = 919
+                add_state_core = 904
+                add_state_core = 900
+                add_state_core = 594
+                add_state_core = 902
+                add_state_core = 599
+                add_state_core = 903
+                add_state_core = 759
+                add_state_core = 591
+                add_state_core = 602
+                add_state_core = 746
+            }
+        }
+    }
+    
+        country_event = {
+            id = KMT.9 #中国昆明政府宣布北伐（廖仲恺主导）
+            title = KMT.9.t
+            desc = KMT.9.d
+            picture = GFX_KMT_event_9
+            is_triggered_only = yes
+            fire_only_once = yes
+    
+            immediate = { 
+                hidden_effect = {
+                    KMT = {
+                    set_cosmetic_tag = KMT_2
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    declare_war_on = { 
+                        target = NAN
+                        type = civil_war
+                    } 
+                    declare_war_on = { 
+                        target = MON
+                        type = civil_war
+                    }
+                }
+            }
+        }
+    
+            option = {
+                name=KMT.9.a
+                set_capital = { state = 592 }
+                country_event = { days = 90  id = MEN.1 }
+                news_event = {id=AOR_news.108}
+                KMT = {
+                    set_politics = {ruling_party = AGR_socialism}
+                    add_popularity = { ideology = AGR_socialism popularity = 0.10 }
+                    create_country_leader = {
+                        name = "Liao_Zhong_Kai"
+                        desc = "Liao_Zhong_Kai_desc"
+                        picture = "gfx/leaders/KMT/Liao_Zhong_Kai.PNG"
+                        expire = "1965.1.1"
+                        ideology = rad_san
+                        traits = {
+                        }
+                    }
+                }
+            }
+        }
+
+
+    # # # # #国 民 政 府 路 线 分 支 # # # # #
+        country_event = {#云贵内战（陈其美主导）
+        id = KMT.10
+        title = KMT.10.t
+        desc =  KMT.10.d
+        picture = GFX_KMT_event_10
+        is_triggered_only = yes
+        #trigger = {
+           # date > 1921.12.05
+           # tag = KMT
+        #}
+        fire_only_once = yes
+        immediate = {
+            hidden_effect = {
+                KMT = {
+                    create_country_leader = {
+                        name = "Sun_zhong_shan"
+                        desc = "Sun_zhong_shan_desc"
+                        picture = "gfx/leaders/KMT/sun.dds"
+                        expire = "1965.1.1"
+                        ideology = sanminism
+                        traits = {
+                        }
+                    }
+                    swap_ideas={
+                    remove_idea = CHI_yunguixiongshi
+                    add_idea = CHI_yunguixiongshi_1
+                }
+            }
+                GUZ = {
+                    declare_war_on = { 
+                        target = KMT
+                        type = civil_war
+                    } 
+                }
+            }
+        }
+        option = {
+            name = KMT.10.a
+            news_event = {id=AOR_news.176}
+            KMT = {
+            add_popularity = { ideology = FRE_democratic popularity = 0.05 }
+            add_popularity = { ideology = CON_democratic popularity = 0.10 }
+            add_popularity = { ideology = AUT_democratic popularity = 0.10 }
+            }
+        }
+    }
+    
+    country_event = {#昆明政府统一南方（陈其美主导）
+        id = KMT.11 
+        title = KMT.11.t
+        desc = KMT.11.d
+        picture = GFX_KMT_event_11
+        fire_only_once = yes
+        trigger = {
+            tag = KMT
+            date > 1922.12.10
+            KMT = {
+                AUT_democratic > 0.15
+                owns_state = 901
+                owns_state = 593
+                owns_state = 592
+                owns_state = 919
+                owns_state = 904
+                owns_state = 900
+                owns_state = 594
+                owns_state = 902
+                owns_state = 599
+                owns_state = 903
+                owns_state = 759
+                owns_state = 591
+                owns_state = 602
+                owns_state = 746
+            }
+        }
+    
+        option = {
+            name = KMT.11.a
+            news_event = {id=AOR_news.106}
+            country_event = { days = 90  id = KMT.12 }
+            KMT = {
+                set_cosmetic_tag = KMT_6
+                swap_ideas={
+                    remove_idea = CHI_insecure_society
+                    add_idea = CHI_care_society
+                }
+                set_party_name = { ideology = Absolutism long_name = KMT_Absolutism_party_1 name = KMT_Absolutism_party_1 }
+                add_popularity = { ideology = FRE_democratic popularity = 0.05 }
+                add_popularity = { ideology = CON_democratic popularity = 0.05 }
+                add_popularity = { ideology = AUT_democratic popularity = 0.10 }
+                add_state_core = 901
+                add_state_core = 593
+                add_state_core = 592
+                add_state_core = 919
+                add_state_core = 904
+                add_state_core = 900
+                add_state_core = 594
+                add_state_core = 902
+                add_state_core = 599
+                add_state_core = 903
+                add_state_core = 759
+                add_state_core = 591
+                add_state_core = 602
+                add_state_core = 746
+            }
+        }
+    }
+    
+        country_event = {
+            id = KMT.12 #中国昆明政府宣布北伐（陈其美主导）
+            title = KMT.12.t
+            desc = KMT.12.d
+            picture = GFX_KMT_event_12
+            is_triggered_only = yes
+            fire_only_once = yes
+    
+            immediate = { 
+                hidden_effect = {
+                    KMT = {
+                    set_cosmetic_tag = KMT_2
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    load_oob = "AOR_LAND_CHI_KMT"
+                    declare_war_on = { 
+                        target = NAN
+                        type = civil_war
+                    } 
+                    declare_war_on = { 
+                        target = MON
+                        type = civil_war
+                    }
+                }
+            }
+        }
+    
+            option = {
+                name=KMT.12.a
+                set_capital = { state = 592 }
+                country_event = { days = 90  id = MEN.1 }
+                news_event = {id=AOR_news.108}
+                KMT = {
+                    set_politics = {ruling_party = AUT_democratic}
+                    add_popularity = { ideology = CON_democratic popularity = 0.05 }
+                    add_popularity = { ideology = AUT_democratic popularity = 0.10 }
+                    create_country_leader = {
+                        name = "Chen_Qi_Mei"
+                        desc = "Chen_Qi_Mei_desc"
+                        picture = "gfx/leaders/KMT/Chen_Qi_Mei.png"
+                        expire = "1965.1.1"
+                        ideology = uni_san
+                        traits = {
+                        }
+                    }
+                }
+            }
+        }
+
+        country_event = {#重建中原（获得中原地区核心）
+        id = KMT.13
+        title = KMT.13.t
+        desc =  KMT.13.d
+        picture = GFX_KMT_event_13
+        is_triggered_only = yes
+        fire_only_once = yes
+ 
+        option = {
+            name = KMT.13.a
+            KMT = {
+                add_state_core = 885
+                add_state_core = 886
+                add_state_core = 887
+                add_state_core = 889
+                add_state_core = 890
+                add_state_core = 598
+            }
+        }
+    }

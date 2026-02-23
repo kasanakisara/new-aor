@@ -1,0 +1,320 @@
+
+add_namespace = FRA_BRA
+add_namespace = FRA_USA
+add_namespace = FRA
+add_namespace = FRA_Social_Crisis
+
+country_event = {
+	id = FRA.1 #出游
+	title = FRA.1.t
+	desc = FRA.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.1.a
+	}
+}
+
+country_event = {
+	id = FRA.2 #在议会的演讲
+	title = FRA.2.t
+	desc = FRA.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.2.a
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = FRA.3 #秘密报告
+	title = FRA.3.t
+	desc = FRA.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.3.a
+	}
+}
+
+country_event = {
+	id = FRA.4 #国民联盟会议
+	title = FRA.4.t
+	desc = FRA.4.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.4.a
+	}
+}
+
+country_event = {
+	id = FRA.5 #请柬
+	title = FRA.5.t
+	desc = FRA.5.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.5.a
+	}
+}
+
+country_event = {
+	id = FRA.6 #法国批判
+	title = FRA.6.t
+	desc = FRA.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		date > 1919.12.1
+		tag = FRA
+	}
+
+	option = {
+		name = FRA.6.a
+		news_event = { id = AOR_news.204 }
+		ENG = {
+			country_event = { 
+				days = 7
+				id = FRA.7 
+			}
+		}
+		country_event = { 
+			days = 7
+			id = FRA.7 
+		}
+	}
+}
+
+country_event = {
+	id = FRA.7 #英国还击
+	title = FRA.7.t
+	desc = FRA.7.d
+	fire_only_once = yes
+
+	option = {
+		name = FRA.7.a
+		FRA = {
+			country_event = {
+				id = FRA.8
+				days = 186
+			}
+		}
+	}
+}
+
+country_event = {
+	id = FRA.8 #法国通过法案
+	title = FRA.8.t
+	desc = FRA.8.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = FRA.8.a
+		news_event = { id = AOR_news.205 }
+		every_country = {
+			limit = {
+				is_in_faction_with = ENG
+				is_in_faction_with = FRA
+			}
+			country_event = {
+				id = FRA.9
+				days = 186
+			}
+		}
+	}
+}
+
+country_event = {
+	id = FRA.9 #协约国正式解散
+	title = FRA.9.t
+	desc = FRA.9.d
+	fire_only_once = yes
+
+	option = {
+		name = FRA.9.a
+		if = {
+			limit = { tag = FRA }
+			news_event = { id = AOR_news.206 }
+		}
+		if = {
+			limit = { tag = ENG }
+			news_event = { id = AOR_spheres_entente.1 }
+		}
+		hidden_effect = {
+			remove_ideas = AOR_Entente_no_war
+		}
+	}
+}
+
+
+country_event = { #米勒兰接任
+	id = FRA.10
+	title = FRA.10.t
+	desc = FRA.10.d
+	is_triggered_only = yes
+	option = {
+		name = FRA.10.a
+		retire_country_leader = yes
+		promote_character = {
+			character = FRA_Alexandre_Millerand
+			ideology = liberalism
+		}
+		set_politics = {
+			ruling_party = FRE_democratic
+		}
+		set_country_leader_ideology = liberalism
+		load_focus_tree = AOR_FRA_focus_tree_2
+		complete_national_focus = AOR_FRA_Traitor_President
+	}
+}
+
+country_event = { #提议内阁
+	id = FRA.11
+	title = FRA.11.t
+	desc = FRA.11.d
+	is_triggered_only = yes
+	option = {
+		name = FRA.11.a #按照三叛徒内阁
+		complete_national_focus = AOR_FRA_Carry_forward_the_old_cabinet
+	}
+	option = {
+		name = FRA.11.b #邀请普恩加莱组阁
+		complete_national_focus = AOR_FRA_Out_of_the_old_shadows
+	}
+}
+
+country_event = { #议会的演说
+	id = FRA.12
+	title = FRA.12.t
+	desc = FRA.12.d
+	is_triggered_only = yes
+	option = {
+		name = FRA.12.a
+		complete_national_focus = AOR_FRA_Shackles
+	}
+}
+
+#####################################################################################
+
+country_event = { #给巴西志愿军
+	id = FRA_BRA.1
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA_BRA.1.a
+		create_unit = {
+			division = "name = \"bxyuanzhengjun\" division_template = \"bxyuanzhengjun\" start_manpower_factor = 1"
+			owner = BRA
+			count = 2
+		}
+	}
+}
+
+country_event = {
+	id = FRA_USA.1 
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA_USA.1.a
+
+
+	}
+}
+
+country_event = {
+	id = FRA_USA.2 
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA_USA.1.a
+
+
+	}
+}
+
+country_event = {
+	id = FRA_USA.3
+
+	is_triggered_only = yes
+
+	option = {
+		name = FRA_USA.1.a
+	}
+}
+
+#################
+## 法国社会危机 ##
+#################
+country_event = {
+	id = FRA_Social_Crisis.1 #一次加重
+	title = FRA_Social_Crisis.1.t
+	desc = FRA_Social_Crisis.1.d
+	is_triggered_only = yes
+	option = {
+		name = FRA_Social_Crisis.1.a
+		swap_ideas = {
+			remove_idea = AOR_FRA_A_Growing_Social_Crisis
+			add_idea = AOR_FRA_A_Growing_Social_Crisis_I
+		}
+	}
+}
+
+country_event = {
+	id = FRA_Social_Crisis.2 #二次加重
+	title = FRA_Social_Crisis.2.t
+	desc = FRA_Social_Crisis.2.d
+	is_triggered_only = yes
+	option = {
+		name = FRA_Social_Crisis.2.a
+		swap_ideas = {
+			remove_idea = AOR_FRA_A_Growing_Social_Crisis_I
+			add_idea = AOR_FRA_A_Growing_Social_Crisis_II
+		}
+	}
+}
+
+country_event = {
+	id = FRA_Social_Crisis.3 #三次加重
+	title = FRA_Social_Crisis.3.t
+	desc = FRA_Social_Crisis.3.d
+	is_triggered_only = yes
+	option = {
+		name = FRA_Social_Crisis.3.a
+		swap_ideas = {
+			remove_idea = AOR_FRA_A_Growing_Social_Crisis_II
+			add_idea = AOR_FRA_A_Growing_Social_Crisis_III
+		}
+		hidden_effect = {
+			country_event = {
+				id = FRA_Social_Crisis.4
+				days = 7
+			}
+		}
+	}
+}
+
+country_event = {
+	id = FRA_Social_Crisis.4 #最终加重
+	title = FRA_Social_Crisis.4.t
+	desc = FRA_Social_Crisis.4.d
+	is_triggered_only = yes
+	option = {
+		name = FRA_Social_Crisis.4.a
+		swap_ideas = {
+			remove_idea = AOR_FRA_A_Growing_Social_Crisis_III
+			add_idea = AOR_FRA_A_Growing_Social_Crisis_IV
+		}
+	}
+}

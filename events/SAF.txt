@@ -1,0 +1,287 @@
+###########################
+# German Events
+###########################
+
+add_namespace = SAF
+
+
+#死了！
+country_event = {
+	id = SAF.1
+	title = SAF.1.t
+	desc = SAF.1.d
+	picture = GFX_events_SAF_1
+	is_triggered_only = yes
+	fire_only_once = yes
+
+    #那就这样吧  
+	immediate = {
+		news_event = { id = AOR_news.23 }
+		retire_country_leader = yes
+		create_country_leader = {
+		name = "Jan Christiaan Smuts"
+		desc = "POLITICS_Smuts_DESC"
+		picture = "az2vq-oka63.dds"
+		expire = "1945.1.1"
+		ideology = federalism
+		}
+	}	
+	option = {
+		name = SAF.1.a
+		
+    }
+}
+
+country_event = {
+	id = SAF.2
+	title = SAF.2.t
+	desc = SAF.2.d
+	picture = GFX_events_SAF_2
+	fire_only_once = yes
+	trigger = {
+	    date > 1920.1.1
+		tag = SAF
+	}
+    #那就这样吧  	
+	option = {
+		name = SAF.2.a
+		ai_chance = {
+			base = 70
+			}
+    }
+	
+		option = {
+		name = SAF.2.b
+		retire_country_leader = yes
+		set_popularities = {
+				CON_democratic = 50
+					Absolutism = 25
+				AUT_democratic = 25
+				}
+		set_politics = {ruling_party = AUT_democratic}
+		create_country_leader = {
+		name = "James Barry Munnik Hertzog"
+		desc = "POLITICS_Hertzog_DESC"
+		picture = "gfx/leaders/SAF/Hertzog.png"
+		expire = "1945.1.1"
+		ideology = authoritarianism
+		}
+		country_event = { days = 150 id = SAF.4 }
+		ai_chance = {
+			base = 30
+			}
+    }
+}
+
+
+country_event = {
+	id = SAF.3
+	title = SAF.3.t
+	desc = SAF.3.d
+	picture = GFX_events_SAF_3
+	fire_only_once = yes
+	trigger = {
+	    date > 1925.1.1
+		tag = SAF
+	}
+    #那就这样吧  	
+	option = {
+		name = SAF.3.a
+		set_politics = {ruling_party = 	CON_democratic}
+		retire_country_leader = yes
+		create_country_leader = {
+		name = "Jan Christiaan Smuts"
+		desc = "POLITICS_Smuts_DESC"
+		picture = "az2vq-oka63.dds"
+		expire = "1945.1.1"
+		ideology = federalism
+		}
+		ai_chance = {
+			base = 40
+			}
+    }
+	
+		option = {
+		trigger = {
+	    NOT = {
+				has_country_flag = saf.change
+				}
+		}
+		name = SAF.3.b
+		retire_country_leader = yes
+		set_popularities = {
+				CON_democratic = 50
+					Absolutism = 25
+				AUT_democratic = 25
+				}
+		set_politics = {ruling_party = AUT_democratic}
+		create_country_leader = {
+		name = "James Barry Munnik Hertzog"
+		desc = "POLITICS_Hertzog_DESC"
+		picture = "gfx/leaders/SAF/Hertzog.png"
+		expire = "1945.1.1"
+		ideology = authoritarianism
+		}
+		ai_chance = {
+			base = 40
+			}
+    }
+		option = {
+		name = SAF.3.c
+		retire_country_leader = yes
+		set_popularities = {
+				CON_democratic = 50
+					Absolutism = 25
+					Special = 25
+				}
+		set_politics = {ruling_party = Special}
+		create_country_leader = {
+		name = "D. F. Malan"
+		desc = "POLITICS_Malan_DESC"
+		picture = "gfx/leaders/SAF/Malan.png"
+		expire = "1945.1.1"
+		ideology = exnationalism 
+		}
+		ai_chance = {
+			base = 20
+			}
+    }
+	option = {
+		trigger = {
+				has_country_flag = saf.change
+		}
+		name = SAF.4.b
+		retire_country_leader = yes
+		set_popularities = {
+				CON_democratic = 25
+					Absolutism = 25
+				AUT_democratic = 25
+				SOC_democratic = 25
+				}
+		set_politics = {ruling_party = SOC_democratic}
+		create_country_leader = {
+		name = "James Barry Munnik Hertzog"
+		desc = "POLITICS_Hertzog_DESC"
+		picture = "gfx/leaders/SAF/Hertzog.png"
+		expire = "1945.1.1"
+		ideology =meliorism
+		}
+		ai_chance = {
+			base = 40
+			}
+    }
+}
+
+country_event = {
+	id = SAF.4
+	title = SAF.4.t
+	desc = SAF.4.d
+	picture = GFX_events_SAF_4
+	fire_only_once = yes
+	trigger = {
+	    date > 1920.1.1
+		tag = SAF
+	}
+    #那就这样吧  	
+	option = {
+		name = SAF.4.a
+		ai_chance = {
+			base = 50
+			}
+    }
+	
+		option = {
+		name = SAF.4.b
+		retire_country_leader = yes
+		set_popularities = {
+				CON_democratic = 25
+					Absolutism = 25
+				AUT_democratic = 25
+				SOC_democratic = 25
+				}
+		set_politics = {ruling_party = SOC_democratic}
+		create_country_leader = {
+		name = "James Barry Munnik Hertzog"
+		desc = "POLITICS_Hertzog_DESC"
+		picture = "gfx/leaders/SAF/Hertzog.png"
+		expire = "1945.1.1"
+		ideology = meliorism
+		}
+		ai_chance = {
+			base = 50
+			}
+		set_country_flag = saf.change
+    }
+}
+
+
+
+country_event = {
+	id = SAF.5
+	title = SAF.5.t
+	desc = SAF.5.d
+	picture = GFX_events_SAF_5
+	fire_only_once = yes
+	trigger = {
+	    date > 1922.6.5
+		tag = SAF
+	}
+    #那就这样吧  	
+	option = {
+		news_event = { id = AOR_news.24 }
+		name = SAF.5.a
+		SWC = {
+				transfer_state = 275
+				
+				add_state_core = 275
+				add_state_core = 719
+				add_state_core = 681
+				add_state_core = 541
+				add_manpower = 10000
+				}
+		SWC = {load_oob = "SWC_war"}
+		SAF = {
+			add_ideas = {
+				RAND_strike
+			}
+		}
+		SWC = {
+		declare_war_on = {
+			target = SAF
+			type = civil_war
+			}
+		}
+		ENG = {
+			add_to_war = {
+				targeted_alliance = SAF
+				enemy = SWC
+			}
+		}
+		BOT = {
+			add_to_war = {
+				targeted_alliance = SAF
+				enemy = SWC
+			}
+		}
+		ZIM = {
+			add_to_war = {
+				targeted_alliance = SAF
+				enemy = SWC
+			}
+		}
+    }
+	
+}
+country_event = {
+	id = SAF.100
+	title = SAF.100.t
+	desc = SAF.100.d
+	picture = GFX_events_SAF_5
+	is_triggered_only = yes
+	fire_only_once = yes	
+	option = {
+		name = SAF.5.a
+
+		}
+    }
+	

@@ -1,0 +1,332 @@
+scripted_gui = {
+	ENG_Parliament = {
+		window_name = "ENG_Parliament"
+		visible = {
+			tag = ENG
+			has_country_flag = ENG_Parliament_visble
+		}
+		properties = {
+			leader_icon_of_Sinn_Fein_Party = {
+				image = "[Leader_icon_of_Sinn_Fein_Party]"
+			}
+			ENG_Parliament_icon_of_motion = {
+				image = "[ENG_Parliament_Icon_of_motion]"
+			}
+			#党派支持率进度条
+			Liberal_Party_Support_rate = {
+				frame = Liberal_Party_Support_rate_progress_var
+				#x = Liberal_Party_Support_rate_progress_x
+			}
+			Liberal_Party_Support_rate_text = {
+				x = Liberal_Party_position_x
+			}
+			conservative_Party_Support_rate = {
+				frame = conservative_Party_Support_rate_progress_var
+				x = conservative_Party_Support_rate_progress_x
+			}
+			conservative_Party_Support_rate_text = {
+				x = conservative_Party_position_x
+			}
+			Labour_Party_Support_rate = {
+				frame = Labour_Party_Support_rate_progress_var
+				x = Labour_Party_Support_rate_progress_x
+			}
+			Labour_Party_Support_rate_text = {
+				x = Labour_Party_position_x
+			}
+			Sinn_Fein_Party_Support_rate = {
+				frame = Sinn_Fein_Party_Support_rate_progress_var
+				x = Sinn_Fein_Party_Support_rate_progress_x
+			}
+			#首相图片位置
+			Liberal_Party_title = {
+				x = Liberal_Party_position_x
+			}
+			leader_icon_of_Liberal_Party = {
+				image = "[Leader_Icon_of_Liberal_Party]"
+				x = Liberal_Party_position_x
+			}
+			conservative_Party_title = {
+				x = conservative_Party_position_x
+			}
+			leader_icon_of_conservative_Party = {
+				image = "[Leader_icon_of_conservative_Party]"
+				x = conservative_Party_position_x
+			}
+			Labour_Party_title = {
+				x = Labour_Party_position_x
+			}
+			leader_icon_of_Labour_Party = {
+				image = "[Leader_icon_of_Labour_Party]"
+				x = Labour_Party_position_x
+			}
+			#席位
+			ENG_hounse_of_common_MP_icon = {
+				frame = ENG_hounse_of_commons_window_array^i
+			}
+		}
+		dynamic_lists = {
+			ENG_hounse_of_common_MP = {
+				array = ENG_hounse_of_commons_window_array
+				index = i
+				value = v
+				entry_container = ENG_hounse_of_common_MP_entry
+			}
+		}
+		triggers = {
+			#议案
+			ENG_Parliament_icon_of_motion_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			ENG_Parliament_name_of_motion_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			ENG_Parliament_desc_of_motion_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			ENG_Parliament_state_of_motion_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			ENG_Parliament_support_people_of_motion_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			OPEN_hitory_motion_window_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			#下议院详情
+			ENG_hounse_of_common_MP_icon_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Party_seats_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Liberal_Party_seats_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			conservative_Party_seats_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Labour_Party_seats_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Sinn_Fein_Party_seats_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+				not = {
+					has_country_flag = remove_Sinn_Fein_Party
+				}
+			}
+			Government_stability_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Public_support_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			#不列颠首相推举
+			#自由党
+			Liberal_Party_title_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			leader_icon_of_Liberal_Party_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			Liberal_Party_Support_rate_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			Liberal_Party_Support_rate_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			#保守党
+			conservative_Party_title_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			leader_icon_of_conservative_Party_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			conservative_Party_Support_rate_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			conservative_Party_Support_rate_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			#工党
+			Labour_Party_title_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			leader_icon_of_Labour_Party_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			Labour_Party_Support_rate_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			Labour_Party_Support_rate_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			#新芬党
+			Sinn_Fein_Party_title_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+				not = {
+					has_country_flag = remove_Sinn_Fein_Party
+				}
+			}
+			leader_icon_of_Sinn_Fein_Party_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+				not = {
+					has_country_flag = remove_Sinn_Fein_Party
+				}
+			}
+			Sinn_Fein_Party_Support_rate_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+				not = {
+					has_country_flag = remove_Sinn_Fein_Party
+				}
+			}
+			Sinn_Fein_Party_Support_rate_text_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+				not = {
+					has_country_flag = remove_Sinn_Fein_Party
+				}
+			}
+			#底部文字
+			Electe_the_Prime_Minister_of_Britain_titile_visible = {
+				check_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+		}
+		effects = {
+			Details_of_the_House_of_Commons_button_click = {
+				set_variable = {
+					ENG_Parliament_window_var = 0
+				}
+			}
+			Electe_the_Prime_Minister_of_Britain_button_click = {
+				set_variable = {
+					ENG_Parliament_window_var = 1
+				}
+			}
+			OPEN_hitory_motion_window_click = {
+				set_country_flag = ENG_Parliament_hitory_motion_window_visible
+			}
+			close_button_click = {
+				clr_country_flag = ENG_Parliament_visble
+			}
+		}
+	}
+}
+
+scripted_gui = {
+	ENG_Parliament_BUTTON_WINDOW = {
+		window_name = "ENG_Parliament_BUTTON_WINDOW"
+		visible = {
+			tag = ENG
+		}
+		properties = {
+		}
+		triggers = {
+		}
+		effects = {
+			ENG_Parliament_button_click = {
+				ENG_Calculate_partisan_support = yes
+				if = {
+					limit = {
+						has_country_flag = ENG_Parliament_visble
+					}
+					clr_country_flag = ENG_Parliament_visble
+				}
+				else = {
+					set_country_flag = ENG_Parliament_visble
+				}
+			}
+		}
+	}
+}
+
+scripted_gui = {
+	ENG_Parliament_hitory_motion_window = {
+		window_name = "ENG_Parliament_hitory_motion_window"
+		visible = {
+			tag = ENG
+			has_country_flag = ENG_Parliament_hitory_motion_window_visible
+		}
+		properties = {
+			ENG_Parliament_icon_of_history_motion = {
+				image = "[ENG_Parliament_Icon_of_history_motion]"
+			}
+		}
+		dynamic_lists = {
+			ENG_Parliament_past_motion_list = {
+				array = ENG_Parliament_past_motion
+				index = ENG_Parliament_past_motion_i
+				entry_container = ENG_Parliament_ord
+				value = ENG_Parliament_past_motion_id
+			}
+		}
+		triggers = {
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = ENG_Parliament_hitory_motion_window_visible
+			}
+		}
+	}
+}

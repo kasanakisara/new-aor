@@ -1,0 +1,164 @@
+add_namespace = CZE
+country_event = {
+	id = CZE.1
+	title = CZE.1
+	desc = CZE.1
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.1.a
+		news_event = {id = AOR_news.310 days = 10}
+		remove_ideas = {
+			CZE_soaring_economy
+		}
+		add_ideas = {
+			CZE_down_economy
+		}
+		country_event = {id = CZE.2}
+	}
+
+}
+country_event = {
+	id = CZE.2
+	title = CZE.2
+	desc = CZE.2
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.2.a
+		ai_chance = {
+			base = 50
+		}
+		country_event = {
+			id = CZE.3 days = 180
+		}
+	}
+	option = { 
+		name = CZE.2.b
+		ai_chance = {
+			base = 30
+		}
+		country_event = {
+			id = CZE.4 days = 250
+		}
+	}
+	option = { 
+		name = CZE.2.c
+		ai_chance = {
+			base = 20
+		}
+		country_event = {
+			id = CZE.5 days = 90
+		}
+	}
+
+}
+country_event = {
+	id = CZE.3
+	title = CZE.3
+	desc = CZE.3
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.3.a
+		news_event = {id = AOR_news.311 days = 10}
+		remove_ideas = {
+			CZE_down_economy
+		}
+		add_ideas = {
+			CZE_soaring_economy
+		}
+	}
+
+}
+country_event = {
+	id = CZE.4
+	title = CZE.4
+	desc = CZE.4
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.4.a
+		news_event = {id = AOR_news.312 days = 10}
+		set_politics = { ruling_party = Absolutism }
+		add_popularity = { ideology = Absolutism popularity = 56 }
+		add_ideas = {
+			CZE_Absolutis
+		}
+		remove_ideas = {
+			CZE_down_economy
+		}
+	}
+}
+country_event = {
+	id = CZE.5
+	title = CZE.5
+	desc = CZE.5
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.5.a
+		news_event = {id = AOR_news.313 days = 10}
+		add_ideas = {
+			CZE_down_down_economy
+		}
+		remove_ideas = {
+			CZE_down_economy
+		}
+		country_event = {id = CZE.6 days = 90}
+	}
+}
+country_event = {
+	id = CZE.6
+	title = CZE.6
+	desc = CZE.6
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.6.a
+		news_event = {id = AOR_news.314 days = 10}
+		remove_ideas = {
+			CZE_down_down_economy
+		}
+		add_ideas = {
+			CZE_new_economy
+		}
+		country_event = {id = CZE.7 days = 20}
+		set_politics = { ruling_party = Marxism}
+		add_popularity = { ideology = Marxism popularity = 56 }
+	}
+}
+country_event = {
+	id = CZE.7
+	title = CZE.7
+	desc = CZE.7
+	picture = GFX_news_depression_calls
+
+	fire_only_once = yes
+	is_triggered_only =  yes
+
+    option = { 
+		name = CZE.7.a
+	ENG = {
+		declare_war_on = { target = CZE type = topple_government }
+	}
+	}
+}
