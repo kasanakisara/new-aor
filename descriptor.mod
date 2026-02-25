@@ -1,15 +1,9 @@
-version="0.1"
+version="1"
 tags={
 	"Alternative History"
-	"Events"
-	"Map"
-	"National Focuses"
-	"Technologies"
-	"Ideologies"
-	"Graphics"
 }
-name="赤色极光：自废墟中崛起"
-supported_version="1.17.4.0"
+name="AOR"
+supported_version="1.17.*"
 replace_path="events"
 replace_path="history/states"
 replace_path="history/countries"
