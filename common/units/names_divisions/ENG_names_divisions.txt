@@ -1,0 +1,1200 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up original_tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire original_tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this original_tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+ENG_INF_01 = {
+	name = "Infantry Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%dth Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Division" }
+		2 = { "%dnd Division" }
+		3 = { "%drd Division" }
+		4 = { "%dth Division" }
+		5 = { "%dth Division" }
+		6 = { "%dth Division" }
+		7 = { "%dth Division" }
+		8 = { "%dth Division" }
+		9 = { "%dth (Scottish) Division" }
+		10 = { "%dth (Northern) Division" }
+		11 = { "%dth (Irish) Division" }
+		12 = { "%dth (Eastern) Division" }
+		13 = { "%dth (Western) Division" }
+		14 = { "%dth (Light) Division" }
+		15 = { "%dth (Scottish) Division" }
+		16 = { "%dth (Irish) Division" }
+		17 = { "%dth (Northern) Division" }
+		18 = { "%dth (Eastern) Division" }
+		19 = { "%dth (Western) Division" }
+		20 = { "%dth (Light) Division" }
+		21 = { "%dst Division" }
+		22 = { "%dnd Division" }
+		23 = { "%drd Division" }
+		24 = { "%dth Division" }
+		25 = { "%dth Division" }
+		26 = { "%dth Division" }
+		27 = { "%dth Division" }
+		28 = { "%dth Division" }
+		29 = { "%dth Division" }
+		30 = { "%dth Division" }
+		31 = { "%dst Division" }
+		32 = { "%dnd Division" }
+		33 = { "%drd Division" }
+		34 = { "%dth Division" }
+		35 = { "%dth Division" }
+		36 = { "%dth (Ulster) Division" }
+		37 = { "%dth Division" }
+		38 = { "%dth Division" }
+		39 = { "%dth Divisionn" }
+		40 = { "%dth Division" }
+		41 = { "%dst Division" }
+		42 = { "%dnd (East Lancashire) Division" }
+		43 = { "%drd (Wessex) Division" }
+		44 = { "%dth (Home Counties) Division" }
+		45 = { "%dth (2nd Wessex) Division" }				
+		46 = { "%dth (1/2nd London) Division" }
+		47 = { "%dth (2/1st London) Division" }
+		48 = { "%dth (South Midland) Division" }	
+		49 = { "%dth (West Riding) Division" }
+		50 = { "%dth (Northumbrian) Division" }
+		51 = { "%dst (Highland) Division" }
+		52 = { "%dnd (Lowland) Division" }
+		54 = { "%dth (East Anglian) Division" }
+		55 = { "%dth (West Lancashire) Division" }
+		56 = { "%dth (1/1st London) Division" }
+		57 = { "%dth (2nd West Lancashire) Division" }
+		58 = { "%dth (2/1st London) Division" }
+		59 = { "%dth (2nd North Midland) Division" }
+		60 = { "%dth (2/2nd London) Division" }
+		61 = { "%dst (2nd South Midland) Division" }
+		62 = { "%dnd (2nd West Riding) Division" }
+		63 = { "%drd (2nd Northumbrian) Division" }
+		64 = { "%dth (2nd Highland) Division" }
+		65 = { "%dth (2nd Lowland) Division" }
+		66 = { "%dth (2nd East Lancashire) Division" }
+		67 = { "%dth (2nd Home Counties) Division" }
+		68 = { "%dth (2nd Welsh) Division" }
+		69 = { "%dth (2nd East Anglian) Division" }
+		70 = { "%dth (2/2nd London) Divisionn" }
+		71 = { "%dst Division" }
+		72 = { "%dnd (2nd Division" }
+		73 = { "%drd Division" }
+		74 = { "%dth (Yeomanry) Division" }
+		75 = { "%dth Division" }
+		82 = { "%dnd Division" }# inactive and fictional units
+		92 = { "%dnd Division" }
+		98 = { "%dth Division" }
+		99 = { "%dth Division" }
+		100 = { "%dth Division" }
+		101 = { "%dst Division" }
+		102 = { "%dnd Division" }
+		103 = { "%drd Division" }
+		104 = { "%dth Division" }
+		105 = { "%dth Division" }
+		106 = { "%dth Division" }
+		107 = { "%dth Division" }
+		108 = { "%dth Division" }
+		109 = { "%dth Division" }
+		110 = { "%dth Division" }
+		111 = { "%dth Division" }
+		112 = { "%dth Division" }
+		113 = { "%dth Division" }
+		114 = { "%dth Division" }
+		115 = { "%dth Division" }
+		116 = { "%dth Division" }
+		117 = { "%dth Division" }
+		118 = { "%dth Division" }
+		119 = { "%dth Division" }
+		120 = { "%dth Division" }
+		121 = { "%dst Division" }
+		122 = { "%dnd Division" }
+		123 = { "%drd Division" }
+		124 = { "%dth Division" }
+		125 = { "%dth Division" }
+		126 = { "%dth Division" }
+		127 = { "%dth Division" }
+		128 = { "%dth Division" }
+		129 = { "%dth Division" }
+		130 = { "%dth Division" }
+		131 = { "%dst Division" }
+		132 = { "%dnd Division" }
+		133 = { "%drd Division" }
+		134 = { "%dth Division" }
+		135 = { "%dth Division" }
+		136 = { "%dth Division" }
+		137 = { "%dth Division" }
+		138 = { "%dth Division" }
+		139 = { "%dth Division" }
+		140 = { "%dth Division" }
+		141 = { "%dst Division" }
+		142 = { "%dnd Division" }
+		143 = { "%drd Division" }
+		144 = { "%dth Division" }
+		145 = { "%dth Division" }
+		146 = { "%dth Division" }
+		147 = { "%dth Division" }
+		148 = { "%dth Division" }
+		149 = { "%dth Division" }
+		150 = { "%dth Division" }
+	}
+}
+
+ENG_INF_02 = {
+	name = "Infantry Brigade"
+
+	for_countries = { ENG EGY }
+
+	can_use = { 
+		OR = {
+			original_tag = ENG
+			is_subject_of = ENG
+		}
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_02 }
+
+	fallback_name = "%d Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Brigade" }
+		2 = { "%dnd Brigade" }
+		3 = { "%drd Brigade" }
+		4 = { "%dth Brigade" }
+		5 = { "%dth Brigade" }
+		6 = { "%dth Brigade" }
+		7 = { "%dth Brigade" }
+		8 = { "%dth Brigade" }
+		9 = { "%dth Brigade" }
+		10 = { "%dth Brigade" }
+		11 = { "%dth Brigade" }
+		12 = { "%dth Brigade" }
+		13 = { "%dth Brigade" }
+		14 = { "%dth Brigade" }
+		15 = { "%dth Brigade" }
+		16 = { "%dth Brigade" }
+		17 = { "%dth Brigade" }
+		18 = { "%dth Brigade" }
+		19 = { "%dth Brigade" }
+		20 = { "%dth Brigade" }
+		21 = { "%dst Brigade" }
+		22 = { "%dnd Brigade" }
+		23 = { "%drd Brigade" }
+		24 = { "%dth Brigade" }
+		25 = { "%dth Brigade" }
+		26 = { "%dth Brigade" }
+		27 = { "%dth Brigade" }
+		28 = { "%dth Brigade" }
+		29 = { "%dth Brigade" }
+		30 = { "%dth Brigade" }
+	}
+}
+
+ENG_INF_03 = { 
+	name = "Light Division" 
+
+	for_countries = { ENG } 
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_03 } 
+
+	fallback_name = "%d (Light) Division" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		14 = { "%dth (Light) Division" } # raised in 1914 for Kitchener's Army
+		20 = { "%dth (Light) Division" } # raised in 1914 for Kitchener's Army
+		1 = { "%dst (Light) Division" }
+		2 = { "%dnd (Light) Division" }
+		3 = { "%drd (Light) Division" }
+		4 = { "%dth (Light) Division" }
+		5 = { "%dth (Light) Division" }
+		6 = { "%dth (Light) Division" }
+		7 = { "%dth (Light) Division" }
+		8 = { "%dth (Light) Division" }
+		9 = { "%dth (Light) Division" }
+		10 = { "%dth (Light) Division" }
+		11 = { "%dth (Light) Division" }
+		12 = { "%dth (Light) Division" }
+		13 = { "%dth (Light) Division" }
+		15 = { "%dth (Light) Division" }
+		16 = { "%dth (Light) Division" }
+		17 = { "%dth (Light) Division" }
+		18 = { "%dth (Light) Division" }
+		19 = { "%dth (Light) Division" }
+		21 = { "%dst (Light) Division" }
+		22 = { "%dnd (Light) Division" }
+		23 = { "%drd (Light) Division" }
+		24 = { "%dth (Light) Division" }
+		25 = { "%dth (Light) Division" }
+		26 = { "%dth (Light) Division" }
+		27 = { "%dth (Light) Division" }
+		28 = { "%dth (Light) Division" }
+		29 = { "%dth (Light) Division" }
+		30 = { "%dth (Light) Division" }
+	} 
+}
+
+ENG_CAV_01 = {
+	name = "Cavalry Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Cavalry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Cavalry Division" }
+		2 = { "%dnd Cavalry Division" }
+		3 = { "%drd Cavalry Division" }
+		4 = { "%dth Cavalry Division" }
+		5 = { "%dth Cavalry Division" }
+		6 = { "%dth Cavalry Division" }
+		7 = { "%dth Cavalry Division" }
+		8 = { "%dth Cavalry Division" }
+		9 = { "%dth Cavalry Division" }
+		10 = { "%dth Cavalry Division" }
+		11 = { "%dth Cavalry Division" }
+		12 = { "%dth Cavalry Division" }
+		13 = { "%dth Cavalry Division" }
+		14 = { "%dth Cavalry Division" }
+		15 = { "%dth Cavalry Division" }
+		16 = { "%dth Cavalry Division" }
+		17 = { "%dth Cavalry Division" }
+		19 = { "%dth Cavalry Division" }
+		20 = { "%dth Cavalry Division" }
+		21 = { "%dst Cavalry Division" }
+		22 = { "%dnd Cavalry Division" }
+		23 = { "%drd Cavalry Division" }
+		24 = { "%dth Cavalry Division" }
+		25 = { "%dth Cavalry Division" }
+		26 = { "%dth Cavalry Division" }
+		27 = { "%dth Cavalry Division" }
+		28 = { "%dth Cavalry Division" }
+		29 = { "%dth Cavalry Division" }
+		30 = { "%dth Cavalry Division" }
+	}
+}
+
+ENG_CAV_02 = {
+	name = "Mounted Division"
+
+	for_countries = { ENG EGY }
+
+	can_use = { 
+		OR = {
+			original_tag = ENG
+			is_subject_of = ENG
+		}
+	}
+
+	division_types = { "cavalry" "bicycle_battalion"}
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_CAV_02 }
+
+	fallback_name = "%d Mounted Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Mounted Division" }
+		2 = { "%dnd Mounted Division" }
+		3 = { "%drd Mounted Division" }
+		4 = { "%dth Mounted Division" }
+		5 = { "%dth Mounted Division" }
+		6 = { "%dth Mounted Division" }
+		7 = { "%dth Mounted Division" }
+		8 = { "%dth Mounted Division" }
+		9 = { "%dth Mounted Division" }
+		10 = { "%dth Mounted Division" }
+		11 = { "%dth Mounted Division" }
+		12 = { "%dth Mounted Division" }
+		13 = { "%dth Mounted Division" }
+		14 = { "%dth Mounted Division" }
+		15 = { "%dth Mounted Division" }
+		16 = { "%dth Mounted Division" }
+		17 = { "%dth Mounted Division" }
+		18 = { "%dth Mounted Division" }
+		19 = { "%dth Mounted Division" }
+		20 = { "%dth Mounted Division" }
+		21 = { "%dst Mounted Division" }
+		22 = { "%dnd Mounted Division" }
+		23 = { "%drd Mounted Division" }
+		24 = { "%dth Mounted Division" }
+		25 = { "%dth Mounted Division" }
+		26 = { "%dth Mounted Division" }
+		27 = { "%dth Mounted Division" }
+		28 = { "%dth Mounted Division" }
+		29 = { "%dth Mounted Division" }
+		30 = { "%dth Mounted Division" }
+	}
+}
+
+ENG_CAV_03 = {
+	name = "Camelry Division"
+
+	for_countries = { ENG EGY RAJ }
+
+	can_use = { 
+		OR = {
+			original_tag = ENG
+			is_subject_of = ENG
+		}
+	}
+
+	division_types = { "camelry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "%dth Camel Corps"
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = {
+		1 = { "%dst Camel Corps" }
+		2 = { "%dnd Camel Corps" }
+		3 = { "%drd Camel Corps" }
+		4 = { "%dth Camel Corps" }
+		5 = { "%dth Camel Corps" }
+	}
+}
+
+ENG_CAV_04 = {
+	name = "Bicycle Division"
+
+	for_countries = { ENG EGY }
+
+	can_use = { 
+		OR = {
+			original_tag = ENG
+			is_subject_of = ENG
+		}
+	}
+
+	division_types = { "bicycle_battalion"}
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_CAV_02 }
+
+	fallback_name = "%d Cyclist Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Cyclist Division" }
+		2 = { "%dnd Cyclist Division" }
+		3 = { "%drd Cyclist Division" }
+		4 = { "%dth Cyclist Division" }
+		5 = { "%dth Cyclist Division" }
+		6 = { "%dth Cyclist Division" }
+		7 = { "%dth Cyclist Division" }
+		8 = { "%dth Cyclist Division" }
+		9 = { "%dth Cyclist Division" }
+		10 = { "%dth Cyclist Division" }
+		11 = { "%dth Cyclist Division" }
+		12 = { "%dth Cyclist Division" }
+		13 = { "%dth Cyclist Division" }
+		14 = { "%dth Cyclist Division" }
+		15 = { "%dth Cyclist Division" }
+		16 = { "%dth Cyclist Division" }
+		17 = { "%dth Cyclist Division" }
+		18 = { "%dth Cyclist Division" }
+		19 = { "%dth Cyclist Division" }
+		20 = { "%dth Cyclist Division" }
+		21 = { "%dst Cyclist Division" }
+		22 = { "%dnd Cyclist Division" }
+		23 = { "%drd Cyclist Division" }
+		24 = { "%dth Cyclist Division" }
+		25 = { "%dth Cyclist Division" }
+		26 = { "%dth Cyclist Division" }
+		27 = { "%dth Cyclist Division" }
+		28 = { "%dth Cyclist Division" }
+		29 = { "%dth Cyclist Division" }
+		30 = { "%dth Cyclist Division" }
+	}
+}
+
+ENG_CAV_05 = {
+	name = "Cavalry Brigade"
+
+	for_countries = { ENG EGY RAJ }
+
+	can_use = { 
+		OR = {
+			original_tag = ENG
+			is_subject_of = ENG
+		}
+	}
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "%dth Cavalry Brigade"
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = {
+		1 = { "%dst Cavalry Brigade" }
+		2 = { "%dnd Cavalry Brigade" }
+		3 = { "%drd Cavalry Brigade" }
+		4 = { "%dth Cavalry Brigade" }
+		5 = { "%dth Cavalry Brigade" }
+	}
+}
+
+ENG_MOT_01 = {
+	name = "Motorised Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		50 = { "%dth (Northumbrian) Division" }			# actual motorized divisions
+		55 = { "%dth (West Lancashire) Division" }
+		59 = { "%dth (Staffordshire) Division" }
+		23 = { "%drd (Northumbrian) Division" }
+		47 = { "%dth (London) Division" }
+		56 = { "%dth (London) Division" }
+		7 = { "%dth Division" }				# potentially motorized divisions
+		8 = { "%dth Division" }
+		1 = { "%dst Division" }
+		2 = { "%dnd Division" }
+		3 = { "%drd Division" }
+		4 = { "%dth Division" }
+		5 = { "%dth Division" }
+		6 = { "%dth Division" }
+		42 = { "%dnd (East Lancashire) Division" }
+		43 = { "%drd (Wessex) Division" }
+		44 = { "%dth (Home Counties) Division" }
+		48 = { "%dth (South Midlands) Division" }
+		49 = { "%dth (West Riding) Division" }
+		51 = { "%dst (Highland) Division" }
+		52 = { "%dnd (Lowland) Division" }
+		53 = { "%drd (Welsh) Division" }
+		54 = { "%dth (East Anglia) Division" }
+		9 = { "%dth (Highland) Division" }
+		15 = { "%dth (Scottish) Division" }
+		18 = { "%dth Division" }
+		38 = { "%dth (Welsh) Division" }
+		45 = { "%dth Division" }
+		61 = { "%dst Division" }
+		66 = { "%dth Division" }
+		12 = { "%dth (Eastern) Division" }
+		46 = { "%dth (North Midlands) Division" }
+		801 = { "Guards Division" }
+		40 = { "%dth Division" }
+		57 = { "%dth (2nd West Lancashire) Infantry Div." }
+		58 = { "%dth (2/1st London) Division" }
+		28 = { "%dth Division" }
+		33 = { "%drd Division" }
+		100 = { "%dth Division" }
+		101 = { "%dst Division" }
+		102 = { "%dnd Division" }
+		103 = { "%drd Division" }
+		104 = { "%dth Division" }
+		105 = { "%dth Division" }
+		106 = { "%dth Division" }
+		107 = { "%dth Division" }
+		108 = { "%dth Division" }
+		109 = { "%dth Division" }
+		110 = { "%dth Division" }
+		111 = { "%dth Division" }
+		112 = { "%dth Division" }
+		113 = { "%dth Division" }
+		114 = { "%dth Division" }
+		115 = { "%dth Division" }
+		116 = { "%dth Division" }
+		117 = { "%dth Division" }
+		118 = { "%dth Division" }
+		119 = { "%dth Division" }
+		120 = { "%dth Division" }
+		121 = { "%dst Division" }
+		122 = { "%dnd Division" }
+		123 = { "%drd Division" }
+		124 = { "%dth Division" }
+		125 = { "%dth Division" }
+		126 = { "%dth Division" }
+		127 = { "%dth Division" }
+		128 = { "%dth Division" }
+		129 = { "%dth Division" }
+		130 = { "%dth Division" }
+		131 = { "%dst Division" }
+		132 = { "%dnd Division" }
+		133 = { "%drd Division" }
+		134 = { "%dth Division" }
+		135 = { "%dth Division" }
+		136 = { "%dth Division" }
+		137 = { "%dth Division" }
+		138 = { "%dth Division" }
+		139 = { "%dth Division" }
+		140 = { "%dth Division" }
+		141 = { "%dst Division" }
+		142 = { "%dnd Division" }
+		143 = { "%drd Division" }
+		144 = { "%dth Division" }
+		145 = { "%dth Division" }
+		146 = { "%dth Division" }
+		147 = { "%dth Division" }
+		148 = { "%dth Division" }
+		149 = { "%dth Division" }
+		150 = { "%dth Division" }
+	}
+}
+
+ENG_MOT_02 = {
+	name = "Motor Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_MOT_01 }
+
+	fallback_name = "%d Motor Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Motor Division" }
+		2 = { "%dnd Motor Division" }
+		3 = { "%drd Motor Division" }
+		4 = { "%dth Motor Division" }
+		5 = { "%dth Motor Division" }
+		6 = { "%dth Motor Division" }
+		7 = { "%dth Motor Division" }
+		8 = { "%dth Motor Division" }
+		9 = { "%dth Motor Division" }
+		10 = { "%dth Motor Division" }
+		11 = { "%dth Motor Division" }
+		12 = { "%dth Motor Division" }
+		13 = { "%dth Motor Division" }
+		14 = { "%dth Motor Division" }
+		15 = { "%dth Motor Division" }
+		16 = { "%dth Motor Division" }
+		17 = { "%dth Motor Division" }
+		18 = { "%dth Motor Division" }
+		19 = { "%dth Motor Division" }
+		20 = { "%dth Motor Division" }
+		21 = { "%dst Motor Division" }
+		22 = { "%dnd Motor Division" }
+		23 = { "%drd Motor Division" }
+		24 = { "%dth Motor Division" }
+		25 = { "%dth Motor Division" }
+		26 = { "%dth Motor Division" }
+		27 = { "%dth Motor Division" }
+		28 = { "%dth Motor Division" }
+		29 = { "%dth Motor Division" }
+		30 = { "%dth Motor Division" }
+	}
+}
+
+ENG_ARM_01 = {
+	name = "Armoured Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Armoured Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Armoured Division" } # formed as Mobile Division
+		7 = { "%dth Armoured Division" } # AKA 'Desert Rats', formed as Mobile Division (Egypt)
+		2 = { "%dnd Armoured Division" }
+		6 = { "%dth Armoured Division" }
+		8 = { "%dth Armoured Division" }
+		9 = { "%dth Armoured Division" }
+		31 = { "Guards Armoured Division" }
+		10 = { "%dth Armoured Division" }
+		11 = { "%dth Armoured Division" }
+		42 = { "%dnd Armoured Division" }
+		79 = { "%dth Armoured Division" }
+		5 = { "%dth Armoured Division" }		# phantom division	
+		3 = { "%drd Armoured Division" }		# fictional divisions
+		4 = { "%dth Armoured Division" }
+		12 = { "%dth Armoured Division" }
+		13 = { "%dth Armoured Division" }
+		14 = { "%dth Armoured Division" }
+		15 = { "%dth Armoured Division" }
+		16 = { "%dth Armoured Division" }
+		17 = { "%dth Armoured Division" }
+		18 = { "%dth Armoured Division" }
+		19 = { "%dth Armoured Division" }
+		20 = { "%dth Armoured Division" }
+		21 = { "%dst Armoured Division" }
+		22 = { "%dnd Armoured Division" }
+		23 = { "%drd Armoured Division" }
+		24 = { "%dth Armoured Division" }
+		25 = { "%dth Armoured Division" }
+		26 = { "%dth Armoured Division" }
+		27 = { "%dth Armoured Division" }
+		28 = { "%dth Armoured Division" }
+		29 = { "%dth Armoured Division" }
+		30 = { "%dth Armoured Division" }
+	}
+}
+
+ENG_ARM_02 = {
+	name = "Tank Brigade"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_ARM_02 }
+
+	fallback_name = "%d Army Tank Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Army Tank Brigade" }
+		2 = { "%dnd Army Tank Brigade" }
+		21 = { "%dst Army Tank Brigade" }
+		22 = { "%dnd Army Tank Brigade" }
+		23 = { "%drd Army Tank Brigade" }
+		24 = { "%dth Army Tank Brigade" }
+		25 = { "%dth Army Tank Brigade" }
+		3 = { "%drd Army Tank Brigade" }
+		6 = { "%dth Army Tank Brigade" }
+		8 = { "%dth Army Tank Brigade" }
+		9 = { "%dth Army Tank Brigade" }
+		10 = { "%dth Army Tank Brigade" }
+		11 = { "%dth Army Tank Brigade" }
+		32 = { "%dnd Army Tank Brigade" }
+		31 = { "%dst Army Tank Brigade" }
+		5 = { "%dth Army Tank Brigade" }		
+		7 = { "%dth Army Tank Brigade" }		
+		4 = { "%dth Army Tank Brigade" }
+		12 = { "%dth Army Tank Brigade" }
+		13 = { "%dth Army Tank Brigade" }
+		14 = { "%dth Army Tank Brigade" }
+		15 = { "%dth Army Tank Brigade" }
+		16 = { "%dth Army Tank Brigade" }
+		17 = { "%dth Army Tank Brigade" }
+		18 = { "%dth Army Tank Brigade" }
+		19 = { "%dth Army Tank Brigade" }
+		20 = { "%dth Army Tank Brigade" }
+		26 = { "%dth Army Tank Brigade" }
+		27 = { "%dth Army Tank Brigade" }
+		28 = { "%dth Army Tank Brigade" }
+		29 = { "%dth Army Tank Brigade" }
+		30 = { "%dth Army Tank Brigade" }
+	}
+}
+
+ENG_ARM_03 = {
+	name = "Heavy Armoured Brigade"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "heavy_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_ARM_03 }
+
+	fallback_name = "%d Heavy Armoured Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Heavy Armoured Brigade" }
+		2 = { "%dnd Heavy Armoured Brigade" }
+		3 = { "%drd Heavy Armoured Brigade" }
+		4 = { "%dth Heavy Armoured Brigade" }
+		5 = { "%dth Heavy Armoured Brigade" }
+		6 = { "%dth Heavy Armoured Brigade" }
+		7 = { "%dth Heavy Armoured Brigade" }
+		8 = { "%dth Heavy Armoured Brigade" }
+		9 = { "%dth Heavy Armoured Brigade" }
+		10 = { "%dth Heavy Armoured Brigade" }
+		11 = { "%dth Heavy Armoured Brigade" }
+		12 = { "%dth Heavy Armoured Brigade" }
+		13 = { "%dth Heavy Armoured Brigade" }
+		14 = { "%dth Heavy Armoured Brigade" }
+		15 = { "%dth Heavy Armoured Brigade" }
+		16 = { "%dth Heavy Armoured Brigade" }
+		17 = { "%dth Heavy Armoured Brigade" }
+		18 = { "%dth Heavy Armoured Brigade" }
+		19 = { "%dth Heavy Armoured Brigade" }
+		20 = { "%dth Heavy Armoured Brigade" }
+		21 = { "%dst Heavy Armoured Brigade" }
+		22 = { "%dnd Heavy Armoured Brigade" }
+		23 = { "%drd Heavy Armoured Brigade" }
+		24 = { "%dth Heavy Armoured Brigade" }
+		25 = { "%dth Heavy Armoured Brigade" }
+		26 = { "%dth Heavy Armoured Brigade" }
+		27 = { "%dth Heavy Armoured Brigade" }
+		28 = { "%dth Heavy Armoured Brigade" }
+		29 = { "%dth Heavy Armoured Brigade" }
+		30 = { "%dth Heavy Armoured Brigade" }
+	}
+}
+
+ENG_MAR_01 = {
+	name = "Royal Marines Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d (Royal Naval) Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst (Royal Naval) Division" }
+		2 = { "%dnd (Royal Naval) Division" }
+		3 = { "%drd (Royal Naval) Division" }
+		4 = { "%dth (Royal Naval) Division" }
+		5 = { "%dth (Royal Naval) Division" }
+		6 = { "%dth (Royal Naval) Division" }
+		7 = { "%dth (Royal Naval) Division" }
+		8 = { "%dth (Royal Naval) Division" }
+		9 = { "%dth (Royal Naval) Division" }
+		10 = { "%dth (Royal Naval) Division" }
+		11 = { "%dth (Royal Naval) Division" }
+		12 = { "%dth (Royal Naval) Division" }
+		13 = { "%dth (Royal Naval) Division" }
+		14 = { "%dth (Royal Naval) Division" }
+		15 = { "%dth (Royal Naval) Division" }
+		16 = { "%dth (Royal Naval) Division" }
+		17 = { "%dth (Royal Naval) Division" }
+		18 = { "%dth (Royal Naval) Division" }
+		19 = { "%dth (Royal Naval) Division" }
+		20 = { "%dth (Royal Naval) Division" }
+		21 = { "%dst (Royal Naval) Division" }
+		22 = { "%dnd (Royal Naval) Division" }
+		23 = { "%drd (Royal Naval) Division" }
+		24 = { "%dth (Royal Naval) Division" }
+		25 = { "%dth (Royal Naval) Division" }
+		26 = { "%dth (Royal Naval) Division" }
+		27 = { "%dth (Royal Naval) Division" }
+		28 = { "%dth (Royal Naval) Division" }
+		29 = { "%dth (Royal Naval) Division" }
+		30 = { "%dth (Royal Naval) Division" }
+	}
+}
+
+ENG_MNT_01 = {
+	name = "Mountain Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		52 = { "%dnd (Lowland) Division" }
+		9 = { "%dth (Highland) Division" }
+		15 = { "%dth (Scottish) Division" }
+		51 = { "%dst (Highland) Division" }
+		64 = { "%dth (Highland) Infantry Mountain Div." }
+		65 = { "%dth (Lowland) Infantry Mountain Div." }
+		36 = { "%dth Division" }
+		801 = { "Guards Division" }
+		46 = { "%dth (North Midlands) Division" }
+		18 = { "%dth Division" }
+		38 = { "%dth (Welsh) Division" }
+		45 = { "%dth Division" }
+		61 = { "%dst Division" }
+		66 = { "%dth Division" }
+		62 = { "%dnd Division" }
+		63 = { "%drd Division" }
+		67 = { "%dth Division" }
+		68 = { "%dth Division" }
+		69 = { "%dth Division" }
+		12 = { "%dth (Eastern) Division" }
+		42 = { "%dnd (East Lancashire) Division" }
+		43 = { "%drd (Wessex) Division" }
+		44 = { "%dth (Home Counties) Division" }
+		48 = { "%dth (South Midlands) Division" }
+		49 = { "%dth (West Riding) Division" }
+		53 = { "%drd (Welsh) Division" }
+		54 = { "%dth (East Anglia) Division" }
+		127 = { "%dth Division" }
+		128 = { "%dth Division" }
+		129 = { "%dth Division" }
+		130 = { "%dth Division" }
+		131 = { "%dst Division" }
+		132 = { "%dnd Division" }
+		133 = { "%drd Division" }
+		134 = { "%dth Division" }
+		135 = { "%dth Division" }
+		136 = { "%dth Division" }
+		137 = { "%dth Division" }
+		138 = { "%dth Division" }
+		139 = { "%dth Division" }
+		140 = { "%dth Division" }
+		141 = { "%dst Division" }
+		142 = { "%dnd Division" }
+	}
+}
+
+ENG_MNT_02 = { 
+	name = "Gurkha Division" 
+
+	for_countries = { ENG RAJ } 
+
+	can_use = {
+		always = no
+	}
+
+	division_types = { "mountaineers" } 
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_MNT_02 } 
+
+	fallback_name = "%d Gurkha Division" 
+
+	# Names with numbers (only one number per entry).
+	# It's okay to have gaps in numbering.
+	ordered = { 
+		17 = { "%dth Gurkha Division" } # raised in 1952 for the Malayan Emergency
+		1 = { "%dst Gurkha Division" }
+		2 = { "%dnd Gurkha Division" }
+		3 = { "%drd Gurkha Division" }
+		4 = { "%dth Gurkha Division" }
+		5 = { "%dth Gurkha Division" }
+		6 = { "%dth Gurkha Division" }
+		7 = { "%dth Gurkha Division" }
+		8 = { "%dth Gurkha Division" }
+		9 = { "%dth Gurkha Division" }
+		10 = { "%dth Gurkha Division" }
+		11 = { "%dth Gurkha Division" }
+		12 = { "%dth Gurkha Division" }
+		13 = { "%dth Gurkha Division" }
+		14 = { "%dth Gurkha Division" }
+		15 = { "%dth Gurkha Division" }
+		16 = { "%dth Gurkha Division" }
+		18 = { "%dth Gurkha Division" }
+		19 = { "%dth Gurkha Division" }
+		20 = { "%dth Gurkha Division" }
+		21 = { "%dst Gurkha Division" }
+		22 = { "%dnd Gurkha Division" }
+		23 = { "%drd Gurkha Division" }
+		24 = { "%dth Gurkha Division" }
+		25 = { "%dth Gurkha Division" }
+		26 = { "%dth Gurkha Division" }
+		27 = { "%dth Gurkha Division" }
+		28 = { "%dth Gurkha Division" }
+		29 = { "%dth Gurkha Division" }
+		30 = { "%dth Gurkha Division" }
+	} 
+}
+
+ENG_GAR_01 = {
+	name = "Garrison Division"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Garrison Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		201 = { "Devon & Cornwall County Div." }			# Home Counties Divisions (1940-41)
+		202 = { "Dorset County Division" }
+		203 = { "Durham & North Riding County Div." }
+		204 = { "West Sussex County Division" }
+		205 = { "Hampshire County Division" }
+		206 = { "Lincolnshire County Division" }
+		207 = { "Norfolk County Division" }
+		208 = { "Northumberland County Division" }
+		209 = { "Yorkshire County Division" }
+		210 = { "Essex County Division" }
+		100 = { "%dth Division" }					# fictional divisions
+		101 = { "%dst Division" }
+		102 = { "%dnd Division" }
+		103 = { "%drd Division" }
+		104 = { "%dth Division" }
+		105 = { "%dth Division" }
+		106 = { "%dth Division" }
+		107 = { "%dth Division" }
+		108 = { "%dth Division" }
+		109 = { "%dth Division" }
+		110 = { "%dth Division" }
+		111 = { "%dth Division" }
+		112 = { "%dth Division" }
+		113 = { "%dth Division" }
+		114 = { "%dth Division" }
+		115 = { "%dth Division" }
+		116 = { "%dth Division" }
+		117 = { "%dth Division" }
+		118 = { "%dth Division" }
+		119 = { "%dth Division" }
+		120 = { "%dth Division" }
+		121 = { "%dst Division" }
+		122 = { "%dnd Division" }
+		123 = { "%drd Division" }
+		124 = { "%dth Division" }
+		125 = { "%dth Division" }
+		126 = { "%dth Division" }
+		127 = { "%dth Division" }
+		128 = { "%dth Division" }
+		129 = { "%dth Division" }
+		130 = { "%dth Division" }
+		131 = { "%dst Division" }
+		132 = { "%dnd Division" }
+		133 = { "%drd Division" }
+		134 = { "%dth Division" }
+		135 = { "%dth Division" }
+		136 = { "%dth Division" }
+		137 = { "%dth Division" }
+		138 = { "%dth Division" }
+		139 = { "%dth Division" }
+		140 = { "%dth Division" }
+		141 = { "%dst Division" }
+		142 = { "%dnd Division" }
+		143 = { "%drd Division" }
+		144 = { "%dth Division" }
+		145 = { "%dth Division" }
+		146 = { "%dth Division" }
+		147 = { "%dth Division" }
+		148 = { "%dth Division" }
+		149 = { "%dth Division" }
+		150 = { "%dth Division" }
+	}
+}
+
+ENG_COL_01 = {
+	name = "Colonial Division"
+
+	for_countries = { ENG }
+
+	can_use = {
+		NOT = {
+			#has_completed_focus = ENG_decolonization
+			always = no
+		}
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d (Africa) Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		11 = { "%dth (East Africa) Division" }				# Actual African divisions
+		812 = { "12th (West Africa) Division" }
+		81 = { "%dst (West Africa) Division" }
+		82 = { "%dnd (West Africa) Division" }
+		501 = { "1st Sudanese Colonials" }					# Ad hoc African forces from regiment to near-division size
+		502 = { "2nd Sudanese Colonials" }
+		503 = { "3rd Sudanese Colonials" }
+		521 = { "1st Ugandan Colonials" }
+		522 = { "2nd Ugandan Colonials" }
+		541 = { "1st Kenyan Colonials" }
+		542 = { "2nd Kenyan Colonials" }
+		561 = { "1st Tanzanian Colonials" }
+		562 = { "2nd Tanzanian Colonials" }
+		581 = { "1st King's African Rifles" }
+		582 = { "2nd King's African Rifles" }
+		583 = { "3rd King's African Rifles" }
+		584 = { "4th King's African Rifles" }
+		585 = { "5th King's African Rifles" }
+		586 = { "6th King's African Rifles" }
+		587 = { "7th King's African Rifles" }
+		588 = { "8th King's African Rifles" }
+		589 = { "9th King's African Rifles" }
+		590 = { "10th King's African Rifles" }
+		83 = { "%drd (Africa) Division" }					# fictional African divisions
+		84 = { "%dth (Africa) Division" }
+		85 = { "%dth (Africa) Division" }
+		86 = { "%dth (Africa) Division" }
+		87 = { "%dth (Africa) Division" }
+		88 = { "%dth (Africa) Division" }
+		89 = { "%dth (Africa) Division" }
+		543 = { "3rd Kenyan Colonials" }					# fictional ad hoc African forces
+		544 = { "4th Kenyan Colonials" }
+		545 = { "5th Kenyan Colonials" }
+		504 = { "3rd Sudanese Colonials" }
+		505 = { "4th Sudanese Colonials" }
+		506 = { "5th Sudanese Colonials" }
+		523 = { "3rd Ugandan Colonials" }
+		524 = { "4th Ugandan Colonials" }
+		563 = { "3rd Tanzanian Colonials" }
+		564 = { "4th Tanzanian Colonials" }
+		591 = { "11th King's African Rifles" }
+		592 = { "12th King's African Rifles" }
+		593 = { "13th King's African Rifles" }
+		594 = { "14th King's African Rifles" }
+		595 = { "15th King's African Rifles" }
+	}
+}
+
+ENG_DEM_01 = 
+{
+	name = "Loyalist Brigade"
+
+	for_countries = { ENG }
+
+	can_use = { always = yes } # used to populate spawned divisions in civil war
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { ENG_INF_01 }
+
+	fallback_name = "%d Loyalist Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Loyalist Brigade" }
+		2 = { "%dnd Loyalist Brigade" }
+		3 = { "%drd Loyalist Brigade" }
+		4 = { "%dth Loyalist Brigade" }
+		5 = { "%dth Loyalist Brigade" }
+		6 = { "%dth Loyalist Brigade" }
+		7 = { "%dth Loyalist Brigade" }
+		8 = { "%dth Loyalist Brigade" }
+		9 = { "%dth Loyalist Brigade" }
+		10 = { "%dth Loyalist Brigade" }
+		11 = { "%dth Loyalist Brigade" }
+		12 = { "%dth Loyalist Brigade" }
+		13 = { "%dth Loyalist Brigade" }
+		14 = { "%dth Loyalist Brigade" }
+		15 = { "%dth Loyalist Brigade" }
+		16 = { "%dth Loyalist Brigade" }
+		17 = { "%dth Loyalist Brigade" }
+		18 = { "%dth Loyalist Brigade" }
+		19 = { "%dth Loyalist Brigade" }
+		20 = { "%dth Loyalist Brigade" }
+		21 = { "%dst Loyalist Brigade" }
+		22 = { "%dnd Loyalist Brigade" }
+		23 = { "%drd Loyalist Brigade" }
+		24 = { "%dth Loyalist Brigade" }
+		25 = { "%dth Loyalist Brigade" }
+		26 = { "%dth Loyalist Brigade" }
+		27 = { "%dth Loyalist Brigade" }
+		28 = { "%dth Loyalist Brigade" }
+		29 = { "%dth Loyalist Brigade" }
+		30 = { "%dth Loyalist Brigade" }
+	}
+}

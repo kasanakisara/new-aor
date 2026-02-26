@@ -17,3 +17,7 @@ replace_path="common/national_focus"
 replace_path="common/characters"
 replace_path="common/scripted_localisation"
 replace_path="common/ideas"
+
+replace_path="common/technologies"
+replace_path="common/technology_sharing"
+replace_path="common/technology_tags"
