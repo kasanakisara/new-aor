@@ -1,46 +1,46 @@
 guiTypes = {
 
-	containerWindowType = {
-		name = "countrypoliticsview"
-		position = { x=-606 y=78}	
-		show_position = { x=-6 y =78 }
-		show_animation_type = decelerated
-		hide_animation_type = accelerated
-		animation_time = 300	
-		size = { width=550 height=100%% }
+	containerWindowType = { 
+		name = "countrypoliticsview" #国家政治视图
+		position = { x=-606 y=78}	 #位置
+		show_position = { x=-6 y =78 } #显示位置
+		show_animation_type = decelerated #显示动画类型=减速动画
+		hide_animation_type = accelerated #隐藏动画类型=加速动画
+		animation_time = 300	 #动画时长=300毫秒
+		size = { width=550 height=100%% } #尺寸 宽度550 高度100%
 		
-		#hide_sound = menu_close_window
-		show_sound = menu_open_window
+		#hide_sound = menu_close_window #隐藏音效
+		show_sound = menu_open_window #打开音效
 		
 		background = {
 			name = "Background"		
-			quadTextureSprite ="GFX_tiled_plain_bg"
+			quadTextureSprite ="GFX_tiled_plain_bg" #背景 资源名称
 		}
 
 		iconType ={
-			name ="production_header_bg"
+			name ="production_header_bg" #生产界面标题栏背景
 			spriteType = "GFX_header_bg"
-			position = { x= 0 y = 07 }
-			Orientation = "UPPER_LEFT"
+			position = { x= 0 y = 7 } #位置
+			Orientation = "UPPER_LEFT" #对齐方式左上角
 		}	
 
 		instantTextboxType = {
-			name = "political_title"
-			position = { x = 68 y = 14 }
-			textureFile = ""
-			font = "hoi_36header"
-			borderSize = {x = 0 y = 0}
+			name = "political_title" #政治界面标题
+			position = { x = 68 y = 13 } #位置
+			textureFile = "" #文本无纹理文件
+			font = "hoi_36header" #字体
+			borderSize = {x = 0 y = 0} #边框尺寸
 			text = "POLITICAL_POLITICAL"
-			maxWidth = 400
-			maxHeight = 20
-			fixedsize = yes
+			maxWidth = 400 #最大宽度
+			maxHeight = 20 #最大高度
+			fixedsize = yes #固定尺寸=是
 		}		
 		
 		iconType ={
-			name ="pol_view_bg"
+			name ="pol_view_bg" #政治界面视图背景
 			spriteType = "GFX_pol_view_bg"
-			position = { x= 0 y = 44 }
-			Orientation = "UPPER_LEFT"
+			position = { x= 0 y = 44 } #位置
+			Orientation = "UPPER_LEFT" #对齐方式左上角
 		}	
 		iconType ={
 			name ="pol_faction_icon"
@@ -56,10 +56,10 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "political_pie_chart"
-			position = { x= 380 y = 210 }
+			position = { x= 218 y = 225 }
 			size = { width=100 height=100 }
 			clipping = no
-			scale = 0.95
+			scale = 0.47
 
 			iconType = {
 				name = "chart"
@@ -72,7 +72,7 @@ guiTypes = {
 				spriteType = "GFX_pol_translator"
 				position = { x = -33 y = 5 }
 				alwaystransparent = yes
-				scale = 1.05
+				scale = 1.09
 			}
 			
 #			iconType ={
@@ -90,7 +90,7 @@ guiTypes = {
 					
 			# instantTextboxType = {
 			# 	name = "party"
-			# 	position = { x = 9 y = 2 }
+			# 	position = { x = 9 y = 18 }
 			# 	font = "hoi_18mbs"
 			# 	text = "party"
 			# 	maxWidth = 155
@@ -110,7 +110,7 @@ guiTypes = {
 					buttonType = {
 						name = "new_faction_button"
 						quadTextureSprite = "GFX_factions_button"
-						position = { x = -8 y = -12 }
+						position = { x = -10 y = 15 }
 						buttonFont = "hoi_16mbs"
 						buttonText = ""
 						frame = 2
@@ -118,7 +118,7 @@ guiTypes = {
 
 					instantTextboxType = {
 						name = "view_factions_text"
-						position = { x = 45 y = 5 }
+						position = { x = 50 y = 35 }
 						font = "hoi_18mbs"
 						text = "CREATE_FACTION"
 						maxWidth = 143
@@ -131,7 +131,7 @@ guiTypes = {
 					iconType = {
 						name = "create_faction_icon"
 						spriteType = "GFX_tension_war_list_major"
-						position = { x = 4 y = -1}
+						position = { x = 3 y = 27}
 						alwaystransparent = yes
 					}														
 				}
@@ -139,14 +139,14 @@ guiTypes = {
 				buttonType = {
 					name = "view_factions_button"
 					quadTextureSprite = "GFX_icon_button_32x32"
-					position = { x = 177 y = 27}
+					position = { x = 177 y = 35}
 					pdx_tooltip = "VIEW_FACTION"
 				}
 				
 				iconType = {
 					name = "view_faction_icon"
 					spriteType = "GFX_relation_faction"
-					position = { x = 178 y = 29}
+					position = { x = 178 y = 36}
 					alwaystransparent = yes
 				}	
 
@@ -183,7 +183,7 @@ guiTypes = {
 					buttonType = {
 						name = "open_faction_button"
 						quadTextureSprite = "GFX_factions_button"
-						position = { x = -9 y = -13 }
+						position = { x = -10 y = 15 }
 						buttonFont = "hoi_16mbs"
 						Orientation = "UPPER_LEFT"
 						frame = 1
@@ -192,13 +192,13 @@ guiTypes = {
 					iconType = {
 						name = "faction_icon"
 						spriteType = "GFX_faction_logo_generic_democratic"
-						position = { x = 3 y = -1}
+						position = { x = 3 y = 27}
 						alwaystransparent = yes
 					}
 
 					positionType = {
 						name = "faction_name_position" #position y will be - half the height to keep it centered
-						position = { x = 40 y = 14  }
+						position = { x = 50 y = 45  }
 					}
 
 					instantTextboxType = {
@@ -224,7 +224,7 @@ guiTypes = {
 			}
 			instantTextboxType = {
 				name = "elections"
-				position = { x = 9 y = 39 }
+				position = { x = 9 y = 0 }
 				font = "hoi_16mbs"
 				text = "elections"
 				maxWidth = 155
@@ -285,7 +285,7 @@ guiTypes = {
 						
 		containerWindowType = {
 			name = "autonomy_progress_view"
-			position = { x = 170 y = 245 }
+			position = { x = 360 y = 322 }
 			size = { width = 170 height = 55 }
 			clipping = no
 
@@ -370,7 +370,7 @@ guiTypes = {
 		
 #		buttonType = {
 #			name = "show_subjects_button"
-#			position = { x = 482 y = 246 }
+#			position = { x = 530 y = 246 }
 #			quadTextureSprite = "GFX_subject_button"
 #		}
 		
@@ -427,13 +427,13 @@ guiTypes = {
 		iconType = {
 			name = "leader_frame2"
 			spriteType = "GFX_pol_leader_frame"
-			position = { x = 10 y = 44 }		
+			position = { x = -5 y = 40 }		
 			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
 			name = "leader_name"
-			position = { x = 18 y = 262 }
+			position = { x = 18 y = 270 }
 			font = "hoi_18mbs"
 			text = "leader_name"
 			maxWidth = 155
@@ -637,19 +637,19 @@ guiTypes = {
 		iconType = {
 			name = "rules"
 			spriteType = "GFX_rules_sum_icon"
-			position = { x = 460 y = 10 }
+			position = { x = 460 y = 13 }
 		}
 
 		buttonType = {
 			name = "manage_occupied_button" #占领地区按钮
 			quadTextureSprite = "GFX_icon_occupied_territories"
 			buttonFont = "hoi_16mbs"
-			position = { x = 400 y = 10 }
+			position = { x = 420 y = 15 }
 		}
 
 		buttonType = {
 			name = "FRA_ENG_Cold_War_button" #冷战按钮
-			position = { x = 33 y = 323 }
+			position = { x = 275 y = 320 }
 			quadTextureSprite = "GFX_icon_manage_subjects"
 			buttonFont = "hoi_16mbs"				
 		}	
@@ -660,7 +660,7 @@ guiTypes = {
 
 			buttonType = {
 				name = "show_subjects_button" #傀儡国按钮
-				position = { x = 0 y = 0 }
+				position = { x = 35 y = 5 }
 				quadTextureSprite = "GFX_icon_manage_subjects"
 				buttonFont = "hoi_16mbs"
 				Orientation = "UPPER_RIGHT"
@@ -1094,7 +1094,7 @@ guiTypes = {
 			font = "hoi_16mbs"
 			text = "party name"
 			fixedsize = yes
-			maxWidth = 175
+			maxWidth = 170
 			maxHeight = 18
 		}
 	}
