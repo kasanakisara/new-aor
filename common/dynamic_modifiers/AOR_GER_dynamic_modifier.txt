@@ -1,0 +1,24 @@
+GER_when_economy_dies = {
+	enable = { always = yes }
+	#icon =
+	stability_weekly = GER_stab_econ
+	consumer_goods_factor = GER_consumer_goods_econ
+	war_support_factor = GER_war_support_econ
+	line_change_production_efficiency_factor = GER_line_change_production_econ
+	production_factory_max_efficiency_factor = GER_factory_efficiency_econ
+}
+
+# 新增：过渡期政治混乱
+# 起点：胜利后状态最糟；通过过渡期国策树逐步削弱各项变量
+GER_post_victory_chaos = {
+	enable = { always = yes }
+	#icon =
+	political_power_factor = GER_pp_chaos
+	stability_factor = GER_stab_chaos
+	army_org_factor = GER_org_chaos
+	political_advisor_cost_factor = GER_advisor_cost_chaos
+}
+
+GER = {
+
+}
