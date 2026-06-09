@@ -1,0 +1,453 @@
+focus_tree = {
+	id = GER_intermediate
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GER
+		}
+	}
+
+	# =====================================================
+	# 起点：胜利后的问题  (1920.12 起，总周期 1920.12 - 1921.9)
+	# =====================================================
+	focus = {
+		id = GER_now_what #胜利后的问题
+		x = 8
+		y = 0
+		cost = 1
+		select_effect = {
+			# === 初始化 dynamic modifier 的变量到"最强 debuff"值 ===
+			# 注意：经济系统已取消，GER_when_economy_dies 及其 *_econ 变量整组移除
+			# GER_post_victory_chaos
+			set_variable = { GER_pp_chaos = -0.30 }                      # PP 增长 -30%
+			set_variable = { GER_stab_chaos = -0.15 }                    # 稳定 -15%
+			set_variable = { GER_org_chaos = -0.10 }                     # 组织度 -10%
+			set_variable = { GER_advisor_cost_chaos = 0.25 }             # 顾问成本 +25%
+			add_dynamic_modifier = { modifier = GER_post_victory_chaos }
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# TODO: 解锁"过渡期混乱"政务/地区行动
+			# TODO: 触发 新闻事件，描述胜利后总体局势
+			# TODO: 抛出一组临时 debuff，由后续国策解锁的决议组/事件逐个消除
+		}
+	}
+
+	# =====================================================
+	# 分支一：乡村内政（7 个国策）
+	# =====================================================
+	focus = {
+		id = GER_country_problems #乡村问题调查
+		relative_position_id = GER_now_what
+		x = -6
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_now_what }
+		completion_reward = {
+			add_political_power = -10
+			# 削弱：摸清乡村权力结构 → PP 混乱缓解
+			add_to_variable = { GER_pp_chaos = 0.10 }
+			# TODO: 解锁"乡村调查"政务/地区行动
+			# TODO: 触发总结乡村状况、权力结构与经济运行的方针
+		}
+	}
+
+	focus = {
+		id = GER_yao_zao_fan_a #要造反啊！（清洗换掉早饭乡镇官员）
+		relative_position_id = GER_country_problems
+		x = -1
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_country_problems }
+		available = {
+			# 仅当北方暴动未走向最坏结局时才允许执行清洗
+			# 否则柏林被反革命势力（右翼武装/自由军团）包围，乡镇早饭官员根本清洗不到
+			# TODO: 替换为实际的北方暴动结局判定 flag/variable
+			NOT = { has_country_flag = GER_northern_uprising_worst_outcome }
+		}
+		completion_reward = {
+			add_political_power = -15
+			add_stability = -0.03
+			# 削弱：清洗换班 → 稳定混乱回血
+			add_to_variable = { GER_stab_chaos = 0.05 }
+			# TODO: 解锁"清洗/换掉早饭乡镇官员"政务/地区行动（带时限）
+			# TODO: 时限到期未完成则恶化"背后捅刀"或破裂年代（事件占位）
+		}
+	}
+
+	focus = {
+		id = GER_watch_far_right #盯紧极右组织
+		relative_position_id = GER_country_problems
+		x = -1
+		y = 2
+		cost = 2
+		prerequisite = { focus = GER_yao_zao_fan_a }
+		completion_reward = {
+			add_political_power = -10
+			# 削弱：监控削弱极右扰动 → 顾问成本下降
+			add_to_variable = { GER_advisor_cost_chaos = -0.10 }
+			# TODO: 解锁"监控极右组织"政务/地区行动
+			# TODO: 触发 报告极右势力分布
+			# TODO: 预留事件 - 从中央警察部队抽调人手，组建专门"政治警察"负责监控极右组织
+			#       事件 ID 占位：KUZ.wrw.X（country event）
+		}
+	}
+
+	focus = {
+		id = GER_obstruct_judiciary #司法部隐蔽阻碍
+		relative_position_id = GER_country_problems
+		x = -1
+		y = 3
+		cost = 2
+		prerequisite = { focus = GER_watch_far_right }
+		completion_reward = {
+			add_political_power = -10
+			add_stability = -0.05
+			# 削弱：暗中削弱旧司法体系 → PP 混乱进一步缓解
+			add_to_variable = { GER_pp_chaos = 0.10 }
+			# TODO: 解锁"司法部隐蔽阻碍"政务/地区行动
+			# TODO: 暴露风险 - 预留事件 处理被发现的后果
+		}
+	}
+
+	focus = {
+		id = GER_agricultural_subsidy #农业补贴
+		relative_position_id = GER_country_problems
+		x = 1
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_country_problems }
+		completion_reward = {
+			add_political_power = -10
+			add_stability = 0.05
+			# 经济系统已取消：原 GER_consumer_goods_econ 削弱效果移除
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "政府出资小农补贴"（不走地区行动）
+		}
+	}
+
+	focus = {
+		id = GER_support_agri_workers #支持农业工人组织
+		relative_position_id = GER_country_problems
+		x = 1
+		y = 2
+		cost = 2
+		prerequisite = { focus = GER_agricultural_subsidy }
+		completion_reward = {
+			add_political_power = -5
+			add_stability = 0.03
+			# 经济系统已取消：原 GER_stab_econ 削弱效果移除
+			# TODO: 解锁"农业工会发展"政务/地区行动
+			# TODO: 为农村组织萌芽打下基础（预留进度变量）
+		}
+	}
+
+	focus = {
+		id = GER_rescue_and_compensate #营救与赔偿
+		relative_position_id = GER_country_problems
+		x = 1
+		y = 3
+		cost = 2
+		prerequisite = { focus = GER_support_agri_workers }
+		completion_reward = {
+			add_political_power = -10
+			add_stability = 0.08
+			# 削弱：人心回收 → 稳定混乱大幅回血
+			add_to_variable = { GER_stab_chaos = 0.10 }
+			# TODO: 解锁"营救暴动被关党员/受害者赔偿清点"政务/地区行动
+			# TODO: 事件表达党内团结
+			# TODO: 预留事件 - SPD 救助困难党员的相关组织
+			#       （描述被关押/受伤/家属遗孀的党员互助网络成型，事件 ID 占位：KUZ.wrw.X）
+		}
+	}
+
+	# =====================================================
+	# 分支二：外交与经济贸易（固定 7 位）
+	# =====================================================
+	focus = {
+		id = GER_trade_with_soviet_russia #与苏俄的经济条约
+		relative_position_id = GER_now_what
+		x = 0
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_now_what }
+		completion_reward = {
+			add_political_power = -10
+			# 经济系统已取消：原 GER_consumer_goods_econ 削弱效果移除
+			# TODO: 给苏俄触发，回应后授予国家精神
+			# TODO: 预留对接未来外交线
+		}
+	}
+
+	focus = {
+		id = GER_traders_are_welcomed #来财 来财
+		relative_position_id = GER_trade_with_soviet_russia
+		x = -2
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_trade_with_soviet_russia }
+		completion_reward = {
+			add_political_power = 25
+			# 经济系统已取消：原 GER_line_change_production_econ 削弱效果移除
+			# TODO: 与其他国家的贸易协定（等待后续外交细则）
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "开放贸易"（不走地区行动）
+		}
+	}
+
+	focus = {
+		id = GER_handle_uk_fra #和英法打交道
+		relative_position_id = GER_trade_with_soviet_russia
+		x = 0
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_trade_with_soviet_russia }
+		completion_reward = {
+			# 经济系统已取消：原 GER_war_support_econ 削弱效果移除
+			# 法国人改吃政治点：用 PP 替代经济回血
+			add_political_power = 30
+			# TODO: 触发英法外交事件
+			# TODO: 预留对接凡尔赛-协约外交线
+		}
+	}
+
+	focus = {
+		id = GER_diplomacy_placeholder_1 #外交预留位 一
+		relative_position_id = GER_trade_with_soviet_russia
+		x = 2
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_trade_with_soviet_russia }
+		completion_reward = {
+			# 经济系统已取消：用 PP 替代原 GER_war_support_econ
+			add_political_power = 15
+			# TODO: 外交空位 1 - 等待后续设计填充
+		}
+	}
+
+	focus = {
+		id = GER_diplomacy_placeholder_2 #外交预留位 二
+		relative_position_id = GER_trade_with_soviet_russia
+		x = -2
+		y = 2
+		cost = 1
+		prerequisite = { focus = GER_traders_are_welcomed }
+		completion_reward = {
+			# 经济系统已取消：用 PP 替代原 GER_factory_efficiency_econ
+			add_political_power = 15
+			# TODO: 外交空位 2 - 等待后续设计填充
+		}
+	}
+
+	focus = {
+		id = GER_diplomacy_placeholder_3 #外交预留位 三
+		relative_position_id = GER_trade_with_soviet_russia
+		x = 0
+		y = 2
+		cost = 1
+		prerequisite = { focus = GER_handle_uk_fra }
+		completion_reward = {
+			# 经济系统已取消：用 PP 替代原 GER_line_change_production_econ
+			add_political_power = 15
+			# TODO: 外交空位 3 - 等待后续设计填充
+		}
+	}
+
+	focus = {
+		id = GER_diplomacy_placeholder_4 #外交预留位 四
+		relative_position_id = GER_trade_with_soviet_russia
+		x = 2
+		y = 2
+		cost = 1
+		prerequisite = { focus = GER_diplomacy_placeholder_1 }
+		completion_reward = {
+			# 经济系统已取消：用 PP 替代原 GER_consumer_goods_econ
+			add_political_power = 15
+			# TODO: 外交空位 4 - 等待后续设计填充
+		}
+	}
+
+	# =====================================================
+	# 分支三：地区影响与立法
+	# =====================================================
+	focus = {
+		id = GER_qu_pulushi #去普鲁士
+		relative_position_id = GER_now_what
+		x = 6
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_now_what }
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# 削弱：拆解普鲁士行政架构 → 组织度回血；同时削弱一部分顾问壁垒
+			add_to_variable = { GER_org_chaos = 0.10 }
+			add_to_variable = { GER_advisor_cost_chaos = -0.05 }
+			# 注意：原表述"清理普鲁士军官"过于夸张——若我们真能清洗军官，
+			# 早就和军部正面冲突了。此处改为只做行政区划拆解，不动军方人事。
+			# TODO: 拆除普鲁士行政区划，调整为多省直辖结构（仅行政层面，不涉及军官清洗）
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "普鲁士拆解"（不走地区行动）
+			# TODO: 时限内行政过渡 debuff（通过临时国家精神实现，非"清洗军官"）
+			# TODO: 减少右翼势力在地方行政层的影响（仅文官系统）
+		}
+	}
+
+	focus = {
+		id = GER_coastal_city_expansion #滨海城市扩张
+		relative_position_id = GER_qu_pulushi
+		x = -2
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_qu_pulushi }
+		completion_reward = {
+			add_political_power = -10
+			# 经济系统已取消：原 GER_factory_efficiency_econ 削弱效果移除
+			# 调整：不再解锁"滨海自由市调整"地区行动
+			# 改为给与汉堡/不来梅/吕贝克等滨海地区 SPD 支持度 + 控制度增长率提升
+			# TODO: 对滨海自由市相关 state 添加 dynamic modifier：
+			#       - SPD 支持度增长率 + X%
+			#       - 控制度增长率 + Y%
+			# TODO: 调整汉堡、不来梅、吕贝克等滨海自由市区划（数据层）
+		}
+	}
+
+	focus = {
+		id = GER_ruhr_coordination #鲁尔区协调管理局
+		relative_position_id = GER_qu_pulushi
+		x = 0
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_qu_pulushi }
+		completion_reward = {
+			add_political_power = -15
+			# 经济系统已取消：原 GER_factory_efficiency_econ 削弱效果移除
+			# TODO: 解锁"鲁尔区协调管理局"地区行动
+			# TODO: 工业重心区划调整 - 预留军工/煤钢产能修正
+		}
+	}
+
+	focus = {
+		id = GER_bavaria_reorganization #巴伐利亚区划调整（自定义）
+		relative_position_id = GER_qu_pulushi
+		x = 2
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_qu_pulushi }
+		completion_reward = {
+			add_political_power = -10
+			# 现实判断：保皇派和地方议会我们动不了，只能做"适当让步"换取
+			# 反革命不满度的小幅下降——而不是真去重组它们。
+			add_to_variable = { GER_advisor_cost_chaos = -0.05 }
+			# TODO: 给与保皇派 / 地方议会"适当让步"的事件
+			#       - 选项：让步换取反革命不满度小幅下降（-X）
+			#       - 不要写成"地方议会与土地重组"，那是动不了的
+			# TODO: 此焦点不再解锁"巴伐利亚地方调整"地区行动
+			# TODO: 触发事件描述让步带来的党内争议
+		}
+	}
+
+	focus = {
+		id = GER_socialization_amendment #社会化法案修正案
+		relative_position_id = GER_qu_pulushi
+		x = -1
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = GER_coastal_city_expansion
+			focus = GER_ruhr_coordination
+		}
+		completion_reward = {
+			add_political_power = -20
+			add_stability = 0.03
+			# 经济系统已取消：原 GER_line_change_production_econ / GER_factory_efficiency_econ 移除
+			# TODO: 降低部分领域社会化难度（预留修正变量）
+			# TODO: 增加社会化进度增长速度
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "社会化加速"（不走地区行动）
+			# TODO: 描述里需明确：本修正案以「法案递交议会」的形式走政务流程，
+			#       通过议会表决决定是否生效，而不是直接由地区行动落地
+		}
+	}
+
+	focus = {
+		id = GER_social_security_act #社会保障法
+		relative_position_id = GER_qu_pulushi
+		x = 1
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = GER_ruhr_coordination
+			focus = GER_bavaria_reorganization
+		}
+		completion_reward = {
+			add_political_power = -15
+			add_stability = 0.05
+			# 削弱：社会保障兜底 → 稳定混乱回血
+			add_to_variable = { GER_stab_chaos = 0.05 }
+			# 经济系统已取消：原 GER_stab_econ 削弱效果移除
+			# TODO: 触发事件让玩家二选一：
+			#       option_A - 增加 SPD 支持度
+			#       option_B - 让步换右翼不满度下降
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "社会保障"（不走地区行动）
+			# TODO: 描述里需明确：法案递交议会，由议会表决决定是否生效
+		}
+	}
+
+	focus = {
+		id = GER_combine_the_companies #组建托拉斯
+		relative_position_id = GER_qu_pulushi
+		x = 0
+		y = 3
+		cost = 3
+		prerequisite = { focus = GER_socialization_amendment }
+		prerequisite = { focus = GER_social_security_act }
+		select_effect = {
+			# 进行时扣 PP - 在 select_effect 中先期一次性预扣，作为占位
+			add_political_power = -20
+			# TODO: 改为添加临时国家精神 GER_combining_trusts，每日 -X PP
+		}
+		completion_reward = {
+			add_political_power = -10
+			# 经济系统已取消：原 GER_factory_efficiency_econ / GER_line_change_production_econ 移除
+			# 代价：右翼集中导致政治氛围进一步紧张 → PP 混乱加重
+			add_to_variable = { GER_pp_chaos = -0.5 }
+			# TODO: 完成后给军工生产 buff（通过国家精神 GER_trust_soviet 实现）
+			# TODO: 加右翼影响力（事件触发）
+			# >>> 归入「政务系统」<<<
+			# TODO: 政务 - "托拉斯苏维埃"（只走政务，没有地区行动）
+			# TODO: 临时国家精神 GER_combining_trusts
+		}
+	}
+
+	# =====================================================
+	# 阶段终点：等待西西里亚事件结果
+	# =====================================================
+	focus = {
+		id = GER_wait_for_results #等待西西里亚事件结果
+		relative_position_id = GER_now_what
+		x = 0
+		y = 5
+		cost = 2
+		prerequisite = { focus = GER_obstruct_judiciary }
+		prerequisite = { focus = GER_rescue_and_compensate }
+		prerequisite = { focus = GER_combine_the_companies }
+		prerequisite = {
+			focus = GER_diplomacy_placeholder_2
+			focus = GER_diplomacy_placeholder_4
+		}
+		completion_reward = {
+			add_political_power = -10
+			# 阶段结算占位：
+			# - 若各变量已削弱到接近 0，可由后续国策树/事件 remove_dynamic_modifier 彻底摘除
+			# - 若仍残留较深 debuff，可由结算事件决定是否保留至下一阶段
+			# 经济系统已取消：GER_when_economy_dies 整组移除，无需再调用 remove_dynamic_modifier
+			# TODO: remove_dynamic_modifier = { modifier = GER_post_victory_chaos }  # 条件触发
+			# TODO: 触发新闻事件 - 西西里亚事件结果总结
+			# TODO: 根据前序选择走向不同结局 - 暗示"输光光"或转入下一阶段国策树
+		}
+	}
+}
