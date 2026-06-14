@@ -1,0 +1,59 @@
+scripted_gui = {
+	GER_Reichstag_BUTTON_WINDOW = {
+		window_name = "GER_Reichstag_BUTTON_WINDOW"
+		visible = { tag = GER }
+		properties = {
+		}
+		triggers = {
+		}
+		effects = {
+			GER_Reichstag_button_click = {
+				GER_Reichstag_prepare_seats = yes
+				GER_Reichstag_refresh = yes
+				if = {
+					limit = { has_country_flag = GER_Reichstag_window_visible }
+					clr_country_flag = GER_Reichstag_window_visible
+				}
+				else = { set_country_flag = GER_Reichstag_window_visible }
+			}
+		}
+	}
+	GER_Reichstag_POL_BUTTON_WINDOW = {
+		context_type = player_context
+		parent_window_name = "countrypoliticsview"
+		window_name = "GER_Reichstag_POL_BUTTON_WINDOW"
+		visible = { tag = GER }
+		effects = {
+			GER_Reichstag_pol_button_click = {
+				GER_Reichstag_prepare_seats = yes
+				GER_Reichstag_refresh = yes
+				if = {
+					limit = { has_country_flag = GER_Reichstag_window_visible }
+					clr_country_flag = GER_Reichstag_window_visible
+				}
+				else = { set_country_flag = GER_Reichstag_window_visible }
+			}
+		}
+	}
+	GER_Reichstag_window = {
+		context_type = player_context
+		window_name = "GER_Reichstag_window"
+		visible = { tag = GER has_country_flag = GER_Reichstag_window_visible }
+		properties = {
+			GER_Reichstag_seat_icon = {
+				x = GER_Reichstag_seat_x^seat_idx
+				y = GER_Reichstag_seat_y^seat_idx
+				frame = GER_Reichstag_seat_frame^seat_idx
+			}
+		}
+		dynamic_lists = {
+			GER_Reichstag_seat_grid = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_Reichstag_seat_entry
+				index = seat_idx
+			}
+		}
+		effects = { close_button_click = { clr_country_flag = GER_Reichstag_window_visible } }
+	}
+}

@@ -78,12 +78,30 @@ defined_text = {
 
 	text = {
 		trigger = {
+			NOT = { original_tag = GER }
+			has_idea = socialist_workers_international_nation
+		}
+		localization_key = nation_is_aligned_with_GER_SL
+	}
+	
+	text = {
+		trigger = {
+			original_tag = GER
+			has_idea = socialist_workers_international_nation
+		}
+		localization_key = GER_SL_special_cold_war_text
+	
+	}
+
+	text = {
+		trigger = {
 			NOT = {
 				OR = {
 					has_idea = entente_member_nation
 					has_idea = british_commonwealth_nation
 					has_idea = little_entente_nation
 					has_idea = comintern_aligned_nation 
+					has_idea = socialist_workers_international_nation
 				}
 			}
 		}
@@ -125,6 +143,13 @@ defined_text = {
 		}
 		localization_key = RUS_special_cold_war_description
 	}
+	text = {
+		trigger = {
+			original_tag = GER
+			has_idea = socialist_workers_international_nation
+		}
+		localization_key = GER_SL_special_cold_war_description
+	}
 }
 
 defined_text = {
@@ -142,6 +167,13 @@ defined_text = {
 	text = { trigger = { tag = ENG } localization_key = GFX_alignment_icon_ENG }
 	text = { trigger = { tag = FRA } localization_key = GFX_alignment_icon_FRA }
 	text = { trigger = { tag = RUS } localization_key = GFX_alignment_icon_RUS }
+	text = {
+		trigger = {
+			tag = GER
+			has_idea = socialist_workers_international_nation
+		}
+		localization_key = GFX_alignment_icon_GER_SL
+	}
 	#text = {
 	#	trigger = {
 	#		meta_trigger = {

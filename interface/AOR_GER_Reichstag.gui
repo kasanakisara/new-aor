@@ -1,0 +1,76 @@
+guiTypes = {
+	containerWindowType = {
+		name = "GER_Reichstag_BUTTON_WINDOW"
+		position = { x = 0 y = -240 }
+		Orientation = LOWER_RIGHT
+		Origo = LOWER_RIGHT
+		size = { width = 100 height = 100 }
+		buttonType = {
+			name = "GER_Reichstag_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_GER_Reichstag_button"
+			buttonFont = "hoi_24header"
+			pdx_tooltip = "GER_Reichstag_button_tt"
+			clicksound = click_default
+		}
+	}
+
+	containerWindowType = {
+		name = "GER_Reichstag_POL_BUTTON_WINDOW"
+		position = { x = 445 y = 300 }
+		size = { width = 70 height = 70 }
+		clipping = no
+
+		buttonType = {
+			name = "GER_Reichstag_pol_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_GER_Reichstag_button"
+			scale = 0.65
+			pdx_tooltip = "GER_Reichstag_button_tt"
+			clicksound = click_default
+		}
+	}
+
+	containerWindowType = {
+		name = "GER_Reichstag_window"
+		position = { x = 0 y = 0 }
+		Orientation = center
+		Origo = center
+		size = { width = 900 height = 720 }
+		moveable = yes
+		background = { name = "background" spriteType = "GFX_GER_Reichstag_bg" }
+		instantTextboxType = { name = "GER_Reichstag_title" position = { x = 0 y = 24 } font = "hoi_36header" text = "GER_Reichstag_title_text" format = centre maxWidth = 900 maxHeight = 44 }
+		instantTextboxType = { name = "GER_Reichstag_subtitle" position = { x = 0 y = 64 } font = "hoi_18mbs" text = "GER_Reichstag_subtitle_text" format = centre maxWidth = 900 maxHeight = 24 }
+		instantTextboxType = { name = "GER_Reichstag_total_seats" position = { x = 356 y = 98 } font = "hoi_24header" text = "GER_Reichstag_total_seats_text" format = centre maxWidth = 190 maxHeight = 36 }
+		gridboxtype = {
+			name = "GER_Reichstag_seat_grid"
+			position = { x = 0 y = 98 }
+			size = { width = 900 height = 360 }
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		containerWindowType = {
+			name = "GER_Reichstag_party_list"
+			position = { x = 86 y = 492 }
+			size = { width = 728 height = 142 }
+			instantTextboxType = { name = "GER_Reichstag_spd_left" position = { x = 0 y = 4 } font = "hoi_20b" text = "GER_Reichstag_spd_left_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_spd_left_tt" }
+			instantTextboxType = { name = "GER_Reichstag_spd_center_left" position = { x = 0 y = 42 } font = "hoi_20b" text = "GER_Reichstag_spd_center_left_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_spd_center_left_tt" }
+			instantTextboxType = { name = "GER_Reichstag_spd_center_right" position = { x = 0 y = 80 } font = "hoi_20b" text = "GER_Reichstag_spd_center_right_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_spd_center_right_tt" }
+			instantTextboxType = { name = "GER_Reichstag_spd_right" position = { x = 0 y = 118 } font = "hoi_20b" text = "GER_Reichstag_spd_right_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_spd_right_tt" }
+			instantTextboxType = { name = "GER_Reichstag_zentrum_left" position = { x = 258 y = 22 } font = "hoi_20b" text = "GER_Reichstag_zentrum_left_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_zentrum_left_tt" }
+			instantTextboxType = { name = "GER_Reichstag_zentrum_center" position = { x = 258 y = 60 } font = "hoi_20b" text = "GER_Reichstag_zentrum_center_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_zentrum_center_tt" }
+			instantTextboxType = { name = "GER_Reichstag_zentrum_right" position = { x = 258 y = 98 } font = "hoi_20b" text = "GER_Reichstag_zentrum_right_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_zentrum_right_tt" }
+			instantTextboxType = { name = "GER_Reichstag_ddp" position = { x = 518 y = 18 } font = "hoi_20b" text = "GER_Reichstag_ddp_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_ddp_tt" }
+			instantTextboxType = { name = "GER_Reichstag_dvp" position = { x = 518 y = 60 } font = "hoi_20b" text = "GER_Reichstag_dvp_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_dvp_tt" }
+			instantTextboxType = { name = "GER_Reichstag_far_right" position = { x = 518 y = 102 } font = "hoi_20b" text = "GER_Reichstag_far_right_text" maxWidth = 210 maxHeight = 28 format = centre pdx_tooltip = "GER_Reichstag_far_right_tt" }
+		}
+		buttonType = { name = "close_button" position = { x = -40 y = 8 } quadTextureSprite = "GFX_profile_button_close" shortcut = "ESCAPE" Orientation = "UPPER_RIGHT" pdx_tooltip = "CLOSE" clicksound = click_close }
+	}
+	containerWindowType = {
+		name = "GER_Reichstag_seat_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 18 height = 18 }
+		iconType = { name = "GER_Reichstag_seat_icon" quadTextureSprite = "GFX_GER_reichstag_seat_icon" pdx_tooltip = "GER_Reichstag_seat_tt" }
+	}
+}
