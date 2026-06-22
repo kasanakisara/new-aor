@@ -1,9 +1,389 @@
 focus_tree = {
-	id = AOR_TUR
+	id = AOR_TUR_initial
 	country = {
 		factor = 0
 		modifier = {
 			add = 10
+			tag = TUR
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 800 }
+	#新苏丹的加冕礼
+	focus = {
+		id = AOR_TUR_initial_coronation_Mehmet
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		x = 10
+		y = 0
+		completion_reward = {
+		}
+	}
+	#宫廷政府最后一搏
+	focus = {
+		id = AOR_TUR_initial_Ferid_counterattack
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_coronation_Mehmet
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_Ittihadist_victory
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_coronation_Mehmet
+		completion_reward = {
+		}
+	}
+	#行动军再次胜利
+	focus = {
+		id = AOR_TUR_initial_Ittihadist_victory
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_coronation_Mehmet
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_Ferid_counterattack
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_coronation_Mehmet
+		completion_reward = {
+		}
+	}
+	#终结自由党的专政
+	focus = {
+		id = AOR_TUR_initial_end_dictatorship
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_Ittihadist_victory
+		}
+		x = -3
+		y = 1
+		relative_position_id = AOR_TUR_initial_Ittihadist_victory
+		completion_reward = {
+		}
+	}
+	#恢复1876年宪法
+	focus = {
+		id = AOR_TUR_initial_restore_constitution
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_end_dictatorship
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_end_dictatorship
+		completion_reward = {
+		}
+	}
+	#广泛邀请流亡者
+	focus = {
+		id = AOR_TUR_initial_reinvite_exiles
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_end_dictatorship
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_end_dictatorship
+		completion_reward = {
+		}
+	}
+	#大同盟政府
+	focus = {
+		id = AOR_TUR_initial_grand_coalition
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_restore_constitution
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reinvite_exiles
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_reinvite_exiles
+		completion_reward = {
+		}
+	}
+	#向侨民的公开信
+	focus = {
+		id = AOR_TUR_initial_letter_to_expatriates
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_end_dictatorship
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_end_dictatorship
+		completion_reward = {
+		}
+	}
+	#重组外交部门
+	focus = {
+		id = AOR_TUR_initial_reorganize_diplomatic_corps
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_letter_to_expatriates
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_recall_international_students
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_letter_to_expatriates
+		completion_reward = {
+		}
+	}
+	#召回海外留学生
+	focus = {
+		id = AOR_TUR_initial_recall_international_students
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_letter_to_expatriates
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_reorganize_diplomatic_corps
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_letter_to_expatriates
+		completion_reward = {
+		}
+	}
+	#联合主义财政
+	focus = {
+		id = AOR_TUR_initial_ittihadist_fiscal_policy
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_Ittihadist_victory
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_TUR_initial_Ittihadist_victory
+		completion_reward = {
+		}
+	}
+	#打通爱琴海贸易
+	focus = {
+		id = AOR_TUR_initial_reopen_Agean_ports
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_ittihadist_fiscal_policy
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_ittihadist_fiscal_policy
+		completion_reward = {
+		}
+	}
+	#赈济新一批穆哈齐尔
+	focus = {
+		id = AOR_TUR_initial_subsidize_muhacir
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_ittihadist_fiscal_policy
+		}
+		x = -1
+		y = 2
+		relative_position_id = AOR_TUR_initial_ittihadist_fiscal_policy
+		completion_reward = {
+		}
+	}
+	#安纳托利亚集权化
+	focus = {
+		id = AOR_TUR_initial_concentration_Anatolia
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_ittihadist_fiscal_policy
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_ittihadist_fiscal_policy
+		completion_reward = {
+		}
+	}
+	#确保还款借贷周转
+	focus = {
+		id = AOR_TUR_initial_maintain_loaning_cycle
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_ittihadist_fiscal_policy
+		}
+		x = 1
+		y = 2
+		relative_position_id = AOR_TUR_initial_ittihadist_fiscal_policy
+		completion_reward = {
+		}
+	}
+	#恢复国债可信度
+	focus = {
+		id = AOR_TUR_initial_credit_with_bondholders
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_ittihadist_fiscal_policy
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_ittihadist_fiscal_policy
+		completion_reward = {
+		}
+	}
+	#重新举行多党选举
+	focus = {
+		id = AOR_TUR_initial_reopen_multiparty_elections
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_grand_coalition
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_diplomatic_corps
+			focus = AOR_TUR_initial_recall_international_students
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reopen_Agean_ports
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_concentration_Anatolia
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_credit_with_bondholders
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_subsidize_muhacir
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_maintain_loaning_cycle
+		}
+		x = 0
+		y = 4
+		relative_position_id = AOR_TUR_initial_Ittihadist_victory
+		completion_reward = {
+		}
+	}
+	#得到授权的政府重组
+	focus = {
+		id = AOR_TUR_initial_reshuffle_cabinet
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_reopen_multiparty_elections
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_reopen_multiparty_elections
+		completion_reward = {
+		}
+	}
+	#准备经济重建与改革
+	focus = {
+		id = AOR_TUR_initial_prepare_economic_reform
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_reshuffle_cabinet
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_reshuffle_cabinet
+		completion_reward = {
+		}
+	}
+	#整顿新国防体系
+	focus = {
+		id = AOR_TUR_initial_new_defense_system
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_reshuffle_cabinet
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_reshuffle_cabinet
+		completion_reward = {
+		}
+	}
+	#申请协约国归还首都
+	focus = {
+		id = AOR_TUR_initial_apply_Istanbul_return
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_prepare_economic_reform
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_new_defense_system
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_reshuffle_cabinet
+		completion_reward = {
+		}
+	}
+	#完整的奥斯曼国家
+	focus = {
+		id = AOR_TUR_initial_country_whole_again
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		prerequisite = {
+			focus = AOR_TUR_initial_apply_Istanbul_return
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_TUR_initial_country_whole_again_tt
+				always = no
+			}
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_shockwave_of_refusal
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_apply_Istanbul_return
+		completion_reward = {
+		}
+	}
+	#海峡仲裁案的余波
+	focus = {
+		id = AOR_TUR_initial_shockwave_of_refusal
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_apply_Istanbul_return
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_country_whole_again
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_apply_Istanbul_return
+		completion_reward = {
+		}
+	}
+}
+focus_tree = {
+	id = AOR_TUR
+	country = {
+		factor = 0
+		modifier = {
+			add = 1
 			tag = TUR
 		}
 	}
@@ -29,7 +409,7 @@ focus_tree = {
 		prerequisite = {
 			focus = AOR_TUR_bitter_remains
 		}
-		x = -0
+		x = 0
 		y = 1
 		relative_position_id = AOR_TUR_bitter_remains
 		completion_reward = {

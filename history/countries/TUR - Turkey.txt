@@ -4,17 +4,20 @@ set_cosmetic_tag = TUR_sultanate
 
 oob="TUR"
 recruit_character = TUR_Muhammad_VI_Sultan
+recruit_character = TUR_Mehmed_Cavid_Bey
+recruit_character = TUR_Lufti_Fikri_Bey
 recruit_character = TUR_Ahmed_Tevfik_Pasha
 recruit_character = TUR_Damat_Ferid_Pasha
-recruit_character = TUR_Mustapha_Subhi
 recruit_character = TUR_Ethem_Nejat
+recruit_character = TUR_Mustapha_Subhi
+recruit_character = TUR_Sefik_Husnu
+recruit_character = TUR_Ziya_Gokalp
 recruit_character = TUR_Shakib_Arslan
 recruit_character = TUR_Salih_Hulusi_Pasha
 recruit_character = TUR_Mehmed_Talaat_Pasha
 recruit_character = TUR_Ahmed_Djemal_Pasha
 recruit_character = TUR_Ismail_Enver_Pasha
 recruit_character = TUR_Mustapha_Kemal_Pasha
-recruit_character = TUR_Sefik_Husnu
 
 # Starting tech
 set_technology = {
@@ -89,13 +92,16 @@ set_politics = {
 
 }
 set_popularities = {
-	AUT_democratic = 37
+	AUT_democratic = 29
 	Marxism = 3
-	CON_democratic = 21
-	Absolutism = 5
+	PAR_socialism = 3
+	SOC_democratic = 10
+	FRE_democratic = 6
+	CON_democratic = 9
+	Absolutism = 11
 	Fascism = 4
-	FRE_democratic = 15
-	ISL_democratic = 6
+	FRE_democratic = 11
+	ISL_democratic = 5
 	Special = 9
 }
 
@@ -104,6 +110,7 @@ add_ideas = {
 	british_commonwealth_nation
 	TUR_Sultan_Mohammed_VI_idea
 	TUR_treaty_mudros_idea
+	TUR_third_constitutional_era_idea
 	TUR_complete_econ_collapse_idea
 }
 
@@ -118,3 +125,35 @@ set_variable = {
 country_event = { id = AOR_TUR_events.5 days = 135 }
 
 activate_mission = IST_fake_mission_countdown
+
+complete_national_focus = AOR_TUR_initial_coronation_Mehmet
+complete_national_focus = AOR_TUR_initial_Ittihadist_victory
+complete_national_focus = AOR_TUR_initial_end_dictatorship
+complete_national_focus = AOR_TUR_initial_restore_constitution
+complete_national_focus = AOR_TUR_initial_reinvite_exiles
+complete_national_focus = AOR_TUR_initial_grand_coalition
+complete_national_focus = AOR_TUR_initial_letter_to_expatriates
+complete_national_focus = AOR_TUR_initial_recall_international_students
+complete_national_focus = AOR_TUR_initial_ittihadist_fiscal_policy
+complete_national_focus = AOR_TUR_initial_reopen_Agean_ports
+complete_national_focus = AOR_TUR_initial_subsidize_muhacir
+complete_national_focus = AOR_TUR_initial_concentration_Anatolia
+complete_national_focus = AOR_TUR_initial_maintain_loaning_cycle
+complete_national_focus = AOR_TUR_initial_credit_with_bondholders
+complete_national_focus = AOR_TUR_initial_reopen_multiparty_elections
+complete_national_focus = AOR_TUR_initial_reshuffle_cabinet
+complete_national_focus = AOR_TUR_initial_prepare_economic_reform
+complete_national_focus = AOR_TUR_initial_new_defense_system
+complete_national_focus = AOR_TUR_initial_apply_Istanbul_return
+
+load_oob = TUR_focus
+
+set_variable = { var = TUR_ITC value = 165 } 
+set_variable = { var = TUR_HIF value = 42 } 
+set_variable = { var = TUR_OSF value = 15 }
+set_variable = { var = TUR_Ahrar value = 19 } 
+set_variable = { var = TUR_Hukuk value = 30 } 
+set_variable = { var = TUR_Nonpartisan value = 16 } 
+set_variable = { var = Vacant value = 1 }
+set_variable = { var = seatNumbers value = 288 }
+TUR_parliament_gui_initial = yes

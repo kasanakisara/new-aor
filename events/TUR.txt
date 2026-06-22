@@ -297,6 +297,73 @@ country_event = { #苏丹的去与留？
 }
 
 add_namespace = AOR_TUR_events
+add_namespace = AOR_TUR_TKP_events
+country_event = { #
+	id = AOR_TUR_TKP_events.1
+	title = AOR_TUR_TKP_events.1.t
+	desc = AOR_TUR_TKP_events.1.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_TKP_events.1.a
+		ai_chance = {
+			base = 50
+		}
+		set_party_name = {
+			ideology = Marxism
+			name = TUR_TICSF_rev_party
+			long_name = TUR_TICSF_party_long
+		}
+		set_party_name = {
+			ideology = PAR_socialism
+			name = TUR_TICSF_mod_party
+			long_name = TUR_TICSF_party_long
+		}
+		set_country_flag = TUR_TICSF_formed_flag
+		custom_effect_tooltip = AOR_TUR_TKP_events_1_tt
+	}
+}
+country_event = { #
+	id = AOR_TUR_TKP_events.2
+	title = AOR_TUR_TKP_events.2.t
+	desc = AOR_TUR_TKP_events.2.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_TKP_events.2.a
+		ai_chance = {
+			base = 50
+		}
+		set_party_name = {
+			ideology = Marxism
+			name = TUR_TICSF_TKP_party
+			long_name = TUR_TICSF_party_long
+		}
+	}
+}
+country_event = { #
+	id = AOR_TUR_TKP_events.3
+	title = AOR_TUR_TKP_events.3.t
+	desc = AOR_TUR_TKP_events.2.d
+	picture = GFX_events_GRE_5
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = AOR_TUR_TKP_events.3.a
+		ai_chance = {
+			base = 50
+		}
+		set_party_name = {
+			ideology = Marxism
+			name = TUR_TKP_party
+			long_name = TUR_TKP_party_long
+		}
+		promote_character = TUR_Mustapha_Subhi
+		custom_effect_tooltip = AOR_TUR_TKP_events_3_tt
+	}
+}
 country_event = { #
 	id = AOR_TUR_events.1
 	title = AOR_TUR_events.1.t

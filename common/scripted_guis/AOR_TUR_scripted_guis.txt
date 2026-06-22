@@ -1,0 +1,41 @@
+scripted_gui = {
+	AOR_TUR_parliament_gui = {
+		context_type = decision_category
+		window_name = "AOR_TUR_parliament_gui_container"
+
+		dynamic_lists = {
+			parliament_main_grid = {
+				array = TUR_parliament_main_array
+				index = parliament_main_index
+				change_scope = no
+				entry_container = AOR_TUR_parliament_main_entry
+			}
+			AOR_TUR_parliament_semicircle_main_grid = {
+				array = TUR_parliament_main_array
+				index = parliament_main_index
+				change_scope = no
+				entry_container = AOR_TUR_parliament_semicircle_main_entry
+			}
+			AOR_TUR_parliament_member_grid = {
+				array = TUR_parliament_member_array
+				index = parliament_member_index
+				change_scope = no
+				entry_container = AOR_TUR_parliament_member_entry
+			}
+		}
+
+		properties = {
+			AOR_TUR_parliament_main_icon = {
+				frame = v
+			}
+			AOR_TUR_parliament_semicircle_main_icon = {
+				frame = v
+				x = TUR_parliament_x_array^parliament_main_index
+				y = TUR_parliament_y_array^parliament_main_index
+			}
+			AOR_TUR_parliament_member_icon = {
+				frame = v
+			}
+		}
+	}
+}
