@@ -377,6 +377,1133 @@ focus_tree = {
 		completion_reward = {
 		}
 	}
+	#稳定军心民意
+	focus = {
+		id = AOR_TUR_initial_stabilize_popular_sentiment
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_shockwave_of_refusal
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#改革与救国行动委员会
+	focus = {
+		id = AOR_TUR_initial_reform_salvation_committee
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_shockwave_of_refusal
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#谈判重组奥斯曼公共债务管理局
+	focus = {
+		id = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_popular_sentiment
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reform_salvation_committee
+		}
+		x = 15
+		y = 2
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#稳定里拉汇率
+	focus = {
+		id = AOR_TUR_initial_stabilize_lira_currency
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		completion_reward = {
+		}
+	}
+	#奥斯曼银行的职能分割
+	focus = {
+		id = AOR_TUR_initial_split_ottoman_bank
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_lira_currency
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_new_central_bank
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_stabilize_lira_currency
+		completion_reward = {
+		}
+	}
+	#建立独立新央行
+	focus = {
+		id = AOR_TUR_initial_new_central_bank
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_lira_currency
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_split_ottoman_bank
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_stabilize_lira_currency
+		completion_reward = {
+		}
+	}
+	#收回各省铸币权
+	focus = {
+		id = AOR_TUR_initial_cancel_provincial_minting
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_new_central_bank
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_split_ottoman_bank
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_stabilize_lira_currency
+		completion_reward = {
+		}
+	}
+	#延续特许权换资金政策
+	focus = {
+		id = AOR_TUR_initial_grant_cash_exchange
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		completion_reward = {
+		}
+	}
+	#重点行业的民族经济
+	focus = {
+		id = AOR_TUR_initial_nationalist_economy
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_grant_cash_exchange
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_grant_cash_exchange
+		completion_reward = {
+		}
+	}
+	#实践曼彻斯特经济学
+	focus = {
+		id = AOR_TUR_initial_manchester_economics
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_grant_cash_exchange
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_grant_cash_exchange
+		completion_reward = {
+		}
+	}
+	#吸收德俄游资
+	focus = {
+		id = AOR_TUR_initial_attract_escaping_capital
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_manchester_economics
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_manchester_economics
+		completion_reward = {
+		}
+	}
+	#英土港口与铁路合作
+	focus = {
+		id = AOR_TUR_initial_british_transportation
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_manchester_economics
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_manchester_economics
+		completion_reward = {
+		}
+	}
+	#招揽法国商业银行
+	focus = {
+		id = AOR_TUR_initial_french_banking
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_manchester_economics
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_manchester_economics
+		completion_reward = {
+		}
+	}
+	#颁布《工业鼓励法》
+	focus = {
+		id = AOR_TUR_initial_industrial_promotion_act
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		completion_reward = {
+		}
+	}
+	#成立工业信贷银行
+	focus = {
+		id = AOR_TUR_initial_industrail_credit_bank
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_industrial_promotion_act
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_industrial_promotion_act
+		completion_reward = {
+		}
+	}
+	#资助铁路与港口重建
+	focus = {
+		id = AOR_TUR_initial_infrastructure_reconstruction
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_industrail_credit_bank
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_industrail_credit_bank
+		completion_reward = {
+		}
+	}
+	#小幅改善劳工权益
+	focus = {
+		id = AOR_TUR_initial_labour_rights
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_industrail_credit_bank
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_industrail_credit_bank
+		completion_reward = {
+		}
+	}
+	#现代化农业财政
+	focus = {
+		id = AOR_TUR_initial_abolish_asar
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_TUR_initial_reorganize_duyun_u_umumiye
+		completion_reward = {
+		}
+	}
+	#限制地主土地所有权
+	focus = {
+		id = AOR_TUR_initial_limit_aga_land_ownership
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_abolish_asar
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_abolish_asar
+		completion_reward = {
+		}
+	}
+	#协商处理烟草专卖公司
+	focus = {
+		id = AOR_TUR_initial_increase_holding_regie_co
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_abolish_asar
+		}
+		x = 0
+		y = 3
+		relative_position_id = AOR_TUR_initial_abolish_asar
+		completion_reward = {
+		}
+	}
+	#废除《强制迁徙法》
+	focus = {
+		id = AOR_TUR_initial_abolish_tehcir_kanunu
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_popular_sentiment
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reform_salvation_committee
+		}
+		x = -5
+		y = 2
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#确保议会法案通过
+	focus = {
+		id = AOR_TUR_initial_ensure_parliament_stability
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_abolish_tehcir_kanunu
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_abolish_tehcir_kanunu
+		completion_reward = {
+		}
+	}
+	#打压哈米德专制残余
+	focus = {
+		id = AOR_TUR_initial_strike_hamidian_autocracy
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_ensure_parliament_stability
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_ensure_parliament_stability
+		completion_reward = {
+		}
+	}
+	#整顿公务员队伍
+	focus = {
+		id = AOR_TUR_initial_tame_bureaucrats
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_abolish_tehcir_kanunu
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_abolish_tehcir_kanunu
+		completion_reward = {
+		}
+	}
+	#启用联进党官僚
+	focus = {
+		id = AOR_TUR_initial_promote_ittihadist_bureaucrats
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_tame_bureaucrats
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_depoliticize_system
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_tame_bureaucrats
+		completion_reward = {
+		}
+	}
+	#重设战争罪行国内法庭
+	focus = {
+		id = AOR_TUR_initial_retry_war_criminals
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promote_ittihadist_bureaucrats
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_promote_ittihadist_bureaucrats
+		completion_reward = {
+		}
+	}
+	#公务员队伍强制脱党
+	focus = {
+		id = AOR_TUR_initial_depoliticize_system
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_tame_bureaucrats
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_promote_ittihadist_bureaucrats
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_tame_bureaucrats
+		completion_reward = {
+		}
+	}
+	#恢复《新闻法》原貌
+	focus = {
+		id = AOR_TUR_initial_reconstruct_press_freedom
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_depoliticize_system
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_depoliticize_system
+		completion_reward = {
+		}
+	}
+	#妇女权利初步推进
+	focus = {
+		id = AOR_TUR_initial_partial_women_suffarage
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promote_ittihadist_bureaucrats
+			focus = AOR_TUR_initial_depoliticize_system
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_tame_bureaucrats
+		completion_reward = {
+		}
+	}
+	#复兴奥斯曼尼里克民族主义
+	focus = {
+		id = AOR_TUR_initial_revitalize_osmanilik
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_abolish_tehcir_kanunu
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_abolish_tehcir_kanunu
+		completion_reward = {
+		}
+	}
+	#建立杰马特自治组织
+	focus = {
+		id = AOR_TUR_initial_establish_cemaat
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_revitalize_osmanilik
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_revitalize_osmanilik
+		completion_reward = {
+		}
+	}
+	#确保苏丹远离政务
+	focus = {
+		id = AOR_TUR_initial_sideline_sultan
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_strike_hamidian_autocracy
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_retry_war_criminals
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_retry_war_criminals
+		completion_reward = {
+		}
+	}
+	#保证女性受教育权
+	focus = {
+		id = AOR_TUR_initial_female_education
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_partial_women_suffarage
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_partial_women_suffarage
+		completion_reward = {
+		}
+	}
+	#重新制定《婚姻法》
+	focus = {
+		id = AOR_TUR_initial_recode_marriage_law
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_partial_women_suffarage
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_partial_women_suffarage
+		completion_reward = {
+		}
+	}
+	#讨论修改1871《省法》
+	focus = {
+		id = AOR_TUR_initial_reform_province_organisation
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reconstruct_press_freedom
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_establish_cemaat
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_reconstruct_press_freedom
+		completion_reward = {
+		}
+	}
+	#许诺转让十二群岛
+	focus = {
+		id = AOR_TUR_initial_promise_twelver_islands
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_popular_sentiment
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reform_salvation_committee
+		}
+		x = 5
+		y = 2
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#利用英法的叙利亚争端
+	focus = {
+		id = AOR_TUR_initial_exploit_syrian_crisis
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promise_twelver_islands
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_TUR_initial_promise_twelver_islands
+		completion_reward = {
+		}
+	}
+	#承认奇里乞亚自治权
+	focus = {
+		id = AOR_TUR_initial_acknowlege_cilicia
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_exploit_syrian_crisis
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_exploit_syrian_crisis
+		completion_reward = {
+		}
+	}
+	#正式放弃安塔基亚
+	focus = {
+		id = AOR_TUR_initial_giveup_antakia
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_acknowlege_cilicia
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_visit_british_parliament
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_acknowlege_cilicia
+		completion_reward = {
+		}
+	}
+	#与费萨尔的单独协议
+	focus = {
+		id = AOR_TUR_initial_negotiation_with_hashems
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_exploit_syrian_crisis
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_exploit_syrian_crisis
+		completion_reward = {
+		}
+	}
+	#参与阿拉伯半岛调停
+	focus = {
+		id = AOR_TUR_initial_interfere_arabian_war
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_exploit_syrian_crisis
+		}
+		x = 1
+		y = 1	
+		relative_position_id = AOR_TUR_initial_exploit_syrian_crisis
+		completion_reward = {
+		}
+	}
+	#摩苏尔-凡城统筹管理协议
+	focus = {
+		id = AOR_TUR_initial_joint_kurdish_management
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_exploit_syrian_crisis
+		}
+		x = 2
+		y = 2	
+		relative_position_id = AOR_TUR_initial_exploit_syrian_crisis
+		completion_reward = {
+		}
+	}
+	#为“合法首都”的议会陈词
+	focus = {
+		id = AOR_TUR_initial_visit_british_parliament
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_joint_kurdish_management
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_giveup_antakia
+		}
+		x = -1
+		y = 1	
+		relative_position_id = AOR_TUR_initial_joint_kurdish_management
+		completion_reward = {
+		}
+	}
+	#重新谈判库尔德边界
+	focus = {
+		id = AOR_TUR_initial_retalk_kurd
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_joint_kurdish_management
+		}
+		x = 1
+		y = 1	
+		relative_position_id = AOR_TUR_initial_joint_kurdish_management
+		completion_reward = {
+		}
+	}
+	#寻找巴尔干潜在盟友
+	focus = {
+		id = AOR_TUR_initial_seek_balkan_friends
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promise_twelver_islands
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_promise_twelver_islands
+		completion_reward = {
+		}
+	}
+	#出让安塔利亚驻港权
+	focus = {
+		id = AOR_TUR_initial_selloff_antalya_port
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promise_twelver_islands
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_promise_twelver_islands
+		completion_reward = {
+		}
+	}
+	#协助打击塞努西
+	focus = {
+		id = AOR_TUR_initial_help_strike_senussi
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_selloff_antalya_port
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_selloff_antalya_port
+		completion_reward = {
+		}
+	}
+	#科斯坦丁尼耶商贸特许状
+	focus = {
+		id = AOR_TUR_initial_issue_istambul_grants
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_selloff_antalya_port
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_selloff_antalya_port
+		completion_reward = {
+		}
+	}
+	#意土反希腊包围网
+	focus = {
+		id = AOR_TUR_initial_encirclement_against_greece
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_help_strike_senussi
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_issue_istambul_grants
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_selloff_antalya_port
+		completion_reward = {
+		}
+	}
+	#占领巴统行动
+	focus = {
+		id = AOR_TUR_initial_occupy_patumni
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_promise_twelver_islands
+		}
+		x = 3
+		y = 1
+		relative_position_id = AOR_TUR_initial_promise_twelver_islands
+		completion_reward = {
+		}
+	}
+	#重新谈判凡湖边界
+	focus = {
+		id = AOR_TUR_initial_renegotiate_iran_border
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_occupy_patumni
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_occupy_patumni
+		completion_reward = {
+		}
+	}
+	#分化格鲁吉亚与亚美尼亚
+	focus = {
+		id = AOR_TUR_initial_split_georgia_armenia
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_occupy_patumni
+		}
+		x = 1
+		y = 2
+		relative_position_id = AOR_TUR_initial_occupy_patumni
+		completion_reward = {
+		}
+	}
+	#拒绝执行协约国封锁
+	focus = {
+		id = AOR_TUR_initial_refuse_entente_embargo
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_occupy_patumni
+		}
+		x = -1
+		y = 2
+		relative_position_id = AOR_TUR_initial_occupy_patumni
+		completion_reward = {
+		}
+	}
+	#签署《苏土互不侵犯条约》
+	focus = {
+		id = AOR_TUR_initial_non_agression_with_soviets
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_refuse_entente_embargo
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_help_suppress_baku
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_refuse_entente_embargo
+		completion_reward = {
+		}
+	}
+	#协助镇压巴库公社
+	focus = {
+		id = AOR_TUR_initial_help_suppress_baku
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_refuse_entente_embargo
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_non_agression_with_soviets
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_refuse_entente_embargo
+		completion_reward = {
+		}
+	}
+	#新军与新作战体系
+	focus = {
+		id = AOR_TUR_initial_new_combat_system
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_stabilize_popular_sentiment
+		}
+		prerequisite = {
+			focus = AOR_TUR_initial_reform_salvation_committee
+		}
+		x = -15
+		y = 2
+		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
+		completion_reward = {
+		}
+	}
+	#索回海军舰队
+	focus = {
+		id = AOR_TUR_initial_retake_navy
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_new_combat_system
+		}
+		x = 4
+		y = 1
+		relative_position_id = AOR_TUR_initial_new_combat_system
+		completion_reward = {
+		}
+	}
+	#加固爱琴海沿岸工事
+	focus = {
+		id = AOR_TUR_initial_fortify_agean_coast
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_retake_navy
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_retake_navy
+		completion_reward = {
+		}
+	}
+	#购置退役主力舰
+	focus = {
+		id = AOR_TUR_initial_naval_purchase
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_fortify_agean_coast
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_fortify_agean_coast
+		completion_reward = {
+		}
+	}
+	#正规化特战组织
+	focus = {
+		id = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_new_combat_system
+		}
+		x = 2
+		y = 1
+		relative_position_id = AOR_TUR_initial_new_combat_system
+		completion_reward = {
+		}
+	}
+	#重划宪兵职责
+	focus = {
+		id = AOR_TUR_initial_relocate_jandarma
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_expand_police_schools
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		completion_reward = {
+		}
+	}
+	#扩张警察培训系统
+	focus = {
+		id = AOR_TUR_initial_expand_police_schools
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_relocate_jandarma
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		completion_reward = {
+		}
+	}
+	#组织与资助国民军
+	focus = {
+		id = AOR_TUR_initial_support_kuva_i_milliye
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_expand_police_schools
+			focus = AOR_TUR_initial_relocate_jandarma
+		}
+		x = 0
+		y = 2
+		relative_position_id = AOR_TUR_initial_professionalize_teskilat_i_mahsusa
+		completion_reward = {
+		}
+	}
+	#准军事组织官方化
+	focus = {
+		id = AOR_TUR_initial_officialize_militia
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_support_kuva_i_milliye
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_call_tkp_army
+		}
+		x = -1
+		y = 1
+		relative_position_id = AOR_TUR_initial_support_kuva_i_milliye
+		completion_reward = {
+		}
+	}
+	#改造帝国新军
+	focus = {
+		id = AOR_TUR_initial_reorganize_new_army
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_new_combat_system
+		}
+		x = -2
+		y = 1
+		relative_position_id = AOR_TUR_initial_new_combat_system
+		completion_reward = {
+		}
+	}
+	#核心军官调度计划
+	focus = {
+		id = AOR_TUR_initial_nucleus_officer_deployment
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_reorganize_new_army
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_reorganize_new_army
+		completion_reward = {
+		}
+	}
+	#平民征兵原则
+	focus = {
+		id = AOR_TUR_initial_conscript_the_masses
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_nucleus_officer_deployment
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_nucleus_officer_deployment
+		completion_reward = {
+		}
+	}
+	#召回海外土耳其人军队
+	focus = {
+		id = AOR_TUR_initial_call_tkp_army
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_conscript_the_masses
+		}
+		mutually_exclusive = {
+			focus = AOR_TUR_initial_officialize_militia
+		}
+		x = 1
+		y = 1
+		relative_position_id = AOR_TUR_initial_conscript_the_masses
+		completion_reward = {
+		}
+	}
+	#邀请法国军事顾问团
+	focus = {
+		id = AOR_TUR_initial_invite_french_commission
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_new_combat_system
+		}
+		x = -4
+		y = 1
+		relative_position_id = AOR_TUR_initial_new_combat_system
+		completion_reward = {
+		}
+	}
+	#紧急购买军需物资
+	focus = {
+		id = AOR_TUR_initial_purchase_military_equipment
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_invite_french_commission
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_invite_french_commission
+		completion_reward = {
+		}
+	}
+	#引进技术人员与产线
+	focus = {
+		id = AOR_TUR_initial_install_production_lines
+		#icon = GFX_AOR_Eric_new_045
+		cost = 5.00
+		cancelable = no
+		prerequisite = {
+			focus = AOR_TUR_initial_purchase_military_equipment
+		}
+		x = 0
+		y = 1
+		relative_position_id = AOR_TUR_initial_purchase_military_equipment
+		completion_reward = {
+		}
+	}
 }
 focus_tree = {
 	id = AOR_TUR
