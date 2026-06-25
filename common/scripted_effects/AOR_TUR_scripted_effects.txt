@@ -8,7 +8,7 @@ TUR_parliament_gui_initial = {
 	add_to_array = { TUR_parliament_seat_array = TUR_Ahrar } #Ahrar Firkasi
 	add_to_array = { TUR_parliament_seat_array = TUR_Hukuk } #Müdafaa-i Hukuk
 	add_to_array = { TUR_parliament_seat_array = TUR_Nonpartisan }
-	add_to_array = { TUR_parliament_seat_array = Vacant }
+	add_to_array = { TUR_parliament_seat_array = TUR_Vacant }
 
 
 
@@ -680,4 +680,84 @@ add_to_array = { TUR_parliament_x_array = 385 }
 add_to_array = { TUR_parliament_y_array = 194 }
 add_to_array = { TUR_parliament_x_array = 399 }
 add_to_array = { TUR_parliament_y_array = 194 }
+}
+
+TUR_reelect_parliament_seats = {
+	TUR = {
+		# --- 第一步：计算总剩余值 ---
+		set_variable = { var = TUR_election_total_remaining value = TUR_seatNumbers }
+		subtract_from_variable = { var = TUR_election_total_remaining value = TUR_Vacant }
+		subtract_from_variable = { var = TUR_election_total_remaining value = TUR_Ahrar }
+		subtract_from_variable = { var = TUR_election_total_remaining value = TUR_Hukuk }
+		subtract_from_variable = { var = TUR_election_total_remaining value = TUR_Nonpartisan }
+
+		# --- 第二步：计算三组权重 ---
+		# 权重1
+		set_variable = { var = TUR_election_weight_1 value = party_popularity@AUT_democratic }
+		add_to_variable = { var = TUR_election_weight_1 value = party_popularity@SOC_democratic }
+		add_to_variable = { var = TUR_election_weight_1 value = party_popularity@Absolutism }
+
+		# 权重2
+		set_variable = { var = TUR_election_weight_2 value = party_popularity@FRE_democratic }
+		add_to_variable = { var = TUR_election_weight_2 value = party_popularity@CON_democratic }
+		add_to_variable = { var = TUR_election_weight_2 value = party_popularity@ISL_democratic }
+
+		# 权重3
+		set_variable = { var = TUR_election_weight_3 value = party_popularity@Marxism }
+		add_to_variable = { var = TUR_election_weight_3 value = party_popularity@PAR_socialism }
+
+		# --- 第三步：计算总权重 ---
+		set_variable = { var = TUR_election_total_weight value = TUR_election_weight_1 }
+		add_to_variable = { var = TUR_election_total_weight value = TUR_election_weight_2 }
+		add_to_variable = { var = TUR_election_total_weight value = TUR_election_weight_3 }
+
+		# --- 第四步：按比例分配 ---
+		if = {
+			limit = { check_variable = { TUR_election_total_weight > 0 } }
+
+			# TUR_election_part_1 = floor(TUR_election_weight_1 / TUR_election_total_weight × TUR_election_total_remaining)
+			set_variable = { var = TUR_election_part_1 value = TUR_election_weight_1 }
+			multiply_variable = { var = TUR_election_part_1 value = TUR_election_total_remaining }
+			divide_variable = { var = TUR_election_part_1 value = TUR_election_total_weight }
+			round_variable = { var = TUR_election_part_1 }
+
+			# TUR_election_part_2 = floor(TUR_election_weight_2 / TUR_election_total_weight × TUR_election_total_remaining)
+			set_variable = { var = TUR_election_part_2 value = TUR_election_weight_2 }
+			multiply_variable = { var = TUR_election_part_2 value = TUR_election_total_remaining }
+			divide_variable = { var = TUR_election_part_2 value = TUR_election_total_weight }
+			round_variable = { var = TUR_election_part_2 }
+
+			# TUR_election_part_3 = TUR_election_total_remaining - TUR_election_part_1 - TUR_election_part_2
+			# 余量全部归入第三份，保证三份之和精确等于 TUR_election_total_remaining
+			set_variable = { var = TUR_election_part_3 value = TUR_election_total_remaining }
+			subtract_from_variable = { var = TUR_election_part_3 value = TUR_election_part_1 }
+			subtract_from_variable = { var = TUR_election_part_3 value = TUR_election_part_2 }
+		}
+		else = {
+			# 兜底处理：总权重为 0 时三等分，余量归 TUR_election_part_3
+			set_variable = { var = TUR_election_part_1 value = TUR_election_total_remaining }
+			divide_variable = { var = TUR_election_part_1 value = 3 }
+			round_variable = { var = TUR_election_part_1 }
+			set_variable = { var = TUR_election_part_2 value = TUR_election_part_1 }
+			round_variable = { var = TUR_election_part_2 }
+			set_variable = { var = TUR_election_part_3 value = TUR_election_total_remaining }
+			subtract_from_variable = { var = TUR_election_part_3 value = TUR_election_part_1 }
+			subtract_from_variable = { var = TUR_election_part_3 value = TUR_election_part_2 }
+		}
+
+		# --- 结果已存入 var:TUR_election_part_1, var:TUR_election_part_2, var:TUR_election_part_3 ---
+		set_variable = { var = TUR_ITC value = TUR_election_part_1 }
+		set_variable = { var = TUR_HIF value = TUR_election_part_2 }
+		set_variable = { var = TUR_OSF value = TUR_election_part_3 }
+	}
+	clear_array = TUR_parliament_seat_array
+	add_to_array = { TUR_parliament_seat_array = TUR_ITC }
+	add_to_array = { TUR_parliament_seat_array = TUR_HIF }
+	add_to_array = { TUR_parliament_seat_array = TUR_OSF }
+	add_to_array = { TUR_parliament_seat_array = TUR_Ahrar }
+	add_to_array = { TUR_parliament_seat_array = TUR_Hukuk }
+	add_to_array = { TUR_parliament_seat_array = TUR_Nonpartisan }
+	add_to_array = { TUR_parliament_seat_array = TUR_Vacant }
+	TUR_reload_parliament_gui = yes
+	add_to_variable = { var = global.AOR_TUR_parliament_gui_dirty value = 0.01 }
 }
