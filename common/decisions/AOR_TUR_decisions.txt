@@ -1,3 +1,32 @@
+TUR_Parliament_decision_category = {
+	TUR_Parliament_legislation_bureaucracy_depoliticisation_decision = {
+		fire_only_once = yes
+		visible = {
+			original_tag = TUR
+			has_completed_focus = AOR_TUR_initial_depoliticize_system
+	   	}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = TUR_Parliament_legislating_tt
+				NOT = {
+					has_country_flag = TUR_Parliament_legislating_flag
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = TUR_Parliament_begin_legislation_tt
+			set_country_flag = TUR_Parliament_legislating_flag
+		}
+	   	remove_effect = {
+			custom_effect_tooltip = TUR_Ittihadist_factionalism_liberal_rise_tt
+			add_to_variable = {
+				AOR_TUR_Ittihadist_liberal_var = 3.5
+			}
+		}
+	   	cost = 20
+	   	days_remove = 7
+	}
+}
 AOR_ottoman_ruins_category = {
 	TUR_loan_from_entente_decision = {
 		fire_only_once = yes
