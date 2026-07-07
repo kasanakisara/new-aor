@@ -2412,7 +2412,10 @@ on_actions = {
 				limit = {
 					#波兰胜利
 					FROM = {
-						original_tag = POL
+						OR = {
+							original_tag = POL
+							original_tag = GLC
+						}
 					}
 					ROOT = {
 						original_tag = WRU
@@ -2432,7 +2435,10 @@ on_actions = {
 				limit = {
 					#波兰胜利
 					FROM = {
-						original_tag = POL
+						OR = {
+							original_tag = POL
+							original_tag = GLC
+						}
 					}
 					ROOT = {
 						original_tag = UPR
@@ -3224,6 +3230,56 @@ on_actions = {
 				}
 	    	}
 		}
+		##高加索相关？##
+		else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+            else = {
+                
+            }
 
 	}
 }
