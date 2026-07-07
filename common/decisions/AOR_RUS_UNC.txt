@@ -700,7 +700,164 @@ AOR_RUS_Soviet_union_category = { #建立苏维埃联盟
 			}
 		}
 	}
+
 	
+	AOR_RUS_Soviet_union_21 = { #拆分土耳其斯坦
+		visible = { always = no }
+		available = {
+			any_state = {
+				limit = {
+					is_core_of = KAZ
+					is_controlled_by = RUS
+				}
+			}
+		}
+		complete_effect = {
+		
+			#哈萨克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = KAZ
+						#state = 402 state = 404 state = 406 state = 407 state = 583 state = 586 state = 587 state = 588 state = 589 state = 590 state = 920 state = 916 state = 918
+					}
+				}
+				KAZ = { transfer_state = PREV }
+			}
+			set_autonomy = { target = KAZ autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#乌兹别克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = UZB
+						#state = 823 state = 831 state = 585 state = 830 state = 405
+					}
+				}
+				UZB = { transfer_state = PREV }
+			}
+			set_autonomy = { target = UZB autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#吉尔吉斯斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = KYR
+						#state = 732 state = 917
+					}
+				}
+				KYR = { transfer_state = PREV }
+			}
+			set_autonomy = { target = KYR autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#塔吉克斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = TAJ
+						#state = 742 state = 919
+					}
+				}
+				TAJ = { transfer_state = PREV }
+			}
+			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
+			#土库曼斯坦
+			every_state = {
+				limit ={
+					OR = {
+						is_core_of = TMS
+						#state = 584 state = 832
+					}
+				}
+				TMS = { transfer_state = PREV }
+			}
+			set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+		}
+		
+	}
+	AOR_RUS_Soviet_union_22 = { #复活吧，北方盟友！！
+		ai_will_do = { base = 100 }
+		
+		available = {
+			NOT = { has_country_flag = RUS_flag_Soviet_union }
+			NOT = { country_exists = GNR }
+			OR = {
+				controls_state = 397
+				controls_state = 262
+				controls_state = 214
+			}
+		}
+		visible = {
+			NOT = { has_global_flag = RUS_flag_Soviet_union }
+			NOT = { country_exists = GNR }
+		}
+		complete_effect = {
+			add_command_power = 2
+			add_political_power = 3
+			if = {
+				limit = {
+					RUS = {
+						controls_state = 397
+					}
+				}
+				GNR = {
+					transfer_state = 397
+				}
+			}
+			if = {
+				limit = {
+					RUS = {
+						controls_state = 262
+					}
+				}
+				GNR = {
+					transfer_state = 262
+				}
+			}
+			if = {
+				limit = {
+					RUS = {
+						controls_state = 214
+					}
+				}
+				GNR = {
+					transfer_state = 214
+				}
+			}
+			set_autonomy = { target = GNR autonomy_state = AOR_SOV_Closely_executed_alliance }
+			hidden_effect = {
+				GNR = {
+					set_popularities = { Marxism = 100 }
+					random_controlled_state = {
+						limit = { is_capital = yes }
+						create_unit = {
+							division = "name = \"Capial Militia 1st\" division_template = \"Common Militia\" start_experience_factor = 0.5 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 2nd\" division_template = \"Common Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 3rd\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 4th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Capial Militia 5th\" division_template = \"Common Militia\" start_experience_factor = 0.3 start_equipment_factor = 1"
+							owner = PREV
+						}
+						create_unit = {
+							division = "name = \"Common Militia\" division_template = \"Common Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+							owner = PREV
+							count = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
 	AOR_RUS_Soviet_union_20= { #成立苏联
 		ai_will_do = { base = 100 }
 		icon = GFX_decision_category_SOV_civil_puppet_interaction
@@ -781,77 +938,6 @@ AOR_RUS_Soviet_union_category = { #建立苏维埃联盟
 		complete_effect = {
 			load_focus_tree = AOR_SOV_2
 		}
-	}
-	
-	AOR_RUS_Soviet_union_21 = { #拆分土耳其斯坦
-		visible = { always = no }
-		available = {
-			any_state = {
-				limit = {
-					is_core_of = KAZ
-					is_controlled_by = RUS
-				}
-			}
-		}
-		complete_effect = {
-		
-			#哈萨克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = KAZ
-						#state = 402 state = 404 state = 406 state = 407 state = 583 state = 586 state = 587 state = 588 state = 589 state = 590 state = 920 state = 916 state = 918
-					}
-				}
-				KAZ = { transfer_state = PREV }
-			}
-			set_autonomy = { target = KAZ autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#乌兹别克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = UZB
-						#state = 823 state = 831 state = 585 state = 830 state = 405
-					}
-				}
-				UZB = { transfer_state = PREV }
-			}
-			set_autonomy = { target = UZB autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#吉尔吉斯斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = KYR
-						#state = 732 state = 917
-					}
-				}
-				KYR = { transfer_state = PREV }
-			}
-			set_autonomy = { target = KYR autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#塔吉克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = TAJ
-						#state = 742 state = 919
-					}
-				}
-				TAJ = { transfer_state = PREV }
-			}
-			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#土库曼斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = TMS
-						#state = 584 state = 832
-					}
-				}
-				TMS = { transfer_state = PREV }
-			}
-			set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
-		}
-		
 	}
 }
 
