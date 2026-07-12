@@ -684,6 +684,16 @@ focus_tree = {
 		y = 2
 		relative_position_id = AOR_TUR_initial_shockwave_of_refusal
 		completion_reward = {
+			custom_effect_tooltip = TUR_Ittihadist_factionalism_liberal_rise_tt
+			add_to_variable = {
+				AOR_TUR_Ittihadist_liberal_var = 0.5
+			}
+			add_popularity = {
+				ideology = absolutism
+				popularity = -0.01
+			}
+			custom_effect_tooltip = TUR_Parliament_unlock_legislation_tt
+			unlock_decision_tooltip = TUR_Parliament_legislation_abolish_tehcir_kanunu_decision
 		}
 	}
 	#确保议会法案通过
@@ -698,6 +708,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_TUR_initial_abolish_tehcir_kanunu
 		completion_reward = {
+			add_ideas = TUR_holy_union_idea
 		}
 	}
 	#打压哈米德专制残余
@@ -755,6 +766,7 @@ focus_tree = {
 				ideology = AUT_democratic
 				popularity = 0.025
 			}
+			add_political_power = 75
 		}
 	}
 	#重设战争罪行国内法庭
