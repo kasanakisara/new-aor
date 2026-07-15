@@ -2412,7 +2412,10 @@ on_actions = {
 				limit = {
 					#波兰胜利
 					FROM = {
-						original_tag = POL
+						OR = {
+							original_tag = POL
+							original_tag = GLC
+						}
 					}
 					ROOT = {
 						original_tag = WRU
@@ -2432,7 +2435,10 @@ on_actions = {
 				limit = {
 					#波兰胜利
 					FROM = {
-						original_tag = POL
+						OR = {
+							original_tag = POL
+							original_tag = GLC
+						}
 					}
 					ROOT = {
 						original_tag = UPR
@@ -3223,6 +3229,218 @@ on_actions = {
 					transfer_state = 88
 				}
 	    	}
+		##高加索相关？##
+		else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    ROOT = {
+                        original_tag = CSU
+                    }
+                    FROM = {
+                        OR = {
+                            original_tag = CAU
+                            is_in_faction_with = SOV
+                            is_in_faction_with = RUS
+                        }
+                    }
+                }
+                every_country = {
+                    white_peace = CAU
+                }
+                CSU = {
+                    annex_country = {
+                        target = CAU
+                        transfer_troops = no
+                    }
+                }
+            }
+			##波罗的海战争-一阶段
+            else_if = {
+                limit = {
+					FROM = {
+						original_tag = RIG #里加政府
+					}
+					ROOT = {
+						original_tag = EST #爱沙尼亚
+					}
+				}
+                RIG = {
+					transfer_state = 811
+					transfer_state = 812
+					transfer_state = 13
+					add_civil_war_target = RIR
+					declare_war_on = {
+						target = RIR
+						type = civil_war
+					}
+					if = {
+						limit = {
+							country_exists = BLR
+						}
+						add_civil_war_target = BLR
+						declare_war_on = {
+							target = BLR
+							type = civil_war
+						}
+					}
+				}
+            }
+			else_if = {
+                limit = {
+					FROM = {
+						OR = {
+							original_tag = RIG #里加政府
+							original_tag = RIR #志愿军
+						}
+					}
+					ROOT = {
+						original_tag = LIT #立陶宛
+					}
+				}
+				FROM = {
+					transfer_state = 189
+					transfer_state = 815
+				}
+            }
+			else_if = {
+                limit = {
+					FROM = {
+						original_tag = RIR #志愿军
+					}
+					ROOT = {
+						original_tag = BLR #白俄罗斯
+					}
+				}
+				RIR = {
+					transfer_state = 94
+					transfer_state = 194
+					transfer_state = 204
+					transfer_state = 206
+					add_civil_war_target = RIG
+					declare_war_on = {
+						target = RIG
+						type = civil_war
+					}
+					if = {
+						limit = {
+							country_exists = EST
+						}
+						add_civil_war_target = EST
+						declare_war_on = {
+							target = EST
+							type = civil_war
+						}
+					}
+				}
+            }
+			else_if = {
+                limit = {
+					FROM = {
+						original_tag = RIR #志愿军
+					}
+					ROOT = {
+						original_tag = RIG #里加政府
+					}
+				}
+				RIR = {
+					annex_country = {
+                        target = RIG
+                        transfer_troops = no
+                    }
+				}
+            }
+			else_if = {
+                limit = {
+					FROM = {
+						original_tag = RIG #里加政府
+					}
+					ROOT = {
+						original_tag = RIR #志愿军
+					}
+				}
+				RIG = {
+					annex_country = {
+                        target = RIR
+                        transfer_troops = no
+                    }
+				}
+            }
+			##以上是白军胜利结局##
+			##以下是三小只胜利结局##
+			else_if = {
+                limit = {
+					FROM = {
+						OR = {
+							original_tag = LIT #立陶宛
+							original_tag = BLR #白俄罗斯
+						}
+					}
+					ROOT = {
+						original_tag = RIR #志愿军
+					}
+				}
+				LIT = {
+					transfer_state = 814
+					transfer_state = 11
+					transfer_state = 784
+				}
+				BLR = {
+					transfer_state = 97
+					transfer_state = 95
+					transfer_state = 96
+					transfer_state = 207
+				}
+            }
+			else_if = {
+                limit = {
+					FROM = {
+						OR = {
+							original_tag = LIT #立陶宛
+							original_tag = EST #爱沙尼亚
+						}
+					}
+					ROOT = {
+						original_tag = RIG #里加
+					}
+				}
+				LAT = {
+					transfer_state = 190
+					transfer_state = 808
+					transfer_state = 809
+					transfer_state = 12
+					transfer_state = 810
+				}
+				EST = {
+					transfer_state = 813
+					transfer_state = 191
+				}
+				RUS = {
+					transfer_state = 209
+					transfer_state = 210
+				}
+            }
 		}
 
 	}

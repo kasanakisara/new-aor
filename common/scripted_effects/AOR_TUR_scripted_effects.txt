@@ -761,3 +761,54 @@ TUR_reelect_parliament_seats = {
 	TUR_reload_parliament_gui = yes
 	add_to_variable = { var = global.AOR_TUR_parliament_gui_dirty value = 0.01 }
 }
+
+TUR_upgrade_crimson_memories_effect = {
+	if = {
+		limit = {
+			has_idea = TUR_crimson_memories_5_idea
+		}
+		swap_ideas = {
+			remove_idea = TUR_crimson_memories_5_idea
+			remove_idea = TUR_crimson_memories_4_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = TUR_crimson_memories_4_idea
+		}
+		swap_ideas = {
+			remove_idea = TUR_crimson_memories_4_idea
+			remove_idea = TUR_crimson_memories_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = TUR_crimson_memories_3_idea
+		}
+		swap_ideas = {
+			remove_idea = TUR_crimson_memories_3_idea
+			remove_idea = TUR_crimson_memories_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = TUR_crimson_memories_2_idea
+		}
+		swap_ideas = {
+			remove_idea = TUR_crimson_memories_2_idea
+			remove_idea = TUR_crimson_memories_1_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = TUR_crimson_memories_1_idea
+		}
+		remove_ideas = TUR_crimson_memories_1_idea
+	}
+	else = {
+		add_command_power = 15
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_political_power = 50
+	}
+}
