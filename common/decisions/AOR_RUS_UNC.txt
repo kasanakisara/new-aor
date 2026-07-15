@@ -703,72 +703,60 @@ AOR_RUS_Soviet_union_category = { #建立苏维埃联盟
 
 	
 	AOR_RUS_Soviet_union_21 = { #拆分土耳其斯坦
-		visible = { always = no }
+		visible = { NOT = { has_global_flag = RUS_flag_Soviet_union } }
 		available = {
-			any_state = {
+			every_state = {
 				limit = {
-					is_core_of = KAZ
+					OR = {
+						is_core_of = UZB
+						is_core_of = TAJ
+						is_core_of = KYR
+						is_core_of = TMS
+					}
+				}
+				OR = {
 					is_controlled_by = RUS
+					CONTROLLER = { is_subject_of = RUS }
 				}
 			}
 		}
 		complete_effect = {
-		
-			#哈萨克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = KAZ
-						#state = 402 state = 404 state = 406 state = 407 state = 583 state = 586 state = 587 state = 588 state = 589 state = 590 state = 920 state = 916 state = 918
-					}
+			hidden_effect = {
+				#花剌子模#
+				KHI = {
+					transfer_state = 831
 				}
-				KAZ = { transfer_state = PREV }
-			}
-			set_autonomy = { target = KAZ autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#乌兹别克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = UZB
-						#state = 823 state = 831 state = 585 state = 830 state = 405
-					}
+				set_autonomy = { target = KHI autonomy_state = AOR_SOV_Closely_executed_alliance }
+				KHI = { set_popularities = { Marxism = 100 } }
+				KHI = { RUS = { RUS_give_gun_licences = yes } }
+
+				#布哈拉#
+				UZB = {
+					transfer_state = 830
+					transfer_state = 742
 				}
-				UZB = { transfer_state = PREV }
-			}
-			set_autonomy = { target = UZB autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#吉尔吉斯斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = KYR
-						#state = 732 state = 917
-					}
-				}
-				KYR = { transfer_state = PREV }
-			}
-			set_autonomy = { target = KYR autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#塔吉克斯坦
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = TAJ
-						#state = 742 state = 919
-					}
-				}
-				TAJ = { transfer_state = PREV }
-			}
-			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
-			#土库曼斯坦
-			every_state = {
-				limit ={
-					OR = {
+				set_autonomy = { target = UZB autonomy_state = AOR_SOV_Closely_executed_alliance }
+				UZB = { set_popularities = { Marxism = 100 } }
+				UZB = { RUS = { RUS_give_gun_licences = yes } }
+
+				#突厥斯坦#
+				every_state = {
+					limit ={
 						is_core_of = TMS
-						#state = 584 state = 832
+						NOT = { is_core_of = UZB }
+						NOT = { is_core_of = KHI }
+					}
+					TMS = {
+						transfer_state = PREV
 					}
 				}
-				TMS = { transfer_state = PREV }
+				set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+				TMS = { set_popularities = { Marxism = 100 } }
+				TMS = { RUS = { RUS_give_gun_licences = yes } }
+
+				#哈萨克aka吉尔吉斯斯坦#
 			}
-			set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+			custom_effect_tooltip = AOR_RUS_Soviet_union_21_tt
 		}
 		
 	}
