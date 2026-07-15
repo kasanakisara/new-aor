@@ -176,6 +176,10 @@ TMS = {
 		ideology = leninism
 	}
 }
+
+set_autonomy = { target = BLS autonomy_state = AOR_SOV_Closely_executed_alliance }
+BLS = { set_popularities = { Marxism = 100 } }
+
 declare_war_on = {
 	target = ARU
 	type = civil_war
@@ -186,6 +190,14 @@ declare_war_on = {
 }
 declare_war_on = {
 	target = UPR
+	type = civil_war
+}
+declare_war_on = {
+	target = BLR
+	type = civil_war
+}
+declare_war_on = {
+	target = RIG
 	type = civil_war
 }
 create_faction = SOVIET_group
@@ -287,6 +299,20 @@ URS = {
 	add_to_war = {
 		targeted_alliance = ARU
 		enemy = RUS
+		 
+	}
+}
+DON = {
+	add_to_war = {
+		targeted_alliance = ARU
+		enemy = RUS
+		 
+	}
+}
+BRS = {
+	add_to_war = {
+		targeted_alliance = RUS
+		enemy = ARU
 		 
 	}
 }

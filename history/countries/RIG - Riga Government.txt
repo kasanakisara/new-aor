@@ -13,13 +13,22 @@ set_technology = {
 }
 
 set_politics = {
-	ruling_party = SOC_democratic
+	ruling_party = Absolutism
 	last_election = "1935.3.31"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	SOC_democratic = 100
+	Absolutism = 100
+}
+create_country_leader = {
+	name = "Temporary Military Government"
+	desc = ""
+	picture = "gfx/leaders/LIT/Army Room Template.dds"
+	expire = "1965.1.1"
+	ideology = miliciagov
+	traits = {
+	}
 }
 
 #create_country_leader = {
@@ -37,14 +46,13 @@ add_ideas = {
 	The_bridgehead_of_imperialism
 }
 
-add_civil_war_target = LIT
-add_civil_war_target = EST
-
-declare_war_on = {
-    target = LIT
-    type = civil_war
+set_autonomy = {
+	target = LIT
+	autonomous_state = AOR_RIG_military_control_state
+	freedom_level = 0.2
 }
-declare_war_on = {
-    target = EST
-    type = civil_war
+set_autonomy = {
+	target = LAT
+	autonomous_state = AOR_RIG_military_control_state
+	freedom_level = 0.2
 }
