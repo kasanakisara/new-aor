@@ -256,83 +256,14 @@ country_event = { ##法国：英国人进行战争动员
 	}
 }
 
-
 country_event = {
-	id = KYR.1 ##阿拉什三顾求和
-	title = KYR.1.t
-	desc = KYR.1.d
-
-	is_triggered_only = yes
-
-	option = {
-		name = KYR.1.a
-		hidden_effect = {
-			RUS = {
-				country_event = { id = AOR_SOV_timeaxis.10084 days = 2}
-			}
-		}
-	}
-}
-
-country_event = {
-	id = AOR_SOV_timeaxis.10084 ##阿拉什三顾求和-第一次不理
-	title = AOR_SOV_timeaxis.10084.t
-	desc = AOR_SOV_timeaxis.10084.d
-
-	is_triggered_only = yes
-
-	option = {
-		name = AOR_SOV_timeaxis.10084.a
-		hidden_effect = {
-			RUS = {
-				country_event = { id = AOR_SOV_timeaxis.10085 days = 2}
-			}
-		}
-	}
-}
-country_event = {
-	id = AOR_SOV_timeaxis.10085 ##阿拉什三顾求和-第二次理
-	title = AOR_SOV_timeaxis.10085.5
-	desc = AOR_SOV_timeaxis.10085.d
-
-	is_triggered_only = yes
-
-	option = {
-		name = RUS.10085.a
-		hidden_effect = {
-			RUS = {
-				country_event = { id = KYR.2 days = 2 }
-			}
-			KYR = {
-				country_event = { id = KYR.2 days = 2 }
-			}
-		}
-	}
-}
-country_event = {
-	id = KYR.2 ##阿拉什三顾求和-和了
-	title = KYR.2.t
-	desc = KYR.2.d
-
-	is_triggered_only = yes
-
-	option = {
-		name = KYR.2.a
-		RUS = {
-			white_peace = KYR
-			country_event = { id = KYR.3 days = 2 }
-		}
-		
-	}
-}
-
-country_event = {
-	id = KYR.3 ##阿拉什三顾求和-土耳其斯坦整合
+	id = KYR.3 ##土耳其斯坦整合 可再度素材复用！！！
 	title = KYR.3.t
 	desc = KYR.3.d
 
 	is_triggered_only = yes
 
+	##实际效果：突厥斯坦取得对整个Средняя Азия的控制##
 	option = {
 		name = KYR.3.a
 		set_country_flag = RUS_flag_soviet_union_1
@@ -346,7 +277,7 @@ country_event = {
 					OR = {
 						is_core_of = UZB
 						is_core_of = TAJ
-						is_core_of = KYR
+						is_core_of = KAZ
 						is_core_of = TMS
 					}
 					OR = {
@@ -354,16 +285,16 @@ country_event = {
 						CONTROLLER = { is_subject_of = RUS }
 					}
 				}
-				TAJ = {
+				TMS = {
 					transfer_state = PREV
 				}
 			}
-			set_autonomy = { target = TAJ autonomy_state = AOR_SOV_Closely_executed_alliance }
-			TAJ = { RUS = { RUS_give_gun_licences = yes } }
+			set_autonomy = { target = TMS autonomy_state = AOR_SOV_Closely_executed_alliance }
+			TMS = { RUS = { RUS_give_gun_licences = yes } }
 		}
 		
 		custom_effect_tooltip = AOR_GER_Newline_tt
-		TAJ = {
+		TMS = {
 			set_cosmetic_tag =  RUS_cosmetic_tag_tuerqisitan
 			division_template = {
 				name = "人民军队"
@@ -378,22 +309,6 @@ country_event = {
 				support = {
 					Mortarsupport = { x = 0 y = 0 }
 				}
-			}
-		}
-		hidden_effect = {
-			every_state = {
-				limit ={
-					OR = {
-						is_core_of = UZB
-						is_core_of = TAJ
-						is_core_of = KYR
-						is_core_of = TMS
-					}
-				}
-				TAJ = { add_state_core = PREV }
-			}
-			TAJ = {
-				set_popularities = { Marxism = 100 }
 			}
 		}
 		
