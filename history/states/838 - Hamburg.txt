@@ -1,38 +1,27 @@
-state = {
-	id = 838
-	name = "STATE_838"
-
-	history = {
-		owner = GER
-		victory_points = {
-			9347 25
-		}
-		victory_points = {
-			6325 5
-		}
-
-		buildings = {
-			infrastructure = 3
-			arms_factory = 2
-			industrial_complex = 2
-			air_base = 2		
-
-			6325 = {
-				naval_base = 1
+state={
+	id=838
+	name="STATE_838"
+	manpower = 1037275
+	state_category=large_town
+	provinces={ 9347}
+	history={
+		victory_points={ 9347 25 } #Hamburg 931,035
+		owner=GER
+		add_core_of=HAM
+		add_core_of=GER	
+		buildings={
+			infrastructure = 4
+			9347={ 
+				naval_base = 9
+				naval_supply_hub = 1
+				naval_headquarters = {
+					level = 1
+					
+				}
 			}
+			dockyard=2
+			arms_factory=1
 		}
-
-		
-		add_core_of = GER
 	}
-
-	provinces = {
-		9347 6325
-	}
-	
-	manpower = 1259710
-	buildings_max_level_factor = 1.000
-	state_category = large_city
-
-	local_supplies = 0.0 
+	local_supplies=0
 }

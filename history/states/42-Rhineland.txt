@@ -2,38 +2,30 @@
 state={
 	id=42
 	name="STATE_42"
-	manpower = 3027739
 	resources={
-		steel=59 # was: 100
-		aluminium=14 # was: 24
+		aluminium=2.000
+		steel=4.000
+		tungsten=4.000
+		coal=7
 	}
-	
-	state_category = metropolis
-
 	history={
+		victory_points = { 11531 5 } #Saarbrücken 105,000
 		owner = GER
-		victory_points = { 3423 3 }
-		victory_points = { 563 3 }
-		victory_points = { 9575 3 }
-		victory_points = { 11531 5 }
-		victory_points = { 11547 5 }
+		add_core_of = GER
 		buildings = {
 			infrastructure = 4
-			industrial_complex = 3
-
+			industrial_complex = 2
+			11531 = {
+				bunker = 2
+			}
 		}
-		add_core_of = GER
-	
 		set_demilitarized_zone = yes
-		
-		
 	}
-
 	provinces={
-		563 3423 3558 9575 11531 11547 
+		11531
 	}
-	
-	
-
-	local_supplies=0.0 
+	manpower=598719
+	buildings_max_level_factor=1.000
+	state_category=town
+	local_supplies=0.000
 }

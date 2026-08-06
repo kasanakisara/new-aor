@@ -1,32 +1,30 @@
-
 state={
 	id=63
 	name="STATE_63"
-	manpower = 604417
+	manpower = 716921
+	state_category=town
+	provinces={   6282   6309 6334 6390 9334 9277 9306 9361 11316 11343 11372
+    }
 	resources={
-		steel=23 # was: 36
-		aluminium=8 # was: 12
+		aluminium=18
+		steel=29
 	}
-	
-	state_category = town
-
 	history={
-		owner = GER
-		buildings = {
+		victory_points={ 6282 10 } #Stettin 236,113
+		
+		victory_points={ 11372 1 } #Köslin 23,236
+		victory_points={ 9361 1 } #Kolberg 24,786
+		owner=GER
+		add_core_of=GER
+		add_claim_by = PRE
+		buildings={
 			infrastructure = 3
-			industrial_complex = 1
-			6282 = {
-				naval_base = 4
-
-			}
-			air_base = 2
+			industrial_complex=2
+			dockyard=2
+			11372={ naval_base = 1 }
+			6282={ naval_base=4 }
+			
 		}
-		add_core_of = GER
 	}
-
-	provinces={
-		9252 9277 9306 11260 11288 
-	}
-
-	local_supplies=7.0 
+	local_supplies=7
 }
