@@ -1,0 +1,301 @@
+#我是不知道这段装哪，就新建个了
+focus_tree = {
+	id = GER_new
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GER
+		}
+	}
+
+	#波鸿代表大会
+	focus = {
+		id = GER_Bochum_General_Assembly
+        icon = GFX_GER_Bochum_General_Assembly
+		x = 16
+		y = 0
+		cost = 1
+
+		completion_reward = {
+			
+		}
+	}
+	#完善党的中央机构
+    focus = {
+		id = GER_Improve_the_Partys_central_organizations
+        icon = GFX_GER_Improve_the_Partys_central_organizations
+		x = 0
+		y = 2
+		cost = 1
+        prerequisite = {
+			focus = GER_Bochum_General_Assembly
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#鼓励基层参与
+    focus = {
+		id = GER_Encourage_grassroots_participation
+        icon = GFX_GER_Encourage_grassroots_participation
+		x = -6
+		y = 2
+		cost = 1
+        prerequisite = {
+			focus = GER_Bochum_General_Assembly
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#主动策略
+    focus = {
+		id = GER_Proactive_strategy
+        icon = GFX_GER_Proactive_strategy
+		x = 6
+		y = 2
+		cost = 1
+        prerequisite = {
+			focus = GER_Bochum_General_Assembly
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#鼓励青年组织
+	focus = {
+		id = GER_Encourage_youth_organizations
+        icon = GFX_GER_Encourage_youth_organizations
+		x = -7
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Encourage_grassroots_participation
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#支持妇女组织
+	focus = {
+		id = GER_Support_women_organizations
+        icon = GFX_GER_Support_women_organizations
+		x = -5
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Encourage_grassroots_participation
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#脑体力劳动者的联盟
+	focus = {
+		id = GER_The_Alliance_of_Mental_and_Physical_Workers
+        icon = GFX_GER_The_Alliance_of_Mental_and_Physical_Workers
+		x = -6
+		y = 4
+		cost = 1
+        prerequisite = {
+			focus = GER_Encourage_grassroots_participation
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#团结失业者
+	focus = {
+		id = GER_Unite_the_unemployed
+        icon = GFX_GER_Unite_the_unemployed
+		x = -7
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_The_Alliance_of_Mental_and_Physical_Workers
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#吸引非社会主义工人
+	focus = {
+		id = GER_Attract_non_socialist_workers
+        icon = GFX_GER_Attract_non_socialist_workers
+		x = -5
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_The_Alliance_of_Mental_and_Physical_Workers
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#采用集中制
+    focus = {
+		id = GER_adopt_a_centralized_system
+        icon = GFX_GER_adopt_a_centralized_system
+		x = -1
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Improve_the_Partys_central_organizations
+		}
+		mutually_exclusive = { focus = GER_adopt_a_federal_system }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#采用联邦制
+    focus = {
+		id = GER_adopt_a_federal_system
+        icon = GFX_GER_adopt_a_federal_system
+		x = 1
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Improve_the_Partys_central_organizations
+		}
+		mutually_exclusive = { focus = GER_adopt_a_centralized_system }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#强调纪律
+    focus = {
+		id = GER_Emphasize_discipline
+        icon = GFX_GER_Emphasize_discipline
+		x = 0
+		y = 4
+		cost = 1
+        prerequisite = {
+			focus = GER_Improve_the_Partys_central_organizations
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#党是革命的核心
+    focus = {
+		id = GER_The_Party_is_the_core_of_the_revolution
+        icon = GFX_GER_The_Party_is_the_core_of_the_revolution
+		x = -1
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_Emphasize_discipline
+		}
+		mutually_exclusive = { focus = GER_Together_as_the_pillars_of_the_socialist_movement }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#党是革命的核心
+    focus = {
+		id = GER_Together_as_the_pillars_of_the_socialist_movement
+        icon = GFX_GER_Together_as_the_pillars_of_the_socialist_movement
+		x = 1
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_Emphasize_discipline
+		}
+		mutually_exclusive = { focus = GER_The_Party_is_the_core_of_the_revolution }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#建立社会主义的斗争需要小心维持
+    focus = {
+		id = GER_The_struggle_to_build_socialism_needs_to_be_carefully_maintained
+        icon = GFX_GER_The_struggle_to_build_socialism_needs_to_be_carefully_maintained
+		x = 5
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Proactive_strategy
+		}
+		mutually_exclusive = { focus = GER_The_struggle_to_build_socialism_cant_be_timid }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#建立社会主义的斗争不能畏畏缩缩
+	focus = {
+		id = GER_The_struggle_to_build_socialism_cant_be_timid
+        icon = GFX_GER_The_struggle_to_build_socialism_cant_be_timid
+		x = 7
+		y = 3
+		cost = 1
+        prerequisite = {
+			focus = GER_Proactive_strategy
+		}
+		mutually_exclusive = { focus = GER_The_struggle_to_build_socialism_needs_to_be_carefully_maintained }
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#反对沙文主义、军国主义
+	focus = {
+		id = GER_Oppose_chauvinism_and_militarism
+        icon = GFX_GER_Oppose_chauvinism_and_militarism
+		x = 6
+		y = 4
+		cost = 1
+        prerequisite = {
+			focus = GER_Proactive_strategy
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#党的组织重新定向
+	focus = {
+		id = GER_The_partys_organization_is_being_redirected
+        icon = GFX_GER_The_partys_organization_is_being_redirected
+		x = 5
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_Oppose_chauvinism_and_militarism
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+	#重申无产阶级专政的目标
+	focus = {
+		id = GER_Reaffirm_the_goal_of_the_dictatorship_of_the_proletariat
+        icon = GFX_GER_Oppose_chauvinism_and_militarism
+		x = 7
+		y = 5
+		cost = 1
+        prerequisite = {
+			focus = GER_Oppose_chauvinism_and_militarism
+		}
+        relative_position_id = GER_Bochum_General_Assembly
+		completion_reward = {
+			
+		}
+	}
+
+}
