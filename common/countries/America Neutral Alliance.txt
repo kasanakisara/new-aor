@@ -1,0 +1,10 @@
+
+### AOR FIX: this country definition file was missing, even though the tag ANA exists
+### in common/country_tags/00_countries.txt and history/countries/ANA - ANA.txt exists.
+### The game logged "Could not open file: common/countries/America Neutral Alliance.txt"
+### and created the country with a NULL definition, which crashed the game while it
+### walked countries during new-game world creation (READ at +0xC8).
+graphical_culture = western_european_gfx
+graphical_culture_2d = western_european_2d
+
+color = { 88 104 128 }
