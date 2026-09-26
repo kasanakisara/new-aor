@@ -1,0 +1,342 @@
+GER_zaofanguanyuan_decisions = {
+	fenbuo_mission = {
+		allowed = {
+			tag = GER
+		}
+		avaliable = {
+			always = no
+		}
+		cancel_trigger = {
+			OR = {
+				check_variable = {guanyuan_zaofan_var > 100}
+				check_variable = {guanyuan_zaofan_var<10}
+			}
+			is_good = no
+			days_mission_timeout = 15
+			timeout_effect = {
+				if = {
+					limit = {
+						check_variable = {guanyuan_zaofan_var>100}
+					}
+					#永久民族精神：搞砸了
+				}
+				else = {
+					if = {
+						limit = {
+							check_variable = {guanyuan_zaofan_var<10}
+
+						}
+						#事件
+					}
+					else = {
+						add_to_variable = {guanyuan_zaofan_var = 10}
+						activate_mission = fenbuo_mission
+					}
+				}
+			}
+		}
+	}
+
+	# =====================================================
+	# 由 GER_yao_zao_fan_a "清洗换掉早饭乡镇官员" 国策解锁
+	# 通过减少 guanyuan_zaofan_var 把局面拖回安全区（<10 触发胜利事件）
+	# 每条决议是可重复执行的 - 由 days_re_enable 控制冷却
+	# =====================================================
+
+	# 1) 平稳调任：温和、便宜、冷却短 - 用于细水长流
+	GER_quiet_replacement = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_yao_zao_fan_a
+			has_political_power > 25
+		}
+		visible = {
+			has_completed_focus = GER_yao_zao_fan_a
+			check_variable = { guanyuan_zaofan_var > 9 }
+		}
+		cost = 25
+		days_remove = 15
+		days_re_enable = 7
+		fire_only_once = no
+		complete_effect = {
+			# 进行中（占位）：可加临时国家精神或小事件
+		}
+		remove_effect = {
+			subtract_from_variable = { guanyuan_zaofan_var = 10 }
+			add_political_power = -5
+			
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# 2) 派遣工作组：中等代价 + 中等收益
+	GER_send_investigation_team = {
+		icon = generic_intel
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_yao_zao_fan_a
+			has_political_power > 35
+		}
+		visible = {
+			has_completed_focus = GER_yao_zao_fan_a
+			check_variable = { guanyuan_zaofan_var > 9 }
+		}
+		cost = 35
+		days_remove = 25
+		days_re_enable = 10
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：临时削弱地方治理（占位）
+		}
+		remove_effect = {
+			subtract_from_variable = { guanyuan_zaofan_var = 15 }
+			add_political_power = -10
+			# 顾问对抗成本短暂上升 - 因为打草惊蛇
+			add_to_variable = { GER_advisor_cost_chaos = 0.02 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# 3) 大力清洗：高代价、高收益、扣稳定 - 用于补救濒临失控的局面
+	GER_aggressive_purge = {
+		icon = generic_purge
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_yao_zao_fan_a
+			has_political_power > 50
+			has_stability > 0.20
+		}
+		visible = {
+			has_completed_focus = GER_yao_zao_fan_a
+			check_variable = { guanyuan_zaofan_var > 24 }
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 14
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：风声鹤唳（占位）
+		}
+		remove_effect = {
+			subtract_from_variable = { guanyuan_zaofan_var = 25 }
+			add_political_power = -15
+			add_stability = -0.02
+			# TODO: 事件，公开清洗的舆论事件
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 2
+				check_variable = { guanyuan_zaofan_var > 60 }
+			}
+		}
+	}
+
+	# 4) 公开批判：耗时长 + 顺带回血战争支持，但日常代价高
+	GER_public_denunciation = {
+		icon = generic_propaganda
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_yao_zao_fan_a
+			has_political_power > 40
+		}
+		visible = {
+			has_completed_focus = GER_yao_zao_fan_a
+			check_variable = { guanyuan_zaofan_var > 19 }
+		}
+		cost = 40
+		days_remove = 45
+		days_re_enable = 21
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：动员宣传机器（占位）
+		}
+		remove_effect = {
+			subtract_from_variable = { guanyuan_zaofan_var = 20 }
+			add_political_power = -10
+			add_war_support = 0.01
+			# TODO: 事件，公开批判的舆论事件
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+}
+
+# =====================================================
+# 乡村治理 综合决议组
+# 对接乡村内政分支的其它国策（除 GER_yao_zao_fan_a 已由 GER_zaofanguanyuan_decisions 处理）
+# 决议条目对应国策 completion_reward 中标注的 "解锁 ... 政务/地区行动"
+# 每条决议都通过削弱 GER_when_economy_dies / GER_post_victory_chaos 的变量来推进过渡期
+# =====================================================
+GER_rural_governance_decisions = {
+
+	# === 乡村调查（来自 GER_country_problems）一次性 ===
+	GER_investigate_countryside = {
+		icon = generic_intel
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_country_problems
+			has_political_power > 15
+		}
+		visible = {
+			has_completed_focus = GER_country_problems
+		}
+		fire_only_once = yes
+		cost = 15
+		days_remove = 20
+		complete_effect = {
+			# 进行中：派出调查员（占位）
+		}
+		remove_effect = {
+			add_political_power = -5
+			add_to_variable = { GER_pp_chaos = 0.03 }
+			# TODO: 调查总结报告事件，给出乡村各派系列表
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# === 监控极右组织（来自 GER_watch_far_right）可重复 ===
+	# 通过反复执行抑制 GER_advisor_cost_chaos 余值，并预留极右势力变量
+	GER_monitor_far_right_action = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_watch_far_right
+			has_political_power > 20
+		}
+		visible = {
+			has_completed_focus = GER_watch_far_right
+		}
+		cost = 20
+		days_remove = 21
+		days_re_enable = 14
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：渗透极右网络（占位）
+		}
+		remove_effect = {
+			add_political_power = -5
+			add_to_variable = { GER_advisor_cost_chaos = -0.02 }
+			# TODO: 维护 GER_far_right_strength_var 进度，到阈值触发事件
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# === 司法部隐蔽阻碍（来自 GER_obstruct_judiciary）可重复 / 风险 ===
+	# 累积 GER_judiciary_exposure_var，过高时由事件结算给出后果
+	GER_obstruct_judiciary_action = {
+		icon = generic_purge
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_obstruct_judiciary
+			has_political_power > 30
+		}
+		visible = {
+			has_completed_focus = GER_obstruct_judiciary
+		}
+		cost = 30
+		days_remove = 25
+		days_re_enable = 18
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：内部使绊（占位）
+		}
+		remove_effect = {
+			add_political_power = -8
+			add_to_variable = { GER_pp_chaos = 0.04 }
+			# 暴露风险累积
+			add_to_variable = { GER_judiciary_exposure_var = 10 }
+			# TODO: 当 GER_judiciary_exposure_var > 50 时由 on_action 抛出事件 处理被发现的后果
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				check_variable = { GER_judiciary_exposure_var > 40 }
+			}
+		}
+	}
+
+	# === 政府小农补贴（来自 GER_agricultural_subsidy）可重复 ===
+	GER_smallholder_subsidy = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_agricultural_subsidy
+			has_political_power > 25
+		}
+		visible = {
+			has_completed_focus = GER_agricultural_subsidy
+		}
+		cost = 25
+		days_remove = 20
+		days_re_enable = 30
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：财政拨款（占位）
+		}
+		remove_effect = {
+			add_political_power = -5
+			add_stability = 0.01
+			add_to_variable = { GER_consumer_goods_econ = -0.02 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# === 农业工会发展（来自 GER_support_agri_workers）可重复 / 进度推进 ===
+	GER_grow_agri_union = {
+		icon = generic_political_discourse
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_support_agri_workers
+			has_political_power > 20
+		}
+		visible = {
+			has_completed_focus = GER_support_agri_workers
+		}
+		cost = 20
+		days_remove = 28
+		days_re_enable = 21
+		fire_only_once = no
+		complete_effect = {
+			# 进行中：基层动员（占位）
+		}
+		remove_effect = {
+			add_political_power = -5
+			add_to_variable = { GER_stab_econ = 0.002 }
+			# 农村组织萌芽进度推进 - 由后续阶段国策树消费
+			add_to_variable = { GER_agri_union_progress_var = 10 }
+			# TODO: 当 GER_agri_union_progress_var >= 100 触发成立全国农会
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# === 营救与赔偿（来自 GER_rescue_and_compensate）一次性 ===
+	GER_release_and_compensate_action = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		available = {
+			has_completed_focus = GER_rescue_and_compensate
+			has_political_power > 30
+		}
+		visible = {
+			has_completed_focus = GER_rescue_and_compensate
+		}
+		fire_only_once = yes
+		cost = 30
+		days_remove = 30
+		complete_effect = {
+			# 进行中：清点与发放（占位）
+		}
+		remove_effect = {
+			add_political_power = -10
+			add_stability = 0.03
+			add_war_support = 0.02
+			add_to_variable = { GER_stab_chaos = 0.05 }
+			# TODO: 党内团结新闻
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+}

@@ -5,11 +5,9 @@
 # 【变量约定】（国家级变量，建议在 GER_now_what / 开局事件里 set_variable 初始化）
 #   GER_food_surplus                粮食余量        （0~100+，越高越好）
 #   GER_agri_development            农业发展度      （0~100+，参照 TNO 做 buff/debuff，越高越好）
-#   GER_resentment_1 ~ GER_resentment_15   各大大区农民反感度（0~100，越低越好）
+#   GER_peasant_resentment          农民反感度      （0~100，越低越好）
 #                                     · 影响征粮 / 粮食税成功概率
 #                                     · 过低(<10) 降 SPD 支持度；过高(>90) 增 SPD 支持度
-#                                     · 编号对应见下方【地区分区】15 区对照
-#                                     · 需在开局事件 set_variable 初始化为 0
 #   GER_SPD_support                 SPD 支持度      （分地 +，合作社 -）
 #
 # 【基调 = country flag】（二选一互斥，由 GER_land_distribution / GER_cooperative_reform 设置）
@@ -17,781 +15,225 @@
 #   GER_agri_tone_cooperative        合作社：-SPD 支持度，但征粮/粮食税成功率与收益上升（组织化）
 #   三个 mission 通过 has_country_flag 检测基调，输出不同结果
 #
-# 【地区分区】（定稿 · 按 designed.png 紫线大区，共 15 区）
-#   覆盖开局即属 GER 的 66 州；后续 mission 可通过 is_in_state / any_state 按州 ID 分流结算。
-#
-#   大区 / 州 ID 列表：
-#     1  巴伐利亚 Bayern（南部）            : 52 53 54 857 861 863
-#     2  符腾堡 Württemberg（西南）         : 837 841 860
-#     3  巴登 Baden（西南）                 : 50
-#     4  莱茵兰 Rheinland（西部）           : 42 51 850 859 1118 1119
-#     5  威斯特法伦 Westfalen（西部）       : 57 854 1115
-#     6  下萨克森 Niedersachsen（西北）     : 56 59 853 1108 1112 1116 1117
-#     7  汉萨城市 Hansestädte（西北）       : 838 862 866
-#     8  石勒苏益格-荷尔斯泰因 S-H（西北） : 58 839 855 1043 1113
-#     9  勃兰登堡及波美拉尼亚 B/P（东北）   : 61 62 63 64 68 86 1110
-#     10 普鲁士 Preussen/Ostpreußen（远东） : 5 85 188 763 807 864 865
-#     11 柏林 Berlin（东北·特区）           : 840
-#     12 西里西亚 Schlesien（东部）         : 66 67 762 849 871
-#     13 图林根 Thüringen（中部）           : 60 1114
-#     14 黑森 Hessen（中西部）              : 55 856 858 1101 1109 1121
-#     15 上萨克森 Obersachsen（中部）       : 65 842 870 1111
-#
-# 【政治派系划分】（策划案 · 用于 mission 有效度修正，编号对应上面 15 区）
-#   左翼核心区  ：柏林(11·不用管) 汉堡—石荷(7,8) 萨克森—图林根(15,13) 鲁尔(4,5)
-#   右翼核心区  ：巴伐利亚(1) 东普鲁士(10) 波美拉尼亚(9) 汉诺威(6)
-#                  → 对应大区 {1, 6, 9, 10}，强制征粮（粮食摊派）有效度降低
-#   被萨尔化的莱茵兰（不用管）：4
-#   西南魏玛联盟巴登—符腾堡   ：2,3
-#   摇摆区      ：威斯特法伦(5) 威悉—埃姆斯(6) 西里西亚(12) 勃兰登堡(9) 梅克伦堡(9) 黑森(14)
-#   注：mission 粒度为大区级，州级派系中若同一大区横跨不同派系（如 6 含汉诺威+威悉埃姆斯、
-#       9 含波美拉尼亚+勃兰登堡+梅克伦堡），按右翼核心区归属整体处理。
+# 【地区分类】敌方核心/摇摆区 / 控制区 / SPD核心区 尚未定稿，本文件先写通用逻辑，
+#   等地区策划出来后再通过 state_flag / tag 分流各 mission 的结算。
 # ============================================================
 
 GER_SPD_decisions = {
 
     # =====================================================
-    # 地区粮食工作 mission（15 个大区，各一个）
-    #   大区事件触发激活后，按 timeout_effect 轮转结算。
-    #   结算逻辑统一在 AOR_GER_region_grain_work（scripted effect），
-    #   调用前 set_variable GER_region_work_id = 大区编号。
-    #
-    #   编号 / 大区对照：
-    #     1 巴伐利亚  2 符腾堡  3 巴登  4 莱茵兰  5 威斯特法伦
-    #     6 下萨克森  7 汉萨城市  8 石勒苏益格-荷尔斯泰因
-    #     9 勃兰登堡及波美拉尼亚  10 普鲁士  11 柏林  12 西里西亚
-    #     13 图林根  14 黑森  15 上萨克森
+    # 1) 征粮  GER_grain_requisition_mission
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加反感度；反感度影响成功概率；降低农业发展度
     # =====================================================
-
-    # 1 巴伐利亚
-    GER_region_bayern_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_1 > 95 } }
+    GER_grain_requisition_mission = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment > 95 }
+        }
         is_good = no
         days_mission_timeout = 30
         selectable_mission = no
         timeout_effect = {
-            set_variable = { GER_region_work_id = 1 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_bayern_mission
-        }
-    }
-
-    # 2 符腾堡
-    GER_region_wurttemberg_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_2 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 2 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_wurttemberg_mission
-        }
-    }
-
-    # 3 巴登
-    GER_region_baden_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_3 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 3 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_baden_mission
-        }
-    }
-
-    # 4 莱茵兰
-    GER_region_rheinland_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_4 > 95 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 4 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_rheinland_mission
-        }
-    }
-
-    # 5 威斯特法伦
-    GER_region_westfalen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_5 > 95 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 5 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_westfalen_mission
-        }
-    }
-
-    # 6 下萨克森
-    GER_region_niedersachsen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_6 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 6 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_niedersachsen_mission
-        }
-    }
-
-    # 7 汉萨城市
-    GER_region_hansa_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_7 > 95 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 7 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_hansa_mission
-        }
-    }
-
-    # 8 石勒苏益格-荷尔斯泰因
-    GER_region_schleswig_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_8 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 8 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_schleswig_mission
-        }
-    }
-
-    # 9 勃兰登堡及波美拉尼亚
-    GER_region_brandenburg_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_9 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 9 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_brandenburg_mission
-        }
-    }
-
-    # 10 普鲁士
-    GER_region_preussen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_10 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 10 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_preussen_mission
-        }
-    }
-
-    # 11 柏林
-    GER_region_berlin_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_11 > 95 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 11 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_berlin_mission
-        }
-    }
-
-    # 12 西里西亚
-    GER_region_schlesien_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_12 > 95 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 12 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_schlesien_mission
-        }
-    }
-
-    # 13 图林根
-    GER_region_thuringen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_13 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 13 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_thuringen_mission
-        }
-    }
-
-    # 14 黑森
-    GER_region_hessen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_14 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 14 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_hessen_mission
-        }
-    }
-
-    # 15 上萨克森
-    GER_region_obersachsen_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_15 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 15 }
-            AOR_GER_region_grain_work = yes
-            activate_mission = GER_region_obersachsen_mission
+            # === 成功率判定：基础 60%，农民反感度越高成功率越低 ===
+            #   反感 ≤50：60%   |   50~75：约 36%   |   >75：约 18%
+            #   基调修正：合作社 x1.2（组织化好征），分地 x0.8（护田难征）
+            set_variable = { GER_req_success_flag = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 基调结果：合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+                # TODO: 成功事件（可给地区加"抗粮"延迟惩罚）
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+                # TODO: 失败小事件 / 舆论
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission
         }
     }
 
     # =====================================================
-    # 组织城乡交换 mission（15 个大区，各一个）
-    #   效果：扣除余粮、增加农业发展度、降低本区不满
-    #   结算逻辑见 AOR_GER_region_urban_rural_exchange
+    # 2) 粮食税  GER_grain_tax_mission
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
     # =====================================================
-
-    # 1 巴伐利亚
-    GER_region_bayern_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 1 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_bayern_exchange_mission
+    GER_grain_tax_mission = {
+        allowed = {
+            tag = GER
         }
-    }
-
-    # 2 符腾堡
-    GER_region_wurttemberg_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 2 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_wurttemberg_exchange_mission
+        available = {
+            always = no
         }
-    }
-
-    # 3 巴登
-    GER_region_baden_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 3 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_baden_exchange_mission
+        activation = {
+            always = no
         }
-    }
-
-    # 4 莱茵兰
-    GER_region_rheinland_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 4 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_rheinland_exchange_mission
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment > 95 }
         }
-    }
-
-    # 5 威斯特法伦
-    GER_region_westfalen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
+        is_good = no
         days_mission_timeout = 30
         selectable_mission = no
         timeout_effect = {
-            set_variable = { GER_region_work_id = 5 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_westfalen_exchange_mission
-        }
-    }
-
-    # 6 下萨克森
-    GER_region_niedersachsen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 6 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_niedersachsen_exchange_mission
-        }
-    }
-
-    # 7 汉萨城市
-    GER_region_hansa_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 7 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_hansa_exchange_mission
-        }
-    }
-
-    # 8 石勒苏益格-荷尔斯泰因
-    GER_region_schleswig_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 8 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_schleswig_exchange_mission
-        }
-    }
-
-    # 9 勃兰登堡及波美拉尼亚
-    GER_region_brandenburg_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 9 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_brandenburg_exchange_mission
-        }
-    }
-
-    # 10 普鲁士
-    GER_region_preussen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 10 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_preussen_exchange_mission
-        }
-    }
-
-    # 11 柏林
-    GER_region_berlin_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 11 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_berlin_exchange_mission
-        }
-    }
-
-    # 12 西里西亚
-    GER_region_schlesien_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 12 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_schlesien_exchange_mission
-        }
-    }
-
-    # 13 图林根
-    GER_region_thuringen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 13 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_thuringen_exchange_mission
-        }
-    }
-
-    # 14 黑森
-    GER_region_hessen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 14 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_hessen_exchange_mission
-        }
-    }
-
-    # 15 上萨克森
-    GER_region_obersachsen_exchange_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_food_surplus < 4 } }
-        is_good = yes
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 15 }
-            AOR_GER_region_urban_rural_exchange = yes
-            activate_mission = GER_region_obersachsen_exchange_mission
+            # === 成功率：基础 70%，反感度越高越低 ===
+            #   基调修正：合作社 x1.2，分地 x0.8
+            set_variable = { GER_tax_success_flag = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment = 2 }
+            }
+            activate_mission = GER_grain_tax_mission
         }
     }
 
     # =====================================================
-    # 强制征粮 mission（15 个大区，各一个）
-    #   效果：获得余粮，但大量损害农业、激起大量不满
-    #   结算逻辑见 AOR_GER_region_force_requisition
+    # 3) 城乡交换  GER_urban_rural_exchange_mission
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    #    备注：经济恢复国策点出后，能筹到足够工业品交换更多粮食，
+    #          "不扣粮食储量、而是增加"——此处通用版即为增加，加量由国策强化
     # =====================================================
-
-    # 1 巴伐利亚
-    GER_region_bayern_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_1 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 1 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_bayern_requisition_mission
+    GER_urban_rural_exchange_mission = {
+        allowed = {
+            tag = GER
         }
-    }
-
-    # 2 符腾堡
-    GER_region_wurttemberg_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_2 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 2 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_wurttemberg_requisition_mission
+        available = {
+            always = no
         }
-    }
-
-    # 3 巴登
-    GER_region_baden_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_3 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 3 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_baden_requisition_mission
+        activation = {
+            always = no
         }
-    }
-
-    # 4 莱茵兰
-    GER_region_rheinland_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_4 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 4 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_rheinland_requisition_mission
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
         }
-    }
-
-    # 5 威斯特法伦
-    GER_region_westfalen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_5 > 95 } }
-        is_good = no
+        is_good = yes
         days_mission_timeout = 30
         selectable_mission = no
         timeout_effect = {
-            set_variable = { GER_region_work_id = 5 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_westfalen_requisition_mission
-        }
-    }
-
-    # 6 下萨克森
-    GER_region_niedersachsen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_6 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 6 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_niedersachsen_requisition_mission
-        }
-    }
-
-    # 7 汉萨城市
-    GER_region_hansa_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_7 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 7 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_hansa_requisition_mission
-        }
-    }
-
-    # 8 石勒苏益格-荷尔斯泰因
-    GER_region_schleswig_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_8 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 8 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_schleswig_requisition_mission
-        }
-    }
-
-    # 9 勃兰登堡及波美拉尼亚
-    GER_region_brandenburg_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_9 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 9 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_brandenburg_requisition_mission
-        }
-    }
-
-    # 10 普鲁士
-    GER_region_preussen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_10 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 10 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_preussen_requisition_mission
-        }
-    }
-
-    # 11 柏林
-    GER_region_berlin_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_11 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 11 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_berlin_requisition_mission
-        }
-    }
-
-    # 12 西里西亚
-    GER_region_schlesien_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_12 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 12 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_schlesien_requisition_mission
-        }
-    }
-
-    # 13 图林根
-    GER_region_thuringen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_13 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 13 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_thuringen_requisition_mission
-        }
-    }
-
-    # 14 黑森
-    GER_region_hessen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_14 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 14 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_hessen_requisition_mission
-        }
-    }
-
-    # 15 上萨克森
-    GER_region_obersachsen_requisition_mission = {
-        allowed = { tag = GER }
-        available = { always = no }
-        activation = { always = no }
-        cancel_trigger = { check_variable = { GER_resentment_15 > 95 } }
-        is_good = no
-        days_mission_timeout = 30
-        selectable_mission = no
-        timeout_effect = {
-            set_variable = { GER_region_work_id = 15 }
-            AOR_GER_region_force_requisition = yes
-            activate_mission = GER_region_obersachsen_requisition_mission
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission
         }
     }
 
@@ -823,6 +265,7 @@ GER_SPD_decisions = {
             add_to_variable = { GER_SPD_support = 5 }
             set_country_flag = GER_agri_tone_land_distributed
             clr_country_flag = GER_agri_tone_cooperative
+            # TODO: 分地宣传事件
         }
         ai_will_do = { factor = 1 }
     }
@@ -862,4 +305,2330 @@ GER_SPD_decisions = {
         ai_will_do = { factor = 1 }
     }
 
+    # =====================================================
+    # 入口：地区粮食工作  GER_open_regional_food_work
+    #    点决议 → 触发第一层事件 GER_SPD.1（选地区）
+    #    再由第二层事件选具体 mission
+    # =====================================================
+    GER_open_regional_food_work = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        available = {
+            has_political_power > 10
+        }
+        visible = {
+            tag = GER
+        }
+        cost = 10
+        days_remove = 5
+        fire_only_once = no
+        days_re_enable = 7
+        complete_effect = {
+            # 进行中：组织地区粮食工作（占位）
+        }
+        remove_effect = {
+            add_political_power = -5
+            country_event = { id = GER_SPD.1 }
+        }
+        ai_will_do = { factor = 1 }
+    }
+
+    # =====================================================
+    # 征粮（普鲁士）  GER_grain_requisition_mission_prussia
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_prussia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_prussia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_prussia = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_prussia > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_prussia > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_prussia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_prussia = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_prussia = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_prussia = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_prussia
+        }
+    }
+
+    # =====================================================
+    # 粮食税（普鲁士）  GER_grain_tax_mission_prussia
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_prussia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_prussia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_prussia = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_prussia > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_prussia > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_prussia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_prussia = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_prussia = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_prussia
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（普鲁士）  GER_urban_rural_exchange_mission_prussia
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_prussia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_prussia > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_prussia = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_prussia = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_prussia = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_prussia
+        }
+    }
+
+    # =====================================================
+    # 征粮（汉诺威）  GER_grain_requisition_mission_hannover
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_hannover = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_hannover > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_hannover = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_hannover > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_hannover > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_hannover = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_hannover = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_hannover = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_hannover = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_hannover
+        }
+    }
+
+    # =====================================================
+    # 粮食税（汉诺威）  GER_grain_tax_mission_hannover
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_hannover = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_hannover > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_hannover = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_hannover > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_hannover > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_hannover = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_hannover = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_hannover = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_hannover
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（汉诺威）  GER_urban_rural_exchange_mission_hannover
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_hannover = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_hannover > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_hannover = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_hannover = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_hannover = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_hannover
+        }
+    }
+
+    # =====================================================
+    # 征粮（巴伐利亚）  GER_grain_requisition_mission_bavaria
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_bavaria = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_bavaria > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_bavaria = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_bavaria > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_bavaria > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_bavaria = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_bavaria = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_bavaria = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_bavaria = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_bavaria
+        }
+    }
+
+    # =====================================================
+    # 粮食税（巴伐利亚）  GER_grain_tax_mission_bavaria
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_bavaria = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_bavaria > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_bavaria = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_bavaria > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_bavaria > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_bavaria = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_bavaria = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_bavaria = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_bavaria
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（巴伐利亚）  GER_urban_rural_exchange_mission_bavaria
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_bavaria = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_bavaria > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_bavaria = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_bavaria = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_bavaria = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_bavaria
+        }
+    }
+
+    # =====================================================
+    # 征粮（萨克森）  GER_grain_requisition_mission_saxony
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_saxony = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_saxony > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_saxony = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_saxony > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_saxony > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_saxony = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_saxony = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_saxony = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_saxony = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_saxony
+        }
+    }
+
+    # =====================================================
+    # 粮食税（萨克森）  GER_grain_tax_mission_saxony
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_saxony = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_saxony > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_saxony = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_saxony > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_saxony > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_saxony = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_saxony = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_saxony = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_saxony
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（萨克森）  GER_urban_rural_exchange_mission_saxony
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_saxony = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_saxony > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_saxony = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_saxony = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_saxony = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_saxony
+        }
+    }
+
+    # =====================================================
+    # 征粮（符腾堡）  GER_grain_requisition_mission_wuerttemberg
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_wuerttemberg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_wuerttemberg > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_wuerttemberg = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_wuerttemberg > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_wuerttemberg > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_wuerttemberg = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_wuerttemberg = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_wuerttemberg = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_wuerttemberg = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_wuerttemberg
+        }
+    }
+
+    # =====================================================
+    # 粮食税（符腾堡）  GER_grain_tax_mission_wuerttemberg
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_wuerttemberg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_wuerttemberg > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_wuerttemberg = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_wuerttemberg > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_wuerttemberg > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_wuerttemberg = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_wuerttemberg = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_wuerttemberg = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_wuerttemberg
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（符腾堡）  GER_urban_rural_exchange_mission_wuerttemberg
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_wuerttemberg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_wuerttemberg > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_wuerttemberg = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_wuerttemberg = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_wuerttemberg = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_wuerttemberg
+        }
+    }
+
+    # =====================================================
+    # 征粮（西里西亚）  GER_grain_requisition_mission_silesia
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_silesia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_silesia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_silesia = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_silesia > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_silesia > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_silesia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_silesia = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_silesia = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_silesia = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_silesia
+        }
+    }
+
+    # =====================================================
+    # 粮食税（西里西亚）  GER_grain_tax_mission_silesia
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_silesia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_silesia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_silesia = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_silesia > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_silesia > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_silesia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_silesia = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_silesia = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_silesia
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（西里西亚）  GER_urban_rural_exchange_mission_silesia
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_silesia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_silesia > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_silesia = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_silesia = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_silesia = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_silesia
+        }
+    }
+
+    # =====================================================
+    # 征粮（波美拉尼亚）  GER_grain_requisition_mission_pomerania
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_pomerania = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_pomerania > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_pomerania = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_pomerania > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_pomerania > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_pomerania = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_pomerania = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_pomerania = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_pomerania = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_pomerania
+        }
+    }
+
+    # =====================================================
+    # 粮食税（波美拉尼亚）  GER_grain_tax_mission_pomerania
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_pomerania = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_pomerania > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_pomerania = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_pomerania > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_pomerania > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_pomerania = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_pomerania = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_pomerania = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_pomerania
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（波美拉尼亚）  GER_urban_rural_exchange_mission_pomerania
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_pomerania = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_pomerania > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_pomerania = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_pomerania = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_pomerania = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_pomerania
+        }
+    }
+
+    # =====================================================
+    # 征粮（石勒苏益格-荷尔施泰因）  GER_grain_requisition_mission_schleswig_holstein
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_schleswig_holstein = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_schleswig_holstein > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_schleswig_holstein = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_schleswig_holstein > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_schleswig_holstein > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_schleswig_holstein = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_schleswig_holstein = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_schleswig_holstein = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_schleswig_holstein = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_schleswig_holstein
+        }
+    }
+
+    # =====================================================
+    # 粮食税（石勒苏益格-荷尔施泰因）  GER_grain_tax_mission_schleswig_holstein
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_schleswig_holstein = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_schleswig_holstein > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_schleswig_holstein = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_schleswig_holstein > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_schleswig_holstein > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_schleswig_holstein = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_schleswig_holstein = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_schleswig_holstein = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_schleswig_holstein
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（石勒苏益格-荷尔施泰因）  GER_urban_rural_exchange_mission_schleswig_holstein
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_schleswig_holstein = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_schleswig_holstein > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_schleswig_holstein = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_schleswig_holstein = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_schleswig_holstein = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_schleswig_holstein
+        }
+    }
+
+    # =====================================================
+    # 征粮（梅克伦堡）  GER_grain_requisition_mission_mecklenburg
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_mecklenburg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_mecklenburg > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_mecklenburg = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_mecklenburg > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_mecklenburg > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_mecklenburg = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_mecklenburg = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_mecklenburg = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_mecklenburg = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_mecklenburg
+        }
+    }
+
+    # =====================================================
+    # 粮食税（梅克伦堡）  GER_grain_tax_mission_mecklenburg
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_mecklenburg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_mecklenburg > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_mecklenburg = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_mecklenburg > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_mecklenburg > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_mecklenburg = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_mecklenburg = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_mecklenburg = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_mecklenburg
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（梅克伦堡）  GER_urban_rural_exchange_mission_mecklenburg
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_mecklenburg = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_mecklenburg > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_mecklenburg = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_mecklenburg = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_mecklenburg = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_mecklenburg
+        }
+    }
+
+    # =====================================================
+    # 征粮（法兰克福）  GER_grain_requisition_mission_frankfurt
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_frankfurt = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_frankfurt > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_frankfurt = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_frankfurt > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_frankfurt > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_frankfurt = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_frankfurt = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_frankfurt = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_frankfurt = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_frankfurt
+        }
+    }
+
+    # =====================================================
+    # 粮食税（法兰克福）  GER_grain_tax_mission_frankfurt
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_frankfurt = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_frankfurt > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_frankfurt = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_frankfurt > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_frankfurt > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_frankfurt = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_frankfurt = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_frankfurt = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_frankfurt
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（法兰克福）  GER_urban_rural_exchange_mission_frankfurt
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_frankfurt = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_frankfurt > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_frankfurt = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_frankfurt = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_frankfurt = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_frankfurt
+        }
+    }
+
+    # =====================================================
+    # 征粮（威斯特伐利亚）  GER_grain_requisition_mission_westphalia
+    #    适用：敌方核心区 / 摇摆区
+    #    效果：增加该地反感度；反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_requisition_mission_westphalia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        # 反感度爆表立即取消，防止暴动前硬征
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_westphalia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 60%，该地农民反感度越高成功率越低
+            set_variable = { GER_req_success_flag_westphalia = 0 }
+            random = {
+                chance = 0.6
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_westphalia > 50 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_westphalia > 75 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_req_success_flag_westphalia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_req_success_flag_westphalia = 1 }
+                }
+                # 成功：粮到手，农民更反感，农业发展受损
+                add_to_variable = { GER_food_surplus = 10 }
+                add_to_variable = { GER_peasant_resentment_westphalia = 5 }
+                add_to_variable = { GER_agri_development = -2 }
+                # 合作社组织化 → 收上来的粮更多
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 5 }
+                }
+                # 分地 → 农民留粮自用，征到的更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -3 }
+                }
+            }
+            else = {
+                # 失败：没征上来，农民照样记恨，地也踩坏了
+                add_to_variable = { GER_peasant_resentment_westphalia = 3 }
+                add_to_variable = { GER_agri_development = -1 }
+            }
+            # 轮转：结算完重新挂起，等待再次激活
+            activate_mission = GER_grain_requisition_mission_westphalia
+        }
+    }
+
+    # =====================================================
+    # 粮食税（威斯特伐利亚）  GER_grain_tax_mission_westphalia
+    #    适用：控制区 / SPD核心区（制度化征收，不主动加反感）
+    #    效果：反感度影响成功概率；降低农业发展度
+    # =====================================================
+    GER_grain_tax_mission_westphalia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            check_variable = { GER_peasant_resentment_westphalia > 95 }
+        }
+        is_good = no
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 成功率：基础 70%，该地农民反感度越高成功率越低
+            set_variable = { GER_tax_success_flag_westphalia = 0 }
+            random = {
+                chance = 0.7
+                modifier = {
+                    factor = 0.6
+                    check_variable = { GER_peasant_resentment_westphalia > 60 }
+                }
+                modifier = {
+                    factor = 0.5
+                    check_variable = { GER_peasant_resentment_westphalia > 80 }
+                }
+                modifier = {
+                    factor = 1.2
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                modifier = {
+                    factor = 0.8
+                    has_country_flag = GER_agri_tone_land_distributed
+                }
+                effect = {
+                    set_variable = { GER_tax_success_flag_westphalia = 1 }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { GER_tax_success_flag_westphalia = 1 }
+                }
+                # 成功：稳定入账，农业略受损
+                add_to_variable = { GER_food_surplus = 8 }
+                add_to_variable = { GER_agri_development = -1 }
+                # 合作社 → 粮税更足
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_cooperative }
+                    add_to_variable = { GER_food_surplus = 4 }
+                }
+                # 分地 → 粮税更少
+                if = {
+                    limit = { has_country_flag = GER_agri_tone_land_distributed }
+                    add_to_variable = { GER_food_surplus = -2 }
+                }
+            }
+            else = {
+                # 失败：抗税/逃税，反感度上升
+                add_to_variable = { GER_peasant_resentment_westphalia = 2 }
+            }
+            activate_mission = GER_grain_tax_mission_westphalia
+        }
+    }
+
+    # =====================================================
+    # 城乡交换（威斯特伐利亚）  GER_urban_rural_exchange_mission_westphalia
+    #    适用：各类型地区通用（更准确的提法：城乡商品交换）
+    #    效果：加粮食余量；给农业发展度；减少少量反感度
+    # =====================================================
+    GER_urban_rural_exchange_mission_westphalia = {
+        allowed = {
+            tag = GER
+        }
+        available = {
+            always = no
+        }
+        activation = {
+            always = no
+        }
+        cancel_trigger = {
+            # 农业太惨 / 反感度爆表时暂停交换
+            OR = {
+                check_variable = { GER_peasant_resentment_westphalia > 95 }
+                check_variable = { GER_agri_development < 10 }
+            }
+        }
+        is_good = yes
+        days_mission_timeout = 30
+        selectable_mission = no
+        timeout_effect = {
+            # 基调修正：合作社 → 组织化收购，交换量更足；分地 → 农户自留多，交换量略减
+            if = {
+                limit = {
+                    has_country_flag = GER_agri_tone_cooperative
+                }
+                add_to_variable = { GER_food_surplus = 9 }
+                add_to_variable = { GER_agri_development = 3 }
+                add_to_variable = { GER_peasant_resentment_westphalia = -3 }
+            }
+            else = {
+                if = {
+                    limit = {
+                        has_country_flag = GER_agri_tone_land_distributed
+                    }
+                    add_to_variable = { GER_food_surplus = 4 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_westphalia = -2 }
+                }
+                else = {
+                    add_to_variable = { GER_food_surplus = 6 }
+                    add_to_variable = { GER_agri_development = 3 }
+                    add_to_variable = { GER_peasant_resentment_westphalia = -2 }
+                }
+            }
+            # 经济恢复国策解锁后：工业品充裕，交换量翻倍
+            if = {
+                limit = {
+                    has_completed_focus = GER_economy_recovery
+                }
+                add_to_variable = { GER_food_surplus = 6 }
+            }
+            activate_mission = GER_urban_rural_exchange_mission_westphalia
+        }
+    }
 }
