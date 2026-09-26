@@ -1,0 +1,42 @@
+division_template={
+	name="联合力量机动大队"
+	regiments={
+		infantry = {x=0 y=0}
+		infantry = {x=0 y=1}
+		infantry = {x=0 y=2}
+		infantry = {x=0 y=3}
+		infantry = {x=1 y=0}
+		infantry = {x=1 y=1}
+
+
+	}
+}
+
+division_template={
+	name="联合力量直属大队"
+	regiments={
+		infantry = {x=0 y=0}
+		infantry = {x=0 y=1}
+		infantry = {x=0 y=2}
+		infantry = {x=1 y=0}
+		infantry = {x=1 y=1}
+		infantry = {x=1 y=2}
+		infantry = {x=2 y=0}
+		infantry = {x=2 y=1}
+
+	}
+	support = {
+		artillery = {x=0 y=0}
+	}
+}
+units={
+
+    division={
+        name="第一机动大队"
+        location=3855
+        division_template="联合力量机动大队"
+        start_experience_factor=0
+        start_equipment_factor=1
+    }
+
+}

@@ -2,8 +2,8 @@ version="1"
 tags={
 	"Alternative History"
 }
-name="AOR"
-supported_version="1.17.*"
+name="AOR_new_beta"
+supported_version="1.19.*"
 replace_path="events"
 replace_path="history/states"
 replace_path="history/countries"
@@ -17,7 +17,6 @@ replace_path="common/national_focus"
 replace_path="common/characters"
 replace_path="common/scripted_localisation"
 replace_path="common/ideas"
-
 replace_path="common/technologies"
 replace_path="common/technology_sharing"
 replace_path="common/technology_tags"

@@ -1,0 +1,82 @@
+division_template = { 
+	name = "陆军师" 
+	division_names_group = CHI_INF_01 
+	
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+	}
+	support = { 
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 1 y = 0 }
+	}
+}
+
+division_template = { 
+	name = "混成旅" 
+	division_names_group = CHI_MNT_01 
+
+	regiments = { 
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 1}
+		cavalry = { x = 2 y = 0 }
+	}
+
+	priority = 2 
+}
+division_template = { 
+	name = "骑兵旅" 
+	division_names_group = CHI_CAV_01 
+
+	regiments = { 
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+	}
+
+}
+
+units = {
+	division= {	
+		name = "安武军第一混成旅"
+		location = 1083
+		division_template = "混成旅"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	division= {	
+		name = "安武军第二混成旅"
+		location = 1083
+		division_template = "混成旅"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	division= {	
+		name = "安武军第三混成旅"
+		location = 1083
+		division_template = "陆军师"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.7
+	}
+    division= {	
+		name = "安武军第四混成旅"
+		location = 1083
+		division_template = "混成旅"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	division= {	
+		name = "安武军第五混成旅"
+		location = 1083
+		division_template = "混成旅"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.65
+	}
+	
+}

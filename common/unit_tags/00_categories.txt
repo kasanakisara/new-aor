@@ -1,10 +1,14 @@
 sub_unit_categories = {
-	category_machine
-	category_Infantry_uniforms
-	infantry_weapons 
+	### AOR FIX (1.19.3 compatibility)
+	### This file is a stale copy of the vanilla list (2026-03-11). The game content
+	### later added the five category_divisional_/regimental_support_* entries below;
+	### because this copy shadows vanilla, every subunit referencing them resolved to
+	### an invalid category and the game crashed while building divisions at game start
+	### (67x "Invalid subunit category" in error.log).
+	### Keep this file a SUPERSET of the vanilla 1.19.3 list.
 	category_tanks
 	category_light_infantry
-    category_front_line
+	category_front_line
 	category_all_infantry
 	category_support_battalions
 	category_militia
@@ -29,24 +33,34 @@ sub_unit_categories = {
 	category_support_artillery
 	category_cavalry
 	category_bus
-	category_Hot_air_balloon
+	category_vehicle_infantry
+	category_special_forces_leg_infantry
+	category_mobile_and_mobile_combat_sup
+	category_infantry_and_bicycle
+	category_self_propelled_artillery
+	category_self_propelled_anti_air
+	category_tank_destroyers
+	category_helicopter_support_companies
+	category_rangers
+	category_anti_tank
+	category_mobile_anti_tank
+	category_rocket_artillery
 	category_carrier_fighter
 	category_carrier_cas
 	category_carrier_nav_bomber
 	category_maritime_patrol_bomber
+	### entries added by game content after 2026-03-11 (were missing from the stale copy)
+	category_marines_and_amphibious
+	category_divisional_support_battalions
+	category_regimental_support_battalions
+	category_tank_destroyer_regimental_support
+	category_self_propelled_anti_air_regimental_support
+	category_regimental_support_artillery
+	### AOR-specific categories (already present before this fix)
+	category_machine
+	category_Infantry_uniforms
+	infantry_weapons
 	category_cv_aircraft
-	category_vehicle_infantry
-	category_mobile_and_mobile_combat_sup
-	category_mobile_anti_tank
-	category_anti_tank
-	category_rocket_artillery
-	category_helicopter_support_companies
-	category_infantry_and_bicycle
-	category_special_forces_leg_infantry
-	category_rangers
-	category_self_propelled_anti_air
-	category_self_propelled_artillery
-	category_tank_destroyers
 	category_modern_tanks
 	category_super_heavy_tanks
 	category_all_artillery
@@ -54,4 +68,9 @@ sub_unit_categories = {
 	anti_ship_cruise_missile
 	category_missiles
 	self_propelled_super_heavy_anti_air
+	category_Hot_air_balloon
+	### referenced by AOR units but never declared anywhere (2x category_airship,
+	### 5x category_magical_infantry in error.log)
+	category_airship
+	category_magical_infantry
 }

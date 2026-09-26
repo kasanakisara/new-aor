@@ -16,11 +16,14 @@ guiTypes = {
 		fade_time = 500
 		fade_type = linear
 
-#		background = {
-#			name = "background"
-#			quadTextureSprite = "GFX_bookmark_entry_bg"
-#			clicksound = click_checkbox
-#		}
+		### AOR FIX: the engine looks this element up by name (containerwindow.cpp:1951)
+		### and warns when it is absent. Keep it, parked off screen, so it stays invisible.
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_bookmark_entry_bg"
+			position = { x = 6000 y = 6000 }
+			clicksound = click_checkbox
+		}
  
 		iconType = {
 			name = "icon"
@@ -153,6 +156,15 @@ guiTypes = {
 			scale = 1
 		}
 
+		### AOR FIX: the engine looks up "new_content" in this entry; keep the element,
+		### parked off screen so the entry stays invisible as designed.
+		iconType = {
+			name = "new_content"
+			position = { x = 110 y = 6000 }
+			spriteType = "GFX_unplayed_content_notification"
+			alwaystransparent = yes
+		}
+
 		instantTextBoxType = {
 			name = "country_name"
 			position = { x = -58 y = 6100 }
@@ -185,6 +197,14 @@ guiTypes = {
 			position = { x=-320 y =-180 }
 			clicksound = click_checkbox
 		}
+
+		### AOR FIX: required "new_content" element, parked off screen.
+		iconType = {
+			name = "new_content"
+			position = { x = 100 y = 6000 }
+			spriteType = "GFX_unplayed_content_notification"
+			alwaystransparent = yes
+		}
 	}
 
 	### country entry
@@ -204,6 +224,33 @@ guiTypes = {
 			quadTextureSprite = "GFX_mini_country_selector"
 			position = { x=0 y =0 }
 			clicksound = click_checkbox
+		}
+
+		### AOR FIX: required "new_content" element, parked off screen.
+		iconType = {
+			name = "new_content"
+			position = { x = 42 y = 6000 }
+			spriteType = "GFX_unplayed_content_notification"
+			alwaystransparent = yes
+		}
+	}
+
+
+	### AOR FIX: the 1.19.3 frontend creates the country filter list box from this
+	### guiType. Without it the lookup returns null and the game crashes with
+	### "Undefined GUI_TYPE: country_filter".
+	containerWindowType = {
+		name = "country_filter"
+		size = { width = 149 height = 33 }
+
+		buttonType = {
+			name = "button"
+			quadTextureSprite = "GFX_country_filter_entry"
+			buttonText = "FILTER"
+			buttonFont = "hoi_16mbs"
+			clicksound = click_default
+			oversound = ui_menu_over
+			frame = 2
 		}
 	}
 
@@ -668,6 +715,16 @@ guiTypes = {
 
 		}
 
+		### AOR FIX: required by the 1.19.3 frontend ("filters" lookup). Parked off screen
+		### to keep this custom layout filter-free; move it on screen to use the filter row.
+		OverlappingElementsBoxType = {
+			name = "filters"
+			position = { x = 22 y = 7000 }
+			size = { x = 1181 y = 32 }
+			format = center
+			spacing = 14.0
+		}
+
 		containerWindowType = {
 			name ="countries_medium"
 			position = { x = 1720 y = 1050 }
@@ -909,6 +966,49 @@ guiTypes = {
 			format = left
 			scrollbarType = standardtext_slider
 		}
+
+		### AOR FIX: required by the 1.19.3 frontend ("more_countries" lookup).
+		### Parked off screen so it does not disturb this custom layout.
+		dropDownBoxType = {
+			name = "more_countries"
+			position = { x = 10 y = 7000 }
+
+			expandButton = {
+				name = "expand_button"
+				position = { x = 1168 y = -4 }
+				quadTextureSprite = "GFX_peace_drop_down_button"
+				clicksound = click_default
+			}
+
+			expandedWindow = {
+				name = "expanded_window"
+				position = { x=0 y= -300 }
+				show_position = { x = 0 y = 25 }
+				show_animation_type = decelerated
+				hide_animation_type = accelerated
+				animation_time = 300
+				size = { width=1205 height=58 }	# dynamically resized in code using countries_mini_expanded's slot size
+				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 50
+				smooth_scrolling = yes
+				margin = { top = 7 bottom = 7 right = 6 }
+
+				background = {
+					name = "Background"
+					quadTextureSprite ="GFX_tiled_window_1b_thin_border"
+				}
+
+				gridBoxType = {
+					name = "countries_mini_expanded"
+					position = { x = 8 y = 0 }
+					size = { width = 199 height = 100%% }
+					slotsize = { width = 52 height = 38 }
+					add_horizontal = yes
+					max_slots_horizontal = 22
+					format = "UPPER_LEFT"
+				}
+			}
+		}
 	}
 
 	containerWindowType = {
@@ -967,31 +1067,35 @@ guiTypes = {
 			scale=1
 		}
 
-#		iconType ={
-#			name ="pol_faction_icon"
-#			spriteType = "GFX_pol_factions_strip"
-#			position = { x= 340 y = 70 }
-#			#Orientation = "UPPER_LEFT"
-#			frame = 1
-#		}
+		### AOR FIX: the 1.19.3 frontend looks up these three elements inside this
+		### window (containerwindow.cpp:862). They were commented out, which is what
+		### the log complains about right before the crash. Elements restored but
+		### parked off screen so the details panel keeps its custom look.
+		iconType ={
+			name ="pol_faction_icon"
+			spriteType = "GFX_pol_factions_strip"
+			position = { x= 340 y = 7000 }
+			#Orientation = "UPPER_LEFT"
+			frame = 1
+		}
 
-#		gridboxtype = {
-#			name = "spirit_grid"
-#			position = { x = 35 y = 77 }
-#			size = { width = 300 height = 68 }
-#			slotsize = { width = 60 height = 68 }
-#			max_slots = { x = 5 y = 1 }
-#			format = "UPPER_LEFT"
-#		}
+		gridboxtype = {
+			name = "spirit_grid"
+			position = { x = 35 y = 7000 }
+			size = { width = 300 height = 68 }
+			slotsize = { width = 60 height = 68 }
+			max_slots = { x = 5 y = 1 }
+			format = "UPPER_LEFT"
+		}
 
-#		gridboxtype = {
-#			name = "spirit_grid_over_defined"
-#			position = { x = 35 y = 77 }
-#			size = { width = 330 height = 68 }
-#			slotsize = { width = 60 height = 68 }
-#			max_slots = { x = 6 y = 2 }
-#			format = "UPPER_LEFT"
-#		}
+		gridboxtype = {
+			name = "spirit_grid_over_defined"
+			position = { x = 35 y = 7000 }
+			size = { width = 330 height = 68 }
+			slotsize = { width = 60 height = 68 }
+			max_slots = { x = 6 y = 2 }
+			format = "UPPER_LEFT"
+		}
 
 		containerWindowType = {
 			name = "political_pie_chart"
