@@ -89,6 +89,13 @@ LEB = "countries/Lebanon.txt"
 JOR = "countries/Jordan.txt"
 SYR = "countries/Syria.txt"
 SYI = "countries/Syrian insurgents.txt"
+### AOR FIX: the country definition files for these tags exist in common/countries/,
+### but the tag lines were missing. Without them the game cannot resolve the tag at
+### all, so history/states/802-Kosovo.txt:16 "add_core_of = KOS" produced a NULL
+### country, which the area owner-split code dereferenced at game start (the crash).
+KOS = "countries/Kosovo.txt"
+BAY = "countries/Bavaria.txt"
+QUE = "countries/Quebec.txt"
 EGY = "countries/Egypt.txt"
 LBA = "countries/Libya.txt"
 WGR = "countries/West Germany.txt"
