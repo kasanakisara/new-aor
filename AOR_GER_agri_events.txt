@@ -1,0 +1,303 @@
+add_name_space GER_SPD
+
+# ============================================================
+# 粮食系统地区工作 —— 事件链
+# 第一层 GER_SPD.1 ：选择地区（由决议 GER_open_regional_food_work 触发）
+# 第二层 GER_SPD.2 ~ .11 ：各地区选择 mission（按地区分类决定可用项）
+#
+# 【地区分类】（用户定稿，左翼即 SPD）
+#   左翼核心区  = SPD核心区 → 粮食税 + 城乡交换
+#      石勒苏益格-荷尔施泰因、萨克森
+#   右翼核心区  = 敌方核心区 → 征粮 + 城乡交换
+#      巴伐利亚、波美拉尼亚
+#   摇摆区                 → 征粮 + 城乡交换
+#      威斯特伐利亚（威斯特法伦）、西里西亚、梅克伦堡、法兰克福（黑森）、
+#      符腾堡（巴登—符腾堡）、普鲁士（东普鲁士）
+# 未纳入（无对应 tag，不管）：柏林、鲁尔、汉诺威、莱茵兰、威悉—埃姆斯、
+#                             勃兰登堡、巴登、图林根
+# ============================================================
+
+# ---------- 第一层：选择地区 ----------
+country_event = {
+    id = GER_SPD.1
+    title = GER_SPD.1.t
+    desc = GER_SPD.1.d
+    is_triggered_only = yes
+
+    option = {  # 石勒苏益格-荷尔施泰因
+        name = GER_SPD.1.a
+        country_event = { id = GER_SPD.2 }
+    }
+
+    option = {  # 萨克森
+        name = GER_SPD.1.b
+        country_event = { id = GER_SPD.3 }
+    }
+
+    option = {  # 巴伐利亚
+        name = GER_SPD.1.c
+        country_event = { id = GER_SPD.4 }
+    }
+
+    option = {  # 普鲁士
+        name = GER_SPD.1.d
+        country_event = { id = GER_SPD.5 }
+    }
+
+    option = {  # 波美拉尼亚
+        name = GER_SPD.1.e
+        country_event = { id = GER_SPD.6 }
+    }
+
+    option = {  # 符腾堡
+        name = GER_SPD.1.f
+        country_event = { id = GER_SPD.7 }
+    }
+
+    option = {  # 威斯特伐利亚
+        name = GER_SPD.1.g
+        country_event = { id = GER_SPD.8 }
+    }
+
+    option = {  # 西里西亚
+        name = GER_SPD.1.h
+        country_event = { id = GER_SPD.9 }
+    }
+
+    option = {  # 梅克伦堡
+        name = GER_SPD.1.i
+        country_event = { id = GER_SPD.10 }
+    }
+
+    option = {  # 法兰克福
+        name = GER_SPD.1.j
+        country_event = { id = GER_SPD.11 }
+    }
+
+    option = {  # 汉诺威
+        name = GER_SPD.1.k
+        country_event = { id = GER_SPD.12 }
+    }
+
+}
+
+# ---------- 第二层：石勒苏益格-荷尔施泰因 ----------
+country_event = {
+    id = GER_SPD.2
+    title = GER_SPD.2.t
+    desc = GER_SPD.2.d
+    is_triggered_only = yes
+
+    option = {  # 粮食税（制度化征收）
+        name = GER_SPD.2.a
+        activate_mission = GER_grain_tax_mission_schleswig_holstein
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.2.b
+        activate_mission = GER_urban_rural_exchange_mission_schleswig_holstein
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.2.c
+    }
+}
+
+# ---------- 第二层：萨克森 ----------
+country_event = {
+    id = GER_SPD.3
+    title = GER_SPD.3.t
+    desc = GER_SPD.3.d
+    is_triggered_only = yes
+
+    option = {  # 粮食税（制度化征收）
+        name = GER_SPD.3.a
+        activate_mission = GER_grain_tax_mission_saxony
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.3.b
+        activate_mission = GER_urban_rural_exchange_mission_saxony
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.3.c
+    }
+}
+
+# ---------- 第二层：巴伐利亚 ----------
+country_event = {
+    id = GER_SPD.4
+    title = GER_SPD.4.t
+    desc = GER_SPD.4.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.4.a
+        activate_mission = GER_grain_requisition_mission_bavaria
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.4.b
+        activate_mission = GER_urban_rural_exchange_mission_bavaria
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.4.c
+    }
+}
+
+# ---------- 第二层：普鲁士 ----------
+country_event = {
+    id = GER_SPD.5
+    title = GER_SPD.5.t
+    desc = GER_SPD.5.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.5.a
+        activate_mission = GER_grain_requisition_mission_prussia
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.5.b
+        activate_mission = GER_urban_rural_exchange_mission_prussia
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.5.c
+    }
+}
+
+# ---------- 第二层：波美拉尼亚 ----------
+country_event = {
+    id = GER_SPD.6
+    title = GER_SPD.6.t
+    desc = GER_SPD.6.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.6.a
+        activate_mission = GER_grain_requisition_mission_pomerania
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.6.b
+        activate_mission = GER_urban_rural_exchange_mission_pomerania
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.6.c
+    }
+}
+
+# ---------- 第二层：符腾堡 ----------
+country_event = {
+    id = GER_SPD.7
+    title = GER_SPD.7.t
+    desc = GER_SPD.7.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.7.a
+        activate_mission = GER_grain_requisition_mission_wuerttemberg
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.7.b
+        activate_mission = GER_urban_rural_exchange_mission_wuerttemberg
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.7.c
+    }
+}
+
+# ---------- 第二层：威斯特伐利亚 ----------
+country_event = {
+    id = GER_SPD.8
+    title = GER_SPD.8.t
+    desc = GER_SPD.8.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.8.a
+        activate_mission = GER_grain_requisition_mission_westphalia
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.8.b
+        activate_mission = GER_urban_rural_exchange_mission_westphalia
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.8.c
+    }
+}
+
+# ---------- 第二层：西里西亚 ----------
+country_event = {
+    id = GER_SPD.9
+    title = GER_SPD.9.t
+    desc = GER_SPD.9.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.9.a
+        activate_mission = GER_grain_requisition_mission_silesia
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.9.b
+        activate_mission = GER_urban_rural_exchange_mission_silesia
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.9.c
+    }
+}
+
+# ---------- 第二层：梅克伦堡 ----------
+country_event = {
+    id = GER_SPD.10
+    title = GER_SPD.10.t
+    desc = GER_SPD.10.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.10.a
+        activate_mission = GER_grain_requisition_mission_mecklenburg
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.10.b
+        activate_mission = GER_urban_rural_exchange_mission_mecklenburg
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.10.c
+    }
+}
+
+# ---------- 第二层：法兰克福 ----------
+country_event = {
+    id = GER_SPD.11
+    title = GER_SPD.11.t
+    desc = GER_SPD.11.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.11.a
+        activate_mission = GER_grain_requisition_mission_frankfurt
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.11.b
+        activate_mission = GER_urban_rural_exchange_mission_frankfurt
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.11.c
+    }
+}
+
+# ---------- 第二层：汉诺威 ----------
+country_event = {
+    id = GER_SPD.12
+    title = GER_SPD.12.t
+    desc = GER_SPD.12.d
+    is_triggered_only = yes
+
+    option = {  # 征粮（强行征收）
+        name = GER_SPD.12.a
+        activate_mission = GER_grain_requisition_mission_hannover
+    }
+    option = {  # 城乡交换
+        name = GER_SPD.12.b
+        activate_mission = GER_urban_rural_exchange_mission_hannover
+    }
+    option = {  # 暂不行动
+        name = GER_SPD.12.c
+    }
+}
+
