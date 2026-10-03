@@ -2789,7 +2789,11 @@ spriteType = {
  }
   spriteType = {
   name = "GFX_AOR_supernews_exit_btn"
-  texturefile = "gfx/AOR_supernews/supernews_btn.png"
+  # AOR FIX: gfx/AOR_supernews/supernews_btn.png was never created, so the supernews
+  # window's only button had no texture and could not be seen/clicked. Fall back to
+  # the vanilla button texture; restore the commented line once the custom art exists.
+  # texturefile = "gfx/AOR_supernews/supernews_btn.png"
+  texturefile = "gfx/interface/button_148x34.dds"
  }
   spriteType = {
   name = "GFX_AOR_supernews_frame_overlay"
