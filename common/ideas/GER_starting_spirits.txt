@@ -1,0 +1,76 @@
+ideas = {
+	country = {
+		GER_lifelong_SPD = {
+			picture = GFX_idea_GER_lifelong_SPD
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				AUT_democratic_drift = 0.5
+				political_power_gain = 0.2
+			}
+		}
+
+		GER_when_economy_dies = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				line_change_production_efficiency_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.15
+				consumer_goods_factor = 0.25
+				industrial_capacity_factory = -0.20
+				local_resources_factor = -0.20
+			}
+		}
+
+		GER_state_within_a_state = {
+			picture = GFX_idea_GER_state_within_a_state
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = -0.15
+				army_core_attack_factor = 0.10
+				army_core_defence_factor = 0.10
+				max_dig_in_factor = -0.30
+			}
+		}
+
+		GER_age_of_fracture = {
+			picture = GFX_idea_GER_age_of_fracture
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.002
+				war_support_factor = -0.10
+				political_power_gain = -0.5
+			}
+		}
+
+		GER_stab_in_the_back = {
+			picture = GFX_idea_GER_stab_in_the_back
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+			on_remove = {
+				if = {
+					limit = { NOT = { has_completed_focus = AOR_GER_Army_9 } }
+					country_lock_all_division_template = no
+				}
+			}
+			modifier = {
+				Fascism_drift = 0.2
+				industrial_capacity_factory = -0.05
+				custom_modifier_tooltip = GER_stab_in_the_back_division_lock_tt
+			}
+		}
+	}
+}

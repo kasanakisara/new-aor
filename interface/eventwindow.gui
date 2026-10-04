@@ -1,10 +1,11 @@
 ### AOR: this is a full copy of the vanilla 1.19.3 interface/eventwindow.gui.
-### ONLY the EventWindow_News window was changed: resized 528x595 -> 1400x750 and
+### EventWindow uses a 236px bottom section for the AOR report artwork.
+### EventWindow_News was resized 528x595 -> 1400x750 and
 ### its children repositioned, so that the custom 1400x750 newspaper artwork
 ### (gfx/interface/event_news_bg.dds) lines up. Every element name is unchanged
 ### (Title / Description / event_picture / event_picture_overlay / options_grid /
 ### btn_minimize are looked up by name in code). Re-sync this file with vanilla
-### after a game update and re-apply only the EventWindow_News changes.
+### after a game update and re-apply these AOR layout changes.
 guiTypes = {
 
  ##   ##  #  # #  # ### ###  #   #     ### #   # ### #  # ###  ## 
@@ -16,7 +17,7 @@ guiTypes = {
 	containerWindowType = {
 		name = "EventWindow"
 		position = { x=-282 y=-310 }	
-		size = { width = 581 height =427 }
+		size = { width = 581 height =457 }
 		moveable = yes
 		Orientation = CENTER		
 		
@@ -88,7 +89,7 @@ guiTypes = {
 		containerWindowType = {
 			name = "bottom_Window"
 			position = { x=0 y=221 }	
-			size = { width = 581 height = 206 }
+			size = { width = 581 height = 236 }
 			moveable = yes
 			clipping = no
 			Orientation = UPPER_LEFT
