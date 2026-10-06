@@ -8,7 +8,7 @@ ideas = {
 
 
 			allowed = {
-				always = yes
+				always = no
 			}
 			removal_cost = -1
 
@@ -43,7 +43,7 @@ ideas = {
 		isolation = {
 
 			allowed = {
-				always = yes
+				always = no
 			}
 			removal_cost = -1
 
@@ -204,18 +204,10 @@ ideas = {
 			available = {
 				has_war_support > 0.5
 				OR = {
-					has_government = fascism
-					has_government = communism
-					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
-					AND = {
-						has_war = yes
-						any_enemy_country = {
-							ic_ratio = {
-								tag = ROOT
-								ratio > 0.4
-							}
-						}
-					}
+					has_government = Marxism
+					has_government = Fascism
+					has_government = Special
+					has_government = Absolutism
 				}
 
 			}
@@ -469,7 +461,7 @@ ideas = {
 		uncontrolled_exports = {
 
 			allowed = {
-				always = yes
+				always = no
 			}
 			removal_cost = -1
 			picture = isolation
@@ -501,29 +493,6 @@ ideas = {
 				}
 			}
 
-			on_remove = {
-				effect_tooltip =  {
-					remove_dynamic_modifier = { modifier = international_city }
-				}
-				hidden_effect = {
-					if = {
-						limit = {
-							tag = POL
-							85 = { is_demilitarized_zone = no }
-							has_civil_war = no 
-						}
-						85 = {
-							if = {
-								limit = {
-									has_dynamic_modifier = { modifier = international_city }
-								}
-								remove_dynamic_modifier = { modifier = international_city }
-							}
-						}
-					}
-				}
-			}
-			
 			cancel_if_invalid = no
 		}
 
@@ -636,7 +605,6 @@ ideas = {
 			available = {
 				OR = {
 					AND = {
-						has_government = democratic
 						has_war = yes
 						any_enemy_country = {
 							ic_ratio = {
@@ -645,13 +613,10 @@ ideas = {
 							}
 						}
 					}
-					AND = {
-						NOT = { has_government = democratic }
-						OR = {
-							has_idea = partial_economic_mobilisation
-							has_idea = war_economy
-							has_idea = tot_economic_mobilisation
-						}
+					OR = {
+						has_idea = partial_economic_mobilisation
+						has_idea = war_economy
+						has_idea = tot_economic_mobilisation
 					}
 				}
 
@@ -713,8 +678,10 @@ ideas = {
 			available = {
 				has_war = yes
 				OR = {
-					has_government = fascism
-					has_government = communism
+					has_government = Marxism
+					has_government = Fascism
+					has_government = Special
+					has_government = Absolutism
 				}
 				OR = {
 					has_idea = war_economy

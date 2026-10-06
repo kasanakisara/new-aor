@@ -1,11 +1,279 @@
 focus_tree = {
 	id = GER_intermediate
+	default = no
 	country = {
 		factor = 0
 		modifier = {
-			add = 10
+			add = 100
 			tag = GER
 		}
+	}
+
+	# =====================================================
+	# 1919：德国开局分支。暂定 7 / 14 天，描述、奖励和美术留空。
+	# 后续分支通过各自的解锁 flag 显现；本分支在进入战后过渡期后隐藏。
+	# =====================================================
+	focus = {
+		id = GER_1919_august
+		x = 8 
+		y = 0
+		cost = 1
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_government_work
+		relative_position_id = GER_1919_august
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_1919_august }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_aid_the_wounded
+		relative_position_id = GER_1919_government_work
+		x = -1
+		y = 2
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_demobilize_the_army
+		relative_position_id = GER_1919_government_work
+		x = -4
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_relieve_unemployment
+		relative_position_id = GER_1919_government_work
+		x = -2
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_chaotic_streets
+		relative_position_id = GER_1919_government_work
+		x = 0
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_restore_transport
+		relative_position_id = GER_1919_government_work
+		x = 1
+		y = 2
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_food_supply
+		relative_position_id = GER_1919_government_work
+		x = 2
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_confiscate_royal_property
+		relative_position_id = GER_1919_government_work
+		x = 4
+		y = 1
+		cost = 2
+		prerequisite = { focus = GER_1919_government_work }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = {
+			country_event = { id = AOR_GER_focus_1919.1 }
+		}
+	}
+
+	focus = {
+		id = GER_1919_consolidate_silesia
+		relative_position_id = GER_1919_government_work
+		x = 0
+		y = 3
+		cost = 2
+		# Separate prerequisite blocks require ALL seven government tasks.
+		prerequisite = { focus = GER_1919_aid_the_wounded }
+		prerequisite = { focus = GER_1919_demobilize_the_army }
+		prerequisite = { focus = GER_1919_relieve_unemployment }
+		prerequisite = { focus = GER_1919_chaotic_streets }
+		prerequisite = { focus = GER_1919_restore_transport }
+		prerequisite = { focus = GER_1919_food_supply }
+		prerequisite = { focus = GER_1919_confiscate_royal_property }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1919_before_the_dawn
+		relative_position_id = GER_1919_consolidate_silesia
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_1919_consolidate_silesia }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		completion_reward = { }
+	}
+
+	# =====================================================
+	# 1920.4 - 1920.12：经济工作（思维导图分支）
+	# 默认隐藏；由 AOR_GER_1920_economy_unlocked 显式解锁。
+	# 独立放在原有树右侧；11 个国策合计 245 天，奖励暂留空。
+	# =====================================================
+	focus = {
+		id = GER_1920_organize_economic_work
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		x = 22
+		y = 0
+		cost = 3
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_erzberger_reform
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		relative_position_id = GER_1920_organize_economic_work
+		x = -1
+		y = 1
+		cost = 4
+		prerequisite = { focus = GER_1920_organize_economic_work }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_socialization_commission
+		icon = GFX_GER_1920_socialization_commission
+		relative_position_id = GER_1920_organize_economic_work
+		x = 1
+		y = 1
+		cost = 4
+		prerequisite = { focus = GER_1920_organize_economic_work }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_national_tax_administration
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		relative_position_id = GER_1920_erzberger_reform
+		x = -2
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_erzberger_reform }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_unified_tax_system
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		relative_position_id = GER_1920_erzberger_reform
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_erzberger_reform }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_centralize_tax_collection
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		relative_position_id = GER_1920_national_tax_administration
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_national_tax_administration }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_one_off_property_tax
+		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
+		relative_position_id = GER_1920_unified_tax_system
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_unified_tax_system }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_integrate_cooperatives
+		icon = GFX_GER_1920_integrate_cooperatives
+		relative_position_id = GER_1920_socialization_commission
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_socialization_commission }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_state_enterprise_management
+		icon = GFX_GER_1920_state_enterprise_management
+		relative_position_id = GER_1920_socialization_commission
+		x = 2
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_socialization_commission }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_infiltrate_economic_administration
+		icon = GFX_GER_1920_infiltrate_economic_administration
+		relative_position_id = GER_1920_integrate_cooperatives
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_integrate_cooperatives }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
+	}
+
+	focus = {
+		id = GER_1920_economic_statistics_and_planning
+		icon = GFX_GER_1920_economic_statistics_and_planning
+		relative_position_id = GER_1920_state_enterprise_management
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = { focus = GER_1920_state_enterprise_management }
+		allow_branch = { AOR_GER_1920_economy_visible = yes }
+		completion_reward = { }
 	}
 
 	# =====================================================
@@ -13,6 +281,7 @@ focus_tree = {
 	# =====================================================
 	focus = {
 		id = GER_now_what #胜利后的问题
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		x = 8
 		y = 0
 		cost = 1
@@ -40,6 +309,7 @@ focus_tree = {
 	# =====================================================
 	focus = {
 		id = GER_country_problems #乡村问题调查
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_now_what
 		x = -6
 		y = 1
@@ -56,6 +326,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_yao_zao_fan_a #要造反啊！（清洗换掉早饭乡镇官员）
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = -1
 		y = 1
@@ -79,6 +350,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_watch_far_right #盯紧极右组织
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = -1
 		y = 2
@@ -97,6 +369,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_obstruct_judiciary #司法部隐蔽阻碍
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = -1
 		y = 3
@@ -114,6 +387,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_agricultural_subsidy #农业补贴
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = 1
 		y = 1
@@ -130,6 +404,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_support_agri_workers #支持农业工人组织
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = 1
 		y = 2
@@ -146,6 +421,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_rescue_and_compensate #营救与赔偿
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_country_problems
 		x = 1
 		y = 3
@@ -168,6 +444,7 @@ focus_tree = {
 	# =====================================================
 	focus = {
 		id = GER_trade_with_soviet_russia #与苏俄的经济条约
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_now_what
 		x = 0
 		y = 1
@@ -183,6 +460,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_traders_are_welcomed #来财 来财
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = -2
 		y = 1
@@ -199,6 +477,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_handle_uk_fra #和英法打交道
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = 0
 		y = 1
@@ -215,6 +494,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_diplomacy_placeholder_1 #外交预留位 一
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = 2
 		y = 1
@@ -229,6 +509,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_diplomacy_placeholder_2 #外交预留位 二
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = -2
 		y = 2
@@ -243,6 +524,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_diplomacy_placeholder_3 #外交预留位 三
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = 0
 		y = 2
@@ -257,6 +539,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_diplomacy_placeholder_4 #外交预留位 四
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_trade_with_soviet_russia
 		x = 2
 		y = 2
@@ -274,6 +557,7 @@ focus_tree = {
 	# =====================================================
 	focus = {
 		id = GER_qu_pulushi #去普鲁士
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_now_what
 		x = 6
 		y = 1
@@ -297,6 +581,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_coastal_city_expansion #滨海城市扩张
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = -2
 		y = 1
@@ -316,6 +601,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_ruhr_coordination #鲁尔区协调管理局
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = 0
 		y = 1
@@ -331,6 +617,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_bavaria_reorganization #巴伐利亚区划调整（自定义）
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = 2
 		y = 1
@@ -351,6 +638,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_socialization_amendment #社会化法案修正案
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = -1
 		y = 2
@@ -374,6 +662,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_social_security_act #社会保障法
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = 1
 		y = 2
@@ -399,6 +688,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_combine_the_companies #组建托拉斯
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_qu_pulushi
 		x = 0
 		y = 3
@@ -428,6 +718,7 @@ focus_tree = {
 	# =====================================================
 	focus = {
 		id = GER_wait_for_results #等待西西里亚事件结果
+		allow_branch = { AOR_GER_post_victory_visible = yes }
 		relative_position_id = GER_now_what
 		x = 0
 		y = 5

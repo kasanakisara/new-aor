@@ -15,15 +15,7 @@ set_technology = {
 	basic_train = 1
 }
 
-create_country_leader = {
-	name = "Karl Renner"
-	desc = "K_R_DESC"
-	picture = "atbpz-m4oz4.dds"
-	expire = "1965.1.1"
-	ideology = meliorism
-	traits = {
-	}
-}
+recruit_character = AUS_victor_adler
 
 create_country_leader = {
 	name = " Franz Ferdinand II"
@@ -58,17 +50,28 @@ create_country_leader = {
 
 
 set_politics = {
-	ruling_party = SOC_democratic
+	ruling_party = PAR_socialism
 	last_election = "1918.11.9"
 	election_frequency = 48
 	elections_allowed = yes
 }
 
 set_popularities = {
-	SOC_democratic =40
-	Absolutism = 12
-	Marxism = 28
-	AUT_democratic= 20
+	PAR_socialism = 55
+	CON_democratic = 45
+}
+
+set_party_name = { ideology = PAR_socialism long_name = AUS_PAR_socialism_party name = AUS_PAR_socialism_party }
+set_party_name = { ideology = CON_democratic long_name = AUS_CON_democratic_party name = AUS_CON_democratic_party }
+
+add_opinion_modifier = {
+	target = GER
+	modifier = AOR_sister_parties
+}
+
+add_opinion_modifier = {
+	target = GER
+	modifier = AOR_austro_prussian_rivalry
 }
 
 set_stability = 0.50

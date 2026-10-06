@@ -1,0 +1,12 @@
+# AOR disables continuous focuses for every country.
+# Override the vanilla file while retaining its palette ID for existing saves.
+continuous_focus_palette = {
+	id = generic_focus
+	country = {
+		factor = 1
+	}
+	default = yes
+	reset_on_civilwar = no
+	position = { x = 50 y = 1000 }
+	# Intentionally empty: no selectable focuses and no AI continuous-focus bonuses.
+}

@@ -770,38 +770,36 @@ guiTypes = {
 	
 	containerWindowType = {
 		name = "political_ideas_window"
-		position = { x = -356 y = 80 }	
-		show_position = { x = 540 y = 80 }
-		show_animation_type = decelerated
-		hide_animation_type = accelerated
-		animation_time = 300
+		position = { x = 540 y = 80 }
+		fade_time = 5000
+		fade_type = accelerated
 		size = { width=500 height=590 }
 		show_sound = open_sub_window
 		
 		background = {
 			name = "Background"		
 			quadTextureSprite ="GFX_category_header"
-			position = { x = -11 y = 4 }
+			position = { x = -15 y = 7 }
 		}
 		
 		instantTextboxType = {
 			name = "title"
-			position = { x = -90 y = 16 }
+			position = { x = -117 y = 19 }
 			font = "hoi_20b"
 			text = "Economic Laws"
 			maxWidth = 450
 			maxHeight = 20
 			format = center
 		}
-		instantTextboxType = {
-			name = "switch"
-			position = { x = 120 y = 18 }
-			font = "hoi_18b"
-			text = "Switch out Henschel"
-			maxWidth = 450
-			maxHeight = 20
-			format = center
-		}
+#		instantTextboxType = {
+#			name = "switch"
+#			position = { x = 120 y = 18 }
+#			font = "hoi_18b"
+#			text = "Switch out Henschel"
+#			maxWidth = 450
+#			maxHeight = 20
+#			format = center
+#		}
 		containerWindowType = {
 			name = "ideas"
 			position = { x = 0 y = 50 }
@@ -822,11 +820,11 @@ guiTypes = {
 					position = { x = -1 y = 3 }	
 				}
 
-				background = {
-					name = "Background"
-					quadTextureSprite ="GFX_tiled_generic_overlay_bg1_small"
-					position = { x = -1 y = 3 }					
-				}
+#				background = {
+#					name = "Background"
+#					quadTextureSprite ="GFX_tiled_generic_overlay_bg1_small"
+#					position = { x = -1 y = 3 }					
+#				}
 
 				gridBoxType = {
 					name = "box_grid"
@@ -851,7 +849,7 @@ guiTypes = {
 		
 		buttonType = {
 			name = "close"
-			position = { x = -50 y = 5 }
+			position = { x = -50 y = 9 }
 			quadTextureSprite ="GFX_closebutton"
 			buttonFont = "Main_14_black"
 			shortcut = "ESCAPE"

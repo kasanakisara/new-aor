@@ -1,0 +1,53 @@
+add_namespace = AOR_GER_flavor
+
+# 德国趣闻_1：真是酷毙了
+country_event = {
+	id = AOR_GER_flavor.1
+	title = AOR_GER_flavor.1.t
+	desc = AOR_GER_flavor.1.desc
+	picture = GFX_AOR_GER_flavor_1
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_flavor.1.a
+	}
+}
+
+add_namespace = AOR_GER_focus_1919
+
+# 从王室到万家：埃森警察局报告节录
+country_event = {
+	id = AOR_GER_focus_1919.1
+	title = AOR_GER_focus_1919.1.t
+	desc = AOR_GER_focus_1919.1.desc
+	picture = GFX_AOR_GER_focus_1919_1
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_focus_1919.1.a
+	}
+}
+
+add_namespace = AOR_GER_economy_1920
+
+# Console: event AOR_GER_economy_1920.1 GER
+# Test-only event: unlock the hidden economy branch and load its tree if necessary.
+country_event = {
+	id = AOR_GER_economy_1920.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		GER = {
+			set_country_flag = AOR_GER_1920_economy_unlocked
+			if = {
+				limit = { NOT = { has_focus_tree = GER_intermediate } }
+				load_focus_tree = {
+					tree = GER_intermediate
+					keep_completed = yes
+				}
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}

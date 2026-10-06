@@ -66,7 +66,8 @@ recruit_character = GER_Kurt_student
 recruit_character = GER_Erich_von_manstein
 recruit_character = GER_Werner_von_fridge
 
-start_national_focus = AOR_GER_Politics_21
+load_focus_tree = GER_intermediate
+start_national_focus = GER_1919_august
 
 set_variable = { GER_Comm_current_vote = 1 } 
 add_to_variable = { global.GER_variable_abs = 1} 
@@ -98,9 +99,22 @@ set_politics = {
 
 }
 set_popularities = {
-	AUT_democratic = 20
-	FRE_democratic = 10
-	Marxism = 70
+	Marxism = 31
+	PAR_socialism = 12
+	FRE_democratic = 23
+	CON_democratic = 20
+	Absolutism = 14
+}
+
+set_party_name = { ideology = Marxism long_name = GER_Marxism_party name = GER_Marxism_party }
+set_party_name = { ideology = PAR_socialism long_name = GER_PAR_socialism_party name = GER_PAR_socialism_party }
+set_party_name = { ideology = FRE_democratic long_name = GER_FRE_democratic_party name = GER_FRE_democratic_party }
+set_party_name = { ideology = CON_democratic long_name = GER_CON_democratic_party name = GER_CON_democratic_party }
+set_party_name = { ideology = Absolutism long_name = GER_Absolutism_party name = GER_Absolutism_party }
+
+add_opinion_modifier = {
+	target = AUS
+	modifier = AOR_sister_parties
 }
 
 add_ideas = {

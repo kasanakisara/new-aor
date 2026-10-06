@@ -1,0 +1,24 @@
+on_actions = {
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = {
+					has_focus_tree = GER_intermediate
+					AOR_GER_1920_economy_visible = yes
+					NOT = { has_country_flag = AOR_GER_1920_economy_layout_refreshed }
+				}
+				set_country_flag = AOR_GER_1920_economy_layout_refreshed
+				mark_focus_tree_layout_dirty = yes
+			}
+			if = {
+				limit = {
+					has_focus_tree = GER_intermediate
+					AOR_GER_post_victory_visible = yes
+					NOT = { has_country_flag = AOR_GER_post_victory_layout_refreshed }
+				}
+				set_country_flag = AOR_GER_post_victory_layout_refreshed
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+}
