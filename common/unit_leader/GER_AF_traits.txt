@@ -1,0 +1,70 @@
+leader_traits = {
+	GER_AF_basic_military_training = {
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			modifier_army_sub_unit_infantry_attack_factor = 0.08
+			modifier_army_sub_unit_infantry_defence_factor = 0.03
+		}
+	}
+	GER_AF_great_war_veteran = {
+		type = land
+		trait_type = personality_trait
+		defense_skill = 1
+		on_add = { set_variable = { GER_AF_great_war_remaining = 730 } }
+		daily_effect = {
+			if = {
+				limit = { NOT = { has_variable = GER_AF_great_war_remaining } }
+				set_variable = { GER_AF_great_war_remaining = 730 }
+			}
+			subtract_from_variable = { GER_AF_great_war_remaining = 1 }
+			if = {
+				limit = { check_variable = { GER_AF_great_war_remaining < 1 } }
+				remove_unit_leader_trait = GER_AF_great_war_veteran
+			}
+		}
+		on_remove = { clear_variable = GER_AF_great_war_remaining }
+	}
+	GER_AF_inexperienced = {
+		type = corps_commander
+		trait_type = personality_trait
+		corps_commander_modifier = { max_commander_army_size = -10 }
+		modifier = { army_morale_factor = 0.05 }
+		daily_effect = {
+			if = {
+				limit = { skill > 1 }
+				remove_unit_leader_trait = GER_AF_inexperienced
+			}
+		}
+	}
+	GER_AF_promising = {
+		type = land
+		trait_type = personality_trait
+		non_shared_modifier = {
+			experience_gain_factor = 0.10
+			promote_cost_factor = -0.10
+		}
+		daily_effect = {
+			if = {
+				limit = { skill > 2 }
+				remove_unit_leader_trait = GER_AF_promising
+			}
+		}
+	}
+	GER_AF_underground_worker = {
+		type = land
+		trait_type = personality_trait
+		modifier = { recon_factor = 0.20 }
+	}
+	GER_AF_foreign_revolutionary = {
+		type = land
+		trait_type = personality_trait
+		non_shared_modifier = { reassignment_duration_factor = 0.25 }
+		modifier = { modifier_army_sub_unit_infantry_attack_factor = 0.13 }
+	}
+	GER_AF_comintern = {
+		type = land
+		trait_type = personality_trait
+		# Comintern affiliation; no numeric effect was specified.
+	}
+}
