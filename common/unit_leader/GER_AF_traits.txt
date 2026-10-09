@@ -10,7 +10,8 @@ leader_traits = {
 	GER_AF_great_war_veteran = {
 		type = land
 		trait_type = personality_trait
-		defense_skill = 1
+		planning_skill = 1
+		logistics_skill = 1
 		on_add = { set_variable = { GER_AF_great_war_remaining = 730 } }
 		daily_effect = {
 			if = {
@@ -59,8 +60,10 @@ leader_traits = {
 	GER_AF_foreign_revolutionary = {
 		type = land
 		trait_type = personality_trait
-		non_shared_modifier = { reassignment_duration_factor = 0.25 }
-		modifier = { modifier_army_sub_unit_infantry_attack_factor = 0.13 }
+		modifier = {
+			army_attack_factor = 0.05
+			army_defence_factor = 0.05
+		}
 	}
 	GER_AF_comintern = {
 		type = land
