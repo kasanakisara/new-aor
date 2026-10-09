@@ -1,0 +1,469 @@
+focus_tree = {
+	id = GER_civil_war
+	default = no
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = GER
+		}
+	}
+
+	# =========================================================================
+	# 22年夏秋季 - 23年夏秋季：内战时期国策树（德意志社会主义共和国 / GER）
+	# -------------------------------------------------------------------------
+	# 依据策划案（drawio）还原：根节点 1 条，三大分支，共 24 条国策。
+	#   绿 经济与生产（一切为了前线！）   8 条
+	#   蓝 政权与国家（打碎国家机器）     8 条
+	#   蓝 军事与红军（人民红军）         7 条
+	# 连线关系严格照策划案：合并节点 GER_all_for_the_front 接受三条线任一抵达。
+	#
+	# 排版：x / y 相对 relative_position_id 的父节点（沿用本 mod
+	#   AOR_GER_intermediate.txt 的写法）。整体布局：
+	#     经济枝在左（x 30~70）／政权枝居中（x 34~58）／军事枝在右（x 58~70）
+	#   已核对过：无两条国策落在同一格，且枝干连线互不穿越。
+	#   若要改回「相对根节点」，把每条 relative_position_id 换成
+	#   GER_all_power_to_the_soviets，x 改为原值加父节点相对根的偏移。
+	#
+	# 效果：数值均为占位实现（先落可运行的骨架，再调平衡）。
+	#   带 TODO 的国家精神尚未在 common/ideas/ 中定义，需另行补建，
+	#   否则 add_ideas 会在 error.log 里报 unknown idea。
+	# 图标：沿用本 mod 的 GFX_<focus_id> 命名，gfx 文件缺失时引擎回落默认图标。
+	# 策划案注记「黄色的部分暂时无法确定，不要填写」——原图未出现黄色节点，
+	#   故本文件不含留白占位节点。
+	# =========================================================================
+
+	# =========================================================================
+	# 根节点
+	# =========================================================================
+	focus = {
+		id = GER_all_power_to_the_soviets			# 一切权力归苏维埃！
+		icon = GFX_GER_all_power_to_the_soviets
+		x = 46
+		y = 0
+		cost = 1
+		available_if_capitulated = yes
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_war_support = 0.10
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.05
+			}
+			custom_effect_tooltip = GER_civil_war_tree_unlocked_tt
+			# TODO: 需要时改为 set_country_flag = AOR_GER_civil_war_started
+		}
+	}
+
+	# =========================================================================
+	# 分支一：经济与生产（策划案绿色节点）
+	# =========================================================================
+
+	focus = {
+		id = GER_everything_for_the_front			# 一切为了前线！
+		icon = GFX_GER_everything_for_the_front
+		relative_position_id = GER_all_power_to_the_soviets
+		x = -16
+		y = 2
+		cost = 3
+		prerequisite = { focus = GER_all_power_to_the_soviets }
+		completion_reward = {
+			add_war_support = 0.10
+			add_stability = -0.05
+			add_ideas = GER_everything_for_the_front_spirit	# TODO: 军工产能↑ / 生活水平↓
+		}
+	}
+
+	focus = {
+		id = GER_regional_soviets					# 区域苏维埃
+		icon = GFX_GER_regional_soviets
+		relative_position_id = GER_everything_for_the_front
+		x = -8
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_everything_for_the_front }
+		completion_reward = {
+			add_stability = 0.05
+			# TODO: 按控制区添加区域精神（地区行政、经济体系、劳动力与燃料调配）
+		}
+	}
+
+	focus = {
+		id = GER_seize_means_of_production			# 夺取生产资料
+		icon = GFX_GER_seize_means_of_production
+		relative_position_id = GER_everything_for_the_front
+		x = -4
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_everything_for_the_front }
+		completion_reward = {
+			add_ideas = GER_seized_means_of_production_spirit			# TODO: 未社会化的工厂、银行、铁路、船只国有化
+			#   —— 工业产出↑、消费品↓、资产阶级支持度↓
+			# TODO: 若要逐州接管，用 every_controlled_state = { ... }（不是 transfer_owner）
+		}
+	}
+
+	focus = {
+		id = GER_master_the_logistics_system		# 掌握物流体系
+		icon = GFX_GER_master_the_logistics_system
+		relative_position_id = GER_regional_soviets
+		x = 0
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_regional_soviets }
+		completion_reward = {
+			add_ideas = GER_consumption_cooperatives
+			# TODO: 居民全员加入消费合作社、组织国营商业、打击投机倒把
+		}
+	}
+
+	focus = {
+		id = GER_organize_rural_urban_exchange		# 组织城乡交换
+		icon = GFX_GER_organize_rural_urban_exchange
+		relative_position_id = GER_regional_soviets
+		x = 4
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_regional_soviets }
+		completion_reward = {
+			add_stability = 0.05
+			# TODO: 核心区小心维持自愿交换（粮食税 + 工业品下乡）；
+			#   非核心区城乡联系薄弱 —— 实在难以建立自愿交换时，强制征收成为可选项
+			unlock_decision_tooltip = GER_grain_requisition
+		}
+	}
+
+	focus = {
+		id = GER_solve_the_funding_problem			# 解决资金问题
+		icon = GFX_GER_solve_the_funding_problem
+		relative_position_id = GER_seize_means_of_production
+		x = 0
+		y = 8
+		cost = 5
+		prerequisite = { focus = GER_seize_means_of_production }
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = GER_new_financial_system
+			# TODO: 对拒绝交出金库钥匙与重要文件的银行、财政机构采取严厉措施，
+			#   建立新财政体系，并向资产阶级征收巨额税款
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = GER_economic_accounting				# 经济核算
+		icon = GFX_GER_economic_accounting
+		relative_position_id = GER_seize_means_of_production
+		x = 8
+		y = 10
+		cost = 6
+		prerequisite = { focus = GER_seize_means_of_production }
+		completion_reward = {
+			add_ideas = GER_economic_accounting_spirit			# TODO: 各级核算单位实行严格经济核算 —— 单位产品劳动消耗量、
+			#   材料消耗量、单位产品及人均燃料消耗量
+		}
+	}
+
+	focus = {
+		id = GER_strengthen_labour_discipline		# 加强劳动纪律
+		icon = GFX_GER_strengthen_labour_discipline
+		relative_position_id = GER_seize_means_of_production
+		x = 4
+		y = 8
+		cost = 5
+		prerequisite = { focus = GER_seize_means_of_production }
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = GER_labour_discipline
+			# TODO: 借工厂委员会、工会与党的教育宣传机构教育政治觉悟较低的群众，
+			#   必要时采取强制手段 —— 工厂产出↑、劳动生产率↑
+		}
+	}
+
+	# =========================================================================
+	# 分支二：政权与国家（策划案蓝色节点）
+	# =========================================================================
+
+	focus = {
+		id = GER_smash_the_state_machine			# 打碎国家机器
+		icon = GFX_GER_smash_the_state_machine
+		relative_position_id = GER_all_power_to_the_soviets
+		x = -12
+		y = 2
+		cost = 3
+		prerequisite = { focus = GER_all_power_to_the_soviets }
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = GER_smashed_state_machine
+			# TODO: 打碎旧资产阶级国家机器，搭建为维护无产阶级统治的国家机器
+		}
+	}
+
+	focus = {
+		id = GER_red_terror							# 红色恐怖
+		icon = GFX_GER_red_terror
+		relative_position_id = GER_smash_the_state_machine
+		x = 0
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_smash_the_state_machine }
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.05
+			add_ideas = GER_revolutionary_security_bureau
+			# TODO: 约吉希斯领导的中央警察部门整合各地分散的安全机构，
+			#   成立革命安全保卫局，由中央规定恐怖的范围、方法、程度
+		}
+	}
+
+	focus = {
+		id = GER_soviet_power_expansion				# 苏维埃政权的扩张
+		icon = GFX_GER_soviet_power_expansion
+		relative_position_id = GER_smash_the_state_machine
+		x = 4
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_smash_the_state_machine }
+		completion_reward = {
+			add_stability = 0.05
+			# TODO: 在占领区建立稳固政权、整合当地资源、扩大政权基础
+		}
+	}
+
+	focus = {
+		id = GER_tighten_freedom_of_speech			# 收紧言论自由
+		icon = GFX_GER_tighten_freedom_of_speech
+		relative_position_id = GER_red_terror
+		x = 0
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_red_terror }
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = GER_tightened_speech
+			# TODO: 统一指挥、统一行动 —— 收紧内部言论自由，
+			#   对外部反革命宣传实行坚决的专政措施
+		}
+	}
+
+	focus = {
+		id = GER_mobilize_newly_liberated_masses	# 发动新解放区群众
+		icon = GFX_GER_mobilize_newly_liberated_masses
+		relative_position_id = GER_red_terror
+		x = 2
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_red_terror }
+		completion_reward = {
+			add_manpower = 20000
+			# TODO: 新解放区的群众动员 —— 人力、地方苏维埃基础、游击队
+		}
+	}
+
+	focus = {
+		id = GER_concentrate_power_in_the_state		# 权力向国家集中
+		icon = GFX_GER_concentrate_power_in_the_state
+		relative_position_id = GER_soviet_power_expansion
+		x = 4
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_red_terror }
+		prerequisite = { focus = GER_soviet_power_expansion }
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			# TODO: 从工厂委员会、经济苏维埃与地方政治自治组织手中收回权力；
+			#   因各地地理分割，暂无法建立统一的全国性决策中心
+		}
+	}
+
+	focus = {
+		id = GER_integrate_friendly_left			# 整合友好左翼力量
+		icon = GFX_GER_integrate_friendly_left
+		relative_position_id = GER_soviet_power_expansion
+		x = 8
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_soviet_power_expansion }
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.05
+			}
+			# TODO: 整合亲布尔什维克的「国际共产主义集团」，
+			#   与友好的工团主义者、无政府主义者达成部分合作
+		}
+	}
+
+	focus = {
+		id = GER_call_back_former_comrades			# 呼唤曾经的同志
+		icon = GFX_GER_call_back_former_comrades
+		relative_position_id = GER_integrate_friendly_left
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = { focus = GER_integrate_friendly_left }
+		completion_reward = {
+			add_popularity = {
+				ideology = Marxism
+				popularity = 0.05
+			}
+			add_stability = 0.05
+			# TODO: 呼唤原 SPD 右派立场上的同志，与抛弃分裂了党、
+			#   背叛社会民主主义的右派领导层决裂
+		}
+	}
+
+	# =========================================================================
+	# 分支三：军事与红军（策划案蓝色节点）
+	# =========================================================================
+
+	focus = {
+		id = GER_people_red_army					# 人民红军
+		icon = GFX_GER_people_red_army
+		relative_position_id = GER_all_power_to_the_soviets
+		x = 8
+		y = 2
+		cost = 4
+		prerequisite = { focus = GER_all_power_to_the_soviets }
+		completion_reward = {
+			add_war_support = 0.10
+			add_ideas = GER_people_red_army_spirit
+			# TODO: 人民军项目失败后只得到一个奇形怪状的国防军 ——
+			#   现整合各色赤卫队、警察部队、人民防卫队、红色海军组织，
+			#   建成一支真正可以保卫革命、保卫无产阶级政权的军队
+		}
+	}
+
+	focus = {
+		id = GER_speed_up_mobilization				# 加快动员效率
+		icon = GFX_GER_speed_up_mobilization
+		relative_position_id = GER_people_red_army
+		x = -8
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_people_red_army }
+		completion_reward = {
+			add_manpower = 30000
+			# TODO: 兵役登记、动员时刻表、地方征召站 —— 动员速度↑
+		}
+	}
+
+	focus = {
+		id = GER_soviet_auxiliary_forces			# 苏维埃辅助部队
+		icon = GFX_GER_soviet_auxiliary_forces
+		relative_position_id = GER_people_red_army
+		x = -4
+		y = 4
+		cost = 4
+		prerequisite = { focus = GER_people_red_army }
+		completion_reward = {
+			add_ideas = GER_soviet_auxiliary_forces_spirit
+			# TODO: 地方苏维埃辅助部队 —— 地区治安维持、协助军事训练、
+			#   当地方工程兵修铁路与道路、协助粮食征集与恐怖工作；
+			#   白军进攻时由红军指挥官接过指挥权
+		}
+	}
+
+	focus = {
+		id = GER_reorganize_the_units				# 整编部队
+		icon = GFX_GER_reorganize_the_units
+		relative_position_id = GER_soviet_auxiliary_forces
+		x = 0
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_soviet_auxiliary_forces }
+		completion_reward = {
+			army_experience = 25
+			# TODO: 编制、武器配置、战术使用统一化 —— 部队战斗力↑
+		}
+	}
+
+	focus = {
+		id = GER_unify_military_command				# 军事指挥统一化
+		icon = GFX_GER_unify_military_command
+		relative_position_id = GER_soviet_auxiliary_forces
+		x = 4
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_soviet_auxiliary_forces }
+		completion_reward = {
+			add_ideas = GER_unified_front_commands
+			# TODO: 各条战线建立统一的军事指挥部，总管各战线军事指挥任务，
+			#   解决部队指挥混乱问题
+		}
+	}
+
+	focus = {
+		id = GER_towards_a_regular_army				# 向正规军迈进
+		icon = GFX_GER_towards_a_regular_army
+		relative_position_id = GER_soviet_auxiliary_forces
+		x = 8
+		y = 6
+		cost = 6
+		prerequisite = { focus = GER_soviet_auxiliary_forces }
+		completion_reward = {
+			army_experience = 25
+			add_ideas = GER_regular_red_army
+			# TODO: 军衔与参谋体系、后勤条令 —— 由赤卫队走向正规红军
+		}
+	}
+
+	focus = {
+		id = GER_red_army_officer_school			# 红军军官学校
+		icon = GFX_GER_red_army_officer_school
+		relative_position_id = GER_towards_a_regular_army
+		x = 4
+		y = 6
+		cost = 5
+		prerequisite = { focus = GER_towards_a_regular_army }
+		completion_reward = {
+			army_experience = 15
+			add_timed_idea = {
+				idea = GER_officer_training
+				days = 365
+			}
+			# TODO: 培养工人出身的军事干部，解决指挥员匮乏
+		}
+	}
+
+	focus = {
+		id = GER_gas_defence						# 防御毒气
+		icon = GFX_GER_gas_defence
+		relative_position_id = GER_red_army_officer_school
+		x = 0
+		y = 2
+		cost = 4
+		prerequisite = { focus = GER_red_army_officer_school }
+		completion_reward = {
+			add_ideas = GER_gas_defence_spirit
+			# TODO: 防毒面具与防护装具、化学侦察、军民防护训练
+		}
+	}
+
+	# =========================================================================
+	# 合并节点：三线汇聚
+	# =========================================================================
+	focus = {
+		id = GER_all_for_the_front					# 一切为了前线！
+		icon = GFX_GER_all_for_the_front
+		relative_position_id = GER_all_power_to_the_soviets
+		x = 0
+		y = 20
+		cost = 8
+		prerequisite = { focus = GER_economic_accounting }
+		prerequisite = { focus = GER_concentrate_power_in_the_state }
+		prerequisite = { focus = GER_gas_defence }
+		completion_reward = {
+			add_war_support = 0.15
+			add_stability = 0.05
+			add_ideas = GER_everything_for_the_front_final_spirit
+			custom_effect_tooltip = GER_civil_war_phase_end_tt
+			# TODO: 内战阶段收束 —— 转入 23 年秋之后的下一阶段国策树／事件链，
+			#   并使本树隐藏（沿用本 mod 的 allow_branch flag 做法）
+		}
+	}
+}
