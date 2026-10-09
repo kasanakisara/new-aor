@@ -1,0 +1,118 @@
+# Country scope. Public values are integer percentages, always totalling 100 after refresh.
+# Initial distribution is explicitly requested by the user: left 17, centre 43, right 40.
+GER_SPD_default_support_effect = {
+	set_variable = { GER_SPD_left_support = 17 }
+	set_variable = { GER_SPD_center_support = 43 }
+	set_variable = { GER_SPD_right_support = 40 }
+}
+
+GER_SPD_initialize_support_effect = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = GER_SPD_support_initialized }
+			NOT = {
+				OR = {
+					has_variable = GER_SPD_left_support
+					has_variable = GER_SPD_center_support
+					has_variable = GER_SPD_right_support
+				}
+			}
+		}
+		GER_SPD_default_support_effect = yes
+	}
+	set_country_flag = GER_SPD_support_initialized
+	GER_SPD_refresh_support_effect = yes
+}
+
+# Call after changing any of the three support variables in an event/focus/decision.
+# Negative inputs become zero. Arbitrary totals are normalised to 100.
+# Largest remainder allocation produces exactly 100 integer rows; ties favour left, then centre.
+# An all-zero input restores the initial distribution.
+GER_SPD_refresh_support_effect = {
+	if = {
+		limit = { check_variable = { GER_SPD_left_support < 0 } }
+		set_variable = { GER_SPD_left_support = 0 }
+	}
+	if = {
+		limit = { check_variable = { GER_SPD_center_support < 0 } }
+		set_variable = { GER_SPD_center_support = 0 }
+	}
+	if = {
+		limit = { check_variable = { GER_SPD_right_support < 0 } }
+		set_variable = { GER_SPD_right_support = 0 }
+	}
+	set_temp_variable = { GER_SPD_total = GER_SPD_left_support }
+	add_to_temp_variable = { GER_SPD_total = GER_SPD_center_support }
+	add_to_temp_variable = { GER_SPD_total = GER_SPD_right_support }
+	if = {
+		limit = { check_variable = { GER_SPD_total = 0 } }
+		GER_SPD_default_support_effect = yes
+		set_temp_variable = { GER_SPD_total = 100 }
+	}
+
+	set_temp_variable = { GER_SPD_left_quota = GER_SPD_left_support }
+	multiply_temp_variable = { GER_SPD_left_quota = 100 }
+	divide_temp_variable = { GER_SPD_left_quota = GER_SPD_total }
+	set_variable = { GER_SPD_left_support = GER_SPD_left_quota }
+	round_variable = GER_SPD_left_support
+	if = {
+		limit = { check_variable = { GER_SPD_left_support > GER_SPD_left_quota } }
+		add_to_variable = { GER_SPD_left_support = -1 }
+	}
+	set_temp_variable = { GER_SPD_left_remainder = GER_SPD_left_quota }
+	subtract_from_temp_variable = { GER_SPD_left_remainder = GER_SPD_left_support }
+
+	set_temp_variable = { GER_SPD_center_quota = GER_SPD_center_support }
+	multiply_temp_variable = { GER_SPD_center_quota = 100 }
+	divide_temp_variable = { GER_SPD_center_quota = GER_SPD_total }
+	set_variable = { GER_SPD_center_support = GER_SPD_center_quota }
+	round_variable = GER_SPD_center_support
+	if = {
+		limit = { check_variable = { GER_SPD_center_support > GER_SPD_center_quota } }
+		add_to_variable = { GER_SPD_center_support = -1 }
+	}
+	set_temp_variable = { GER_SPD_center_remainder = GER_SPD_center_quota }
+	subtract_from_temp_variable = { GER_SPD_center_remainder = GER_SPD_center_support }
+
+	set_temp_variable = { GER_SPD_right_quota = GER_SPD_right_support }
+	multiply_temp_variable = { GER_SPD_right_quota = 100 }
+	divide_temp_variable = { GER_SPD_right_quota = GER_SPD_total }
+	set_variable = { GER_SPD_right_support = GER_SPD_right_quota }
+	round_variable = GER_SPD_right_support
+	if = {
+		limit = { check_variable = { GER_SPD_right_support > GER_SPD_right_quota } }
+		add_to_variable = { GER_SPD_right_support = -1 }
+	}
+	set_temp_variable = { GER_SPD_right_remainder = GER_SPD_right_quota }
+	subtract_from_temp_variable = { GER_SPD_right_remainder = GER_SPD_right_support }
+
+	set_temp_variable = { GER_SPD_unassigned = 100 }
+	subtract_from_temp_variable = { GER_SPD_unassigned = GER_SPD_left_support }
+	subtract_from_temp_variable = { GER_SPD_unassigned = GER_SPD_center_support }
+	subtract_from_temp_variable = { GER_SPD_unassigned = GER_SPD_right_support }
+	while = {
+		limit = { check_variable = { GER_SPD_unassigned > 0 } }
+		if = {
+			limit = {
+				NOT = { check_variable = { GER_SPD_left_remainder < GER_SPD_center_remainder } }
+				NOT = { check_variable = { GER_SPD_left_remainder < GER_SPD_right_remainder } }
+			}
+			add_to_variable = { GER_SPD_left_support = 1 }
+			set_temp_variable = { GER_SPD_left_remainder = -1 }
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { GER_SPD_center_remainder < GER_SPD_right_remainder } } }
+			add_to_variable = { GER_SPD_center_support = 1 }
+			set_temp_variable = { GER_SPD_center_remainder = -1 }
+		}
+		else = {
+			add_to_variable = { GER_SPD_right_support = 1 }
+			set_temp_variable = { GER_SPD_right_remainder = -1 }
+		}
+		add_to_temp_variable = { GER_SPD_unassigned = -1 }
+	}
+	set_variable = { GER_SPD_left_last_support = GER_SPD_left_support }
+	set_variable = { GER_SPD_center_last_support = GER_SPD_center_support }
+	set_variable = { GER_SPD_right_last_support = GER_SPD_right_support }
+	add_to_variable = { GER_SPD_gui_revision = 1 }
+}

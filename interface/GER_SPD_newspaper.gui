@@ -1,0 +1,2386 @@
+# Newspaper: 480 x 720; 4 columns x 25 rows. Each visible row is 1 percentage point.
+# Row order: down each column, then left to right. Three mutually exclusive icons per row.
+guiTypes = {
+	containerWindowType = {
+		name = "GER_SPD_newspaper_window"
+		# Move the entire newspaper here: +x right, +y down (pixels relative to the category).
+		position = { x = 20 y = 0 }
+		size = { width = 500 height = 730 }
+		clipping = yes
+		# Silent backing consumes clicks before they reach the decision category background.
+		iconType = {
+			name = "GER_SPD_paper"
+			position = { x = 10 y = 4 }
+			spriteType = "GFX_GER_SPD_newspaper_background"
+	
+		}
+		# Paper starts at (10,4), size 480x720; 31x31 icon inset 2px from top/right.
+		iconType = {
+			name = "GER_SPD_questionmark"
+			position = { x = 457 y = 6 }
+			spriteType = "GFX_GER_SPD_questionmark"
+			pdx_tooltip = GER_SPD_questionmark_tt
+		}
+		iconType = {
+			name = "GER_SPD_headline"
+			position = { x = 23 y = 189 }
+			spriteType = "GFX_GER_SPD_newspaper_title"
+			pdx_tooltip = GER_SPD_headline_default_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_headline_left"
+			position = { x = 23 y = 189 }
+			spriteType = "GFX_GER_SPD_newspaper_title_left"
+			pdx_tooltip = GER_SPD_headline_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_headline_center"
+			position = { x = 23 y = 189 }
+			spriteType = "GFX_GER_SPD_newspaper_title_center"
+			pdx_tooltip = GER_SPD_headline_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_headline_right"
+			position = { x = 23 y = 189 }
+			spriteType = "GFX_GER_SPD_newspaper_title_right"
+			pdx_tooltip = GER_SPD_headline_right_tooltip
+		}
+
+		# Bottom-left unity flower. Icon types show a tooltip but have no click action.
+		iconType = {
+			name = "GER_SPD_unity_bloom"
+			position = { x = 20 y = 615 }
+			spriteType = "GFX_GER_SPD_Landnelke_bloom"
+			pdx_tooltip = GER_SPD_unity_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_unity_decay"
+			position = { x = 20 y = 615 }
+			spriteType = "GFX_GER_SPD_Landnelke_decay"
+			pdx_tooltip = GER_SPD_unity_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_unity_decay_1"
+			position = { x = 20 y = 615 }
+			spriteType = "GFX_GER_SPD_Landnelke_decay_1"
+			pdx_tooltip = GER_SPD_unity_tooltip
+		}
+
+		buttonType = {
+			name = "GER_SPD_history_button"
+			position = { x = 145 y = 615 }
+			quadTextureSprite = "GFX_GER_SPD_history_button"
+			pdx_tooltip = GER_SPD_history_button_tt
+		}
+
+		# Artwork is already 159x105; display at its native size.
+		# Placeholder button: intentionally has no scripted click effect yet.
+		buttonType = {
+			name = "GER_SPD_tarot_button"
+			position = { x = 310 y = 615 }
+			quadTextureSprite = "GFX_GER_SPD_tarot_button"
+			scale = 1.0
+			pdx_tooltip = GER_SPD_tarot_button_tt
+		}
+
+		# Column 1, row 1: percentage point 1.
+		iconType = {
+			name = "GER_SPD_row_001_left"
+			position = { x = 20 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 1
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_001_center"
+			position = { x = 20 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 1
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_001_right"
+			position = { x = 20 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 1
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 2: percentage point 2.
+		iconType = {
+			name = "GER_SPD_row_002_left"
+			position = { x = 20 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 2
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_002_center"
+			position = { x = 20 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 2
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_002_right"
+			position = { x = 20 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 2
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 3: percentage point 3.
+		iconType = {
+			name = "GER_SPD_row_003_left"
+			position = { x = 20 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 3
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_003_center"
+			position = { x = 20 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 3
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_003_right"
+			position = { x = 20 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 3
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 4: percentage point 4.
+		iconType = {
+			name = "GER_SPD_row_004_left"
+			position = { x = 20 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 4
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_004_center"
+			position = { x = 20 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 4
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_004_right"
+			position = { x = 20 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 4
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 5: percentage point 5.
+		iconType = {
+			name = "GER_SPD_row_005_left"
+			position = { x = 20 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 5
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_005_center"
+			position = { x = 20 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 5
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_005_right"
+			position = { x = 20 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 5
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 6: percentage point 6.
+		iconType = {
+			name = "GER_SPD_row_006_left"
+			position = { x = 20 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 6
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_006_center"
+			position = { x = 20 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 6
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_006_right"
+			position = { x = 20 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 6
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 7: percentage point 7.
+		iconType = {
+			name = "GER_SPD_row_007_left"
+			position = { x = 20 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 7
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_007_center"
+			position = { x = 20 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 7
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_007_right"
+			position = { x = 20 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 7
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 8: percentage point 8.
+		iconType = {
+			name = "GER_SPD_row_008_left"
+			position = { x = 20 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 8
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_008_center"
+			position = { x = 20 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 8
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_008_right"
+			position = { x = 20 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 8
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 9: percentage point 9.
+		iconType = {
+			name = "GER_SPD_row_009_left"
+			position = { x = 20 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 9
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_009_center"
+			position = { x = 20 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 9
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_009_right"
+			position = { x = 20 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 9
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 10: percentage point 10.
+		iconType = {
+			name = "GER_SPD_row_010_left"
+			position = { x = 20 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 10
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_010_center"
+			position = { x = 20 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 10
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_010_right"
+			position = { x = 20 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 10
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 11: percentage point 11.
+		iconType = {
+			name = "GER_SPD_row_011_left"
+			position = { x = 20 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 11
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_011_center"
+			position = { x = 20 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 11
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_011_right"
+			position = { x = 20 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 11
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 12: percentage point 12.
+		iconType = {
+			name = "GER_SPD_row_012_left"
+			position = { x = 20 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 12
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_012_center"
+			position = { x = 20 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 12
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_012_right"
+			position = { x = 20 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 12
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 13: percentage point 13.
+		iconType = {
+			name = "GER_SPD_row_013_left"
+			position = { x = 20 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 13
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_013_center"
+			position = { x = 20 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 13
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_013_right"
+			position = { x = 20 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 13
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 14: percentage point 14.
+		iconType = {
+			name = "GER_SPD_row_014_left"
+			position = { x = 20 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 14
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_014_center"
+			position = { x = 20 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 14
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_014_right"
+			position = { x = 20 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 14
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 15: percentage point 15.
+		iconType = {
+			name = "GER_SPD_row_015_left"
+			position = { x = 20 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 15
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_015_center"
+			position = { x = 20 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 15
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_015_right"
+			position = { x = 20 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 15
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 16: percentage point 16.
+		iconType = {
+			name = "GER_SPD_row_016_left"
+			position = { x = 20 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 16
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_016_center"
+			position = { x = 20 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 16
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_016_right"
+			position = { x = 20 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 16
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 17: percentage point 17.
+		iconType = {
+			name = "GER_SPD_row_017_left"
+			position = { x = 20 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 17
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_017_center"
+			position = { x = 20 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 17
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_017_right"
+			position = { x = 20 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 17
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 18: percentage point 18.
+		iconType = {
+			name = "GER_SPD_row_018_left"
+			position = { x = 20 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 18
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_018_center"
+			position = { x = 20 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 18
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_018_right"
+			position = { x = 20 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 18
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 19: percentage point 19.
+		iconType = {
+			name = "GER_SPD_row_019_left"
+			position = { x = 20 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 19
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_019_center"
+			position = { x = 20 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 19
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_019_right"
+			position = { x = 20 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 19
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 20: percentage point 20.
+		iconType = {
+			name = "GER_SPD_row_020_left"
+			position = { x = 20 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 20
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_020_center"
+			position = { x = 20 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 20
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_020_right"
+			position = { x = 20 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 20
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 21: percentage point 21.
+		iconType = {
+			name = "GER_SPD_row_021_left"
+			position = { x = 20 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 21
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_021_center"
+			position = { x = 20 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 21
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_021_right"
+			position = { x = 20 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 21
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 22: percentage point 22.
+		iconType = {
+			name = "GER_SPD_row_022_left"
+			position = { x = 20 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 22
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_022_center"
+			position = { x = 20 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 22
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_022_right"
+			position = { x = 20 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 22
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 23: percentage point 23.
+		iconType = {
+			name = "GER_SPD_row_023_left"
+			position = { x = 20 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 23
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_023_center"
+			position = { x = 20 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 23
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_023_right"
+			position = { x = 20 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 23
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 24: percentage point 24.
+		iconType = {
+			name = "GER_SPD_row_024_left"
+			position = { x = 20 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 24
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_024_center"
+			position = { x = 20 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 24
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_024_right"
+			position = { x = 20 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 24
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 1, row 25: percentage point 25.
+		iconType = {
+			name = "GER_SPD_row_025_left"
+			position = { x = 20 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 25
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_025_center"
+			position = { x = 20 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 25
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_025_right"
+			position = { x = 20 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 25
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 1: percentage point 26.
+		iconType = {
+			name = "GER_SPD_row_026_left"
+			position = { x = 137 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 1
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_026_center"
+			position = { x = 137 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 1
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_026_right"
+			position = { x = 137 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 1
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 2: percentage point 27.
+		iconType = {
+			name = "GER_SPD_row_027_left"
+			position = { x = 137 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 2
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_027_center"
+			position = { x = 137 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 2
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_027_right"
+			position = { x = 137 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 2
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 3: percentage point 28.
+		iconType = {
+			name = "GER_SPD_row_028_left"
+			position = { x = 137 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 3
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_028_center"
+			position = { x = 137 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 3
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_028_right"
+			position = { x = 137 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 3
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 4: percentage point 29.
+		iconType = {
+			name = "GER_SPD_row_029_left"
+			position = { x = 137 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 4
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_029_center"
+			position = { x = 137 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 4
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_029_right"
+			position = { x = 137 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 4
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 5: percentage point 30.
+		iconType = {
+			name = "GER_SPD_row_030_left"
+			position = { x = 137 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 5
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_030_center"
+			position = { x = 137 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 5
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_030_right"
+			position = { x = 137 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 5
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 6: percentage point 31.
+		iconType = {
+			name = "GER_SPD_row_031_left"
+			position = { x = 137 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 6
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_031_center"
+			position = { x = 137 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 6
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_031_right"
+			position = { x = 137 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 6
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 7: percentage point 32.
+		iconType = {
+			name = "GER_SPD_row_032_left"
+			position = { x = 137 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 7
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_032_center"
+			position = { x = 137 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 7
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_032_right"
+			position = { x = 137 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 7
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 8: percentage point 33.
+		iconType = {
+			name = "GER_SPD_row_033_left"
+			position = { x = 137 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 8
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_033_center"
+			position = { x = 137 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 8
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_033_right"
+			position = { x = 137 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 8
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 9: percentage point 34.
+		iconType = {
+			name = "GER_SPD_row_034_left"
+			position = { x = 137 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 9
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_034_center"
+			position = { x = 137 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 9
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_034_right"
+			position = { x = 137 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 9
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 10: percentage point 35.
+		iconType = {
+			name = "GER_SPD_row_035_left"
+			position = { x = 137 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 10
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_035_center"
+			position = { x = 137 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 10
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_035_right"
+			position = { x = 137 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 10
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 11: percentage point 36.
+		iconType = {
+			name = "GER_SPD_row_036_left"
+			position = { x = 137 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 11
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_036_center"
+			position = { x = 137 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 11
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_036_right"
+			position = { x = 137 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 11
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 12: percentage point 37.
+		iconType = {
+			name = "GER_SPD_row_037_left"
+			position = { x = 137 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 12
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_037_center"
+			position = { x = 137 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 12
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_037_right"
+			position = { x = 137 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 12
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 13: percentage point 38.
+		iconType = {
+			name = "GER_SPD_row_038_left"
+			position = { x = 137 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 13
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_038_center"
+			position = { x = 137 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 13
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_038_right"
+			position = { x = 137 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 13
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 14: percentage point 39.
+		iconType = {
+			name = "GER_SPD_row_039_left"
+			position = { x = 137 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 14
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_039_center"
+			position = { x = 137 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 14
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_039_right"
+			position = { x = 137 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 14
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 15: percentage point 40.
+		iconType = {
+			name = "GER_SPD_row_040_left"
+			position = { x = 137 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 15
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_040_center"
+			position = { x = 137 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 15
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_040_right"
+			position = { x = 137 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 15
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 16: percentage point 41.
+		iconType = {
+			name = "GER_SPD_row_041_left"
+			position = { x = 137 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 16
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_041_center"
+			position = { x = 137 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 16
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_041_right"
+			position = { x = 137 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 16
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 17: percentage point 42.
+		iconType = {
+			name = "GER_SPD_row_042_left"
+			position = { x = 137 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 17
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_042_center"
+			position = { x = 137 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 17
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_042_right"
+			position = { x = 137 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 17
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 18: percentage point 43.
+		iconType = {
+			name = "GER_SPD_row_043_left"
+			position = { x = 137 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 18
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_043_center"
+			position = { x = 137 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 18
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_043_right"
+			position = { x = 137 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 18
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 19: percentage point 44.
+		iconType = {
+			name = "GER_SPD_row_044_left"
+			position = { x = 137 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 19
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_044_center"
+			position = { x = 137 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 19
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_044_right"
+			position = { x = 137 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 19
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 20: percentage point 45.
+		iconType = {
+			name = "GER_SPD_row_045_left"
+			position = { x = 137 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 20
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_045_center"
+			position = { x = 137 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 20
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_045_right"
+			position = { x = 137 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 20
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 21: percentage point 46.
+		iconType = {
+			name = "GER_SPD_row_046_left"
+			position = { x = 137 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 21
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_046_center"
+			position = { x = 137 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 21
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_046_right"
+			position = { x = 137 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 21
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 22: percentage point 47.
+		iconType = {
+			name = "GER_SPD_row_047_left"
+			position = { x = 137 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 22
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_047_center"
+			position = { x = 137 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 22
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_047_right"
+			position = { x = 137 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 22
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 23: percentage point 48.
+		iconType = {
+			name = "GER_SPD_row_048_left"
+			position = { x = 137 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 23
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_048_center"
+			position = { x = 137 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 23
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_048_right"
+			position = { x = 137 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 23
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 24: percentage point 49.
+		iconType = {
+			name = "GER_SPD_row_049_left"
+			position = { x = 137 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 24
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_049_center"
+			position = { x = 137 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 24
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_049_right"
+			position = { x = 137 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 24
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 2, row 25: percentage point 50.
+		iconType = {
+			name = "GER_SPD_row_050_left"
+			position = { x = 137 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 25
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_050_center"
+			position = { x = 137 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 25
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_050_right"
+			position = { x = 137 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 25
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 1: percentage point 51.
+		iconType = {
+			name = "GER_SPD_row_051_left"
+			position = { x = 254 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 1
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_051_center"
+			position = { x = 254 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 1
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_051_right"
+			position = { x = 254 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 1
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 2: percentage point 52.
+		iconType = {
+			name = "GER_SPD_row_052_left"
+			position = { x = 254 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 2
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_052_center"
+			position = { x = 254 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 2
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_052_right"
+			position = { x = 254 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 2
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 3: percentage point 53.
+		iconType = {
+			name = "GER_SPD_row_053_left"
+			position = { x = 254 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 3
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_053_center"
+			position = { x = 254 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 3
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_053_right"
+			position = { x = 254 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 3
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 4: percentage point 54.
+		iconType = {
+			name = "GER_SPD_row_054_left"
+			position = { x = 254 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 4
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_054_center"
+			position = { x = 254 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 4
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_054_right"
+			position = { x = 254 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 4
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 5: percentage point 55.
+		iconType = {
+			name = "GER_SPD_row_055_left"
+			position = { x = 254 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 5
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_055_center"
+			position = { x = 254 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 5
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_055_right"
+			position = { x = 254 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 5
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 6: percentage point 56.
+		iconType = {
+			name = "GER_SPD_row_056_left"
+			position = { x = 254 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 6
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_056_center"
+			position = { x = 254 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 6
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_056_right"
+			position = { x = 254 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 6
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 7: percentage point 57.
+		iconType = {
+			name = "GER_SPD_row_057_left"
+			position = { x = 254 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 7
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_057_center"
+			position = { x = 254 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 7
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_057_right"
+			position = { x = 254 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 7
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 8: percentage point 58.
+		iconType = {
+			name = "GER_SPD_row_058_left"
+			position = { x = 254 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 8
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_058_center"
+			position = { x = 254 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 8
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_058_right"
+			position = { x = 254 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 8
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 9: percentage point 59.
+		iconType = {
+			name = "GER_SPD_row_059_left"
+			position = { x = 254 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 9
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_059_center"
+			position = { x = 254 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 9
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_059_right"
+			position = { x = 254 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 9
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 10: percentage point 60.
+		iconType = {
+			name = "GER_SPD_row_060_left"
+			position = { x = 254 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 10
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_060_center"
+			position = { x = 254 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 10
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_060_right"
+			position = { x = 254 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 10
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 11: percentage point 61.
+		iconType = {
+			name = "GER_SPD_row_061_left"
+			position = { x = 254 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 11
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_061_center"
+			position = { x = 254 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 11
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_061_right"
+			position = { x = 254 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 11
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 12: percentage point 62.
+		iconType = {
+			name = "GER_SPD_row_062_left"
+			position = { x = 254 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 12
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_062_center"
+			position = { x = 254 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 12
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_062_right"
+			position = { x = 254 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 12
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 13: percentage point 63.
+		iconType = {
+			name = "GER_SPD_row_063_left"
+			position = { x = 254 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 13
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_063_center"
+			position = { x = 254 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 13
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_063_right"
+			position = { x = 254 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 13
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 14: percentage point 64.
+		iconType = {
+			name = "GER_SPD_row_064_left"
+			position = { x = 254 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 14
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_064_center"
+			position = { x = 254 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 14
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_064_right"
+			position = { x = 254 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 14
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 15: percentage point 65.
+		iconType = {
+			name = "GER_SPD_row_065_left"
+			position = { x = 254 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 15
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_065_center"
+			position = { x = 254 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 15
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_065_right"
+			position = { x = 254 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 15
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 16: percentage point 66.
+		iconType = {
+			name = "GER_SPD_row_066_left"
+			position = { x = 254 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 16
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_066_center"
+			position = { x = 254 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 16
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_066_right"
+			position = { x = 254 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 16
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 17: percentage point 67.
+		iconType = {
+			name = "GER_SPD_row_067_left"
+			position = { x = 254 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 17
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_067_center"
+			position = { x = 254 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 17
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_067_right"
+			position = { x = 254 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 17
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 18: percentage point 68.
+		iconType = {
+			name = "GER_SPD_row_068_left"
+			position = { x = 254 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 18
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_068_center"
+			position = { x = 254 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 18
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_068_right"
+			position = { x = 254 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 18
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 19: percentage point 69.
+		iconType = {
+			name = "GER_SPD_row_069_left"
+			position = { x = 254 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 19
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_069_center"
+			position = { x = 254 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 19
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_069_right"
+			position = { x = 254 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 19
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 20: percentage point 70.
+		iconType = {
+			name = "GER_SPD_row_070_left"
+			position = { x = 254 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 20
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_070_center"
+			position = { x = 254 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 20
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_070_right"
+			position = { x = 254 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 20
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 21: percentage point 71.
+		iconType = {
+			name = "GER_SPD_row_071_left"
+			position = { x = 254 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 21
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_071_center"
+			position = { x = 254 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 21
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_071_right"
+			position = { x = 254 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 21
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 22: percentage point 72.
+		iconType = {
+			name = "GER_SPD_row_072_left"
+			position = { x = 254 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 22
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_072_center"
+			position = { x = 254 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 22
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_072_right"
+			position = { x = 254 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 22
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 23: percentage point 73.
+		iconType = {
+			name = "GER_SPD_row_073_left"
+			position = { x = 254 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 23
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_073_center"
+			position = { x = 254 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 23
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_073_right"
+			position = { x = 254 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 23
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 24: percentage point 74.
+		iconType = {
+			name = "GER_SPD_row_074_left"
+			position = { x = 254 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 24
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_074_center"
+			position = { x = 254 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 24
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_074_right"
+			position = { x = 254 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 24
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 3, row 25: percentage point 75.
+		iconType = {
+			name = "GER_SPD_row_075_left"
+			position = { x = 254 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 25
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_075_center"
+			position = { x = 254 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 25
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_075_right"
+			position = { x = 254 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 25
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 1: percentage point 76.
+		iconType = {
+			name = "GER_SPD_row_076_left"
+			position = { x = 371 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 1
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_076_center"
+			position = { x = 371 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 1
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_076_right"
+			position = { x = 371 y = 304 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 1
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 2: percentage point 77.
+		iconType = {
+			name = "GER_SPD_row_077_left"
+			position = { x = 371 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 2
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_077_center"
+			position = { x = 371 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 2
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_077_right"
+			position = { x = 371 y = 316 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 2
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 3: percentage point 78.
+		iconType = {
+			name = "GER_SPD_row_078_left"
+			position = { x = 371 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 3
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_078_center"
+			position = { x = 371 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 3
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_078_right"
+			position = { x = 371 y = 328 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 3
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 4: percentage point 79.
+		iconType = {
+			name = "GER_SPD_row_079_left"
+			position = { x = 371 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 4
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_079_center"
+			position = { x = 371 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 4
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_079_right"
+			position = { x = 371 y = 340 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 4
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 5: percentage point 80.
+		iconType = {
+			name = "GER_SPD_row_080_left"
+			position = { x = 371 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 5
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_080_center"
+			position = { x = 371 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 5
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_080_right"
+			position = { x = 371 y = 352 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 5
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 6: percentage point 81.
+		iconType = {
+			name = "GER_SPD_row_081_left"
+			position = { x = 371 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 6
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_081_center"
+			position = { x = 371 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 6
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_081_right"
+			position = { x = 371 y = 364 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 6
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 7: percentage point 82.
+		iconType = {
+			name = "GER_SPD_row_082_left"
+			position = { x = 371 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 7
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_082_center"
+			position = { x = 371 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 7
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_082_right"
+			position = { x = 371 y = 376 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 7
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 8: percentage point 83.
+		iconType = {
+			name = "GER_SPD_row_083_left"
+			position = { x = 371 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 8
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_083_center"
+			position = { x = 371 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 8
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_083_right"
+			position = { x = 371 y = 388 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 8
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 9: percentage point 84.
+		iconType = {
+			name = "GER_SPD_row_084_left"
+			position = { x = 371 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 9
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_084_center"
+			position = { x = 371 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 9
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_084_right"
+			position = { x = 371 y = 400 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 9
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 10: percentage point 85.
+		iconType = {
+			name = "GER_SPD_row_085_left"
+			position = { x = 371 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 10
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_085_center"
+			position = { x = 371 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 10
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_085_right"
+			position = { x = 371 y = 412 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 10
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 11: percentage point 86.
+		iconType = {
+			name = "GER_SPD_row_086_left"
+			position = { x = 371 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 11
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_086_center"
+			position = { x = 371 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 11
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_086_right"
+			position = { x = 371 y = 424 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 11
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 12: percentage point 87.
+		iconType = {
+			name = "GER_SPD_row_087_left"
+			position = { x = 371 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 12
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_087_center"
+			position = { x = 371 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 12
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_087_right"
+			position = { x = 371 y = 436 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 12
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 13: percentage point 88.
+		iconType = {
+			name = "GER_SPD_row_088_left"
+			position = { x = 371 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 13
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_088_center"
+			position = { x = 371 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 13
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_088_right"
+			position = { x = 371 y = 448 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 13
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 14: percentage point 89.
+		iconType = {
+			name = "GER_SPD_row_089_left"
+			position = { x = 371 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 14
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_089_center"
+			position = { x = 371 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 14
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_089_right"
+			position = { x = 371 y = 460 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 14
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 15: percentage point 90.
+		iconType = {
+			name = "GER_SPD_row_090_left"
+			position = { x = 371 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 15
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_090_center"
+			position = { x = 371 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 15
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_090_right"
+			position = { x = 371 y = 472 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 15
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 16: percentage point 91.
+		iconType = {
+			name = "GER_SPD_row_091_left"
+			position = { x = 371 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 16
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_091_center"
+			position = { x = 371 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 16
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_091_right"
+			position = { x = 371 y = 484 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 16
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 17: percentage point 92.
+		iconType = {
+			name = "GER_SPD_row_092_left"
+			position = { x = 371 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 17
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_092_center"
+			position = { x = 371 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 17
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_092_right"
+			position = { x = 371 y = 496 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 17
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 18: percentage point 93.
+		iconType = {
+			name = "GER_SPD_row_093_left"
+			position = { x = 371 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 18
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_093_center"
+			position = { x = 371 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 18
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_093_right"
+			position = { x = 371 y = 508 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 18
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 19: percentage point 94.
+		iconType = {
+			name = "GER_SPD_row_094_left"
+			position = { x = 371 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 19
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_094_center"
+			position = { x = 371 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 19
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_094_right"
+			position = { x = 371 y = 520 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 19
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 20: percentage point 95.
+		iconType = {
+			name = "GER_SPD_row_095_left"
+			position = { x = 371 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 20
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_095_center"
+			position = { x = 371 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 20
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_095_right"
+			position = { x = 371 y = 532 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 20
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 21: percentage point 96.
+		iconType = {
+			name = "GER_SPD_row_096_left"
+			position = { x = 371 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 21
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_096_center"
+			position = { x = 371 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 21
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_096_right"
+			position = { x = 371 y = 544 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 21
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 22: percentage point 97.
+		iconType = {
+			name = "GER_SPD_row_097_left"
+			position = { x = 371 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 22
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_097_center"
+			position = { x = 371 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 22
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_097_right"
+			position = { x = 371 y = 556 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 22
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 23: percentage point 98.
+		iconType = {
+			name = "GER_SPD_row_098_left"
+			position = { x = 371 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 23
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_098_center"
+			position = { x = 371 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 23
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_098_right"
+			position = { x = 371 y = 568 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 23
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 24: percentage point 99.
+		iconType = {
+			name = "GER_SPD_row_099_left"
+			position = { x = 371 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 24
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_099_center"
+			position = { x = 371 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 24
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_099_right"
+			position = { x = 371 y = 580 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 24
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+
+		# Column 4, row 25: percentage point 100.
+		iconType = {
+			name = "GER_SPD_row_100_left"
+			position = { x = 371 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_left"
+			frame = 25
+			pdx_tooltip = GER_SPD_left_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_100_center"
+			position = { x = 371 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_center"
+			frame = 25
+			pdx_tooltip = GER_SPD_center_tooltip
+		}
+		iconType = {
+			name = "GER_SPD_row_100_right"
+			position = { x = 371 y = 592 }
+			spriteType = "GFX_GER_SPD_rows_right"
+			frame = 25
+			pdx_tooltip = GER_SPD_right_tooltip
+		}
+	}
+}

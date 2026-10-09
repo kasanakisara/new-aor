@@ -1,0 +1,17 @@
+scripted_gui = {
+	GER_SPD_history_panel_gui = {
+		context_type = player_context
+		# Standalone player window; do not attach to the decision panel.
+		window_name = "GER_SPD_history_panel"
+		ai_enabled = { always = no }
+		visible = {
+			tag = GER
+			has_country_flag = GER_SPD_history_open
+		}
+		effects = {
+			GER_SPD_history_close_click = {
+				clr_country_flag = GER_SPD_history_open
+			}
+		}
+	}
+}

@@ -1,0 +1,1041 @@
+# Support values are integer percentages; GER_SPD_refresh_support_effect keeps the sum at 100.
+scripted_gui = {
+	GER_SPD_newspaper_gui = {
+		context_type = decision_category
+		window_name = "GER_SPD_newspaper_window"
+		dirty = GER_SPD_gui_revision
+		visible = { tag = GER }
+		ai_enabled = { always = no }
+		effects = {
+			GER_SPD_history_button_click = {
+				if = {
+					limit = { has_country_flag = GER_SPD_history_open }
+					clr_country_flag = GER_SPD_history_open
+				}
+				else = { set_country_flag = GER_SPD_history_open }
+			}
+		}
+		triggers = {
+			GER_SPD_unity_bloom_visible = { check_variable = { GER_SPD_unity > 59 } }
+			GER_SPD_unity_decay_visible = {
+				check_variable = { GER_SPD_unity > 29 }
+				check_variable = { GER_SPD_unity < 60 }
+			}
+			GER_SPD_unity_decay_1_visible = { check_variable = { GER_SPD_unity < 30 } }
+			GER_SPD_headline_visible = {
+				check_variable = { GER_SPD_left_support < 61 }
+				check_variable = { GER_SPD_center_support < 61 }
+				check_variable = { GER_SPD_right_support < 61 }
+			}
+			GER_SPD_headline_left_visible = {
+				check_variable = { GER_SPD_left_support > 60 }
+			}
+			GER_SPD_headline_center_visible = {
+				check_variable = { GER_SPD_center_support > 60 }
+			}
+			GER_SPD_headline_right_visible = {
+				check_variable = { GER_SPD_right_support > 60 }
+			}
+			GER_SPD_row_001_left_visible = {
+				check_variable = { GER_SPD_left_support > 0 }
+			}
+			GER_SPD_row_001_center_visible = {
+				check_variable = { GER_SPD_left_support < 1 }
+				check_variable = { GER_SPD_right_support < 100 }
+			}
+			GER_SPD_row_001_right_visible = {
+				check_variable = { GER_SPD_right_support > 99 }
+			}
+			GER_SPD_row_002_left_visible = {
+				check_variable = { GER_SPD_left_support > 1 }
+			}
+			GER_SPD_row_002_center_visible = {
+				check_variable = { GER_SPD_left_support < 2 }
+				check_variable = { GER_SPD_right_support < 99 }
+			}
+			GER_SPD_row_002_right_visible = {
+				check_variable = { GER_SPD_right_support > 98 }
+			}
+			GER_SPD_row_003_left_visible = {
+				check_variable = { GER_SPD_left_support > 2 }
+			}
+			GER_SPD_row_003_center_visible = {
+				check_variable = { GER_SPD_left_support < 3 }
+				check_variable = { GER_SPD_right_support < 98 }
+			}
+			GER_SPD_row_003_right_visible = {
+				check_variable = { GER_SPD_right_support > 97 }
+			}
+			GER_SPD_row_004_left_visible = {
+				check_variable = { GER_SPD_left_support > 3 }
+			}
+			GER_SPD_row_004_center_visible = {
+				check_variable = { GER_SPD_left_support < 4 }
+				check_variable = { GER_SPD_right_support < 97 }
+			}
+			GER_SPD_row_004_right_visible = {
+				check_variable = { GER_SPD_right_support > 96 }
+			}
+			GER_SPD_row_005_left_visible = {
+				check_variable = { GER_SPD_left_support > 4 }
+			}
+			GER_SPD_row_005_center_visible = {
+				check_variable = { GER_SPD_left_support < 5 }
+				check_variable = { GER_SPD_right_support < 96 }
+			}
+			GER_SPD_row_005_right_visible = {
+				check_variable = { GER_SPD_right_support > 95 }
+			}
+			GER_SPD_row_006_left_visible = {
+				check_variable = { GER_SPD_left_support > 5 }
+			}
+			GER_SPD_row_006_center_visible = {
+				check_variable = { GER_SPD_left_support < 6 }
+				check_variable = { GER_SPD_right_support < 95 }
+			}
+			GER_SPD_row_006_right_visible = {
+				check_variable = { GER_SPD_right_support > 94 }
+			}
+			GER_SPD_row_007_left_visible = {
+				check_variable = { GER_SPD_left_support > 6 }
+			}
+			GER_SPD_row_007_center_visible = {
+				check_variable = { GER_SPD_left_support < 7 }
+				check_variable = { GER_SPD_right_support < 94 }
+			}
+			GER_SPD_row_007_right_visible = {
+				check_variable = { GER_SPD_right_support > 93 }
+			}
+			GER_SPD_row_008_left_visible = {
+				check_variable = { GER_SPD_left_support > 7 }
+			}
+			GER_SPD_row_008_center_visible = {
+				check_variable = { GER_SPD_left_support < 8 }
+				check_variable = { GER_SPD_right_support < 93 }
+			}
+			GER_SPD_row_008_right_visible = {
+				check_variable = { GER_SPD_right_support > 92 }
+			}
+			GER_SPD_row_009_left_visible = {
+				check_variable = { GER_SPD_left_support > 8 }
+			}
+			GER_SPD_row_009_center_visible = {
+				check_variable = { GER_SPD_left_support < 9 }
+				check_variable = { GER_SPD_right_support < 92 }
+			}
+			GER_SPD_row_009_right_visible = {
+				check_variable = { GER_SPD_right_support > 91 }
+			}
+			GER_SPD_row_010_left_visible = {
+				check_variable = { GER_SPD_left_support > 9 }
+			}
+			GER_SPD_row_010_center_visible = {
+				check_variable = { GER_SPD_left_support < 10 }
+				check_variable = { GER_SPD_right_support < 91 }
+			}
+			GER_SPD_row_010_right_visible = {
+				check_variable = { GER_SPD_right_support > 90 }
+			}
+			GER_SPD_row_011_left_visible = {
+				check_variable = { GER_SPD_left_support > 10 }
+			}
+			GER_SPD_row_011_center_visible = {
+				check_variable = { GER_SPD_left_support < 11 }
+				check_variable = { GER_SPD_right_support < 90 }
+			}
+			GER_SPD_row_011_right_visible = {
+				check_variable = { GER_SPD_right_support > 89 }
+			}
+			GER_SPD_row_012_left_visible = {
+				check_variable = { GER_SPD_left_support > 11 }
+			}
+			GER_SPD_row_012_center_visible = {
+				check_variable = { GER_SPD_left_support < 12 }
+				check_variable = { GER_SPD_right_support < 89 }
+			}
+			GER_SPD_row_012_right_visible = {
+				check_variable = { GER_SPD_right_support > 88 }
+			}
+			GER_SPD_row_013_left_visible = {
+				check_variable = { GER_SPD_left_support > 12 }
+			}
+			GER_SPD_row_013_center_visible = {
+				check_variable = { GER_SPD_left_support < 13 }
+				check_variable = { GER_SPD_right_support < 88 }
+			}
+			GER_SPD_row_013_right_visible = {
+				check_variable = { GER_SPD_right_support > 87 }
+			}
+			GER_SPD_row_014_left_visible = {
+				check_variable = { GER_SPD_left_support > 13 }
+			}
+			GER_SPD_row_014_center_visible = {
+				check_variable = { GER_SPD_left_support < 14 }
+				check_variable = { GER_SPD_right_support < 87 }
+			}
+			GER_SPD_row_014_right_visible = {
+				check_variable = { GER_SPD_right_support > 86 }
+			}
+			GER_SPD_row_015_left_visible = {
+				check_variable = { GER_SPD_left_support > 14 }
+			}
+			GER_SPD_row_015_center_visible = {
+				check_variable = { GER_SPD_left_support < 15 }
+				check_variable = { GER_SPD_right_support < 86 }
+			}
+			GER_SPD_row_015_right_visible = {
+				check_variable = { GER_SPD_right_support > 85 }
+			}
+			GER_SPD_row_016_left_visible = {
+				check_variable = { GER_SPD_left_support > 15 }
+			}
+			GER_SPD_row_016_center_visible = {
+				check_variable = { GER_SPD_left_support < 16 }
+				check_variable = { GER_SPD_right_support < 85 }
+			}
+			GER_SPD_row_016_right_visible = {
+				check_variable = { GER_SPD_right_support > 84 }
+			}
+			GER_SPD_row_017_left_visible = {
+				check_variable = { GER_SPD_left_support > 16 }
+			}
+			GER_SPD_row_017_center_visible = {
+				check_variable = { GER_SPD_left_support < 17 }
+				check_variable = { GER_SPD_right_support < 84 }
+			}
+			GER_SPD_row_017_right_visible = {
+				check_variable = { GER_SPD_right_support > 83 }
+			}
+			GER_SPD_row_018_left_visible = {
+				check_variable = { GER_SPD_left_support > 17 }
+			}
+			GER_SPD_row_018_center_visible = {
+				check_variable = { GER_SPD_left_support < 18 }
+				check_variable = { GER_SPD_right_support < 83 }
+			}
+			GER_SPD_row_018_right_visible = {
+				check_variable = { GER_SPD_right_support > 82 }
+			}
+			GER_SPD_row_019_left_visible = {
+				check_variable = { GER_SPD_left_support > 18 }
+			}
+			GER_SPD_row_019_center_visible = {
+				check_variable = { GER_SPD_left_support < 19 }
+				check_variable = { GER_SPD_right_support < 82 }
+			}
+			GER_SPD_row_019_right_visible = {
+				check_variable = { GER_SPD_right_support > 81 }
+			}
+			GER_SPD_row_020_left_visible = {
+				check_variable = { GER_SPD_left_support > 19 }
+			}
+			GER_SPD_row_020_center_visible = {
+				check_variable = { GER_SPD_left_support < 20 }
+				check_variable = { GER_SPD_right_support < 81 }
+			}
+			GER_SPD_row_020_right_visible = {
+				check_variable = { GER_SPD_right_support > 80 }
+			}
+			GER_SPD_row_021_left_visible = {
+				check_variable = { GER_SPD_left_support > 20 }
+			}
+			GER_SPD_row_021_center_visible = {
+				check_variable = { GER_SPD_left_support < 21 }
+				check_variable = { GER_SPD_right_support < 80 }
+			}
+			GER_SPD_row_021_right_visible = {
+				check_variable = { GER_SPD_right_support > 79 }
+			}
+			GER_SPD_row_022_left_visible = {
+				check_variable = { GER_SPD_left_support > 21 }
+			}
+			GER_SPD_row_022_center_visible = {
+				check_variable = { GER_SPD_left_support < 22 }
+				check_variable = { GER_SPD_right_support < 79 }
+			}
+			GER_SPD_row_022_right_visible = {
+				check_variable = { GER_SPD_right_support > 78 }
+			}
+			GER_SPD_row_023_left_visible = {
+				check_variable = { GER_SPD_left_support > 22 }
+			}
+			GER_SPD_row_023_center_visible = {
+				check_variable = { GER_SPD_left_support < 23 }
+				check_variable = { GER_SPD_right_support < 78 }
+			}
+			GER_SPD_row_023_right_visible = {
+				check_variable = { GER_SPD_right_support > 77 }
+			}
+			GER_SPD_row_024_left_visible = {
+				check_variable = { GER_SPD_left_support > 23 }
+			}
+			GER_SPD_row_024_center_visible = {
+				check_variable = { GER_SPD_left_support < 24 }
+				check_variable = { GER_SPD_right_support < 77 }
+			}
+			GER_SPD_row_024_right_visible = {
+				check_variable = { GER_SPD_right_support > 76 }
+			}
+			GER_SPD_row_025_left_visible = {
+				check_variable = { GER_SPD_left_support > 24 }
+			}
+			GER_SPD_row_025_center_visible = {
+				check_variable = { GER_SPD_left_support < 25 }
+				check_variable = { GER_SPD_right_support < 76 }
+			}
+			GER_SPD_row_025_right_visible = {
+				check_variable = { GER_SPD_right_support > 75 }
+			}
+			GER_SPD_row_026_left_visible = {
+				check_variable = { GER_SPD_left_support > 25 }
+			}
+			GER_SPD_row_026_center_visible = {
+				check_variable = { GER_SPD_left_support < 26 }
+				check_variable = { GER_SPD_right_support < 75 }
+			}
+			GER_SPD_row_026_right_visible = {
+				check_variable = { GER_SPD_right_support > 74 }
+			}
+			GER_SPD_row_027_left_visible = {
+				check_variable = { GER_SPD_left_support > 26 }
+			}
+			GER_SPD_row_027_center_visible = {
+				check_variable = { GER_SPD_left_support < 27 }
+				check_variable = { GER_SPD_right_support < 74 }
+			}
+			GER_SPD_row_027_right_visible = {
+				check_variable = { GER_SPD_right_support > 73 }
+			}
+			GER_SPD_row_028_left_visible = {
+				check_variable = { GER_SPD_left_support > 27 }
+			}
+			GER_SPD_row_028_center_visible = {
+				check_variable = { GER_SPD_left_support < 28 }
+				check_variable = { GER_SPD_right_support < 73 }
+			}
+			GER_SPD_row_028_right_visible = {
+				check_variable = { GER_SPD_right_support > 72 }
+			}
+			GER_SPD_row_029_left_visible = {
+				check_variable = { GER_SPD_left_support > 28 }
+			}
+			GER_SPD_row_029_center_visible = {
+				check_variable = { GER_SPD_left_support < 29 }
+				check_variable = { GER_SPD_right_support < 72 }
+			}
+			GER_SPD_row_029_right_visible = {
+				check_variable = { GER_SPD_right_support > 71 }
+			}
+			GER_SPD_row_030_left_visible = {
+				check_variable = { GER_SPD_left_support > 29 }
+			}
+			GER_SPD_row_030_center_visible = {
+				check_variable = { GER_SPD_left_support < 30 }
+				check_variable = { GER_SPD_right_support < 71 }
+			}
+			GER_SPD_row_030_right_visible = {
+				check_variable = { GER_SPD_right_support > 70 }
+			}
+			GER_SPD_row_031_left_visible = {
+				check_variable = { GER_SPD_left_support > 30 }
+			}
+			GER_SPD_row_031_center_visible = {
+				check_variable = { GER_SPD_left_support < 31 }
+				check_variable = { GER_SPD_right_support < 70 }
+			}
+			GER_SPD_row_031_right_visible = {
+				check_variable = { GER_SPD_right_support > 69 }
+			}
+			GER_SPD_row_032_left_visible = {
+				check_variable = { GER_SPD_left_support > 31 }
+			}
+			GER_SPD_row_032_center_visible = {
+				check_variable = { GER_SPD_left_support < 32 }
+				check_variable = { GER_SPD_right_support < 69 }
+			}
+			GER_SPD_row_032_right_visible = {
+				check_variable = { GER_SPD_right_support > 68 }
+			}
+			GER_SPD_row_033_left_visible = {
+				check_variable = { GER_SPD_left_support > 32 }
+			}
+			GER_SPD_row_033_center_visible = {
+				check_variable = { GER_SPD_left_support < 33 }
+				check_variable = { GER_SPD_right_support < 68 }
+			}
+			GER_SPD_row_033_right_visible = {
+				check_variable = { GER_SPD_right_support > 67 }
+			}
+			GER_SPD_row_034_left_visible = {
+				check_variable = { GER_SPD_left_support > 33 }
+			}
+			GER_SPD_row_034_center_visible = {
+				check_variable = { GER_SPD_left_support < 34 }
+				check_variable = { GER_SPD_right_support < 67 }
+			}
+			GER_SPD_row_034_right_visible = {
+				check_variable = { GER_SPD_right_support > 66 }
+			}
+			GER_SPD_row_035_left_visible = {
+				check_variable = { GER_SPD_left_support > 34 }
+			}
+			GER_SPD_row_035_center_visible = {
+				check_variable = { GER_SPD_left_support < 35 }
+				check_variable = { GER_SPD_right_support < 66 }
+			}
+			GER_SPD_row_035_right_visible = {
+				check_variable = { GER_SPD_right_support > 65 }
+			}
+			GER_SPD_row_036_left_visible = {
+				check_variable = { GER_SPD_left_support > 35 }
+			}
+			GER_SPD_row_036_center_visible = {
+				check_variable = { GER_SPD_left_support < 36 }
+				check_variable = { GER_SPD_right_support < 65 }
+			}
+			GER_SPD_row_036_right_visible = {
+				check_variable = { GER_SPD_right_support > 64 }
+			}
+			GER_SPD_row_037_left_visible = {
+				check_variable = { GER_SPD_left_support > 36 }
+			}
+			GER_SPD_row_037_center_visible = {
+				check_variable = { GER_SPD_left_support < 37 }
+				check_variable = { GER_SPD_right_support < 64 }
+			}
+			GER_SPD_row_037_right_visible = {
+				check_variable = { GER_SPD_right_support > 63 }
+			}
+			GER_SPD_row_038_left_visible = {
+				check_variable = { GER_SPD_left_support > 37 }
+			}
+			GER_SPD_row_038_center_visible = {
+				check_variable = { GER_SPD_left_support < 38 }
+				check_variable = { GER_SPD_right_support < 63 }
+			}
+			GER_SPD_row_038_right_visible = {
+				check_variable = { GER_SPD_right_support > 62 }
+			}
+			GER_SPD_row_039_left_visible = {
+				check_variable = { GER_SPD_left_support > 38 }
+			}
+			GER_SPD_row_039_center_visible = {
+				check_variable = { GER_SPD_left_support < 39 }
+				check_variable = { GER_SPD_right_support < 62 }
+			}
+			GER_SPD_row_039_right_visible = {
+				check_variable = { GER_SPD_right_support > 61 }
+			}
+			GER_SPD_row_040_left_visible = {
+				check_variable = { GER_SPD_left_support > 39 }
+			}
+			GER_SPD_row_040_center_visible = {
+				check_variable = { GER_SPD_left_support < 40 }
+				check_variable = { GER_SPD_right_support < 61 }
+			}
+			GER_SPD_row_040_right_visible = {
+				check_variable = { GER_SPD_right_support > 60 }
+			}
+			GER_SPD_row_041_left_visible = {
+				check_variable = { GER_SPD_left_support > 40 }
+			}
+			GER_SPD_row_041_center_visible = {
+				check_variable = { GER_SPD_left_support < 41 }
+				check_variable = { GER_SPD_right_support < 60 }
+			}
+			GER_SPD_row_041_right_visible = {
+				check_variable = { GER_SPD_right_support > 59 }
+			}
+			GER_SPD_row_042_left_visible = {
+				check_variable = { GER_SPD_left_support > 41 }
+			}
+			GER_SPD_row_042_center_visible = {
+				check_variable = { GER_SPD_left_support < 42 }
+				check_variable = { GER_SPD_right_support < 59 }
+			}
+			GER_SPD_row_042_right_visible = {
+				check_variable = { GER_SPD_right_support > 58 }
+			}
+			GER_SPD_row_043_left_visible = {
+				check_variable = { GER_SPD_left_support > 42 }
+			}
+			GER_SPD_row_043_center_visible = {
+				check_variable = { GER_SPD_left_support < 43 }
+				check_variable = { GER_SPD_right_support < 58 }
+			}
+			GER_SPD_row_043_right_visible = {
+				check_variable = { GER_SPD_right_support > 57 }
+			}
+			GER_SPD_row_044_left_visible = {
+				check_variable = { GER_SPD_left_support > 43 }
+			}
+			GER_SPD_row_044_center_visible = {
+				check_variable = { GER_SPD_left_support < 44 }
+				check_variable = { GER_SPD_right_support < 57 }
+			}
+			GER_SPD_row_044_right_visible = {
+				check_variable = { GER_SPD_right_support > 56 }
+			}
+			GER_SPD_row_045_left_visible = {
+				check_variable = { GER_SPD_left_support > 44 }
+			}
+			GER_SPD_row_045_center_visible = {
+				check_variable = { GER_SPD_left_support < 45 }
+				check_variable = { GER_SPD_right_support < 56 }
+			}
+			GER_SPD_row_045_right_visible = {
+				check_variable = { GER_SPD_right_support > 55 }
+			}
+			GER_SPD_row_046_left_visible = {
+				check_variable = { GER_SPD_left_support > 45 }
+			}
+			GER_SPD_row_046_center_visible = {
+				check_variable = { GER_SPD_left_support < 46 }
+				check_variable = { GER_SPD_right_support < 55 }
+			}
+			GER_SPD_row_046_right_visible = {
+				check_variable = { GER_SPD_right_support > 54 }
+			}
+			GER_SPD_row_047_left_visible = {
+				check_variable = { GER_SPD_left_support > 46 }
+			}
+			GER_SPD_row_047_center_visible = {
+				check_variable = { GER_SPD_left_support < 47 }
+				check_variable = { GER_SPD_right_support < 54 }
+			}
+			GER_SPD_row_047_right_visible = {
+				check_variable = { GER_SPD_right_support > 53 }
+			}
+			GER_SPD_row_048_left_visible = {
+				check_variable = { GER_SPD_left_support > 47 }
+			}
+			GER_SPD_row_048_center_visible = {
+				check_variable = { GER_SPD_left_support < 48 }
+				check_variable = { GER_SPD_right_support < 53 }
+			}
+			GER_SPD_row_048_right_visible = {
+				check_variable = { GER_SPD_right_support > 52 }
+			}
+			GER_SPD_row_049_left_visible = {
+				check_variable = { GER_SPD_left_support > 48 }
+			}
+			GER_SPD_row_049_center_visible = {
+				check_variable = { GER_SPD_left_support < 49 }
+				check_variable = { GER_SPD_right_support < 52 }
+			}
+			GER_SPD_row_049_right_visible = {
+				check_variable = { GER_SPD_right_support > 51 }
+			}
+			GER_SPD_row_050_left_visible = {
+				check_variable = { GER_SPD_left_support > 49 }
+			}
+			GER_SPD_row_050_center_visible = {
+				check_variable = { GER_SPD_left_support < 50 }
+				check_variable = { GER_SPD_right_support < 51 }
+			}
+			GER_SPD_row_050_right_visible = {
+				check_variable = { GER_SPD_right_support > 50 }
+			}
+			GER_SPD_row_051_left_visible = {
+				check_variable = { GER_SPD_left_support > 50 }
+			}
+			GER_SPD_row_051_center_visible = {
+				check_variable = { GER_SPD_left_support < 51 }
+				check_variable = { GER_SPD_right_support < 50 }
+			}
+			GER_SPD_row_051_right_visible = {
+				check_variable = { GER_SPD_right_support > 49 }
+			}
+			GER_SPD_row_052_left_visible = {
+				check_variable = { GER_SPD_left_support > 51 }
+			}
+			GER_SPD_row_052_center_visible = {
+				check_variable = { GER_SPD_left_support < 52 }
+				check_variable = { GER_SPD_right_support < 49 }
+			}
+			GER_SPD_row_052_right_visible = {
+				check_variable = { GER_SPD_right_support > 48 }
+			}
+			GER_SPD_row_053_left_visible = {
+				check_variable = { GER_SPD_left_support > 52 }
+			}
+			GER_SPD_row_053_center_visible = {
+				check_variable = { GER_SPD_left_support < 53 }
+				check_variable = { GER_SPD_right_support < 48 }
+			}
+			GER_SPD_row_053_right_visible = {
+				check_variable = { GER_SPD_right_support > 47 }
+			}
+			GER_SPD_row_054_left_visible = {
+				check_variable = { GER_SPD_left_support > 53 }
+			}
+			GER_SPD_row_054_center_visible = {
+				check_variable = { GER_SPD_left_support < 54 }
+				check_variable = { GER_SPD_right_support < 47 }
+			}
+			GER_SPD_row_054_right_visible = {
+				check_variable = { GER_SPD_right_support > 46 }
+			}
+			GER_SPD_row_055_left_visible = {
+				check_variable = { GER_SPD_left_support > 54 }
+			}
+			GER_SPD_row_055_center_visible = {
+				check_variable = { GER_SPD_left_support < 55 }
+				check_variable = { GER_SPD_right_support < 46 }
+			}
+			GER_SPD_row_055_right_visible = {
+				check_variable = { GER_SPD_right_support > 45 }
+			}
+			GER_SPD_row_056_left_visible = {
+				check_variable = { GER_SPD_left_support > 55 }
+			}
+			GER_SPD_row_056_center_visible = {
+				check_variable = { GER_SPD_left_support < 56 }
+				check_variable = { GER_SPD_right_support < 45 }
+			}
+			GER_SPD_row_056_right_visible = {
+				check_variable = { GER_SPD_right_support > 44 }
+			}
+			GER_SPD_row_057_left_visible = {
+				check_variable = { GER_SPD_left_support > 56 }
+			}
+			GER_SPD_row_057_center_visible = {
+				check_variable = { GER_SPD_left_support < 57 }
+				check_variable = { GER_SPD_right_support < 44 }
+			}
+			GER_SPD_row_057_right_visible = {
+				check_variable = { GER_SPD_right_support > 43 }
+			}
+			GER_SPD_row_058_left_visible = {
+				check_variable = { GER_SPD_left_support > 57 }
+			}
+			GER_SPD_row_058_center_visible = {
+				check_variable = { GER_SPD_left_support < 58 }
+				check_variable = { GER_SPD_right_support < 43 }
+			}
+			GER_SPD_row_058_right_visible = {
+				check_variable = { GER_SPD_right_support > 42 }
+			}
+			GER_SPD_row_059_left_visible = {
+				check_variable = { GER_SPD_left_support > 58 }
+			}
+			GER_SPD_row_059_center_visible = {
+				check_variable = { GER_SPD_left_support < 59 }
+				check_variable = { GER_SPD_right_support < 42 }
+			}
+			GER_SPD_row_059_right_visible = {
+				check_variable = { GER_SPD_right_support > 41 }
+			}
+			GER_SPD_row_060_left_visible = {
+				check_variable = { GER_SPD_left_support > 59 }
+			}
+			GER_SPD_row_060_center_visible = {
+				check_variable = { GER_SPD_left_support < 60 }
+				check_variable = { GER_SPD_right_support < 41 }
+			}
+			GER_SPD_row_060_right_visible = {
+				check_variable = { GER_SPD_right_support > 40 }
+			}
+			GER_SPD_row_061_left_visible = {
+				check_variable = { GER_SPD_left_support > 60 }
+			}
+			GER_SPD_row_061_center_visible = {
+				check_variable = { GER_SPD_left_support < 61 }
+				check_variable = { GER_SPD_right_support < 40 }
+			}
+			GER_SPD_row_061_right_visible = {
+				check_variable = { GER_SPD_right_support > 39 }
+			}
+			GER_SPD_row_062_left_visible = {
+				check_variable = { GER_SPD_left_support > 61 }
+			}
+			GER_SPD_row_062_center_visible = {
+				check_variable = { GER_SPD_left_support < 62 }
+				check_variable = { GER_SPD_right_support < 39 }
+			}
+			GER_SPD_row_062_right_visible = {
+				check_variable = { GER_SPD_right_support > 38 }
+			}
+			GER_SPD_row_063_left_visible = {
+				check_variable = { GER_SPD_left_support > 62 }
+			}
+			GER_SPD_row_063_center_visible = {
+				check_variable = { GER_SPD_left_support < 63 }
+				check_variable = { GER_SPD_right_support < 38 }
+			}
+			GER_SPD_row_063_right_visible = {
+				check_variable = { GER_SPD_right_support > 37 }
+			}
+			GER_SPD_row_064_left_visible = {
+				check_variable = { GER_SPD_left_support > 63 }
+			}
+			GER_SPD_row_064_center_visible = {
+				check_variable = { GER_SPD_left_support < 64 }
+				check_variable = { GER_SPD_right_support < 37 }
+			}
+			GER_SPD_row_064_right_visible = {
+				check_variable = { GER_SPD_right_support > 36 }
+			}
+			GER_SPD_row_065_left_visible = {
+				check_variable = { GER_SPD_left_support > 64 }
+			}
+			GER_SPD_row_065_center_visible = {
+				check_variable = { GER_SPD_left_support < 65 }
+				check_variable = { GER_SPD_right_support < 36 }
+			}
+			GER_SPD_row_065_right_visible = {
+				check_variable = { GER_SPD_right_support > 35 }
+			}
+			GER_SPD_row_066_left_visible = {
+				check_variable = { GER_SPD_left_support > 65 }
+			}
+			GER_SPD_row_066_center_visible = {
+				check_variable = { GER_SPD_left_support < 66 }
+				check_variable = { GER_SPD_right_support < 35 }
+			}
+			GER_SPD_row_066_right_visible = {
+				check_variable = { GER_SPD_right_support > 34 }
+			}
+			GER_SPD_row_067_left_visible = {
+				check_variable = { GER_SPD_left_support > 66 }
+			}
+			GER_SPD_row_067_center_visible = {
+				check_variable = { GER_SPD_left_support < 67 }
+				check_variable = { GER_SPD_right_support < 34 }
+			}
+			GER_SPD_row_067_right_visible = {
+				check_variable = { GER_SPD_right_support > 33 }
+			}
+			GER_SPD_row_068_left_visible = {
+				check_variable = { GER_SPD_left_support > 67 }
+			}
+			GER_SPD_row_068_center_visible = {
+				check_variable = { GER_SPD_left_support < 68 }
+				check_variable = { GER_SPD_right_support < 33 }
+			}
+			GER_SPD_row_068_right_visible = {
+				check_variable = { GER_SPD_right_support > 32 }
+			}
+			GER_SPD_row_069_left_visible = {
+				check_variable = { GER_SPD_left_support > 68 }
+			}
+			GER_SPD_row_069_center_visible = {
+				check_variable = { GER_SPD_left_support < 69 }
+				check_variable = { GER_SPD_right_support < 32 }
+			}
+			GER_SPD_row_069_right_visible = {
+				check_variable = { GER_SPD_right_support > 31 }
+			}
+			GER_SPD_row_070_left_visible = {
+				check_variable = { GER_SPD_left_support > 69 }
+			}
+			GER_SPD_row_070_center_visible = {
+				check_variable = { GER_SPD_left_support < 70 }
+				check_variable = { GER_SPD_right_support < 31 }
+			}
+			GER_SPD_row_070_right_visible = {
+				check_variable = { GER_SPD_right_support > 30 }
+			}
+			GER_SPD_row_071_left_visible = {
+				check_variable = { GER_SPD_left_support > 70 }
+			}
+			GER_SPD_row_071_center_visible = {
+				check_variable = { GER_SPD_left_support < 71 }
+				check_variable = { GER_SPD_right_support < 30 }
+			}
+			GER_SPD_row_071_right_visible = {
+				check_variable = { GER_SPD_right_support > 29 }
+			}
+			GER_SPD_row_072_left_visible = {
+				check_variable = { GER_SPD_left_support > 71 }
+			}
+			GER_SPD_row_072_center_visible = {
+				check_variable = { GER_SPD_left_support < 72 }
+				check_variable = { GER_SPD_right_support < 29 }
+			}
+			GER_SPD_row_072_right_visible = {
+				check_variable = { GER_SPD_right_support > 28 }
+			}
+			GER_SPD_row_073_left_visible = {
+				check_variable = { GER_SPD_left_support > 72 }
+			}
+			GER_SPD_row_073_center_visible = {
+				check_variable = { GER_SPD_left_support < 73 }
+				check_variable = { GER_SPD_right_support < 28 }
+			}
+			GER_SPD_row_073_right_visible = {
+				check_variable = { GER_SPD_right_support > 27 }
+			}
+			GER_SPD_row_074_left_visible = {
+				check_variable = { GER_SPD_left_support > 73 }
+			}
+			GER_SPD_row_074_center_visible = {
+				check_variable = { GER_SPD_left_support < 74 }
+				check_variable = { GER_SPD_right_support < 27 }
+			}
+			GER_SPD_row_074_right_visible = {
+				check_variable = { GER_SPD_right_support > 26 }
+			}
+			GER_SPD_row_075_left_visible = {
+				check_variable = { GER_SPD_left_support > 74 }
+			}
+			GER_SPD_row_075_center_visible = {
+				check_variable = { GER_SPD_left_support < 75 }
+				check_variable = { GER_SPD_right_support < 26 }
+			}
+			GER_SPD_row_075_right_visible = {
+				check_variable = { GER_SPD_right_support > 25 }
+			}
+			GER_SPD_row_076_left_visible = {
+				check_variable = { GER_SPD_left_support > 75 }
+			}
+			GER_SPD_row_076_center_visible = {
+				check_variable = { GER_SPD_left_support < 76 }
+				check_variable = { GER_SPD_right_support < 25 }
+			}
+			GER_SPD_row_076_right_visible = {
+				check_variable = { GER_SPD_right_support > 24 }
+			}
+			GER_SPD_row_077_left_visible = {
+				check_variable = { GER_SPD_left_support > 76 }
+			}
+			GER_SPD_row_077_center_visible = {
+				check_variable = { GER_SPD_left_support < 77 }
+				check_variable = { GER_SPD_right_support < 24 }
+			}
+			GER_SPD_row_077_right_visible = {
+				check_variable = { GER_SPD_right_support > 23 }
+			}
+			GER_SPD_row_078_left_visible = {
+				check_variable = { GER_SPD_left_support > 77 }
+			}
+			GER_SPD_row_078_center_visible = {
+				check_variable = { GER_SPD_left_support < 78 }
+				check_variable = { GER_SPD_right_support < 23 }
+			}
+			GER_SPD_row_078_right_visible = {
+				check_variable = { GER_SPD_right_support > 22 }
+			}
+			GER_SPD_row_079_left_visible = {
+				check_variable = { GER_SPD_left_support > 78 }
+			}
+			GER_SPD_row_079_center_visible = {
+				check_variable = { GER_SPD_left_support < 79 }
+				check_variable = { GER_SPD_right_support < 22 }
+			}
+			GER_SPD_row_079_right_visible = {
+				check_variable = { GER_SPD_right_support > 21 }
+			}
+			GER_SPD_row_080_left_visible = {
+				check_variable = { GER_SPD_left_support > 79 }
+			}
+			GER_SPD_row_080_center_visible = {
+				check_variable = { GER_SPD_left_support < 80 }
+				check_variable = { GER_SPD_right_support < 21 }
+			}
+			GER_SPD_row_080_right_visible = {
+				check_variable = { GER_SPD_right_support > 20 }
+			}
+			GER_SPD_row_081_left_visible = {
+				check_variable = { GER_SPD_left_support > 80 }
+			}
+			GER_SPD_row_081_center_visible = {
+				check_variable = { GER_SPD_left_support < 81 }
+				check_variable = { GER_SPD_right_support < 20 }
+			}
+			GER_SPD_row_081_right_visible = {
+				check_variable = { GER_SPD_right_support > 19 }
+			}
+			GER_SPD_row_082_left_visible = {
+				check_variable = { GER_SPD_left_support > 81 }
+			}
+			GER_SPD_row_082_center_visible = {
+				check_variable = { GER_SPD_left_support < 82 }
+				check_variable = { GER_SPD_right_support < 19 }
+			}
+			GER_SPD_row_082_right_visible = {
+				check_variable = { GER_SPD_right_support > 18 }
+			}
+			GER_SPD_row_083_left_visible = {
+				check_variable = { GER_SPD_left_support > 82 }
+			}
+			GER_SPD_row_083_center_visible = {
+				check_variable = { GER_SPD_left_support < 83 }
+				check_variable = { GER_SPD_right_support < 18 }
+			}
+			GER_SPD_row_083_right_visible = {
+				check_variable = { GER_SPD_right_support > 17 }
+			}
+			GER_SPD_row_084_left_visible = {
+				check_variable = { GER_SPD_left_support > 83 }
+			}
+			GER_SPD_row_084_center_visible = {
+				check_variable = { GER_SPD_left_support < 84 }
+				check_variable = { GER_SPD_right_support < 17 }
+			}
+			GER_SPD_row_084_right_visible = {
+				check_variable = { GER_SPD_right_support > 16 }
+			}
+			GER_SPD_row_085_left_visible = {
+				check_variable = { GER_SPD_left_support > 84 }
+			}
+			GER_SPD_row_085_center_visible = {
+				check_variable = { GER_SPD_left_support < 85 }
+				check_variable = { GER_SPD_right_support < 16 }
+			}
+			GER_SPD_row_085_right_visible = {
+				check_variable = { GER_SPD_right_support > 15 }
+			}
+			GER_SPD_row_086_left_visible = {
+				check_variable = { GER_SPD_left_support > 85 }
+			}
+			GER_SPD_row_086_center_visible = {
+				check_variable = { GER_SPD_left_support < 86 }
+				check_variable = { GER_SPD_right_support < 15 }
+			}
+			GER_SPD_row_086_right_visible = {
+				check_variable = { GER_SPD_right_support > 14 }
+			}
+			GER_SPD_row_087_left_visible = {
+				check_variable = { GER_SPD_left_support > 86 }
+			}
+			GER_SPD_row_087_center_visible = {
+				check_variable = { GER_SPD_left_support < 87 }
+				check_variable = { GER_SPD_right_support < 14 }
+			}
+			GER_SPD_row_087_right_visible = {
+				check_variable = { GER_SPD_right_support > 13 }
+			}
+			GER_SPD_row_088_left_visible = {
+				check_variable = { GER_SPD_left_support > 87 }
+			}
+			GER_SPD_row_088_center_visible = {
+				check_variable = { GER_SPD_left_support < 88 }
+				check_variable = { GER_SPD_right_support < 13 }
+			}
+			GER_SPD_row_088_right_visible = {
+				check_variable = { GER_SPD_right_support > 12 }
+			}
+			GER_SPD_row_089_left_visible = {
+				check_variable = { GER_SPD_left_support > 88 }
+			}
+			GER_SPD_row_089_center_visible = {
+				check_variable = { GER_SPD_left_support < 89 }
+				check_variable = { GER_SPD_right_support < 12 }
+			}
+			GER_SPD_row_089_right_visible = {
+				check_variable = { GER_SPD_right_support > 11 }
+			}
+			GER_SPD_row_090_left_visible = {
+				check_variable = { GER_SPD_left_support > 89 }
+			}
+			GER_SPD_row_090_center_visible = {
+				check_variable = { GER_SPD_left_support < 90 }
+				check_variable = { GER_SPD_right_support < 11 }
+			}
+			GER_SPD_row_090_right_visible = {
+				check_variable = { GER_SPD_right_support > 10 }
+			}
+			GER_SPD_row_091_left_visible = {
+				check_variable = { GER_SPD_left_support > 90 }
+			}
+			GER_SPD_row_091_center_visible = {
+				check_variable = { GER_SPD_left_support < 91 }
+				check_variable = { GER_SPD_right_support < 10 }
+			}
+			GER_SPD_row_091_right_visible = {
+				check_variable = { GER_SPD_right_support > 9 }
+			}
+			GER_SPD_row_092_left_visible = {
+				check_variable = { GER_SPD_left_support > 91 }
+			}
+			GER_SPD_row_092_center_visible = {
+				check_variable = { GER_SPD_left_support < 92 }
+				check_variable = { GER_SPD_right_support < 9 }
+			}
+			GER_SPD_row_092_right_visible = {
+				check_variable = { GER_SPD_right_support > 8 }
+			}
+			GER_SPD_row_093_left_visible = {
+				check_variable = { GER_SPD_left_support > 92 }
+			}
+			GER_SPD_row_093_center_visible = {
+				check_variable = { GER_SPD_left_support < 93 }
+				check_variable = { GER_SPD_right_support < 8 }
+			}
+			GER_SPD_row_093_right_visible = {
+				check_variable = { GER_SPD_right_support > 7 }
+			}
+			GER_SPD_row_094_left_visible = {
+				check_variable = { GER_SPD_left_support > 93 }
+			}
+			GER_SPD_row_094_center_visible = {
+				check_variable = { GER_SPD_left_support < 94 }
+				check_variable = { GER_SPD_right_support < 7 }
+			}
+			GER_SPD_row_094_right_visible = {
+				check_variable = { GER_SPD_right_support > 6 }
+			}
+			GER_SPD_row_095_left_visible = {
+				check_variable = { GER_SPD_left_support > 94 }
+			}
+			GER_SPD_row_095_center_visible = {
+				check_variable = { GER_SPD_left_support < 95 }
+				check_variable = { GER_SPD_right_support < 6 }
+			}
+			GER_SPD_row_095_right_visible = {
+				check_variable = { GER_SPD_right_support > 5 }
+			}
+			GER_SPD_row_096_left_visible = {
+				check_variable = { GER_SPD_left_support > 95 }
+			}
+			GER_SPD_row_096_center_visible = {
+				check_variable = { GER_SPD_left_support < 96 }
+				check_variable = { GER_SPD_right_support < 5 }
+			}
+			GER_SPD_row_096_right_visible = {
+				check_variable = { GER_SPD_right_support > 4 }
+			}
+			GER_SPD_row_097_left_visible = {
+				check_variable = { GER_SPD_left_support > 96 }
+			}
+			GER_SPD_row_097_center_visible = {
+				check_variable = { GER_SPD_left_support < 97 }
+				check_variable = { GER_SPD_right_support < 4 }
+			}
+			GER_SPD_row_097_right_visible = {
+				check_variable = { GER_SPD_right_support > 3 }
+			}
+			GER_SPD_row_098_left_visible = {
+				check_variable = { GER_SPD_left_support > 97 }
+			}
+			GER_SPD_row_098_center_visible = {
+				check_variable = { GER_SPD_left_support < 98 }
+				check_variable = { GER_SPD_right_support < 3 }
+			}
+			GER_SPD_row_098_right_visible = {
+				check_variable = { GER_SPD_right_support > 2 }
+			}
+			GER_SPD_row_099_left_visible = {
+				check_variable = { GER_SPD_left_support > 98 }
+			}
+			GER_SPD_row_099_center_visible = {
+				check_variable = { GER_SPD_left_support < 99 }
+				check_variable = { GER_SPD_right_support < 2 }
+			}
+			GER_SPD_row_099_right_visible = {
+				check_variable = { GER_SPD_right_support > 1 }
+			}
+			GER_SPD_row_100_left_visible = {
+				check_variable = { GER_SPD_left_support > 99 }
+			}
+			GER_SPD_row_100_center_visible = {
+				check_variable = { GER_SPD_left_support < 100 }
+				check_variable = { GER_SPD_right_support < 1 }
+			}
+			GER_SPD_row_100_right_visible = {
+				check_variable = { GER_SPD_right_support > 0 }
+			}
+		}
+	}
+}

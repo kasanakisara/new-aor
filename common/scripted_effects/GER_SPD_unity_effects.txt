@@ -1,0 +1,43 @@
+# GER country scope. Other effects may change GER_SPD_unity and call the refresh effect.
+GER_SPD_initialize_unity_effect = {
+	if = {
+		limit = { NOT = { has_variable = GER_SPD_unity } }
+		set_variable = { GER_SPD_unity = 65 }
+	}
+	set_country_flag = GER_SPD_unity_initialized
+	add_dynamic_modifier = { modifier = GER_SPD_unity_modifier }
+	GER_SPD_refresh_unity_effect = yes
+}
+
+# Ten-point steps, centred on 50%. 0 -> -1 PP/-0.5 CP/-0.5% weekly stability;
+# 100 -> +1 PP/+0.5 CP/+0.5% weekly stability.
+GER_SPD_refresh_unity_effect = {
+	if = {
+		limit = { check_variable = { GER_SPD_unity < 0 } }
+		set_variable = { GER_SPD_unity = 0 }
+	}
+	if = {
+		limit = { check_variable = { GER_SPD_unity > 100 } }
+		set_variable = { GER_SPD_unity = 100 }
+	}
+	round_variable = GER_SPD_unity
+	set_variable = { GER_SPD_unity_step = -5 }
+	if = { limit = { check_variable = { GER_SPD_unity > 9 } } set_variable = { GER_SPD_unity_step = -4 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 19 } } set_variable = { GER_SPD_unity_step = -3 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 29 } } set_variable = { GER_SPD_unity_step = -2 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 39 } } set_variable = { GER_SPD_unity_step = -1 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 49 } } set_variable = { GER_SPD_unity_step = 0 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 59 } } set_variable = { GER_SPD_unity_step = 1 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 69 } } set_variable = { GER_SPD_unity_step = 2 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 79 } } set_variable = { GER_SPD_unity_step = 3 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 89 } } set_variable = { GER_SPD_unity_step = 4 } }
+	if = { limit = { check_variable = { GER_SPD_unity > 99 } } set_variable = { GER_SPD_unity_step = 5 } }
+	set_variable = { GER_SPD_unity_pp = GER_SPD_unity_step }
+	multiply_variable = { GER_SPD_unity_pp = 0.2 }
+	set_variable = { GER_SPD_unity_cp = GER_SPD_unity_step }
+	multiply_variable = { GER_SPD_unity_cp = 0.1 }
+	set_variable = { GER_SPD_unity_stability_weekly = GER_SPD_unity_step }
+	multiply_variable = { GER_SPD_unity_stability_weekly = 0.001 }
+	set_variable = { GER_SPD_unity_last = GER_SPD_unity }
+	add_to_variable = { GER_SPD_gui_revision = 1 }
+}

@@ -1,0 +1,35 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			GER = { GER_SPD_initialize_support_effect = yes }
+			GER = { GER_SPD_initialize_unity_effect = yes }
+		}
+	}
+	# Backfill old saves; also catch direct variable changes that omitted the refresh effect.
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = GER_SPD_unity_initialized } }
+				GER_SPD_initialize_unity_effect = yes
+			}
+			else_if = {
+				limit = { NOT = { check_variable = { GER_SPD_unity = GER_SPD_unity_last } } }
+				GER_SPD_refresh_unity_effect = yes
+			}
+			if = {
+				limit = { NOT = { has_country_flag = GER_SPD_support_initialized } }
+				GER_SPD_initialize_support_effect = yes
+			}
+			else_if = {
+				limit = {
+					OR = {
+						NOT = { check_variable = { GER_SPD_left_support = GER_SPD_left_last_support } }
+						NOT = { check_variable = { GER_SPD_center_support = GER_SPD_center_last_support } }
+						NOT = { check_variable = { GER_SPD_right_support = GER_SPD_right_last_support } }
+					}
+				}
+				GER_SPD_refresh_support_effect = yes
+			}
+		}
+	}
+}

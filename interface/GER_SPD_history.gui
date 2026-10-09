@@ -1,0 +1,197 @@
+guiTypes = {
+	containerWindowType = {
+		name = "GER_SPD_history_panel"
+		# Screen coordinates: decision panel right edge is -6 + 550 = 544.
+		position = { x = 544 y = 121 }
+		Orientation = "UPPER_LEFT"
+		size = { width = 460 height = 782 }
+		moveable = yes
+		clipping = no
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg_lined"
+		}
+		instantTextboxType = {
+			name = "GER_SPD_history_heading"
+			position = { x = 36 y = 13 }
+			font = "hoi_20b"
+			text = "GER_SPD_history_window_title"
+			maxWidth = 388
+			maxHeight = 30
+			format = center
+			alwaystransparent = yes
+		}
+		buttonType = {
+			name = "GER_SPD_history_close"
+			position = { x = -36 y = 6 }
+			Orientation = "UPPER_RIGHT"
+			quadTextureSprite = "GFX_aor_closebutton_2"
+			clicksound = click_close
+			pdx_tooltip = CLOSE
+		}
+		containerWindowType = {
+			name = "GER_SPD_history_scroll"
+			position = { x = 12 y = 53 }
+			size = { width = 436 height = 712 }
+			clipping = yes
+			verticalScrollbar = "right_vertical_slider"
+			vertical_scroll_step = 66
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_transparent"
+			}
+			# Add future milestones as another independent entry below this one.
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1875"
+				position = { x = 8 y = 0 }
+				size = { width = 406 height = 260 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1875_title"
+					maxWidth = 400
+					maxHeight = 25
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1875_quote"
+					maxWidth = 400
+					maxHeight = 70
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 108 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1875_body"
+					maxWidth = 400
+					maxHeight = 150
+				}
+			}
+			# Add future milestones as another independent entry below this one.
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1891"
+				position = { x = 8 y = 265 }
+				size = { width = 406 height = 260 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1891_title"
+					maxWidth = 400
+					maxHeight = 25
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1891_quote"
+					maxWidth = 400
+					maxHeight = 70
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 108 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1891_body"
+					maxWidth = 400
+					maxHeight = 150
+				}
+			}
+			# Add future milestones as another independent entry below this one.
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1906"
+				position = { x = 8 y = 530 }
+				size = { width = 406 height = 260 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1906_title"
+					maxWidth = 400
+					maxHeight = 25
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1906_quote"
+					maxWidth = 400
+					maxHeight = 70
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 108 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1906_body"
+					maxWidth = 400
+					maxHeight = 150
+				}
+			}
+			# Add future milestones as another independent entry below this one.
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1912"
+				position = { x = 8 y = 795 }
+				size = { width = 406 height = 260 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1912_title"
+					maxWidth = 400
+					maxHeight = 25
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1912_quote"
+					maxWidth = 400
+					maxHeight = 70
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 108 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1912_body"
+					maxWidth = 400
+					maxHeight = 150
+				}
+			}
+			# Add future milestones as another independent entry below this one.
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1917"
+				position = { x = 8 y = 1060 }
+				size = { width = 406 height = 260 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1917_title"
+					maxWidth = 400
+					maxHeight = 25
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1917_quote"
+					maxWidth = 400
+					maxHeight = 70
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 108 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1917_body"
+					maxWidth = 400
+					maxHeight = 150
+				}
+			}
+		}
+	}
+}
