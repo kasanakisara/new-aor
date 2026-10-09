@@ -262,6 +262,11 @@ equipments = {
 		}
 		group_by = archetype
 		
+		# 补齐：本文件其他原型都有这一行，缺了它引擎会报
+		# "Equipment archetype armored_vehicles_3 doesn't have its interface
+		#  category scripted"，该原型无法挂到生产界面的装备分类下。
+		interface_category = interface_category_land
+		
 		maximum_speed = 13
 		reliability = 0.7
 		hardness = 0.65

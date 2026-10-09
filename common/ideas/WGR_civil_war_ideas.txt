@@ -1,0 +1,223 @@
+ideas = {
+	country = {
+
+	# =====================================================================
+	# 22年夏秋季 - 23年夏秋季 内战时期国策树（GER_national_focus_1.txt）所引用
+	# 的国家精神。
+	#
+	# picture：暂时借用原版／本 mod 已有的 GFX 名，避免缺失贴图；
+	#   文案与美术到位后改成 GFX_idea_GER_xxx 即可。
+	# allowed = { always = no } + removal_cost = -1：只能由国策添加与移除，
+	#   与 common/ideas/GER_starting_spirits.txt 的写法保持一致。
+	# 数值为占位实现，待平衡。
+	# =====================================================================
+
+	# ---------- 分支一：经济与生产 ----------
+
+	GER_everything_for_the_front_spirit = {				# 一切为了前线！
+		picture = generic_military_industry
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			industrial_capacity_factory = 0.10
+			industrial_capacity_dockyard = 0.05
+			consumer_goods_factor = 0.15
+			war_support_factor = 0.10
+		}
+	}
+
+	GER_seized_means_of_production_spirit = {				# 夺取生产资料
+		picture = generic_communism_drift
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			industrial_capacity_factory = 0.15
+			production_factory_efficiency_gain_factor = 0.05
+			consumer_goods_factor = -0.10
+			political_power_gain = -0.05
+		}
+	}
+
+	GER_consumption_cooperatives = {				# 掌握物流体系
+		picture = generic_production_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			production_speed_infrastructure_factor = 0.10
+			min_export = 0.05
+			consumer_goods_factor = -0.05
+		}
+	}
+
+	GER_new_financial_system = {					# 解决资金问题
+		picture = generic_political_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			political_power_gain = 0.10
+			production_speed_arms_factory_factor = 0.05
+			stability_factor = -0.05
+		}
+	}
+
+	GER_economic_accounting_spirit = {						# 经济核算
+		picture = generic_industrial_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.10
+			production_factory_max_efficiency_factor = 0.10
+			line_change_production_efficiency_factor = 0.05
+		}
+	}
+
+	GER_labour_discipline = {						# 加强劳动纪律
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			production_factory_max_efficiency_factor = 0.10
+			industrial_capacity_factory = 0.05
+			stability_factor = -0.05
+		}
+	}
+
+	# ---------- 分支二：政权与国家 ----------
+
+	GER_smashed_state_machine = {					# 打碎国家机器
+		picture = generic_political_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			political_power_gain = 0.15
+			stability_factor = -0.10
+			army_core_attack_factor = 0.05
+		}
+	}
+
+	GER_revolutionary_security_bureau = {			# 红色恐怖
+		picture = generic_secret_police
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			political_power_gain = 0.10
+			stability_factor = 0.10
+			war_support_factor = 0.05
+		}
+	}
+
+	GER_tightened_speech = {						# 收紧言论自由
+		picture = generic_political_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			stability_factor = 0.10
+			political_power_gain = 0.10
+		}
+	}
+
+	# ---------- 分支三：军事与红军 ----------
+
+	GER_people_red_army_spirit = {					# 人民红军
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			army_core_attack_factor = 0.10
+			army_core_defence_factor = 0.10
+			conscription_factor = 0.05
+			war_support_factor = 0.05
+		}
+	}
+
+	GER_soviet_auxiliary_forces_spirit = {			# 苏维埃辅助部队
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			weekly_manpower = 1500
+			conscription_factor = 0.05
+			production_speed_infrastructure_factor = 0.05
+			stability_factor = 0.05
+		}
+	}
+
+	GER_unified_front_commands = {					# 军事指挥统一化
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			planning_speed = 0.10
+			command_power_gain = 0.10
+		}
+	}
+
+	GER_regular_red_army = {						# 向正规军迈进
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			army_core_attack_factor = 0.10
+			army_core_defence_factor = 0.10
+			army_attack_factor = 0.05
+			experience_gain_army_factor = 0.10
+		}
+	}
+
+	GER_gas_defence_spirit = {						# 防御毒气
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			army_core_defence_factor = 0.05
+			attrition = -0.10
+			experience_loss_factor = -0.10
+		}
+	}
+
+	GER_everything_for_the_front_final_spirit = {			# 一切为了前线！（合并节点）
+		picture = generic_military_industry
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			industrial_capacity_factory = 0.15
+			consumer_goods_factor = 0.20
+			war_support_factor = 0.15
+			conscription_factor = 0.10
+			stability_factor = -0.05
+		}
+	}
+
+	# ---------- 临时精神（add_timed_idea） ----------
+
+	GER_officer_training = {						# 红军军官学校（365 天）
+		picture = generic_army_effort
+		allowed = { always = no }
+		allowed_civil_war = { always = yes }
+		removal_cost = -1
+		modifier = {
+			experience_gain_army_factor = 0.20
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+		}
+	}
+
+	}
+}

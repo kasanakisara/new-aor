@@ -24,7 +24,19 @@ guiTypes = {
 			format = center
 		}
 
-
+		# 1.19 的 command_character_view 代码会去取名为 switch 的元素；本文件是在
+		# 旧版原版基础上改的，整块漏掉了它，导致 containerwindow.cpp 报
+		# 'Could not find "switch" in window command_character_view_window'。
+		# 现按 1.19 原版补回（y 由 26 调为 30，避免与下方 ideas 容器重叠）。
+		instantTextboxType = {
+			name = "switch"
+			position = { x = 0 y = 30 }
+			font = "hoi_18b"
+			text = "Switch out Character Place Holder"
+			maxWidth = 450
+			maxHeight = 20
+			format = center
+		}
 
 		containerWindowType = {
 			name = "ideas"
