@@ -64,7 +64,7 @@ focus_tree = {
 		id = GER_everything_for_the_front			# 一切为了前线！
 		icon = GFX_GER_everything_for_the_front
 		relative_position_id = GER_all_power_to_the_soviets
-		x = -16
+		x = -11
 		y = 2
 		cost = 3
 		prerequisite = { focus = GER_all_power_to_the_soviets }
@@ -79,8 +79,8 @@ focus_tree = {
 		id = GER_regional_soviets					# 区域苏维埃
 		icon = GFX_GER_regional_soviets
 		relative_position_id = GER_everything_for_the_front
-		x = -8
-		y = 4
+		x = -2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_everything_for_the_front }
 		completion_reward = {
@@ -93,8 +93,8 @@ focus_tree = {
 		id = GER_seize_means_of_production			# 夺取生产资料
 		icon = GFX_GER_seize_means_of_production
 		relative_position_id = GER_everything_for_the_front
-		x = -4
-		y = 4
+		x = 2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_everything_for_the_front }
 		completion_reward = {
@@ -108,8 +108,8 @@ focus_tree = {
 		id = GER_master_the_logistics_system		# 掌握物流体系
 		icon = GFX_GER_master_the_logistics_system
 		relative_position_id = GER_regional_soviets
-		x = 0
-		y = 6
+		x = -2
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_regional_soviets }
 		completion_reward = {
@@ -122,8 +122,8 @@ focus_tree = {
 		id = GER_organize_rural_urban_exchange		# 组织城乡交换
 		icon = GFX_GER_organize_rural_urban_exchange
 		relative_position_id = GER_regional_soviets
-		x = 4
-		y = 6
+		x = 0
+		y = 2
 		cost = 5
 		prerequisite = { focus = GER_regional_soviets }
 		completion_reward = {
@@ -138,10 +138,12 @@ focus_tree = {
 		id = GER_solve_the_funding_problem			# 解决资金问题
 		icon = GFX_GER_solve_the_funding_problem
 		relative_position_id = GER_seize_means_of_production
-		x = 0
-		y = 8
+		x = -2
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_seize_means_of_production }
+		prerequisite = { focus = GER_regional_soviets }
+
 		completion_reward = {
 			add_political_power = 50
 			add_ideas = GER_new_financial_system
@@ -155,8 +157,8 @@ focus_tree = {
 		id = GER_economic_accounting				# 经济核算
 		icon = GFX_GER_economic_accounting
 		relative_position_id = GER_seize_means_of_production
-		x = 8
-		y = 10
+		x = 0
+		y = 2
 		cost = 6
 		prerequisite = { focus = GER_seize_means_of_production }
 		completion_reward = {
@@ -169,8 +171,8 @@ focus_tree = {
 		id = GER_strengthen_labour_discipline		# 加强劳动纪律
 		icon = GFX_GER_strengthen_labour_discipline
 		relative_position_id = GER_seize_means_of_production
-		x = 4
-		y = 8
+		x = 2
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_seize_means_of_production }
 		completion_reward = {
@@ -189,7 +191,7 @@ focus_tree = {
 		id = GER_smash_the_state_machine			# 打碎国家机器
 		icon = GFX_GER_smash_the_state_machine
 		relative_position_id = GER_all_power_to_the_soviets
-		x = -12
+		x = 0
 		y = 2
 		cost = 3
 		prerequisite = { focus = GER_all_power_to_the_soviets }
@@ -205,8 +207,8 @@ focus_tree = {
 		id = GER_red_terror							# 红色恐怖
 		icon = GFX_GER_red_terror
 		relative_position_id = GER_smash_the_state_machine
-		x = 0
-		y = 4
+		x = -2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_smash_the_state_machine }
 		completion_reward = {
@@ -222,8 +224,8 @@ focus_tree = {
 		id = GER_soviet_power_expansion				# 苏维埃政权的扩张
 		icon = GFX_GER_soviet_power_expansion
 		relative_position_id = GER_smash_the_state_machine
-		x = 4
-		y = 4
+		x = 2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_smash_the_state_machine }
 		completion_reward = {
@@ -236,8 +238,8 @@ focus_tree = {
 		id = GER_tighten_freedom_of_speech			# 收紧言论自由
 		icon = GFX_GER_tighten_freedom_of_speech
 		relative_position_id = GER_red_terror
-		x = 0
-		y = 6
+		x = -2
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_red_terror }
 		completion_reward = {
@@ -252,8 +254,8 @@ focus_tree = {
 		id = GER_mobilize_newly_liberated_masses	# 发动新解放区群众
 		icon = GFX_GER_mobilize_newly_liberated_masses
 		relative_position_id = GER_red_terror
-		x = 2
-		y = 6
+		x = 0
+		y = 2
 		cost = 5
 		prerequisite = { focus = GER_red_terror }
 		completion_reward = {
@@ -266,8 +268,8 @@ focus_tree = {
 		id = GER_concentrate_power_in_the_state		# 权力向国家集中
 		icon = GFX_GER_concentrate_power_in_the_state
 		relative_position_id = GER_soviet_power_expansion
-		x = 4
-		y = 6
+		x = -2
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_red_terror }
 		prerequisite = { focus = GER_soviet_power_expansion }
@@ -283,8 +285,8 @@ focus_tree = {
 		id = GER_integrate_friendly_left			# 整合友好左翼力量
 		icon = GFX_GER_integrate_friendly_left
 		relative_position_id = GER_soviet_power_expansion
-		x = 8
-		y = 4
+		x = 0
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_soviet_power_expansion }
 		completion_reward = {
@@ -301,11 +303,11 @@ focus_tree = {
 	focus = {
 		id = GER_call_back_former_comrades			# 呼唤曾经的同志
 		icon = GFX_GER_call_back_former_comrades
-		relative_position_id = GER_integrate_friendly_left
-		x = 0
-		y = 2
+		relative_position_id = GFX_GER_soviet_power_expansion
+		x = 50
+		y = 5
 		cost = 5
-		prerequisite = { focus = GER_integrate_friendly_left }
+		prerequisite = { focus = GER_soviet_power_expansion }
 		completion_reward = {
 			add_popularity = {
 				ideology = Marxism
@@ -325,7 +327,7 @@ focus_tree = {
 		id = GER_people_red_army					# 人民红军
 		icon = GFX_GER_people_red_army
 		relative_position_id = GER_all_power_to_the_soviets
-		x = 8
+		x = 11
 		y = 2
 		cost = 4
 		prerequisite = { focus = GER_all_power_to_the_soviets }
@@ -342,8 +344,8 @@ focus_tree = {
 		id = GER_speed_up_mobilization				# 加快动员效率
 		icon = GFX_GER_speed_up_mobilization
 		relative_position_id = GER_people_red_army
-		x = -8
-		y = 4
+		x = -2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_people_red_army }
 		completion_reward = {
@@ -356,8 +358,8 @@ focus_tree = {
 		id = GER_soviet_auxiliary_forces			# 苏维埃辅助部队
 		icon = GFX_GER_soviet_auxiliary_forces
 		relative_position_id = GER_people_red_army
-		x = -4
-		y = 4
+		x = 2
+		y = 2
 		cost = 4
 		prerequisite = { focus = GER_people_red_army }
 		completion_reward = {
@@ -372,8 +374,8 @@ focus_tree = {
 		id = GER_reorganize_the_units				# 整编部队
 		icon = GFX_GER_reorganize_the_units
 		relative_position_id = GER_soviet_auxiliary_forces
-		x = 0
-		y = 6
+		x = -6
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_soviet_auxiliary_forces }
 		completion_reward = {
@@ -386,8 +388,8 @@ focus_tree = {
 		id = GER_unify_military_command				# 军事指挥统一化
 		icon = GFX_GER_unify_military_command
 		relative_position_id = GER_soviet_auxiliary_forces
-		x = 4
-		y = 6
+		x = -4
+		y = 2
 		cost = 5
 		prerequisite = { focus = GER_soviet_auxiliary_forces }
 		completion_reward = {
@@ -401,8 +403,8 @@ focus_tree = {
 		id = GER_towards_a_regular_army				# 向正规军迈进
 		icon = GFX_GER_towards_a_regular_army
 		relative_position_id = GER_soviet_auxiliary_forces
-		x = 8
-		y = 6
+		x = -2
+		y = 1
 		cost = 6
 		prerequisite = { focus = GER_soviet_auxiliary_forces }
 		completion_reward = {
@@ -417,9 +419,9 @@ focus_tree = {
 		icon = GFX_GER_red_army_officer_school
 		relative_position_id = GER_towards_a_regular_army
 		x = 4
-		y = 6
+		y = 0
 		cost = 5
-		prerequisite = { focus = GER_towards_a_regular_army }
+		prerequisite = { focus = GER_soviet_auxiliary_forces }
 		completion_reward = {
 			army_experience = 15
 			add_timed_idea = {
@@ -434,10 +436,10 @@ focus_tree = {
 		id = GER_gas_defence						# 防御毒气
 		icon = GFX_GER_gas_defence
 		relative_position_id = GER_red_army_officer_school
-		x = 0
-		y = 2
+		x = -2
+		y = 1
 		cost = 4
-		prerequisite = { focus = GER_red_army_officer_school }
+		prerequisite = { focus = GER_soviet_auxiliary_forces }
 		completion_reward = {
 			add_ideas = GER_gas_defence_spirit
 			# TODO: 防毒面具与防护装具、化学侦察、军民防护训练
@@ -452,11 +454,8 @@ focus_tree = {
 		icon = GFX_GER_all_for_the_front
 		relative_position_id = GER_all_power_to_the_soviets
 		x = 0
-		y = 20
+		y = 8
 		cost = 8
-		prerequisite = { focus = GER_economic_accounting }
-		prerequisite = { focus = GER_concentrate_power_in_the_state }
-		prerequisite = { focus = GER_gas_defence }
 		completion_reward = {
 			add_war_support = 0.15
 			add_stability = 0.05
