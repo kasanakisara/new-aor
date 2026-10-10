@@ -2,19 +2,18 @@ add_namespace = DEN
 add_namespace = denmark_trade_deal
 
 country_event = {
-	id = DEN.1 #otto 你觉着你是职业政客吗 我觉着我是
+	id = DEN.1 #otto 你觉着你是职业政客吗 我觉着我是 —— 王室线的"利贝内阁"
 	title = DEN.1.t
 	desc = DEN.1.d
-	picture = GFX_DEN_event_1
+	picture = GFX_report_event_king_speech
+	is_triggered_only = yes
 	fire_only_once = yes
-	trigger = {
-    }
-
-
-    option = {
+	option = {
 		name = DEN.1.a
+		# 注意：recruit_character 是仅限 history 的效果（见 error.log 警告），
+		# 利贝已在 history/countries/DEN - Denmark.txt 中开局招募，
+		# 此处只需让保守派上台，游戏会自动从保守派人物中任命首相。
         retire_country_leader = yes
-        recruit_character = Otto_Liebe
         set_politics = {
             ruling_party = CON_democratic
         }

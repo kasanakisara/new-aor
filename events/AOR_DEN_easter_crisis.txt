@@ -1,0 +1,151 @@
+####################################################################
+# 丹麦 · 复活节危机事件链
+#
+# 世界观口径（新设定）：
+#   南部邻国 = 1919.8—1922.7 的「德意志共和国」（社民党＋中央党，总统倍倍尔、
+#   总理哈泽）。柏林正被巴伐利亚危机与国防法风波拖住，无力北顾；
+#   石勒苏益格两区公投依《凡尔赛条约》第107—114款执行。
+#   北石勒苏益格（state 839，丹方称"南日德兰"）几近必然归丹；
+#   中石勒苏益格（state 58）与弗伦斯堡（state 1043）则压倒性留德。
+####################################################################
+
+add_namespace = den_easter_crisis
+
+#-------------------------------------------------- 危机开场
+country_event = {
+	id = den_easter_crisis.1
+	title = den_easter_crisis.1.t
+	desc = den_easter_crisis.1.d
+	picture = GFX_report_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		country_event = { id = den_easter_crisis.2 days = 14 }
+	}
+
+	option = {
+		name = den_easter_crisis.1.a
+		add_political_power = 25
+		add_stability = -0.05
+	}
+}
+
+#-------------------------------------------------- 国王的最后通牒
+country_event = {
+	id = den_easter_crisis.2
+	title = den_easter_crisis.2.t
+	desc = den_easter_crisis.2.d
+	picture = GFX_report_event_king_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # 站在王冠一边
+		name = den_easter_crisis.2.a
+		add_political_power = 40
+		add_stability = -0.05
+		set_country_flag = den_king_assertive
+	}
+
+	option = { # 站在议会一边
+		name = den_easter_crisis.2.b
+		add_political_power = 20
+		add_stability = 0.05
+		set_country_flag = den_parliament_assertive
+	}
+}
+
+#-------------------------------------------------- 一、王室妥协路线结果
+country_event = {
+	id = den_easter_crisis.3
+	title = den_easter_crisis.3.t
+	desc = den_easter_crisis.3.d
+	picture = GFX_report_event_albanian_king_zog
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = den_easter_crisis.3.a
+		set_country_flag = den_royal_route
+		add_political_power = 20
+		country_event = { id = DEN.1 days = 3 }
+	}
+}
+
+#-------------------------------------------------- 二、议会路线结果
+country_event = {
+	id = den_easter_crisis.4
+	title = den_easter_crisis.4.t
+	desc = den_easter_crisis.4.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = den_easter_crisis.4.a
+		set_country_flag = den_parliament_route
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+}
+
+#-------------------------------------------------- 三、军营路线结果
+country_event = {
+	id = den_easter_crisis.5
+	title = den_easter_crisis.5.t
+	desc = den_easter_crisis.5.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = den_easter_crisis.5.a
+		set_country_flag = den_military_route
+		add_army_experience = 25
+		add_popularity = { ideology = Marxism popularity = -0.05 }
+	}
+}
+
+#-------------------------------------------------- 石勒苏益格的阴影（由 NSH 链接入）
+country_event = {
+	id = den_easter_crisis.6
+	title = den_easter_crisis.6.t
+	desc = den_easter_crisis.6.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { # 接受结果，维持体面
+		name = den_easter_crisis.6.a
+		add_stability = 0.05
+		add_political_power = 25
+		if = {
+			limit = { GER = { exists = yes } }
+			GER = { add_opinion_modifier = { target = DEN modifier = DEN_accepts_plebiscite } }
+		}
+	}
+
+	option = { # 把问题交给国际联盟
+		name = den_easter_crisis.6.b
+		add_political_power = 50
+		set_country_flag = DEN_schleswig_internationalized
+	}
+
+	option = { # 边境不应由投票决定（需王室线或强硬立场）
+		name = den_easter_crisis.6.c
+		trigger = {
+			OR = {
+				has_country_flag = DEN_wants_south_schleswig
+				has_country_flag = den_king_assertive
+				has_country_flag = den_military_route
+			}
+		}
+		add_war_support = 0.1
+		add_stability = -0.05
+		if = {
+			limit = { GER = { exists = yes } }
+			GER = { add_opinion_modifier = { target = DEN modifier = DEN_rejects_plebiscite } }
+		}
+		set_country_flag = DEN_wants_south_schleswig
+	}
+}

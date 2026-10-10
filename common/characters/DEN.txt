@@ -31,14 +31,14 @@ characters = {
 	}
 
 	DEN_thorvald_stauning = {
-		name = "thorvald stauning"
+		name = "Thorvald Stauning"
 		portraits={
 			civilian={
 				large = "gfx/leaders/DEN/DEN_thorvald_stauning.dds"
 			}
 		}
 		country_leader = {
-			ideology = socialism
+			ideology = SOC_democratic
 			desc = "DEN_thorvald_stauning_DESC"
 			traits = { DEN_socialdemokrat }
 			expire = "1965.1.1.1"
@@ -65,14 +65,380 @@ characters = {
 		name = "Otto Liebe"
 		portraits={
 			civilian={
-				small="gfx/interface/ideas/advisors/Otto_Liebe.png"
+				large="gfx/leaders/DEN/Otto_Liebe.dds"
+				small="gfx/leaders/DEN/Otto_Liebe.dds"
 			}
 		}
 		advisor = {
 			slot = political_advisor
 			idea_token = DEN_Otto_Liebe
 			traits = {Lawyer_politician}
-			available = { NOT = { { has_country_leader = Otto_Liebe }}}
+			available = { NOT = { has_country_leader = Otto_Liebe } }
 		}
 	}	
+
+	####################################################################
+	# 丹麦 · 军事主官（1919 开局）
+	# 世界观口径：1919.8—1922.7 的德意志共和国为南部邻国；丹麦为"战争末期的
+	# 投机赢家"，1918.6 加入协约国，1920 年经公投收回北石勒苏益格。
+	# 头像暂用欧洲通用将领图占位，美术出图后替换 portraits 内的路径即可。
+	####################################################################
+
+	DEN_Ellis_Wolff = { #总参谋长
+		name = "Ellis Wolff"
+		portraits = {
+			army = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_2_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Ellis_Wolff.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_2_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Ellis_Wolff.png"
+			}
+		}
+		field_marshal = {
+			desc = DEN_Ellis_Wolff_desc
+			traits = { infantry_officer organizer thorough_planner trait_cautious }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 4
+			planning_skill = 4
+			logistics_skill = 3
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = army_chief
+			idea_token = DEN_Ellis_Wolff
+			allowed = { original_tag = DEN }
+			traits = { army_chief_organizational_3 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_William_Prior = { #陆军总监
+		name = "William Prior"
+		portraits = {
+			army = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_3_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_William_Prior.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_3_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_William_Prior.png"
+			}
+		}
+		corps_commander = {
+			desc = DEN_William_Prior_desc
+			traits = { infantry_officer organizer adaptable }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = high_command
+			ledger = army
+			idea_token = DEN_William_Prior
+			allowed = { original_tag = DEN }
+			traits = { army_infantry_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Ebbe_Gortz = { #骑炮兵总监、参谋学院教官
+		name = "Ebbe Gortz"
+		portraits = {
+			army = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_5_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Ebbe_Gortz.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_5_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Ebbe_Gortz.png"
+			}
+		}
+		corps_commander = {
+			desc = DEN_Ebbe_Gortz_desc
+			traits = { armor_officer organizer combined_arms_expert }
+			skill = 2
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = theorist
+			idea_token = DEN_Ebbe_Gortz
+			allowed = { original_tag = DEN }
+			traits = { military_theorist }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Erik_With = { #青年参谋军官
+		name = "Erik With"
+		portraits = {
+			army = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_7_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Erik_With.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_7_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Erik_With.png"
+			}
+		}
+		corps_commander = {
+			desc = DEN_Erik_With_desc
+			traits = { infantry_officer trait_cautious }
+			skill = 1
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = -1
+		}
+	}
+
+	####################################################################
+	# 丹麦 · 海军主官
+	####################################################################
+
+	DEN_Frederik_Zahrtmann = { #海军参谋长（任期待考）
+		name = "Frederik Zahrtmann"
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_8_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Frederik_Zahrtmann.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_8_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Frederik_Zahrtmann.png"
+			}
+		}
+		navy_leader = {
+			desc = DEN_Frederik_Zahrtmann_desc
+			traits = { seawolf superior_tactician navy_career_officer gentlemanly }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 4
+			maneuvering_skill = 3
+			coordination_skill = 4
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = navy_chief
+			idea_token = DEN_Frederik_Zahrtmann
+			allowed = { original_tag = DEN }
+			traits = { navy_chief_decisive_battle_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Carl_Hammerich = { #海军后勤与动员专家
+		name = "Carl Hammerich"
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_7_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Carl_Hammerich.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_7_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Carl_Hammerich.png"
+			}
+		}
+		navy_leader = {
+			desc = DEN_Carl_Hammerich_desc
+			traits = { spotter blockade_runner search_pattern_expert }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			maneuvering_skill = 3
+			coordination_skill = 3
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = high_command
+			ledger = navy
+			idea_token = DEN_Carl_Hammerich
+			allowed = { original_tag = DEN }
+			traits = { navy_fleet_logistics_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Aage_Vedel = { #潜艇与鱼雷艇青年军官
+		name = "Aage Vedel"
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_3_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Aage_Vedel.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_3_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Aage_Vedel.png"
+			}
+		}
+		navy_leader = {
+			desc = DEN_Aage_Vedel_desc
+			traits = { torpedo_expert lone_wolf bold }
+			skill = 1
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 3
+			coordination_skill = 2
+			legacy_id = -1
+		}
+	}
+
+	DEN_Henri_Konow = { #前丹属西印度群岛总督 · 海军大臣
+		name = "Henri Konow"
+		portraits = {
+			navy = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_9_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Henri_Konow.png"
+			}
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_9_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Henri_Konow.png"
+			}
+		}
+		navy_leader = {
+			desc = DEN_Henri_Konow_desc
+			traits = { naval_lineage navy_career_officer gentlemanly ironside }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			maneuvering_skill = 2
+			coordination_skill = 4
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 100
+			slot = navy_chief
+			idea_token = DEN_Henri_Konow
+			allowed = { original_tag = DEN }
+			traits = { navy_chief_reform_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	####################################################################
+	# 丹麦 · 内阁（政治顾问）
+	####################################################################
+
+	DEN_Peter_Munch = { #激进自由党 · 国防大臣
+		name = "Peter Munch"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_5_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Peter_Munch.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_Peter_Munch
+			allowed = { original_tag = DEN }
+			traits = { silent_workhorse }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Klaus_Berntsen = { #自由党元老 · 前首相兼国防大臣
+		name = "Klaus Berntsen"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_6_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Klaus_Berntsen.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_Klaus_Berntsen
+			allowed = { original_tag = DEN }
+			traits = { old_figurehead }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Ove_Rode = { #激进自由党 · 内政大臣
+		name = "Ove Rode"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/Portrait_Europe_Generic_3_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Ove_Rode.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_Ove_Rode
+			allowed = { original_tag = DEN }
+			traits = { financial_expert }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_HP_Hanssen = { #北石勒苏益格丹麦族领袖
+		name = "HP Hanssen"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_6_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_HP_Hanssen.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_HP_Hanssen
+			allowed = { original_tag = DEN }
+			traits = { Diplomatic_experts }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Frederik_Borgbjerg = { #社会民主党 · 社会改革派
+		name = "Frederik Borgbjerg"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_5_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Frederik_Borgbjerg.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_Frederik_Borgbjerg
+			allowed = { original_tag = DEN }
+			traits = { popular_figurehead }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	DEN_Christmas_Moller = { #保守人民党
+		name = "Christmas Moller"
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/Europe/portrait_europe_generic_7_land_new.png"
+				small = "gfx/interface/ideas/advisors/DEN_Christmas_Moller.png"
+			}
+		}
+		advisor = {
+			cost = 100
+			slot = political_advisor
+			idea_token = DEN_Christmas_Moller
+			allowed = { original_tag = DEN }
+			traits = { DEN_konservativ }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
 }

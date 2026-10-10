@@ -7,6 +7,25 @@ recruit_character = Otto_Liebe
 recruit_character = DEN_Henri_Konow
 recruit_character = Otto_Liebe_advisor
 
+### 陆军主官 ###
+recruit_character = DEN_Ellis_Wolff
+recruit_character = DEN_William_Prior
+recruit_character = DEN_Ebbe_Gortz
+recruit_character = DEN_Erik_With
+
+### 海军主官 ###
+recruit_character = DEN_Frederik_Zahrtmann
+recruit_character = DEN_Carl_Hammerich
+recruit_character = DEN_Aage_Vedel
+
+### 内阁（政治顾问）###
+recruit_character = DEN_Peter_Munch
+recruit_character = DEN_Klaus_Berntsen
+recruit_character = DEN_Ove_Rode
+recruit_character = DEN_HP_Hanssen
+recruit_character = DEN_Frederik_Borgbjerg
+recruit_character = DEN_Christmas_Moller
+
 #oob = "DEN_1936"
 
 set_research_slots = 3
@@ -21,8 +40,7 @@ set_technology = {
 	tech_support = 1		
 	tech_recon = 1
 	tech_engineers = 1
-	interwar_antiair = 1
-	cv_early_fighter = 1
+	cv_fighter_equipment_0 = 1
 	early_ship_hull_light_cruiser = 1
 	early_ship_hull_submarine = 1
 }
@@ -94,7 +112,11 @@ add_ideas = {
 	The_first_awakening_of_ambition
 	Christian_X
 	serious_neutral_stance
+	royal_prerogative
 }
+
+#军备废弛（定义于 common/dynamic_modifiers/AOR_DEN_dynamic_modifiers.txt）
+add_dynamic_modifier = { modifier = DEN_neglected_military_dynamic_modifier }
 
 create_equipment_variant = {
 	name = "Rota Class"								

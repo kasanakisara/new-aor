@@ -6,7 +6,7 @@ country_event = {
 	id = NSH.1
 	title = NSH.1.t
 	desc = NSH.1.d
-	picture = GFX_events_NSH_1
+	picture = GFX_news_event_election_vote
 	fire_only_once = yes
 	hidden = yes
 	trigger = {
@@ -49,14 +49,15 @@ country_event = {
 	id = NSH.2
 	title = NSH.2.t
 	desc = NSH.2.d
-	picture = GFX_events_NSH_2
+	picture = GFX_news_event_election_vote
 	is_triggered_only = yes	
 	fire_only_once = yes
 	hidden = yes
 
 	option = {  #南石勒苏益格公投入德
 		name = NSH.2.a
-		DEN = { country_event = { id = NSH.3 } }
+		DEN = { country_event = { id = den_easter_crisis.6 days = 3 } }
+		DEN = { country_event = { id = NSH.3 days = 10 } }
 		news_event = { id = AOR_news.211 }
 		GER = {
 			add_state_core = 58
@@ -75,6 +76,7 @@ country_event = {
     }
 	option = { #南石勒苏益格公投入丹 （这不太可能）
 		name = NSH.2.b 
+		DEN = { country_event = { id = den_easter_crisis.6 days = 3 } }
 		news_event = { id = AOR_news.212 }
 		SHL = { country_event = { id = NSH.4 } }
 
@@ -99,6 +101,7 @@ country_event = {
     }
 	option = { #石勒苏益格-荷尔施泰因公投作废
 	name = NSH.2.c
+	DEN = { country_event = { id = den_easter_crisis.6 days = 3 } }
 	news_event = { id = AOR_news.213 }
 	ai_chance = {
 		base = 5
@@ -111,14 +114,14 @@ country_event = {
 	id = NSH.3
 	title = NSH.3.t
 	desc = NSH.3.d
-	picture = GFX_events_NSH_3
+	picture = GFX_report_event_election_vote
 	is_triggered_only = yes	
 	fire_only_once = yes
 
-	option = {#认了
+	option = {#认了：默认由德国地方当局接管南石荷，丹麦保留北石勒苏益格
 		name = NSH.3.a
 		SHL = { 
-			set_cosmetic_tag = SHL_2_Marxism
+			set_cosmetic_tag = SHL_CON_democratic
 			transfer_state = 58 
 			transfer_state = 1043
 		}
@@ -131,13 +134,31 @@ country_event = {
 			base = 75
 		}
     }
+
+	option = {#不认：王室线/军营线下的强硬派，宁可在边境上见真章
+		name = NSH.3.b
+		trigger = {
+			OR = {
+				has_country_flag = DEN_wants_south_schleswig
+				has_country_flag = den_military_route
+			}
+		}
+		add_war_support = 0.1
+		add_stability = -0.05
+		add_opinion_modifier = { target = GER modifier = DEN_rejects_plebiscite }
+		country_event = { id = NSH.4 days = 7 }
+
+		ai_chance = {
+			base = 25
+		}
+    }
 }
 
 country_event = { #丹麦走了王政路线 对南石勒苏益格发动边战
 	id = NSH.4
 	title = NSH.4.t
 	desc = NSH.4.d
-	picture = GFX_events_NSH_4
+	picture = GFX_report_event_journalists_speech
 	is_triggered_only = yes	
 	fire_only_once = yes
 

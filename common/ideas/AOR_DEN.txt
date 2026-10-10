@@ -56,14 +56,6 @@ ideas = {
 			modifier = {
 			}
 		}
-		DEN_neglected_military_dynamic_modifier = { #军备废弛
-			enable = { always = yes }
-			icon = GFX_idea_generic_neglected_military
-
-			mobilization_speed = -0.2 
-			surrender_limit = -0.2
-			planning_speed = -0.1
-		}
 		DEN_declaration_of_neutrality = { #中立宣言
 			name = DEN_declaration_of_neutrality
 			removal_cost = -1
@@ -210,6 +202,70 @@ ideas = {
 				out_of_supply_factor = -0.1
 				supply_node_range = 0.1
 				consumer_goods_factor = 0.15
+			}
+		}
+
+		#王权未受成文约束：国王掌握组阁、解散议会与军队统帅的实权
+		royal_prerogative = {
+			name = royal_prerogative
+			removal_cost = -1
+			picture = DEN_idea_royal_prerogative
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = -0.05
+				justify_war_goal_time = 0.1
+			}
+		}
+
+		#王室妥协路线：王冠留下，权力交给议会
+		den_constitutional_monarchy = {
+			name = den_constitutional_monarchy
+			removal_cost = -1
+			picture = DEN_idea_constitutional_monarchy
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.05
+				war_support_factor = -0.05
+			}
+		}
+
+		#军营路线：哥本哈根与边境一起进入戒严
+		den_martial_law = {
+			name = den_martial_law
+			removal_cost = -1
+			picture = DEN_idea_martial_law
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				war_support_factor = 0.1
+				stability_factor = -0.1
+				army_defence_factor = 0.05
+				mobilization_speed = 0.1
 			}
 		}
 	}
