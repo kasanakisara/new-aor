@@ -4,7 +4,7 @@ guiTypes = {
 		# Screen coordinates: decision panel right edge is -6 + 550 = 544.
 		position = { x = 544 y = 121 }
 		Orientation = "UPPER_LEFT"
-		size = { width = 460 height = 782 }
+		size = { width = 552 height = 782 }
 		moveable = yes
 		clipping = no
 		background = {
@@ -13,183 +13,279 @@ guiTypes = {
 		}
 		instantTextboxType = {
 			name = "GER_SPD_history_heading"
-			position = { x = 36 y = 13 }
+			position = { x = 15 y = 13 }
 			font = "hoi_20b"
 			text = "GER_SPD_history_window_title"
-			maxWidth = 388
+			maxWidth = 520
 			maxHeight = 30
 			format = center
 			alwaystransparent = yes
 		}
 		buttonType = {
 			name = "GER_SPD_history_close"
-			position = { x = -36 y = 6 }
+			position = { x = -38 y = 2 }
 			Orientation = "UPPER_RIGHT"
 			quadTextureSprite = "GFX_aor_closebutton_2"
 			clicksound = click_close
 			pdx_tooltip = CLOSE
 		}
+		# Separate content backdrop; the outer plate uses GFX_tiled_plain_bg_lined.
+		# Match visible edges using texture padding: outer L/R/B=4/4/4,
+		# inner L/R/B=3/4/5. Both draw at x=4..547 and bottom y=777.
+		containerWindowType = {
+			name = "GER_SPD_history_content_frame"
+			position = { x = 1 y = 49 }
+			size = { width = 551 height = 734 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window2_1b_border"
+			}
+		}
 		containerWindowType = {
 			name = "GER_SPD_history_scroll"
-			position = { x = 12 y = 53 }
-			size = { width = 436 height = 712 }
+			# Inset the clipping area below the inner top line and above its bottom line.
+			# Keep x + width = 551 to hold the scrollbar in place when shifting content.
+			position = { x = 15 y = 61 }
+			size = { width = 536 height = 705 }
 			clipping = yes
 			verticalScrollbar = "right_vertical_slider"
-			vertical_scroll_step = 66
-			scroll_wheel_factor = 40
+			# Small direct scroll increments; avoid eased motion near the bottom limit.
+			vertical_scroll_step = 45
+			scroll_wheel_factor = 45
 			smooth_scrolling = yes
 			background = {
 				name = "Background"
 				quadTextureSprite = "GFX_tiled_window_transparent"
 			}
-			# Add future milestones as another independent entry below this one.
+			# Layout: Arial_14s Chinese glyph advances at width 505, lineHeight 16.
+			# Quote rows: 3, 3, 2, 3, 3, 2; body rows: 4, 4, 4, 4, 9, 12.
+			# Quote bottom -> image: 6px; image (125px high) -> body: 12px.
+			# Entry height = body bottom + 4px allowance; next entry starts 14px later.
+			# With title y=6, each next title is 24px below the preceding body.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1875"
-				position = { x = 8 y = 0 }
-				size = { width = 406 height = 260 }
+				position = { x = 2 y = 0 }
+				size = { width = 505 height = 295 }
 				instantTextboxType = {
 					name = "title"
 					position = { x = 0 y = 6 }
 					font = "hoi_18mbs"
 					text = "GER_SPD_history_1875_title"
-					maxWidth = 400
+					maxWidth = 505
 					maxHeight = 25
+					format = center
 				}
 				instantTextboxType = {
 					name = "quote"
 					position = { x = 0 y = 36 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1875_quote"
-					maxWidth = 400
-					maxHeight = 70
+					maxWidth = 505
+					maxHeight = 52
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1875"
+					position = { x = 0 y = 90 }
+					spriteType = "GFX_GER_SPD_history_Gothaer"
+					alwaystransparent = yes
 				}
 				instantTextboxType = {
 					name = "body"
-					position = { x = 0 y = 108 }
+					position = { x = 0 y = 227 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1875_body"
-					maxWidth = 400
-					maxHeight = 150
+					maxWidth = 505
+					maxHeight = 68
 				}
 			}
 			# Add future milestones as another independent entry below this one.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1891"
-				position = { x = 8 y = 265 }
-				size = { width = 406 height = 260 }
+				position = { x = 2 y = 309 }
+				size = { width = 505 height = 295 }
 				instantTextboxType = {
 					name = "title"
 					position = { x = 0 y = 6 }
 					font = "hoi_18mbs"
 					text = "GER_SPD_history_1891_title"
-					maxWidth = 400
+					maxWidth = 505
 					maxHeight = 25
+					format = center
 				}
 				instantTextboxType = {
 					name = "quote"
 					position = { x = 0 y = 36 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1891_quote"
-					maxWidth = 400
-					maxHeight = 70
+					maxWidth = 505
+					maxHeight = 52
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1891"
+					position = { x = 0 y = 90 }
+					spriteType = "GFX_GER_SPD_history_Erfurter"
+					alwaystransparent = yes
 				}
 				instantTextboxType = {
 					name = "body"
-					position = { x = 0 y = 108 }
+					position = { x = 0 y = 227 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1891_body"
-					maxWidth = 400
-					maxHeight = 150
+					maxWidth = 505
+					maxHeight = 68
 				}
 			}
 			# Add future milestones as another independent entry below this one.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1906"
-				position = { x = 8 y = 530 }
-				size = { width = 406 height = 260 }
+				position = { x = 2 y = 618 }
+				size = { width = 505 height = 279 }
 				instantTextboxType = {
 					name = "title"
 					position = { x = 0 y = 6 }
 					font = "hoi_18mbs"
 					text = "GER_SPD_history_1906_title"
-					maxWidth = 400
+					maxWidth = 505
 					maxHeight = 25
+					format = center
 				}
 				instantTextboxType = {
 					name = "quote"
 					position = { x = 0 y = 36 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1906_quote"
-					maxWidth = 400
-					maxHeight = 70
+					maxWidth = 505
+					maxHeight = 36
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1906"
+					position = { x = 0 y = 74 }
+					spriteType = "GFX_GER_SPD_history_Mannheim"
+					alwaystransparent = yes
 				}
 				instantTextboxType = {
 					name = "body"
-					position = { x = 0 y = 108 }
+					position = { x = 0 y = 211 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1906_body"
-					maxWidth = 400
-					maxHeight = 150
+					maxWidth = 505
+					maxHeight = 68
 				}
 			}
 			# Add future milestones as another independent entry below this one.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1912"
-				position = { x = 8 y = 795 }
-				size = { width = 406 height = 260 }
+				position = { x = 2 y = 911 }
+				size = { width = 505 height = 295 }
 				instantTextboxType = {
 					name = "title"
 					position = { x = 0 y = 6 }
 					font = "hoi_18mbs"
 					text = "GER_SPD_history_1912_title"
-					maxWidth = 400
+					maxWidth = 505
 					maxHeight = 25
+					format = center
 				}
 				instantTextboxType = {
 					name = "quote"
 					position = { x = 0 y = 36 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1912_quote"
-					maxWidth = 400
-					maxHeight = 70
+					maxWidth = 505
+					maxHeight = 52
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1912"
+					position = { x = 0 y = 90 }
+					spriteType = "GFX_GER_SPD_history_Chemnitz"
+					alwaystransparent = yes
 				}
 				instantTextboxType = {
 					name = "body"
-					position = { x = 0 y = 108 }
+					position = { x = 0 y = 227 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1912_body"
-					maxWidth = 400
-					maxHeight = 150
+					maxWidth = 505
+					maxHeight = 68
+				}
+			}
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1915"
+				position = { x = 2 y = 1220 }
+				size = { width = 505 height = 375 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1915_title"
+					maxWidth = 505
+					maxHeight = 25
+					format = center
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1915_quote"
+					maxWidth = 505
+					maxHeight = 52
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1915"
+					position = { x = 0 y = 90 }
+					spriteType = "GFX_GER_SPD_history_Zimmerwald"
+					alwaystransparent = yes
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 227 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1915_body"
+					maxWidth = 505
+					maxHeight = 148
 				}
 			}
 			# Add future milestones as another independent entry below this one.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1917"
-				position = { x = 8 y = 1060 }
-				size = { width = 406 height = 260 }
+				position = { x = 2 y = 1609 }
+				size = { width = 505 height = 407 }
 				instantTextboxType = {
 					name = "title"
 					position = { x = 0 y = 6 }
 					font = "hoi_18mbs"
 					text = "GER_SPD_history_1917_title"
-					maxWidth = 400
+					maxWidth = 505
 					maxHeight = 25
+					format = center
 				}
 				instantTextboxType = {
 					name = "quote"
 					position = { x = 0 y = 36 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1917_quote"
-					maxWidth = 400
-					maxHeight = 70
+					maxWidth = 505
+					maxHeight = 36
+					format = center
+				}
+				iconType = {
+					name = "GER_SPD_history_picture_1917"
+					position = { x = 0 y = 74 }
+					spriteType = "GFX_GER_SPD_history_1917"
+					alwaystransparent = yes
 				}
 				instantTextboxType = {
 					name = "body"
-					position = { x = 0 y = 108 }
+					position = { x = 0 y = 211 }
 					font = "hoi_16mbs"
 					text = "GER_SPD_history_1917_body"
-					maxWidth = 400
-					maxHeight = 150
+					maxWidth = 505
+					maxHeight = 196
 				}
 			}
 		}
