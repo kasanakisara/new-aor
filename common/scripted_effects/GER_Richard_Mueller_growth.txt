@@ -1,0 +1,33 @@
+GER_Richard_Mueller_start_growth = {
+ if = {
+  limit = {
+   has_idea = GER_Richard_Mueller_growth_cabinet_1
+   NOT = { has_country_flag = GER_Richard_Mueller_growth_started }
+  }
+  set_country_flag = GER_Richard_Mueller_growth_started
+  country_event = { id = AOR_GER_mueller_growth.1 days = 15 }
+ }
+}
+
+# Explicit trait tooltips avoid dynamic localization in advisor modifier tooltips.
+GER_Richard_Mueller_refresh_growth_tooltip = {
+ if = {
+  limit = {
+   has_country_flag = GER_Richard_Mueller_growth_ready
+   has_idea = GER_Richard_Mueller_growth_cabinet_1
+   NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
+   NOT = { has_country_flag = GER_Richard_Mueller_growth_tooltip_updated }
+  }
+  remove_trait = {
+   character = GER_Richard_Mueller_growth_cabinet_1
+   slot = growth_cabinet
+   trait = GER_Richard_Mueller_growth_party_radicals
+  }
+  add_trait = {
+   character = GER_Richard_Mueller_growth_cabinet_1
+   slot = growth_cabinet
+   trait = GER_Richard_Mueller_growth_party_radicals_complete
+  }
+  set_country_flag = GER_Richard_Mueller_growth_tooltip_updated
+ }
+}

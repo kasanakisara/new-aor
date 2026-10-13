@@ -1,0 +1,29 @@
+AOR_tarot_test_category = {
+    AOR_tarot_flight_open_decision = {
+        icon = generic_political_discourse
+        visible = { always = no }
+        available = { always = yes }
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            clr_country_flag = AOR_tarot_test_open
+            clr_country_flag = AOR_tarot_flight_played
+            set_country_flag = AOR_tarot_flight_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+    AOR_tarot_test_open_decision = {
+        icon = generic_political_discourse
+        visible = { always = no }
+        available = { always = yes }
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            clr_country_flag = AOR_tarot_test_flipped
+            set_country_flag = AOR_tarot_test_open
+        }
+        ai_will_do = { factor = 0 }
+    }
+}

@@ -1,0 +1,77 @@
+guiTypes = {
+    containerWindowType = {
+        name = "AOR_tarot_test_window"
+        position = { x = 480 y = 20 }
+        Orientation = "upper_left"
+        size = { width = 460 height = 710 }
+        moveable = yes
+        clipping = no
+        background = {
+            name = "Background"
+            quadTextureSprite = "GFX_tiled_plain_bg_lined"
+        }
+        instantTextboxType = {
+            name = "AOR_tarot_test_heading"
+            position = { x = 30 y = 13 }
+            font = "hoi_20b"
+            text = "AOR_tarot_test_title"
+            maxWidth = 400
+            maxHeight = 28
+            format = center
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_test_close"
+            position = { x = 422 y = 2 }
+            quadTextureSprite = "GFX_aor_closebutton_2"
+            clicksound = click_close
+            pdx_tooltip = CLOSE
+        }
+        iconType = {
+            name = "AOR_tarot_test_card_1"
+            position = { x = 22 y = 22 }
+            spriteType = "GFX_AOR_tarot_deck_back"
+            scale = 0.8
+            alwaystransparent = yes
+        }
+        iconType = {
+            name = "AOR_tarot_test_card_2"
+            position = { x = 232 y = 22 }
+            spriteType = "GFX_AOR_tarot_deck_back"
+            scale = 0.8
+            alwaystransparent = yes
+        }
+        iconType = {
+            name = "AOR_tarot_test_card_3"
+            position = { x = 22 y = 330 }
+            spriteType = "GFX_AOR_tarot_deck_back"
+            scale = 0.8
+            alwaystransparent = yes
+        }
+        iconType = {
+            name = "AOR_tarot_test_card_4"
+            position = { x = 232 y = 330 }
+            spriteType = "GFX_AOR_tarot_deck_back"
+            scale = 0.8
+            alwaystransparent = yes
+        }
+        # The scripted image switches between static back and animation.
+        # Reset replaces the animated sprite, rather than only hiding it.
+        buttonType = {
+            name = "AOR_tarot_test_reset_button"
+            position = { x = 240 y = 658 }
+            quadTextureSprite = "GFX_button_148x34"
+            buttonText = "AOR_tarot_test_reset_button"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+        buttonType = {
+            name = "AOR_tarot_test_random_button"
+            position = { x = 72 y = 658 }
+            quadTextureSprite = "GFX_button_148x34"
+            buttonText = "AOR_tarot_test_random_button"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+    }
+}

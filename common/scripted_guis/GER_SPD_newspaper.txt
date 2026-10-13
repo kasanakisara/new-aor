@@ -7,6 +7,14 @@ scripted_gui = {
 		visible = { tag = GER }
 		ai_enabled = { always = no }
 		effects = {
+			GER_SPD_tarot_button_click = {
+				clr_country_flag = AOR_tarot_test_open
+				if = {
+					limit = { has_country_flag = AOR_tarot_flight_open }
+					clr_country_flag = AOR_tarot_flight_open
+				}
+				else = { set_country_flag = AOR_tarot_flight_open }
+			}
 			GER_SPD_history_button_click = {
 				if = {
 					limit = { has_country_flag = GER_SPD_history_open }

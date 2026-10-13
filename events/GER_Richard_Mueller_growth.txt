@@ -1,0 +1,38 @@
+add_namespace = AOR_GER_mueller_growth
+
+# Update the tooltip at expiry, without waiting for the player's response.
+country_event = {
+ id = AOR_GER_mueller_growth.1
+ hidden = yes
+ is_triggered_only = yes
+ trigger = {
+  has_idea = GER_Richard_Mueller_growth_cabinet_1
+  NOT = { has_country_flag = GER_Richard_Mueller_growth_ready }
+  NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
+ }
+ immediate = {
+  set_country_flag = GER_Richard_Mueller_growth_ready
+  GER_Richard_Mueller_refresh_growth_tooltip = yes
+  country_event = { id = AOR_GER_mueller_growth.2 }
+ }
+}
+
+country_event = {
+ id = AOR_GER_mueller_growth.2
+ title = AOR_GER_mueller_growth.2.t
+ desc = AOR_GER_mueller_growth.2.desc
+ is_triggered_only = yes
+ trigger = {
+  has_country_flag = GER_Richard_Mueller_growth_ready
+  NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
+ }
+ option = {
+  name = AOR_GER_mueller_growth.2.a
+  if = {
+   limit = { NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred } }
+   set_country_flag = GER_Richard_Mueller_growth_transferred
+   retire_character = GER_Richard_Mueller_growth_cabinet_1
+   recruit_character = GER_Richard_Mueller_regular_cabinet
+  }
+ }
+}

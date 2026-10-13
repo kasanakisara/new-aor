@@ -1,0 +1,34 @@
+scripted_gui = {
+    AOR_tarot_test_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_test_window"
+        ai_enabled = { always = no }
+        # Retained only as an archived layout; the flying-card GUI is the active one.
+        visible = { always = no }
+        effects = {
+            AOR_tarot_test_close_click = {
+                clr_country_flag = AOR_tarot_test_open
+                clr_country_flag = AOR_tarot_test_flipped
+            }
+            AOR_tarot_test_random_button_click = {
+                AOR_tarot_test_draw_four = yes
+                # Switch playback names even if a slot draws the same card again.
+                if = {
+                    limit = { has_country_flag = AOR_tarot_test_variant }
+                    clr_country_flag = AOR_tarot_test_variant
+                }
+                else = { set_country_flag = AOR_tarot_test_variant }
+                set_country_flag = AOR_tarot_test_flipped
+            }
+            AOR_tarot_test_reset_button_click = {
+                clr_country_flag = AOR_tarot_test_flipped
+            }
+        }
+        properties = {
+            AOR_tarot_test_card_1 = { image = "[AOR_tarot_test_card_1_image]" }
+            AOR_tarot_test_card_2 = { image = "[AOR_tarot_test_card_2_image]" }
+            AOR_tarot_test_card_3 = { image = "[AOR_tarot_test_card_3_image]" }
+            AOR_tarot_test_card_4 = { image = "[AOR_tarot_test_card_4_image]" }
+        }
+    }
+}

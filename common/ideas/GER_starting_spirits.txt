@@ -1,3 +1,4 @@
+# 1919 starting spirits and cumulative focus upgrades.
 ideas = {
 	country = {
 		GER_lifelong_SPD = {
@@ -7,9 +8,44 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				stability_factor = 0.05
+				stability_weekly = 0.001
 				war_support_factor = 0.05
-				AUT_democratic_drift = 0.5
-				political_power_gain = 0.2
+				Marxism_drift = 0.01
+				PAR_socialism_drift = 0.01
+				political_power_gain = 0.30
+			}
+		}
+
+		GER_lifelong_SPD_government = {
+			picture = GFX_idea_GER_lifelong_SPD
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				stability_weekly = 0.001
+				war_support_factor = 0.05
+				Marxism_drift = 0.01
+				PAR_socialism_drift = 0.01
+				political_power_gain = 0.30
+				political_power_factor = 0.05
+			}
+		}
+
+		GER_lifelong_SPD_consolation = {
+			picture = GFX_idea_GER_lifelong_SPD
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				stability_weekly = 0.0015
+				war_support_factor = 0.05
+				Marxism_drift = 0.01
+				PAR_socialism_drift = 0.01
+				political_power_gain = 0.30
+				political_power_factor = 0.05
+				party_popularity_stability_factor = 0.05
 			}
 		}
 
@@ -19,11 +55,81 @@ ideas = {
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				line_change_production_efficiency_factor = -0.15
-				production_factory_efficiency_gain_factor = -0.15
+				political_power_gain = -0.05
+				conscription_factor = -0.20
+				monthly_population = -0.03
+				consumer_goods_factor = 0.35
+				research_speed_factor = -0.15
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.10
+				conversion_cost_civ_to_mil_factor = 0.25
+				conversion_cost_mil_to_civ_factor = 0.25
+			}
+		}
+
+		GER_when_economy_dies_demobilized = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.05
+				conscription_factor = -0.20
+				monthly_population = 0
+				consumer_goods_factor = 0.35
+				research_speed_factor = -0.15
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.10
+				conversion_cost_civ_to_mil_factor = 0.25
+				conversion_cost_mil_to_civ_factor = 0.25
+			}
+		}
+
+		GER_when_economy_dies_royal_property = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.05
+				conscription_factor = -0.20
+				monthly_population = -0.03
 				consumer_goods_factor = 0.25
-				industrial_capacity_factory = -0.20
-				local_resources_factor = -0.20
+				research_speed_factor = -0.15
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.10
+				conversion_cost_civ_to_mil_factor = 0.25
+				conversion_cost_mil_to_civ_factor = 0.25
+			}
+		}
+
+		GER_when_economy_dies_recovering = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.05
+				conscription_factor = -0.20
+				monthly_population = 0
+				consumer_goods_factor = 0.25
+				research_speed_factor = -0.15
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.10
+				conversion_cost_civ_to_mil_factor = 0.25
+				conversion_cost_mil_to_civ_factor = 0.25
 			}
 		}
 
@@ -37,6 +143,8 @@ ideas = {
 				army_core_attack_factor = 0.10
 				army_core_defence_factor = 0.10
 				max_dig_in_factor = -0.30
+				dig_in_speed_factor = 0.05
+				attrition = -0.05
 			}
 		}
 
@@ -48,7 +156,21 @@ ideas = {
 			modifier = {
 				stability_weekly = -0.002
 				war_support_factor = -0.10
-				political_power_gain = -0.5
+				political_power_gain = -0.50
+				political_power_cost = 0.15
+			}
+		}
+
+		GER_age_of_fracture_food_supply = {
+			picture = GFX_idea_GER_age_of_fracture
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.002
+				war_support_factor = -0.10
+				political_power_gain = -0.35
+				political_power_cost = 0.05
 			}
 		}
 
@@ -67,10 +189,48 @@ ideas = {
 				}
 			}
 			modifier = {
-				Fascism_drift = 0.2
+				Absolutism_drift = 0.01
 				industrial_capacity_factory = -0.05
+				army_morale_factor = -0.10
+				training_time_army_factor = 0.15
 				custom_modifier_tooltip = GER_stab_in_the_back_division_lock_tt
 			}
 		}
+
+		GER_1919_economic_stimulus = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.15
+				production_factory_max_efficiency_factor = 0.20
+			}
+		}
+
+		GER_1919_transport_repair = {
+			picture = GFX_idea_GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_infrastructure_factor = 0.35
+				production_speed_rail_way_factor = 0.30
+			}
+		}
+
+		GER_1919_social_stabilization = {
+			picture = GFX_idea_GER_lifelong_SPD
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			on_remove = { add_political_power = -50 }
+			modifier = {
+				stability_weekly = 0.001
+				industrial_capacity_factory = 0.10
+			}
+		}
+
 	}
 }

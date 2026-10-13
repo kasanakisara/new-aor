@@ -10,7 +10,7 @@ focus_tree = {
 	}
 
 	# =====================================================
-	# 1919：德国开局分支。暂定 7 / 14 天，描述、奖励和美术留空。
+	# 1919：德国开局分支。按设计图实现时长、奖励与前置，剧情事件暂用测试事件。
 	# 后续分支通过各自的解锁 flag 显现；本分支在进入战后过渡期后隐藏。
 	# =====================================================
 	focus = {
@@ -19,7 +19,11 @@ focus_tree = {
 		y = 0
 		cost = 1
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_stability = 0.025
+			add_political_power = 15
+			country_event = { id = AOR_GER_1919_test.1 }
+		}
 	}
 
 	focus = {
@@ -27,10 +31,13 @@ focus_tree = {
 		relative_position_id = GER_1919_august
 		x = 0
 		y = 1
-		cost = 1
+		cost = 2
 		prerequisite = { focus = GER_1919_august }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			swap_ideas = { remove_idea = GER_lifelong_SPD add_idea = GER_lifelong_SPD_government }
+			country_event = { id = AOR_GER_1919_test.2 }
+		}
 	}
 
 	focus = {
@@ -39,9 +46,17 @@ focus_tree = {
 		x = -1
 		y = 2
 		cost = 2
-		prerequisite = { focus = GER_1919_government_work }
+		prerequisite = { focus = GER_1919_demobilize_the_army }
+		prerequisite = { focus = GER_1919_relieve_unemployment }
+		prerequisite = { focus = GER_1919_chaotic_streets }
+		prerequisite = { focus = GER_1919_food_supply }
+		prerequisite = { focus = GER_1919_confiscate_royal_property }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_stability = 0.05
+			swap_ideas = { remove_idea = GER_lifelong_SPD_government add_idea = GER_lifelong_SPD_consolation }
+			country_event = { id = AOR_GER_focus_1919.2 }
+		}
 	}
 
 	focus = {
@@ -52,7 +67,17 @@ focus_tree = {
 		cost = 2
 		prerequisite = { focus = GER_1919_government_work }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_political_power = 10
+			if = {
+				limit = { has_idea = GER_when_economy_dies_royal_property }
+				swap_ideas = { remove_idea = GER_when_economy_dies_royal_property add_idea = GER_when_economy_dies_recovering }
+			}
+			else_if = {
+				limit = { has_idea = GER_when_economy_dies }
+				swap_ideas = { remove_idea = GER_when_economy_dies add_idea = GER_when_economy_dies_demobilized }
+			}
+		}
 	}
 
 	focus = {
@@ -63,7 +88,11 @@ focus_tree = {
 		cost = 2
 		prerequisite = { focus = GER_1919_government_work }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_political_power = 50
+			add_timed_idea = { idea = GER_1919_economic_stimulus days = 35 }
+			country_event = { id = AOR_GER_1919_test.4 }
+		}
 	}
 
 	focus = {
@@ -74,7 +103,10 @@ focus_tree = {
 		cost = 2
 		prerequisite = { focus = GER_1919_government_work }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_timed_idea = { idea = GER_1919_social_stabilization days = 70 }
+			custom_effect_tooltip = GER_1919_social_stabilization_expiry_tt
+		}
 	}
 
 	focus = {
@@ -83,9 +115,16 @@ focus_tree = {
 		x = 1
 		y = 2
 		cost = 2
-		prerequisite = { focus = GER_1919_government_work }
+		prerequisite = { focus = GER_1919_demobilize_the_army }
+		prerequisite = { focus = GER_1919_relieve_unemployment }
+		prerequisite = { focus = GER_1919_chaotic_streets }
+		prerequisite = { focus = GER_1919_food_supply }
+		prerequisite = { focus = GER_1919_confiscate_royal_property }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_timed_idea = { idea = GER_1919_transport_repair days = 70 }
+			country_event = { id = AOR_GER_1919_test.5 }
+		}
 	}
 
 	focus = {
@@ -96,7 +135,10 @@ focus_tree = {
 		cost = 2
 		prerequisite = { focus = GER_1919_government_work }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			swap_ideas = { remove_idea = GER_age_of_fracture add_idea = GER_age_of_fracture_food_supply }
+			country_event = { id = AOR_GER_focus_1919.3 }
+		}
 	}
 
 	focus = {
@@ -108,7 +150,17 @@ focus_tree = {
 		prerequisite = { focus = GER_1919_government_work }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
 		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
 			country_event = { id = AOR_GER_focus_1919.1 }
+			if = {
+				limit = { has_idea = GER_when_economy_dies_demobilized }
+				swap_ideas = { remove_idea = GER_when_economy_dies_demobilized add_idea = GER_when_economy_dies_recovering }
+			}
+			else_if = {
+				limit = { has_idea = GER_when_economy_dies }
+				swap_ideas = { remove_idea = GER_when_economy_dies add_idea = GER_when_economy_dies_royal_property }
+			}
 		}
 	}
 
@@ -117,17 +169,13 @@ focus_tree = {
 		relative_position_id = GER_1919_government_work
 		x = 0
 		y = 3
-		cost = 2
-		# Separate prerequisite blocks require ALL seven government tasks.
+		cost = 3
 		prerequisite = { focus = GER_1919_aid_the_wounded }
-		prerequisite = { focus = GER_1919_demobilize_the_army }
-		prerequisite = { focus = GER_1919_relieve_unemployment }
-		prerequisite = { focus = GER_1919_chaotic_streets }
 		prerequisite = { focus = GER_1919_restore_transport }
-		prerequisite = { focus = GER_1919_food_supply }
-		prerequisite = { focus = GER_1919_confiscate_royal_property }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			custom_effect_tooltip = GER_1919_consolidate_silesia_effect_tt
+		}
 	}
 
 	focus = {
@@ -135,10 +183,18 @@ focus_tree = {
 		relative_position_id = GER_1919_consolidate_silesia
 		x = 0
 		y = 1
-		cost = 1
+		cost = 5
 		prerequisite = { focus = GER_1919_consolidate_silesia }
 		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			if = {
+				limit = { has_idea = GER_age_of_fracture_food_supply }
+				remove_ideas = GER_age_of_fracture_food_supply
+			}
+			else = { remove_ideas = GER_age_of_fracture }
+			remove_ideas = GER_stab_in_the_back
+			remove_ideas = GER_state_within_a_state
+		}
 	}
 
 	# =====================================================

@@ -1,0 +1,280 @@
+guiTypes = {
+    containerWindowType = {
+        name = "AOR_tarot_flight_window"
+        position = { x = 540 y = 74 }
+        size = { width = 460 height = 740 }
+        clipping = no
+        moveable = yes
+        # The movable root needs its own background to receive drag input.
+        # Transparent decorative children alone do not provide a drag surface.
+        background = { name = "Background" quadTextureSprite = "GFX_tiled_plain_bg_lined" }
+        instantTextboxType = {
+            name = "flight_title"
+            position = { x = 30 y = 13 }
+            font = "hoi_20b"
+            text = "AOR_tarot_flight_title"
+            maxWidth = 400
+            maxHeight = 28
+            format = center
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_close"
+            position = { x = 422 y = 2 }
+            quadTextureSprite = "GFX_aor_closebutton_2"
+            clicksound = click_close
+            pdx_tooltip = CLOSE
+        }
+        iconType = {
+            name = "AOR_tarot_flight_help"
+            # Background has a 4px transparent inset; leave 2px from its visible edge.
+            position = { x = 6 y = 6 }
+            spriteType = "GFX_GER_SPD_questionmark"
+            pdx_tooltip = AOR_tarot_flight_help_tt
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_draw"
+            position = { x = 72 y = 688 }
+            quadTextureSprite = "GFX_button_148x34"
+            buttonText = "AOR_tarot_flight_draw"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_flight_draw_tt
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_confirm"
+            position = { x = 240 y = 688 }
+            quadTextureSprite = "GFX_button_148x34"
+            buttonText = "AOR_tarot_flight_confirm"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_flight_confirm_tt
+        }
+    }
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_1_window"
+        position = { x = 22 y = 52 }
+        size = { width = 205 height = 308 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_1"
+            position = { x = 29 y = 30 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 1
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_1"
+            position = { x = 0 y = 0 }
+            quadTextureSprite = "GFX_AOR_tarot_deck_back"
+            clicksound = click_default
+            scale = 0.8
+            pdx_tooltip = AOR_tarot_flight_card_1_tt
+        }
+    }
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_2_window"
+        position = { x = 232 y = 52 }
+        size = { width = 205 height = 308 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_2"
+            position = { x = 29 y = 30 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 1
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_2"
+            position = { x = 0 y = 0 }
+            quadTextureSprite = "GFX_AOR_tarot_deck_back"
+            clicksound = click_default
+            scale = 0.8
+            pdx_tooltip = AOR_tarot_flight_card_2_tt
+        }
+    }
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_3_window"
+        position = { x = 22 y = 360 }
+        size = { width = 205 height = 308 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_3"
+            position = { x = 29 y = 30 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 1
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_3"
+            position = { x = 0 y = 0 }
+            quadTextureSprite = "GFX_AOR_tarot_deck_back"
+            clicksound = click_default
+            scale = 0.8
+            pdx_tooltip = AOR_tarot_flight_card_3_tt
+        }
+    }
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_4_window"
+        position = { x = 232 y = 360 }
+        size = { width = 205 height = 308 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_4"
+            position = { x = 29 y = 30 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 1
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_4"
+            position = { x = 0 y = 0 }
+            quadTextureSprite = "GFX_AOR_tarot_deck_back"
+            clicksound = click_default
+            scale = 0.8
+            pdx_tooltip = AOR_tarot_flight_card_4_tt
+        }
+    }
+    containerWindowType = {
+        name = "AOR_tarot_flight_used_window"
+        position = { x = 450 y = 0 }
+        size = { width = 205 height = 740 }
+        clipping = no
+        background = { name = "Background" quadTextureSprite = "GFX_tiled_plain_bg_lined" }
+        containerWindowType = {
+            name = "AOR_tarot_flight_suits_backdrop"
+            position = { x = 0 y = 440 }
+            size = { width = 205 height = 300 }
+            alwaystransparent = yes
+            background = { name = "Background" quadTextureSprite = "GFX_tiled_plain_bg_lined" }
+        }
+        buttonType = {
+            name = "AOR_tarot_album_toggle"
+            position = { x = 29 y = 390 }
+            quadTextureSprite = "GFX_button_148x34"
+            buttonText = "AOR_tarot_album_open"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+        iconType = {
+            name = "AOR_tarot_flight_used_frame"
+            position = { x = 29 y = 82 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 1
+            alwaystransparent = yes
+        }
+        iconType = {
+            name = "AOR_tarot_flight_used_card"
+            position = { x = 0 y = 52 }
+            spriteType = "GFX_AOR_tarot_face_01"
+            scale = 0.8
+            pdx_tooltip = AOR_tarot_flight_used_card_tt
+        }
+        iconType = {
+            name = "AOR_tarot_flight_used_suit"
+            position = { x = 32 y = 84 }
+            spriteType = "GFX_AOR_tarot_suit_23"
+            scale = 0.331
+            pdx_tooltip = AOR_tarot_flight_used_card_tt
+        }
+        instantTextboxType = {
+            name = "AOR_tarot_flight_used_label"
+            position = { x = 5 y = 343 }
+            font = "hoi_16mbs"
+            text = "AOR_tarot_flight_used_label"
+            maxWidth = 195
+            maxHeight = 28
+            format = center
+            alwaystransparent = yes
+        }
+    }
+
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_5_window"
+        position = { x = 480 y = 468 }
+        size = { width = 64 height = 108 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_5"
+            position = { x = 0 y = 0 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 0.43
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_5"
+            position = { x = 2 y = 2 }
+            quadTextureSprite = "GFX_AOR_tarot_suit_small_23"
+            scale = 1
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_suit_23_tt
+        }
+    }
+
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_6_window"
+        position = { x = 565 y = 468 }
+        size = { width = 64 height = 108 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_6"
+            position = { x = 0 y = 0 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 0.43
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_6"
+            position = { x = 2 y = 2 }
+            quadTextureSprite = "GFX_AOR_tarot_suit_small_24"
+            scale = 1
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_suit_24_tt
+        }
+    }
+
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_7_window"
+        position = { x = 480 y = 594 }
+        size = { width = 64 height = 108 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_7"
+            position = { x = 0 y = 0 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 0.43
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_7"
+            position = { x = 2 y = 2 }
+            quadTextureSprite = "GFX_AOR_tarot_suit_small_25"
+            scale = 1
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_suit_25_tt
+        }
+    }
+
+    containerWindowType = {
+        name = "AOR_tarot_flight_card_8_window"
+        position = { x = 565 y = 594 }
+        size = { width = 64 height = 108 }
+        clipping = no
+        iconType = {
+            name = "AOR_tarot_flight_frame_8"
+            position = { x = 0 y = 0 }
+            spriteType = "GFX_AOR_tarot_frame"
+            scale = 0.43
+            alwaystransparent = yes
+        }
+        buttonType = {
+            name = "AOR_tarot_flight_card_8"
+            position = { x = 2 y = 2 }
+            quadTextureSprite = "GFX_AOR_tarot_suit_small_26"
+            scale = 1
+            clicksound = click_default
+            pdx_tooltip = AOR_tarot_suit_26_tt
+        }
+    }
+
+}

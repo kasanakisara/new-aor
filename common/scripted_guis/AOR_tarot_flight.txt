@@ -1,0 +1,388 @@
+scripted_gui = {
+    AOR_tarot_flight_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_window"
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_confirm_click_enabled = {
+                has_country_flag = AOR_tarot_flight_played
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                check_variable = { AOR_tarot_flight_selected > 0 }
+                check_variable = { AOR_tarot_flight_selected < 9 }
+            }
+        }
+        effects = {
+            AOR_tarot_flight_confirm_click = { AOR_tarot_flight_use_selected = yes }
+            AOR_tarot_flight_close_click = {
+                clr_country_flag = AOR_tarot_flight_open
+            }
+            AOR_tarot_flight_draw_click = {
+                set_variable = { AOR_tarot_flight_selected = 0 }
+                AOR_tarot_flight_draw_four = yes
+                if = {
+                    limit = { has_country_flag = AOR_tarot_flight_variant }
+                    clr_country_flag = AOR_tarot_flight_variant
+                }
+                else = { set_country_flag = AOR_tarot_flight_variant }
+                set_country_flag = AOR_tarot_flight_played
+            }
+        }
+    }
+    AOR_tarot_flight_card_1_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_1_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_1_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_1 = { image = "[AOR_tarot_flight_card_1_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_1_click = {
+                if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_1 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 1 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_1 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 1 }
+                }
+            }
+        }
+    }
+    AOR_tarot_flight_card_2_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_2_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_2_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_2 = { image = "[AOR_tarot_flight_card_2_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_2_click = {
+                if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_2 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 2 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_2 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 2 }
+                }
+            }
+        }
+    }
+    AOR_tarot_flight_card_3_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_3_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_3_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_3 = { image = "[AOR_tarot_flight_card_3_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_3_click = {
+                if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_3 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 3 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_3 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 3 }
+                }
+            }
+        }
+    }
+    AOR_tarot_flight_card_4_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_4_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_4_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_4 = { image = "[AOR_tarot_flight_card_4_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_4_click = {
+                if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_4 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 4 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { AOR_tarot_flight_slot_4 > 0 }
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 4 }
+                }
+            }
+        }
+    }
+    AOR_tarot_flight_used_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_used_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        effects = {
+            AOR_tarot_album_toggle_click = {
+                if = {
+                    limit = { has_country_flag = AOR_tarot_album_open }
+                    clr_country_flag = AOR_tarot_album_open
+                }
+                else = { set_country_flag = AOR_tarot_album_open }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_used_card = { image = "[AOR_tarot_flight_used_card_image]" }
+            AOR_tarot_flight_used_suit = { image = "[AOR_tarot_flight_used_suit_image]" }
+        }
+        triggers = {
+            AOR_tarot_flight_used_card_visible = {
+                check_variable = { AOR_tarot_flight_used_card > 0 }
+                check_variable = { AOR_tarot_flight_used_card < 23 }
+            }
+            AOR_tarot_flight_used_suit_visible = { check_variable = { AOR_tarot_flight_used_card > 22 } }
+        }
+    }
+
+    AOR_tarot_flight_card_5_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_5_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_5_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_5 = { image = "[AOR_tarot_flight_card_5_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_5_click = {
+                if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 5 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 5 }
+                }
+            }
+        }
+    }
+
+    AOR_tarot_flight_card_6_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_6_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_6_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_6 = { image = "[AOR_tarot_flight_card_6_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_6_click = {
+                if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 6 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 6 }
+                }
+            }
+        }
+    }
+
+    AOR_tarot_flight_card_7_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_7_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_7_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_7 = { image = "[AOR_tarot_flight_card_7_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_7_click = {
+                if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 7 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 7 }
+                }
+            }
+        }
+    }
+
+    AOR_tarot_flight_card_8_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_flight_card_8_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_tarot_flight_open }
+        triggers = {
+            AOR_tarot_flight_card_8_click_enabled = {
+                NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            }
+        }
+        properties = {
+            AOR_tarot_flight_card_8 = { image = "[AOR_tarot_flight_card_8_image]" }
+        }
+        effects = {
+            AOR_tarot_flight_card_8_click = {
+                if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 8 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 0 }
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = AOR_tarot_flight_played
+                        NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+                        check_variable = { AOR_tarot_flight_selected = 0 }
+                    }
+                    set_variable = { AOR_tarot_flight_selected = 8 }
+                }
+            }
+        }
+    }
+
+
+    AOR_tarot_album_gui = {
+        context_type = player_context
+        window_name = "AOR_tarot_album_window"
+        parent_scripted_gui = AOR_tarot_flight_gui
+        properties = {
+            album_card_01 = { image = "[AOR_tarot_album_card_01_image]" }
+            album_card_02 = { image = "[AOR_tarot_album_card_02_image]" }
+            album_card_03 = { image = "[AOR_tarot_album_card_03_image]" }
+            album_card_04 = { image = "[AOR_tarot_album_card_04_image]" }
+            album_card_05 = { image = "[AOR_tarot_album_card_05_image]" }
+            album_card_06 = { image = "[AOR_tarot_album_card_06_image]" }
+            album_card_07 = { image = "[AOR_tarot_album_card_07_image]" }
+            album_card_08 = { image = "[AOR_tarot_album_card_08_image]" }
+            album_card_09 = { image = "[AOR_tarot_album_card_09_image]" }
+            album_card_10 = { image = "[AOR_tarot_album_card_10_image]" }
+            album_card_11 = { image = "[AOR_tarot_album_card_11_image]" }
+            album_card_12 = { image = "[AOR_tarot_album_card_12_image]" }
+            album_card_13 = { image = "[AOR_tarot_album_card_13_image]" }
+            album_card_14 = { image = "[AOR_tarot_album_card_14_image]" }
+            album_card_15 = { image = "[AOR_tarot_album_card_15_image]" }
+            album_card_16 = { image = "[AOR_tarot_album_card_16_image]" }
+            album_card_17 = { image = "[AOR_tarot_album_card_17_image]" }
+            album_card_18 = { image = "[AOR_tarot_album_card_18_image]" }
+            album_card_19 = { image = "[AOR_tarot_album_card_19_image]" }
+            album_card_20 = { image = "[AOR_tarot_album_card_20_image]" }
+            album_card_21 = { image = "[AOR_tarot_album_card_21_image]" }
+            album_card_22 = { image = "[AOR_tarot_album_card_22_image]" }
+        }
+        ai_enabled = { always = no }
+        visible = {
+            has_country_flag = AOR_tarot_flight_open
+            has_country_flag = AOR_tarot_album_open
+        }
+    }
+
+}

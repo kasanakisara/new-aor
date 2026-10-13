@@ -1,0 +1,143 @@
+# Generated; availability helper handles empty/short pools safely.
+AOR_tarot_flight_draw_four = {
+    clr_country_flag = AOR_tarot_flight_confirmed
+    set_variable = { AOR_tarot_flight_selected = 0 }
+    AOR_tarot_draw_available_four = yes
+}
+AOR_tarot_flight_use_selected = {
+    if = {
+        limit = {
+            has_country_flag = AOR_tarot_flight_open
+            has_country_flag = AOR_tarot_flight_played
+            NOT = { has_country_flag = AOR_tarot_flight_confirmed }
+            check_variable = { AOR_tarot_flight_selected > 0 }
+            check_variable = { AOR_tarot_flight_selected < 9 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 1 } }
+            set_variable = { AOR_tarot_flight_used_card = AOR_tarot_flight_slot_1 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 2 } }
+            set_variable = { AOR_tarot_flight_used_card = AOR_tarot_flight_slot_2 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 3 } }
+            set_variable = { AOR_tarot_flight_used_card = AOR_tarot_flight_slot_3 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 4 } }
+            set_variable = { AOR_tarot_flight_used_card = AOR_tarot_flight_slot_4 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 5 } }
+            set_variable = { AOR_tarot_flight_used_card = 23 }
+            AOR_tarot_card_23_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 6 } }
+            set_variable = { AOR_tarot_flight_used_card = 24 }
+            AOR_tarot_card_24_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 7 } }
+            set_variable = { AOR_tarot_flight_used_card = 25 }
+            AOR_tarot_card_25_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_selected = 8 } }
+            set_variable = { AOR_tarot_flight_used_card = 26 }
+            AOR_tarot_card_26_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 1 } }
+            AOR_tarot_card_01_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 2 } }
+            AOR_tarot_card_02_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 3 } }
+            AOR_tarot_card_03_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 4 } }
+            AOR_tarot_card_04_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 5 } }
+            AOR_tarot_card_05_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 6 } }
+            AOR_tarot_card_06_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 7 } }
+            AOR_tarot_card_07_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 8 } }
+            AOR_tarot_card_08_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 9 } }
+            AOR_tarot_card_09_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 10 } }
+            AOR_tarot_card_10_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 11 } }
+            AOR_tarot_card_11_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 12 } }
+            AOR_tarot_card_12_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 13 } }
+            AOR_tarot_card_13_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 14 } }
+            AOR_tarot_card_14_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 15 } }
+            AOR_tarot_card_15_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 16 } }
+            AOR_tarot_card_16_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 17 } }
+            AOR_tarot_card_17_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 18 } }
+            AOR_tarot_card_18_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 19 } }
+            AOR_tarot_card_19_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 20 } }
+            AOR_tarot_card_20_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 21 } }
+            AOR_tarot_card_21_use = yes
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_flight_used_card = 22 } }
+            AOR_tarot_card_22_use = yes
+        }
+        set_country_flag = AOR_tarot_flight_confirmed
+        # Keep the confirmed card independently of subsequent draws and closing.
+    }
+}
