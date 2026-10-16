@@ -2,6 +2,9 @@ add_namespace = NSH
 
 
 #北石勒苏益格公投
+# 时点：1920.9.1（条约 1920.1.18 签署、1920.2.10 石勒苏益格移交国际联盟托管，约 7 个月后）
+# 前提：AOR_GER_versailles.6 已执行 release = NSH，NSH 拥有 839/58/1043；
+#       在托管设立之前 NSH 不存在，本事件的 tag = NSH 条件无法满足。
 country_event = {
 	id = NSH.1
 	title = NSH.1.t
@@ -11,7 +14,7 @@ country_event = {
 	hidden = yes
 	trigger = {
 		tag = NSH
-		date > 1920.2.1
+		date > 1920.8.31
 		}
 
 	option = {  #北石勒苏益格公投入丹
@@ -25,7 +28,7 @@ country_event = {
 		}
 
 		ai_chance = {
-			base = 99
+			base = 75
 		}
     }
 	option = { #北石勒苏益格公投入德（这不太可能）
@@ -39,7 +42,7 @@ country_event = {
 		}		
 
 		ai_chance = {
-			base = 1
+			base = 25
 		}
     }
 }
@@ -59,7 +62,10 @@ country_event = {
 		DEN = { country_event = { id = den_easter_crisis.6 days = 3 } }
 		DEN = { country_event = { id = NSH.3 days = 10 } }
 		news_event = { id = AOR_news.211 }
+		# 托管区归还德国：托管结束后归属必须显式移交，否则州仍留在 NSH 名下
 		GER = {
+			transfer_state = 58
+			transfer_state = 1043
 			add_state_core = 58
 			add_state_core = 1043
 		}	
@@ -80,7 +86,10 @@ country_event = {
 		news_event = { id = AOR_news.212 }
 		SHL = { country_event = { id = NSH.4 } }
 
+		# 托管区移交丹麦
 		DEN = {
+			transfer_state = 58
+			transfer_state = 1043
 			add_state_core = 58
 			add_state_core = 1043
 		}
@@ -120,10 +129,11 @@ country_event = {
 
 	option = {#认了：默认由德国地方当局接管南石荷，丹麦保留北石勒苏益格
 		name = NSH.3.a
+		# 归属已在 NSH.2 的分支里显式移交（入德 → GER / 入丹 → DEN），
+		# 此处只做石勒苏益格-荷尔斯泰因的行政表述，不再转移州，
+		# 否则会在"入丹"分支里把州又拨回德国一侧。
 		SHL = { 
 			set_cosmetic_tag = SHL_CON_democratic
-			transfer_state = 58 
-			transfer_state = 1043
 		}
 
 		58 = { set_demilitarized_zone = no }

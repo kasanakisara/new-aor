@@ -1,9 +1,10 @@
 ####################################################################
 # 德国 · 凡尔赛条约事件链的日期驱动
 # 1919.12.10：
-#   1) 完成「凡尔赛之行」国策（仅用于在国策树中标记进程；该focus不可手动点击，
-#      因此事件链不依赖它是否被引擎接受，而是直接触发事件）；
-#   2) 触发 AOR_GER_versailles.1（巴黎来电）。
+#   1) 置旗标 AOR_GER_versailles_started（链条已启动，防重复）
+#      + AOR_GER_versailles_started_flag（国策树里三个里程碑国策的 available 条件）
+#   2) 完成「凡尔赛之行」国策（玩家也可自行点击，完成后无副作用）
+#   3) 触发 AOR_GER_versailles.1（巴黎来电）
 # 之后的推进全部由事件自身的 days 延迟完成，不再依赖 on_action。
 ####################################################################
 on_actions = {
@@ -16,6 +17,9 @@ on_actions = {
 					NOT = { has_country_flag = AOR_GER_versailles_started }
 				}
 				set_country_flag = AOR_GER_versailles_started
+				# 国策 GER_1919_versailles_journey / _rotten_hand / _backbone_breaks
+				# 的 available 条件就是这个旗标
+				set_country_flag = AOR_GER_versailles_started_flag
 				complete_national_focus = GER_1919_versailles_journey
 				country_event = { id = AOR_GER_versailles.1 days = 1 }
 			}

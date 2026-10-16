@@ -137,6 +137,10 @@ country_event = {
 
 		# 1920.1.18 签署新闻
 		news_event = { id = AOR_GER_versailles.5 days = 15 }
+
+		# 1920.2.10 条约开始执行：石勒苏益格移交国际联盟托管
+		# （1.3 + 38 天 = 2.10；国联首次会议亦在 1920 年 2 月初，见 AOR_news.49）
+		country_event = { id = AOR_GER_versailles.6 days = 38 }
 	}
 }
 
@@ -152,5 +156,78 @@ news_event = {
 
 	option = {
 		name = AOR_GER_versailles.5.a
+	}
+}
+
+####################################################################
+# 事件6：条约开始执行 · 石勒苏益格移交国际联盟托管  *1920.2.10
+#
+# 设计（2026-10 修订）：
+#   北石勒苏益格（州 839）与中石勒苏益格（州 58 + 弗伦斯堡 1043）
+#   先整体划为「国际联盟特别托管区」（即 NSH 石勒苏益格托管地），
+#   之后再分区举行公投：北区 1920.9.1（NSH.1）、中区 1920.10.1（NSH.2，+30 天）。
+#   公投时点与既有新闻文案一致（AOR_news.211/212 提到"柏林正被《国防法》风波拖住"，
+#   即 1920 年秋）。
+#
+# 注意：开局 NSH 不拥有任何州，其公投事件 NSH.1 的 trigger 是 tag = NSH，
+#   因此在托管设立之前该链根本无法触发。release = NSH 会按核心州把
+#   839 / 58 / 1043 一并交出，并让 NSH 正式存在于地图上。
+####################################################################
+country_event = {
+	id = AOR_GER_versailles.6
+	title = AOR_GER_versailles.6.t
+	desc = AOR_GER_versailles.6.d
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = AOR_GER_schleswig_mandate
+		set_global_flag = AOR_GER_schleswig_mandate
+
+		# === 石勒苏益格三州移交国际联盟托管区 ===
+		release = NSH
+		if = {
+			limit = { NOT = { NSH = { owns_state = 839 } } }
+			NSH = { transfer_state = 839 }
+		}
+		if = {
+			limit = { NOT = { NSH = { owns_state = 58 } } }
+			NSH = { transfer_state = 58 }
+		}
+		if = {
+			limit = { NOT = { NSH = { owns_state = 1043 } } }
+			NSH = { transfer_state = 1043 }
+		}
+		NSH = {
+			add_state_core = 839
+			add_state_core = 58
+			add_state_core = 1043
+		}
+
+		# === 国际联盟的担保：英法共同保证托管区安全 ===
+		if = {
+			limit = { ENG = { exists = yes } }
+			ENG = { give_guarantee = NSH }
+		}
+		if = {
+			limit = { FRA = { exists = yes } }
+			FRA = { give_guarantee = NSH }
+		}
+	}
+
+	option = { # 接受托管安排，等待公投
+		name = AOR_GER_versailles.6.a
+		add_stability = -0.03
+		add_war_support = -0.02
+		add_political_power = -20
+	}
+
+	option = { # 向国联提出正式抗议
+		name = AOR_GER_versailles.6.b
+		add_war_support = 0.03
+		add_political_power = -40
+		ENG = { add_opinion_modifier = { target = ROOT modifier = AOR_GER_versailles_objection } }
+		FRA = { add_opinion_modifier = { target = ROOT modifier = AOR_GER_versailles_objection } }
 	}
 }
