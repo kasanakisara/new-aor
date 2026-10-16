@@ -100,8 +100,8 @@ focus_tree = {
 		cost = 4
 		prerequisite = { focus = GER_everything_for_the_front }
 		completion_reward = {
-			add_ideas = GER_seized_means_of_production_spirit			# TODO: 未社会化的工厂、银行、铁路、船只国有化
-			#   —— 工业产出↑、消费品↓、资产阶级支持度↓
+			add_ideas = GER_seized_means_of_production_spirit	#   —— 工业产出↑、消费品↓、资产阶级支持度↓		
+			# TODO: 未社会化的工厂、银行、铁路、船只国有化 
 			# TODO: 若要逐州接管，用 every_controlled_state = { ... }（不是 transfer_owner）
 		}
 	}
@@ -132,7 +132,7 @@ focus_tree = {
 			add_stability = 0.05
 			# TODO: 核心区小心维持自愿交换（粮食税 + 工业品下乡）；
 			#   非核心区城乡联系薄弱 —— 实在难以建立自愿交换时，强制征收成为可选项
-			unlock_decision_tooltip = GER_grain_requisition
+			# Decision unlock is added once GER_grain_requisition is defined.
 		}
 	}
 
@@ -305,9 +305,9 @@ focus_tree = {
 	focus = {
 		id = GER_call_back_former_comrades			# 呼唤曾经的同志
 		icon = GFX_GER_call_back_former_comrades
-		relative_position_id = GFX_GER_soviet_power_expansion
-		x = 50
-		y = 5
+		relative_position_id = GER_soviet_power_expansion
+		x = 3
+		y = 1
 		cost = 5
 		prerequisite = { focus = GER_soviet_power_expansion }
 		completion_reward = {
