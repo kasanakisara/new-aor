@@ -82,6 +82,11 @@ country_event = {
 
 	option = { # 玩家无法选择：仅用于呈现"没办法修改"
 		name = AOR_GER_versailles.3.b
+		add_stability = -0.03
+		add_political_power = -25
+		# 议程取消、紧急投票：为期两天的临时民族精神
+		add_timed_idea = { idea = GER_reichstag_emergency_session days = 2 }
+		country_event = { id = AOR_GER_versailles.4 days = 1 }
 		custom_effect_tooltip = AOR_GER_versailles.3.1.tt
 	}
 }
