@@ -1,33 +1,33 @@
-####################################################################
-# 德国 · 凡尔赛条约事件链（1919.12.10 - 1920.1.18）
-#
-# 世界观口径（新设定）：1919.8—1922.7 的德意志共和国，
-#   社会民主党＋中央党联合执政，总统倍倍尔、总理哈泽。
-# 驱动方式：on_daily_GER 在 1919.12.10 完成「凡尔赛之行」国策，
-#   由该国的 completion_reward 触发 .1，此后全部由事件链自己推进。
-# 国策树中的三个里程碑国策（凡尔赛之行 / 烂手！ / 脊梁断裂）均为
-#   available = { always = no }，只能由事件 complete_national_focus 完成。
-####################################################################
-
 add_namespace = AOR_GER_versailles
 
-#-------------------------------------------------- 事件1：巴黎来电 *1919.12.10
+#-------------------------------------------------- 事件1：葡萄酒与香烟 *1919.12.10
 country_event = {
 	id = AOR_GER_versailles.1
 	title = AOR_GER_versailles.1.t
 	desc = AOR_GER_versailles.1.d
-	picture = GFX_news_event_generic_sign_treaty1
+	picture = GFX_AOR_GER_versailles_wine_and_cigarettes
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	immediate = {
-		# 21 天后（1919.12.31）触发事件2
-		country_event = { id = AOR_GER_versailles.2 days = 21 }
+		hidden_effect = {
+			set_country_flag = AOR_GER_versailles_journey_visible
+			mark_focus_tree_layout_dirty = yes
+			# 21 天后（1919.12.31）触发事件2
+			country_event = { id = AOR_GER_versailles.2 days = 21 }
+		}
 	}
 
 	option = {
 		name = AOR_GER_versailles.1.a
-		add_political_power = -10
+		hidden_effect = {
+			set_country_flag = AOR_GER_versailles_journey_departed
+			if = {
+				limit = { NOT = { has_completed_focus = GER_1919_versailles_journey } }
+				set_country_flag = AOR_GER_versailles_journey_in_progress
+				activate_shine_on_focus = GER_1919_versailles_journey
+			}
+		}
 	}
 }
 
@@ -36,20 +36,29 @@ country_event = {
 	id = AOR_GER_versailles.2
 	title = AOR_GER_versailles.2.t
 	desc = AOR_GER_versailles.2.d
-	picture = GFX_news_event_generic_read_write
+	picture = GFX_AOR_GER_versailles_happy_new_year
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	immediate = {
-		complete_national_focus = GER_1919_versailles_rotten_hand
-		# 3 天后（1920.1.2）触发事件3
-		country_event = { id = AOR_GER_versailles.3 days = 3 }
+		hidden_effect = {
+			deactivate_shine_on_focus = GER_1919_versailles_journey
+			complete_national_focus = GER_1919_versailles_journey
+			clr_country_flag = AOR_GER_versailles_journey_in_progress
+			set_country_flag = AOR_GER_versailles_rotten_hand_visible
+			mark_focus_tree_layout_dirty = yes
+			# 12月31日至1月2日相隔2天；从事件出现时计时，不受选项点击影响。
+			country_event = { id = AOR_GER_versailles.3 days = 2 }
+		}
 	}
 
 	option = {
 		name = AOR_GER_versailles.2.a
-		add_stability = -0.03
 		custom_effect_tooltip = AOR_GER_versailles.2.tt
+		hidden_effect = {
+			set_country_flag = AOR_GER_versailles_treaty_read
+			complete_national_focus = GER_1919_versailles_rotten_hand
+		}
 	}
 }
 
@@ -58,89 +67,36 @@ country_event = {
 	id = AOR_GER_versailles.3
 	title = AOR_GER_versailles.3.t
 	desc = AOR_GER_versailles.3.d
-	picture = GFX_news_event_election_vote
+	picture = GFX_AOR_GER_versailles_twenty_four_hours
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	immediate = {
-		complete_national_focus = GER_1919_versailles_backbone_breaks
-		set_country_flag = AOR_GER_reichstag_emergency_vote
-		# 议会进入紧急会期：国策 GUI 显示议事槌，席位刷新
-		set_country_flag = GER_yihui_hammer_active
-		GER_Reichstag_refresh = yes
-	}
-
-	option = { # 议会已经替我们做了决定
+	option = {
 		name = AOR_GER_versailles.3.a
-		add_stability = -0.03
-		add_political_power = -25
-		# 议程取消、紧急投票：为期两天的临时民族精神
-		add_timed_idea = { idea = GER_reichstag_emergency_session days = 2 }
-		country_event = { id = AOR_GER_versailles.4 days = 1 }
 		custom_effect_tooltip = AOR_GER_versailles.3.tt
-	}
-
-	option = { # 玩家无法选择：仅用于呈现"没办法修改"
-		name = AOR_GER_versailles.3.b
-		add_stability = -0.03
-		add_political_power = -25
-		# 议程取消、紧急投票：为期两天的临时民族精神
-		add_timed_idea = { idea = GER_reichstag_emergency_session days = 2 }
-		country_event = { id = AOR_GER_versailles.4 days = 1 }
-		custom_effect_tooltip = AOR_GER_versailles.3.1.tt
 	}
 }
 
-#-------------------------------------------------- 事件4：屈辱条约 *1920.1.3
+#-------------------------------------------------- 事件4：屈辱条约（触发方式待定）
 country_event = {
 	id = AOR_GER_versailles.4
 	title = AOR_GER_versailles.4.t
 	desc = AOR_GER_versailles.4.d
-	picture = GFX_news_event_generic_sign_treaty2
+	picture = GFX_AOR_GER_versailles_humiliating_treaty
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	immediate = {
-		clr_country_flag = AOR_GER_reichstag_emergency_vote
-		clr_country_flag = GER_yihui_hammer_active
-		set_country_flag = AOR_GER_versailles_signed
-		# 供其他德国邦国（巴伐利亚等）读取
-		set_global_flag = AOR_GER_versailles_officers_purged
+		hidden_effect = {
+			set_country_flag = AOR_GER_versailles_backbone_visible
+			set_country_flag = AOR_GER_versailles_everything_lost
+			mark_focus_tree_layout_dirty = yes
+			complete_national_focus = GER_1919_versailles_backbone_breaks
+		}
 	}
 
 	option = {
 		name = AOR_GER_versailles.4.a
-
-		# === 政治家辞职：兰曹、谢德曼、诺斯克 ===
-		retire_character = GER_03_04_Ulrich_von_Brockdorff_Rantzau
-		retire_character = GER_03_03_Philipp_Scheidemann
-		retire_character = GER_03_05_Gustav_Noske
-
-		# === 军队清洗：旧军官团的一部分人被逐出共和国军界 ===
-		# 这些将领可在后续"巴伐利亚"线中被重新招募
-		retire_character = GER_Fernando_von_bock
-		retire_character = GER_Erich_von_manstein
-		retire_character = GER_Werner_von_fridge
-		retire_character = GER_Friedrich_Fromm
-		set_country_flag = AOR_GER_versailles_officers_purged
-
-		# === 民族精神：凡尔赛的枷锁 ===
-		add_ideas = GER_Versailles_shackles
-
-		# === 代价 ===
-		add_stability = -0.15
-		add_political_power = -100
-		add_war_support = -0.05
-
-		# 议会席位刷新（辞职的三人从议会界面消失）
-		GER_Reichstag_refresh = yes
-
-		# 1920.1.18 签署新闻
-		news_event = { id = AOR_GER_versailles.5 days = 15 }
-
-		# 1920.2.10 条约开始执行：石勒苏益格移交国际联盟托管
-		# （1.3 + 38 天 = 2.10；国联首次会议亦在 1920 年 2 月初，见 AOR_news.49）
-		country_event = { id = AOR_GER_versailles.6 days = 38 }
 	}
 }
 

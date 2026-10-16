@@ -174,7 +174,17 @@ focus_tree = {
 		cost = 3
 		prerequisite = { focus = GER_1919_aid_the_wounded }
 		prerequisite = { focus = GER_1919_restore_transport }
-		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		allow_branch = {
+			AOR_GER_1919_opening_visible = yes
+			NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_before_versailles_event_tt
+				NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
+			}
+		}
+		cancel_if_invalid = yes
 		completion_reward = {
 			custom_effect_tooltip = GER_1919_consolidate_silesia_effect_tt
 		}
@@ -187,7 +197,10 @@ focus_tree = {
 		y = 1
 		cost = 5
 		prerequisite = { focus = GER_1919_consolidate_silesia }
-		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		allow_branch = {
+			AOR_GER_1919_opening_visible = yes
+			NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
+		}
 		completion_reward = {
 			if = {
 				limit = { has_idea = GER_age_of_fracture_food_supply }
@@ -201,21 +214,27 @@ focus_tree = {
 
 	# =====================================================
 	# 1919.12 - 1920.1：凡尔赛条约（剧情里程碑）
-	# 三个国策均无法手动点击，只能由 AOR_GER_versailles 事件链
-	# 通过 complete_national_focus 完成，仅用于在国策树中标记进程。
+	# 事件1出现后替换奥得河畔之风波的位置；后续节点按事件逐步显示。
 	# =====================================================
 	focus = {
 		id = GER_1919_versailles_journey #凡尔赛之行
-		relative_position_id = GER_1919_before_the_dawn
+		relative_position_id = GER_1919_government_work
 		x = 0
-		y = 1
-		cost = 1
-		prerequisite = { focus = GER_1919_before_the_dawn }
-		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		available = { has_country_flag = AOR_GER_versailles_started_flag }
-		completion_reward = {
-			custom_effect_tooltip = AOR_GER_versailles_journey_tt
+		y = 3
+		cost = 3
+		prerequisite = { focus = GER_1919_aid_the_wounded }
+		prerequisite = { focus = GER_1919_restore_transport }
+		allow_branch = { has_country_flag = AOR_GER_versailles_journey_visible }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_versailles_journey_departure_tt
+				has_country_flag = AOR_GER_versailles_journey_departed
+			}
+			# 后台推进时仍禁止占用普通国策槽，不显示额外失败条件。
+			hidden_trigger = { always = no }
 		}
+		cancel_if_invalid = no
+		completion_reward = { }
 	}
 
 	focus = {
@@ -225,14 +244,14 @@ focus_tree = {
 		y = 1
 		cost = 1
 		prerequisite = { focus = GER_1919_versailles_journey }
-		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		available = { has_country_flag = AOR_GER_versailles_started_flag }
-		completion_reward = {
-			if = {
-				limit = { FRA = { exists = yes } }
-				add_opinion_modifier = { target = FRA modifier = AOR_GER_versailles_objection }
+		allow_branch = { has_country_flag = AOR_GER_versailles_rotten_hand_visible }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_versailles_treaty_read_tt
+				has_country_flag = AOR_GER_versailles_treaty_read
 			}
 		}
+		completion_reward = { }
 	}
 
 	focus = {
@@ -242,8 +261,13 @@ focus_tree = {
 		y = 1
 		cost = 1
 		prerequisite = { focus = GER_1919_versailles_rotten_hand }
-		allow_branch = { AOR_GER_1919_opening_visible = yes }
-		available = { has_country_flag = AOR_GER_versailles_started_flag }
+		allow_branch = { has_country_flag = AOR_GER_versailles_backbone_visible }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_versailles_everything_lost_tt
+				has_country_flag = AOR_GER_versailles_everything_lost
+			}
+		}
 		completion_reward = {
 		}
 	}
