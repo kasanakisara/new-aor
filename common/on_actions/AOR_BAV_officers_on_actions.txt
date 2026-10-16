@@ -1,0 +1,22 @@
+####################################################################
+# 巴伐利亚 · 凡尔赛条约线后续：旧军官投奔
+# 条件：全局旗标 AOR_GER_versailles_officers_purged（德国 1920.1.3 屈辱条约）
+#       且巴伐利亚已与 GER 开战（内战爆发）。
+# 触发一次 BAV.76，招募四名被共和国清洗的旧军官。
+####################################################################
+on_actions = {
+	on_daily_BAV = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = AOR_GER_versailles_officers_purged
+					has_war_with = GER
+					NOT = { has_country_flag = BAV_got_versailles_officers }
+					NOT = { has_country_flag = BAV_versailles_officers_event_fired }
+				}
+				set_country_flag = BAV_versailles_officers_event_fired
+				country_event = { id = BAV.76 days = 3 }
+			}
+		}
+	}
+}

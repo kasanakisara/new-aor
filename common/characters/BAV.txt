@@ -251,4 +251,137 @@ characters = {
 			}
 		}
 	}
+
+	####################################################################
+	# 凡尔赛条约后被逐出共和国军界的旧军官：内战期间投奔巴伐利亚
+	# 由 events/BAV.txt 的 BAV.76 招募（触发条件：全局旗标
+	# AOR_GER_versailles_officers_purged 且已与 GER 开战）。
+	# 姓名沿用 GER 的同名本地化键，避免重复维护。
+	####################################################################
+	BAV_Fernando_von_bock = { #费尔多·冯·博克
+		name = GER_Fernando_von_bock
+		portraits = {
+			army = {
+				large = gfx/leaders/GER/Fernando_von_bock.png
+				small = GFX_portrait_Fernando_von_bock_small
+			}
+			civilian = {
+				large = GFX_portrait_Fernando_von_bock
+				small = GFX_portrait_Fernando_von_bock_small
+			}
+		}
+		corps_commander = {
+			traits = { brilliant_strategist career_officer media_personality BAV_old_order }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 150
+			slot = high_command
+			ledger = army
+			idea_token = BAV_Fernando_von_bock
+			allowed = { original_tag = BAV }
+			traits = { army_infantry_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	BAV_Erich_von_manstein = { #埃里希·冯·曼施坦因
+		name = GER_Erich_von_manstein
+		portraits = {
+			army = {
+				large = gfx/leaders/GER/Erich_von_manstein.png
+				small = GFX_portrait_Erich_von_manstein_small
+			}
+			civilian = {
+				large = GFX_portrait_Erich_von_manstein
+				small = GFX_portrait_Erich_von_manstein_small
+			}
+		}
+		corps_commander = {
+			traits = { brilliant_strategist armor_officer career_officer trait_engineer BAV_old_order }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 150
+			slot = theorist
+			ledger = army
+			idea_token = BAV_Erich_von_manstein
+			allowed = { original_tag = BAV }
+			traits = { mobile_warfare_expert }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	BAV_Werner_von_fritsch = { #维尔纳·冯·弗里奇
+		name = GER_Werner_von_fridge
+		portraits = {
+			army = {
+				large = gfx/leaders/GER/Werner_von_fridge.png
+				small = GFX_portrait_Werner_von_fridge_small
+			}
+			civilian = {
+				large = GFX_portrait_Werner_von_fridge
+				small = GFX_portrait_Werner_von_fridge_small
+			}
+		}
+		corps_commander = {
+			traits = { urban_assault_specialist old_guard career_officer BAV_old_order }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 150
+			slot = army_chief
+			idea_token = BAV_Werner_von_fritsch
+			allowed = { original_tag = BAV }
+			traits = { army_chief_defensive_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
+
+	BAV_Friedrich_Fromm = { #弗里德里希·弗洛姆
+		name = GER_Friedrich_Fromm
+		portraits = {
+			army = {
+				large = gfx/leaders/GER/Friedrich_Fromm.png
+				small = GFX_portrait_Friedrich_Fromm_small
+			}
+			civilian = {
+				large = GFX_portrait_Friedrich_Fromm
+				small = GFX_portrait_Friedrich_Fromm_small
+			}
+		}
+		corps_commander = {
+			traits = { BAV_old_order career_officer }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+		}
+		advisor = {
+			cost = 150
+			slot = high_command
+			ledger = army
+			idea_token = BAV_Friedrich_Fromm
+			allowed = { original_tag = BAV }
+			traits = { army_artillery_2 }
+			ai_will_do = { factor = 1.000 }
+		}
+	}
 }

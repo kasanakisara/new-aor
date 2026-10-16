@@ -232,5 +232,33 @@ ideas = {
 			}
 		}
 
+		#凡尔赛的枷锁（1920.1.3 屈辱条约签署后获得）
+		#图标为占位美术，见 interface/AOR_GER_versailles.gfx
+		GER_Versailles_shackles = {
+			picture = GFX_idea_GER_Versailles_shackles
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.05
+				political_power_gain = -0.10
+				consumer_goods_factor = 0.05
+				industrial_capacity_factory = -0.05
+			}
+		}
+
+		#国民议会紧急会议（凡尔赛最后通牒期间获得，为期两天）
+		GER_reichstag_emergency_session = {
+			picture = GFX_idea_GER_reichstag_emergency_session
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.20
+				stability_factor = -0.02
+			}
+		}
+
 	}
 }

@@ -200,6 +200,57 @@ focus_tree = {
 	}
 
 	# =====================================================
+	# 1919.12 - 1920.1：凡尔赛条约（剧情里程碑）
+	# 三个国策均无法手动点击，只能由 AOR_GER_versailles 事件链
+	# 通过 complete_national_focus 完成，仅用于在国策树中标记进程。
+	# =====================================================
+	focus = {
+		id = GER_1919_versailles_journey #凡尔赛之行
+		relative_position_id = GER_1919_before_the_dawn
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_1919_before_the_dawn }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		available = { always = no }
+		completion_reward = {
+			custom_effect_tooltip = AOR_GER_versailles_journey_tt
+		}
+	}
+
+	focus = {
+		id = GER_1919_versailles_rotten_hand #烂手！
+		relative_position_id = GER_1919_versailles_journey
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_1919_versailles_journey }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		available = { always = no }
+		completion_reward = {
+			custom_effect_tooltip = AOR_GER_versailles_rotten_hand_tt
+			if = {
+				limit = { FRA = { exists = yes } }
+				add_opinion_modifier = { target = FRA modifier = AOR_GER_versailles_objection }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_1919_versailles_backbone_breaks #脊梁断裂
+		relative_position_id = GER_1919_versailles_rotten_hand
+		x = 0
+		y = 1
+		cost = 1
+		prerequisite = { focus = GER_1919_versailles_rotten_hand }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		available = { always = no }
+		completion_reward = {
+			custom_effect_tooltip = AOR_GER_versailles_backbone_tt
+		}
+	}
+
+	# =====================================================
 	# 1920.4 - 1920.12：经济工作（思维导图分支）
 	# 默认隐藏；由 AOR_GER_1920_economy_unlocked 显式解锁。
 	# 独立放在原有树右侧；11 个国策合计 245 天，奖励暂留空。
