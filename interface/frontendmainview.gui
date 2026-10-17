@@ -497,7 +497,9 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "nudge_button"
-			position = { x = 16 y = 25800 }
+			# 2026-10：原为 y = 25800（被推到屏幕外，主菜单 Nudge 按钮因此不可见）
+			# 模组主菜单按钮间距为 60、自 y=0 起排到 360（告老还乡），故放到 420
+			position = { x = 0 y = 420 }
 			quadTextureSprite ="GFX_main_lobby_button"	
 			buttonText = "Nudge!"
 			buttonFont = "hoi_24header"

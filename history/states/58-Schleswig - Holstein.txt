@@ -1,28 +1,27 @@
-state = {
+state={
 	id=58
 	name="STATE_58"
-	history = {
+	provinces={
+		3231 
+	}
+	manpower=600000
+	buildings_max_level_factor=1
+	state_category=large_city
+	local_supplies=1
+	history={
+		owner = GER
 		victory_points = {
 			3231 2 
 		}
-		owner = GER
 		buildings = {
 			infrastructure = 4
 			industrial_complex = 2
 			dockyard = 1
 			air_base = 3
-			6389 ={
-				naval_base = 8
-			}
 		}
-		add_core_of = NSH
+		# 南石勒苏益格（OTL 的"第三区"）：不投票、不交出
+		# 注意：不能带 NSH 核心，否则 release = NSH 会把这一州一并放出
+		add_core_of = GER
 		add_core_of = SHL
 	}
-	provinces = {
-		317 3231 11366 
-	}
-	manpower=968150
-	buildings_max_level_factor=1.000
-	state_category=large_city
-	local_supplies=1.000
 }

@@ -123,20 +123,23 @@ news_event = {
 }
 
 ####################################################################
-# 石勒苏益格线（2026-10 重写，按指定时间表）
+# 石勒苏益格线（2026-10：确定性，无随机）
 #
 #   1920.8.1   .6  通知：国际委员会将于十天后接管（无实际效果）
-#   1920.8.11  .7  移交：州 839 / 58 / 1043 → NSH（国际联盟托管地＝国际委员会）
-#   1920.9.1   .8  北区公投：全部投向丹麦（此刻不做任何领土移交）
-#   1920.10.4  .9  中区公投·丹麦胜（40%）：十天后（10.14）全部托管区移交丹麦
-#              .10 中区公投·德国胜（60%）：1921.1.5 结算，北区归丹麦、中区还德国
-#   1920.10.14 .11 全部托管区移交丹麦（由 .9 排期 +10 天）
-#   1921.1.5   .12 最终边界：北区 → 丹麦，中区 + 弗伦斯堡 → 德国
+#   1920.8.11  .7  移交：北区 839 + 中石勒苏益格 1043 + 弗伦斯堡市 1125 → 国际委员会（NSH）
+#   1920.9.1   .8  北区公投（选区 839）：全部投向丹麦（本阶段不移交）
+#   1920.10.4  .9  中区公投（选区 1043 中石勒苏益格 + 1125 弗伦斯堡市）：全部留在德国
+#   1921.1.5   .10 结算：839 → 丹麦王国；1043 + 1125 → 德意志共和国
 #
-# 日期判定统一放在 common/on_actions/AOR_GER_versailles_on_actions.txt；
-# 本文件只负责叙事与领土操作。
-# 注意：NSH 开局不拥有任何州，release = NSH 会按核心州把三州一并交出，
-#   让 NSH（国际委员会）正式出现在地图上，之后才能在其名下再转移。
+# 区划对应 OTL：
+#   Zone 1 北区          = 州 839
+#   Zone 2 中区          = 州 1043（中石勒苏益格：省 317、11366）+ 州 1125（弗伦斯堡市：省 13265）
+#   Zone 3 南石勒苏益格  = 州 58（胡苏姆/腓特烈施塔特一带），不投票、不交出
+#
+# 公投分三个选区依次揭晓，归属统一在 1921.1.5 结算移交。
+# 注意：release = NSH 会放出所有带 NSH 核心的州（839、1043、1125），
+#   因此州 58 已移除 NSH 核心（改为 GER + SHL 核心），否则南石勒苏益格会被一并交出去。
+# 日期判定见 common/on_actions/AOR_GER_versailles_on_actions.txt。
 ####################################################################
 country_event = {
 	id = AOR_GER_versailles.6
@@ -164,24 +167,24 @@ country_event = {
 		set_country_flag = AOR_GER_schleswig_handover
 		set_global_flag = AOR_GER_schleswig_handover
 
-		# 三州移交国际委员会（NSH 石勒苏益格托管地）
+		# 北区 839 与弗伦斯堡 1043 移交国际委员会
 		release = NSH
 		if = {
 			limit = { NOT = { NSH = { owns_state = 839 } } }
 			NSH = { transfer_state = 839 }
 		}
 		if = {
-			limit = { NOT = { NSH = { owns_state = 58 } } }
-			NSH = { transfer_state = 58 }
-		}
-		if = {
 			limit = { NOT = { NSH = { owns_state = 1043 } } }
 			NSH = { transfer_state = 1043 }
 		}
+		if = {
+			limit = { NOT = { NSH = { owns_state = 1125 } } }
+			NSH = { transfer_state = 1125 }
+		}
 		NSH = {
 			add_state_core = 839
-			add_state_core = 58
 			add_state_core = 1043
+			add_state_core = 1125
 		}
 
 		# 国际委员会的担保方
@@ -200,7 +203,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.9.1 北区公投
+#-------------------------------------------------- 1920.9.1 北区公投（全部归丹麦）
 country_event = {
 	id = AOR_GER_versailles.8
 	title = AOR_GER_versailles.8.t
@@ -209,7 +212,6 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	# 结果：全部投向丹麦；本阶段不做领土移交（等中区结果一并处理）
 	immediate = {
 		set_country_flag = AOR_schleswig_north_denmark
 	}
@@ -219,7 +221,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.10.4 中区公投 · 丹麦胜（40%）
+#-------------------------------------------------- 1920.10.4 中区公投（1043 + 1125，全部归德国）
 country_event = {
 	id = AOR_GER_versailles.9
 	title = AOR_GER_versailles.9.t
@@ -229,9 +231,9 @@ country_event = {
 	fire_only_once = yes
 
 	immediate = {
-		set_country_flag = AOR_schleswig_center_denmark
-		# 十天后，全部托管区移交丹麦（1920.10.14）
-		country_event = { id = AOR_GER_versailles.11 days = 10 }
+		# 中区两个选区：中石勒苏益格（1043）与弗伦斯堡市（1125）同日揭晓，结果都是留德
+		set_country_flag = AOR_schleswig_center_german
+		set_country_flag = AOR_schleswig_flensburg_german
 	}
 
 	option = {
@@ -239,89 +241,40 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.10.4 中区公投 · 德国胜（60%）
+
+#-------------------------------------------------- 1921.1.5 最终结算
 country_event = {
 	id = AOR_GER_versailles.10
 	title = AOR_GER_versailles.10.t
 	desc = AOR_GER_versailles.10.d
-	picture = GFX_news_event_election_vote
+	picture = GFX_news_event_generic_read_write
 	is_triggered_only = yes
 	fire_only_once = yes
 
 	immediate = {
-		set_country_flag = AOR_schleswig_center_german
+		# 北区 839 → 丹麦
+		DEN = {
+			transfer_state = 839
+			add_state_core = 839
+		}
+		# 中区（弗伦斯堡 1043）→ 德国
+		GER = {
+			transfer_state = 1043
+			transfer_state = 1125
+			add_state_core = 1043
+			add_state_core = 1125
+		}
+		if = {
+			limit = { SHL = { exists = yes } }
+			SHL = {
+				add_state_core = 1043
+				}
+		}
+		set_country_flag = AOR_schleswig_settled
 	}
 
 	option = {
 		name = AOR_GER_versailles.10.a
-	}
-}
-
-#-------------------------------------------------- 1920.10.14 全部托管区移交丹麦
-country_event = {
-	id = AOR_GER_versailles.11
-	title = AOR_GER_versailles.11.t
-	desc = AOR_GER_versailles.11.d
-	picture = GFX_news_event_generic_read_write
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	immediate = {
-		hidden_effect = {
-			DEN = {
-				transfer_state = 839
-				transfer_state = 58
-				transfer_state = 1043
-				add_state_core = 839
-				add_state_core = 58
-				add_state_core = 1043
-			}
-		set_country_flag = AOR_schleswig_lost_all
-		}
-	}
-
-	option = {
-		name = AOR_GER_versailles.11.a
-		news_event = { id = AOR_news.212 }
-	}
-}
-
-#-------------------------------------------------- 1921.1.5 最终边界
-country_event = {
-	id = AOR_GER_versailles.12
-	title = AOR_GER_versailles.12.t
-	desc = AOR_GER_versailles.12.d
-	picture = GFX_news_event_generic_read_write
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	immediate = {
-		hidden_effect = {
-			# 北区归丹麦
-			DEN = {
-				transfer_state = 839
-				add_state_core = 839
-			}
-			# 中区与弗伦斯堡归还德国
-			GER = {
-				transfer_state = 58
-				transfer_state = 1043
-				add_state_core = 58
-				add_state_core = 1043
-			}
-			if = {
-				limit = { SHL = { exists = yes } }
-				SHL = {
-					add_state_core = 58
-					add_state_core = 1043
-				}
-			}
-			set_country_flag = AOR_schleswig_settled_1919
-		}
-	}
-	option = {
-		name = AOR_GER_versailles.12.a
 		news_event = { id = AOR_news.211 }
 	}
 }
-
