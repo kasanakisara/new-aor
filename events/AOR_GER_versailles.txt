@@ -90,12 +90,15 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = AOR_GER_versailles_backbone_visible
 			set_country_flag = AOR_GER_versailles_everything_lost
+			# 条约已签署：石勒苏益格线（on_actions）的分地判定依赖此旗标
+			set_country_flag = AOR_GER_versailles_signed
+			set_global_flag = AOR_GER_versailles_signed
 			mark_focus_tree_layout_dirty = yes
 			complete_national_focus = GER_1919_versailles_backbone_breaks
 
-			#这里想触发
-			#1920.2.10 新闻事件：德国签署凡尔赛条约后分地（仅限丹麦）
-			#country_event = { id = AOR_GER_versailles.6 days = 38 }
+			# 分地线（石勒苏益格）已改为由 on_actions 按日期驱动，不再在这里排期：
+			#   1920.8.1 通知 → 8.11 移交国际委员会 → 9.1 北区公投 → 10.4 中区公投 → 10.14 / 1921.1.5 结算
+			# 见 common/on_actions/AOR_GER_versailles_on_actions.txt
 		}
 	}
 
@@ -120,18 +123,20 @@ news_event = {
 }
 
 ####################################################################
-# 事件6：条约开始执行 · 石勒苏益格移交国际联盟托管  *1920.2.10
+# 石勒苏益格线（2026-10 重写，按指定时间表）
 #
-# 设计（2026-10 修订）：
-#   北石勒苏益格（州 839）与中石勒苏益格（州 58 + 弗伦斯堡 1043）
-#   先整体划为「国际联盟特别托管区」（即 NSH 石勒苏益格托管地），
-#   之后再分区举行公投：北区 1920.9.1（NSH.1）、中区 1920.10.1（NSH.2，+30 天）。
-#   公投时点与既有新闻文案一致（AOR_news.211/212 提到"柏林正被《国防法》风波拖住"，
-#   即 1920 年秋）。
+#   1920.8.1   .6  通知：国际委员会将于十天后接管（无实际效果）
+#   1920.8.11  .7  移交：州 839 / 58 / 1043 → NSH（国际联盟托管地＝国际委员会）
+#   1920.9.1   .8  北区公投：全部投向丹麦（此刻不做任何领土移交）
+#   1920.10.4  .9  中区公投·丹麦胜（40%）：十天后（10.14）全部托管区移交丹麦
+#              .10 中区公投·德国胜（60%）：1921.1.5 结算，北区归丹麦、中区还德国
+#   1920.10.14 .11 全部托管区移交丹麦（由 .9 排期 +10 天）
+#   1921.1.5   .12 最终边界：北区 → 丹麦，中区 + 弗伦斯堡 → 德国
 #
-# 注意：开局 NSH 不拥有任何州，其公投事件 NSH.1 的 trigger 是 tag = NSH，
-#   因此在托管设立之前该链根本无法触发。release = NSH 会按核心州把
-#   839 / 58 / 1043 一并交出，并让 NSH 正式存在于地图上。
+# 日期判定统一放在 common/on_actions/AOR_GER_versailles_on_actions.txt；
+# 本文件只负责叙事与领土操作。
+# 注意：NSH 开局不拥有任何州，release = NSH 会按核心州把三州一并交出，
+#   让 NSH（国际委员会）正式出现在地图上，之后才能在其名下再转移。
 ####################################################################
 country_event = {
 	id = AOR_GER_versailles.6
@@ -141,11 +146,25 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	immediate = {
-		set_country_flag = AOR_GER_schleswig_mandate
-		set_global_flag = AOR_GER_schleswig_mandate
+	option = { # 仅通知，无实际效果
+		name = AOR_GER_versailles.6.a
+	}
+}
 
-		# === 石勒苏益格三州移交国际联盟托管区 ===
+#-------------------------------------------------- 1920.8.11 移交国际委员会
+country_event = {
+	id = AOR_GER_versailles.7
+	title = AOR_GER_versailles.7.t
+	desc = AOR_GER_versailles.7.d
+	picture = GFX_news_event_generic_sign_treaty2
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = AOR_GER_schleswig_handover
+		set_global_flag = AOR_GER_schleswig_handover
+
+		# 三州移交国际委员会（NSH 石勒苏益格托管地）
 		release = NSH
 		if = {
 			limit = { NOT = { NSH = { owns_state = 839 } } }
@@ -165,7 +184,7 @@ country_event = {
 			add_state_core = 1043
 		}
 
-		# === 国际联盟的担保：英法共同保证托管区安全 ===
+		# 国际委员会的担保方
 		if = {
 			limit = { ENG = { exists = yes } }
 			ENG = { give_guarantee = NSH }
@@ -176,18 +195,133 @@ country_event = {
 		}
 	}
 
-	option = { # 接受托管安排，等待公投
-		name = AOR_GER_versailles.6.a
-		add_stability = -0.03
-		add_war_support = -0.02
-		add_political_power = -20
-	}
-
-	option = { # 向国联提出正式抗议
-		name = AOR_GER_versailles.6.b
-		add_war_support = 0.03
-		add_political_power = -40
-		ENG = { add_opinion_modifier = { target = ROOT modifier = AOR_GER_versailles_objection } }
-		FRA = { add_opinion_modifier = { target = ROOT modifier = AOR_GER_versailles_objection } }
+	option = {
+		name = AOR_GER_versailles.7.a
 	}
 }
+
+#-------------------------------------------------- 1920.9.1 北区公投
+country_event = {
+	id = AOR_GER_versailles.8
+	title = AOR_GER_versailles.8.t
+	desc = AOR_GER_versailles.8.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# 结果：全部投向丹麦；本阶段不做领土移交（等中区结果一并处理）
+	immediate = {
+		set_country_flag = AOR_schleswig_north_denmark
+	}
+
+	option = {
+		name = AOR_GER_versailles.8.a
+	}
+}
+
+#-------------------------------------------------- 1920.10.4 中区公投 · 丹麦胜（40%）
+country_event = {
+	id = AOR_GER_versailles.9
+	title = AOR_GER_versailles.9.t
+	desc = AOR_GER_versailles.9.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = AOR_schleswig_center_denmark
+		# 十天后，全部托管区移交丹麦（1920.10.14）
+		country_event = { id = AOR_GER_versailles.11 days = 10 }
+	}
+
+	option = {
+		name = AOR_GER_versailles.9.a
+	}
+}
+
+#-------------------------------------------------- 1920.10.4 中区公投 · 德国胜（60%）
+country_event = {
+	id = AOR_GER_versailles.10
+	title = AOR_GER_versailles.10.t
+	desc = AOR_GER_versailles.10.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = AOR_schleswig_center_german
+	}
+
+	option = {
+		name = AOR_GER_versailles.10.a
+	}
+}
+
+#-------------------------------------------------- 1920.10.14 全部托管区移交丹麦
+country_event = {
+	id = AOR_GER_versailles.11
+	title = AOR_GER_versailles.11.t
+	desc = AOR_GER_versailles.11.d
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			DEN = {
+				transfer_state = 839
+				transfer_state = 58
+				transfer_state = 1043
+				add_state_core = 839
+				add_state_core = 58
+				add_state_core = 1043
+			}
+		set_country_flag = AOR_schleswig_lost_all
+		}
+	}
+
+	option = {
+		name = AOR_GER_versailles.11.a
+		news_event = { id = AOR_news.212 }
+	}
+}
+
+#-------------------------------------------------- 1921.1.5 最终边界
+country_event = {
+	id = AOR_GER_versailles.12
+	title = AOR_GER_versailles.12.t
+	desc = AOR_GER_versailles.12.d
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			# 北区归丹麦
+			DEN = {
+				transfer_state = 839
+				add_state_core = 839
+			}
+			# 中区与弗伦斯堡归还德国
+			GER = {
+				transfer_state = 58
+				transfer_state = 1043
+				add_state_core = 58
+				add_state_core = 1043
+			}
+			if = {
+				limit = { SHL = { exists = yes } }
+				SHL = {
+					add_state_core = 58
+					add_state_core = 1043
+				}
+			}
+			set_country_flag = AOR_schleswig_settled_1919
+		}
+	}
+	option = {
+		name = AOR_GER_versailles.12.a
+		news_event = { id = AOR_news.211 }
+	}
+}
+

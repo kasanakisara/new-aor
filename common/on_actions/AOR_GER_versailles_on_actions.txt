@@ -5,7 +5,14 @@
 #      + AOR_GER_versailles_started_flag（国策树里三个里程碑国策的 available 条件）
 #   2) 当天直接触发 AOR_GER_versailles.1（葡萄酒与香烟）
 #   3) 事件 immediate 显示独立国策分支，排定 12.31 的事件2
-# 之后的推进全部由事件自身的 days 延迟完成，不再依赖 on_action。
+#
+# 石勒苏益格线（2026-10 按指定时间表）：
+#   1920.8.1   通知国际委员会将于十天后接管            -> .6（无实际效果）
+#   1920.8.11  州 839/58/1043 移交国际委员会（NSH）    -> .7
+#   1920.9.1   北区公投（全部投向丹麦，暂不移交）      -> .8
+#   1920.10.4  中区公投：丹麦 40% / 德国 60%           -> .9 / .10
+#   1921.1.5   中区留在德国时的最终结算                -> .12
+#   （“.9 丹麦胜 → 十天后 .11 全部移交丹麦”由 .9 自身排期）
 ####################################################################
 on_actions = {
 	on_daily_GER = {
@@ -21,6 +28,66 @@ on_actions = {
 				# 保留旧后续国策使用的启动旗标。
 				set_country_flag = AOR_GER_versailles_started_flag
 				country_event = { id = AOR_GER_versailles.1 }
+			}
+
+			# ------------------ 石勒苏益格线 ------------------
+			# 只用「链条已启动」做前置，不依赖事件 4 的触发方式（该事件当前标注为"待定"）。
+			if = {
+				limit = { has_country_flag = AOR_GER_versailles_started }
+
+				# 1920.8.1 通知（无实际效果）
+				if = {
+					limit = {
+						date > 1920.7.31
+						NOT = { has_country_flag = AOR_schleswig_notice }
+					}
+					set_country_flag = AOR_schleswig_notice
+					country_event = { id = AOR_GER_versailles.6 }
+				}
+
+				# 1920.8.11 三州移交国际委员会
+				if = {
+					limit = {
+						date > 1920.8.10
+						NOT = { has_country_flag = AOR_schleswig_handover }
+					}
+					set_country_flag = AOR_schleswig_handover
+					country_event = { id = AOR_GER_versailles.7 }
+				}
+
+				# 1920.9.1 北区公投
+				if = {
+					limit = {
+						date > 1920.8.31
+						NOT = { has_country_flag = AOR_schleswig_north }
+					}
+					set_country_flag = AOR_schleswig_north
+					country_event = { id = AOR_GER_versailles.8 }
+				}
+
+				# 1920.10.4 中区公投：丹麦 40% / 德国 60%
+				if = {
+					limit = {
+						date > 1920.10.3
+						NOT = { has_country_flag = AOR_schleswig_center }
+					}
+					set_country_flag = AOR_schleswig_center
+					random_list = {
+						40 = { country_event = { id = AOR_GER_versailles.9 } }
+						60 = { country_event = { id = AOR_GER_versailles.10 } }
+					}
+				}
+
+				# 1921.1.5 中区留在德国时的最终结算
+				if = {
+					limit = {
+						date > 1921.1.4
+						has_country_flag = AOR_schleswig_center_german
+						NOT = { has_country_flag = AOR_schleswig_settled }
+					}
+					set_country_flag = AOR_schleswig_settled
+					country_event = { id = AOR_GER_versailles.12 }
+				}
 			}
 		}
 	}

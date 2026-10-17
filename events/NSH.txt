@@ -2,9 +2,10 @@ add_namespace = NSH
 
 
 #北石勒苏益格公投
-# 时点：1920.9.1（条约 1920.1.18 签署、1920.2.10 石勒苏益格移交国际联盟托管，约 7 个月后）
-# 前提：AOR_GER_versailles.6 已执行 release = NSH，NSH 拥有 839/58/1043；
-#       在托管设立之前 NSH 不存在，本事件的 tag = NSH 条件无法满足。
+# 2026-10：本链已被 AOR_GER_versailles.6–.12 取代
+#   （1920.8.1 通知国际委员会 → 8.11 移交 → 9.1 北区公投 → 10.4 中区公投 → 10.14 / 次年 1.5 结算）。
+#   为避免与新托管线重复触发，此处停用；NSH.2–NSH.4 均由本事件排队，随之不再触发。
+#   若要恢复旧链，把 trigger 改回 tag = NSH 并设定日期即可。
 country_event = {
 	id = NSH.1
 	title = NSH.1.t
@@ -13,8 +14,7 @@ country_event = {
 	fire_only_once = yes
 	hidden = yes
 	trigger = {
-		tag = NSH
-		date > 1920.8.31
+		always = no
 		}
 
 	option = {  #北石勒苏益格公投入丹
