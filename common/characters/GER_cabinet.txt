@@ -12,7 +12,7 @@ characters = {
 					NOT = { OR = { has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_03_Karl_Kautsky has_idea = GER_01_04_Eduard_Bernstein } }
 				}
 			}
-			traits = { AOR_GER_theorist AOR_GER_spd_revolutionary_stewards }
+			traits = { AORCabinetErnstDaeumigLabeltheorist AORCabinetErnstDaeumigLabelspdrevolutionarystewards }
 		}
 	}
 
@@ -29,7 +29,7 @@ characters = {
 					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_03_Karl_Kautsky has_idea = GER_01_04_Eduard_Bernstein } }
 				}
 			}
-			traits = { AOR_GER_theorist AOR_GER_spd_left }
+			traits = { AORCabinetFranzMehringLabeltheorist AORCabinetFranzMehringLabelspdleft }
 		}
 	}
 
@@ -46,7 +46,7 @@ characters = {
 					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_04_Eduard_Bernstein } }
 				}
 			}
-			traits = { AOR_GER_theorist AOR_GER_spd_center AOR_GER_marxist_pope }
+			traits = { AORCabinetKarlKautskyLabeltheorist AORCabinetKarlKautskyLabelspdcenter AOR_GER_marxist_pope }
 		}
 	}
 
@@ -63,7 +63,7 @@ characters = {
 					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_03_Karl_Kautsky } }
 				}
 			}
-			traits = { AOR_GER_theorist AOR_GER_spd_bernstein }
+			traits = { AORCabinetEduardBernsteinLabeltheorist AOR_GER_spd_bernstein }
 		}
 	}
 
@@ -80,7 +80,7 @@ characters = {
 					NOT = { OR = { has_idea = GER_02_02_Robert_Dittmann has_idea = GER_02_03_Theodor_Leipart } }
 				}
 			}
-			traits = { AOR_GER_union_head AOR_GER_spd_right AOR_GER_legien_personal }
+			traits = { AORCabinetKarlLegienLabelunionhead AORCabinetKarlLegienLabelspdright AOR_GER_legien_personal }
 		}
 	}
 
@@ -104,7 +104,7 @@ characters = {
 					}
 				}
 			}
-			traits = { AOR_GER_union_head AOR_GER_spd_center AOR_GER_dittmann_personal }
+			traits = { AORCabinetRobertDittmannLabelunionhead AORCabinetRobertDittmannLabelspdcenter AOR_GER_dittmann_personal }
 		}
 	}
 
@@ -128,7 +128,7 @@ characters = {
 					}
 				}
 			}
-			traits = { AOR_GER_union_head AOR_GER_spd_right AOR_GER_leipart_personal }
+			traits = { AORCabinetTheodorLeipartLabelunionhead AORCabinetTheodorLeipartLabelspdright AOR_GER_leipart_personal }
 		}
 	}
 
@@ -139,7 +139,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_01_Rudolf_Wissell
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_economic_minister AOR_GER_spd_right }
+			traits = { AOR_GER_economic_minister AORCabinetRudolfWissellLabelspdright }
 		}
 	}
 
@@ -150,7 +150,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_02_Hugo_Haase
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_chancellor AOR_GER_spd_center }
+			traits = { AOR_GER_chancellor AORCabinetHugoHaaseLabelspdcenter }
 		}
 	}
 
@@ -161,7 +161,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_03_Philipp_Scheidemann
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_vice_chancellor AOR_GER_spd_right }
+			traits = { AOR_GER_vice_chancellor AORCabinetPhilippScheidemannLabelspdright }
 		}
 	}
 
@@ -183,7 +183,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_05_Gustav_Noske
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_defense_minister AOR_GER_spd_right AOR_GER_bloodhound }
+			traits = { AOR_GER_defense_minister AORCabinetGustavNoskeLabelspdright AOR_GER_bloodhound }
 		}
 	}
 
@@ -194,7 +194,7 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_06_Gustav_Bauer
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_labor_minister AOR_GER_spd_right }
+			traits = { AOR_GER_labor_minister AORCabinetGustavBauerLabelspdright }
 		}
 	}
 
@@ -205,62 +205,216 @@ characters = {
 			slot = political_advisor
 			idea_token = GER_03_07_Eduard_David
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_minister_without_portfolio AOR_GER_spd_right }
+			traits = { AOR_GER_minister_without_portfolio AORCabinetEduardDavidLabelspdright }
 		}
 	}
 
-	GER_04_01_Georg_Ledebour = {
-		name = GER_04_01_Georg_Ledebour
+	GER_03_08_Hugo_Preuss = {
+        name = GER_03_08_Hugo_Preuss
+        portraits = { civilian = { small = "GFX_idea_GER_03_08_Hugo_Preuss" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_03_08_Hugo_Preuss
+            allowed = { original_tag = GER }
+            traits = { AOR_GER_interior_minister AORCabinetHugoPreussLabelddp }
+        }
+    }
+
+	GER_04_01_Carl_Ballod = {
+        name = GER_04_01_Carl_Ballod
+        portraits = { civilian = { small = "GFX_idea_GER_04_01_Carl_Ballod" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_04_01_Carl_Ballod
+            allowed = { original_tag = GER }
+            traits = { AORCabinetCarlBallodLabeleconomist AOR_GER_planned_economy }
+        }
+    }
+
+	GER_04_02_Emil_Lederer = {
+        name = GER_04_02_Emil_Lederer
+        portraits = { civilian = { small = "GFX_idea_GER_04_02_Emil_Lederer" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_04_02_Emil_Lederer
+            allowed = { original_tag = GER }
+            traits = { AORCabinetEmilLedererLabeleconomist AOR_GER_economic_sociology }
+        }
+    }
+
+	GER_04_03_Robert_Wilbrandt = {
+        name = GER_04_03_Robert_Wilbrandt
+        portraits = { civilian = { small = "GFX_idea_GER_04_03_Robert_Wilbrandt" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_04_03_Robert_Wilbrandt
+            allowed = { original_tag = GER }
+            traits = { AORCabinetRobertWilbrandtLabeleconomist AOR_GER_social_economics }
+        }
+    }
+
+	GER_05_01_Carl_Duisberg = {
+        name = GER_05_01_Carl_Duisberg
+        portraits = { civilian = { small = "GFX_idea_GER_05_01_Carl_Duisberg" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_05_01_Carl_Duisberg
+            allowed = { original_tag = GER }
+            traits = { AORCabinetCarlDuisbergLabelindustrialist AOR_GER_bayer }
+        }
+    }
+
+	GER_05_02_Carl_Koettgen = {
+        name = GER_05_02_Carl_Koettgen
+        portraits = { civilian = { small = "GFX_idea_GER_05_02_Carl_Koettgen" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_05_02_Carl_Koettgen
+            allowed = { original_tag = GER }
+            traits = { AORCabinetCarlKoettgenLabelindustrialist AOR_GER_siemens_schuckert }
+        }
+    }
+
+	GER_05_03_Paul_Reusch = {
+        name = GER_05_03_Paul_Reusch
+        portraits = { civilian = { small = "GFX_idea_GER_05_03_Paul_Reusch" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_05_03_Paul_Reusch
+            allowed = { original_tag = GER }
+            traits = { AORCabinetPaulReuschLabelindustrialist AOR_GER_ghh }
+        }
+    }
+
+	GER_06_01_Hjalmar_Schacht = {
+        name = GER_06_01_Hjalmar_Schacht
+        portraits = { civilian = { small = "GFX_idea_GER_06_01_Hjalmar_Schacht" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_06_01_Hjalmar_Schacht
+            allowed = { original_tag = GER }
+            traits = { AOR_GER_banker AOR_GER_monetary_policy }
+        }
+    }
+
+	GER_07_01_Clara_Zetkin = {
+        name = GER_07_01_Clara_Zetkin
+        portraits = { civilian = { small = "GFX_idea_GER_07_01_Clara_Zetkin" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_07_01_Clara_Zetkin
+            allowed = { original_tag = GER }
+            traits = { AORCabinetClaraZetkinLabelspdleft }
+        }
+    }
+
+	GER_08_01_Georg_Ledebour = {
+		name = GER_08_01_Georg_Ledebour
 		portraits = { civilian = { small = "gfx/interface/ideas/GER/advisors/Georg_Ledebour.png" } }
 		advisor = {
 			slot = political_advisor
-			idea_token = GER_04_01_Georg_Ledebour
+			idea_token = GER_08_01_Georg_Ledebour
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_spd_left }
+			traits = { AORCabinetGeorgLedebourLabelspdcenter }
 		}
 	}
 
-	GER_04_02_Otto_Wels = {
-		name = GER_04_02_Otto_Wels
+	GER_09_01_Otto_Wels = {
+		name = GER_09_01_Otto_Wels
 		portraits = { civilian = { small = "gfx/interface/ideas/GER/advisors/Otto_Wels.png" } }
 		advisor = {
 			slot = political_advisor
-			idea_token = GER_04_02_Otto_Wels
+			idea_token = GER_09_01_Otto_Wels
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_spd_right }
+			traits = { AORCabinetOttoWelsLabelspdright }
 		}
 	}
 
-	GER_04_03_Otto_Braun = {
-		name = GER_04_03_Otto_Braun
+	GER_09_02_Otto_Braun = {
+		name = GER_09_02_Otto_Braun
 		portraits = { civilian = { small = "gfx/interface/ideas/GER/advisors/Otto_Braun.png" } }
 		advisor = {
 			slot = political_advisor
-			idea_token = GER_04_03_Otto_Braun
+			idea_token = GER_09_02_Otto_Braun
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_spd_right }
+			traits = { AORCabinetOttoBraunLabelspdright }
 		}
 	}
 
-	GER_04_04_Friedrich_Ebert = {
-		name = GER_04_04_Friedrich_Ebert
+	GER_09_03_Friedrich_Ebert = {
+		name = GER_09_03_Friedrich_Ebert
 		portraits = { civilian = { small = "gfx/interface/ideas/GER/advisors/Friedrich_Ebert.png" } }
 		advisor = {
 			slot = political_advisor
-			idea_token = GER_04_04_Friedrich_Ebert
+			idea_token = GER_09_03_Friedrich_Ebert
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_spd_right silent_workhorse }
+			traits = { AORCabinetFriedrichEbertLabelspdright silent_workhorse }
 		}
 	}
 
-	GER_04_05_Hermann_Mueller = {
-		name = GER_04_05_Hermann_Mueller
+	GER_09_04_Hermann_Mueller = {
+		name = GER_09_04_Hermann_Mueller
 		portraits = { civilian = { small = "gfx/interface/ideas/GER/advisors/Hermann_Mueller.png" } }
 		advisor = {
 			slot = political_advisor
-			idea_token = GER_04_05_Hermann_Mueller
+			idea_token = GER_09_04_Hermann_Mueller
 			allowed = { original_tag = GER }
-			traits = { AOR_GER_spd_right }
+			traits = { AORCabinetHermannMuellerLabelspdright }
 		}
 	}
+
+	GER_09_05_Carl_Severing = {
+        name = GER_09_05_Carl_Severing
+        portraits = { civilian = { small = "GFX_idea_GER_09_05_Carl_Severing" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_09_05_Carl_Severing
+            allowed = { original_tag = GER }
+            traits = { AORCabinetCarlSeveringLabelspdright }
+        }
+    }
+
+	GER_10_01_Karl_Joseph_Wirth = {
+        name = GER_10_01_Karl_Joseph_Wirth
+        portraits = { civilian = { small = "GFX_idea_GER_10_01_Karl_Joseph_Wirth" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_10_01_Karl_Joseph_Wirth
+            allowed = { original_tag = GER }
+            traits = { AORCabinetKarlJosephWirthLabelzentrum }
+        }
+    }
+
+	GER_10_02_Matthias_Erzberger = {
+        name = GER_10_02_Matthias_Erzberger
+        portraits = { civilian = { small = "GFX_idea_GER_10_02_Matthias_Erzberger" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_10_02_Matthias_Erzberger
+            allowed = { original_tag = GER }
+            traits = { AORCabinetMatthiasErzbergerLabelzentrum }
+        }
+    }
+
+	GER_11_01_Erich_Koch_Weser = {
+        name = GER_11_01_Erich_Koch_Weser
+        portraits = { civilian = { small = "GFX_idea_GER_11_01_Erich_Koch_Weser" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_11_01_Erich_Koch_Weser
+            allowed = { original_tag = GER }
+            traits = { AORCabinetErichKochWeserLabelddp }
+        }
+    }
+
+	GER_12_01_Gustav_Stresemann = {
+        name = GER_12_01_Gustav_Stresemann
+        portraits = { civilian = { small = "GFX_idea_GER_12_01_Gustav_Stresemann" } }
+        advisor = {
+            slot = political_advisor
+            idea_token = GER_12_01_Gustav_Stresemann
+            allowed = { original_tag = GER }
+            traits = { AOR_GER_dvp }
+        }
+    }
 }
