@@ -1,0 +1,25 @@
+capital = 737
+set_research_slots = 2
+
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 3
+
+set_politics = {
+	ruling_party = CON_democratic
+	last_election = "1919.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	CON_democratic = 90
+	Absolutism = 10
+}
+
+# 1919.8：德属新几内亚在法律上仍属德国，实际由澳大利亚占领军管制
+GER = {
+	add_opinion_modifier = { target = DNG modifier = AOR_GER_colonial_ties }
+}
