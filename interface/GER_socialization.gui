@@ -1,0 +1,713 @@
+guiTypes = {
+    containerWindowType = {
+        name = "GER_socialization_window"
+        position = { x = 0 y = 0 }
+        size = { width = 523 height = 441 }
+        clipping = yes
+        # Child elements sit 6px left and 8px lower to align with the category and leave space below its description.
+        # National overview: 497x82; reserve separators at x=171 and x=337.
+        # Tile has 4px transparent margins. The tabs end just below the second button row.
+        # Future separator artwork: 8x240, displayed at scale 0.25 (2x60).
+        containerWindowType = {
+            name = "GER_socialization_overview_background"
+            position = { x = 6 y = 8 }
+            size = { width = 497 height = 82 }
+            background = {
+                name = "Background"
+                quadTextureSprite = "GFX_tiled_plain_bg_lined"
+            }
+        }
+        instantTextboxType = {
+            name = "GER_socialization_organization_title"
+            position = { x = 15 y = 18 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_organization_title"
+            pdx_tooltip = "GER_socialization_organization_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        instantTextboxType = {
+            name = "GER_socialization_organization_value"
+            position = { x = 15 y = 41 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_organization_value"
+            pdx_tooltip = "GER_socialization_organization_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        iconType = {
+            name = "GER_socialization_organization_bar"
+            position = { x = 21 y = 59 }
+            spriteType = "GFX_GER_socialization_organization_bar"
+            pdx_tooltip = "GER_socialization_organization_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_counterrevolution_title"
+            position = { x = 181 y = 18 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_counterrevolution_title"
+            pdx_tooltip = "GER_socialization_counterrevolution_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        instantTextboxType = {
+            name = "GER_socialization_counterrevolution_value"
+            position = { x = 181 y = 41 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_counterrevolution_value"
+            pdx_tooltip = "GER_socialization_counterrevolution_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        iconType = {
+            name = "GER_socialization_counterrevolution_bar"
+            position = { x = 187 y = 59 }
+            spriteType = "GFX_GER_socialization_counterrevolution_bar"
+            pdx_tooltip = "GER_socialization_counterrevolution_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_radicalism_title"
+            position = { x = 347 y = 18 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_radicalism_title"
+            pdx_tooltip = "GER_socialization_radicalism_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        instantTextboxType = {
+            name = "GER_socialization_radicalism_value"
+            position = { x = 347 y = 41 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_radicalism_value"
+            pdx_tooltip = "GER_socialization_radicalism_tooltip"
+            maxWidth = 147
+            maxHeight = 22
+            format = center
+        }
+        iconType = {
+            name = "GER_socialization_radicalism_bar"
+            position = { x = 353 y = 59 }
+            spriteType = "GFX_GER_socialization_radicalism_bar"
+            pdx_tooltip = "GER_socialization_radicalism_tooltip"
+        }
+        # Picture art has visible side edges at x=10 and x=499.
+        # The tiled frame has 4px edges at the same x positions; inset the 79px tabs to expose them.
+        # Keep the frame's bottom line next to the picture's top line.
+        containerWindowType = {
+            name = "GER_socialization_tabs_background"
+            position = { x = 6 y = 80 }
+            size = { width = 497 height = 73 }
+            background = {
+                name = "Background"
+                quadTextureSprite = "GFX_tiled_plain_bg_lined"
+            }
+        }
+        iconType = {
+            name = "GER_socialization_railway_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_railway"
+            pdx_tooltip = "GER_socialization_railway_tt"
+        } 
+        iconType = {
+            name = "GER_socialization_mining_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_mining"
+            pdx_tooltip = "GER_socialization_mining_tt"
+        }
+        iconType = {
+            name = "GER_socialization_power_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_power"
+            pdx_tooltip = "GER_socialization_power_tt"
+        }
+        iconType = {
+            name = "GER_socialization_banking_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_banking"
+            pdx_tooltip = "GER_socialization_banking_tt"
+        }
+        iconType = {
+            name = "GER_socialization_armaments_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_armaments"
+            pdx_tooltip = "GER_socialization_armaments_tt"
+        }
+        iconType = {
+            name = "GER_socialization_metalworking_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_metalworking"
+            pdx_tooltip = "GER_socialization_metalworking_tt"
+        }
+        iconType = {
+            name = "GER_socialization_chemicals_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_chemicals"
+            pdx_tooltip = "GER_socialization_chemicals_tt"
+        }
+        iconType = {
+            name = "GER_socialization_electrical_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_electrical"
+            pdx_tooltip = "GER_socialization_electrical_tt"
+        }
+        iconType = {
+            name = "GER_socialization_light_industry_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_light_industry"
+            pdx_tooltip = "GER_socialization_light_industry_tt"
+        }
+        iconType = {
+            name = "GER_socialization_handicrafts_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_handicrafts"
+            pdx_tooltip = "GER_socialization_handicrafts_tt"
+        }
+        iconType = {
+            name = "GER_socialization_shipbuilding_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_shipbuilding"
+            pdx_tooltip = "GER_socialization_shipbuilding_tt"
+        }
+        iconType = {
+            name = "GER_socialization_agriculture_picture"
+            position = { x = 4 y = 145 }
+            spriteType = "GFX_GER_socialization_agriculture"
+            pdx_tooltip = "GER_socialization_agriculture_tt"
+        }
+        # Picture art ends at picture y+177; the tile starts at its y+4, both at y=322.
+        containerWindowType = {
+            name = "GER_socialization_industry_background"
+            position = { x = 6 y = 318 }
+            size = { width = 497 height = 123 }
+            background = {
+                name = "Background"
+                quadTextureSprite = "GFX_tiled_plain_bg_lined"
+            }
+        }
+        iconType = {
+            name = "GER_socialization_industry_bar"
+            position = { x = 20 y = 360 }
+            spriteType = "GFX_GER_socialization_industry_bar"
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_industry_timer"
+            position = { x = 155 y = 406 }
+            font = "hoi_24header"
+            text = "GER_socialization_industry_timer"
+            maxWidth = 200
+            maxHeight = 28
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_railway_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_railway_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_mining_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_mining_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_power_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_power_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_banking_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_banking_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_armaments_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_armaments_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_metalworking_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_metalworking_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_chemicals_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_chemicals_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_electrical_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_electrical_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_light_industry_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_light_industry_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_handicrafts_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_handicrafts_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_shipbuilding_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_shipbuilding_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_agriculture_caption"
+            position = { x = 20 y = 332 }
+            font = "hoi_24header"
+            text = "GER_socialization_agriculture_caption"
+            maxWidth = 470
+            maxHeight = 32
+            format = center
+            pdx_tooltip = "GER_socialization_industry_progress_tooltip"
+        }
+        buttonType = {
+            name = "GER_socialization_railway_button"
+            position = { x = 14 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_railway_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_railway_button_selected"
+            position = { x = 14 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_railway_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_mining_button"
+            position = { x = 94 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_mining_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_mining_button_selected"
+            position = { x = 94 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_mining_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_power_button"
+            position = { x = 174 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_power_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_power_button_selected"
+            position = { x = 174 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_power_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_banking_button"
+            position = { x = 254 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_banking_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_banking_button_selected"
+            position = { x = 254 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_banking_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_armaments_button"
+            position = { x = 334 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_armaments_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_armaments_button_selected"
+            position = { x = 334 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_armaments_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_metalworking_button"
+            position = { x = 414 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_metalworking_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_metalworking_button_selected"
+            position = { x = 414 y = 88 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_metalworking_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_chemicals_button"
+            position = { x = 14 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_chemicals_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_chemicals_button_selected"
+            position = { x = 14 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_chemicals_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_electrical_button"
+            position = { x = 94 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_electrical_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_electrical_button_selected"
+            position = { x = 94 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_electrical_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_light_industry_button"
+            position = { x = 174 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_light_industry_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_light_industry_button_selected"
+            position = { x = 174 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_light_industry_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_handicrafts_button"
+            position = { x = 254 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_handicrafts_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_handicrafts_button_selected"
+            position = { x = 254 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_handicrafts_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_shipbuilding_button"
+            position = { x = 334 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_shipbuilding_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_shipbuilding_button_selected"
+            position = { x = 334 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_shipbuilding_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_agriculture_button"
+            position = { x = 414 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 1
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_agriculture_tt"
+        }
+        buttonType = {
+            name = "GER_socialization_agriculture_button_selected"
+            position = { x = 414 y = 118 }
+            quadTextureSprite = "GFX_GER_socialization_button"
+            scale = 1.112676
+            frame = 2
+            buttonFont = "hoi_16mbs"
+            buttonText = ""
+            clicksound = click_default
+            pdx_tooltip = "GER_socialization_agriculture_tt"
+        }
+        instantTextboxType = {
+            name = "GER_socialization_railway_button_label"
+            position = { x = 14 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_railway"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_mining_button_label"
+            position = { x = 94 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_mining"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_power_button_label"
+            position = { x = 174 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_power"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_banking_button_label"
+            position = { x = 254 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_banking"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_armaments_button_label"
+            position = { x = 334 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_armaments"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_metalworking_button_label"
+            position = { x = 414 y = 92 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_metalworking"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_chemicals_button_label"
+            position = { x = 14 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_chemicals"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_electrical_button_label"
+            position = { x = 94 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_electrical"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_light_industry_button_label"
+            position = { x = 174 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_light_industry"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_handicrafts_button_label"
+            position = { x = 254 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_handicrafts"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_shipbuilding_button_label"
+            position = { x = 334 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_shipbuilding"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_socialization_agriculture_button_label"
+            position = { x = 414 y = 122 }
+            font = "hoi_16mbs"
+            text = "GER_socialization_agriculture"
+            maxWidth = 79
+            maxHeight = 20
+            format = center
+            alwaystransparent = yes
+        }
+    }
+}

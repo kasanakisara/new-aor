@@ -1,0 +1,544 @@
+# Autonomous missions appear only when drawn from their respective action pools.
+GER_socialization_category = {
+    GER_soc_auto_worker_occupy_factories = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 10
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 7
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_occupy_factories_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 10 }
+                subtract_from_variable = { GER_socialization_counterrevolution = 10 }
+                set_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_occupy_factories_stop_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_radicalism_base = 5 }
+                set_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_soviet_newspaper = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 20
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 7
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_soviet_newspaper_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 10 }
+                set_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_soviet_newspaper_stop_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 5 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 5 }
+                set_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_purge_scabs = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 15
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 10
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_purge_scabs_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_counterrevolution = 20 }
+                add_to_variable = { GER_socialization_radicalism_base = 7 }
+                GER_soc_auto_extend_counter_5 = yes
+                set_variable = { GER_soc_auto_worker_purge_scabs_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_purge_scabs_stop_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 8 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 8 }
+                set_variable = { GER_soc_auto_worker_purge_scabs_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_street_campaign = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 20
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 10
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_street_campaign_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 20 }
+                add_to_variable = { GER_socialization_radicalism_base = 2 }
+                set_variable = { GER_soc_auto_worker_street_campaign_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_street_campaign_stop_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 5 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 6 }
+                set_variable = { GER_soc_auto_worker_street_campaign_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_soviet_elections = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 30
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 14
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_soviet_elections_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 50 }
+                subtract_from_variable = { GER_socialization_counterrevolution = 40 }
+                add_to_variable = { GER_socialization_radicalism_base = 10 }
+                set_variable = { GER_soc_auto_worker_soviet_elections_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_soviet_elections_stop_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 20 }
+                GER_soc_auto_remove_points = yes
+                add_to_variable = { GER_socialization_counterrevolution = 10 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 20 }
+                set_variable = { GER_soc_auto_worker_soviet_elections_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_workers_patrol = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 20
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 14
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_workers_patrol_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 20 }
+                subtract_from_variable = { GER_socialization_counterrevolution = 20 }
+                add_to_variable = { GER_socialization_radicalism_base = 5 }
+                GER_soc_auto_extend_counter_5 = yes
+                set_variable = { GER_soc_auto_worker_workers_patrol_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_workers_patrol_stop_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 15 }
+                GER_soc_auto_remove_points = yes
+                add_to_variable = { GER_socialization_counterrevolution = 40 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 10 }
+                set_variable = { GER_soc_auto_worker_workers_patrol_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_party_worker_links = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 15
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 7
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_party_worker_links_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 10 }
+                add_to_variable = { GER_socialization_points_pool = 20 }
+                set_variable = { GER_soc_auto_worker_party_worker_links_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_party_worker_links_stop_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_radicalism_base = 10 }
+                set_variable = { GER_soc_auto_points_loss = 10 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_worker_party_worker_links_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_expose_plot = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 10
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 7
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_expose_plot_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_counterrevolution = 20 }
+                GER_soc_auto_extend_counter_10 = yes
+                set_variable = { GER_soc_auto_worker_expose_plot_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_expose_plot_stop_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_counterrevolution = 20 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 10 }
+                set_variable = { GER_soc_auto_worker_expose_plot_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_worker_workers_accounting = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = yes }
+        selectable_mission = yes
+        cost = 30
+        ai_will_do = { factor = 0 }
+        is_good = yes
+        days_mission_timeout = 21
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_workers_accounting_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 10 }
+                add_to_variable = { GER_socialization_points_pool = 40 }
+                set_variable = { GER_soc_auto_worker_workers_accounting_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+        complete_effect = {
+            custom_effect_tooltip = GER_soc_auto_worker_workers_accounting_stop_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 30 }
+                GER_soc_auto_remove_points = yes
+                subtract_from_variable = { GER_socialization_organization = 5 }
+                add_to_variable = { GER_socialization_counterrevolution = 20 }
+                subtract_from_variable = { GER_socialization_radicalism_base = 20 }
+                set_variable = { GER_soc_auto_worker_workers_accounting_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_withdraw_assets = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 30
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_withdraw_assets_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 10 }
+                GER_soc_auto_remove_points = yes
+                subtract_from_variable = { GER_socialization_radicalism_base = 5 }
+                set_variable = { GER_soc_auto_counter_withdraw_assets_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_sabotage_assets = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 30
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_sabotage_assets_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 20 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_counter_sabotage_assets_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_manipulate_local_offices = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 20
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_manipulate_local_offices_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_soc_manual_lock_days = 4 }
+                add_to_variable = { GER_soc_auto_counter_cooldown = 3 }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = -8 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = -8 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = -8 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = -8 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = -8 } }
+                set_variable = { GER_soc_auto_counter_manipulate_local_offices_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_divide_workers = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 30
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_divide_workers_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 10 }
+                add_to_variable = { GER_socialization_counterrevolution = 20 }
+                set_variable = { GER_soc_auto_points_loss = 20 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_counter_divide_workers_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_soviet_failure_rumors = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 14
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_soviet_failure_rumors_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 8 }
+                add_to_variable = { GER_socialization_counterrevolution = 5 }
+                set_variable = { GER_soc_auto_counter_soviet_failure_rumors_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_recruit_thugs = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 50
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_recruit_thugs_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 30 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_counter_recruit_thugs_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_promote_private_property = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 21
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_promote_private_property_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 7 }
+                add_to_variable = { GER_socialization_counterrevolution = 10 }
+                set_variable = { GER_soc_auto_counter_promote_private_property_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_inflation_agitation = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 40
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_inflation_agitation_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 10 }
+                set_variable = { GER_soc_auto_points_loss = 20 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_counter_inflation_agitation_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_assassinate_organizers = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 40
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_assassinate_organizers_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 40 }
+                GER_soc_auto_remove_points = yes
+                subtract_from_variable = { GER_socialization_organization = 25 }
+                set_variable = { GER_soc_auto_counter_assassinate_organizers_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_far_right_groups = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 40
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_far_right_groups_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 20 }
+                set_variable = { GER_soc_auto_points_loss = 50 }
+                GER_soc_auto_remove_points = yes
+                set_variable = { GER_soc_auto_counter_far_right_groups_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_foreign_contacts = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 21
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_foreign_contacts_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_counterrevolution = 30 }
+                subtract_from_variable = { GER_socialization_organization = 10 }
+                set_variable = { GER_soc_auto_counter_foreign_contacts_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_fund_party_right = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 21
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_fund_party_right_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_auto_points_loss = 20 }
+                GER_soc_auto_remove_points = yes
+                if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = -5 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = -5 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = -5 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = -5 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = -5 } }
+                set_variable = { GER_soc_auto_counter_fund_party_right_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_soc_auto_counter_domestic_capital = {
+        icon = generic_political_actions
+        allowed = { tag = GER }
+        activation = { always = no }
+        available = { always = no }
+        is_good = no
+        days_mission_timeout = 30
+        fire_only_once = no
+        timeout_effect = {
+            custom_effect_tooltip = GER_soc_auto_counter_domestic_capital_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_organization = 10 }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_days_mission_timeout = { mission = GER_soc_auto_counter_manipulate_local_offices days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_days_mission_timeout = { mission = GER_soc_auto_counter_soviet_failure_rumors days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_days_mission_timeout = { mission = GER_soc_auto_counter_promote_private_property days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_days_mission_timeout = { mission = GER_soc_auto_counter_assassinate_organizers days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_days_mission_timeout = { mission = GER_soc_auto_counter_far_right_groups days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_days_mission_timeout = { mission = GER_soc_auto_counter_foreign_contacts days = -7 } }
+                if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = -7 } }
+                set_variable = { GER_soc_auto_counter_domestic_capital_cooldown = 7 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+}

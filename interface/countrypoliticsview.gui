@@ -134,7 +134,7 @@ guiTypes = {
 
 			containerWindowType = {
 				name = "faction"
-				position = { x = 100 y = -50}
+				position = { x = 100 y = -38}
 				size = { width = 175 height = 20 }
 				clipping = no
 
@@ -546,8 +546,10 @@ guiTypes = {
 			containerWindowType = {
 				name = "national_spirit_container"
 				position = { x = 99 y = 16 }
-				size = { width = 364 height = 74 }
-				verticalScrollbar = "right_vertical_slider"
+				size = { width = 354 height = 92 }
+				horizontalScrollbar = "bottom_horizontal_slider"
+				scroll_wheel_factor = 70
+				clipping = yes
 
 				background = {
 					name = "Background"
@@ -557,17 +559,17 @@ guiTypes = {
 				gridboxtype = {
 					name = "spirit_grid"
 					position = { x = 1 y = 2 }
-					size = { width = 354 height = 68 }
-					slotsize = { width = 59 height = 68 }
-					max_slots = { x = 6 y = 1 }
+					size = { width = 350 height = 68 }
+					slotsize = { width = 70 height = 68 }
+					max_slots_vertical = 1
 					format = "UPPER_LEFT"
 				}
 				gridboxtype = {
 					name = "spirit_grid_over_defined"
-					position = { x = 10 y = 1 }
-					size = { width = 330 height = 68 }
-					slotsize = { width = 33 height = 34 }
-					max_slots_horizontal = 10
+					position = { x = 1 y = 2 }
+					size = { width = 350 height = 68 }
+					slotsize = { width = 70 height = 68 }
+					max_slots_vertical = 1
 					format = "UPPER_LEFT"
 				}
 			}

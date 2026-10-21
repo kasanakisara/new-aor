@@ -1,0 +1,21 @@
+on_actions = {
+    # The category is currently available from game start. A future focus can
+    # call GER_socialization_initialize when it unlocks the category instead.
+    on_startup = {
+        effect = {
+            GER = { GER_socialization_initialize = yes }
+        }
+    }
+    on_daily = {
+        effect = {
+            if = {
+                limit = { tag = GER }
+                if = {
+                    limit = { NOT = { has_country_flag = GER_socialization_started } }
+                    GER_socialization_initialize = yes
+                }
+                else = { GER_socialization_daily_tick = yes }
+            }
+        }
+    }
+}

@@ -1,0 +1,610 @@
+# Country scope. Call after changing overview metrics for an immediate GUI update.
+# Persistent frame values avoid relying on temporary data from icon visibility checks.
+GER_socialization_refresh_bars = {
+    GER_socialization_refresh_targets = yes
+    set_variable = { GER_soc_mass_strike_cost = 350 }
+    if = { limit = { has_country_flag = GER_socialization_union_reform_success } set_variable = { GER_soc_mass_strike_cost = 250 } }
+    if = {
+        limit = { NOT = { has_variable = GER_socialization_radicalism_base } }
+        set_variable = { GER_socialization_radicalism_base = GER_socialization_radicalism }
+        if = { limit = { has_variable = GER_socialization_organization_applied_radicalism_bonus } subtract_from_variable = { var = GER_socialization_radicalism_base value = GER_socialization_organization_applied_radicalism_bonus } }
+        if = { limit = { has_variable = GER_socialization_radicalism_applied_bonus } subtract_from_variable = { var = GER_socialization_radicalism_base value = GER_socialization_radicalism_applied_bonus } }
+        clamp_variable = { var = GER_socialization_radicalism_base min = 0 max = 100 }
+    }
+    # Preserve progress added directly to the displayed variable by other scripts.
+    if = {
+        limit = {
+            has_variable = GER_socialization_radicalism_last_displayed
+            OR = {
+                check_variable = { GER_socialization_radicalism > GER_socialization_radicalism_last_displayed }
+                check_variable = { GER_socialization_radicalism < GER_socialization_radicalism_last_displayed }
+            }
+        }
+        set_variable = { GER_socialization_radicalism_external_change = GER_socialization_radicalism }
+        subtract_from_variable = { var = GER_socialization_radicalism_external_change value = GER_socialization_radicalism_last_displayed }
+        add_to_variable = { var = GER_socialization_radicalism_base value = GER_socialization_radicalism_external_change }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_organization_level } } set_variable = { GER_socialization_organization_level = 0 } }
+    clamp_variable = { var = GER_socialization_organization_level min = 0 max = 4 }
+    GER_socialization_organization_borrow_level = yes
+    GER_socialization_organization_borrow_level = yes
+    GER_socialization_organization_borrow_level = yes
+    GER_socialization_organization_borrow_level = yes
+    if = { limit = { check_variable = { GER_socialization_organization < 0 } } set_variable = { GER_socialization_organization = 0 } }
+    # The bar tracks progress within the current level. Carry any overflow forward.
+    GER_socialization_organization_advance_level = yes
+    GER_socialization_organization_advance_level = yes
+    GER_socialization_organization_advance_level = yes
+    GER_socialization_organization_advance_level = yes
+    if = { limit = { check_variable = { GER_socialization_organization_level = 4 } } clamp_variable = { var = GER_socialization_organization min = 0 max = 100 } }
+    GER_socialization_refresh_organization_effect = yes
+    GER_socialization_radicalism_borrow_level = yes
+    GER_socialization_radicalism_borrow_level = yes
+    GER_socialization_radicalism_borrow_level = yes
+    if = { limit = { check_variable = { GER_socialization_radicalism_base < 0 } } set_variable = { GER_socialization_radicalism_base = 0 } }
+    GER_socialization_refresh_radicalism_effect = yes
+    set_variable = { GER_socialization_radicalism = GER_socialization_radicalism_base }
+    add_to_variable = { var = GER_socialization_radicalism value = GER_socialization_organization_new_radicalism_bonus }
+    add_to_variable = { var = GER_socialization_radicalism value = GER_socialization_radicalism_new_bonus }
+    GER_socialization_radicalism_advance_level = yes
+    GER_socialization_radicalism_advance_level = yes
+    GER_socialization_radicalism_advance_level = yes
+    clamp_variable = { var = GER_socialization_radicalism min = 0 max = 100 }
+    set_variable = { GER_socialization_radicalism_last_displayed = GER_socialization_radicalism }
+    set_variable = { GER_socialization_organization_fill = GER_socialization_organization }
+    clamp_variable = { var = GER_socialization_organization_fill min = 0 max = 100 }
+    clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+    set_variable = { GER_socialization_counterrevolution_fill = GER_socialization_counterrevolution }
+    divide_variable = { GER_socialization_counterrevolution_fill = 12 }
+    clamp_variable = { var = GER_socialization_counterrevolution_fill min = 0 max = 100 }
+    set_variable = { GER_socialization_counterrevolution_percent = GER_socialization_counterrevolution_fill }
+    # The automatic-action script can gate its choices on this intensity variable.
+    # 0: none; 1: <25%; 2: 25-74%; 3: 75-99%; 4: 100% (all actions).
+    set_variable = { GER_socialization_counterrevolution_intensity = 0 }
+    if = { limit = { check_variable = { GER_socialization_counterrevolution_percent > 0 } } set_variable = { GER_socialization_counterrevolution_intensity = 1 } }
+    if = { limit = { check_variable = { GER_socialization_counterrevolution > 299 } } set_variable = { GER_socialization_counterrevolution_intensity = 2 } }
+    if = { limit = { check_variable = { GER_socialization_counterrevolution > 899 } } set_variable = { GER_socialization_counterrevolution_intensity = 3 } }
+    if = { limit = { check_variable = { GER_socialization_counterrevolution > 1199 } } set_variable = { GER_socialization_counterrevolution_intensity = 4 } }
+    set_variable = { GER_socialization_radicalism_fill = GER_socialization_radicalism }
+    clamp_variable = { var = GER_socialization_radicalism_fill min = 0 max = 100 }
+    GER_socialization_distribute_points = yes
+    GER_socialization_refresh_selected_industry = yes
+}
+
+GER_socialization_organization_borrow_level = {
+    if = {
+        limit = { check_variable = { GER_socialization_organization < 0 } check_variable = { GER_socialization_organization_level > 0 } }
+        add_to_variable = { GER_socialization_organization = 100 }
+        subtract_from_variable = { GER_socialization_organization_level = 1 }
+    }
+}
+GER_socialization_organization_advance_level = {
+    if = {
+        limit = { check_variable = { GER_socialization_organization = 100 } check_variable = { GER_socialization_organization_level < 4 } }
+        subtract_from_variable = { GER_socialization_organization = 100 }
+        add_to_variable = { GER_socialization_organization_level = 1 }
+    }
+}
+GER_socialization_radicalism_borrow_level = {
+    if = {
+        limit = { check_variable = { GER_socialization_radicalism_base < 0 } check_variable = { GER_socialization_radicalism_level > 0 } }
+        add_to_variable = { GER_socialization_radicalism_base = 100 }
+        subtract_from_variable = { GER_socialization_radicalism_level = 1 }
+    }
+}
+GER_socialization_radicalism_advance_level = {
+    if = {
+        limit = { check_variable = { GER_socialization_radicalism = 100 } check_variable = { GER_socialization_radicalism_level < 3 } }
+        subtract_from_variable = { GER_socialization_radicalism_base = 100 }
+        add_to_variable = { GER_socialization_radicalism_level = 1 }
+        GER_socialization_refresh_radicalism_effect = yes
+        set_variable = { GER_socialization_radicalism = GER_socialization_radicalism_base }
+        add_to_variable = { var = GER_socialization_radicalism value = GER_socialization_organization_new_radicalism_bonus }
+        add_to_variable = { var = GER_socialization_radicalism value = GER_socialization_radicalism_new_bonus }
+    }
+}
+
+# One entry point for the schedule. A future focus can call this instead of on_startup.
+GER_socialization_initialize = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_socialization_started } }
+        set_country_flag = GER_socialization_started
+        # Starting balance; do not overwrite an existing save's socialization values.
+        if = { limit = { NOT = { has_variable = GER_socialization_counterrevolution } } set_variable = { GER_socialization_counterrevolution = 1000 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_organization_level } } set_variable = { GER_socialization_organization_level = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_organization } } set_variable = { GER_socialization_organization = 50 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism_level } } set_variable = { GER_socialization_radicalism_level = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism_base } } set_variable = { GER_socialization_radicalism_base = 50 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism } } set_variable = { GER_socialization_radicalism = 50 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_selected } } set_variable = { GER_socialization_selected = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_active_industry } } set_variable = { GER_socialization_active_industry = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_days_remaining } } set_variable = { GER_socialization_days_remaining = 65 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_elapsed_days } } set_variable = { GER_socialization_elapsed_days = 0 } }
+        GER_soc_auto_reset_industry = yes
+    }
+    GER_socialization_refresh_bars = yes
+}
+
+# One day passes for the current industry. A finished industry advances during
+# refresh; an unfinished industry fails when its remaining days reach zero.
+GER_socialization_daily_tick = {
+    if = { limit = { NOT = { has_country_flag = GER_soc_auto_initialized } } GER_soc_auto_reset_industry = yes set_country_flag = GER_soc_auto_initialized }
+    GER_socialization_refresh_bars = yes
+    GER_socialization_reconcile_rewards = yes
+    if = {
+        limit = { has_country_flag = GER_socialization_reward_mining }
+        add_to_variable = { GER_socialization_mining_refresh_days = 1 }
+        if = {
+            limit = { check_variable = { GER_socialization_mining_refresh_days > 29 } }
+            subtract_from_variable = { GER_socialization_mining_refresh_days = 30 }
+            GER_socialization_refresh_mining_resources = yes
+        }
+    }
+    if = {
+        limit = { has_country_flag = GER_socialization_reward_banking check_variable = { GER_socialization_active_industry < 12 } }
+        add_to_variable = { GER_socialization_bank_bonus_days = 1 }
+        if = {
+            limit = { check_variable = { GER_socialization_bank_bonus_days > 6 } }
+            subtract_from_variable = { GER_socialization_bank_bonus_days = 7 }
+            add_to_variable = { GER_socialization_points_pool = 4 }
+            GER_socialization_refresh_bars = yes
+        }
+    }
+    set_variable = { GER_socialization_day_start_industry = GER_socialization_active_industry }
+    if = { limit = { check_variable = { GER_socialization_day_start_industry < 12 } } add_to_variable = { GER_socialization_elapsed_days = 1 } }
+    GER_socialization_decisions_daily_tick = yes
+    GER_soc_auto_daily_tick = yes
+    if = {
+        limit = {
+            check_variable = { GER_socialization_active_industry < 12 }
+            check_variable = { GER_socialization_active_industry = GER_socialization_day_start_industry }
+            NOT = { check_variable = { GER_socialization_active_industry > GER_socialization_day_start_industry } }
+        }
+        subtract_from_variable = { GER_socialization_days_remaining = 1 }
+        if = {
+            limit = { check_variable = { GER_socialization_days_remaining < 1 } }
+            GER_socialization_advance_industry = yes
+        }
+    }
+    GER_socialization_refresh_selected_industry = yes
+}
+
+# Completion keeps its points; expiry leaves its partial points and records failure.
+GER_socialization_advance_industry = {
+    GER_soc_auto_reset_industry = yes
+    GER_socialization_refresh_targets = yes
+    GER_socialization_award_active_industry = yes
+    if = { limit = { check_variable = { GER_socialization_active_industry = 0 } check_variable = { GER_socialization_active_industry < 1 } check_variable = { GER_socialization_railway_points < 150 } } set_variable = { GER_socialization_railway_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } check_variable = { GER_socialization_mining_points < 200 } } set_variable = { GER_socialization_mining_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 2 } check_variable = { GER_socialization_active_industry < 3 } check_variable = { GER_socialization_power_points < 250 } } set_variable = { GER_socialization_power_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 3 } check_variable = { GER_socialization_active_industry < 4 } check_variable = { GER_socialization_banking_points < 100 } } set_variable = { GER_socialization_banking_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 4 } check_variable = { GER_socialization_active_industry < 5 } check_variable = { GER_socialization_armaments_points < 100 } } set_variable = { GER_socialization_armaments_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 5 } check_variable = { GER_socialization_active_industry < 6 } check_variable = { GER_socialization_metalworking_points < GER_soc_target_metalworking } } set_variable = { GER_socialization_metalworking_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 6 } check_variable = { GER_socialization_active_industry < 7 } check_variable = { GER_socialization_chemicals_points < GER_soc_target_chemicals } } set_variable = { GER_socialization_chemicals_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 7 } check_variable = { GER_socialization_active_industry < 8 } check_variable = { GER_socialization_electrical_points < GER_soc_target_electrical } } set_variable = { GER_socialization_electrical_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 8 } check_variable = { GER_socialization_active_industry < 9 } check_variable = { GER_socialization_light_industry_points < 400 } } set_variable = { GER_socialization_light_industry_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 9 } check_variable = { GER_socialization_active_industry < 10 } check_variable = { GER_socialization_handicrafts_points < GER_soc_target_handicrafts } } set_variable = { GER_socialization_handicrafts_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 10 } check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_socialization_shipbuilding_points < 150 } } set_variable = { GER_socialization_shipbuilding_failed = 1 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 12 } check_variable = { GER_socialization_agriculture_points < 1000 } } set_variable = { GER_socialization_agriculture_failed = 1 } }
+    add_to_variable = { GER_socialization_active_industry = 1 }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 11 } } GER_socialization_clear_temporary_decision_effects = yes }
+    set_variable = { GER_socialization_days_remaining = 0 }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 2 } check_variable = { GER_socialization_active_industry < 3 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 3 } check_variable = { GER_socialization_active_industry < 4 } } set_variable = { GER_socialization_days_remaining = 30 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 4 } check_variable = { GER_socialization_active_industry < 5 } } set_variable = { GER_socialization_days_remaining = 30 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 5 } check_variable = { GER_socialization_active_industry < 6 } } set_variable = { GER_socialization_days_remaining = 75 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 6 } check_variable = { GER_socialization_active_industry < 7 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 7 } check_variable = { GER_socialization_active_industry < 8 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 8 } check_variable = { GER_socialization_active_industry < 9 } } set_variable = { GER_socialization_days_remaining = 75 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 9 } check_variable = { GER_socialization_active_industry < 10 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 10 } check_variable = { GER_socialization_active_industry < 11 } } set_variable = { GER_socialization_days_remaining = 65 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 12 } } set_variable = { GER_socialization_days_remaining = 206 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 12 } } set_country_flag = GER_socialization_finished }
+}
+
+# Add an award to GER_socialization_points_pool and call refresh_bars. The GUI
+# selection is for preview only; allocation starts at the active industry.
+GER_socialization_distribute_points = {
+    if = { limit = { NOT = { has_variable = GER_socialization_points_pool } } set_variable = { GER_socialization_points_pool = 0 } }
+    if = { limit = { NOT = { has_variable = GER_socialization_railway_points } } set_variable = { GER_socialization_railway_points = 0 } }
+    clamp_variable = { var = GER_socialization_railway_points min = 0 max = 150 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 0 } check_variable = { GER_socialization_active_industry < 1 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_railway_points < 150 } }
+            add_to_variable = { var = GER_socialization_railway_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_railway_points > 150 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_railway_points }
+                subtract_from_variable = { GER_socialization_points_pool = 150 }
+                set_variable = { GER_socialization_railway_points = 150 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_railway_points = 150 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_mining_points } } set_variable = { GER_socialization_mining_points = 0 } }
+    clamp_variable = { var = GER_socialization_mining_points min = 0 max = 200 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_mining_points < 200 } }
+            add_to_variable = { var = GER_socialization_mining_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_mining_points > 200 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_mining_points }
+                subtract_from_variable = { GER_socialization_points_pool = 200 }
+                set_variable = { GER_socialization_mining_points = 200 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_mining_points = 200 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_power_points } } set_variable = { GER_socialization_power_points = 0 } }
+    clamp_variable = { var = GER_socialization_power_points min = 0 max = 250 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 2 } check_variable = { GER_socialization_active_industry < 3 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_power_points < 250 } }
+            add_to_variable = { var = GER_socialization_power_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_power_points > 250 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_power_points }
+                subtract_from_variable = { GER_socialization_points_pool = 250 }
+                set_variable = { GER_socialization_power_points = 250 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_power_points = 250 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_banking_points } } set_variable = { GER_socialization_banking_points = 0 } }
+    clamp_variable = { var = GER_socialization_banking_points min = 0 max = 100 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 3 } check_variable = { GER_socialization_active_industry < 4 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_banking_points < 100 } }
+            add_to_variable = { var = GER_socialization_banking_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_banking_points > 100 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_banking_points }
+                subtract_from_variable = { GER_socialization_points_pool = 100 }
+                set_variable = { GER_socialization_banking_points = 100 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_banking_points = 100 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_armaments_points } } set_variable = { GER_socialization_armaments_points = 0 } }
+    clamp_variable = { var = GER_socialization_armaments_points min = 0 max = 100 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 4 } check_variable = { GER_socialization_active_industry < 5 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_armaments_points < 100 } }
+            add_to_variable = { var = GER_socialization_armaments_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_armaments_points > 100 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_armaments_points }
+                subtract_from_variable = { GER_socialization_points_pool = 100 }
+                set_variable = { GER_socialization_armaments_points = 100 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_armaments_points = 100 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_metalworking_points } } set_variable = { GER_socialization_metalworking_points = 0 } }
+    clamp_variable = { var = GER_socialization_metalworking_points min = 0 max = 1000 }
+    if = { limit = { check_variable = { GER_socialization_metalworking_points > GER_soc_target_metalworking } } set_variable = { GER_socialization_metalworking_points = GER_soc_target_metalworking } }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 5 } check_variable = { GER_socialization_active_industry < 6 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_metalworking_points < GER_soc_target_metalworking } }
+            add_to_variable = { var = GER_socialization_metalworking_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_metalworking_points > GER_soc_target_metalworking } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_metalworking_points }
+                subtract_from_variable = { GER_socialization_points_pool = GER_soc_target_metalworking }
+                set_variable = { GER_socialization_metalworking_points = GER_soc_target_metalworking }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_metalworking_points = GER_soc_target_metalworking } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_chemicals_points } } set_variable = { GER_socialization_chemicals_points = 0 } }
+    clamp_variable = { var = GER_socialization_chemicals_points min = 0 max = 1000 }
+    if = { limit = { check_variable = { GER_socialization_chemicals_points > GER_soc_target_chemicals } } set_variable = { GER_socialization_chemicals_points = GER_soc_target_chemicals } }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 6 } check_variable = { GER_socialization_active_industry < 7 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_chemicals_points < GER_soc_target_chemicals } }
+            add_to_variable = { var = GER_socialization_chemicals_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_chemicals_points > GER_soc_target_chemicals } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_chemicals_points }
+                subtract_from_variable = { GER_socialization_points_pool = GER_soc_target_chemicals }
+                set_variable = { GER_socialization_chemicals_points = GER_soc_target_chemicals }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_chemicals_points = GER_soc_target_chemicals } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_electrical_points } } set_variable = { GER_socialization_electrical_points = 0 } }
+    clamp_variable = { var = GER_socialization_electrical_points min = 0 max = 1000 }
+    if = { limit = { check_variable = { GER_socialization_electrical_points > GER_soc_target_electrical } } set_variable = { GER_socialization_electrical_points = GER_soc_target_electrical } }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 7 } check_variable = { GER_socialization_active_industry < 8 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_electrical_points < GER_soc_target_electrical } }
+            add_to_variable = { var = GER_socialization_electrical_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_electrical_points > GER_soc_target_electrical } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_electrical_points }
+                subtract_from_variable = { GER_socialization_points_pool = GER_soc_target_electrical }
+                set_variable = { GER_socialization_electrical_points = GER_soc_target_electrical }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_electrical_points = GER_soc_target_electrical } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_light_industry_points } } set_variable = { GER_socialization_light_industry_points = 0 } }
+    clamp_variable = { var = GER_socialization_light_industry_points min = 0 max = 400 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 8 } check_variable = { GER_socialization_active_industry < 9 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_light_industry_points < 400 } }
+            add_to_variable = { var = GER_socialization_light_industry_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_light_industry_points > 400 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_light_industry_points }
+                subtract_from_variable = { GER_socialization_points_pool = 400 }
+                set_variable = { GER_socialization_light_industry_points = 400 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_light_industry_points = 400 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_handicrafts_points } } set_variable = { GER_socialization_handicrafts_points = 0 } }
+    clamp_variable = { var = GER_socialization_handicrafts_points min = 0 max = 1000 }
+    if = { limit = { check_variable = { GER_socialization_handicrafts_points > GER_soc_target_handicrafts } } set_variable = { GER_socialization_handicrafts_points = GER_soc_target_handicrafts } }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 9 } check_variable = { GER_socialization_active_industry < 10 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_handicrafts_points < GER_soc_target_handicrafts } }
+            add_to_variable = { var = GER_socialization_handicrafts_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_handicrafts_points > GER_soc_target_handicrafts } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_handicrafts_points }
+                subtract_from_variable = { GER_socialization_points_pool = GER_soc_target_handicrafts }
+                set_variable = { GER_socialization_handicrafts_points = GER_soc_target_handicrafts }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_handicrafts_points = GER_soc_target_handicrafts } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_shipbuilding_points } } set_variable = { GER_socialization_shipbuilding_points = 0 } }
+    clamp_variable = { var = GER_socialization_shipbuilding_points min = 0 max = 150 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 10 } check_variable = { GER_socialization_active_industry < 11 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_shipbuilding_points < 150 } }
+            add_to_variable = { var = GER_socialization_shipbuilding_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_shipbuilding_points > 150 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_shipbuilding_points }
+                subtract_from_variable = { GER_socialization_points_pool = 150 }
+                set_variable = { GER_socialization_shipbuilding_points = 150 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_shipbuilding_points = 150 } } GER_socialization_advance_industry = yes }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_agriculture_points } } set_variable = { GER_socialization_agriculture_points = 0 } }
+    clamp_variable = { var = GER_socialization_agriculture_points min = 0 max = 1000 }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 12 } }
+        if = {
+            limit = { check_variable = { GER_socialization_points_pool > 0 } check_variable = { GER_socialization_agriculture_points < 1000 } }
+            add_to_variable = { var = GER_socialization_agriculture_points value = GER_socialization_points_pool }
+            if = {
+                limit = { check_variable = { GER_socialization_agriculture_points > 1000 } }
+                set_variable = { GER_socialization_points_pool = GER_socialization_agriculture_points }
+                subtract_from_variable = { GER_socialization_points_pool = 1000 }
+                set_variable = { GER_socialization_agriculture_points = 1000 }
+            }
+            else = { set_variable = { GER_socialization_points_pool = 0 } }
+        }
+        if = { limit = { check_variable = { GER_socialization_agriculture_points = 1000 } } GER_socialization_advance_industry = yes }
+    }
+    # All remaining points are discarded after industry #12 is complete.
+    set_variable = { GER_socialization_points_pool = 0 }
+}
+# Keep the country bonus and radicalism increase in step with the current level.
+GER_socialization_refresh_organization_effect = {
+    if = {
+        limit = { NOT = { has_dynamic_modifier = { modifier = GER_socialization_organization_modifier } } }
+        add_dynamic_modifier = { modifier = GER_socialization_organization_modifier }
+    }
+    set_variable = { GER_socialization_organization_new_radicalism_bonus = 0 }
+    set_variable = { GER_socialization_organization_construction_bonus = 0 }
+    set_variable = { GER_socialization_organization_slots_bonus = 0 }
+    set_variable = { GER_socialization_organization_resources_bonus = 0 }
+    set_variable = { GER_socialization_organization_factory_bonus = 0 }
+    if = {
+        limit = { check_variable = { GER_socialization_organization_level = 1 } check_variable = { GER_socialization_organization_level < 2 } }
+        set_variable = { GER_socialization_organization_new_radicalism_bonus = 3 }
+        set_variable = { GER_socialization_organization_construction_bonus = 0.06 }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_organization_level = 2 } check_variable = { GER_socialization_organization_level < 3 } }
+        set_variable = { GER_socialization_organization_new_radicalism_bonus = 5 }
+        set_variable = { GER_socialization_organization_slots_bonus = 0.10 }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_organization_level = 3 } check_variable = { GER_socialization_organization_level < 4 } }
+        set_variable = { GER_socialization_organization_new_radicalism_bonus = 8 }
+        set_variable = { GER_socialization_organization_resources_bonus = 0.08 }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_organization_level = 4 } }
+        set_variable = { GER_socialization_organization_new_radicalism_bonus = 10 }
+        set_variable = { GER_socialization_organization_factory_bonus = 0.15 }
+    }
+
+}
+
+# Radicalism level also contributes to the displayed radicalism value.
+GER_socialization_refresh_radicalism_effect = {
+    if = {
+        limit = { NOT = { has_dynamic_modifier = { modifier = GER_socialization_radicalism_modifier } } }
+        add_dynamic_modifier = { modifier = GER_socialization_radicalism_modifier }
+    }
+    if = { limit = { NOT = { has_variable = GER_socialization_radicalism_level } } set_variable = { GER_socialization_radicalism_level = 0 } }
+    clamp_variable = { var = GER_socialization_radicalism_level min = 0 max = 3 }
+
+    set_variable = { GER_socialization_radicalism_new_bonus = 0 }
+    set_variable = { GER_socialization_radicalism_consumer_goods_penalty = 0 }
+    set_variable = { GER_socialization_radicalism_construction_penalty = 0 }
+    set_variable = { GER_socialization_radicalism_efficiency_penalty = 0 }
+    if = {
+        limit = { check_variable = { GER_socialization_radicalism_level = 1 } check_variable = { GER_socialization_radicalism_level < 2 } }
+        set_variable = { GER_socialization_radicalism_new_bonus = 2 }
+        set_variable = { GER_socialization_radicalism_consumer_goods_penalty = 0.20 }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_radicalism_level = 2 } check_variable = { GER_socialization_radicalism_level < 3 } }
+        set_variable = { GER_socialization_radicalism_new_bonus = 5 }
+        set_variable = { GER_socialization_radicalism_construction_penalty = -0.15 }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_radicalism_level = 3 } }
+        set_variable = { GER_socialization_radicalism_new_bonus = 8 }
+        set_variable = { GER_socialization_radicalism_efficiency_penalty = -0.15 }
+    }
+
+}
+
+# The GUI displays the selected industry; awards use the separate ordered pool.
+GER_socialization_refresh_selected_industry = {
+    set_variable = { GER_socialization_selected_points = 0 }
+    set_variable = { GER_socialization_selected_target = 150 }
+    if = {
+        limit = { OR = { NOT = { has_variable = GER_socialization_selected } check_variable = { GER_socialization_selected < 1 } } }
+        if = {
+            limit = { has_variable = GER_socialization_railway_points }
+            set_variable = { GER_socialization_selected_points = GER_socialization_railway_points }
+        }
+    }
+    if = { limit = { check_variable = { GER_socialization_selected = 1 } } set_variable = { GER_socialization_selected_target = 200 } if = { limit = { has_variable = GER_socialization_mining_points } set_variable = { GER_socialization_selected_points = GER_socialization_mining_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 2 } } set_variable = { GER_socialization_selected_target = 250 } if = { limit = { has_variable = GER_socialization_power_points } set_variable = { GER_socialization_selected_points = GER_socialization_power_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 3 } } set_variable = { GER_socialization_selected_target = 100 } if = { limit = { has_variable = GER_socialization_banking_points } set_variable = { GER_socialization_selected_points = GER_socialization_banking_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 4 } } set_variable = { GER_socialization_selected_target = 100 } if = { limit = { has_variable = GER_socialization_armaments_points } set_variable = { GER_socialization_selected_points = GER_socialization_armaments_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 5 } } set_variable = { GER_socialization_selected_target = GER_soc_target_metalworking } if = { limit = { has_variable = GER_socialization_metalworking_points } set_variable = { GER_socialization_selected_points = GER_socialization_metalworking_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 6 } } set_variable = { GER_socialization_selected_target = GER_soc_target_chemicals } if = { limit = { has_variable = GER_socialization_chemicals_points } set_variable = { GER_socialization_selected_points = GER_socialization_chemicals_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 7 } } set_variable = { GER_socialization_selected_target = GER_soc_target_electrical } if = { limit = { has_variable = GER_socialization_electrical_points } set_variable = { GER_socialization_selected_points = GER_socialization_electrical_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 8 } } set_variable = { GER_socialization_selected_target = 400 } if = { limit = { has_variable = GER_socialization_light_industry_points } set_variable = { GER_socialization_selected_points = GER_socialization_light_industry_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 9 } } set_variable = { GER_socialization_selected_target = GER_soc_target_handicrafts } if = { limit = { has_variable = GER_socialization_handicrafts_points } set_variable = { GER_socialization_selected_points = GER_socialization_handicrafts_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 10 } } set_variable = { GER_socialization_selected_target = 150 } if = { limit = { has_variable = GER_socialization_shipbuilding_points } set_variable = { GER_socialization_selected_points = GER_socialization_shipbuilding_points } } }
+    if = { limit = { check_variable = { GER_socialization_selected = 11 } } set_variable = { GER_socialization_selected_target = 1000 } if = { limit = { has_variable = GER_socialization_agriculture_points } set_variable = { GER_socialization_selected_points = GER_socialization_agriculture_points } } }
+    set_variable = { GER_socialization_selected_fill = GER_socialization_selected_points }
+    multiply_variable = { GER_socialization_selected_fill = 100 }
+    divide_variable = { var = GER_socialization_selected_fill value = GER_socialization_selected_target }
+    clamp_variable = { var = GER_socialization_selected_fill min = 0 max = 100 }
+    # Tooltip always reports the active industry, even when another tab is previewed.
+    set_variable = { GER_socialization_active_points = 0 }
+    set_variable = { GER_socialization_active_target = 0 }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 0 } check_variable = { GER_socialization_active_industry < 1 } } set_variable = { GER_socialization_active_points = GER_socialization_railway_points } set_variable = { GER_socialization_active_target = 150 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } } set_variable = { GER_socialization_active_points = GER_socialization_mining_points } set_variable = { GER_socialization_active_target = 200 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 2 } check_variable = { GER_socialization_active_industry < 3 } } set_variable = { GER_socialization_active_points = GER_socialization_power_points } set_variable = { GER_socialization_active_target = 250 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 3 } check_variable = { GER_socialization_active_industry < 4 } } set_variable = { GER_socialization_active_points = GER_socialization_banking_points } set_variable = { GER_socialization_active_target = 100 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 4 } check_variable = { GER_socialization_active_industry < 5 } } set_variable = { GER_socialization_active_points = GER_socialization_armaments_points } set_variable = { GER_socialization_active_target = 100 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 5 } check_variable = { GER_socialization_active_industry < 6 } } set_variable = { GER_socialization_active_points = GER_socialization_metalworking_points } set_variable = { GER_socialization_active_target = GER_soc_target_metalworking } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 6 } check_variable = { GER_socialization_active_industry < 7 } } set_variable = { GER_socialization_active_points = GER_socialization_chemicals_points } set_variable = { GER_socialization_active_target = GER_soc_target_chemicals } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 7 } check_variable = { GER_socialization_active_industry < 8 } } set_variable = { GER_socialization_active_points = GER_socialization_electrical_points } set_variable = { GER_socialization_active_target = GER_soc_target_electrical } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 8 } check_variable = { GER_socialization_active_industry < 9 } } set_variable = { GER_socialization_active_points = GER_socialization_light_industry_points } set_variable = { GER_socialization_active_target = 400 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 9 } check_variable = { GER_socialization_active_industry < 10 } } set_variable = { GER_socialization_active_points = GER_socialization_handicrafts_points } set_variable = { GER_socialization_active_target = GER_soc_target_handicrafts } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 10 } check_variable = { GER_socialization_active_industry < 11 } } set_variable = { GER_socialization_active_points = GER_socialization_shipbuilding_points } set_variable = { GER_socialization_active_target = 150 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 12 } } set_variable = { GER_socialization_active_points = GER_socialization_agriculture_points } set_variable = { GER_socialization_active_target = 1000 } }
+    # Status is independent of the previewed industry's incomplete point total.
+    set_variable = { GER_socialization_selected_status = 0 }
+    if = {
+        limit = { check_variable = { GER_socialization_selected < GER_socialization_active_industry } }
+        set_variable = { GER_socialization_selected_status = 2 }
+        if = {
+            limit = { check_variable = { GER_socialization_selected_points = GER_socialization_selected_target } }
+            set_variable = { GER_socialization_selected_status = 1 }
+        }
+    }
+    set_variable = { GER_socialization_active_industry_next = GER_socialization_active_industry }
+    add_to_variable = { GER_socialization_active_industry_next = 1 }
+    if = {
+        limit = {
+            check_variable = { GER_socialization_selected = GER_socialization_active_industry }
+            check_variable = { GER_socialization_selected < GER_socialization_active_industry_next }
+        }
+        set_variable = { GER_socialization_selected_status = 3 }
+    }
+}
+
+# Test-only reset; gameplay awards should use GER_socialization_points_pool.
+GER_socialization_reset_industry_points = {
+    GER_soc_auto_reset_industry = yes
+    GER_socialization_clear_temporary_decision_effects = yes
+    set_variable = { GER_socialization_bank_bonus_days = 0 }
+    clr_country_flag = GER_socialization_reward_railway
+    clr_country_flag = GER_socialization_reward_mining
+    set_variable = { GER_socialization_mining_refresh_days = 0 }
+    GER_socialization_refresh_mining_resources = yes
+    clr_country_flag = GER_socialization_reward_power
+    clr_country_flag = GER_socialization_reward_banking
+    clr_country_flag = GER_socialization_reward_armaments
+    clr_country_flag = GER_socialization_reward_metalworking
+    clr_country_flag = GER_socialization_reward_chemicals
+    clr_country_flag = GER_socialization_reward_electrical
+    clr_country_flag = GER_socialization_reward_light_industry
+    clr_country_flag = GER_socialization_reward_handicrafts
+    clr_country_flag = GER_socialization_reward_shipbuilding
+    remove_dynamic_modifier = { modifier = GER_socialization_industry_rewards_modifier }
+    set_variable = { GER_soc_reward_stability_weekly = 0 }
+    set_variable = { GER_soc_reward_factory_output = 0 }
+    set_variable = { GER_soc_reward_factory_efficiency = 0 }
+    set_variable = { GER_soc_reward_construction_speed = 0 }
+    set_variable = { GER_soc_reward_consumer_goods = 0 }
+    set_variable = { GER_soc_reward_dockyard_output = 0 }
+    remove_ideas = GER_socialization_reward_power_idea
+    remove_ideas = GER_socialization_reward_armaments_idea
+    remove_ideas = GER_socialization_reward_metalworking_idea
+    remove_ideas = GER_socialization_reward_light_industry_idea
+    remove_ideas = GER_socialization_reward_shipbuilding_idea
+    set_variable = { GER_socialization_points_pool = 0 }
+    set_variable = { GER_soc_last_strike_industry = -1 }
+    set_country_flag = GER_socialization_started
+    clr_country_flag = GER_socialization_finished
+    set_variable = { GER_socialization_active_industry = 0 }
+    set_variable = { GER_socialization_days_remaining = 65 }
+    set_variable = { GER_socialization_elapsed_days = 0 }
+    set_variable = { GER_socialization_railway_failed = 0 }
+    set_variable = { GER_socialization_mining_failed = 0 }
+    set_variable = { GER_socialization_power_failed = 0 }
+    set_variable = { GER_socialization_banking_failed = 0 }
+    set_variable = { GER_socialization_armaments_failed = 0 }
+    set_variable = { GER_socialization_metalworking_failed = 0 }
+    set_variable = { GER_socialization_chemicals_failed = 0 }
+    set_variable = { GER_socialization_electrical_failed = 0 }
+    set_variable = { GER_socialization_light_industry_failed = 0 }
+    set_variable = { GER_socialization_handicrafts_failed = 0 }
+    set_variable = { GER_socialization_shipbuilding_failed = 0 }
+    set_variable = { GER_socialization_agriculture_failed = 0 }
+    set_variable = { GER_socialization_railway_points = 0 }
+    set_variable = { GER_socialization_mining_points = 0 }
+    set_variable = { GER_socialization_power_points = 0 }
+    set_variable = { GER_socialization_banking_points = 0 }
+    set_variable = { GER_socialization_armaments_points = 0 }
+    set_variable = { GER_socialization_metalworking_points = 0 }
+    set_variable = { GER_socialization_chemicals_points = 0 }
+    set_variable = { GER_socialization_electrical_points = 0 }
+    set_variable = { GER_socialization_light_industry_points = 0 }
+    set_variable = { GER_socialization_handicrafts_points = 0 }
+    set_variable = { GER_socialization_shipbuilding_points = 0 }
+    set_variable = { GER_socialization_agriculture_points = 0 }
+    GER_socialization_refresh_selected_industry = yes
+}

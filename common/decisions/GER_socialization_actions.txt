@@ -1,0 +1,226 @@
+# Repeatable socialization decisions. The active industry, not the preview tab,
+# receives every point award.
+GER_socialization_category = {
+    GER_socialization_expel_factory_guards = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_guard_a_effect_idea } NOT = { has_idea = GER_soc_guard_b_effect_idea } NOT = { has_idea = GER_soc_guard_c_effect_idea } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 }
+            check_variable = { GER_socialization_active_industry < 11 }
+            OR = { NOT = { has_variable = GER_soc_guard_decision_cooldown } check_variable = { GER_soc_guard_decision_cooldown < 1 } }
+            OR = {
+                NOT = { has_variable = GER_soc_guard_a_days }
+                check_variable = { GER_soc_guard_a_days < 1 }
+                NOT = { has_variable = GER_soc_guard_b_days }
+                check_variable = { GER_soc_guard_b_days < 1 }
+                NOT = { has_variable = GER_soc_guard_c_days }
+                check_variable = { GER_soc_guard_c_days < 1 }
+            }
+        }
+        cost = 15
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_expel_factory_guards_effect_tt
+            hidden_effect = {
+                subtract_from_variable = { GER_socialization_counterrevolution = 24 }
+                add_to_variable = { GER_socialization_points_pool = 35 }
+                GER_socialization_activate_guard_radicalism = yes
+                set_variable = { GER_soc_guard_decision_cooldown = 7 }
+                GER_soc_auto_extend_counter_3 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_oppose_unorganized = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_oppose_effect_idea } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_oppose_days } check_variable = { GER_soc_oppose_days < 1 } } }
+        cost = 15
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_oppose_unorganized_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 8 }
+                set_variable = { GER_soc_oppose_days = 7 }
+                set_variable = { GER_soc_oppose_week = 0 }
+                add_timed_idea = { idea = GER_soc_oppose_effect_idea days = 7 }
+                GER_soc_auto_accelerate_worker_1 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_unite_office_workers = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_staff_effect_idea } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_staff_days } check_variable = { GER_soc_staff_days < 1 } } }
+        cost = 10
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_unite_office_workers_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 25 }
+                subtract_from_variable = { GER_socialization_counterrevolution = 24 }
+                add_to_variable = { GER_socialization_organization = 8 }
+                set_variable = { GER_soc_staff_days = 14 }
+                set_variable = { GER_soc_staff_week = 0 }
+                add_timed_idea = { idea = GER_soc_staff_effect_idea days = 14 }
+                GER_soc_auto_extend_counter_4 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_resist_union_interference = {
+        icon = generic_political_actions
+        visible = {
+            tag = GER
+            has_country_flag = GER_socialization_started
+            check_variable = { GER_socialization_active_industry < 11 }
+            NOT = { has_country_flag = GER_socialization_union_reform_success }
+            OR = { NOT = { has_variable = GER_soc_resist_cooldown } check_variable = { GER_soc_resist_cooldown < 1 } }
+        }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_resist_cooldown } check_variable = { GER_soc_resist_cooldown < 1 } } }
+        cost = 20
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_resist_union_interference_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_points_pool = 20 }
+                set_variable = { GER_soc_resist_cooldown = 14 }
+                GER_soc_auto_accelerate_worker_2 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_supervise_central_agency = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_supervise_effect_idea } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_supervise_days } check_variable = { GER_soc_supervise_days < 1 } } }
+        cost = 40
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_supervise_central_agency_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 10 }
+                add_to_variable = { GER_socialization_radicalism_base = 8 }
+                set_variable = { GER_soc_supervise_days = 21 }
+                set_variable = { GER_soc_supervise_week = 0 }
+                add_timed_idea = { idea = GER_soc_supervise_effect_idea days = 21 }
+                GER_soc_auto_extend_counter_5 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_build_trust_soviets = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_trust_effect_idea } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_trust_days } check_variable = { GER_soc_trust_days < 1 } } }
+        cost = 40
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_build_trust_soviets_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_organization = 10 }
+                add_to_variable = { GER_socialization_points_pool = 30 }
+                add_to_variable = { GER_socialization_radicalism_base = 8 }
+                set_variable = { GER_soc_trust_days = 14 }
+                set_variable = { GER_soc_trust_week = 0 }
+                add_timed_idea = { idea = GER_soc_trust_effect_idea days = 14 }
+                GER_soc_auto_accelerate_worker_2 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_open_workers_schools = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 }
+            check_variable = { GER_socialization_active_industry < 11 }
+            custom_trigger_tooltip = {
+                tooltip = GER_socialization_workers_school_once_tt
+                hidden_trigger = { NOT = { has_country_flag = GER_soc_workers_school } }
+            }
+        }
+        cost = 50
+        days_remove = 0
+        fire_only_once = yes
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_open_workers_schools_effect_tt
+            hidden_effect = {
+                set_country_flag = GER_soc_workers_school
+                add_ideas = GER_soc_workers_school_idea
+                set_variable = { GER_soc_school_week = 0 }
+                set_variable = { GER_soc_school_fortnight = 0 }
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+    GER_socialization_mass_strike = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_socialization_mass_strike_disruption } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 }
+            check_variable = { GER_socialization_active_industry < 11 }
+            OR = {
+                NOT = { has_variable = GER_soc_last_strike_industry }
+                check_variable = { GER_socialization_active_industry > GER_soc_last_strike_industry }
+            }
+        }
+        cost = GER_soc_mass_strike_cost
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_mass_strike_effect_tt
+            hidden_effect = {
+                set_variable = { GER_soc_last_strike_industry = GER_socialization_active_industry }
+                set_variable = { GER_soc_strike_target_industry = GER_socialization_active_industry }
+                add_to_variable = { GER_socialization_points_pool = 150 }
+                subtract_from_variable = { GER_socialization_counterrevolution = 240 }
+                add_to_variable = { GER_socialization_radicalism_base = 10 }
+                remove_ideas = GER_socialization_mass_strike_disruption
+                add_timed_idea = { idea = GER_socialization_mass_strike_disruption days = 90 }
+                GER_socialization_refresh_bars = yes
+                if = {
+                    limit = {
+                        check_variable = { GER_socialization_active_industry = GER_soc_strike_target_industry }
+                        NOT = { check_variable = { GER_socialization_active_industry > GER_soc_strike_target_industry } }
+                        check_variable = { GER_socialization_active_industry < 11 }
+                    }
+                    subtract_from_variable = { GER_socialization_days_remaining = 20 }
+                    if = { limit = { check_variable = { GER_socialization_days_remaining < 1 } } GER_socialization_advance_industry = yes }
+                    GER_socialization_refresh_selected_industry = yes
+                }
+                GER_soc_auto_extend_counter_10 = yes
+            }
+        }
+    }
+    GER_socialization_extend_project = {
+        icon = generic_political_actions
+        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } }
+        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } }
+        cost = 100
+        days_remove = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            custom_effect_tooltip = GER_socialization_extend_project_effect_tt
+            hidden_effect = {
+                add_to_variable = { GER_socialization_days_remaining = 15 }
+                add_to_variable = { GER_socialization_radicalism_base = 8 }
+                GER_soc_auto_extend_counter_3 = yes
+                GER_socialization_refresh_bars = yes
+            }
+        }
+    }
+}

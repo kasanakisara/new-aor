@@ -1,0 +1,134 @@
+# Temporary weekly effects for the socialization decisions. One-time effects
+# are applied immediately when the player starts a decision.
+GER_socialization_activate_guard_radicalism = {
+    if = {
+        limit = { OR = { NOT = { has_variable = GER_soc_guard_a_days } check_variable = { GER_soc_guard_a_days < 1 } } }
+        set_variable = { GER_soc_guard_a_days = 14 }
+        set_variable = { GER_soc_guard_a_week = 0 }
+        add_timed_idea = { idea = GER_soc_guard_a_effect_idea days = 14 }
+    }
+    else_if = {
+        limit = { OR = { NOT = { has_variable = GER_soc_guard_b_days } check_variable = { GER_soc_guard_b_days < 1 } } }
+        set_variable = { GER_soc_guard_b_days = 14 }
+        set_variable = { GER_soc_guard_b_week = 0 }
+        add_timed_idea = { idea = GER_soc_guard_b_effect_idea days = 14 }
+    }
+    else = {
+        set_variable = { GER_soc_guard_c_days = 14 }
+        set_variable = { GER_soc_guard_c_week = 0 }
+        add_timed_idea = { idea = GER_soc_guard_c_effect_idea days = 14 }
+    }
+}
+
+GER_socialization_decisions_daily_tick = {
+    if = { limit = { has_country_flag = GER_soc_workers_school NOT = { has_idea = GER_soc_workers_school_idea } } add_ideas = GER_soc_workers_school_idea }
+    if = { limit = { check_variable = { GER_soc_guard_decision_cooldown > 0 } } subtract_from_variable = { GER_soc_guard_decision_cooldown = 1 } }
+    if = { limit = { check_variable = { GER_soc_resist_cooldown > 0 } } subtract_from_variable = { GER_soc_resist_cooldown = 1 } }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_guard_a_days > 0 } }
+        subtract_from_variable = { GER_soc_guard_a_days = 1 }
+        add_to_variable = { GER_soc_guard_a_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_guard_a_week = 7 } }
+            subtract_from_variable = { GER_soc_guard_a_week = 7 }
+            add_to_variable = { GER_socialization_radicalism_base = 3 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_guard_b_days > 0 } }
+        subtract_from_variable = { GER_soc_guard_b_days = 1 }
+        add_to_variable = { GER_soc_guard_b_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_guard_b_week = 7 } }
+            subtract_from_variable = { GER_soc_guard_b_week = 7 }
+            add_to_variable = { GER_socialization_radicalism_base = 3 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_guard_c_days > 0 } }
+        subtract_from_variable = { GER_soc_guard_c_days = 1 }
+        add_to_variable = { GER_soc_guard_c_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_guard_c_week = 7 } }
+            subtract_from_variable = { GER_soc_guard_c_week = 7 }
+            add_to_variable = { GER_socialization_radicalism_base = 3 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_oppose_days > 0 } }
+        subtract_from_variable = { GER_soc_oppose_days = 1 }
+        add_to_variable = { GER_soc_oppose_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_oppose_week = 7 } }
+            subtract_from_variable = { GER_soc_oppose_week = 7 }
+            add_to_variable = { GER_socialization_points_pool = 5 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_staff_days > 0 } }
+        subtract_from_variable = { GER_soc_staff_days = 1 }
+        add_to_variable = { GER_soc_staff_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_staff_week = 7 } }
+            subtract_from_variable = { GER_soc_staff_week = 7 }
+            add_to_variable = { GER_socialization_radicalism_base = 5 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_supervise_days > 0 } }
+        subtract_from_variable = { GER_soc_supervise_days = 1 }
+        add_to_variable = { GER_soc_supervise_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_supervise_week = 7 } }
+            subtract_from_variable = { GER_soc_supervise_week = 7 }
+            add_to_variable = { GER_socialization_points_pool = 10 }
+        }
+    }
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } check_variable = { GER_soc_trust_days > 0 } }
+        subtract_from_variable = { GER_soc_trust_days = 1 }
+        add_to_variable = { GER_soc_trust_week = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_trust_week = 7 } }
+            subtract_from_variable = { GER_soc_trust_week = 7 }
+            add_to_variable = { GER_socialization_points_pool = 8 }
+        }
+    }
+    # The school benefits every industry before agriculture, then stops.
+    if = {
+        limit = { has_country_flag = GER_soc_workers_school check_variable = { GER_socialization_active_industry < 11 } }
+        add_to_variable = { GER_soc_school_week = 1 }
+        add_to_variable = { GER_soc_school_fortnight = 1 }
+        if = {
+            limit = { check_variable = { GER_soc_school_week = 7 } }
+            subtract_from_variable = { GER_soc_school_week = 7 }
+            add_to_variable = { GER_socialization_points_pool = 6 }
+        }
+        if = {
+            limit = { check_variable = { GER_soc_school_fortnight = 14 } }
+            subtract_from_variable = { GER_soc_school_fortnight = 14 }
+            add_to_variable = { GER_socialization_organization = 3 }
+        }
+    }
+    GER_socialization_refresh_bars = yes
+}
+
+# Non-agricultural temporary actions end when the schedule enters agriculture.
+GER_socialization_clear_temporary_decision_effects = {
+    set_variable = { GER_soc_guard_decision_cooldown = 0 }
+    set_variable = { GER_soc_resist_cooldown = 0 }
+    set_variable = { GER_soc_guard_a_days = 0 }
+    set_variable = { GER_soc_guard_b_days = 0 }
+    set_variable = { GER_soc_guard_c_days = 0 }
+    set_variable = { GER_soc_oppose_days = 0 }
+    set_variable = { GER_soc_staff_days = 0 }
+    set_variable = { GER_soc_supervise_days = 0 }
+    set_variable = { GER_soc_trust_days = 0 }
+    remove_ideas = GER_soc_guard_a_effect_idea
+    remove_ideas = GER_soc_guard_b_effect_idea
+    remove_ideas = GER_soc_guard_c_effect_idea
+    remove_ideas = GER_soc_oppose_effect_idea
+    remove_ideas = GER_soc_staff_effect_idea
+    remove_ideas = GER_soc_supervise_effect_idea
+    remove_ideas = GER_soc_trust_effect_idea
+}

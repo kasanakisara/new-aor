@@ -1,0 +1,505 @@
+# Autonomous actions: draw one to five eligible missions per batch.
+GER_soc_auto_remove_points = {
+    if = { limit = { check_variable = { GER_socialization_active_industry = 0 } check_variable = { GER_socialization_active_industry < 1 } } subtract_from_variable = { var = GER_socialization_railway_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_railway_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } } subtract_from_variable = { var = GER_socialization_mining_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_mining_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 2 } check_variable = { GER_socialization_active_industry < 3 } } subtract_from_variable = { var = GER_socialization_power_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_power_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 3 } check_variable = { GER_socialization_active_industry < 4 } } subtract_from_variable = { var = GER_socialization_banking_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_banking_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 4 } check_variable = { GER_socialization_active_industry < 5 } } subtract_from_variable = { var = GER_socialization_armaments_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_armaments_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 5 } check_variable = { GER_socialization_active_industry < 6 } } subtract_from_variable = { var = GER_socialization_metalworking_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_metalworking_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 6 } check_variable = { GER_socialization_active_industry < 7 } } subtract_from_variable = { var = GER_socialization_chemicals_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_chemicals_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 7 } check_variable = { GER_socialization_active_industry < 8 } } subtract_from_variable = { var = GER_socialization_electrical_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_electrical_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 8 } check_variable = { GER_socialization_active_industry < 9 } } subtract_from_variable = { var = GER_socialization_light_industry_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_light_industry_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 9 } check_variable = { GER_socialization_active_industry < 10 } } subtract_from_variable = { var = GER_socialization_handicrafts_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_handicrafts_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 10 } check_variable = { GER_socialization_active_industry < 11 } } subtract_from_variable = { var = GER_socialization_shipbuilding_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_shipbuilding_points min = 0 max = 1000 } }
+    if = { limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 11 } } subtract_from_variable = { var = GER_socialization_agriculture_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_agriculture_points min = 0 max = 1000 } }
+    GER_socialization_refresh_selected_industry = yes
+}
+GER_soc_auto_extend_counter_3 = {
+    if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_days_mission_timeout = { mission = GER_soc_auto_counter_manipulate_local_offices days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_days_mission_timeout = { mission = GER_soc_auto_counter_soviet_failure_rumors days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_days_mission_timeout = { mission = GER_soc_auto_counter_promote_private_property days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_days_mission_timeout = { mission = GER_soc_auto_counter_assassinate_organizers days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_days_mission_timeout = { mission = GER_soc_auto_counter_far_right_groups days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_days_mission_timeout = { mission = GER_soc_auto_counter_foreign_contacts days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 3 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 3 } }
+}
+GER_soc_auto_extend_counter_4 = {
+    if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_days_mission_timeout = { mission = GER_soc_auto_counter_manipulate_local_offices days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_days_mission_timeout = { mission = GER_soc_auto_counter_soviet_failure_rumors days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_days_mission_timeout = { mission = GER_soc_auto_counter_promote_private_property days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_days_mission_timeout = { mission = GER_soc_auto_counter_assassinate_organizers days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_days_mission_timeout = { mission = GER_soc_auto_counter_far_right_groups days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_days_mission_timeout = { mission = GER_soc_auto_counter_foreign_contacts days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 4 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 4 } }
+}
+GER_soc_auto_extend_counter_5 = {
+    if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_days_mission_timeout = { mission = GER_soc_auto_counter_manipulate_local_offices days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_days_mission_timeout = { mission = GER_soc_auto_counter_soviet_failure_rumors days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_days_mission_timeout = { mission = GER_soc_auto_counter_promote_private_property days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_days_mission_timeout = { mission = GER_soc_auto_counter_assassinate_organizers days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_days_mission_timeout = { mission = GER_soc_auto_counter_far_right_groups days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_days_mission_timeout = { mission = GER_soc_auto_counter_foreign_contacts days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 5 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 5 } }
+}
+GER_soc_auto_extend_counter_10 = {
+    if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_days_mission_timeout = { mission = GER_soc_auto_counter_manipulate_local_offices days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_days_mission_timeout = { mission = GER_soc_auto_counter_divide_workers days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_days_mission_timeout = { mission = GER_soc_auto_counter_soviet_failure_rumors days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_days_mission_timeout = { mission = GER_soc_auto_counter_recruit_thugs days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_days_mission_timeout = { mission = GER_soc_auto_counter_promote_private_property days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_days_mission_timeout = { mission = GER_soc_auto_counter_inflation_agitation days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_days_mission_timeout = { mission = GER_soc_auto_counter_assassinate_organizers days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_days_mission_timeout = { mission = GER_soc_auto_counter_far_right_groups days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_days_mission_timeout = { mission = GER_soc_auto_counter_foreign_contacts days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 10 } }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 10 } }
+}
+GER_soc_auto_reset_industry = {
+    if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } remove_mission = GER_soc_auto_worker_occupy_factories }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } remove_mission = GER_soc_auto_worker_soviet_newspaper }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_purge_scabs } remove_mission = GER_soc_auto_worker_purge_scabs }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_street_campaign } remove_mission = GER_soc_auto_worker_street_campaign }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_elections } remove_mission = GER_soc_auto_worker_soviet_elections }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_patrol } remove_mission = GER_soc_auto_worker_workers_patrol }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_party_worker_links } remove_mission = GER_soc_auto_worker_party_worker_links }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_expose_plot } remove_mission = GER_soc_auto_worker_expose_plot }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_accounting } remove_mission = GER_soc_auto_worker_workers_accounting }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } remove_mission = GER_soc_auto_counter_withdraw_assets }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } remove_mission = GER_soc_auto_counter_sabotage_assets }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } remove_mission = GER_soc_auto_counter_manipulate_local_offices }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } remove_mission = GER_soc_auto_counter_divide_workers }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } remove_mission = GER_soc_auto_counter_soviet_failure_rumors }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } remove_mission = GER_soc_auto_counter_recruit_thugs }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } remove_mission = GER_soc_auto_counter_promote_private_property }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } remove_mission = GER_soc_auto_counter_inflation_agitation }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } remove_mission = GER_soc_auto_counter_assassinate_organizers }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } remove_mission = GER_soc_auto_counter_far_right_groups }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } remove_mission = GER_soc_auto_counter_foreign_contacts }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } remove_mission = GER_soc_auto_counter_fund_party_right }
+    if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } remove_mission = GER_soc_auto_counter_domestic_capital }
+    set_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_purge_scabs_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_street_campaign_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_soviet_elections_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_workers_patrol_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_party_worker_links_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_expose_plot_cooldown = 0 }
+    set_variable = { GER_soc_auto_worker_workers_accounting_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_withdraw_assets_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_sabotage_assets_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_manipulate_local_offices_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_divide_workers_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_soviet_failure_rumors_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_recruit_thugs_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_promote_private_property_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_inflation_agitation_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_assassinate_organizers_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_far_right_groups_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_foreign_contacts_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_fund_party_right_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_domestic_capital_cooldown = 0 }
+    set_variable = { GER_soc_auto_office_uses = 0 }
+    set_variable = { GER_soc_manual_lock_days = 0 }
+    set_variable = { GER_soc_auto_worker_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_cooldown = 0 }
+    set_variable = { GER_soc_auto_counter_batch_delay = 0 }
+    set_variable = { GER_soc_auto_worker_batch_attempts = 0 }
+    set_variable = { GER_soc_auto_counter_batch_attempts = 0 }
+    clr_country_flag = GER_soc_auto_batch_active
+}
+# Draw worker and counterrevolutionary actions independently; active missions
+# and per-action cooldowns prevent drawing the same action twice in one batch.
+GER_soc_auto_start_worker_one = {
+    random_list = {
+        seed = random
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_occupy_factories
+                    check_variable = { GER_soc_auto_worker_occupy_factories_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_occupy_factories
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_soviet_newspaper
+                    check_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_soviet_newspaper
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_purge_scabs
+                    check_variable = { GER_soc_auto_worker_purge_scabs_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_purge_scabs
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_street_campaign
+                    check_variable = { GER_soc_auto_worker_street_campaign_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_street_campaign
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_soviet_elections
+                    check_variable = { GER_soc_auto_worker_soviet_elections_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                    check_variable = { GER_socialization_organization_level < 3 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_soviet_elections
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_workers_patrol
+                    check_variable = { GER_soc_auto_worker_workers_patrol_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_workers_patrol
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_party_worker_links
+                    check_variable = { GER_soc_auto_worker_party_worker_links_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_party_worker_links
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_expose_plot
+                    check_variable = { GER_soc_auto_worker_expose_plot_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_expose_plot
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_worker_workers_accounting
+                    check_variable = { GER_soc_auto_worker_workers_accounting_cooldown > 0 }
+                    check_variable = { GER_soc_auto_worker_cooldown > 0 }
+                }
+            }
+            activate_mission = GER_soc_auto_worker_workers_accounting
+        }
+    }
+}
+GER_soc_auto_start_counter_one = {
+    random_list = {
+        seed = random
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_withdraw_assets
+                    check_variable = { GER_soc_auto_counter_withdraw_assets_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 120 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_withdraw_assets
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_sabotage_assets
+                    check_variable = { GER_soc_auto_counter_sabotage_assets_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 120 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_sabotage_assets
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_manipulate_local_offices
+                    check_variable = { GER_soc_auto_counter_manipulate_local_offices_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 240 }
+                    check_variable = { GER_soc_auto_office_uses > 1 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_manipulate_local_offices
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_divide_workers
+                    check_variable = { GER_soc_auto_counter_divide_workers_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 240 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_divide_workers
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_soviet_failure_rumors
+                    check_variable = { GER_soc_auto_counter_soviet_failure_rumors_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 180 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_soviet_failure_rumors
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_recruit_thugs
+                    check_variable = { GER_soc_auto_counter_recruit_thugs_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 540 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_recruit_thugs
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_promote_private_property
+                    check_variable = { GER_soc_auto_counter_promote_private_property_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 120 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_promote_private_property
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_inflation_agitation
+                    check_variable = { GER_soc_auto_counter_inflation_agitation_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 480 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_inflation_agitation
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_assassinate_organizers
+                    check_variable = { GER_soc_auto_counter_assassinate_organizers_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 720 }
+                    check_variable = { GER_socialization_radicalism_level < 3 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_assassinate_organizers
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_far_right_groups
+                    check_variable = { GER_soc_auto_counter_far_right_groups_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 720 }
+                    check_variable = { GER_socialization_radicalism_level < 3 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_far_right_groups
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_foreign_contacts
+                    check_variable = { GER_soc_auto_counter_foreign_contacts_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 600 }
+                    check_variable = { GER_socialization_radicalism_level < 3 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_foreign_contacts
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_fund_party_right
+                    check_variable = { GER_soc_auto_counter_fund_party_right_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 420 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_fund_party_right
+        }
+        100 = {
+            modifier = {
+                factor = 0
+                OR = {
+                    has_active_mission = GER_soc_auto_counter_domestic_capital
+                    check_variable = { GER_soc_auto_counter_domestic_capital_cooldown > 0 }
+                    check_variable = { GER_soc_auto_counter_cooldown > 0 }
+                    check_variable = { GER_socialization_counterrevolution < 240 }
+                }
+            }
+            activate_mission = GER_soc_auto_counter_domestic_capital
+        }
+    }
+}
+GER_soc_auto_daily_tick = {
+    if = {
+        limit = { check_variable = { GER_socialization_active_industry < 11 } }
+        if = { limit = { NOT = { has_variable = GER_soc_auto_worker_cooldown } } set_variable = { GER_soc_auto_worker_cooldown = 0 } }
+        if = { limit = { NOT = { has_variable = GER_soc_auto_counter_cooldown } } set_variable = { GER_soc_auto_counter_cooldown = 0 } }
+        if = { limit = { NOT = { has_variable = GER_soc_auto_counter_batch_delay } } set_variable = { GER_soc_auto_counter_batch_delay = 0 } }
+        if = { limit = { check_variable = { GER_soc_manual_lock_days > 0 } } subtract_from_variable = { GER_soc_manual_lock_days = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_cooldown = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_cooldown = 1 } }
+        set_variable = { GER_soc_auto_active_count = 0 }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_occupy_factories_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_purge_scabs } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_purge_scabs_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_purge_scabs_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_street_campaign } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_street_campaign_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_street_campaign_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_elections } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_soviet_elections_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_soviet_elections_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_workers_patrol } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_workers_patrol_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_workers_patrol_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_party_worker_links } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_party_worker_links_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_party_worker_links_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_expose_plot } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_expose_plot_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_expose_plot_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_worker_workers_accounting } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_worker_workers_accounting_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_workers_accounting_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_withdraw_assets_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_withdraw_assets_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_sabotage_assets_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_sabotage_assets_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_manipulate_local_offices_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_manipulate_local_offices_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_divide_workers_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_divide_workers_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_soviet_failure_rumors_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_soviet_failure_rumors_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_recruit_thugs_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_recruit_thugs_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_promote_private_property_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_promote_private_property_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_inflation_agitation_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_inflation_agitation_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_assassinate_organizers_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_assassinate_organizers_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_far_right_groups_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_far_right_groups_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_foreign_contacts_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_foreign_contacts_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_fund_party_right_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_fund_party_right_cooldown = 1 } }
+        if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_to_variable = { GER_soc_auto_active_count = 1 } }
+        if = { limit = { check_variable = { GER_soc_auto_counter_domestic_capital_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_domestic_capital_cooldown = 1 } }
+        if = {
+            limit = { has_country_flag = GER_soc_auto_batch_active check_variable = { GER_soc_auto_active_count < 1 } }
+            clr_country_flag = GER_soc_auto_batch_active
+            set_variable = { GER_soc_auto_worker_cooldown = 7 }
+            clamp_variable = { var = GER_soc_auto_worker_cooldown min = 0 max = 100 }
+            set_variable = { GER_soc_auto_counter_cooldown = 7 }
+            add_to_variable = { var = GER_soc_auto_counter_cooldown value = GER_soc_auto_counter_batch_delay }
+            set_variable = { GER_soc_auto_counter_batch_delay = 0 }
+        }
+        if = {
+            limit = { NOT = { has_country_flag = GER_soc_auto_batch_active } check_variable = { GER_soc_auto_worker_cooldown < 1 } check_variable = { GER_soc_auto_counter_cooldown < 1 } }
+            set_country_flag = GER_soc_auto_batch_active
+            random_list = {
+                50 = { set_variable = { GER_soc_auto_worker_batch_attempts = 1 } }
+                50 = { set_variable = { GER_soc_auto_worker_batch_attempts = 2 } }
+            }
+            GER_soc_auto_start_worker_one = yes
+            if = { limit = { check_variable = { GER_soc_auto_worker_batch_attempts > 1 } } GER_soc_auto_start_worker_one = yes }
+            random_list = {
+                50 = { set_variable = { GER_soc_auto_counter_batch_attempts = 1 } }
+                50 = { set_variable = { GER_soc_auto_counter_batch_attempts = 2 } }
+            }
+            GER_soc_auto_start_counter_one = yes
+            if = { limit = { check_variable = { GER_soc_auto_counter_batch_attempts > 1 } } GER_soc_auto_start_counter_one = yes }
+        }
+    }
+}
+GER_soc_auto_accelerate_worker_1 = {
+    if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_days_mission_timeout = { mission = GER_soc_auto_worker_occupy_factories days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_newspaper days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_purge_scabs } add_days_mission_timeout = { mission = GER_soc_auto_worker_purge_scabs days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_street_campaign } add_days_mission_timeout = { mission = GER_soc_auto_worker_street_campaign days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_elections } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_elections days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_patrol } add_days_mission_timeout = { mission = GER_soc_auto_worker_workers_patrol days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_party_worker_links } add_days_mission_timeout = { mission = GER_soc_auto_worker_party_worker_links days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_expose_plot } add_days_mission_timeout = { mission = GER_soc_auto_worker_expose_plot days = -1 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_accounting } add_days_mission_timeout = { mission = GER_soc_auto_worker_workers_accounting days = -1 } }
+}
+GER_soc_auto_accelerate_worker_2 = {
+    if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_days_mission_timeout = { mission = GER_soc_auto_worker_occupy_factories days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_newspaper days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_purge_scabs } add_days_mission_timeout = { mission = GER_soc_auto_worker_purge_scabs days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_street_campaign } add_days_mission_timeout = { mission = GER_soc_auto_worker_street_campaign days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_elections } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_elections days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_patrol } add_days_mission_timeout = { mission = GER_soc_auto_worker_workers_patrol days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_party_worker_links } add_days_mission_timeout = { mission = GER_soc_auto_worker_party_worker_links days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_expose_plot } add_days_mission_timeout = { mission = GER_soc_auto_worker_expose_plot days = -2 } }
+    if = { limit = { has_active_mission = GER_soc_auto_worker_workers_accounting } add_days_mission_timeout = { mission = GER_soc_auto_worker_workers_accounting days = -2 } }
+}

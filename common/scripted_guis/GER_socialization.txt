@@ -1,0 +1,118 @@
+scripted_gui = {
+    GER_socialization_gui = {
+        context_type = decision_category
+        window_name = "GER_socialization_window"
+        # Refresh the overview even when the selected industry does not change.
+        # Percentages use 0..100; strength uses 0..1200. Levels are independent.
+        visible = { tag = GER }
+        ai_enabled = { always = no }
+        properties = {
+            GER_socialization_organization_bar = { frame = var:GER_socialization_organization_fill }
+            GER_socialization_counterrevolution_bar = { frame = var:GER_socialization_counterrevolution_fill }
+            GER_socialization_radicalism_bar = { frame = var:GER_socialization_radicalism_fill }
+            GER_socialization_industry_bar = { frame = var:GER_socialization_selected_fill }
+        }
+        effects = {
+            GER_socialization_railway_button_selected_click = { set_variable = { GER_socialization_selected = 0 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_mining_button_selected_click = { set_variable = { GER_socialization_selected = 1 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_power_button_selected_click = { set_variable = { GER_socialization_selected = 2 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_banking_button_selected_click = { set_variable = { GER_socialization_selected = 3 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_armaments_button_selected_click = { set_variable = { GER_socialization_selected = 4 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_metalworking_button_selected_click = { set_variable = { GER_socialization_selected = 5 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_chemicals_button_selected_click = { set_variable = { GER_socialization_selected = 6 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_electrical_button_selected_click = { set_variable = { GER_socialization_selected = 7 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_light_industry_button_selected_click = { set_variable = { GER_socialization_selected = 8 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_handicrafts_button_selected_click = { set_variable = { GER_socialization_selected = 9 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_shipbuilding_button_selected_click = { set_variable = { GER_socialization_selected = 10 } GER_socialization_refresh_selected_industry = yes }
+            GER_socialization_agriculture_button_selected_click = { set_variable = { GER_socialization_selected = 11 } GER_socialization_refresh_selected_industry = yes }
+
+            GER_socialization_railway_button_click = {
+                set_variable = { GER_socialization_selected = 0 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_mining_button_click = { 
+                set_variable = { GER_socialization_selected = 1 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_power_button_click = {
+                set_variable = { GER_socialization_selected = 2 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_banking_button_click = {
+                set_variable = { GER_socialization_selected = 3 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_armaments_button_click = {
+                set_variable = { GER_socialization_selected = 4 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_metalworking_button_click = {
+                set_variable = { GER_socialization_selected = 5 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_chemicals_button_click = {
+                set_variable = { GER_socialization_selected = 6 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_electrical_button_click = {
+                set_variable = { GER_socialization_selected = 7 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_light_industry_button_click = {
+                set_variable = { GER_socialization_selected = 8 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_handicrafts_button_click = {
+                set_variable = { GER_socialization_selected = 9 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_shipbuilding_button_click = {
+                set_variable = { GER_socialization_selected = 10 } GER_socialization_refresh_selected_industry = yes
+            }
+            GER_socialization_agriculture_button_click = {
+                set_variable = { GER_socialization_selected = 11 } GER_socialization_refresh_selected_industry = yes
+            }
+        }
+        triggers = {
+            GER_socialization_railway_button_visible = { NOT = { OR = { NOT = { has_variable = GER_socialization_selected } check_variable = { GER_socialization_selected = 0 } } } }
+            GER_socialization_railway_button_selected_visible = { OR = { NOT = { has_variable = GER_socialization_selected } check_variable = { GER_socialization_selected = 0 } } }
+            GER_socialization_mining_button_visible = { NOT = { check_variable = { GER_socialization_selected = 1 } } }
+            GER_socialization_mining_button_selected_visible = { check_variable = { GER_socialization_selected = 1 } }
+            GER_socialization_power_button_visible = { NOT = { check_variable = { GER_socialization_selected = 2 } } }
+            GER_socialization_power_button_selected_visible = { check_variable = { GER_socialization_selected = 2 } }
+            GER_socialization_banking_button_visible = { NOT = { check_variable = { GER_socialization_selected = 3 } } }
+            GER_socialization_banking_button_selected_visible = { check_variable = { GER_socialization_selected = 3 } }
+            GER_socialization_armaments_button_visible = { NOT = { check_variable = { GER_socialization_selected = 4 } } }
+            GER_socialization_armaments_button_selected_visible = { check_variable = { GER_socialization_selected = 4 } }
+            GER_socialization_metalworking_button_visible = { NOT = { check_variable = { GER_socialization_selected = 5 } } }
+            GER_socialization_metalworking_button_selected_visible = { check_variable = { GER_socialization_selected = 5 } }
+            GER_socialization_chemicals_button_visible = { NOT = { check_variable = { GER_socialization_selected = 6 } } }
+            GER_socialization_chemicals_button_selected_visible = { check_variable = { GER_socialization_selected = 6 } }
+            GER_socialization_electrical_button_visible = { NOT = { check_variable = { GER_socialization_selected = 7 } } }
+            GER_socialization_electrical_button_selected_visible = { check_variable = { GER_socialization_selected = 7 } }
+            GER_socialization_light_industry_button_visible = { NOT = { check_variable = { GER_socialization_selected = 8 } } }
+            GER_socialization_light_industry_button_selected_visible = { check_variable = { GER_socialization_selected = 8 } }
+            GER_socialization_handicrafts_button_visible = { NOT = { check_variable = { GER_socialization_selected = 9 } } }
+            GER_socialization_handicrafts_button_selected_visible = { check_variable = { GER_socialization_selected = 9 } }
+            GER_socialization_shipbuilding_button_visible = { NOT = { check_variable = { GER_socialization_selected = 10 } } }
+            GER_socialization_shipbuilding_button_selected_visible = { check_variable = { GER_socialization_selected = 10 } }
+            GER_socialization_agriculture_button_visible = { NOT = { check_variable = { GER_socialization_selected = 11 } } }
+            GER_socialization_agriculture_button_selected_visible = { check_variable = { GER_socialization_selected = 11 } }
+
+            GER_socialization_railway_picture_visible = { OR = { NOT = { has_variable = GER_socialization_selected } check_variable = { GER_socialization_selected = 0 } } }
+            GER_socialization_railway_caption_visible = { OR = { NOT = { has_variable = GER_socialization_selected } check_variable = { GER_socialization_selected = 0 } } }
+            GER_socialization_mining_picture_visible = { check_variable = { GER_socialization_selected = 1 } }
+            GER_socialization_mining_caption_visible = { check_variable = { GER_socialization_selected = 1 } }
+            GER_socialization_power_picture_visible = { check_variable = { GER_socialization_selected = 2 } }
+            GER_socialization_power_caption_visible = { check_variable = { GER_socialization_selected = 2 } }
+            GER_socialization_banking_picture_visible = { check_variable = { GER_socialization_selected = 3 } }
+            GER_socialization_banking_caption_visible = { check_variable = { GER_socialization_selected = 3 } }
+            GER_socialization_armaments_picture_visible = { check_variable = { GER_socialization_selected = 4 } }
+            GER_socialization_armaments_caption_visible = { check_variable = { GER_socialization_selected = 4 } }
+            GER_socialization_metalworking_picture_visible = { check_variable = { GER_socialization_selected = 5 } }
+            GER_socialization_metalworking_caption_visible = { check_variable = { GER_socialization_selected = 5 } }
+            GER_socialization_chemicals_picture_visible = { check_variable = { GER_socialization_selected = 6 } }
+            GER_socialization_chemicals_caption_visible = { check_variable = { GER_socialization_selected = 6 } }
+            GER_socialization_electrical_picture_visible = { check_variable = { GER_socialization_selected = 7 } }
+            GER_socialization_electrical_caption_visible = { check_variable = { GER_socialization_selected = 7 } }
+            GER_socialization_light_industry_picture_visible = { check_variable = { GER_socialization_selected = 8 } }
+            GER_socialization_light_industry_caption_visible = { check_variable = { GER_socialization_selected = 8 } }
+            GER_socialization_handicrafts_picture_visible = { check_variable = { GER_socialization_selected = 9 } }
+            GER_socialization_handicrafts_caption_visible = { check_variable = { GER_socialization_selected = 9 } }
+            GER_socialization_shipbuilding_picture_visible = { check_variable = { GER_socialization_selected = 10 } }
+            GER_socialization_shipbuilding_caption_visible = { check_variable = { GER_socialization_selected = 10 } }
+            GER_socialization_agriculture_picture_visible = { check_variable = { GER_socialization_selected = 11 } }
+            GER_socialization_agriculture_caption_visible = { check_variable = { GER_socialization_selected = 11 } }
+        }
+    }
+}
