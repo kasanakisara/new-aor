@@ -1,0 +1,57 @@
+sub_units = {
+	aor_sniper_observer = {
+		abbreviation = "SNP"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+		type = { infantry support }
+		group = support
+		categories = { category_support_battalions category_recon category_army }
+		same_support_type = recon
+		combat_width = 0
+		manpower = 100
+		max_strength = 1
+		max_organisation = 20
+		default_morale = 0.3
+		training_time = 120
+		weight = 0.1
+		supply_consumption = 0.02
+		recon = 0.5
+		soft_attack = -0.80
+		defense = -0.909091
+		breakthrough = -0.933333
+		need = { infantry_equipment = 10 support_equipment = 5 }
+		essential = { infantry_equipment support_equipment }
+	}
+	aor_flame_support = {
+		abbreviation = "FLM"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+		type = { infantry support }
+		group = support
+		categories = { category_support_battalions category_army }
+		same_support_type = flame
+		combat_width = 0
+		manpower = 200
+		max_strength = 1
+		max_organisation = 10
+		default_morale = 0.3
+		training_time = 120
+		weight = 0.1
+		supply_consumption = 0.08
+		soft_attack = -0.80
+		defense = -0.909091
+		breakthrough = -0.333333
+		urban = { attack = 0.03 }
+		fort = { attack = 0.05 }
+		need = { infantry_equipment = 10 support_equipment = 20 }
+		essential = { infantry_equipment support_equipment }
+	}
+}

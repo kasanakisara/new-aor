@@ -211,4 +211,23 @@ GER_socialization_refresh_industry_rewards = {
         }
         add_dynamic_modifier = { modifier = GER_socialization_industry_rewards_modifier }
     }
+    if = {
+        limit = {
+            OR = {
+                has_country_flag = GER_socialization_reward_railway
+                has_country_flag = GER_socialization_reward_mining
+                has_country_flag = GER_socialization_reward_power
+                has_country_flag = GER_socialization_reward_banking
+                has_country_flag = GER_socialization_reward_armaments
+                has_country_flag = GER_socialization_reward_metalworking
+                has_country_flag = GER_socialization_reward_chemicals
+                has_country_flag = GER_socialization_reward_electrical
+                has_country_flag = GER_socialization_reward_light_industry
+                has_country_flag = GER_socialization_reward_handicrafts
+                has_country_flag = GER_socialization_reward_shipbuilding
+            }
+            NOT = { has_idea = GER_socialization_industry_rewards_idea }
+        }
+        add_ideas = GER_socialization_industry_rewards_idea
+    }
 }

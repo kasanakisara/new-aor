@@ -1281,4 +1281,105 @@ technologies = {
 		}
 	}
 
+
+# AOR infantry v4.1 support branches
+	aor_inf_f02 = {
+		aor_flame_support = { soft_attack = 0.10 breakthrough = 0.10 urban = { attack = 0.02 } fort = { attack = 0.03 } }
+		research_cost = 1
+		start_year = 1923
+		folder = { name = support_folder position = { x = 9 y = 12 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_n01 = {
+		allow = { has_tech = tech_support }
+		path = { leads_to_tech = aor_inf_n02 research_cost_coeff = 1 }
+		enable_subunits = { aor_sniper_observer }
+		research_cost = 0.818182
+		start_year = 1919
+		folder = { name = support_folder position = { x = 3 y = 6 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_n02 = {
+		path = { leads_to_tech = aor_inf_n03 research_cost_coeff = 1 }
+		aor_sniper_observer = { recon = 0.5 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = support_folder position = { x = 6 y = 6 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_n03 = {
+		aor_sniper_observer = { soft_attack = 0.20 defense = 0.10 recon = 0.5 }
+		research_cost = 1
+		start_year = 1926
+		folder = { name = support_folder position = { x = 12 y = 6 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_mg1 = {
+		allow = { has_tech = tech_support }
+		path = { leads_to_tech = aor_inf_mg2 research_cost_coeff = 1 }
+		path = { leads_to_tech = aor_inf_mg_t research_cost_coeff = 1 }
+		path = { leads_to_tech = aor_inf_mg_o research_cost_coeff = 1 }
+		enable_subunits = { Machine_gun }
+		research_cost = 0.727273
+		start_year = 1919
+		folder = { name = support_folder position = { x = 3 y = 0 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_mg2 = {
+		path = { leads_to_tech = aor_inf_mg3 research_cost_coeff = 1 }
+		Machine_gun = { soft_attack = 0.10 defense = 0.10 }
+		research_cost = 1
+		start_year = 1923
+		folder = { name = support_folder position = { x = 9 y = 0 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_mg3 = {
+		Machine_gun = { soft_attack = 0.10 defense = 0.10 }
+		research_cost = 1
+		start_year = 1929
+		folder = { name = support_folder position = { x = 15 y = 0 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_mg_t = {
+		Machine_gun = { supply_consumption = -0.10 }
+		research_cost = 0.545455
+		start_year = 1920
+		folder = { name = support_folder position = { x = 6 y = 2 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_mg_o = {
+		Machine_gun = { defense = 0.05 }
+		research_cost = 0.727273
+		start_year = 1926
+		folder = { name = support_folder position = { x = 12 y = 2 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
+
+	aor_inf_f01 = {
+		allow = { has_tech = tech_support }
+		path = { leads_to_tech = aor_inf_f02 research_cost_coeff = 1 }
+		enable_subunits = { aor_flame_support }
+		research_cost = 1
+		start_year = 1919
+		folder = { name = support_folder position = { x = 3 y = 12 } }
+		categories = { support_tech }
+		ai_will_do = { factor = 1 }
+	}
 }
