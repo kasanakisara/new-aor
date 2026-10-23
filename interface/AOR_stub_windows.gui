@@ -1,0 +1,83 @@
+### 占位窗口（stub windows）
+###
+### 下面这些名字被 common/scripted_guis/*.txt 里的 window_name 引用，
+### 但 mod 里没有任何 .gui 定义它们。引擎加载时会报：
+###   Undefined GUI_TYPE: XXX - This will most likely crash the game
+###   Window XXX not found.
+###
+### 这里给每个名字一个 1x1 的透明窗口：
+###   * scripted_gui 的 window_name 能解析，不再触发上述崩溃警告
+###   * 尺寸 1x1 且无背景，所以即使 visible 为真也不会显示任何东西
+###   * 对应功能本身仍是未完成的（和之前一样），但不会再因缺少窗口而崩溃
+guiTypes = {
+
+	containerWindowType = {
+		name = "AOR_second_leader_container"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "AOR_second_leader_player_container"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "AOR_faction_gui_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "AOR_nationunion_gui_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "AOR_option_country_gui_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "country_information_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "intelligence_agency_blocker_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "ENG_hounse_of_commons_window"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "hounse_of_commons_button_0"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+
+	containerWindowType = {
+		name = "pie_aiji_ui"
+		position = { x = 0 y = 0 }
+		size = { width = 1 height = 1 }
+		clipping = no
+	}
+}

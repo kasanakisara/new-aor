@@ -1,13 +1,20 @@
 scripted_gui = {
+
+	### 注入到政治界面的入口按钮
+	### 注意：context_type 必须写在 window_name 之前，且取值只能是
+	### player_context / decision_category / selected_country_context / country_mapicon 等；
+	### 原来写的 country_context 不是合法值，会导致整个文件解析失败。
 	AOR_weapons_button = {
+		context_type = player_context
 		window_name = "AOR_weapons_window_button"
-		context_type = country_context
+		parent_window_name = "countrypoliticsview"
+
 		visible = {
 			always = yes
 		}
-		parent_window_name = "countrypoliticsview"
+
 		effects = {
-			AOR_weapons_button_click ={
+			AOR_weapons_button_click = {
 				if = {
 					limit = {
 						NOT = {
@@ -23,9 +30,10 @@ scripted_gui = {
 		}
 	}
 
+	### 武器窗口本体，靠上面的国策标记控制显隐
 	AOR_weapons_window = {
-		window_name = "AOR_weapons_window"
 		context_type = player_context
+		window_name = "AOR_weapons_window"
 
 		visible = {
 			has_country_flag = open_AOR_weapons_button_window

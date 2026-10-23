@@ -1,95 +1,73 @@
-
 guiTypes = {
+
+	############################################################
+	### 武器窗口的入口按钮：由 common/scripted_guis/AOR_weapons_window.txt
+	### 通过 parent_window_name = "countrypoliticsview" 注入政治界面。
+	### scripted_gui 的 window_name 必须是“窗口”（containerWindowType），
+	### effects 里的 XXX_click 对应本窗口内名为 XXX 的按钮。
+	############################################################
 	containerWindowType = {
-		name = "AOR_weapons_window"
-		position = {
-			x = 0
-			y = 0
-		}
+		name = "AOR_weapons_window_button"
+		position = { x = 0 y = 0 }
+		size = { width = 60 height = 60 }
+		orientation = UPPER_LEFT
+		clipping = no
+
 		buttonType = {
-			name = "AOR_weapons_window"
-			position = {
-				x = 1850
-				y = 750
-			}
-			quadTextureSprite = "AOR_weapons_button"
+			name = "AOR_weapons_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_ENG_hounse_of_commons_button"
+			clicksound = click_default
 		}
 	}
 
+	############################################################
+	### 武器窗口本体（由 open_AOR_weapons_button_window 国策标记控制显隐）
+	############################################################
 	containerWindowType = {
 		name = "AOR_weapons_window"
-		position = {
-			x = 80
-			y = 0
-		}
-		size = {
-			width = 1400
-			height = 640
-		}
+		position = { x = 80 y = 0 }
+		size = { width = 1400 height = 640 }
+		orientation = center
+
 		background = {
 			name = "background"
-			quadTextureSprite = "GFX_black_bg_tile"
+			quadTextureSprite = "GFX_tiled_window_small_small"
 		}
 
-		Orientation = center
-		origo = center
-
-		buttonType = {
-			name = "AOR_weapons_window_button"
-
-			position = {
-				x = 1320
-				y = 0
-			}
-			quadTextureSprite = "ENG_hounse_of_commons_button"
-
-		}
-		instantTextboxType = {
+		instantTextBoxType = {
 			name = "ENG_hounse_of_commons_text"
-			position = {
-				x = 500
-				y = 20
-			}
+			position = { x = 500 y = 20 }
 			font = "hoi_36header"
-			text = "大不列颠及爱尔兰联合王国下议院"
+			text = "AOR_weapons_window_title"
 			maxWidth = 400
 			maxHeight = 250
 			format = center
 		}
 
-		gridboxtype = {
+		gridBoxType = {
 			name = "ENG_hounse_of_common_MP"
-			position = {
-				x = 50
-				y = -100
-			}
-			slotsize = {
-				width = 25
-				height = 25
-			}
-
+			position = { x = 50 y = 100 }
+			slotsize = { width = 25 height = 25 }
 			max_slots_horizontal = 40
 			max_slots_vertical = 10
 			add_horizontal = no
 		}
 	}
 
+	############################################################
+	### 上面 gridBoxType 的单元格模板
+	############################################################
 	containerWindowType = {
 		name = "ENG_hounse_of_common_MP_entry"
-		position = {
-			x = 0
-			y = 0
-		}
+		position = { x = 0 y = 0 }
+		size = { width = 25 height = 25 }
 
-		icontype = {
+		iconType = {
 			name = "ENG_hounse_of_common_MP_icon"
-			position = {
-				x = -20
-				y = 170
-			}
-			spriteType = "ENG_hounse_of_commons_MP"
-			Orientation = center
-			Origo = center
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_ENG_hounse_of_commons_MP"
+			orientation = center
 			scale = 0.17
 		}
 	}
