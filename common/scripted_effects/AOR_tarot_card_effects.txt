@@ -8,7 +8,22 @@ AOR_tarot_card_01_use = { } # 0 The Fool
 AOR_tarot_card_02_use = { } # I The Magician
 AOR_tarot_card_03_use = { } # II The High Priestess
 AOR_tarot_card_04_use = { } # III The Empress
-AOR_tarot_card_05_use = { } # IV The Emperor
+AOR_tarot_card_05_use = { # IV The Emperor / August Bebel
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_05_uses }
+                check_variable = { AOR_tarot_card_05_uses < 2 }
+            }
+        }
+        add_to_variable = { AOR_tarot_card_05_uses = 1 }
+        add_to_variable = { GER_SPD_unity = 15 }
+        GER_SPD_refresh_unity_effect = yes
+        subtract_from_variable = { GER_socialization_radicalism_base = 20 }
+        GER_socialization_refresh_bars = yes
+        add_political_power = 100 
+    }
+}
 AOR_tarot_card_06_use = { } # V The Hierophant
 AOR_tarot_card_07_use = { } # VI The Lovers
 AOR_tarot_card_08_use = { } # VII The Chariot

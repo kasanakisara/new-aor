@@ -1,4 +1,4 @@
-﻿capital = 361
+capital = 361
 
 set_naval_oob = "AOR_USA_naval"
 load_oob = "AOR_USA_LAND_1919"
@@ -45,6 +45,7 @@ set_convoys = 20
 
 # Starting tech
 set_technology = {
+	aor_tank_support = 1
 	aor_inf_u01 = 1
 	aor_inf_g01 = 1
 	aor_inf_u02 = 1
@@ -55,11 +56,6 @@ set_technology = {
 	tech_trucks = 1
 	motorised_infantry = 1
 	mechanised_infantry = 1
-	early_armor_car = 1
-	independent_turret = 1
-	tracked_suspension = 1
-	great_war_light_chassis = 1
-	great_war_heavy_chassis = 1
 	Old_howitzers = 1
 	tech_recon = 1
 	tech_support = 1		
@@ -94,7 +90,6 @@ if = {
 		NOT = { has_dlc = "No Step Back" }
 	}
 	set_technology = {
-		gwtank = 1
 
 	}
 }
@@ -327,30 +322,6 @@ autonomy_state = autonomy_puppet
 }
 
 ###陆军装甲设计###
-create_equipment_variant = {
-	name = "ATL1-斯科特"
-	type = light_tank_chassis_0 
-	parent_version = 0
-	modules = {
-		main_armament_slot = tank_small_cannon
-		turret_type_slot = tank_light_two_man_tank_turret
-		suspension_type_slot = tank_torsion_bar_suspension
-		armor_type_slot = tank_riveted_armor
-		engine_type_slot = tank_gasoline_engine
-	}
-}
-create_equipment_variant = {
-	name = "ATH1-山姆"
-	type = heavy_tank_chassis_0
-	parent_version = 0
-	modules = {
-		main_armament_slot = tank_medium_cannon
-		turret_type_slot = tank_heavy_fixed_superstructure_turret
-		suspension_type_slot = tank_torsion_bar_suspension
-		armor_type_slot = tank_riveted_armor
-		engine_type_slot = tank_gasoline_engine
-	}
-}
 
 ###海军舰艇设计###
 create_equipment_variant = {

@@ -9,6 +9,10 @@ on_actions = {
 	on_daily_GER = {
 		effect = {
 			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				GER_SPD_sync_bebel_unity_bonus_effect = yes
+			}
+			if = {
 				limit = { NOT = { has_country_flag = GER_SPD_unity_initialized } }
 				GER_SPD_initialize_unity_effect = yes
 			}

@@ -49,7 +49,10 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { AOR_tarot_flight_slot_1 = 5 }
-            has_global_flag = GER_SPD_tarot_august_bebel_dead
+            OR = {
+                has_global_flag = GER_SPD_tarot_august_bebel_dead 
+                check_variable = { AOR_tarot_card_05_uses > 1 }
+            }
         }
         localization_key = AOR_tarot_card_05_dead_tt
     }
@@ -296,7 +299,10 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { AOR_tarot_flight_slot_2 = 5 }
-            has_global_flag = GER_SPD_tarot_august_bebel_dead
+            OR = {
+                has_global_flag = GER_SPD_tarot_august_bebel_dead
+                check_variable = { AOR_tarot_card_05_uses > 1 }
+            }
         }
         localization_key = AOR_tarot_card_05_dead_tt
     }
@@ -543,7 +549,10 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { AOR_tarot_flight_slot_3 = 5 }
-            has_global_flag = GER_SPD_tarot_august_bebel_dead
+            OR = {
+                has_global_flag = GER_SPD_tarot_august_bebel_dead
+                check_variable = { AOR_tarot_card_05_uses > 1 }
+            }
         }
         localization_key = AOR_tarot_card_05_dead_tt
     }
@@ -790,7 +799,10 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { AOR_tarot_flight_slot_4 = 5 }
-            has_global_flag = GER_SPD_tarot_august_bebel_dead
+            OR = {
+                has_global_flag = GER_SPD_tarot_august_bebel_dead
+                check_variable = { AOR_tarot_card_05_uses > 1 }
+            }
         }
         localization_key = AOR_tarot_card_05_dead_tt
     }
@@ -1036,7 +1048,10 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { AOR_tarot_flight_used_card = 5 }
-            has_global_flag = GER_SPD_tarot_august_bebel_dead
+            OR = {
+                has_global_flag = GER_SPD_tarot_august_bebel_dead
+                check_variable = { AOR_tarot_card_05_uses > 1 }
+            }
         }
         localization_key = AOR_tarot_card_05_dead_tt
     }
@@ -1259,7 +1274,7 @@ defined_text = {
 }
 defined_text = {
     name = AOR_tarot_album_card_05_tooltip
-    text = { trigger = { has_global_flag = GER_SPD_tarot_august_bebel_dead } localization_key = AOR_tarot_card_05_dead_tt }
+    text = { trigger = { OR = { has_global_flag = GER_SPD_tarot_august_bebel_dead check_variable = { AOR_tarot_card_05_uses > 1 } } } localization_key = AOR_tarot_card_05_dead_tt }
     text = { trigger = { always = yes } localization_key = AOR_tarot_card_05_alive_tt }
 }
 defined_text = {

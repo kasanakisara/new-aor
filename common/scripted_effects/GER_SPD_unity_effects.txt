@@ -1,8 +1,43 @@
+GER_SPD_sync_bebel_unity_bonus_effect = {
+    # Migrate an existing save while Bebel is the ruling leader.
+    if = {
+        limit = { has_country_leader = { character = GER_Bebel ruling_only = yes } }
+        if = {
+            limit = { GER_Bebel = { has_trait = German_workers_leaders } }
+            remove_country_leader_trait = German_workers_leaders
+            add_country_leader_trait = GER_workers_emperor
+        }
+        if = {
+            limit = { GER_Bebel = { has_trait = Evergreen_leader } }
+            remove_country_leader_trait = Evergreen_leader
+            add_country_leader_trait = GER_evergreen_leader
+        }
+        if = {
+            limit = { GER_Bebel = { has_trait = Aftermath_of_resignation } }
+            remove_country_leader_trait = Aftermath_of_resignation
+        }
+    }
+    set_variable = { GER_SPD_bebel_unity_bonus_current = 0 }
+    if = {
+        limit = {
+            has_country_leader = { character = GER_Bebel ruling_only = yes }
+            GER_Bebel = { has_trait = GER_evergreen_leader }
+        }
+        set_variable = { GER_SPD_bebel_unity_bonus_current = 10 }
+    }
+    if = {
+        limit = { NOT = { check_variable = { GER_SPD_bebel_unity_bonus = GER_SPD_bebel_unity_bonus_current } } }
+        subtract_from_variable = { GER_SPD_unity = GER_SPD_bebel_unity_bonus }
+        add_to_variable = { GER_SPD_unity = GER_SPD_bebel_unity_bonus_current }
+        set_variable = { GER_SPD_bebel_unity_bonus = GER_SPD_bebel_unity_bonus_current }
+    }
+}
+
 # GER country scope. Other effects may change GER_SPD_unity and call the refresh effect.
 GER_SPD_initialize_unity_effect = {
 	if = {
 		limit = { NOT = { has_variable = GER_SPD_unity } }
-		set_variable = { GER_SPD_unity = 65 }
+		set_variable = { GER_SPD_unity = 50 }
 	}
 	set_country_flag = GER_SPD_unity_initialized
 	add_dynamic_modifier = { modifier = GER_SPD_unity_modifier }
@@ -12,6 +47,7 @@ GER_SPD_initialize_unity_effect = {
 # Ten-point steps, centred on 50%. 0 -> -1 PP/-0.5 CP/-0.5% weekly stability;
 # 100 -> +1 PP/+0.5 CP/+0.5% weekly stability.
 GER_SPD_refresh_unity_effect = {
+	GER_SPD_sync_bebel_unity_bonus_effect = yes
 	if = {
 		limit = { check_variable = { GER_SPD_unity < 0 } }
 		set_variable = { GER_SPD_unity = 0 }

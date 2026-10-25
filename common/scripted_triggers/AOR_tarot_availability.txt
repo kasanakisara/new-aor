@@ -15,6 +15,10 @@ AOR_tarot_card_04_drawable = {
 }
 AOR_tarot_card_05_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_05_blocked }
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_05_uses }
+        check_variable = { AOR_tarot_card_05_uses < 2 }
+    }
 }
 AOR_tarot_card_06_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_06_blocked }
@@ -24,7 +28,7 @@ AOR_tarot_card_07_drawable = {
     has_country_flag = AOR_tarot_card_07_unlocked
 }
 AOR_tarot_card_08_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_08_blocked }
+    NOT = { has_country_flag = AOR_tarot_card_08_blocked } 
 }
 AOR_tarot_card_09_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_09_blocked }
