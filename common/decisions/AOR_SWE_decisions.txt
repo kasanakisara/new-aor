@@ -934,21 +934,26 @@ SWE_Union_decision_categories = { #联邦一梦
     #### 梦中呓语（遗传性议题） ####
     SWE_Skagerrak_Strait_Arbitration = { #斯卡格拉克海峡仲裁
         available = {
-			SWE = {
-                OR = {
+            OR = {
+                GER = {
                     has_opinion = {  
-					    target = GER value > 69
-				    }
-                    AND = {
+                        target = SWE value > 69
+                    }
+                }
+                
+                AND = {
+                    ENG = {
                         has_opinion = {  
-                            target = ENG value > 39
+                            target = SWE value > 39
                         }
+                    }
+                    FRA = {
                         has_opinion = {  
-                            target = FRA value > 39
+                            target = SWE value > 39
                         }
                     }
                 }
-		    }
+            }
         }
         activation = {
             has_completed_focus = SWE_Beautiful_New_World

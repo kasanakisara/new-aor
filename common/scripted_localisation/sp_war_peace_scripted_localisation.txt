@@ -153,6 +153,9 @@ defined_text = { # 战争总结
 					original_tag = ALT
 					original_tag = CSU 
 					original_tag = DON
+					original_tag = ORE
+					original_tag = SBC
+					original_tag = SCC
 				}
 			}
 			event_target:losing_country = {
@@ -180,6 +183,9 @@ defined_text = { # 战争总结
 					original_tag = ALT
 					original_tag = CSU
 					original_tag = DON
+					original_tag = ORE
+					original_tag = SBC
+					original_tag = SCC
 				}
 			}
 		}
@@ -278,6 +284,7 @@ defined_text = { # 战争结语
 					NOT = { original_tag = DON }
 					NOT = { original_tag = US1 }
 					NOT = { original_tag = US2 }
+					NOT = { original_tag = ITA }
 				}
 				event_target:losing_country = {
 					NOT = { original_tag = ORA }
@@ -324,6 +331,7 @@ defined_text = { # 战争结语
 					NOT = { original_tag = CSU }
 					NOT = { original_tag = US1 }
 					NOT = { original_tag = US2 }
+					NOT = { original_tag = LBA }
 				}
 				# ORA和ARG都将使用特殊战争结语
 			}
@@ -611,9 +619,6 @@ defined_text = { # 战争结语
 
 	text = { #全世界暴打塞努西
 		trigger = {
-			event_target:winning_country = {
-				original_tag = ITA
-			}
 			event_target:losing_country = {
 				original_tag = LBA
 			}
@@ -755,6 +760,42 @@ defined_text = { # 战争结语
 	}
 
 	text = { #红军-TMS败
+		trigger = {
+			event_target:winning_country = {
+				is_in_faction_with = ARU
+			}
+			event_target:losing_country = {
+				original_tag = TMS
+			}
+		}
+		localization_key = SP_WARPEACE_ARU_TMS_WT
+	}
+
+	text = { #红军-ORE败
+		trigger = {
+			event_target:winning_country = {
+				is_in_faction_with = ARU
+			}
+			event_target:losing_country = {
+				original_tag = TMS
+			}
+		}
+		localization_key = SP_WARPEACE_ARU_TMS_WT
+	}
+
+	text = { #红军-SCC败
+		trigger = {
+			event_target:winning_country = {
+				is_in_faction_with = ARU
+			}
+			event_target:losing_country = {
+				original_tag = TMS
+			}
+		}
+		localization_key = SP_WARPEACE_ARU_TMS_WT
+	}
+
+	text = { #红军-SBC败
 		trigger = {
 			event_target:winning_country = {
 				is_in_faction_with = ARU
