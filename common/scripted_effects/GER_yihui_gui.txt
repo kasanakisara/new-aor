@@ -1,0 +1,98 @@
+scripted_gui = {
+#////////////////////////////////////////////////////////////////////
+#//                            _ooOoo_                             //
+#//                           o8888888o                            //
+#//                           88" . "88                            //
+#//                           (| ^_^ |)                            //
+#//                           O\  =  /O                            //
+#//                        ____/`---'\____                         //
+#//                      .' \\|      |//  '.                       //
+#//                     /  \|||   :  |||//  \                      //
+#//                    /  _||||| -:- |||||-  \                     //
+#//                    |   |  \\  -  /// |   |                     //
+#//                    | \_|  ''\---/''  |   |                     //
+#//                    \  .-\__  `-`  ___/-. /                     //
+#//                  ___`. .'  /--.--\  `. . ___                   //
+#//                ."" '< '.___\_<|>_/___.'  >'"".                //
+#//              | | :  `- \`.;`\ _ /`;.`/ - ` : | |               //
+#//              \  \ `-.   \_ __\ /__ _/   .-` /  /               //
+#//        ========`-.____`-.___\_____/___.-`____.-'========       //
+#//                             `=---='                            //
+#//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      //
+#//        佛祖保佑             永无BUG              永不修改      //
+#////////////////////////////////////////////////////////////////////
+GER_yihui_button = {
+		context_type = player_context
+		window_name = "GER_yihui_entry_bg"
+		visible = {
+			original_tag = GER
+			NOT = { has_country_flag = GER_yihui_canceled_final }
+		}
+		effects = {
+			GER_yihui_button_click = {
+				clr_country_flag = gui_alert_visible
+				GER_Reichstag_prepare_seats = yes
+				GER_Reichstag_refresh = yes
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = GER_main_GUI_open 
+						}
+					}
+					set_country_flag = GER_main_GUI_open 
+				}
+				else_if = {
+					limit = {
+						has_country_flag = GER_main_GUI_open 
+					}
+					clr_country_flag = GER_main_GUI_open 
+				}
+			}
+		}
+		triggers = {
+			gui_alert_visible = {
+				has_country_flag = gui_alert_visible
+			}
+		}
+	}	
+	GER_yihui_gui = {
+		context_type =  player_context
+		window_name = GER_yihui_gui
+		visible = {
+			original_tag = GER
+			has_country_flag = GER_main_GUI_open
+		}
+		properties = {
+			GER_Reichstag_seat_icon = {
+				x = GER_Reichstag_seat_x^seat_idx
+				y = GER_Reichstag_seat_y^seat_idx
+				frame = GER_Reichstag_seat_frame^seat_idx
+			}
+		}
+		dynamic_lists = {
+			GER_Reichstag_seat_grid = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_Reichstag_seat_entry
+				index = seat_idx
+			}
+		}
+		triggers = {
+			GER_yihui_hammer_color_visible = {
+				has_country_flag = GER_yihui_hammer_active
+			}
+			GER_yihui_hammer_bw_visible = {
+				NOT = { has_country_flag = GER_yihui_hammer_active }
+			}
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = GER_main_GUI_open
+			}
+			GER_yihui_capacity_button_click = {
+				GER_yihui_expand_capacity = yes
+			}
+		}
+	}
+}
+
