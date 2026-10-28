@@ -33,8 +33,20 @@ GER_Reichstag_set_default_seats = {#共459席
 	set_variable = { GER_reichstag_dnvp_seats = 68 }
 	set_variable = { GER_reichstag_other_seats = 16 }
 	set_variable = { GER_yihui_inertia = 60 }
+	set_variable = { GER_yihui_focus_capacity = 2 }
 	GER_Reichstag_prepare_seats = yes
 	GER_Reichstag_refresh = yes
+}
+
+# 扩容议会焦点：消耗议会协商惯性，增加可同时执行的法案数量
+GER_yihui_expand_capacity = {
+	if = {
+		limit = {
+			check_variable = { GER_yihui_inertia > 29 }
+		}
+		subtract_from_variable = { GER_yihui_inertia = 30 }
+		add_to_variable = { GER_yihui_focus_capacity = 1 }
+	}
 }
 
 
