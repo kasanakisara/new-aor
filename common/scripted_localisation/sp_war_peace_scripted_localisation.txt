@@ -39,6 +39,11 @@ defined_text = { # 战争总结
 					NOT = { original_tag = URS }
 					NOT = { original_tag = CAU }
 					NOT = { original_tag = DON }
+					NOT = { original_tag = RIG }
+					NOT = { original_tag = LIT }
+					NOT = { original_tag = LAT }
+					NOT = { original_tag = BLS }
+					NOT = { original_tag = BLR }
 				}
 				event_target:losing_country = {
 					NOT = { original_tag = ORA }
@@ -76,6 +81,11 @@ defined_text = { # 战争总结
 					NOT = { original_tag = URS }
 					NOT = { original_tag = CAU }
 					NOT = { original_tag = DON }
+					NOT = { original_tag = RIG }
+					NOT = { original_tag = LIT }
+					NOT = { original_tag = LAT }
+					NOT = { original_tag = BLS }
+					NOT = { original_tag = BLR }
 				}
 				# ORA和ARG都将使用特殊战争总结
 			}
@@ -156,6 +166,8 @@ defined_text = { # 战争总结
 					original_tag = ORE
 					original_tag = SBC
 					original_tag = SCC
+					original_tag = BLS
+					original_tag = BLR
 				}
 			}
 			event_target:losing_country = {
@@ -186,6 +198,8 @@ defined_text = { # 战争总结
 					original_tag = ORE
 					original_tag = SBC
 					original_tag = SCC
+					original_tag = BLS
+					original_tag = BLR
 				}
 			}
 		}
@@ -233,6 +247,25 @@ defined_text = { # 战争总结
 			}
 		}
 		localization_key = SP_WARPEACE_Ukraine_War_W
+	}
+
+	text = { #俄国内战的外溢
+		trigger = {
+			event_target:winning_country = {
+				OR = {
+					original_tag = RUS
+					original_tag = BLS
+				}
+			}
+			event_target:losing_country = {
+				OR = {
+					original_tag = RIG 
+					original_tag = LIT
+					original_tag = LAT
+				}
+			}
+		}
+		localization_key = SP_WARPEACE_RUS_excivilwar_W
 	}
 }
 defined_text = { # 战争结语
@@ -285,6 +318,11 @@ defined_text = { # 战争结语
 					NOT = { original_tag = US1 }
 					NOT = { original_tag = US2 }
 					NOT = { original_tag = ITA }
+					NOT = { original_tag = BLS }
+					NOT = { original_tag = BLR }
+					NOT = { original_tag = RIG }
+					NOT = { original_tag = LIT }
+					NOT = { original_tag = LAT }
 				}
 				event_target:losing_country = {
 					NOT = { original_tag = ORA }
@@ -332,6 +370,11 @@ defined_text = { # 战争结语
 					NOT = { original_tag = US1 }
 					NOT = { original_tag = US2 }
 					NOT = { original_tag = LBA }
+					NOT = { original_tag = BLS }
+					NOT = { original_tag = BLR }
+					NOT = { original_tag = RIG }
+					NOT = { original_tag = LIT }
+					NOT = { original_tag = LAT }
 				}
 				# ORA和ARG都将使用特殊战争结语
 			}
@@ -771,39 +814,63 @@ defined_text = { # 战争结语
 		localization_key = SP_WARPEACE_ARU_TMS_WT
 	}
 
-	text = { #红军-ORE败
+	text = { #白军-ORE败
 		trigger = {
 			event_target:winning_country = {
-				is_in_faction_with = ARU
+				is_in_faction_with = RUS
 			}
 			event_target:losing_country = {
-				original_tag = TMS
+				original_tag = ORE
 			}
 		}
-		localization_key = SP_WARPEACE_ARU_TMS_WT
+		localization_key = SP_WARPEACE_RUS_ORE_WT
 	}
 
-	text = { #红军-SCC败
+	text = { #白军-SCC败
 		trigger = {
 			event_target:winning_country = {
-				is_in_faction_with = ARU
+				is_in_faction_with = RUS
 			}
 			event_target:losing_country = {
-				original_tag = TMS
+				original_tag = SCC
 			}
 		}
-		localization_key = SP_WARPEACE_ARU_TMS_WT
+		localization_key = SP_WARPEACE_RUS_SCC_WT
 	}
 
-	text = { #红军-SBC败
+	text = { #白军-SBC败
 		trigger = {
 			event_target:winning_country = {
-				is_in_faction_with = ARU
+				is_in_faction_with = RUS
 			}
 			event_target:losing_country = {
-				original_tag = TMS
+				original_tag = SBC
 			}
 		}
-		localization_key = SP_WARPEACE_ARU_TMS_WT
+		localization_key = SP_WARPEACE_RUS_SBC_WT
+	}
+
+	text = { #白军-BYA败
+		trigger = {
+			event_target:winning_country = {
+				is_in_faction_with = RUS
+			}
+			event_target:losing_country = {
+				original_tag = SBC
+			}
+		}
+		localization_key = SP_WARPEACE_RUS_SBC_WT
+	}
+
+	text = { #白军-RIG败
+		trigger = {
+			event_target:winning_country = {
+				is_in_faction_with = RUS
+			}
+			event_target:losing_country = {
+				original_tag = RIG
+			}
+		}
+		localization_key = SP_WARPEACE_RUS_RIG_WT
 	}
 }

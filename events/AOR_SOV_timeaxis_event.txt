@@ -315,3 +315,28 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = AOR_SOV_timeaxis.10091
+	title = AOR_SOV_timeaxis.10091.t
+	desc = AOR_SOV_timeaxis.10091.d
+	fire_only_once = yes
+	trigger = {
+		tag = RUS
+		ARU = {
+			surrender_progress < 0.4
+		}
+	}
+
+	option = {
+		name = AOR_SOV_timeaxis.10091.a
+		ARU = {
+			add_to_faction = BYA
+		}
+		BYA = {
+			add_to_war = {
+				targeted_alliance = ARU
+				enemy = RUS
+			}
+		}
+	}
+}
