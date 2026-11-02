@@ -3,7 +3,6 @@ tags={
 	"Alternative History"
 }
 name="AOR_new_beta"
-supported_version="1.19.*"
 replace_path="events"
 replace_path="history/states"
 replace_path="history/countries"
@@ -20,3 +19,5 @@ replace_path="common/ideas"
 replace_path="common/technologies"
 replace_path="common/technology_sharing"
 replace_path="common/technology_tags"
+supported_version="1.19.*"
+remote_file_id="3832161332"
