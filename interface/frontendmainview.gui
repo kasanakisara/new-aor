@@ -209,25 +209,26 @@ guiTypes = {
 	### MAIN MENU PANEL (upperleft)
 	containerWindowType = {
 		name  ="mainmenu_panel_upperleft"
-		position = { x=0 y =-2000 }
-		show_position = { x=0 y =0 }
+		position = { x = -486 y = -2000 }
+		show_position = { x = -486 y = 0 }
 		animation_type = decelerated
 		animation_time = 1000
 		size = { width = 246 height = 450}
-		Orientation = CENTER_LEFT
+		Orientation = CENTER_RIGHT
 		Origo = CENTER
 		
 		iconType = {
 			name ="frontend_game_logo"
-			spriteType = "GFX_frontend_game_logo"
-			position = { x= 528 y = -120 }
+			spriteType = "GFX_AOR_frontend_game_logo"
+			position = { x = 123 y = -120 }
 			centerposition = yes
+            scale = 0.60
 		}
 		clipping = no
 		background = {
-				name = "Background"
-				# quadTextureSprite ="GFX_tiled_bg"
-			}
+                name = "Background"
+                quadTextureSprite = "GFX_AOR_frontend_empty"
+            }
 		
 	}
 
@@ -283,9 +284,9 @@ guiTypes = {
 	### SINGLE PLAYER MENU
 	containerWindowType = {
 		name = "mainmenu_single_player"
-		position = { x=430 y =66}
+		position = { x = -486 y = 66 }
 		size = { width = 246 height = 450 }
-		Orientation = CENTER_LEFT
+		Orientation = CENTER_RIGHT
 		Origo = CENTER	
 				
 		background = {
@@ -295,8 +296,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "sp_continue_button"
-			position = { x = 0 y = 0 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 0 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "FE_CONTINUE"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -337,8 +338,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "sp_new_button"
-			position = { x = 0 y = 70 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 70 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "FE_NEW"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -347,8 +348,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "sp_load_button"
-			position = {  x = 0 y = 140 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = {  x = 13 y = 140 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "MENU_BAR_LOAD"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -357,8 +358,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "sp_tutorial_button"
-			position = { x = 0 y = 210}
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 210}
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "FE_TUTORIAL"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -367,8 +368,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "sp_back_button"
-			position = { x = 0 y = 300 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 300 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "BACK"
 			buttonFont = "hoi_24header"
 			clicksound = click_close
@@ -380,9 +381,9 @@ guiTypes = {
 	### MAIN MENU PANEL (bottom)
 	containerWindowType = {
 		name ="mainmenu_panel_bottom"
-		position = { x=430 y =66}
+		position = { x = -486 y = 66 }
 		size = { width = 246 height = 450 }
-		Orientation = CENTER_LEFT
+		Orientation = CENTER_RIGHT
 		Origo = CENTER	
 
 		positionType = {
@@ -407,25 +408,25 @@ guiTypes = {
 		instantTextBoxType = {
 
 			name ="version_label"
-			position = { x = -50 y = 411 }
+			position = { x = -17 y = 411 }
 			textureFile = ""
 			font = "hoi_18b"
 			borderSize = {x = 0 y = 0}
 			text = "ALPHA"	
 			format = centre
-			maxWidth = 346
+			maxWidth = 280
 			maxHeight = 20	
 		}
 
 		positionType = {
 			name = "version_label_subscription_position"
-			position = { x = -50 y = 416 }
+			position = { x = -17 y = 416 }
 		}
 		
 		ButtonType = {
 			name = "single_player_button"
-			position = { x = 0 y = 0 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 13 y = 0 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"
 			font = "hoi_24header"			
 			text = "FE_SINGLE_PLAYER"				
 			clicksound = click_default			
@@ -434,8 +435,8 @@ guiTypes = {
 
 		ButtonType = {
 			name = "multi_player_button"
-			position = { x = 0 y = 60}
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 13 y = 60}
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"
 			font = "hoi_24header"			
 			text = "FE_MULTI_PLAYER"			
 			clicksound = click_default
@@ -444,8 +445,8 @@ guiTypes = {
 		
 		ButtonType = {
 			name = "settings_button"
-			position = { x = 0 y = 120 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 120 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "OPTIONS"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -454,8 +455,8 @@ guiTypes = {
 		
 		buttonType = {
 			name = "career_profile_button"
-			position = { x = 0 y = 180 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 13 y = 180 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"
 			buttonText = "MENU_BAR_CAREER_PROFILE"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -464,8 +465,8 @@ guiTypes = {
 		
 		buttonType = {
 			name = "friends_button"
-			position = { x = 0 y = 240 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 13 y = 240 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"
 			buttonText = "MENU_BAR_FRIENDS"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -474,8 +475,8 @@ guiTypes = {
 
 		ButtonType = {
 			name = "credits_button"
-			position = {  x = 0 y = 300 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = {  x = 13 y = 300 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "FE_CREDITS"
 			buttonFont = "hoi_24header"
 			clicksound = click_default
@@ -484,8 +485,8 @@ guiTypes = {
 
 		ButtonType = {
 			name = "exit_button"
-			position = { x = 0 y = 360 }
-			quadTextureSprite ="GFX_main_lobby_button"
+			position = { x = 13 y = 360 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"
 			font = "hoi_24header"			
 			text = "FE_EXIT"			
 			clicksound = click_default
@@ -499,8 +500,8 @@ guiTypes = {
 			name = "nudge_button"
 			# 2026-10：原为 y = 25800（被推到屏幕外，主菜单 Nudge 按钮因此不可见）
 			# 模组主菜单按钮间距为 60、自 y=0 起排到 360（告老还乡），故放到 420
-			position = { x = 0 y = 420 }
-			quadTextureSprite ="GFX_main_lobby_button"	
+			position = { x = 13 y = 420 }
+			quadTextureSprite ="GFX_AOR_frontend_menu_button_221"	
 			buttonText = "Nudge!"
 			buttonFont = "hoi_24header"
 			shortcut = "n"
@@ -573,30 +574,30 @@ guiTypes = {
 	}
 	
 	containerWindowType = {
-		name = "mainmenu_social_buttons"
-		position = { x=0 y =0}
+		name = "mainmenu_social_buttons" hide = yes
+		position = { x = -10000 y = -10000 }
 		size = { width = 246 height = 450 }
 		Orientation = CENTER_LEFT
-		Origo = CENTER
+		Origo = UPPER_LEFT
 		
 		positionType = {
 			name = "position_without_social_gui"
-			position = { x = 430 y = 529 }
+			position = { x = -10000 y = -10000 }
 		}
 
 		positionType = {
 			name = "subscription_position"
-			position = { x = 430 y = 529 }
+			position = { x = -10000 y = -10000 }
 		}
 
 		positionType = {
 			name = "subscription_position_without_social_gui"
-			position = { x = 430 y = 529 }
+			position = { x = -10000 y = -10000 }
 		}
 		
 		containerWindowType = {
 			name = "social_view_interface_window"
-			position = { x = 250 y = 0  }
+			position = { x = -10000 y = -10000 }
 			size = { width = 60 height = 40 }
 			
 			buttonType = {
@@ -640,7 +641,7 @@ guiTypes = {
 		}
         containerWindowType = {
             name = "first_row"
-			position = { x=48 y=-17 }
+			position = { x = -10000 y = -10000 }
             ButtonType = {
                 name = "homepage_button"
                 position = { x=0 y=0 }
@@ -678,7 +679,7 @@ guiTypes = {
         }
         containerWindowType = {
             name = "second_row"
-			position = { x=30 y=19 }
+			position = { x = -10000 y = -10000 }
             ButtonType = {
                 name = "bluesky_button"
                 position = { x=0 y=0 }
