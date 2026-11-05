@@ -174,7 +174,7 @@ equipments = {
 
 		archetype = ship_hull_light
 		priority = 2000
-		parent = ship_hull_light_2
+		parent = aor_ship_hull_light_1923
 		#alias = destroyer_3
 
 		module_slots = {
@@ -500,5 +500,52 @@ equipments = {
 			chromium = 1
 		}		
 		manpower = 500
+	}
+
+	aor_ship_hull_light_1923 = {
+		year = 1923
+
+		archetype = ship_hull_light
+		priority = 2000
+		parent = ship_hull_light_2
+		#alias = destroyer_2
+		
+		module_slots = {
+			fixed_ship_battery_slot = inherit
+			fixed_ship_anti_air_slot = inherit
+			fixed_ship_fire_control_system_slot = inherit
+			fixed_ship_radar_slot = inherit
+			fixed_ship_torpedo_slot = inherit
+			fixed_ship_engine_slot = inherit
+
+			mid_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo
+					ship_mine_warfare
+					ship_mine_layer
+					ship_depth_charge
+					ship_anti_air
+					ship_light_battery
+				}
+			}
+			rear_1_custom_slot = mid_1_custom_slot
+		}
+
+		default_modules = {
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+		}
+
+
+		reliability = 0.875
+		naval_range = 1900
+		max_strength = 45
+		build_cost_ic = 262.5
+		resources = {
+			steel = 2
+		}
+		manpower = 360
 	}
 }

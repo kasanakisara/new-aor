@@ -1,0 +1,23 @@
+
+
+air_wings = {
+	111 = { 														# Helsinki
+		small_plane_airframe_1919 = { owner = "FIN" amount = 28  version_name = "标准小型机体攻击型 1919" }				# 1, 4 Bomber Groups -- Fokker C.Xs, Blenheim Is
+		small_plane_airframe_1914 = { owner = "FIN" amount = 45  version_name = "标准小型机体 1914" }			# 2 Fighter Group -- Fokker D.XXIs, Bristol Bulldogs
+	}
+}
+
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1914
+			creator = "FIN version_name = "标准小型机体 1914" "
+		}
+		requested_factories = 1
+		progress = 0.89
+		efficiency = 100
+		industrial_manufacturer = mio:FIN_valtion_lentokonetehdas_organization
+	}
+}

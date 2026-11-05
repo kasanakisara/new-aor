@@ -1,3 +1,44 @@
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+set_technology = {
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_small_1919 = 1
+	aor_air_torpedo_1914 = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1919"
+	type = small_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_gun_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
 capital = 303
 
 #oob = "PRU_1936"
@@ -11,34 +52,31 @@ if = {
 
 # Starting tech
 set_technology = {
-		aor_armorcr_1919 = 1
-		aor_aa_1919 = 1
-		aor_fcs_1914 = 1
-		aor_engine_1914 = 1
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
-
-	cv_early_fighter = 1
- 
-	CAS1 = 1
-
-	Old_howitzers = 1
-	aor_field_gun_1 = 1
-	interwar_antitank = 1
+aor_armorcr_1919 = 1
+aor_aa_1919 = 1
+aor_fcs_1914 = 1
+aor_engine_1914 = 1
+aor_inf_u01 = 1
+aor_inf_r01 = 1
+aor_air_small_1914 = 1
+aor_air_small_1919 = 1
+Old_howitzers = 1
+aor_field_gun_1 = 1
+interwar_antitank = 1
 }
 
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
-		basic_naval_mines = 1
-		early_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		early_ship_hull_light_cruiser = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		coastal_defense_ships = 1
-	}
+basic_naval_mines = 1
+early_ship_hull_light = 1
+early_ship_hull_submarine = 1
+early_ship_hull_light_cruiser = 1
+basic_battery = 1
+basic_torpedo = 1
+basic_depth_charges = 1
+coastal_defense_ships = 1
+}
 }
 
 

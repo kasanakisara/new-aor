@@ -1,3 +1,31 @@
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+set_technology = {
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_torpedo_1914 = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
 capital = 306
 
 #oob = "COL_1936"
@@ -11,31 +39,29 @@ if = {
 
 # Starting tech
 set_technology = {
-		aor_aa_1919 = 1
-		aor_fcs_1914 = 1
-		aor_engine_1914 = 1
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
-	tech_support = 1		
-	tech_engineers = 1
-
-	cv_early_fighter = 1
-
-	Old_howitzers = 1
-	aor_field_gun_1 = 1
-	interwar_antitank = 1
+aor_aa_1919 = 1
+aor_fcs_1914 = 1
+aor_engine_1914 = 1
+aor_inf_u01 = 1
+aor_inf_r01 = 1
+tech_support = 1
+tech_engineers = 1
+aor_air_small_1914 = 1
+Old_howitzers = 1
+aor_field_gun_1 = 1
+interwar_antitank = 1
 }
 
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
-		basic_naval_mines = 1
-		early_ship_hull_light = 1
-		tech_1919_ship_hull_light = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-	}
+basic_naval_mines = 1
+early_ship_hull_light = 1
+tech_1919_ship_hull_light = 1
+basic_battery = 1
+basic_torpedo = 1
+basic_depth_charges = 1
+}
 }
 
 recruit_character = COL_alfonso_lópez_pumarejo

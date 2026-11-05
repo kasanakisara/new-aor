@@ -1,3 +1,35 @@
+# AOR industry 1919 baseline; later tiers remain research choices.
+set_technology = {
+	fuel_refining = 1
+}
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+set_technology = {
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_torpedo_1914 = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
 capital = 307
 
 #oob = "VEN_1936"
@@ -8,8 +40,8 @@ set_technology = {
 	aor_inf_r01 = 1
  
  
-	fuel_silos = 1
-	fuel_refining = 1
+	
+	
 }
 
 recruit_character = VEN_eleazar_lópez_contreras
@@ -75,19 +107,23 @@ set_country_flag = monroe_doctrine
 		mechanical_computing = 1
 
 		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_refining2 = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	Old_howitzers = 1
 	aor_field_gun_1 = 1
 	aor_howitzer_1 = 1
 	interwar_antitank = 1
+
+	basic_machine_tools = 1
+	construction1 = 1
+	fuel_refining = 1
 }
 }
 

@@ -1,0 +1,833 @@
+equipments = {
+	small_plane_airframe = {
+		year = 1914
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = fighter
+		allowed_types = { fighter cas naval_bomber scout_plane }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = light_plane
+		air_map_icon_frame = 1
+		interface_category = interface_category_air
+		interface_overview_category_index = 1
+		picture = archetype_fighter_equipment
+		reliability = 0.78
+		air_superiority = 1
+		fuel_consumption = 0
+		manpower = 20
+		build_cost_ic = 4
+		resources = {
+			aluminium = 2
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { fighter_weapon cas_weapon nav_bomber_weapon recon_camera }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_engine_1x }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_engine_1x_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+			module_count_limit = { category = aor_plane_defence count < 2 }
+		module_count_limit = { category = aor_plane_sight count < 2 }
+		module_count_limit = { category = aor_plane_radio count < 2 }
+		module_count_limit = { category = aor_plane_tank count < 2 }
+		module_count_limit = { category = aor_plane_structure count < 2 }
+		module_count_limit = { category = aor_plane_armor count < 2 }
+		module_count_limit = { category = aor_plane_water count < 2 }
+		module_count_limit = { category = aor_plane_cowling count < 2 }
+		module_count_limit = { category = recon_camera count < 2 }
+	}
+	small_plane_airframe_1914 = {
+		year = 1914
+		archetype = small_plane_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1914"
+		maximum_speed = 135
+		air_range = 300
+		air_agility = 22
+		air_defence = 3
+		weight = 3
+	}
+	small_plane_airframe_1919 = {
+		year = 1919
+		archetype = small_plane_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1919"
+		maximum_speed = 190
+		air_range = 400
+		air_agility = 30
+		air_defence = 4
+		weight = 4
+		parent = small_plane_airframe_1914
+	}
+	small_plane_airframe_1925 = {
+		year = 1925
+		archetype = small_plane_airframe
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1925"
+		maximum_speed = 250
+		air_range = 500
+		air_agility = 38
+		air_defence = 5
+		weight = 5
+		parent = small_plane_airframe_1919
+	}
+	small_plane_airframe_1930 = {
+		year = 1930
+		archetype = small_plane_airframe
+		module_slots = inherit
+		priority = 4
+		abbreviation = "1930"
+		maximum_speed = 305
+		air_range = 600
+		air_agility = 44
+		air_defence = 6
+		weight = 6
+		parent = small_plane_airframe_1925
+	}
+	cv_small_plane_airframe = {
+		year = 1927
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = fighter
+		allowed_types = { fighter cas naval_bomber scout_plane }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = light_plane
+		air_map_icon_frame = 1
+		interface_category = interface_category_air
+		interface_overview_category_index = 1
+		picture = archetype_fighter_equipment
+		reliability = 0.78
+		air_superiority = 1
+		fuel_consumption = 0
+		manpower = 20
+		build_cost_ic = 4
+		resources = {
+			aluminium = 2
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { fighter_weapon cas_weapon nav_bomber_weapon recon_camera }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_engine_1x }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_engine_1x_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+		carrier_capable = yes
+		default_carrier_composition_weight = 1
+			module_count_limit = { category = aor_plane_defence count < 2 }
+		module_count_limit = { category = aor_plane_sight count < 2 }
+		module_count_limit = { category = aor_plane_radio count < 2 }
+		module_count_limit = { category = aor_plane_tank count < 2 }
+		module_count_limit = { category = aor_plane_structure count < 2 }
+		module_count_limit = { category = aor_plane_armor count < 2 }
+		module_count_limit = { category = aor_plane_water count < 2 }
+		module_count_limit = { category = aor_plane_cowling count < 2 }
+		module_count_limit = { category = recon_camera count < 2 }
+	}
+	cv_small_plane_airframe_1927 = {
+		year = 1927
+		archetype = cv_small_plane_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1927"
+		maximum_speed = 235
+		air_range = 350
+		air_agility = 30
+		air_defence = 5
+		weight = 5
+	}
+	cv_small_plane_airframe_1930 = {
+		year = 1930
+		archetype = cv_small_plane_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1930"
+		maximum_speed = 280
+		air_range = 450
+		air_agility = 36
+		air_defence = 6
+		weight = 6
+		parent = cv_small_plane_airframe_1927
+	}
+	medium_plane_airframe = {
+		year = 1914
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = tactical_bomber
+		allowed_types = { tactical_bomber scout_plane naval_bomber maritime_patrol_plane  heavy_fighter }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = medium_plane
+		air_map_icon_frame = 6
+		interface_category = interface_category_air
+		interface_overview_category_index = 4
+		picture = archetype_strat_bomber_equipment
+		reliability = 0.78
+		air_superiority = 1
+		fuel_consumption = 0
+		manpower = 20
+		build_cost_ic = 8
+		resources = {
+			aluminium = 2
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { aor_medium_bomb recon_camera nav_bomber_weapon aor_plane_patrol  fighter_weapon }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_engine_1x aor_engine_2x aor_engine_3x }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_engine_1x_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+			module_count_limit = { category = aor_plane_defence count < 2 }
+		module_count_limit = { category = aor_plane_sight count < 2 }
+		module_count_limit = { category = aor_plane_radio count < 2 }
+		module_count_limit = { category = aor_plane_tank count < 2 }
+		module_count_limit = { category = aor_plane_structure count < 2 }
+		module_count_limit = { category = aor_plane_armor count < 2 }
+		module_count_limit = { category = aor_plane_water count < 2 }
+		module_count_limit = { category = aor_plane_cowling count < 2 }
+		module_count_limit = { category = recon_camera count < 2 }
+	}
+	medium_plane_airframe_1914 = {
+		year = 1914
+		archetype = medium_plane_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1914"
+		maximum_speed = 115
+		air_range = 400
+		air_agility = 12
+		air_defence = 6
+		weight = 6
+	}
+	medium_plane_airframe_1919 = {
+		year = 1919
+		archetype = medium_plane_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1919"
+		maximum_speed = 150
+		air_range = 550
+		air_agility = 15
+		air_defence = 7
+		weight = 7
+		parent = medium_plane_airframe_1914
+	}
+	medium_plane_airframe_1923 = {
+		year = 1923
+		archetype = medium_plane_airframe
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1923"
+		maximum_speed = 175
+		air_range = 700
+		air_agility = 17
+		air_defence = 8
+		weight = 8
+		parent = medium_plane_airframe_1919
+	}
+	medium_plane_airframe_1927 = {
+		year = 1927
+		archetype = medium_plane_airframe
+		module_slots = inherit
+		priority = 4
+		abbreviation = "1927"
+		maximum_speed = 215
+		air_range = 850
+		air_agility = 20
+		air_defence = 9
+		weight = 9
+		parent = medium_plane_airframe_1923
+	}
+	medium_plane_airframe_1930 = {
+		year = 1930
+		archetype = medium_plane_airframe
+		module_slots = inherit
+		priority = 5
+		abbreviation = "1930"
+		maximum_speed = 250
+		air_range = 1100
+		air_agility = 23
+		air_defence = 10
+		weight = 10
+		parent = medium_plane_airframe_1927
+	}
+	transport_plane_equipment = {
+		year = 1919
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = air_transport
+		allowed_types = { air_transport }
+		allow_mission_type = { training air_supply paradrop }
+		group_by = archetype
+		sprite = medium_plane
+		air_map_icon_frame = 12
+		interface_category = interface_category_air
+		interface_overview_category_index = 6
+		picture = archetype_strat_bomber_equipment
+		reliability = 0.78
+		air_superiority = 1
+		fuel_consumption = 0
+		manpower = 20
+		build_cost_ic = 8
+		resources = {
+			aluminium = 2
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { aor_cargo }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_engine_1x aor_engine_2x aor_engine_3x }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_water }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_water }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_water }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_water }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_engine_1x_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+			module_count_limit = { category = aor_plane_radio count < 2 }
+		module_count_limit = { category = aor_plane_tank count < 2 }
+		module_count_limit = { category = aor_plane_structure count < 2 }
+		module_count_limit = { category = aor_plane_water count < 2 }
+	}
+	transport_plane_equipment_1919 = {
+		year = 1919
+		archetype = transport_plane_equipment
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1919"
+		maximum_speed = 145
+		air_range = 500
+		air_agility = 8
+		air_defence = 5
+		weight = 7
+	}
+	transport_plane_equipment_1927 = {
+		year = 1927
+		archetype = transport_plane_equipment
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1927"
+		maximum_speed = 190
+		air_range = 850
+		air_agility = 10
+		air_defence = 6
+		weight = 8
+		parent = transport_plane_equipment_1919
+	}
+	transport_plane_equipment_1930 = {
+		year = 1930
+		archetype = transport_plane_equipment
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1930"
+		maximum_speed = 220
+		air_range = 1100
+		air_agility = 12
+		air_defence = 7
+		weight = 9
+		parent = transport_plane_equipment_1927
+	}
+	large_plane_airframe = {
+		year = 1914
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = strategic_bomber
+		allowed_types = { strategic_bomber scout_plane maritime_patrol_plane naval_bomber }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = heavy_plane
+		air_map_icon_frame = 7
+		interface_category = interface_category_air
+		interface_overview_category_index = 5
+		picture = archetype_strat_bomber_equipment
+		reliability = 0.78
+		air_superiority = 1
+		fuel_consumption = 0
+		manpower = 20
+		build_cost_ic = 8
+		resources = {
+			aluminium = 2
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { aor_large_bomb recon_camera aor_plane_patrol nav_bomber_weapon }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_engine_2x aor_engine_3x aor_engine_4x }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_plane_defence aor_plane_sight aor_plane_radio aor_plane_tank aor_plane_structure aor_plane_armor aor_plane_water aor_plane_cowling recon_camera }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_engine_2x_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+			module_count_limit = { category = aor_plane_defence count < 2 }
+		module_count_limit = { category = aor_plane_sight count < 2 }
+		module_count_limit = { category = aor_plane_radio count < 2 }
+		module_count_limit = { category = aor_plane_tank count < 2 }
+		module_count_limit = { category = aor_plane_structure count < 2 }
+		module_count_limit = { category = aor_plane_armor count < 2 }
+		module_count_limit = { category = aor_plane_water count < 2 }
+		module_count_limit = { category = aor_plane_cowling count < 2 }
+		module_count_limit = { category = recon_camera count < 2 }
+	}
+	large_plane_airframe_1914 = {
+		year = 1914
+		archetype = large_plane_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1914"
+		maximum_speed = 95
+		air_range = 650
+		air_agility = 5
+		air_defence = 10
+		weight = 12
+	}
+	large_plane_airframe_1919 = {
+		year = 1919
+		archetype = large_plane_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1919"
+		maximum_speed = 135
+		air_range = 900
+		air_agility = 7
+		air_defence = 12
+		weight = 14
+		parent = large_plane_airframe_1914
+	}
+	large_plane_airframe_1925 = {
+		year = 1925
+		archetype = large_plane_airframe
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1925"
+		maximum_speed = 170
+		air_range = 1200
+		air_agility = 9
+		air_defence = 14
+		weight = 16
+		parent = large_plane_airframe_1919
+	}
+	large_plane_airframe_1930 = {
+		year = 1930
+		archetype = large_plane_airframe
+		module_slots = inherit
+		priority = 4
+		abbreviation = "1930"
+		maximum_speed = 205
+		air_range = 1500
+		air_agility = 11
+		air_defence = 16
+		weight = 18
+		parent = large_plane_airframe_1925
+	}
+	aor_blimp_airframe = {
+		year = 1914
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = scout_plane
+		allowed_types = { scout_plane naval_bomber maritime_patrol_plane }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = airship
+		air_map_icon_frame = 10
+		interface_category = interface_category_air
+		interface_overview_category_index = 7
+		picture = archetype_strat_bomber_equipment
+		reliability = 0.64
+		air_superiority = 0.02
+		fuel_consumption = 0
+		manpower = 55
+		build_cost_ic = 12
+		resources = {
+			aluminium = 3
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { aor_airship_observation aor_airship_patrol aor_airship_patrol_weapon }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_blimp_engine }
+			}
+			aor_gas_slot = {
+				required = yes
+				allowed_module_categories = { aor_blimp_gas }
+			}
+			aor_structure_slot = {
+				required = yes
+				allowed_module_categories = { aor_blimp_structure }
+			}
+			aor_trim_slot = {
+				required = yes
+				allowed_module_categories = { aor_blimp_trim }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_blimp_engine_1
+			aor_gas_slot = aor_blimp_gas_1
+			aor_structure_slot = aor_blimp_structure_1
+			aor_trim_slot = aor_blimp_trim_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+		forbid_mission_type = { drop_nuke naval_kamikaze }
+			module_count_limit = { category = aor_airship_defence count < 2 }
+		module_count_limit = { category = aor_airship_sight count < 2 }
+		module_count_limit = { category = aor_airship_radio count < 2 }
+		module_count_limit = { category = aor_airship_tank count < 2 }
+		module_count_limit = { category = aor_blimp_gas count < 2 }
+		module_count_limit = { category = aor_blimp_structure count < 2 }
+		module_count_limit = { category = aor_blimp_trim count < 2 }
+	}
+	aor_blimp_airframe_1914 = {
+		year = 1914
+		archetype = aor_blimp_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1914"
+		maximum_speed = 60
+		air_range = 500
+		air_agility = 2
+		air_defence = 3
+		weight = 10
+	}
+	aor_blimp_airframe_1919 = {
+		year = 1919
+		archetype = aor_blimp_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1919"
+		maximum_speed = 70
+		air_range = 650
+		air_agility = 2.5
+		air_defence = 3.5
+		weight = 12
+		parent = aor_blimp_airframe_1914
+	}
+	aor_blimp_airframe_1927 = {
+		year = 1927
+		archetype = aor_blimp_airframe
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1927"
+		maximum_speed = 80
+		air_range = 850
+		air_agility = 3
+		air_defence = 4
+		weight = 14
+		parent = aor_blimp_airframe_1919
+	}
+	aor_blimp_airframe_1930 = {
+		year = 1930
+		archetype = aor_blimp_airframe
+		module_slots = inherit
+		priority = 4
+		abbreviation = "1930"
+		maximum_speed = 90
+		air_range = 1050
+		air_agility = 3.5
+		air_defence = 4.5
+		weight = 16
+		parent = aor_blimp_airframe_1927
+	}
+	aor_rigid_airframe = {
+		year = 1914
+		is_archetype = yes
+		is_convertable = yes
+		is_buildable = no
+		type = scout_plane
+		allowed_types = { scout_plane naval_bomber maritime_patrol_plane strategic_bomber }
+		allow_mission_type = { training }
+		group_by = archetype
+		sprite = airship
+		air_map_icon_frame = 10
+		interface_category = interface_category_air
+		interface_overview_category_index = 7
+		picture = archetype_strat_bomber_equipment
+		reliability = 0.64
+		air_superiority = 0.02
+		fuel_consumption = 0
+		manpower = 55
+		build_cost_ic = 55
+		resources = {
+			aluminium = 3
+			rubber = 1
+		}
+		module_slots = {
+			fixed_main_weapon_slot = {
+				required = yes
+				allowed_module_categories = { aor_airship_observation aor_airship_patrol aor_airship_patrol_weapon aor_airship_bomb }
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = { aor_rigid_engine }
+			}
+			aor_gas_slot = {
+				required = yes
+				allowed_module_categories = { aor_rigid_gas }
+			}
+			aor_structure_slot = {
+				required = yes
+				allowed_module_categories = { aor_rigid_structure }
+			}
+			aor_trim_slot = {
+				required = yes
+				allowed_module_categories = { aor_rigid_trim }
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = { aor_airship_defence aor_airship_sight aor_airship_radio aor_airship_tank }
+			}
+		}
+		default_modules = {
+			fixed_main_weapon_slot = empty
+			engine_type_slot = aor_rigid_engine_1
+			aor_gas_slot = aor_rigid_gas_1
+			aor_structure_slot = aor_rigid_structure_1
+			aor_trim_slot = aor_rigid_trim_1
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		type_override = fixed_main_weapon_slot
+		forbid_mission_type = { drop_nuke naval_kamikaze }
+			module_count_limit = { category = aor_airship_defence count < 2 }
+		module_count_limit = { category = aor_airship_sight count < 2 }
+		module_count_limit = { category = aor_airship_radio count < 2 }
+		module_count_limit = { category = aor_airship_tank count < 2 }
+		module_count_limit = { category = aor_rigid_gas count < 2 }
+		module_count_limit = { category = aor_rigid_structure count < 2 }
+		module_count_limit = { category = aor_rigid_trim count < 2 }
+	}
+	aor_rigid_airframe_1914 = {
+		year = 1914
+		archetype = aor_rigid_airframe
+		module_slots = inherit
+		priority = 1
+		abbreviation = "1914"
+		maximum_speed = 75
+		air_range = 1400
+		air_agility = 1
+		air_defence = 4
+		weight = 22
+	}
+	aor_rigid_airframe_1919 = {
+		year = 1919
+		archetype = aor_rigid_airframe
+		module_slots = inherit
+		priority = 2
+		abbreviation = "1919"
+		maximum_speed = 90
+		air_range = 1900
+		air_agility = 1.2
+		air_defence = 5
+		weight = 25
+		parent = aor_rigid_airframe_1914
+	}
+	aor_rigid_airframe_1925 = {
+		year = 1925
+		archetype = aor_rigid_airframe
+		module_slots = inherit
+		priority = 3
+		abbreviation = "1925"
+		maximum_speed = 105
+		air_range = 2600
+		air_agility = 1.4
+		air_defence = 6
+		weight = 28
+		parent = aor_rigid_airframe_1919
+	}
+	aor_rigid_airframe_1930 = {
+		year = 1930
+		archetype = aor_rigid_airframe
+		module_slots = inherit
+		priority = 4
+		abbreviation = "1930"
+		maximum_speed = 118
+		air_range = 3200
+		air_agility = 1.6
+		air_defence = 7
+		weight = 30
+		parent = aor_rigid_airframe_1925
+	}
+}

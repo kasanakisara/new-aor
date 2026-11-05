@@ -1,23 +1,51 @@
-﻿capital = 440
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+set_technology = {
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_small_1919 = 1
+	aor_air_torpedo_1914 = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1919"
+	type = small_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_gun_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
+capital = 440
 
 #oob = "PAK_1936"
 
 # Starting tech
 set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	tech_recon = 1
-	transport = 1
-	trench_warfare = 1
-	fleet_in_being = 1
-	CAS1 = 1
-	
+aor_inf_u01 = 1
+aor_inf_g01 = 1
+aor_inf_u02 = 1
+aor_inf_r01 = 1
+aor_inf_l00 = 1
+aor_inf_l01 = 1
+tech_support = 1
+tech_engineers = 1
+tech_recon = 1
+transport = 1
+trench_warfare = 1
+fleet_in_being = 1
+aor_air_small_1919 = 1
 }
 
 if = {
@@ -74,44 +102,37 @@ recruit_character = PAK_nt
 
 	
 	set_technology = {
-		
-	 
-	 
-		#doctrines
-		#Air
-		force_rotation = 1
-		fighter_baiting = 1
-		grand_battle_plan = 1
+force_rotation = 1
+fighter_baiting = 1
+grand_battle_plan = 1
+trench_warfare = 1
+prepared_defense = 1
+battlefleet_concentration = 1
+subsidiary_carrier_role = 1
+convoy_sailing = 1
+convoy_escorts = 1
+submarine_operations = 1
+electronic_mechanical_engineering = 1
+radio = 1
+radio_detection = 1
+decimetric_radar = 1
+mechanical_computing = 1
+computing_machine = 1
+basic_encryption = 1
+basic_decryption = 1
 
-		trench_warfare = 1
-		prepared_defense = 1
-		battlefleet_concentration = 1
-		subsidiary_carrier_role = 1
-		convoy_sailing = 1
-		convoy_escorts = 1
-		submarine_operations = 1
 
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		decimetric_radar = 1
-		mechanical_computing = 1
-		computing_machine = 1
-		basic_encryption = 1
-		basic_decryption = 1
 
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-		dispersed_industry3 = 1
-	}
+
+
+
+
+
+
+
+	basic_machine_tools = 1
+	construction1 = 1
+}
 }
 
 set_politics = {

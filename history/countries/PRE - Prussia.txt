@@ -1,3 +1,50 @@
+# AOR industry 1919 baseline; later tiers remain research choices.
+set_technology = {
+	fuel_refining = 1
+}
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+set_technology = {
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_medium_1914 = 1
+	aor_air_medium_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_small_1919 = 1
+	aor_air_torpedo_1914 = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1919"
+	type = small_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_gun_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准中型机体 1919"
+	type = medium_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_medium_bay_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
 capital = 64
 
 set_cosmetic_tag = PRE_1_Absolutism
@@ -13,33 +60,28 @@ recruit_character = PRE_Remus_von_Voilsch
 
 # Starting tech
 set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
+aor_inf_u01 = 1
+aor_inf_g01 = 1
+aor_inf_u02 = 1
+aor_inf_r01 = 1
+aor_inf_l00 = 1
+aor_inf_l01 = 1
+tech_recon = 1
+tech_support = 1
+tech_engineers = 1
+aor_inf_t01 = 1
+aor_air_medium_1919 = 1
+aor_air_small_1919 = 1
+mobile_warfare = 1
+trade_interdiction = 1
+formation_flying = 1
 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	
 
-	Old_howitzers = 1
-	aor_field_gun_1 = 1
-	interwar_antitank = 1
+
+
+Old_howitzers = 1
+aor_field_gun_1 = 1
+interwar_antitank = 1
 }
 if = {
 	limit = {
@@ -48,8 +90,8 @@ if = {
 		}
 	}
 	set_technology = {
- 
-	}
+
+}
 }
 if = {
 	limit = {
@@ -58,7 +100,8 @@ if = {
 		
 	}
 	set_technology = {
-	}
+
+}
 }
 
 if = {
@@ -66,8 +109,8 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		mtg_transport = 1
-	}
+mtg_transport = 1
+}
 }
 
 

@@ -1,0 +1,26 @@
+
+
+air_wings = {
+	### Vuzdushnite voiski -- Sofia (early purchases of GER Ar 65, He 51 fighters)
+	48 = {
+		medium_plane_airframe_1919 =  { owner = "BUL" creator = "SOV" amount = 36  version_name = "标准中型机体 1919" }	# 5-ta Aviatsiyata Grupa -- B.71 Jerva (SB-100-2M), MB.210 # 1-vo Aviatsiyata Grupa -- P.43 Chaika, MB.210
+		medium_plane_airframe_1914 =  { owner = "BUL" creator = "FRA" amount = 12  version_name = "标准中型机体 1914" }
+		small_plane_airframe_1919 =  { owner = "BUL" creator = "POL" version_name = "标准小型机体攻击型 1919" amount = 36 }
+		small_plane_airframe_1914 =  { owner = "BUL" creator = "POL" version_name = "标准小型机体 1914" amount = 36 }				# 6-ta Aviatsiyata Grupa -- PZL P.24
+		small_plane_airframe_1919 =  { owner = "BUL" amount = 72  version_name = "标准小型机体 1919" }				# 2-vo Aviatsiyata Grupa -- Avia B.534 Dogan
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1919
+			creator = "BUL version_name = "标准小型机体 1919" "
+		}
+		requested_factories = 1
+		progress = 0.55
+		efficiency = 100
+	}
+}
