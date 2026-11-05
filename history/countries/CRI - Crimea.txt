@@ -1,4 +1,4 @@
-﻿capital = 137 #Sevastopol, should really be Simferopol but that would require more states so Sevastopol will do
+capital = 137 #Sevastopol, should really be Simferopol but that would require more states so Sevastopol will do
 
 ##oob = "CRI_1936"
 
@@ -6,6 +6,11 @@ set_research_slots = 3
 
 # Starting tech
 set_technology = {
+		aor_armorcr_1919 = 1
+		aor_armorheavy_1919 = 1
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
 	aor_inf_u01 = 1
 	aor_inf_g01 = 1
 	aor_inf_u02 = 1
@@ -43,30 +48,16 @@ if = {
 	set_technology = {
 	}
 }
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		early_submarine = 1
-		basic_submarine = 1
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_heavy_cruiser = 1
-		early_battleship = 1
-		early_battlecruiser = 1
-		transport = 1
-	}
-}
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
 		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
+		tech_1919_ship_hull_submarine = 1
 		early_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
+		early_ship_hull_light_cruiser = 1
 		early_ship_hull_heavy = 1
 		mtg_transport = 1
 		basic_battery = 1

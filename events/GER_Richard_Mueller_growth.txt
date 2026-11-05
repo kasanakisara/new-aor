@@ -28,11 +28,14 @@ country_event = {
  }
  option = {
   name = AOR_GER_mueller_growth.2.a
-  if = {
-   limit = { NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred } }
-   set_country_flag = GER_Richard_Mueller_growth_transferred
-   retire_character = GER_Richard_Mueller_growth_cabinet_1
-   recruit_character = GER_Richard_Mueller_regular_cabinet
+  custom_effect_tooltip = AOR_GER_mueller_growth.2.effect_tt
+  hidden_effect = {
+   if = {
+    limit = { NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred } }
+    set_country_flag = GER_Richard_Mueller_growth_transferred
+    retire_character = GER_Richard_Mueller_growth_cabinet_1
+    recruit_character = GER_Richard_Mueller_regular_cabinet
+   }
   }
  }
 }

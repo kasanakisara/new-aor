@@ -2597,4 +2597,62 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 2500
 	}
+
+	aor_carrier_deck_20 = {
+		abbreviation = "sda"
+		category = aor_carrier_deck_20
+		gfx = ship_deck_space
+		add_equipment_type = capital_ship
+		add_stats = { carrier_size = 2 build_cost_ic = 950 }
+		multiply_stats = { naval_speed = -0.08 }
+		manpower = 350
+	}
+
+	aor_carrier_deck_30 = {
+		abbreviation = "sda"
+		category = aor_carrier_deck_30
+		gfx = ship_deck_space
+		add_equipment_type = capital_ship
+		add_stats = { carrier_size = 3 build_cost_ic = 1450 }
+		multiply_stats = { naval_speed = -0.08 }
+		manpower = 350
+	}
+
+	aor_ship_armor_bb_4 = {
+		abbreviation = "sde"
+		category = ship_heavy_armor
+		gfx = ship_armor_thick_3
+		parent = ship_armor_bb_3
+		multiply_stats = { build_cost_ic = 0.225 naval_speed = -0.12 max_strength = 0.18 }
+		add_stats = { armor_value = 46 naval_torpedo_damage_reduction_factor = 0.24 }
+		build_cost_resources = { steel = 2 chromium = 1 }
+	}
+
+	aor_ship_armor_bc_4 = {
+		abbreviation = "sdf"
+		category = ship_heavy_armor
+		gfx = ship_armor_3
+		parent = ship_armor_bc_3
+		multiply_stats = { build_cost_ic = 0.16 naval_speed = -0.11 max_strength = 0.16 }
+		add_stats = { armor_value = 37 naval_torpedo_damage_reduction_factor = 0.19 }
+		build_cost_resources = { steel = 1 chromium = 1 }
+	}
+
+	aor_ship_sonar_3 = {
+		abbreviation = "sso"
+		category = ship_sonar
+		gfx = ship_sonar_2
+		parent = ship_sonar_2
+		sfx = sfx_ui_sd_module_sonar
+		add_stats = { sub_detection = 14 build_cost_ic = 90 }
+	}
+
+	aor_ship_airplane_launcher_3 = {
+		abbreviation = "sap"
+		category = ship_airplane_launcher
+		gfx = ship_airplane_launcher_2
+		parent = ship_airplane_launcher_2
+		add_stats = { surface_detection = 13 sub_detection = 4 build_cost_ic = 210 }
+		multiply_stats = { naval_speed = -0.01 }
+	}
 }

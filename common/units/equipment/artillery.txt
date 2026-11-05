@@ -1,7 +1,7 @@
 equipments = {
 
 	artillery_equipment = {
-		year = 1914
+		year = 1900
 
 		is_archetype = yes
 		picture = archetype_artillery_equipment		
@@ -39,16 +39,10 @@ equipments = {
 		}
 	}
 
-	artillery_equipment_1 = {
-		year = 1934
-
-		archetype = artillery_equipment
-		priority = 50
-		visual_level = 0
-	}
+	artillery_equipment_1 = { year = 1919 archetype = artillery_equipment parent = artillery_equipment_0 priority = 50 visual_level = 0 }
 	
 	artillery_equipment_2 = {
-		year = 1920
+		year = 1923
 
 		archetype = artillery_equipment
 		parent = artillery_equipment_1
@@ -57,7 +51,6 @@ equipments = {
 
 		defense = 15
 		breakthrough = 8
-		soft_attack = 35
 
 		reliability = 0.8
 
@@ -75,7 +68,7 @@ equipments = {
 	}
 	
 	artillery_equipment_3 = {
-		year = 1925
+		year = 1930
 
 		archetype = artillery_equipment
 		parent = artillery_equipment_2
@@ -211,4 +204,9 @@ equipments = {
 		visual_level = 0
 	}
 	
+
+	artillery_equipment_0 = {
+        year = 1900 archetype = artillery_equipment priority = 40 visual_level = 0
+        soft_attack = 15 defense = 7 breakthrough = 3 build_cost_ic = 2.5
+    }
 }

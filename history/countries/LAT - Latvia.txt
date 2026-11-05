@@ -1,4 +1,4 @@
-﻿capital = 808
+capital = 808
 
 #oob = "LAT_1936"
 if = {
@@ -20,6 +20,10 @@ create_country_leader = {
 }
 
 set_technology = {
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
+		basic_battery = 1
 	aor_inf_u01 = 1
 	aor_inf_g01 = 1
 	aor_inf_u02 = 1
@@ -31,17 +35,11 @@ set_technology = {
 	tech_support = 1
 	basic_train = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_submarine = 1
-	}
-}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_torpedo = 1
-		submarine_mine_laying = 1
 		early_ship_hull_submarine = 1
 	}
 }

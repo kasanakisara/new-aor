@@ -1,10 +1,14 @@
-﻿capital = 804
+capital = 804
 
 set_research_slots = 3
 
 # Starting tech
 # clone of Yugoslavia
 set_technology = {
+		aor_armorcr_1919 = 1
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
 	aor_inf_u01 = 1
 	aor_inf_g01 = 1
 	aor_inf_u02 = 1
@@ -36,16 +40,7 @@ if = {
 	set_technology = {
 	}
 }
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_submarine = 1
-	}
-}
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
@@ -53,7 +48,7 @@ if = {
 	set_technology = {
 		early_ship_hull_submarine = 1
 		early_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
+		early_ship_hull_light_cruiser = 1
 		basic_battery = 1
 		basic_torpedo = 1
 	}

@@ -584,4 +584,49 @@ equipments = {
 		}		
 		manpower = 6000
 	}
+
+	aor_ship_hull_carrier_1927 = {
+		year = 1927
+		archetype = ship_hull_carrier
+		priority = 1000
+		module_slots = {
+			fixed_ship_deck_slot_1 = { required = yes allowed_module_categories = { aor_carrier_deck_20 } }
+			fixed_ship_engine_slot = { required = yes allowed_module_categories = { carrier_ship_engine } }
+			fixed_ship_anti_air_slot = { required = no allowed_module_categories = { ship_anti_air } }
+			fixed_ship_secondaries_slot = { required = no allowed_module_categories = { ship_secondaries } }
+		}
+		default_modules = { fixed_ship_deck_slot_1 = aor_carrier_deck_20 fixed_ship_engine_slot = carrier_ship_engine_1 }
+		carrier_size = 0
+		naval_speed = 20
+		naval_range = 2500
+		reliability = 0.70
+		max_strength = 260
+		fuel_consumption = 80
+		build_cost_ic = 2800
+		manpower = 2000
+		resources = { steel = 4 chromium = 1 }
+	}
+
+	aor_ship_hull_carrier_1930 = {
+		year = 1930
+		archetype = ship_hull_carrier
+		priority = 1000
+		parent = aor_ship_hull_carrier_1927
+		module_slots = {
+			fixed_ship_deck_slot_1 = { required = yes allowed_module_categories = { aor_carrier_deck_30 } }
+			fixed_ship_engine_slot = { required = yes allowed_module_categories = { carrier_ship_engine } }
+			fixed_ship_anti_air_slot = { required = no allowed_module_categories = { ship_anti_air } }
+			fixed_ship_secondaries_slot = { required = no allowed_module_categories = { ship_secondaries } }
+		}
+		default_modules = { fixed_ship_deck_slot_1 = aor_carrier_deck_30 fixed_ship_engine_slot = carrier_ship_engine_2 }
+		carrier_size = 0
+		naval_speed = 25
+		naval_range = 2500
+		reliability = 0.70
+		max_strength = 330
+		fuel_consumption = 110
+		build_cost_ic = 3900
+		manpower = 2000
+		resources = { steel = 4 chromium = 1 }
+	}
 }

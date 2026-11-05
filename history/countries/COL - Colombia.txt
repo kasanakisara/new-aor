@@ -1,4 +1,4 @@
-﻿capital = 306
+capital = 306
 
 #oob = "COL_1936"
 if = {
@@ -11,27 +11,27 @@ if = {
 
 # Starting tech
 set_technology = {
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
 	aor_inf_u01 = 1
 	aor_inf_r01 = 1
 	tech_support = 1		
 	tech_engineers = 1
- 
-	interwar_antiair = 1
- 
+
 	cv_early_fighter = 1
+
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	interwar_antitank = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-	early_destroyer = 1
-	}
-}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_naval_mines = 1
 		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
+		tech_1919_ship_hull_light = 1
 		basic_battery = 1
 		basic_torpedo = 1
 		basic_depth_charges = 1

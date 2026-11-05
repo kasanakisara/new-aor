@@ -798,109 +798,11 @@ technologies = {
 ############################### 
 
 
-	basic_fire_control_system = {
 
-		allow_branch = {
-			has_dlc = "Man the Guns"
-		}
 
-		enable_equipment_modules = { 
-			ship_fire_control_system_1
-		}
 
-		path = {
-			leads_to_tech = improved_fire_control_system
-		}
-		
-		research_cost = 1
 
-		start_year = 1918
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 4 }
-		}
-		
-		ai_will_do = {
-			factor = 0.75
 
-		}
-		
-		categories = {
-			electronics
-			computing_tech
-			naval_equipment
-		}
-	}
-
-	improved_fire_control_system = {
-
-		enable_equipment_modules = { 
-			ship_fire_control_system_2
-		}
-		
-		research_cost = 1
-		allow_branch = {
-			has_dlc = "Man the Guns"
-		}
-
-		start_year = 1920
-
-		path = {
-			leads_to_tech = advanced_fire_control_system
-			research_cost_coeff = 1
-		}
-
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 7 }
-		}
-		
-		ai_will_do = {
-			factor = 0.75
-
-		}
-		
-		categories = {
-			electronics
-			computing_tech
-			naval_equipment
-		}
-	}
-
-	advanced_fire_control_system = {
-
-		enable_equipment_modules = { 
-			ship_fire_control_system_3
-		}
-		allow_branch = {
-			has_dlc = "Man the Guns"
-		}
-		
-		research_cost = 1
-
-		start_year = 1925
-
-		path = {
-			leads_to_tech = modern_fire_control_system
-			research_cost_coeff = 1
-		}
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 10 }
-		}
-		
-		ai_will_do = {
-			factor = 0.75
-			
-		}
-		
-		categories = {
-			electronics
-			computing_tech
-			naval_equipment
-		}
-	}
 
 	modern_fire_control_system = {
 

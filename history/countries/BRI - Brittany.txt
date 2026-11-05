@@ -1,10 +1,15 @@
-﻿capital = 14
+capital = 14
 
 ##oob = ""
 
 set_research_slots = 3
 # Starting tech
 set_technology = {
+		aor_armorcr_1919 = 1
+		aor_armorheavy_1919 = 1
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
 	aor_inf_u01 = 1
 	aor_inf_g01 = 1
 	aor_inf_u02 = 1
@@ -15,12 +20,7 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
 
- 
- 
 	cv_early_fighter = 1
 	cv_naval_bomber1 = 1
  
@@ -31,6 +31,10 @@ set_technology = {
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
+
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	interwar_antitank = 1
 }
 
 if = {
@@ -52,43 +56,24 @@ if = {
 	set_technology = {
 	}
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-		set_technology = {
-		early_submarine = 1
-		basic_submarine = 1
-		early_destroyer = 1
-		basic_destroyer = 1
-		early_light_cruiser = 1
-		basic_light_cruiser = 1
-		early_heavy_cruiser = 1
-		basic_heavy_cruiser = 1
-		early_battleship = 1
-		early_battlecruiser = 1
-		basic_battlecruiser = 1
-		early_carrier = 1
-		transport = 1
-	}
-}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_naval_mines = 1
-		submarine_mine_laying = 1
 		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
+		tech_1919_ship_hull_light = 1
 		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_cruiser = 1
+		tech_1919_ship_hull_submarine = 1
+		early_ship_hull_light_cruiser = 1
 		early_ship_hull_heavy = 1
-		basic_ship_hull_heavy = 1
-		early_ship_hull_carrier = 1
+		tech_1919_ship_hull_heavy = 1
 		basic_battery = 1
-		basic_light_battery = 1
-		basic_medium_battery = 1
+		aor_lightgun_1919 = 1
+		aor_mediumgun_1919 = 1
 		basic_torpedo = 1
 		basic_depth_charges = 1
-		basic_secondary_battery = 1
+		aor_secondary_1919 = 1
 		basic_heavy_armor_scheme = 1
 		mtg_transport = 1
 	}

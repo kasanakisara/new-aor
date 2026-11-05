@@ -134,7 +134,7 @@ equipments = {
 	}
 
 	light_cruiser_1 = {
-		year = 1922
+		year = 1914
 		visual_level = 0
 		archetype = ship_hull_cruiser
 		priority = 1900
@@ -183,7 +183,7 @@ equipments = {
 	}
 
 	light_cruiser_2 = {
-		year = 1936
+		year = 1919
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1900
@@ -232,7 +232,7 @@ equipments = {
 		manpower = 800
 	}
 	light_cruiser_3 = {
-		year = 1940
+		year = 1923
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1900
@@ -284,7 +284,7 @@ equipments = {
 	}
 	
 	light_cruiser_4 = {
-		year = 1944
+		year = 1930
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1900
@@ -337,7 +337,7 @@ equipments = {
 	}
 
 	heavy_cruiser_1 = {
-		year = 1922
+		year = 1914
 		visual_level = 0
 		type = capital_ship
 		archetype = ship_hull_cruiser
@@ -503,7 +503,7 @@ equipments = {
 	}
 	
 	heavy_cruiser_2 = {
-		year = 1936
+		year = 1919
 		visual_level = 2
 		archetype = ship_hull_cruiser
 		priority = 1800
@@ -552,7 +552,7 @@ equipments = {
 	}
 	
 	heavy_cruiser_3 = {
-		year = 1940
+		year = 1923
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1800
@@ -934,5 +934,56 @@ equipments = {
 			fixed_ship_battery_slot = empty
 			fixed_ship_secondaries_slot = empty
 		}
+	}
+
+
+	aor_heavy_cruiser_4 = {
+		year = 1930
+		visual_level = 1
+		archetype = ship_hull_cruiser
+		priority = 1800
+		parent = heavy_cruiser_3
+		module_slots = inherit
+		default_modules = {
+			fixed_ship_battery_slot = ship_medium_battery_3
+			fixed_ship_anti_air_slot = ship_anti_air_4
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_secondaries_2
+			mid_2_custom_slot = ship_anti_air_4
+			rear_1_custom_slot = ship_medium_battery_3
+			rear_2_custom_slot = ship_anti_air_4
+		}
+		hg_armor_piercing = 0
+		hg_attack = 0
+		lg_armor_piercing = 0
+		lg_attack = 0
+		torpedo_attack = 0
+		
+		anti_air_attack = 0
+		
+		armor_value = 12
+
+		
+		surface_detection = 25
+		sub_detection = 5
+		surface_visibility = 15
+		naval_speed = 30
+		reliability = 0.90
+
+		naval_range = 4500
+		
+		max_strength = 220
+		
+
+
+		build_cost_ic = 3200
+		resources = {
+			#oil = 2
+			steel = 4
+		}		
+		manpower = 1900
 	}
 }

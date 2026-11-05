@@ -52,22 +52,20 @@ create_country_leader = {
 
 # Starting tech
 set_technology = {
+		aor_armorcr_1919 = 1
+		aor_aa_1919 = 1
+		aor_fcs_1914 = 1
+		aor_engine_1914 = 1
 	aor_inf_u01 = 1
 	aor_inf_r01 = 1
- 
-	interwar_antiair = 1
- 
+
 	CAS1 = 1
+
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	interwar_antitank = 1
 }
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_submarine = 1
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_heavy_cruiser = 1
-	}
-}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
@@ -136,21 +134,20 @@ set_convoys = 15
 		construction2 = 1
 		dispersed_industry = 1
 		dispersed_industry2 = 1
-	}
-	if = {
-		limit = { not = { has_dlc = "Man the Guns" } }
-		set_technology = {
-			basic_submarine = 1
-			basic_heavy_cruiser = 1
-		}
-	}
+	
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	aor_howitzer_1 = 1
+	interwar_antitank = 1
+}
+	
 	if = {
 		limit = { has_dlc = "Man the Guns" }
 		set_technology = {
 			early_ship_hull_submarine = 1
-			basic_ship_hull_submarine = 1
-			early_ship_hull_cruiser = 1
-			basic_medium_battery = 1
+			tech_1919_ship_hull_submarine = 1
+			early_ship_hull_light_cruiser = 1
+			aor_mediumgun_1919 = 1
 		}
 	}
 }
