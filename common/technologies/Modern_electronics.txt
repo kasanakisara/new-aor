@@ -1,10 +1,10 @@
-# AOR engineering revision. Gas definitions below are preserved verbatim.
+# AOR engineering revision. Gas_Preparation also unlocks the chemical support company.
 technologies = {
 	aor_basic_science_1900 = {
 		research_speed_factor = 0.06
 		path = { leads_to_tech = aor_basic_science_1920 research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { aor_basic_science }
 		ai_will_do = { factor = 6 }
@@ -58,7 +58,7 @@ technologies = {
 		coordination_bonus = 0.01
 		path = { leads_to_tech = Modern_electronics2 research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { electronics }
 		ai_will_do = { factor = 3 }
@@ -130,7 +130,7 @@ technologies = {
 		path = { leads_to_tech = Classic_optics2 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_artillery_optics_1920 research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 1 y = 0 } }
 		categories = { electronics }
 		ai_will_do = { factor = 2 }
@@ -230,7 +230,7 @@ technologies = {
 		air_mission_efficiency = 0.02
 		path = { leads_to_tech = Hot_air_balloon_reconnaissance research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { Hot_air_balloon_tech }
 		ai_will_do = { factor = 2 }
@@ -331,229 +331,22 @@ technologies = {
 		ai_will_do = { factor = 1 }
 	}
 
-Gas_Preparation = {
-		path = {
-			leads_to_tech = Gas_Preparation1 
-			research_cost_coeff = 1
-		}	
-		path = {
-			leads_to_tech = Gas_Preparation2 
-			research_cost_coeff = 1
-		}	
-		path = {
-			leads_to_tech = Gas_Preparation3
-			research_cost_coeff = 1
-		}
-		research_cost = 0.7
-		start_year = 1915
-        custom_modifier_tooltip = unlock_Gas_Preparation
-		folder = {
-			name = electronics_folder
-			position = { x = 2 y = 0 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation1 = {
-		path = {
-			leads_to_tech = Gas_Preparation5
-			research_cost_coeff = 1
-		}
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
-		research_cost = 0.7
-		start_year = 1921
 
-		folder = {
-			name = electronics_folder
-			position = { x = 2 y = 2 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation2 = {
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
-		path = {
-			leads_to_tech = Gas_Preparation4
-			research_cost_coeff = 1
-		}
-		research_cost = 0.7
-		start_year = 1922
 
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 4 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation3 = {
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
-		path = {
-			leads_to_tech = Gas_Preparation6
-			research_cost_coeff = 1
-		}
-		research_cost = 0.7
-		start_year = 1922
 
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 4 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation4 = {
-		
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
-		research_cost = 0.7
-		start_year = 1924
 
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 6 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation5 = {
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
 
-		research_cost = 0.7
-		start_year = 1925
 
-		folder = {
-			name = electronics_folder
-			position = { x = 2 y = 8 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_Preparation6 = {
-		infantry = {
-			breakthrough = 0.05
-			soft_attack = 0.01
-		}
 
-		research_cost = 0.7
-		start_year = 1924
 
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 6 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		} 
-	}
-Gas_mask = {
-		infantry = {
-			casualty_trickleback = 0.05
-			defence = 0.03
-		}
-		path = {
-			leads_to_tech = Gas_mask1
-			research_cost_coeff = 1
-		}
-		research_cost = 0.7
-		start_year = 1920
 
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 0 }
-		}
-		custom_modifier_tooltip = unlock_Gas
-		ai_will_do = {
-			factor = 30
-		}
-		
-		categories = {
-			Gas_bombs
-		}
-	}
-Gas_mask1 = {
-		infantry = {
-			casualty_trickleback = 0.05
-			defence = 0.03
-		}
-		research_cost = 0.7
-		start_year = 1920
-
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 2 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-		}  
-		
-		categories = {
-			Gas_bombs
-		}
-	}
 
 	aor_encryption_1900 = {
 		encryption = 1
 		allow_branch = { NOT = { has_dlc = "La Resistance" } }
 		path = { leads_to_tech = aor_encryption_1923 research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { electronics encryption_tech }
 		ai_will_do = { factor = 1 }
@@ -564,7 +357,7 @@ Gas_mask1 = {
 		allow_branch = { NOT = { has_dlc = "La Resistance" } }
 		path = { leads_to_tech = aor_decryption_1923 research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { electronics decryption_tech }
 		ai_will_do = { factor = 1 }
@@ -575,7 +368,7 @@ Gas_mask1 = {
 		allow_branch = { has_dlc = "La Resistance" }
 		path = { leads_to_tech = aor_encryption_1923_lar research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { electronics encryption_tech }
 		ai_will_do = { factor = 1 }
@@ -586,9 +379,145 @@ Gas_mask1 = {
 		allow_branch = { has_dlc = "La Resistance" }
 		path = { leads_to_tech = aor_decryption_1923_lar research_cost_coeff = 1 }
 		research_cost = 0.545455
-		start_year = 1900
+		start_year = 1914
 		folder = { name = electronics_folder position = { x = 0 y = 0 } }
 		categories = { electronics decryption_tech }
 		ai_will_do = { factor = 1 }
 	}
+
+
+
+
+
+
+
+# AOR: independent gas/mask roots; shared native paths, with an explicit native research gate.
+Gas_Preparation = {
+	enable_subunits = { aor_chemical_support }
+	path = { leads_to_tech = aor_gas_1920 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1914
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation_tt
+	folder = { name = electronics_folder position = { x = 0 y = 0 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_mask = {
+	path = { leads_to_tech = aor_gas_mask_1920 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1914
+	custom_modifier_tooltip = aor_chemical_Gas_mask_tt
+	folder = { name = electronics_folder position = { x = 4 y = 0 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_Preparation1 = {
+	path = { leads_to_tech = Gas_Preparation2 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation1_tt
+	folder = { name = electronics_folder position = { x = 0 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_mask1 = {
+	path = { leads_to_tech = aor_gas_mask_3 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_chemical_Gas_mask1_tt
+	folder = { name = electronics_folder position = { x = 4 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_Preparation2 = {
+	path = { leads_to_tech = Gas_Preparation3 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1925
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation2_tt
+	folder = { name = electronics_folder position = { x = 0 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+aor_gas_mask_3 = {
+	path = { leads_to_tech = aor_gas_mask_4 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1925
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_3_tt
+	folder = { name = electronics_folder position = { x = 4 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_Preparation3 = {
+	path = { leads_to_tech = Gas_Preparation4 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1928
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation3_tt
+	folder = { name = electronics_folder position = { x = 0 y = 8 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+aor_gas_mask_4 = {
+	path = { leads_to_tech = aor_gas_mask_5 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1928
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_4_tt
+	folder = { name = electronics_folder position = { x = 4 y = 8 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_Preparation4 = {
+	research_cost = 0.7
+	start_year = 1930
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation4_tt
+	folder = { name = electronics_folder position = { x = 0 y = 10 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+aor_gas_mask_5 = {
+	research_cost = 0.7
+	start_year = 1930
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_5_tt
+	folder = { name = electronics_folder position = { x = 4 y = 10 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+Gas_Preparation5 = {
+	allow = { has_tech = aor_gas_1920 has_tech = aor_gas_mask_1920 }
+	path = { leads_to_tech = Gas_Preparation6 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_plan_Gas_Preparation5
+	folder = { name = electronics_folder position = { x = 2 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 0 }
+}
+Gas_Preparation6 = {
+	research_cost = 0.7
+	start_year = 1925
+	custom_modifier_tooltip = aor_plan_Gas_Preparation6
+	folder = { name = electronics_folder position = { x = 2 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 0 }
+}
+
+aor_gas_1920 = {
+	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
+	path = { leads_to_tech = Gas_Preparation1 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1920
+	custom_modifier_tooltip = aor_chemical_aor_gas_1920_tt
+	folder = { name = electronics_folder position = { x = 0 y = 2 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
+aor_gas_mask_1920 = {
+	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
+	path = { leads_to_tech = Gas_mask1 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1920
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_1920_tt
+	folder = { name = electronics_folder position = { x = 4 y = 2 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+}
 }

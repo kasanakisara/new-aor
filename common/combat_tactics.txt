@@ -8,7 +8,7 @@ phases = { # phase = no is the standard phase
 	tactical_withdrawal
 	seize_bridge
 	hold_bridge
-    chemical_warfare
+	chemical_warfare
 }
 
 tactic_basic_attack = {
@@ -35,12 +35,9 @@ tactic_basic_defend = {
 		is_attacker = no
 		phase = no
 	}
-	
 	active = yes
-	
-	base =  { factor = 4 }
+	base = { factor = 4 }
 	picture = defend
-	
 	defender = 0.05
 }
 
@@ -916,140 +913,17 @@ tactic_masterful_blitz = {
 	defender = -0.2
 }
 
-tactic_prepare_gas_attack = {
 
-	is_attacker = yes
-	trigger = {
-		is_attacker = yes
-		phase = no
-		OWNER = { 
-			has_tech = Gas_Preparation
-		}
-	}
 
-	active = no
 
-	base = { factor = 1.3 }
-	picture = prepare_gas_attack
-	countered_by = tactic_tactical_withdrawal
-	countered_by = tactic_ambush
-
-    phase = chemical_warfare
-	display_phase = chemical_warfare
-
-	combat_width = -0.25
-	attacker_movement_speed = -0.25
-}
-
-tactic_gas_retreat = {
-
-        is_attacker = no
-        trigger = {
-		is_attacker = no
-		phase = chemical_warfare
-		OWNER = { 
-			land_doctrine_level < 9
-			has_tech = Gas_Preparation
-		}
-        }
-
-	active = yes
-
-	base = { factor = 2 }
-	picture = gas_retreat
-
-	display_phase = chemical_warfare
-
-	combat_width = -0.25
-        attacker = 0.35 
-        defender = -0.5
-	attacker_movement_speed = 0.5
-}
         
 
-tactic_gas_attack = {
-
-	is_attacker = yes
-	trigger = { # combined scope for both country and combatant
-		is_attacker = yes
-		phase = chemical_warfare
-		OWNER = { 
-			has_tech = Gas_Preparation
-		}
-		
-	}
-	
-	active = yes
-
-	base =  { factor = 2 }
-	picture = gas_attack
-
-        countered_by = tactic_gas_charge
-
-        display_phase = chemical_warfare
-
-	attacker = 0.35
-        defender = -0.15
-        attacker_movement_speed = -0.25
-	combat_width = -0.25
-}
 
 
-tactic_gas_mask = {
 
-	is_attacker = no
-	trigger = {
-		is_attacker = no
-		phase = chemical_warfare
-        OWNER = { 
-			has_tech = Gas_mask
-			land_doctrine_level > 9 
-		}
-		
-		
-	}
 
-	base =  { factor = 3 }
-	picture = gas_mask
-	
-	countered_by = tactic_basic_attack
 
-	attacker = -0.25
-        defender = 0.05
 
-        display_phase = chemical_warfare
-
-}
-
-tactic_gas_mask_charge = {
-
-	is_attacker = no
-	trigger = {
-		is_attacker = no
-		phase = chemical_warfare
-                frontage_full = yes
-                OWNER = { 
-					land_doctrine_level > 10 
-					has_tech = Gas_Preparation
-				}
-	}
-	
-	active = yes
-
-	base =  { factor = 3 }
-	picture = gas_mask_charge
-	
-	countered_by = tactic_overwhelming_fire
-        countered_by = tactic_barrage
-
-	attacker = 0.15
-        defender = 0.35
-        attacker_movement_speed = -0.25
-        combat_width = -0.5
- 
-        display_phase = chemical_warfare
-
-}
 
 tactic_urban_defense = { 
 	is_attacker = no
@@ -1250,4 +1124,343 @@ tactic_sf_ambush = { #countered by mouse holing
 	
 	defender = 0.25
 	attacker_org_damage_modifier = -0.10
+}
+# AOR chemical phase adapted from Workshop 3365515312.
+tactic_prepare_gas_attack = {
+
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = no
+		OWNER = {
+			has_tech = Gas_Preparation 
+		}
+		has_unit_type = aor_chemical_support
+		NOT = { is_fighting_in_terrain = urban }
+	}
+
+	active = yes
+
+	base = { factor = 7 }
+	picture = prepare_gas_attack
+	countered_by = tactic_tactical_withdrawal
+
+    phase = chemical_warfare
+	display_phase = chemical_warfare
+
+	attacker = 0
+	defender = 0.05
+	attacker_movement_speed = -0.25
+}
+
+tactic_gas_dispersion = { 
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+	}
+	
+	active = yes
+	
+	base =  { 
+		factor = 0.5
+		modifier = {
+			factor = 0.5 #no i wont stop
+			has_trait = aggressive_assaulter
+		}
+		modifier = {
+			factor = 2 #**giggles im in danger**
+			skill_advantage < 0
+		}
+	}
+	picture = gas_retreat
+	display_phase = chemical_warfare
+
+	phase = no 
+	
+	attacker = 0
+	attacker_movement_speed = -0.25
+}
+
+tactic_gas_retreat = {
+
+	is_attacker = no
+	trigger = {
+		is_attacker = no
+		phase = chemical_warfare
+		OWNER = {
+			NOT = {
+				has_tech = Gas_mask
+			}
+		}
+	}
+
+	active = yes
+
+	base = { 
+		factor = 1 
+		modifier = {
+			skill > 1
+			factor = 0.5
+		}
+		modifier = {
+			skill > 2
+			factor = 0.25
+		}
+		modifier = {
+			skill > 3
+			factor = 0.1
+		}
+	}
+	picture = gas_retreat
+
+	display_phase = chemical_warfare
+
+	attacker = 0.35 
+	defender = -0.5
+	attacker_movement_speed = 0.5
+}
+
+tactic_handmade_gas_masks = {
+
+	is_attacker = no
+	trigger = {
+		is_attacker = no
+		phase = chemical_warfare
+		OWNER = {
+			NOT = {
+				has_tech = Gas_mask
+			}
+		}
+	}
+
+	active = yes
+
+	base = { 
+		factor = 1
+		modifier = {
+			skill_advantage > 0 #commander is skilled
+			skill > 2
+			factor = 2
+		}
+		modifier = {
+			OR = {
+				skill_advantage > 1 #commander is very skilled
+				skill > 3
+			}
+			factor = 4
+		}
+	}
+	picture = gas_retreat
+
+	display_phase = chemical_warfare
+
+	attacker = 0.3
+	defender = -0.3
+	attacker_movement_speed = 0.25
+}
+
+tactic_gas_masks_retreat = {
+
+	is_attacker = no
+	trigger = {
+		is_attacker = no
+		phase = chemical_warfare
+		OWNER = {
+			has_tech = Gas_mask
+		}
+	}
+
+	active = yes
+
+	base = {
+		factor = 1
+		modifier = {
+			factor = 1
+			OWNER = { has_tech = aor_gas_mask_1920 NOT = { OR = { has_tech = Gas_mask1 has_tech = aor_gas_mask_3 has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 1
+			OWNER = { has_tech = Gas_mask1 NOT = { OR = { has_tech = aor_gas_mask_3 has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 1
+			OWNER = { has_tech = aor_gas_mask_3 NOT = { OR = { has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 1
+			OWNER = { has_tech = aor_gas_mask_4 NOT = { OR = { has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 0.5
+			OWNER = { has_tech = aor_gas_mask_5 }
+		}
+	}
+	picture = gas_retreat
+
+	display_phase = chemical_warfare
+
+	attacker = 0.05 
+	defender = -0.25
+	attacker_movement_speed = 0.25
+}
+
+tactic_gas_mask = {
+
+	is_attacker = no
+	trigger = {
+		is_attacker = no
+		phase = chemical_warfare
+		OWNER = {
+			has_tech = Gas_mask
+		}
+	}
+
+	active = yes
+
+	base = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			OWNER = { has_tech = aor_gas_mask_1920 NOT = { OR = { has_tech = Gas_mask1 has_tech = aor_gas_mask_3 has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 2
+			OWNER = { has_tech = Gas_mask1 NOT = { OR = { has_tech = aor_gas_mask_3 has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 4
+			OWNER = { has_tech = aor_gas_mask_3 NOT = { OR = { has_tech = aor_gas_mask_4 has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 8
+			OWNER = { has_tech = aor_gas_mask_4 NOT = { OR = { has_tech = aor_gas_mask_5 } } }
+		}
+		modifier = {
+			factor = 16
+			OWNER = { has_tech = aor_gas_mask_5 }
+		}
+	}
+	picture = gas_mask
+
+	display_phase = chemical_warfare
+
+	defender = -0.2
+}
+
+tactic_gas_attack = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = Gas_Preparation NOT = { OR = { has_tech = aor_gas_1920 has_tech = Gas_Preparation1 has_tech = Gas_Preparation2 has_tech = Gas_Preparation3 has_tech = Gas_Preparation4 } } }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.1
+	attacker_org_damage_modifier = 0.05
+	attacker_movement_speed = -0.5
+}
+
+tactic_aor_gas_attack_2 = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = Gas_Preparation1 NOT = { OR = { has_tech = Gas_Preparation2 has_tech = Gas_Preparation3 has_tech = Gas_Preparation4 } } }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.15
+	attacker_org_damage_modifier = 0.05
+	defender_org_damage_modifier = 0.05
+	attacker_movement_speed = -0.5
+}
+
+tactic_aor_gas_attack_3 = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = Gas_Preparation2 NOT = { OR = { has_tech = Gas_Preparation3 has_tech = Gas_Preparation4 } } }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.2
+	attacker_org_damage_modifier = 0.1
+	defender_org_damage_modifier = 0.1
+}
+
+tactic_aor_gas_attack_4 = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = Gas_Preparation3 NOT = { OR = { has_tech = Gas_Preparation4 } } }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.225
+	attacker_org_damage_modifier = 0.125
+	defender_org_damage_modifier = 0.125
+}
+
+tactic_aor_gas_attack_5 = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = Gas_Preparation4 }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.25
+	attacker_org_damage_modifier = 0.15
+	defender_org_damage_modifier = 0.15
+}
+
+
+tactic_aor_gas_attack_1920 = {
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = chemical_warfare
+		has_unit_type = aor_chemical_support
+		OWNER = { has_tech = aor_gas_1920 NOT = { OR = { has_tech = Gas_Preparation1 has_tech = Gas_Preparation2 has_tech = Gas_Preparation3 has_tech = Gas_Preparation4 } } }
+	}
+	active = yes
+	base = { factor = 4 }
+	picture = gas_attack
+	countered_by = tactic_gas_mask
+	phase = chemical_warfare
+	display_phase = chemical_warfare
+	attacker = 0.125
+	attacker_org_damage_modifier = 0.05
+	defender_org_damage_modifier = 0.025
+	attacker_movement_speed = -0.5
 }
