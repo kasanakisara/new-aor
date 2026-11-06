@@ -1,0 +1,17 @@
+scripted_gui = {
+    aor_chemical_locked_gui = {
+        context_type = player_context
+        window_name = "aor_chemical_locked_window"
+        parent_window_name = "abilitylist_window_instance"
+        visible = {
+            NOT = { aor_chemical_authorization_country_ready = yes }
+        }
+        effects = {
+            aor_chemical_locked_button_click = { }
+        }
+        triggers = {
+            aor_chemical_locked_button_click_enabled = { always = no }
+        }
+        ai_enabled = { always = no }
+    }
+}

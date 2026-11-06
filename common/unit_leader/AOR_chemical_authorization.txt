@@ -1,0 +1,22 @@
+leader_traits = {
+    aor_chemical_authorized = {
+        type = land
+        trait_type = status_trait
+        show_in_combat = yes
+        override_effect_tooltip = AOR_CHEMICAL_AUTHORIZED_EFFECTS_TT
+        # Native division filter, also used by vanilla engineer/irregular officers.
+        # The entire DIVISION gains these modifiers, not merely the support company.
+        unit_trigger = {
+            division_has_battalion_in_template = aor_chemical_support
+        }
+        modifier = {
+            offence = 0.40
+            breakthrough_factor = 0.50
+            str_damage_multiplier = 0.10
+        }
+        # Never randomly generated, earned, or bought in the trait tree.
+        gain_xp = { always = no }
+        new_commander_weight = { factor = 0 }
+        ai_will_do = { factor = 0 }
+    }
+}

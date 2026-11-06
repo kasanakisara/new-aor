@@ -1,0 +1,54 @@
+# AOR: fixed resource cost paid once; native ability cost is per battalion.
+ability = {
+    aor_chemical_authorization = {
+        name = AOR_ABILITY_CHEMICAL_AUTHORIZATION
+        desc = AOR_ABILITY_CHEMICAL_AUTHORIZATION_DESC
+        icon = GFX_ability_force_attack
+        sound_effect = command_power_ability_offensive
+        type = army_leader
+        allowed = {
+            is_leading_army_group = no
+            is_border_war = no
+            num_units > 0
+            OWNER = {
+                aor_chemical_authorization_country_ready = yes
+            }
+        }
+        # No army-wide unit_modifiers: ALL combat effects belong to the filtered trait.
+        cost = 0
+        duration = 168
+        cooldown = 168
+        cancelable = no
+        one_time_effect = {
+            # Effect tooltips are part of the immediate native hover popup.
+            # desc is an extended/delayed popup and must not hold the main text.
+            custom_effect_tooltip = AOR_CHEMICAL_READY_TOOLTIP
+            hidden_effect = {
+            # Recheck at execution to prevent concurrent orders overspending stockpiles.
+            if = {
+                limit = {
+                    NOT = { has_trait = aor_chemical_authorized }
+                    OWNER = {
+                        aor_chemical_authorization_country_ready = yes
+                    }
+                }
+                OWNER = {
+                    add_command_power = -30
+                    add_political_power = -50
+                    add_stability = -0.02
+                    add_equipment_to_stockpile = {
+                        type = support_equipment
+                        amount = -100
+                    }
+                }
+                add_timed_unit_leader_trait = {
+                    trait = aor_chemical_authorized
+                    days = 7
+                }
+            }
+            }
+        }
+        # This is an explicitly player-authorized expenditure.
+        ai_will_do = { factor = 0 }
+    }
+}
