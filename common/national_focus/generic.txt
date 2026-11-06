@@ -972,7 +972,7 @@ focus_tree = {
 			factor = 3
 			modifier = {
 				factor = 0
-				date < 1939.1.1
+				always = yes
 				OR = { 
 					# we dont want chinese minors to go crazy on slots early since they get eaten
 					tag = GXC 
@@ -1628,35 +1628,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = nuclear_effort
-		icon = GFX_focus_wonderweapons
-		prerequisite = { focus = infrastructure_effort_2 }
-		x = -2
-		y = 1
-		relative_position_id = infrastructure_effort_2
-		cost = 10
-		
-		search_filters = { FOCUS_FILTER_RESEARCH } 
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = nuclear_bonus
-				ahead_reduction = 2
-				category = nuclear
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0.25
-				always = yes
-			}
-		}
-	}
+	
 
 	focus = {
 		id = extra_tech_slot
@@ -1718,7 +1690,7 @@ focus_tree = {
 				bonus = 1.0
 				uses = 4
 				category = electronics
-				category = nuclear
+				
 				category = rocketry
 			}
 		}

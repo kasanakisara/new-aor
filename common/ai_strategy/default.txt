@@ -440,7 +440,7 @@ bba_support_boosts = {
 
 	enable = {
 		is_historical_focus_on = yes
-		date < 1939.1.1
+		always = yes
 	}
 	abort_when_not_enabled = yes
 
@@ -1512,7 +1512,7 @@ minors_dont_spy = {
 ### SPECIAL PROJECT STRATEGIES
 default_build_a_nl_facility = {
 	enable = {
-		has_tech = atomic_research
+		always = no
 		num_of_civilian_factories > 25
 		num_of_military_factories > 25 # Even if we have the base tech, let's wait until we have some kind of capacity
 		nuclear_facility < 1  # one is enough
@@ -1552,7 +1552,7 @@ default_build_a_nav_facility = {
 default_build_a_gun_emplacement = {
 	enable = {
 		is_major = yes
-		has_tech = land_multi_charge_large_caliber_gun_tech
+		always = no
 		num_of_military_factories > 50
 		mega_gun_emplacement < 1
 		NOT = {
@@ -1783,20 +1783,7 @@ default_recruit_land_scientist = {
 	}
 }
 
-default_recruit_nuclear_scientist = {
-	enable = {
-		OR = {
-			can_assign_supportive_scientist_to_faction = specialization_nuclear
-			nuclear_facility > 0
-		}
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = recruit_scientist
-		id = specialization_nuclear
-		value = 100
-	}
-}
+
 
 default_recruit_naval_scientist = {
 	enable = {
@@ -2004,15 +1991,4 @@ if_we_can_build_sams_we_want_sams = {
 		value = 1
 	}
 }
-if_we_can_build_nuclear_missiles_we_want_nuclear_missiles = {
-	enable = {
-		is_special_project_completed = sp:sp_nuclear_warheads
-	}
-	abort_when_not_enabled = yes
 
-	ai_strategy = {
-		type = equipment_production_min_factories_archetype
-		id = nuclear_missile_equipment
-		value = 1
-	}
-}

@@ -122,90 +122,7 @@ recruit_character = USB_leon_degrelle
 recruit_character = USB_jules_iserentant
 
 
-1939.1.1 = {
 
-	add_political_power = 1199
-	add_command_power = 100
-	
-	#adding ministers
-	add_ideas = {
-		army_ordnance_department
-		general_electric
-		USA_prepare_intervention
-
-		#laws
-		isolation
-		volunteer_only
-
-		new_deal
-	}
-
-	#focuses
-
-	#oob = "USA_1939"
-	set_technology = {
-aor_air_small_1919 = 1
-aor_air_medium_1919 = 1
-aor_air_medium_1919 = 1
-aor_air_small_1919 = 1
-interwar_artillery = 1
-interwar_antitank = 1
-aor_inf_l05 = 1
-aor_inf_l03 = 1
-aor_inf_l01 = 1
-aor_inf_m01 = 1
-air_superiority = 1
-infrastructure_destruction = 1
-naval_strike_tactics = 1
-sup_delay = 1
-submarine_operations_bs = 1
-carrier_primacy = 1
-electronic_mechanical_engineering = 1
-radio = 1
-radio_detection = 1
-mechanical_computing = 1
-computing_machine = 1
-basic_encryption = 1
-basic_decryption = 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-Old_howitzers = 1
-aor_field_gun_1 = 1
-aor_howitzer_1 = 1
-
-	basic_machine_tools = 1
-	construction1 = 1
-	fuel_refining = 1
-}
-	if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-
-}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-
-}
-}
-	
-}
 
 
 
@@ -232,14 +149,7 @@ add_ideas = {
 	neutrality_idea
 }
 
-1939.1.1 = {
-	set_politics = {
-		ruling_party = Absolutism
-		last_election = "1936.11.3"
-		election_frequency = 48
-		elections_allowed = yes
-	}
-}
+
 
 
 
@@ -327,53 +237,3 @@ create_equipment_variant = {
 
 }
 
-1939.1.1 = {
-	
-	create_equipment_variant = {
-		name = "Salmon Class"
-		type = submarine_2
-		upgrades = {
-			ship_reliability_upgrade = 1
-			sub_engine_upgrade = 1
-			sub_stealth_upgrade = 1
-			sub_torpedo_upgrade = 1
-		}
-	}
-
-	create_equipment_variant = {
-		name = "Benson & Gleaves Class"
-		type = destroyer_2
-		upgrades = {
-			ship_torpedo_upgrade = 3
-			destroyer_engine_upgrade = 3
-			ship_ASW_upgrade = 3
-			ship_anti_air_upgrade = 3
-		}
-	}
-
-	create_equipment_variant = {
-		name = "Wasp Class"
-		type = carrier_2
-		upgrades = {
-			ship_deckspace_upgrade = 2
-			carrier_armor_upgrade = 2
-			ship_engine_upgrade = 2
-			ship_reliability_upgrade = 2
-		}
-	}
-
-	
-
-
-	# 1941
-	#create_equipment_variant = {
-	#	name = "South Dakota Class"
-	#	type = battleship_2
-	#	upgrades = {
-	#		ship_reliability_upgrade = 3
-	#		ship_engine_upgrade = 3
-	#		ship_armor_upgrade = 3
-	#		ship_gun_upgrade = 3
-	#	}
-	#}
-}

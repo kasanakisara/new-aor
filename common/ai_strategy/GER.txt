@@ -300,7 +300,7 @@ GER_assault_armor = {
 			has_war = yes
 			AND = {
 				ai_wants_divisions > 6 
-				date > 1939.6.1
+				always = no
 			}
 		}
 	}
@@ -5011,7 +5011,7 @@ GER_sokol_raids_store_some_equipment = {
 	enable = {
 		has_war_with = CZE
 		date > 1938.1.1
-		date < 1939.9.9
+		always = yes
 	}
 
 	abort_when_not_enabled = yes
@@ -5083,7 +5083,7 @@ GER_wait_on_attacking_CZE_if_im_about_to_get_dogpiled = { #Makes Germany think t
 		has_war_with_wargoal_against = {
     		target = CZE
 		}
-		date < 1939.9.1 #Enough time stalling, we got to start WW2
+		always = yes #Enough time stalling, we got to start WW2
 		OR = {
 			country_exists = FRA
 			country_exists = SOV
@@ -5220,7 +5220,7 @@ GER_build_tank_destroyers = {
 	allowed = { original_tag = GER }
 	enable = {
 		has_tech = basic_medium_tank_chassis
-		date > 1939.9.1
+		always = no
 	}
 	abort_when_not_enabled = yes
 

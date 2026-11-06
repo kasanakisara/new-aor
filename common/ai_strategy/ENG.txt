@@ -545,7 +545,7 @@ ENG_less_weapon_purchases_more_for_construction = {
 		original_tag = ENG
 	}
 	enable = {
-		date < 1939.1.1
+		always = yes
 		has_war = no
 	}
 	abort_when_not_enabled = yes
@@ -566,7 +566,7 @@ ENG_fewer_factories_for_purchases_please = {
 		original_tag = ENG
 	}
 	enable = {
-		date > 1939.1.1
+		always = no
 	}
 	abort_when_not_enabled = yes
 
@@ -627,10 +627,10 @@ ENG_defend_poland_against_germany = {
 ENG_royal_air_force = {
 	allowed = { original_tag = ENG }
 	enable = {
-		date > 1939.4.1
+		always = no
 	}
 	abort = {
-		date < 1939.4.1
+		always = yes
 	}
 
 	ai_strategy = {
@@ -3139,7 +3139,7 @@ ENG_avoid_balkans_until_africa_is_secure = {
 	allowed = { original_tag = ENG }
 	enable = {
 		is_historical_focus_on = yes
-		date > 1939.6.6
+		always = no
 		date < 1943.6.6
 		ENG_enemy_in_north_africa = yes
 	}

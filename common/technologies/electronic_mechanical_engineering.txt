@@ -1,45 +1,5 @@
 technologies = {
-	electronic_mechanical_engineering = {
-
-		# small boost to research speed
-		research_speed_factor = 0.03
-		
-		path = {
-			leads_to_tech = radio 
-			research_cost_coeff = 1
-		}
-		path = {
-			leads_to_tech = mechanical_computing 
-			research_cost_coeff = 1
-		}
-
-		enable_equipment_modules = { 
-			ship_fire_control_system_0
-		}
-		
-		research_cost = 1
-		start_year = 1936
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 0 }
-		}
-		
-		ai_will_do = {
-			factor = 30
-			
-			
-			modifier = {
-				factor = 3
-				date > "1937.1.1"
-			}
-		}
-		
-		categories = {
-			electronics
-		}
-		
-
-	}
+	
 	
 	radio = {
 
@@ -82,7 +42,7 @@ technologies = {
 			}
 			modifier = {
 				factor = 5
-				date > "1939.8.1"
+				always = no
 			}
 		}
 		
@@ -130,7 +90,7 @@ technologies = {
 		# can build radars/radar boost in air/sea combat depends on radar level
 
 		path = {
-			leads_to_tech = improved_decimetric_radar 
+			leads_to_tech = centimetric_radar 
 			research_cost_coeff = 1
 		}
 		coordination_bonus = 0.01
@@ -172,51 +132,7 @@ technologies = {
 		}
 	}
 	
-	improved_decimetric_radar = {
-
-		# radar boost in air/sea combat depends on radar level
-		enable_building = {
-			building = radar_station
-			level = 3
-		}
-		coordination_bonus = 0.01
-		enable_equipment_modules = { 
-			ship_radar_2
-		}
-
-		path = {
-			leads_to_tech = centimetric_radar 
-			research_cost_coeff = 1
-		}
-		
-		research_cost = 1.25
-		start_year = 1939
-		
-		folder = {
-			name = electronics_folder
-			position = { x = -2 y = 8 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				OR = {
-					tag = ENG
-					tag = USA
-				}
-				factor = 5
-			}
-			modifier = {
-				date < "1939.1.1"
-				factor = 0.5
-			}
-		}
-		
-		categories = {
-			electronics
-			radar_tech
-		}
-	}
+	
 	
 	centimetric_radar = {
 
@@ -428,7 +344,7 @@ technologies = {
 			
 			modifier = {
 				factor = 3
-				date > "1939.1.1"
+				always = no
 			}
 		}
 		
@@ -1032,155 +948,11 @@ technologies = {
 	}
 	
 	
-	atomic_research = {
-
-		research_speed_factor = 0.04
-		
-		path = {
-			leads_to_tech = nuclear_reactor 
-			research_cost_coeff = 1
-		}
-		
-		start_year = 1940
-		research_cost = 5
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 0 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				factor = 1.2
-				date > "1941.1.1"
-			}
-			
-			modifier = {
-				factor = 1.2
-				date > "1942.1.1"
-			}
-			
-			modifier = {
-				factor = 1.2
-				date > "1943.1.1"
-			}
-			
-			modifier = {
-				factor = 2
-				tag = USA
-			}
-		}
-		
-		categories = {
-			nuclear
-		}
-		
-		on_research_complete = {
-			hidden_effect = {
-				if = {
-					limit = {
-						has_dlc = "By Blood Alone"
-					}
-					if = {
-						limit = {
-							check_variable = { global.atomic_research_race < 3 }
-						}
-						add_to_variable = { global.atomic_research_race = 1 }
-						if = {
-							limit = {
-								original_tag = ITA
-								NOT = { has_country_flag = ITA_pioneer_in_atomic_research_flag }
-							}
-							set_country_flag = ITA_pioneer_in_atomic_research_flag
-						}
-						else_if = {
-							limit = {
-								check_variable = { global.atomic_research_race = 3 }
-								NOT = {
-									any_country = {
-										original_tag = ITA
-										has_country_flag = ITA_pioneer_in_atomic_research_flag
-									}
-								}
-							}
-							random_country = {
-								limit = {
-									original_tag = ITA
-								}
-								set_country_flag = ITA_late_to_the_atomic_party_flag
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	
-	nuclear_reactor = {
-
-		# can build reactors
-		
-		start_year = 1943
-		research_cost = 5
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 2 }
-		}
-
-		path = {
-			leads_to_tech = nukes 
-			research_cost_coeff = 1
-		}
-		
-		ai_will_do = {
-			factor = 3
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-		}
-		
-		categories = {
-			nuclear
-		}
-		
-		enable_building = {
-			building = nuclear_reactor
-			level = 1
-		}
-	}
-
-	nukes = {
 	
-		start_year = 1945
-		research_cost = 5
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 6 }
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-		
-		nuclear_production = 1
-		on_research_complete = {
-			if = {
-				limit = {
-					tag = USA
-					has_war_with = JAP
-				}
-				play_warning_to_japan_effect = yes
-			}
-		}
-		categories = {
-			nuclear
-		}
-	}
+	
+
+	
 
 	lar_decryption_bonus_tech = {
 				
