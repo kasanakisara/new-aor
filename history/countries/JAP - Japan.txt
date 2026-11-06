@@ -1,154 +1,50 @@
-# AOR industry 1919 baseline; later tiers remain research choices.
-set_technology = {
-	construction1 = 1
-	excavation1 = 1
-	fuel_refining = 1
-	basic_machine_tools = 1
-}
-# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
-set_technology = {
-	aor_air_bomb_bundle_1914 = 1
-	aor_air_bomb_bundle_1919 = 1
-	aor_air_construction_1914 = 1
-	aor_air_construction_1919 = 1
-	aor_air_engine_1914 = 1
-	aor_air_engine_1919 = 1
-	aor_air_equipment_1914 = 1
-	aor_air_equipment_1919 = 1
-	aor_air_gun_bundle_1914 = 1
-	aor_air_gun_bundle_1919 = 1
-	aor_air_medium_1914 = 1
-	aor_air_medium_1919 = 1
-	aor_air_small_1914 = 1
-	aor_air_small_1919 = 1
-	aor_air_torpedo_1914 = 1
-}
-create_equipment_variant = {
-	name = "标准小型机体 1919"
-	type = small_plane_airframe_1919
-	modules = {
-		fixed_main_weapon_slot = aor_gun_2
-		engine_type_slot = aor_engine_1x_2
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-create_equipment_variant = {
-	name = "标准中型机体 1919"
-	type = medium_plane_airframe_1919
-	modules = {
-		fixed_main_weapon_slot = aor_medium_bay_2
-		engine_type_slot = aor_engine_1x_2
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-create_equipment_variant = {
-	name = "标准小型机体 1914"
-	type = small_plane_airframe_1914
-	modules = {
-		fixed_main_weapon_slot = aor_gun_1
-		engine_type_slot = aor_engine_1x_1
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-create_equipment_variant = {
-	name = "标准中型机体 1914"
-	type = medium_plane_airframe_1914
-	modules = {
-		fixed_main_weapon_slot = aor_medium_bay_1
-		engine_type_slot = aor_engine_1x_1
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-create_equipment_variant = {
-	name = "标准小型机体攻击型 1919"
-	type = small_plane_airframe_1919
-	modules = {
-		fixed_main_weapon_slot = aor_light_bomb_2
-		engine_type_slot = aor_engine_1x_2
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-create_equipment_variant = {
-	name = "标准小型机体对海型 1919"
-	type = small_plane_airframe_1919
-	modules = {
-		fixed_main_weapon_slot = aor_torpedo_1
-		engine_type_slot = aor_engine_1x_2
-		special_type_slot_1 = empty
-		special_type_slot_2 = empty
-		special_type_slot_3 = empty
-		special_type_slot_4 = empty
-	}
-}
-
 capital = 282
 oob = "AOR_LAND_JAP"
 set_naval_oob = "AOR_JAP_naval"
-add_ideas = JAP_lixian
-add_ideas = JAP_junbu
-add_ideas = JAP_minzhi
-add_ideas = JAP_samo
-add_ideas = JAP_fanfa
-add_ideas = JAP_misao
+add_ideas = JAP_wartime_mobilization_evil
+add_ideas = JAP_constitutional_revival
+add_ideas = JAP_satsuma_military
+add_ideas = JAP_russo_japanese_war_continuation
+add_ideas = JAP_emperor_taisho
 
 set_technology = {
-aor_armorcr_1919 = 1
-aor_armorheavy_1919 = 1
-aor_aa_1919 = 1
-aor_fcs_1914 = 1
-aor_engine_1914 = 1
-basic_torpedo = 1
-basic_battery = 1
-aor_inf_u01 = 1
-aor_inf_g01 = 1
-aor_inf_u02 = 1
-aor_inf_r01 = 1
-aor_inf_l00 = 1
-aor_inf_l01 = 1
-tech_trucks = 1
-motorised_infantry = 1
-mechanised_infantry = 1
-Old_howitzers = 1
-tech_recon = 1
-tech_support = 1
-tech_engineers = 1
-aor_inf_mg1 = 1
-early_ship_hull_submarine = 1
-early_ship_hull_submarine = 1
-early_ship_hull_light = 1
-early_ship_hull_light = 1
-early_ship_hull_light_cruiser = 1
-early_ship_hull_light_cruiser = 1
-early_ship_hull_light_cruiser = 1
-tech_1919_ship_hull_light_cruiser = 1
-early_ship_hull_heavy = 1
-tech_1919_crusier_battleship_hull = 1
-early_ship_hull_heavy = 1
-tech_1919_ship_hull_heavy = 1
-superior_firepower = 1
-base_strike = 1
-
-
-aor_inf_m01 = 1
-basic_train = 1
-aor_field_gun_1 = 1
-aor_howitzer_1 = 1
-interwar_antitank = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_artillery = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	early_armor_car = 1
+	independent_turret = 1
+	tracked_suspension = 1
+	great_war_light_chassis = 1
+	great_war_heavy_chassis = 1
+	Old_howitzers = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	machine_equipment_weapons = 1
+	early_ship_hull_submarine = 1
+	tech_1908_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	tech_1909_ship_hull_light = 1
+	early_ship_hull_light_cruiser = 1
+	tech_1909_ship_hull_light_cruiser = 1
+	early_ship_hull_heavy_cruiser = 1
+	late_ship_hull_heavy_cruiser = 1
+	early_ship_hull_heavy = 1
+	tech_1909_crusier_battleship_hull = 1
+	tech_1906_ship_hull_heavy = 1
+	tech_1914_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+ 
+	superior_firepower = 1
+	base_strike = 1
+	 
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
 }
 
 set_stability = 0.6 #baseline, THE EMPEROR PROTECTS
@@ -176,10 +72,10 @@ add_equipment_to_stockpile = {
 }
 
 add_equipment_to_stockpile = {
-	type = small_plane_airframe_1919
+	type = fighter_equipment
 	amount = 100
 	producer = JAP	
- variant_name = "标准小型机体 1919" }
+}
 
 create_country_leader = {
 	name = "Emperor_Taisho"
@@ -234,6 +130,8 @@ set_popularities = {
 	Fascism = 9
 	Absolutism = 20
 }
+recruit_character = JAP_Taketomi_Tokitoshi
+promote_character = JAP_Taketomi_Tokitoshi
 puppet = KOR
 puppet = PYO
 
