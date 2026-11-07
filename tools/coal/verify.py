@@ -64,4 +64,4 @@ print("states with coal:", tot[True], "without:", tot[False])
 print("coal total:", coal_total)
 print("files edited:", changed)
 # untouched files identical?
-print("backup files:", len(os.listdir(BK)))
+print("backup files:", len(os.listdir(BK)) if os.path.isdir(BK) else "(none)")

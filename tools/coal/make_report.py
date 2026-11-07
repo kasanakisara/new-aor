@@ -72,13 +72,13 @@ for r in coal_rows:
 
 lines = []
 lines.append("# AOR 煤炭分布（1919）\n")
-lines.append("按原版 HOI4 `history/states` 的煤炭密度，用**省份插值**重算到 AOR 的州；再整体 ×1.5（1919 年煤炭仍是主要能源）。\n")
+lines.append("按原版 HOI4 `history/states` 的煤炭密度，用**省份插值**重算到 AOR 的州；再整体 ×1.3（1919 年煤炭仍是主要能源）。\n")
 lines.append("## 总览\n")
 lines.append(f"- 有煤州：**{len(coal_rows)}** / {len(rows)}（原版 {VAN_STATES} 个）")
 lines.append(f"- 全球煤总量：**{total}**（原版 {VAN_TOTAL}，×{total/VAN_TOTAL:.2f}）")
 lines.append(f"- 单州最高：{max(r['coal'] for r in coal_rows)}（{max(coal_rows, key=lambda r: r['coal'])['file']}）")
 lines.append(f"- 单州中位：{sorted(r['coal'] for r in coal_rows)[len(coal_rows)//2]}")
-lines.append(f"- 计算方法：`state_coal = round(1.5 * Σ(原版所属州煤量 / 该州省份数))`，基础值 ≥0.4 的州至少 1 煤；原有手工煤值取较大者")
+lines.append(f"- 计算方法：`state_coal = round(1.3 * Σ(原版所属州煤量 / 该州省份数))`，基础值 ≥0.4 的州至少 1 煤；原有手工煤值取较大者")
 lines.append("")
 lines.append("## 分国家（按新煤量）\n")
 lines.append("| 国家 | 煤 | 州数 |")

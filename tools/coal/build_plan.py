@@ -4,7 +4,7 @@ import os, re, json, collections
 
 VAN = r"D:\SteamLibrary\steamapps\common\Hearts of Iron IV\history\states"
 AOR = r"D:\new-aor\history\states"
-SCALE = 1.5
+SCALE = 1.3
 MIN_BASE = 0.4
 
 d = json.load(open(r"D:\new-aor\tools\coal\data.json", encoding="utf-8"))
