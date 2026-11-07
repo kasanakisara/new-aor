@@ -1,5 +1,5 @@
 add_namespace = HUN
-add_namespace = HUN_news
+
 #克罗地亚问题
 country_event = {
 	id = HUN.1 #匈牙利进攻三一共和国
@@ -8,7 +8,8 @@ country_event = {
 	picture = GFX_events_HUN_1
 	fire_only_once = yes
 	trigger = {
-		has_global_flag = Danube_is_died
+		date > 1920.3.1
+ country_exists = CRO
 		tag  = HUN
 		HUN = {
 			has_government = Fascism
@@ -20,7 +21,7 @@ country_event = {
     #是时候恢复马扎尔人的统治了	
 	option = {
 		name = HUN.1.a
-		news_event = {id = AOR_news.227}
+		country_event = {id = AOR_news_router.59}
 		HUN = {
 			declare_war_on = {
 				target = CRO
@@ -38,7 +39,8 @@ country_event = {
 	picture = GFX_events_HUN_2
 	fire_only_once = yes
 	trigger = {
-		has_global_flag = Danube_is_died
+		date > 1920.3.1
+ country_exists = CRO
 		tag  = HUN
 		has_government = SOC_democratic
 	}
@@ -48,7 +50,7 @@ country_event = {
     #那就这样吧  	
 	option = {
 		name = HUN.2.a
-		news_event = {id = AOR_news.228}
+		country_event = {id = AOR_news_router.47}
 		HUN = {
 			set_autonomy = {
 				target = CRO
@@ -74,7 +76,8 @@ country_event = {
 	picture = GFX_events_HUN_2
 	fire_only_once = yes
 	trigger = {
-		has_global_flag = Danube_is_died
+		date > 1920.3.1
+ country_exists = CRO
 		tag  = HUN
 		has_government = FRE_democratic
 	}
@@ -84,7 +87,7 @@ country_event = {
     #那就这样吧  	
 	option = {
 		name = HUN.3.a
-		news_event = {id = AOR_news.229}
+		country_event = {id = AOR_news_router.48}
 		HUN = {
 			annex_country = {
 				target = CRO
@@ -105,9 +108,10 @@ country_event = {
 	picture = GFX_events_HUN_2
 	fire_only_once = yes
 	trigger = {
-		has_global_flag = Danube_is_died
+		date > 1920.3.1
+ country_exists = CRO
 		tag  = HUN
-		has_government = Aboslutism
+		has_government = Absolutism
 	}
 	mean_time_to_happen = {
 		days = 30
@@ -116,7 +120,7 @@ country_event = {
 	option = {
 		name = HUN.4.a
 		HUN = {
-			news_event = {id = AOR_news.236 }
+			country_event = {id = AOR_news_router.55 }
 			set_autonomy = {
 				target = CRO
 				autonomous_state = autonomy_dominion
@@ -133,9 +137,10 @@ country_event = {
 	picture = GFX_events_HUN_2
 	fire_only_once = yes
 	trigger = {
-		has_global_flag = Danube_is_died
+		date > 1920.3.1
+ country_exists = CRO
 		tag  = HUN
-		has_government = AGR_democratic
+		has_government = AGR_socialism
 	}
 	mean_time_to_happen = {
 		days = 30
@@ -144,7 +149,7 @@ country_event = {
 	option = {
 		name = HUN.5.a
 		HUN = {
-			news_event = {id = AOR_news.236 }
+			country_event = {id = AOR_news_router.55 }
 			set_autonomy = {
 				target = CRO
 				autonomous_state = autonomy_dominion
@@ -171,18 +176,7 @@ country_event = {
 }
 }
 
-news_event = {
-	id = HUN_news.1
-	title = HUN_news.1.t
-	desc = HUN_news.1d
-	picture = GFX_HUN_news.1_pic
-	is_triggered_only = yes 
-	major = yes
 
-	option = {
-		name = HUN_news.1.a
-	}
-}
 ############匈牙利政治换届############
 country_event = {   #我已不再年轻
 	id = HUN.7
@@ -191,7 +185,8 @@ country_event = {   #我已不再年轻
 	picture = GFX_HUN_tisza
 	fire_only_once = yes
 	trigger = {
-	date = 1920.01.01
+	tag = HUN
+ date > 1919.12.31
 	}
 	mean_time_to_happen = {
 		days = 1
@@ -200,10 +195,10 @@ country_event = {   #我已不再年轻
 	option = { 
 		name = HUN.7.a
 		add_political_power = 1
-		news_event = {
-			id = AOR_news.237
+		country_event = {
+			id = AOR_news_router.56
 		}
-		country_event = {id = HUN.5}
+		country_event = { id = HUN.8 days = 60 }
 	}
 }
 
@@ -219,14 +214,17 @@ country_event = {   #我已不再年轻
 	}
     #还政于民  	
 	option = { 
-		name = HUN.tisza.a #蒂撒连任了
+		set_politics = { ruling_party = Absolutism }
+ name = HUN.tisza.a #蒂撒连任了
 		add_political_power = 1
 		add_popularity = {
 			ideology = Absolutism
 			popularity = 20
 		}
-		news_event = {id = AOR_news.230}
+		
 		set_cosmetic_tag = HUN_tisza
+
+country_event = { id = AOR_news_router.49 }
 }
 	    option = { 
 		name = HUN.karoly.a #卡罗伊获胜
@@ -241,7 +239,9 @@ country_event = {   #我已不再年轻
 			ideology = SOC_democratic
 			popularity = 20
 		}
-		news_event = {id = AOR_news.231}
+		
+
+country_event = { id = AOR_news_router.50 }
 }
 	
 	option = { 
@@ -257,7 +257,9 @@ country_event = {   #我已不再年轻
 			ideology = Fascism
 			popularity = 20
 		}
-		news_event = {id = AOR_news.232}
+		
+
+country_event = { id = AOR_news_router.51 }
 }
 	option = { 
 		name = HUN.bethlan.a #贝瑟伦赢得大选
@@ -272,7 +274,9 @@ country_event = {   #我已不再年轻
 			ideology = FRE_democratic
 			popularity = 20
 		}
-		news_event = {id = AOR_news.233}
+		
+
+country_event = { id = AOR_news_router.52 }
 }
 
 	option = { 
@@ -288,8 +292,10 @@ country_event = {   #我已不再年轻
 			ideology = AGR_socialism
 			popularity = 20
 		}
-		news_event = {id = AOR_news.234}
-    }
+		
+    
+country_event = { id = AOR_news_router.53 }
+}
 }
 
 country_event = {
@@ -310,7 +316,7 @@ country_event = {
 				add_war_support = 0.1
 				add_manpower = -5000
 				give_guarantee = DAL
-				news_event = {id = AOR_news.235}
+				country_event = {id = AOR_news_router.54}
 				}
 	        }
         }

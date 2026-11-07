@@ -451,15 +451,15 @@ on_actions = {
 					transfer_state = 48
 				}
 				every_country = {
-					news_event = {
-						id = AOR_news.351
-					}
+					
 					limit = {
 						has_war_with = BUL
 					}
 					white_peace = BUL
 				}
-			}
+			
+AOR_report_greek_balkan_victory_news = yes
+}
 			else_if = {
 				limit = {
 					GRE = {
@@ -488,15 +488,15 @@ on_actions = {
 					transfer_state = 103
 				}
 				every_country = {
-					news_event = {
-						id = AOR_news.351
-					}
+					
 					limit = {
 						has_war_with = HUN
 					}
 					white_peace = HUN
 				}
-			}
+			
+AOR_report_greek_balkan_victory_news = yes
+}
 			#输了
 			else_if = {
 				limit = {
@@ -525,8 +525,8 @@ on_actions = {
 					}
 				}
 				every_country = {
-					news_event = {
-						id = AOR_news.352
+					country_event = {
+						id = AOR_news_router.23
 					}
 					limit = {
 						has_war_with = ROM
@@ -560,8 +560,8 @@ on_actions = {
 					set_cosmetic_tag = GRE_CON_2
 				}
 				every_country = {
-					news_event = {
-						id = AOR_news.352
+					country_event = {
+						id = AOR_news_router.23
 					}
 					limit = {
 						has_war_with = GRE
@@ -596,8 +596,8 @@ on_actions = {
 					}
 				}
 				every_country = {
-					news_event = {
-						id = AOR_news.352
+					country_event = {
+						id = AOR_news_router.23
 					}
 					limit = {
 						has_war_with = YUG
@@ -609,7 +609,7 @@ on_actions = {
 			else_if = {
 				limit = {
 					TUR = {
-						has_idea = revenge
+						has_country_flag = AOR_TUR_revenge
 					}
 					FROM = {
 						original_tag = TUR
@@ -900,8 +900,8 @@ on_actions = {
 					add_state_core = 896
 					add_state_core = 622
 					country_event = { days = 90  id = KMT.13 }
-					news_event = {
-						id = AOR_news.171 #国民革命政府战胜北京政府！
+					country_event = {
+						id = AOR_news_router.148 #国民革命政府战胜北京政府！
 					}
 				}
 				MAN = {
@@ -924,8 +924,8 @@ on_actions = {
 					annex_country = {
 						target = KMT
 					}
-					news_event = {
-						id = AOR_news.123 #北京政府消灭华南国民党政权
+					country_event = {
+						id = AOR_news_router.108 #北京政府消灭华南国民党政权
 					}
 					country_event = {
 						days = 90
@@ -998,8 +998,8 @@ on_actions = {
 					add_state_core = 896
 					add_state_core = 622
 					country_event = { days = 90  id = KMT.13 }
-					news_event = {
-						id = AOR_news.170 #国民革命政府战胜南京政府！
+					country_event = {
+						id = AOR_news_router.147 #国民革命政府战胜南京政府！
 					}
 				}
 				MAN = {
@@ -1022,8 +1022,8 @@ on_actions = {
 					annex_country = {
 						target = KMT
 					}
-					news_event = {
-						id = AOR_news.124 #南京政府消灭华南国民党政权
+					country_event = {
+						id = AOR_news_router.109 #南京政府消灭华南国民党政权
 					}
 					country_event = {
 						days = 90
@@ -1072,8 +1072,8 @@ on_actions = {
 						target = MEN
 						transfer_troops = yes
 					}
-					news_event = {
-						id = AOR_news.125 #国民革命政府占领满洲
+					country_event = {
+						id = AOR_news_router.110 #国民革命政府占领满洲
 					}
 				}
 			}
@@ -1157,8 +1157,8 @@ on_actions = {
 					add_state_core = 744
 					add_state_core = 896
 					add_state_core = 622
-					news_event = {
-						id = AOR_news.173 #联省革命政府战胜北京政府！
+					country_event = {
+						id = AOR_news_router.150 #联省革命政府战胜北京政府！
 					}
 				}
 				MAN = {
@@ -1181,8 +1181,8 @@ on_actions = {
 					annex_country = {
 						target = UPC
 					}
-					news_event = {
-						id = AOR_news.121 #北京政府消灭华南广州政权
+					country_event = {
+						id = AOR_news_router.106 #北京政府消灭华南广州政权
 					}
 					country_event = {
 						days = 90
@@ -1254,8 +1254,8 @@ on_actions = {
 					add_state_core = 744
 					add_state_core = 896
 					add_state_core = 622
-					news_event = {
-						id = AOR_news.172 #联省革命政府战胜南京政府！
+					country_event = {
+						id = AOR_news_router.149 #联省革命政府战胜南京政府！
 					}
 				}
 				MAN = {
@@ -1278,8 +1278,8 @@ on_actions = {
 					annex_country = {
 						target = UPC
 					}
-					news_event = {
-						id = AOR_news.122 #南京政府消灭华南广州政权 
+					country_event = {
+						id = AOR_news_router.107 #南京政府消灭华南广州政权 
 					}
 					country_event = {
 						days = 90
@@ -1331,8 +1331,8 @@ on_actions = {
 					annex_country = {
 						target = SHX
 					}
-					news_event = {
-						id = AOR_news.126 #联省革命政府占领满洲
+					country_event = {
+						id = AOR_news_router.111 #联省革命政府占领满洲
 					}
 					add_state_core = 884
 					add_state_core = 615
@@ -1645,8 +1645,8 @@ on_actions = {
 					}
 				}
 				KMT = {
-					news_event = {
-						id = AOR_news.132 #中国国民政府占领四川
+					country_event = {
+						id = AOR_news_router.117 #中国国民政府占领四川
 					}
 					annex_country = {
 						target = DCD
@@ -1671,8 +1671,8 @@ on_actions = {
 					}
 				}
 				UPC = {
-					news_event = {
-						id = AOR_news.133 #中国广州政府占领四川
+					country_event = {
+						id = AOR_news_router.118 #中国广州政府占领四川
 					}
 					annex_country = {
 						target = DCD
@@ -1714,8 +1714,8 @@ on_actions = {
 					}
 				}
 				UPC = {
-				news_event = {
-					id = AOR_news.154 #广州政府消灭四川红军
+				country_event = {
+					id = AOR_news_router.134 #广州政府消灭四川红军
 				}
 				annex_country = {
 				    target = PRC
@@ -1807,7 +1807,7 @@ on_actions = {
 					}
 				}
 				KMT = {
-					news_event = {id=AOR_news.145} #云贵战争结束
+					country_event = {id=AOR_news_router.125} #云贵战争结束
 					annex_country = {
 						target = GUZ
 					}
@@ -2046,7 +2046,7 @@ on_actions = {
 					}
 				}
 				ITA = {
-					news_event = {id=AOR_news.179}
+					country_event = {id=AOR_news_router.165}
 					annex_country = {
 						target = LBA
 					}
@@ -2076,7 +2076,7 @@ on_actions = {
 					}
 				}
 				ITA = {
-					news_event = {id=AOR_news.179}
+					country_event = {id=AOR_news_router.165}
 					annex_country = {
 						target = LBA
 					}
@@ -2106,7 +2106,7 @@ on_actions = {
 					}
 				}
 				ITA = {
-					news_event = {id=AOR_news.179}
+					country_event = {id=AOR_news_router.165}
 					annex_country = {
 						target = LBA
 					}
@@ -2137,7 +2137,7 @@ on_actions = {
 					}
 				}
 				FRA = {
-					#news_event = {id=AOR_news.179}
+					#news_event = {id=AOR_news_africa.7}
 					annex_country = {
 						target = RFR
 					}
@@ -2160,7 +2160,7 @@ on_actions = {
 					}
 				}
 				SPR = {
-					#news_event = {id=AOR_news.179}
+					#news_event = {id=AOR_news_africa.7}
 					annex_country = {
 						target = RFR
 					}
@@ -2387,7 +2387,7 @@ on_actions = {
 						original_tag = UPR
 					}
 				}
-				news_event = AOR_news.220
+				country_event = AOR_news_router.46
 				ROM = {
 					transfer_state = 1045
 				}
@@ -2444,7 +2444,7 @@ on_actions = {
 						original_tag = UPR
 					}
 				}
-				news_event = AOR_news.220
+				country_event = AOR_news_router.46
 				ROM = {
 					transfer_state = 1045
 				}
@@ -2495,7 +2495,7 @@ on_actions = {
 						original_tag = UPR
 					}
 				}
-				news_event = AOR_news.220
+				country_event = AOR_news_router.46
 				ROM = {
 					transfer_state = 1045
 				}
@@ -2546,7 +2546,7 @@ on_actions = {
 						original_tag = UPR
 					}
 				}
-				news_event = AOR_news.220
+				country_event = AOR_news_router.46
 				ROM = {
 					transfer_state = 1045
 				}
@@ -2640,7 +2640,7 @@ on_actions = {
 				        original_tag = SHL
 				    }
 			    }
-				news_event = { id =AOR_news.215 }
+				
 				DEN = {
 					if = {
 						limit ={
@@ -2669,7 +2669,7 @@ on_actions = {
 					    original_tag = DEN
 				    }
 			    }
-				news_event = {id =AOR_news.216 }
+				
 				SHL = {
 					set_cosmetic_tag = SHL_2_Marxism
 					if = {
@@ -2702,7 +2702,7 @@ on_actions = {
 						original_tag = AFK
 					}
 				}
-				news_event = {id = AOR_news.223 }
+				country_event = {id = AOR_news_router.156 }
                 AFG = {
 					transfer_state = 415
 					transfer_state = 1052
@@ -2718,7 +2718,7 @@ on_actions = {
 						original_tag = AFG
 					}
 				}
-				news_event = {id = AOR_news.224 }
+				country_event = {id = AOR_news_router.157 }
                 AFK = {
 					set_cosmetic_tag = AFK_Absolutism
 					set_capital = {

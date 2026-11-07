@@ -41,7 +41,9 @@ country_event = {
 
 		dismantle_faction =  yes
 		
-	}
+	
+country_event = { id = AOR_news_router.177 }
+}
 
 }
 
@@ -51,6 +53,7 @@ country_event = {
 	desc = MNU.7.d
 	picture = GFX_events_MXS_7
     trigger = {
+ tag = MNU
 		MXS = {
 			NOT = {
 				OR = {
@@ -63,7 +66,7 @@ country_event = {
 	}
 	fire_only_once = yes
 	immediate = {
-		news_event ={ id = AOR_news.8 days = 1}
+		country_event ={ id = AOR_news_router.178 days = 1}
 	}
 	option = {
 		name = MNU.7.a
@@ -108,6 +111,7 @@ country_event = {
 	desc = MNU.8.d
 	picture = GFX_events_MXS_8
     trigger = {
+ tag = MNU
 		NOT = {country_exists = MXS}
 		MNU = {
 				OR = {
@@ -143,11 +147,12 @@ country_event = {
 }
 #第二次，农民军胜利
 country_event = {
-	id = MNU.8
-	title = MNU.8.t
-	desc = MNU.8.d
+	id = MNU.9
+	title = MNU.9.t
+	desc = MNU.9.d
 	picture = GFX_events_MXS_8
     trigger = {
+ tag = MNU
 		NOT = {country_exists = MXS}
 		MNU = {
 			NOT = {
@@ -163,8 +168,8 @@ country_event = {
 	fire_only_once = yes
 
 	option = {
-		name = MNU.8.a
-		log = "[GetLogInfo] [From.GetName]MNU.8.a"
+		name = MNU.9.a
+		log = "[GetLogInfo] [From.GetName]MNU.9.a"
 		PLM = {
 			transfer_state =483
 			transfer_state =481

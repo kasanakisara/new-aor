@@ -409,8 +409,8 @@ add_equipment_to_stockpile = {
 }
 
 ENG = {
-	news_event = { days = 2297 id = AOR_news.13 }
-	news_event = { days = 418 id = AOR_news.14 }
+	country_event = { days = 2297 id = AOR_news_router.8 }
+	country_event = { days = 418 id = AOR_news_router.9 }
 }
 
 ###海军舰艇设计###
@@ -835,3 +835,6 @@ create_equipment_variant = {
 	}
 }
 activate_mission = IST_fake_mission_countdown
+# Under London: 1920.4.15, scheduled from the 1919.8.1 bookmark.
+# HOI4 uses a 365-day calendar; fixed delay, no random_days.
+country_event = { id = AOR_news_router.5 days = 257 }

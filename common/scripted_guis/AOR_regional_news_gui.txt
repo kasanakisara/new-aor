@@ -1,0 +1,111 @@
+scripted_gui = {
+    AOR_news_filter_button_gui = {
+        context_type = player_context
+        window_name = "AOR_news_filter_button_window"
+        parent_window_name = event_header
+        ai_enabled = { always = no }
+        effects = {
+            AOR_news_filter_open_click = {
+                AOR_news_initialize_preferences = yes
+                if = { limit = { has_country_flag = AOR_news_filter_panel_open }
+                    clr_country_flag = AOR_news_filter_panel_open
+                }
+                else = { set_country_flag = AOR_news_filter_panel_open }
+            }
+        }
+    }
+    AOR_news_filter_panel_gui = {
+        context_type = player_context
+        window_name = "AOR_news_filter_panel"
+        ai_enabled = { always = no }
+        visible = { has_country_flag = AOR_news_filter_panel_open }
+        effects = {
+            AOR_news_checkbox_europe_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_europe = yes } }
+                    set_country_flag = AOR_news_subscribed_europe
+                }
+            }
+            AOR_news_checkbox_europe_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_europe = yes } }
+                    clr_country_flag = AOR_news_subscribed_europe
+                }
+            }
+            AOR_news_checkbox_asia_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_asia = yes } }
+                    set_country_flag = AOR_news_subscribed_asia
+                }
+            }
+            AOR_news_checkbox_asia_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_asia = yes } }
+                    clr_country_flag = AOR_news_subscribed_asia
+                }
+            }
+            AOR_news_checkbox_africa_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_africa = yes } }
+                    set_country_flag = AOR_news_subscribed_africa
+                }
+            }
+            AOR_news_checkbox_africa_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_africa = yes } }
+                    clr_country_flag = AOR_news_subscribed_africa
+                }
+            }
+            AOR_news_checkbox_oceania_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_oceania = yes } }
+                    set_country_flag = AOR_news_subscribed_oceania
+                }
+            }
+            AOR_news_checkbox_oceania_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_oceania = yes } }
+                    clr_country_flag = AOR_news_subscribed_oceania
+                }
+            }
+            AOR_news_checkbox_north_america_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_north_america = yes } }
+                    set_country_flag = AOR_news_subscribed_north_america
+                }
+            }
+            AOR_news_checkbox_north_america_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_north_america = yes } }
+                    clr_country_flag = AOR_news_subscribed_north_america
+                }
+            }
+            AOR_news_checkbox_south_america_off_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_south_america = yes } }
+                    set_country_flag = AOR_news_subscribed_south_america
+                }
+            }
+            AOR_news_checkbox_south_america_on_click = {
+                if = { limit = { NOT = { AOR_news_intrinsic_south_america = yes } }
+                    clr_country_flag = AOR_news_subscribed_south_america
+                }
+            }
+        }
+        triggers = {
+            AOR_news_checkbox_europe_off_visible = { NOT = { AOR_news_receives_europe = yes } }
+            AOR_news_checkbox_europe_off_click_enabled = { NOT = { AOR_news_intrinsic_europe = yes } }
+            AOR_news_checkbox_europe_on_visible = { AOR_news_receives_europe = yes }
+            AOR_news_checkbox_europe_on_click_enabled = { NOT = { AOR_news_intrinsic_europe = yes } }
+            AOR_news_checkbox_asia_off_visible = { NOT = { AOR_news_receives_asia = yes } }
+            AOR_news_checkbox_asia_off_click_enabled = { NOT = { AOR_news_intrinsic_asia = yes } }
+            AOR_news_checkbox_asia_on_visible = { AOR_news_receives_asia = yes }
+            AOR_news_checkbox_asia_on_click_enabled = { NOT = { AOR_news_intrinsic_asia = yes } }
+            AOR_news_checkbox_africa_off_visible = { NOT = { AOR_news_receives_africa = yes } }
+            AOR_news_checkbox_africa_off_click_enabled = { NOT = { AOR_news_intrinsic_africa = yes } }
+            AOR_news_checkbox_africa_on_visible = { AOR_news_receives_africa = yes }
+            AOR_news_checkbox_africa_on_click_enabled = { NOT = { AOR_news_intrinsic_africa = yes } }
+            AOR_news_checkbox_oceania_off_visible = { NOT = { AOR_news_receives_oceania = yes } }
+            AOR_news_checkbox_oceania_off_click_enabled = { NOT = { AOR_news_intrinsic_oceania = yes } }
+            AOR_news_checkbox_oceania_on_visible = { AOR_news_receives_oceania = yes }
+            AOR_news_checkbox_oceania_on_click_enabled = { NOT = { AOR_news_intrinsic_oceania = yes } }
+            AOR_news_checkbox_north_america_off_visible = { NOT = { AOR_news_receives_north_america = yes } }
+            AOR_news_checkbox_north_america_off_click_enabled = { NOT = { AOR_news_intrinsic_north_america = yes } }
+            AOR_news_checkbox_north_america_on_visible = { AOR_news_receives_north_america = yes }
+            AOR_news_checkbox_north_america_on_click_enabled = { NOT = { AOR_news_intrinsic_north_america = yes } }
+            AOR_news_checkbox_south_america_off_visible = { NOT = { AOR_news_receives_south_america = yes } }
+            AOR_news_checkbox_south_america_off_click_enabled = { NOT = { AOR_news_intrinsic_south_america = yes } }
+            AOR_news_checkbox_south_america_on_visible = { AOR_news_receives_south_america = yes }
+            AOR_news_checkbox_south_america_on_click_enabled = { NOT = { AOR_news_intrinsic_south_america = yes } }
+        }
+    }
+}

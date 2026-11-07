@@ -30,7 +30,7 @@ country_event = {
 			set_country_flag = prepare_war_baergan
 			TUR = {
 				set_country_flag = prepare_war_baergan
-				country_event = { id = AOR_TUR_events.6 days = 1 }
+				
 			}
 		}
 	}
@@ -44,7 +44,7 @@ country_event = {
 				compare = greater_than_or_equals
 			}
 		}
-		news_event = {id = AOR_news.39}
+		country_event = {id = AOR_news_router.13}
 		GRE = {
 			annex_country = {
 				target = IST
@@ -65,8 +65,7 @@ country_event = {
 		ai_chance = {
 			base = 60
 			}
-		country_event = { days = 90 id = TUR.1
-		}	
+		TUR = { country_event = { days = 90 id = TUR.1 } }	
 		GRE = {leave_faction = yes} #离开协约准备打仗
 		country_event = {id = GRE_peace.1 days = 450}	
 	}
@@ -97,7 +96,7 @@ country_event = {
 
 		}
 		GRE = {leave_faction =yes}
-		news_event = {id = AOR_news.40}
+		country_event = {id = AOR_news_router.14}
 		country_event = { days = 90 id = GRE.2
 			}	#希腊宣战
 		ai_chance = {
@@ -123,7 +122,7 @@ country_event = {
 				}
 			add_ideas = Take_the_initiative_to_attack
 		}
-		news_event = {id = AOR_news.29}
+		country_event = {id = AOR_news_router.63}
 		
 	}
 }
@@ -137,11 +136,12 @@ country_event = {#侵略成功
 		days = 7
 	}
 	trigger = {
+ tag = GRE
 		has_war_with = TUR
 		controls_state   = 343
 		controls_state  = 797
 		has_idea = Take_the_initiative_to_attack
-		TUR = {NOT = { has_idea = revenge }
+		TUR = {NOT = { has_country_flag = AOR_TUR_revenge }
 	}
 	}
 	immediate = {
@@ -150,7 +150,7 @@ country_event = {#侵略成功
     #那就这样吧  	
 	option = {
 		name = GRE.3.a
-		news_event = {id = AOR_news.42}
+		country_event = {id = AOR_news_router.68}
 		transfer_state = 797
 		transfer_state =  340
 		transfer_state =  341
@@ -163,7 +163,7 @@ country_event = {#侵略成功
 			white_peace = TUR
 		}
 		TUR = {
-			country_event = {days = 1 id = AOR_TUR_events.7}
+			
 		}
 		GRE = {
 			country_event = {days = 45 id = GRE.5}
@@ -181,11 +181,12 @@ country_event = {#自卫成功
 		clr_country_flag = prepare_war_baergan
 	}
 	trigger = {
+ tag = GRE
 		has_war_with = TUR
 		controls_state   = 343
 		controls_state  = 797
 		NOT = {has_idea = Take_the_initiative_to_attack}
-		TUR = {NOT = { has_idea = revenge }
+		TUR = {NOT = { has_country_flag = AOR_TUR_revenge }
 	}
 	}
 	mean_time_to_happen = {
@@ -194,7 +195,7 @@ country_event = {#自卫成功
     #那就这样吧  	
 	option = {
 		name = GRE.4.a
-		news_event = {id = AOR_news.43}
+		country_event = {id = AOR_news_router.69}
 		TUR = {
 			country_event = {days = 1 id = TUR.2}
 		}
@@ -254,8 +255,8 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 	trigger = {
-	    has_idea = idea_Depression_calls_1
-		tag = AUS
+	    
+		tag = GRE
 	}
     #那就这样吧  	
 	option = {
@@ -266,7 +267,7 @@ country_event = {
  		}
 		country_event = {days =60 id  = GRE.7}
 		HUN  = {
-			country_event = {days = 30 id = HUN.3}
+			country_event = {days = 30 id = HUN.6}
 		}
 }
 }
@@ -315,7 +316,7 @@ country_event = {
    	fire_only_once = yes
    	trigger = {
    		has_government = Absolutism
-   		AUS = {has_idea = Depression_calls_1}
+   		date > 1922.6.1
    		tag = GRE
    	}
    	mean_time_to_happen = {
@@ -388,8 +389,8 @@ country_event = {
    		GRE = {
    			add_to_faction = HUN
    		}
-   		country_event = {days = 90 id = GRE.9}
-   		BUL = {country_event = {days =15 id = BUL.1}}
+   		country_event = {days = 90 id = GRE.11}
+   		BUL = {country_event = {days =15 id = BUL.1000}}
    		log = "[GetLogInfo] [From.GetName]: event GRE.10 option GRE.12.a"
    	}
    }
@@ -404,7 +405,7 @@ country_event = {
         #那就这样吧  	
    	option = {
    		name = GRE.11.a
-   		news_event = {id = AOR_news.351}
+   		
    		GRE = {
    			declare_war_on = {
    				target = BUL

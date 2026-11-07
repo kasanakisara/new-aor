@@ -1,18 +1,18 @@
 add_namespace = YUG
 country_event = {
-	id = YUG.1
-	title = YUG.1.t
-	desc = YUG.1.d
+	id = YUG.100
+	title = YUG.100.t
+	desc = YUG.100.d
 	picture = GFX_events_YUG_1
 	fire_only_once = yes
-	is_triggered_only = yes
+	trigger = { tag = YUG owns_state = 109 owns_state = 103 NOT = { country_exists = CRO } has_war = no }
 	mean_time_to_happen = {
 		days = 1
 	}
     #那就这样吧  	
 	option = {
-		name = YUG.1.a
+		name = YUG.100.a
 		set_cosmetic_tag = YUG_BIG_1
-		news_event = {id = AOR_news.348}
+		country_event = {id = AOR_news_router.20}
 }
 }

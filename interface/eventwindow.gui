@@ -488,16 +488,19 @@ guiTypes = {
             name = "top_Window"
             position = { x = 0 y = 0 }
             size = { width = 565 height = 395 }
+            moveable = yes
             Orientation = UPPER_LEFT
             iconType = {
                 name = "event_picture"
                 spriteType = "GFX_news_event_001"
                 position = { x = 74 y = 164 }
-                Orientation = UPPER_LEFT
+                moveable = yes
+            Orientation = UPPER_LEFT
                 alwaystransparent = yes
             }
             instantTextBoxType = {
                 name = "Title"
+                alwaystransparent = yes
                 # Extra leading blank lines keep mastheads below decision-row clipping.
                 # Offset the native Title upwards to preserve popup placement.
                 position = { x = 30 y = -116 }
@@ -519,9 +522,11 @@ guiTypes = {
             name = "midsection"
             position = { x = 0 y = 395 }
             size = { width = 565 height = 285 }
+            moveable = yes
             Orientation = UPPER_LEFT
             instantTextBoxType = {
                 name = "Description"
+                alwaystransparent = yes
                 position = { x = 56 y = 0 }
                 font = "hoi4_typewriter16"
                 borderSize = { x = 0 y = 0 }
@@ -535,6 +540,7 @@ guiTypes = {
             name = "bottom_Window"
             position = { x = 0 y = 699 }
             size = { width = 565 height = 70 }
+            moveable = yes
             Orientation = UPPER_LEFT
             gridBoxType = {
                 name = "options_grid"

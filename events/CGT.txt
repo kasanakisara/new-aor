@@ -14,7 +14,7 @@ country_event = {
 		name = CGT.1.a
 		log = "CGT.1"
 		#爆新闻
-		news_event = {id=AOR_news.59}
+		country_event = {id=AOR_news_router.190}
 		country_event = {id = CGT.2 days = 1}
 	}
 }
@@ -29,7 +29,7 @@ country_event = {
 		name = CGT.2.a
 		log = "CGT.2"
 		#爆新闻
-		news_event = {id=AOR_news.60}
+		country_event = {id=AOR_news_router.191}
 		PLM = {
 			dismantle_faction = Farmers_League
 			declare_war_on = {
@@ -45,7 +45,7 @@ country_event = {
 		name = CGT.2.b
 		log = "CGT.2.b"
 		#爆新闻
-		news_event = {id=AOR_news.62}
+		country_event = {id=AOR_news_router.192}
 		SFM = {
 			annex_country = {
 				target = PLM
@@ -91,7 +91,7 @@ country_event = {
  	option = {
  		name = CGT.3.a
  		#爆新闻
- 		news_event = {id=AOR_news.61}
+ 		country_event = {id=AOR_news_router.192}
  		SFM = {
 			 annex_country = {
 				 target = PLM
@@ -132,7 +132,7 @@ country_event = {
 	option = {
 		name = CGT.4.a
 		#爆新闻
-		news_event = {id=AOR_news.61}
+		country_event = {id=AOR_news_router.192}
 		SFM = {
 			annex_country = {
 				target = PLM
@@ -181,12 +181,13 @@ country_event = {
 	}
 }
 country_event = {
-	id = CGT.5
-	title = CGT.5.t
-	desc = CGT.5.d
+	id = CGT.6
+	title = CGT.6.t
+	desc = CGT.6.d
 	picture = GFX_news_CGT_extinct
 	fire_only_once = yes
 	trigger = {
+ tag = CGT
 		has_country_flag = CGT_war_on
 		CGT = {
 			NOT = {
@@ -195,7 +196,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = CGT.5.a
+		name = CGT.6.a
 		#爆新闻
 		if = {
 			limit = {

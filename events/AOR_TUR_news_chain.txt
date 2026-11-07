@@ -1,0 +1,21 @@
+add_namespace = TUR
+country_event = { id = TUR.1 hidden = yes is_triggered_only = yes fire_only_once = yes
+ immediate = { if = { limit = { tag = TUR NOT = { has_war_with = GRE } country_exists = GRE } declare_war_on = { target = GRE type = take_claimed_state } } }
+}
+country_event = { id = TUR.2 hidden = yes is_triggered_only = yes fire_only_once = yes
+ immediate = { set_country_flag = AOR_TUR_first_war_defeat }
+}
+country_event = { id = TUR.5 hidden = yes is_triggered_only = yes fire_only_once = yes
+ immediate = { if = { limit = { tag = TUR country_exists = GRE NOT = { has_war_with = GRE } } set_country_flag = AOR_TUR_revenge declare_war_on = { target = GRE type = take_claimed_state } } }
+}
+country_event = { id = TUR.100 hidden = yes fire_only_once = yes
+ trigger = { tag = TUR has_war_with = GRE controls_state = 797 controls_state = 343 GRE = { has_idea = Take_the_initiative_to_attack surrender_progress > 0.25 } }
+ mean_time_to_happen = { days = 1 }
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_ottoman_victory_news } } set_global_flag = AOR_ottoman_victory_news country_event = { id = AOR_news_router.67 } }
+  transfer_state = 797
+  transfer_state = 340
+  transfer_state = 341
+  every_country = { limit = { has_war_with = TUR } white_peace = TUR }
+ }
+}
