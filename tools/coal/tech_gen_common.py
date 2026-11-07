@@ -26,8 +26,8 @@ P1 = {"CZE", "POL", "BEL", "SWE", "SPR", "BRA", "ARG"}
 
 # 二线：有像样的军队，但没有完整重工业/毒气/中型轰炸机
 P1B = {"ROM", "BUL", "GRE", "SER", "YUG", "TUR", "RAJ", "CAN", "AST", "NZL", "SAF",
-       "HUN", "CHI", "OTT", "UKR", "MEX", "SIA"}
-P2 = {"AUS", "HOL", "SWI", "DEN", "NOR", "FIN", "POR", "PER", "EGY", "AFG", "MAN", "MEN",
+       "HUN", "OTT", "UKR", "MEX", "SIA"}
+P2 = {"CHI", "AUS", "HOL", "SWI", "DEN", "NOR", "FIN", "POR", "PER", "EGY", "AFG", "MAN", "MEN",
       "MON", "CHL", "COL", "VEN", "PRU", "BOL", "ECU", "URG", "PAR", "CUB", "DOM",
       "GUA", "HON", "ELS", "NIC", "COS", "PAN", "HAI", "EST", "LAT", "LIT", "BLR",
       "BR1", "BR2", "BR3", "BR4"}

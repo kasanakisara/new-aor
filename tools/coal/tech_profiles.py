@@ -108,7 +108,7 @@ for _t in ["RAJ", "EGY", "PER", "CAN", "AST", "NZL", "SAF"]:
     AIR_OVERRIDE[_t] = 1
 for _t in ["PER", "EGY", "UKR", "HUN", "OTT"]:
     NAVY_OVERRIDE[_t] = 0
-for _t in ["MEX", "SIA"]:
+for _t in ["MEX", "SIA", "CHI"]:
     AIR_OVERRIDE[_t] = 1
 AIR_OVERRIDE["AUS"] = 0
 
