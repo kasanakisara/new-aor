@@ -13,6 +13,7 @@ oob_req = json.load(open(r"D:\new-aor\tools\coal\oob_req.json", encoding="utf-8"
 LAND_BY_TIER = {
     "P0": list(P.BASE_LAND) + list(P.SPECIAL) + ["aor_tank_support"],
     "P1": list(P.BASE_LAND) + list(P.SPECIAL),
+    "P1B": list(P.BASE_LAND) + ["aor_inf_t01", "aor_inf_e01"],
     "P2": ["aor_inf_r01", "aor_inf_r02", "aor_inf_l00", "aor_inf_l01", "aor_inf_u01",
            "aor_inf_u02", "tech_support", "tech_engineers", "tech_recon",
            "aor_inf_mg1", "Old_howitzers", "aor_field_gun_1"],
@@ -21,13 +22,15 @@ LAND_BY_TIER = {
 }
 
 P0 = {"ENG", "FRA", "USA", "ITA", "JAP", "RUS", "ARU"}
-P1 = {"AUS", "HUN", "CZE", "POL", "BEL", "HOL", "SWE", "SPR", "TUR", "RAJ", "CAN",
-      "AST", "NZL", "SAF", "BRA", "ARG", "MEX", "ROM", "BUL", "GRE", "SER", "YUG",
-      "FIN", "DEN", "NOR", "POR", "SWI", "IRE", "PER", "SIA", "CHI", "EGY", "UKR",
-      "OTT"}
-P2 = {"AFG", "MAN", "MEN", "MON", "CHL", "COL", "VEN", "PRU", "BOL", "ECU",
-      "URG", "PAR", "CUB", "DOM", "GUA", "HON", "ELS", "NIC", "COS", "PAN", "HAI",
-      "EST", "LAT", "LIT", "BLR", "BR1", "BR2", "BR3", "BR4"}
+P1 = {"CZE", "POL", "BEL", "SWE", "SPR", "BRA", "ARG"}
+
+# 二线：有像样的军队，但没有完整重工业/毒气/中型轰炸机
+P1B = {"ROM", "BUL", "GRE", "SER", "YUG", "TUR", "RAJ", "CAN", "AST", "NZL", "SAF",
+       "HUN", "CHI", "OTT", "UKR", "MEX", "SIA"}
+P2 = {"AUS", "HOL", "SWI", "DEN", "NOR", "FIN", "POR", "PER", "EGY", "AFG", "MAN", "MEN",
+      "MON", "CHL", "COL", "VEN", "PRU", "BOL", "ECU", "URG", "PAR", "CUB", "DOM",
+      "GUA", "HON", "ELS", "NIC", "COS", "PAN", "HAI", "EST", "LAT", "LIT", "BLR",
+      "BR1", "BR2", "BR3", "BR4"}
 P4 = {"ETH", "LIB", "BHU",        
           "ANA", "ANH", "ARN", "ASA", "ASU", "BAG", "BAV",
       "BOT", "BRD", "BRI",   "CAR", "CAU", "CBS", "CGT", "CHA", 
@@ -73,6 +76,8 @@ def profile_of(tag):
         return "P0"
     if tag in P1:
         return "P1"
+    if tag in P1B:
+        return "P1B"
     if tag in P2:
         return "P2"
     if tag in P4:
@@ -80,14 +85,22 @@ def profile_of(tag):
     return "P3"
 
 
-DEFAULT_AIR = {"P0": 4, "P1": 3, "P2": 2, "P3": 1, "P4": 0}
-DEFAULT_NAVY = {"P0": 2, "P1": 2, "P2": 1, "P3": 0, "P4": 0}
+DEFAULT_AIR = {"P0": 4, "P1": 2, "P1B": 2, "P2": 2, "P3": 1, "P4": 0}
+DEFAULT_NAVY = {"P0": 2, "P1": 1, "P1B": 1, "P2": 1, "P3": 0, "P4": 0}
+TIER_KIND = {"P0": 1, "P1": 1, "P1B": 1, "P2": 2, "P3": 3, "P4": 4}
 
 
 def build(tag, fn):
     prof = profile_of(tag)
     ind, sci, _air, nav, special = list(P.PROFILES[prof])
     ind = list(ind)
+    sci = list(sci)
+    lvl = P.INDUSTRY_OVERRIDE.get(tag)
+    if lvl == "mid":
+        ind = list(P.IND_BASIC) + list(P.IND_MID_NOSYNTH)
+    lvl = P.SCIENCE_OVERRIDE.get(tag)
+    if lvl == "mid":
+        sci = list(P.SCI_BASIC) + list(P.SCI_MID)
     air_tier = P.AIR_OVERRIDE.get(tag, DEFAULT_AIR[prof])
     navy_tier = P.NAVY_OVERRIDE.get(tag, DEFAULT_NAVY[prof])
     air = list(AIR_TIERS[air_tier])

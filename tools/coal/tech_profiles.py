@@ -17,6 +17,7 @@ BASE_LAND = [
 
 IND_BASIC = ["basic_machine_tools"]
 IND_MID = ["construction1", "excavation1", "fuel_refining", "aor_railway_engineering"]
+IND_MID_NOSYNTH = ["construction1", "excavation1", "aor_railway_engineering"]
 IND_HIGH = ["aor_fortification1"]
 IND_NAVAL = ["aor_shipbuilding"]
 
@@ -61,7 +62,12 @@ PROFILES = {
            AIR_14 + AIR_19 + AIR_MED + AIR_LARGE + AIR_TORPEDO,
            NAV_14 + NAV_19,
            SPECIAL),
-    "P2": (IND_BASIC + IND_MID,
+    "P1B": (IND_BASIC + IND_MID_NOSYNTH,
+            SCI_BASIC + SCI_MID,
+            AIR_14 + AIR_19,
+            NAV_14,
+            ["aor_inf_t01", "aor_inf_e01"]),
+    "P2": (IND_BASIC + IND_MID_NOSYNTH,
            SCI_BASIC + SCI_MID,
            AIR_14 + AIR_19,
            NAV_14,
@@ -91,17 +97,25 @@ NAV_DOC = {}
 AIR_DOC = {}
 
 # ---- great powers
-for t in ["ENG", "FRA", "USA", "ITA", "JAP", "RUS", "ARU"]:
-    AIR_OVERRIDE[t] = 4
-    NAVY_OVERRIDE[t] = 2
+# 1919 现实：俄国/全俄政府没有飞艇与造舰能力
+AIR_OVERRIDE["RUS"] = 2
+NAVY_OVERRIDE["RUS"] = 1
+AIR_OVERRIDE["ARU"] = 2
+NAVY_OVERRIDE["ARU"] = 1
+
+# 没有独立空军的：印度、埃及、波斯、加拿大、澳洲、新西兰、南非
+for _t in ["RAJ", "EGY", "PER", "CAN", "AST", "NZL", "SAF"]:
+    AIR_OVERRIDE[_t] = 1
+for _t in ["PER", "EGY", "UKR", "HUN", "OTT"]:
+    NAVY_OVERRIDE[_t] = 0
+for _t in ["MEX", "SIA"]:
+    AIR_OVERRIDE[_t] = 1
+AIR_OVERRIDE["AUS"] = 0
 
 # ---- major powers
 P1 = ["AUS", "HUN", "CZE", "POL", "BEL", "HOL", "SWE", "SPR", "TUR", "RAJ", "CAN",
       "AST", "NZL", "SAF", "BRA", "ARG", "MEX", "ROM", "BUL", "GRE", "SER", "YUG",
       "FIN", "DEN", "NOR", "POR", "SWI", "IRE", "PER", "SIA", "CHI", "EGY", "UKR"]
-for t in P1:
-    AIR_OVERRIDE[t] = 3
-    NAVY_OVERRIDE[t] = 1
 
 # ---- regional powers
 P2 = ["ALB", "MNT", "BOS", "CRO", "SLO", "MAC", "KOS", "GEO", "ARM", "AZR", "IRQ",
@@ -109,9 +123,6 @@ P2 = ["ALB", "MNT", "BOS", "CRO", "SLO", "MAC", "KOS", "GEO", "ARM", "AZR", "IRQ
       "IOM", "AFG", "KOR", "MAN", "MEN", "TIB", "NEP", "MON", "CHL", "COL", "VEN",
       "PRU", "BOL", "ECU", "URG", "PAR", "CUB", "DOM", "GUA", "HON", "ELS", "NIC",
       "COS", "PAN", "HAI", "PHI", "INS", "EST", "LAT", "LIT", "BLR"]
-for t in P2:
-    AIR_OVERRIDE[t] = 2
-    NAVY_OVERRIDE[t] = 1
 
 # landlocked / no navy in 1919
 LANDLOCKED = {"AUS", "HUN", "CZE", "SWI", "BOL", "PAR", "AFG", "NEP", "BHU", "TIB",
@@ -161,6 +172,10 @@ NO_NAVY = NO_AIR | {"ABK", "ADU", "ANA", "ANH", "ARN", "ASA", "ASU", "BAV", "BRI
                     "LIE", "SMR", "VAT", "MNC", "MLD", "BHU", "BOL", "PAR"}
 for t in NO_NAVY:
     NAVY_OVERRIDE[t] = 0
+
+# 工业/科学降档：战乱或殖民经济体
+INDUSTRY_OVERRIDE = {"RUS": "mid", "ARU": "mid", "CHI": "mid", "RAJ": "mid"}
+SCIENCE_OVERRIDE = {"CHI": "mid", "RAJ": "mid"}
 
 # ---- land doctrines
 for t in ["ENG", "JAP", "ARG", "CAN", "AST", "NZL", "SAF", "USA"]:
