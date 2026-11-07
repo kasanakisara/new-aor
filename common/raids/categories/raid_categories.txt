@@ -16,14 +16,7 @@ categories = {
 		}
 	}
 
-	nuclear_raids = {
-	    intel_source = air
-	    free_targeting = yes
-	    faction_influence_score_on_success = -100
-	    available = { always = no }
-	
-	visible = { always = no }
-}
+	nuclear_raids = { intel_source = army free_targeting = yes visible = { has_dlc = "Gotterdammerung" } available = { always = yes } }
 
 	land_infiltration_raids = {
 	    intel_source = army
@@ -57,4 +50,6 @@ categories = {
 
 		}
 	}
+
+ aor_state_gas_raids = { intel_source = army visible = { always = no } available = { always = no } }
 }

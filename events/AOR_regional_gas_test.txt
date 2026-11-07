@@ -1,0 +1,73 @@
+# Console-only; no autonomous triggers. Use a separate test save.
+add_namespace = aor_gas_test
+country_event = {
+ id = aor_gas_test.1 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = { set_technology = { Gas_Preparation6 = 1 } add_command_power = 100 }
+}
+country_event = {
+ id = aor_gas_test.2 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = { add_nuclear_bombs = 10 }
+}
+country_event = {
+ id = aor_gas_test.3 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = {
+  set_temp_variable = { aor_gas_test_remove_stock = num_of_nukes }
+  multiply_temp_variable = { aor_gas_test_remove_stock = -1 }
+  add_nuclear_bombs = temp_var:aor_gas_test_remove_stock
+ }
+}
+country_event = {
+ id = aor_gas_test.4 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = {
+  if = {
+   limit = { has_variable = aor_gas_test_state }
+   save_global_event_target_as = aor_gas_attacker
+   var:aor_gas_test_state = {
+    save_global_event_target_as = aor_gas_target
+    controller = { save_global_event_target_as = aor_gas_victim }
+    # Retired: test an actual province raid.
+   }
+  }
+ }
+}
+country_event = {
+ id = aor_gas_test.5 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = { capital_scope = { add_building_construction = { type = nuclear_reactor level = 1 instant_build = yes } } }
+}
+country_event = {
+ id = aor_gas_test.6 hidden = yes is_triggered_only = yes
+ option = { name = OK }
+ immediate = {
+  if = {
+   limit = { has_variable = aor_gas_test_state }
+   var:aor_gas_test_state = {
+    clr_state_flag = aor_gas_contaminated
+    clr_state_flag = aor_gas_smoke_cleanup
+    remove_dynamic_modifier = { modifier = aor_gas_state_contamination }
+    remove_province_modifier = { static_modifiers = { aor_gas_battlefield } province = { all_provinces = yes } }
+    aor_gas_remove_smoke = yes
+   }
+  }
+ }
+}
+
+# Explicit console-only test switch; never activated during ordinary gameplay.
+country_event = {
+ id = aor_gas_test.7 hidden = yes is_triggered_only = yes
+ immediate = {
+  set_country_flag = { flag = aor_gas_force_success_test days = 30 }
+  log = "AOR_CHEMICAL: force-success test enabled for 30 days"
+ }
+}
+country_event = {
+ id = aor_gas_test.8 hidden = yes is_triggered_only = yes
+ immediate = {
+  clr_country_flag = aor_gas_force_success_test
+  log = "AOR_CHEMICAL: force-success test disabled"
+ }
+}

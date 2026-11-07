@@ -1,0 +1,256 @@
+types = {
+ aor_regional_gas_strike = {
+  category = nuclear_raids
+  days_to_prepare = 7
+  days_re_enable = 28
+  command_power = 30
+  ai_will_do = { base = 0 }
+  allowed = { has_dlc = "Gotterdammerung" }
+  visible = { has_dlc = "Gotterdammerung" }
+  show_target = { NOT = { is_in_faction_with = FROM } }
+  available = { has_tech = Gas_Preparation6 has_war_with = FROM }
+  launchable = {
+   has_tech = Gas_Preparation6 has_war_with = FROM
+
+  }
+  target_type = { province = any }
+  custom_map_icon = GFX_raid_type_icon_aor_regional_gas_strike
+  target_icon = GFX_other_target_icon
+  launch_sound = raid_land_launchable_sound
+  unit_model = { entity = motorized_vehicle_entity }
+  unit_animations = { stage = { state = "move" } }
+  unit_requirements = { battalion_types = { infantry = { min = 3 } } }
+  essential_equipment = { nukes = 1 }
+  nuke_type = nuclear_bomb
+  starting_point = { building_types = { supply_node } }
+  arrow = { type = land }
+  success_factors = {
+   success = {
+    base = 0.65
+    aor_gas_test_success_bonus = {
+     scope = country
+     formula = { base = 0 modifier = { has_country_flag = aor_gas_force_success_test add = 1 } }
+     reference = 1
+     weight = 2
+     can_actor_affect = yes
+     can_target_affect = no
+    }
+
+   }
+   critical = { base = 0.10 experience = { reference = 1 weight = 0.10 } }
+   disaster = { base = -0.15 # Offset the native high-risk +0.25 so disaster occupies 0.10, leaving room for 0.90 success.
+    aor_gas_test_disaster_suppression = {
+     scope = country
+     formula = { base = 0 modifier = { has_country_flag = aor_gas_force_success_test add = 1 } }
+     reference = 1
+     weight = -2
+     can_actor_affect = yes
+     can_target_affect = no
+    }
+ }
+  }
+  success_levels = {
+   failure = {
+    actor_effects = { var:actor_country = { log = "AOR_CHEMICAL: raid failed; no chemical impact" } raid_damage_units = { org_damage = 0.25 str_damage = 0.10 ratio = yes } }
+   }
+   limited_success = { victim_effects = {
+    hidden_effect = { # Inline native effects: raid outcome parsing does not expand parameter blocks here.
+    var:actor_country = { log = "AOR_CHEMICAL: limited_success entered" }
+    set_temp_variable = { aor_gas_entity_id = target_province }
+    add_to_temp_variable = { aor_gas_entity_id = 1800000 }
+    meta_effect = {
+     text = {
+      var:target_state = {
+       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
+       damage_units = { province = [P] army = yes org_damage = 0.50 str_damage = 0.25 ratio = yes }
+       set_state_flag = { flag = aor_gas_province_[P] days = 28 }
+       set_state_flag = aor_gas_cleanup_[P]
+       set_state_flag = aor_gas_has_province_clouds
+       create_entity = { entity = building_aor_gas_cloud id = [E] province = [P] scale = 4 visible = aor_gas_world_visible }
+       set_entity_animation = { id = [E] animation = "attack" }
+      }
+      every_country = { limit = { is_ai = no } goto_province = [P] }
+     }
+     P = target_province
+     E = aor_gas_entity_id
+    }
+    var:target_state = {
+     
+     # Population exists on the state, not the individual province. Approved exception.
+     set_variable = { aor_gas_population_before_k = state_population_k }
+     set_temp_variable = { aor_gas_loss_k = state_population_k }
+     multiply_temp_variable = { aor_gas_loss_k = 0.5 }
+     # Keep values below the fixed-point variable range, even in populous states.
+     while = {
+      limit = { check_variable = { aor_gas_loss_k > 1000 } }
+      add_manpower = -1000000
+      subtract_from_temp_variable = { aor_gas_loss_k = 1000 }
+     }
+     multiply_temp_variable = { aor_gas_loss_k = -1000 }
+     add_manpower = temp_var:aor_gas_loss_k
+     set_variable = { aor_gas_population_after_k = state_population_k }
+     log = "AOR_CHEMICAL population [This.GetName]: before_k=[?aor_gas_population_before_k] after_k=[?aor_gas_population_after_k]"
+     
+     save_global_event_target_as = aor_gas_target
+     aor_gas_schedule_cleanup = yes
+    }
+    var:actor_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.10
+     add_war_support = -0.15
+     save_global_event_target_as = aor_gas_attacker
+     log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:victim_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.15
+     add_war_support = -0.10
+     save_global_event_target_as = aor_gas_victim
+     log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:actor_country = {
+     news_event = { id = AOR_news_global.5 }
+     log = "AOR_CHEMICAL: limited_success completed; global news dispatched"
+    }
+    
+    }
+    var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
+    custom_effect_tooltip = aor_chemical_political_cost_tt
+   } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
+   success = { victim_effects = {
+    hidden_effect = { # Inline native effects: raid outcome parsing does not expand parameter blocks here.
+    var:actor_country = { log = "AOR_CHEMICAL: success entered" }
+    set_temp_variable = { aor_gas_entity_id = target_province }
+    add_to_temp_variable = { aor_gas_entity_id = 1800000 }
+    meta_effect = {
+     text = {
+      var:target_state = {
+       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
+       damage_units = { province = [P] army = yes org_damage = 0.75 str_damage = 0.50 ratio = yes }
+       set_state_flag = { flag = aor_gas_province_[P] days = 28 }
+       set_state_flag = aor_gas_cleanup_[P]
+       set_state_flag = aor_gas_has_province_clouds
+       create_entity = { entity = building_aor_gas_cloud id = [E] province = [P] scale = 4 visible = aor_gas_world_visible }
+       set_entity_animation = { id = [E] animation = "attack" }
+      }
+      every_country = { limit = { is_ai = no } goto_province = [P] }
+     }
+     P = target_province
+     E = aor_gas_entity_id
+    }
+    var:target_state = {
+     
+     # Population exists on the state, not the individual province. Approved exception.
+     set_variable = { aor_gas_population_before_k = state_population_k }
+     set_temp_variable = { aor_gas_loss_k = state_population_k }
+     multiply_temp_variable = { aor_gas_loss_k = 0.5 }
+     # Keep values below the fixed-point variable range, even in populous states.
+     while = {
+      limit = { check_variable = { aor_gas_loss_k > 1000 } }
+      add_manpower = -1000000
+      subtract_from_temp_variable = { aor_gas_loss_k = 1000 }
+     }
+     multiply_temp_variable = { aor_gas_loss_k = -1000 }
+     add_manpower = temp_var:aor_gas_loss_k
+     set_variable = { aor_gas_population_after_k = state_population_k }
+     log = "AOR_CHEMICAL population [This.GetName]: before_k=[?aor_gas_population_before_k] after_k=[?aor_gas_population_after_k]"
+     
+     save_global_event_target_as = aor_gas_target
+     aor_gas_schedule_cleanup = yes
+    }
+    var:actor_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.10
+     add_war_support = -0.15
+     save_global_event_target_as = aor_gas_attacker
+     log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:victim_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.15
+     add_war_support = -0.10
+     save_global_event_target_as = aor_gas_victim
+     log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:actor_country = {
+     news_event = { id = AOR_news_global.5 }
+     log = "AOR_CHEMICAL: success completed; global news dispatched"
+    }
+    
+    }
+    var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
+    custom_effect_tooltip = aor_chemical_political_cost_tt
+   } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
+   critical_success = { victim_effects = {
+    hidden_effect = { # Inline native effects: raid outcome parsing does not expand parameter blocks here.
+    var:actor_country = { log = "AOR_CHEMICAL: critical_success entered" }
+    set_temp_variable = { aor_gas_entity_id = target_province }
+    add_to_temp_variable = { aor_gas_entity_id = 1800000 }
+    meta_effect = {
+     text = {
+      var:target_state = {
+       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
+       damage_units = { province = [P] army = yes org_damage = 0.90 str_damage = 0.75 ratio = yes }
+       set_state_flag = { flag = aor_gas_province_[P] days = 28 }
+       set_state_flag = aor_gas_cleanup_[P]
+       set_state_flag = aor_gas_has_province_clouds
+       create_entity = { entity = building_aor_gas_cloud id = [E] province = [P] scale = 4 visible = aor_gas_world_visible }
+       set_entity_animation = { id = [E] animation = "attack" }
+      }
+      every_country = { limit = { is_ai = no } goto_province = [P] }
+     }
+     P = target_province
+     E = aor_gas_entity_id
+    }
+    var:target_state = {
+     
+     # Population exists on the state, not the individual province. Approved exception.
+     set_variable = { aor_gas_population_before_k = state_population_k }
+     set_temp_variable = { aor_gas_loss_k = state_population_k }
+     multiply_temp_variable = { aor_gas_loss_k = 0.5 }
+     # Keep values below the fixed-point variable range, even in populous states.
+     while = {
+      limit = { check_variable = { aor_gas_loss_k > 1000 } }
+      add_manpower = -1000000
+      subtract_from_temp_variable = { aor_gas_loss_k = 1000 }
+     }
+     multiply_temp_variable = { aor_gas_loss_k = -1000 }
+     add_manpower = temp_var:aor_gas_loss_k
+     set_variable = { aor_gas_population_after_k = state_population_k }
+     log = "AOR_CHEMICAL population [This.GetName]: before_k=[?aor_gas_population_before_k] after_k=[?aor_gas_population_after_k]"
+     
+     save_global_event_target_as = aor_gas_target
+     aor_gas_schedule_cleanup = yes
+    }
+    var:actor_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.10
+     add_war_support = -0.15
+     save_global_event_target_as = aor_gas_attacker
+     log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:victim_country = {
+     set_variable = { aor_gas_stability_before = stability }
+     set_variable = { aor_gas_war_support_before = war_support }
+     add_stability = -0.15
+     add_war_support = -0.10
+     save_global_event_target_as = aor_gas_victim
+     log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
+    }
+    var:actor_country = {
+     news_event = { id = AOR_news_global.5 }
+     log = "AOR_CHEMICAL: critical_success completed; global news dispatched"
+    }
+    
+    }
+    var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
+    custom_effect_tooltip = aor_chemical_political_cost_tt
+   } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
+  }
+ }
+}
