@@ -117,12 +117,6 @@ set_war_support = 0.8
 
 set_research_slots = 4
 set_fuel_ratio = 1.0
-add_ideas = {
-	limited_exports
-	limited_conscription
-	partial_economic_mobilisation
-
-}
 
 add_equipment_to_stockpile = {
 	type = support_equipment
@@ -142,45 +136,6 @@ add_equipment_to_stockpile = {
 	producer = JAP	
 }
 
-create_country_leader = {
-	name = "Emperor_Taisho"
-	desc = "Emperor_Taisho_desc"
-	picture = "gfx/leaders/JAP/Emperor_Taisho.dds"
-	expire = "1965.1.1"
-	ideology = monarchism
-	traits = {
-	}
-}
-create_country_leader = {
-	name = "Emperor_Hirohito"
-	desc = "Emperor_Hirohito_desc"
-	picture = "gfx/leaders/JAP/Emperor_Hirohito.png"
-	expire = "1965.1.1"
-	ideology = monarchism
-	traits = {
-	}
-}
-
-create_country_leader = {
-	name = "Tokonji_takejiro"
-	desc = "Tokonji_takejiro_desc"
-	picture = "gfx/leaders/JAP/Tokonji_takejiro.png"
-	expire = "1965.1.1"
-	ideology = authoritarianism
-	traits = {
-	}
-}
-
-create_country_leader = {
-	name = "Ichiro_Hatoyama"
-	desc = "Ichiro_Hatoyama_desc"
-	picture = "gfx/leaders/JAP/Ichiro_Hatoyama.png"
-	expire = "1965.1.1"
-	ideology = conservatism
-	traits = {
-	}
-}
-
 set_politics = {
 	ruling_party = AUT_democratic
 	last_election = "1919.1.1"
@@ -197,14 +152,55 @@ set_popularities = {
 }
 recruit_character = JAP_Taketomi_Tokitoshi
 promote_character = JAP_Taketomi_Tokitoshi
+recruit_character = JAP_Inukai_Tsuyoshi
+activate_advisor = JAP_Inukai_Tsuyoshi
+recruit_character = JAP_Wakatsuki_Reijiro
+activate_advisor = JAP_Wakatsuki_Reijiro
+recruit_character = JAP_Kato_Takaaki
+activate_advisor = JAP_Kato_Takaaki
 puppet = KOR
 puppet = PYO
+set_autonomy = {
+	target = PRI
+	autonomous_state = AOR_military_control_state
+	freedom_level = 0.2
+}
+set_autonomy = {
+	target = JKA
+	autonomous_state = AOR_military_control_state
+	freedom_level = 0.2
+}
+
+declare_war_on = {
+	target = ARU
+	type = puppet_wargoal_focus
+}
+
+JKA = {
+	add_to_war = {
+		targeted_alliance = JAP
+		enemy = ARU		 
+	}
+}
+
+PRI = {
+	add_to_war = {
+		targeted_alliance = JAP
+		enemy = ARU		 
+	}
+}
 
 give_guarantee = QID
 
 JAP = {
 country_event = {days = 3 id = AOR_news_router.70}
 country_event = { days = 1520 id = JAP.17 }
+}
+
+add_ideas = {
+	limited_exports
+	limited_conscription
+	war_economy
 }
 
 ###海军舰艇设计###
