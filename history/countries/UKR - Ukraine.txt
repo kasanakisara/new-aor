@@ -1,3 +1,60 @@
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_fortification1 = 1
+	aor_railway_engineering = 1
+	basic_machine_tools = 1
+	construction1 = 1
+	excavation1 = 1
+	fuel_refining = 1
+	# Science
+	Classic_optics = 1
+	Gas_Preparation = 1
+	Gas_mask = 1
+	Hot_air_balloon = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_b01 = 1
+	aor_inf_e01 = 1
+	aor_inf_g01 = 1
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_m01 = 1
+	aor_inf_mg1 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_t01 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	basic_train = 1
+	tech_engineers = 1
+	tech_field_hospital = 1
+	tech_military_police = 1
+	tech_recon = 1
+	tech_support = 1
+	# Artillery
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_medium_1914 = 1
+	aor_air_medium_1919 = 1
+	aor_air_small_1914 = 1
+	aor_air_small_1919 = 1
+	# Doctrine
+	formation_flying = 1
+	mass_assault = 1
+}
 capital = 202 #Kiev
 
 #oob = "AOR_LAND_UKR"
@@ -5,65 +62,13 @@ capital = 202 #Kiev
 set_research_slots = 2
 
 # Starting tech
-set_technology = {
-		aor_armorcr_1919 = 1
-		aor_armorheavy_1919 = 1
-		aor_aa_1919 = 1
-		aor_fcs_1914 = 1
-		aor_engine_1914 = 1
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	tech_military_police = 1
-	aor_inf_t01 = 1
-	 
- 
- 
- 
- 
- 
- 
-	mass_assault = 1
-	fleet_in_being = 1
-}
 
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-}
 
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		early_ship_hull_submarine = 1
-		tech_1919_ship_hull_submarine = 1
-		early_ship_hull_light = 1
-		early_ship_hull_light_cruiser = 1
-		early_ship_hull_heavy = 1
-		mtg_transport = 1
-		basic_battery = 1
-		basic_torpedo = 1
-	}
-}
 
 set_politics = {
 	ruling_party = Marxism

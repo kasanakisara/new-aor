@@ -1,3 +1,12 @@
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	basic_machine_tools = 1
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
 
 capital = 906
 
@@ -5,13 +14,6 @@ recruit_character = 陈宦
 recruit_character = 熊克武
 
 
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		#set_naval_#oob = "CHI_1936_naval_mtg"
-	else = {
-		#set_naval_#oob = "CHI_1936_naval_legacy"
-	}
-}
 
 add_ideas = {
 	CHI_soldiers_will_ready
@@ -41,46 +43,7 @@ create_country_leader = {
 set_stability = 0.5
 set_war_support = 0.5
 # Starting tech
-set_technology = {
-		aor_armorcr_1919 = 1
-		aor_aa_1919 = 1
-		aor_fcs_1914 = 1
-		aor_engine_1914 = 1
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
 
-	mass_assault = 1
-	fleet_in_being = 1
-	basic_train = 1
-
-	Old_howitzers = 1
-	aor_field_gun_1 = 1
-	interwar_antitank = 1
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-	else = {
-		set_technology = {
-		}
-	}
-}
-
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		early_ship_hull_light = 1
-		early_ship_hull_light_cruiser = 1
-		basic_battery = 1
-		aor_secondary_1919 = 1
-		basic_torpedo = 1
-		coastal_defense_ships = 1
-	}
-}
 set_convoys = 40
 set_politics = {
 	ruling_party = Absolutism
