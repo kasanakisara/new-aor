@@ -555,14 +555,6 @@ siege_artillery = {
 
     ai_will_do = { base = 0 }
 
-    super_heavy_artillery = {
-        battalion_mult = {
-            category = category_army
-            soft_attack = 0.1
-            defense = 0.1
-        }
-    }
-
     equipment_bonus = {
         railway_gun_equipment = {
             railway_gun_attack = 0.25
@@ -575,31 +567,9 @@ siege_artillery = {
     }
 
     rewards = {
-
-        fortress_busters = {
-            super_heavy_artillery = {
-                fort = {
-                    attack = 0.25
-                }
-            }
-            self_propelled_super_heavy_artillery = {
-                fort = {
-                    attack = 0.25
-                }
-            }
-        }
         improved_transport_preparation = {
             category_line_artillery = {
                 default_morale = 0.2
-            }
-            super_heavy_artillery = {
-                plains = {
-                    movement = 0.1
-                }
-            }
-            self_propelled_super_heavy_artillery = {
-                plains = {
-                    movement = 0.1
                 }
             }
 
@@ -615,42 +585,16 @@ siege_artillery = {
                 
             }
         }
-        precomputed_firing_data = {
-            super_heavy_artillery = {
-                max_organisation = 10
-                defense = 0.2
-            }
-            self_propelled_super_heavy_artillery = {
-                max_organisation = 10
-                defense = 0.2
-            }
-
-        }
         urban_strongpoint_sieges = {
 
             category_artillery = {
                 soft_attack = 0.05
-            }
-            super_heavy_artillery = {
-                urban = {
-                    attack = 0.2
-                }
-            }
-            self_propelled_super_heavy_artillery = {
-                urban = {
-                    attack = 0.2
-                }
             }
         }
         mobile_artillery_command = {
             category_support_artillery = {
                 max_organisation = 10
             }
-            self_propelled_super_heavy_artillery = {
-                max_organisation = 10
-                maximum_speed = 0.5
-            }
-
             equipment_bonus = {
                 railway_gun_equipment = {
                     maximum_speed = 1
