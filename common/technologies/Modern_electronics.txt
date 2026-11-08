@@ -1,639 +1,625 @@
-# AOR engineering revision. Gas_Preparation also unlocks the chemical support company.
-technologies = {
-	aor_basic_science_1900 = {
-  # BEGIN AOR theory project unlocks
-  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_atomic_structure } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_general_relativity } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_symmetry_conservation } }
-  # END AOR theory project unlocks
-
-		research_speed_factor = 0.06
-		path = { leads_to_tech = aor_basic_science_1920 research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	aor_basic_science_1920 = {
-  # BEGIN AOR theory project unlocks
-  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_relativistic_cosmology } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_abstract_algebra } }
-  # END AOR theory project unlocks
-
-		research_speed_factor = 0.04
-		path = { leads_to_tech = aor_basic_science_1923 research_cost_coeff = 1 }
-		research_cost = 0.818182
-		start_year = 1920
-		folder = { name = electronics_folder position = { x = 0 y = 2 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	aor_basic_science_1923 = {
-  # BEGIN AOR theory project unlocks
-  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_matter_waves } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_quantum_mechanics } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_unified_field_theory } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_mathematical_logic } }
-  # END AOR theory project unlocks
-
-		research_speed_factor = 0.04
-		path = { leads_to_tech = aor_basic_science_1925 research_cost_coeff = 1 }
-		research_cost = 0.909091
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	aor_basic_science_1925 = {
-  # BEGIN AOR theory project unlocks
-  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_quantum_electrodynamics } }
-  # END AOR theory project unlocks
-
-		research_speed_factor = 0.05
-		path = { leads_to_tech = aor_basic_science_1928 research_cost_coeff = 1 }
-		research_cost = 1.000000
-		start_year = 1925
-		folder = { name = electronics_folder position = { x = 0 y = 6 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	aor_basic_science_1928 = {
-		research_speed_factor = 0.05
-		path = { leads_to_tech = aor_basic_science_1930 research_cost_coeff = 1 }
-		research_cost = 1.000000
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	aor_basic_science_1930 = {
-		research_speed_factor = 0.06
-		research_cost = 0.818182
-		start_year = 1930
-		folder = { name = electronics_folder position = { x = 0 y = 10 } }
-		categories = { aor_basic_science }
-		ai_will_do = { factor = 6 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	Modern_electronics = {
-		land_reinforce_rate = 0.01
-		coordination_bonus = 0.01
-		path = { leads_to_tech = Modern_electronics2 research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	Modern_electronics2 = {
-		land_reinforce_rate = 0.01
-		coordination_bonus = 0.01
-		path = { leads_to_tech = Modern_electronics3 research_cost_coeff = 1 }
-		research_cost = 0.818182
-		start_year = 1920
-		folder = { name = electronics_folder position = { x = 0 y = 2 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
-
-}
-	Modern_electronics3 = {
-		land_reinforce_rate = 0.01
-		coordination_bonus = 0.01
-		path = { leads_to_tech = Modern_electronics4 research_cost_coeff = 1 }
-		research_cost = 0.909091
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
-
-}
-	Modern_electronics4 = {
-		land_reinforce_rate = 0.01
-		coordination_bonus = 0.01
-		path = { leads_to_tech = Modern_electronics5 research_cost_coeff = 1 }
-		research_cost = 0.909091
-		start_year = 1925
-		folder = { name = electronics_folder position = { x = 0 y = 6 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
-
-}
-	Modern_electronics5 = {
-		land_reinforce_rate = 0.01
-		coordination_bonus = 0.01
-		path = { leads_to_tech = Modern_electronics6 research_cost_coeff = 1 }
-		research_cost = 1.000000
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
-
-}
-	Modern_electronics6 = {
-		land_reinforce_rate = 0.02
-		coordination_bonus = 0.02
-		research_cost = 1.000000
-		start_year = 1930
-		folder = { name = electronics_folder position = { x = 0 y = 10 } }
-		categories = { electronics }
-		ai_will_do = { factor = 3 }
-	
-
-}
-	Classic_optics = {
-		category_all_infantry = { soft_attack = 0.02 breakthrough = 0.02 }
-		cavalry = { soft_attack = 0.02 breakthrough = 0.02 }
-		camelry = { soft_attack = 0.02 breakthrough = 0.02 }
-		Machine_gun = { soft_attack = 0.02 breakthrough = 0.02 }
-		aor_sniper_observer = { soft_attack = 0.02 breakthrough = 0.02 }
-		recon = { soft_attack = 0.02 breakthrough = 0.02 }
-		mot_recon = { soft_attack = 0.02 breakthrough = 0.02 }
-		artillery = { soft_attack = 0.02 }
-		artillery_brigade = { soft_attack = 0.02 }
-		mot_artillery_brigade = { soft_attack = 0.02 }
-		howitzer_brigade = { soft_attack = 0.02 }
-		anti_air = { air_attack = 0.02 }
-		anti_air_brigade = { air_attack = 0.02 }
-		mot_anti_air_brigade = { air_attack = 0.02 }
-		path = { leads_to_tech = Classic_optics2 research_cost_coeff = 1 }
-		path = { leads_to_tech = aor_artillery_optics_1920 research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 1 y = 0 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
- special_project_specialization = { specialization_nuclear }
-}
-	Classic_optics2 = {
-		category_all_infantry = { soft_attack = 0.03 breakthrough = 0.04 }
-		cavalry = { soft_attack = 0.03 breakthrough = 0.04 }
-		camelry = { soft_attack = 0.03 breakthrough = 0.04 }
-		Machine_gun = { soft_attack = 0.03 breakthrough = 0.04 }
-		aor_sniper_observer = { soft_attack = 0.03 breakthrough = 0.04 }
-		recon = { soft_attack = 0.03 breakthrough = 0.04 }
-		mot_recon = { soft_attack = 0.03 breakthrough = 0.04 }
-		path = { leads_to_tech = Infantry_sights research_cost_coeff = 1 }
-		research_cost = 0.818182
-		start_year = 1920
-		folder = { name = electronics_folder position = { x = 0 y = 2 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	Infantry_sights = {
-		category_all_infantry = { soft_attack = 0.05 breakthrough = 0.05 }
-		cavalry = { soft_attack = 0.05 breakthrough = 0.05 }
-		camelry = { soft_attack = 0.05 breakthrough = 0.05 }
-		Machine_gun = { soft_attack = 0.05 breakthrough = 0.05 }
-		aor_sniper_observer = { soft_attack = 0.05 breakthrough = 0.05 }
-		recon = { soft_attack = 0.05 breakthrough = 0.05 }
-		mot_recon = { soft_attack = 0.05 breakthrough = 0.05 }
-		path = { leads_to_tech = Infantry_sights2 research_cost_coeff = 1 }
-		research_cost = 1.000000
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	
-	Infantry_sights2 = {
-		category_all_infantry = { soft_attack = 0.07 breakthrough = 0.07 }
-		cavalry = { soft_attack = 0.07 breakthrough = 0.07 }
-		camelry = { soft_attack = 0.07 breakthrough = 0.07 }
-		Machine_gun = { soft_attack = 0.07 breakthrough = 0.07 }
-		aor_sniper_observer = { soft_attack = 0.07 breakthrough = 0.07 }
-		recon = { soft_attack = 0.07 breakthrough = 0.07 }
-		mot_recon = { soft_attack = 0.07 breakthrough = 0.07 }
-		research_cost = 1.181818
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	aor_artillery_optics_1920 = {
-		artillery = { soft_attack = 0.04 breakthrough = 0.03 }
-		artillery_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
-		mot_artillery_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
-		howitzer_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
-		anti_air = { air_attack = 0.04 soft_attack = 0.03 }
-		anti_air_brigade = { air_attack = 0.04 soft_attack = 0.03 }
-		mot_anti_air_brigade = { air_attack = 0.04 soft_attack = 0.03 }
-		path = { leads_to_tech = Artillery_observation_technology research_cost_coeff = 1 }
-		research_cost = 0.818182
-		start_year = 1920
-		folder = { name = electronics_folder position = { x = 2 y = 2 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	Artillery_observation_technology = {
-		artillery = { soft_attack = 0.06 breakthrough = 0.03 }
-		artillery_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
-		mot_artillery_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
-		howitzer_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
-		anti_air = { air_attack = 0.06 soft_attack = 0.03 }
-		anti_air_brigade = { air_attack = 0.06 soft_attack = 0.03 }
-		mot_anti_air_brigade = { air_attack = 0.06 soft_attack = 0.03 }
-		path = { leads_to_tech = Artillery_observation_technology2 research_cost_coeff = 1 }
-		research_cost = 1.000000
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 2 y = 4 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	
-	Artillery_observation_technology2 = {
-		artillery = { soft_attack = 0.08 breakthrough = 0.04 }
-		artillery_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
-		mot_artillery_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
-		howitzer_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
-		anti_air = { air_attack = 0.08 soft_attack = 0.04 }
-		anti_air_brigade = { air_attack = 0.08 soft_attack = 0.04 }
-		mot_anti_air_brigade = { air_attack = 0.08 soft_attack = 0.04 }
-		research_cost = 1.181818
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 2 y = 8 } }
-		categories = { electronics }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	Hot_air_balloon = {
-		category_recon = { recon = 0.1 }
-		air_mission_efficiency = 0.02
-		path = { leads_to_tech = Hot_air_balloon_reconnaissance research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { Hot_air_balloon_tech }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	Hot_air_balloon_reconnaissance = {
-		category_recon = { recon = 0.15 }
-		air_mission_efficiency = 0.03
-		path = { leads_to_tech = aor_balloon_air_coordination research_cost_coeff = 1 }
-		research_cost = 0.818182
-		start_year = 1920
-		folder = { name = electronics_folder position = { x = 0 y = 2 } }
-		categories = { Hot_air_balloon_tech }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	aor_balloon_air_coordination = {
-		category_recon = { recon = 0.2 }
-		air_mission_efficiency = 0.05
-		research_cost = 1.000000
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { Hot_air_balloon_tech }
-		ai_will_do = { factor = 2 }
-	
-
-}
-	aor_encryption_1923 = {
-		encryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		path = { leads_to_tech = aor_encryption_1928 research_cost_coeff = 1 }
-		research_cost = 0.727273
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-	aor_encryption_1928 = {
-		encryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		research_cost = 0.727273
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-	aor_decryption_1923 = {
-		decryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		path = { leads_to_tech = aor_decryption_1928 research_cost_coeff = 1 }
-		research_cost = 0.909091
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-	aor_decryption_1928 = {
-		decryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		research_cost = 0.909091
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
+# AOR engineering revision. Gas_Preparation also unlocks the chemical support company.
+technologies = {
+	aor_basic_science_1900 = {
+
+  # BEGIN AOR theory project unlocks
+  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_atomic_structure } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_general_relativity } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_symmetry_conservation } }
+  # END AOR theory project unlocks
+
+		research_speed_factor = 0.06
+		path = { leads_to_tech = aor_basic_science_1920 research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 0 y = 0 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	aor_basic_science_1920 = {
+  # BEGIN AOR theory project unlocks
+  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_relativistic_cosmology } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_abstract_algebra } }
+  # END AOR theory project unlocks
+
+		research_speed_factor = 0.04
+		path = { leads_to_tech = aor_basic_science_1923 research_cost_coeff = 1 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = electronics_folder position = { x = 0 y = 2 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	aor_basic_science_1923 = {
+  # BEGIN AOR theory project unlocks
+  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_matter_waves } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_quantum_mechanics } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_unified_field_theory } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_mathematical_logic } }
+  # END AOR theory project unlocks
+
+		research_speed_factor = 0.04
+		path = { leads_to_tech = aor_basic_science_1925 research_cost_coeff = 1 }
+		research_cost = 0.909091
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	aor_basic_science_1925 = {
+
+  # BEGIN AOR theory project unlocks
+  on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_quantum_electrodynamics } }
+  # END AOR theory project unlocks
+
+		research_speed_factor = 0.05
+		path = { leads_to_tech = aor_basic_science_1928 research_cost_coeff = 1 }
+		research_cost = 1.000000
+		start_year = 1925
+		folder = { name = electronics_folder position = { x = 0 y = 6 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	aor_basic_science_1928 = {
+		research_speed_factor = 0.05
+		path = { leads_to_tech = aor_basic_science_1930 research_cost_coeff = 1 }
+		research_cost = 1.000000
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 0 y = 8 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	aor_basic_science_1930 = {
+		research_speed_factor = 0.06
+		research_cost = 0.818182
+		start_year = 1930
+		folder = { name = electronics_folder position = { x = 0 y = 10 } }
+		categories = { aor_basic_science }
+		ai_will_do = { factor = 6 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	Modern_electronics = {
+		land_reinforce_rate = 0.01
+		coordination_bonus = 0.01
+		path = { leads_to_tech = Modern_electronics2 research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 0 y = 0 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	Modern_electronics2 = {
+ on_research_complete = { custom_effect_tooltip = aor_fix_unlock_hydroelectric_half  custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_high_voltage }  }
+
+		land_reinforce_rate = 0.01
+		coordination_bonus = 0.01
+		path = { leads_to_tech = Modern_electronics3 research_cost_coeff = 1 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = electronics_folder position = { x = 0 y = 2 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+
+}
+	Modern_electronics3 = {
+ on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_radio_control } }
+
+		land_reinforce_rate = 0.01
+		coordination_bonus = 0.01
+		path = { leads_to_tech = Modern_electronics4 research_cost_coeff = 1 }
+		research_cost = 0.909091
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+
+}
+	Modern_electronics4 = {
+		land_reinforce_rate = 0.01
+		coordination_bonus = 0.01
+		path = { leads_to_tech = Modern_electronics5 research_cost_coeff = 1 }
+		research_cost = 0.909091
+		start_year = 1925
+		folder = { name = electronics_folder position = { x = 0 y = 6 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+
+}
+	Modern_electronics5 = {
+		land_reinforce_rate = 0.01
+		coordination_bonus = 0.01
+		path = { leads_to_tech = Modern_electronics6 research_cost_coeff = 1 }
+		research_cost = 1.000000
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 0 y = 8 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+
+}
+	Modern_electronics6 = {
+		land_reinforce_rate = 0.02
+		coordination_bonus = 0.02
+		research_cost = 1.000000
+		start_year = 1930
+		folder = { name = electronics_folder position = { x = 0 y = 10 } }
+		categories = { electronics }
+		ai_will_do = { factor = 3 }
+	
+
+}
+	Classic_optics = {
+		category_all_infantry = { soft_attack = 0.02 breakthrough = 0.02 }
+		cavalry = { soft_attack = 0.02 breakthrough = 0.02 }
+		camelry = { soft_attack = 0.02 breakthrough = 0.02 }
+		Machine_gun = { soft_attack = 0.02 breakthrough = 0.02 }
+		aor_sniper_observer = { soft_attack = 0.02 breakthrough = 0.02 }
+		recon = { soft_attack = 0.02 breakthrough = 0.02 }
+		mot_recon = { soft_attack = 0.02 breakthrough = 0.02 }
+		artillery = { soft_attack = 0.02 }
+		artillery_brigade = { soft_attack = 0.02 }
+		mot_artillery_brigade = { soft_attack = 0.02 }
+		howitzer_brigade = { soft_attack = 0.02 }
+		anti_air = { air_attack = 0.02 }
+		anti_air_brigade = { air_attack = 0.02 }
+		mot_anti_air_brigade = { air_attack = 0.02 }
+		path = { leads_to_tech = Classic_optics2 research_cost_coeff = 1 }
+		path = { leads_to_tech = aor_artillery_optics_1920 research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 1 y = 0 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+ special_project_specialization = { specialization_nuclear }
+}
+	Classic_optics2 = {
+		category_all_infantry = { soft_attack = 0.03 breakthrough = 0.04 }
+		cavalry = { soft_attack = 0.03 breakthrough = 0.04 }
+		camelry = { soft_attack = 0.03 breakthrough = 0.04 }
+		Machine_gun = { soft_attack = 0.03 breakthrough = 0.04 }
+		aor_sniper_observer = { soft_attack = 0.03 breakthrough = 0.04 }
+		recon = { soft_attack = 0.03 breakthrough = 0.04 }
+		mot_recon = { soft_attack = 0.03 breakthrough = 0.04 }
+		path = { leads_to_tech = Infantry_sights research_cost_coeff = 1 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = electronics_folder position = { x = 0 y = 2 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	Infantry_sights = {
+		category_all_infantry = { soft_attack = 0.05 breakthrough = 0.05 }
+		cavalry = { soft_attack = 0.05 breakthrough = 0.05 }
+		camelry = { soft_attack = 0.05 breakthrough = 0.05 }
+		Machine_gun = { soft_attack = 0.05 breakthrough = 0.05 }
+		aor_sniper_observer = { soft_attack = 0.05 breakthrough = 0.05 }
+		recon = { soft_attack = 0.05 breakthrough = 0.05 }
+		mot_recon = { soft_attack = 0.05 breakthrough = 0.05 }
+		path = { leads_to_tech = Infantry_sights2 research_cost_coeff = 1 }
+		research_cost = 1.000000
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	
+	Infantry_sights2 = {
+		category_all_infantry = { soft_attack = 0.07 breakthrough = 0.07 }
+		cavalry = { soft_attack = 0.07 breakthrough = 0.07 }
+		camelry = { soft_attack = 0.07 breakthrough = 0.07 }
+		Machine_gun = { soft_attack = 0.07 breakthrough = 0.07 }
+		aor_sniper_observer = { soft_attack = 0.07 breakthrough = 0.07 }
+		recon = { soft_attack = 0.07 breakthrough = 0.07 }
+		mot_recon = { soft_attack = 0.07 breakthrough = 0.07 }
+		research_cost = 1.181818
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 0 y = 8 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	aor_artillery_optics_1920 = {
+		artillery = { soft_attack = 0.04 breakthrough = 0.03 }
+		artillery_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
+		mot_artillery_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
+		howitzer_brigade = { soft_attack = 0.04 breakthrough = 0.03 }
+		anti_air = { air_attack = 0.04 soft_attack = 0.03 }
+		anti_air_brigade = { air_attack = 0.04 soft_attack = 0.03 }
+		mot_anti_air_brigade = { air_attack = 0.04 soft_attack = 0.03 }
+		path = { leads_to_tech = Artillery_observation_technology research_cost_coeff = 1 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = electronics_folder position = { x = 2 y = 2 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	Artillery_observation_technology = {
+		artillery = { soft_attack = 0.06 breakthrough = 0.03 }
+		artillery_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
+		mot_artillery_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
+		howitzer_brigade = { soft_attack = 0.06 breakthrough = 0.03 }
+		anti_air = { air_attack = 0.06 soft_attack = 0.03 }
+		anti_air_brigade = { air_attack = 0.06 soft_attack = 0.03 }
+		mot_anti_air_brigade = { air_attack = 0.06 soft_attack = 0.03 }
+		path = { leads_to_tech = Artillery_observation_technology2 research_cost_coeff = 1 }
+		research_cost = 1.000000
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 2 y = 4 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	
+	Artillery_observation_technology2 = {
+		artillery = { soft_attack = 0.08 breakthrough = 0.04 }
+		artillery_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
+		mot_artillery_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
+		howitzer_brigade = { soft_attack = 0.08 breakthrough = 0.04 }
+		anti_air = { air_attack = 0.08 soft_attack = 0.04 }
+		anti_air_brigade = { air_attack = 0.08 soft_attack = 0.04 }
+		mot_anti_air_brigade = { air_attack = 0.08 soft_attack = 0.04 }
+		research_cost = 1.181818
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 2 y = 8 } }
+		categories = { electronics }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	Hot_air_balloon = {
+		category_recon = { recon = 0.1 }
+		air_mission_efficiency = 0.02
+		path = { leads_to_tech = Hot_air_balloon_reconnaissance research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 0 y = 0 } }
+		categories = { Hot_air_balloon_tech }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	Hot_air_balloon_reconnaissance = {
+		category_recon = { recon = 0.15 }
+		air_mission_efficiency = 0.03
+		path = { leads_to_tech = aor_balloon_air_coordination research_cost_coeff = 1 }
+		research_cost = 0.818182
+		start_year = 1920
+		folder = { name = electronics_folder position = { x = 0 y = 2 } }
+		categories = { Hot_air_balloon_tech }
+		ai_will_do = { factor = 2 }
+	
+
+}
+	aor_balloon_air_coordination = {
+		category_recon = { recon = 0.2 }
+		air_mission_efficiency = 0.05
+		research_cost = 1.000000
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { Hot_air_balloon_tech }
+		ai_will_do = { factor = 2 }
+	
+
+}
+
 	aor_encryption_1923_lar = {
-		crypto_strength = 1
-		allow_branch = { has_dlc = "La Resistance" }
-		path = { leads_to_tech = aor_encryption_1928_lar research_cost_coeff = 1 }
-		research_cost = 0.727273
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
+ force_use_small_tech_layout = yes
+
+ on_research_complete = { custom_effect_tooltip = aor_fix_unlock_rotor_cipher_half   }
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_radio_control } }
+
+		crypto_strength = 1
+		allow_branch = { has_dlc = "La Resistance" }
+		path = { leads_to_tech = aor_encryption_1928_lar research_cost_coeff = 1 }
+		research_cost = 0.727273
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { electronics encryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
 	aor_encryption_1928_lar = {
-		crypto_strength = 1
-		allow_branch = { has_dlc = "La Resistance" }
-		research_cost = 0.727273
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
+ force_use_small_tech_layout = yes
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_rotor_cipher } }
+
+		crypto_strength = 1
+		allow_branch = { has_dlc = "La Resistance" }
+		research_cost = 0.727273
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 0 y = 8 } }
+		categories = { electronics encryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
 	aor_decryption_1923_lar = {
-		decryption_power = 25
-		allow_branch = { has_dlc = "La Resistance" }
-		path = { leads_to_tech = aor_decryption_1928_lar research_cost_coeff = 1 }
-		research_cost = 0.909091
-		start_year = 1923
-		folder = { name = electronics_folder position = { x = 0 y = 4 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
+ force_use_small_tech_layout = yes
+
+ on_research_complete = { custom_effect_tooltip = aor_fix_unlock_rotor_cipher_half   }
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_radio_control } }
+
+		decryption_power = 25
+		allow_branch = { has_dlc = "La Resistance" }
+		path = { leads_to_tech = aor_decryption_1928_lar research_cost_coeff = 1 }
+		research_cost = 0.909091
+		start_year = 1923
+		folder = { name = electronics_folder position = { x = 0 y = 4 } }
+		categories = { electronics decryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
 	aor_decryption_1928_lar = {
-		decryption_power = 25
-		allow_branch = { has_dlc = "La Resistance" }
-		research_cost = 0.909091
-		start_year = 1928
-		folder = { name = electronics_folder position = { x = 0 y = 8 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-
-
-
-
-
-
-
-
-
-
-
-	aor_encryption_1900 = {
-		encryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		path = { leads_to_tech = aor_encryption_1923 research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-
-	aor_decryption_1900 = {
-		decryption = 1
-		allow_branch = { NOT = { has_dlc = "La Resistance" } }
-		path = { leads_to_tech = aor_decryption_1923 research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-
-	aor_encryption_1900_lar = {
-		crypto_strength = 1
-		allow_branch = { has_dlc = "La Resistance" }
-		path = { leads_to_tech = aor_encryption_1923_lar research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { electronics encryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-
-	aor_decryption_1900_lar = {
-		decryption_power = 25
-		allow_branch = { has_dlc = "La Resistance" }
-		path = { leads_to_tech = aor_decryption_1923_lar research_cost_coeff = 1 }
-		research_cost = 0.545455
-		start_year = 1914
-		folder = { name = electronics_folder position = { x = 0 y = 0 } }
-		categories = { electronics decryption_tech }
-		ai_will_do = { factor = 1 }
-	
-
-}
-
-
-
-
-
-
-
-# AOR: independent gas/mask roots; shared native paths, with an explicit native research gate.
-Gas_Preparation = {
-	enable_subunits = { aor_chemical_support }
-	path = { leads_to_tech = aor_gas_1920 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1914
-	custom_modifier_tooltip = aor_chemical_Gas_Preparation_tt
-	folder = { name = electronics_folder position = { x = 0 y = 0 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
- special_project_specialization = { specialization_nuclear }
-}
-Gas_mask = {
-	path = { leads_to_tech = aor_gas_mask_1920 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1914
-	custom_modifier_tooltip = aor_chemical_Gas_mask_tt
-	folder = { name = electronics_folder position = { x = 4 y = 0 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_Preparation1 = {
-	path = { leads_to_tech = Gas_Preparation2 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1923
-	custom_modifier_tooltip = aor_chemical_Gas_Preparation1_tt
-	folder = { name = electronics_folder position = { x = 0 y = 4 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_mask1 = {
-	path = { leads_to_tech = aor_gas_mask_3 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1923
-	custom_modifier_tooltip = aor_chemical_Gas_mask1_tt
-	folder = { name = electronics_folder position = { x = 4 y = 4 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_Preparation2 = {
-	path = { leads_to_tech = Gas_Preparation3 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1925
-	custom_modifier_tooltip = aor_chemical_Gas_Preparation2_tt
-	folder = { name = electronics_folder position = { x = 0 y = 6 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-aor_gas_mask_3 = {
-	path = { leads_to_tech = aor_gas_mask_4 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1925
-	custom_modifier_tooltip = aor_chemical_aor_gas_mask_3_tt
-	folder = { name = electronics_folder position = { x = 4 y = 6 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_Preparation3 = {
-	path = { leads_to_tech = Gas_Preparation4 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1928
-	custom_modifier_tooltip = aor_chemical_Gas_Preparation3_tt
-	folder = { name = electronics_folder position = { x = 0 y = 8 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-aor_gas_mask_4 = {
-	path = { leads_to_tech = aor_gas_mask_5 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1928
-	custom_modifier_tooltip = aor_chemical_aor_gas_mask_4_tt
-	folder = { name = electronics_folder position = { x = 4 y = 8 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_Preparation4 = {
-	research_cost = 0.7
-	start_year = 1930
-	custom_modifier_tooltip = aor_chemical_Gas_Preparation4_tt
-	folder = { name = electronics_folder position = { x = 0 y = 10 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-aor_gas_mask_5 = {
-	research_cost = 0.7
-	start_year = 1930
-	custom_modifier_tooltip = aor_chemical_aor_gas_mask_5_tt
-	folder = { name = electronics_folder position = { x = 4 y = 10 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-Gas_Preparation5 = {
- on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_strategic_chemical_foundations } }
-	allow = { has_tech = aor_gas_1920 has_tech = aor_gas_mask_1920 }
-	path = { leads_to_tech = Gas_Preparation6 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1923
-	custom_modifier_tooltip = aor_plan_Gas_Preparation5
-	folder = { name = electronics_folder position = { x = 2 y = 4 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 0 }
-
- special_project_specialization = { specialization_nuclear }
-}
-Gas_Preparation6 = {
- is_special_project_tech = yes
- allow = { ROOT = { is_special_project_completed = sp:sp_aor_strategic_chemical_foundations } }
- on_research_complete = { custom_effect_tooltip = aor_plan_Gas_Preparation6 hidden_effect = { set_technology = { nukes = 1 popup = no } } }
- enable_building = { nuclear_reactor = 1 }
-	research_cost = 0.7
-	start_year = 1925
-	folder = { name = electronics_folder position = { x = 2 y = 6 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 0 }
-
- special_project_specialization = { specialization_nuclear }
-}
-
-aor_gas_1920 = {
-	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
-	path = { leads_to_tech = Gas_Preparation1 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1920
-	custom_modifier_tooltip = aor_chemical_aor_gas_1920_tt
-	folder = { name = electronics_folder position = { x = 0 y = 2 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-aor_gas_mask_1920 = {
-	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
-	path = { leads_to_tech = Gas_mask1 research_cost_coeff = 1 }
-	research_cost = 0.7
-	start_year = 1920
-	custom_modifier_tooltip = aor_chemical_aor_gas_mask_1920_tt
-	folder = { name = electronics_folder position = { x = 4 y = 2 } }
-	categories = { Gas_bombs support_tech }
-	ai_will_do = { factor = 30 }
-
-
-}
-}
+ force_use_small_tech_layout = yes
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_rotor_cipher } }
+
+		decryption_power = 25
+		allow_branch = { has_dlc = "La Resistance" }
+		research_cost = 0.909091
+		start_year = 1928
+		folder = { name = electronics_folder position = { x = 0 y = 8 } }
+		categories = { electronics decryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
+
+
+	aor_encryption_1900_lar = {
+		crypto_strength = 1
+		allow_branch = { has_dlc = "La Resistance" }
+		path = { leads_to_tech = aor_encryption_1923_lar research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 0 y = 0 } }
+		categories = { electronics encryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
+
+	aor_decryption_1900_lar = {
+		decryption_power = 25
+		allow_branch = { has_dlc = "La Resistance" }
+		path = { leads_to_tech = aor_decryption_1923_lar research_cost_coeff = 1 }
+		research_cost = 0.545455
+		start_year = 1914
+		folder = { name = electronics_folder position = { x = 0 y = 0 } }
+		categories = { electronics decryption_tech }
+		ai_will_do = { factor = 1 }
+	
+
+}
+
+
+
+
+
+
+
+# AOR: independent gas/mask roots; shared native paths, with an explicit native research gate.
+Gas_Preparation = {
+	enable_subunits = { aor_chemical_support }
+	path = { leads_to_tech = aor_gas_1920 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1914
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation_tt
+	folder = { name = electronics_folder position = { x = 0 y = 0 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+ special_project_specialization = { specialization_nuclear }
+}
+Gas_mask = {
+	path = { leads_to_tech = aor_gas_mask_1920 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1914
+	custom_modifier_tooltip = aor_chemical_Gas_mask_tt
+	folder = { name = electronics_folder position = { x = 4 y = 0 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_Preparation1 = {
+	path = { leads_to_tech = Gas_Preparation2 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation1_tt
+	folder = { name = electronics_folder position = { x = 0 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_mask1 = {
+	path = { leads_to_tech = aor_gas_mask_3 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_chemical_Gas_mask1_tt
+	folder = { name = electronics_folder position = { x = 4 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_Preparation2 = {
+	path = { leads_to_tech = Gas_Preparation3 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1925
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation2_tt
+	folder = { name = electronics_folder position = { x = 0 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+aor_gas_mask_3 = {
+	path = { leads_to_tech = aor_gas_mask_4 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1925
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_3_tt
+	folder = { name = electronics_folder position = { x = 4 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_Preparation3 = {
+	path = { leads_to_tech = Gas_Preparation4 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1928
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation3_tt
+	folder = { name = electronics_folder position = { x = 0 y = 8 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+aor_gas_mask_4 = {
+	path = { leads_to_tech = aor_gas_mask_5 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1928
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_4_tt
+	folder = { name = electronics_folder position = { x = 4 y = 8 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_Preparation4 = {
+	research_cost = 0.7
+	start_year = 1930
+	custom_modifier_tooltip = aor_chemical_Gas_Preparation4_tt
+	folder = { name = electronics_folder position = { x = 0 y = 10 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+aor_gas_mask_5 = {
+	research_cost = 0.7
+	start_year = 1930
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_5_tt
+	folder = { name = electronics_folder position = { x = 4 y = 10 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+Gas_Preparation5 = {
+ on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_strategic_chemical_foundations } }
+	allow = { has_tech = aor_gas_1920 has_tech = aor_gas_mask_1920 }
+	path = { leads_to_tech = Gas_Preparation6 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1923
+	custom_modifier_tooltip = aor_plan_Gas_Preparation5
+	folder = { name = electronics_folder position = { x = 2 y = 4 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 0 }
+
+ special_project_specialization = { specialization_nuclear }
+}
+Gas_Preparation6 = {
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_strategic_chemical_foundations } }
+ on_research_complete = {  hidden_effect = { set_technology = { nukes = 1 popup = no } } }
+ enable_building = { building = nuclear_reactor level = 1 }
+	research_cost = 0.7
+	start_year = 1925
+	folder = { name = electronics_folder position = { x = 2 y = 6 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 0 }
+
+ special_project_specialization = { specialization_nuclear }
+}
+
+aor_gas_1920 = {
+	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
+	path = { leads_to_tech = Gas_Preparation1 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1920
+	custom_modifier_tooltip = aor_chemical_aor_gas_1920_tt
+	folder = { name = electronics_folder position = { x = 0 y = 2 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+aor_gas_mask_1920 = {
+	path = { leads_to_tech = Gas_Preparation5 research_cost_coeff = 1 }
+	path = { leads_to_tech = Gas_mask1 research_cost_coeff = 1 }
+	research_cost = 0.7
+	start_year = 1920
+	custom_modifier_tooltip = aor_chemical_aor_gas_mask_1920_tt
+	folder = { name = electronics_folder position = { x = 4 y = 2 } }
+	categories = { Gas_bombs support_tech }
+	ai_will_do = { factor = 30 }
+
+
+}
+
+ aor_pulse_radar = {
+ force_use_small_tech_layout = yes
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_pulse_radar } }
+ research_cost = 1 start_year = 1927
+ folder = { name = electronics_folder position = { x = 0 y = 0 } }
+ categories = { electronics }
+ ai_will_do = { factor = 0 }
+ enable_building = { building = radar_station level = 6 }
+ }
+
+ aor_high_voltage = {
+ force_use_small_tech_layout = yes
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_high_voltage } }
+ research_cost = 1 start_year = 1922
+ folder = { name = electronics_folder position = { x = 0 y = 0 } }
+ categories = { electronics }
+ ai_will_do = { factor = 0 }
+ enable_building = { building = energy_infrastructure level = 1 }
+ }
+
+ aor_hydroelectric = {
+ force_use_small_tech_layout = yes
+
+ is_special_project_tech = yes
+ allow = { ROOT = { is_special_project_completed = sp:sp_aor_hydroelectric } }
+ research_cost = 1 start_year = 1923
+ folder = { name = electronics_folder position = { x = 0 y = 0 } }
+ categories = { electronics }
+ ai_will_do = { factor = 0 }
+ enable_building = { building = industrial_infrastructure level = 1 }
+ }
+}

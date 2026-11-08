@@ -56,10 +56,7 @@ technologies = {
 	radio_detection = {
 
 		# 
-		enable_building = {
-			building = radar_station
-			level = 1
-		}
+		
 		coordination_bonus = 0.01
 		path = {
 			leads_to_tech = decimetric_radar 
@@ -130,10 +127,7 @@ technologies = {
 			radar_tech
 		}
 		
-		enable_building = {
-			building = radar_station
-			level = 2
-		}
+		
 	
 
 }
@@ -143,10 +137,7 @@ technologies = {
 	centimetric_radar = {
 
 		# radar boost in air/sea combat depends on radar level
-		enable_building = {
-			building = radar_station
-			level = 4
-		}
+		
 		coordination_bonus = 0.01
 		enable_equipment_modules = { 
 			ship_radar_3
@@ -195,10 +186,7 @@ technologies = {
 	improved_centimetric_radar = {
 
 		# radar boost in air/sea combat depends on radar level
-		enable_building = {
-			building = radar_station
-			level = 5
-		}
+		
 		coordination_bonus = 0.01
 		enable_equipment_modules = {
 			air_ground_radar_1
@@ -245,10 +233,7 @@ technologies = {
 	advanced_centimetric_radar = {
 
 		# radar boost in air/sea combat depends on radar level
-		enable_building = {
-			building = radar_station
-			level = 6
-		}
+		
 		coordination_bonus = 0.01
 		enable_equipment_modules = { 
 			ship_radar_4
@@ -331,14 +316,8 @@ technologies = {
 			leads_to_tech = improved_computing_machine 
 			research_cost_coeff = 1
 		}
-		path = {
-			leads_to_tech = basic_encryption 
-			research_cost_coeff = 1
-		}
-		path = {
-			leads_to_tech = basic_decryption 
-			research_cost_coeff = 1
-		}
+		
+		
 
 		research_cost = 2.5
 		start_year = 1938
@@ -384,14 +363,8 @@ technologies = {
 			leads_to_tech = advanced_computing_machine 
 			research_cost_coeff = 1
 		}
-		path = {
-			leads_to_tech = improved_encryption 
-			research_cost_coeff = 1
-		}
-		path = {
-			leads_to_tech = improved_decryption 
-			research_cost_coeff = 1
-		}
+		
+		
 		
 		research_cost = 2.5
 		start_year = 1940
@@ -435,14 +408,8 @@ technologies = {
 		# small boost to research speed
 		research_speed_factor = 0.08
 		
-		path = {
-			leads_to_tech = advanced_encryption 
-			research_cost_coeff = 1
-		}
-		path = {
-			leads_to_tech = advanced_decryption 
-			research_cost_coeff = 1
-		}
+		
+		
 		
 		research_cost = 2.5
 		start_year = 1942
@@ -475,264 +442,7 @@ technologies = {
 	
 
 }
-	
-	basic_encryption = {
 
-		# encryption 1
-		encryption = 1
-		
-		research_cost = 1
-		start_year = 1938
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 8 }
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			modifier = {
-				has_war = yes
-				factor = 3
-			}
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-	
-
-}
-	
-	improved_encryption = {
-
-		# encryption 2
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 1940
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 12 }
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			modifier = {
-				has_war = yes
-				factor = 3
-			}
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-	
-
-}
-	
-	advanced_encryption = {
-
-		# encryption 3
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 1942
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 16 }
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			modifier = {
-				has_war = yes
-				factor = 3
-			}
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-	
-
-}
-	
-	basic_decryption = {
-
-		# decryption 1
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 1938
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 6 }
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-	
-
-}
-	
-	improved_decryption = {
-
-		# decryption 2
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 1940
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 10 }
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-	
-
-}
-	
-	advanced_decryption = {
-
-		# decryption 3
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 1942
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 14 }
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			modifier = {
-				num_of_military_factories < 50
-				factor = 1.5 # not a major
-			}
-			modifier = {
-				factor = 3
-
-				tag = GER
-			}
-			modifier = {
-				factor = 3
-
-				tag = SOV
-			}
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-	
-
-}
 
 
 # 火控系统 ##################### 
