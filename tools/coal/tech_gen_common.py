@@ -13,10 +13,10 @@ oob_req = json.load(open(r"D:\new-aor\tools\coal\oob_req.json", encoding="utf-8"
 LAND_BY_TIER = {
     "P0": list(P.BASE_LAND) + list(P.SPECIAL) + ["aor_tank_support"],
     "P1": list(P.BASE_LAND) + list(P.SPECIAL),
-    "P1B": list(P.BASE_LAND) + ["aor_inf_t01", "aor_inf_e01"],
+    "P1B": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_t01", "aor_inf_e01"],
     "P2": ["aor_inf_r01", "aor_inf_r02", "aor_inf_l00", "aor_inf_l01", "aor_inf_u01",
            "aor_inf_u02", "tech_support", "tech_engineers", "tech_recon",
-           "aor_inf_mg1", "Old_howitzers", "aor_field_gun_1"],
+           "aor_inf_mg1", "Old_howitzers"],
     "P3": ["aor_inf_r01", "aor_inf_l00", "aor_inf_u01", "Old_howitzers"],
     "P4": ["aor_inf_r01"],
 }
