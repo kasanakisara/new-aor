@@ -1,12 +1,13 @@
-#######美 国 第 二 次 南 北 战 争#######
+# AOR: dependency-audited scripted functions.
+
 USA_second_civil_war = {
 			hidden_effect = {
 			country_event = {id=AOR_news_router.193}
 			USA = {
-			country_event = { days = 1 id = USA.10014 }
-			country_event = { days = 3 id = USA.10048 }
+			country_event = { days = 1 id = AOR_fix_USA_extra.15 }
+			country_event = { days = 3 id = AOR_fix_USA_extra.49 }
 			country_event = { days = 7 id = USA.9 }
-			country_event = { days = 12 id = USA.10075 }
+			country_event = { days = 12 id = AOR_fix_USA_extra.76 }
 			}
 			set_victory_points = {
                 province = 6710
@@ -247,8 +248,6 @@ USA_second_civil_war = {
 		    }
 		}
 
-
-#######美 国 西 部 战 争#######
 USA_civil_war_west = {
 	    US2 = {
 	    country_event = {id = USA.1006 days = 200}
@@ -684,7 +683,6 @@ USA_civil_war_west = {
 		}
 	}
 
-#######美 国 西 部 收 复 之 战#######	
 USA_civil_war_west_1 = {
 	USA = {
 		if = {
@@ -765,8 +763,6 @@ USA_civil_war_west_1 = {
 		}
 	}
 
-
-#######美 国 第 三 次 内 战#######		
 USA_civil_war_east = {
 	USU = {
 		add_ideas = CHI_gemingtongyizhixi
@@ -827,4 +823,3 @@ USA_civil_war_east = {
 			transfer_state = 1049
 		}
 	}
-

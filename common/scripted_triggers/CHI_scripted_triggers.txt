@@ -1,0 +1,133 @@
+# AOR: dependency-audited scripted functions.
+
+is_independent_china_or_warlord = { #Does not include sinkiang
+	OR = {
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = GDC
+		original_tag = SND
+		original_tag = SIC
+		original_tag = NXM
+		original_tag = GSM
+		original_tag = XIC
+		original_tag = KHM
+		original_tag = KUM
+		original_tag = RNG
+		original_tag = HBC
+	}
+	is_subject = no
+}
+
+is_literally_china = {
+	OR = {
+		original_tag = CHI
+		original_tag = PRC
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = SIK
+		original_tag = GDC
+		original_tag = SND
+		original_tag = SIC
+		original_tag = NXM
+		original_tag = GSM
+		original_tag = XIC
+		original_tag = KHM
+		original_tag = KUM
+		original_tag = RNG
+		original_tag = HBC
+	}
+}
+
+is_literally_china_not_prc = { ## Needed for SEA MIO reasons
+	OR = {
+		original_tag = CHI
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = SIK
+		original_tag = GDC
+		original_tag = SND
+		original_tag = SIC
+		original_tag = NXM
+		original_tag = GSM
+		original_tag = XIC
+		original_tag = KHM
+		original_tag = KUM
+		original_tag = RNG
+		original_tag = HBC
+	}
+}
+
+is_chinese_warlord = {
+	OR = {		
+		original_tag = GXC
+		original_tag = YUN
+		original_tag = SHX
+		original_tag = XSM
+		original_tag = SIK
+		original_tag = GDC
+		original_tag = SND
+		original_tag = SIC
+		original_tag = NXM
+		original_tag = GSM
+		original_tag = XIC
+		original_tag = KHM
+		original_tag = KUM
+		original_tag = HBC
+	}
+}
+
+CHI_northern_mandate_states = {
+	OR = {
+		region = 149 #Eastern Siberia
+		region = 256 #Transbaikal
+		region = 148 #Russian Far east
+		region = 266 #uriankhai
+		region = 259 #Eastern Sakha
+		region = 260 #Western Sakha
+		region = 262 #Central Siberia
+		region = 87 #Sea of Okhotsk 
+		region = 258 #Okhotsk
+		region = 257 #Northern Far east
+		region = 147 #Northern Siberia
+	}
+}
+
+CHI_southern_mandate_states = {
+	OR = {
+		region = 142 # North Indochina
+		region = 228 # South IndoChina
+		region = 292 # Shan States 
+		region = 229 # Siam 
+		region = 294 # Rangoon
+		region = 295 # Mandalay
+		region = 188 # Malay
+		region = 160 # Philipines
+		region = 187 # Sumatra
+		region = 159 # Borneo
+		region = 158 # Sunda Islands
+		region = 93 # Java Sea
+		region = 293 # Tenasserim 
+		region = 141 # Eastern India  
+		region = 146 # Himalayas
+	}
+}
+
+CHI_greater_game_states = {
+	OR = {
+		region = 136 # Alash
+		region = 268 # Ferghana
+		region = 270 # Syr Darya
+		region = 267 # Transcaspia
+		region = 269 # Samnarkand
+		region = 162 # North Afghanistan
+		region = 251 # Ngari
+	}
+}

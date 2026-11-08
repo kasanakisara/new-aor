@@ -8,14 +8,8 @@ set_technology = {
 
 capital = 751
 
-if = {
-	limit = {
-    	surrender_progress > 0.1
-	}
-	PRC = {
-		annex_everything
-	}
-}
+# Capitulation handling moved to daily runtime hook
+
 
 add_ideas = {
 	CHI_soldiers_will_ready
@@ -37,7 +31,7 @@ set_stability = 0.4
 set_war_support = 0.2
 # Starting tech
 
-set_convoys = 40
+add_equipment_to_stockpile = { type = convoy amount = 40 }
 
 set_politics = {
 	ruling_party = Absolutism

@@ -11,11 +11,13 @@ future_main_battle_tanks = {
             limit = {
                 has_dlc = "No Step Back"
             }
-            has_tech = main_battle_tank_chassis
+            always = no # unavailable AOR object: has_tech main_battle_tank_chassis
+
 
         }
         else = {
-            has_tech = main_battle_tank
+            always = no # unavailable AOR object: has_tech main_battle_tank
+
         }
     }
 
@@ -90,10 +92,12 @@ future_super_heavy_tanks = {
             limit = {
                 has_dlc = "No Step Back"
             }
-            has_tech = super_heavy_tank_chassis_a
+            always = no # unavailable AOR object: has_tech super_heavy_tank_chassis_a
+
         }
         else = {
-            has_tech = super_heavy_tank
+            always = no # unavailable AOR object: has_tech super_heavy_tank
+
         }
     }
 
@@ -200,13 +204,16 @@ future_amphibious_tanks = {
             limit = {
                 has_dlc = "No Step Back"
             }
-            has_tech = main_battle_tank_chassis
+            always = no # unavailable AOR object: has_tech main_battle_tank_chassis
+
             has_tech = amphibious_tank_chassis
 
         }
         else = {
-            has_tech = main_battle_tank
-            has_tech = amphibious_tank
+            always = no # unavailable AOR object: has_tech main_battle_tank
+
+            always = no # unavailable AOR object: has_tech amphibious_tank
+
         }
     }
 

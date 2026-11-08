@@ -35,7 +35,7 @@ country= {
 			unit_upkeep_attrition_factor = -0.3
 			
 			#supply_consumption_factor = -0.10
-			#supply_factor = 0.3
+			#supply_consumption_factor = 0.3
 			#truck_attrition = -0.3
 		}
 	}
@@ -47,7 +47,7 @@ country= {
 			political_power_cost = 0.5
 			consumer_goods_factor = -0.05
 			supply_consumption_factor = -0.05
-			supply_factor = 0.10
+			supply_consumption_factor = 0.10
 		}
 	}
 	#战时共产主义-削弱
@@ -62,7 +62,7 @@ country= {
 			unit_upkeep_attrition_factor = -0.3
 			
 			#supply_consumption_factor = -0.10
-			#supply_factor = 0.3
+			#supply_consumption_factor = 0.3
 			#truck_attrition = -0.3
 		}
 	}
@@ -595,7 +595,7 @@ country= {
 		modifier = {
 			stability_factor = 0.05
 			subversive_activites_upkeep = -0.5
-			communist_drift = 0.01
+# Removed unsupported legacy modifier communist_drift
 
 		}
 	}
@@ -830,7 +830,8 @@ country= {
 	PRC_present_danger1 = {
 		picture = PRC_present_danger
 		allowed = { original_tag = PRC }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 			political_power_cost = 1.0
 			stability_factor = -0.25
@@ -844,7 +845,8 @@ country= {
 	PRC_present_danger2 = {
 		picture = PRC_present_danger
 		allowed = { original_tag = PRC }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 			political_power_cost = 0.3
 			stability_factor = -0.05
@@ -857,7 +859,8 @@ country= {
 	PRC_present_danger3 = {
 		picture = PRC_present_danger
 		allowed = { original_tag = PRC }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 			political_power_cost = 0.2
 			consumer_goods_factor = 0.1
@@ -868,7 +871,8 @@ country= {
 	PRC_present_danger4 = {
 		picture = PRC_present_danger
 		allowed = { original_tag = PRC }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 			political_power_cost = 0.1
 			consumer_goods_factor = 0.05
@@ -879,7 +883,8 @@ country= {
 	PRC_sov_directional_investment = {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			production_speed_infrastructure_factor = 0.1
 			consumer_goods_factor = -0.05
@@ -892,7 +897,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = -0.1
 			max_dig_in = 1
@@ -904,7 +910,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			max_planning = 0.05
@@ -916,7 +923,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.1
 			experience_gain_army_unit_factor = 0.05
@@ -929,7 +937,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			max_command_power = 20
@@ -942,7 +951,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			army_speed_factor = 0.04
@@ -955,7 +965,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			army_artillery_attack_factor = 0.1
@@ -968,7 +979,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			supply_consumption_factor = -0.05
@@ -979,7 +991,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			max_planning = 0.05
@@ -991,7 +1004,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			army_speed_factor = 0.04
@@ -1003,7 +1017,8 @@ country= {
 		picture = prc_gongchanguoji
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 		modifier = {
 			experience_gain_army_factor = 0.05
 			army_artillery_attack_factor = 0.05
@@ -1017,7 +1032,8 @@ country= {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				consumer_goods_factor = 0.05
 			}
@@ -1027,7 +1043,8 @@ country= {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.5
 				political_power_factor = -0.20
@@ -1043,7 +1060,8 @@ country= {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.1
 				political_power_factor = -0.1
@@ -1056,7 +1074,8 @@ country= {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.05
 			}
@@ -1067,7 +1086,8 @@ country= {
 		picture = tur_odpa
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.8
 				political_power_factor = -0.4
@@ -1081,7 +1101,8 @@ country= {
 		picture = tur_odpa
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.6
 				political_power_factor = -0.3
@@ -1095,7 +1116,8 @@ country= {
 		picture = tur_odpa
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.4
 				political_power_factor = -0.2
@@ -1109,7 +1131,8 @@ country= {
 		picture = tur_odpa
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.2
 				political_power_factor = -0.1
@@ -1123,7 +1146,8 @@ country= {
 		picture = tur_odpa
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = 0.1
 				political_power_factor = -0.05
@@ -1137,7 +1161,8 @@ country= {
 		picture = generic_local_self_management
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_factor = -0.2
 			}
@@ -1149,7 +1174,8 @@ country= {
 		picture = SPR_seize_the_gold_reserves
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = -0.4
 				political_power_factor = 0.2
@@ -1161,7 +1187,8 @@ country= {
 		picture = SPR_seize_the_gold_reserves
 		allowed = { original_tag = PRC }
 		cancel = { has_war_with = RUS }
-		allowed_civil_war = { has_government = communism }
+		allowed_civil_war = { always = no # unavailable AOR object: has_government communism
+ }
 			modifier = {
 				political_power_cost = -0.2
 				political_power_factor = 0.1
@@ -1175,7 +1202,8 @@ country= {
 	PRC_SCCC_1 = {
 		picture = SOV_second_five_year_plan
 		allowed = { original_tag = PRC }
-		available = { has_completed_focus = tzxx_PRC_Repair_Yanan_construction }
+		available = { always = no # unavailable AOR object: has_completed_focus tzxx_PRC_Repair_Yanan_construction
+ }
 		visible = {
 		NOT = { has_country_flag = PRC_SCCC_level_2_flag }
 		}
@@ -1582,7 +1610,7 @@ country= {
 			#部队维护费
 			unit_upkeep_attrition_factor = -0.2
 			#补给效率
-			supply_factor = 0.25
+			supply_consumption_factor = 0.25
 			#补给车队损耗
 			truck_attrition = -0.25
 			
@@ -1604,7 +1632,7 @@ country= {
 			#部队维护费
 			unit_upkeep_attrition_factor = -0.2
 			#补给效率
-			supply_factor = 0.25
+			supply_consumption_factor = 0.25
 			#补给车队损耗
 			truck_attrition = -0.25
 			
@@ -1637,7 +1665,7 @@ country= {
 			#部队维护费
 			unit_upkeep_attrition_factor = -0.2
 			#补给效率
-			supply_factor = 0.25
+			supply_consumption_factor = 0.25
 			#补给车队损耗
 			truck_attrition = -0.25
 			
@@ -1727,8 +1755,8 @@ country= {
 		modifier = {
 			political_power_factor = -0.1
 			fascism_drift = 0.05
-			democratic_drift = 0.05
-			neutrality_drift = 0.05
+# Removed unsupported legacy modifier democratic_drift
+# Removed unsupported legacy modifier neutrality_drift
 		}
 	}
 	PRC_Attrac_intellectuals_2 = { #吸引全国知识分子#整肃运动
@@ -1743,8 +1771,8 @@ country= {
 			political_power_factor = 0.1
 			research_speed_factor = 0.01
 			fascism_drift = -0.05
-			democratic_drift = -0.05
-			neutrality_drift = -0.05
+# Removed unsupported legacy modifier democratic_drift
+# Removed unsupported legacy modifier neutrality_drift
 		}
 	}
 	PRC_navy_yuanyangqianting = { #远洋潜艇
@@ -1868,7 +1896,7 @@ country= {
 				research_speed_factor = 0.03
 				drift_defence_factor = 0.25
 				foreign_subversive_activites = -0.25
-				communism_drift = 0.01
+# Removed unsupported legacy modifier communism_drift
 			}
 		}
 	
@@ -1888,8 +1916,8 @@ country= {
 		modifier = {
 			stability_factor = 0.1
 			fascism_drift = -0.15
-			democratic_drift = -0.15
-			neutrality_drift = -0.15
+# Removed unsupported legacy modifier democratic_drift
+# Removed unsupported legacy modifier neutrality_drift
 		}
 	}
 	
@@ -2125,7 +2153,7 @@ country= {
 		modifier = {
 			consumer_goods_factor = -0.03
 			industrial_capacity_factory = 0.05
-			communism_drift = 0.1
+# Removed unsupported legacy modifier communism_drift
 			autonomy_gain = 3.0
 		}
 	}

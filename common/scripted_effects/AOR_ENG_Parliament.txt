@@ -1,4 +1,5 @@
-#英国下议院gui-计算党派支持率
+# AOR: dependency-audited scripted functions.
+
 ENG_Calculate_partisan_support = {
 	set_variable = {
 		Liberal_Party_Support_rate_var = party_popularity_100@FRE_democratic
@@ -192,22 +193,6 @@ ENG_Calculate_partisan_support = {
 	ENG_Seat_calculation = yes
 }
 
-#去除新芬党
-ENG_remove_Sinn_Fein_Party = {
-	set_country_flag = remove_Sinn_Fein_Party
-	set_variable = {
-		Liberal_Party_position_x = 388
-	}
-	set_variable = {
-		conservative_Party_position_x = 722
-	}
-	set_variable = {
-		Labour_Party_position_x = 1055
-	}
-	ENG_Calculate_partisan_support = yes
-}
-
-#席位计算
 ENG_Seat_calculation = {
 	set_temp_variable = {
 		##工党
@@ -272,45 +257,5 @@ ENG_Seat_calculation = {
 		array = ENG_hounse_of_commons_window_array
 		value = 7
 		size = 400
-	}
-}
-
-#加入历史议案
-ENG_add_to_his_motion_and_change_to_none = {
-	add_to_array = {
-		ENG_Parliament_past_motion = ENG_Parliament_num_of_motion_going
-	}
-	add_to_array = {
-		ENG_Parliament_past_motion_state^ENG_Parliament_past_motion_i = ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going
-	}
-	set_variable = {
-		ENG_Parliament_motion_going^ENG_Parliament_num_of_motion_going = 0
-	}
-	set_variable = {
-		ENG_Parliament_num_of_motion_going = 0
-	}
-}
-
-ENG_baerganmengyou = {
-	custom_effect_tooltip = ENG_baerganmengyou_tt
-	hidden_effect = {
-		ENG = {
-			add_opinion_modifier = {
-				target = ROM
-				modifier = womendebaerganmengyou
-			}
-			add_opinion_modifier = {
-				target = GRE
-		    	modifier = womendebaerganmengyou
-		    }
-			add_opinion_modifier = {
-				target = BUL
-				modifier = womendebaerganmengyou
-			}
-			add_opinion_modifier = {
-				target = SER
-				modifier = womendebaerganmengyou
-			}
-		}
 	}
 }

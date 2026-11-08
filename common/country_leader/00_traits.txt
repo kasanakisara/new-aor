@@ -769,7 +769,7 @@ leader_traits = {
 
 	anti_communist = {
 		random = no
-		communism_acceptance = -50
+# Removed unsupported legacy modifier communism_acceptance
 		Marxism_drift = -0.01
 
 		ai_will_do = {
@@ -886,7 +886,7 @@ leader_traits = {
 
 	anti_democrat = {
 		random = no
-		democratic_acceptance = -50
+# Removed unsupported legacy modifier democratic_acceptance
 		CON_democratic_drift = -0.02
 		stability_factor = 0.10
 
@@ -972,7 +972,7 @@ leader_traits = {
 		experience_gain_army = 0.12
 		Marxism_drift = 0.1
 
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 2
@@ -1262,9 +1262,9 @@ leader_traits = {
 		stability_factor = 0.05
 		economy_cost_factor = -0.33
 		consumer_goods_factor = -0.03
-		democratic_acceptance = 50
+# Removed unsupported legacy modifier democratic_acceptance
 		fascism_acceptance = -25
-		communism_acceptance = -25
+# Removed unsupported legacy modifier communism_acceptance
 	}
 
 	the_young_magnate = {
@@ -1273,7 +1273,7 @@ leader_traits = {
 		production_speed_rail_way_factor = 0.1
 		production_speed_synthetic_refinery_factor = 0.1
 		trade_opinion_factor = 0.25
-		democratic_acceptance = 25
+# Removed unsupported legacy modifier democratic_acceptance
 	}
 
 	polemarch = {
@@ -1881,7 +1881,7 @@ leader_traits = {
 		political_power_factor = 0.05
 		stability_factor = 0.1
 		political_advisor_cost_factor = -0.1
-		democratic_acceptance = 50
+# Removed unsupported legacy modifier democratic_acceptance
 	}
 
 	the_bloody_professor_regency_council = { #Regency Council (led by Aleksandar Tsankov)
@@ -2174,7 +2174,7 @@ leader_traits = {
 		political_power_factor = 0.1
 		stability_factor = 0.05
 		research_speed_factor = 0.02
-		democratic_acceptance = 50
+# Removed unsupported legacy modifier democratic_acceptance
 		civilian_intel_to_others = 15
 		industrial_capacity_factory = -0.05
 	}
@@ -2185,7 +2185,7 @@ leader_traits = {
 		political_power_factor = 0.15
 		stability_factor = 0.1
 		research_speed_factor = 0.05
-		democratic_acceptance = 50
+# Removed unsupported legacy modifier democratic_acceptance
 		civilian_intel_to_others = 15
 		industrial_capacity_factory = -0.02
 	}
@@ -2416,7 +2416,7 @@ leader_traits = {
 		opinion_gain_monthly_factor = 0.15
 		enemy_justify_war_goal_time = 0.15
 		request_lease_tension = -0.2
-		democratic_acceptance = 40
+# Removed unsupported legacy modifier democratic_acceptance
 	}
 
 	#Patriarch Sergy
@@ -2647,7 +2647,8 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				not = { has_completed_focus = USA_suspend_the_presecution }
+				not = { always = no # unavailable AOR object: has_completed_focus USA_suspend_the_presecution
+ }
 				factor = 0
 			}
 		}
@@ -2673,7 +2674,8 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 			modifier = { 
-				not = { has_completed_focus = USA_america_first }
+				not = { always = no # unavailable AOR object: has_completed_focus USA_america_first
+ }
 				factor = 0
 			}
 		}
@@ -2688,7 +2690,8 @@ leader_traits = {
 			factor = 1
 			modifier = {
 				tag = HUN
-				not = { has_completed_focus = HUN_invite_the_habsburg_prince }
+				not = { always = no # unavailable AOR object: has_completed_focus HUN_invite_the_habsburg_prince
+ }
 				factor = 0
 			}
 		}
@@ -3507,7 +3510,7 @@ leader_traits = {
 		Fascism_drift = -0.05
 		Marxism_drift = -0.05
 		CON_democratic_drift = 0.05
-		democratic_acceptance = 40
+# Removed unsupported legacy modifier democratic_acceptance
 	}
 
 	agricultural_nationalist = {
@@ -3660,7 +3663,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = 0.1
-		democratic_acceptance = 85
+# Removed unsupported legacy modifier democratic_acceptance
 	}
 
 	leftist_legionary = {
@@ -3691,7 +3694,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		Marxism_drift = 0.05
-		communism_acceptance = 25
+# Removed unsupported legacy modifier communism_acceptance
 		research_speed_factor = 0.05
 	}
 
@@ -4041,7 +4044,7 @@ leader_traits = {
 		equipment_bonus = {
 			CAS_equipment = {
 				instant = yes
-				air_ground_attack = 0.1 
+# Removed unsupported legacy modifier air_ground_attack
 			}
 		}
 		air_doctrine_cost_factor = -0.10
@@ -4728,7 +4731,7 @@ leader_traits = {
 		army_defence_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4740,7 +4743,7 @@ leader_traits = {
 		army_defence_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4752,7 +4755,7 @@ leader_traits = {
 		army_defence_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4765,7 +4768,7 @@ leader_traits = {
 		army_attack_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4777,7 +4780,7 @@ leader_traits = {
 		army_attack_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4789,7 +4792,7 @@ leader_traits = {
 		army_attack_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4811,7 +4814,7 @@ leader_traits = {
 		training_time_army_factor = -0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4823,7 +4826,7 @@ leader_traits = {
 		training_time_army_factor = -0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4835,7 +4838,7 @@ leader_traits = {
 		training_time_army_factor = -0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4847,7 +4850,7 @@ leader_traits = {
 		sprite = 5	
 		experience_gain_army = 0.12
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4858,7 +4861,7 @@ leader_traits = {
 		sprite = 5		
 		experience_gain_army = 0.16
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4869,7 +4872,7 @@ leader_traits = {
 		sprite = 5	
 		experience_gain_army = 0.2
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4882,7 +4885,7 @@ leader_traits = {
 		army_org_factor = 0.04		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4894,7 +4897,7 @@ leader_traits = {
 		army_org_factor = 0.08		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4906,7 +4909,7 @@ leader_traits = {
 		army_org_factor = 0.12		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4918,7 +4921,7 @@ leader_traits = {
 		planning_speed = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4930,7 +4933,7 @@ leader_traits = {
 		planning_speed = 0.10		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4942,7 +4945,7 @@ leader_traits = {
 		planning_speed = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4954,7 +4957,7 @@ leader_traits = {
 		out_of_supply_factor = -0.03		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -4966,7 +4969,7 @@ leader_traits = {
 		out_of_supply_factor = -0.06		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -4978,7 +4981,7 @@ leader_traits = {
 		out_of_supply_factor = -0.09	
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -4991,7 +4994,7 @@ leader_traits = {
 		army_speed_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5003,7 +5006,7 @@ leader_traits = {
 		army_speed_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5015,7 +5018,7 @@ leader_traits = {
 		army_speed_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5028,7 +5031,7 @@ leader_traits = {
 		mobilization_speed = -0.02
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5041,7 +5044,7 @@ leader_traits = {
 		mobilization_speed = -0.04
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 1
@@ -5054,7 +5057,7 @@ leader_traits = {
 		mobilization_speed = -0.06
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 1
@@ -5067,7 +5070,7 @@ leader_traits = {
 		dig_in_speed_factor = 0.08		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5079,7 +5082,7 @@ leader_traits = {
 		dig_in_speed_factor = 0.16		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5091,7 +5094,7 @@ leader_traits = {
 		dig_in_speed_factor = 0.24		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5105,7 +5108,7 @@ leader_traits = {
 	    army_armor_defence_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5118,7 +5121,7 @@ leader_traits = {
 	    army_armor_defence_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5131,7 +5134,7 @@ leader_traits = {
 	    army_armor_defence_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5145,7 +5148,7 @@ leader_traits = {
 		army_artillery_defence_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5158,7 +5161,7 @@ leader_traits = {
 		army_artillery_defence_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5171,7 +5174,7 @@ leader_traits = {
 		army_artillery_defence_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5185,7 +5188,7 @@ leader_traits = {
 		army_infantry_defence_factor = 0.1		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5198,7 +5201,7 @@ leader_traits = {
 		army_infantry_defence_factor = 0.15		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 3
@@ -5211,7 +5214,7 @@ leader_traits = {
 		army_infantry_defence_factor = 0.2		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 4
@@ -5225,7 +5228,7 @@ leader_traits = {
 	    special_forces_defence_factor = 0.1		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5238,7 +5241,7 @@ leader_traits = {
 	    special_forces_defence_factor = 0.15		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5251,7 +5254,7 @@ leader_traits = {
 	    special_forces_defence_factor = 0.2		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5265,7 +5268,7 @@ leader_traits = {
 		cavalry_defence_factor = 0.05	
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5278,7 +5281,7 @@ leader_traits = {
 		cavalry_defence_factor = 0.1	
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5291,7 +5294,7 @@ leader_traits = {
 		cavalry_defence_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5306,7 +5309,7 @@ leader_traits = {
 		mechanized_defence_factor = 0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 2
@@ -5321,7 +5324,7 @@ leader_traits = {
 		mechanized_defence_factor = 0.1		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 3
@@ -5336,7 +5339,7 @@ leader_traits = {
 		mechanized_defence_factor = 0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 4
@@ -5349,7 +5352,7 @@ leader_traits = {
 		army_morale_factor = 0.04		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5361,7 +5364,7 @@ leader_traits = {
 		army_morale_factor = 0.08		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5373,7 +5376,7 @@ leader_traits = {
 		army_morale_factor = 0.12		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5386,7 +5389,7 @@ leader_traits = {
 		enemy_army_bonus_air_superiority_factor = -0.05		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5398,7 +5401,7 @@ leader_traits = {
 		enemy_army_bonus_air_superiority_factor = -0.10		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5410,7 +5413,7 @@ leader_traits = {
 		enemy_army_bonus_air_superiority_factor = -0.15		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5423,7 +5426,7 @@ leader_traits = {
 		attrition = -0.04		
 		experience_gain_army = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 2
@@ -5435,7 +5438,7 @@ leader_traits = {
 		attrition = -0.08		
 		experience_gain_army = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 4
@@ -5447,7 +5450,7 @@ leader_traits = {
 		attrition = -0.12		
 		experience_gain_army = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 6
@@ -5459,7 +5462,7 @@ leader_traits = {
 		sprite = 1
 		experience_gain_air = 0.12
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5470,7 +5473,7 @@ leader_traits = {
 		sprite = 1
 		experience_gain_air = 0.16
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5481,7 +5484,7 @@ leader_traits = {
 		sprite = 1
 		experience_gain_air = 0.2
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5494,7 +5497,7 @@ leader_traits = {
 		air_accidents_factor = -0.05
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5506,7 +5509,7 @@ leader_traits = {
 		air_accidents_factor = -0.1
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5518,7 +5521,7 @@ leader_traits = {
 		air_accidents_factor = -0.15		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5541,7 +5544,7 @@ leader_traits = {
 		air_night_penalty = -0.1
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5553,7 +5556,7 @@ leader_traits = {
 		air_night_penalty = -0.2
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5565,7 +5568,7 @@ leader_traits = {
 		air_night_penalty = -0.3		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5578,7 +5581,7 @@ leader_traits = {
 		army_bonus_air_superiority_factor = 0.05
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5590,7 +5593,7 @@ leader_traits = {
 		army_bonus_air_superiority_factor = 0.1
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5602,7 +5605,7 @@ leader_traits = {
 		army_bonus_air_superiority_factor = 0.15		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5616,7 +5619,7 @@ leader_traits = {
 		air_weather_penalty = -0.1
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5628,7 +5631,7 @@ leader_traits = {
 		air_weather_penalty = -0.2
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5640,7 +5643,7 @@ leader_traits = {
 		air_weather_penalty = -0.3		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5653,7 +5656,7 @@ leader_traits = {
 		air_ace_generation_chance_factor = 0.05
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5665,7 +5668,7 @@ leader_traits = {
 		air_ace_generation_chance_factor = 0.1
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5677,7 +5680,7 @@ leader_traits = {
 		air_ace_generation_chance_factor = 0.15		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5692,7 +5695,7 @@ leader_traits = {
 		naval_strike_agility_factor = 0.02
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5706,7 +5709,7 @@ leader_traits = {
 		naval_strike_agility_factor = 0.03
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5720,7 +5723,7 @@ leader_traits = {
 		naval_strike_agility_factor = 0.05		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5730,12 +5733,12 @@ leader_traits = {
 	
 	air_bomber_interception_1 = { # Bomber Interception mission efficiency increased by 4%
 		sprite = 1
-		air_interception_attack_factor = 0.02
-		air_interception_defence_factor = 0.02
-		air_interception_agility_factor = 0.02
+# Removed unsupported legacy modifier air_interception_attack_factor
+# Removed unsupported legacy modifier air_interception_defence_factor
+# Removed unsupported legacy modifier air_interception_agility_factor
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5744,12 +5747,12 @@ leader_traits = {
 	
 	air_bomber_interception_2 = { # Bomber Interception mission efficiency increased by 8%
 		sprite = 1
-		air_interception_attack_factor = 0.03
-		air_interception_defence_factor = 0.03
-		air_interception_agility_factor = 0.03
+# Removed unsupported legacy modifier air_interception_attack_factor
+# Removed unsupported legacy modifier air_interception_defence_factor
+# Removed unsupported legacy modifier air_interception_agility_factor
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5758,12 +5761,12 @@ leader_traits = {
 	
 	air_bomber_interception_3 = { # Bomber Interception mission efficiency increased by 12%
 		sprite = 1
-		air_interception_attack_factor = 0.05
-		air_interception_defence_factor = 0.05
-		air_interception_agility_factor = 0.05		
+# Removed unsupported legacy modifier air_interception_attack_factor
+# Removed unsupported legacy modifier air_interception_defence_factor
+# Removed unsupported legacy modifier air_interception_agility_factor
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5773,12 +5776,12 @@ leader_traits = {
 	
 	air_air_superiority_1 = { # Air Superiority mission efficiency increased by 4%
 		sprite = 1
-		air_air_superiority_attack_factor = 0.02
-		air_air_superiority_defence_factor = 0.02
-		air_air_superiority_agility_factor = 0.02
+# Removed unsupported legacy modifier air_air_superiority_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_defence_factor
+# Removed unsupported legacy modifier air_air_superiority_agility_factor
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5787,12 +5790,12 @@ leader_traits = {
 	
 	air_air_superiority_2 = { # Air Superiority mission efficiency increased by 8%
 		sprite = 1
-		air_air_superiority_attack_factor = 0.03
-		air_air_superiority_defence_factor = 0.03
-		air_air_superiority_agility_factor = 0.03
+# Removed unsupported legacy modifier air_air_superiority_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_defence_factor
+# Removed unsupported legacy modifier air_air_superiority_agility_factor
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5801,12 +5804,12 @@ leader_traits = {
 	
 	air_air_superiority_3 = { # Air Superiority mission efficiency increased by 12%
 		sprite = 1
-		air_air_superiority_attack_factor = 0.05
-		air_air_superiority_defence_factor = 0.05
-		air_air_superiority_agility_factor = 0.05		
+# Removed unsupported legacy modifier air_air_superiority_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_defence_factor
+# Removed unsupported legacy modifier air_air_superiority_agility_factor
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5816,12 +5819,12 @@ leader_traits = {
 	
 	air_close_air_support_1 = { # Close Air Support mission efficiency increased by 4%
 		sprite = 1
-		air_close_air_support_attack_factor = 0.02
-		air_close_air_support_defence_factor = 0.02
-		air_close_air_support_agility_factor = 0.02
+# Removed unsupported legacy modifier air_close_air_support_attack_factor
+# Removed unsupported legacy modifier air_close_air_support_defence_factor
+# Removed unsupported legacy modifier air_close_air_support_agility_factor
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5830,12 +5833,12 @@ leader_traits = {
 	
 	air_close_air_support_2 = { # Close Air Support mission efficiency increased by 8%
 		sprite = 1
-		air_close_air_support_attack_factor = 0.03
-		air_close_air_support_defence_factor = 0.03
-		air_close_air_support_agility_factor = 0.03
+# Removed unsupported legacy modifier air_close_air_support_attack_factor
+# Removed unsupported legacy modifier air_close_air_support_defence_factor
+# Removed unsupported legacy modifier air_close_air_support_agility_factor
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5844,12 +5847,12 @@ leader_traits = {
 	
 	air_close_air_support_3 = { # Close Air Support mission efficiency increased by 12%
 		sprite = 1
-		air_close_air_support_attack_factor = 0.05
-		air_close_air_support_defence_factor = 0.05
-		air_close_air_support_agility_factor = 0.05		
+# Removed unsupported legacy modifier air_close_air_support_attack_factor
+# Removed unsupported legacy modifier air_close_air_support_defence_factor
+# Removed unsupported legacy modifier air_close_air_support_agility_factor
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5859,13 +5862,13 @@ leader_traits = {
 	
 	air_strategic_bombing_1 = { # Strategic Bombing mission efficiency increased by 4%
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.01
+# Removed unsupported legacy modifier air_strategic_bomber_attack_factor
 		air_strategic_bomber_defence_factor = 0.01
-		air_strategic_bomber_agility_factor = 0.01
+# Removed unsupported legacy modifier air_strategic_bomber_agility_factor
 		air_strategic_bomber_bombing_factor = 0.03
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5874,13 +5877,13 @@ leader_traits = {
 	
 	air_strategic_bombing_2 = { # Strategic Bombing mission efficiency increased by 8%
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.02
+# Removed unsupported legacy modifier air_strategic_bomber_attack_factor
 		air_strategic_bomber_defence_factor = 0.02
-		air_strategic_bomber_agility_factor = 0.02
+# Removed unsupported legacy modifier air_strategic_bomber_agility_factor
 		air_strategic_bomber_bombing_factor = 0.05
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5889,13 +5892,13 @@ leader_traits = {
 	
 	air_strategic_bombing_3 = { # Strategic Bombing mission efficiency increased by 12%
 		sprite = 2
-		air_strategic_bomber_attack_factor = 0.03
+# Removed unsupported legacy modifier air_strategic_bomber_attack_factor
 		air_strategic_bomber_defence_factor = 0.03
-		air_strategic_bomber_agility_factor = 0.03
+# Removed unsupported legacy modifier air_strategic_bomber_agility_factor
 		air_strategic_bomber_bombing_factor = 0.09		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5908,7 +5911,7 @@ leader_traits = {
 		air_cas_present_factor = 0.1
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5920,7 +5923,7 @@ leader_traits = {
 		air_cas_present_factor = 0.15
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5932,7 +5935,7 @@ leader_traits = {
 		air_cas_present_factor = 0.2		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5942,12 +5945,12 @@ leader_traits = {
 	
 	air_airborne_1 = { # Paratrooper drop efficiency increased by 4%
 		sprite = 1
-		air_paradrop_attack_factor = 0.01
-		air_paradrop_defence_factor = 0.03
-		air_paradrop_agility_factor = 0.03
+# Removed unsupported legacy modifier air_paradrop_attack_factor
+# Removed unsupported legacy modifier air_paradrop_defence_factor
+# Removed unsupported legacy modifier air_paradrop_agility_factor
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5956,12 +5959,12 @@ leader_traits = {
 	
 	air_airborne_2 = { # Paratrooper drop efficiency increased by 8%
 		sprite = 1
-		air_paradrop_attack_factor = 0.02
-		air_paradrop_defence_factor = 0.05
-		air_paradrop_agility_factor = 0.05
+# Removed unsupported legacy modifier air_paradrop_attack_factor
+# Removed unsupported legacy modifier air_paradrop_defence_factor
+# Removed unsupported legacy modifier air_paradrop_agility_factor
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -5970,12 +5973,12 @@ leader_traits = {
 	
 	air_airborne_3 = { # Paratrooper drop efficiency increased by 12%
 		sprite = 1
-		air_paradrop_attack_factor = 0.03
-		air_paradrop_defence_factor = 0.07
-		air_paradrop_agility_factor = 0.07				
+# Removed unsupported legacy modifier air_paradrop_attack_factor
+# Removed unsupported legacy modifier air_paradrop_defence_factor
+# Removed unsupported legacy modifier air_paradrop_agility_factor
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -5987,7 +5990,7 @@ leader_traits = {
 		air_training_xp_gain_factor = 0.05
 		experience_gain_air = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -5998,7 +6001,7 @@ leader_traits = {
 		air_training_xp_gain_factor = 0.1
 		experience_gain_air = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6009,7 +6012,7 @@ leader_traits = {
 		air_training_xp_gain_factor = 0.15		
 		experience_gain_air = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6024,7 +6027,7 @@ leader_traits = {
 		navy_carrier_air_agility_factor = 0.04
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6038,7 +6041,7 @@ leader_traits = {
 		navy_carrier_air_agility_factor = 0.08
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6052,7 +6055,7 @@ leader_traits = {
 		navy_carrier_air_agility_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6068,7 +6071,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6083,7 +6086,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.1
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6098,7 +6101,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6111,7 +6114,7 @@ leader_traits = {
 		convoy_raiding_efficiency_factor = 0.1
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6123,7 +6126,7 @@ leader_traits = {
 		convoy_raiding_efficiency_factor = 0.15
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6135,7 +6138,7 @@ leader_traits = {
 		convoy_raiding_efficiency_factor = 0.2
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6157,7 +6160,7 @@ leader_traits = {
 		sprite = 3
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6168,7 +6171,7 @@ leader_traits = {
 		sprite = 3
 		experience_gain_navy = 0.16
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6179,7 +6182,7 @@ leader_traits = {
 		sprite = 3
 		experience_gain_navy = 0.2
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6191,7 +6194,7 @@ leader_traits = {
 		naval_speed_factor = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6203,7 +6206,7 @@ leader_traits = {
 		naval_speed_factor = 0.1
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6215,7 +6218,7 @@ leader_traits = {
 		naval_speed_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6228,7 +6231,7 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.1
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6240,7 +6243,7 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.15
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6252,7 +6255,7 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.2
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6265,7 +6268,7 @@ leader_traits = {
 		navy_anti_air_attack_factor = 0.08
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6277,7 +6280,7 @@ leader_traits = {
 		navy_anti_air_attack_factor = 0.15
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6289,7 +6292,7 @@ leader_traits = {
 		navy_anti_air_attack_factor = 0.2
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6302,7 +6305,7 @@ leader_traits = {
 		navy_max_range_factor = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6314,7 +6317,7 @@ leader_traits = {
 		navy_max_range_factor = 0.10
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6326,7 +6329,7 @@ leader_traits = {
 		navy_max_range_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6339,7 +6342,7 @@ leader_traits = {
 		amphibious_invasion = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6351,7 +6354,7 @@ leader_traits = {
 		amphibious_invasion = 0.1
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6363,7 +6366,7 @@ leader_traits = {
 		amphibious_invasion = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6377,7 +6380,7 @@ leader_traits = {
 		navy_submarine_defence_factor = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6390,7 +6393,7 @@ leader_traits = {
 		navy_submarine_defence_factor = 0.1
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6403,7 +6406,7 @@ leader_traits = {
 		navy_submarine_defence_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6417,7 +6420,7 @@ leader_traits = {
 		navy_capital_ship_defence_factor = 0.05
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6430,7 +6433,7 @@ leader_traits = {
 		navy_capital_ship_defence_factor = 0.1
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6443,7 +6446,7 @@ leader_traits = {
 		navy_capital_ship_defence_factor = 0.15
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6457,7 +6460,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.1
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6470,7 +6473,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.15
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6483,7 +6486,7 @@ leader_traits = {
 		navy_screen_defence_factor = 0.2
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6495,7 +6498,7 @@ leader_traits = {
 		sortie_efficiency = 0.1
 		experience_gain_navy = 0.06
 		
-		command_cap = @tier1
+		max_command_power = @tier1
 		
 		ai_will_do = {
 			factor = 1
@@ -6507,7 +6510,7 @@ leader_traits = {
 		sortie_efficiency = 0.15
 		experience_gain_navy = 0.09
 		
-		command_cap = @tier2
+		max_command_power = @tier2
 		
 		ai_will_do = {
 			factor = 2
@@ -6519,7 +6522,7 @@ leader_traits = {
 		sortie_efficiency = 0.2
 		experience_gain_navy = 0.12
 		
-		command_cap = @tier3
+		max_command_power = @tier3
 		
 		ai_will_do = {
 			factor = 3
@@ -6660,7 +6663,7 @@ leader_traits = {
 	}
 	Party_Affairs_Coordinator = {#党务协调者
 	random = no
-		stability_popularity_factor = 0.35
+# Removed unsupported legacy modifier stability_popularity_factor
 	}
 	Famous_educator = {#知名教育家
 	random = no
@@ -6673,8 +6676,8 @@ leader_traits = {
 	Harmony_Establishment_Country = {#调和立国论
 	random = no
 		compliance_growth = 0.01
-		resistance_damage_to_garrisons = -0.15
-		foreign_subversive_activities = -0.4
+# Removed unsupported legacy modifier resistance_damage_to_garrisons
+# Removed unsupported legacy modifier foreign_subversive_activities
 	}
 	Democratic_revolutionaries = {#民主革命家
 		war_support_factor = 0.05
@@ -6699,12 +6702,12 @@ leader_traits = {
 	random = no
 		production_speed_synthetic_refinery_factor = 0.1
 		MAX_FUEL_FACTOR = 0.1
-		FUEL_GAIN_ADD = 0.1
+# Removed unsupported legacy modifier FUEL_GAIN_ADD
 	}
 	Famous_comprador = {#著名大买办
 	random = no
 	    political_power_factor = 0.2
-		modifier_production_speed_industrial_complex_factor = -0.1
+# Removed unsupported legacy modifier modifier_production_speed_industrial_complex_factor
 		production_speed_infrastructure_factor = -0.1
 		production_speed_fuel_silo_factor = -0.1
 	}
@@ -6745,8 +6748,8 @@ leader_traits = {
 		# 经济顾问特质
 	Worker_Factory_Manager = {
 		random = no
-		production_speed_factor = 0.1
-		production_efficiency_factor = 0.05
+# Removed unsupported legacy modifier production_speed_factor
+# Removed unsupported legacy modifier production_efficiency_factor
 	}
 
 	Infinite_Potential_Financial_Expert = {
@@ -6757,7 +6760,7 @@ leader_traits = {
 	Worker_Revolutionary = {
 		random = no
                             #加支持度
-		production_efficiency_factor = 0.1
+# Removed unsupported legacy modifier production_efficiency_factor
 
 	}
 
@@ -6771,26 +6774,26 @@ leader_traits = {
 		random = no
                             #加支持度
 		supply_consumption_factor = -0.15
-		resource_extraction_speed_factor = 0.1
+# Removed unsupported legacy modifier resource_extraction_speed_factor
 
 	}
 	Railway_Pioneer = {
 		random = no
-		infrastructure_speed_factor = 0.2
-		railway_speed_factor = 0.2
-		supply_depot_speed_factor = 0.2
+# Removed unsupported legacy modifier infrastructure_speed_factor
+# Removed unsupported legacy modifier railway_speed_factor
+# Removed unsupported legacy modifier supply_depot_speed_factor
 	}
 	# 教育顾问特质
 	Famous_Educator = {
 		random = no
 		research_speed_factor = 0.1
-		electronics_research_speed_factor = 0.1
+# Removed unsupported legacy modifier electronics_research_speed_factor
 	}
 
 	Red_Educator = {
 		random = no
 		research_speed_factor = 0.1
-		industrial_research_speed_factor = 0.1
+# Removed unsupported legacy modifier industrial_research_speed_factor
 	}
 
 	# 内阁特质
@@ -6844,113 +6847,113 @@ leader_traits = {
 	# 情报顾问特质
 	Intelligence_Master = {
 		random = no
-		espionage_factor = 0.2
-		foreign_espionage_factor = -0.2
+# Removed unsupported legacy modifier espionage_factor
+# Removed unsupported legacy modifier foreign_espionage_factor
 	}
 
 	# 军事顾问特质
 	Military_Expert = {
 		random = no
-		land_attack = 0.1
-		land_artillery_attack = 0.1
+# Removed unsupported legacy modifier land_attack
+# Removed unsupported legacy modifier land_artillery_attack
 	}
 
 	Guerilla_Master = {
 		random = no
-		land_speed_factor = 0.05
-		land_defense = -0.1
+# Removed unsupported legacy modifier land_speed_factor
+# Removed unsupported legacy modifier land_defense
 	}
 
 	Iron_Wall_General = {
 		random = no
-		land_defense = 0.1
-		entrenchment_building_speed = 0.1
-		entrenchment = 1
+# Removed unsupported legacy modifier land_defense
+# Removed unsupported legacy modifier entrenchment_building_speed
+# Removed unsupported legacy modifier entrenchment
 	}
 
 	Logistics_General = {
 		random = no
 		supply_consumption_factor = -0.1
-		encirclement_factor = -0.1
+# Removed unsupported legacy modifier encirclement_factor
 	}
 
 	Mobilization_Master = {
 		random = no
-		reinforcement_rate = 0.02
-		organization_loss_factor = -0.25
+# Removed unsupported legacy modifier reinforcement_rate
+# Removed unsupported legacy modifier organization_loss_factor
 	}
 
 	# 陆军部长特质
 	Firepower_Support_School = {
 		random = no
-		land_artillery_attack = 0.1
-		land_breakthrough = 0.1
+# Removed unsupported legacy modifier land_artillery_attack
+# Removed unsupported legacy modifier land_breakthrough
 	}
 
 	Mobile_Warfare_Doctrine = {
 		random = no
-		land_speed_factor = 0.1
-		organization_loss_factor = -0.1
+# Removed unsupported legacy modifier land_speed_factor
+# Removed unsupported legacy modifier organization_loss_factor
 	}
 
 	Flexible_Defense_Doctrine = {
 		random = no
-		planning_speed_factor = 0.1
-		planning_bonus_factor = 0.1
-		land_defense = 0.1
+# Removed unsupported legacy modifier planning_speed_factor
+# Removed unsupported legacy modifier planning_bonus_factor
+# Removed unsupported legacy modifier land_defense
 	}
 
 	Military_Logistics_Doctrine = {
 		random = no
-		army_damage_factor = 0.15
-		supply_loss_factor = -0.2
-		land_defense = -0.1
+# Removed unsupported legacy modifier army_damage_factor
+# Removed unsupported legacy modifier supply_loss_factor
+# Removed unsupported legacy modifier land_defense
 	}
 
 	# 总司令特质
 	Infantry_Expert = {
 		random = no
-		land_infantry_attack = 0.1
-		land_infantry_defense = 0.1
+# Removed unsupported legacy modifier land_infantry_attack
+# Removed unsupported legacy modifier land_infantry_defense
 	}
 
 	Organization_Master = {
 		random = no
-		organization = 0.1
-		organization_regain = 0.1
+# Removed unsupported legacy modifier organization
+# Removed unsupported legacy modifier organization_regain
 	}
 
 	Cleanser_General = {
 		random = no
 		equipment_capture_factor = 0.02
-		research_bonus_factor = 0.2
+# Removed unsupported legacy modifier research_bonus_factor
 	}
 
 	Logistics_Master = {
 		random = no
-		supply_depot_capacity_factor = 0.15
+# Removed unsupported legacy modifier supply_depot_capacity_factor
 	}
 
 	# 空军部长特质
 	Air_Superiority = {
 		random = no
-		air_superiority_factor = 0.1
+# Removed unsupported legacy modifier air_superiority_factor
 	}
 
 	Ground_Support = {
 		random = no
-		air_ground_attack = 0.1
+# Removed unsupported legacy modifier air_ground_attack
 	}
 
 	Ace_Pilot_School = {
 		random = no
-		fighter_ace_chance_factor = 0.1
+# Removed unsupported legacy modifier fighter_ace_chance_factor
 	}
 
 	# 海军部长特质
 	Battleship_Gunnery_Expert = {
 		random = no
-		ship_gun_attack = 0.1
+# Removed unsupported legacy modifier ship_gun_attack
 	}
 
 	cruel_colonist_authority = {   #残忍的殖民当局

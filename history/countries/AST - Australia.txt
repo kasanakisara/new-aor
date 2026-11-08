@@ -96,7 +96,8 @@ if = {
 	limit = {
 		has_dlc = "Together for Victory"
 	}
-	recruit_character = AST_iven_mackay #Empty char can become unit leader via FT
+	# unavailable or duplicate character AST_iven_mackay
+ #Empty char can become unit leader via FT
 }
 
 
@@ -123,6 +124,11 @@ set_popularities = {
 	FRE_democratic = 5
 }
 
-set_convoys = 100
+add_equipment_to_stockpile = { type = convoy amount = 100 }
 
 set_cosmetic_tag = AST_UK # British AST
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "V/W Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "S Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Canberra Class" type = heavy_cruiser_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_medium_battery_1 fixed_ship_anti_air_slot = ship_anti_air_2 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = cruiser_ship_engine_1 fixed_ship_secondaries_slot = ship_secondaries_1 mid_1_custom_slot = ship_secondaries_1 mid_2_custom_slot = ship_anti_air_2 rear_1_custom_slot = ship_medium_battery_1 } }

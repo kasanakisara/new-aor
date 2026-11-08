@@ -13,7 +13,7 @@ technology_sharing_group = {
     	is_in_faction_with = ENG
     	ENG = {
     		is_faction_leader = yes
-    		has_government = Liberalism
+    		has_government = FRE_democratic
 		}
     }
 }
@@ -30,7 +30,7 @@ technology_sharing_group = {
 
     available = {
     	NOT = { has_war_with = SOV }
-    	SOV = { has_government = Revolutionism }
+    	SOV = { has_government = Marxism }
     }
 }
 
@@ -93,7 +93,8 @@ technology_sharing_group = {
         is_in_faction_with = CZE
 		CZE = {
 			is_faction_leader = yes
-			has_completed_focus = CZE_faction_tech_sharing
+			always = no # unavailable AOR object: has_completed_focus CZE_faction_tech_sharing
+
 		}
     }
 }

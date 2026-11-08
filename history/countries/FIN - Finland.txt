@@ -108,7 +108,7 @@ create_country_leader = {
 
 
 
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
 
 
@@ -132,3 +132,6 @@ add_ideas = {
 	Great_War_Zone
 	An_unstable_republic
 }
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Väinämöinen Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }

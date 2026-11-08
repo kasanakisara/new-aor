@@ -1,3 +1,5 @@
+# Historical formations already carry basic support equipment.
+set_technology = { tech_support = 1 }
 # AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Science
@@ -25,7 +27,7 @@ if = {
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.2
 set_country_flag = AOR_GER_flag_NOT_support_resolution
 set_country_flag = Bebel_mission_finish_1
@@ -41,9 +43,12 @@ recruit_character = Eugen_Levine
 recruit_character = BAV_Mehring
 recruit_character = BAV_Luksemburg
 recruit_character = BAV_Karl_Liebknecht
-recruit_character = BAV_Karl_Liebknecht_command
-recruit_character = BAV_Luksemburg_command
-recruit_character = BAV_Mehring_command
+# unavailable or duplicate character BAV_Karl_Liebknecht_command
+
+# unavailable or duplicate character BAV_Luksemburg_command
+
+# unavailable or duplicate character BAV_Mehring_command
+
 recruit_character = Eugen_Levine_command
 
 set_variable = { Bebel_Trust = 6 }
@@ -69,21 +74,7 @@ set_popularities = {
 	Marxism = 68
 }
 
-add_ideas = {
-	comintern_aligned_nation
-	BAV_dying_bureaucracy
-	BAV_the_red_star_in_DEU 
-	BAV_a_deep_cut_from_revolution
-	Compact_of_German_Confederation_1
-	Roving_style
-	Extreme_democratic_rampant	
-	closed_economy
-	BAV_Mehring
-	Eugen_Levine
-	BAV_Luksemburg
-	BAV_Karl_Liebknecht
-
-}
+add_ideas = { BAV_dying_bureaucracy BAV_the_red_star_in_DEU BAV_a_deep_cut_from_revolution Compact_of_German_Confederation_1 Roving_style Extreme_democratic_rampant closed_economy }
 
 BAV = {
 country_event = { days = 1001 id = BAV.3 }

@@ -1,4 +1,6 @@
-﻿# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+# Historical formations already carry basic support equipment.
+set_technology = { tech_support = 1 }
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Science
 	Modern_electronics = 1
@@ -35,7 +37,7 @@ recruit_character = KSH_Werner_Eduard_Fritz_von_Blomberg
 set_research_slots = 3
 # Starting tech
 
-set_convoys = 20
+add_equipment_to_stockpile = { type = convoy amount = 20 }
 
 set_politics = {
 	ruling_party = AUT_democratic
@@ -66,7 +68,7 @@ create_country_leader = {
 
 	name = "Paul Joseph Goebbels"
 	desc = "POLITICS_Paul_Joseph_Goebbels_DESC"
-	picture = "KSH_Paul_Joseph_Goebbels.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1953.3.1"
 	ideology = strasser
 	traits = {
@@ -78,7 +80,7 @@ create_country_leader = {
 
 	name = "Ethel von Hohensolen"
 	desc = "POLITICS_Ethel_von_Hohensolen_DESC"
-	picture = "Ethel_von_Hohensolen.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1953.1.1"
 	ideology = monarchism
 	traits = {
@@ -95,6 +97,6 @@ add_ideas = {
 }
 
 oob="KSH_1919"
-effect = {
+
 	country_lock_all_division_template = yes
-	}
+	

@@ -40,7 +40,7 @@ if = {
 
 
 set_research_slots = 4
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.75
 
 
@@ -126,7 +126,7 @@ create_country_leader = {
 create_equipment_variant = {
 	name = "Königsberg Class"
 	type = light_cruiser_1
-	parent_version = 0
+	allow_without_tech = yes
 	upgrades = {
 		ship_reliability_upgrade = 2
 		ship_engine_upgrade = 2
@@ -139,7 +139,7 @@ create_equipment_variant = {
 create_equipment_variant = {
 	name = "Deutschland Class"
 	type = heavy_cruiser_1
-	parent_version = 0
+	allow_without_tech = yes
 	upgrades = {
 		ship_reliability_upgrade = 1
 		ship_engine_upgrade = 1

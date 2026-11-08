@@ -128,7 +128,8 @@ air_subdoctrine_close_air_bombing = {
 						has_dlc = "By Blood Alone"
 					}
 					hidden_effect = {
-						add_ideas = doctrine_land_radar_cost_reduction
+						# unavailable add_ideas doctrine_land_radar_cost_reduction
+
 					}
 					custom_effect_tooltip = {
 						localization_key = DOCTRINE_REDUCTION_COST
@@ -191,7 +192,8 @@ air_subdoctrine_shock_and_awe = {
 						has_dlc = "By Blood Alone"
 					}
 					hidden_effect = {
-						add_ideas = doctrine_flexible_payload_cost_reduction
+						# unavailable add_ideas doctrine_flexible_payload_cost_reduction
+
 					}
 					custom_effect_tooltip = {
 						localization_key = DOCTRINE_REDUCTION_COST
@@ -267,11 +269,13 @@ air_subdoctrine_steel_predators = {
 					limit = {
 						AND = {
 							has_dlc = "By Blood Alone"
-							NOT = { has_idea = doctrine_flexible_payload_cost_reduction }
+							NOT = { always = no # unavailable AOR object: has_idea doctrine_flexible_payload_cost_reduction
+ }
 						}
 					}
 					hidden_effect = {
-						add_ideas = doctrine_flexible_payload_cost_reduction
+						# unavailable add_ideas doctrine_flexible_payload_cost_reduction
+
 					}
 					custom_effect_tooltip = {
 						localization_key = DOCTRINE_REDUCTION_COST

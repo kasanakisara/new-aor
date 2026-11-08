@@ -72,28 +72,50 @@ SIA_lama
 SIA_neiyouwaihuan
 }
 
-recruit_character = SIA_phraya_phahon
-recruit_character = SIA_nangklao_chichalerm
-recruit_character = SIA_chao_phonphayuhasena
-recruit_character = SIA_nangklao_suriyawongse
-recruit_character = SIA_tianliang_huntrakool
-recruit_character = SIA_phra_silpasakrakorn
-recruit_character = SIA_luang_sinthusongkhramchai
-recruit_character = SIA_thawon_thamrongnawasawat
-recruit_character = SIA_phraya_preechacholayudha
-recruit_character = SIA_pridi_phanomyong
-recruit_character = SIA_sindhu_kamalanavin
-recruit_character = SIA_phraya_chitnasongkhla
-recruit_character = SIA_phraya_thayarnpikart
-recruit_character = SIA_phra_vechayanrangsarit
-recruit_character = SIA_manphya_khanphialong
-recruit_character = SIA_luang_phibunsongkhram
-recruit_character = SIA_phraya_wichcitcholathai
-recruit_character = SIA_sawat_phutianands
-recruit_character = SIA_phraya_chalermarkiart
-recruit_character = SIA_kuang_abhayavongsa
-recruit_character = SIA_thawee_punyaketu
-recruit_character = SIA_phot_bhahalyodin
+# unavailable or duplicate character SIA_phraya_phahon
+
+# unavailable or duplicate character SIA_nangklao_chichalerm
+
+# unavailable or duplicate character SIA_chao_phonphayuhasena
+
+# unavailable or duplicate character SIA_nangklao_suriyawongse
+
+# unavailable or duplicate character SIA_tianliang_huntrakool
+
+# unavailable or duplicate character SIA_phra_silpasakrakorn
+
+# unavailable or duplicate character SIA_luang_sinthusongkhramchai
+
+# unavailable or duplicate character SIA_thawon_thamrongnawasawat
+
+# unavailable or duplicate character SIA_phraya_preechacholayudha
+
+# unavailable or duplicate character SIA_pridi_phanomyong
+
+# unavailable or duplicate character SIA_sindhu_kamalanavin
+
+# unavailable or duplicate character SIA_phraya_chitnasongkhla
+
+# unavailable or duplicate character SIA_phraya_thayarnpikart
+
+# unavailable or duplicate character SIA_phra_vechayanrangsarit
+
+# unavailable or duplicate character SIA_manphya_khanphialong
+
+# unavailable or duplicate character SIA_luang_phibunsongkhram
+
+# unavailable or duplicate character SIA_phraya_wichcitcholathai
+
+# unavailable or duplicate character SIA_sawat_phutianands
+
+# unavailable or duplicate character SIA_phraya_chalermarkiart
+
+# unavailable or duplicate character SIA_kuang_abhayavongsa
+
+# unavailable or duplicate character SIA_thawee_punyaketu
+
+# unavailable or duplicate character SIA_phot_bhahalyodin
+
 
 
 create_country_leader = {
@@ -110,7 +132,7 @@ create_country_leader = {
 
 # Starting tech
 
-set_convoys = 15
+add_equipment_to_stockpile = { type = convoy amount = 15 }
 
 
 
@@ -141,18 +163,22 @@ if = {
 		name = "Phra Ruang Class"				
 		type = ship_hull_light_1
 		name_group = SIA_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = empty
+ rear_1_custom_slot = empty
+}
 	}
 }
 
 # 1939 Start #
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Trad Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "CMB Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }

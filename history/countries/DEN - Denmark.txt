@@ -1,3 +1,13 @@
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Niels Iuel Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = {
+ front_1_custom_slot = empty
+ rear_1_custom_slot = empty
+ fixed_ship_secondaries_slot = empty
+ fixed_ship_battery_slot = dp_ship_medium_1
+ fixed_ship_fire_control_system_slot = aor_ship_sonar_3
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+} }
 # AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Industry
@@ -58,7 +68,6 @@ create_equipment_variant = {
 
 capital = 1047
 oob = "AOR_LAND_DEN"
-set_naval_oob = "DEN_naval_1919"
 
 recruit_character = Otto_Liebe
 recruit_character = DEN_Henri_Konow
@@ -159,30 +168,35 @@ create_equipment_variant = {
 	name = "Rota Class"								
 	type = submarine_1
 	name_group = DEN_SS_HISTORICAL
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_1
-		fixed_ship_engine_slot = sub_ship_engine_1
-		rear_1_custom_slot = empty
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = empty
+}
 }
 create_equipment_variant = {
 	name = "Herluf Trolle Class"				
 	type = ship_hull_cruiser_coastal_defense_ship
 	name_group = DEN_CA_HISTORICAL
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_1
-		fixed_ship_armor_slot = ship_armor_cruiser_2
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_1
-	}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = empty
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = ship_torpedo_1
 }
+}
+
+
+
+
+set_naval_oob = "DEN_naval_1919"
 
 

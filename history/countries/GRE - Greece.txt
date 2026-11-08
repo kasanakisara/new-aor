@@ -89,19 +89,9 @@ set_research_slots = 3
 		}
 	}
 
-add_ideas = {
-	entente_member_nation
-	little_entente_nation
-	Great_ideals_are_close_at_hand
-	Kings_and_ministers
-	The_national_enthusiasm_of_the_military_headquarters
-	A_land_surrounded_by_mountains_and_seas
-	export_focus
-	limited_conscription
-	civilian_economy
-}
+add_ideas = { Great_ideals_are_close_at_hand Kings_and_ministers The_national_enthusiasm_of_the_military_headquarters A_land_surrounded_by_mountains_and_seas export_focus limited_conscription civilian_economy }
 
-set_convoys = 10
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 
 create_country_leader = {
 	name = "Eleftherios Venizelos"
@@ -146,3 +136,7 @@ country_event = {
 	id = GRE.1
 }
 activate_mission = IST_fake_mission_countdown
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Hydra Class" type = destroyer_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = ship_torpedo_1 mid_1_custom_slot = empty rear_1_custom_slot = ship_depth_charge_1 } }
+create_equipment_variant = { name = "Averof Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Aetos Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }

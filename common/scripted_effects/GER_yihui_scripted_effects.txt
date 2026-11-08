@@ -1,25 +1,5 @@
-#////////////////////////////////////////////////////////////////////
-#//                            _ooOoo_                             //
-#//                           o8888888o                            //
-#//                           88" . "88                            //
-#//                           (| ^_^ |)                            //
-#//                           O\  =  /O                            //
-#//                        ____/`---'\____                         //
-#//                      .' \\|      |//  '.                       //
-#//                     /  \|||   :  |||//  \                      //
-#//                    /  _||||| -:- |||||-  \                     //
-#//                    |   |  \\  -  /// |   |                     //
-#//                    | \_|  ''\---/''  |   |                     //
-#//                    \  .-\__   -   ___/-. /                     //
-#//                  ___`. .'  /--.--\  `. . ___                   //
-#//                ."" '< '.___\_<|>_/___.'  >'"".                //
-#//              | | :  `- \`.;`\ _ /`;.`/ - ` : | |               //
-#//              \  \ `-.   \_ __\ /__ _/   .-` /  /               //
-#//        ========`-.____`-.___\_____/___.-`____.-'========       //
-#//                             `=---='                            //
-#//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      //
-#//        佛祖保佑             永无BUG              永不修改      //
-#////////////////////////////////////////////////////////////////////
+# AOR: dependency-audited scripted functions.
+
 GER_Reichstag_set_default_seats = {#共459席
 	set_variable = { GER_reichstag_spd_left_seats = 35 }
 	set_variable = { GER_reichstag_spd_center_left_seats = 88 }
@@ -38,7 +18,6 @@ GER_Reichstag_set_default_seats = {#共459席
 	GER_Reichstag_refresh = yes
 }
 
-# 扩容议会焦点：消耗议会协商惯性，增加可同时执行的法案数量
 GER_yihui_expand_capacity = {
 	if = {
 		limit = {
@@ -49,9 +28,6 @@ GER_yihui_expand_capacity = {
 	}
 }
 
-
-# Compact equal-distance layout: 459 seats; 12 rows; radial pitch 18px.
-# Inner radius 114.43px; outer radius 312.43px; original 18x18 seat art.
 GER_Reichstag_prepare_seats = {
 	clear_array = GER_Reichstag_seat_x
 	clear_array = GER_Reichstag_seat_y
@@ -1040,7 +1016,7 @@ GER_Reichstag_refresh = {
 	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_other_seats }
 	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_bvp_seats }
 }
-# Initialize empty countries and old saves, preserving any existing seat allocation.
+
 GER_Reichstag_initialize = {
 	set_temp_variable = { GER_reichstag_existing_seats = 0 }
 	add_to_temp_variable = { GER_reichstag_existing_seats = GER_reichstag_spd_left_seats }

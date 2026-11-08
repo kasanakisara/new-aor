@@ -33,3 +33,11 @@ replace_path="common/ai_equipment"
 replace_path="common/ai_templates"
 
 replace_path="common/ai_focuses"
+
+replace_path="common/scripted_effects"
+
+replace_path="common/scripted_triggers"
+
+replace_path="common/decisions/categories"
+
+replace_path="gfx/interface/equipmentdesigner/graphic_db"

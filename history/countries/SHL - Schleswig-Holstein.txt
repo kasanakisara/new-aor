@@ -35,7 +35,7 @@ if = {
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.75
 
 
@@ -52,19 +52,13 @@ set_popularities = {
 	Marxism = 60
 }
 
-add_ideas = {
-	comintern_aligned_nation
-	The_Soviet_of_Sailors
-	Break_with_diehards
-	Pearl_of_the_North
-	Compact_of_German_Confederation_1
-}
+add_ideas = { The_Soviet_of_Sailors Break_with_diehards Pearl_of_the_North Compact_of_German_Confederation_1 }
 
 set_country_flag = AOR_GER_flag_NOT_support_resolution
 
-effect = {
+
 	country_lock_all_division_template = yes
-}
+
 
 create_country_leader = {
 	name = "Anton Pannekoek"
@@ -83,7 +77,7 @@ if = {
 	create_equipment_variant = {
 		name = "Königsberg Class"
 		type = light_cruiser_1
-		parent_version = 0
+		allow_without_tech = yes
 		upgrades = {
 			ship_reliability_upgrade = 2
 			ship_engine_upgrade = 2
@@ -95,7 +89,7 @@ if = {
 	create_equipment_variant = {
 		name = "Deutschland Class"
 		type = heavy_cruiser_1
-		parent_version = 0
+		allow_without_tech = yes
 		upgrades = {
 			ship_reliability_upgrade = 1
 			ship_engine_upgrade = 1
@@ -110,19 +104,19 @@ create_equipment_variant = {
 	name = "Hamburg"
 	type = light_cruiser_1
 	name_group = Hamburg
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = ship_radar_1
-		fixed_ship_engine_slot = cruiser_ship_engine_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		fixed_ship_armor_slot = ship_armor_cruiser_1
-		mid_1_custom_slot = ship_light_battery_2
-		mid_2_custom_slot = ship_light_battery_2
-		rear_1_custom_slot = ship_light_battery_2
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = ship_radar_1
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ mid_1_custom_slot = ship_light_battery_2
+ mid_2_custom_slot = ship_light_battery_2
+ rear_1_custom_slot = ship_light_battery_2
+}
 	obsolete = no
 	icon = "GFX_SHL_ship_hull_cruiser_1"
 }
@@ -139,20 +133,20 @@ create_equipment_variant = {
 	name = "Schleswig-Holstein"
 	type = battleship_1
 	name_group = Schleswig-Holstein
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_heavy_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_2
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = ship_radar_1
-		fixed_ship_engine_slot = heavy_ship_engine_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		fixed_ship_armor_slot = ship_armor_bb_1
-		front_1_custom_slot = ship_heavy_battery_1
-		mid_1_custom_slot = ship_secondaries_1
-		mid_2_custom_slot = ship_secondaries_1
-		rear_1_custom_slot = ship_heavy_battery_1
-	}
+ fixed_ship_battery_slot = ship_heavy_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = ship_radar_1
+ fixed_ship_engine_slot = heavy_ship_engine_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ front_1_custom_slot = ship_heavy_battery_1
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = ship_secondaries_1
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 	upgrades = {
 		ship_reliability_upgrade = 2
 		ship_engine_upgrade = 2
@@ -175,16 +169,16 @@ add_equipment_production = {
 			name = "Toshkent 1919 Class"
 			type = ship_hull_light_2
 			name_group = GER_DD_HISTORICAL
-			parent_version = 0
+			allow_without_tech = yes
 			modules = {
-				fixed_ship_battery_slot = ship_light_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_2
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				rear_1_custom_slot = ship_depth_charge_1
-			}
+ fixed_ship_battery_slot = ship_light_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_2
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 		}
 		add_equipment_production = {
 					equipment = {

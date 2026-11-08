@@ -1,0 +1,99 @@
+operation_SIA_sabotage_indochina_ports = {
+	icon = GFX_operations_targeted_sabotage
+	map_icon = GFX_operations_targeted_sabotage_map
+	name = operation_SIA_sabotage_indochina_ports
+	desc = operation_SIA_sabotage_indochina_ports_desc
+	priority = 14
+
+	days = 90
+	network_strength = 10
+	operatives = 1
+
+	allowed = {
+		original_tag = SIA
+		has_dlc = "Thunder at Our Gates"
+	}
+
+	visible = {
+		always = no # unavailable AOR object: has_completed_focus SIA_destroy_the_indochinese_ports
+
+		num_of_operatives > 0
+		any_of_scopes = {
+			array = SIA.indochina_states
+			is_controlled_by = FROM
+			naval_base > 0
+			NOT = { has_state_flag = SIA_port_charges_planted }
+		}
+	}
+
+	available = {
+		any_of_scopes = {
+			array = SIA.indochina_states
+			is_controlled_by = FROM
+			naval_base > 0
+			NOT = { has_state_flag = SIA_port_charges_planted }
+		}
+	}
+
+	requirements = {
+		has_equipment = { large_plane_airframe > 24 }
+	}
+
+	risk_chance = 0.2
+	experience = 2
+
+	outcome_potential = {
+		custom_effect_tooltip = operation_SIA_sabotage_indochina_ports_potential_tt
+	}
+
+	outcome_execute = {
+		random_list = {
+			90 = {
+				SIA_plant_indochina_port_charges = yes
+			}
+			10 = {
+				custom_effect_tooltip = operation_SIA_sabotage_indochina_ports_failed_tt
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = {
+			base = 25
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = { has_war = no }
+			}
+			modifier = {
+				FROM = { has_war_with = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = {
+		targeted_sabotage_plant_explosives = { base = 90 }
+		targeted_sabotage_organize_more_meetings = { base = 10 }
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = {
+			base = 15
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}

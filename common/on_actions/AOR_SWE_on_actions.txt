@@ -7,29 +7,29 @@ on_actions = {
 				limit = {
 					OR = {
 						has_idea = SWE_Open_the_door
-						has_idea = SWE_Thrid_Chioce
+						has_idea = SWE_Third_Chioce
 					}
 				}
 
 				## 政府支出 -> 生活消费品
 				if = {
-					limit = { check_variable = { SWE_Government_Spending = 0 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 0 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_consumer_goods_factor = 0 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 25 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 25 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_consumer_goods_factor = 0.25 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 50 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 50 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_consumer_goods_factor = 0.35 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 75 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 75 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_consumer_goods_factor = 0.45 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 100 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 100 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_consumer_goods_factor = 0.5 }
 				}
 				else = {
@@ -38,23 +38,23 @@ on_actions = {
 
 				## 政府支出 -> 国际市场开放度
 				if = {
-					limit = { check_variable = { SWE_Government_Spending = 0 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 0 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Market_Inclusion = -2.5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 25 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 25 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Market_Inclusion = 0 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 50 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 50 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Market_Inclusion = 2.5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 75 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 75 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Market_Inclusion = 5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Government_Spending = 100 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Government_Spending value = 100 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Market_Inclusion = 7.5 }
 				}
 				else = {
@@ -69,23 +69,23 @@ on_actions = {
 
 				## 国际市场开放度 -> 本土工业发展度
 				if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 0 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 0 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Industry_Development = -2.5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 25 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Industry_Development = 0 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 50 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 50 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Industry_Development = 2.5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 75 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Industry_Development = 5 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 100 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 100 compare = less_than_or_equals } }
 					add_to_variable = { SWE_Industry_Development = 7.5 }
 				}
 
@@ -101,23 +101,23 @@ on_actions = {
 
 				## 国际市场开放度 -> 建造速度
 				if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 0 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 0 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_construction_speed = -0.05 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 25 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_construction_speed = 0 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 50 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 50 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_construction_speed = 0.15 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 75 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_construction_speed = 0.25 }
 				}
 				else_if = {
-					limit = { check_variable = { SWE_Market_Inclusion = 100 compare = less_than_or_equals } }
+					limit = { check_variable = { var = SWE_Market_Inclusion value = 100 compare = less_than_or_equals } }
 					set_variable = { SWE_Trade_construction_speed = 0.45 }
 				}
 				else = {
@@ -139,43 +139,43 @@ on_actions = {
 
 				if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 15 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 15 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = -0.25 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 25 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 25 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 45 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 45 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0.25 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 45 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 45 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0.25 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 65 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 65 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0.5 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 75 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 75 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0.65 }
 				}
 				else_if = {
 					limit = {
-						check_variable = { SWE_Market_Inclusion = 85 compare = less_than_or_more }
+						check_variable = { var = SWE_Market_Inclusion value = 85 compare = less_than_or_more }
 					}
 					add_to_variable = { SWE_Union_progress_value_add = 0.75 }
 				}
@@ -632,7 +632,7 @@ on_actions = {
 					}
 						## 检测本土工业发展度
 					if = {
-						limit = { check_variable = { SWE_Industry_Development = 25 compare = less_than_or_equals } }
+						limit = { check_variable = { var = SWE_Industry_Development value = 25 compare = less_than_or_equals } }
 						random_owned_controlled_state = {
 							limit = { is_core_of = SWE }
 							add_extra_state_shared_building_slots = 1
@@ -645,7 +645,7 @@ on_actions = {
 					}
 
 					else_if = {
-						limit = { check_variable = { SWE_Industry_Development = 75 compare = less_than_or_equals } }
+						limit = { check_variable = { var = SWE_Industry_Development value = 75 compare = less_than_or_equals } }
 						random_owned_controlled_state = {
 							limit = { is_core_of = SWE }
 							add_extra_state_shared_building_slots = 2
@@ -762,7 +762,7 @@ on_actions = {
 				#增长下限
 				if = {
 					limit = {
-						check_variable = { SWE_Norweign_Independence_add = 0 compare = less_than_or_equals }
+						check_variable = { var = SWE_Norweign_Independence_add value = 0 compare = less_than_or_equals }
 					}
 					set_variable = { SWE_Norweign_Independence_add = 0.25 }
 				}
@@ -781,7 +781,7 @@ on_actions = {
 				#上下限
 				if = {
 					limit = {
-						check_variable = { SWE_Norweign_Independence_value = 0 compare = less_than_or_equals }
+						check_variable = { var = SWE_Norweign_Independence_value value = 0 compare = less_than_or_equals }
 					}
 					set_variable = { SWE_Norweign_Independence_value = 0 }
 				}
@@ -894,8 +894,8 @@ on_actions = {
 					tag = SWE
 					has_country_flag = SWE_Folkhemmet_flag
 					OR = {
-						check_variable = { SWE_National_debt = 0.8 compare = more_than_or_equals }
-						check_variable = { SWE_has_National_debt = 0.8 compare = more_than_or_equals }
+						check_variable = { var = SWE_National_debt value = 0.8 compare = more_than_or_equals }
+						check_variable = { var = SWE_has_National_debt value = 0.8 compare = more_than_or_equals }
 					}
 				}
 				add_ideas = SWE_High_national_debt
@@ -908,8 +908,8 @@ on_actions = {
 					tag = SWE
 					has_country_flag = SWE_Folkhemmet_flag
 					OR = {
-						check_variable = { SWE_National_debt = 0.2 compare = less_than_or_equals }
-						check_variable = { SWE_has_National_debt = 0.2 compare = less_than_or_equals }
+						check_variable = { var = SWE_National_debt value = 0.2 compare = less_than_or_equals }
+						check_variable = { var = SWE_has_National_debt value = 0.2 compare = less_than_or_equals }
 					}
 				}
 				add_ideas = SWE_Low_national_debt

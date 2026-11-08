@@ -248,7 +248,8 @@ coastal_defence_fleet = {
 		IF = {
 			limit = {
 				NOT = {
-					has_tech = coastal_defense_ships
+					always = no # unavailable AOR object: has_tech coastal_defense_ships
+
 				}
 			}
 			set_technology = { 

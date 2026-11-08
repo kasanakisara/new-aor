@@ -71,7 +71,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体攻击型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_cas_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_light_bomb_2
 		engine_type_slot = aor_engine_1x_2
@@ -83,7 +83,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体对海型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_naval_bomber_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_torpedo_1
 		engine_type_slot = aor_engine_1x_2
@@ -112,7 +112,7 @@ oob = "SWE_oob"
 # Starting tech
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.5
 
 
@@ -158,3 +158,12 @@ set_variable = { SWE_Norweign_Independence_stability_power_cost = 0.1 }
 
 country_event = { id = Tosca.1 days = 5 }
 country_event = { id = SWE.1 days = 1262 }
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Draken Class" type = submarine_1 allow_without_tech = yes modules = { fixed_ship_torpedo_slot = ship_torpedo_sub_1 fixed_ship_engine_slot = sub_ship_engine_1 rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Äran Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Örnen Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Clas Fleming Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Sverige Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Ehrensköld Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Oscar II Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Fylgia Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }

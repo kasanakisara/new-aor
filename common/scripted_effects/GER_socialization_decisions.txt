@@ -1,5 +1,5 @@
-# Temporary weekly effects for the socialization decisions. One-time effects
-# are applied immediately when the player starts a decision.
+# AOR: dependency-audited scripted functions.
+
 GER_socialization_activate_guard_radicalism = {
     if = {
         limit = { OR = { NOT = { has_variable = GER_soc_guard_a_days } check_variable = { GER_soc_guard_a_days < 1 } } }
@@ -113,7 +113,6 @@ GER_socialization_decisions_daily_tick = {
     GER_socialization_refresh_bars = yes
 }
 
-# Non-agricultural temporary actions end when the schedule enters agriculture.
 GER_socialization_clear_temporary_decision_effects = {
     set_variable = { GER_soc_guard_decision_cooldown = 0 }
     set_variable = { GER_soc_resist_cooldown = 0 }

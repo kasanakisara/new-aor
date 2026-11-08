@@ -1,0 +1,32 @@
+# AOR: dependency-audited scripted functions.
+
+NOR_AAT = { # Trigger to check if playing as Norway while having AAT
+	original_tag = NOR
+	has_dlc = "Arms Against Tyranny"
+}
+
+NOR_prep_his_mod_remove_trigger = { #Trigger to remove the state modifiers in the prep system when playing historical democratic  
+	NOR = {
+		OR = {
+			NOT = { owns_state = PREV }
+			AND = {
+				has_war = no 
+				has_capitulated = yes 
+				exists = no 
+			}
+		}
+	}
+}
+
+NOR_prep_fasc_mod_remove_trigger = { #Trigger to remove the state modifiers in the prep system  
+	NOR = {
+		OR = {
+			NOT = { owns_state = PREV }
+			AND = {
+				has_war = no 
+				has_capitulated = yes 
+				exists = no 
+			}
+		}
+	}
+}

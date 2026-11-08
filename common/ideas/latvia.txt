@@ -17,7 +17,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				democratic_drift = 0.1
+# Removed unsupported legacy modifier democratic_drift
 				stability_factor = 0.1
 				war_support_factor = 0.1
 			}
@@ -38,7 +38,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				democratic_drift = 0.2
+# Removed unsupported legacy modifier democratic_drift
 				stability_factor = 0.1
 				war_support_factor = 0.1
 			}
@@ -59,7 +59,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				democratic_drift = 0.3
+# Removed unsupported legacy modifier democratic_drift
 				stability_factor = 0.15
 				war_support_factor = 0.15
 			}
@@ -83,7 +83,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -92,7 +93,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				neutrality_drift = 0.1
+# Removed unsupported legacy modifier neutrality_drift
 				experience_gain_army = 0.02
 				stability_factor = 0.05
 				war_support_factor = 0.05
@@ -117,7 +118,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -126,9 +128,9 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				neutrality_drift = 0.1
+# Removed unsupported legacy modifier neutrality_drift
 				join_faction_tension = -0.20
-				democratic_acceptance = 85
+# Removed unsupported legacy modifier democratic_acceptance
 			}
 		}
 
@@ -150,7 +152,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -159,7 +162,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				neutrality_drift = 0.2
+# Removed unsupported legacy modifier neutrality_drift
 				experience_gain_army = 0.02
 				stability_factor = 0.05
 				war_support_factor = 0.05
@@ -184,7 +187,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -193,7 +197,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				neutrality_drift = 0.3
+# Removed unsupported legacy modifier neutrality_drift
 				experience_gain_army = 0.05
 				stability_factor = 0.05
 				war_support_factor = 0.1
@@ -218,7 +222,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -227,7 +232,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				neutrality_drift = 0.3
+# Removed unsupported legacy modifier neutrality_drift
 				experience_gain_army = 0.05
 				stability_factor = 0.1
 				war_support_factor = 0.2
@@ -253,7 +258,8 @@ ideas = {
 					AND = {
 						is_subject = yes
 						OVERLORD = {
-							has_government = neutrality
+							always = no # unavailable AOR object: has_government neutrality
+
 						}
 					}
 				}
@@ -279,7 +285,8 @@ ideas = {
 			}
 			
 			available = {
-				NOT = { has_government = communism }
+				NOT = { always = no # unavailable AOR object: has_government communism
+ }
 			}
 
 			removal_cost = -1
@@ -340,8 +347,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = fascism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government fascism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 
@@ -551,8 +560,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = fascism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government fascism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 
@@ -572,7 +583,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -594,7 +606,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -617,7 +630,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -643,7 +657,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1

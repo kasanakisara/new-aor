@@ -63,38 +63,61 @@ capital = 306
 # Starting tech
 
 
-recruit_character = COL_alfonso_lópez_pumarejo
-recruit_character = COL_mariano_ospina_pérez
-recruit_character = COL_gustavo_rojas_pinilla
-recruit_character = COL_david_de_vidal
-recruit_character = COL_isidoro_sotomayor
-recruit_character = COL_eduardo_poirier_escobar
-recruit_character = COL_luis_bernardo_andrade
-recruit_character = COL_luis_rodriguez
-recruit_character = COL_luis_acevedo
-recruit_character = COL_enrico_diaz_carias
-recruit_character = COL_guillermo_padilla_manrique
-recruit_character = COL_gabriel_paris_gordillo
-recruit_character = COL_mauricio_soto_gomez
-recruit_character = COL_salvador_tiaga_gonzalez
-recruit_character = COL_querista_sellor
-recruit_character = COL_camilo_daza_alvarez
-recruit_character = COL_manuel_quinones
-recruit_character = COL_german_olano_moreno
-recruit_character = COL_ruben_piedrahita_arango
-recruit_character = COL_jose_ellis_quinsado
-recruit_character = COL_m_e_rojas_de_moreno
-recruit_character = COL_raphael_hollmann
-recruit_character = COL_jorge_lopez_suyo
+# unavailable or duplicate character COL_alfonso_lópez_pumarejo
+
+# unavailable or duplicate character COL_mariano_ospina_pérez
+
+# unavailable or duplicate character COL_gustavo_rojas_pinilla
+
+# unavailable or duplicate character COL_david_de_vidal
+
+# unavailable or duplicate character COL_isidoro_sotomayor
+
+# unavailable or duplicate character COL_eduardo_poirier_escobar
+
+# unavailable or duplicate character COL_luis_bernardo_andrade
+
+# unavailable or duplicate character COL_luis_rodriguez
+
+# unavailable or duplicate character COL_luis_acevedo
+
+# unavailable or duplicate character COL_enrico_diaz_carias
+
+# unavailable or duplicate character COL_guillermo_padilla_manrique
+
+# unavailable or duplicate character COL_gabriel_paris_gordillo
+
+# unavailable or duplicate character COL_mauricio_soto_gomez
+
+# unavailable or duplicate character COL_salvador_tiaga_gonzalez
+
+# unavailable or duplicate character COL_querista_sellor
+
+# unavailable or duplicate character COL_camilo_daza_alvarez
+
+# unavailable or duplicate character COL_manuel_quinones
+
+# unavailable or duplicate character COL_german_olano_moreno
+
+# unavailable or duplicate character COL_ruben_piedrahita_arango
+
+# unavailable or duplicate character COL_jose_ellis_quinsado
+
+# unavailable or duplicate character COL_m_e_rojas_de_moreno
+
+# unavailable or duplicate character COL_raphael_hollmann
+
+# unavailable or duplicate character COL_jorge_lopez_suyo
+
 
 
 set_country_flag = monroe_doctrine
 
-set_convoys = 10
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 
 
 
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 set_politics = {
 	ruling_party = CON_democratic
 	last_election = "1934.2.11"
@@ -122,16 +145,16 @@ if = {
 		name = "Antioquia Class"				
 		type = ship_hull_light_1
 		name_group = COL_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_2
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_mine_layer_1
-			rear_1_custom_slot = ship_depth_charge_1
-		}
+ fixed_ship_battery_slot = ship_light_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_2
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_mine_layer_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 	}
 }

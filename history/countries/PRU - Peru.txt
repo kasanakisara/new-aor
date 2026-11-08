@@ -63,36 +63,61 @@ capital = 303
 # Starting tech
 
 
-recruit_character = PRU_Óscar_benavides
-recruit_character = PRU_sebastián_lynch
-recruit_character = PRU_hilarión_lynch
-recruit_character = PRU_santiago_ruíztagle
-recruit_character = PRU_rafael_escardo
-recruit_character = PRU_alberto_lopez_flores
-recruit_character = PRU_oscar_gilardi
-recruit_character = PRU_felipe_tudela
-recruit_character = PRU_eduardo_cantabria_gomez
-recruit_character = PRU_ernesto_scroth
-recruit_character = PRU_luis_ramirez_ortiz
-recruit_character = PRU_oscar_benavides_larrea
-recruit_character = PRU_manuel_odria_amoretti
-recruit_character = PRU_luis_navarrete
-recruit_character = PRU_paul_de_beaudiez
-recruit_character = PRU_alberto_roque_saldias
-recruit_character = PRU_vladimiro_lopez_trigoso
-recruit_character = PRU_eloy_g_ureta
-recruit_character = PRU_fernando_m_quesada_blanco
-recruit_character = PRU_eduardo_montero_rojas
-recruit_character = PRU_romulo_frias
-recruit_character = PRU_oscar_miro_quesada
-recruit_character = PRU_jose_bustamante_y_rivero
-recruit_character = PRU_armando_reveredo_iglesias
-recruit_character = PRU_reynaldo_vinatea
+# unavailable or duplicate character PRU_Óscar_benavides
+
+# unavailable or duplicate character PRU_sebastián_lynch
+
+# unavailable or duplicate character PRU_hilarión_lynch
+
+# unavailable or duplicate character PRU_santiago_ruíztagle
+
+# unavailable or duplicate character PRU_rafael_escardo
+
+# unavailable or duplicate character PRU_alberto_lopez_flores
+
+# unavailable or duplicate character PRU_oscar_gilardi
+
+# unavailable or duplicate character PRU_felipe_tudela
+
+# unavailable or duplicate character PRU_eduardo_cantabria_gomez
+
+# unavailable or duplicate character PRU_ernesto_scroth
+
+# unavailable or duplicate character PRU_luis_ramirez_ortiz
+
+# unavailable or duplicate character PRU_oscar_benavides_larrea
+
+# unavailable or duplicate character PRU_manuel_odria_amoretti
+
+# unavailable or duplicate character PRU_luis_navarrete
+
+# unavailable or duplicate character PRU_paul_de_beaudiez
+
+# unavailable or duplicate character PRU_alberto_roque_saldias
+
+# unavailable or duplicate character PRU_vladimiro_lopez_trigoso
+
+# unavailable or duplicate character PRU_eloy_g_ureta
+
+# unavailable or duplicate character PRU_fernando_m_quesada_blanco
+
+# unavailable or duplicate character PRU_eduardo_montero_rojas
+
+# unavailable or duplicate character PRU_romulo_frias
+
+# unavailable or duplicate character PRU_oscar_miro_quesada
+
+# unavailable or duplicate character PRU_jose_bustamante_y_rivero
+
+# unavailable or duplicate character PRU_armando_reveredo_iglesias
+
+# unavailable or duplicate character PRU_reynaldo_vinatea
+
 
 
 set_country_flag = monroe_doctrine
 
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
 
 
@@ -122,47 +147,47 @@ if = {
 	create_equipment_variant = {
 		name = "R1 Class"				
 		type = submarine_1
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = empty
+}
 	}
 	# Destroyers #
 	create_equipment_variant = {
 		name = "Almirante Villar Class"				
 		type = ship_hull_light_1
 		name_group = PRU_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_mine_layer_1
-			rear_1_custom_slot = ship_torpedo_1
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_mine_layer_1
+ rear_1_custom_slot = ship_torpedo_1
+}
 	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
 		name = "Almirante Grau Class"				
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = PRU_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = empty
-			fixed_ship_secondaries_slot = empty
-			mid_1_custom_slot = empty
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_light_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = empty
+ fixed_ship_secondaries_slot = empty
+ mid_1_custom_slot = empty
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = empty
+}
 	}
 }

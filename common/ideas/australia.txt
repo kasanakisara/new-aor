@@ -350,7 +350,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				NOT = { has_government = democratic }
+				NOT = { always = no # unavailable AOR object: has_government democratic
+ }
 			}
 
 			removal_cost = -1
@@ -370,7 +371,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				#has_government = communism
+				#always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -391,7 +393,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -421,7 +424,7 @@ ideas = {
 
 			modifier = {
 				autonomy_gain = 1
-				democratic_drift = -0.1
+# Removed unsupported legacy modifier democratic_drift
 				fascism_drift = 0.2
 			}
 		}
@@ -665,7 +668,8 @@ ideas = {
 			}
 
 			available = {
-				has_completed_focus = AST_commonwealth_aircraft_corporation
+				always = no # unavailable AOR object: has_completed_focus AST_commonwealth_aircraft_corporation
+
 				is_subject_of = ENG
 			}
 

@@ -9,7 +9,8 @@ future_artillery_power = { ### TODO EAW_SEA MAKE THIS MORE INTERESTING
 
     available = {
         OR = {
-            has_tech = artillery_b
+            always = no # unavailable AOR object: has_tech artillery_b
+
         }
     }
 
@@ -95,7 +96,8 @@ future_advanced_rocketry = { ### TODO EAW_SEA MAKE THIS MORE INTERESTING
 
     available = {
         OR = {
-            has_tech = rocket_artillery_b
+            always = no # unavailable AOR object: has_tech rocket_artillery_b
+
         }
     }
 
@@ -314,7 +316,7 @@ future_modern_logistics = {
         }
         logistics_in_difficult_terrain = {
         #5
-			supply_factor = 0.05
+			supply_consumption_factor = 0.05
 			logistics_company = {
 				forest = {
 					movement = 0.1

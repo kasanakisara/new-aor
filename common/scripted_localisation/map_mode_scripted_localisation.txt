@@ -8,7 +8,8 @@ defined_text = {
 		trigger = {
 			NOT = { original_tag = ENG }
 			NOT = { original_tag = FRA }
-			has_idea = entente_member_nation
+			always = no # unavailable AOR object: has_idea entente_member_nation
+
 		}
 		localization_key = nation_is_aligned_with_entente
 	}
@@ -19,7 +20,8 @@ defined_text = {
 				original_tag = FRA
 				original_tag = ENG
 			}
-			has_idea = entente_member_nation
+			always = no # unavailable AOR object: has_idea entente_member_nation
+
 		}
 		localization_key = entente_special_cold_war_text
 	
@@ -28,7 +30,8 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = { original_tag = ENG }
-			has_idea = british_commonwealth_nation 
+			always = no # unavailable AOR object: has_idea british_commonwealth_nation
+ 
 		}
 		localization_key = nation_is_aligned_with_ENG
 	}
@@ -36,7 +39,8 @@ defined_text = {
 	text = {
 		trigger = {
 			original_tag = ENG
-			has_idea = british_commonwealth_nation
+			always = no # unavailable AOR object: has_idea british_commonwealth_nation
+
 		}
 		localization_key = ENG_special_cold_war_text
 	
@@ -45,7 +49,8 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = { original_tag = FRA }
-			has_idea = little_entente_nation 
+			always = no # unavailable AOR object: has_idea little_entente_nation
+ 
 		}
 		localization_key = nation_is_aligned_with_FRA
 	}
@@ -53,7 +58,8 @@ defined_text = {
 	text = {
 		trigger = {
 			original_tag = FRA
-			has_idea = little_entente_nation
+			always = no # unavailable AOR object: has_idea little_entente_nation
+
 		}
 		localization_key = FRA_special_cold_war_text
 	
@@ -62,7 +68,8 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = { original_tag = RUS }
-			has_idea = comintern_aligned_nation 
+			always = no # unavailable AOR object: has_idea comintern_aligned_nation
+ 
 		}
 		localization_key = nation_is_aligned_with_comintern
 	}
@@ -70,7 +77,8 @@ defined_text = {
 	text = {
 		trigger = {
 			original_tag = RUS
-			has_idea = comintern_aligned_nation
+			always = no # unavailable AOR object: has_idea comintern_aligned_nation
+
 		}
 		localization_key = RUS_special_cold_war_text
 	
@@ -79,7 +87,8 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = { original_tag = GER }
-			has_idea = socialist_workers_international_nation
+			always = no # unavailable AOR object: has_idea socialist_workers_international_nation
+
 		}
 		localization_key = nation_is_aligned_with_GER_SL
 	}
@@ -87,7 +96,8 @@ defined_text = {
 	text = {
 		trigger = {
 			original_tag = GER
-			has_idea = socialist_workers_international_nation
+			always = no # unavailable AOR object: has_idea socialist_workers_international_nation
+
 		}
 		localization_key = GER_SL_special_cold_war_text
 	
@@ -97,11 +107,16 @@ defined_text = {
 		trigger = {
 			NOT = {
 				OR = {
-					has_idea = entente_member_nation
-					has_idea = british_commonwealth_nation
-					has_idea = little_entente_nation
-					has_idea = comintern_aligned_nation 
-					has_idea = socialist_workers_international_nation
+					always = no # unavailable AOR object: has_idea entente_member_nation
+
+					always = no # unavailable AOR object: has_idea british_commonwealth_nation
+
+					always = no # unavailable AOR object: has_idea little_entente_nation
+
+					always = no # unavailable AOR object: has_idea comintern_aligned_nation
+ 
+					always = no # unavailable AOR object: has_idea socialist_workers_international_nation
+
 				}
 			}
 		}
@@ -118,35 +133,40 @@ defined_text = {
 				original_tag = ENG
 				original_tag = FRA
 			}
-			has_idea = entente_member_nation
+			always = no # unavailable AOR object: has_idea entente_member_nation
+
 		}
 		localization_key = entente_special_cold_war_description
 	}
 	text = {
 		trigger = {
 			original_tag = ENG
-			has_idea = british_commonwealth_nation
+			always = no # unavailable AOR object: has_idea british_commonwealth_nation
+
 		}
 		localization_key = ENG_special_cold_war_description
 	}
 	text = {
 		trigger = {
 			original_tag = FRA
-			has_idea = little_entente_nation
+			always = no # unavailable AOR object: has_idea little_entente_nation
+
 		}
 		localization_key = FRA_special_cold_war_description
 	}
 	text = {
 		trigger = {
 			original_tag = RUS
-			has_idea = comintern_aligned_nation
+			always = no # unavailable AOR object: has_idea comintern_aligned_nation
+
 		}
 		localization_key = RUS_special_cold_war_description
 	}
 	text = {
 		trigger = {
 			original_tag = GER
-			has_idea = socialist_workers_international_nation
+			always = no # unavailable AOR object: has_idea socialist_workers_international_nation
+
 		}
 		localization_key = GER_SL_special_cold_war_description
 	}
@@ -170,7 +190,8 @@ defined_text = {
 	text = {
 		trigger = {
 			tag = GER
-			has_idea = socialist_workers_international_nation
+			always = no # unavailable AOR object: has_idea socialist_workers_international_nation
+
 		}
 		localization_key = GFX_alignment_icon_GER_SL
 	}

@@ -1,4 +1,5 @@
-﻿###########################
+add_namespace = AOR_fix_CHI_extra
+###########################
 add_namespace = CHI
 add_namespace = CHI_Northwest_decision
 add_namespace = CHI_test
@@ -90,13 +91,13 @@ country_event = {
 	option = {
 		name = CHI.4.c
 		hidden_effect = {
-		country_event = { id = CHI.40001 }
+		country_event = { id = AOR_fix_CHI_extra.1 }
 		}
 	}
 }
 
 country_event = {
-	id = CHI.40001
+	id = AOR_fix_CHI_extra.1
 	title = CHI.40001.t
 	desc = CHI.40001.d
 	picture = GFX_Portrait_of_Tirpitz
@@ -177,7 +178,7 @@ country_event = {
 			    transfer_state = 758
 			    transfer_state = 608
 			330= {
-				set_demilitarized_zone = NO
+				set_demilitarized_zone = no
 			}
 
 			create_country_leader = {
@@ -802,8 +803,10 @@ country_event = {
 
 	option = {
 		name = CHI.28.b
-		add_ideas = liangshiyi
-		add_ideas = zhuqiyin
+		# unavailable add_ideas liangshiyi
+
+		# unavailable add_ideas zhuqiyin
+
 		add_offsite_building = { type = arms_factory level = 2 }
 		add_ideas = yujiaotonghuichubuhezuo
 	}	
@@ -1549,7 +1552,7 @@ country_event = {
 				change_tag_from = ROOT
 				annex_country = { 
 					target = NAN 
-					transfer_troops =YES 
+					transfer_troops =yes 
 				}
 			}
 				NAN = {
@@ -1642,7 +1645,7 @@ country_event = {
 				change_tag_from = ROOT
 				annex_country = { 
 					target = MON 
-					transfer_troops =YES 
+					transfer_troops =yes 
 				}
 			}
 				MON = {
@@ -2086,8 +2089,8 @@ country_event = {
 	option = {
 		if = {
 			limit = {
-				has_ai
-			}
+				is_ai = yes
+}
 		}
 		log = "test 2 on "
 		
@@ -2096,7 +2099,7 @@ country_event = {
 
 country_event = {
 	# 《北望》（袁世凯收复外西北）
-	id = CHI.10000
+	id = AOR_fix_CHI_extra.2
 	title = CHI.10000.t
 	desc = CHI.10000.d
 	picture = GFX_AOR_chi_wangyejia	
@@ -2109,7 +2112,7 @@ country_event = {
 
 country_event = {
 	# 《旗女》（袁世凯收复外西北）
-	id = CHI.10001
+	id = AOR_fix_CHI_extra.3
 	title = CHI.10001.t
 	desc = CHI.10001.d
 	picture = GFX_AOR_chi_wangyejia	
@@ -2118,14 +2121,14 @@ country_event = {
 	option = {
 		name = CHI.10001.a
 		country_event = {
-			id = CHI.10002
+			id = AOR_fix_CHI_extra.4
 		}
 	}
 }
 
 country_event = {
 	# 《旗女2》（袁世凯收复外西北）
-	id = CHI.10002
+	id = AOR_fix_CHI_extra.4
 	title = CHI.10002.t
 	desc = CHI.10002.d
 	picture = GFX_AOR_chi_wangyejia	

@@ -26,7 +26,8 @@ CZE_ckd_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = ETH } }
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
+			FROM = { always = no # AOR: unavailable has_completed_focus ETH_invite_foreign_industrialists
+ }
 		}
 	}
 
@@ -65,14 +66,16 @@ CZE_ckd_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -104,7 +107,8 @@ CZE_ckd_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_the_tvp_project
+				always = no # AOR: unavailable has_completed_focus CZE_the_tvp_project
+
 			}
 		}
 
@@ -137,7 +141,8 @@ CZE_tatra_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 				OR = {
 					controls_state = 9
 					any_subject_country = {
@@ -154,7 +159,8 @@ CZE_tatra_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 			}
 		}
 	}
@@ -176,7 +182,8 @@ CZE_tatra_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_grow_tatras_capabilities
+				always = no # AOR: unavailable has_completed_focus CZE_grow_tatras_capabilities
+
 			}
 		}
 
@@ -215,15 +222,18 @@ CZE_skoda_armor_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = ETH } }
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
+			FROM = { always = no # AOR: unavailable has_completed_focus ETH_invite_foreign_industrialists
+ }
 		}
 		IF = {
 			limit = { FROM = { original_tag = HUN } }
-			FROM = { has_completed_focus = wuw_HUN_integrate_bohemian_and_austrian_industries }
+			FROM = { always = no # AOR: unavailable has_completed_focus wuw_HUN_integrate_bohemian_and_austrian_industries
+ }
 		}
 		IF = {
 			limit = { FROM = { original_tag = PER } }
-			FROM = { has_completed_focus = PER_czech_tanks }
+			FROM = { always = no # AOR: unavailable has_completed_focus PER_czech_tanks
+ }
 		}
 	}
 
@@ -249,7 +259,8 @@ CZE_skoda_armor_organization = {
 		}
 		IF = {
 			limit = { FROM = { original_tag = PER } }
-			FROM = { has_completed_focus = PER_czech_tanks }
+			FROM = { always = no # AOR: unavailable has_completed_focus PER_czech_tanks
+ }
 		}
 	}
 
@@ -266,7 +277,8 @@ CZE_skoda_armor_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
@@ -274,7 +286,8 @@ CZE_skoda_armor_organization = {
 		
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -306,7 +319,8 @@ CZE_skoda_armor_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_redouble_tank_development_efforts
+				always = no # AOR: unavailable has_completed_focus CZE_redouble_tank_development_efforts
+
 			}
 		}
 
@@ -344,7 +358,8 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = CZE_rearmed_and_retooled
+				always = no # AOR: unavailable has_completed_focus CZE_rearmed_and_retooled
+
 			}
 		}
 		if = {
@@ -364,7 +379,8 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 				OR = {
 					controls_state = 9
 					any_subject_country = {
@@ -383,7 +399,8 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 			}
 		}
 	}
@@ -412,7 +429,8 @@ CZE_skoda_works_german_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = GER } }
-			FROM = { has_completed_focus = GER_integrate_czech_manufacturers }
+			FROM = { always = no # AOR: unavailable has_completed_focus GER_integrate_czech_manufacturers
+ }
 		}
 	}
 
@@ -461,7 +479,8 @@ CZE_bohmische_mahrische_maschinenfabrik_ag_german_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = GER } }
-			FROM = { has_completed_focus = GER_integrate_czech_manufacturers }
+			FROM = { always = no # AOR: unavailable has_completed_focus GER_integrate_czech_manufacturers
+ }
 		}
 	}
 
@@ -516,7 +535,8 @@ CZE_bohmische_mahrische_maschinenfabrik_ag_german_organization = {
 
 		available = {
 			# FROM = { #We already check
-			# 	has_completed_focus = GER_integrate_czech_manufacturers
+			# 	always = no # AOR: unavailable has_completed_focus GER_integrate_czech_manufacturers
+
 			# }
 		}
 
@@ -605,7 +625,8 @@ CZE_avia_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = ETH } }
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
+			FROM = { always = no # AOR: unavailable has_completed_focus ETH_invite_foreign_industrialists
+ }
 		}
 	}
 
@@ -648,7 +669,8 @@ CZE_avia_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -687,7 +709,8 @@ CZE_avia_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -740,7 +763,8 @@ CZE_ckd_praga_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = HUN } }
-			FROM = { has_completed_focus = wuw_HUN_integrate_bohemian_and_austrian_industries }
+			FROM = { always = no # AOR: unavailable has_completed_focus wuw_HUN_integrate_bohemian_and_austrian_industries
+ }
 		}
 	}
 
@@ -781,7 +805,8 @@ CZE_ckd_praga_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_grow_ckd_secondary_facilities
+				always = no # AOR: unavailable has_completed_focus CZE_grow_ckd_secondary_facilities
+
 			}
 		}
 
@@ -809,7 +834,8 @@ CZE_ckd_praga_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -848,7 +874,8 @@ CZE_ckd_praga_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -910,7 +937,8 @@ CZE_aero_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -949,7 +977,8 @@ CZE_aero_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -1000,7 +1029,8 @@ CZE_letov_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -1039,7 +1069,8 @@ CZE_letov_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -1090,7 +1121,8 @@ CZE_benees_mraz_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -1129,7 +1161,8 @@ CZE_benees_mraz_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -1177,7 +1210,8 @@ CZE_zlin_aircraft_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -1216,7 +1250,8 @@ CZE_zlin_aircraft_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -1273,7 +1308,8 @@ CZE_avia_german_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = GER } }
-			FROM = { has_completed_focus = GER_integrate_czech_manufacturers }
+			FROM = { always = no # AOR: unavailable has_completed_focus GER_integrate_czech_manufacturers
+ }
 		}
 	}
 
@@ -1316,7 +1352,8 @@ CZE_avia_german_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = GER_aerodynamic_research_institute
+				always = no # AOR: unavailable has_completed_focus GER_aerodynamic_research_institute
+
 				NOT = { has_country_flag = GER_mio_trait_aerodynamic_research_insitute_taken_flag }
 			}
 		}
@@ -1482,7 +1519,8 @@ CZE_zbrojovka_brno_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
@@ -1490,7 +1528,8 @@ CZE_zbrojovka_brno_organization = {
 		
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -1527,7 +1566,8 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = GER_integrate_czech_manufacturers
+				always = no # AOR: unavailable has_completed_focus GER_integrate_czech_manufacturers
+
 			}
 		}
 		if = {
@@ -1537,7 +1577,8 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 			}
 		}
 	}
@@ -1550,7 +1591,8 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = CZE_establish_a_armament_factory_in_uhersky_brod
+				always = no # AOR: unavailable has_completed_focus CZE_establish_a_armament_factory_in_uhersky_brod
+
 			}
 		}
 		if = {
@@ -1579,7 +1621,8 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 				}
 			}
 			FROM = {
-				has_completed_focus = POL_join_CZE_military
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_military
+
 			}
 		}
 	}
@@ -1597,14 +1640,16 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
 		
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -1635,7 +1680,8 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_joint_stock_schemes
+				always = no # AOR: unavailable has_completed_focus CZE_joint_stock_schemes
+
 				NOT = { has_country_flag = CZE_mio_trait_walter_co_taken_flag }
 			}
 		}
@@ -1716,7 +1762,8 @@ CZE_skoda_artillery_organization = {
 	visible = {
 		IF = {
 			limit = { FROM = { original_tag = ETH } }
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
+			FROM = { always = no # AOR: unavailable has_completed_focus ETH_invite_foreign_industrialists
+ }
 		}
 	}
 
@@ -1762,14 +1809,16 @@ CZE_skoda_artillery_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -1801,7 +1850,8 @@ CZE_skoda_artillery_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_expand_skoda_offices
+				always = no # AOR: unavailable has_completed_focus CZE_expand_skoda_offices
+
 			}
 		}
 
@@ -1835,7 +1885,8 @@ CZE_skoda_artillery_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_expand_skoda_offices
+				always = no # AOR: unavailable has_completed_focus CZE_expand_skoda_offices
+
 			}
 		}
 
@@ -1877,7 +1928,8 @@ CZE_praga_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_expand_praga
+				always = no # AOR: unavailable has_completed_focus CZE_expand_praga
+
 			}
 		}
 
@@ -1908,7 +1960,8 @@ CZE_praga_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -1959,7 +2012,8 @@ CZE_ringhoffer_tatra_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_grow_tatras_capabilities
+				always = no # AOR: unavailable has_completed_focus CZE_grow_tatras_capabilities
+
 			}
 		}
 
@@ -1987,7 +2041,8 @@ CZE_ringhoffer_tatra_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -2028,7 +2083,8 @@ CZE_zbrojovka_vsetin_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_industry
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_industry
+
 				OR = {
 					controls_state = 9
 					any_subject_country = {
@@ -2045,7 +2101,8 @@ CZE_zbrojovka_vsetin_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_industry
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_industry
+
 			}
 		}
 	}
@@ -2067,7 +2124,8 @@ CZE_zbrojovka_vsetin_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -2107,7 +2165,8 @@ CZE_CKD_plzen_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_rails
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_rails
+
 				OR = {
 					controls_state = 9
 					any_subject_country = {
@@ -2124,7 +2183,8 @@ CZE_CKD_plzen_organization = {
 				limit = {
 					original_tag = POL
 				}
-				has_completed_focus = POL_join_CZE_rails
+				always = no # AOR: unavailable has_completed_focus POL_join_CZE_rails
+
 			}
 		}
 	}
@@ -2162,7 +2222,8 @@ CZE_CKD_plzen_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_grow_ckd_secondary_facilities
+				always = no # AOR: unavailable has_completed_focus CZE_grow_ckd_secondary_facilities
+
 			}
 		}
 
@@ -2190,7 +2251,8 @@ CZE_CKD_plzen_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}
@@ -2239,7 +2301,8 @@ CZE_praga_aviation_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_expand_praga
+				always = no # AOR: unavailable has_completed_focus CZE_expand_praga
+
 			}
 		}
 
@@ -2268,14 +2331,16 @@ CZE_praga_aviation_organization = {
 				original_tag = CZE
 				has_dlc = "Peace For Our Time"
 				NOT = {
-					has_completed_focus = CZE_kickstart_rapid_rearmanent 
+					always = no # AOR: unavailable has_completed_focus CZE_kickstart_rapid_rearmanent
+ 
 				}
 			}
 		}
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_keep_focus_on_weapon_exports
+				always = no # AOR: unavailable has_completed_focus CZE_keep_focus_on_weapon_exports
+
 			}
 		}
 
@@ -2306,7 +2371,8 @@ CZE_praga_aviation_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = CZE_diversify_bata
+				always = no # AOR: unavailable has_completed_focus CZE_diversify_bata
+
 				NOT = { has_country_flag = CZE_mio_trait_bata_corporation_taken_flag }
 			}
 		}

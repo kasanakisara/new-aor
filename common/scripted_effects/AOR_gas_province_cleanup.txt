@@ -1,3 +1,5 @@
+# AOR: dependency-audited scripted functions.
+
 aor_gas_cleanup_provinces = {
  if = { limit = { state = 1 }
   if = { limit = { has_state_flag = aor_gas_province_3838 } create_entity = { entity = building_aor_gas_cloud id = 1803838 province = 3838 scale = 4 visible = aor_gas_world_visible } set_entity_animation = { id = 1803838 animation = "attack" } }
@@ -23816,6 +23818,7 @@ aor_gas_cleanup_provinces = {
   if = { limit = { NOT = { OR = { has_state_flag = aor_gas_cleanup_1423 has_state_flag = aor_gas_cleanup_4223 has_state_flag = aor_gas_cleanup_4284 has_state_flag = aor_gas_cleanup_4341 has_state_flag = aor_gas_cleanup_7303 has_state_flag = aor_gas_cleanup_7331 has_state_flag = aor_gas_cleanup_12133 } } } clr_state_flag = aor_gas_has_province_clouds }
  }
 }
+
 aor_gas_schedule_cleanup = {
  if = { limit = { state = 1 } state_event = { id = aor_gas_cleanup.1 days = 28 trigger_for = controller } }
  if = { limit = { state = 10 } state_event = { id = aor_gas_cleanup.10 days = 28 trigger_for = controller } }

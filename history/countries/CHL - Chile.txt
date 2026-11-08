@@ -64,35 +64,57 @@ oob = "CHL_AOR"
 # Starting tech
 
 
-recruit_character = CHL_arturo_alessandri
-recruit_character = CHL_jorge_gonzález_von_marées
-recruit_character = CHL_carlos_contreras_labarca
-recruit_character = CHL_escudero_oscar_otárola
-recruit_character = CHL_domingo_blanco
-recruit_character = CHL_julio_allard_pinto
-recruit_character = CHL_gustavo_silva
-recruit_character = CHL_jose_luis_sanchez_besa
-recruit_character = CHL_marmaduke_grove
-recruit_character = CHL_e_novoa_fuentes
-recruit_character = CHL_dario_mujica_gamboa
-recruit_character = CHL_c_j_de_la_motte
-recruit_character = CHL_carlos_fuentes_rabe
-recruit_character = CHL_arturo_espinoza_mujica
-recruit_character = CHL_carlos_puga_monsalve
-recruit_character = CHL_francisco_o_ryan_orrego
-recruit_character = CHL_ernesto_m_orlando
-recruit_character = CHL_dario_cellejas_rojas
-recruit_character = CHL_ariosto_herrera
-recruit_character = CHL_luis_alamos_barros
-recruit_character = CHL_miguel_cruchaga_tacomal
-recruit_character = CHL_gustavo_ross_santa_maria
+# unavailable or duplicate character CHL_arturo_alessandri
+
+# unavailable or duplicate character CHL_jorge_gonzález_von_marées
+
+# unavailable or duplicate character CHL_carlos_contreras_labarca
+
+# unavailable or duplicate character CHL_escudero_oscar_otárola
+
+# unavailable or duplicate character CHL_domingo_blanco
+
+# unavailable or duplicate character CHL_julio_allard_pinto
+
+# unavailable or duplicate character CHL_gustavo_silva
+
+# unavailable or duplicate character CHL_jose_luis_sanchez_besa
+
+# unavailable or duplicate character CHL_marmaduke_grove
+
+# unavailable or duplicate character CHL_e_novoa_fuentes
+
+# unavailable or duplicate character CHL_dario_mujica_gamboa
+
+# unavailable or duplicate character CHL_c_j_de_la_motte
+
+# unavailable or duplicate character CHL_carlos_fuentes_rabe
+
+# unavailable or duplicate character CHL_arturo_espinoza_mujica
+
+# unavailable or duplicate character CHL_carlos_puga_monsalve
+
+# unavailable or duplicate character CHL_francisco_o_ryan_orrego
+
+# unavailable or duplicate character CHL_ernesto_m_orlando
+
+# unavailable or duplicate character CHL_dario_cellejas_rojas
+
+# unavailable or duplicate character CHL_ariosto_herrera
+
+# unavailable or duplicate character CHL_luis_alamos_barros
+
+# unavailable or duplicate character CHL_miguel_cruchaga_tacomal
+
+# unavailable or duplicate character CHL_gustavo_ross_santa_maria
+
 
 
 
 set_country_flag = monroe_doctrine
 
-set_convoys = 20
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 20 }
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
 set_politics = {
 	ruling_party = CON_democratic
@@ -149,114 +171,113 @@ if = {
 		name = "H1 Class"				
 		type = submarine_1
 		name_group = CHL_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = empty
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Capitán O'Brien Class"				
 		type = submarine_1
 		name_group = CHL_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = ship_torpedo_sub_1
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 	}
 	# Destroyers #
 	create_equipment_variant = {
 		name = "Almirante Lynch Class"				
 		type = ship_hull_light_1
 		name_group = CHL_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = empty
+ rear_1_custom_slot = empty
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Serrano Class"	
 		type = ship_hull_light_1
 		name_group = CHL_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_mine_layer_1
-			rear_1_custom_slot = ship_depth_charge_1
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_mine_layer_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 	}
 	# Cruisers #
 	create_equipment_variant = {
 		name = "O'Higgins Class"				
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = CHL_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			mid_1_custom_slot = empty
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = empty
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = empty
+}
 	}
 	create_equipment_variant = {
 		name = "Chacabuco Class"				
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = CHL_CL_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = empty
-			fixed_ship_secondaries_slot = empty
-			mid_1_custom_slot = empty
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = ship_torpedo_1
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = empty
+ fixed_ship_secondaries_slot = empty
+ mid_1_custom_slot = empty
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = ship_torpedo_1
+}
 	}
 	# Battleships #
 	create_equipment_variant = {
 		name = "Almirante Latorre Class"	
 		type = battleship_1
 		name_group = CHL_BB_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_heavy_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = heavy_ship_engine_1
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			fixed_ship_armor_slot = ship_armor_bb_1
-			front_1_custom_slot = ship_heavy_battery_1
-			mid_1_custom_slot = ship_secondaries_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ front_1_custom_slot = ship_heavy_battery_1
+ mid_1_custom_slot = ship_secondaries_1
+ rear_1_custom_slot = empty
+}
 	}
 }

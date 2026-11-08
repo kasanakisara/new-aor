@@ -119,7 +119,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体对海型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_naval_bomber_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_torpedo_1
 		engine_type_slot = aor_engine_1x_2
@@ -131,7 +131,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体攻击型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_cas_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_light_bomb_2
 		engine_type_slot = aor_engine_1x_2
@@ -184,10 +184,9 @@ if = {
 
 
 set_research_slots = 4
-set_convoys = 10
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 set_stability = 0.55
 add_command_power = 20
-set_naval_oob =  "AOR_FRA_naval"
 
 set_politics = {
 	ruling_party = SOC_democratic
@@ -206,13 +205,7 @@ set_popularities = {
 	Absolutism = 5
 }
 
-add_ideas = {
-	entente_member_nation
-	AOR_FRA_The_Third_Republic
-	AOR_FRA_The_Shadow_of_the_world_war
-	AOR_FRA_A_Growing_Social_Crisis
-	AOR_FRA_World_owner
-}
+add_ideas = { AOR_FRA_The_Third_Republic AOR_FRA_The_Shadow_of_the_world_war AOR_FRA_A_Growing_Social_Crisis AOR_FRA_World_owner }
 
 
 recruit_character = FRA_TIGER
@@ -256,453 +249,366 @@ FRA = {
 create_equipment_variant = {
 	name = "布列塔尼级"				
 	type = battleship_3
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_heavy_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_2
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = heavy_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_bb_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_heavy_battery_2
-		mid_1_custom_slot = ship_heavy_battery_2
-		mid_2_custom_slot = ship_secondaries_2
-		mid_3_custom_slot = ship_secondaries_2
-		rear_1_custom_slot = ship_heavy_battery_2
-		rear_2_custom_slot = ship_anti_air_2
-	}
+ fixed_ship_battery_slot = ship_heavy_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_bb_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ front_1_custom_slot = ship_heavy_battery_2
+ mid_2_custom_slot = ship_secondaries_2
+ rear_1_custom_slot = ship_heavy_battery_2
+}
 }
 create_equipment_variant = {
 	name = "孤拔级"				
 	type = battleship_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_heavy_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = heavy_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_bb_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_heavy_battery_1 
-		mid_1_custom_slot = ship_heavy_battery_1 
-		mid_2_custom_slot = ship_secondaries_2
-		mid_3_custom_slot = ship_secondaries_2
-		rear_1_custom_slot = ship_heavy_battery_1
-		rear_2_custom_slot = ship_torpedo_2
-	}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_bb_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ front_1_custom_slot = ship_heavy_battery_1
+ mid_2_custom_slot = ship_secondaries_2
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 }
 create_equipment_variant = {
 	name = "丹东级"				
 	type = battleship_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_heavy_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = heavy_ship_engine_1
-		fixed_ship_armor_slot = ship_armor_bb_1
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_secondaries_2
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = ship_secondaries_2
-		mid_3_custom_slot = ship_secondaries_2
-		rear_1_custom_slot = ship_heavy_battery_1
-		rear_2_custom_slot = ship_secondaries_2
-	}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = ship_secondaries_2
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 }
 create_equipment_variant = {
 	name = "自由级"				
 	type = battleship_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_heavy_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = heavy_ship_engine_1
-		fixed_ship_armor_slot = ship_armor_bb_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		front_1_custom_slot = ship_secondaries_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = ship_secondaries_1
-		mid_3_custom_slot = ship_secondaries_1
-		rear_1_custom_slot = ship_heavy_battery_1
-		rear_2_custom_slot = ship_secondaries_1
-	}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = ship_secondaries_1
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 }
 create_equipment_variant = {
 	name = "埃德加·居内级"				
 	type = heavy_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_3
-		fixed_ship_anti_air_slot = ship_anti_air_2
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_secondaries_2
-		mid_1_custom_slot = ship_secondaries_2
-		mid_2_custom_slot = ship_medium_battery_2
-		rear_1_custom_slot = ship_anti_air_2
-		rear_2_custom_slot = ship_medium_battery_3
-	}
+ fixed_ship_battery_slot = ship_medium_battery_3
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_secondaries_2
+ mid_2_custom_slot = ship_medium_battery_2
+ rear_1_custom_slot = ship_anti_air_2
+}
 }
 create_equipment_variant = {
 	name = "欧内斯特·勒南级"				
 	type = heavy_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_2
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_secondaries_2
-		mid_1_custom_slot = ship_secondaries_2
-		mid_2_custom_slot = ship_medium_battery_2
-		rear_1_custom_slot = ship_anti_air_2
-		rear_2_custom_slot = ship_medium_battery_2
-	}
+ fixed_ship_battery_slot = ship_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_secondaries_2
+ mid_2_custom_slot = ship_medium_battery_2
+ rear_1_custom_slot = ship_anti_air_2
+}
 }
 create_equipment_variant = {
 	name = "莱昂·甘必大级"				
 	type = heavy_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_2
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_secondaries_2
-		mid_1_custom_slot = ship_secondaries_1
-		mid_2_custom_slot = ship_medium_battery_2
-		rear_1_custom_slot = ship_anti_air_1
-		rear_2_custom_slot = ship_medium_battery_2
-	}
+ fixed_ship_battery_slot = ship_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = ship_medium_battery_2
+ rear_1_custom_slot = ship_anti_air_1
+}
 }
 create_equipment_variant = {
 	name = "格鲁塞级"				
 	type = heavy_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_2
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_secondaries_2
-		mid_1_custom_slot = ship_secondaries_1
-		mid_2_custom_slot = ship_medium_battery_2
-		rear_1_custom_slot = ship_secondaries_1
-		rear_2_custom_slot = ship_medium_battery_2
-	}
+ fixed_ship_battery_slot = ship_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = ship_medium_battery_2
+}
 }
 create_equipment_variant = {
 	name = "杜普莱克斯级"				
 	type = heavy_cruiser_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_medium_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_1
-		fixed_ship_armor_slot = ship_armor_cruiser_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		front_1_custom_slot = ship_secondaries_1
-		mid_1_custom_slot = ship_secondaries_2
-		mid_2_custom_slot = ship_medium_battery_1
-		rear_1_custom_slot = ship_secondaries_2
-		rear_2_custom_slot = ship_medium_battery_1
-	}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = ship_secondaries_2
+ mid_2_custom_slot = ship_medium_battery_1
+ rear_2_custom_slot = ship_medium_battery_1
+}
 }
 create_equipment_variant = {
 	name = "笛卡尔级"				
 	type = light_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_medium_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_1
-		fixed_ship_secondaries_slot = ship_secondaries_2
-		front_1_custom_slot = ship_torpedo_1
-		mid_1_custom_slot = ship_secondaries_1
-		mid_2_custom_slot = ship_light_medium_battery_2
-		rear_1_custom_slot = ship_light_medium_battery_1
-	}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = ship_light_medium_battery_2
+ rear_1_custom_slot = ship_light_medium_battery_1
+}
 }
 create_equipment_variant = {
 	name = "达萨级"				
 	type = light_cruiser_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_medium_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_2
-		fixed_ship_armor_slot = ship_armor_cruiser_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		front_1_custom_slot = ship_torpedo_1
-		mid_1_custom_slot = ship_secondaries_1
-		mid_2_custom_slot = ship_light_medium_battery_2
-		rear_1_custom_slot = ship_light_medium_battery_1
-	}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = ship_light_medium_battery_2
+ rear_1_custom_slot = ship_light_medium_battery_1
+}
 }
 create_equipment_variant = {
 	name = "拉瓦锡级"				
 	type = light_cruiser_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_medium_battery_2
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = cruiser_ship_engine_1
-		fixed_ship_armor_slot = ship_armor_cruiser_1
-		fixed_ship_secondaries_slot = ship_secondaries_1
-		front_1_custom_slot = ship_torpedo_1
-		mid_1_custom_slot = ship_light_medium_battery_2
-		mid_2_custom_slot = ship_secondaries_1
-		rear_1_custom_slot = ship_light_battery_1
-	}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ mid_1_custom_slot = ship_light_medium_battery_2
+ mid_2_custom_slot = ship_secondaries_1
+ rear_1_custom_slot = ship_light_battery_1
+ fixed_ship_fire_control_system_slot = aor_ship_sonar_3
+}
 }
 create_equipment_variant = {
 	name = "恩赛尼·拉贝级"				
 	type = destroyer_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_2
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_2
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_2
-		front_1_custom_slot = ship_torpedo_2
-		mid_1_custom_slot = ship_anti_air_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_light_battery_2
-	}
+ fixed_ship_battery_slot = ship_light_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_2
+ fixed_ship_torpedo_slot = ship_torpedo_2
+ mid_1_custom_slot = ship_anti_air_1
+}
 }
 create_equipment_variant = {
 	name = "布坎尼尔级"				
 	type = destroyer_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_depth_charge_1
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_torpedo_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 }
 create_equipment_variant = {
 	name = "阿冈班级"				
 	type = destroyer_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_depth_charge_1
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_torpedo_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 }
 create_equipment_variant = {
 	name = "斯帕希级"				
 	type = destroyer_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = ship_anti_air_1
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = empty
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_torpedo_1
+ rear_1_custom_slot = empty
+}
 }
 create_equipment_variant = {
 	name = "布兰科级"				
 	type = destroyer_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = empty
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_torpedo_1
+ rear_1_custom_slot = empty
+}
 }
 create_equipment_variant = {
 	name = "骑兵级"				
 	type = destroyer_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_battery_slot = ship_light_battery_1
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = light_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		fixed_ship_torpedo_slot= ship_torpedo_1
-		mid_1_custom_slot = ship_torpedo_1
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = empty
-	}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = empty
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_torpedo_1
+ rear_1_custom_slot = empty
+}
 }
 create_equipment_variant = {
 	name = "古斯塔夫·泽德级"				
 	type = submarine_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_2
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_2
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_2
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_2
+ fixed_ship_engine_slot = sub_ship_engine_2
+ rear_1_custom_slot = ship_torpedo_sub_2
+}
 }
 create_equipment_variant = {
 	name = "H级"				
 	type = submarine_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_1
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_2
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_1
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_2
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 }
 create_equipment_variant = {
 	name = "布里奥辛级"				
 	type = submarine_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_2
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_2
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_1
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_2
+ fixed_ship_engine_slot = sub_ship_engine_2
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 }
 create_equipment_variant = {
 	name = "阿基米德级"				
 	type = submarine_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_2
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_2
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_1
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_2
+ fixed_ship_engine_slot = sub_ship_engine_2
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 }
 create_equipment_variant = {
 	name = "普劳东级"				
 	type = submarine_2
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = ship_torpedo_sub_2
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_1
-	}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_2
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 }
 create_equipment_variant = {
 	name = "白鹭级"				
 	type = submarine_1
-	parent_version = 0
+	allow_without_tech = yes
 	modules = {
-		fixed_ship_torpedo_slot = empty
-		fixed_ship_battery_slot = empty
-		fixed_ship_anti_air_slot = empty
-		fixed_ship_fire_control_system_slot = empty
-		fixed_ship_radar_slot = empty
-		fixed_ship_engine_slot = sub_ship_engine_1
-		fixed_ship_armor_slot = empty
-		fixed_ship_secondaries_slot = empty
-		front_1_custom_slot = empty
-		mid_1_custom_slot = empty
-		mid_2_custom_slot = empty
-		rear_1_custom_slot = ship_torpedo_sub_1
-	}
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+}
 }
 activate_mission = IST_fake_mission_countdown
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "630 Series" type = submarine_1 allow_without_tech = yes modules = { fixed_ship_torpedo_slot = ship_torpedo_sub_1 fixed_ship_engine_slot = sub_ship_engine_1 rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Chacal Class" type = destroyer_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = ship_torpedo_1 mid_1_custom_slot = empty rear_1_custom_slot = ship_depth_charge_1 } }
+create_equipment_variant = { name = "Redoutable Class" type = submarine_1 allow_without_tech = yes modules = { fixed_ship_torpedo_slot = ship_torpedo_sub_1 fixed_ship_engine_slot = sub_ship_engine_1 rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Aigle & Vauquelin Class" type = destroyer_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = ship_torpedo_1 mid_1_custom_slot = empty rear_1_custom_slot = ship_depth_charge_1 } }
+create_equipment_variant = { name = "Bretagne Class" type = battleship_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_heavy_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = heavy_ship_engine_1 fixed_ship_secondaries_slot = ship_secondaries_1 fixed_ship_armor_slot = ship_armor_bb_1 front_1_custom_slot = ship_anti_air_1 mid_1_custom_slot = ship_anti_air_1 mid_2_custom_slot = ship_secondaries_2 rear_1_custom_slot = ship_heavy_battery_1 } }
+create_equipment_variant = { name = "Le Fantasque Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Béarn Class" type = ship_hull_carrier_conversion_bb allow_without_tech = yes modules = { fixed_ship_engine_slot = heavy_ship_engine_1 mid_1_custom_slot = empty fixed_ship_deck_slot_1 = ship_deck_space } }
+create_equipment_variant = { name = "Bourrasque Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
+create_equipment_variant = { name = "Surcouf Class" type = ship_hull_cruiser_submarine allow_without_tech = yes modules = { front_1_custom_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_torpedo_slot = ship_torpedo_sub_1 fixed_ship_engine_slot = sub_ship_engine_1 } }
+
+set_naval_oob =  "AOR_FRA_naval"
+

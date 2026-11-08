@@ -9,10 +9,13 @@ future_modern_battleplan = {
 
     available = {
         OR = {
-			has_tech = advanced_infantry_weapons_b
-			has_tech = magical_weapons2
+			always = no # unavailable AOR object: has_tech advanced_infantry_weapons_b
+
+			always = no # unavailable AOR object: has_tech magical_weapons2
+
 		}
-		has_tech = mechanised_infantry_a
+		always = no # unavailable AOR object: has_tech mechanised_infantry_a
+
     }
     # EFFECTS
 	planning_speed = 0.1
@@ -53,7 +56,8 @@ future_global_expeditionaries = {
     xp_type = army
 
     available = {
-        has_tech = mtg_tank_landing_craft
+        always = no # unavailable AOR object: has_tech mtg_tank_landing_craft
+
     }
     # EFFECTS
 	naval_invasion_prep_days = -10

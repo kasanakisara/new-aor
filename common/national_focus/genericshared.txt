@@ -68,7 +68,8 @@ search_filter_prios = {
 		id = shared_motorization_effort
 		icon = GFX_goal_generic_army_motorized
 		prerequisite = { focus = shard_army_effort }
-		bypass = { has_tech = motorised_infantry }
+		bypass = { always = no # unavailable AOR object: has_tech motorised_infantry
+ }
 		x = 1
 		y = 1
 		relative_position_id = shard_army_effort
@@ -245,7 +246,8 @@ search_filter_prios = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = shared_special_forces
+			# unavailable add_ideas shared_special_forces
+
 			add_tech_bonus = {
 				name = special_forces_bonus
 				bonus = 1.0

@@ -362,8 +362,10 @@ ideas = {
 			
 			available = {
 				OR = {
-					has_completed_focus = CHI_chinese_panzers
-					has_idea = german_advisors
+					always = no # unavailable AOR object: has_completed_focus CHI_chinese_panzers
+
+					always = no # unavailable AOR object: has_idea german_advisors
+
 				}
 				NOT = {
 					has_war_with = GER
@@ -385,7 +387,8 @@ ideas = {
 				modifier = { # CHI might lose the advisors, don't want the AI wasting PP
 					factor = 0
 					NOT = {
-						has_completed_focus = CHI_chinese_panzers
+						always = no # unavailable AOR object: has_completed_focus CHI_chinese_panzers
+
 					}
 				}
 			}
@@ -405,7 +408,8 @@ ideas = {
 					limit = {
 						has_dlc = "Waking the Tiger"
 					}
-					has_completed_focus = CHI_camco
+					always = no # unavailable AOR object: has_completed_focus CHI_camco
+
 				}
 			}
 
@@ -441,7 +445,8 @@ ideas = {
 					limit = {
 						has_dlc = "Waking the Tiger"
 					}
-					has_completed_focus = CHI_local_fighter_production
+					always = no # unavailable AOR object: has_completed_focus CHI_local_fighter_production
+
 				}
 			}
 
@@ -481,7 +486,8 @@ ideas = {
 			cost = 50
 
 			available = {
-				has_completed_focus = CHI_local_bomber_production
+				always = no # unavailable AOR object: has_completed_focus CHI_local_bomber_production
+
 			}
 
 			allowed = {

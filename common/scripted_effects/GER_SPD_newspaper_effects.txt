@@ -1,5 +1,5 @@
-# Country scope. Public values are integer percentages, always totalling 100 after refresh.
-# Initial distribution is explicitly requested by the user: left 17, centre 43, right 40.
+# AOR: dependency-audited scripted functions.
+
 GER_SPD_default_support_effect = {
 	set_variable = { GER_SPD_left_support = 17 }
 	set_variable = { GER_SPD_center_support = 43 }
@@ -24,10 +24,6 @@ GER_SPD_initialize_support_effect = {
 	GER_SPD_refresh_support_effect = yes
 }
 
-# Call after changing any of the three support variables in an event/focus/decision.
-# Negative inputs become zero. Arbitrary totals are normalised to 100.
-# Largest remainder allocation produces exactly 100 integer rows; ties favour left, then centre.
-# An all-zero input restores the initial distribution.
 GER_SPD_refresh_support_effect = {
 	if = {
 		limit = { check_variable = { GER_SPD_left_support < 0 } }

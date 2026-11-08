@@ -1,8 +1,4 @@
-# Parliamentary approval hook: call GER_socialization_enact_amendment = yes from the future vote event.
-GER_socialization_enact_amendment = {
-    set_country_flag = GER_socialization_amendment_passed
-    GER_socialization_refresh_bars = yes
-}
+# AOR: dependency-audited scripted functions.
 
 GER_socialization_refresh_targets = {
     set_variable = { GER_soc_target_metalworking = 700 }
@@ -37,8 +33,6 @@ GER_socialization_award_mining = {
     }
 }
 
-# Resource-specific output modifiers are state scoped. Sync owned states after
-# annexations and remove the bonus from states no longer owned by Germany.
 GER_socialization_refresh_mining_resources = {
     every_state = {
         limit = {
@@ -173,8 +167,6 @@ GER_socialization_reconcile_rewards = {
     GER_socialization_refresh_industry_rewards = yes
 }
 
-# One visible country modifier gathers the permanent bonuses unlocked by each
-# industry. Keep the older ideas defined so saves can remove them on migration.
 GER_socialization_refresh_industry_rewards = {
     remove_ideas = GER_socialization_reward_power_idea
     remove_ideas = GER_socialization_reward_armaments_idea

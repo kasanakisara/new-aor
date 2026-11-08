@@ -66,8 +66,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = neutrality
-					has_government = fascism
+					always = no # unavailable AOR object: has_government neutrality
+
+					always = no # unavailable AOR object: has_government fascism
+
 				}
 			}
 			
@@ -433,15 +435,17 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = communism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government communism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 			
 			modifier = {
 				military_leader_cost_factor = 0.5 
 				max_command_power = 20
-				communism_drift = 0.1
+# Removed unsupported legacy modifier communism_drift
 				army_core_attack_factor = 0.1
 				army_core_defence_factor = 0.1
 			}
@@ -459,8 +463,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = fascism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government fascism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 			
@@ -483,12 +489,13 @@ ideas = {
 			removal_cost = -1
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 			
 			modifier = {
 				conscription = 0.02
-				communism_drift = 0.1
+# Removed unsupported legacy modifier communism_drift
 			}
 		}
 		
@@ -504,7 +511,8 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT = {
-					has_government = communism
+					always = no # unavailable AOR object: has_government communism
+
 				}
 			}
 			
@@ -526,7 +534,8 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT = {
-					has_government = communism
+					always = no # unavailable AOR object: has_government communism
+
 				}
 			}
 			
@@ -566,11 +575,12 @@ ideas = {
 			removal_cost = -1
 
 			allowed_civil_war = {
-				has_government = democratic
+				always = no # unavailable AOR object: has_government democratic
+
 			}
 			
 			modifier = {
-				democratic_drift = 0.1
+# Removed unsupported legacy modifier democratic_drift
 				production_speed_industrial_complex_factor = 0.1
 				production_speed_infrastructure_factor = 0.1
 			}
@@ -587,11 +597,12 @@ ideas = {
 			removal_cost = -1
 
 			allowed_civil_war = {
-				has_government = democratic
+				always = no # unavailable AOR object: has_government democratic
+
 			}
 			
 			modifier = {
-				democratic_drift = 0.2
+# Removed unsupported legacy modifier democratic_drift
 				production_speed_industrial_complex_factor = 0.2
 				production_speed_infrastructure_factor = 0.2
 			}
@@ -608,7 +619,8 @@ ideas = {
 			removal_cost = -1
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 			
 			modifier = {
@@ -628,7 +640,8 @@ ideas = {
 			removal_cost = -1
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 			
 			modifier = {
@@ -652,7 +665,7 @@ ideas = {
 			}
 			
 			modifier = {
-				democratic_drift = 0.1
+# Removed unsupported legacy modifier democratic_drift
 				research_speed_factor = 0.05
 			}
 		}
@@ -672,7 +685,7 @@ ideas = {
 			}
 			
 			modifier = {
-				democratic_drift = 0.1
+# Removed unsupported legacy modifier democratic_drift
 				send_volunteer_divisions_required = -1
 				enemy_justify_war_goal_time = 1.0
 			}
@@ -798,7 +811,7 @@ ideas = {
 			}
 
 			modifier = {
-				communism_drift = 0.2
+# Removed unsupported legacy modifier communism_drift
 			}
 		}						
 		MEX_idea_vanguard_of_the_4th_international = {
@@ -813,8 +826,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = communism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government communism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 
@@ -835,8 +850,10 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = fascism
-					has_government = neutrality
+					always = no # unavailable AOR object: has_government fascism
+
+					always = no # unavailable AOR object: has_government neutrality
+
 				}
 			}
 
@@ -860,7 +877,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_tank_workshops
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_tank_workshops
+
 			}
 			
 			research_bonus = {
@@ -953,7 +971,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_gulf_coast_naval_yards
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_gulf_coast_naval_yards
+
 			}
 			
 			research_bonus = {
@@ -974,7 +993,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_pacific_coast_naval_yards
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_pacific_coast_naval_yards
+
 			}
 			
 			research_bonus = {
@@ -1000,7 +1020,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_aviation_workshops
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_aviation_workshops
+
 			}
 			
 			research_bonus = {
@@ -1033,7 +1054,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_royal_dutch_shell
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_royal_dutch_shell
+
 			}
 			
 			research_bonus = {
@@ -1062,7 +1084,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_nationalize_the_oil_fields
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_nationalize_the_oil_fields
+
 			}
 			
 			research_bonus = {
@@ -1091,7 +1114,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_national_bank
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_national_bank
+
 			}
 			
 			research_bonus = {
@@ -1116,7 +1140,8 @@ ideas = {
 			}
 			
 			available = {
-				has_completed_focus = MEX_focus_engineering_school
+				always = no # unavailable AOR object: has_completed_focus MEX_focus_engineering_school
+
 			}
 			
 			research_bonus = {

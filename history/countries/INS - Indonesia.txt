@@ -1,3 +1,5 @@
+# Historical formations already carry basic support equipment.
+set_technology = { tech_support = 1 }
 # AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Science
@@ -24,7 +26,7 @@ set_research_slots = 2
 
 
 
-set_convoys = 25
+add_equipment_to_stockpile = { type = convoy amount = 25 }
 set_popularities = {
 	CON_democratic = 10
 	Fascism = 10
@@ -48,7 +50,8 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
-	recruit_character = INS_hein_ter_poorten
+	# unavailable or duplicate character INS_hein_ter_poorten
+
 }
 
 set_cosmetic_tag = INS_HOL # Netherlands East Indies

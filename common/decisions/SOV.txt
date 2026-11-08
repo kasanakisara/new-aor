@@ -9,7 +9,8 @@ SOV_Soviet_mobilization_order = {
 		}
 		
 		available = {
-		    has_completed_focus = conscript_for_sov
+		    always = no # unavailable AOR object: has_completed_focus conscript_for_sov
+
 			OR = {
 			    has_war = yes
 				has_war_with = ARU
@@ -24,10 +25,7 @@ SOV_Soviet_mobilization_order = {
 		
 		remove_effect = {
 			add_war_support = 0.05
-			add_popularity = {
-				ideology = communism
-			    popularity = 0.05
-			}
+			
 		}
 
 	}

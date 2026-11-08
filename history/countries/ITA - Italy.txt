@@ -118,7 +118,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体对海型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_naval_bomber_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_torpedo_1
 		engine_type_slot = aor_engine_1x_2
@@ -130,7 +130,7 @@ create_equipment_variant = {
 }
 create_equipment_variant = {
 	name = "标准小型机体攻击型 1919"
-	type = small_plane_airframe_1919
+	type = small_plane_cas_airframe_1919
 	modules = {
 		fixed_main_weapon_slot = aor_light_bomb_2
 		engine_type_slot = aor_engine_1x_2
@@ -205,11 +205,11 @@ if = {
 	}
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
-			set_naval_oob = "ITA_1936_naval_legacy"
+
 }
 if = {
 	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "ITA_1936_naval_mtg"
+
 }
 
 add_equipment_to_stockpile = {
@@ -218,7 +218,7 @@ add_equipment_to_stockpile = {
 	producer = ITA	
 }
 
-set_convoys = 200
+add_equipment_to_stockpile = { type = convoy amount = 200 }
 
 set_politics = {
 	ruling_party = Absolutism
@@ -403,172 +403,170 @@ if = {
 		name = "Andrea Doria Class"
 		type = battleship_1
 		name_group = ITA_BB_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_heavy_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = heavy_ship_engine_1
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			fixed_ship_armor_slot = ship_armor_bb_1
-			front_1_custom_slot = ship_anti_air_1
-			mid_1_custom_slot = ship_secondaries_1
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = ship_heavy_battery_1
-		}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_1
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ front_1_custom_slot = ship_anti_air_1
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Conte Di Cavour Class"
 		type = battleship_1
 		name_group = ITA_BB_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_heavy_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = heavy_ship_engine_2
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			fixed_ship_armor_slot = ship_armor_bb_1
-			front_1_custom_slot = empty
-			mid_1_custom_slot = ship_secondaries_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_heavy_battery_1
-		}
+ fixed_ship_battery_slot = ship_heavy_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_2
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ fixed_ship_armor_slot = ship_armor_bb_1
+ front_1_custom_slot = empty
+ mid_1_custom_slot = ship_secondaries_1
+ rear_1_custom_slot = ship_heavy_battery_1
+}
 	}
 	### Heavy Cruiser Variants	
 	create_equipment_variant = {
 		name = "San Giorgio Class"
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = ITA_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_2
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			front_1_custom_slot = ship_anti_air_1
-			mid_1_custom_slot = ship_secondaries_1
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = ship_torpedo_1
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = ship_secondaries_1
+ front_1_custom_slot = ship_anti_air_1
+ mid_1_custom_slot = ship_secondaries_1
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = ship_torpedo_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Trento Class"
 		type = light_cruiser_1
 		name_group = ITA_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			fixed_ship_secondaries_slot = empty
-			mid_1_custom_slot = ship_medium_battery_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_anti_air_1
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = empty
+ mid_1_custom_slot = ship_medium_battery_1
+ mid_2_custom_slot = ship_airplane_launcher_1
+ rear_1_custom_slot = ship_anti_air_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Zara Class"
 		type = light_cruiser_1
 		name_group = ITA_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_2
-			fixed_ship_secondaries_slot = empty
-			mid_1_custom_slot = ship_medium_battery_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_anti_air_1
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_2
+ fixed_ship_secondaries_slot = empty
+ mid_1_custom_slot = ship_medium_battery_1
+ mid_2_custom_slot = ship_airplane_launcher_1
+ rear_1_custom_slot = ship_anti_air_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Bolzano Class"
 		type = light_cruiser_1
 		name_group = ITA_CA_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			fixed_ship_secondaries_slot = empty
-			mid_1_custom_slot = ship_medium_battery_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_anti_air_1
-		}
+ fixed_ship_battery_slot = ship_medium_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ fixed_ship_secondaries_slot = empty
+ mid_1_custom_slot = ship_medium_battery_1
+ mid_2_custom_slot = ship_airplane_launcher_1
+ rear_1_custom_slot = ship_anti_air_1
+}
 	}
 	### Light Cruiser Variants	
 	create_equipment_variant = {
 		name = "Taranto Class"
 		type = light_cruiser_1
 		name_group = ITA_CL_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_1
-			fixed_ship_anti_air_slot = empty
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			mid_1_custom_slot = ship_torpedo_1
-			mid_2_custom_slot = empty
-			rear_1_custom_slot = ship_mine_layer_1
-		}
+ fixed_ship_battery_slot = ship_light_medium_battery_1
+ fixed_ship_anti_air_slot = empty
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_1
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = empty
+ rear_1_custom_slot = ship_mine_layer_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Giussano Class"
 		type = light_cruiser_1
 		name_group = ITA_CL_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_2
-			fixed_ship_anti_air_slot = ship_anti_air_2
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_armor_slot = empty
-			mid_1_custom_slot = ship_torpedo_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_light_medium_battery_2
-		}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = empty
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = ship_airplane_launcher_1
+ rear_1_custom_slot = ship_light_medium_battery_2
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Montecuccoli Class"
 		type = light_cruiser_2
 		name_group = ITA_CL_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_2
-			fixed_ship_anti_air_slot = ship_anti_air_2
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_armor_slot = empty
-			front_1_custom_slot = ship_anti_air_1
-			mid_1_custom_slot = ship_torpedo_1
-			mid_2_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_light_medium_battery_2
-		}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = empty
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = ship_airplane_launcher_1
+ rear_1_custom_slot = ship_light_medium_battery_2
+}
 	}
 
 	### Light Cruiser Variants	
@@ -576,138 +574,139 @@ if = {
 		name = "Duca degli Abruzzi Class"
 		type = light_cruiser_2
 		name_group = ITA_CL_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_2
-			fixed_ship_anti_air_slot = ship_anti_air_2
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = ship_anti_air_2
-			mid_1_custom_slot = ship_torpedo_1
-			mid_2_custom_slot = ship_airplane_launcher_2
-			rear_1_custom_slot = ship_light_medium_battery_2
-		}
+ fixed_ship_battery_slot = ship_light_medium_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_2
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = cruiser_ship_engine_2
+ fixed_ship_armor_slot = ship_armor_cruiser_1
+ mid_1_custom_slot = ship_torpedo_1
+ mid_2_custom_slot = ship_airplane_launcher_2
+ rear_1_custom_slot = ship_light_medium_battery_2
+}
 	}
 	### Destroyer Variants
 	create_equipment_variant = {
 		name = "Curatone Class" 		#Represents the following WWI/1920s DDs/DEs: Curatone, Sauro/Sella, Turbine, Pilo, Audace, Siritori, La Masa, Palestro, Cantore
 		type = ship_hull_light_1
 		name_group = ITA_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = empty
+ rear_1_custom_slot = empty
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Navigatori Class"			#Represents the following WWI/1920s Heavy DDs: Mirabello, (Aquila,) Leone, Navigatori
 		type = ship_hull_light_1
 		name_group = ITA_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_mine_layer_1
-			rear_1_custom_slot = ship_depth_charge_1
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_1
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = ship_mine_layer_1
+ rear_1_custom_slot = ship_depth_charge_1
+}
 		obsolete = yes
 	}	
 	create_equipment_variant = {
 		name = "Maestrale Class" 			#Represents the following WWI/1920s DDs: Freccia, Foglore, Mastrale, Oriani, Spica (and subclasses)
 		type = ship_hull_light_1
 		name_group = ITA_DD_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = empty
-			rear_1_custom_slot = ship_depth_charge_1
-		}
+ fixed_ship_battery_slot = ship_light_battery_1
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = light_ship_engine_2
+ fixed_ship_torpedo_slot = ship_torpedo_1
+ mid_1_custom_slot = empty
+ rear_1_custom_slot = ship_depth_charge_1
+}
 	}
 	create_equipment_variant = {
 			name = "Littorio Class"
 			type = battleship_2
 			name_group = ITA_BB_HISTORICAL
-			parent_version = 0
+			allow_without_tech = yes
 			modules = {
-				fixed_ship_battery_slot = ship_heavy_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = heavy_ship_engine_2
-				fixed_ship_secondaries_slot = ship_secondaries_2
-				fixed_ship_armor_slot = ship_armor_bb_2
-				front_1_custom_slot = ship_anti_air_1
-				mid_1_custom_slot = ship_secondaries_2
-				mid_2_custom_slot = ship_airplane_launcher_2
-				rear_1_custom_slot = ship_heavy_battery_2
-			}
+ fixed_ship_battery_slot = ship_heavy_battery_2
+ fixed_ship_anti_air_slot = ship_anti_air_1
+ fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+ fixed_ship_radar_slot = empty
+ fixed_ship_engine_slot = heavy_ship_engine_2
+ fixed_ship_secondaries_slot = ship_secondaries_2
+ fixed_ship_armor_slot = ship_armor_bb_2
+ front_1_custom_slot = ship_anti_air_1
+ mid_1_custom_slot = ship_secondaries_2
+ rear_1_custom_slot = ship_heavy_battery_2
+}
 		}
 	### Submarine Variants	
 	create_equipment_variant = {
 		name = "Mameli Class"
 		type = submarine_1
 		name_group = ITA_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = empty
+}
 		obsolete = yes
 	}	
 	create_equipment_variant = {
 		name = "Bandiera Class"
 		type = submarine_1
 		name_group = ITA_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = ship_torpedo_sub_1
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Sirena Class"
 		type = submarine_2
 		name_group = ITA_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = empty
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = empty
+}
 		obsolete = yes
 	}
 	create_equipment_variant = {
 		name = "Calvi Class"
 		type = submarine_2
 		name_group = ITA_SS_HISTORICAL
-		parent_version = 0
+		allow_without_tech = yes
 		modules = {
-			fixed_ship_torpedo_slot = ship_torpedo_sub_1
-			fixed_ship_engine_slot = sub_ship_engine_1
-			rear_1_custom_slot = ship_torpedo_sub_1
-		}
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+}
 	}
 }
 
 
+
+			set_naval_oob = "ITA_1936_naval_legacy"
+		set_naval_oob = "ITA_1936_naval_mtg"

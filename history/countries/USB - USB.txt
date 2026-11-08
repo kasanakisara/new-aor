@@ -1,3 +1,5 @@
+# Historical formations already carry basic support equipment.
+set_technology = { tech_support = 1 }
 # AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Science
@@ -59,23 +61,39 @@ if = {
 	}
 	}
 
-recruit_character = USB_georges_vereecken
-recruit_character = USB_rene_lagrou
-recruit_character = USB_gaston_eyskens
-recruit_character = USB_victor_strydonck_burkel
-recruit_character = USB_paul_van_zeeland
-recruit_character = USB_fritz_lob
-recruit_character = USB_yvan_gerard
-recruit_character = USB_jules_pire
-recruit_character = USB_georges_deffontaine
-recruit_character = USB_oscar_michiels
-recruit_character = USB_raoul_overstraeten
-recruit_character = USB_fritz_conrad
-recruit_character = USB_victor_van_strydonck_de_burkel
-recruit_character = USB_paul-henri_spaak
-recruit_character = USB_charles_bastin
-recruit_character = USB_leon_degrelle
-recruit_character = USB_jules_iserentant
+# unavailable or duplicate character USB_georges_vereecken
+
+# unavailable or duplicate character USB_rene_lagrou
+
+# unavailable or duplicate character USB_gaston_eyskens
+
+# unavailable or duplicate character USB_victor_strydonck_burkel
+
+# unavailable or duplicate character USB_paul_van_zeeland
+
+# unavailable or duplicate character USB_fritz_lob
+
+# unavailable or duplicate character USB_yvan_gerard
+
+# unavailable or duplicate character USB_jules_pire
+
+# unavailable or duplicate character USB_georges_deffontaine
+
+# unavailable or duplicate character USB_oscar_michiels
+
+# unavailable or duplicate character USB_raoul_overstraeten
+
+# unavailable or duplicate character USB_fritz_conrad
+
+# unavailable or duplicate character USB_victor_van_strydonck_de_burkel
+
+# unavailable or duplicate character USB_paul
+-henri_spaak
+# unavailable or duplicate character USB_charles_bastin
+
+# unavailable or duplicate character USB_leon_degrelle
+
+# unavailable or duplicate character USB_jules_iserentant
 
 
 
@@ -83,7 +101,8 @@ recruit_character = USB_jules_iserentant
 
 
 
-set_convoys = 400
+
+add_equipment_to_stockpile = { type = convoy amount = 400 }
 
 
 set_politics = {
@@ -97,13 +116,7 @@ set_popularities = {
 	Marxism = 1
 }
 
-add_ideas = {
-	civilian_economy
-	limited_conscription
-	free_trade
-	home_of_the_free
-	neutrality_idea
-}
+add_ideas = { civilian_economy limited_conscription free_trade neutrality_idea }
 
 
 
