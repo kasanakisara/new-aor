@@ -1,100 +1,100 @@
-add_namespace = AOR_SOV_timeaxis
+add_namespace = AOR_RUS_timeaxis
 add_namespace = KYR
 
 #响应邻国起义#
 country_event = {
-	id = AOR_SOV_timeaxis.1
-	title = AOR_SOV_timeaxis.1.t
-	desc = AOR_SOV_timeaxis.1.desc
+	id = AOR_RUS_timeaxis.1
+	title = AOR_RUS_timeaxis.1.t
+	desc = AOR_RUS_timeaxis.1.desc
 	picture = 1
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = { #赞成
-		name = AOR_SOV_timeaxis.1.a
+		name = AOR_RUS_timeaxis.1.a
 		custom_effect_tooltip = "调试"
 		add_political_power = 25
 		add_war_support = 0.05
 		FROM = { add_to_faction = ROOT }
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1001 days = 1 } }
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1001 days = 1 } }
 	}
 	option = {
-		name = AOR_SOV_timeaxis.1.b
+		name = AOR_RUS_timeaxis.1.b
 		custom_effect_tooltip = "调试"
 		add_political_power = 75
 		add_stability = 0.05
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1002 days = 1 } }
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1002 days = 1 } }
 	}
 	option = {
-		name = AOR_SOV_timeaxis.1.c
+		name = AOR_RUS_timeaxis.1.c
 		custom_effect_tooltip = "调试"
 		add_stability = 0.10
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1003 days = 1 } }
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1003 days = 1 } }
 	}
 }
 
 #对方赞成#
 country_event = {
-	id = AOR_SOV_timeaxis.1001
-	title = AOR_SOV_timeaxis.1001.t
-	desc = AOR_SOV_timeaxis.1001.desc
+	id = AOR_RUS_timeaxis.1001
+	title = AOR_RUS_timeaxis.1001.t
+	desc = AOR_RUS_timeaxis.1001.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1001.a
+		name = AOR_RUS_timeaxis.1001.a
 	}
 }
 #对方拒绝#
 country_event = {
-	id = AOR_SOV_timeaxis.1002
-	title = AOR_SOV_timeaxis.1002.t
-	desc = AOR_SOV_timeaxis.1002.desc
+	id = AOR_RUS_timeaxis.1002
+	title = AOR_RUS_timeaxis.1002.t
+	desc = AOR_RUS_timeaxis.1002.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1002.a
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1004 days = 1 } }
+		name = AOR_RUS_timeaxis.1002.a
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1004 days = 1 } }
 	}
 }
 #对方希望折中#
 country_event = {
-	id = AOR_SOV_timeaxis.1003
-	title = AOR_SOV_timeaxis.1003.t
-	desc = AOR_SOV_timeaxis.1003.desc
+	id = AOR_RUS_timeaxis.1003
+	title = AOR_RUS_timeaxis.1003.t
+	desc = AOR_RUS_timeaxis.1003.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1003.a
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1005 days = 1 } }
+		name = AOR_RUS_timeaxis.1003.a
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1005 days = 1 } }
 	}
 	option = {
-		name = AOR_SOV_timeaxis.1003.b
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1006 days = 1 } }
+		name = AOR_RUS_timeaxis.1003.b
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1006 days = 1 } }
 	}
 	option = {
-		name = AOR_SOV_timeaxis.1003.c
-		FROM = { country_event = { id = AOR_SOV_timeaxis.1007 days = 1 } }
+		name = AOR_RUS_timeaxis.1003.c
+		FROM = { country_event = { id = AOR_RUS_timeaxis.1007 days = 1 } }
 	}
 }
 #苏俄尊重我们的立场#
 country_event = {
-	id = AOR_SOV_timeaxis.1004
-	title = AOR_SOV_timeaxis.1004.t
-	desc = AOR_SOV_timeaxis.1004.desc
+	id = AOR_RUS_timeaxis.1004
+	title = AOR_RUS_timeaxis.1004.t
+	desc = AOR_RUS_timeaxis.1004.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1004.a
+		name = AOR_RUS_timeaxis.1004.a
 	}
 }
 #苏俄言辞激烈的批评#
 country_event = {
-	id = AOR_SOV_timeaxis.1005
-	title = AOR_SOV_timeaxis.1005.t
-	desc = AOR_SOV_timeaxis.1005.desc
+	id = AOR_RUS_timeaxis.1005
+	title = AOR_RUS_timeaxis.1005.t
+	desc = AOR_RUS_timeaxis.1005.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1005.a
+		name = AOR_RUS_timeaxis.1005.a
 		add_political_power = -50
 		add_stability = -0.05
 		add_timed_ideas = {
@@ -105,26 +105,26 @@ country_event = {
 }
 #苏俄尊重我们的立场#
 country_event = {
-	id = AOR_SOV_timeaxis.1006
-	title = AOR_SOV_timeaxis.1006.t
-	desc = AOR_SOV_timeaxis.1006.desc
+	id = AOR_RUS_timeaxis.1006
+	title = AOR_RUS_timeaxis.1006.t
+	desc = AOR_RUS_timeaxis.1006.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1006.a
+		name = AOR_RUS_timeaxis.1006.a
 		add_political_power = 25
 	}
 }
 
 #苏俄送来了帮助#
 country_event = {
-	id = AOR_SOV_timeaxis.1007
-	title = AOR_SOV_timeaxis.1007.t
-	desc = AOR_SOV_timeaxis.1007.desc
+	id = AOR_RUS_timeaxis.1007
+	title = AOR_RUS_timeaxis.1007.t
+	desc = AOR_RUS_timeaxis.1007.desc
 	is_triggered_only = yes
 	#fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.1007.a
+		name = AOR_RUS_timeaxis.1007.a
 		add_political_power = 25
 		add_equipment_to_stockpile = {
 			type = infantry_equipment_0
@@ -138,40 +138,40 @@ country_event = {
 
 
 country_event = { ##苏俄夺取了终年不冻港
-	id = AOR_SOV_timeaxis.1008
-	title = AOR_SOV_timeaxis.1008.t
-	desc = AOR_SOV_timeaxis.1008.desc
+	id = AOR_RUS_timeaxis.1008
+	title = AOR_RUS_timeaxis.1008.t
+	desc = AOR_RUS_timeaxis.1008.desc
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
 		ai_chance = { base = 10 }
-		name = AOR_SOV_timeaxis.1008.a
+		name = AOR_RUS_timeaxis.1008.a
 		add_war_support = 0.02
 		custom_effect_tooltip = AOR_GER_Newline_tt
-		RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10081 } }
+		RUS = { country_event = { days = 1 id = AOR_RUS_timeaxis.10081 } }
 	}
 	option = {
 		ai_chance = { base = 0 }
-		name = AOR_SOV_timeaxis.1008.b
+		name = AOR_RUS_timeaxis.1008.b
 		remove_ideas = ENG_pioneer_of_interventionism
 		add_political_power = -120
 		add_stability = -0.10
 		add_war_support = -0.15
 		custom_effect_tooltip = AOR_GER_Newline_tt
-		RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10082 } }
+		RUS = { country_event = { days = 1 id = AOR_RUS_timeaxis.10082 } }
 		custom_effect_tooltip = AOR_GER_Newline_tt
-		FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+		FRA = { country_event = { days = 1 id = AOR_RUS_timeaxis.10083 } }
 	}
 }
 
 country_event = { ##英国人默认了
-	id = AOR_SOV_timeaxis.10081
-	title = AOR_SOV_timeaxis.10081.t
-	desc = AOR_SOV_timeaxis.10081.desc
+	id = AOR_RUS_timeaxis.10081
+	title = AOR_RUS_timeaxis.10081.t
+	desc = AOR_RUS_timeaxis.10081.desc
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.10081.a
+		name = AOR_RUS_timeaxis.10081.a
 		add_political_power = 25
 		add_war_support = 0.05
 		add_equipment_to_stockpile = {
@@ -193,13 +193,13 @@ country_event = { ##英国人默认了
 	}
 }
 country_event = { ##苏俄：英国人进行战争动员
-	id = AOR_SOV_timeaxis.10082
-	title = AOR_SOV_timeaxis.10082.t
-	desc = AOR_SOV_timeaxis.10082.desc
+	id = AOR_RUS_timeaxis.10082
+	title = AOR_RUS_timeaxis.10082.t
+	desc = AOR_RUS_timeaxis.10082.desc
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.10082.a
+		name = AOR_RUS_timeaxis.10082.a
 		add_political_power = 25
 		add_war_support = 0.05
 		add_equipment_to_stockpile = {
@@ -235,24 +235,24 @@ country_event = { ##苏俄：英国人进行战争动员
 				}
 			}
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+			FRA = { country_event = { days = 1 id = AOR_RUS_timeaxis.10083 } }
 		}
 	}
 }
 country_event = { ##法国：英国人进行战争动员
-	id = AOR_SOV_timeaxis.10083
-	title = AOR_SOV_timeaxis.10083.t
-	desc = AOR_SOV_timeaxis.10083.desc
+	id = AOR_RUS_timeaxis.10083
+	title = AOR_RUS_timeaxis.10083.t
+	desc = AOR_RUS_timeaxis.10083.desc
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = {
-		name = AOR_SOV_timeaxis.10083.a
+		name = AOR_RUS_timeaxis.10083.a
 	}
 	option = {
-		name = AOR_SOV_timeaxis.10083.b
+		name = AOR_RUS_timeaxis.10083.b
 	}
 	option = {
-		name = AOR_SOV_timeaxis.10083.c
+		name = AOR_RUS_timeaxis.10083.c
 	}
 }
 
@@ -316,9 +316,9 @@ country_event = {
 }
 
 country_event = {
-	id = AOR_SOV_timeaxis.10091
-	title = AOR_SOV_timeaxis.10091.t
-	desc = AOR_SOV_timeaxis.10091.d
+	id = AOR_RUS_timeaxis.1009 #谢苗诺夫参战
+	title = AOR_RUS_timeaxis.1009.t
+	desc = AOR_RUS_timeaxis.1009.d
 	fire_only_once = yes
 	trigger = {
 		tag = RUS
@@ -328,7 +328,7 @@ country_event = {
 	}
 
 	option = {
-		name = AOR_SOV_timeaxis.10091.a
+		name = AOR_RUS_timeaxis.1009.a
 		ARU = {
 			add_to_faction = BYA
 		}
@@ -337,6 +337,49 @@ country_event = {
 				targeted_alliance = ARU
 				enemy = RUS
 			}
+		}
+	}
+}
+
+country_event = {
+	id = AOR_RUS_timeaxis.10010 #波兰进军立陶宛
+	title = AOR_RUS_timeaxis.10010.t
+	desc = AOR_RUS_timeaxis.10010.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_RUS_timeaxis.10010.a
+
+		set_autonomy = {
+			target = LIT
+			autonomous_state = AOR_military_control_state
+			freedom_level = 0.2
+		}
+		LIT = {
+			add_ideas = {
+				AOR_Entente_no_war
+			}
+		}
+		news_event = { id = AOR_news_europe.56 }
+		RUS = {
+			country_event = { id = AOR_RUS_timeaxis.10011 days = 3 }
+		}
+	}
+}
+
+country_event = {
+	id = AOR_RUS_timeaxis.10011 #波兰进军立陶宛
+	title = AOR_RUS_timeaxis.10011.t
+	desc = AOR_RUS_timeaxis.10011.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_RUS_timeaxis.10011.a
+
+		POL = {
+			transfer_state = 97
 		}
 	}
 }
