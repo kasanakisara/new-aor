@@ -12,6 +12,11 @@
 
 # Cruiser Submarine
 sp_naval_cruiser_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval 
 
 	project_tags = sp_tag_submarine
@@ -22,28 +27,13 @@ sp_naval_cruiser_submarine = {
 
 	complexity = sp_complexity.medium
 	prototype_time = sp_time.prototype.medium 
-	allowed = {
-		#FREE PROJECT
-	}
+	
 
 	special_project_parent = {
 		
 	}
 
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = early_ship_hull_submarine
-			}
-			else = {
-				has_tech = early_submarine
-			}
-
-		}
-	}
+	
 
 	breakthrough_cost = {
 		specialization_naval = 1
@@ -85,20 +75,27 @@ sp_naval_cruiser_submarine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_failure_torpedo_accident
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 	
 	unique_prototype_rewards = {
 
@@ -178,6 +175,11 @@ sp_naval_cruiser_submarine = {
 
 #Fleet Submarine
 sp_naval_fleet_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 	
 
@@ -187,27 +189,12 @@ sp_naval_fleet_submarine = {
 		base = 1
 	}
 
-	allowed = {
-		#FREE PROJECT
-	}
+	
 
 	complexity = sp_complexity.medium
 	prototype_time = sp_time.prototype.long
 
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = improved_ship_hull_submarine
-			}
-			else = {
-				has_tech = improved_submarine 
-			}
-
-		}
-	}
+	
 
 
 	special_project_parent = {
@@ -260,20 +247,27 @@ sp_naval_fleet_submarine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_failure_torpedo_accident
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_fleet_submarine_unique_reward_a = {
@@ -363,6 +357,11 @@ sp_naval_fleet_submarine = {
 
 # Nuclear Powered Submarine
 sp_naval_nuclear_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval  
 	
 	project_tags = {
@@ -376,18 +375,14 @@ sp_naval_nuclear_submarine = {
 
 	complexity = sp_complexity.insane
 	prototype_time = sp_time.prototype.long	
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_naval_fleet_submarine
 		sp_nuclear_engines
 	}
 
-	available = { 
-		
-	}
+	
 	
 	breakthrough_cost = {
 		specialization_naval = 3
@@ -434,20 +429,27 @@ sp_naval_nuclear_submarine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_failure_nuclear_accident
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_nuclear_submarine_unique_reward_a = {
@@ -550,6 +552,11 @@ sp_naval_nuclear_submarine = {
 
 # Rocket Launching Submarine
 sp_naval_rocket_launching_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval 
 
 	project_tags = {
@@ -570,18 +577,14 @@ sp_naval_rocket_launching_submarine = {
 	}	
 	complexity = sp_complexity.medium 
 	prototype_time = sp_time.prototype.long
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_naval_fleet_submarine
 		sp_rockets_ballistic_missile
 	}
 
-	available = { 
-		
-	}
+	
 
 	breakthrough_cost = {
 		specialization_naval = 2
@@ -612,19 +615,27 @@ sp_naval_rocket_launching_submarine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3	
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_rocket_launching_submarine_unique_reward_a = {
@@ -746,6 +757,11 @@ sp_naval_rocket_launching_submarine = {
 
 # Nuclear Missile Submarine
 sp_naval_nuclear_missile_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 specialization = specialization_naval
 project_tags = {
 		sp_tag_nuclear_warfare
@@ -759,14 +775,42 @@ resource_cost = {
 	}
 complexity = sp_complexity.large
 prototype_time = sp_time.prototype.very_long
-allowed = { always = no }
-available = { always = no }
+
+
 project_output = { }
+
+ generic_prototype_rewards = {
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 }
 
 
 #Nuclear Torpedo
 sp_naval_nuclear_torpedo = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 specialization = specialization_naval
 project_tags = {
 		sp_tag_submarine
@@ -781,14 +825,42 @@ resource_cost = {
 	}
 complexity = sp_complexity.large
 prototype_time = sp_time.prototype.long
-allowed = { always = no }
-available = { always = no }
+
+
 project_output = { }
+
+ generic_prototype_rewards = {
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 }
 
 
 #Midget Submarine
 sp_naval_midget_submarine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -800,24 +872,9 @@ sp_naval_midget_submarine = {
 		base = 1
 	}
 
-	allowed = {
-		#FREE
-	}
 	
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = early_ship_hull_submarine
-			}
-			else = {
-				has_tech = early_submarine
-			}
-
-		}
-	}
+	
+	
 
 	complexity = sp_complexity.medium
 	prototype_time = sp_time.prototype.short
@@ -923,20 +980,27 @@ sp_naval_midget_submarine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_failure_torpedo_accident		
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_midget_submarine_unique_reward_a = {
@@ -1053,6 +1117,11 @@ sp_naval_midget_submarine = {
 
 #Air-Independent Propulsion
 sp_naval_aip_engine = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 	resource_cost = {
@@ -1081,24 +1150,9 @@ sp_naval_aip_engine = {
 		}
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = basic_ship_hull_submarine
-			}
-			else = {
-				has_tech = basic_submarine 
-			}
-
-		}
-	}
+	
+	
 	
 	breakthrough_cost = {
 		specialization_naval = 2
@@ -1145,19 +1199,27 @@ sp_naval_aip_engine = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3		
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_aip_engine_unique_reward_a = {
@@ -1235,6 +1297,11 @@ sp_naval_aip_engine = {
 
 #ANECHOIC TILES
 sp_naval_anechoic_tiles = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -1254,24 +1321,9 @@ sp_naval_anechoic_tiles = {
 		}
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = basic_ship_hull_submarine
-			}
-			else = {
-				has_tech = basic_submarine 
-			}
-
-		}
-	}
+	
+	
 	
 	breakthrough_cost = {
 		specialization_naval = 1
@@ -1314,19 +1366,27 @@ sp_naval_anechoic_tiles = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_anechoic_tiles_unique_reward_a = {
@@ -1403,6 +1463,11 @@ sp_naval_anechoic_tiles = {
 
 #SUBMARINE CARRIER
 sp_naval_submarine_carrier = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 specialization = specialization_naval
 
 	project_tags = sp_tag_submarine
@@ -1421,25 +1486,9 @@ specialization = specialization_naval
 		}
 	}
 
-	allowed = {
-		has_dlc = "No Compromise, No Surrender"
-	}
+	
 
-	available = {
-		FROM = {
-			if = {
-				limit = { 
-					has_dlc = "Man the Guns"
-				}
-			has_tech = basic_ship_hull_carrier
-			has_tech = improved_ship_hull_submarine				
-			}
-			else = {
-				has_tech = basic_carrier
-				has_tech = improved_submarine
-			}
-		}
-	}
+	
 
 	resource_cost = {
 		resources = { 
@@ -1530,19 +1579,27 @@ specialization = specialization_naval
 		}
 	}
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_submarine_carrier_unique_reward_a = {
@@ -1621,6 +1678,11 @@ specialization = specialization_naval
 #########################################################
 #Torpedo Cruiser
 sp_naval_torpedo_cruiser = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -1640,24 +1702,8 @@ sp_naval_torpedo_cruiser = {
 		}
 	}
 
-	allowed = {
-		#FREE
-	}
-	available = {
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = early_ship_hull_cruiser
-			}
-			else = {
-				has_tech = early_light_cruiser
-			}
-
-		}
-			
-	}
+	
+	
 	
 	complexity = sp_complexity.small
 	prototype_time = sp_time.prototype.medium
@@ -1715,26 +1761,27 @@ sp_naval_torpedo_cruiser = {
 		
 	}
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_reward_armor_tech_1
-		sp_naval_generic_reward_armor_tech_2
-		sp_naval_generic_reward_armor_tech_3
-		sp_naval_generic_reward_artillery_tech_1
-		sp_naval_generic_reward_artillery_tech_2
-		sp_naval_generic_reward_artillery_tech_3
-		sp_naval_generic_failure_torpedo_accident				
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_torpedo_cruiser_unique_reward_a = {
@@ -1824,6 +1871,11 @@ sp_naval_torpedo_cruiser = {
 
 #Super Heavy Battleship
 sp_naval_super_heavy_battleship = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 	project_tags = sp_tag_surface_ship
@@ -1855,23 +1907,9 @@ sp_naval_super_heavy_battleship = {
 		}
 	}
 
-	allowed = {
-		#FREE
-	}
+	
 
-	available = {
-		FROM = {
-			if = {
-				limit = { 
-					has_dlc = "Man the Guns"
-				}
-				has_tech = early_ship_hull_heavy
-			}
-			else = {
-				has_tech = early_battleship
-			}
-		}
-	}
+	
 
 	complexity = sp_complexity.medium
 	prototype_time = sp_time.prototype.medium
@@ -1935,25 +1973,27 @@ sp_naval_super_heavy_battleship = {
 		
 	}
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_reward_armor_tech_1
-		sp_naval_generic_reward_armor_tech_2
-		sp_naval_generic_reward_armor_tech_3
-		sp_naval_generic_reward_artillery_tech_1
-		sp_naval_generic_reward_artillery_tech_2
-		sp_naval_generic_reward_artillery_tech_3				
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_super_heavy_battleship_unique_reward_a = {
@@ -2196,6 +2236,11 @@ sp_naval_super_heavy_battleship = {
 
 #Advanced Modern Super Battleship
 sp_naval_modern_battleship = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval 
 
 
@@ -2205,24 +2250,9 @@ sp_naval_modern_battleship = {
 		base = 1
 	}
 
-	allowed = {
-	has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-		FROM = {
-			if = {
-				limit = { 
-					has_dlc = "Man the Guns"
-					}
-			has_tech = advanced_ship_hull_heavy
-				
-			}
-			else = {
-				has_tech = advanced_battleship
-			}
-		}
-	}
+	
+	
 	
 	complexity = sp_complexity.large
 	prototype_time = sp_time.prototype.long
@@ -2279,25 +2309,27 @@ sp_naval_modern_battleship = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_reward_armor_tech_1
-		sp_naval_generic_reward_armor_tech_2
-		sp_naval_generic_reward_armor_tech_3
-		sp_naval_generic_reward_artillery_tech_1
-		sp_naval_generic_reward_artillery_tech_2
-		sp_naval_generic_reward_artillery_tech_3							
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_modern_battleship_unique_reward_a = {
@@ -2538,6 +2570,11 @@ sp_naval_modern_battleship = {
 
 #Super Naval Carrier
 sp_naval_modern_carrier = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -2547,25 +2584,9 @@ sp_naval_modern_carrier = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = advanced_ship_hull_carrier
-			}
-			else = {
-				has_tech = advanced_carrier
-			}
-
-		}
-
-	}
+	
+	
 	
 	breakthrough_cost = {
 		specialization_naval = 2
@@ -2621,22 +2642,27 @@ sp_naval_modern_carrier = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3
-		sp_naval_generic_reward_armor_tech_1
-		sp_naval_generic_reward_armor_tech_2
-		sp_naval_generic_reward_armor_tech_3					
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 unique_prototype_rewards = {
 		sp_naval_modern_carrier_unique_reward_a = {
@@ -2873,6 +2899,11 @@ unique_prototype_rewards = {
 
 #ICE CARRIER
 sp_naval_ice_carrier = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -2882,25 +2913,9 @@ sp_naval_ice_carrier = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-				FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = improved_ship_hull_carrier
-			}
-			else = {
-				has_tech = improved_carrier
-			}
-
-		}
-
-	}
+	
+	
 
 	resource_cost = {
 		resources = { 
@@ -2979,19 +2994,27 @@ sp_naval_ice_carrier = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3		
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_ice_carrier_unique_reward_a = {
@@ -3080,6 +3103,11 @@ sp_naval_ice_carrier = {
 
 #Underway Replenishment
 sp_naval_underway_replenishment = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 	project_tags = sp_tag_surface_ship
@@ -3088,19 +3116,9 @@ sp_naval_underway_replenishment = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-		FROM = {
-			OR = {
-				has_doctrine = new_base_strike
-				has_doctrine = new_fleet_in_being
-			}
-		}
- 
-	}
+	
+	
 
 	resource_cost = {
 		resources = { 
@@ -3137,19 +3155,27 @@ sp_naval_underway_replenishment = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_underway_replenishment_unique_reward_a = {
@@ -3216,6 +3242,11 @@ sp_naval_underway_replenishment = {
 #PROXIMITY FUZE
 
 sp_naval_proximity_fuze = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 
@@ -3225,15 +3256,9 @@ sp_naval_proximity_fuze = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
-	available = {
-		FROM = {
-			has_tech = improved_radio
-		}	
-	}
+	
 	
 	resource_cost = {
 		resources = { 
@@ -3268,19 +3293,27 @@ sp_naval_proximity_fuze = {
 	}
 
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_proximity_fuzes_unique_reward_a = {
@@ -3336,6 +3369,11 @@ sp_naval_proximity_fuze = {
 }
 
 sp_naval_support_ships = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_naval
 
 	project_tags = sp_tag_surface_ship
@@ -3344,23 +3382,9 @@ sp_naval_support_ships = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "No Compromise, No Surrender"
-	}
+	
 
-	available = {
-		FROM = {
-			if = {
-				limit = { 
-					has_dlc = "Man the Guns"
-				}
-			has_tech = mtg_transport				
-			}
-			else = {
-				has_tech = transport
-			}
-		}
-	}
+	
 
 	resource_cost = {
 		resources = { 
@@ -3392,19 +3416,27 @@ sp_naval_support_ships = {
 		}
 	}
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_support_ships_unique_reward_a = {
@@ -3535,6 +3567,11 @@ sp_naval_support_ships = {
 }
 
 sp_naval_escort_carrier = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 specialization = specialization_naval
 
 	project_tags = sp_tag_surface_ship
@@ -3543,23 +3580,9 @@ specialization = specialization_naval
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "No Compromise, No Surrender"
-	}
+	
 
-	available = {
-		FROM = {
-			if = {
-				limit = { 
-					has_dlc = "Man the Guns"
-				}
-			has_tech = basic_ship_hull_carrier				
-			}
-			else = {
-				has_tech = basic_carrier
-			}
-		}
-	}
+	
 
 	resource_cost = {
 		resources = { 
@@ -3604,19 +3627,27 @@ specialization = specialization_naval
 		}
 	}
 	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+ sp_naval_generic_reward_scientist_xp_1
+ sp_naval_generic_reward_scientist_xp_2
+ sp_naval_generic_reward_scientist_xp_3
+ sp_naval_generic_reward_navy_xp_1
+ sp_naval_generic_reward_navy_xp_2
+ sp_naval_generic_reward_navy_xp_3
+ sp_naval_generic_reward_major_progress_1
+ sp_naval_generic_reward_major_progress_2
+ sp_naval_generic_reward_major_progress_3
+ sp_naval_generic_reward_test_failure_1
+ sp_naval_generic_reward_test_failure_2
+ sp_naval_generic_reward_test_failure_3
+ sp_naval_generic_reward_armor_tech_1
+ sp_naval_generic_reward_armor_tech_2
+ sp_naval_generic_reward_armor_tech_3
+ sp_naval_generic_reward_artillery_tech_1
+ sp_naval_generic_reward_artillery_tech_2
+ sp_naval_generic_reward_artillery_tech_3
+ sp_naval_generic_failure_nuclear_accident
+ sp_naval_generic_failure_torpedo_accident
+ }
 
 	unique_prototype_rewards = {
 		sp_naval_escort_carrier_unique_reward_a = {

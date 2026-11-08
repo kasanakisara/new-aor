@@ -558,34 +558,47 @@ technologies = {
 		start_year = 1921
 		folder = { name = support_folder position = { x = 14 y = 4 } }
 		categories = { support_tech }
+		special_project_specialization = { specialization_land }
+		on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_tank_prototype } }
 		ai_will_do = { factor = 1 }
 	}
 
 	aor_tank_support2 = {
-		aor_tank_support = { recon = 0.5 breakthrough = 0.10 }
+		aor_tank_support = { recon = 0.05 fort = { attack = 0.01 } }
 		path = { leads_to_tech = aor_tank_support3 research_cost_coeff = 1 }
 		research_cost = 1.5
 		start_year = 1924
 		folder = { name = support_folder position = { x = 14 y = 8 } }
 		categories = { support_tech }
+		special_project_specialization = { specialization_land }
 		ai_will_do = { factor = 1 }
 	}
 
 	aor_tank_support3 = {
-		aor_tank_support = { suppression = 0.2 soft_attack = 0.10 }
+		aor_tank_support = { recon = 0.05 urban = { attack = 0.01 } }
 		path = { leads_to_tech = aor_tank_support4 research_cost_coeff = 1 }
 		research_cost = 1.5
 		start_year = 1928
 		folder = { name = support_folder position = { x = 14 y = 12 } }
 		categories = { support_tech }
+		special_project_specialization = { specialization_land }
 		ai_will_do = { factor = 1 }
 	}
 
 	aor_tank_support4 = {
-		aor_tank_support = { recon = 0.5 breakthrough = 0.10 }
+		aor_tank_support = { recon = 0.05 fort = { attack = 0.01 } }
 		research_cost = 1.5
 		start_year = 1932
 		folder = { name = support_folder position = { x = 14 y = 16 } }
+		categories = { support_tech }
+		special_project_specialization = { specialization_land }
+		ai_will_do = { factor = 1 }
+	}
+	aor_supply_truck_tech = {
+		enable_equipments = { aor_supply_truck_equipment_1 }
+		research_cost = 1.5
+		start_year = 1918
+		folder = { name = support_folder position = { x = 0 y = 0 } }
 		categories = { support_tech }
 		ai_will_do = { factor = 1 }
 	}

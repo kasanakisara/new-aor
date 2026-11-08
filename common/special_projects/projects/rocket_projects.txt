@@ -8,6 +8,11 @@
 
 
 sp_rockets_flying_bomb = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air 
 	icon = GFX_sp_rockets_flying_bomb
 
@@ -46,11 +51,7 @@ sp_rockets_flying_bomb = {
 
 	complexity = sp_complexity.medium
 
-	available = { 
-		FROM = {
-			has_tech = experimental_rockets
-		}
-	}
+	
 
 	
 	prototype_time = sp_time.prototype.medium
@@ -89,24 +90,24 @@ sp_rockets_flying_bomb = {
 	}
 
 	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 
 	unique_prototype_rewards = {
 		
@@ -330,6 +331,11 @@ sp_rockets_flying_bomb = {
 
 # Ballistic Missiles - The V2 programme
 sp_rockets_ballistic_missile = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air 
 	breakthrough_cost = {
 		specialization_air = 3
@@ -349,11 +355,7 @@ sp_rockets_ballistic_missile = {
 		}
 	}
 
-	available = { 
-		FROM = {
-			has_tech = experimental_rockets
-		}
-	}
+	
 
 	ai_will_do = {
 		base = 1
@@ -408,24 +410,24 @@ sp_rockets_ballistic_missile = {
 	}
 
 	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3	
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 
 	unique_prototype_rewards = {
 		sp_rocket_wind_tunnel_choice_reward = {
@@ -556,6 +558,11 @@ sp_rockets_ballistic_missile = {
 
 # Medium range Missiles
 sp_rockets_medium_range_ballistic_missile = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air 
 	
 	icon = GFX_sp_rockets_medium_range_ballistic_missiles
@@ -576,9 +583,7 @@ sp_rockets_medium_range_ballistic_missile = {
 		sp_rockets_ballistic_missile
 	}
 
-	available = { 
-		
-	}
+	
 
 	ai_will_do = {
 		base = 1
@@ -620,24 +625,24 @@ sp_rockets_medium_range_ballistic_missile = {
 	}
 
 	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3		
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 
 	unique_prototype_rewards = {
 		sp_rocket_turbo_pump_froth_reward = {
@@ -707,6 +712,11 @@ sp_rockets_medium_range_ballistic_missile = {
 
 # Long range Missiles
 sp_rockets_long_range_ballistic_missile = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air 
 	
 	icon = GFX_sp_rockets_icbm
@@ -724,9 +734,7 @@ sp_rockets_long_range_ballistic_missile = {
 			chromium = 12
 		}
 	}
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_rockets_medium_range_ballistic_missile
@@ -734,8 +742,7 @@ sp_rockets_long_range_ballistic_missile = {
 		sp_nuclear_warheads
 	}
 
-	available = {
-	}
+	
 	ai_will_do = {
 		base = 1
 	}
@@ -757,24 +764,24 @@ sp_rockets_long_range_ballistic_missile = {
 	}
 
 	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3		
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 
 	unique_prototype_rewards = {
 		sp_rocket_outercoating_reward = {
@@ -877,6 +884,11 @@ sp_rockets_long_range_ballistic_missile = {
 
 # Ground to Air Missiles - The Wasserfall Project
 sp_rockets_ground_to_air_missile = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air 
 	breakthrough_cost = {
 		specialization_air = 2
@@ -897,19 +909,13 @@ sp_rockets_ground_to_air_missile = {
 	}	
 	complexity = sp_complexity.large 
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_rockets_ballistic_missile
 	}
 
-	available = { 
-		FROM = {
-			has_tech = experimental_rockets
-		}
-	}
+	
 	
 	ai_will_do = {
 		base = 1
@@ -933,24 +939,24 @@ sp_rockets_ground_to_air_missile = {
 	}
 
 	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3		
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 
 	unique_prototype_rewards = {
 		# Ground control improvements

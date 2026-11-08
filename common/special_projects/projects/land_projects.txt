@@ -11,6 +11,11 @@
 
 
 sp_land_flamethrower_tank = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 	#icon = GFX_sp_land_flamethrower_tank ### Automatically hooked-in since the GFX ID matches the project ID.
 
@@ -20,15 +25,9 @@ sp_land_flamethrower_tank = {
 		base = 1
 	}
 
-	allowed = {
-		has_dlc = "No Step Back"
-	}
 	
-	available = {
-		FROM = {
-			has_tech = tech_engineers
-		}
-	}
+	
+	
 
 	breakthrough_cost = {
 		specialization_land = 1
@@ -94,20 +93,27 @@ sp_land_flamethrower_tank = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_resource_scarcity
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 }
 
 
@@ -121,15 +127,16 @@ sp_land_flamethrower_tank = {
                                                                                                                                                                                                 
 
 sp_land_military_engineering_vehicles = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_tank
 	
-	available = {
-		FROM = {
-			has_tech = tech_engineers
-		}
-	}
+	
 	
 	prototype_time = sp_time.prototype.short
 
@@ -176,26 +183,27 @@ sp_land_military_engineering_vehicles = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_armor_tech_1
-		sp_land_generic_reward_armor_tech_2
-		sp_land_generic_reward_armor_tech_3
-		sp_land_generic_reward_engine_bonus_1
-		sp_land_generic_reward_engine_bonus_2
-		sp_land_generic_reward_engine_bonus_3
-		sp_land_generic_reward_resource_scarcity
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 }
 
 
@@ -211,29 +219,18 @@ sp_land_military_engineering_vehicles = {
                                                                                                                                                                                                   
 
 sp_land_land_cruiser = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_tank
 
-	allowed = {
-		always = no
-	}
+	
 
-	available = {
-		if = {
-			limit = {
-				has_dlc = "No Step Back"
-			}
-			FROM = {
-				has_tech = super_heavy_tank_chassis
-			}
-		}
-		else = {
-			FROM = {
-				has_tech = super_heavy_tank
-			}
-		}
-	}
+	
 	
 	prototype_time = sp_time.prototype.medium
 
@@ -420,30 +417,27 @@ sp_land_land_cruiser = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_armor_tech_1
-		sp_land_generic_reward_armor_tech_2
-		sp_land_generic_reward_armor_tech_3
-		sp_land_generic_reward_armor_bonus_1
-		sp_land_generic_reward_armor_bonus_2
-		sp_land_generic_reward_armor_bonus_3
-		sp_land_generic_reward_engine_bonus_1
-		sp_land_generic_reward_engine_bonus_2
-		sp_land_generic_reward_engine_bonus_3
-		sp_land_generic_reward_resource_scarcity
-		sp_land_generic_reward_critical_failure
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 	unique_prototype_rewards = {
 		sp_land_reward_land_cruiser_overheating = {
@@ -943,19 +937,18 @@ sp_land_land_cruiser = {
                                                                                                                                                                                                
 
 sp_land_super_heavy_howitzer = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-		FROM = {
-			has_tech = gw_artillery
-		}
-	}
+	
+	
 	
 	prototype_time = sp_time.prototype.short
 
@@ -991,27 +984,27 @@ sp_land_super_heavy_howitzer = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_artillery_tech_1
-		sp_land_generic_reward_artillery_tech_2
-		sp_land_generic_reward_artillery_tech_3
-		sp_land_generic_reward_artillery_bonus_1
-		sp_land_generic_reward_artillery_bonus_2
-		sp_land_generic_reward_artillery_bonus_3
-		sp_land_generic_reward_resource_scarcity
-		sp_land_generic_reward_critical_failure
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 	unique_prototype_rewards = {
 
@@ -1078,14 +1071,17 @@ sp_land_super_heavy_howitzer = {
 }
 
 sp_land_self_propelled_super_heavy_howitzer = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
 
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_land_military_engineering_vehicles
@@ -1126,27 +1122,27 @@ sp_land_self_propelled_super_heavy_howitzer = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_artillery_tech_1
-		sp_land_generic_reward_artillery_tech_2
-		sp_land_generic_reward_artillery_tech_3
-		sp_land_generic_reward_artillery_bonus_1
-		sp_land_generic_reward_artillery_bonus_2
-		sp_land_generic_reward_artillery_bonus_3
-		sp_land_generic_reward_resource_scarcity
-		sp_land_generic_reward_critical_failure
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 	unique_prototype_rewards = {
 
@@ -1207,19 +1203,18 @@ sp_land_self_propelled_super_heavy_howitzer = {
 }
 
 sp_land_super_heavy_railway_gun = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
 
-	allowed = {
-		has_dlc = "No Step Back"
-	}
+	
 
-	available = {
-		FROM = {
-			has_tech = railway_gun
-		}
-	}
+	
 
 	prototype_time = sp_time.prototype.long
 
@@ -1272,37 +1267,40 @@ sp_land_super_heavy_railway_gun = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_artillery_tech_1
-		sp_land_generic_reward_artillery_tech_2
-		sp_land_generic_reward_artillery_tech_3
-		sp_land_generic_reward_artillery_bonus_1
-		sp_land_generic_reward_artillery_bonus_2
-		sp_land_generic_reward_artillery_bonus_3
-		sp_land_generic_reward_resource_scarcity
-		sp_land_generic_reward_critical_failure
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 }
 
 sp_land_multi_charge_large_caliber_gun = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+	
 
 	special_project_parent = {
 		sp_land_super_heavy_howitzer
@@ -1358,26 +1356,27 @@ sp_land_multi_charge_large_caliber_gun = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_artillery_tech_1
-		sp_land_generic_reward_artillery_tech_2
-		sp_land_generic_reward_artillery_tech_3
-		sp_land_generic_reward_artillery_bonus_1
-		sp_land_generic_reward_artillery_bonus_2
-		sp_land_generic_reward_artillery_bonus_3
-		sp_land_generic_reward_resource_scarcity
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 	unique_prototype_rewards = {
 
@@ -1540,19 +1539,18 @@ sp_land_multi_charge_large_caliber_gun = {
 
 
 sp_land_stronghold_network = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
 	
-	available = {
-		FROM = {
-			has_tech = basic_fortification_tech
-		}
-	}
+	
+	
 	
 	prototype_time = sp_time.prototype.medium
 
@@ -1588,20 +1586,27 @@ sp_land_stronghold_network = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_critical_failure
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 	unique_prototype_rewards = {
 		sp_land_reward_stronghold_network_structural_weakness_discovered = {
@@ -2094,6 +2099,11 @@ sp_land_stronghold_network = {
 
 #Large Caliber Kinetic energy sabot - Pfot
 sp_land_large_caliber_kinetic_energy_sabot = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_land
 
 	project_tags = sp_tag_artillery
@@ -2144,15 +2154,9 @@ sp_land_large_caliber_kinetic_energy_sabot = {
 		}
 	}
 
-	allowed = {
-		has_dlc = "Peace For Our Time"
-	}
+	
 
-	available = {
-		FROM = {
-			has_tech = interwar_antitank
-		}	
-	}
+	
 
 	prototype_time = sp_time.prototype.short
 
@@ -2207,26 +2211,26 @@ sp_land_large_caliber_kinetic_energy_sabot = {
 	}
 
 	generic_prototype_rewards = {
-		sp_land_generic_reward_scientist_xp_1
-		sp_land_generic_reward_scientist_xp_2
-		sp_land_generic_reward_scientist_xp_3
-		sp_land_generic_reward_army_xp_1
-		sp_land_generic_reward_army_xp_2
-		sp_land_generic_reward_army_xp_3
-		sp_land_generic_reward_major_progress_1
-		sp_land_generic_reward_major_progress_2
-		sp_land_generic_reward_major_progress_3
-		sp_land_generic_reward_test_failure_1
-		sp_land_generic_reward_test_failure_2
-		sp_land_generic_reward_test_failure_3
-		sp_land_generic_reward_artillery_tech_1
-		sp_land_generic_reward_artillery_tech_2
-		sp_land_generic_reward_artillery_tech_3
-		sp_land_generic_reward_artillery_bonus_1
-		sp_land_generic_reward_artillery_bonus_2
-		sp_land_generic_reward_artillery_bonus_3
-		sp_land_generic_reward_resource_scarcity
-		sp_land_generic_reward_critical_failure	
-	}
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
 
 }

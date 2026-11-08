@@ -1,0 +1,219 @@
+sp_aor_atomic_structure = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1900 } }
+ breakthrough_cost = { specialization_nuclear = 1 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 72
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_breakthrough_progress = { specialization = specialization_nuclear value = 0.25 }
+  }
+ }
+}
+
+sp_aor_matter_waves = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1923 is_special_project_completed = sp:sp_aor_atomic_structure } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 96
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_breakthrough_progress = { specialization = specialization_nuclear value = 0.5 }
+  }
+ }
+}
+
+sp_aor_quantum_mechanics = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1923 is_special_project_completed = sp:sp_aor_matter_waves } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 96
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_breakthrough_progress = { specialization = specialization_nuclear value = 1 } add_ideas = aor_theory_quantum_mechanics
+  }
+ }
+}
+
+sp_aor_quantum_electrodynamics = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1925 is_special_project_completed = sp:sp_aor_quantum_mechanics } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 144
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_quantum_electrodynamics
+  }
+ }
+}
+
+sp_aor_general_relativity = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1900 } }
+ breakthrough_cost = { specialization_nuclear = 1 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 108
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_breakthrough_progress = { specialization = specialization_nuclear value = 0.25 }
+  }
+ }
+}
+
+sp_aor_relativistic_cosmology = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1920 is_special_project_completed = sp:sp_aor_general_relativity } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 72
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_relativistic_cosmology
+  }
+ }
+}
+
+sp_aor_unified_field_theory = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_physics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1923 is_special_project_completed = sp:sp_aor_general_relativity } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 144
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_unified_field_theory
+  }
+ }
+}
+
+sp_aor_symmetry_conservation = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_mathematics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1900 } }
+ breakthrough_cost = { specialization_nuclear = 1 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 60
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_symmetry_conservation
+  }
+ }
+}
+
+sp_aor_abstract_algebra = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_mathematics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1920 is_special_project_completed = sp:sp_aor_symmetry_conservation } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 84
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_abstract_algebra
+  }
+ }
+}
+
+sp_aor_mathematical_logic = {
+ specialization = specialization_nuclear
+ icon = GFX_sp_nuclear_reactor
+ project_tags = sp_tag_aor_mathematics
+ allowed = { always = yes }
+ visible = { always = yes }
+ available = { FROM = { has_tech = aor_basic_science_1923 is_special_project_completed = sp:sp_aor_abstract_algebra } }
+ breakthrough_cost = { specialization_nuclear = 0 }
+ # Five iterations; no strategic resources or paid prototype choices.
+ prototype_time = 84
+ complexity = { min = 20 max = 20 }
+ ai_will_do = { base = 1 }
+ generic_prototype_rewards = {
+  sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20
+ }
+ project_output = {
+  country_effects = {
+   add_ideas = aor_theory_mathematical_logic
+  }
+ }
+}

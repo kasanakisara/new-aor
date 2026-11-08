@@ -25,29 +25,9 @@ types = {
   starting_point = { building_types = { supply_node } }
   arrow = { type = land }
   success_factors = {
-   success = {
-    base = 0.65
-    aor_gas_test_success_bonus = {
-     scope = country
-     formula = { base = 0 modifier = { has_country_flag = aor_gas_force_success_test add = 1 } }
-     reference = 1
-     weight = 2
-     can_actor_affect = yes
-     can_target_affect = no
-    }
-
-   }
+   success = { base = 0.65 }
    critical = { base = 0.10 experience = { reference = 1 weight = 0.10 } }
-   disaster = { base = -0.15 # Offset the native high-risk +0.25 so disaster occupies 0.10, leaving room for 0.90 success.
-    aor_gas_test_disaster_suppression = {
-     scope = country
-     formula = { base = 0 modifier = { has_country_flag = aor_gas_force_success_test add = 1 } }
-     reference = 1
-     weight = -2
-     can_actor_affect = yes
-     can_target_affect = no
-    }
- }
+   disaster = { base = 0.0 }
   }
   success_levels = {
    failure = {
@@ -61,7 +41,6 @@ types = {
     meta_effect = {
      text = {
       var:target_state = {
-       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
        damage_units = { province = [P] army = yes org_damage = 0.50 str_damage = 0.25 ratio = yes }
        set_state_flag = { flag = aor_gas_province_[P] days = 28 }
        set_state_flag = aor_gas_cleanup_[P]
@@ -97,16 +76,12 @@ types = {
     var:actor_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.10
-     add_war_support = -0.15
      save_global_event_target_as = aor_gas_attacker
      log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
     var:victim_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.15
-     add_war_support = -0.10
      save_global_event_target_as = aor_gas_victim
      log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
@@ -117,7 +92,8 @@ types = {
     
     }
     var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
-    custom_effect_tooltip = aor_chemical_political_cost_tt
+    var:actor_country = { add_stability = -0.10 add_war_support = -0.15 }
+    var:victim_country = { add_stability = -0.15 add_war_support = -0.10 }
    } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
    success = { victim_effects = {
     hidden_effect = { # Inline native effects: raid outcome parsing does not expand parameter blocks here.
@@ -127,7 +103,6 @@ types = {
     meta_effect = {
      text = {
       var:target_state = {
-       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
        damage_units = { province = [P] army = yes org_damage = 0.75 str_damage = 0.50 ratio = yes }
        set_state_flag = { flag = aor_gas_province_[P] days = 28 }
        set_state_flag = aor_gas_cleanup_[P]
@@ -163,16 +138,12 @@ types = {
     var:actor_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.10
-     add_war_support = -0.15
      save_global_event_target_as = aor_gas_attacker
      log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
     var:victim_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.15
-     add_war_support = -0.10
      save_global_event_target_as = aor_gas_victim
      log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
@@ -183,7 +154,8 @@ types = {
     
     }
     var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
-    custom_effect_tooltip = aor_chemical_political_cost_tt
+    var:actor_country = { add_stability = -0.10 add_war_support = -0.15 }
+    var:victim_country = { add_stability = -0.15 add_war_support = -0.10 }
    } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
    critical_success = { victim_effects = {
     hidden_effect = { # Inline native effects: raid outcome parsing does not expand parameter blocks here.
@@ -193,7 +165,6 @@ types = {
     meta_effect = {
      text = {
       var:target_state = {
-       add_province_modifier = { static_modifiers = { aor_chemical_province_contamination } province = [P] days = 28 }
        damage_units = { province = [P] army = yes org_damage = 0.90 str_damage = 0.75 ratio = yes }
        set_state_flag = { flag = aor_gas_province_[P] days = 28 }
        set_state_flag = aor_gas_cleanup_[P]
@@ -229,16 +200,12 @@ types = {
     var:actor_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.10
-     add_war_support = -0.15
      save_global_event_target_as = aor_gas_attacker
      log = "AOR_CHEMICAL attacker [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
     var:victim_country = {
      set_variable = { aor_gas_stability_before = stability }
      set_variable = { aor_gas_war_support_before = war_support }
-     add_stability = -0.15
-     add_war_support = -0.10
      save_global_event_target_as = aor_gas_victim
      log = "AOR_CHEMICAL victim [This.GetName]: stability_before=[?aor_gas_stability_before] stability_after=[?stability] war_support_before=[?aor_gas_war_support_before] war_support_after=[?war_support]"
     }
@@ -249,7 +216,8 @@ types = {
     
     }
     var:target_state = { add_dynamic_modifier = { modifier = aor_chemical_contamination_notice days = 28 } }
-    custom_effect_tooltip = aor_chemical_political_cost_tt
+    var:actor_country = { add_stability = -0.10 add_war_support = -0.15 }
+    var:victim_country = { add_stability = -0.15 add_war_support = -0.10 }
    } visual_effect = { entity = "building_aor_gas_burst" animation = "attack" } }
   }
  }

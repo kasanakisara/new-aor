@@ -1,2 +1,10 @@
 aor_gas_state_contamination = { enable = { always = yes } }
-aor_chemical_contamination_notice = { enable = { always = yes } icon = GFX_modifiers_radiation custom_modifier_tooltip = aor_chemical_contamination_effects_tt }
+aor_chemical_contamination_notice = {
+ enable = { always = yes }
+ icon = GFX_modifiers_radiation
+ army_attack_factor = -0.60
+ army_defence_factor = -0.60
+ local_org_regain = -0.75
+ army_speed_factor = -0.50
+ attrition = 0.30
+}

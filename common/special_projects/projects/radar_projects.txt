@@ -1,4 +1,9 @@
 sp_air_radar = {
+	# AOR: vanilla projects permanently disabled.
+	allowed = { always = no }
+	visible = { always = no }
+	available = { always = no }
+
 	specialization = specialization_air
 	icon = GFX_sp_nuclear_radar
 	project_tags = sp_tag_radar
@@ -13,9 +18,7 @@ sp_air_radar = {
 
 	project_tags = sp_tag_radar
 
-	available = { 
-		FROM = { has_tech = radio }
-	}
+	
 
 	resource_cost = {
 		resources = { 
@@ -75,10 +78,22 @@ sp_air_radar = {
 	}
 
 	generic_prototype_rewards = {
-		sp_air_scientist_xp_generic_reward
-		sp_nuclear_generic_electronics_tech_reward
-		sp_nuclear_generic_industry_tech_reward
-		sp_air_political_interference_generic_reward
-		sp_air_generic_major_breakthrough_reward
-	}
+ sp_air_scientist_xp_generic_reward
+ sp_air_generic_major_breakthrough_reward
+ sp_air_generic_aerodynamics_advancements_reward
+ sp_air_generic_discoveries_reward
+ sp_air_political_interference_generic_reward
+ sp_air_generic_reward_scientist_xp_1
+ sp_air_generic_reward_scientist_xp_2
+ sp_air_generic_reward_scientist_xp_3
+ sp_air_generic_reward_air_xp_1
+ sp_air_generic_reward_air_xp_2
+ sp_air_generic_reward_air_xp_3
+ sp_air_generic_reward_major_progress_1
+ sp_air_generic_reward_major_progress_2
+ sp_air_generic_reward_major_progress_3
+ sp_air_generic_reward_test_failure_1
+ sp_air_generic_reward_test_failure_2
+ sp_air_generic_reward_test_failure_3
+ }
 }
