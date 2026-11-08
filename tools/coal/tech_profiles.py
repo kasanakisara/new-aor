@@ -62,22 +62,22 @@ PROFILES = {
            AIR_14 + AIR_19 + AIR_MED + AIR_LARGE + AIR_TORPEDO,
            NAV_14 + NAV_19,
            SPECIAL),
-    "P1B": (IND_BASIC + IND_MID_NOSYNTH,
+    "P1B": (["excavation1", "aor_railway_engineering"],
             SCI_BASIC + SCI_MID,
             AIR_14 + AIR_19,
             NAV_14,
             ["aor_inf_t01", "aor_inf_e01"]),
-    "P2": (IND_BASIC + IND_MID_NOSYNTH,
+    "P2": (["excavation1", "aor_railway_engineering"],
            SCI_BASIC + SCI_MID,
            AIR_14 + AIR_19,
            NAV_14,
            ["aor_inf_t01"]),
-    "P3": (IND_BASIC + ["construction1"],
+    "P3": ([],
            SCI_BASIC,
            AIR_14,
            [],
            []),
-    "P4": (IND_BASIC,
+    "P4": ([],
            ["aor_basic_science_1900"],
            [],
            [],
@@ -174,7 +174,7 @@ for t in NO_NAVY:
     NAVY_OVERRIDE[t] = 0
 
 # 工业/科学降档：战乱或殖民经济体
-INDUSTRY_OVERRIDE = {"RUS": "mid", "ARU": "mid", "CHI": "mid", "RAJ": "mid"}
+INDUSTRY_OVERRIDE = {"RUS": "mid", "ARU": "mid"}
 SCIENCE_OVERRIDE = {"CHI": "mid", "RAJ": "mid"}
 
 # ---- land doctrines
