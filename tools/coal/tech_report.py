@@ -42,7 +42,7 @@ lines.append("按 1919 年各国实际军事/工业水平分档，为每个国�
 lines.append("## 分档\n")
 lines.append("| 档位 | 含义 | 国家数 | 科技数 | 内容 |")
 lines.append("| --- | --- | ---: | ---: | --- |")
-lines.append(f"| P0 | 一战列强 | {prof_count['P0']} | {min(prof_range['P0'])}-{max(prof_range['P0'])} | 工业（采矿/铁路/炼油/要塞/造船）+科学全套+航空 1914/1919 中小型+海军 1919 舰体+全部步兵/支援/炮兵+陆海空学说 |")
+lines.append(f"| P0 | 一战列强 | {prof_count['P0']} | {min(prof_range['P0'])}-{max(prof_range['P0'])} | 工业（采矿/铁路/炼油/要塞/造船）+科学全套+航空 1914/1919 中小型+海军 1914 舰体+步兵/支援/炮兵（含陆战/山地/坦克支援） |")
 lines.append(f"| P1 | 主要强国 | {prof_count['P1']} | {min(prof_range['P1'])}-{max(prof_range['P1'])} | 工业只剩采矿/铁路+基础科学+航空 1914/1919 小型+海军 1914 舰体+步兵/支援/炮兵+学说 |")
 lines.append(f"| P1B | 二线强国 | {prof_count['P1B']} | {min(prof_range['P1B'])}-{max(prof_range['P1B'])} | 有像样军队但工业薄弱：步枪/机枪/工兵/1900 野炮+仅 1914 小型机+1914 舰体；只给采矿/铁路 |")
 lines.append(f"| P2 | 地区国家 | {prof_count['P2']} | {min(prof_range['P2'])}-{max(prof_range['P2'])} | 只给采矿/铁路+科学基础+仅 1914 小型机+海军 1914+步枪1919/机枪/工兵/1900 野炮 |")

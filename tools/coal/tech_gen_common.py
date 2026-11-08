@@ -11,7 +11,7 @@ oob_req = json.load(open(r"D:\new-aor\tools\coal\oob_req.json", encoding="utf-8"
 
 # Land techs by tier: no universal "Great War kit" — only what the country actually fielded.
 LAND_BY_TIER = {
-    "P0": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + list(P.SPECIAL) + ["aor_tank_support"],
+    "P0": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_m01", "aor_inf_t01", "aor_tank_support"],
     "P1": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + list(P.SPECIAL),
     "P1B": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_t01", "aor_inf_e01"],
     "P2": ["aor_inf_r01", "aor_inf_r02", "aor_inf_l00", "aor_inf_l01", "aor_inf_u01",
