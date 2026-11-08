@@ -7,13 +7,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { small_plane_airframe_1914 }
 			path = { leads_to_tech = aor_air_small_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_small_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -22,13 +22,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { small_plane_airframe_1919 }
 			path = { leads_to_tech = aor_air_small_1925 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_small_1925 = {
 		research_cost = 2.2
 		start_year = 1925
@@ -37,14 +37,14 @@ technologies = {
 			position = { x=0 y=6 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { small_plane_airframe_1925 }
 			path = { leads_to_tech = aor_air_small_1930 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_air_carrier_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_small_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -53,12 +53,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { small_plane_airframe_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_carrier_1927 = {
 		research_cost = 2.2
 		start_year = 1927
@@ -67,14 +67,14 @@ technologies = {
 			position = { x=-3 y=8 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { cv_small_plane_airframe_1927 }
 		allow = { has_tech = aor_air_engine_1923 }
 			path = { leads_to_tech = aor_air_carrier_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_carrier_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -83,13 +83,13 @@ technologies = {
 			position = { x=-3 y=12 }
 		}
 		categories = { air_equipment light_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { cv_small_plane_airframe_1930 }
 		allow = { has_tech = aor_air_small_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_medium_1914 = {
 		research_cost = 2.2
 		start_year = 1914
@@ -98,13 +98,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { medium_plane_airframe_1914 }
 			path = { leads_to_tech = aor_air_medium_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_medium_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -113,14 +113,14 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { medium_plane_airframe_1919 }
 			path = { leads_to_tech = aor_air_medium_1923 research_cost_coeff = 1 }
 		
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_medium_1923 = {
 		research_cost = 2.2
 		start_year = 1923
@@ -129,13 +129,13 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { medium_plane_airframe_1923 }
 			path = { leads_to_tech = aor_air_medium_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_medium_1927 = {
 		research_cost = 2.2
 		start_year = 1927
@@ -144,13 +144,13 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { medium_plane_airframe_1927 }
 			path = { leads_to_tech = aor_air_medium_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_medium_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -159,12 +159,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { medium_plane_airframe_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_transport_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -173,14 +173,14 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { transport_plane_equipment_1919 }
 		enable_equipment_modules = { aor_cargo_basic }
 			path = { leads_to_tech = aor_air_transport_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_transport_1927 = {
 		research_cost = 2.2
 		start_year = 1927
@@ -189,14 +189,14 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { transport_plane_equipment_1927 }
 		enable_equipment_modules = { aor_cargo_basic }
 			path = { leads_to_tech = aor_air_transport_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_transport_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -205,13 +205,13 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment medium_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { transport_plane_equipment_1930 }
 		enable_equipment_modules = { aor_cargo_basic }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_large_1914 = {
 		research_cost = 2.2
 		start_year = 1914
@@ -220,13 +220,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment heavy_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { large_plane_airframe_1914 }
 			path = { leads_to_tech = aor_air_large_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_large_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -235,13 +235,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment heavy_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { large_plane_airframe_1919 }
 			path = { leads_to_tech = aor_air_large_1925 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_large_1925 = {
 		research_cost = 2.2
 		start_year = 1925
@@ -250,13 +250,13 @@ technologies = {
 			position = { x=0 y=6 }
 		}
 		categories = { air_equipment heavy_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { large_plane_airframe_1925 }
 			path = { leads_to_tech = aor_air_large_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_large_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -265,12 +265,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment heavy_air }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { large_plane_airframe_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_blimp_1914 = {
 		research_cost = 2.2
 		start_year = 1914
@@ -279,13 +279,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment medium_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_blimp_airframe_1914 }
 			path = { leads_to_tech = aor_air_blimp_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_blimp_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -294,13 +294,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment medium_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_blimp_airframe_1919 }
 			path = { leads_to_tech = aor_air_blimp_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_blimp_1927 = {
 		research_cost = 2.2
 		start_year = 1927
@@ -309,13 +309,13 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment medium_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_blimp_airframe_1927 }
 			path = { leads_to_tech = aor_air_blimp_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_blimp_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -324,12 +324,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment medium_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_blimp_airframe_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_rigid_1914 = {
 		research_cost = 2.2
 		start_year = 1914
@@ -338,13 +338,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment heavy_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_rigid_airframe_1914 }
 			path = { leads_to_tech = aor_air_rigid_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_rigid_1919 = {
 		research_cost = 2.2
 		start_year = 1919
@@ -353,13 +353,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment heavy_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_rigid_airframe_1919 }
 			path = { leads_to_tech = aor_air_rigid_1925 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_rigid_1925 = {
 		research_cost = 2.2
 		start_year = 1925
@@ -368,13 +368,13 @@ technologies = {
 			position = { x=0 y=6 }
 		}
 		categories = { air_equipment heavy_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_rigid_airframe_1925 }
 			path = { leads_to_tech = aor_air_rigid_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_rigid_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -383,12 +383,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment heavy_air aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipments = { aor_rigid_airframe_1930 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_gun_bundle_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -397,14 +397,14 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_gun_1 aor_plane_defence_1 aor_airship_defence_1 }
 			path = { leads_to_tech = aor_air_gun_bundle_1919 research_cost_coeff = 1 }
 		
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_gun_bundle_1919 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -413,13 +413,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_gun_2 aor_plane_defence_2 aor_airship_defence_2 }
 		
  path = { leads_to_tech = aor_air_gun_bundle_1925 research_cost_coeff = 1 }
+
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
 }
 	aor_air_gun_bundle_1925 = {
 		research_cost = 1.2
@@ -429,13 +429,13 @@ technologies = {
 			position = { x=0 y=6 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_gun_3 aor_plane_defence_3 aor_airship_defence_3 }
 			path = { leads_to_tech = aor_air_gun_bundle_1929 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_gun_bundle_1929 = {
 		research_cost = 1.2
 		start_year = 1929
@@ -444,12 +444,12 @@ technologies = {
 			position = { x=0 y=10 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_gun_4 aor_plane_defence_4 aor_airship_defence_4 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_bomb_bundle_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -458,14 +458,14 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_light_bomb_1 aor_medium_bay_1 aor_large_bay_1 aor_airship_bay_1 aor_plane_sight_1 aor_airship_sight_1 }
 			path = { leads_to_tech = aor_air_bomb_bundle_1919 research_cost_coeff = 1 }
 		
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_bomb_bundle_1919 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -474,13 +474,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_light_bomb_2 aor_medium_bay_2 aor_large_bay_2 aor_airship_bay_2 aor_airship_patrol_bomb_2 }
 		
  path = { leads_to_tech = aor_air_bomb_bundle_1923 research_cost_coeff = 1 }
+
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
 }
 	aor_air_bomb_bundle_1923 = {
 		research_cost = 1.2
@@ -490,13 +490,13 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_light_bomb_3 aor_medium_bay_3 aor_large_bay_3 aor_airship_bay_3 aor_plane_sight_3 aor_airship_sight_3 }
 			path = { leads_to_tech = aor_air_bomb_bundle_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_bomb_bundle_1927 = {
 		research_cost = 1.2
 		start_year = 1927
@@ -505,13 +505,13 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_light_bomb_4 aor_medium_bay_4 aor_large_bay_4 aor_airship_bay_4 aor_airship_patrol_bomb_4 }
 			path = { leads_to_tech = aor_air_bomb_bundle_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_bomb_bundle_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -520,12 +520,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_light_bomb_5 aor_medium_bay_5 aor_large_bay_5 aor_airship_bay_5 aor_plane_sight_5 aor_airship_sight_5 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_torpedo_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -534,13 +534,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_torpedo_1 }
 			path = { leads_to_tech = aor_air_torpedo_1923 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_torpedo_1923 = {
 		research_cost = 1.2
 		start_year = 1923
@@ -549,13 +549,13 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_torpedo_2 }
 			path = { leads_to_tech = aor_air_torpedo_1929 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_torpedo_1929 = {
 		research_cost = 1.2
 		start_year = 1929
@@ -564,12 +564,12 @@ technologies = {
 			position = { x=0 y=10 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_torpedo_3 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_engine_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -578,14 +578,14 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_engine_1x_1 aor_engine_2x_1 aor_engine_3x_1 aor_engine_4x_1 aor_blimp_engine_1 aor_rigid_engine_1 }
 			path = { leads_to_tech = aor_air_engine_1919 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_air_construction_1914 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_engine_1919 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -594,13 +594,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_engine_1x_2 aor_engine_2x_2 aor_engine_3x_2 aor_engine_4x_2 aor_blimp_engine_2 aor_rigid_engine_2 }
 			path = { leads_to_tech = aor_air_engine_1923 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_engine_1923 = {
 		research_cost = 1.2
 		start_year = 1923
@@ -609,14 +609,14 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_engine_1x_3 aor_engine_2x_3 aor_engine_3x_3 aor_engine_4x_3 aor_blimp_engine_3 aor_rigid_engine_3 }
 			path = { leads_to_tech = aor_air_engine_1927 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_air_equipment_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_engine_1927 = {
 		research_cost = 1.2
 		start_year = 1927
@@ -625,13 +625,13 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_engine_1x_4 aor_engine_2x_4 aor_engine_3x_4 aor_engine_4x_4 aor_blimp_engine_4 aor_rigid_engine_4 }
 			path = { leads_to_tech = aor_air_engine_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_engine_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -640,12 +640,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_engine_1x_5 aor_engine_2x_5 aor_engine_3x_5 aor_engine_4x_5 aor_blimp_engine_5 aor_rigid_engine_5 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_construction_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -654,13 +654,13 @@ technologies = {
 			position = { x=-2 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_structure_1 aor_floats_1 }
 			path = { leads_to_tech = aor_air_construction_1919 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_construction_1919 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -669,13 +669,13 @@ technologies = {
 			position = { x=-2 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_structure_2 aor_armor_2 }
 			path = { leads_to_tech = aor_air_construction_1925 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_construction_1925 = {
 		research_cost = 1.2
 		start_year = 1925
@@ -684,13 +684,13 @@ technologies = {
 			position = { x=-2 y=6 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_structure_3 aor_armor_3 aor_floats_3 }
 			path = { leads_to_tech = aor_air_construction_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_construction_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -699,12 +699,12 @@ technologies = {
 			position = { x=-2 y=12 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_structure_4 aor_armor_4 aor_cowling }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_equipment_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -713,14 +713,14 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_plane_camera_1 aor_plane_patrol_1 aor_airship_camera_1 aor_airship_patrol_1 }
 			path = { leads_to_tech = aor_air_equipment_1919 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_air_equipment_1923 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_equipment_1919 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -729,13 +729,13 @@ technologies = {
 			position = { x=1 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_plane_radio_1 aor_airship_radio_1 aor_plane_tank_1 aor_airship_tank_1 }
 			path = { leads_to_tech = aor_air_equipment_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_equipment_1923 = {
 		research_cost = 1.2
 		start_year = 1923
@@ -744,12 +744,12 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_plane_camera_2 aor_plane_patrol_2 aor_airship_camera_2 aor_airship_patrol_2 aor_flying_boat }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_equipment_1927 = {
 		research_cost = 1.2
 		start_year = 1927
@@ -758,13 +758,13 @@ technologies = {
 			position = { x=2 y=8 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_plane_camera_3 aor_plane_patrol_3 aor_airship_camera_3 aor_airship_patrol_3 aor_plane_radio_2 aor_airship_radio_2 aor_plane_tank_2 aor_airship_tank_2 }
 		allow = { has_tech = aor_air_equipment_1919 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_equipment_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -773,13 +773,13 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment plane_modules_tech }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_plane_radio_3 aor_airship_radio_3 }
 		allow = { has_tech = aor_air_equipment_1923 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_gas_1914 = {
 		research_cost = 1.2
 		start_year = 1914
@@ -788,13 +788,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_gas_1 aor_rigid_gas_1 }
 			path = { leads_to_tech = aor_air_gas_1923 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_gas_1923 = {
 		research_cost = 1.2
 		start_year = 1923
@@ -803,14 +803,14 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_gas_2 aor_rigid_gas_2 }
 			path = { leads_to_tech = aor_air_gas_1929 research_cost_coeff = 1 }
 	
  on_research_complete = { aor_sync_helium_modules = yes }
+
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
 }
 	aor_air_gas_1929 = {
 		research_cost = 1.2
@@ -820,13 +820,13 @@ technologies = {
 			position = { x=0 y=10 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_gas_3 aor_rigid_gas_3 }
 		
  on_research_complete = { aor_sync_helium_modules = yes }
+
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
 }
 	aor_air_airship_structure_1914 = {
 		research_cost = 1.2
@@ -836,13 +836,13 @@ technologies = {
 			position = { x=0 y=0 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_structure_1 aor_blimp_trim_1 aor_rigid_structure_1 aor_rigid_trim_1 }
 			path = { leads_to_tech = aor_air_airship_structure_1921 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_airship_structure_1921 = {
 		research_cost = 1.2
 		start_year = 1919
@@ -851,13 +851,13 @@ technologies = {
 			position = { x=0 y=2 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_structure_2 aor_rigid_structure_2 }
 			path = { leads_to_tech = aor_air_airship_structure_1927 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_airship_structure_1927 = {
 		research_cost = 1.2
 		start_year = 1927
@@ -866,13 +866,13 @@ technologies = {
 			position = { x=0 y=8 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_structure_3 aor_rigid_structure_3 }
 			path = { leads_to_tech = aor_air_airship_structure_1930 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_airship_structure_1930 = {
 		research_cost = 3.5
 		start_year = 1930
@@ -881,12 +881,12 @@ technologies = {
 			position = { x=0 y=12 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blimp_structure_4 aor_blimp_trim_4 aor_rigid_structure_4 aor_rigid_trim_4 }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_airship_range_1923 = {
 		research_cost = 1.2
 		start_year = 1923
@@ -895,13 +895,13 @@ technologies = {
 			position = { x=0 y=4 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_water_recovery }
 			path = { leads_to_tech = aor_air_airship_range_1929 research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 	aor_air_airship_range_1929 = {
 		research_cost = 1.2
 		start_year = 1929
@@ -910,12 +910,12 @@ technologies = {
 			position = { x=0 y=10 }
 		}
 		categories = { air_equipment plane_modules_tech aor_airship_technology }
-		ai_will_do = {
-			factor = 1
-		}
+		
 		special_project_specialization = { specialization_air }
 		enable_equipment_modules = { aor_blaugas }
-		}
+		
+	ai_will_do = { factor = 3 modifier = { factor = 0.5 num_of_military_factories < 10 } }
+}
 
 aor_air_helium_1923 = {
 	research_cost = 1
