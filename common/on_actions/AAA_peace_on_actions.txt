@@ -457,9 +457,8 @@ on_actions = {
 					}
 					white_peace = BUL
 				}
-			
-AOR_report_greek_balkan_victory_news = yes
-}
+				AOR_report_greek_balkan_victory_news = yes
+			}
 			else_if = {
 				limit = {
 					GRE = {
@@ -494,9 +493,8 @@ AOR_report_greek_balkan_victory_news = yes
 					}
 					white_peace = HUN
 				}
-			
-AOR_report_greek_balkan_victory_news = yes
-}
+				AOR_report_greek_balkan_victory_news = yes
+			}
 			#输了
 			else_if = {
 				limit = {
@@ -2374,6 +2372,8 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
+				}
+				UKR = {
 					transfer_state = 199
 				}
 			}
@@ -2395,7 +2395,6 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
-					transfer_state = 199
 				}
 				UKR = {
 					transfer_state = 197
@@ -2403,9 +2402,11 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 202
 					transfer_state = 203
 					transfer_state = 834
-				}
-				LIT = {
+					transfer_state = 192
+					transfer_state = 199
 					transfer_state = 201
+					transfer_state = 196
+					transfer_state = 226
 				}
 			}
 			else_if = {
@@ -2428,6 +2429,8 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
+				}
+				UKR = {
 					transfer_state = 199
 				}
 			}
@@ -2452,7 +2455,6 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
-					transfer_state = 199
 				}
 				UKR = {
 					transfer_state = 197
@@ -2460,9 +2462,11 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 202
 					transfer_state = 203
 					transfer_state = 834
-				}
-				LIT = {
+					transfer_state = 192
+					transfer_state = 199					
 					transfer_state = 201
+					transfer_state = 196
+					transfer_state = 226
 				}
 			}
 			else_if = {
@@ -2482,6 +2486,8 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
+				}
+				UKR = {
 					transfer_state = 199
 				}
 			}
@@ -2503,7 +2509,6 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
-					transfer_state = 199
 				}
 				UKR = {
 					transfer_state = 197
@@ -2511,9 +2516,11 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 202
 					transfer_state = 203
 					transfer_state = 834
-				}
-				LIT = {
+					transfer_state = 192
+					transfer_state = 199
 					transfer_state = 201
+					transfer_state = 196
+					transfer_state = 226
 				}
 			}
 			else_if = {
@@ -2533,6 +2540,8 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
+				}
+				UKR = {
 					transfer_state = 199
 				}
 			}
@@ -2554,17 +2563,17 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 					transfer_state = 91
 					transfer_state = 93
-					transfer_state = 199
 				}
 				UKR = {
 					transfer_state = 197
 					transfer_state = 198
 					transfer_state = 202
 					transfer_state = 203
-					transfer_state = 834
-				}
-				LIT = {
 					transfer_state = 201
+					transfer_state = 192
+					transfer_state = 834
+					transfer_state = 196
+					transfer_state = 226
 				}
 			}
 
@@ -2969,17 +2978,17 @@ AOR_report_greek_balkan_victory_news = yes
 				    transfer_state = 58
 				}
 	    	}
-		        #######法兰克福苏维埃大战反动派#######
-         
-				else_if = {
-					limit = {
-					#德国北方败
-					FROM = {
-						original_tag = NAU
-					}
-					ROOT = {
-						original_tag = GER
-					}
+			#######法兰克福苏维埃大战反动派#######
+		
+			else_if = {
+				limit = {
+				#德国北方败
+				FROM = {
+					original_tag = NAU
+				}
+				ROOT = {
+					original_tag = GER
+				}
 				}
 				NAU = {
 					if = {
@@ -3179,7 +3188,6 @@ AOR_report_greek_balkan_victory_news = yes
 					transfer_state = 89
 				    transfer_state = 91
 					transfer_state = 93
-				    transfer_state = 199
 					transfer_state = 1039
 				    transfer_state = 1040
 					transfer_state = 1046
@@ -3230,54 +3238,163 @@ AOR_report_greek_balkan_victory_news = yes
 				}
 	    	}
 		##高加索相关？##
-		else_if = {
-                limit = {
-                    ROOT = {
-                        original_tag = CSU
-                    }
-                    FROM = {
-                        OR = {
-                            original_tag = CAU
-                            is_in_faction_with = SOV
-                            is_in_faction_with = RUS
-                        }
-                    }
-                }
-                every_country = {
-                    white_peace = CAU
-                }
-                CSU = {
-                    annex_country = {
-                        target = CAU
-                        transfer_troops = no
-                    }
-                }
-            }
-            else_if = {
-                limit = {
-                    ROOT = {
-                        original_tag = CSU
-                    }
-                    FROM = {
-                        OR = {
-                            original_tag = CAU
-                            is_in_faction_with = SOV
-                            is_in_faction_with = RUS
-                        }
-                    }
-                }
-                every_country = {
-                    white_peace = CAU
-                }
-                CSU = {
-                    annex_country = {
-                        target = CAU
-                        transfer_troops = no
-                    }
-                }
-            }
-			
-		}
+		##本段暂时注释，以待不时之需。##
+			else_if = {
+				limit = {
+					ROOT = {
+						original_tag = CSU
+					}
+					FROM = {
+						OR = {
+							original_tag = CAU
+							is_in_faction_with = RUS
+						}
+					}
+				}
+				every_country = {
+					white_peace = CAU
+				}
+				CSU = {
+					annex_country = {
+						target = CAU
+						transfer_troops = no
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						original_tag = CSU
+					}
+					FROM = {
+						OR = {
+							original_tag = CAU						
+							is_in_faction_with = ARU
+						}
+					}
+				}
+				every_country = {
+					white_peace = CAU
+				}
+				CSU = {
+					annex_country = {
+						target = CAU
+						transfer_troops = no
+					}
+				}
+			}
+		######苏俄内战！######
+		## 当前暂不制作苏俄被打败的脚本。 ##
+		## 波罗的干涉军 ##
+			else_if = {
+				limit = {
+					ROOT = {
+						original_tag = RIG
+					}
+					FROM = {
+						OR = {				
+							is_in_faction_with = RUS
+						}
+					}
+				}
+				RUS = {
+					annex_country = {
+						target = RIG
+						transfer_troops = no
+					}
+				}
+				if = {
+					limit = {
+						NOT = { 
+							LIT = { is_subject_of = POL }
+						}
+					}
+					POL = {
+						country_event = { id = AOR_RUS_timeaxis.10010 } ##波兰出兵立陶宛##
+					}
+				}
+			}
 
+			else_if = {
+				limit = {
+					ROOT = {
+						original_tag = LAT
+					}
+					FROM = {
+						OR = {				
+							is_in_faction_with = RUS
+						}
+					}
+				}
+				RUS = {
+					annex_country = {
+						target = LAT
+						transfer_troops = no
+					}
+				}
+				if = {
+					limit = {
+						NOT = { 
+							LIT = { is_subject_of = POL }
+						}
+					}
+					POL = {
+						country_event = { id = AOR_RUS_timeaxis.10010 } ##波兰出兵立陶宛##
+					}
+				}
+			}
+		## 白俄罗斯 ##
+			else_if = {
+				limit = {
+					ROOT = {
+						original_tag = BLR
+					}
+					FROM = {
+						OR = {				
+							is_in_faction_with = RUS
+						}
+					}
+				}
+				BLS = {
+					annex_country = {
+						target = BLR
+						transfer_troops = no
+					}
+				}
+				if = {
+					limit = {
+						NOT = { 
+							LIT = { is_subject_of = POL }
+						}
+					}
+					POL = {
+						country_event = { id = AOR_RUS_timeaxis.10010 } ##波兰出兵立陶宛##
+					}
+				}
+			}
+		## 白芬兰 ##
+		else_if = {
+				limit = {
+					ROOT = {
+						original_tag = FIN
+					}
+					FROM = {
+						OR = {				
+							is_in_faction_with = RUS
+						}
+					}
+				}
+				every_country = {
+					white_peace = FIN
+				}
+				FIC = {
+					annex_country = {
+						target = FIN
+						transfer_troops = no
+					}
+				}
+			}
+
+		}
 	}
 }
