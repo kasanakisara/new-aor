@@ -11,8 +11,8 @@ oob_req = json.load(open(r"D:\new-aor\tools\coal\oob_req.json", encoding="utf-8"
 
 # Land techs by tier: no universal "Great War kit" — only what the country actually fielded.
 LAND_BY_TIER = {
-    "P0": list(P.BASE_LAND) + list(P.SPECIAL) + ["aor_tank_support"],
-    "P1": list(P.BASE_LAND) + list(P.SPECIAL),
+    "P0": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + list(P.SPECIAL) + ["aor_tank_support"],
+    "P1": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + list(P.SPECIAL),
     "P1B": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_t01", "aor_inf_e01"],
     "P2": ["aor_inf_r01", "aor_inf_r02", "aor_inf_l00", "aor_inf_l01", "aor_inf_u01",
            "aor_inf_u02", "tech_support", "tech_engineers", "tech_recon",
@@ -85,7 +85,7 @@ def profile_of(tag):
     return "P3"
 
 
-DEFAULT_AIR = {"P0": 4, "P1": 2, "P1B": 2, "P2": 2, "P3": 1, "P4": 0}
+DEFAULT_AIR = {"P0": 4, "P1": 2, "P1B": 1, "P2": 1, "P3": 1, "P4": 0}
 DEFAULT_NAVY = {"P0": 2, "P1": 1, "P1B": 1, "P2": 1, "P3": 0, "P4": 0}
 TIER_KIND = {"P0": 1, "P1": 1, "P1B": 1, "P2": 2, "P3": 3, "P4": 4}
 

@@ -52,16 +52,16 @@ SPECIAL = ["aor_inf_m01", "aor_inf_t01", "aor_inf_e01"]
 
 # profile -> (industry list, science list, air list, navy list, special list)
 PROFILES = {
-    "P0": (IND_BASIC + IND_MID + IND_HIGH + IND_NAVAL,
+    "P0": (["excavation1", "fuel_refining", "aor_railway_engineering", "aor_fortification1", "aor_shipbuilding"],
            SCI_BASIC + SCI_MID + SCI_HIGH,
            AIR_14 + AIR_19 + AIR_MED + AIR_LARGE + AIR_TRANSPORT + AIR_AIRSHIP + AIR_TORPEDO,
            NAV_14 + NAV_19,
            SPECIAL + ["aor_tank_support"]),
-    "P1": (IND_BASIC + IND_MID + IND_HIGH + IND_NAVAL,
-           SCI_BASIC + SCI_MID + SCI_HIGH,
-           AIR_14 + AIR_19 + AIR_MED + AIR_LARGE + AIR_TORPEDO,
-           NAV_14 + NAV_19,
-           SPECIAL),
+    "P1": (["excavation1", "aor_railway_engineering"],
+           SCI_BASIC + SCI_MID,
+           AIR_14 + AIR_19,
+           NAV_14,
+           ["aor_inf_t01"]),
     "P1B": (["excavation1", "aor_railway_engineering"],
             SCI_BASIC + SCI_MID,
             AIR_14 + AIR_19,
@@ -97,6 +97,20 @@ NAV_DOC = {}
 AIR_DOC = {}
 
 # ---- great powers
+AIR_OVERRIDE["ENG"] = 3          # 1919 飞艇只是试验，不再白送
+AIR_OVERRIDE["FRA"] = 3
+AIR_OVERRIDE["USA"] = 3
+AIR_OVERRIDE["ITA"] = 3
+AIR_OVERRIDE["JAP"] = 3
+
+NAVY_OVERRIDE["USA"] = 2
+NAVY_OVERRIDE["JAP"] = 2
+NAVY_OVERRIDE["ENG"] = 2
+NAVY_OVERRIDE["USA"] = 2
+NAVY_OVERRIDE["JAP"] = 2
+NAVY_OVERRIDE["FRA"] = 1
+NAVY_OVERRIDE["ITA"] = 1
+
 # 1919 现实：俄国/全俄政府没有飞艇与造舰能力
 AIR_OVERRIDE["RUS"] = 2
 NAVY_OVERRIDE["RUS"] = 1
