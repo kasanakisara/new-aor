@@ -11,6 +11,4 @@
 - `events/AOR_news_router.txt` 可以保留或新增隐藏分发事件，但玩家可见的新闻正文必须留在 `AOR_world_news.txt`。项目、国策、决议等来源只负责触发对应 ID，修改 ID 时同步更新所有引用。
 - 交付前检查编号唯一、触发引用、本地化键和图片引用一致。此规则适用于以后新增或修改的新闻，不授权无关的大规模迁移。
 
-正式模组目前位于 `C:\Users\DONG\Documents\Paradox Interactive\Hearts of Iron IV\mod\new-aor`。以正式模组当前文件为准，不要拿资料目录中的旧成品覆盖较新的文件。
-
 - 新闻标题本地化必须以 `[Get_AOR_news_masthead]` 开头，例如 `AOR_news_global.6.t:0 "[Get_AOR_news_masthead]粒子加速器的建成"`。现有界面依赖此前缀显示报头并定位标题，缺失会导致报头消失且标题移出可见区域。检查标题时必须验证此前缀。
