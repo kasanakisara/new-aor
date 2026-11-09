@@ -1,0 +1,23 @@
+add_namespace = AOR_GER_bernstein
+
+# 社会主义的第三条道路？
+# 触发方式：common/on_actions/AOR_GER_bernstein_on_actions.txt 检测到
+# GER_01_04_Eduard_Bernstein 被聘为政治顾问（is_hired_as_advisor）后触发。
+# 选项效果：解锁塔罗牌「X 命运之轮 - 伯恩施坦」（AOR_tarot_card_11_enable），
+# 使其可以进入抽牌池（清除 blocked 标记并置 unlocked）。
+country_event = {
+	id = AOR_GER_bernstein.1
+	title = AOR_GER_bernstein.1.t
+	desc = AOR_GER_bernstein.1.desc
+	picture = GFX_AOR_GER_bernstein_hired
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOR_GER_bernstein.1.a
+		AOR_tarot_card_11_enable = yes
+		custom_effect_tooltip = AOR_GER_bernstein.1.tt_tarot
+		custom_effect_tooltip = AOR_GER_bernstein.1.tt_warn
+	}
+}
