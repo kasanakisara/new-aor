@@ -1,0 +1,170 @@
+﻿air_subdoctrine_rigid_long_range_recon = {
+    track = rigid_airship
+    name = SUBDOCTRINE_RIGID_LONG_RANGE_RECON
+    description = SUBDOCTRINE_RIGID_LONG_RANGE_RECON_DESC
+    icon = GFX_doctrine_formation_flying_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    rigid_airship = {
+        air_range = 0.1
+    }
+
+    rewards = {
+        oceanic_recon = {
+            rigid_airship = {
+                air_range = 0.1
+            }
+        }
+        fleet_scouting = {
+            rigid_airship = {
+                air_mission_efficiency = 0.05
+            }
+        }
+        weather_procedures = {
+            rigid_airship = {
+                air_weather_penalty = -0.1
+            }
+        }
+        radio_room = {
+            rigid_airship = {
+                air_mission_efficiency = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_rigid_strategic_bombing = {
+    track = rigid_airship
+    name = SUBDOCTRINE_RIGID_STRATEGIC_BOMBING
+    description = SUBDOCTRINE_RIGID_STRATEGIC_BOMBING_DESC
+    icon = GFX_doctrine_strategic_destruction_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    rigid_airship = {
+        air_ground_attack = 0.05
+    }
+    airship_bomber = {
+        air_ground_attack = 0.05
+    }
+
+    rewards = {
+        night_raids = {
+            airship_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        heavy_payloads = {
+            airship_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        high_altitude_runs = {
+            rigid_airship = {
+                air_defence = 0.05
+            }
+        }
+        target_selection = {
+            airship_bomber = {
+                air_mission_efficiency = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_rigid_fleet_escort = {
+    track = rigid_airship
+    name = SUBDOCTRINE_RIGID_FLEET_ESCORT
+    description = SUBDOCTRINE_RIGID_FLEET_ESCORT_DESC
+    icon = GFX_doctrine_fleet_in_being_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    rigid_airship = {
+        air_defence = 0.05
+    }
+
+    rewards = {
+        fleet_cover = {
+            rigid_airship = {
+                air_defence = 0.05
+            }
+        }
+        anti_airship_patrols = {
+            rigid_airship = {
+                air_attack = 0.05
+            }
+        }
+        convoy_shadowing = {
+            aor_rigid_maritime_patrol_plane = {
+                air_range = 0.1
+            }
+        }
+        coordinated_search = {
+            aor_rigid_maritime_patrol_plane = {
+                air_mission_efficiency = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_rigid_supply = {
+    track = rigid_airship
+    name = SUBDOCTRINE_RIGID_SUPPLY
+    description = SUBDOCTRINE_RIGID_SUPPLY_DESC
+    icon = GFX_doctrine_low_echelon_support_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    rigid_airship = {
+        air_range = 0.05
+    }
+
+    rewards = {
+        remote_supply = {
+            rigid_airship = {
+                air_range = 0.1
+            }
+        }
+        long_range_transport = {
+            rigid_airship = {
+                air_range = 0.05
+            }
+        }
+        field_resupply = {
+            rigid_airship = {
+                air_mission_efficiency = 0.05
+            }
+        }
+        maintenance_crews = {
+            rigid_airship = {
+                air_accidents_factor = -0.05
+            }
+        }
+    }
+}

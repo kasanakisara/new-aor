@@ -1,4 +1,4 @@
-line_of_battle = {
+﻿line_of_battle = {
     track = capital_ships
     name = SUBDOCTRINE_LINE_OF_BATTLE
     description = SUBDOCTRINE_LINE_OF_BATTLE_DESC
@@ -7,72 +7,41 @@ line_of_battle = {
     xp_cost = 100
     xp_type = navy
 
-    available = {
-        always = yes
-    }
+    available = { always = yes }
 
-    ai_will_do = { 
-        base = 1
-        #modifier = {
-        #    factor = 75
-        #    OR = {
-        #        original_tag = ENG
-        #        original_tag = USA
-        #        original_tag = JAP
-        #        original_tag = ITA
-        #        original_tag = SOV
-        #    }
-        #}
-    }
+    ai_will_do = { base = 1 }
 
     # EFFECTS
-	navy_fuel_consumption_factor = -0.05
-	naval_has_potf_in_combat_attack = 0.10
+    battleship = {
+        max_organisation = 5
+    }
 
     rewards = {
-        flagships={
-            battleship= {
+        flagships = {
+            battleship = {
                 max_organisation = 5
             }
-			heavy_cruiser = {
-				max_organisation = 5
-			}
+            heavy_cruiser = {
+                max_organisation = 5
+            }
         }
         ordnance_handling_training = {
-			battleship = {
-				hg_attack = 0.05
-				lg_attack = 0.05
-				hg_armor_piercing = 0.05
-			}
-			heavy_cruiser = {
-				hg_attack = 0.05
-			}
-        }
-        blue_water_logistics = { #TODO see if these make sense
             battleship = {
-				supply_consumption = -0.1
-			}
-			battle_cruiser = {
-				supply_consumption = -0.1
-			}
+                hg_attack = 0.05
+                lg_attack = 0.05
+            }
+        }
+        blue_water_logistics = {
+            battleship = {
+                supply_consumption = -0.1
+            }
+            battle_cruiser = {
+                supply_consumption = -0.1
+            }
         }
         bulkhead_drills = {
             battleship = {
-				naval_torpedo_damage_reduction_factor = 0.1
-			}
-			heavy_cruiser = {
-				naval_torpedo_damage_reduction_factor = 0.1
-			}
-        }
-        modernized_line_of_battle={
-            battleship = {
-				max_organisation = 10
-			}
-			heavy_cruiser = {
-				max_organisation = 5
-			}
-			battle_cruiser= {
-                max_organisation = 5
+                naval_torpedo_damage_reduction_factor = 0.1
             }
         }
     }
@@ -87,69 +56,35 @@ battlecruiser_supremacy = {
     xp_cost = 100
     xp_type = navy
 
-    available = {
-        always = yes
-    }
+    available = { always = yes }
 
-    ai_will_do = { 
-        base = 1
-        #modifier = {
-        #    factor = 75
-        #    original_tag = FRA
-        #}
-    }
+    ai_will_do = { base = 1 }
 
     # EFFECTS
-	naval_supply_consumption_factor = -0.05
-	naval_critical_score_chance_factor = 0.03
+    battle_cruiser = {
+        hg_attack = 0.05
+    }
 
     rewards = {
-        ship_of_the_line={
-            battle_cruiser= {
-                max_organisation = 10
-            }
-			heavy_cruiser = {
-				max_organisation = 10
-			}
-        }
-        coordinated_strike_protocol = {
-			battle_cruiser = {
-				hg_attack = 0.10
-				lg_attack = 0.05
-			}
-			battleship = {
-				lg_attack = 0.05
-			}
-        }
-        open_water_patrolling = {
+        speed_trials = {
             battle_cruiser = {
-				surface_detection = 0.05
-			}
-			heavy_cruiser = {
-				surface_detection = 0.10
-			}
-        }
-        planning_at_speed = {
-            battleship = {
-				naval_speed = 0.1
-			}
-			battle_cruiser = {
-				naval_speed = 0.05
-			}
-			heavy_cruiser = {
-				naval_speed = 0.05
-			}
-        }
-        capital_drills={
-            battleship = {
-				max_organisation = 5
-			}
-			battle_cruiser= {
-                max_organisation = 10
+                naval_speed = 0.05
             }
-			heavy_cruiser = {
-				max_organisation = 5
-			}
+        }
+        capital_raiders = {
+            battle_cruiser = {
+                max_organisation = 5
+            }
+        }
+        long_range_target_acquisition = {
+            battle_cruiser = {
+                hg_armor_piercing = 0.05
+            }
+        }
+        stowage_efficiency = {
+            battle_cruiser = {
+                supply_consumption = -0.1
+            }
         }
     }
 }
@@ -163,134 +98,35 @@ armored_raiders = {
     xp_cost = 100
     xp_type = navy
 
-    available = {
-        always = yes
-    }
+    available = { always = yes }
 
-    ai_will_do = { 
-        base = 1
-        #modifier = {
-        #    factor = 50
-        #    original_tag = GER
-        #}
-    }
+    ai_will_do = { base = 1 }
 
     # EFFECTS
-	naval_supply_consumption_factor = -0.10
-	screening_without_screens = 0.10
+    heavy_cruiser = {
+        hg_attack = 0.05
+    }
 
     rewards = {
-        expert_reconnaissance={
-            battle_cruiser= {
-                surface_detection = 0.1
+        casemate_upgrades = {
+            heavy_cruiser = {
+                armor_value = 0.05
             }
-			battleship = {
-				surface_detection = 0.1
-			}
-        }
-        speed_trials = {
-        	equipment_bonus = {
-                capital_ship = {
-                    naval_range = 0.10
-                    instant = yes
-                }
-            }
-        }
-        modernized_officer_education = {
-            battle_cruiser= {
-                max_organisation = 5
-            }
-			battleship = {
-				max_organisation = 5
-			}
         }
         capital_raiders = {
-            battleship = {
-				max_organisation = 5
-				convoy_raiding_coordination = 0.25
-				surface_detection = 0.10
-			}
-			battle_cruiser = {
-				max_organisation = 5
-				convoy_raiding_coordination = 0.15
-				surface_detection = 0.15
-			}
-			heavy_cruiser = {
-				max_organisation = 5
-			}
-        }
-        crisis_management={
-            modifier = {
-				navy_casualty_on_hit = -0.40
-				navy_casualty_on_sink = -0.20
-			}
-        }
-    }
-}
-
-coastal_defence_fleet = {
-    track = capital_ships
-    name = SUBDOCTRINE_COASTAL_DEFENCE
-    description = SUBDOCTRINE_COASTAL_DEFENCE_DESC
-    icon = GFX_doctrine_floating_fortress_medium
-
-    xp_cost = 100
-    xp_type = navy
-
-    visible = {
-        has_dlc = "No Compromise, No Surrender"
-    }
-
-    ai_will_do = { }
-
-    # EFFECTS
-	effect = {
-		IF = {
-			limit = {
-				NOT = {
-					always = no # unavailable AOR object: has_tech coastal_defense_ships
-
-				}
-			}
-			set_technology = { 
-				coastal_defense_ships = 1 
-			}
-		}
-	}
-	naval_supply_consumption_factor = -0.15
-	navy_max_range_factor = -0.10
-
-
-    rewards = {
-        aging_navy={
-            modifier = { refit_speed = 0.15 }
-        }
-        casemate_upgrades = {
-            equipment_bonus = {
-                ship_hull_cruiser_coastal_defense_ship = {
-                    anti_air_attack = 0.15
-                    lg_attack = 0.05
-                    instant = yes
-                }
+            heavy_cruiser = {
+                max_organisation = 5
             }
         }
-        escort_duties= {
-            heavy_cruiser= {
-                sub_detection = 0.15
-            }
-			light_cruiser= {
-                sub_detection = 0.10
+        open_water_patrolling = {
+            heavy_cruiser = {
+                naval_range = 0.1
             }
         }
-        hail_of_fire = {
-            modifier = {
-				naval_light_gun_hit_chance_factor = 0.05
-			}
-        }
-        spare_part_logistics={
-            modifier = {
-				refit_ic_cost = -0.15
-			}
+        emergency_drills = {
+            heavy_cruiser = {
+                reliability = 0.05
+            }
         }
     }
 }
@@ -299,147 +135,85 @@ naval_gunfire_support = {
     track = capital_ships
     name = SUBDOCTRINE_NAVAL_GUNFIRE_SUPPORT
     description = SUBDOCTRINE_NAVAL_GUNFIRE_SUPPORT_DESC
-    icon = GFX_doctrine_naval_gunfire_support_medium  
+    icon = GFX_doctrine_naval_gunfire_medium
 
     xp_cost = 100
     xp_type = navy
 
-    available = {
-        always = yes
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    battleship = {
+        hg_attack = 0.05
     }
-
-    visible = {
-        has_dlc = "No Compromise, No Surrender"
+    heavy_cruiser = {
+        lg_attack = 0.05
     }
-
-    ai_will_do = { }
-
-	shore_bombardment_bonus = 0.25
-	navy_fuel_consumption_factor = -0.10
 
     rewards = {
-        landing_lane_clearance = {
-            modifier = { 
-            naval_mine_hit_chance = -0.10
-            mines_sweeping_by_fleets_factor = 0.10
+        long_range_fire_support = {
+            battleship = {
+                hg_attack = 0.05
             }
         }
-
-        inshore_aa_screen = {
-			heavy_cruiser = {
-				anti_air_attack = 0.15
-			}		
-			battleship = {
-				anti_air_attack = 0.15
-			}
-			battle_cruiser = {
-				anti_air_attack = 0.15
-			}				
-
+        hail_of_fire = {
+            heavy_cruiser = {
+                lg_attack = 0.05
+            }
         }
-
-        joint_operations= {
-        	naval_invasion_planning_bonus_speed = 0.20
-        	naval_repair_support_value_factor = 0.10
-    		naval_general_support_value_factor = 0.10
-
+        coastal_bombardment = {
+            battleship = {
+                hg_attack = 0.05
+            }
         }
-
-        floating_base={
-            modifier = {
-        		navy_casualty_on_hit = -0.20
-        		navy_casualty_on_sink = -0.10
-    			floating_harbor_supply = 0.25
-    			
-        	}
+        precision_strikes = {
+            battleship = {
+                hg_armor_piercing = 0.05
+            }
         }
-
-        green_water_operations={
-    		battleship = {
-    			surface_visibility = -0.10
-			}
-			battle_cruiser = {
-    			surface_visibility = -0.10
-			}
-			heavy_cruiser = {
-    			surface_visibility = -0.10
-			}
-			naval_coordination = 0.1
-			refit_speed = 0.2
-   		}
-   	}
+    }
 }
-
 
 battleship_antiair_screen = {
     track = capital_ships
     name = SUBDOCTRINE_BATTLESHIP_ANTIAIR_SCREEN
     description = SUBDOCTRINE_BATTLESHIP_ANTIAIR_SCREEN_DESC
-    icon = GFX_doctrine_battleship_antiair_screen_medium 
+    icon = GFX_doctrine_battleship_antiair_screen_medium
 
     xp_cost = 100
     xp_type = navy
 
-    available = {
-        always = yes
-    }
+    available = { always = yes }
 
-    visible = {
-    	has_dlc = "No Compromise, No Surrender"
-    }
+    ai_will_do = { base = 1 }
 
-    navy_anti_air_attack_factor = 0.1
+    # EFFECTS
+    battleship = {
+        anti_air_attack = 0.05
+    }
 
     rewards = {
-
-    	all_seas_anti_aircraft = {
-    		battleship = {
-    			anti_air_attack = 0.1
-    		}
-    		battle_cruiser = {
-    			anti_air_attack = 0.1
-    		}
-    	}
-
-    	efficient_navigation = {
-    		battleship = {
-    			fuel_consumption = -0.1
-    		}
-    	}
-
-    	broad_air_cover = {
-    		battleship = {
-    			max_organisation = 15
-    			surface_detection = 0.05
-    		}
-    		battle_cruiser = {
-    			max_organisation = 15
-    			surface_detection = 0.05
-    		}
-    	}
-    	inaccessible_skies = {
+        inshore_aa_screen = {
             battleship = {
-                anti_air_attack = 0.15
-                lg_attack = 0.05
-            }
-            battle_cruiser = {
-                anti_air_attack = 0.15
-                lg_attack = 0.05
+                anti_air_attack = 0.05
             }
         }
-
-    	capital_screens = {
-    		equipment_bonus = {
-    			ship_hull_heavy = {
-    				armor_value = 0.15
-    				max_strength = 0.05
-    				lg_attack = 0.05
-    				instant = yes
-    			}
-    		}
-    	}
+        further_air_defense = {
+            heavy_cruiser = {
+                anti_air_attack = 0.05
+            }
+        }
+        coordinated_strike_protocol = {
+            battleship = {
+                max_organisation = 5
+            }
+        }
+        crisis_management = {
+            battleship = {
+                reliability = 0.05
+            }
+        }
     }
 }
-
-
-
