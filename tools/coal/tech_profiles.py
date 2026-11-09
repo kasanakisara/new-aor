@@ -62,12 +62,12 @@ PROFILES = {
            AIR_14 + AIR_19,
            NAV_14,
            ["aor_inf_t01"]),
-    "P1B": (["excavation1", "aor_railway_engineering"],
+    "P1B": (["aor_railway_engineering"],
             SCI_BASIC + SCI_MID,
             AIR_14 + AIR_19,
             NAV_14,
             ["aor_inf_t01", "aor_inf_e01"]),
-    "P2": (["excavation1", "aor_railway_engineering"],
+    "P2": (["aor_railway_engineering"],
            SCI_BASIC + SCI_MID,
            AIR_14 + AIR_19,
            NAV_14,
@@ -106,17 +106,17 @@ AIR_OVERRIDE["JAP"] = 3
 NAVY_OVERRIDE["USA"] = 2
 NAVY_OVERRIDE["JAP"] = 2
 # 1919 舰体（战后新舰）不再白送，列强也从无畏舰时代起步
-NAVY_OVERRIDE["ENG"] = 1
-NAVY_OVERRIDE["USA"] = 1
-NAVY_OVERRIDE["JAP"] = 1
-NAVY_OVERRIDE["FRA"] = 1
-NAVY_OVERRIDE["ITA"] = 1
+NAVY_OVERRIDE["ENG"] = 0
+NAVY_OVERRIDE["USA"] = 0
+NAVY_OVERRIDE["JAP"] = 0
+NAVY_OVERRIDE["FRA"] = 0
+NAVY_OVERRIDE["ITA"] = 0
 
 # 1919 现实：俄国/全俄政府没有飞艇与造舰能力
 AIR_OVERRIDE["RUS"] = 2
-NAVY_OVERRIDE["RUS"] = 1
+NAVY_OVERRIDE["RUS"] = 0
 AIR_OVERRIDE["ARU"] = 2
-NAVY_OVERRIDE["ARU"] = 1
+NAVY_OVERRIDE["ARU"] = 0
 
 # 没有独立空军的：印度、埃及、波斯、加拿大、澳洲、新西兰、南非
 for _t in ["RAJ", "EGY", "PER", "CAN", "AST", "NZL", "SAF"]:
