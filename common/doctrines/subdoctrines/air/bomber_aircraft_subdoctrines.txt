@@ -1,0 +1,195 @@
+﻿air_subdoctrine_close_range_support = {
+    track = bomber_aircraft
+    name = SUBDOCTRINE_CLOSE_RANGE_SUPPORT
+    description = SUBDOCTRINE_CLOSE_RANGE_SUPPORT_DESC
+    icon = GFX_doctrine_direct_ground_support_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    cas = {
+        air_ground_attack = 0.05
+    }
+
+    rewards = {
+        continuous_fire_support = {
+            cas = {
+                air_ground_attack = 0.05
+            }
+        }
+        forward_air_controllers = {
+            air_close_air_support_org_damage_factor = 0.05
+        }
+        suppression_runs = {
+            cas = {
+                air_ground_attack = 0.05
+            }
+        }
+        cas_preservation = {
+            cas = {
+                air_defence = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_tactical_battlefield_support = {
+    track = bomber_aircraft
+    name = SUBDOCTRINE_TACTICAL_BATTLEFIELD_SUPPORT
+    description = SUBDOCTRINE_TACTICAL_BATTLEFIELD_SUPPORT_DESC
+    icon = GFX_doctrine_direct_ground_support_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    tac_bomber = {
+        air_ground_attack = 0.05
+    }
+
+    rewards = {
+        ground_interdiction = {
+            tac_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        movement_interdiction = {
+            tac_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        effective_targetting = {
+            air_mission_efficiency = 0.05
+        }
+        optimized_payload = {
+            tac_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_carpet_bombing = {
+    track = bomber_aircraft
+    name = SUBDOCTRINE_CARPET_BOMBING
+    description = SUBDOCTRINE_CARPET_BOMBING_DESC
+    icon = GFX_doctrine_strategic_destruction_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    strat_bomber = {
+        air_ground_attack = 0.05
+    }
+
+    rewards = {
+        strategic_bombing = {
+            strat_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        keypoint_bombing = {
+            strat_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        logistical_bombing = {
+            strat_bomber = {
+                air_ground_attack = 0.05
+            }
+        }
+        rugged_airframes = {
+            strat_bomber = {
+                air_defence = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_night_bombing = {
+    track = bomber_aircraft
+    name = SUBDOCTRINE_NIGHT_BOMBING
+    description = SUBDOCTRINE_NIGHT_BOMBING_DESC
+    icon = GFX_doctrine_night_bombing_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    strat_bomber = {
+        air_weather_penalty = -0.1
+    }
+
+    rewards = {
+        night_operations = {
+            air_mission_efficiency = 0.05
+        }
+        safety_protocols = {
+            air_accidents_factor = -0.05
+        }
+        all_weather_drills = {
+            air_weather_penalty = -0.1
+        }
+        navigation_training = {
+            strat_bomber = {
+                air_range = 0.05
+            }
+        }
+    }
+}
+
+air_subdoctrine_coastal_air_patrol = {
+    track = bomber_aircraft
+    name = SUBDOCTRINE_COASTAL_AIR_PATROL
+    description = SUBDOCTRINE_COASTAL_AIR_PATROL_DESC
+    icon = GFX_doctrine_naval_air_operations_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    nav_bomber = {
+        naval_strike_attack = 0.05
+    }
+
+    rewards = {
+        naval_strike_aces = {
+            nav_bomber = {
+                naval_strike_attack = 0.05
+            }
+        }
+        port_strikes = {
+            port_strike = 0.05
+        }
+        extended_sea_patrols = {
+            nav_bomber = {
+                air_range = 0.1
+            }
+        }
+        naval_expertise = {
+            naval_strike_targetting_factor = 0.05
+        }
+    }
+}

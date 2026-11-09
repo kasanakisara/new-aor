@@ -1,3 +1,11 @@
+# 标题本地化必须以 [Get_AOR_news_masthead] 开头，否则报头缺失且标题移出可见区域。
+# AOR 新闻编写规则（作者及 AI 必读）：
+# 所有玩家可见 news_event 必须统一写在本文件 events/AOR_world_news.txt；禁止新增独立新闻文件。
+# 使用下方已有 AOR_news_<范围> namespace；新增编号先扫描正式模组已有 ID，取该 namespace 最大数字 + 1，禁止重复、重排或复用。
+# 本地化写入对应语言 AOR_world_news_l_<语言>.yml，键沿用事件编号；配图注册于 interface/AOR_world_news_pictures.gfx。
+# 全球重大新闻使用 AOR_news_global.<编号> 和 major = yes，不设地区订阅限制；地区新闻遵循现有订阅路由。
+# 其他文件只触发新闻 ID；隐藏分发事件可写 AOR_news_router.txt。详细规则见模组根目录 AGENTS.md。
+
 # Visible news definitions. Dispatchers preserve timing and apply player subscriptions.
 add_namespace = AOR_news_global
 add_namespace = AOR_news_europe
@@ -3688,4 +3696,15 @@ news_event = {
  major = yes
  is_triggered_only = yes
  option = { name = AOR_news_global.5.a }
+}
+
+# Global major news: particle accelerator.
+news_event = {
+ id = AOR_news_global.6
+ title = AOR_news_global.6.t
+ desc = AOR_news_global.6.desc
+ picture = GFX_AOR_news_global.6_pic
+ major = yes
+ is_triggered_only = yes
+ option = { name = AOR_news_global.6.a custom_effect_tooltip = AOR_news_global.6.future_tt }
 }

@@ -1,10 +1,3 @@
-
-# AOR historical class definitions required by naval OOB
-create_equipment_variant = { name = "E级潜艇" type = submarine_2 allow_without_tech = yes modules = {
- fixed_ship_torpedo_slot = ship_torpedo_sub_1
- fixed_ship_engine_slot = sub_ship_engine_1
- rear_1_custom_slot = ship_torpedo_sub_1
-} }
 # AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
 	# Science
@@ -13,13 +6,14 @@ set_technology = {
 	aor_inf_r01 = 1
 	# Navy
 	aor_bc_1925 = 1
-	early_ship_hull_heavy = 1
-	early_ship_hull_light_cruiser = 1
-	early_ship_hull_submarine = 1
-	tech_1919_ship_hull_heavy = 1
-	tech_1919_ship_hull_light_cruiser = 1
-	tech_1919_ship_hull_submarine = 1
 }
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "E级潜艇" type = submarine_2 allow_without_tech = yes modules = {
+ fixed_ship_torpedo_slot = ship_torpedo_sub_1
+ fixed_ship_engine_slot = sub_ship_engine_1
+ rear_1_custom_slot = ship_torpedo_sub_1
+} }
 
 capital = 371
 

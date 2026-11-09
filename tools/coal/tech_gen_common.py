@@ -10,13 +10,15 @@ techs = json.load(open(r"D:\new-aor\tools\coal\techs.json", encoding="utf-8"))
 oob_req = json.load(open(r"D:\new-aor\tools\coal\oob_req.json", encoding="utf-8"))
 
 # Land techs by tier: no universal "Great War kit" — only what the country actually fielded.
+SUPPORT_TECHS = ["tech_support", "tech_engineers", "tech_recon", "tech_military_police",
+                 "aor_inf_mg1", "tech_field_hospital", "basic_train"]
+
 LAND_BY_TIER = {
     "P0": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_m01", "aor_inf_t01", "aor_tank_support"],
     "P1": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + list(P.SPECIAL),
-    "P1B": [x for x in P.BASE_LAND if x != "aor_field_gun_1"] + ["aor_inf_t01", "aor_inf_e01"],
+    "P1B": [x for x in P.BASE_LAND if x != "aor_field_gun_1" and x not in SUPPORT_TECHS] + ["aor_inf_t01", "aor_inf_e01"],
     "P2": ["aor_inf_r01", "aor_inf_r02", "aor_inf_l00", "aor_inf_l01", "aor_inf_u01",
-           "aor_inf_u02", "tech_support", "tech_engineers", "tech_recon",
-           "aor_inf_mg1", "Old_howitzers"],
+           "aor_inf_u02", "Old_howitzers"],
     "P3": ["aor_inf_r01", "aor_inf_l00", "aor_inf_u01", "Old_howitzers"],
     "P4": ["aor_inf_r01"],
 }
@@ -86,7 +88,7 @@ def profile_of(tag):
 
 
 DEFAULT_AIR = {"P0": 4, "P1": 2, "P1B": 1, "P2": 1, "P3": 1, "P4": 0}
-DEFAULT_NAVY = {"P0": 2, "P1": 1, "P1B": 1, "P2": 1, "P3": 0, "P4": 0}
+DEFAULT_NAVY = {"P0": 0, "P1": 0, "P1B": 0, "P2": 0, "P3": 0, "P4": 0}
 TIER_KIND = {"P0": 1, "P1": 1, "P1B": 1, "P2": 2, "P3": 3, "P4": 4}
 
 
@@ -114,6 +116,12 @@ def build(tag, fn):
 
     need = [x for x in oob_req.get(fn, {}).get("need", [])
             if not (set(techs[x]["equip"]) & AIR_FRAME_EQUIP) and x not in AIR_FRAME_EQUIP]
+    # 海军科技不再由 OOB 自动补回（全局削海军）
+    NAVAL_TECHS = set(P.NAV_14) | set(P.NAV_19)
+    need = [x for x in need if x not in NAVAL_TECHS]
+    # 支援连科技只给 P0/P1
+    if prof not in ("P0", "P1"):
+        need = [x for x in need if x not in SUPPORT_TECHS]
 
     docs = [] if prof == "P4" else [P.LAND_DOC.get(tag, "trench_warfare")]
     if nav:
