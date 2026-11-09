@@ -354,18 +354,26 @@ def main():
 
     # air tracks (new ones)
     L = []
-    for tid, key, cats in [("bomber_aircraft", "DOCTRINE_TRACK_BOMBER_AIRCRAFT",
-                            ["category_cas", "category_tac_bomber", "category_strat_bomber", "category_nav_bomber"]),
-                           ("blimp", "DOCTRINE_TRACK_BLIMP", ["airship"]),
-                           ("rigid_airship", "DOCTRINE_TRACK_RIGID_AIRSHIP", ["rigid_airship"])]:
+    for tid, key, cats, subs in [("bomber_aircraft", "DOCTRINE_TRACK_BOMBER_AIRCRAFT",
+                            ["category_cas", "category_tac_bomber", "category_strat_bomber", "category_nav_bomber"], []),
+                           ("blimp", "DOCTRINE_TRACK_BLIMP", [],
+                            ["airship", "aor_blimp_naval_bomber", "aor_blimp_maritime_patrol_plane"]),
+                           ("rigid_airship", "DOCTRINE_TRACK_RIGID_AIRSHIP", [],
+                            ["rigid_airship", "airship_bomber", "aor_rigid_naval_bomber", "aor_rigid_maritime_patrol_plane"])]:
         L.append("%s = {" % tid)
         L.append("    name = %s" % key)
         L.append("    mastery = {")
         L.append("        multiplier = 1.0")
-        L.append("        sub_units = {")
-        for c in cats:
-            L.append("            %s" % c)
-        L.append("        }")
+        if cats:
+            L.append("        categories = {")
+            for c in cats:
+                L.append("            %s" % c)
+            L.append("        }")
+        if subs:
+            L.append("        sub_units = {")
+            for u in subs:
+                L.append("            %s" % u)
+            L.append("        }")
         L.append("    }")
         L.append("}")
         L.append("")
