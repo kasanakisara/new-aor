@@ -61,8 +61,8 @@ INF = [
       ("local_counterattack", {"category_all_infantry": {"soft_attack": 0.05, "defense": 0.05}})], None),
     ("large_unit_tactics", "SUBDOCTRINE_LARGE_UNIT_TACTICS", "GFX_doctrine_offensive_formations_medium",
      {"category_all_infantry": {"max_organisation": 5}},
-     [("corps_command", {"category_army": {"max_planning": 0.05}}),
-      ("staff_work", {"category_army": {"max_planning": 0.10}}),
+     [("corps_command", {"max_planning": 0.05}),
+      ("staff_work", {"max_planning": 0.10}),
       ("coordinated_advance", {"category_all_infantry": {"soft_attack": 0.03}}),
       ("reserve_echelons", {"category_all_infantry": {"max_organisation": 5}})], None),
     ("assault_infantry", "SUBDOCTRINE_ASSAULT_INFANTRY", "GFX_doctrine_assault_infantry_medium",
@@ -76,7 +76,7 @@ INF = [
      [("patrol_doctrine", {"recon": {"recon": 0.10}, "aor_sniper_observer": {"soft_attack": 0.05}}),
       ("sniper_teams", {"aor_sniper_observer": {"soft_attack": 0.10, "defense": 0.05}}),
       ("sabotage_raids", {"commando_units": {"breakthrough": 0.05}}),
-      ("night_raids", {"commando_units": {"soft_attack": 0.10, "land_night_attack": 0.05}})], None),
+      ("night_raids", {"commando_units": {"soft_attack": 0.10}})], None),
     ("irregulars", "SUBDOCTRINE_IRREGULARS", "GFX_doctrine_irregulars_medium",
      {"irregular_infantry": {"defense": 0.10}, "militia": {"defense": 0.05}},
      [("partisan_bands", {"irregular_infantry": {"max_organisation": 5}}),
@@ -136,7 +136,7 @@ SUP = [
       ("combined_arms", {"aor_tank_support": {"defense": 0.05}})], None),
     ("logistics_support", "SUBDOCTRINE_LOGISTICS_SUPPORT", "GFX_doctrine_field_engineering_medium",
      {"field_hospital": {"max_organisation": 5}},
-     [("field_hospitals", {"field_hospital": {"max_organisation": 5, "casualty_trickleback": 0.03}}),
+     [("field_hospitals", {"field_hospital": {"max_organisation": 5}}),
       ("maintenance_crews", {"engineer": {"defense": 0.05}}),
       ("supply_columns", {"aor_integrated_support": {"supply_consumption": -0.05}}),
       ("signal_corps", {"aor_integrated_support": {"initiative": 0.05}})], None),
@@ -162,10 +162,10 @@ SUP = [
 
 OPS = [
     ("mission_type_tactics", "SUBDOCTRINE_MISSION_TYPE_TACTICS", "GFX_doctrine_mission_type_tactics_medium",
-     {"category_army": {"max_planning": 0.05}},
-     [("mission_orders", {"category_army": {"max_planning": 0.05}}),
+     {"max_planning": 0.05},
+     [("mission_orders", {"max_planning": 0.05}),
       ("initiative", {"category_all_infantry": {"initiative": 0.05}}),
-      ("combined_planning", {"category_army": {"max_planning": 0.05, "command_power_gain": 0.10}}),
+      ("combined_planning", {"max_planning": 0.05, "command_power_gain": 0.10}),
       ("flexible_response", {"category_all_infantry": {"maximum_speed": 0.05}})], None),
     ("last_stand", "SUBDOCTRINE_LAST_STAND", "GFX_doctrine_last_stand_medium",
      {"category_all_infantry": {"defense": 0.10}},
@@ -177,7 +177,7 @@ OPS = [
      {"category_light_infantry": {"breakthrough": 0.05}},
      [("storm_troops", {"assault_team": {"breakthrough": 0.05, "soft_attack": 0.05}}),
       ("weak_point_probing", {"category_all_infantry": {"soft_attack": 0.05}}),
-      ("night_infiltration", {"category_light_infantry": {"land_night_attack": 0.05}}),
+      ("night_infiltration", {"land_night_attack": 0.05}),
       ("command_decentralisation", {"category_all_infantry": {"initiative": 0.05}})], None),
     ("grand_assault", "SUBDOCTRINE_GRAND_ASSAULT", "GFX_doctrine_grand_assault_medium",
      {"category_army": {"breakthrough": 0.05}},
@@ -190,7 +190,7 @@ OPS = [
      [("hit_and_run", {"irregular_infantry": {"soft_attack": 0.05}}),
       ("hidden_bases", {"irregular_infantry": {"defense": 0.10}}),
       ("local_levies", {"militia": {"max_organisation": 5}}),
-      ("night_operations", {"irregular_infantry": {"land_night_attack": 0.05}})], None),
+      ("night_operations", {"land_night_attack": 0.05})], None),
     ("rapid_domination", "SUBDOCTRINE_RAPID_DOMINATION", "GFX_doctrine_offensive_formations_medium",
      {"category_all_infantry": {"soft_attack": 0.05}},
      [("concentrated_push", {"category_all_infantry": {"breakthrough": 0.05}}),
@@ -198,14 +198,14 @@ OPS = [
       ("reserve_exploitation", {"category_all_infantry": {"maximum_speed": 0.05}}),
       ("sustained_offensive", {"category_all_infantry": {"max_organisation": 5}})], None),
     ("expeditionary_warfare", "SUBDOCTRINE_EXPEDITIONARY_WARFARE", "GFX_doctrine_expeditionary_warfare_medium",
-     {"category_army": {"supply_consumption_factor": -0.10}},
-     [("overseas_supply", {"category_army": {"out_of_supply_factor": -0.10}}),
+     {"supply_consumption_factor": -0.10},
+     [("overseas_supply", {"out_of_supply_factor": -0.10}),
       ("colonial_warfare", {"category_all_infantry": {"maximum_speed": 0.05}}),
       ("port_seizure", {"category_all_infantry": {"soft_attack": 0.05}}),
       ("expeditionary_logistics", {"aor_integrated_support": {"supply_consumption": -0.05}})], None),
     ("methodical_battle", "SUBDOCTRINE_METHODICAL_BATTLE", "GFX_doctrine_mission_type_tactics_medium",
-     {"category_army": {"max_planning": 0.05}},
-     [("command_by_directive", {"category_army": {"max_planning": 0.10}}),
+     {"max_planning": 0.05},
+     [("command_by_directive", {"max_planning": 0.10}),
       ("centralized_fire_planning", {"category_line_artillery": {"soft_attack": 0.05}}),
       ("scientific_conduct", {"category_all_infantry": {"initiative": 0.05}}),
       ("relentless_offensive", {"category_all_infantry": {"max_organisation": 5, "soft_attack": 0.03}})], "industrial_warfare"),
@@ -221,6 +221,9 @@ OPS = [
 def fmt_mods(mods, indent):
     out = []
     for target, vals in mods.items():
+        if not isinstance(vals, dict):
+            out.append("%s%s = %s" % (indent, target, vals))
+            continue
         out.append("%s%s = {" % (indent, target))
         for k, v in vals.items():
             out.append("%s    %s = %s" % (indent, k, v))
@@ -242,7 +245,7 @@ def emit_sub(sd):
     L.append("")
     if grand_only:
         L.append("    available = {")
-        L.append("        has_grand_doctrine = %s" % grand_only)
+        L.append("        has_doctrine = %s" % grand_only)
         L.append("    }")
     else:
         L.append("    available = {")
@@ -335,7 +338,7 @@ def main():
         L.append("    }")
         L.append("}")
         L.append("")
-    out["tracks/land_doctrine_tracks.txt"] = "\n".join(L)
+    # keep the original track definitions (armor/future tracks must stay defined)
 
     # --- subdoctrines ---
     for track, data, fname in [("infantry", INF, "infantry_subdoctrines.txt"),

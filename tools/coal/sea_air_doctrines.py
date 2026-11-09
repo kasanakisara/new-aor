@@ -57,7 +57,7 @@ SEA_SCREEN = [
      [("escort_duties", {"destroyer": {"sub_detection": 0.10}}),
       ("escort_reclassification", {"light_cruiser": {"sub_detection": 0.05}}),
       ("open_water_patrolling", {"destroyer": {"naval_range": 0.10}}),
-      ("rough_weather_procedure", {"destroyer": {"naval_weather_penalty_factor": -0.10}})]),
+      ("rough_weather_procedure", {"naval_weather_penalty_factor": -0.10})]),
     ("torpedo_primacy", "SUBDOCTRINE_TORPEDO_PRIMACY", "GFX_doctrine_naval_strike_torpedo_tactics_medium",
      {"destroyer": {"torpedo_attack": 0.05}},
      [("specialized_torpedoes", {"destroyer": {"torpedo_attack": 0.10}}),
@@ -86,8 +86,8 @@ SEA_SCREEN = [
      {"destroyer": {"max_organisation": 5}},
      [("green_water_operations", {"destroyer": {"max_organisation": 5}}),
       ("inshore_operations", {"light_cruiser": {"max_organisation": 5}}),
-      ("mine_warfare", {"destroyer": {"naval_mine_hit_chance": 0.10}}),
-      ("minesweeping", {"light_cruiser": {"mines_sweeping_by_fleets_factor": 0.10}})]),
+      ("mine_warfare", {"naval_mine_hit_chance": 0.10}),
+      ("minesweeping", {"mines_sweeping_by_fleets_factor": 0.10})]),
     ("anti_aircraft_cruisers", "SUBDOCTRINE_SCREEN_ANTI_AIRCRAFT_CRUISERS", "GFX_doctrine_battleship_antiair_screen_medium",
      {"light_cruiser": {"anti_air_attack": 0.05}},
      [("inshore_aa_screen", {"light_cruiser": {"anti_air_attack": 0.05}}),
@@ -125,8 +125,8 @@ FIGHTER = [
      {"fighter": {"air_defence": 0.05}},
      [("home_defence", {"fighter": {"air_defence": 0.05}}),
       ("forward_interception", {"fighter": {"air_agility": 0.05}}),
-      ("all_weather_training", {"fighter": {"air_weather_penalty": -0.10}}),
-      ("experienced_pilots_protection", {"fighter": {"air_ace_generation_chance_factor": 0.10}})]),
+      ("all_weather_training", {"air_weather_penalty": -0.10}),
+      ("experienced_pilots_protection", {"air_ace_generation_chance_factor": 0.10})]),
     ("air_subdoctrine_escort_fighter", "SUBDOCTRINE_ESCORT_FIGHTER", "GFX_doctrine_escort_patrols_medium",
      {"fighter": {"air_range": 0.05}},
      [("escort_missions", {"fighter": {"air_range": 0.10}}),
@@ -137,34 +137,34 @@ FIGHTER = [
      {"fighter": {"air_attack": 0.05}},
      [("evasive_techniques", {"fighter": {"air_agility": 0.10}}),
       ("experienced_gunners", {"fighter": {"air_attack": 0.05}}),
-      ("tactical_flexibility", {"fighter": {"air_mission_efficiency": 0.05}}),
-      ("ace_pilots", {"fighter": {"ace_effectiveness_factor": 0.10}})]),
+      ("tactical_flexibility", {"air_mission_efficiency": 0.05}),
+      ("ace_pilots", {"ace_effectiveness_factor": 0.10})]),
     ("air_subdoctrine_fighter_bombers", "SUBDOCTRINE_FIGHTER_BOMBERS", "GFX_doctrine_air_skirmish_medium",
      {"cas": {"air_attack": 0.05}},
      [("fighter_bombers", {"cas": {"air_attack": 0.05}}),
       ("ground_interdiction", {"cas": {"air_ground_attack": 0.05}}),
       ("low_level_attack_runs", {"cas": {"air_ground_attack": 0.10}}),
-      ("close_air_support_aces", {"cas": {"air_ace_generation_chance_factor": 0.10}})]),
+      ("close_air_support_aces", {"air_ace_generation_chance_factor": 0.10})]),
     ("air_subdoctrine_aerial_reconnaissance", "SUBDOCTRINE_AERIAL_RECONNAISSANCE", "GFX_doctrine_formation_flying_medium",
      {"scout_plane": {"air_range": 0.05}},
-     [("forward_spotters", {"scout_plane": {"air_mission_efficiency": 0.05}}),
+     [("forward_spotters", {"air_mission_efficiency": 0.05}),
       ("improved_observation", {"scout_plane": {"air_range": 0.10}}),
       ("terrain_familiarity", {"scout_plane": {"air_agility": 0.05}}),
-      ("rapid_reporting", {"scout_plane": {"air_mission_efficiency": 0.05}})]),
+      ("rapid_reporting", {"air_mission_efficiency": 0.05})]),
 ]
 
 BOMBER = [
     ("air_subdoctrine_close_range_support", "SUBDOCTRINE_CLOSE_RANGE_SUPPORT", "GFX_doctrine_direct_ground_support_medium",
      {"cas": {"air_ground_attack": 0.05}},
      [("continuous_fire_support", {"cas": {"air_ground_attack": 0.05}}),
-      ("forward_air_controllers", {"cas": {"air_close_air_support_org_damage_factor": 0.05}}),
+      ("forward_air_controllers", {"air_close_air_support_org_damage_factor": 0.05}),
       ("suppression_runs", {"cas": {"air_ground_attack": 0.05}}),
       ("cas_preservation", {"cas": {"air_defence": 0.05}})]),
     ("air_subdoctrine_tactical_battlefield_support", "SUBDOCTRINE_TACTICAL_BATTLEFIELD_SUPPORT", "GFX_doctrine_direct_ground_support_medium",
      {"tac_bomber": {"air_ground_attack": 0.05}},
      [("ground_interdiction", {"tac_bomber": {"air_ground_attack": 0.05}}),
       ("movement_interdiction", {"tac_bomber": {"air_ground_attack": 0.05}}),
-      ("effective_targetting", {"tac_bomber": {"air_mission_efficiency": 0.05}}),
+      ("effective_targetting", {"air_mission_efficiency": 0.05}),
       ("optimized_payload", {"tac_bomber": {"air_ground_attack": 0.05}})]),
     ("air_subdoctrine_carpet_bombing", "SUBDOCTRINE_CARPET_BOMBING", "GFX_doctrine_strategic_destruction_medium",
      {"strat_bomber": {"air_ground_attack": 0.05}},
@@ -174,37 +174,37 @@ BOMBER = [
       ("rugged_airframes", {"strat_bomber": {"air_defence": 0.05}})]),
     ("air_subdoctrine_night_bombing", "SUBDOCTRINE_NIGHT_BOMBING", "GFX_doctrine_night_bombing_medium",
      {"strat_bomber": {"air_weather_penalty": -0.10}},
-     [("night_operations", {"strat_bomber": {"air_mission_efficiency": 0.05}}),
-      ("safety_protocols", {"strat_bomber": {"air_accidents_factor": -0.05}}),
-      ("all_weather_drills", {"tac_bomber": {"air_weather_penalty": -0.10}}),
+     [("night_operations", {"air_mission_efficiency": 0.05}),
+      ("safety_protocols", {"air_accidents_factor": -0.05}),
+      ("all_weather_drills", {"air_weather_penalty": -0.10}),
       ("navigation_training", {"strat_bomber": {"air_range": 0.05}})]),
     ("air_subdoctrine_coastal_air_patrol", "SUBDOCTRINE_COASTAL_AIR_PATROL", "GFX_doctrine_naval_air_operations_medium",
      {"nav_bomber": {"naval_strike_attack": 0.05}},
      [("naval_strike_aces", {"nav_bomber": {"naval_strike_attack": 0.05}}),
-      ("port_strikes", {"nav_bomber": {"port_strike": 0.05}}),
+      ("port_strikes", {"port_strike": 0.05}),
       ("extended_sea_patrols", {"nav_bomber": {"air_range": 0.10}}),
-      ("naval_expertise", {"nav_bomber": {"naval_strike_targetting_factor": 0.05}})]),
+      ("naval_expertise", {"naval_strike_targetting_factor": 0.05})]),
 ]
 
 BLIMP = [
     ("air_subdoctrine_blimp_scouting", "SUBDOCTRINE_BLIMP_SCOUTING", "GFX_doctrine_formation_flying_medium",
      {"airship": {"air_range": 0.10}},
-     [("frontline_recon", {"airship": {"air_mission_efficiency": 0.05}}),
+     [("frontline_recon", {"air_mission_efficiency": 0.05}),
       ("low_altitude_observation", {"airship": {"air_range": 0.05}}),
-      ("rapid_reporting", {"airship": {"air_mission_efficiency": 0.05}}),
-      ("weather_reading", {"airship": {"air_weather_penalty": -0.10}})]),
+      ("rapid_reporting", {"air_mission_efficiency": 0.05}),
+      ("weather_reading", {"air_weather_penalty": -0.10})]),
     ("air_subdoctrine_blimp_maritime_patrol", "SUBDOCTRINE_BLIMP_MARITIME_PATROL", "GFX_doctrine_naval_air_operations_medium",
      {"aor_blimp_maritime_patrol_plane": {"air_range": 0.10}},
      [("sea_lane_patrol", {"aor_blimp_maritime_patrol_plane": {"air_range": 0.10}}),
-      ("convoy_watching", {"aor_blimp_maritime_patrol_plane": {"air_mission_efficiency": 0.05}}),
+      ("convoy_watching", {"air_mission_efficiency": 0.05}),
       ("coastal_recon", {"airship": {"air_range": 0.10}}),
-      ("radio_reporting", {"aor_blimp_maritime_patrol_plane": {"naval_strike_targetting_factor": 0.05}})]),
+      ("radio_reporting", {"naval_strike_targetting_factor": 0.05})]),
     ("air_subdoctrine_blimp_anti_submarine", "SUBDOCTRINE_BLIMP_ANTI_SUBMARINE", "GFX_doctrine_hunter_killer_groups_medium",
      {"aor_blimp_naval_bomber": {"naval_strike_attack": 0.05}},
      [("submarine_hunting", {"aor_blimp_naval_bomber": {"naval_strike_attack": 0.05}}),
       ("depth_charge_drops", {"aor_blimp_naval_bomber": {"naval_strike_attack": 0.05}}),
-      ("shadowing", {"aor_blimp_maritime_patrol_plane": {"air_mission_efficiency": 0.05}}),
-      ("night_patrols", {"aor_blimp_naval_bomber": {"air_weather_penalty": -0.10}})]),
+      ("shadowing", {"air_mission_efficiency": 0.05}),
+      ("night_patrols", {"air_weather_penalty": -0.10})]),
     ("air_subdoctrine_blimp_bombing", "SUBDOCTRINE_BLIMP_BOMBING", "GFX_doctrine_night_bombing_medium",
      {"aor_blimp_naval_bomber": {"air_ground_attack": 0.05}},
      [("night_harassment", {"aor_blimp_naval_bomber": {"air_ground_attack": 0.05}}),
@@ -217,33 +217,36 @@ RIGID = [
     ("air_subdoctrine_rigid_long_range_recon", "SUBDOCTRINE_RIGID_LONG_RANGE_RECON", "GFX_doctrine_formation_flying_medium",
      {"rigid_airship": {"air_range": 0.10}},
      [("oceanic_recon", {"rigid_airship": {"air_range": 0.10}}),
-      ("fleet_scouting", {"rigid_airship": {"air_mission_efficiency": 0.05}}),
-      ("weather_procedures", {"rigid_airship": {"air_weather_penalty": -0.10}}),
-      ("radio_room", {"rigid_airship": {"air_mission_efficiency": 0.05}})]),
+      ("fleet_scouting", {"air_mission_efficiency": 0.05}),
+      ("weather_procedures", {"air_weather_penalty": -0.10}),
+      ("radio_room", {"air_mission_efficiency": 0.05})]),
     ("air_subdoctrine_rigid_strategic_bombing", "SUBDOCTRINE_RIGID_STRATEGIC_BOMBING", "GFX_doctrine_strategic_destruction_medium",
      {"rigid_airship": {"air_ground_attack": 0.05}, "airship_bomber": {"air_ground_attack": 0.05}},
      [("night_raids", {"airship_bomber": {"air_ground_attack": 0.05}}),
       ("heavy_payloads", {"airship_bomber": {"air_ground_attack": 0.05}}),
       ("high_altitude_runs", {"rigid_airship": {"air_defence": 0.05}}),
-      ("target_selection", {"airship_bomber": {"air_mission_efficiency": 0.05}})]),
+      ("target_selection", {"air_mission_efficiency": 0.05})]),
     ("air_subdoctrine_rigid_fleet_escort", "SUBDOCTRINE_RIGID_FLEET_ESCORT", "GFX_doctrine_fleet_in_being_medium",
      {"rigid_airship": {"air_defence": 0.05}},
      [("fleet_cover", {"rigid_airship": {"air_defence": 0.05}}),
       ("anti_airship_patrols", {"rigid_airship": {"air_attack": 0.05}}),
       ("convoy_shadowing", {"aor_rigid_maritime_patrol_plane": {"air_range": 0.10}}),
-      ("coordinated_search", {"aor_rigid_maritime_patrol_plane": {"air_mission_efficiency": 0.05}})]),
+      ("coordinated_search", {"air_mission_efficiency": 0.05})]),
     ("air_subdoctrine_rigid_supply", "SUBDOCTRINE_RIGID_SUPPLY", "GFX_doctrine_low_echelon_support_medium",
      {"rigid_airship": {"air_range": 0.05}},
      [("remote_supply", {"rigid_airship": {"air_range": 0.10}}),
       ("long_range_transport", {"rigid_airship": {"air_range": 0.05}}),
-      ("field_resupply", {"rigid_airship": {"air_mission_efficiency": 0.05}}),
-      ("maintenance_crews", {"rigid_airship": {"air_accidents_factor": -0.05}})]),
+      ("field_resupply", {"air_mission_efficiency": 0.05}),
+      ("maintenance_crews", {"air_accidents_factor": -0.05})]),
 ]
 
 
 def fmt_mods(mods, indent):
     out = []
     for target, vals in mods.items():
+        if not isinstance(vals, dict):
+            out.append("%s%s = %s" % (indent, target, vals))
+            continue
         out.append("%s%s = {" % (indent, target))
         for k, v in vals.items():
             out.append("%s    %s = %s" % (indent, k, v))
@@ -280,7 +283,7 @@ def emit_sub(sid, key, icon, track, effect, rewards, xp_type):
 
 def emit_grand(gid, key, icon, effects, milestones, tracks, xp_type, var_prefix):
     L = ["%s = {" % gid,
-         "    folder = %s" % ("sea" if xp_type == "navy" else "air"),
+         "    folder = %s" % ("naval" if xp_type == "navy" else "air"),
          "",
          "    name = %s" % key,
          "    description = %s_DESC" % key,
@@ -362,6 +365,9 @@ def main():
                             ["rigid_airship", "airship_bomber", "aor_rigid_naval_bomber", "aor_rigid_maritime_patrol_plane"])]:
         L.append("%s = {" % tid)
         L.append("    name = %s" % key)
+        L.append('    background = "GFX_air_superiority_bg"')
+        L.append('    icon = "GFX_doctrine_milestone_fighter_air"')
+        L.append('    icon_frame = "GFX_doctrine_decor_air"')
         L.append("    mastery = {")
         L.append("        multiplier = 1.0")
         if cats:

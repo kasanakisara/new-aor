@@ -14,15 +14,11 @@
     ai_will_do = { base = 1 }
 
     # EFFECTS
-    category_army = {
-        max_planning = 0.05
-    }
+    max_planning = 0.05
 
     rewards = {
         mission_orders = {
-            category_army = {
-                max_planning = 0.05
-            }
+            max_planning = 0.05
         }
         initiative = {
             category_all_infantry = {
@@ -30,10 +26,8 @@
             }
         }
         combined_planning = {
-            category_army = {
-                max_planning = 0.05
-                command_power_gain = 0.1
-            }
+            max_planning = 0.05
+            command_power_gain = 0.1
         }
         flexible_response = {
             category_all_infantry = {
@@ -121,9 +115,7 @@ infiltration_tactics = {
             }
         }
         night_infiltration = {
-            category_light_infantry = {
-                land_night_attack = 0.05
-            }
+            land_night_attack = 0.05
         }
         command_decentralisation = {
             category_all_infantry = {
@@ -216,9 +208,7 @@ guerilla_war = {
             }
         }
         night_operations = {
-            irregular_infantry = {
-                land_night_attack = 0.05
-            }
+            land_night_attack = 0.05
         }
     }
 }
@@ -283,15 +273,11 @@ expeditionary_warfare = {
     ai_will_do = { base = 1 }
 
     # EFFECTS
-    category_army = {
-        supply_consumption_factor = -0.1
-    }
+    supply_consumption_factor = -0.1
 
     rewards = {
         overseas_supply = {
-            category_army = {
-                out_of_supply_factor = -0.1
-            }
+            out_of_supply_factor = -0.1
         }
         colonial_warfare = {
             category_all_infantry = {
@@ -321,21 +307,17 @@ methodical_battle = {
     xp_type = army
 
     available = {
-        has_grand_doctrine = industrial_warfare
+        has_doctrine = industrial_warfare
     }
 
     ai_will_do = { base = 1 }
 
     # EFFECTS
-    category_army = {
-        max_planning = 0.05
-    }
+    max_planning = 0.05
 
     rewards = {
         command_by_directive = {
-            category_army = {
-                max_planning = 0.1
-            }
+            max_planning = 0.1
         }
         centralized_fire_planning = {
             category_line_artillery = {
@@ -366,7 +348,7 @@ attack_in_position_warfare = {
     xp_type = army
 
     available = {
-        has_grand_doctrine = industrial_warfare
+        has_doctrine = industrial_warfare
     }
 
     ai_will_do = { base = 1 }
