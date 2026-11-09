@@ -1,0 +1,234 @@
+##### land_grand_doctrines.txt
+  new_mobile_warfare           GRAND_DOCTRINE_MOBILE_WARFARE            tracks=[]
+  superior_firepower           GRAND_DOCTRINE_SUPERIOR_FIREPOWER        tracks=[]
+  grand_battleplan             GRAND_DOCTRINE_GRAND_BATTLEPLAN          tracks=[]
+  mass_assault                 GRAND_DOCTRINE_MASS_ASSAULT              tracks=[]
+
+##### air_grand_doctrines.txt
+  new_strategic_destruction    GRAND_DOCTRINE_STRATEGIC_DESTRUCTION     tracks=[]
+  new_battlefield_support      GRAND_DOCTRINE_BATTLEFIELD_SUPPORT       tracks=[]
+  new_operational_integrity    GRAND_DOCTRINE_OPERATIONAL_INTEGRITY     tracks=[]
+
+##### sea_grand_doctrines.txt
+  new_fleet_in_being           GRAND_DOCTRINE_FLEET_IN_BEING            tracks=[]
+  new_convoy_raiding           GRAND_DOCTRINE_CONVOY_RAIDING            tracks=[]
+  new_base_strike              GRAND_DOCTRINE_BASE_STRIKE               tracks=[]
+
+##### special_forces_grand_doctrines.txt
+  special_forces_quantity      GRAND_DOCTRINE_SPECIAL_FORCES_QUANTITY   tracks=[]
+  special_forces_quality       GRAND_DOCTRINE_SPECIAL_FORCES_QUALITY    tracks=[]
+
+##### tracks/land_doctrine_tracks.txt
+  infantry                 DOCTRINE_TRACK_INFANTRY              sub_units= cats=category_all_infantry
+  combat_support           DOCTRINE_TRACK_COMBAT_SUPPORT        sub_units= cats=category_line_artillery category_artillery category_support_
+  armor                    DOCTRINE_TRACK_ARMOR                 sub_units=armored_car cats=category_tanks category_all_armor
+  operations               DOCTRINE_TRACK_OPERATIONS            sub_units= cats=category_all_infantry category_line_artillery category_artil
+
+##### tracks/future_land_doctrine_tracks.txt
+  future_infantry          DOCTRINE_TRACK_FUTURE_INFANTRY       sub_units= cats=category_all_infantry
+  future_combat_support    DOCTRINE_TRACK_FUTURE_COMBAT_SUPPORT sub_units= cats=category_line_artillery category_artillery category_support_
+  future_armor             DOCTRINE_TRACK_FUTURE_ARMOR          sub_units=armored_car cats=category_tanks category_all_armor
+  future_operations        DOCTRINE_TRACK_FUTURE_OPERATIONS     sub_units= cats=category_all_infantry category_line_artillery category_artil
+
+##### tracks/future_air_doctrine_tracks.txt
+  future_fighter_aircraft  DOCTRINE_TRACK_FUTURE_FIGHTER_AIRCRAFT sub_units= cats=
+  future_strike_aircraft   DOCTRINE_TRACK_FUTURE_STRIKE_AIRCRAFT sub_units= cats=
+  future_medium_aircraft   DOCTRINE_TRACK_FUTURE_MEDIUM_AIRCRAFT sub_units= cats=
+  future_heavy_aircraft    DOCTRINE_TRACK_FUTURE_HEAVY_AIRCRAFT sub_units= cats=
+
+##### tracks/future_sea_doctrine_tracks.txt
+  future_capital_ships     DOCTRINE_TRACK_FUTURE_CAPITAL_SHIPS  sub_units= cats=
+  future_carriers          DOCTRINE_TRACK_FUTURE_CARRIERS       sub_units= cats=
+  future_screens           DOCTRINE_TRACK_FUTURE_SCREENS        sub_units= cats=
+  future_submarines        DOCTRINE_TRACK_FUTURE_SUBMARINES     sub_units= cats=
+
+##### subdoctrines/land/armor_subdoctrines.txt
+  armored_spearhead                  SUBDOCTRINE_ARMORED_SPEARHEAD      effects=['vailable', 'visible', 'i_will_do', 'ewards']
+  armored_spearhead_no_lar           SUBDOCTRINE_ARMORED_SPEARHEAD      effects=['vailable', 'visible', 'i_will_do', 'ewards']
+  armored_infantry_support           SUBDOCTRINE_ARMORED_INFANTRY_SUPPORT effects=['vailable', 'i_will_do', 'ffect', 'ewards']
+  streamlined_deployment             SUBDOCTRINE_STREAMLINED_DEPLOYMENT effects=['vailable', 'i_will_do', 'category_all_armor', 'ewards']
+  mobile_defense                     SUBDOCTRINE_MOBILE_DEFENSE         effects=['vailable', 'i_will_do', 'armored_engineer', 'category_all_armor', 'ewards']
+  armored_cavalry                    SUBDOCTRINE_ARMORED_CAVALRY        effects=['vailable', 'visible', 'i_will_do', 'armored_car', 'mechanized', 'ewards']
+  armored_cavalry_no_lar             SUBDOCTRINE_ARMORED_CAVALRY        effects=['vailable', 'visible', 'i_will_do', 'motorized', 'mechanized', 'ewards']
+  tank_destroyer_force               SUBDOCTRINE_TANK_DESTROYER_FORCE   effects=['visible', 'i_will_do', 'category_all_armor', 'ewards']
+
+##### subdoctrines/land/combat_support_subdoctrines.txt
+  fire_concentration                 SUBDOCTRINE_FIRE_CONCENTRATION     effects=['vailable', 'i_will_do', 'artillery_brigade', 'rocket_artillery_brigade', 'category_line_artillery', 'ewards']
+  anti_tank_frontline                SUBDOCTRINE_ANTI_TANK_FRONT        effects=['vailable', 'i_will_do', 'engineer', 'ewards']
+  flying_batteries                   SUBDOCTRINE_FLYING_BATTERIES       effects=['vailable', 'visible', 'i_will_do', 'ffect', 'category_line_artillery', 'ewards']
+  mobile_recon_and_assault           SUBDOCTRINE_MOBILE_RECON_AND_ASSAULT effects=['vailable', 'visible', 'i_will_do', 'armored_car', 'light_armor', 'ewards']
+  mobile_recon_and_assault_no_lar    SUBDOCTRINE_MOBILE_RECON_AND_ASSAULT effects=['vailable', 'visible', 'i_will_do', 'light_armor', 'ewards']
+  self_propelled_support             SUBDOCTRINE_SELF_PROPELLED_SUPPORT effects=['vailable', 'visible', 'i_will_do', 'category_self_propelled_artillery', 'category_self_propelled_anti_air', 'category_tank_destroyers', 'ewards']
+  siege_artillery                    SUBDOCTRINE_SIEGE_ARTILLERY        effects=['vailable', 'visible', 'i_will_do', 'equipment_bonus', 'ewards', 'urban_strongpoint_sieges', 'mobile_artillery_command']
+  field_engineering                  SUBDOCTRINE_FIELD_ENGINEERING      effects=['i_will_do', 'engineer', 'assault_engineer', 'pioneer_support', 'ewards']
+
+##### subdoctrines/land/future_armor_subdoctrines.txt
+  future_main_battle_tanks           SUBDOCTRINE_FUTURE_MAIN_BATTLE_TANKS effects=['vailable', 'i_will_do', 'category_modern_tanks', 'ewards']
+  future_super_heavy_tanks           SUBDOCTRINE_FUTURE_SUPER_HEAVY_TANKS effects=['vailable', 'i_will_do', 'category_super_heavy_tanks', 'ewards']
+  future_amphibious_tanks            SUBDOCTRINE_FUTURE_AMPHIBIOUS_TANKS effects=['vailable', 'i_will_do', 'light_armor', 'modern_armor', 'ewards']
+
+##### subdoctrines/land/future_combat_support_subdoctrines.txt
+  future_artillery_power             SUBDOCTRINE_FUTURE_ARTILLERY_POWER effects=['vailable', 'i_will_do', 'category_line_artillery', 'ewards']
+  future_advanced_rocketry           SUBDOCTRINE_FUTURE_ADVANCED_ROCKETRY effects=['vailable', 'i_will_do', 'category_rocket_artillery', 'ewards']
+  future_modern_logistics            SUBDOCTRINE_FUTURE_MODERN_LOGISTICS effects=['vailable', 'i_will_do', 'maintenance_company', 'armored_maintenance', 'field_hospital', 'helicopter_field_hospital', 'logistics_company', 'helicopter_transport', 'signal_company', 'armored_signal', 'ewards']
+  air_cavalry                        SUBDOCTRINE_AIR_CAVALRY            effects=['vailable', 'visible', 'i_will_do', 'category_helicopter_support_companies', 'ewards']
+
+##### subdoctrines/land/future_infantry_subdoctrines.txt
+  future_motorized_infantry          SUBDOCTRINE_FUTURE_MOTORIZED_INFANTRY effects=['vailable', 'i_will_do', 'category_vehicle_infantry', 'ewards']
+  future_modern_mechanized_formations SUBDOCTRINE_MODERN_MECHANIZED_FORMATIONS effects=['vailable', 'i_will_do', 'category_vehicle_infantry', 'ewards']
+  future_modern_infantry_warfare     SUBDOCTRINE_FUTURE_MODERN_INFANTRY_WARFARE effects=['vailable', 'i_will_do', 'infantry', 'magical_infantry', 'ewards']
+  future_partisan_heroes             SUBDOCTRINE_FUTURE_PARTISAN_HEROES effects=['vailable', 'i_will_do', 'category_light_infantry', 'ewards']
+  future_magocentric_warfare         SUBDOCTRINE_FUTURE_MAGOCENTRIC_WARFARE effects=['vailable', 'i_will_do', 'category_magical_infantry', 'ewards']
+
+##### subdoctrines/land/future_operations_subdoctrines.txt
+  future_modern_battleplan           SUBDOCTRINE_FUTURE_MODERN_BATTLEPLAN effects=['vailable', 'i_will_do', 'ewards']
+  future_global_expeditionaries      SUBDOCTRINE_FUTURE_GLOBAL_EXPEDITIONARIES effects=['vailable', 'i_will_do', 'ewards']
+  future_wmd_integration             SUBDOCTRINE_FUTURE_WMD_INTEGRATION effects=['vailable', 'i_will_do', 'ewards']
+  future_ideological_fanaticism      SUBDOCTRINE_FUTURE_IDEOLOGICAL_FANATICISM effects=['vailable', 'i_will_do', 'ewards']
+
+##### subdoctrines/land/infantry_subdoctrines.txt
+  mobile_infantry                    SUBDOCTRINE_MOBILE_INFANTRY        effects=['vailable', 'i_will_do', 'ffect', 'ewards']
+  defensive_postures                 SUBDOCTRINE_DEFENSIVE_POSTURES     effects=['vailable', 'i_will_do', 'category_vehicle_infantry', 'category_all_infantry', 'ewards']
+  large_unit_tactics                 SUBDOCTRINE_LARGE_UNIT_TACTICS     effects=['vailable', 'i_will_do', 'ffect', 'category_all_infantry', 'ewards']
+  assault_infantry                   SUBDOCTRINE_ASSAULT_INFANTRY       effects=['vailable', 'i_will_do', 'artillery', 'ewards']
+  commandos                          SUBDOCTRINE_COMMANDOS              effects=['vailable', 'visible', 'i_will_do', 'logistics_company', 'ewards']
+  irregulars                         SUBDOCTRINE_IRREGULARS             effects=['vailable', 'visible', 'i_will_do', 'irregular_infantry', 'militia', 'ewards']
+  peoples_war                        SUBDOCTRINE_PEOPLES_WAR            effects=['vailable', 'visible', 'i_will_do', 'militia', 'ewards']
+  great_war_infantry                 SUBDOCTRINE_GREAT_WAR_INFANTRY     effects=['vailable', 'i_will_do', 'category_vehicle_infantry', 'category_light_infantry', 'ewards']
+
+##### subdoctrines/land/operations_subdoctrines.txt
+  mission_type_tactics               SUBDOCTRINE_MISSION_TYPE_TACTICS   effects=['i_will_do', 'vailable', 'category_all_infantry', 'ewards']
+  last_stand                         SUBDOCTRINE_LAST_STAND             effects=['vailable', 'i_will_do', 'ewards']
+  infiltration_tactics               SUBDOCTRINE_INFILTRATION_TACTICS   effects=['vailable', 'i_will_do', 'i_will_do', 'ewards']
+  grand_assault                      SUBDOCTRINE_GRAND_ASSAULT          effects=['vailable', 'i_will_do', 'category_army', 'i_will_do', 'ewards']
+  deep_battle                        SUBDOCTRINE_DEEP_BATTLE            effects=['vailable', 'visible', 'i_will_do', 'category_tanks', 'i_will_do', 'ewards']
+  deep_battle_no_lar                 SUBDOCTRINE_DEEP_BATTLE            effects=['vailable', 'visible', 'i_will_do', 'category_tanks', 'i_will_do', 'ewards']
+  guerilla_war                       SUBDOCTRINE_GUERILLA_WAR           effects=['vailable', 'visible', 'i_will_do', 'irregular_infantry', 'militia', 'ewards']
+  rapid_domination                   SUBDOCTRINE_RAPID_DOMINATION       effects=['vailable', 'i_will_do', 'category_all_infantry', 'category_line_artillery', 'i_will_do', 'ewards']
+  expeditionary_warfare              SUBDOCTRINE_EXPEDITIONARY_WARFARE  effects=['vailable', 'visible', 'i_will_do', 'i_will_do', 'ewards']
+
+##### subdoctrines/air/advanced_air_fighter_aircraft_subdoctrines.txt
+  air_subdoctrine_dominance_theory   SUBDOCTRINE_AIR_DOMINANCE_THEORY   effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_hammer_and_anvil   SUBDOCTRINE_AIR_HAMMER_ANVIL       effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_firestorm_fuel     SUBDOCTRINE_AIR_FIRESTORM_FUEL     effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_naval_strike_groups SUBDOCTRINE_AIR_NAVAL_FIGHTERS     effects=['vailable', 'i_will_do', 'ewards']
+
+##### subdoctrines/air/advanced_air_heavy_aircraft_subdoctrines.txt
+  air_subdoctrine_firestorm_strategy SUBDOCTRINE_AIR_FIRESTORM          effects=['vailable', 'i_will_do', 'strat_bomber', 'ewards']
+  air_subdoctrine_intercontinental_strategy_gtd SUBDOCTRINE_AIR_INTERCONTINENTAL_AIRCRAFT effects=['vailable', 'visible', 'i_will_do', 'strat_bomber_intercontinental', 'ewards']
+  air_subdoctrine_intercontinental_strategy_nogtd SUBDOCTRINE_AIR_INTERCONTINENTAL_AIRCRAFT effects=['vailable', 'visible', 'i_will_do', 'strat_bomber', 'ewards']
+  air_subdoctrine_ship_hunters       SUBDOCTRINE_AIR_SHIP_HUNTERS       effects=['vailable', 'i_will_do', 'maritime_patrol_plane', 'ewards']
+  air_subdoctrine_missile_superiority SUBDOCTRINE_AIR_MISSILES_DOCTRINE  effects=['vailable', 'visible', 'mastery', 'i_will_do', 'category_missiles', 'ewards']
+
+##### subdoctrines/air/advanced_air_medium_aircraft_subdoctrines.txt
+  air_subdoctrine_protected_destruction SUBDOCTRINE_AIR_PROTECTED_DESTRUCTION effects=['vailable', 'i_will_do', 'tac_bomber', 'ewards']
+  air_subdoctrine_close_air_bombing  SUBDOCTRINE_AIR_CLOSE_AIR_BOMBING  effects=['vailable', 'i_will_do', 'tac_bomber', 'ewards']
+  air_subdoctrine_shock_and_awe      SUBDOCTRINE_AIR_SHOCK_AND_AWE      effects=['vailable', 'i_will_do', 'tac_bomber', 'ewards']
+  air_subdoctrine_steel_predators    SUBDOCTRINE_AIR_HEAVY_FIGHTERS     effects=['vailable', 'i_will_do', 'heavy_fighter', 'ewards']
+
+##### subdoctrines/air/advanced_air_strike_aircraft_subdoctrines.txt
+  air_subdoctrine_iron_dome_strategy SUBDOCTRINE_AIR_IRON_DOME          effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+  air_subdoctrine_close_range_support SUBDOCTRINE_CLOSE_RANGE_SUPPORT    effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+  air_subdoctrine_auxillary_destruction SUBDOCTRINE_AUXILARY_DESTRUCTION   effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+  air_subdoctrine_heavy_cas_focus    SUBDOCTRINE_HEAVY_CAS              effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+
+##### subdoctrines/air/air_fighter_aircraft_subdoctrines.txt
+  air_subdoctrine_fighter_homeland_defense SUBDOCTRINE_FIGHTER_HOMELAND_DEFENSE effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_escort_fighter     SUBDOCTRINE_ESCORT_FIGHTER         effects=['vailable', 'i_will_do', 'category_fighter', 'ewards']
+  air_subdoctrine_fighter_bombers    SUBDOCTRINE_FIGHTER_BOMBERS        effects=['visible', 'vailable', 'i_will_do', 'category_fighter', 'ewards']
+  air_subdoctrine_tactical_flexibility SUBDOCTRINE_TACTICAL_FLEXIBILITY   effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_dogfighting_mastery SUBDOCTRINE_DOGFIGHTING_MASTERY    effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_fighter_central_field SUBDOCTRINE_FIGHTER_CENTRAL_FIELD  effects=['vailable', 'i_will_do', 'ewards']
+
+##### subdoctrines/air/air_heavy_aircraft_subdoctrines.txt
+  air_subdoctrine_night_bombing      SUBDOCTRINE_NIGHT_BOMBING          effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_carpet_bombing     SUBDOCTRINE_CARPET_BOMBING         effects=['vailable', 'i_will_do', 'category_strat_bomber', 'ewards']
+  air_subdoctrine_deep_air_raids     SUBDOCTRINE_DEEP_AIR_RAIDS         effects=['vailable', 'i_will_do', 'category_strat_bomber', 'ewards']
+  air_subdoctrine_flying_fortresses  SUBDOCTRINE_FLYING_FORTRESSES      effects=['vailable', 'i_will_do', 'category_strat_bomber', 'ewards']
+  air_subdoctrine_coastal_air_patrol SUBDOCTRINE_COASTAL_AIR_PATROL     effects=['visible', 'vailable', 'i_will_do', 'category_maritime_patrol_bomber', 'ewards']
+  air_subdoctrine_open_ocean_air_patrol SUBDOCTRINE_OPEN_OCEAN_AIR_PATROL  effects=['visible', 'vailable', 'i_will_do', 'category_maritime_patrol_bomber', 'ewards']
+  air_subdoctrine_heavy_aircraft_focus SUBDOCTRINE_HEAVY_AIRCRAFT_FOCUS   effects=['visible', 'vailable', 'i_will_do', 'category_strat_bomber', 'ewards']
+
+##### subdoctrines/air/air_medium_aircraft_subdoctrines.txt
+  air_subdoctrine_bomber_interception SUBDOCTRINE_BOMBER_INTERCEPTION    effects=['vailable', 'i_will_do', 'category_heavy_fighter', 'ewards']
+  air_subdoctrine_long_range_escort  SUBDOCTRINE_LONG_RANGE_ESCORT      effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_operational_air_support SUBDOCTRINE_OPERATIONAL_AIR_SUPPORT effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_tactical_battlefield_support SUBDOCTRINE_TACTICAL_BATTLEFIELD_SUPPORT effects=['vailable', 'i_will_do', 'category_tac_bomber', 'ewards']
+  air_subdoctrine_theater_interdiction SUBDOCTRINE_THEATER_INTERDICTION   effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_aerial_reconnaissance SUBDOCTRINE_AERIAL_RECONNAISSANCE  effects=['visible', 'vailable', 'i_will_do', 'category_scout_plane', 'ewards']
+
+##### subdoctrines/air/air_strike_aircraft_subdoctrines.txt
+  air_subdoctrine_flying_artillery   SUBDOCTRINE_FLYING_ARTILLERY       effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+  air_subdoctrine_dive_bombers       SUBDOCTRINE_DIVE_BOMBERS           effects=['vailable', 'i_will_do', 'category_cas', 'ewards']
+  air_subdoctrine_flexible_fire_support SUBDOCTRINE_FLEXIBLE_FIRE_SUPPORT  effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_carrier_strikes    SUBDOCTRINE_CARRIER_STRIKES        effects=['vailable', 'i_will_do', 'category_carrier_cas', 'category_carrier_nav_bomber', 'ewards']
+  air_subdoctrine_naval_strike_tactics SUBDOCTRINE_NAVAL_STRIKE_TACTICS   effects=['vailable', 'i_will_do', 'ewards']
+  air_subdoctrine_naval_torpedo_tactics SUBDOCTRINE_NAVAL_TORPEDO_TACTICS  effects=['vailable', 'i_will_do', 'category_nav_bomber', 'ewards']
+
+##### subdoctrines/sea/future_carriers_subdoctrines.txt
+  future_behemoth_fleet              SUBDOCTRINE_BEHEMOTH_FLEET         effects=['vailable', 'i_will_do', 'ewards']
+  future_mosquito_fleet              SUBDOCTRINE_MOSQUITO_FLEET         effects=['vailable', 'i_will_do', 'ewards']
+  future_hide_and_seek               SUBDOCTRINE_STEALTH_CARRIERS       effects=['vailable', 'i_will_do', 'carrier', 'ewards']
+  future_naval_hunters               SUBDOCTRINE_NAVAL_HUNTERS          effects=['vailable', 'i_will_do', 'carrier', 'ewards']
+
+##### subdoctrines/sea/future_navy_capital_subdoctrines.txt
+  future_floating_anti_air_platform  SUBDOCTRINE_FUTURE_FLOATING_ANTI_AIR_PLATFORM effects=['vailable', 'i_will_do', 'ewards']
+  future_missile_heavies             SUBDOCTRINE_FUTURE_MISSILE_HEAVIES effects=['vailable', 'i_will_do', 'ewards']
+  sea_doctrine_tons_of_steel         SUBDOCTRINE_TONS_OF_STEEL          effects=['vailable', 'i_will_do', 'ewards']
+  sea_doctrine_floating_fortress     SUBDOCTRINE_FLOATING_FORTRESS      effects=['vailable', 'i_will_do', 'ewards']
+
+##### subdoctrines/sea/future_screen_doctrines.txt
+  future_air_coverage                SUBDOCTRINE_ANTI_AIR_SCREEN        effects=['vailable', 'i_will_do', 'light_cruiser', 'destroyer', 'ewards']
+  future_barotrauma_reference        SUBDOCTRINE_ANTI_SUBMARINE_SCREEN  effects=['vailable', 'i_will_do', 'monitor', 'destroyer', 'ewards']
+  future_detection_ships             SUBDOCTRINE_DETECTION_SCREENS      effects=['vailable', 'i_will_do', 'monitor', 'light_cruiser', 'ewards']
+  future_litoral_ships               SUBDOCTRINE_LITORAL_SHIPS          effects=['vailable', 'i_will_do', 'monitor', 'destroyer', 'ewards']
+
+##### subdoctrines/sea/future_submarines_subdoctrines.txt
+  future_sub_cruisers_doc            SUBDOCTRINE_SUB_CRUISERS           effects=['vailable', 'visible', 'i_will_do', 'submarine', 'ewards']
+  future_sub_deep_operations         SUBDOCTRINE_DEEP_OPERATIONS        effects=['vailable', 'i_will_do', 'ewards']
+  future_sub_anti_capitals           SUBDOCTRINE_CAPITAL_HUNTERS        effects=['vailable', 'i_will_do', 'submarine', 'ewards']
+  future_sub_convoy_protection       SUBDOCTRINE_CONVOY_ESCORT_SUBS     effects=['vailable', 'i_will_do', 'submarine', 'ewards']
+
+##### subdoctrines/sea/navy_capital_subdoctrines.txt
+  line_of_battle                     SUBDOCTRINE_LINE_OF_BATTLE         effects=['vailable', 'i_will_do', 'ewards']
+  battlecruiser_supremacy            SUBDOCTRINE_BATTLECRUISER_SUPREMACY effects=['vailable', 'i_will_do', 'ewards']
+  armored_raiders                    SUBDOCTRINE_ARMORED_RAIDERS        effects=['vailable', 'i_will_do', 'ewards']
+  coastal_defence_fleet              SUBDOCTRINE_COASTAL_DEFENCE        effects=['visible', 'i_will_do', 'ffect', 'ewards']
+  naval_gunfire_support              SUBDOCTRINE_NAVAL_GUNFIRE_SUPPORT  effects=['vailable', 'visible', 'i_will_do', 'ewards']
+  battleship_antiair_screen          SUBDOCTRINE_BATTLESHIP_ANTIAIR_SCREEN effects=['vailable', 'visible', 'ewards']
+
+##### subdoctrines/sea/navy_carrier_doctrines.txt
+  carrier_battlegroups               SUBDOCTRINE_CARRIER_BATTLEGROUPS   effects=['i_will_do', 'vailable', 'i_will_do', 'ewards']
+  floating_airfields                 SUBDOCTRINE_CARRIER_AIRFIELDS      effects=['vailable', 'i_will_do', 'ewards']
+  escort_carrier_support             SUBDOCTRINE_ESCORT_CARRIER_SUPPORT effects=['vailable', 'visible', 'ewards']
+  broad_naval_support                SUBDOCTRINE_BROAD_NAVAL_SUPPORT    effects=['vailable', 'visible', 'ewards']
+  massed_carrier_fleet               SUBDOCTRINE_MASSED_CARRIER_FLEET   effects=['i_will_do', 'vailable', 'ewards']
+  light_task_forces                  SUBDOCTRINE_LIGHT_TASK_FORCES      effects=['i_will_do', 'mastery', 'vailable', 'visible', 'ewards']
+
+##### subdoctrines/sea/navy_screen_doctrines.txt
+  convoy_escort                      SUBDOCTRINE_SCREEN_CONVOY_ESCORT   effects=['vailable', 'i_will_do', 'ewards']
+  support_integrated_operations      SUBDOCTRINE_SCREEN_INTEGRATED_OPERATIONS effects=['vailable', 'i_will_do', 'ewards']
+  hunter_killers                     SUBDOCTRINE_SCREEN_HUNTER_KILLERS  effects=['vailable', 'visible', 'i_will_do', 'ewards']
+  torpedo_primacy                    SUBDOCTRINE_SCREEN_TORPEDO_PRIMACY effects=['i_will_do', 'vailable', 'visible', 'ewards']
+  anti_aircraft_cruisers             SUBDOCTRINE_SCREEN_ANTI_AIRCRAFT_CRUISERS effects=['vailable', 'visible', 'ewards']
+  screen_support_focus               SUBDOCTRINE_SCREEN_SUPPORT_FOCUS   effects=['vailable', 'visible', 'ewards']
+  jeune_ecole                        SUBDOCTRINE_SCREEN_JEUNE_ECOLE     effects=['vailable', 'ewards']
+  patrol_boats                       SUBDOCTRINE_SCREEN_PATROL_BOATS    effects=['vailable', 'visible', 'destroyer', 'ewards']
+
+##### subdoctrines/sea/navy_submarine_doctrines.txt
+  wolfpacks                          SUBDOCTRINE_SUBMARINE_WOLFPACKS    effects=['vailable', 'i_will_do', 'submarine', 'ewards']
+  submarine_fleet_operations         SUBDOCTRINE_SUBMARINE_FLEET_OPERATIONS effects=['vailable', 'i_will_do', 'ewards']
+  capital_hunters                    SUBDOCTRINE_SUBMARINE_CAPITAL_HUNTERS effects=['i_will_do', 'vailable', 'ewards']
+  submarine_coastal_defense          SUBDOCTRINE_SUBMARINE_COASTAL_DEFENSE effects=['vailable', 'visible', 'submarine', 'ewards']
+  coastal_minelaying                 SUBDOCTRINE_SUBMARINE_COASTAL_MINELAYING effects=['vailable', 'visible', 'ewards']
+  long_range_submarines              SUBDOCTRINE_SUBMARINE_LONG_RANGE_SUBMARINES effects=['vailable', 'visible', 'ewards']
+
+##### subdoctrines/special_forces/special_forces_subdoctrines.txt
+  mountaineers_1                     SUBDOCTRINE_MOUNTAINEERS_1         effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'rangers_support', 'ewards']
+  mountaineers_2                     SUBDOCTRINE_MOUNTAINEERS_2         effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'rangers_support', 'ewards']
+  marines_1                          SUBDOCTRINE_MARINES_1              effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'pioneer_support', 'ewards']
+  marines_2                          SUBDOCTRINE_MARINES_2              effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'pioneer_support', 'ewards']
+  paratroopers_1                     SUBDOCTRINE_PARATROOPERS_1         effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'signal_company', 'ewards']
+  paratroopers_2                     SUBDOCTRINE_PARATROOPERS_2         effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'field_hospital', 'ewards']
+  rangers_1                          SUBDOCTRINE_RANGERS_1              effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'ranger_battalion', 'ewards']
+  rangers_2                          SUBDOCTRINE_RANGERS_2              effects=['track', 'xor', 'mastery', 'vailable', 'visible', 'i_will_do', 'ffect', 'ranger_battalion', 'ewards']
