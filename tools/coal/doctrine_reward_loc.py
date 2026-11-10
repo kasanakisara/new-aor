@@ -74,6 +74,9 @@ WORDS = {
     "strongpoint_isolation": "强点孤立", "close_air_support_aces": "近距支援王牌",
     "preliminary": "预先", "tactical": "战术", "cas": "近距支援", "controllers": "管制员",
     "scorched_earth": "焦土", "forward_air_controllers": "前沿空中管制",
+    "long_range_liaison": "远程联络", "courier_service": "信使勤务", "personnel_transport": "人员运输",
+    "fall_of_shot_watching": "弹着观测", "counter_battery_spotting": "反炮兵校射",
+    "trench_mapping": "战壕测绘", "signal_flares": "信号弹", "liaison_flights": "联络飞行",
 }
 
 
