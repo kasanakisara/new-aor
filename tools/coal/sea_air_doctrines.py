@@ -167,7 +167,7 @@ BOMBER = [
       ("logistical_bombing", {"strat_bomber": {"air_ground_attack": 0.05}}),
       ("rugged_airframes", {"strat_bomber": {"air_defence": 0.05}})]),
     ("air_subdoctrine_night_bombing", "SUBDOCTRINE_NIGHT_BOMBING", "GFX_doctrine_night_bombing_medium",
-     {"strat_bomber": {"air_weather_penalty": -0.10}},
+     {"air_weather_penalty": -0.10},
      [("night_operations", {"air_mission_efficiency": 0.05}),
       ("safety_protocols", {"air_accidents_factor": -0.05}),
       ("all_weather_drills", {"air_weather_penalty": -0.10}),
@@ -395,7 +395,12 @@ def main():
     if apply:
         for rel, text in out.items():
             p = os.path.join(DOC, rel)
-            open(p, "wb").write(b"\xef\xbb\xbf" + text.encode("utf-8"))
+            data = text.encode("utf-8")
+            if rel.startswith("tracks/"):
+                data = data.lstrip(b"\xef\xbb\xbf").lstrip(b"\r\n \t")
+                open(p, "wb").write(data)
+            else:
+                open(p, "wb").write(b"\xef\xbb\xbf" + data)
             print("wrote", p)
         # delete old air/sea files
         for fn in ["future_carriers_subdoctrines.txt", "future_navy_capital_subdoctrines.txt",
@@ -414,7 +419,7 @@ def main():
                 print("removed air", fn)
         # suppress vanilla carrier/submarine doctrine content
         for fn in ["navy_carrier_doctrines.txt", "navy_submarine_doctrines.txt"]:
-            open(os.path.join(DOC, "subdoctrines", "sea", fn), "wb").write(b"\xef\xbb\xbf# 1919: carrier/submarine doctrine disabled\n")
+            open(os.path.join(DOC, "subdoctrines", "sea", fn), "wb").write(b"# 1919: carrier/submarine doctrine disabled\n")
             print("emptied sea", fn)
         for fn in ["future_air_doctrine_tracks.txt", "future_sea_doctrine_tracks.txt"]:
             p = os.path.join(DOC, "tracks", fn)

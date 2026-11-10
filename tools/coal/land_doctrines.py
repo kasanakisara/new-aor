@@ -391,7 +391,7 @@ def main():
                 print("removed", p)
         # 覆盖原版装甲子学说：留空文件，避免 1919 出现装甲学说
         open(os.path.join(DOC, "subdoctrines", "land", "armor_subdoctrines.txt"), "wb").write(
-            b"\xef\xbb\xbf# 1919: armor doctrine disabled\n")
+            b"# 1919: armor doctrine disabled\n")
         for fn in ["future_land_doctrine_tracks.txt"]:
             p = os.path.join(DOC, "tracks", fn)
             if os.path.exists(p):
