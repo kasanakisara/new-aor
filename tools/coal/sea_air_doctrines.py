@@ -109,7 +109,7 @@ AIR_GRAND = [
     ("new_battlefield_support", "GRAND_DOCTRINE_BATTLEFIELD_SUPPORT", "GFX_doctrine_direct_ground_support_medium",
      [("cas", {"air_ground_attack": 0.05}),
       ("tac_bomber", {"air_ground_attack": 0.05}),
-      ("aor_blimp_naval_bomber", {"air_ground_attack": 0.05}),
+      ("aor_blimp_naval_bomber", {"naval_strike_attack": 0.05}),
       ("airship", {"air_defence": 0.05})],
      [{"cas": {"air_agility": 0.05}},
       {"fighter": {"air_agility": 0.05}},
