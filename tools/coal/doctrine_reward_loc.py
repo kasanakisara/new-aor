@@ -123,8 +123,8 @@ def main():
     zh = ["l_simp_chinese:"]
     en = ["l_english:"]
     for key, rid in pairs:
-        zh.append(' %s:0 "%s"' % (key, cn_name(rid)))
-        en.append(' %s:0 "%s"' % (key, rid.replace("_", " ").title()))
+        zh.append(' %s: "%s"' % (key, cn_name(rid)))
+        en.append(' %s: "%s"' % (key, rid.replace("_", " ").title()))
     open(os.path.join(ROOT, "localisation", "simp_chinese",
                       "AOR_doctrine_rewards_l_simp_chinese.yml"), "wb").write(
         b"\xef\xbb\xbf" + ("\n".join(zh) + "\n").encode("utf-8"))

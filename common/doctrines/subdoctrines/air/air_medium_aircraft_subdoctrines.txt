@@ -18,12 +18,12 @@ air_subdoctrine_blimp_scouting = {
 
     rewards = {
         frontline_recon = {
-            air_mission_efficiency = 0.05
-        }
-        low_altitude_observation = {
             airship = {
                 air_range = 0.05
             }
+        }
+        low_altitude_observation = {
+            air_mission_efficiency = 0.05
         }
         rapid_reporting = {
             air_mission_efficiency = 0.05
@@ -34,11 +34,11 @@ air_subdoctrine_blimp_scouting = {
     }
 }
 
-air_subdoctrine_blimp_maritime_patrol = {
+air_subdoctrine_blimp_artillery_spotting = {
     track = blimp
-    name = SUBDOCTRINE_BLIMP_MARITIME_PATROL
-    description = SUBDOCTRINE_BLIMP_MARITIME_PATROL_DESC
-    icon = GFX_doctrine_naval_air_operations_medium
+    name = SUBDOCTRINE_BLIMP_ARTILLERY_SPOTTING
+    description = SUBDOCTRINE_BLIMP_ARTILLERY_SPOTTING_DESC
+    icon = GFX_doctrine_formation_flying_medium
 
     xp_cost = 100
     xp_type = air
@@ -48,64 +48,26 @@ air_subdoctrine_blimp_maritime_patrol = {
     ai_will_do = { base = 1 }
 
     # EFFECTS
-    aor_blimp_maritime_patrol_plane = {
-        air_range = 0.1
+    airship = {
+        air_mission_efficiency = 0.05
     }
 
     rewards = {
-        sea_lane_patrol = {
-            aor_blimp_maritime_patrol_plane = {
-                air_range = 0.1
-            }
-        }
-        convoy_watching = {
+        fall_of_shot_watching = {
             air_mission_efficiency = 0.05
         }
-        coastal_recon = {
+        counter_battery_spotting = {
             airship = {
-                air_range = 0.1
+                air_range = 0.05
             }
         }
-        radio_reporting = {
-            naval_strike_targetting_factor = 0.05
-        }
-    }
-}
-
-air_subdoctrine_blimp_anti_submarine = {
-    track = blimp
-    name = SUBDOCTRINE_BLIMP_ANTI_SUBMARINE
-    description = SUBDOCTRINE_BLIMP_ANTI_SUBMARINE_DESC
-    icon = GFX_doctrine_hunter_killer_groups_medium
-
-    xp_cost = 100
-    xp_type = air
-
-    available = { always = yes }
-
-    ai_will_do = { base = 1 }
-
-    # EFFECTS
-    aor_blimp_naval_bomber = {
-        naval_strike_attack = 0.05
-    }
-
-    rewards = {
-        submarine_hunting = {
-            aor_blimp_naval_bomber = {
-                naval_strike_attack = 0.05
+        trench_mapping = {
+            airship = {
+                air_range = 0.05
             }
         }
-        depth_charge_drops = {
-            aor_blimp_naval_bomber = {
-                naval_strike_attack = 0.05
-            }
-        }
-        shadowing = {
+        signal_flares = {
             air_mission_efficiency = 0.05
-        }
-        night_patrols = {
-            air_weather_penalty = -0.1
         }
     }
 }
@@ -148,6 +110,46 @@ air_subdoctrine_blimp_bombing = {
             airship = {
                 air_range = 0.1
             }
+        }
+    }
+}
+
+air_subdoctrine_blimp_transport = {
+    track = blimp
+    name = SUBDOCTRINE_BLIMP_TRANSPORT
+    description = SUBDOCTRINE_BLIMP_TRANSPORT_DESC
+    icon = GFX_doctrine_low_echelon_support_medium
+
+    xp_cost = 100
+    xp_type = air
+
+    available = { always = yes }
+
+    ai_will_do = { base = 1 }
+
+    # EFFECTS
+    airship = {
+        air_range = 0.05
+    }
+
+    rewards = {
+        liaison_flights = {
+            airship = {
+                air_range = 0.05
+            }
+        }
+        courier_service = {
+            airship = {
+                air_mission_efficiency = 0.05
+            }
+        }
+        remote_resupply = {
+            airship = {
+                air_range = 0.05
+            }
+        }
+        maintenance_crews = {
+            air_accidents_factor = -0.05
         }
     }
 }
