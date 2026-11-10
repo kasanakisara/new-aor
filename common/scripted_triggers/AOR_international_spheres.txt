@@ -1,0 +1,40 @@
+# 国家层级判定；德国势力范围完全独立于原生阵营。
+AOR_in_socialist_international_sphere = {
+ has_country_flag = AOR_socialist_international_member
+}
+AOR_in_comintern_sphere = {
+ NOT = { AOR_in_socialist_international_sphere = yes }
+ OR = {
+  has_country_flag = AOR_comintern_sphere_member
+  original_tag = RUS
+  tag = FIC
+  tag = RPS
+  is_in_faction_with = RUS
+ }
+}
+
+# 开局协约国覆盖英法、现有盟国和两国属国；解散后分别显示两国集团。
+AOR_in_entente_sphere = {
+ NOT = { has_global_flag = AOR_entente_dissolved }
+ NOT = { AOR_in_socialist_international_sphere = yes }
+ NOT = { AOR_in_comintern_sphere = yes }
+ OR = {
+  original_tag = ENG
+  original_tag = FRA
+  is_in_faction_with = ENG
+  is_subject_of = ENG
+  is_subject_of = FRA
+ }
+}
+AOR_in_british_sphere = {
+ has_global_flag = AOR_entente_dissolved
+ NOT = { AOR_in_socialist_international_sphere = yes }
+ NOT = { AOR_in_comintern_sphere = yes }
+ OR = { original_tag = ENG is_in_faction_with = ENG is_subject_of = ENG }
+}
+AOR_in_french_sphere = {
+ has_global_flag = AOR_entente_dissolved
+ NOT = { AOR_in_socialist_international_sphere = yes }
+ NOT = { AOR_in_comintern_sphere = yes }
+ OR = { original_tag = FRA is_in_faction_with = FRA is_subject_of = FRA }
+}

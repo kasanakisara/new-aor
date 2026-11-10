@@ -3708,3 +3708,29 @@ news_event = {
  is_triggered_only = yes
  option = { name = AOR_news_global.6.a custom_effect_tooltip = AOR_news_global.6.future_tt }
 }
+
+# 柏林会议一败涂地
+news_event = {
+ major = no
+ id = AOR_news_europe.57
+ title = AOR_news_europe.57.t
+ desc = AOR_news_europe.57.desc
+ picture = GFX_AOR_news_europe.57_pic
+ is_triggered_only = yes
+ trigger = { AOR_news_receives_europe = yes }
+ option = {
+  name = AOR_news_europe.57.a
+  trigger = { AOR_in_socialist_international_sphere = yes }
+ }
+ option = {
+  name = AOR_news_europe.57.b
+  trigger = { NOT = { AOR_in_socialist_international_sphere = yes } AOR_in_comintern_sphere = yes }
+ }
+ option = {
+  name = AOR_news_europe.57.c
+  trigger = {
+   NOT = { AOR_in_socialist_international_sphere = yes }
+   NOT = { AOR_in_comintern_sphere = yes }
+  }
+ }
+}

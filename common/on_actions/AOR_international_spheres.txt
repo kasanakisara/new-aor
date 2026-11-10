@@ -1,0 +1,20 @@
+# 旧存档兼容：仅识别奥地利领导、四个原始成员俱在的旧多瑙联盟。
+on_actions = {
+ on_startup = { effect = {
+  if = {
+   limit = { NOT = { has_global_flag = AOR_danube_removal_checked } }
+   if = {
+    limit = {
+     AUS = { exists = yes }
+     AUS = { is_faction_leader = yes }
+     HUN = { is_in_faction_with = AUS }
+     CZE = { is_in_faction_with = AUS }
+     DAL = { is_in_faction_with = AUS }
+     CRO = { is_in_faction_with = AUS }
+    }
+    AUS = { dismantle_faction = yes }
+   }
+   set_global_flag = AOR_danube_removal_checked
+  }
+ } }
+}

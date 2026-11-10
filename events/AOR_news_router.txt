@@ -3276,3 +3276,49 @@ country_event = {
   }
  }
 }
+
+country_event = {
+ id = AOR_news_router.233
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  if = {
+   limit = { has_global_flag = AOR_socialist_international_established AUS = { exists = yes } }
+   AUS = { set_country_flag = AOR_socialist_international_member }
+   force_update_map_mode = { mapmode = spheres_of_influence_map }
+  }
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.57 }
+  }
+ }
+}
+
+# 1919.11.10：伯尔尼会议圆满落幕，新闻在 immediate 中分发。
+country_event = {
+ id = AOR_news_router.234
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.58 }
+  }
+ }
+}
+
+# 1920.8.7：共产国际第二次代表大会圆满落幕，新闻在 immediate 中分发。
+country_event = {
+ id = AOR_news_router.235
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.59 }
+  }
+ }
+}

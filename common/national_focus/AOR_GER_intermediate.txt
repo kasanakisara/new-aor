@@ -13,6 +13,20 @@ focus_tree = {
 	# 1919：德国开局分支。按设计图实现时长、奖励与前置，剧情事件暂用测试事件。
 	# 后续分支通过各自的解锁 flag 显现；本分支在进入战后过渡期后隐藏。
 	# =====================================================
+	# 第二国际：独立于1919八月政治分支，保持同一行，位于奥古斯特右侧八格。
+	focus = {
+		id = GER_rebuild_second_international
+		icon = GFX_goal_generic_alliance
+		relative_position_id = GER_1919_august
+		x = 8
+		y = 0
+		cost = 5
+		cancelable = no
+		completion_reward = {
+			country_event = { id = AOR_GER_Second_International.1 }
+		}
+	}
+
 	focus = {
 		id = GER_1919_august
 		icon = GFX_GER_1919_august

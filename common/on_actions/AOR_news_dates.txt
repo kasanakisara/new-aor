@@ -9,5 +9,17 @@ on_actions = {
    set_global_flag = AOR_CPC_first_congress_news
    CHI = { country_event = { id = AOR_news_router.75 } }
   }
+  # 1919.11.10，只排定一次；通过隐藏事件的 immediate 分发。
+  if = {
+   limit = { date > 1919.11.9 NOT = { has_global_flag = AOR_berne_international_congress_news } }
+   set_global_flag = AOR_berne_international_congress_news
+   random_country = { country_event = { id = AOR_news_router.234 } }
+  }
+  # 1920.8.7，只排定一次；通过隐藏事件的 immediate 分发。
+  if = {
+   limit = { date > 1920.8.6 NOT = { has_global_flag = AOR_comintern_second_congress_news } }
+   set_global_flag = AOR_comintern_second_congress_news
+   random_country = { country_event = { id = AOR_news_router.235 } }
+  }
  } }
 }
