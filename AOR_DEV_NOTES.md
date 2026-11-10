@@ -10,6 +10,7 @@
 - git：仓库 blob 是 LF、工作区是 CRLF，提交前先把要提交的文件转成 LF，否则 diff 会整文件重写
 - 用户自己的工作区改动（interface/*.gfx、descriptor.mod 等）不要动
 - 提交按分类：科技 / 部队 / 海军 / 番号 / 内容 / 工具
+- **禁止 git push**：用户要求改动先本地积累，等他明确说「可以上传」再一次性推送；平时只做本地 commit（可回滚）
 
 ## 1. 已完成
 
@@ -89,3 +90,29 @@ $PY tools/coal/spread_units.py --apply    # 部队分散
 $PY tools/coal/eu_navies.py --apply       # 欧洲海军
 $PY tools/coal/aor_name_groups.py --apply # 番号组
 ```
+
+
+## 5. 三军学说系统（2026-11 重制）
+
+### 5.1 结构
+- `common/doctrines/grand_doctrines/` 大学说、`tracks/` 轨道、`subdoctrines/` 子学说
+- 陆军：4 大学说（优势火力/决战计划/人海突击/工业战）× 3 轨道（步兵/战斗支援/作战）
+- 海军：2 大学说（存在舰队/破交）× 2 轨道（主力舰/屏卫舰）
+- 空军：3 大学说 × 4 轨道（战斗机/轰炸机/软式飞艇/硬式飞艇）
+- 特战：结构不动，兵种映射到 AOR 实际存在的支援连/营
+
+### 5.2 关键踩坑（血泪）
+1. **游戏只认与本体同名的文件**：新建 `bomber_aircraft_subdoctrines.txt` 这种名字不会被加载，
+   必须覆盖本体文件名（`air_strike_aircraft_subdoctrines.txt` 等）；想删本体内容就用**空文件覆盖**
+2. **doctrine 文件不要 BOM**：BOM 会并进第一个子学说/轨道的 id，导致第一个奖励名/轨道解析异常
+3. **loc 格式用 `key: "值"`**（不要 `key:0 "值"`，本作本体是前者）
+4. 兵种块里只能写单位属性（soft_attack/defense/breakthrough/max_organisation/air_range 等），
+   `max_planning`、`air_mission_efficiency`、`land_night_attack` 这类**国家层面**属性写在子学说根节点
+5. 奖励本地化 key = `<子学说id>_<奖励id>`；轨道名/子学说名用 `SUBDOCTRINE_*` / `DOCTRINE_TRACK_*`，
+   中文缺失的键要自己补
+6. 特种兵学说里 `rangers_support/pioneer_support/marine_commando/ranger_battalion` 在 AOR 不存在，
+   已映射为 `aor_sniper_observer/engineer/marine/commando_units`
+
+### 5.3 脚本
+- `tools/coal/land_doctrines.py`（陆）、`sea_air_doctrines.py`（海空）、`doctrine_reward_loc.py`（奖励词条）
+- `tools/coal/doctrine_inventory.py`（现状盘点）
