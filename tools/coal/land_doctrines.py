@@ -383,12 +383,15 @@ def main():
             open(p, "wb").write(b"\xef\xbb\xbf" + text.encode("utf-8"))
             print("wrote", p)
         # delete armor + future land files
-        for fn in ["armor_subdoctrines.txt", "future_armor_subdoctrines.txt", "future_combat_support_subdoctrines.txt",
+        for fn in ["future_armor_subdoctrines.txt", "future_combat_support_subdoctrines.txt",
                    "future_infantry_subdoctrines.txt", "future_operations_subdoctrines.txt"]:
             p = os.path.join(DOC, "subdoctrines", "land", fn)
             if os.path.exists(p):
                 os.remove(p)
                 print("removed", p)
+        # 覆盖原版装甲子学说：留空文件，避免 1919 出现装甲学说
+        open(os.path.join(DOC, "subdoctrines", "land", "armor_subdoctrines.txt"), "wb").write(
+            b"\xef\xbb\xbf# 1919: armor doctrine disabled\n")
         for fn in ["future_land_doctrine_tracks.txt"]:
             p = os.path.join(DOC, "tracks", fn)
             if os.path.exists(p):

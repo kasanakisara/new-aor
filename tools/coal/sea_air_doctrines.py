@@ -139,12 +139,6 @@ FIGHTER = [
       ("experienced_gunners", {"fighter": {"air_attack": 0.05}}),
       ("tactical_flexibility", {"air_mission_efficiency": 0.05}),
       ("ace_pilots", {"ace_effectiveness_factor": 0.10})]),
-    ("air_subdoctrine_fighter_bombers", "SUBDOCTRINE_FIGHTER_BOMBERS", "GFX_doctrine_air_skirmish_medium",
-     {"cas": {"air_attack": 0.05}},
-     [("fighter_bombers", {"cas": {"air_attack": 0.05}}),
-      ("ground_interdiction", {"cas": {"air_ground_attack": 0.05}}),
-      ("low_level_attack_runs", {"cas": {"air_ground_attack": 0.10}}),
-      ("close_air_support_aces", {"air_ace_generation_chance_factor": 0.10})]),
     ("air_subdoctrine_aerial_reconnaissance", "SUBDOCTRINE_AERIAL_RECONNAISSANCE", "GFX_doctrine_formation_flying_medium",
      {"scout_plane": {"air_range": 0.05}},
      [("forward_spotters", {"air_mission_efficiency": 0.05}),
@@ -383,13 +377,15 @@ def main():
         L.append("    }")
         L.append("}")
         L.append("")
-    out["tracks/air_doctrine_tracks.txt"] = "\n".join(L)
+    vanilla_tracks = open(r"D:\SteamLibrary\steamapps\common\Hearts of Iron IV\common\doctrines\tracks\air_doctrine_track.txt",
+                          "rb").read().decode("utf-8-sig")
+    out["tracks/air_doctrine_track.txt"] = vanilla_tracks + "\n" + "\n".join(L)
 
     # air subdoctrines
-    for track, data, fname in [("fighter_aircraft", FIGHTER, "fighter_aircraft_subdoctrines.txt"),
-                               ("bomber_aircraft", BOMBER, "bomber_aircraft_subdoctrines.txt"),
-                               ("blimp", BLIMP, "blimp_subdoctrines.txt"),
-                               ("rigid_airship", RIGID, "rigid_airship_subdoctrines.txt")]:
+    for track, data, fname in [("fighter_aircraft", FIGHTER, "air_fighter_aircraft_subdoctrines.txt"),
+                               ("bomber_aircraft", BOMBER, "air_strike_aircraft_subdoctrines.txt"),
+                               ("blimp", BLIMP, "air_medium_aircraft_subdoctrines.txt"),
+                               ("rigid_airship", RIGID, "air_heavy_aircraft_subdoctrines.txt")]:
         L = []
         for sd in data:
             L.append(emit_sub(sd[0], sd[1], sd[2], track, sd[3], sd[4], "air"))
@@ -409,11 +405,17 @@ def main():
             if os.path.exists(p):
                 os.remove(p)
                 print("removed", p)
-        for fn in os.listdir(os.path.join(DOC, "subdoctrines", "air")):
-            if fn.endswith(".txt") and fn not in ("fighter_aircraft_subdoctrines.txt", "bomber_aircraft_subdoctrines.txt",
-                                                  "blimp_subdoctrines.txt", "rigid_airship_subdoctrines.txt"):
-                os.remove(os.path.join(DOC, "subdoctrines", "air", fn))
+        keep = ("air_fighter_aircraft_subdoctrines.txt", "air_strike_aircraft_subdoctrines.txt",
+                "air_medium_aircraft_subdoctrines.txt", "air_heavy_aircraft_subdoctrines.txt")
+        adir = os.path.join(DOC, "subdoctrines", "air")
+        for fn in os.listdir(adir):
+            if fn.endswith(".txt") and fn not in keep:
+                os.remove(os.path.join(adir, fn))
                 print("removed air", fn)
+        # suppress vanilla carrier/submarine doctrine content
+        for fn in ["navy_carrier_doctrines.txt", "navy_submarine_doctrines.txt"]:
+            open(os.path.join(DOC, "subdoctrines", "sea", fn), "wb").write(b"\xef\xbb\xbf# 1919: carrier/submarine doctrine disabled\n")
+            print("emptied sea", fn)
         for fn in ["future_air_doctrine_tracks.txt", "future_sea_doctrine_tracks.txt"]:
             p = os.path.join(DOC, "tracks", fn)
             if os.path.exists(p):

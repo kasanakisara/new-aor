@@ -116,46 +116,6 @@ air_subdoctrine_dogfighting_mastery = {
     }
 }
 
-air_subdoctrine_fighter_bombers = {
-    track = fighter_aircraft
-    name = SUBDOCTRINE_FIGHTER_BOMBERS
-    description = SUBDOCTRINE_FIGHTER_BOMBERS_DESC
-    icon = GFX_doctrine_air_skirmish_medium
-
-    xp_cost = 100
-    xp_type = air
-
-    available = { always = yes }
-
-    ai_will_do = { base = 1 }
-
-    # EFFECTS
-    cas = {
-        air_attack = 0.05
-    }
-
-    rewards = {
-        fighter_bombers = {
-            cas = {
-                air_attack = 0.05
-            }
-        }
-        ground_interdiction = {
-            cas = {
-                air_ground_attack = 0.05
-            }
-        }
-        low_level_attack_runs = {
-            cas = {
-                air_ground_attack = 0.1
-            }
-        }
-        close_air_support_aces = {
-            air_ace_generation_chance_factor = 0.1
-        }
-    }
-}
-
 air_subdoctrine_aerial_reconnaissance = {
     track = fighter_aircraft
     name = SUBDOCTRINE_AERIAL_RECONNAISSANCE
