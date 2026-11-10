@@ -400,7 +400,7 @@ def main():
                 data = data.lstrip(b"\xef\xbb\xbf").lstrip(b"\r\n \t")
                 open(p, "wb").write(data)
             else:
-                open(p, "wb").write(b"\xef\xbb\xbf" + data)
+                open(p, "wb").write(data)
             print("wrote", p)
         # delete old air/sea files
         for fn in ["future_carriers_subdoctrines.txt", "future_navy_capital_subdoctrines.txt",

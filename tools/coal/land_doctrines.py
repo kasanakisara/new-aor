@@ -380,7 +380,7 @@ def main():
     if apply:
         for rel, text in out.items():
             p = os.path.join(DOC, rel)
-            open(p, "wb").write(b"\xef\xbb\xbf" + text.encode("utf-8"))
+            open(p, "wb").write(text.encode("utf-8"))
             print("wrote", p)
         # delete armor + future land files
         for fn in ["future_armor_subdoctrines.txt", "future_combat_support_subdoctrines.txt",
