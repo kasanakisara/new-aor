@@ -57,7 +57,7 @@ SEA_SCREEN = [
      [("escort_duties", {"destroyer": {"sub_detection": 0.10}}),
       ("escort_reclassification", {"light_cruiser": {"sub_detection": 0.05}}),
       ("open_water_patrolling", {"destroyer": {"naval_range": 0.10}}),
-      ("rough_weather_procedure", {"naval_weather_penalty_factor": -0.10})]),
+      ("rough_weather_procedure", {"destroyer": {"surface_detection": 0.05}})]),
     ("torpedo_primacy", "SUBDOCTRINE_TORPEDO_PRIMACY", "GFX_doctrine_naval_strike_torpedo_tactics_medium",
      {"destroyer": {"torpedo_attack": 0.05}},
      [("specialized_torpedoes", {"destroyer": {"torpedo_attack": 0.10}}),
