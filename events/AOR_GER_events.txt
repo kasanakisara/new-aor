@@ -1,3 +1,16 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# AOR 德国事件维护规则（脚本与本地化文件使用同一份注释）
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 德国 country_event 正文统一追加到 events/AOR_GER_events.txt。
+# 对应事件标题、正文、按钮与按钮效果文本统一追加到 localisation/simp_chinese/events/AOR_GER_events_l_simp_chinese.yml。
+# 不为单条德国事件或事件链另建事件脚本、事件本地化文件。
+# 沿用已有 namespace；新增事件前扫描该 namespace 的全部 ID，取最大数字加一，保留旧编号。
+# 新增事件组沿用本文件的圆点分隔线、中文组名及单行 # 注释格式；脚本与本地化的组名保持一致。
+# 民族精神文本写入 localisation/simp_chinese/ideas/AOR_GER_l_simp_chinese.yml；决议与 GUI 文本写入各自对应文件。
+# news_event 仍遵守世界新闻规则：正文写入 events/AOR_world_news.txt，本地化写入 AOR_world_news_l_语言.yml。
+# 始终以正式模组当前文件为准；本地化保持 UTF-8 BOM；交付前检查唯一 ID 和本地化引用。
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
 add_namespace = AOR_GER_1919_test
 add_namespace = AOR_GER_bernstein
 add_namespace = AOR_GER_flavor
@@ -680,7 +693,9 @@ country_event = {
  fire_only_once = yes
  option = { name = AOR_GER_union_competition.4.a }
 }
-# Continuation of AOR_GER_union_competition; IDs allocated after .4.
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 法兰克福代表大会与工会选举
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 country_event = {
     id = AOR_GER_union_competition.5
     title = AOR_GER_union_competition.5.t
@@ -718,7 +733,6 @@ country_event = {
     fire_only_once = yes
     immediate = {
         set_country_flag = { flag = AOR_GER_union_leader_elected value = 2 }
-        if = { limit = { has_character = GER_02_03_Theodor_Leipart } activate_advisor = GER_02_03_Theodor_Leipart }
         GER_union_prepare_rewards = yes
     }
     option = {
@@ -735,7 +749,6 @@ country_event = {
     fire_only_once = yes
     immediate = {
         set_country_flag = { flag = AOR_GER_union_leader_elected value = 1 }
-        if = { limit = { has_character = GER_02_02_Robert_Dittmann } activate_advisor = GER_02_02_Robert_Dittmann }
         GER_union_prepare_rewards = yes
     }
     option = {
@@ -752,7 +765,6 @@ country_event = {
     fire_only_once = yes
     immediate = {
         set_country_flag = { flag = AOR_GER_union_leader_elected value = 3 }
-        if = { limit = { has_character = GER_Richard_Mueller_regular_cabinet } activate_advisor = GER_Richard_Mueller_regular_cabinet }
         GER_union_prepare_rewards = yes
     }
     option = {

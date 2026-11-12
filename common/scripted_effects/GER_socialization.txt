@@ -3,8 +3,11 @@
 GER_socialization_refresh_bars = {
     GER_socialization_refresh_targets = yes
     set_variable = { GER_soc_mass_strike_cost = 350 }
-    if = { limit = { has_country_flag = GER_socialization_union_reform_success } set_variable = { GER_soc_mass_strike_cost = 250 } }
-    subtract_from_variable = { GER_soc_mass_strike_cost = GER_union_mass_strike_discount }
+    if = {
+        limit = { has_country_flag = GER_union_rewards_active }
+        subtract_from_variable = { GER_soc_mass_strike_cost = GER_union_mass_strike_discount }
+    }
+    else_if = { limit = { has_country_flag = GER_socialization_union_reform_success } set_variable = { GER_soc_mass_strike_cost = 250 } }
     clamp_variable = { var = GER_soc_mass_strike_cost min = 0 max = 350 }
     if = {
         limit = { NOT = { has_variable = GER_socialization_radicalism_base } }
@@ -205,13 +208,6 @@ GER_socialization_advance_industry = {
 }
 
 GER_socialization_distribute_points = {
-    # ADGB reform accelerates incoming socialization progress; the pool is consumed below.
-    if = {
-        limit = { has_country_flag = GER_union_rewards_active check_variable = { GER_socialization_points_pool > 0 } }
-        set_temp_variable = { GER_union_progress_multiplier = 1 }
-        add_to_temp_variable = { GER_union_progress_multiplier = GER_union_social_rate }
-        multiply_variable = { GER_socialization_points_pool = GER_union_progress_multiplier }
-    }
     if = { limit = { NOT = { has_variable = GER_socialization_points_pool } } set_variable = { GER_socialization_points_pool = 0 } }
     if = { limit = { NOT = { has_variable = GER_socialization_railway_points } } set_variable = { GER_socialization_railway_points = 0 } }
     clamp_variable = { var = GER_socialization_railway_points min = 0 max = 150 }
