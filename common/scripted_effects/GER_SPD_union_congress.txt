@@ -1,0 +1,75 @@
+# Frankfurt congress: one dynamic spirit, additive rewards from A, B and one C.
+GER_union_prepare_rewards = {
+    set_variable = { GER_union_pp_factor = 0 }
+    set_variable = { GER_union_efficiency = 0 }
+    set_variable = { GER_union_retention = 0 }
+    set_variable = { GER_union_social_rate = 0 }
+    set_variable = { GER_union_left_biweekly = 0 }
+    set_variable = { GER_union_center_biweekly = 0 }
+    set_variable = { GER_union_points_biweekly = 0 }
+    set_variable = { GER_union_mass_strike_discount = 0 }
+    set_variable = { GER_union_legislative_launch_discount = 0 }
+    set_variable = { GER_union_strike_escalation_discount = 0 }
+    set_variable = { GER_union_general_strike_discount = 0 }
+    if = {
+        limit = { has_country_flag = GER_SPD_union_industrial_done }
+        add_to_variable = { GER_union_pp_factor = 0.05 }
+        add_to_variable = { GER_union_efficiency = 0.05 }
+        add_to_variable = { GER_union_retention = 0.2 }
+        add_to_variable = { GER_union_social_rate = 0.1 }
+        add_to_variable = { GER_union_left_biweekly = 0.3 }
+        add_to_variable = { GER_union_center_biweekly = 0.3 }
+        add_to_variable = { GER_union_mass_strike_discount = 50 }
+        add_to_variable = { GER_union_legislative_launch_discount = 20 }
+        add_to_variable = { GER_union_strike_escalation_discount = 10 }
+        add_to_variable = { GER_union_general_strike_discount = 100 }
+    }
+    if = {
+        limit = { has_country_flag = GER_SPD_union_militant_done }
+        add_to_variable = { GER_union_pp_factor = 0.05 }
+        add_to_variable = { GER_union_left_biweekly = 0.3 }
+        add_to_variable = { GER_union_mass_strike_discount = 75 }
+        add_to_variable = { GER_union_legislative_launch_discount = 30 }
+        add_to_variable = { GER_union_strike_escalation_discount = 20 }
+        add_to_variable = { GER_union_general_strike_discount = 100 }
+    }
+    if = {
+        limit = { has_country_flag = GER_SPD_union_soviet_independence_done }
+        add_to_variable = { GER_union_pp_factor = 0.05 }
+        add_to_variable = { GER_union_points_biweekly = 6 }
+        add_to_variable = { GER_union_mass_strike_discount = 50 }
+        add_to_variable = { GER_union_legislative_launch_discount = 10 }
+        add_to_variable = { GER_union_strike_escalation_discount = 25 }
+        add_to_variable = { GER_union_general_strike_discount = 80 }
+    }
+    if = {
+        limit = { has_country_flag = GER_SPD_union_soviet_integration_done }
+        add_to_variable = { GER_union_pp_factor = 0.1 }
+        add_to_variable = { GER_union_efficiency = 0.1 }
+        add_to_variable = { GER_union_points_biweekly = 8 }
+        add_to_variable = { GER_union_mass_strike_discount = 75 }
+        add_to_variable = { GER_union_legislative_launch_discount = 15 }
+        add_to_variable = { GER_union_strike_escalation_discount = 25 }
+        add_to_variable = { GER_union_general_strike_discount = 100 }
+    }
+    # TODO: Legislative struggle decisions do not exist yet. Connect their actual costs
+    # to GER_union_legislative_launch_discount, GER_union_strike_escalation_discount
+    # and GER_union_general_strike_discount. Until then these three are tooltip-only.
+}
+GER_union_apply_rewards = {
+    add_dynamic_modifier = { modifier = GER_SPD_ADGB_modifier }
+    hidden_effect = {
+        set_country_flag = GER_union_rewards_active
+        set_variable = { GER_union_reward_days = 0 }
+        GER_socialization_refresh_bars = yes
+    }
+}
+GER_union_biweekly_rewards = {
+    add_to_variable = { GER_SPD_left_support = GER_union_left_biweekly }
+    add_to_variable = { GER_SPD_center_support = GER_union_center_biweekly }
+    subtract_from_variable = { GER_SPD_right_support = GER_union_left_biweekly }
+    subtract_from_variable = { GER_SPD_right_support = GER_union_center_biweekly }
+    GER_SPD_refresh_support_effect = yes
+    add_to_variable = { GER_socialization_points_pool = GER_union_points_biweekly }
+    GER_socialization_refresh_bars = yes
+}

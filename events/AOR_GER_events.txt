@@ -614,6 +614,9 @@ country_event = {
 	}
 	immediate = {
 		set_country_flag = AOR_GER_legien_dead
+		set_country_flag = GER_SPD_union_reform_open
+		clr_country_flag = GER_SPD_union_reform_collapsed
+		activate_mission = GER_SPD_union_frankfurt_countdown
 		add_to_variable = { GER_SPD_gui_revision = 1 }
 		hidden_effect = {
 			if = {
@@ -651,4 +654,110 @@ country_event = {
 		custom_effect_tooltip = AOR_GER_union_competition.1.effect_tt
 		hidden_effect = { news_event = { id = AOR_news_europe.60 } }
 	}
+}
+
+country_event = {
+ id = AOR_GER_union_competition.2
+ title = AOR_GER_union_competition.2.t
+ desc = AOR_GER_union_competition.2.desc
+ is_triggered_only = yes
+ fire_only_once = yes
+ option = { name = AOR_GER_union_competition.2.a }
+}
+country_event = {
+ id = AOR_GER_union_competition.3
+ title = AOR_GER_union_competition.3.t
+ desc = AOR_GER_union_competition.3.desc
+ is_triggered_only = yes
+ fire_only_once = yes
+ option = { name = AOR_GER_union_competition.3.a }
+}
+country_event = {
+ id = AOR_GER_union_competition.4
+ title = AOR_GER_union_competition.4.t
+ desc = AOR_GER_union_competition.4.desc
+ is_triggered_only = yes
+ fire_only_once = yes
+ option = { name = AOR_GER_union_competition.4.a }
+}
+# Continuation of AOR_GER_union_competition; IDs allocated after .4.
+country_event = {
+    id = AOR_GER_union_competition.5
+    title = AOR_GER_union_competition.5.t
+    desc = AOR_GER_union_competition.5.desc
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        clr_country_flag = GER_SPD_union_reform_open
+        remove_decision = GER_SPD_union_mobilize
+        remove_decision = GER_SPD_union_coordinate
+        set_country_flag = GER_SPD_union_congress_started
+        add_to_variable = { GER_SPD_gui_revision = 1 }
+        set_variable = { GER_union_focus_victories = 0 }
+        if = { limit = { has_country_flag = GER_SPD_union_industrial_done } add_to_variable = { GER_union_focus_victories = 1 } }
+        if = { limit = { has_country_flag = GER_SPD_union_militant_done } add_to_variable = { GER_union_focus_victories = 1 } }
+        if = {
+            limit = { OR = { has_country_flag = GER_SPD_union_soviet_independence_done has_country_flag = GER_SPD_union_soviet_integration_done } }
+            add_to_variable = { GER_union_focus_victories = 1 }
+        }
+    }
+    option = {
+        name = AOR_GER_union_competition.5.a
+        hidden_effect = {
+            if = { limit = { check_variable = { GER_union_focus_victories > 2 } } country_event = { id = AOR_GER_union_competition.8 } }
+            else_if = { limit = { check_variable = { GER_union_focus_victories > 0 } } country_event = { id = AOR_GER_union_competition.7 } }
+            else = { country_event = { id = AOR_GER_union_competition.6 } }
+        }
+    }
+}
+country_event = {
+    id = AOR_GER_union_competition.6
+    title = AOR_GER_union_competition.6.t
+    desc = AOR_GER_union_competition.6.desc
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        set_country_flag = { flag = AOR_GER_union_leader_elected value = 2 }
+        if = { limit = { has_character = GER_02_03_Theodor_Leipart } activate_advisor = GER_02_03_Theodor_Leipart }
+        GER_union_prepare_rewards = yes
+    }
+    option = {
+        name = AOR_GER_union_competition.6.a
+        custom_effect_tooltip = AOR_GER_union_competition.6.result_tt
+        GER_union_apply_rewards = yes
+    }
+}
+country_event = {
+    id = AOR_GER_union_competition.7
+    title = AOR_GER_union_competition.7.t
+    desc = AOR_GER_union_competition.7.desc
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        set_country_flag = { flag = AOR_GER_union_leader_elected value = 1 }
+        if = { limit = { has_character = GER_02_02_Robert_Dittmann } activate_advisor = GER_02_02_Robert_Dittmann }
+        GER_union_prepare_rewards = yes
+    }
+    option = {
+        name = AOR_GER_union_competition.7.a
+        custom_effect_tooltip = AOR_GER_union_competition.7.result_tt
+        GER_union_apply_rewards = yes
+    }
+}
+country_event = {
+    id = AOR_GER_union_competition.8
+    title = AOR_GER_union_competition.8.t
+    desc = AOR_GER_union_competition.8.desc
+    is_triggered_only = yes
+    fire_only_once = yes
+    immediate = {
+        set_country_flag = { flag = AOR_GER_union_leader_elected value = 3 }
+        if = { limit = { has_character = GER_Richard_Mueller_regular_cabinet } activate_advisor = GER_Richard_Mueller_regular_cabinet }
+        GER_union_prepare_rewards = yes
+    }
+    option = {
+        name = AOR_GER_union_competition.8.a
+        custom_effect_tooltip = AOR_GER_union_competition.8.result_tt
+        GER_union_apply_rewards = yes
+    }
 }

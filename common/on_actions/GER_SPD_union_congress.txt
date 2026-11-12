@@ -1,0 +1,15 @@
+on_actions = {
+    on_daily_GER = {
+        effect = {
+            if = {
+                limit = { has_country_flag = GER_union_rewards_active }
+                add_to_variable = { GER_union_reward_days = 1 }
+                if = {
+                    limit = { check_variable = { GER_union_reward_days > 13 } }
+                    subtract_from_variable = { GER_union_reward_days = 14 }
+                    GER_union_biweekly_rewards = yes
+                }
+            }
+        }
+    }
+}

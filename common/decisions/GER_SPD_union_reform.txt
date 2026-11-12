@@ -1,0 +1,230 @@
+GER_SPD_lifelong_tribune_category = {
+    GER_SPD_union_collapse = {
+        icon = generic_political_discourse
+        priority = 100
+        visible = {
+            has_country_flag = GER_SPD_union_reform_open
+            NOT = { has_country_flag = GER_SPD_union_reform_collapsed }
+        }
+        available = { always = yes }
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_collapse_tt
+            hidden_effect = { set_country_flag = GER_SPD_union_reform_collapsed }
+        }
+        ai_will_do = { factor = 0 }
+    }
+    GER_SPD_union_expand = {
+        icon = generic_political_discourse
+        priority = 100
+        visible = {
+            has_country_flag = GER_SPD_union_reform_open
+            has_country_flag = GER_SPD_union_reform_collapsed
+        }
+        available = { always = yes }
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_expand_tt
+            hidden_effect = { clr_country_flag = GER_SPD_union_reform_collapsed }
+        }
+        ai_will_do = { factor = 0 }
+    }
+    GER_SPD_union_criticism = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        cost = 10
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_left_gain_tt
+            custom_effect_tooltip = GER_SPD_union_right_loss_5_tt
+            hidden_effect = {
+                add_to_variable = { GER_SPD_left_support = 5 }
+                add_to_variable = { GER_SPD_right_support = -5 }
+                GER_SPD_refresh_support_effect = yes
+            }
+        }
+    }
+    GER_SPD_union_mobilize = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        cost = 20
+        fire_only_once = no
+        days_re_enable = 0
+        days_remove = 7
+        remove_effect = {
+            add_political_power = 50
+            custom_effect_tooltip = GER_SPD_union_left_gain_tt
+            custom_effect_tooltip = GER_SPD_union_center_gain_tt
+            custom_effect_tooltip = GER_SPD_union_right_loss_10_tt
+            hidden_effect = {
+                add_to_variable = { GER_SPD_left_support = 5 }
+                add_to_variable = { GER_SPD_center_support = 5 }
+                add_to_variable = { GER_SPD_right_support = -10 }
+                GER_SPD_refresh_support_effect = yes
+            }
+        }
+    }
+    GER_SPD_union_coordinate = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        cost = 20
+        fire_only_once = no
+        days_re_enable = 0
+        days_remove = 7
+        remove_effect = {
+            add_political_power = 50
+            custom_effect_tooltip = GER_SPD_union_center_gain_tt
+            custom_effect_tooltip = GER_SPD_union_right_loss_5_tt
+            hidden_effect = {
+                add_to_variable = { GER_SPD_center_support = 5 }
+                add_to_variable = { GER_SPD_right_support = -5 }
+                GER_SPD_refresh_support_effect = yes
+            }
+        }
+    }
+    GER_SPD_union_metal = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        cost = 15
+        fire_only_once = no
+        days_re_enable = 0
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_left_gain_tt
+            custom_effect_tooltip = GER_SPD_union_center_gain_tt
+            custom_effect_tooltip = GER_SPD_union_right_loss_10_tt
+            hidden_effect = {
+                add_to_variable = { GER_SPD_left_support = 5 }
+                add_to_variable = { GER_SPD_center_support = 5 }
+                add_to_variable = { GER_SPD_right_support = -10 }
+                GER_SPD_refresh_support_effect = yes
+            }
+            if = {
+                limit = { NOT = { has_country_flag = GER_SPD_union_metal_event_seen } }
+                hidden_effect = { set_country_flag = GER_SPD_union_metal_event_seen }
+                country_event = { id = AOR_GER_union_competition.2 }
+            }
+        }
+    }
+    GER_SPD_union_industrial = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_combined_65_tt
+                check_variable = { GER_SPD_right_support < 36 }
+            }
+        }
+        cost = 40
+        fire_only_once = yes
+        complete_effect = {
+            country_event = { id = AOR_GER_union_competition.3 }
+            custom_effect_tooltip = GER_SPD_union_industrial_complete_tt
+            hidden_effect = {
+                set_country_flag = GER_SPD_union_industrial_done
+                add_to_variable = { GER_SPD_gui_revision = 1 }
+            }
+        }
+    }
+    GER_SPD_union_militant = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_combined_67_tt
+                check_variable = { GER_SPD_right_support < 34 }
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_left_20_tt
+                check_variable = { GER_SPD_left_support > 19 }
+            }
+        }
+        cost = 50
+        fire_only_once = yes
+        complete_effect = {
+            country_event = { id = AOR_GER_union_competition.4 }
+            custom_effect_tooltip = GER_SPD_union_militant_complete_tt
+            hidden_effect = {
+                set_country_flag = GER_SPD_union_militant_done
+                add_to_variable = { GER_SPD_gui_revision = 1 }
+            }
+        }
+    }
+    GER_SPD_union_soviet_independence = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_requires_militant_tt
+                has_country_flag = GER_SPD_union_militant_done
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_no_integration_tt
+                NOT = { has_country_flag = GER_SPD_union_soviet_integration_done }
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_combined_65_tt
+                check_variable = { GER_SPD_right_support < 36 }
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_left_25_tt
+                check_variable = { GER_SPD_left_support > 24 }
+            }
+        }
+        cost = 30
+        fire_only_once = yes
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_soviet_independence_complete_tt
+            hidden_effect = {
+                set_country_flag = GER_SPD_union_soviet_independence_done
+                add_to_variable = { GER_SPD_gui_revision = 1 }
+            }
+        }
+    }
+    GER_SPD_union_soviet_integration = {
+        icon = GFX_decision_AOR_union_reform
+        visible = { has_country_flag = GER_SPD_union_reform_open NOT = { has_country_flag = GER_SPD_union_reform_collapsed } }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_requires_militant_tt
+                has_country_flag = GER_SPD_union_militant_done
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_no_independence_tt
+                NOT = { has_country_flag = GER_SPD_union_soviet_independence_done }
+            }
+            custom_trigger_tooltip = {
+                tooltip = GER_SPD_union_combined_67_tt
+                check_variable = { GER_SPD_right_support < 34 }
+            }
+        }
+        cost = 60
+        fire_only_once = yes
+        complete_effect = {
+            custom_effect_tooltip = GER_SPD_union_soviet_integration_complete_tt
+            hidden_effect = {
+                set_country_flag = GER_SPD_union_soviet_integration_done
+                add_to_variable = { GER_SPD_gui_revision = 1 }
+            }
+        }
+    }
+    GER_SPD_union_frankfurt_countdown = {
+        icon = GFX_decision_AOR_union_reform
+        priority = -100
+        activation = { always = no }
+        visible = {
+            has_country_flag = GER_SPD_union_reform_open
+            NOT = { has_country_flag = GER_SPD_union_reform_collapsed }
+        }
+        available = { always = no }
+        cancel_if_not_visible = no
+        days_mission_timeout = 30
+        is_good = no
+        fire_only_once = yes
+        timeout_effect = { country_event = { id = AOR_GER_union_competition.5 } }
+    }
+}

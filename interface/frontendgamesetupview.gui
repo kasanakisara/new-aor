@@ -2248,13 +2248,17 @@ guiTypes = {
 			show_position = { x=0 y =-100 }
 			animation_type = decelerated
 			animation_time = 1000
-			size = { width=102% height =128}
+			size = { width=100% height =128}
 			Orientation = lower_left
 
-			Background ={
-				name ="bottom_win"
-				spriteType = "GFX_tiled_frontend_lower_bar"
-				position = { x=-10 y =0}
+			containerWindowType = {
+				name = background
+				size = { width=102% height=100% }
+				Background = {
+					name ="bottom_win"
+					spriteType = "GFX_tiled_frontend_lower_bar"
+					position = { x=-10 y =0}
+				}
 			}
 
 			ButtonType = {
