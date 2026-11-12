@@ -206,7 +206,7 @@ focus_tree = {
 	}
 	focus = { #星空与道德律
 		id = AOR_GER_Politics_11
-		icon = GFX_AOR_GER_Politics_11
+		icon = GFX_AOR_Eric_new_002
 		cost = 10.00
 		prerequisite = {
 			focus = AOR_GER_Politics_7
@@ -228,7 +228,7 @@ focus_tree = {
 	}
 	focus = { #深入人心的民主共和
 		id = AOR_GER_Politics_12
-		icon = GFX_AOR_GER_Politics_12
+		icon = GFX_AOR_Eric_new_002
 		cost = 0.00
 		prerequisite = {
 			focus = AOR_GER_Politics_10
@@ -244,7 +244,7 @@ focus_tree = {
 	}
 	focus = { #德式民主始源地
 		id = AOR_GER_Politics_13
-		icon = GFX_AOR_GER_Politics_13
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_11
@@ -350,15 +350,10 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Politics_14
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_100_tt
-				check_variable = { AOR_GER_gold_quantity > 99 }
-			}
+			
 		}
 		completion_reward = {
-			custom_effect_tooltip = AOR_GER_gold_100_tt
-			add_to_variable = { AOR_GER_gold_quantity = -100 }
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			add_war_support = 0.04
 			add_research_slot = 1
@@ -379,17 +374,12 @@ focus_tree = {
 		y = 3
 		relative_position_id = AOR_GER_Politics_17
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_100_tt
-				check_variable = { AOR_GER_gold_quantity > 99 }
-			}
+			
 		}
 		completion_reward = {
 			add_political_power = 120
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			custom_effect_tooltip = AOR_GER_gold_100_tt
-			add_to_variable = { AOR_GER_gold_quantity = -100 }
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			swap_ideas = {
 				remove_idea = AOR_GER_idea_civilians_right_to_education
@@ -930,7 +920,7 @@ focus_tree = {
 	}
 	focus = { #重拾德意志国际地位
 		id = AOR_GER_Politics_38
-		icon = GFX_Eric_the_big_power
+		icon = GFX_AOR_Eric_new_002
 		cost = 10.00
 		prerequisite = {
 			focus = AOR_GER_Politics_13
@@ -952,7 +942,7 @@ focus_tree = {
 	#独裁线
 	focus = { #组建国务委员会
 		id = AOR_GER_Politics_39
-		icon = GFX_AOR_Eric_new_043
+		icon = GFX_AOR_Eric_new_002
 		cost = 10.00
 		mutually_exclusive = {
 			focus = AOR_GER_Politics_21
@@ -1061,7 +1051,7 @@ focus_tree = {
 	}
 	focus = { #掌控国家媒体
 		id = AOR_GER_Politics_43
-		icon = GFX_PRC8_qudidiguozhuyixuanchuanjiguan
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_39
@@ -1110,7 +1100,7 @@ focus_tree = {
 	}
 	focus = { #重新组建议会
 		id = AOR_GER_Politics_46
-		icon = GFX_Eric_Establishment_of_the_State_Council
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_39
@@ -1126,7 +1116,7 @@ focus_tree = {
 	}
 	focus = { #虚位总理
 		id = AOR_GER_Politics_47
-		icon = GFX_Eric_Prime_Minister
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_46
@@ -1145,7 +1135,7 @@ focus_tree = {
 	}
 	focus = { #调整政府支出
 		id = AOR_GER_Politics_48
-		icon = GFX_AOR_Eric_new_011
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_46
@@ -1175,7 +1165,7 @@ focus_tree = {
 	}
 	focus = { #请求外国援助
 		id = AOR_GER_Politics_50
-		icon = GFX_Eric_democratic_state
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_45
@@ -1205,7 +1195,7 @@ focus_tree = {
 	}
 	focus = { #紧急组织最高工委会
 		id = AOR_GER_Politics_52
-		icon = GFX_Eric_Emergency_Organization_Committee
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_45
@@ -1220,7 +1210,7 @@ focus_tree = {
 	}
 	focus = { #镇压共产主义
 		id = AOR_GER_Politics_53
-		icon = GFX_Eric_Smash_communism
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_45
@@ -1274,7 +1264,8 @@ focus_tree = {
 			add_stability = 0.05
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			AOR_GER_Ideological_opposition_relieve_right = yes
-			add_ideas = FRA_communism_banned
+			# unavailable add_ideas FRA_communism_banned
+
 		}
 
 	}
@@ -1333,7 +1324,7 @@ focus_tree = {
 	}
 	focus = { #德意志工人的“领袖”
 		id = AOR_GER_Politics_59
-		icon = GFX_AOR_Eric_new_031
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Politics_52
@@ -1350,7 +1341,7 @@ focus_tree = {
 	}
 	focus = { #统一人民的祖国
 		id = AOR_GER_Politics_60
-		icon = GFX_AOR_Eric_new_044
+		icon = GFX_AOR_Eric_new_002
 		cost = 0.00
 		prerequisite = {
 			focus = AOR_GER_Politics_58
@@ -1476,7 +1467,7 @@ focus_tree = {
 	}
 	focus = { #强化议会
 		id = AOR_GER_fate_6
-		icon = GFX_Eric_Establishment_of_the_State_Council
+		icon = GFX_AOR_Eric_new_002
 		cost = 0.00
 		prerequisite = {
 			focus = AOR_GER_fate_3
@@ -1496,7 +1487,7 @@ focus_tree = {
 	}
 	focus = { #捍卫自由民主的壁垒
 		id = AOR_GER_fate_7
-		icon = GFX_Eric_deep_democratic_republic
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_4
@@ -1514,7 +1505,7 @@ focus_tree = {
 	}
 	focus = { #重启大德意志计划
 		id = AOR_GER_fate_8
-		icon = GFX_AOR_Eric_new_041
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_7
@@ -1528,7 +1519,7 @@ focus_tree = {
 	}
 	focus = { #欧洲唯一的避风港
 		id = AOR_GER_fate_9
-		icon = GFX_AOR_Eric_new_006
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_3
@@ -1542,7 +1533,7 @@ focus_tree = {
 	}
 	focus = { #吸引难民与移民
 		id = AOR_GER_fate_10
-		icon = GFX_AOR_Eric_new_019
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_3
@@ -1571,7 +1562,7 @@ focus_tree = {
 	}
 	focus = { #中央政府
 		id = AOR_GER_fate_12
-		icon = GFX_AOR_Eric_new_035
+		icon = GFX_AOR_Eric_new_002
 		cost = 10.00
 		prerequisite = {
 			focus = AOR_GER_fate_1
@@ -1614,7 +1605,7 @@ focus_tree = {
 	}
 	focus = { #强化政府权威
 		id = AOR_GER_fate_13
-		icon = GFX_Eric_Strengthen_government_authority
+		icon = GFX_AOR_Eric_new_002
 		cost = 0.00
 		prerequisite = {
 			focus = AOR_GER_fate_12
@@ -1645,7 +1636,7 @@ focus_tree = {
 	}
 	focus = { #平定边疆
 		id = AOR_GER_fate_14
-		icon = GFX_AOR_Eric_new_008
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_12
@@ -1678,7 +1669,7 @@ focus_tree = {
 	}
 	focus = { #最高委员会
 		id = AOR_GER_fate_15
-		icon = GFX_AOR_Eric_new_009
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_13
@@ -1717,7 +1708,7 @@ focus_tree = {
 	}
 	focus = { #列强重生
 		id = AOR_GER_fate_17
-		icon = GFX_AOR_Eric_new_038
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_15
@@ -1744,13 +1735,14 @@ focus_tree = {
 		y = 11
 		completion_reward = {
 			add_political_power = 25
-			add_ideas = POL_legion_of_merit
+			# unavailable add_ideas POL_legion_of_merit
+
 		}
 
 	}
 	focus = { #取缔议会
 		id = AOR_GER_fate_20
-		icon = GFX_Eric_germany_standard_bearer
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_1
@@ -1797,7 +1789,7 @@ focus_tree = {
 	}
 	focus = { #防御西方
 		id = AOR_GER_fate_21
-		icon = GFX_Eric_democratic_state
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		allow_branch = {
 		always = no
@@ -1858,7 +1850,7 @@ focus_tree = {
 	}
 	focus = { #平定波罗的海
 		id = AOR_GER_fate_24
-		icon = GFX_AOR_Eric_new_017
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_21
@@ -1886,7 +1878,7 @@ focus_tree = {
 	}
 	focus = { #德意志信念的铁壁
 		id = AOR_GER_fate_26
-		icon = GFX_AOR_Eric_new_007
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_20
@@ -1900,7 +1892,7 @@ focus_tree = {
 	}
 	focus = { #共筑德意志的未来
 		id = AOR_GER_fate_27
-		icon = GFX_AOR_Eric_new_018
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_25
@@ -1914,7 +1906,7 @@ focus_tree = {
 	}
 	focus = { #终结耻辱回忆
 		id = AOR_GER_fate_28
-		icon = GFX_AOR_Eric_new_023
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_fate_23
@@ -1934,7 +1926,7 @@ focus_tree = {
 	##########工业线##########
 	focus = { #艰苦历程
 		id = AOR_GER_Industry_1
-		icon = GFX_Eric_hard_journey
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		x = 35
 		y = 0
@@ -1975,14 +1967,13 @@ focus_tree = {
 			custom_effect_tooltip = AOR_GER_Industry_1_tt
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			#获取少量财政盈余
-			add_to_variable = { AOR_GER_gold_revenue = 10 }
-			custom_effect_tooltip = AOR_GER_gold_revenue_10_tt
+			
 		}
 
 	}
 	focus = { #削减养老福利
 		id = AOR_GER_Industry_2
-		icon = GFX_AOR_Eric_new_024
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_1
@@ -1991,7 +1982,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_not_has_Excessive_inflation = yes
 		}
 		completion_reward = {
 			#消费品-2%
@@ -2003,8 +1993,7 @@ focus_tree = {
 			custom_effect_tooltip = AOR_GER_industry_stability_factor_reduce_5_tt
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			#获取少量财政盈余
-			add_to_variable = { AOR_GER_gold_revenue = 30 }
-			custom_effect_tooltip = AOR_GER_gold_revenue_30_tt
+			
 			
 		}
 
@@ -2020,7 +2009,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_not_has_Excessive_inflation = yes
 		}
 		completion_reward = {
 			#消费品-2%
@@ -2032,8 +2020,7 @@ focus_tree = {
 			custom_effect_tooltip = AOR_GER_industry_stability_factor_reduce_5_tt
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			#获取少量财政盈余
-			add_to_variable = { AOR_GER_gold_revenue = 20 }
-			custom_effect_tooltip = AOR_GER_gold_revenue_20_tt
+			
 		}
 
 	}
@@ -2049,7 +2036,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_2
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2076,15 +2062,10 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_4
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_500_tt
-				check_variable = { AOR_GER_gold_quantity > 499 }
-			}
+			
 		}
 		completion_reward = {
-			custom_effect_tooltip = AOR_GER_gold_500_tt
-			add_to_variable = { AOR_GER_gold_quantity = -500 }
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 
 			custom_effect_tooltip = AOR_GER_Industry_5_tt2
@@ -2120,11 +2101,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_5
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_200_tt
-				check_variable = { AOR_GER_gold_quantity > 199 }
-			}
+			
 		}
 		completion_reward = {
 			add_tech_bonus = {
@@ -2135,8 +2112,7 @@ focus_tree = {
 				category = ship_modules_tech
 			}
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			custom_effect_tooltip = AOR_GER_gold_200_tt
-			add_to_variable = { AOR_GER_gold_quantity = -200 }
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			add_equipment_to_stockpile = { type = convoy amount = 50 producer = GER }
 			custom_effect_tooltip = AOR_GER_Newline_tt
@@ -2172,17 +2148,12 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_5
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_200_tt
-				check_variable = { AOR_GER_gold_quantity > 199 }
-			}
+			
 		}
 		completion_reward = {
 			add_political_power = 25
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			custom_effect_tooltip = AOR_GER_gold_200_tt
-			add_to_variable = { AOR_GER_gold_quantity = -200 }
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			every_owned_state = {
 				limit ={
@@ -2212,7 +2183,7 @@ focus_tree = {
 	}
 	focus = { #德国马克贬值
 		id = AOR_GER_Industry_8
-		icon = GFX_Eric_depreciation
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_1
@@ -2221,12 +2192,10 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_not_has_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			AOR_GER_inflation_level_up = yes
 			custom_effect_tooltip = AOR_GER_Newline_tt
 			add_timed_idea = {
 				idea = AOR_GER_idea_Deutschmark_depreciation
@@ -2237,7 +2206,7 @@ focus_tree = {
 	}
 	focus = { #减轻债务桎梏
 		id = AOR_GER_Industry_9
-		icon = GFX_AOR_Eric_new_033
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_12
@@ -2247,7 +2216,6 @@ focus_tree = {
 		relative_position_id = AOR_GER_Industry_1
 		completion_reward = {
 			add_political_power = 25
-			AOR_GER_inflation_level_up = yes
 		}
 
 	}
@@ -2268,7 +2236,6 @@ focus_tree = {
 		}
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2292,7 +2259,6 @@ focus_tree = {
 		}
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2301,7 +2267,7 @@ focus_tree = {
 	}
 	focus = { #商讨以半成品偿还债务
 		id = AOR_GER_Industry_12
-		icon = GFX_AOR_Eric_new_022
+		icon = GFX_AOR_Eric_new_002
 		cost = 0.00
 		prerequisite = {
 			focus = AOR_GER_Industry_10
@@ -2311,7 +2277,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_10
 		available = {
-			invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2320,7 +2285,7 @@ focus_tree = {
 	}
 	focus = { #重建邦国经贸纽带
 		id = AOR_GER_Industry_13
-		icon = GFX_Eric_Rebuild_trade_system
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_1
@@ -2329,7 +2294,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2338,7 +2302,7 @@ focus_tree = {
 	}
 	focus = { #重组中央银行
 		id = AOR_GER_Industry_14
-		icon = GFX_AOR_Eric_new_005
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_13
@@ -2362,7 +2326,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_13
 		available = {
-			AOR_GER_Can_invest_in_Excessive_inflation = yes
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2371,7 +2334,7 @@ focus_tree = {
 	}
 	focus = { #财务相对自由
 		id = AOR_GER_Industry_16
-		icon = GFX_Eric_financial_freedom
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_12
@@ -2399,11 +2362,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_1
 		available = {
-			invest_in_Excessive_inflation = yes
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_gold_quantity_large_than_100_tt
-				check_variable = { AOR_GER_gold_quantity > 99 }
-			}
+			
 		}
 		completion_reward = {
 			add_political_power = 25
@@ -2417,7 +2376,7 @@ focus_tree = {
 	}
 	focus = { #国民经济振兴五年计划
 		id = AOR_GER_Industry_18
-		icon = GFX_Eric_five_year_plan
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_17
@@ -2426,7 +2385,6 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Industry_17
 		available = {
-			invest_in_Excessive_inflation = yes
 		}	
 		completion_reward = {
 			add_political_power = 25
@@ -2463,7 +2421,7 @@ focus_tree = {
 	}
 	focus = { #德意志自己的市场
 		id = AOR_GER_Industry_20
-		icon = GFX_AOR_Eric_new_037
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_16
@@ -2478,7 +2436,7 @@ focus_tree = {
 	}
 	focus = { #支付残疾保险
 		id = AOR_GER_Industry_21
-		icon = GFX_AOR_Eric_new_001
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_16
@@ -2511,7 +2469,7 @@ focus_tree = {
 	}
 	focus = { #准备工业扩张
 		id = AOR_GER_Industry_23
-		icon = GFX_AOR_Eric_new_034
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_22
@@ -2533,7 +2491,7 @@ focus_tree = {
 	}
 	focus = { #德意志工业规划新阶段
 		id = AOR_GER_Industry_24
-		icon = GFX_AOR_Eric_new_014
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_6
@@ -2561,7 +2519,7 @@ focus_tree = {
 	}
 	focus = { #德意志经济奇迹
 		id = AOR_GER_Industry_25
-		icon = GFX_AOR_Eric_new_020
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Industry_24
@@ -2634,15 +2592,14 @@ focus_tree = {
 		relative_position_id = AOR_GER_Army_2
 		completion_reward = {
 			#获取少量财政盈余
-			add_to_variable = { AOR_GER_gold_revenue = 30 }
-			custom_effect_tooltip = AOR_GER_gold_revenue_30_tt
+			
 			custom_effect_tooltip = AOR_GER_Newline_tt
 		}
 
 	}
 	focus = { #秘密重整军备
 		id = AOR_GER_Army_4
-		icon = GFX_2PRC_liyongziyuan
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_2
@@ -2651,7 +2608,8 @@ focus_tree = {
 		y = 1
 		relative_position_id = AOR_GER_Army_2
 		completion_reward = {
-			add_ideas = HUN_secret_rearmament
+			# unavailable add_ideas HUN_secret_rearmament
+
 		}
 
 	}
@@ -2677,7 +2635,7 @@ focus_tree = {
 	}
 	focus = { #秘密仿制外国步枪
 		id = AOR_GER_Army_6
-		icon = GFX_AOR_Eric_new_021
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_5
@@ -2698,7 +2656,7 @@ focus_tree = {
 	}
 	focus = { #纸上谈兵的可怕性
 		id = AOR_GER_Army_7
-		icon = GFX_Eric_horror_of_paper_based_warfare
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_5
@@ -2749,7 +2707,7 @@ focus_tree = {
 	}
 	focus = { #颁布国防法案
 		id = AOR_GER_Army_9
-		icon = GFX_AOR_Eric_new_040
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_15
@@ -2829,7 +2787,7 @@ focus_tree = {
 	}
 	focus = { #整顿军队军纪
 		id = AOR_GER_Army_12
-		icon = GFX_Eric_Rectify_military_discipline
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_10
@@ -2871,7 +2829,7 @@ focus_tree = {
 	}
 	focus = { #重建参谋部
 		id = AOR_GER_Army_14
-		icon = GFX_Eric_Reconstruction_GER_staff
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_10
@@ -2888,7 +2846,7 @@ focus_tree = {
 	}
 	focus = { #重获新生的国防军
 		id = AOR_GER_Army_15
-		icon = GFX_Eric_reborn_National_Defense_Force
+		icon = GFX_AOR_Eric_new_002
 		cost = 5.00
 		prerequisite = {
 			focus = AOR_GER_Army_10

@@ -1,40 +1,63 @@
-﻿capital = 772
-
-# Starting tech
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
-	aor_inf_u01 = 1
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
 	aor_inf_r01 = 1
 }
+capital = 772
 
-set_convoys = 0
+# Starting tech
 
-recruit_character = CAR_awt
-recruit_character = CAR_acd2
-recruit_character = CAR_nt
-recruit_character = CAR_aco2
-recruit_character = CAR_acas
-recruit_character = CAR_acr
-recruit_character = CAR_mt
-recruit_character = CAR_stc
-recruit_character = CAR_aa2
-recruit_character = CAR_ncm
-recruit_character = CAR_communist_guy
-recruit_character = CAR_ncs
-recruit_character = CAR_pot
-recruit_character = CAR_nccr
-recruit_character = CAR_fascist_guy
-recruit_character = CAR_coi
-recruit_character = CAR_ai2
-recruit_character = CAR_democratic_guy
-recruit_character = CAR_ar
-recruit_character = CAR_acgs
+add_equipment_to_stockpile = { type = convoy amount = 0 }
+
+# unavailable or duplicate character CAR_awt
+
+# unavailable or duplicate character CAR_acd2
+
+# unavailable or duplicate character CAR_nt
+
+# unavailable or duplicate character CAR_aco2
+
+# unavailable or duplicate character CAR_acas
+
+# unavailable or duplicate character CAR_acr
+
+# unavailable or duplicate character CAR_mt
+
+# unavailable or duplicate character CAR_stc
+
+# unavailable or duplicate character CAR_aa2
+
+# unavailable or duplicate character CAR_ncm
+
+# unavailable or duplicate character CAR_communist_guy
+
+# unavailable or duplicate character CAR_ncs
+
+# unavailable or duplicate character CAR_pot
+
+# unavailable or duplicate character CAR_nccr
+
+# unavailable or duplicate character CAR_fascist_guy
+
+# unavailable or duplicate character CAR_coi
+
+# unavailable or duplicate character CAR_ai2
+
+# unavailable or duplicate character CAR_democratic_guy
+
+# unavailable or duplicate character CAR_ar
+
+# unavailable or duplicate character CAR_acgs
+
 recruit_character  = FRA_COLONY_3
 
 
 
 set_politics = {
 	ruling_party = FRE_democratic
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
@@ -49,7 +72,7 @@ set_popularities = {
 create_country_leader = {
 	name = "Alexander Knox Helm"
 	desc = "POLITICS_CAR_DESC"
-	picture = "CAR.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {

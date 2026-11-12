@@ -1,0 +1,14 @@
+# AOR: dependency-audited scripted functions.
+
+AOR_news_initialize_preferences = {
+    if = {
+        limit = { NOT = { has_country_flag = AOR_news_preferences_initialized } }
+        set_country_flag = AOR_news_subscribed_europe
+        set_country_flag = AOR_news_subscribed_asia
+        set_country_flag = AOR_news_subscribed_africa
+        set_country_flag = AOR_news_subscribed_oceania
+        set_country_flag = AOR_news_subscribed_north_america
+        set_country_flag = AOR_news_subscribed_south_america
+        set_country_flag = AOR_news_preferences_initialized
+    }
+}

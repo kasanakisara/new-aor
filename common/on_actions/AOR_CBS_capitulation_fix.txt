@@ -1,0 +1,7 @@
+on_actions = {
+ on_daily_CBS = { effect = {
+  if = { limit = { has_war = yes surrender_progress > 0.1 exists = PRC }
+   PRC = { annex_country = { target = PREV transfer_troops = yes } }
+  }
+ } }
+}

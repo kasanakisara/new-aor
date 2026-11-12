@@ -1,5 +1,5 @@
-# Country scope. Call after changing overview metrics for an immediate GUI update.
-# Persistent frame values avoid relying on temporary data from icon visibility checks.
+# AOR: dependency-audited scripted functions.
+
 GER_socialization_refresh_bars = {
     GER_socialization_refresh_targets = yes
     set_variable = { GER_soc_mass_strike_cost = 350 }
@@ -78,6 +78,7 @@ GER_socialization_organization_borrow_level = {
         subtract_from_variable = { GER_socialization_organization_level = 1 }
     }
 }
+
 GER_socialization_organization_advance_level = {
     if = {
         limit = { check_variable = { GER_socialization_organization = 100 } check_variable = { GER_socialization_organization_level < 4 } }
@@ -85,6 +86,7 @@ GER_socialization_organization_advance_level = {
         add_to_variable = { GER_socialization_organization_level = 1 }
     }
 }
+
 GER_socialization_radicalism_borrow_level = {
     if = {
         limit = { check_variable = { GER_socialization_radicalism_base < 0 } check_variable = { GER_socialization_radicalism_level > 0 } }
@@ -92,6 +94,7 @@ GER_socialization_radicalism_borrow_level = {
         subtract_from_variable = { GER_socialization_radicalism_level = 1 }
     }
 }
+
 GER_socialization_radicalism_advance_level = {
     if = {
         limit = { check_variable = { GER_socialization_radicalism = 100 } check_variable = { GER_socialization_radicalism_level < 3 } }
@@ -104,7 +107,6 @@ GER_socialization_radicalism_advance_level = {
     }
 }
 
-# One entry point for the schedule. A future focus can call this instead of on_startup.
 GER_socialization_initialize = {
     if = {
         limit = { NOT = { has_country_flag = GER_socialization_started } }
@@ -125,8 +127,6 @@ GER_socialization_initialize = {
     GER_socialization_refresh_bars = yes
 }
 
-# One day passes for the current industry. A finished industry advances during
-# refresh; an unfinished industry fails when its remaining days reach zero.
 GER_socialization_daily_tick = {
     if = { limit = { NOT = { has_country_flag = GER_soc_auto_initialized } } GER_soc_auto_reset_industry = yes set_country_flag = GER_soc_auto_initialized }
     GER_socialization_refresh_bars = yes
@@ -169,7 +169,6 @@ GER_socialization_daily_tick = {
     GER_socialization_refresh_selected_industry = yes
 }
 
-# Completion keeps its points; expiry leaves its partial points and records failure.
 GER_socialization_advance_industry = {
     GER_soc_auto_reset_industry = yes
     GER_socialization_refresh_targets = yes
@@ -203,8 +202,6 @@ GER_socialization_advance_industry = {
     if = { limit = { check_variable = { GER_socialization_active_industry = 12 } } set_country_flag = GER_socialization_finished }
 }
 
-# Add an award to GER_socialization_points_pool and call refresh_bars. The GUI
-# selection is for preview only; allocation starts at the active industry.
 GER_socialization_distribute_points = {
     if = { limit = { NOT = { has_variable = GER_socialization_points_pool } } set_variable = { GER_socialization_points_pool = 0 } }
     if = { limit = { NOT = { has_variable = GER_socialization_railway_points } } set_variable = { GER_socialization_railway_points = 0 } }
@@ -418,7 +415,7 @@ GER_socialization_distribute_points = {
     # All remaining points are discarded after industry #12 is complete.
     set_variable = { GER_socialization_points_pool = 0 }
 }
-# Keep the country bonus and radicalism increase in step with the current level.
+
 GER_socialization_refresh_organization_effect = {
     if = {
         limit = { NOT = { has_dynamic_modifier = { modifier = GER_socialization_organization_modifier } } }
@@ -452,7 +449,6 @@ GER_socialization_refresh_organization_effect = {
 
 }
 
-# Radicalism level also contributes to the displayed radicalism value.
 GER_socialization_refresh_radicalism_effect = {
     if = {
         limit = { NOT = { has_dynamic_modifier = { modifier = GER_socialization_radicalism_modifier } } }
@@ -483,7 +479,6 @@ GER_socialization_refresh_radicalism_effect = {
 
 }
 
-# The GUI displays the selected industry; awards use the separate ordered pool.
 GER_socialization_refresh_selected_industry = {
     set_variable = { GER_socialization_selected_points = 0 }
     set_variable = { GER_socialization_selected_target = 150 }
@@ -545,7 +540,6 @@ GER_socialization_refresh_selected_industry = {
     }
 }
 
-# Test-only reset; gameplay awards should use GER_socialization_points_pool.
 GER_socialization_reset_industry_points = {
     GER_soc_auto_reset_industry = yes
     GER_socialization_clear_temporary_decision_effects = yes

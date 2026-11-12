@@ -1,10 +1,50 @@
-﻿capital = 812
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	mass_assault = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
 
-#oob = "EST_1936"
+capital = 812
+oob = "AOR_EU_EST"
 
 set_research_slots = 2
 
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
 set_politics = {
 	ruling_party = CON_democratic

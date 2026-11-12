@@ -1,95 +1,100 @@
-﻿capital = 307
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	mass_assault = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
+capital = 307
 
 #oob = "VEN_1936"
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
- 
- 
-	fuel_silos = 1
-	fuel_refining = 1
-}
 
-recruit_character = VEN_eleazar_lópez_contreras
-recruit_character = VEN_juan_bautista_fuenmayor
-recruit_character = VEN_luis_figueroa
-recruit_character = VEN_patricio_franco
-recruit_character = VEN_isaias_medina_angarita
-recruit_character = VEN_humberto_santabria_villa
-recruit_character = VEN_carlos_molina_talavayo
-recruit_character = VEN_roberto_de_luca_varesano
-recruit_character = VEN_carlos_garcia_mendoza
-recruit_character = VEN_miguel_diaz_fraile
-recruit_character = VEN_victor_sanchez_croes
-recruit_character = VEN_antonio_casas_gonzalez
-recruit_character = VEN_carlos_ramos_diaz
-recruit_character = VEN_david_lopez_henriques
-recruit_character = VEN_jose_polares_pavon
-recruit_character = VEN_tomas_contreras_villalobos
-recruit_character = VEN_carlos_delgado_chalbaud
-recruit_character = VEN_manuel_diaz_rodriguez
-recruit_character = VEN_romulo_gallegos_freire
-recruit_character = VEN_isidoro_ruiz_tuerro
+# unavailable or duplicate character VEN_eleazar_lópez_contreras
+
+# unavailable or duplicate character VEN_juan_bautista_fuenmayor
+
+# unavailable or duplicate character VEN_luis_figueroa
+
+# unavailable or duplicate character VEN_patricio_franco
+
+# unavailable or duplicate character VEN_isaias_medina_angarita
+
+# unavailable or duplicate character VEN_humberto_santabria_villa
+
+# unavailable or duplicate character VEN_carlos_molina_talavayo
+
+# unavailable or duplicate character VEN_roberto_de_luca_varesano
+
+# unavailable or duplicate character VEN_carlos_garcia_mendoza
+
+# unavailable or duplicate character VEN_miguel_diaz_fraile
+
+# unavailable or duplicate character VEN_victor_sanchez_croes
+
+# unavailable or duplicate character VEN_antonio_casas_gonzalez
+
+# unavailable or duplicate character VEN_carlos_ramos_diaz
+
+# unavailable or duplicate character VEN_david_lopez_henriques
+
+# unavailable or duplicate character VEN_jose_polares_pavon
+
+# unavailable or duplicate character VEN_tomas_contreras_villalobos
+
+# unavailable or duplicate character VEN_carlos_delgado_chalbaud
+
+# unavailable or duplicate character VEN_manuel_diaz_rodriguez
+
+# unavailable or duplicate character VEN_romulo_gallegos_freire
+
+# unavailable or duplicate character VEN_isidoro_ruiz_tuerro
+
 
 
 set_country_flag = monroe_doctrine
 
-1939.1.1 = {
 
-	add_political_power = 1198
-	add_command_power = 100
-	
-	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
-	
-	#oob = "VEN_1939"
-	set_technology = {
-		interwar_artillery = 1
-		aor_inf_l00 = 1
-		aor_inf_l01 = 1
-		aor_inf_l05 = 1
-		aor_inf_l03 = 1
 
-		#doctrines
-		air_superiority = 1
-		grand_battle_plan = 1
-		trench_warfare = 1
-		fleet_in_being = 1
-		battlefleet_concentration = 1
-		convoy_sailing = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_refining2 = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-	}
-}
-
-set_convoys = 10
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 set_politics = {
 	ruling_party = Fascism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }

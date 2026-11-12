@@ -1,36 +1,77 @@
-﻿capital = 313
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	mass_assault = 1
+}
+capital = 313
 
 #oob = "GUA_1936"
 
 add_ideas = GUA_the_bannan
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
- 
- 
-}
 
-recruit_character = GUA_jorge_ubico
-recruit_character = GUA_justo_arbenz
-recruit_character = GUA_máximo_arbenz
-recruit_character = GUA_diego_barahona
-recruit_character = GUA_jorge_torriello_garrido
-recruit_character = GUA_carlos_diaz_de_leon
-recruit_character = GUA_jacopo_arbenz_guzman
-recruit_character = GUA_w_tesch_orlando
-recruit_character = GUA_r_buenaventure_pineda
-recruit_character = GUA_tomas_mendoza_urribe
-recruit_character = GUA_miguel_garcia_granados
-recruit_character = GUA_jose_ezuira_abel
-recruit_character = GUA_m_ydigaras_fuentes
-recruit_character = GUA_federico_ponce_vaides
-recruit_character = GUA_manuel_orellana
-recruit_character = GUA_francisco_javier_arana
-recruit_character = GUA_juan_arevalo_bermejo
-recruit_character = GUA_eduardo_villagran_ariza
-recruit_character = GUA_manuel_arroyo
+# unavailable or duplicate character GUA_jorge_ubico
+
+# unavailable or duplicate character GUA_justo_arbenz
+
+# unavailable or duplicate character GUA_máximo_arbenz
+
+# unavailable or duplicate character GUA_diego_barahona
+
+# unavailable or duplicate character GUA_jorge_torriello_garrido
+
+# unavailable or duplicate character GUA_carlos_diaz_de_leon
+
+# unavailable or duplicate character GUA_jacopo_arbenz_guzman
+
+# unavailable or duplicate character GUA_w_tesch_orlando
+
+# unavailable or duplicate character GUA_r_buenaventure_pineda
+
+# unavailable or duplicate character GUA_tomas_mendoza_urribe
+
+# unavailable or duplicate character GUA_miguel_garcia_granados
+
+# unavailable or duplicate character GUA_jose_ezuira_abel
+
+# unavailable or duplicate character GUA_m_ydigaras_fuentes
+
+# unavailable or duplicate character GUA_federico_ponce_vaides
+
+# unavailable or duplicate character GUA_manuel_orellana
+
+# unavailable or duplicate character GUA_francisco_javier_arana
+
+# unavailable or duplicate character GUA_juan_arevalo_bermejo
+
+# unavailable or duplicate character GUA_eduardo_villagran_ariza
+
+# unavailable or duplicate character GUA_manuel_arroyo
+
 
 create_country_leader = {
 	name = "Manuel Estrada Cabrera"
@@ -45,55 +86,9 @@ create_country_leader = {
 
 set_country_flag = monroe_doctrine
 set_war_support = 0.1
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
-1939.1.1 = {
 
-	add_political_power = 1198
-	add_command_power = 100
-	
-	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
-	
-	#oob = "GUA_1939"
-	set_technology = {
-		aor_inf_l00 = 1
-		aor_inf_l01 = 1
-
-		#doctrines
-		air_superiority = 1
-		mass_assault = 1
-		pocket_defence = 1
-		defence_in_depth = 1
-		fleet_in_being = 1
-		battlefleet_concentration = 1
-		convoy_sailing = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_silos = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-	}
-}
 
 set_politics = {
 	ruling_party = AUT_democratic

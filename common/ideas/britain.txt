@@ -10,12 +10,14 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT ={
-					has_government = communism
+					always = no # unavailable AOR object: has_government communism
+
 				}
 				NOT = {
 					any_other_country = {
 						original_tag = ENG
-						has_government = democratic 
+						always = no # unavailable AOR object: has_government democratic
+ 
 						NOT = {
 							tag = ROOT
 						}

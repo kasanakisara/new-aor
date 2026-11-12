@@ -1,0 +1,178 @@
+# AOR: generic industrial tiers, infantry/artillery focus. Values are weights, not percentages.
+aor_ai_baseline = {
+	enable = { always = yes }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = infantry value = 70 }
+	ai_strategy = { type = role_ratio id = garrison value = 12 }
+	ai_strategy = { type = role_ratio id = armor value = -100 }
+	ai_strategy = { type = role_ratio id = mechanized value = -100 }
+	ai_strategy = { type = role_ratio id = motorized value = -100 }
+	ai_strategy = { type = role_ratio id = paratroopers value = -100 }
+	ai_strategy = { type = role_ratio id = marines value = 0 }
+	ai_strategy = { type = role_ratio id = cavalry value = 0 }
+	ai_strategy = { type = role_ratio id = mountaineers value = 0 }
+	ai_strategy = { type = equipment_production_factor id = infantry value = 60 }
+	ai_strategy = { type = equipment_production_factor id = artillery value = 70 }
+	ai_strategy = { type = equipment_production_factor id = support value = 25 }
+	ai_strategy = { type = equipment_production_factor id = armor value = -100 }
+	ai_strategy = { type = equipment_production_factor id = motorized value = -50 }
+	ai_strategy = { type = equipment_production_factor id = fighter value = 5 }
+	ai_strategy = { type = equipment_production_factor id = cas value = 3 }
+	ai_strategy = { type = unit_ratio id = fighter value = 65 }
+	ai_strategy = { type = unit_ratio id = cas value = 25 }
+	ai_strategy = { type = unit_ratio id = tactical_bomber value = 10 }
+	ai_strategy = { type = unit_ratio id = strategic_bomber value = 3 }
+	ai_strategy = { type = equipment_stockpile_surplus_ratio value = 20 }
+	ai_strategy = { type = role_ratio id = naval_screen value = 65 }
+	ai_strategy = { type = role_ratio id = naval_escort value = 35 }
+	ai_strategy = { type = role_ratio id = naval_cruiser_light value = 25 }
+	ai_strategy = { type = role_ratio id = naval_capital_bb value = 10 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 15 }
+	ai_strategy = { type = role_ratio id = naval_carrier value = -70 }
+	ai_strategy = { type = equipment_production_surplus_management id = infantry_equipment value = 10 }
+	ai_strategy = { type = equipment_production_surplus_management id = support_equipment value = 3 }
+	ai_strategy = { type = equipment_production_surplus_management id = artillery_equipment value = 5 }
+	ai_strategy = { type = equipment_production_surplus_management id = convoy value = 1 }
+}
+
+aor_ai_industry_small = {
+	enable = { num_of_military_factories < 15 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = ai_wanted_divisions_factor value = 10 }
+	ai_strategy = { type = added_military_to_civilian_factory_ratio value = 20 }
+}
+
+aor_ai_industry_medium = {
+	enable = { num_of_military_factories > 14 num_of_military_factories < 40 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = ai_wanted_divisions_factor value = 25 }
+	ai_strategy = { type = added_military_to_civilian_factory_ratio value = 40 }
+}
+
+aor_ai_industry_large = {
+	enable = { num_of_military_factories > 39 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = ai_wanted_divisions_factor value = 50 }
+	ai_strategy = { type = added_military_to_civilian_factory_ratio value = 60 }
+}
+
+aor_ai_factory_floor_small = {
+	enable = { num_of_military_factories > 4 num_of_military_factories < 15 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_min_factories_archetype id = infantry_equipment value = 2 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = artillery_equipment value = 1 }
+}
+
+aor_ai_factory_floor_medium = {
+	enable = { num_of_military_factories > 14 num_of_military_factories < 40 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_min_factories_archetype id = infantry_equipment value = 5 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = artillery_equipment value = 3 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = support_equipment value = 1 }
+}
+
+aor_ai_factory_floor_large = {
+	enable = { num_of_military_factories > 39 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_min_factories_archetype id = infantry_equipment value = 10 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = artillery_equipment value = 6 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = support_equipment value = 2 }
+}
+
+aor_ai_wartime_reserve = {
+	enable = { has_war = yes }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_market_for_sale_threshold id = infantry value = 150000 }
+	ai_strategy = { type = equipment_market_for_sale_threshold id = support value = 50000 }
+	ai_strategy = { type = equipment_market_for_sale_threshold id = artillery value = 10000 }
+}
+aor_airship_support = {
+	enable = { num_of_military_factories > 14 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = unit_ratio id = scout_plane value = 8 }
+	ai_strategy = { type = unit_ratio id = naval_bomber value = 5 }
+	ai_strategy = { type = unit_ratio id = maritime_patrol_plane value = 4 }
+	ai_strategy = { type = equipment_production_factor id = scout_plane value = 5 }
+	ai_strategy = { type = equipment_production_factor id = strategic_bomber value = 3 }
+}
+
+aor_roles_defense = {
+	enable = { num_of_military_factories > 7 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = aor_defense value = 18 }
+}
+
+aor_roles_assault = {
+	enable = { num_of_military_factories > 11 has_tech = aor_inf_e01 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = aor_assault value = 12 }
+}
+
+aor_roles_heavy_artillery = {
+	enable = { num_of_military_factories > 24 has_tech = aor_howitzer_1 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = aor_heavy_artillery value = 8 }
+}
+
+aor_roles_mountain = {
+	enable = { has_tech = aor_inf_t01 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = mountaineers value = 6 }
+}
+
+aor_roles_marine = {
+	enable = { has_tech = aor_inf_m01 num_of_naval_factories > 0 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = marines value = 5 }
+}
+
+aor_roles_cavalry = {
+	enable = { num_of_military_factories < 25 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = cavalry value = 4 }
+}
+
+aor_roles_police = {
+	enable = { has_tech = tech_military_police }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = suppression value = 3 }
+}
+
+aor_howitzer_production = {
+	enable = { has_tech = aor_howitzer_1 num_of_military_factories > 24 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_min_factories_archetype id = howitzer_equipment value = 1 }
+	ai_strategy = { type = equipment_production_surplus_management id = howitzer_equipment value = 3 }
+}
+
+aor_supply_truck_production = {
+	enable = { has_tech = aor_supply_truck_tech num_of_military_factories > 19 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_min_factories_archetype id = aor_supply_truck_equipment value = 1 }
+}
+
+aor_build_science = {
+	enable = { has_tech = aor_basic_science_1900 num_of_civilian_factories > 17 num_of_military_factories > 9 nuclear_facility < 1 NOT = { any_controlled_state = { nuclear_facility > 0 } } }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = build_building id = nuclear_facility value = 10 }
+}
+
+aor_build_experimental_land = {
+	enable = { has_tech = aor_tank_support OR = { AND = { num_of_civilian_factories > 34 num_of_military_factories > 29 } AND = { OR = { original_tag = ENG original_tag = FRA } num_of_civilian_factories > 19 num_of_military_factories > 14 } } land_facility < 1 NOT = { any_controlled_state = { land_facility > 0 } } }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = build_building id = land_facility value = 10 }
+}
+
+aor_own_gas_support_supply = {
+	enable = { has_tech = Gas_Preparation num_of_military_factories > 9 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = equipment_production_surplus_management id = support_equipment value = 5 }
+}
+
+aor_tank_support_service = {
+	enable = { has_tech = aor_tank_support has_tech = aor_supply_truck_tech is_special_project_completed = sp:sp_aor_tank_prototype num_of_military_factories > 24 }
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = aor_tank_assault value = 4 }
+	ai_strategy = { type = equipment_production_factor id = armor value = 100 }
+	ai_strategy = { type = equipment_production_min_factories_archetype id = aor_early_tank_equipment value = 1 }
+}

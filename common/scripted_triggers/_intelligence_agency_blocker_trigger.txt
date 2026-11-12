@@ -1,10 +1,11 @@
-# From Kaiserredux, copy & modify by Hacker
+# AOR: dependency-audited scripted functions.
 
 can_create_intelligence_agency = {
 	# change as desired
 	if = {
 		limit = { tag = SWE }
-		has_completed_focus = SWE_Broke
+		always = no # AOR: unavailable has_completed_focus SWE_Broke
+
 	}
 	else = {
 		always = yes

@@ -1,0 +1,75 @@
+ideas = {
+	country = {
+		JAP_wartime_mobilization_evil = {
+			picture = idea_JAP_wartime_mobilization_evil
+			allowed = { always = yes }
+			modifier = {
+				production_factory_start_efficiency_factor = -0.1
+				production_speed_buildings_factor = -0.1
+				conscription_factor = -0.1
+				custom_modifier_tooltip = GER_stab_in_the_back_division_lock_tt
+			}
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+		}
+
+		JAP_constitutional_revival = {
+			picture = idea_JAP_constitutional_revival
+			allowed = { always = yes }
+			modifier = {
+				FRE_democratic_drift = 0.01
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+
+		JAP_satsuma_military = {
+			picture = idea_JAP_satsuma_military
+			allowed = { always = yes }
+			modifier = {
+				experience_gain_army = 0.01
+				experience_gain_navy = 0.01
+				experience_gain_air = 0.05
+				army_morale_factor = 0.15
+			}
+		}
+
+		JAP_russo_japanese_war_continuation = {
+			picture = idea_JAP_russo_japanese_war_continuation
+			allowed = { always = yes }
+			modifier = {
+				army_org_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = ARU
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+			}
+		}
+
+		JAP_emperor_taisho = {
+			picture = idea_JAP_emperor_taisho
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.08
+				war_support_factor = 0.03
+			}
+		}
+
+		JAP_Extension_of_Imperial = {
+			picture = idea_JAP_Extension_of_Imperial
+			allowed = { always = yes }
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				custom_modifier_tooltip = GER_stab_in_the_back_division_lock_tt
+			}
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+		}
+
+		
+	}
+}

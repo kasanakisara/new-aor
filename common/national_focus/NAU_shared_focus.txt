@@ -1,7 +1,9 @@
 
 	#法兰克福 政治线 + 经济线国策
 	
-	shared_focus = { #起始国策
+	shared_focus = {
+icon = GFX_AOR_Eric_new_002
+ #起始国策
 		id = NAU_ranshaodeshizhengting
 		#动态icon
 		dynamic = yes
@@ -376,7 +378,8 @@
 		id = NAU_aijiasoucha
 		icon = GFX_goal_unknown
 		available = {
-			has_completed_focus = NAU_An_arm_of_nations
+			always = no # unavailable AOR object: has_completed_focus NAU_An_arm_of_nations
+
 		}
 		cost=10
 		ai_will_do={
@@ -2010,7 +2013,9 @@
 
 #########法兰克福（NAU）经济路线
 
-	shared_focus = { #起始国策
+	shared_focus = {
+icon = GFX_AOR_Eric_new_002
+ #起始国策
 		id = NAU_jingjixian
 		#动态icon
 		dynamic = yes

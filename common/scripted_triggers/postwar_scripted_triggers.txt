@@ -1,0 +1,17 @@
+# AOR: dependency-audited scripted functions.
+
+is_post_ww2_era = {
+	OR = {
+		has_global_flag = germany_lost_the_war
+		date > 1946.1.1
+	}
+}
+
+IRQ_PER_should_seek_independence = {
+	OR = {
+		original_tag = IRQ
+		original_tag = PER
+	}
+	is_subject = yes
+	is_post_ww2_era = yes
+}

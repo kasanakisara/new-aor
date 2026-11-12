@@ -1,95 +1,48 @@
-﻿capital = 64
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+
+capital = 64
+oob = "PRE_1919"
 
 set_cosmetic_tag = PRE_1_Absolutism
 
 recruit_character = PRE_Gustav_emil_bernhard_bodo_kessel
 recruit_character = PRE_Johannes_braskowitz
 recruit_character = PRE_Josias_von_merlingen
-recruit_character = PRE_Karl_von_einem
+# unavailable or duplicate character PRE_Karl_von_einem
+
 recruit_character = PRE_Ludwig_von_falkenhausen
 recruit_character = PRE_Maximlian_von_peitvitz
 recruit_character = PRE_Prinz_Friedrich_Leopold
 recruit_character = PRE_Remus_von_Voilsch
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
- 
- 
- 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	
-}
 if = {
 	limit = {
 		NOT = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.75
 
 
 
 set_politics = {
 	ruling_party = Absolutism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 
@@ -147,7 +100,5 @@ create_country_leader = {
 #	}
 #}
 
-oob="PRE_1919"
-effect = {
 	country_lock_all_division_template = yes
-	}
+	

@@ -1,0 +1,29 @@
+on_actions = {
+ on_capitulation = {
+  effect = {
+if = { limit = { ROOT = { original_tag = TUR } FROM = { original_tag = GRE } NOT = { has_global_flag = AOR_greek_total_victory_news } }
+   set_global_flag = AOR_greek_total_victory_news
+   GRE = { country_event = { id = AOR_news_router.21 } }
+  }
+if = { limit = { ROOT = { original_tag = GRE } FROM = { original_tag = BUL } NOT = { has_global_flag = AOR_bulgarian_victory_news } }
+   set_global_flag = AOR_bulgarian_victory_news
+   BUL = { country_event = { id = AOR_news_router.23 } }
+  }
+if = { limit = { ROOT = { original_tag = GRE } FROM = { original_tag = TUR } NOT = { has_global_flag = AOR_ottoman_victory_news } }
+   set_global_flag = AOR_ottoman_victory_news
+   TUR = { country_event = { id = AOR_news_router.67 } }
+  }
+if = {
+   limit = {
+    country_exists = GRE
+    ROOT = {
+     OR = { original_tag = BUL original_tag = HUN original_tag = YUG original_tag = ROM }
+     NOT = { is_in_faction_with = GRE }
+    }
+    FROM = { OR = { original_tag = GRE is_in_faction_with = GRE } }
+   }
+   AOR_report_greek_balkan_victory_news = yes
+  }
+  }
+ }
+}

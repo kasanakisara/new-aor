@@ -1,10 +1,28 @@
-﻿capital = 325
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+capital = 325
 #oob = "YUN_1936"
 
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
-}
 
 if = {
 	limit = {
@@ -16,98 +34,52 @@ if = {
 	}
 }
 
-recruit_character = YUN_long_yun
-recruit_character = YUN_lu_han
-recruit_character = YUN_mao_dong
-recruit_character = YUN_cheng_peng
-recruit_character = YUN_hsia_wu
-recruit_character = YUN_liao_fang
-recruit_character = YUN_luo_sun
-recruit_character = YUN_huang_dong
-recruit_character = YUN_zhang_wu
-recruit_character = YUN_zhu_hu
-recruit_character = YUN_li_jiang
-recruit_character = YUN_chen_zhao
-recruit_character = YUN_hu_wei
-recruit_character = YUN_liu_zhao
-recruit_character = YUN_liang_peng
-recruit_character = YUN_pan_tian
-recruit_character = YUN_wang_jiang
-recruit_character = YUN_zhou_zhirou
-recruit_character = YUN_liu_wenhui
-recruit_character = YUN_ding_zhipan
+# unavailable or duplicate character YUN_long_yun
 
-1939.1.1 = {
+# unavailable or duplicate character YUN_lu_han
 
-	add_political_power = 1198
-	add_command_power = 100
+# unavailable or duplicate character YUN_mao_dong
 
-	if = {
-		limit = {
-			has_dlc = "Waking the Tiger"
-		}
+# unavailable or duplicate character YUN_cheng_peng
 
-		CHI = { add_to_faction = PREV }
-		add_to_war = {
-			targeted_alliance = CHI
-			enemy = JAP
-			 
-		}
+# unavailable or duplicate character YUN_hsia_wu
 
-		complete_national_focus = CHI_secure_internal_politics
-		complete_national_focus = CHI_cooperation_with_the_nationalists
-		complete_national_focus = CHI_industrial_investment
-		complete_national_focus = CHI_public_education_reform
-		complete_national_focus = CHI_long_term_economic_planning
-		complete_national_focus = CHI_technological_cooperation
-		complete_national_focus = CHI_local_arms_production
-		complete_national_focus = CHI_new_model_province
-		complete_national_focus = CHI_root_out_corruption
-		complete_national_focus = CHI_land_reform
-		complete_national_focus = CHI_reform_the_administration
-		else = {		
-			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = construction_effort_2
-			complete_national_focus = production_effort_2
-			complete_national_focus = infrastructure_effort
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
-		}
-	}
-	
-	#oob = "YUN_1939"
+# unavailable or duplicate character YUN_liao_fang
 
-	set_technology = {
-		#doctrines
-		grand_battle_plan = 1
-		trench_warfare = 1
+# unavailable or duplicate character YUN_luo_sun
 
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
+# unavailable or duplicate character YUN_huang_dong
 
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		fuel_silos = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-	}
-}
+# unavailable or duplicate character YUN_zhang_wu
+
+# unavailable or duplicate character YUN_zhu_hu
+
+# unavailable or duplicate character YUN_li_jiang
+
+# unavailable or duplicate character YUN_chen_zhao
+
+# unavailable or duplicate character YUN_hu_wei
+
+# unavailable or duplicate character YUN_liu_zhao
+
+# unavailable or duplicate character YUN_liang_peng
+
+# unavailable or duplicate character YUN_pan_tian
+
+# unavailable or duplicate character YUN_wang_jiang
+
+# unavailable or duplicate character YUN_zhou_zhirou
+
+# unavailable or duplicate character YUN_liu_wenhui
+
+# unavailable or duplicate character YUN_ding_zhipan
+
+
+
 
 set_politics = {
 	ruling_party = Absolutism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }

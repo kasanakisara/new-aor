@@ -1,3 +1,5 @@
+# AOR: dependency-audited scripted functions.
+
 GER_SPD_sync_bebel_unity_bonus_effect = {
     # Migrate an existing save while Bebel is the ruling leader.
     if = {
@@ -33,7 +35,6 @@ GER_SPD_sync_bebel_unity_bonus_effect = {
     }
 }
 
-# GER country scope. Other effects may change GER_SPD_unity and call the refresh effect.
 GER_SPD_initialize_unity_effect = {
 	if = {
 		limit = { NOT = { has_variable = GER_SPD_unity } }
@@ -44,8 +45,6 @@ GER_SPD_initialize_unity_effect = {
 	GER_SPD_refresh_unity_effect = yes
 }
 
-# Ten-point steps, centred on 50%. 0 -> -1 PP/-0.5 CP/-0.5% weekly stability;
-# 100 -> +1 PP/+0.5 CP/+0.5% weekly stability.
 GER_SPD_refresh_unity_effect = {
 	GER_SPD_sync_bebel_unity_bonus_effect = yes
 	if = {

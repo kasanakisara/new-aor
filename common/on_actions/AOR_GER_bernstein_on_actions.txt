@@ -1,0 +1,20 @@
+on_actions = {
+	# 伯恩施坦入阁：GER_01_04_Eduard_Bernstein 被聘为政治顾问后触发事件
+	# 雇佣顾问没有专属 on_action，因此用每日检测 + 一次性国家 flag 兜底，
+	# 兼容旧存档中已经雇佣了伯恩施坦的情况。
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = { has_character = GER_01_04_Eduard_Bernstein }
+				if = {
+					limit = {
+						NOT = { has_country_flag = AOR_GER_bernstein_advisor_hired }
+						GER_01_04_Eduard_Bernstein = { is_hired_as_advisor = yes }
+					}
+					set_country_flag = AOR_GER_bernstein_advisor_hired
+					country_event = { id = AOR_GER_bernstein.1 }
+				}
+			}
+		}
+	}
+}

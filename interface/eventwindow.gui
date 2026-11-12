@@ -475,97 +475,84 @@ guiTypes = {
 #  # ###  # #  ##      ###   #   ### #  #  #  ##  
 
 	containerWindowType = {
-		name = "EventWindow_News"
-		position = { x=-700 y=-375 }
-		size = { width = 1400 height = 750 }
-		moveable = yes
-		Orientation = CENTER
-		show_sound = world_news_effect
-		hide_sound = menu_close_window
-		
-		background = {
-			name = "Background"
-			spriteType ="GFX_event_news_bg"
-		}
-	
-		containerWindowType = {
-			name = "top_Window"
-			position = { x=0 y=0 }
-			size = { width = 1400 height = 215 }
-			Orientation = UPPER_LEFT
-	
-			iconType =
-			{
-				name ="event_picture"
-				spriteType = "GFX_news_event_001"
-				position = { x = 229 y = 218 }
-				Orientation = "UPPER_LEFT"
-				alwaystransparent = yes
-			}
-			
-			iconType = {
-				name ="event_picture_overlay"
-				spriteType = "GFX_event_news_pic_overlay"
-				position = { x = 229 y = 218 }
-				Orientation = "UPPER_LEFT"
-				alwaystransparent = yes
-			}
-			
-			instantTextBoxType = {
-				name = "Title"
-				position = { x = 184 y = 62 }
-				font = "hoi4_typewriter22"
-				borderSize = {x = 0 y = 0}
-				text = "Title text here!"
-				maxWidth = 1032
-				maxHeight = 72
-				format = left
-			}
-			
-			buttonType = {
-				name = "btn_minimize"
-				position = {x=14 y=14}
-				spriteType = "GFX_event_button_minimize"
-				clicksound = click_default
-			}
-		}
-	
-		containerWindowType = {
-			name = "midsection"
-			position = { x=736 y=250 }
-			size = { width = 540 height = 400 }
-			Orientation = UPPER_LEFT
-		
-			instantTextBoxType = {
-				name = "Description"
-				position = { x = 12 y = 12 }
-				font = "hoi4_typewriter16"
-				borderSize = {x = 0 y = 0}
-				text = "Long text here!"
-				maxWidth = 520
-				maxHeight = 376
-				format = left
-			}
-		}
-	
-	
-		containerWindowType = {
-			name = "bottom_Window"
-			position = { x=0 y=480 }
-			size = { width = 1400 height = 270 }
-			Orientation = UPPER_LEFT
-	
-			gridBoxType = {
-				name = "options_grid"
-				position = { x = 161 y = 176 }
-				size = { width = 300 height = 30 }
-				slotsize = { width = 300 height = 47 }
-				max_slots_horizontal = 1
-				format = "UPPER_LEFT"
-			}
-		}
-	}
-	
+        name = "EventWindow_News"
+        position = { x = -282 y = -392 }
+        size = { width = 565 height = 784 }
+        moveable = yes
+        Orientation = CENTER
+        show_sound = world_news_effect
+        hide_sound = menu_close_window
+        background = { name = "Background" spriteType = "GFX_event_news_bg" }
+
+        containerWindowType = {
+            name = "top_Window"
+            position = { x = 0 y = 0 }
+            size = { width = 565 height = 395 }
+            moveable = yes
+            Orientation = UPPER_LEFT
+            iconType = {
+                name = "event_picture"
+                spriteType = "GFX_news_event_001"
+                position = { x = 74 y = 164 }
+                moveable = yes
+            Orientation = UPPER_LEFT
+                alwaystransparent = yes
+            }
+            instantTextBoxType = {
+                name = "Title"
+                alwaystransparent = yes
+                # Extra leading blank lines keep mastheads below decision-row clipping.
+                # Offset the native Title upwards to preserve popup placement.
+                position = { x = 30 y = -116 }
+                font = "hoi4_typewriter22"
+                borderSize = { x = 0 y = 0 }
+                text = "Title text here!"
+                maxWidth = 500
+                maxHeight = 510
+                format = centre
+            }
+            buttonType = {
+                name = "btn_minimize"
+                position = { x = 28 y = 40 }
+                spriteType = "GFX_event_button_minimize"
+                clicksound = click_default
+            }
+        }
+        containerWindowType = {
+            name = "midsection"
+            position = { x = 0 y = 395 }
+            size = { width = 565 height = 285 }
+            moveable = yes
+            Orientation = UPPER_LEFT
+            instantTextBoxType = {
+                name = "Description"
+                alwaystransparent = yes
+                position = { x = 56 y = 0 }
+                font = "hoi4_typewriter16"
+                borderSize = { x = 0 y = 0 }
+                text = "Long text here!"
+                maxWidth = 449
+                maxHeight = 285
+                format = left
+            }
+        }
+        containerWindowType = {
+            name = "bottom_Window"
+            position = { x = 0 y = 699 }
+            size = { width = 565 height = 70 }
+            moveable = yes
+            Orientation = UPPER_LEFT
+            gridBoxType = {
+                name = "options_grid"
+                position = { x = 104 y = 10 }
+                size = { width = 352 height = 47 }
+                slotsize = { width = 352 height = 47 }
+                max_slots_horizontal = 1
+                format = UPPER_LEFT
+            }
+        }
+    }
+
 	containerWindowType = {
 		name = "event_option_entry"
 		size = { width = 300 height = 47 }

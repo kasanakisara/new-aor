@@ -1,4 +1,5 @@
-# Autonomous actions: draw one to five eligible missions per batch.
+# AOR: dependency-audited scripted functions.
+
 GER_soc_auto_remove_points = {
     if = { limit = { check_variable = { GER_socialization_active_industry = 0 } check_variable = { GER_socialization_active_industry < 1 } } subtract_from_variable = { var = GER_socialization_railway_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_railway_points min = 0 max = 1000 } }
     if = { limit = { check_variable = { GER_socialization_active_industry = 1 } check_variable = { GER_socialization_active_industry < 2 } } subtract_from_variable = { var = GER_socialization_mining_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_mining_points min = 0 max = 1000 } }
@@ -14,6 +15,7 @@ GER_soc_auto_remove_points = {
     if = { limit = { check_variable = { GER_socialization_active_industry = 11 } check_variable = { GER_socialization_active_industry < 11 } } subtract_from_variable = { var = GER_socialization_agriculture_points value = GER_soc_auto_points_loss } clamp_variable = { var = GER_socialization_agriculture_points min = 0 max = 1000 } }
     GER_socialization_refresh_selected_industry = yes
 }
+
 GER_soc_auto_extend_counter_3 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 3 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 3 } }
@@ -29,6 +31,7 @@ GER_soc_auto_extend_counter_3 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 3 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 3 } }
 }
+
 GER_soc_auto_extend_counter_4 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 4 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 4 } }
@@ -44,6 +47,7 @@ GER_soc_auto_extend_counter_4 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 4 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 4 } }
 }
+
 GER_soc_auto_extend_counter_5 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 5 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 5 } }
@@ -59,6 +63,7 @@ GER_soc_auto_extend_counter_5 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 5 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 5 } }
 }
+
 GER_soc_auto_extend_counter_10 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_withdraw_assets days = 10 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } add_days_mission_timeout = { mission = GER_soc_auto_counter_sabotage_assets days = 10 } }
@@ -74,6 +79,7 @@ GER_soc_auto_extend_counter_10 = {
     if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } add_days_mission_timeout = { mission = GER_soc_auto_counter_fund_party_right days = 10 } }
     if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } add_days_mission_timeout = { mission = GER_soc_auto_counter_domestic_capital days = 10 } }
 }
+
 GER_soc_auto_reset_industry = {
     if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } remove_mission = GER_soc_auto_worker_occupy_factories }
     if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } remove_mission = GER_soc_auto_worker_soviet_newspaper }
@@ -128,8 +134,7 @@ GER_soc_auto_reset_industry = {
     set_variable = { GER_soc_auto_counter_batch_attempts = 0 }
     clr_country_flag = GER_soc_auto_batch_active
 }
-# Draw worker and counterrevolutionary actions independently; active missions
-# and per-action cooldowns prevent drawing the same action twice in one batch.
+
 GER_soc_auto_start_worker_one = {
     random_list = {
         seed = random
@@ -235,6 +240,7 @@ GER_soc_auto_start_worker_one = {
         }
     }
 }
+
 GER_soc_auto_start_counter_one = {
     random_list = {
         seed = random
@@ -400,6 +406,7 @@ GER_soc_auto_start_counter_one = {
         }
     }
 }
+
 GER_soc_auto_daily_tick = {
     if = {
         limit = { check_variable = { GER_socialization_active_industry < 11 } }
@@ -481,6 +488,7 @@ GER_soc_auto_daily_tick = {
         }
     }
 }
+
 GER_soc_auto_delay_worker_5 = {
     if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_days_mission_timeout = { mission = GER_soc_auto_worker_occupy_factories days = 5 } }
     if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_newspaper days = 5 } }
@@ -492,6 +500,7 @@ GER_soc_auto_delay_worker_5 = {
     if = { limit = { has_active_mission = GER_soc_auto_worker_expose_plot } add_days_mission_timeout = { mission = GER_soc_auto_worker_expose_plot days = 5 } }
     if = { limit = { has_active_mission = GER_soc_auto_worker_workers_accounting } add_days_mission_timeout = { mission = GER_soc_auto_worker_workers_accounting days = 5 } }
 }
+
 GER_soc_auto_accelerate_worker_2 = {
     if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_days_mission_timeout = { mission = GER_soc_auto_worker_occupy_factories days = -2 } }
     if = { limit = { has_active_mission = GER_soc_auto_worker_soviet_newspaper } add_days_mission_timeout = { mission = GER_soc_auto_worker_soviet_newspaper days = -2 } }

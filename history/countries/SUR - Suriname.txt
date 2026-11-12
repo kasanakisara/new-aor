@@ -1,52 +1,37 @@
-﻿capital = 309
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+capital = 309
 
 ##oob = ""
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
-}
 
-set_convoys = 5
+add_equipment_to_stockpile = { type = convoy amount = 5 }
 
-1939.1.1 = {
-	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
-	
-	set_technology = {
 
-		#doctrines
-		grand_battle_plan = 1
-		trench_warfare = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-	}
-}
 set_politics = {
 	ruling_party = CON_democratic
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }

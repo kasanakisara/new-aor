@@ -9,7 +9,10 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_theorist_exclusive_tt
-					NOT = { OR = { has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_03_Karl_Kautsky has_idea = GER_01_04_Eduard_Bernstein } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_01_02_Franz_Mehring
+ always = no # unavailable AOR object: has_idea GER_01_03_Karl_Kautsky
+ always = no # unavailable AOR object: has_idea GER_01_04_Eduard_Bernstein
+ } }
 				}
 			}
 			traits = { AORCabinetErnstDaeumigLabeltheorist AORCabinetErnstDaeumigLabelspdrevolutionarystewards AOR_GER_council_standard_bearer }
@@ -26,7 +29,10 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_theorist_exclusive_tt
-					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_03_Karl_Kautsky has_idea = GER_01_04_Eduard_Bernstein } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_01_01_Ernst_Daeumig
+ always = no # unavailable AOR object: has_idea GER_01_03_Karl_Kautsky
+ always = no # unavailable AOR object: has_idea GER_01_04_Eduard_Bernstein
+ } }
 				}
 			}
 			traits = { AORCabinetFranzMehringLabeltheorist AORCabinetFranzMehringLabelspdleft AOR_GER_red_historian }
@@ -43,7 +49,10 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_theorist_exclusive_tt
-					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_04_Eduard_Bernstein } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_01_01_Ernst_Daeumig
+ always = no # unavailable AOR object: has_idea GER_01_02_Franz_Mehring
+ always = no # unavailable AOR object: has_idea GER_01_04_Eduard_Bernstein
+ } }
 				}
 			}
 			traits = { AORCabinetKarlKautskyLabeltheorist AORCabinetKarlKautskyLabelspdcenter AOR_GER_marxist_pope }
@@ -60,7 +69,10 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_theorist_exclusive_tt
-					NOT = { OR = { has_idea = GER_01_01_Ernst_Daeumig has_idea = GER_01_02_Franz_Mehring has_idea = GER_01_03_Karl_Kautsky } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_01_01_Ernst_Daeumig
+ always = no # unavailable AOR object: has_idea GER_01_02_Franz_Mehring
+ always = no # unavailable AOR object: has_idea GER_01_03_Karl_Kautsky
+ } }
 				}
 			}
 			traits = { AORCabinetEduardBernsteinLabeltheorist AOR_GER_spd_bernstein AOR_GER_father_of_revisionism }
@@ -77,7 +89,9 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_union_exclusive_tt
-					NOT = { OR = { has_idea = GER_02_02_Robert_Dittmann has_idea = GER_02_03_Theodor_Leipart } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_02_02_Robert_Dittmann
+ always = no # unavailable AOR object: has_idea GER_02_03_Theodor_Leipart
+ } }
 				}
 			}
 			traits = { AORCabinetKarlLegienLabelunionhead AORCabinetKarlLegienLabelspdright AOR_GER_legien_personal }
@@ -94,12 +108,15 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_union_exclusive_tt
-					NOT = { OR = { has_idea = GER_02_01_Karl_Legien has_idea = GER_02_03_Theodor_Leipart } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_02_01_Karl_Legien
+ always = no # unavailable AOR object: has_idea GER_02_03_Theodor_Leipart
+ } }
 				}
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_legien_dead_tt
 					OR = {
-						has_idea = GER_02_02_Robert_Dittmann
+						always = no # unavailable AOR object: has_idea GER_02_02_Robert_Dittmann
+
 						NOT = { has_character = GER_02_01_Karl_Legien }
 					}
 				}
@@ -118,12 +135,15 @@ characters = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_union_exclusive_tt
-					NOT = { OR = { has_idea = GER_02_01_Karl_Legien has_idea = GER_02_02_Robert_Dittmann } }
+					NOT = { OR = { always = no # unavailable AOR object: has_idea GER_02_01_Karl_Legien
+ always = no # unavailable AOR object: has_idea GER_02_02_Robert_Dittmann
+ } }
 				}
 				custom_trigger_tooltip = {
 					tooltip = AOR_GER_legien_dead_tt
 					OR = {
-						has_idea = GER_02_03_Theodor_Leipart
+						always = no # unavailable AOR object: has_idea GER_02_03_Theodor_Leipart
+
 						NOT = { has_character = GER_02_01_Karl_Legien }
 					}
 				}

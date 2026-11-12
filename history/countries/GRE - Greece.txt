@@ -1,6 +1,51 @@
-﻿capital = 47
+﻿# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_b01 = 1
+	aor_inf_e01 = 1
+	aor_inf_g01 = 1
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_t01 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
 
-#oob = "GRE_1936"
+capital = 47
+oob = "GRE"
+set_naval_oob = "AOR_NAV_GRE"
 
 ###################
 #### 3D MODELS ####
@@ -14,51 +59,7 @@
 set_cosmetic_tag = GRE
 set_research_slots = 3
 
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_r01 = 1
-	aor_inf_t01 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	tech_recon = 1
- 
-	trench_warfare = 1
- 
- 
-	fuel_silos = 1
-	synth_oil_experiments = 1
-}
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_submarine = 1
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_heavy_cruiser = 1
-		early_battleship = 1
-		transport = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_cruiser = 1
-		early_ship_hull_heavy = 1
-		basic_battery = 1
-		basic_secondary_battery = 1
-		basic_cruiser_armor_scheme = 1
-		basic_torpedo = 1
-		coastal_defense_ships = 1
-		pre_dreadnoughts = 1
-		mtg_transport = 1
-	}
-}
+
 
 	if = {
 		limit = { NOT = { has_dlc = "Battle for the Bosporus" } }
@@ -69,19 +70,9 @@ if = {
 		}
 	}
 
-add_ideas = {
-	entente_member_nation
-	little_entente_nation
-	Great_ideals_are_close_at_hand
-	Kings_and_ministers
-	The_national_enthusiasm_of_the_military_headquarters
-	A_land_surrounded_by_mountains_and_seas
-	export_focus
-	limited_conscription
-	civilian_economy
-}
+add_ideas = { Great_ideals_are_close_at_hand Kings_and_ministers The_national_enthusiasm_of_the_military_headquarters A_land_surrounded_by_mountains_and_seas export_focus limited_conscription civilian_economy }
 
-set_convoys = 10
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 
 create_country_leader = {
 	name = "Eleftherios Venizelos"
@@ -121,9 +112,12 @@ country_event = {
 	days = 360
 	id = GRE.1
 }
-oob="GRE"
 country_event = {
 	days = 1000
 	id = GRE.1
 }
 activate_mission = IST_fake_mission_countdown
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Hydra Class" type = destroyer_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = ship_torpedo_1 mid_1_custom_slot = empty rear_1_custom_slot = ship_depth_charge_1 } }
+create_equipment_variant = { name = "Averof Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Aetos Class" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }

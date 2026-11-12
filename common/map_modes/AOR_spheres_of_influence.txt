@@ -1,0 +1,53 @@
+scripted_map_modes = {
+ spheres_of_influence_map = {
+  top = {
+   type = country
+   thickness = no
+   color = {
+    # Keep colour constants within the engine's three-decimal fixed-point precision.
+    FROM = {
+     set_temp_variable = { alpha = 1.0 }
+     if = {
+      limit = { AOR_in_socialist_international_sphere = yes }
+      set_temp_variable = { red = 0.863 }
+      set_temp_variable = { green = 0.125 }
+      set_temp_variable = { blue = 0.125 }
+     }
+     else_if = {
+      limit = { AOR_in_comintern_sphere = yes }
+      set_temp_variable = { red = 0.647 }
+      set_temp_variable = { green = 0.165 }
+      set_temp_variable = { blue = 0.165 }
+     }
+     else_if = {
+      limit = { AOR_in_entente_sphere = yes }
+      set_temp_variable = { red = 0.231 }
+      set_temp_variable = { green = 0.388 }
+      set_temp_variable = { blue = 0.596 }
+     }
+     else_if = {
+      limit = { AOR_in_british_sphere = yes }
+      set_temp_variable = { red = 0.647 }
+      set_temp_variable = { green = 0.094 }
+      set_temp_variable = { blue = 0.094 }
+     }
+     else_if = {
+      limit = { AOR_in_french_sphere = yes }
+      set_temp_variable = { red = 0.224 }
+      set_temp_variable = { green = 0.443 }
+      set_temp_variable = { blue = 0.894 }
+     }
+     else = {
+      set_temp_variable = { red = 0.28 }
+      set_temp_variable = { green = 0.28 }
+      set_temp_variable = { blue = 0.28 }
+     }
+     }
+   }
+  }
+  bottom = { type = none }
+  far_text = country
+  near_text = none
+  update_daily = yes
+ }
+}

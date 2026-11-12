@@ -1,24 +1,31 @@
-﻿capital = 440
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+
+capital = 440
 
 #oob = "PAK_1936"
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	tech_recon = 1
-	transport = 1
-	trench_warfare = 1
-	fleet_in_being = 1
-	CAS1 = 1
-	
-}
 
 if = {
 	limit = { has_dlc = "Together for Victory" }
@@ -26,93 +33,50 @@ if = {
 	add_to_tech_sharing_group = commonwealth_research
 }
 
-set_convoys = 20
+add_equipment_to_stockpile = { type = convoy amount = 20 }
 
-recruit_character = PAK_acd2
-recruit_character = PAK_fascist_guy
-recruit_character = PAK_ncs
-recruit_character = PAK_nccr
-recruit_character = PAK_aco2
-recruit_character = PAK_communist_guy
-recruit_character = PAK_ai2
-recruit_character = PAK_ar
-recruit_character = PAK_coi
-recruit_character = PAK_acas
-recruit_character = PAK_acgs
-recruit_character = PAK_aa2
-recruit_character = PAK_democratic_guy
-recruit_character = PAK_acr
-recruit_character = PAK_stc
-recruit_character = PAK_awt
-recruit_character = PAK_pot
-recruit_character = PAK_mt
-recruit_character = PAK_ncm
-recruit_character = PAK_nt
+# unavailable or duplicate character PAK_acd2
 
-1939.1.1 = {#placeholder same tech as ENG
-	#generic focuses
+# unavailable or duplicate character PAK_fascist_guy
 
-	add_political_power = 1198
-	add_command_power = 100
-	#oob = "PAK_1939"
-	
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+# unavailable or duplicate character PAK_ncs
 
-	add_ideas = {
-		#laws
-		volunteer_only
-		low_economic_mobilisation
-	}
+# unavailable or duplicate character PAK_nccr
 
-	
-	set_technology = {
-		
-	 
-	 
-		#doctrines
-		#Air
-		force_rotation = 1
-		fighter_baiting = 1
-		grand_battle_plan = 1
+# unavailable or duplicate character PAK_aco2
 
-		trench_warfare = 1
-		prepared_defense = 1
-		battlefleet_concentration = 1
-		subsidiary_carrier_role = 1
-		convoy_sailing = 1
-		convoy_escorts = 1
-		submarine_operations = 1
+# unavailable or duplicate character PAK_communist_guy
 
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		decimetric_radar = 1
-		mechanical_computing = 1
-		computing_machine = 1
-		basic_encryption = 1
-		basic_decryption = 1
+# unavailable or duplicate character PAK_ai2
 
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-		dispersed_industry3 = 1
-	}
-}
+# unavailable or duplicate character PAK_ar
+
+# unavailable or duplicate character PAK_coi
+
+# unavailable or duplicate character PAK_acas
+
+# unavailable or duplicate character PAK_acgs
+
+# unavailable or duplicate character PAK_aa2
+
+# unavailable or duplicate character PAK_democratic_guy
+
+# unavailable or duplicate character PAK_acr
+
+# unavailable or duplicate character PAK_stc
+
+# unavailable or duplicate character PAK_awt
+
+# unavailable or duplicate character PAK_pot
+
+# unavailable or duplicate character PAK_mt
+
+# unavailable or duplicate character PAK_ncm
+
+# unavailable or duplicate character PAK_nt
+
+
+
 
 set_politics = {
 	ruling_party = Absolutism

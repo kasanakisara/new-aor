@@ -1,0 +1,25 @@
+on_actions = {
+ on_daily = { effect = {
+  if = { limit = { date > 1920.2.29 NOT = { has_global_flag = AOR_flu_ended_news } }
+   set_global_flag = AOR_flu_ended_news
+   every_country = { remove_ideas = H1N1 set_country_flag = H1N1_disappear }
+   ENG = { country_event = { id = AOR_news_router.4 } }
+  }
+  if = { limit = { date > 1921.7.22 NOT = { has_global_flag = AOR_CPC_first_congress_news } }
+   set_global_flag = AOR_CPC_first_congress_news
+   CHI = { country_event = { id = AOR_news_router.75 } }
+  }
+  # 1919.11.10，只排定一次；通过隐藏事件的 immediate 分发。
+  if = {
+   limit = { date > 1919.11.9 NOT = { has_global_flag = AOR_berne_international_congress_news } }
+   set_global_flag = AOR_berne_international_congress_news
+   random_country = { country_event = { id = AOR_news_router.234 } }
+  }
+  # 1920.8.7，只排定一次；通过隐藏事件的 immediate 分发。
+  if = {
+   limit = { date > 1920.8.6 NOT = { has_global_flag = AOR_comintern_second_congress_news } }
+   set_global_flag = AOR_comintern_second_congress_news
+   random_country = { country_event = { id = AOR_news_router.235 } }
+  }
+ } }
+}

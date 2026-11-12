@@ -1,194 +1,158 @@
-﻿####### Division Templates #######
-division_template = { 
-	name = "大日本近衛師團" 
-	division_names_group = JAP_INF_01 
-	
-	regiments = { 
-		Elite_infantry = {x=0 y=0}
-        Elite_infantry = {x=0 y=1}
-        Elite_infantry = {x=1 y=0}
-        Elite_infantry = {x=1 y=1}
-		cavalry = {x=2 y=0}
-        cavalry = {x=2 y=1}
-		cavalry = {x=2 y=2}
-		artillery_brigade = {x=3 y=0}
-		artillery_brigade = {x=3 y=1}
-		artillery_brigade = {x=3 y=2}
+####### Division Templates #######
+# 依據名單：
+#   常設師團（12步1炮1炮兵支援）
+#   特設師團（9步1炮炮兵支援）
+
+division_template = {
+	name = "大日本常設師團"
+	division_names_group = JAP_INF_01
+
+	regiments = {
+		infantry = {x=0 y=0}
+		infantry = {x=0 y=1}
+		infantry = {x=0 y=2}
+		infantry = {x=1 y=0}
+		infantry = {x=1 y=1}
+		infantry = {x=1 y=2}
+		infantry = {x=2 y=0}
+		infantry = {x=2 y=1}
+		infantry = {x=2 y=2}
+		infantry = {x=3 y=0}
+		infantry = {x=3 y=1}
+		infantry = {x=3 y=2}
+		artillery_brigade = {x=4 y=0}
 	}
 	support = {
 		artillery = {x=0 y=0}
-		engineer = {x=0 y=1}
-		Hot_air_balloon = {x=0 y=2}
 	}
 }
-division_template = { 
-	name = "大日本陸軍師團" 
-	division_names_group = JAP_INF_01 
-	
-	regiments = { 
-		Elite_infantry = {x=0 y=0}
-        Elite_infantry = {x=0 y=1}
-        Elite_infantry = {x=1 y=0}
-        Elite_infantry = {x=1 y=1}
-		cavalry = {x=2 y=0}
-        cavalry = {x=2 y=0}
+
+division_template = {
+	name = "大日本特設師團"
+	division_names_group = JAP_INF_01
+
+	regiments = {
+		infantry = {x=0 y=0}
+		infantry = {x=0 y=1}
+		infantry = {x=0 y=2}
+		infantry = {x=1 y=0}
+		infantry = {x=1 y=1}
+		infantry = {x=1 y=2}
+		infantry = {x=2 y=0}
+		infantry = {x=2 y=1}
+		infantry = {x=2 y=2}
 		artillery_brigade = {x=3 y=0}
-		artillery_brigade = {x=3 y=1}
 	}
 	support = {
 		artillery = {x=0 y=0}
-		engineer = {x=0 y=1}
 	}
 }
+
 ####### OOB #######
+# 駐地說明：
+#   外阿穆爾 = 浦鹽斯德/伯力/斯帕斯克/沿海州/捷爾涅伊（JAP 領）
+#   日本本土 = 關東/奧羽/北陸/東山/東海/近畿/山陽/北九州/道央（JAP 領）
+#   太平洋   = 馬紹爾/特魯克/硫磺島/帕勞（JAP 領）
+#   大韓帝國 = 漢城/平壤/羅南（KOR 傀儡領）
+#   滿洲     = 大連/旅順（JAP 領）＋奉天/吉林/濱江/依蘭（CHI 領，關東軍駐屯地）
+#   中國     = 青島（JAP 領）
 units = {
-#近卫军
-division= {	
-	name = "近衛師團“宫”"
-	location = 1182
-	division_template = "大日本近衛師團"
-	start_experience_factor = 0.3
-	start_equipment_factor = 1
-}
-#师团
-	division= {	
-		name = "東京第一師團“玉”"
-		location = 1182
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "仙臺第二師團"
-		location = 7169
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "名古屋第三師團"
-		location = 7125
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "大阪第四師團"
-		location = 957
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "広岛第五師團"
-		location = 4056
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "熊本第六師團"
-		location = 11925
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
+
+	# ===== 常設師團（第1～25師團，12步1炮1炮兵支援）=====
+
+	
+	division= {
 		name = "旭川第七師團"
-		location = 12189
-		division_template = "大日本陸軍師團"
+		location = 12421
+		division_template = "大日本常設師團"
 		start_experience_factor = 0.2
 		start_equipment_factor = 1
 	}
-	division= {	
-		name = "弘前第八師團“杉”"
-		location = 6928
-		division_template = "大日本陸軍師團"
+	division= {
+		name = "弘前第八師團"
+		location = 6994
+		division_template = "大日本常設師團"
 		start_experience_factor = 0.2
 		start_equipment_factor = 1
 	}
-	division= {	
-		name = "金沢第九師團"
-		location = 4052
-		division_template = "大日本陸軍師團"
+	division= {
+		name = "金澤第九師團"
+		location = 10032
+		division_template = "大日本常設師團"
 		start_experience_factor = 0.2
 		start_equipment_factor = 1
 	}
-	division= {	
-		name = "姫路第十師團"
-		location = 7125
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "善通寺第十一師團"
-		location = 11948
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "小仓第十二師團“剑”"
-		location = 4056
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "高田第十三師團"
-		location = 1150
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "宇都宫第十四師團"
-		location = 993
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
-		name = "豊桥第十五師團"
-		location = 1150
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
+	division= {
 		name = "京都第十六師團"
 		location = 1136
-		division_template = "大日本陸軍師團"
+		division_template = "大日本常設師團"
 		start_experience_factor = 0.2
 		start_equipment_factor = 1
 	}
-	division= {	
-		name = "冈山第十七師團"
-		location = 7212
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
-	}
-	division= {	
+	division= {
 		name = "久留米第十八師團"
-		location = 7663
-		division_template = "大日本陸軍師團"
+		location = 13039
+		division_template = "大日本常設師團"
 		start_experience_factor = 0.2
 		start_equipment_factor = 1
 	}
-	division= {	
-		name = "罗南第十九師團"
+	division= {
+		name = "羅南第十九師團"
+		location = 10083
+		division_template = "大日本常設師團"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "京城第二十師團"
+		location = 7125
+		division_template = "大日本常設師團"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	# ===== 特設師團（第26～41師團，9步1炮炮兵支援）=====
+
+	division= {
+		name = "平壤第三十師團"
+		location = 4052
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
+	}
+	division= {
+		name = "東京第三十二師團"
+		location = 1182
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
+	}
+	division= {
+		name = "名古屋第三十八師團"
+		location = 2489
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
+	}
+	division= {
+		name = "廣島第三十九師團"
 		location = 10000
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
 	}
-	division= {	
-		name = "龙山第二十师師團"
-		location = 11771
-		division_template = "大日本陸軍師團"
-		start_experience_factor = 0.2
-		start_equipment_factor = 1
+	division= {
+		name = "善通寺第四十師團"
+		location = 10000
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
+	}
+	division= {
+		name = "宇都宮第四十一師團"
+		location = 13025
+		division_template = "大日本特設師團"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.9
 	}
 }

@@ -1,68 +1,5 @@
-#刷新变量
-Refresh_ENG_Lick_wounds_variables = {
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 1 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_EGY_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 2 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_AFR_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 3 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_RAJ_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 4 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_WAF_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 5 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_SAF_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 6 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_ASL_favorability_Var }
-	}
-	if = {
-		limit = { check_variable = { ENG_Commonwealth_country_favorability = 7 } }
-		set_variable = { ENG_Commonwealth_country_favorability_Var = ENG_NZL_favorability_Var }
-	}
-}
-#每月刷新变量
-Refresh_ENG_Lick_wounds_variables_monthly = {
-	#国民支持度
-	set_variable = { ENG_National_Support_Var_monthly = ENG_Current_Vitality_Var }
-	subtract_from_variable = { ENG_National_Support_Var_monthly = 50 }
-	divide_variable = { ENG_National_Support_Var_monthly = 20 }
-	add_to_variable = { ENG_National_Support_Var = ENG_National_Support_Var_monthly }
-	#当前元气
-	set_variable = { ENG_Current_Vitality_Var_monthly = ENG_National_Support_Var }
-	add_to_variable = { ENG_Current_Vitality_Var_monthly = ENG_Federal_Nexus_Var }
-	add_to_variable = { ENG_Current_Vitality_Var_monthly = ENG_British_authority_Var }
-	subtract_from_variable = { ENG_Current_Vitality_Var_monthly = 150 }
-	divide_variable = { ENG_Current_Vitality_Var_monthly = 100 }
-	add_to_variable = { ENG_Current_Vitality_Var = ENG_Current_Vitality_Var_monthly }
-	#联邦联结度
-	set_variable = { ENG_Federal_Nexus_Var_monthly = ENG_British_authority_Var }
-	subtract_from_variable = { ENG_Federal_Nexus_Var_monthly = ENG_Federal_Nexus_Var }
-	divide_variable = { ENG_Federal_Nexus_Var_monthly = 50 }
-	add_to_variable = { ENG_Federal_Nexus_Var = ENG_Federal_Nexus_Var_monthly }
-	#英国权威
-	set_variable = { ENG_British_authority_Var_monthly = ENG_EGY_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_AFR_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_RAJ_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_WAF_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_SAF_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_ASL_favorability_Var }
-	add_to_variable = { ENG_British_authority_Var_monthly = ENG_NZL_favorability_Var }
-	subtract_from_variable = { ENG_British_authority_Var_monthly = 370 }
-	divide_variable = { ENG_British_authority_Var_monthly = 100 }
-	add_to_variable = { ENG_British_authority_Var = ENG_British_authority_Var_monthly }
-	#
-	Compute_ENG_Lick_wounds_dynamic_modifier = yes
-}
-#计算动态修正
+# AOR: dependency-audited scripted functions.
+
 Compute_ENG_Lick_wounds_dynamic_modifier = {
 	#动态修正
 	set_variable = { ENG_Lick_wounds_dynamic_modifier_Var_1 = ENG_Current_Vitality_Var }
@@ -94,7 +31,7 @@ Compute_ENG_Lick_wounds_dynamic_modifier = {
 		#min = 0
 	}
 }
-#启动！
+
 Enable_ENG_Lick_wounds_effect = {
 	unlock_decision_category_tooltip = ENG_Lick_wounds_decision_categories
 	custom_effect_tooltip = Enable_ENG_Lick_wounds_effect_tt
@@ -107,8 +44,6 @@ Enable_ENG_Lick_wounds_effect = {
 	}
 }
 
-
-#启动2c计划
 kailuo_kaipudun = {
 	if = {
 		limit = {

@@ -1,0 +1,32 @@
+# AOR: dependency-audited scripted functions.
+
+ETH_upgrade_state_category = {
+	IF = {
+		limit = { has_state_category = wasteland }
+		set_state_category = pastoral
+	}
+	ELSE_IF = {
+		limit = { has_state_category = pastoral }
+		set_state_category = rural
+	}
+	ELSE_IF = {
+		limit = { has_state_category = rural }
+		set_state_category = town
+	}
+	ELSE_IF = {
+		limit = { has_state_category = town }
+		set_state_category = large_town
+	}
+	ELSE_IF = {
+		limit = { has_state_category = large_town }
+		set_state_category = city
+	}
+	ELSE_IF = {
+		limit = { has_state_category = city }
+		set_state_category = large_city
+	}
+}
+
+on_daily = {
+
+}

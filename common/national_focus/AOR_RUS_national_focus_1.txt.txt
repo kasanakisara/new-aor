@@ -44,7 +44,7 @@ focus_tree = {
 					traits = { operative_infiltrator operative_safe_cracker }
 					bypass_recruitment = no
 					available_to_spy_master = yes
-					nationalities = { RUS ANU ARR }
+					nationalities = { RUS ARR }
 				}
 			}
 			hidden_effect = {
@@ -58,7 +58,7 @@ focus_tree = {
     # 保卫圣彼得堡：
     focus = {
         id = AOR_SOV_Civil_war_3
-        icon = AOR_SOV_Civil_war_3_gfx
+        icon = GFX_AOR_Eric_new_002
         relative_position_id = AOR_SOV_Civil_war_1
         x = 0
         y = 1
@@ -331,13 +331,13 @@ focus_tree = {
 				ARN = { remove_core_of = PREV }
 			}
 			custom_effect_tooltip = AOR_GER_Newline_tt
-			ENG = { country_event = { days = 1 id = AOR_SOV_timeaxis.1008 } }
+			ENG = { country_event = { days = 1 id = AOR_RUS_timeaxis.1008 } }
 			hidden_effect = {
 			#展示事件组
 			effect_tooltip = {
 				#如果他们接受
 				custom_effect_tooltip = if_they_accept_tt
-				RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10081 } }
+				RUS = { country_event = { days = 1 id = AOR_fix_AOR_RUS_timeaxis_extra.1 } }
 				custom_effect_tooltip = AOR_GER_Newline_tt
 				add_political_power = 25
 				add_war_support = 0.05
@@ -348,7 +348,7 @@ focus_tree = {
 
 				#如果他们拒绝
 				custom_effect_tooltip = if_they_reject_tt
-				RUS = { country_event = { days = 1 id = AOR_SOV_timeaxis.10082 } }
+				RUS = { country_event = { days = 1 id = AOR_fix_AOR_RUS_timeaxis_extra.2 } }
 				custom_effect_tooltip = AOR_GER_Newline_tt
 				custom_effect_tooltip = AOR_SOV_Civil_war_9_tt
 				ENG = {
@@ -371,7 +371,7 @@ focus_tree = {
 				}
 			}
 				custom_effect_tooltip = AOR_GER_Newline_tt
-				FRA = { country_event = { days = 1 id = AOR_SOV_timeaxis.10083 } }
+				FRA = { country_event = { days = 1 id = AOR_fix_AOR_RUS_timeaxis_extra.3 } }
 			}
 		}
     }
@@ -379,7 +379,7 @@ focus_tree = {
     # 摧毁匪帮政权：
     focus = {
         id = AOR_SOV_Civil_war_5
-        icon = AOR_SOV_Civil_war_5_gfx
+        icon = GFX_AOR_Eric_new_002
         relative_position_id = AOR_SOV_Civil_war_1
         x = -2
         y = 2
@@ -395,7 +395,7 @@ focus_tree = {
     # 进军波罗的海：
     focus = {
         id = AOR_SOV_Civil_war_7
-        icon = AOR_SOV_Civil_war_7_gfx
+        icon = GFX_AOR_Eric_new_002
         relative_position_id = AOR_SOV_Civil_war_1
         x = 2
         y = 2
@@ -657,7 +657,7 @@ focus_tree = {
                 custom_effect_tooltip = AOR_GER_Newline_tt
                 hidden_effect = {
                     
-                    news_event = { id = AOR_news.1 days = 1 }
+                    country_event = { id = AOR_news_router.1 days = 1 }
                     every_state = {
                         limit = {
                             CONTROLLER = {

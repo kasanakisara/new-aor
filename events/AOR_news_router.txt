@@ -1,0 +1,3324 @@
+# Hidden sender-side dispatch only; visible stories stay in AOR_world_news.txt.
+add_namespace = AOR_news_router
+
+country_event = {
+ id = AOR_news_router.1
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_1 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_1 days = 1 }
+   
+   every_country = { limit = { is_ai = no } news_event = { id = AOR_news_global.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.2
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_2 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_2 days = 1 }
+   
+   every_country = { limit = { is_ai = no } news_event = { id = AOR_news_global.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.3
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_3 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_3 days = 1 }
+   
+   every_country = { limit = { is_ai = no } news_event = { id = AOR_news_global.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.4
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_4 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_4 days = 1 }
+   
+   every_country = { limit = { is_ai = no } news_event = { id = AOR_news_global.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.5
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_5 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_5 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.6
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_6 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_6 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.7
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_7 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_7 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.8
+ hidden = yes
+ is_triggered_only = yes
+trigger = {
+	    date > 1925.10.2
+		date < 1925.10.4
+		tag = ENG
+	}
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_8 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_8 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.9
+ hidden = yes
+ is_triggered_only = yes
+trigger = {
+	    date > 1920.9.14
+		date < 1920.9.16
+		tag = ENG
+	}
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_9 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_9 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.10
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_10 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_10 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.6 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.11
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_11 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_11 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.7 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.12
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_12 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_12 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.8 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.13
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_13 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_13 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.9 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.14
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_14 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_14 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.10 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.15
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_15 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_15 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.11 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.16
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_16 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_16 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.12 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.17
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_17 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_17 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.13 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.18
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_18 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_18 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.14 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.19
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_19 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_19 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.15 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.20
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_20 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_20 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.16 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.21
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_21 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_21 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.17 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.22
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_22 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_22 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.18 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.23
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_23 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_23 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.19 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.24
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_24 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_24 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.20 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.25
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_25 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_25 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.21 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.26
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_26 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_26 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.22 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.27
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_27 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_27 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.23 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.28
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_28 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_28 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.24 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.29
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_29 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_29 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.25 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.30
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_30 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_30 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.26 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.31
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_31 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_31 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.27 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.32
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_32 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_32 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.28 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.33
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_33 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_33 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.29 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.34
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_34 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_34 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.30 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.35
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_35 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_35 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.31 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.36
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_36 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_36 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.32 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.37
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_37 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_37 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.33 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.38
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_38 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_38 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.34 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.39
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_39 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_39 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.35 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.40
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_40 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_40 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.36 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.41
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_41 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_41 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.37 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.42
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_42 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_42 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.38 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.43
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_43 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_43 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.39 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.44
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_44 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_44 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.40 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.45
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_45 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_45 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.41 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.46
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_46 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_46 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.42 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.47
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_47 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_47 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.43 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.48
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_48 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_48 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.44 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.49
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_49 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_49 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.45 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.50
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_50 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_50 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.46 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.51
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_51 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_51 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.47 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.52
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_52 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_52 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.48 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.53
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_53 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_53 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.49 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.54
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_54 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_54 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.50 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.55
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_55 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_55 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.51 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.56
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_56 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_56 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.52 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.57
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_57 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_57 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.53 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.58
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_58 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_58 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.54 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.59
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_59 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_59 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_europe = yes } news_event = { id = AOR_news_europe.55 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.60
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_60 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_60 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.61
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_61 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_61 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.62
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_62 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_62 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.63
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_63 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_63 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.64
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_64 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_64 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.65
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_65 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_65 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.6 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.66
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_66 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_66 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.7 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.67
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_67 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_67 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.8 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.68
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_68 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_68 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.9 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.69
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_69 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_69 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.10 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.70
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_70 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_70 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.11 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.71
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_71 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_71 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.12 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.72
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_72 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_72 days = 1 }
+   
+	
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.13 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.73
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_73 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_73 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.14 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.74
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_74 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_74 days = 1 }
+   QID = {
+			transfer_state = 743
+		}
+
+	
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.15 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.75
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_75 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_75 days = 1 }
+   
+	
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.16 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.76
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_76 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_76 days = 1 }
+   
+	
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.17 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.77
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_77 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_77 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.18 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.78
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_78 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_78 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.19 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.79
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_79 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_79 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.20 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.80
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_80 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_80 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.21 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.81
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_81 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_81 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.22 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.82
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_82 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_82 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.23 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.83
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_83 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_83 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.24 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.84
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_84 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_84 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.25 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.85
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_85 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_85 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.26 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.86
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_86 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_86 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.27 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.87
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_87 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_87 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.28 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.88
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_88 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_88 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.29 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.89
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_89 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_89 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.30 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.90
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_90 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_90 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.31 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.91
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_91 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_91 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.32 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.92
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_92 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_92 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.33 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.93
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_93 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_93 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.34 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.94
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_94 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_94 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.35 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.95
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_95 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_95 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.36 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.96
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_96 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_96 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.37 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.97
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_97 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_97 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.38 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.98
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_98 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_98 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.39 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.99
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_99 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_99 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.40 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.100
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_100 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_100 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.41 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.101
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_101 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_101 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.42 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.102
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_102 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_102 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.43 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.103
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_103 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_103 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.44 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.104
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_104 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_104 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.45 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.105
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_105 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_105 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.46 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.106
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_106 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_106 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.47 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.107
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_107 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_107 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.48 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.108
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_108 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_108 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.49 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.109
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_109 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_109 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.50 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.110
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_110 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_110 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.51 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.111
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_111 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_111 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.52 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.112
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_112 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_112 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.53 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.113
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_113 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_113 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.54 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.114
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_114 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_114 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.55 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.115
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_115 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_115 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.56 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.116
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_116 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_116 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.57 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.117
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_117 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_117 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.58 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.118
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_118 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_118 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.59 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.119
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_119 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_119 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.60 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.120
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_120 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_120 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.61 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.121
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_121 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_121 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.62 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.122
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_122 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_122 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.63 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.123
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_123 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_123 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.64 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.124
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_124 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_124 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.65 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.125
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_125 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_125 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.66 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.126
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_126 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_126 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.67 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.127
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_127 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_127 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.68 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.128
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_128 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_128 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.69 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.129
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_129 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_129 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.70 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.130
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_130 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_130 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.71 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.131
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_131 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_131 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.72 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.132
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_132 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_132 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.73 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.133
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_133 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_133 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.74 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.134
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_134 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_134 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.75 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.135
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_135 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_135 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.76 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.136
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_136 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_136 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.77 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.137
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_137 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_137 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.78 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.138
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_138 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_138 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.79 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.139
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_139 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_139 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.80 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.140
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_140 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_140 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.81 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.141
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_141 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_141 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.82 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.142
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_142 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_142 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.83 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.143
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_143 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_143 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.84 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.144
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_144 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_144 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.85 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.145
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_145 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_145 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.86 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.146
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_146 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_146 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.87 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.147
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_147 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_147 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.88 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.148
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_148 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_148 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.89 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.149
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_149 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_149 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.90 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.150
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_150 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_150 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.91 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.151
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_151 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_151 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.92 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.152
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_152 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_152 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.93 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.153
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_153 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_153 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.94 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.154
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_154 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_154 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.95 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.155
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_155 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_155 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.96 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.156
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_156 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_156 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.97 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.157
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_157 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_157 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.98 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.158
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_158 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_158 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_asia = yes } news_event = { id = AOR_news_asia.99 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.159
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_159 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_159 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.160
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_160 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_160 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.161
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_161 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_161 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.162
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_162 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_162 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.163
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_163 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_163 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.164
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_164 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_164 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.6 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.165
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_165 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_165 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.7 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.166
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_166 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_166 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.8 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.167
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_167 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_167 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.9 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.168
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_168 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_168 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_africa = yes } news_event = { id = AOR_news_africa.10 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.169
+ hidden = yes
+ fire_only_once = yes
+trigger = {
+	    date > 1919.12.12
+		date < 1919.12.14
+		tag = AST
+	}
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_169 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_169 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_oceania = yes } news_event = { id = AOR_news_oceania.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.170
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_170 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_170 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_oceania = yes } news_event = { id = AOR_news_oceania.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.171
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_171 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_171 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_oceania = yes } news_event = { id = AOR_news_oceania.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.172
+ hidden = yes
+ fire_only_once = yes
+trigger = {
+	    date > 1923.11.1
+		date < 1923.11.2
+		tag = AST
+	}
+mean_time_to_happen = { days = 1}
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_172 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_172 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_oceania = yes } news_event = { id = AOR_news_oceania.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.173
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_173 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_173 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_oceania = yes } news_event = { id = AOR_news_oceania.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.174
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_174 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_174 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.175
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_175 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_175 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.176
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_176 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_176 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.177
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_177 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_177 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.178
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_178 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_178 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.179
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_179 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_179 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.6 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.180
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_180 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_180 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.7 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.181
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_181 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_181 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.8 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.182
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_182 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_182 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.9 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.183
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_183 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_183 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.10 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.184
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_184 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_184 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.11 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.185
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_185 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_185 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.12 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.186
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_186 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_186 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.13 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.187
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_187 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_187 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.14 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.188
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_188 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_188 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.15 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.189
+ hidden = yes
+ fire_only_once = yes
+trigger = {
+	    date > 1928.11.27
+		date < 1928.11.29
+		tag = USA
+	}
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_189 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_189 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.16 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.190
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_190 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_190 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.17 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.191
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_191 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_191 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.18 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.192
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_192 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_192 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.19 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.193
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_193 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_193 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.20 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.194
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_194 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_194 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.21 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.195
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_195 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_195 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.22 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.196
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_196 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_196 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.23 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.197
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_197 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_197 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.24 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.198
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_198 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_198 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.25 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.199
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_199 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_199 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.26 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.200
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_200 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_200 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.27 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.201
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_201 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_201 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.28 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.202
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_202 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_202 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.29 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.203
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_203 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_203 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.30 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.204
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_204 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_204 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.31 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.205
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_205 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_205 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.32 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.206
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_206 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_206 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.33 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.207
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_207 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_207 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.34 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.208
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_208 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_208 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.35 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.209
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_209 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_209 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.36 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.210
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_210 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_210 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.37 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.211
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_211 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_211 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.38 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.212
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_212 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_212 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.39 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.213
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_213 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_213 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.40 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.214
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_214 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_214 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.41 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.215
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_215 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_215 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.42 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.216
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_216 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_216 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.43 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.217
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_217 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_217 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.44 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.218
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_218 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_218 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.45 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.219
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_219 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_219 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.46 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.220
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_220 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_220 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.47 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.221
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_221 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_221 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.48 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.222
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_222 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_222 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.49 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.223
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_223 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_223 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_north_america = yes } news_event = { id = AOR_news_north_america.50 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.224
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_224 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_224 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.1 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.225
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_225 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_225 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.2 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.226
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_226 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_226 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.3 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.227
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_227 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_227 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.4 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.228
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_228 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_228 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.5 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.229
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_229 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_229 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.6 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.230
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_230 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_230 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.7 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.231
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_231 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_231 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.8 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.232
+ hidden = yes
+ is_triggered_only = yes
+
+ immediate = {
+  if = { limit = { NOT = { has_global_flag = AOR_news_dispatch_cooldown_232 } }
+   set_global_flag = { flag = AOR_news_dispatch_cooldown_232 days = 1 }
+   
+   every_country = { limit = { is_ai = no AOR_news_receives_south_america = yes } news_event = { id = AOR_news_south_america.9 } }
+  }
+ }
+}
+
+country_event = {
+ id = AOR_news_router.233
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  if = {
+   limit = { has_global_flag = AOR_socialist_international_established AUS = { exists = yes } }
+   AUS = { set_country_flag = AOR_socialist_international_member }
+   force_update_map_mode = { mapmode = spheres_of_influence_map }
+  }
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.57 }
+  }
+ }
+}
+
+# 1919.11.10：伯尔尼会议圆满落幕，新闻在 immediate 中分发。
+country_event = {
+ id = AOR_news_router.234
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.58 }
+  }
+ }
+}
+
+# 1920.8.7：共产国际第二次代表大会圆满落幕，新闻在 immediate 中分发。
+country_event = {
+ id = AOR_news_router.235
+ hidden = yes
+ is_triggered_only = yes
+ fire_only_once = yes
+ immediate = {
+  every_country = {
+   limit = { is_ai = no AOR_news_receives_europe = yes }
+   news_event = { id = AOR_news_europe.59 }
+  }
+ }
+}

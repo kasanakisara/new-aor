@@ -1,30 +1,15 @@
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+# Historical formations already carry basic support equipment.
+
 capital = 858
 oob = "NAU_AOR"
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	interwar_antiair = 1
-	tactical_bomber1 = 1
-	CAS1 = 1
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	aor_inf_mg1 = 1
-	Old_howitzers = 1
-}
 
 if = {
 	limit = {
@@ -32,35 +17,8 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 country_event = { days = 3 id = NAU.1 }
@@ -87,14 +45,14 @@ set_variable  = {AOR_NAU_FORCES_M_L = 3}
 #极高=5，高=4，中=3，低=2，极低=1
 
 set_research_slots = 2
-set_convoys = 30
+add_equipment_to_stockpile = { type = convoy amount = 30 }
 set_stability = 0.35
 set_set_war_support = 0.7
 
 
 set_politics = {
 	ruling_party = Absolutism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 

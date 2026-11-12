@@ -1,0 +1,32 @@
+# AOR: dependency-audited scripted functions.
+
+DEN_trade_deal_effects = {
+	#This is to show the player the effect no matter the focuses they've taken previously
+	custom_effect_tooltip = DEN_modify_industrial_capability_dynamic_modifier
+	add_to_variable = {
+		DEN_industrial_capabilities_consumer_goods = -0.1
+		tooltip = consumer_goods_factor_tt
+	}
+	if = { #This is to show the player that the different focuses below will modify Economic Crisis in different ways and is here purely for loc purposes
+		limit = {
+			NOT = {
+				always = no # AOR: unavailable has_completed_focus DEN_kanslergadeforliget
+
+				always = no # AOR: unavailable has_completed_focus DEN_fortify_our_borders
+
+			}
+		}
+		custom_effect_tooltip = DEN_effects_after_fortify_our_borders_tt
+		add_to_variable = { DEN_economic_crisis_neutrality_drift = -0.02 }
+		custom_effect_tooltip = DEN_economic_crisis_neutrality_drift_modifier
+	}
+	if = { #This is to show the player the effects after completing Fortify Our Borders
+		limit = {
+			always = no # AOR: unavailable has_completed_focus DEN_fortify_our_borders
+
+			has_dynamic_modifier = { modifier = DEN_economic_crisis_dynamic_modifier }
+		}
+		add_to_variable = { DEN_economic_crisis_neutrality_drift = -0.02 }
+		custom_effect_tooltip = DEN_economic_crisis_neutrality_drift_modifier
+	}
+}

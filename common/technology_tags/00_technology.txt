@@ -136,6 +136,16 @@ technology_categories = {
 	mio_cat_tech_all_destroyer_and_modules #Includes all DD and all related modules
 	mio_cat_tech_all_motorized_mechanized
 	mio_cat_artillery #Includes all Motorized (incl. Motorized Rocket Artillery) and Mechanized Equipment. (DOES NOT INCLUDE ARMORED CARS)
+
+	aor_airship_technology
+
+	aor_transport_tech
+	aor_shipbuilding_tech
+	aor_chemical_tech
+
+	aor_fortification_tech
+
+	aor_basic_science
 }
 
 technology_folders = {
@@ -156,10 +166,7 @@ technology_folders = {
 	artillery_folder = {
 		ledger = army
 	}
-	air_techs_folder = {
-		available = { NOT = { has_dlc = "By Blood Alone" } }
-		ledger = air
-	}
+	air_techs_folder = { available = { always = no } ledger = air }
 	bba_air_techs_folder = {
 		available = {
 			has_dlc = "By Blood Alone"
@@ -174,16 +181,13 @@ technology_folders = {
 		ledger = navy
 	}
 	mtgnavalfolder = {
-		#available = {
-			#has_dlc = "Man the Guns"
-		#}
+
+		available = { has_dlc = "Man the Guns" }
 		ledger = navy
 	}
 	mtgnavalsupportfolder = {
-		available = {
-			#has_dlc = "Man the Guns"
-			always = no
-		}
+
+		available = { has_dlc = "Man the Guns" }
 		ledger = navy
 	}
 	industry_folder = {

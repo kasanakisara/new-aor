@@ -1,0 +1,137 @@
+defined_text = {
+    name = Get_AOR_news_masthead
+    text = {
+        trigger = { original_tag = GER }
+        localization_key = AOR_compact_GER_header
+    }
+
+    text = {
+        trigger = {
+            original_tag = ENG  ##泰晤士报
+        }
+        localization_key = AOR_compact_AOR_Times_news_header
+    }
+
+    text = {
+        trigger = {
+            original_tag = RUS   ##革命先锋报
+            always = no # unavailable AOR object: has_government marxism
+ 
+        }
+        localization_key = AOR_compact_AOR_geming_news_header
+    }
+
+    text = {
+        trigger = {
+            original_tag = USA ##纽约时报
+        }
+        localization_key = AOR_compact_AOR_New_York_Times_header
+    }
+
+    text = {
+        trigger = {
+            original_tag = SWE ##每日新闻报
+        }
+        localization_key = AOR_compact_AOR_Dagens_Nyheter_header
+    }
+
+    text = {
+        trigger = {       ##德意志日报
+            or = {
+                original_tag = GER
+                original_tag = KSH
+                original_tag = HAN
+                original_tag = WUR      
+                original_tag = RHI 
+                original_tag = PRE
+                original_tag = SIL
+                original_tag = SAX
+                original_tag = SHL
+                original_tag = MEK 
+                original_tag = NAU 
+            }
+            NOT = {
+                always = no # unavailable AOR object: has_government marxism
+
+            }
+        }
+        localization_key = AOR_compact_AOR_deyizhi_news_header
+    }
+    text = {
+        trigger = {  ##红旗报
+            original_tag = BAV
+        }
+        localization_key = AOR_compact_AOR_hongqi_news_header
+    }
+    text = {
+        trigger = {  ##人民观察家报
+            original_tag = WUR
+            has_government = Fascism
+        }
+        localization_key = AOR_compact_AOR_renminguanzhajia_news_header
+    }
+
+    text = {
+        trigger = {  ##费加罗报
+            original_tag = FRA
+        }
+        localization_key = AOR_compact_AOR_Figaro_news_header
+    }
+
+    text = {
+        trigger = {  ##共和报
+            original_tag = CHI 
+        }
+        localization_key = AOR_compact_AOR_gonghe_news_header 
+    }
+	text = {
+        trigger = {
+            original_tag = ORA  ##抵抗报
+        }
+        localization_key = AOR_compact_AOR_dikang_news_header
+    }
+    text = {   ##联合皇家报
+        trigger = {
+            original_tag = YUG 
+        }
+        localization_key = AOR_compact_AOR_lianhehuangjiabao_news_header
+    }
+
+    text = {  ##二十世纪报
+        trigger = {  
+            original_tag = BEL
+        }
+        localization_key = AOR_compact_AOR_ershishiji_news_header
+    }
+
+    text = { ##梵蒂冈人民报
+        trigger = {
+            original_tag = VAT 
+        }
+        localization_key = AOR_compact_AOR_fandigangrenmin_news_header
+    }
+
+    text = {  ##意大利每日报
+        trigger = {
+            original_tag = ITA 
+        }
+        localization_key = AOR_compact_AOR_yidalimeiribao_news_header
+    }	
+
+    text = { ##世界联合报
+        trigger = {
+            always = yes
+        }
+        localization_key = AOR_compact_AOR_shijielianhebao_news_header
+    }
+
+    text = {  ##赤旗报
+        trigger = {
+            original_tag = JAP
+            always = no # unavailable AOR object: has_government marxism
+
+        }
+        localization_key = AOR_compact_AOR_chiqibao_news_header
+    }
+
+}

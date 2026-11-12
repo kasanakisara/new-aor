@@ -48,28 +48,28 @@ GER_SPD_decisions = {
             #   反感 ≤50：60%   |   50~75：约 36%   |   >75：约 18%
             #   基调修正：合作社 x1.2（组织化好征），分地 x0.8（护田难征）
             set_variable = { GER_req_success_flag = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_1 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_1 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_1 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_1 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_1 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_1
+
                     set_variable = { GER_req_success_flag = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag = 1 }
@@ -126,28 +126,28 @@ GER_SPD_decisions = {
             # === 成功率：基础 70%，反感度越高越低 ===
             #   基调修正：合作社 x1.2，分地 x0.8
             set_variable = { GER_tax_success_flag = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_2 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_2 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_2 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_2 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_2 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_2
+
                     set_variable = { GER_tax_success_flag = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag = 1 }
@@ -229,7 +229,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -358,28 +359,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_prussia = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_3 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_prussia > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_3 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_prussia > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_3 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_3 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_3 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_3
+
                     set_variable = { GER_req_success_flag_prussia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_prussia = 1 }
@@ -433,28 +434,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_prussia = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_4 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_prussia > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_4 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_prussia > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_4 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_4 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_4 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_4
+
                     set_variable = { GER_tax_success_flag_prussia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_prussia = 1 }
@@ -534,7 +535,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -567,28 +569,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_hannover = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_5 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_hannover > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_5 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_hannover > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_5 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_5 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_5 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_5
+
                     set_variable = { GER_req_success_flag_hannover = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_hannover = 1 }
@@ -642,28 +644,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_hannover = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_6 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_hannover > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_6 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_hannover > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_6 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_6 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_6 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_6
+
                     set_variable = { GER_tax_success_flag_hannover = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_hannover = 1 }
@@ -743,7 +745,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -776,28 +779,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_bavaria = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_7 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_bavaria > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_7 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_bavaria > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_7 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_7 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_7 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_7
+
                     set_variable = { GER_req_success_flag_bavaria = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_bavaria = 1 }
@@ -851,28 +854,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_bavaria = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_8 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_bavaria > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_8 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_bavaria > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_8 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_8 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_8 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_8
+
                     set_variable = { GER_tax_success_flag_bavaria = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_bavaria = 1 }
@@ -952,7 +955,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -985,28 +989,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_saxony = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_9 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_saxony > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_9 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_saxony > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_9 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_9 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_9 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_9
+
                     set_variable = { GER_req_success_flag_saxony = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_saxony = 1 }
@@ -1060,28 +1064,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_saxony = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_10 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_saxony > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_10 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_saxony > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_10 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_10 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_10 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_10
+
                     set_variable = { GER_tax_success_flag_saxony = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_saxony = 1 }
@@ -1161,7 +1165,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -1194,28 +1199,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_wuerttemberg = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_11 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_wuerttemberg > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_11 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_wuerttemberg > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_11 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_11 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_11 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_11
+
                     set_variable = { GER_req_success_flag_wuerttemberg = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_wuerttemberg = 1 }
@@ -1269,28 +1274,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_wuerttemberg = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_12 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_wuerttemberg > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_12 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_wuerttemberg > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_12 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_12 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_12 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_12
+
                     set_variable = { GER_tax_success_flag_wuerttemberg = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_wuerttemberg = 1 }
@@ -1370,7 +1375,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -1403,28 +1409,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_silesia = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_13 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_silesia > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_13 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_silesia > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_13 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_13 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_13 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_13
+
                     set_variable = { GER_req_success_flag_silesia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_silesia = 1 }
@@ -1478,28 +1484,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_silesia = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_14 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_silesia > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_14 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_silesia > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_14 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_14 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_14 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_14
+
                     set_variable = { GER_tax_success_flag_silesia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_silesia = 1 }
@@ -1579,7 +1585,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -1612,28 +1619,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_pomerania = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_15 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_pomerania > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_15 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_pomerania > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_15 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_15 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_15 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_15
+
                     set_variable = { GER_req_success_flag_pomerania = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_pomerania = 1 }
@@ -1687,28 +1694,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_pomerania = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_16 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_pomerania > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_16 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_pomerania > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_16 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_16 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_16 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_16
+
                     set_variable = { GER_tax_success_flag_pomerania = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_pomerania = 1 }
@@ -1788,7 +1795,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -1821,28 +1829,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_schleswig_holstein = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_17 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_schleswig_holstein > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_17 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_schleswig_holstein > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_17 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_17 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_17 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_17
+
                     set_variable = { GER_req_success_flag_schleswig_holstein = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_schleswig_holstein = 1 }
@@ -1896,28 +1904,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_schleswig_holstein = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_18 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_schleswig_holstein > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_18 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_schleswig_holstein > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_18 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_18 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_18 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_18
+
                     set_variable = { GER_tax_success_flag_schleswig_holstein = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_schleswig_holstein = 1 }
@@ -1997,7 +2005,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -2030,28 +2039,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_mecklenburg = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_19 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_mecklenburg > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_19 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_mecklenburg > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_19 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_19 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_19 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_19
+
                     set_variable = { GER_req_success_flag_mecklenburg = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_mecklenburg = 1 }
@@ -2105,28 +2114,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_mecklenburg = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_20 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_mecklenburg > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_20 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_mecklenburg > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_20 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_20 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_20 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_20
+
                     set_variable = { GER_tax_success_flag_mecklenburg = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_mecklenburg = 1 }
@@ -2206,7 +2215,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -2239,28 +2249,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_frankfurt = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_21 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_frankfurt > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_21 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_frankfurt > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_21 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_21 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_21 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_21
+
                     set_variable = { GER_req_success_flag_frankfurt = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_frankfurt = 1 }
@@ -2314,28 +2324,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_frankfurt = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_22 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_frankfurt > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_22 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_frankfurt > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_22 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_22 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_22 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_22
+
                     set_variable = { GER_tax_success_flag_frankfurt = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_frankfurt = 1 }
@@ -2415,7 +2425,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }
@@ -2448,28 +2459,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 60%，该地农民反感度越高成功率越低
             set_variable = { GER_req_success_flag_westphalia = 0 }
-            random = {
-                chance = 0.6
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_23 = 60 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_westphalia > 50 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_23 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_westphalia > 75 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_23 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_23 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_23 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_23
+
                     set_variable = { GER_req_success_flag_westphalia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_req_success_flag_westphalia = 1 }
@@ -2523,28 +2534,28 @@ GER_SPD_decisions = {
         timeout_effect = {
             # 成功率：基础 70%，该地农民反感度越高成功率越低
             set_variable = { GER_tax_success_flag_westphalia = 0 }
-            random = {
-                chance = 0.7
-                modifier = {
-                    factor = 0.6
+            set_temp_variable = { aor_spd_roll_24 = 70 }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_westphalia > 60 }
-                }
-                modifier = {
-                    factor = 0.5
+                 } multiply_temp_variable = { aor_spd_roll_24 = 0.6 } }
+if = { limit = { 
+                    
                     check_variable = { GER_peasant_resentment_westphalia > 80 }
-                }
-                modifier = {
-                    factor = 1.2
+                 } multiply_temp_variable = { aor_spd_roll_24 = 0.5 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_cooperative
-                }
-                modifier = {
-                    factor = 0.8
+                 } multiply_temp_variable = { aor_spd_roll_24 = 1.2 } }
+if = { limit = { 
+                    
                     has_country_flag = GER_agri_tone_land_distributed
-                }
-                effect = {
+                 } multiply_temp_variable = { aor_spd_roll_24 = 0.8 } }
+random = { chance = temp_var:aor_spd_roll_24
+
                     set_variable = { GER_tax_success_flag_westphalia = 1 }
-                }
-            }
+                
+}
             if = {
                 limit = {
                     check_variable = { GER_tax_success_flag_westphalia = 1 }
@@ -2624,7 +2635,8 @@ GER_SPD_decisions = {
             # 经济恢复国策解锁后：工业品充裕，交换量翻倍
             if = {
                 limit = {
-                    has_completed_focus = GER_economy_recovery
+                    always = no # unavailable AOR object: has_completed_focus GER_economy_recovery
+
                 }
                 add_to_variable = { GER_food_surplus = 6 }
             }

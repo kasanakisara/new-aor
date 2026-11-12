@@ -1,22 +1,24 @@
-﻿capital = 104
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Doctrine
+	mass_assault = 1
+}
+capital = 104
+oob = "AOR_EU_BOS"
 
 set_research_slots = 3
 
 # Starting tech
 # clone of Yugoslavia
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
- 
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	basic_train = 1
-}
 
 if = {
 	limit = {
@@ -24,46 +26,13 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
 
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_submarine = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		early_ship_hull_submarine = 1
-		early_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
-		basic_battery = 1
-		basic_torpedo = 1
-	}
-}
+
 
 set_politics = {
 	ruling_party = CON_democratic
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }

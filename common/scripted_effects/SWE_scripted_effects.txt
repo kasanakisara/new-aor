@@ -1,0 +1,23 @@
+# AOR: dependency-audited scripted functions.
+
+lerp = {
+	
+	# Linearly interpolates between a and b by x.
+	# x is clamped between 0 - 1.
+	# a + (b -a ) * x
+	# The arguments below needs to be set before running the effect. The result is stored in lerp_result, and is in the same scope as the lerp was called from 
+	# lerp_x:  The interpolation value between the two numbers
+	# lerp_b: start value
+	# lerp_a: end value
+
+	set_temp_variable = { x = lerp_x }
+	clamp_temp_variable = { var = x min = 0 max = 1 }
+	set_temp_variable = { a = lerp_a }
+	set_temp_variable = { b = lerp_b }
+
+	set_temp_variable = { b_minus_a = b }
+	subtract_from_temp_variable = { b_minus_a = a }
+	multiply_temp_variable = { b_minus_a = x }
+	add_to_temp_variable = { b_minus_a = a }
+	set_variable = { lerp_result = b_minus_a }
+}

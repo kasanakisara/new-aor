@@ -1,0 +1,281 @@
+sp_aor_tank_prototype = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { has_tech = aor_tank_support } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 150 complexity = { min = 20 max = 20 }
+ 
+ project_output = { enable_equipments = { aor_early_tank_equipment_1 } country_effects = { custom_effect_tooltip = aor_early_tank_unlocked_tt } }
+
+ resource_cost = { resources = { steel = 2 } }
+ unique_prototype_rewards = { aor_tank_first_vehicle = { fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 } option = { token = aor_tank_first_copy iteration_output = { country_effects = { add_political_power = -35 if = { limit = { aor_initial_entente_member = yes } FROM = { add_project_progress_ratio = 0.3 } } else = { FROM = { add_project_progress_ratio = 0.25 } } } } }
+option = { token = aor_tank_first_independent iteration_output = { country_effects = { FROM = { add_project_progress_ratio = 0.2 } add_timed_idea = { idea = aor_tank_research_lessons days = 720 } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_armor = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_prototype } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 90 complexity = { min = 20 max = 20 }
+ 
+ project_output = { country_effects = { custom_effect_tooltip = aor_tank_armor_unlock_tt } }
+
+ resource_cost = { resources = { steel = 3 chromium = 1 } }
+ unique_prototype_rewards = { aor_tank_plate = { fire_only_once = yes threshold = { min = 40 max = 100 } weight = { base = 1000 } option = { token = aor_tank_plate_heat iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } add_timed_idea = { idea = aor_tank_research_lessons days = 720 } } } }
+option = { token = aor_tank_plate_batch iteration_output = { country_effects = { add_political_power = -20 add_timed_idea = { idea = aor_tank_trial_workshops days = 90 } FROM = { add_project_progress_ratio = 0.15 } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_gun = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_prototype } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 90 complexity = { min = 20 max = 20 }
+ 
+ project_output = { country_effects = { custom_effect_tooltip = aor_tank_gun_unlock_tt } }
+
+ resource_cost = { resources = { steel = 2 tungsten = 1 } }
+ unique_prototype_rewards = { aor_tank_cramped_turret = { fire_only_once = yes threshold = { min = 40 max = 100 } weight = { base = 1000 } option = { token = aor_tank_gun_crew iteration_output = { country_effects = { FROM = { add_project_progress_ratio = 0.1 } army_experience = 10 } } }
+option = { token = aor_tank_gun_mount iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } add_unit_bonus = { aor_tank_support = { soft_attack = 0.03 } } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_reliability = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_prototype } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 90 complexity = { min = 20 max = 20 }
+ 
+ project_output = { country_effects = { custom_effect_tooltip = aor_tank_reliability_unlock_tt } }
+
+ resource_cost = { resources = { steel = 1 rubber = 1 } }
+ unique_prototype_rewards = { aor_tank_spares = { fire_only_once = yes threshold = { min = 40 max = 100 } weight = { base = 1000 } option = { token = aor_tank_spares_gauges iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } add_timed_idea = { idea = aor_tank_standardization_lessons days = 720 } } } }
+option = { token = aor_tank_spares_fit iteration_output = { country_effects = { add_timed_idea = { idea = aor_tank_trial_workshops days = 90 } FROM = { add_project_progress_ratio = 0.15 } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_engine = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_prototype } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 90 complexity = { min = 20 max = 20 }
+ 
+ project_output = { country_effects = { custom_effect_tooltip = aor_tank_engine_unlock_tt } }
+
+ resource_cost = { resources = { steel = 2 rubber = 1 } }
+ unique_prototype_rewards = { aor_tank_track_failure = { fire_only_once = yes threshold = { min = 40 max = 100 } weight = { base = 1000 } option = { token = aor_tank_track_redesign iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.1 } add_timed_idea = { idea = aor_tank_reliability_lessons days = 720 } } } }
+option = { token = aor_tank_track_reinforce iteration_output = { country_effects = { add_timed_idea = { idea = aor_tank_trial_workshops days = 90 } FROM = { add_project_progress_ratio = 0.1 } } } }
+option = { token = aor_tank_track_continue iteration_output = { country_effects = { FROM = { add_project_progress_ratio = 0.1 } random_list = { 65 = { } 35 = { FROM = { add_project_progress_ratio = -0.2 } add_timed_idea = { idea = aor_tank_accident days = 120 } } } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_standardization = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_prototype is_special_project_completed = sp:sp_aor_tank_armor is_special_project_completed = sp:sp_aor_tank_gun is_special_project_completed = sp:sp_aor_tank_reliability is_special_project_completed = sp:sp_aor_tank_engine } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 150 complexity = { min = 20 max = 20 }
+ 
+ project_output = { country_effects = { add_ideas = aor_tank_standardized_production } }
+
+ resource_cost = { resources = { steel = 3 tungsten = 1 } }
+ unique_prototype_rewards = { aor_tank_twelve = { fire_only_once = yes threshold = { min = 40 max = 100 } weight = { base = 1000 } option = { token = aor_tank_twelve_rush iteration_output = { country_effects = { FROM = { add_project_progress_ratio = 0.2 } add_timed_idea = { idea = aor_tank_rushed_service days = 365 } } } }
+option = { token = aor_tank_twelve_refine iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.1 } add_timed_idea = { idea = aor_tank_research_lessons days = 720 } } } }
+option = { token = aor_tank_twelve_expand iteration_output = { country_effects = { add_timed_idea = { idea = aor_tank_expanded_workshops days = 120 } FROM = { add_project_progress_ratio = 0.25 } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}
+sp_aor_tank_battalion = {
+ specialization = specialization_land icon = GFX_sp_land_land_cruiser project_tags = sp_tag_tank
+ allowed = { always = yes }
+ visible = { FROM = { has_tech = aor_tank_support } }
+ available = { FROM = { is_special_project_completed = sp:sp_aor_tank_standardization } }
+ breakthrough_cost = { specialization_land = 1 }
+ prototype_time = 180 complexity = { min = 20 max = 20 }
+ 
+ project_output = { enable_subunits = { aor_experimental_tank_battalion } country_effects = { custom_effect_tooltip = aor_tank_five_unlock_tt
+ if = { limit = { has_country_flag = aor_tank_role_shield } create_equipment_variant = { name = "步兵协同试验型" type = aor_early_tank_equipment_1 allow_without_tech = yes upgrades = { aor_tank_armor_upgrade = 5 aor_tank_gun_upgrade = 3 aor_tank_reliability_upgrade = 5 aor_tank_engine_upgrade = 2 } } }
+ if = { limit = { has_country_flag = aor_tank_role_fist } create_equipment_variant = { name = "机动作战试验型" type = aor_early_tank_equipment_1 allow_without_tech = yes upgrades = { aor_tank_armor_upgrade = 2 aor_tank_gun_upgrade = 5 aor_tank_reliability_upgrade = 3 aor_tank_engine_upgrade = 5 } } }
+ if = { limit = { has_country_flag = aor_tank_role_shield } add_equipment_to_stockpile = { type = aor_early_tank_equipment_1 variant_name = "步兵协同试验型" amount = 12 } }
+ else_if = { limit = { has_country_flag = aor_tank_role_fist } add_equipment_to_stockpile = { type = aor_early_tank_equipment_1 variant_name = "机动作战试验型" amount = 12 } }
+ else = { add_equipment_to_stockpile = { type = aor_early_tank_equipment_1 amount = 12 } }
+ } }
+
+ resource_cost = { resources = { steel = 2 rubber = 1 } }
+ unique_prototype_rewards = { aor_tank_role = { fire_only_once = yes threshold = { min = 60 max = 100 } weight = { base = 1000 } option = { token = aor_tank_role_shield iteration_output = { country_effects = { set_country_flag = aor_tank_role_shield add_unit_bonus = { aor_tank_support = { defense = 0.10 max_organisation = 2 } } } } }
+option = { token = aor_tank_role_fist iteration_output = { country_effects = { set_country_flag = aor_tank_role_fist add_unit_bonus = { aor_experimental_tank_battalion = { breakthrough = 0.10 maximum_speed = 0.05 } } } } } } }
+
+ generic_prototype_rewards = {
+ sp_land_generic_reward_scientist_xp_1
+ sp_land_generic_reward_scientist_xp_2
+ sp_land_generic_reward_scientist_xp_3
+ sp_land_generic_reward_army_xp_1
+ sp_land_generic_reward_army_xp_2
+ sp_land_generic_reward_army_xp_3
+ sp_land_generic_reward_major_progress_1
+ sp_land_generic_reward_major_progress_2
+ sp_land_generic_reward_major_progress_3
+ sp_land_generic_reward_test_failure_1
+ sp_land_generic_reward_test_failure_2
+ sp_land_generic_reward_test_failure_3
+ sp_land_generic_reward_artillery_tech_1
+ sp_land_generic_reward_artillery_tech_2
+ sp_land_generic_reward_artillery_tech_3
+ sp_land_generic_reward_artillery_bonus_1
+ sp_land_generic_reward_artillery_bonus_2
+ sp_land_generic_reward_artillery_bonus_3
+ sp_land_generic_reward_resource_scarcity
+ sp_land_generic_reward_critical_failure
+ }
+
+	ai_will_do = { base = 1 modifier = { factor = 3 ROOT = { num_of_military_factories > 29 num_of_civilian_factories > 24 } } modifier = { factor = 4 ROOT = { OR = { original_tag = ENG original_tag = FRA } } } }
+}

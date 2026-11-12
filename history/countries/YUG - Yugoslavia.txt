@@ -1,6 +1,50 @@
-﻿capital = 107
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_b01 = 1
+	aor_inf_e01 = 1
+	aor_inf_g01 = 1
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_t01 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
 
-set_oob = "AOR_LNAD_YUG"
+capital = 107
+oob = "AOR_LNAD_YUG"
 
 set_research_slots = 3
 
@@ -16,67 +60,17 @@ add_ideas = {
 }
 
 
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
- 
-	
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	interwar_antitank = 1
- 
-	interwar_antiair = 1
-	superior_firepower = 1
-	basic_train = 1
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-}
 
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
 	}
-}
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_destroyer = 1
-		early_light_cruiser = 1
-		early_submarine = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_cruiser = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		coastal_defense_ships = 1
-	}
-}
 
 
 
-set_convoys = 10
+
+add_equipment_to_stockpile = { type = convoy amount = 10 }
 set_politics = {
 	ruling_party = Absolutism
 	last_election = "1935.5.3"
@@ -89,3 +83,10 @@ set_popularities = {
 	Absolutism = 50
 }
 
+
+# Constitutional assembly; territorial unification is a separate YUG.100 event.
+country_event = { id = YUG.1 days = 90 }
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Dalmacija Class" type = ship_hull_cruiser_coastal_defense_ship allow_without_tech = yes modules = { front_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_battery_slot = dp_ship_medium_1 fixed_ship_secondaries_slot = empty fixed_ship_fire_control_system_slot = aor_ship_sonar_3 fixed_ship_engine_slot = cruiser_ship_engine_1 } }
+create_equipment_variant = { name = "Dubrovnik Class" type = ship_hull_light_2 allow_without_tech = yes modules = { mid_1_custom_slot = empty rear_1_custom_slot = empty fixed_ship_engine_slot = light_ship_engine_2 fixed_ship_battery_slot = ship_light_battery_1 } }

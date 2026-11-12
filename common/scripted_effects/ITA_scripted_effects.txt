@@ -1,0 +1,140 @@
+# AOR: dependency-audited scripted functions.
+
+ITA_add_king_vittorio_emanuele_back_as_idea = { #After having removed him
+	if = {
+		limit = {
+			always = no # AOR: unavailable has_completed_focus ITA_the_new_emperor_of_ethiopia
+
+			ITA_vittorio_emanuele_iii = { has_character_flag = ITA_king_of_albania_flag }
+		}
+		# unavailable add_ideas vittorio_emanuele_albania_ethiopia
+
+
+	}
+	else_if = {
+		limit = {
+			ITA_vittorio_emanuele_iii = { has_character_flag = ITA_king_of_albania_flag }
+		}
+		# unavailable add_ideas vittorio_emanuele_king_of_albania
+
+	}
+	else_if = {
+		limit = {
+			always = no # AOR: unavailable has_completed_focus ITA_the_new_emperor_of_ethiopia
+
+		}
+		# unavailable add_ideas vittorio_emanuele_emperor_of_ethiopia
+
+	}
+	else = {
+		# unavailable add_ideas vittorio_emanuele
+
+	}
+	if = {
+		limit = {
+			has_country_flag = ITA_deposed_the_king
+		}
+		clr_country_flag = ITA_deposed_the_king
+	}
+}
+
+ITA_promote_umberto_to_country_leader = {
+	if = {
+		limit = {
+			ITA_prince_umberto = {
+				can_be_country_leader = yes
+			}
+		}
+		if = {
+			limit = {
+				ITA_prince_umberto = {
+					has_ideology_group = neutrality
+				}
+			}
+			ITA_prince_umberto = { promote_character = { ideology = despotism } }
+		}
+		else_if = {
+			limit = {
+				ITA_prince_umberto = {
+					has_ideology_group = democratic
+				}
+			}
+			ITA_prince_umberto = { promote_character = { ideology = conservatism } }
+		}
+	}
+	else_if = {
+		limit = {
+			always = no # AOR: unavailable has_completed_focus ITA_democratic_king
+
+		}
+		add_country_leader_role = {
+			character =  ITA_prince_umberto
+			promote_leader = yes
+			country_leader = {
+				ideology = conservatism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		add_country_leader_role = { #Add the Non-Aligned role too, but without promoting
+			character =  ITA_prince_umberto
+			country_leader = {
+				ideology = despotism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		set_character_name = {
+			character = ITA_prince_umberto
+			name = ITA_prince_umberto_king
+		}
+		#BoP
+		set_power_balance = {
+			id = ITA_power_balance
+			right_side = ITA_king_umberto_side
+		}
+	}
+	else = {
+		add_country_leader_role = {
+			character =  ITA_prince_umberto
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				traits = { inexperienced_monarch eager_commander }
+				expire = "1965.1.1.1"
+				id = -1
+			}
+		}
+		set_character_name = {
+			character = ITA_prince_umberto
+			name = ITA_prince_umberto_king
+		}
+		#BoP
+		set_power_balance = {
+			id = ITA_power_balance
+			right_side = ITA_king_umberto_side
+		}
+
+	}
+
+	if = {
+		limit = {
+			has_character = ITA_vittorio_emanuele_iii
+		}
+		retire_character = ITA_vittorio_emanuele_iii
+	}
+}
+
+ITA_add_basic_light_flamethrower_template = {
+	if = {
+		limit = {
+			has_dlc = "Gotterdammerung"
+		}
+		
+	}
+	else = {
+		
+	}
+}

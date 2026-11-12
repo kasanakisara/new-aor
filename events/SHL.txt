@@ -177,8 +177,10 @@ set_country_flag = karl_doenitz
 	
 	trigger = {
 		SHL = { 
-		has_completed_focus = SHL_there_is_no_god_and_master
-		has_completed_focus = SHL_railway_build
+		always = no # unavailable AOR object: has_completed_focus SHL_there_is_no_god_and_master
+
+		always = no # unavailable AOR object: has_completed_focus SHL_railway_build
+
 		}
 		original_tag = SHL
 	}

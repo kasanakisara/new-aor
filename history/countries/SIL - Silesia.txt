@@ -1,4 +1,13 @@
-﻿capital = 66
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+
+capital = 66
+oob = "AOR_EU_SIL"
 
 set_cosmetic_tag = SIL_1_FRE_democratic
 
@@ -12,97 +21,14 @@ recruit_character = SIL_Richard_Von_Schobert
 
 set_research_slots = 3
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_support = 1
-	tech_engineers = 1
-	tech_recon = 1
-	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
- 
- 
-	cv_early_fighter = 1
-	cv_naval_bomber1 = 1
- 
-	tactical_bomber1 = 1
-	CAS1 = 1
-	trench_warfare = 1
-	fleet_in_being = 1
-	fuel_silos = 1
-	fuel_refining = 1
-}
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-		set_technology = {
-		early_submarine = 1
-		basic_submarine = 1
-		early_destroyer = 1
-		basic_destroyer = 1
-		early_light_cruiser = 1
-		basic_light_cruiser = 1
-		early_heavy_cruiser = 1
-		basic_heavy_cruiser = 1
-		early_battleship = 1
-		early_battlecruiser = 1
-		basic_battlecruiser = 1
-		early_carrier = 1
-		transport = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_cruiser = 1
-		early_ship_hull_heavy = 1
-		basic_ship_hull_heavy = 1
-		early_ship_hull_carrier = 1
-		basic_battery = 1
-		basic_light_battery = 1
-		basic_medium_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		basic_secondary_battery = 1
-		basic_heavy_armor_scheme = 1
-		mtg_transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
-	set_technology = {
-	}
-}
 
-set_convoys = 20
+
+add_equipment_to_stockpile = { type = convoy amount = 20 }
 
 set_country_flag = AOR_GER_flag_NOT_support_resolution
 
@@ -119,16 +45,11 @@ set_popularities = {
 	FRE_democratic = 60
 }
 
-add_ideas = {
-	Captain's_first_mate
-	Czech_experience
-	Polish_question
-	Compact_of_German_Confederation
-}
+add_ideas = { Czech_experience Polish_question Compact_of_German_Confederation }
 
-effect = {
+
 	country_lock_all_division_template = yes
-	}
+	
 
 create_country_leader = {
 	name = "Philipp Scheidemann"
@@ -139,5 +60,3 @@ create_country_leader = {
 	traits = {
 	}
 }
-
-oob="SIL_1919"

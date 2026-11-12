@@ -1,0 +1,514 @@
+sp_aor_coal_liquefaction = {
+ resource_cost = { resources = { steel = 6 coal = 12 chromium = 1 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_chemistry
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = fuel_refining2 has_tech = aor_industrial_chemistry2 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 108
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_coal_liquefaction = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_coal_liquefaction_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_coal_liquefaction_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|synth_oil_experiments set_technology = { synth_oil_experiments = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_synthetic_rubber = {
+ resource_cost = { resources = { steel = 4 oil = 2 coal = 6 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_chemistry
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = aor_industrial_chemistry2 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 120
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_synthetic_rubber = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_synthetic_rubber_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_synthetic_rubber_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_synthetic_rubber set_technology = { aor_synthetic_rubber = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_rotor_cipher = {
+ resource_cost = { resources = { steel = 2 aluminium = 2 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_mathematics project_tags = sp_tag_aor_electrical_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = aor_encryption_1923_lar has_tech = aor_decryption_1923_lar } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 108
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_rotor_cipher = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_rotor_cipher_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_rotor_cipher_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_encryption_1928_lar set_technology = { aor_encryption_1928_lar = 1 popup = no } }custom_override_tooltip = { tooltip = tech_effect|aor_decryption_1928_lar set_technology = { aor_decryption_1928_lar = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_radio_control = {
+ resource_cost = { resources = { steel = 3 aluminium = 2 tungsten = 1 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_electrical_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = Modern_electronics3 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 72
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_radio_control = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_radio_control_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_radio_control_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_encryption_1923_lar set_technology = { aor_encryption_1923_lar = 1 popup = no } }custom_override_tooltip = { tooltip = tech_effect|aor_decryption_1923_lar set_technology = { aor_decryption_1923_lar = 1 popup = no } } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_pulse_radar } set_country_flag = aor_radio_control_completed custom_effect_tooltip = aor_remote_projects_reserved_tt } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_pulse_radar = {
+ resource_cost = { resources = { steel = 5 aluminium = 4 tungsten = 1 coal = 2 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_electrical_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { is_special_project_completed = sp:sp_aor_radio_control } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 144
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_pulse_radar = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_pulse_radar_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_pulse_radar_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_pulse_radar set_technology = { aor_pulse_radar = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_high_voltage = {
+ resource_cost = { resources = { steel = 6 aluminium = 4 rubber = 1 coal = 6 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_electrical_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = Modern_electronics2 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 90
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_high_voltage = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_high_voltage_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_high_voltage_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_high_voltage set_technology = { aor_high_voltage = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_hydroelectric = {
+ resource_cost = { resources = { steel = 8 aluminium = 3 coal = 4 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_electrical_engineering project_tags = sp_tag_aor_civil_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = Modern_electronics2 has_tech = construction1 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 120
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_hydroelectric = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_hydroelectric_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_hydroelectric_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_hydroelectric set_technology = { aor_hydroelectric = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_highway = {
+ resource_cost = { resources = { steel = 4 oil = 1 rubber = 1 coal = 3 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_civil_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = aor_railway_engineering } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 72
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_highway = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_highway_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_highway_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_highway set_technology = { aor_highway = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_prefabrication = {
+ resource_cost = { resources = { steel = 6 coal = 6 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_civil_engineering project_tags = sp_tag_aor_chemistry
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { has_tech = construction4 } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 108
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_prefabrication = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_prefabrication_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_prefabrication_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { custom_override_tooltip = { tooltip = tech_effect|aor_prefabrication set_technology = { aor_prefabrication = 1 popup = no } } } }
+
+
+	ai_will_do = { base = 4 }
+}
+
+
+
+sp_aor_transmutation = {
+ resource_cost = { resources = { steel = 2 aluminium = 2 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_physics
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { is_special_project_completed = sp:sp_aor_atomic_structure } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 90
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_transmutation = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_transmutation_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_transmutation_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { add_breakthrough_progress = { specialization = specialization_nuclear value = 1 } custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_accelerator } } }
+
+
+	ai_will_do = { base = 2 }
+}
+
+
+
+sp_aor_accelerator = {
+ resource_cost = { resources = { steel = 7 aluminium = 5 tungsten = 1 coal = 8 } }
+
+ specialization = specialization_nuclear
+
+ icon = GFX_sp_nuclear_reactor
+
+ project_tags = sp_tag_aor_physics project_tags = sp_tag_aor_electrical_engineering
+
+ allowed = { always = yes }
+
+ visible = { always = yes }
+
+ available = { FROM = { is_special_project_completed = sp:sp_aor_transmutation } }
+
+ breakthrough_cost = { specialization_nuclear = 1 }
+
+ prototype_time = 180
+
+ complexity = { min = 20 max = 20 }
+
+ 
+
+ generic_prototype_rewards = { sp_aor_basic_science_reward_1 sp_aor_basic_science_reward_2 sp_aor_basic_science_reward_3 sp_aor_basic_science_reward_4 sp_aor_basic_science_reward_5 sp_aor_basic_science_reward_6 sp_aor_basic_science_reward_7 sp_aor_basic_science_reward_8 sp_aor_basic_science_reward_9 sp_aor_basic_science_reward_10 sp_aor_basic_science_reward_11 sp_aor_basic_science_reward_12 sp_aor_basic_science_reward_13 sp_aor_basic_science_reward_14 sp_aor_basic_science_reward_15 sp_aor_basic_science_reward_16 sp_aor_basic_science_reward_17 sp_aor_basic_science_reward_18 sp_aor_basic_science_reward_19 sp_aor_basic_science_reward_20 }
+
+ unique_prototype_rewards = {
+
+  aor_applied_accelerator = {
+
+   fire_only_once = yes threshold = { min = 20 max = 100 } weight = { base = 1000 }
+
+   option = { token = aor_applied_accelerator_review iteration_output = { country_effects = { FROM = { add_project_progress_ratio = -0.05 } } scientist_effects = { add_scientist_xp = { experience = 100 specialization = specialization_nuclear } } } }
+
+   option = { token = aor_applied_accelerator_fund iteration_output = { country_effects = { add_political_power = -50 FROM = { add_project_progress_ratio = 0.1 } } } }
+
+  }
+
+ }
+
+ project_output = { country_effects = { add_breakthrough_progress = { specialization = specialization_nuclear value = 1.5 } news_event = { id = AOR_news_global.6 days = 1 } } }
+
+
+	ai_will_do = { base = 2 }
+}

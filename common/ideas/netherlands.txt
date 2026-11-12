@@ -12,12 +12,14 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT ={
-					has_government = communism
+					always = no # unavailable AOR object: has_government communism
+
 				}
 				NOT = {
 					any_other_country = {
 						original_tag = HOL
-						has_government = democratic 
+						always = no # unavailable AOR object: has_government democratic
+ 
 						NOT = {
 							tag = ROOT
 						}
@@ -447,15 +449,15 @@ ideas = {
 			removal_cost = -1
 						
 			equipment_bonus = {
-				fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				cv_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				jet_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
@@ -463,11 +465,11 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				CAS_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				nav_bomber_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
@@ -475,19 +477,19 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				rocket_interceptor_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				jet_tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				jet_strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
@@ -495,7 +497,7 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
-				strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.05
 				}
@@ -523,15 +525,15 @@ ideas = {
 			removal_cost = -1
 						
 			equipment_bonus = {
-				fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				cv_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				jet_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
@@ -539,11 +541,11 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				CAS_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				nav_bomber_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
@@ -551,19 +553,19 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				rocket_interceptor_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				jet_tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				jet_strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
@@ -571,7 +573,7 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
-				strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.1
 				}
@@ -749,15 +751,15 @@ ideas = {
 			removal_cost = -1
 
 			equipment_bonus = {
-				fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				cv_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				jet_fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
@@ -765,11 +767,11 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				CAS_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				nav_bomber_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
@@ -777,19 +779,19 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				rocket_interceptor_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				jet_tac_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				jet_strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
@@ -797,7 +799,7 @@ ideas = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
-				strat_bomber_equipment = {
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.2
 				}
@@ -863,7 +865,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				democratic_drift = -0.02
+# Removed unsupported legacy modifier democratic_drift
 			}
 		}
 
@@ -897,7 +899,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -917,7 +920,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -937,7 +941,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 			
 			removal_cost = -1
@@ -970,7 +975,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -989,7 +995,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 
 			removal_cost = -1
@@ -1009,13 +1016,14 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				communism_drift = 0.1
+# Removed unsupported legacy modifier communism_drift
 			}
 		}
 
@@ -1028,7 +1036,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1047,7 +1056,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1066,7 +1076,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1085,7 +1096,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1104,7 +1116,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1124,7 +1137,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = communism
+				always = no # unavailable AOR object: has_government communism
+
 			}
 
 			removal_cost = -1
@@ -1146,20 +1160,23 @@ ideas = {
 
 			available = {
 				OR = {
-					has_government = neutrality
-					NOT = { has_completed_focus = HOL_the_only_man_in_the_dutch_government }
+					always = no # unavailable AOR object: has_government neutrality
+
+					NOT = { always = no # unavailable AOR object: has_completed_focus HOL_the_only_man_in_the_dutch_government
+ }
 				}
 			}
 
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				neutrality_drift = 0.1
+# Removed unsupported legacy modifier neutrality_drift
 			}
 		}
 
@@ -1175,19 +1192,22 @@ ideas = {
 
 			available = {
 				OR = {
-					has_government = neutrality
-					NOT = { has_completed_focus = HOL_the_only_man_in_the_dutch_government }
+					always = no # unavailable AOR object: has_government neutrality
+
+					NOT = { always = no # unavailable AOR object: has_completed_focus HOL_the_only_man_in_the_dutch_government
+ }
 				}
 			}
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 
 			removal_cost = -1
 
 			modifier = {
-				neutrality_drift = 0.2
+# Removed unsupported legacy modifier neutrality_drift
 				resistance_growth_on_our_occupied_states = 0.25
 				army_core_defence_factor = 0.1
 				army_core_attack_factor = 0.1
@@ -1203,7 +1223,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 
 			removal_cost = -1
@@ -1222,15 +1243,16 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = democratic
+				always = no # unavailable AOR object: has_government democratic
+
 			}
 
 			removal_cost = -1
 
 			modifier = {
 				fascism_drift = -0.02
-				communism_drift = -0.02
-				democratic_drift = 0.05
+# Removed unsupported legacy modifier communism_drift
+# Removed unsupported legacy modifier democratic_drift
 				stability_weekly = 0.001
 			}
 		}
@@ -1246,7 +1268,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 
 			removal_cost = -1
@@ -1265,7 +1288,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 
 			removal_cost = -1
@@ -1306,7 +1330,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = democratic
+				always = no # unavailable AOR object: has_government democratic
+
 			}
 
 			removal_cost = -1
@@ -1325,14 +1350,15 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = democratic
+				always = no # unavailable AOR object: has_government democratic
+
 			}
 
 			removal_cost = -1
 
 			modifier = {
 				fascism_drift = -0.02
-				communism_drift = -0.02
+# Removed unsupported legacy modifier communism_drift
 			}
 		}
 
@@ -1662,10 +1688,10 @@ ideas = {
 			removal_cost = -1
 						
 			modifier = {
-				air_interception_attack_factor = 0.03
-				air_air_superiority_attack_factor = 0.03
-				air_air_superiority_defence_factor = 0.03
-				air_air_superiority_agility_factor = 0.03
+# Removed unsupported legacy modifier air_interception_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_defence_factor
+# Removed unsupported legacy modifier air_air_superiority_agility_factor
 			}
 		}
 
@@ -1686,10 +1712,10 @@ ideas = {
 			removal_cost = -1
 						
 			modifier = {
-				air_interception_attack_factor = -0.03
-				air_air_superiority_attack_factor = -0.03
-				air_air_superiority_defence_factor = -0.03
-				air_air_superiority_agility_factor = -0.03
+# Removed unsupported legacy modifier air_interception_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_attack_factor
+# Removed unsupported legacy modifier air_air_superiority_defence_factor
+# Removed unsupported legacy modifier air_air_superiority_agility_factor
 			}
 		}
 
@@ -1911,7 +1937,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = neutrality
+				always = no # unavailable AOR object: has_government neutrality
+
 			}
 			
 			removal_cost = -1
@@ -1927,7 +1954,8 @@ ideas = {
 			}
 
 			allowed_civil_war = {
-				has_government = fascism
+				always = no # unavailable AOR object: has_government fascism
+
 			}
 			
 			removal_cost = -1
@@ -1951,7 +1979,8 @@ ideas = {
 			picture = fokker
 
 			available = {
-				has_completed_focus = HOL_fokker
+				always = no # unavailable AOR object: has_completed_focus HOL_fokker
+
 			}
 			
 			allowed = {
@@ -2064,7 +2093,8 @@ ideas = {
 			picture = HOL_daf
 
 			available = {
-				has_completed_focus = HOL_daf
+				always = no # unavailable AOR object: has_completed_focus HOL_daf
+
 			}
 
 			allowed = {
@@ -2088,7 +2118,8 @@ ideas = {
 			picture = artillerie_inrichtingen
 
 			available = {
-				has_completed_focus = HOL_expand_the_artillerieinrichtingen
+				always = no # unavailable AOR object: has_completed_focus HOL_expand_the_artillerieinrichtingen
+
 			}
 			
 			allowed = {
@@ -2142,7 +2173,8 @@ ideas = {
 		HOL_royal_dutch_shell = {
 
 			available = {
-				has_completed_focus = HOL_expand_curacao_oil_refineries
+				always = no # unavailable AOR object: has_completed_focus HOL_expand_curacao_oil_refineries
+
 			}
 			
 			allowed = {
@@ -2165,7 +2197,8 @@ ideas = {
 		HOL_philips = {
 
 			available = {
-				has_completed_focus = HOL_philips_focus
+				always = no # unavailable AOR object: has_completed_focus HOL_philips_focus
+
 			}
 			
 			allowed = {

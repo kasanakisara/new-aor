@@ -1,0 +1,27 @@
+# Tactical chemical capability; no permanent army-wide attack bonus.
+sub_units = {
+	aor_chemical_support = {
+		abbreviation = "CHM"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no
+		type = { infantry support }
+		group = support
+		categories = { category_support_battalions category_army }
+		same_support_type = aor_chemical
+		combat_width = 0
+		manpower = 200
+		max_strength = 1
+		max_organisation = 10
+		default_morale = 0.3
+		training_time = 120
+		weight = 0.1
+		supply_consumption = 0.08
+		# Support equipment provides no direct firepower. Value comes from tactics.
+		need = { support_equipment = 30 }
+		essential = { support_equipment }
+	}
+}

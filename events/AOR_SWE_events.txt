@@ -28,7 +28,7 @@ country_event = {
             remove_ideas = SWE_Universal_Suffrage
             clr_country_flag = SWE_Folkhemmet_flag
             country_event = { id = SWE_Haakon_Death.1 days = 5 }
-            news_event = { id = AOR_news.90 }
+            country_event = { id = AOR_news_router.26 }
             add_ideas = SWE_Regency_Council
             kill_country_leader = yes
             set_politics = {
@@ -850,7 +850,7 @@ country_event = {
         name = Tosca.3.a
         hidden_effect = {
             country_event = { id = Tosca.4 days = 2 }
-            country_event = { id = AOR_news.84 }
+            country_event = { id = AOR_news_router.25 }
         }
 
     }
@@ -916,7 +916,8 @@ country_event = {
             remove_ideas = SWE_Encourage
             remove_ideas = SWE_Further_Reform_Law
             remove_ideas = SWE_Open_the_door
-            remove_ideas = SWE_Third_Choice
+            # unavailable remove_ideas SWE_Third_Choice
+
             remove_ideas = SWE_Folkhemmet
             remove_ideas = SWE_Ex_Folkhemmet
             remove_ideas = SWE_Folkhemmet_debuff
@@ -968,7 +969,7 @@ country_event = {
     option = {
         name = SWE_Haakon_Death.4.a
         hidden_effect = {
-            news_event = { id = AOR_news.241 }
+            country_event = { id = AOR_news_router.57 }
             SCR = {
                 transfer_state = 967
                 every_state = {

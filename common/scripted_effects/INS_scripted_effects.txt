@@ -1,0 +1,139 @@
+# AOR: dependency-audited scripted functions.
+
+indonesia_increase_escalation_1_effect = {
+	hidden_effect = { INS = { add_to_variable = { var = INS_war_escalation_level value = 1 tooltip = INS_increase_escalation_1_tt } } }
+	hidden_effect = { INS = { clamp_variable = { var = INS_war_escalation_level max = 10 } } }
+	custom_effect_tooltip = INS_increase_escalation_1_tt
+	indonesia_evaluate_escalation_effect = yes
+}
+
+indonesia_evaluate_escalation_effect = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_2_flag }
+			check_variable = { INS.INS_war_escalation_level > 1 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_2_flag }
+		HOL = { set_country_flag = INS_war_escalation_2_flag }
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_3_flag }
+			check_variable = { INS.INS_war_escalation_level > 2 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_3_flag }
+		HOL = { set_country_flag = INS_war_escalation_3_flag }
+		HOL = {
+			custom_effect_tooltip = available_focus_tt
+			custom_effect_tooltip = INSHOL_franco_dutch_accord
+			custom_effect_tooltip = INSHOL_london_batavia_accord
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_4_flag }
+			check_variable = { INS.INS_war_escalation_level > 3 }
+		}
+		INS = { set_country_flag = INS_war_escalation_4_flag }
+		HOL = { set_country_flag = INS_war_escalation_4_flag }
+		HOL = {
+			unlock_decision_tooltip = INS_revolution_war_HOL
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_5_flag }
+			check_variable = { INS.INS_war_escalation_level > 4 }
+		}
+		INS = { set_country_flag = INS_war_escalation_5_flag }
+		HOL = { set_country_flag = INS_war_escalation_5_flag }
+		INS = {
+			country_event = {
+				id = INS_chaos_events.1 #Battle in Surabaya
+				hours = 1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_6_flag }
+			check_variable = { INS.INS_war_escalation_level > 5 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_6_flag }
+		HOL = { set_country_flag = INS_war_escalation_6_flag }
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_7_flag }
+			check_variable = { INS.INS_war_escalation_level > 6 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_7_flag }
+		HOL = { set_country_flag = INS_war_escalation_7_flag }
+		HOL = {
+			custom_effect_tooltip = no_penalties_war_tt
+		}
+		INS = {
+			custom_effect_tooltip = available_focus_tt
+			custom_effect_tooltip = INSHOL_rapid_escalation
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_8_flag }
+			check_variable = { INS.INS_war_escalation_level > 7 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_8_flag }
+		HOL = { set_country_flag = INS_war_escalation_8_flag }
+		HOL = {
+			custom_effect_tooltip = INS_war_escalation_8_tt
+		}
+		INS = {
+			country_event = {
+				id = INS_chaos_events.3 #Failed attempt on Sukarno's Life
+				hours = 4
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_9_flag }
+			check_variable = { INS.INS_war_escalation_level > 8 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_9_flag }
+		HOL = { set_country_flag = INS_war_escalation_9_flag }
+		
+		INS = {
+			country_event = {
+				id = INS_chaos_events.2 #Socialist Parties Merge
+				hours = 4
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = INS_war_escalation_10_flag }
+			check_variable = { INS.INS_war_escalation_level > 9 }
+		}
+
+		INS = { set_country_flag = INS_war_escalation_10_flag }
+		HOL = { set_country_flag = INS_war_escalation_10_flag }
+		INS = {
+			custom_effect_tooltip = available_focus_tt
+			custom_effect_tooltip = INSHOL_renville_agreement
+		}
+	}
+}

@@ -1,0 +1,26 @@
+
+air_wings = {
+	### Aéronautique Militaire Belge -- Brussels (Nivelle)
+	6 = {
+		# 2e Régiment d'Aéronautique 
+		# Consisted of 50 operational Gladiator Is, Hurricanes, CR.42s in 1940
+		# Only had Fairey Fox recon/l bombers that were also used as fighters in 1936, along with trainers
+		small_plane_airframe_1914 =  {
+			owner = "BEL" 
+			amount = 43
+		 version_name = "标准小型机体 1914" }
+	}
+}
+
+### Starting Production ###
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1914
+			creator = "BEL version_name = "标准小型机体 1914" "
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 100
+	}
+}

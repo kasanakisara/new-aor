@@ -1,111 +1,81 @@
-﻿capital = 70
-
-
-
-
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
 set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
- 
-	interwar_artillery = 1
-	interwar_antiair = 1
-	aor_inf_r01 = 1
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
 	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	aor_inf_l05 = 1
-	aor_inf_l03 = 1
-	tech_support = 1
-	tech_recon = 1
-	aor_inf_t01 = 1
-	tech_engineers = 1
- 
- 
-	CAS1 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Doctrine
+	mass_assault = 1
 }
+
+capital = 70
+oob = "AOR_EU_SLO"
+
+
+
+
 
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
- 
-	}
-	set_#oob = "SLO_1939"
+		set_#oob = "SLO_1939"
 }
 if = {
 	limit = {
 		has_dlc = "No Step Back"
 	}
-	set_technology = {
-	}
-	set_#oob = "SLO_1939_nsb"
+		set_#oob = "SLO_1939_nsb"
 }
 
-recruit_character = SLO_jozef_tiso
-recruit_character = SLO_jaroslav_kratochvil
-recruit_character = SLO_vojtech_daubner
-recruit_character = SLO_jozef_hora
-recruit_character = SLO_frano_kral
-recruit_character = SLO_jozef_snejdarek
-recruit_character = SLO_fritz_gejza
-recruit_character = SLO_frantisek_sadek
-recruit_character = SLO_stefan_tiso
-recruit_character = SLO_cyril_kuchta
-recruit_character = SLO_jindrich_honzl
-recruit_character = SLO_frantisek_straka
-recruit_character = SLO_karol_sidor
-recruit_character = SLO_emil_lendvay
-recruit_character = SLO_jozef_turanec
-recruit_character = SLO_gustav_malar
-recruit_character = SLO_rudolf_viest
-recruit_character = SLO_janko_jesensky
-recruit_character = SLO_ferdinand_catlos
-recruit_character = SLO_anton_pulanick
+# unavailable or duplicate character SLO_jozef_tiso
+
+# unavailable or duplicate character SLO_jaroslav_kratochvil
+
+# unavailable or duplicate character SLO_vojtech_daubner
+
+# unavailable or duplicate character SLO_jozef_hora
+
+# unavailable or duplicate character SLO_frano_kral
+
+# unavailable or duplicate character SLO_jozef_snejdarek
+
+# unavailable or duplicate character SLO_fritz_gejza
+
+# unavailable or duplicate character SLO_frantisek_sadek
+
+# unavailable or duplicate character SLO_stefan_tiso
+
+# unavailable or duplicate character SLO_cyril_kuchta
+
+# unavailable or duplicate character SLO_jindrich_honzl
+
+# unavailable or duplicate character SLO_frantisek_straka
+
+# unavailable or duplicate character SLO_karol_sidor
+
+# unavailable or duplicate character SLO_emil_lendvay
+
+# unavailable or duplicate character SLO_jozef_turanec
+
+# unavailable or duplicate character SLO_gustav_malar
+
+# unavailable or duplicate character SLO_rudolf_viest
+
+# unavailable or duplicate character SLO_janko_jesensky
+
+# unavailable or duplicate character SLO_ferdinand_catlos
+
+# unavailable or duplicate character SLO_anton_pulanick
 
 
-1939.1.1 = {
-	
-	add_political_power = 1198
-	add_command_power = 100
 
-	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
-	
-	set_technology = {
-		#doctrines
-		formation_flying = 1
-		grand_battle_plan = 1
-		trench_warfare = 1
 
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		mechanical_computing = 1
-		computing_machine = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		fuel_silos = 1
-		construction1 = 1
-		concentrated_industry = 1
-	}
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-	}
-}
 
 set_politics = {
 	ruling_party = Fascism

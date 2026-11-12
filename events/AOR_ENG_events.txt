@@ -1,7 +1,8 @@
+add_namespace = AOR_fix_ENG_extra
 add_namespace = ENG
-# AOR FIX: the news_ENG.1/2 news events at the end of this file need their own
-# namespace declared, otherwise the parser reports "Malformed token: news_ENG.1".
-add_namespace = news_ENG
+# AOR FIX: the AOR_news_europe.1/2 news events at the end of this file need their own
+# namespace declared, otherwise the parser reports "Malformed token: AOR_news_europe.1".
+
 
 country_event = { #劳合乔治的进一步计划
 	id = ENG.1
@@ -70,10 +71,7 @@ country_event = { #假如德国赢了世界大战
 
 	option = {
 		name = ENG.5.a
-		country_event = {
-			days = 7
-			id = news_ENG.1
-		}
+		
 	}
 }
 
@@ -234,19 +232,7 @@ country_event = { #日不落 直至永远
 	}
 }
 
-news_event = { #xinshijie
-	id = ENG.17
-	title = ENG.17.t
-	desc = ENG.17.d
-	picture = ENG.17.p
 
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	option = {
-		name = ENG.17.a
-	}
-}
 country_event = {
 	id = ENG.20
 	title = ENG.20.t
@@ -271,7 +257,7 @@ country_event = {
 	}
 }
 country_event = { #xinshijie
-	id = ENG.1145141919810
+	id = AOR_fix_ENG_extra.1
 	title = ENG.1145141919810.t
 	desc = ENG.1145141919810.d
 	picture = ENG.1145141919810.p
@@ -309,44 +295,7 @@ country_event = {
 	}
 }
 
-country_event = { #退阵营+新闻
-	id = ENG.1002
-	title = ENG.1002.t
-	desc = ENG.1002.d
-	picture = ENG.1001.p
-	is_triggered_only = yes
-	fire_only_once = yes
 
-	option = {
-		name = ENG.1002.a
-		dismantle_faction = yes
-		remove_ideas = AOR_Entente_no_war
-		news_event = { id = news_ENG.2 }
-	}
-}
 
-news_event = {
-	id = news_ENG.1
-	title = news_ENG.1.t
-	desc = news_ENG.1.d
-	picture = news_ENG.1.p
-	is_triggered_only = yes
-	fire_only_once = yes
 
-	option = {
-		name = news_ENG.1.a
-	}
-}
 
-news_event = {
-	id = news_ENG.2 #英国阵营解散
-	title = news_ENG.2.t
-	desc = news_ENG.2.d
-	picture = news_ENG.2.p
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	option = {
-		name = news_ENG.2.a
-	}
-}

@@ -1,0 +1,21 @@
+# Persistent pollution loops until the province flag expires and cleanup destroys its entity.
+entity = {
+ name = "building_aor_gas_cloud"
+ pdxmesh = "nuke_mesh"
+ default_state = "attack"
+ state = { name = "attack" animation = attack looping = yes
+  event = { time = 0.5 particle = "building_gas_particle" }
+ }
+ scale = 0.5
+}
+
+# The raid UI owns this separate, one-shot visual.
+entity = {
+ name = "building_aor_gas_burst"
+ pdxmesh = "nuke_mesh"
+ default_state = "attack"
+ state = { name = "attack" animation = attack looping = no
+  event = { time = 0.5 particle = "building_gas_particle" }
+ }
+ scale = 0.5
+}

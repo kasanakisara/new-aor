@@ -1,0 +1,158 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+SIA_chaiseri_organization = {
+	name = SIA_chaiseri_organization
+	include = generic_infantry_tank_organization
+	icon = GFX_idea_SIA_chaiseri
+	allowed = {
+		original_TAG = SIA
+		has_dlc = "Thunder at Our Gates"
+	}
+} 
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+
+SIA_bangkok_dock_organization = {
+	name = SIA_bangkok_dock_organization
+	include = generic_escort_ship_organization
+	icon = GFX_idea_SIA_bangkok_dock
+	allowed = {
+		original_TAG = SIA
+	}
+
+	available =  {
+		SIA = { NOT = { always = no # AOR: unavailable has_completed_focus SIA_sell_bangkok_dock_co
+ } }
+	}
+}
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+
+SIA_directorate_of_aeronautical_engineering = {
+	name = SIA_directorate_of_aeronautical_engineering
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_SIA_directorate_of_aeronautical_engineering
+	allowed = {
+		original_TAG = SIA
+	}
+
+	add_trait = {
+		token = SIA_mio_trait_japanese_air_mission
+		name = SIA_mio_trait_japanese_air_mission
+		icon = GFX_generic_mio_trait_icon_torpedo_attack
+		special_trait_background = yes
+
+		position = { x=2 y=0 }
+		relative_position_id = generic_mio_trait_advanced_aerodynamics
+
+
+		available = {
+			owner = {
+				always = no # AOR: unavailable has_completed_focus SIA_accept_a_japanese_technical_mission
+
+			}
+		}
+
+		equipment_bonus = {
+			air_agility = 0.05
+			naval_strike_targetting = 0.10
+			naval_strike_attack = 0.05
+		}
+	}
+
+	add_trait = {
+		token = SIA_mio_trait_american_procurement
+		name = SIA_mio_trait_american_procurement
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+		special_trait_background = yes
+
+		position = { x=3 y=0 }
+		relative_position_id = generic_mio_trait_advanced_aerodynamics
+
+
+		available = {
+			owner = {
+				always = no # AOR: unavailable has_completed_focus SIA_preserve_american_procurement_channels
+
+			}
+		}
+
+		equipment_bonus = {
+			build_cost_ic = -0.05
+		}
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+	}
+}
+
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+
+#Infantry equipment
+SIA_army_ordnance_department_organzation = {
+	name = SIA_army_ordnance_department_organzation
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_SIA_army_ordnance_department
+	allowed = {
+		original_TAG = SIA
+		has_dlc = "Thunder at Our Gates"
+	}
+}
+
+#Artillery
+SIA_army_ordnance_department_artillery_organzation = {
+	name = SIA_army_ordnance_department_artillery_organzation
+	include = generic_artillery_organization
+	icon = GFX_idea_SIA_army_ordnance_department
+	allowed = {
+		original_TAG = SIA
+		has_dlc = "Thunder at Our Gates"
+	}
+}
+
+#Motorized
+SIA_thai_rung_organization = {
+	name = SIA_thai_rung_organization
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_SIA_thai_rung
+	allowed = {
+		original_TAG = SIA
+		has_dlc = "Thunder at Our Gates"
+	}
+}

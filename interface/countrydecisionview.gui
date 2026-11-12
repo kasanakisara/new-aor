@@ -347,8 +347,8 @@ guiTypes = {
 		name = "event_item"
 		position = {x=0 y=0}
 		Orientation = upper_left
-		size = {width=3 height=33}
-		clipping = no
+		size = {width=512 height=33}
+		clipping = yes
 
 		buttonType = {
 			name = "btn_bg"
@@ -366,29 +366,26 @@ guiTypes = {
 
 		instantTextboxType = {
 			name = "name_text"
-			position = { x = 50 y = 8 }
+			position = { x = 50 y = 2 }
 			textureFile = ""
 			font = "hoi_16mbs"
 			borderSize = { x = 0 y = 0 }
 			text = "event name"
-			maxWidth = 390
-			fixedsize = yes
-			maxHeight = 20
+			maxWidth = 450
+			maxHeight = 12
 			format = left
-			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
 			name = "timer_text"
-			position = { x = 350 y = 9 }
+			position = { x = 350 y = 2 }
 			textureFile = ""
 			font = "hoi_16mbs"
 			borderSize = { x = 0 y = 0 }
 			text = "999"
 			maxWidth = 150
-			maxHeight = 32
+			maxHeight = 20
 			format = right
-			alwaystransparent = yes
 		}
 	}
 
@@ -723,4 +720,20 @@ guiTypes = {
 			spriteType = "GFX_locator_item_icon"
 		}
 	}
+containerWindowType = {
+ name = "AOR_news_filter_button_window"
+ position = { x = 434 y = 8 }
+ size = { width = 71 height = 26 }
+ clipping = no
+ buttonType = {
+  name = "AOR_news_filter_open"
+  position = { x = 0 y = 0 }
+  quadTextureSprite = "GFX_small_button_71x26"
+  buttonText = "AOR_news_filter_open_label"
+  buttonFont = "hoi_16mbs"
+  clicksound = decisions_ui_button
+  pdx_tooltip = AOR_news_filter_open_tt
+ }
+}
+
 }

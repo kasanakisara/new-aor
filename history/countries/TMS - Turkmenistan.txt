@@ -1,39 +1,31 @@
-﻿capital = 584
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_l00 = 1
+	aor_inf_r01 = 1
+	aor_inf_u01 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	trench_warfare = 1
+}
+
+capital = 584
 
 ##oob = ""
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
-
- 
- 
- 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	
-}
 
 if = {
 	limit = {
@@ -41,46 +33,19 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 
 
 set_research_slots = 2
-set_convoys = 20
+add_equipment_to_stockpile = { type = convoy amount = 20 }
 set_stability = 0.75
 set_war_support = 0.8
 set_politics = {
 	ruling_party = Marxism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 
@@ -94,15 +59,13 @@ set_popularities = {
 create_country_leader = {
 	name = "卡普·叶利谢耶维奇·索罗金"
 	desc = ""
-	picture = "a25kj-fljym.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = leninism
 	traits = {
 	}
 }
 
-add_ideas = {
-	comintern_aligned_nation
-}
+
 
 set_province_controller = 10671

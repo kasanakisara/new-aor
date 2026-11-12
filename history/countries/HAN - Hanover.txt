@@ -1,4 +1,13 @@
-﻿capital = 59
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+
+capital = 59
+oob = "HAN_1919"
 
 recruit_character = HAN_Alexander_Adolf_August_Karl_Singen
 recruit_character = HAN_Alexander_Von_Kruck
@@ -10,37 +19,6 @@ recruit_character = HAN_Wilhelm_Keitel
 set_cosmetic_tag = HAN_1
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
-	
- 
- 
- 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	
-}
 
 if = {
 	limit = {
@@ -48,107 +26,21 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.75
 
-1939.1.1 = {
 
-	add_political_power = 1197
-	add_command_power = 100
-	
-
-	#BUILDINGS
-	
-
-	set_technology = {
-		CAS2 = 1
-		heavy_fighter1 = 1
-		interwar_artillery = 1
-		interwar_antitank = 1
-		aor_inf_l05 = 1
-		aor_inf_l03 = 1
-		aor_inf_r02 = 1
-		aor_inf_r03 = 1
-		aor_inf_r04 = 1
-		aor_inf_l01 = 1
-
-		#doctrines
-		delay = 1
-		elastic_defence = 1
-		armored_spearhead = 1
-		schwerpunk = 1
-		blitzkrieg = 1
-		convoy_interdiction_ti = 1
-		unrestricted_submarine_warfare = 1
-		raider_patrols = 1
-		#air
-		formation_flying = 1		
-		dive_bombing = 1
-		direct_ground_support = 1
-
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		radio_detection = 1
-		decimetric_radar = 1
-		mechanical_computing = 1
-		computing_machine = 1
-		basic_encryption = 1
-		basic_decryption = 1
-
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		construction1 = 1
-		construction2 = 1
-		construction3 = 1
-		construction4 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-		dispersed_industry3 = 1
-		dispersed_industry4 = 1
-
-	}
-}
 
 set_politics = {
 	ruling_party = Absolutism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 
@@ -179,9 +71,9 @@ create_country_leader = {
 	}
 }
 
-effect = {
+
 	country_lock_all_division_template = yes
-	}
+	
 
 
 
@@ -209,5 +101,3 @@ effect = {
 #		political_prisoner
 #	}
 #}
-
-oob="HAN_1919"

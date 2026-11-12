@@ -1,4 +1,49 @@
-﻿capital = 275
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Industry
+	aor_railway_engineering = 1
+	# Science
+	Classic_optics = 1
+	Modern_electronics = 1
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_b01 = 1
+	aor_inf_e01 = 1
+	aor_inf_g01 = 1
+	aor_inf_l00 = 1
+	aor_inf_l01 = 1
+	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_t01 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	# Artillery
+	Old_howitzers = 1
+	# Aviation
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_construction_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_small_1914 = 1
+	# Doctrine
+	formation_flying = 1
+	mobile_warfare = 1
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+
+capital = 275
 
 oob = "SAF_1919"
 create_country_leader = {
@@ -11,7 +56,7 @@ create_country_leader = {
 	traits = {
 	}
 }
-set_convoys = 25
+add_equipment_to_stockpile = { type = convoy amount = 25 }
 set_politics = {
 	ruling_party = CON_democratic
 	last_election = "1933.5.17"
@@ -25,69 +70,14 @@ set_popularities = {
 set_stability = 0.6
 set_war_support = 0.1
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_support = 1		
-	tech_engineers = 1
-	tech_recon = 1
- 
- 
-	cv_early_fighter = 1
-	cv_naval_bomber1 = 1
- 
- 
-	CAS1 = 1
-	trench_warfare = 1
-	fleet_in_being = 1
-	fuel_silos = 1
-	transport = 1
-	early_destroyer = 1
-	early_ship_hull_light = 1
-	basic_battery = 1
-	basic_torpedo = 1
-	mtg_transport = 1
-}
 
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
 	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-}
 
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		early_destroyer = 1
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		early_ship_hull_light = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		mtg_transport = 1
-	}
-}
+
 
 
 SAF = {

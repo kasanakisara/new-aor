@@ -1,6 +1,13 @@
-﻿capital = 408
+﻿# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+capital = 408
 
-
+load_oob = AOR_LAND_PRI
 
 set_stability = 0.2 
 set_war_support = 0.8
@@ -8,27 +15,24 @@ set_war_support = 0.8
 set_research_slots = 2
 set_fuel_ratio = 1.0
 add_ideas = {
-}
-
-create_country_leader = {
-	name = "TPrimorye State Duma"
-	desc = ""
-	picture = "Duma.dds"
-	expire = "1965.1.1"
-	ideology = patriarch
-	traits = {
-	}
+	JAP_Extension_of_Imperial
 }
 
 set_politics = {
-	ruling_party = AUT_democratic
-	last_election = "1919.1.1"
+	ruling_party = Absolutism
+	last_election = "1935.3.31"
 	election_frequency = 48
 	elections_allowed = no
-
 }
 set_popularities = {
-	AUT_democratic = 50
-	FRE_democratic = 15
-	Absolutism = 35
+	Absolutism = 100
+}
+
+recruit_character = PRI_Sadanarushinno
+promote_character = PRI_Sadanarushinno
+add_ideas = {
+	limited_exports
+	limited_conscription
+	war_economy
+
 }

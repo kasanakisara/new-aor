@@ -1,0 +1,193 @@
+# Restored externally invoked script dependencies (including music).
+
+has_same_ideology = {
+	custom_trigger_tooltip = {
+		tooltip = has_same_ideology_tt
+		OR = {
+			AND = {
+				has_government = democratic
+				ROOT = { has_government = democratic }
+			}
+			AND = {
+				has_government = fascism
+				ROOT = { has_government = fascism }
+			}
+			AND = {
+				has_government = communism
+				ROOT = { has_government = communism }
+			}
+			AND = {
+				has_government = neutrality
+				ROOT = { has_government = neutrality }
+			}
+		}
+	}
+}
+
+can_unlock_second_track_of_sf_doctrine = {
+	if = {
+		limit = { check_variable = { sf_trees > 1 } }
+		custom_trigger_tooltip = {
+			tooltip = can_unlock_second_track_special_forces_doctrine_yes
+			check_variable = { sf_trees > 1 }
+		}
+	}
+	else = {
+		custom_trigger_tooltip = {
+			tooltip = can_unlock_second_track_special_forces_doctrine_no
+			always = no
+		}
+	}
+}
+
+is_available_to_collaboration_government = { # occupied_countries.1 should be updated along with this
+	is_subject = no
+	if = {
+		limit = {
+			original_tag = ITA
+		}
+		NOT = { FROM = { original_tag = YUG } }
+	}
+
+	if = {
+		limit = {
+			original_tag = POL
+		}
+		NOT = { FROM = { original_tag = DNZ } }
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+		}
+		NOT = { FROM = { original_tag = KUR } }
+	}
+	NOT = {
+		FROM = {
+			original_tag = SDL
+		}
+	}
+	NOT = {
+		any_country_with_original_tag = {
+			original_tag_to_check = FROM
+			is_puppet_of = PREV # if already created one do not create another
+			has_autonomy_state = autonomy_collaboration_government
+		}
+	}
+}
+
+state_is_fully_controlled_by_ROOT_or_subject = {
+	custom_trigger_tooltip = {
+		tooltip = state_is_fully_controlled_by_ROOT_or_subject_tt
+		OR = {
+			is_fully_controlled_by = ROOT
+			controller = {
+				is_subject_of = ROOT
+				has_full_control_of_state = PREV
+			}
+		}
+	}
+}
+
+is_unlikely_country_tag = {
+	OR = {
+	    tag = BRI
+	    tag = CAT
+	    tag = NAV
+	    tag = GLC
+	    tag = ADU
+	    tag = BRI
+	    tag = OCC
+	    tag = COR
+	    tag = DNZ
+	    tag = KSH
+	    tag = CKK
+	    tag = FER
+	    tag = YAK
+	    tag = VLA
+	    tag = KKP
+	    tag = YAM
+	    tag = TAY
+	    tag = OVO
+	    tag = NEN
+	    tag = KOM
+	    tag = CHU
+	    tag = MEL
+	    tag = RIF
+	    tag = HAR
+	    tag = TIG
+	    tag = AFA
+	    tag = BEG
+	    tag = GBA
+	    tag = SID
+	    tag = ORO
+	    tag = QEM
+	    tag = LBV
+	    tag = PAP
+	    tag = TOS
+	    tag = SPM
+	    tag = TTS
+		tag = BSK
+		tag = TAT
+		tag = UDM
+		tag = KHA
+		tag = VGE
+		tag = KAL
+		tag = KAR
+		tag = SIL
+		tag = KSH
+		tag = ALT
+		tag = BUK
+		tag = KHI
+		tag = SMI
+		tag = QUE
+		tag = YUC
+		tag = RIG
+		tag = WLA
+		tag = GRN
+		tag = EVE
+		tag = SHL
+		tag = MEK
+		tag = HAN
+		tag = SAX
+		tag = PRE
+		tag = BAY
+		tag = WUR
+		tag = THU
+		tag = HES
+		tag = RHI
+		tag = RNG 
+		tag = PSR 
+		tag = GXC
+		tag = YUN
+		tag = SHX
+		tag = XSM
+		tag = SIK
+		tag = GDC
+		tag = SND
+		tag = SIC
+		tag = NXM
+		tag = GSM
+		tag = XIC
+		tag = KHM
+		tag = KUM
+		tag = HBC
+	}
+}
+
+should_play_south_american_music = {
+	capital_scope = { is_on_continent = south_america }
+}
+
+pc_has_authored_wholesale_puppet_plan = {
+	OR = {
+		original_tag = GER # yalta.txt, FRA/USA/ENG each puppet an occupation zone. Was the existing exemption.
+		AND = {
+			original_tag = CHI # JAP.txt, JAP_create_chinese_puppet
+			ROOT = { original_tag = JAP }
+		}
+		AND = {
+			original_tag = JAP # USA.txt, USA_puppet_japan
+			ROOT = { original_tag = USA }
+		}
+	}
+}

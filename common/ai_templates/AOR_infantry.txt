@@ -1,0 +1,308 @@
+aor_infantry_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = infantry
+ upgrade_prio = { base = 8 }
+ aor_infantry_0 = {
+ enable = { has_tech = aor_inf_r01 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 6 } }
+ }
+ aor_infantry_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_r01 has_tech = tech_support }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 6 } support = { aor_chemical_support = 1 } }
+ }
+ aor_infantry_1 = {
+ enable = { has_tech = aor_inf_r01 has_tech = tech_support num_of_military_factories > 7 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 } support = { artillery = 1 } }
+ }
+ aor_infantry_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_r01 has_tech = tech_support num_of_military_factories > 7 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 } support = { artillery = 1 aor_chemical_support = 1 } }
+ }
+ aor_infantry_2 = {
+ enable = { has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 14 }
+ upgrade_prio = { base = 5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 2 } support = { engineer = 1 artillery = 1 } }
+ }
+ aor_infantry_2_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 14 }
+ upgrade_prio = { base = 5.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 2 } support = { engineer = 1 artillery = 1 aor_chemical_support = 1 } }
+ }
+ aor_infantry_3 = {
+ enable = { has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_support num_of_military_factories > 29 }
+ upgrade_prio = { base = 7 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 2 } support = { engineer = 1 artillery = 1 Machine_gun = 1 aor_integrated_support = 1 field_hospital = 1 } }
+ }
+ aor_infantry_3_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 29 }
+ upgrade_prio = { base = 7.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 2 } support = { engineer = 1 artillery = 1 Machine_gun = 1 aor_integrated_support = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_aor_defense_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = aor_defense
+ upgrade_prio = { base = 3 }
+ aor_aor_defense_0 = {
+ enable = { has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 7 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 } support = { engineer = 1 Machine_gun = 1 } }
+ }
+ aor_aor_defense_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 7 }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 } support = { engineer = 1 Machine_gun = 1 aor_chemical_support = 1 } }
+ }
+ aor_aor_defense_1 = {
+ enable = { has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_recon has_tech = tech_support num_of_military_factories > 19 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 1 } support = { engineer = 1 Machine_gun = 1 aor_sniper_observer = 1 artillery = 1 field_hospital = 1 } }
+ }
+ aor_aor_defense_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 19 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 1 } support = { engineer = 1 Machine_gun = 1 aor_sniper_observer = 1 artillery = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_aor_assault_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = aor_assault
+ upgrade_prio = { base = 3 }
+ aor_aor_assault_0 = {
+ enable = { has_tech = aor_inf_e01 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 11 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 2
+ target_template = { regiments = { assault_team = 6 infantry = 2 artillery_brigade = 1 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 } }
+ }
+ aor_aor_assault_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_e01 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 11 }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { assault_team = 6 infantry = 2 artillery_brigade = 1 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 aor_chemical_support = 1 } }
+ }
+ aor_aor_assault_1 = {
+ enable = { has_tech = aor_inf_e01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_support num_of_military_factories > 34 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 2
+ target_template = { regiments = { assault_team = 8 artillery_brigade = 2 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 aor_integrated_support = 1 field_hospital = 1 } }
+ }
+ aor_aor_assault_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_e01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 34 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { assault_team = 8 artillery_brigade = 2 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 aor_integrated_support = 1 aor_chemical_support = 1 } }
+ }
+ aor_aor_assault_2 = {
+ enable = { has_tech = aor_inf_b02 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_support num_of_military_factories > 54 }
+ upgrade_prio = { base = 5 }
+ reinforce_prio = 2
+ target_template = { regiments = { aor_armored_assault = 8 artillery_brigade = 2 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 aor_integrated_support = 1 field_hospital = 1 } }
+ }
+ aor_aor_assault_2_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_b02 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 54 }
+ upgrade_prio = { base = 5.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { aor_armored_assault = 8 artillery_brigade = 2 } support = { engineer = 1 aor_flame_support = 1 artillery = 1 aor_integrated_support = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_aor_heavy_artillery_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = aor_heavy_artillery
+ upgrade_prio = { base = 3 }
+ aor_aor_heavy_artillery_0 = {
+ enable = { has_tech = aor_howitzer_1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 24 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 howitzer_brigade = 1 } support = { engineer = 1 artillery = 1 recon = 1 } }
+ }
+ aor_aor_heavy_artillery_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_howitzer_1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 24 }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 howitzer_brigade = 1 } support = { engineer = 1 artillery = 1 recon = 1 aor_chemical_support = 1 } }
+ }
+ aor_aor_heavy_artillery_1 = {
+ enable = { has_tech = aor_howitzer_1 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_maintenance_company has_tech = tech_recon has_tech = tech_support num_of_military_factories > 49 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 1 howitzer_brigade = 2 } support = { engineer = 1 artillery = 1 aor_integrated_support = 1 recon = 1 maintenance_company = 1 } }
+ }
+ aor_aor_heavy_artillery_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_howitzer_1 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 49 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 9 artillery_brigade = 1 howitzer_brigade = 2 } support = { engineer = 1 artillery = 1 aor_integrated_support = 1 recon = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_garrison_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = garrison
+ upgrade_prio = { base = 3 }
+ aor_garrison_0 = {
+ enable = { has_tech = aor_inf_r01 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 0
+ target_template = { regiments = { infantry = 6 } }
+ }
+ aor_garrison_1 = {
+ enable = { has_tech = aor_inf_mg1 has_tech = aor_inf_r01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 14 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 0
+ target_template = { regiments = { infantry = 6 } support = { engineer = 1 Machine_gun = 1 } }
+ }
+}
+aor_mountaineers_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = mountaineers
+ upgrade_prio = { base = 3 }
+ aor_mountaineers_0 = {
+ enable = { has_tech = aor_inf_t01 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 6 } }
+ }
+ aor_mountaineers_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_t01 has_tech = tech_support }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 6 } support = { aor_chemical_support = 1 } }
+ }
+ aor_mountaineers_1 = {
+ enable = { has_tech = aor_inf_t01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 14 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 8 } support = { engineer = 1 recon = 1 artillery = 1 } }
+ }
+ aor_mountaineers_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_t01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 14 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 8 } support = { engineer = 1 recon = 1 artillery = 1 aor_chemical_support = 1 } }
+ }
+ aor_mountaineers_2 = {
+ enable = { has_tech = aor_inf_t01 has_tech = aor_integrated_support_1 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_recon has_tech = tech_support num_of_military_factories > 34 }
+ upgrade_prio = { base = 5 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 8 artillery_brigade = 1 } support = { engineer = 1 recon = 1 artillery = 1 field_hospital = 1 aor_integrated_support = 1 } }
+ }
+ aor_mountaineers_2_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_t01 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_recon has_tech = tech_support num_of_military_factories > 34 }
+ upgrade_prio = { base = 5.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { mountaineers = 8 artillery_brigade = 1 } support = { engineer = 1 recon = 1 artillery = 1 field_hospital = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_marines_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = marines
+ upgrade_prio = { base = 3 }
+ aor_marines_0 = {
+ enable = { has_tech = aor_inf_m01 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 6 } }
+ }
+ aor_marines_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_m01 has_tech = tech_support }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 6 } support = { aor_chemical_support = 1 } }
+ }
+ aor_marines_1 = {
+ enable = { has_tech = aor_inf_m01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 19 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 8 } support = { engineer = 1 artillery = 1 aor_flame_support = 1 } }
+ }
+ aor_marines_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_m01 has_tech = tech_engineers has_tech = tech_support num_of_military_factories > 19 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 8 } support = { engineer = 1 artillery = 1 aor_flame_support = 1 aor_chemical_support = 1 } }
+ }
+ aor_marines_2 = {
+ enable = { has_tech = aor_inf_m01 has_tech = tech_engineers has_tech = tech_field_hospital has_tech = tech_recon has_tech = tech_support num_of_military_factories > 39 }
+ upgrade_prio = { base = 5 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 8 } support = { engineer = 1 artillery = 1 aor_flame_support = 1 recon = 1 field_hospital = 1 } }
+ }
+ aor_marines_2_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_m01 has_tech = tech_engineers has_tech = tech_recon has_tech = tech_support num_of_military_factories > 39 }
+ upgrade_prio = { base = 5.5 }
+ reinforce_prio = 2
+ target_template = { regiments = { marine = 8 } support = { engineer = 1 artillery = 1 aor_flame_support = 1 recon = 1 aor_chemical_support = 1 } }
+ }
+}
+aor_cavalry_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = cavalry
+ upgrade_prio = { base = 3 }
+ aor_cavalry_0 = {
+ enable = { has_tech = aor_inf_r01 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 1
+ target_template = { regiments = { cavalry = 4 } }
+ }
+ aor_cavalry_1 = {
+ enable = { has_tech = aor_inf_r01 has_tech = tech_recon has_tech = tech_support num_of_military_factories > 11 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 1
+ target_template = { regiments = { cavalry = 6 } support = { recon = 1 artillery = 1 } }
+ }
+}
+aor_suppression_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = suppression
+ upgrade_prio = { base = 3 }
+ aor_suppression_0 = {
+ enable = { has_tech = aor_inf_r01 has_tech = tech_military_police has_tech = tech_support }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 0
+ target_template = { regiments = { cavalry = 6 } support = { military_police = 1 } }
+ }
+}
+aor_aor_tank_assault_role = {
+ available_for = { ABK ADU AFG AFK ALB ALG ALT ANA ANG ANH ARA ARG ARM ARN ARR ARU ASA AST ASU AUS AZR BAG BAH BAN BAS BAV BAY BEL BHR BHU BLR BLS BLZ BNL BOL BOS BOT BR1 BR2 BR3 BR4 BRA BRD BRI BRM BSK BUK BUL BYA CAM CAN CAR CAT CAU CAY CBS CGT CHA CHI CHL CHT CHU CIN CKK CMR COG COL COR COS CRC CRI CRO CSA CSU CUB CYP CZE D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20 D21 D22 D23 D24 D25 D26 D27 D28 D29 D30 D31 D32 D33 D34 D35 D36 D37 D38 D39 D40 D41 D42 D43 D44 D45 D46 D47 D48 D49 D50 DAG DAH DAL DCD DDR DEN DJI DNG DNZ DOM DON ECU EGY ELS ENG EQG ERI EST ETH FER FIC FIJ FIN FRA FSM FUJ GAB GAM GCL GDL GEO GER GHA GLC GML GNA GNB GNR GRE GUA GUM GUZ GXC GYA HAI HAM HAN HAW HOL HON HRZ HSP HUN ICE IDE INS IOM IRE IRQ ISR IST ITA IUS IVO JAM JAP JIZ JKA JLD JOR JSR KAL KAR KAZ KBK KEN KHI KKP KKW KMT KOM KOR KOS KOW KSH KUB KUR KUW KYR LAO LAT LBA LEB LIB LIE LIT LUX MAC MAD MAL MAN MEK MEL MEN MEX MIA MLD MLI MLT MLW MNC MNT MNU MOL MON MOR MRT MSP MXS MZB NAA NAG NAJ NAN NAU NAV NEN NEP NFL NGA NGR NIC NIR NMB NOA NOR NPE NSH NUG NZL OCC OIC OMA ORA ORE OVO PAK PAL PAN PAR PBF PER PHI PHR PLM PNG POL POR PRC PRE PRI PRU PSR PUE PYO QAT QBC QID QIN QUE RAJ RCG RFR RHI RIG ROM RPS RUS RWA SAF SAM SAU SAX SBC SCC SCO SCR SEN SER SFM SHG SHL SHX SIA SIE SIK SIL SLO SLV SMA SOL SOM SOV SPE SPR SRK SRL SUD SUR SWC SWE SWI SYI SYR TAH TAJ TAN TAT TAY TCG TIB TMS TOG TRA TRI TRP TRZ TUN TUR TZN UAE UDM UGA UKR UPC UPR URG URS US1 US2 US3 US4 US5 US6 US7 US8 USA USB USU UZB VAT VEN VGE VIN VLA VOL WES WGR WLS WRU WUG WUR XCD XSM YAK YAM YEM YUC YUG YUN ZAM ZAN ZHE ZIM }
+ role = aor_tank_assault
+ upgrade_prio = { base = 3 }
+ aor_aor_tank_assault_0 = {
+ enable = { has_tech = aor_inf_r01 has_tech = aor_tank_support has_tech = tech_engineers has_tech = tech_support has_tech = aor_supply_truck_tech is_special_project_completed = sp:sp_aor_tank_prototype num_of_military_factories > 24 }
+ upgrade_prio = { base = 1 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 } support = { engineer = 1 artillery = 1 aor_tank_support = 1 } }
+ }
+ aor_aor_tank_assault_0_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_r01 has_tech = aor_tank_support has_tech = tech_engineers has_tech = tech_support has_tech = aor_supply_truck_tech is_special_project_completed = sp:sp_aor_tank_prototype num_of_military_factories > 24 }
+ upgrade_prio = { base = 1.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { infantry = 7 artillery_brigade = 1 } support = { engineer = 1 artillery = 1 aor_tank_support = 1 aor_chemical_support = 1 } }
+ }
+ aor_aor_tank_assault_1 = {
+ enable = { has_tech = aor_inf_e01 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = aor_tank_support has_tech = tech_engineers has_tech = tech_maintenance_company has_tech = tech_support has_tech = aor_supply_truck_tech is_special_project_completed = sp:sp_aor_tank_prototype num_of_military_factories > 44 }
+ upgrade_prio = { base = 3 }
+ reinforce_prio = 1
+ target_template = { regiments = { assault_team = 6 infantry = 2 artillery_brigade = 1 } support = { engineer = 1 artillery = 1 aor_tank_support = 1 aor_integrated_support = 1 maintenance_company = 1 } }
+ }
+ aor_aor_tank_assault_1_chemical = {
+ enable = { has_tech = Gas_Preparation has_tech = aor_inf_e01 has_tech = aor_inf_r01 has_tech = aor_integrated_support_1 has_tech = aor_tank_support has_tech = tech_engineers has_tech = tech_support has_tech = aor_supply_truck_tech is_special_project_completed = sp:sp_aor_tank_prototype num_of_military_factories > 44 }
+ upgrade_prio = { base = 3.5 }
+ reinforce_prio = 1
+ target_template = { regiments = { assault_team = 6 infantry = 2 artillery_brigade = 1 } support = { engineer = 1 artillery = 1 aor_tank_support = 1 aor_integrated_support = 1 aor_chemical_support = 1 } }
+ }
+}

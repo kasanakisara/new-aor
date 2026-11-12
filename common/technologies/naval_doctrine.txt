@@ -60,16 +60,16 @@ technologies = {
 			position = { x = 0 y = 0 }
 		}
 		
-		ai_will_do = {
-			factor = 2
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			cruiser = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	battlefleet_concentration = {
 		# EFFECT #############
@@ -106,28 +106,16 @@ technologies = {
 			position = { x = -2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			cruiser = 1.5
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	subsidiary_carrier_role = {
 		#Carriers support the Battleships
@@ -160,29 +148,7 @@ technologies = {
 			position = { x = -2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
@@ -190,7 +156,9 @@ technologies = {
 			carrier = 1.5
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	hunter_killer_groups = {
 		#Groups of Destroyers (and CVEs should those ever be added) formed to hunt down enemy subs
@@ -229,32 +197,16 @@ technologies = {
 			position = { x = -2 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war_with = GER
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.5
 			cruiser = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_fortress = {
 		#Large, powerful gun armed ships are clearly the best ships
@@ -289,23 +241,15 @@ technologies = {
 			position = { x = -2 y = 8 }
 		}
 
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_airfield = {
 		#Non base strike trees get a late CV booster
@@ -338,24 +282,16 @@ technologies = {
 			position = { x = -1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	grand_battlefleet = {
 		#Top tech for the Battlefleet tree. 
@@ -393,31 +329,15 @@ technologies = {
 			position = { x = -1 y = 12 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_sailing = {
 		#Convoy escort/ ASW branch
@@ -452,29 +372,16 @@ technologies = {
 			position = { x = 0 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_escorts = {
 		#Assigning dedicated convoy escorts to keep them safe
@@ -509,37 +416,16 @@ technologies = {
 			position = { x = 0 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.5
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	escort_carriers = {
 		#Small carriers/converted merchant ships sail with convoys for increased defense against subs and raiders
@@ -573,37 +459,16 @@ technologies = {
 			position = { x = 0 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.5
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	integrated_convoy_defence = {
 		#The top convoy tech, basically now all the earlier concepts are working well with each other for maximum effect
@@ -645,37 +510,16 @@ technologies = {
 			position = { x = 0 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = ENG
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	submarine_operations = {
 		# Basic sub-boosting tree, not as good as Trade Interdiction's 
@@ -710,15 +554,15 @@ technologies = {
 			position = { x = 2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	undersea_blockade = {
 		# Sub boost
@@ -753,23 +597,15 @@ technologies = {
 			position = { x = 2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_interdiction = {
 		# Sub boost
@@ -804,23 +640,15 @@ technologies = {
 			position = { x = 2 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	submarine_offensive = {
 		# Sub boost
@@ -849,23 +677,15 @@ technologies = {
 			position = { x = 2 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	trade_interdiction = {
 		doctrine_name = "TITLE_TRADE_INTERDICTION"
@@ -927,28 +747,16 @@ technologies = {
 			position = { x = 0 y = 0 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 3
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 1.0
 			cruiser = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_interdiction_ti = {
 
@@ -984,28 +792,15 @@ technologies = {
 			position = { x = 2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 3
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	unrestricted_submarine_warfare = {
 		#Nice bonus for subs vs convoys
@@ -1040,36 +835,15 @@ technologies = {
 			position = { x = 2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 3
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	wolfpacks = {
 		# More sub bonuses - subs operate in groups to sink convoys
@@ -1106,36 +880,15 @@ technologies = {
 			position = { x = 2 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 3
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	advanced_submarine_warfare = {
 		# More sub bonuses - subs are deployed in numbers and the navy is better at putting them in the right places
@@ -1170,36 +923,15 @@ technologies = {
 			position = { x = 2 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	combined_operations_raiding = {
 		#top raiding idea - subs and surface raiders act in harmony to destroy convoys
@@ -1245,37 +977,16 @@ technologies = {
 			position = { x = 2 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = GER
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			cruiser = 1.5
 			submarine = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	raider_patrols = {
 		#Surface raiding Branch + some boosts for Battleships
@@ -1316,16 +1027,16 @@ technologies = {
 			position = { x = -2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			cruiser = 1.5
 			battleship = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	capital_ship_raiders = {
 		#Battleships/Battlecrusiers are used as raiders rather than in the line of battle in a fleet
@@ -1367,24 +1078,16 @@ technologies = {
 			position = { x = -2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			cruiser = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	battlefleet_concentration_ti = {
 
@@ -1423,23 +1126,15 @@ technologies = {
 			position = { x = -2 y =6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_fortress_ti = {
 
@@ -1472,23 +1167,15 @@ technologies = {
 			position = { x = -2 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_airfield_ti = {
 
@@ -1516,24 +1203,16 @@ technologies = {
 			position = { x = -1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	carrier_operations = {
 		# Carrier/Convoy defense branch - not great at either of them, should have worse CVs than Fleet in Being
@@ -1568,23 +1247,16 @@ technologies = {
 			position = { x = 0 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_navy_size = {
-					type = carrier
-					size < 1
-				}
-				factor = 0
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_sailing_ti = {
 
@@ -1619,16 +1291,16 @@ technologies = {
 			position = { x = 0 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	subsidiary_carrier_role_ti = {
 
@@ -1661,16 +1333,16 @@ technologies = {
 			position = { x = 0 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	naval_air_operations = {
 		# slightly improved CV operation
@@ -1705,16 +1377,16 @@ technologies = {
 			position = { x = 0 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	base_strike = {
 		doctrine_name = "TITLE_BASE_STRIKE"
@@ -1761,31 +1433,16 @@ technologies = {
 			position = { x = 0 y = 0 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	carrier_primacy = {
 		#The idea that the carrier is the primary naval weapon and that other ships, even the BB, exist to support them
@@ -1821,39 +1478,16 @@ technologies = {
 			position = { x = 2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1.25
-			
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.5
 			naval_air = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	carrier_task_forces = {
 		#Task forces are based around carrier flagship 
@@ -1890,36 +1524,7 @@ technologies = {
 			position = { x = 2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
@@ -1927,7 +1532,9 @@ technologies = {
 			naval_air = 0.75
 			cruiser = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_airfield_bs = {
 
@@ -1960,47 +1567,16 @@ technologies = {
 			position = { x = 2 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 4
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	massed_strikes = {
 		#CAGs are larger and more effort is made to have all planes arrive at the target at the same time, even when launched from multiple CVs
@@ -2038,47 +1614,16 @@ technologies = {
 			position = { x = 2 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 4
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			carrier = 2.0
 			naval_air = 0.75
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	floating_fortress_bs = {
 
@@ -2111,37 +1656,15 @@ technologies = {
 			position = { x = 2 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 4
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	carrier_battlegroups = {
 		#Larger carrier-lead fleets
@@ -2174,40 +1697,7 @@ technologies = {
 			position = { x = 2 y = 12 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				has_war = yes
-				factor = 2
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = JAP
-				}
-				factor = 2.5
-			}
-			modifier = {
-				OR = {
-					has_war_with = JAP
-					has_war_with = USA
-				}
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 4
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
@@ -2215,7 +1705,9 @@ technologies = {
 			naval_air = 0.75
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	submarine_operations_bs = {
 
@@ -2248,27 +1740,15 @@ technologies = {
 			position = { x = 0 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	undersea_blockade_bs = {
 
@@ -2300,35 +1780,15 @@ technologies = {
 			position = { x = 0 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_interdiction_bs = {
 
@@ -2362,35 +1822,15 @@ technologies = {
 			position = { x = 0 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	submarine_offensive_bs = {
 		# same as submarine_offensive
@@ -2417,35 +1857,15 @@ technologies = {
 			position = { x = 0 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			submarine = 2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_escorts_bs = {
 
@@ -2479,28 +1899,16 @@ technologies = {
 			position = { x = -2 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	escort_patrols = {
 		# Lesser version of hunter-killer groups
@@ -2539,36 +1947,16 @@ technologies = {
 			position = { x = -2 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	convoy_sailing_bs = {
 
@@ -2602,36 +1990,16 @@ technologies = {
 			position = { x = -2 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 5
-			}
-			modifier = {
-				tag = USA
-				factor = 2
-			}
-			modifier = {
-				has_navy_experience > 120
-				factor = 2
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_1_trigger = yes }
-				factor = 0.5
-			}
-			modifier = {
-				not = { ai_air_doctrine_tier_2_trigger = yes }
-				factor = 0.75
-			}
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			battleship = 1.0
 			naval_equipment = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	integrated_convoy_defence_bs = {
 
@@ -2667,15 +2035,15 @@ technologies = {
 			position = { x = -2 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 1
-		}
+		
 		
 		ai_research_weights = {
 			naval_doctrine = -1.0
 			naval_equipment = 1.0
 			battleship = 1.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 }

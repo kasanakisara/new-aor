@@ -1,30 +1,16 @@
-﻿capital = 861
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+# Historical formations already carry basic support equipment.
+
+capital = 861
+oob = "BAV_AOR"
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	interwar_antiair = 1
-	tactical_bomber1 = 1
-	CAS1 = 1
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	aor_inf_mg1 = 1
-	Old_howitzers = 1
-}
 
 if = {
 	limit = {
@@ -32,41 +18,14 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		
-		has_dlc = "No Step Back"
-		
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.2
 set_country_flag = AOR_GER_flag_NOT_support_resolution
 set_country_flag = Bebel_mission_finish_1
@@ -82,9 +41,12 @@ recruit_character = Eugen_Levine
 recruit_character = BAV_Mehring
 recruit_character = BAV_Luksemburg
 recruit_character = BAV_Karl_Liebknecht
-recruit_character = BAV_Karl_Liebknecht_command
-recruit_character = BAV_Luksemburg_command
-recruit_character = BAV_Mehring_command
+# unavailable or duplicate character BAV_Karl_Liebknecht_command
+
+# unavailable or duplicate character BAV_Luksemburg_command
+
+# unavailable or duplicate character BAV_Mehring_command
+
 recruit_character = Eugen_Levine_command
 
 set_variable = { Bebel_Trust = 6 }
@@ -98,7 +60,7 @@ set_variable = { Bebel_Trust = 6 }
 
 set_politics = {
 	ruling_party = Marxism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 
@@ -110,23 +72,7 @@ set_popularities = {
 	Marxism = 68
 }
 
-add_ideas = {
-	comintern_aligned_nation
-	BAV_dying_bureaucracy
-	BAV_the_red_star_in_DEU 
-	BAV_a_deep_cut_from_revolution
-	Compact_of_German_Confederation_1
-	Roving_style
-	Extreme_democratic_rampant	
-	closed_economy
-	BAV_Mehring
-	Eugen_Levine
-	BAV_Luksemburg
-	BAV_Karl_Liebknecht
-
-}
-
-oob = "BAV_AOR"
+add_ideas = { BAV_dying_bureaucracy BAV_the_red_star_in_DEU BAV_a_deep_cut_from_revolution Compact_of_German_Confederation_1 Roving_style Extreme_democratic_rampant closed_economy }
 
 BAV = {
 country_event = { days = 1001 id = BAV.3 }

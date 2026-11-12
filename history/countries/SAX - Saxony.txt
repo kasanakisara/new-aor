@@ -1,4 +1,13 @@
-﻿capital = 65
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+
+capital = 65
+oob = "SAX_1919"
 
 recruit_character = SAX_Friedrich_August
 recruit_character = SAX_Hans_Karl_Adolph_von_Carlowitz
@@ -16,73 +25,18 @@ recruit_character = SAX_Paul_frolich
 set_cosmetic_tag = SAX_1
 
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
-	
- 
- 
- 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
-	mobile_warfare = 1
-	trade_interdiction = 1
-	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-}
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
-	set_technology = {
- 
 	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-	}
-}
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	set_technology = {
-		mtg_transport = 1
-	}
-}
+
 
 
 
 
 set_research_slots = 3
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.75
 
 set_country_flag = AOR_GER_flag_NOT_support_resolution
@@ -107,9 +61,9 @@ add_ideas = {
 	Compact_of_German_Confederation
 }
 
-effect = {
+
 	country_lock_all_division_template = yes
-	}
+	
 
 create_country_leader = {
 	name = "Karl Kautsky"
@@ -130,6 +84,4 @@ create_country_leader = {
 #	traits = {
 #	}
 #}
-
-oob="SAX_1919"
 

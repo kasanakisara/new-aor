@@ -1,0 +1,25 @@
+# AOR: dependency-audited scripted functions.
+
+AOR_news_intrinsic_europe = { capital_scope = { is_on_continent = europe } }
+
+AOR_news_receives_europe = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_europe = yes has_country_flag = AOR_news_subscribed_europe } }
+
+AOR_news_intrinsic_asia = { capital_scope = { OR = { is_on_continent = asia is_on_continent = middle_east } } }
+
+AOR_news_receives_asia = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_asia = yes has_country_flag = AOR_news_subscribed_asia } }
+
+AOR_news_intrinsic_africa = { capital_scope = { is_on_continent = africa } }
+
+AOR_news_receives_africa = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_africa = yes has_country_flag = AOR_news_subscribed_africa } }
+
+AOR_news_intrinsic_oceania = { capital_scope = { is_on_continent = australia } }
+
+AOR_news_receives_oceania = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_oceania = yes has_country_flag = AOR_news_subscribed_oceania } }
+
+AOR_news_intrinsic_north_america = { capital_scope = { is_on_continent = north_america } }
+
+AOR_news_receives_north_america = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_north_america = yes has_country_flag = AOR_news_subscribed_north_america } }
+
+AOR_news_intrinsic_south_america = { capital_scope = { is_on_continent = south_america } }
+
+AOR_news_receives_south_america = { OR = { NOT = { has_country_flag = AOR_news_preferences_initialized } AOR_news_intrinsic_south_america = yes has_country_flag = AOR_news_subscribed_south_america } }

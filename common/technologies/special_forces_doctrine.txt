@@ -60,19 +60,15 @@ technologies = {
 			position = { x = 0 y = 0 }
 		}
 				
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				NOT = { ai_has_completed_army_doctrine = yes }
-			}
-		}
+		
 		
 		ai_research_weights = {
 			#air_doctrine = -1.0
 			#light_air = -2.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	ski_troops = {
 
@@ -111,14 +107,14 @@ technologies = {
 			position = { x = -1 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	rangers = {
 
@@ -156,14 +152,14 @@ technologies = {
 			position = { x = 1 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	special_forces_recon = {
 
@@ -174,7 +170,7 @@ technologies = {
 			initiative = 0.01
 		}
 		unit_mountaineers_design_cost_factor = -0.50
-		unit_rangers_support_design_cost_factor = -0.50
+# Removed unsupported legacy modifier unit_rangers_support_design_cost_factor
 		
 		force_use_small_tech_layout = yes
 		
@@ -202,14 +198,14 @@ technologies = {
 			position = { x = 0 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	mountaineers_combat_1 = {
 
@@ -246,14 +242,14 @@ technologies = {
 			position = { x = -1 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	mountaineers_combat_2 = {
 
@@ -297,14 +293,14 @@ technologies = {
 			position = { x = 1 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	mountaineers_combat_3 = {
 
@@ -341,14 +337,14 @@ technologies = {
 			position = { x = 0 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	mountaineers_keystone_1 = {
 
@@ -380,14 +376,14 @@ technologies = {
 			position = { x = -1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	mountaineers_keystone_2 = {
 
@@ -418,14 +414,14 @@ technologies = {
 			position = { x = 1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#armor = 3.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	###Marines
 	
@@ -485,22 +481,14 @@ technologies = {
 			position = { x = 0 y = 0 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-			modifier = {
-				factor = 0
-				tag = USA
-			}
-			modifier = {
-				factor = 0
-				NOT = { ai_has_completed_naval_doctrine = yes }
-			}
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_jungle_troops = {
 		
@@ -539,14 +527,14 @@ technologies = {
 			position = { x = -1 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_shore_parties = {
 		
@@ -585,14 +573,14 @@ technologies = {
 			position = { x = 1 y = 2 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_recon = {
 		
@@ -632,14 +620,14 @@ technologies = {
 			position = { x = 0 y = 4 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_commandoes = {
 		
@@ -681,14 +669,14 @@ technologies = {
 			position = { x = -1 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_expeditionary = {
 		
@@ -724,14 +712,14 @@ technologies = {
 			position = { x = 1 y = 6 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_commandos_demolition = {
 		
@@ -772,14 +760,14 @@ technologies = {
 			position = { x = -1 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_expeditionary_blowtorch = {
 		
@@ -821,14 +809,14 @@ technologies = {
 			position = { x = 1 y = 8 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_commandoes_mechanised = {
 		
@@ -854,7 +842,8 @@ technologies = {
 		
 		
 		on_research_complete = {
-			add_ideas = GEN_cheaper_amphib
+			# unavailable add_ideas GEN_cheaper_amphib
+
 		}
 		
 		doctrine = yes	
@@ -872,14 +861,14 @@ technologies = {
 			position = { x = -1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_commandoes_mechanised_non_mtg = {
 		
@@ -906,14 +895,14 @@ technologies = {
 			position = { x = -1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 	
 	marines_expeditionary_support = {
 		
@@ -961,12 +950,12 @@ technologies = {
 			position = { x = 1 y = 10 }
 		}
 		
-		ai_will_do = {
-			factor = 20
-		}
+		
 		
 		ai_research_weights = {
 			#artillery = 4.0
 		}
-	}
+	
+	ai_will_do = { factor = 2.5 }
+}
 }

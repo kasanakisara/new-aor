@@ -1,0 +1,32 @@
+# AOR 1919 starting army for DAL
+division_template = {
+	name = "Infantry Division"
+	division_names_group = AOR_GEN_INF
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 2 y = 1 }
+	}
+	support = {
+	}
+}
+
+units = {
+	division = {
+		name = "第1步兵师"
+		location = 9914
+		division_template = "Infantry Division"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.8
+	}
+	division = {
+		name = "第2步兵师"
+		location = 3448
+		division_template = "Infantry Division"
+		start_experience_factor = 0.35
+		start_equipment_factor = 0.8
+	}
+}

@@ -1,4 +1,12 @@
-﻿capital = 361
+# AOR 1919 tech baseline (generated): historically appropriate starting technologies.
+set_technology = {
+	# Science
+	aor_basic_science_1900 = 1
+	# Infantry and support
+	aor_inf_r01 = 1
+}
+# Historical formations already carry basic support equipment.
+capital = 361
 
 #oob = "USA_1936"
 
@@ -13,52 +21,46 @@ set_variable = { var = quorum_low value = 39 }
 set_variable = { var = quorum_medium value = 49 }
 set_variable = { var = quorum_high value = 58 }
 # Starting tech
-set_technology = {
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
-	aor_inf_r01 = 1
-	aor_inf_l00 = 1
-	aor_inf_l01 = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
-	superior_firepower = 1
-	base_strike = 1
-	basic_train = 1
-}
 
- #recruit_character = CSA_georges_vereecken
- #recruit_character = CSA_raoul_overstraeten
-#recruit_character = CSA_rene_lagrou
-#recruit_character = CSA_paul_van_zeeland
-#recruit_character = CSA_victor_van_strydonck_de_burkel
-#recruit_character = CSA_fritz_conrad
-#recruit_character = CSA_fritz_lob
-#recruit_character = CSA_georges_deffontaine
-#recruit_character = CSA_victor_strydonck_burkel
-#recruit_character = CSA_charles_bastin
-#recruit_character = CSA_paul-henri_spaak
-#recruit_character = CSA_gaston_eyskens
-#recruit_character = CSA_leon_degrelle
-#recruit_character = CSA_jules_iserentant
-#recruit_character = CSA_jules_pire
-#recruit_character = CSA_oscar_michiels
-#recruit_character = CSA_yvan_gerard
+ ## unavailable or duplicate character CSA_georges_vereecken
+
+ ## unavailable or duplicate character CSA_raoul_overstraeten
+
+## unavailable or duplicate character CSA_rene_lagrou
+
+## unavailable or duplicate character CSA_paul_van_zeeland
+
+## unavailable or duplicate character CSA_victor_van_strydonck_de_burkel
+
+## unavailable or duplicate character CSA_fritz_conrad
+
+## unavailable or duplicate character CSA_fritz_lob
+
+## unavailable or duplicate character CSA_georges_deffontaine
+
+## unavailable or duplicate character CSA_victor_strydonck_burkel
+
+## unavailable or duplicate character CSA_charles_bastin
+
+## unavailable or duplicate character CSA_paul
+-henri_spaak
+## unavailable or duplicate character CSA_gaston_eyskens
+
+## unavailable or duplicate character CSA_leon_degrelle
+
+## unavailable or duplicate character CSA_jules_iserentant
+
+## unavailable or duplicate character CSA_jules_pire
+
+## unavailable or duplicate character CSA_oscar_michiels
+
+## unavailable or duplicate character CSA_yvan_gerard
 
 
-	create_equipment_variant = {
-		name = "Martin M166"
-		type = medium_plane_airframe_0
-		upgrades = {
-			plane_tac_bomb_upgrade = 2
-			plane_range_upgrade = 1
-			plane_engine_upgrade = 2
-			plane_reliability_upgrade = 3
-		}
-	}
 
-set_convoys = 100
+	
+
+add_equipment_to_stockpile = { type = convoy amount = 100 }
 
 
 set_politics = {

@@ -6,7 +6,7 @@ technologies = {
 		start_year = 1918
 		folder = { name = support_folder position = { x = 0 y = 0 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 2 }
+		
 		path = { leads_to_tech = tech_engineers research_cost_coeff = 1 }
 		path = { leads_to_tech = tech_recon research_cost_coeff = 1 }
 		path = { leads_to_tech = tech_military_police research_cost_coeff = 1 }
@@ -15,7 +15,9 @@ technologies = {
 		path = { leads_to_tech = tech_maintenance_company research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_integrated_support_1 research_cost_coeff = 1 }
 		path = { leads_to_tech = aor_tank_support research_cost_coeff = 1 }
-	}
+	
+	ai_will_do = { factor = 8 }
+}
 	# engineer
 	tech_engineers = {
 		enable_subunits = { engineer aor_flame_support }
@@ -27,8 +29,10 @@ technologies = {
 			support_tech
 			engineers_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 8 }
+}
 	tech_engineers2 = {
 		engineer = {
 			entrenchment  = 2
@@ -47,8 +51,10 @@ technologies = {
 			support_tech
 			engineers_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_engineers3 = {
 		engineer = {
 			entrenchment  = 2
@@ -65,8 +71,10 @@ technologies = {
 			support_tech
 			engineers_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_engineers4 = {
 		engineer = {
 			entrenchment  = 2
@@ -82,8 +90,10 @@ technologies = {
 			support_tech
 			engineers_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# recon
 	tech_recon = {
 		enable_subunits = { recon aor_sniper_observer }
@@ -95,8 +105,10 @@ technologies = {
 			support_tech
 			recon_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_recon2 = {
 		category_recon = {
 			recon = 2
@@ -110,8 +122,10 @@ technologies = {
 			support_tech
 			recon_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_recon3 = {
 		category_recon = {
 			recon = 2
@@ -125,8 +139,10 @@ technologies = {
 			support_tech
 			recon_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_recon4 = {
 		category_recon = {
 			recon = 2
@@ -138,8 +154,10 @@ technologies = {
 			support_tech
 			recon_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# police
 	tech_military_police = {
 		enable_subunits = { military_police }
@@ -151,8 +169,10 @@ technologies = {
 			support_tech
 			military_police_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_military_police2 = {
 		military_police = {
 			suppression_factor = 0.1
@@ -165,8 +185,10 @@ technologies = {
 			support_tech
 			military_police_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_military_police3 = {
 		military_police = {
 			suppression_factor = 0.1
@@ -179,8 +201,10 @@ technologies = {
 			support_tech
 			military_police_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_military_police4 = {
 		military_police = {
 			suppression_factor = 0.1
@@ -192,8 +216,10 @@ technologies = {
 			support_tech
 			military_police_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# machinegun
 	aor_inf_mg1 = {
 		enable_subunits = { Machine_gun }
@@ -202,8 +228,10 @@ technologies = {
 		start_year = 1919
 		folder = { name = support_folder position = { x = 6 y = 2 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	aor_inf_mg2 = {
 		Machine_gun = { soft_attack = 0.10 defense = 0.10 breakthrough = 0.10 }
 		path = { leads_to_tech = aor_inf_mg3 research_cost_coeff = 1 }
@@ -211,8 +239,10 @@ technologies = {
 		start_year = 1923
 		folder = { name = support_folder position = { x = 6 y = 6 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	aor_inf_mg3 = {
 		Machine_gun = { soft_attack = 0.10 defense = 0.10 breakthrough = 0.10 }
 		path = { leads_to_tech = aor_inf_mg4 research_cost_coeff = 1 }
@@ -220,16 +250,20 @@ technologies = {
 		start_year = 1926
 		folder = { name = support_folder position = { x = 6 y = 10 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	aor_inf_mg4 = {
 		Machine_gun = { soft_attack = 0.10 defense = 0.10 breakthrough = 0.10 }
 		research_cost = 1.5
 		start_year = 1930
 		folder = { name = support_folder position = { x = 6 y = 14 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# mortar
 	tech_paijipao1 = {
 		allow = { always = no }
@@ -258,8 +292,10 @@ technologies = {
 			support_tech
 			hospital_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_field_hospital2 = {
 		field_hospital = {
 			casualty_trickleback = 0.10
@@ -273,8 +309,10 @@ technologies = {
 			support_tech
 			hospital_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_field_hospital3 = {
 		field_hospital = {
 			casualty_trickleback = 0.1
@@ -288,8 +326,10 @@ technologies = {
 			support_tech
 			hospital_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_field_hospital4 = {
 		field_hospital = {
 			casualty_trickleback = 0.1
@@ -302,8 +342,10 @@ technologies = {
 			support_tech
 			hospital_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# maintenance
 	tech_maintenance_company = {
 		enable_subunits = { maintenance_company }
@@ -315,8 +357,10 @@ technologies = {
 			support_tech
 			maintenance_company_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_maintenance_company2 = {
 		maintenance_company = {
 			reliability_factor = 0.05
@@ -330,8 +374,10 @@ technologies = {
 			support_tech
 			maintenance_company_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_maintenance_company3 = {
 		maintenance_company = {
 			reliability_factor = 0.05
@@ -345,8 +391,10 @@ technologies = {
 			support_tech
 			maintenance_company_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	tech_maintenance_company4 = {
 		maintenance_company = {
 			reliability_factor = 0.05
@@ -359,8 +407,10 @@ technologies = {
 			support_tech
 			maintenance_company_tech
 		}
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	# logistics
 	tech_logistics_company = {
 		allow = { always = no }
@@ -471,8 +521,10 @@ technologies = {
 		start_year = 1918
 		folder = { name = support_folder position = { x = 0 y = 0 } }
 		categories = { train_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 8 }
+}
 	wartime_train = {
 		enable_equipments = { train_equipment_2 }
 		path = { leads_to_tech = aor_armored_train research_cost_coeff = 1 }
@@ -480,16 +532,20 @@ technologies = {
 		start_year = 1925
 		folder = { name = support_folder position = { x = 0 y = 6 } }
 		categories = { train_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 	aor_armored_train = {
 		enable_equipments = { train_equipment_3 }
 		research_cost = 1.5
 		start_year = 1928
 		folder = { name = support_folder position = { x = 0 y = 12 } }
 		categories = { train_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 
 
 	aor_integrated_support_1 = {
@@ -499,8 +555,10 @@ technologies = {
 		start_year = 1921
 		folder = { name = support_folder position = { x = 12 y = 4 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 
 	aor_integrated_support_2 = {
 		aor_integrated_support = { supply_consumption_factor = -0.05 initiative = 0.05 }
@@ -509,8 +567,10 @@ technologies = {
 		start_year = 1924
 		folder = { name = support_folder position = { x = 12 y = 8 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 
 	aor_integrated_support_3 = {
 		aor_integrated_support = { supply_consumption_factor = -0.05 initiative = 0.05 }
@@ -519,8 +579,10 @@ technologies = {
 		start_year = 1928
 		folder = { name = support_folder position = { x = 12 y = 12 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 
 	aor_integrated_support_4 = {
 		aor_integrated_support = { supply_consumption_factor = -0.05 initiative = 0.05 }
@@ -528,8 +590,10 @@ technologies = {
 		start_year = 1932
 		folder = { name = support_folder position = { x = 12 y = 16 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		
+	
+	ai_will_do = { factor = 5 }
+}
 
 	aor_car_support = {
 		allow = { always = no }
@@ -558,35 +622,58 @@ technologies = {
 		start_year = 1921
 		folder = { name = support_folder position = { x = 14 y = 4 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		special_project_specialization = { specialization_land }
+		on_research_complete = { custom_effect_tooltip = { localization_key = SP_UNLOCK_PROJECT PROJECT = sp_aor_tank_prototype } }
+		
+	
+	ai_will_do = { factor = 1 modifier = { factor = 4 num_of_military_factories > 29 num_of_civilian_factories > 24 } modifier = { factor = 3 OR = { original_tag = ENG original_tag = FRA } } }
+}
 
 	aor_tank_support2 = {
-		aor_tank_support = { recon = 0.5 breakthrough = 0.10 }
+		aor_tank_support = { recon = 0.05 fort = { attack = 0.01 } }
 		path = { leads_to_tech = aor_tank_support3 research_cost_coeff = 1 }
 		research_cost = 1.5
 		start_year = 1924
 		folder = { name = support_folder position = { x = 14 y = 8 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		special_project_specialization = { specialization_land }
+		
+	
+	ai_will_do = { factor = 1 modifier = { factor = 4 num_of_military_factories > 29 num_of_civilian_factories > 24 } modifier = { factor = 3 OR = { original_tag = ENG original_tag = FRA } } }
+}
 
 	aor_tank_support3 = {
-		aor_tank_support = { suppression = 0.2 soft_attack = 0.10 }
+		aor_tank_support = { recon = 0.05 urban = { attack = 0.01 } }
 		path = { leads_to_tech = aor_tank_support4 research_cost_coeff = 1 }
 		research_cost = 1.5
 		start_year = 1928
 		folder = { name = support_folder position = { x = 14 y = 12 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		special_project_specialization = { specialization_land }
+		
+	
+	ai_will_do = { factor = 1 modifier = { factor = 4 num_of_military_factories > 29 num_of_civilian_factories > 24 } modifier = { factor = 3 OR = { original_tag = ENG original_tag = FRA } } }
+}
 
 	aor_tank_support4 = {
-		aor_tank_support = { recon = 0.5 breakthrough = 0.10 }
+		aor_tank_support = { recon = 0.05 fort = { attack = 0.01 } }
 		research_cost = 1.5
 		start_year = 1932
 		folder = { name = support_folder position = { x = 14 y = 16 } }
 		categories = { support_tech }
-		ai_will_do = { factor = 1 }
-	}
+		special_project_specialization = { specialization_land }
+		
+	
+	ai_will_do = { factor = 1 modifier = { factor = 4 num_of_military_factories > 29 num_of_civilian_factories > 24 } modifier = { factor = 3 OR = { original_tag = ENG original_tag = FRA } } }
+}
+	aor_supply_truck_tech = {
+		enable_equipments = { aor_supply_truck_equipment_1 }
+		research_cost = 1.5
+		start_year = 1918
+		folder = { name = support_folder position = { x = 0 y = 0 } }
+		categories = { support_tech }
+		
+	
+	ai_will_do = { factor = 8 }
+}
 }

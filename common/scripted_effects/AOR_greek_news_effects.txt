@@ -1,0 +1,9 @@
+# AOR: dependency-audited scripted functions.
+
+AOR_report_greek_balkan_victory_news = {
+ if = {
+  limit = { country_exists = GRE NOT = { has_global_flag = AOR_greek_balkan_victory_news } }
+  set_global_flag = AOR_greek_balkan_victory_news
+  GRE = { country_event = { id = AOR_news_router.22 } }
+ }
+}

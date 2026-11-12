@@ -1,64 +1,228 @@
-capital = 840
-oob = "GER_AOR"
-# Starting tech
+# AOR Germany, 1919.8.1: inherited technical knowledge, not material readiness.
 set_technology = {
-	aor_tank_support = 1
-	aor_inf_u01 = 1
-	aor_inf_g01 = 1
-	aor_inf_u02 = 1
+	# Industry: inherited engineering; industrial branch remains a player choice
+	basic_machine_tools = 1
+	construction1 = 1
+	excavation1 = 1
+	fuel_refining = 1
+	aor_railway_engineering = 1
+	aor_shipbuilding = 1
+	aor_fortification1 = 1
+
+	# Science: prewar knowledge and Great War observation / protection
+	Modern_electronics = 1
+	Classic_optics = 1
+	Hot_air_balloon = 1
+	Hot_air_balloon_reconnaissance = 1
+	Gas_Preparation = 1
+	Gas_mask = 1
+
+	# Infantry: Great War standard arms and specialist experience
 	aor_inf_r01 = 1
+	aor_inf_r02 = 1
+	aor_inf_b01 = 1
 	aor_inf_l00 = 1
 	aor_inf_l01 = 1
-	interwar_artillery = 1
-	Old_howitzers = 1
-	tech_recon = 1
-	tech_support = 1		
-	tech_engineers = 1
+	aor_inf_g01 = 1
+	aor_inf_u01 = 1
+	aor_inf_u02 = 1
+	aor_inf_m01 = 1
+	aor_inf_e01 = 1
 	aor_inf_t01 = 1
-	 
- 
-	interwar_antiair = 1
 
- 
- 
- 
-	tactical_bomber1 = 1
- 
-	CAS1 = 1
- 
+	# Support: basic services; retain armor already used by the starting OOB
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	aor_inf_mg1 = 1
+	tech_field_hospital = 1
+	basic_train = 1
+	aor_tank_support = 1
+	aor_supply_truck_tech = 1
+
+	# Artillery: inherited Great War field, howitzer and AA equipment
+	Old_howitzers = 1
+	aor_field_gun_1 = 1
+	aor_howitzer_1 = 1
+	interwar_antitank = 1
+
+	# Aviation: existing 1914/1919 foundation plus German heavy aircraft and airships
+	aor_air_small_1914 = 1
+	aor_air_small_1919 = 1
+	aor_air_medium_1914 = 1
+	aor_air_medium_1919 = 1
+	aor_air_transport_1919 = 1
+	aor_air_large_1914 = 1
+	aor_air_large_1919 = 1
+	aor_air_blimp_1914 = 1
+	aor_air_rigid_1914 = 1
+	aor_air_rigid_1919 = 1
+	aor_air_gun_bundle_1914 = 1
+	aor_air_gun_bundle_1919 = 1
+	aor_air_bomb_bundle_1914 = 1
+	aor_air_bomb_bundle_1919 = 1
+	aor_air_torpedo_1914 = 1
+	aor_air_engine_1914 = 1
+	aor_air_engine_1919 = 1
+	aor_air_construction_1914 = 1
+	aor_air_construction_1919 = 1
+	aor_air_equipment_1914 = 1
+	aor_air_equipment_1919 = 1
+	aor_air_gas_1914 = 1
+	aor_air_airship_structure_1914 = 1
+	aor_air_airship_structure_1921 = 1
+
+	# Navy: Kaiserliche Marine shipbuilding knowledge, without restoring any ships
+	early_ship_hull_light = 1
+	tech_1919_ship_hull_light = 1
+	aor_depth_1919 = 1
+	aor_sonar_1919 = 1
+	early_ship_hull_light_cruiser = 1
+	tech_1919_ship_hull_light_cruiser = 1
+	early_ship_hull_heavy = 1
+	tech_1919_ship_hull_heavy = 1
+	tech_1919_crusier_battleship_hull = 1
+	early_ship_hull_submarine = 1
+	tech_1919_ship_hull_submarine = 1
+	aor_armorheavy_1919 = 1
+	aor_armorcr_1919 = 1
+	aor_airscout_1919 = 1
+	aor_lightgun_1919 = 1
+	aor_mediumgun_1919 = 1
+	basic_battery = 1
+	aor_heavygun_1919 = 1
+	aor_secondary_1919 = 1
+	aor_aa_1919 = 1
+	basic_torpedo = 1
+	aor_torpedo_1919 = 1
+	aor_engine_1914 = 1
+	aor_engine_1919 = 1
+	aor_fcs_1914 = 1
+	basic_fire_control_system = 1
+	damage_control_1 = 1
+	fire_control_methods_1 = 1
+	basic_naval_mines = 1
+	aor_mines_1919 = 1
+
+	# Existing doctrine choices retained
 	mobile_warfare = 1
 	trade_interdiction = 1
 	formation_flying = 1
-	fuel_silos = 1
-	synth_oil_experiments = 1
-	oil_processing = 1
-	fuel_refining = 1
-	
+
+
+	aor_basic_science_1900 = 1
+}
+# AOR industry 1919 baseline; later tiers remain research choices.
+
+# AOR modular aviation startup: tech prerequisites and modules precede variants and stockpiles.
+
+create_equipment_variant = {
+	name = "标准小型机体 1919"
+	type = small_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_gun_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准中型机体 1914"
+	type = medium_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_medium_bay_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准中型机体 1919"
+	type = medium_plane_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_medium_bay_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准小型机体 1914"
+	type = small_plane_airframe_1914
+	modules = {
+		fixed_main_weapon_slot = aor_gun_1
+		engine_type_slot = aor_engine_1x_1
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准运输机体 1919"
+	type = transport_plane_equipment_1919
+	modules = {
+		fixed_main_weapon_slot = aor_cargo_basic
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准小型机体攻击型 1919"
+	type = small_plane_cas_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_light_bomb_2
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
+}
+create_equipment_variant = {
+	name = "标准小型机体对海型 1919"
+	type = small_plane_naval_bomber_airframe_1919
+	modules = {
+		fixed_main_weapon_slot = aor_torpedo_1
+		engine_type_slot = aor_engine_1x_2
+		special_type_slot_1 = empty
+		special_type_slot_2 = empty
+		special_type_slot_3 = empty
+		special_type_slot_4 = empty
+	}
 }
 
-if = {
-	limit = {
-		not = { has_dlc = "Man the Guns" }
-	}
-	set_technology = {
-		transport = 1
-	}
-}
+capital = 840
+oob = "GER_AOR"
+# Starting tech
+
+
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		mtg_transport = 1
-	}
+mtg_transport = 1
+}
 }
 
-effect = {
+
 country_lock_all_division_template = yes
-}
+
 
 set_research_slots = 4
-set_convoys = 50
+add_equipment_to_stockpile = { type = convoy amount = 50 }
 set_stability = 0.40
 recruit_character = GER_Bebel
 recruit_character = GER_Karl_Liebknecht_growth_cabinet_1
@@ -142,7 +306,7 @@ recruit_character = GER_AF_Max_Reichpietsch
 recruit_character = GER_AF_Otto_Tost
 
 load_focus_tree = GER_intermediate
-start_national_focus = GER_1919_august
+# 开局国策及已进行天数在 history/units/GER_AOR.txt 的 focus 块初始化。
 
 set_variable = { GER_Comm_current_vote = 1 } 
 add_to_variable = { global.GER_variable_abs = 1} 
@@ -168,7 +332,7 @@ set_country_flag = AOR_GER_flag_NOT_support_resolution
 
 set_politics = {
 	ruling_party = Marxism
-	last_election = "1936.1.1"
+	last_election = "1919.1.1"
 	election_frequency = 48
 	elections_allowed = no
 
@@ -214,7 +378,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Paul von Hindenburg"
 	desc = ""
-	picture = "ayipk-7ybyr.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = despotism
 	traits = {
@@ -224,7 +388,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Gustav Stresemann"
 	desc = ""
-	picture = "aiv9n-no5o5.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = liberalism
 	traits = {
@@ -234,7 +398,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Walther Rathenau"
 	desc = ""
-	picture = "an3s6-p9ro9.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
@@ -244,7 +408,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Adolf Hitler"
 	desc = ""
-	picture = "aum51-irg52.dds"
+	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = NSDAP
 	traits = {
@@ -276,3 +440,29 @@ add_equipment_to_stockpile = {
     producer = GER
 }
 
+
+# Complete inherited prototype before recruiting the selectable scientist roster.
+complete_special_project = { project = sp:sp_aor_tank_prototype }
+
+# AOR 1919 historical scientists
+recruit_character = AOR_GER_scientist_ludwig_prandtl
+recruit_character = AOR_GER_scientist_hugo_junkers
+recruit_character = AOR_GER_scientist_georg_schlesinger
+recruit_character = AOR_GER_scientist_carl_cranz
+recruit_character = AOR_GER_scientist_hans_burkner
+recruit_character = AOR_GER_scientist_albert_einstein
+recruit_character = AOR_GER_scientist_max_planck
+recruit_character = AOR_GER_scientist_david_hilbert
+recruit_character = AOR_GER_scientist_fritz_haber
+recruit_character = AOR_GER_scientist_emmy_noether
+recruit_character = AOR_GER_scientist_max_born
+
+recruit_character = AOR_GER_scientist_georg_von_arco
+recruit_character = AOR_GER_scientist_waldemar_petersen
+recruit_character = AOR_GER_scientist_emil_morsch
+recruit_character = AOR_GER_scientist_august_hertwig
+
+# AOR historical class definitions required by naval OOB
+create_equipment_variant = { name = "Deutschland" type = heavy_cruiser_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_medium_battery_1 fixed_ship_anti_air_slot = ship_anti_air_2 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = cruiser_ship_engine_1 fixed_ship_secondaries_slot = ship_secondaries_1 mid_1_custom_slot = ship_secondaries_1 mid_2_custom_slot = ship_anti_air_2 rear_1_custom_slot = ship_medium_battery_1 } }
+create_equipment_variant = { name = "Königsberg" type = light_cruiser_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_medium_battery_1 fixed_ship_anti_air_slot = ship_anti_air_1 fixed_ship_fire_control_system_slot = ship_fire_control_system_0 fixed_ship_radar_slot = empty fixed_ship_engine_slot = cruiser_ship_engine_1 mid_1_custom_slot = ship_torpedo_1 mid_2_custom_slot = ship_anti_air_1 rear_1_custom_slot = ship_light_medium_battery_1 } }
+create_equipment_variant = { name = "Type 24" type = ship_hull_light_1 allow_without_tech = yes modules = { fixed_ship_battery_slot = ship_light_battery_1 fixed_ship_anti_air_slot = empty fixed_ship_fire_control_system_slot = empty fixed_ship_radar_slot = empty fixed_ship_engine_slot = light_ship_engine_1 fixed_ship_torpedo_slot = empty mid_1_custom_slot = empty rear_1_custom_slot = empty } }
