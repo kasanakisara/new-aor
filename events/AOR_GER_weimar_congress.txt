@@ -1,0 +1,343 @@
+# ============================================================
+# 魏玛代表大会事件链（AOR · 德国）—— 骨架版：只有结构与触发，无正文
+# 1919.09.08 开幕 — 1919.09.15 结束；后续延至 1920.07.28 波鸿代表大会
+#
+#   .1  事件①  开幕与三方定调          1919.09.08（自动 +3 天）
+#   .2  事件②  左派反击与党改革动议    1919.09.11（自动 +2 天）
+#   .3  事件③  领袖的背影              1919.09.13（自动 +2 天）
+#   .4  触发    左右派打嘴仗            1919.09.15（链末：动议推迟到波鸿）
+#   .5  事件    列金去世                1919.09.22
+#   .6  触发    抢先行动                1919.09.23
+#   .7  事件    工会法兰克福代表大会     1919.11.30
+#   .8  触发    剑拔弩张                1919.12.01（按焦点胜利数结算）
+#   .9  结果    左派：米勒「革命工长」    3 个焦点
+#   .10 结果    中派：迪斯曼「激进转向」  1-2 个焦点
+#   .11 结果    右派：莱帕特「按部就班」  0 个焦点
+#   .12 事件    抓紧时间                1920.01.13
+#   .13 事件    波鸿代表大会            1920.07.28
+#
+# 驱动：common/on_actions/AOR_GER_weimar_on_actions.txt
+# 本地化：localisation/simp_chinese/events/AOR_GER_weimar_congress_l_simp_chinese.yml
+# 调试：event AOR_GER_weimar_congress.1 GER
+#
+# TODO（待接入，不属于本骨架范围）：
+#   1. 事件正文文案：本地化里目前是“（待写文案）+ 要点”占位。
+#   2. 工会三大焦点：需由国策/其他系统置 AOR_union_focus_1_won / _2_won / _3_won；
+#      未接入时 .8 的结算固定落在 0 个焦点 → 右派莱帕特。
+# ============================================================
+
+add_namespace = AOR_GER_weimar_congress
+
+# ------------------------------------------------------------ 事件① 开幕
+country_event = {
+	id = AOR_GER_weimar_congress.1
+	title = AOR_GER_weimar_congress.1.t
+	desc = AOR_GER_weimar_congress.1.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_weimar_congress_started
+			country_event = { id = AOR_GER_weimar_congress.2 days = 3 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.1.a
+	}
+}
+
+# ------------------------------------------------------------ 事件② 左派反击
+country_event = {
+	id = AOR_GER_weimar_congress.2
+	title = AOR_GER_weimar_congress.2.t
+	desc = AOR_GER_weimar_congress.2.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_weimar_congress.3 days = 2 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.2.a
+	}
+}
+
+# ------------------------------------------------------------ 事件③ 领袖的背影
+country_event = {
+	id = AOR_GER_weimar_congress.3
+	title = AOR_GER_weimar_congress.3.t
+	desc = AOR_GER_weimar_congress.3.d
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_weimar_congress.4 days = 2 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.3.a
+	}
+}
+
+# ------------------------------------------------------------ 链末：左右派打嘴仗
+country_event = {
+	id = AOR_GER_weimar_congress.4
+	title = AOR_GER_weimar_congress.4.t
+	desc = AOR_GER_weimar_congress.4.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = AOR_weimar_party_reform_postponed
+		if = {
+			limit = { has_country_flag = GER_SPD_unity_initialized }
+			hidden_effect = {
+				add_to_variable = { GER_SPD_unity = -5 }
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.4.a
+		custom_effect_tooltip = AOR_GER_weimar_congress.4.tt
+	}
+}
+
+# ------------------------------------------------------------ 09.22 列金去世
+country_event = {
+	id = AOR_GER_weimar_congress.5
+	title = AOR_GER_weimar_congress.5.t
+	desc = AOR_GER_weimar_congress.5.d
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_weimar_legien_dead
+			country_event = { id = AOR_GER_weimar_congress.6 days = 1 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.5.a
+	}
+}
+
+# ------------------------------------------------------------ 触发：抢先行动
+country_event = {
+	id = AOR_GER_weimar_congress.6
+	title = AOR_GER_weimar_congress.6.t
+	desc = AOR_GER_weimar_congress.6.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_union_congress_open
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.6.a
+	}
+}
+
+# ------------------------------------------------------------ 11.30 法兰克福代表大会
+country_event = {
+	id = AOR_GER_weimar_congress.7
+	title = AOR_GER_weimar_congress.7.t
+	desc = AOR_GER_weimar_congress.7.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_union_frankfurt_congress
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.7.a
+		country_event = { id = AOR_GER_weimar_congress.8 days = 1 }
+	}
+}
+
+# ------------------------------------------------------------ 触发：剑拔弩张
+country_event = {
+	id = AOR_GER_weimar_congress.8
+	title = AOR_GER_weimar_congress.8.t
+	desc = AOR_GER_weimar_congress.8.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOR_GER_weimar_congress.8.a
+		custom_effect_tooltip = AOR_GER_weimar_congress.8.tt
+		hidden_effect = {
+			# 三大焦点的胜利数决定工会归属：3 → 左，1-2 → 中，0 → 右
+			set_variable = { AOR_union_focus_wins = 0 }
+			if = {
+				limit = { has_country_flag = AOR_union_focus_1_won }
+				add_to_variable = { AOR_union_focus_wins = 1 }
+			}
+			if = {
+				limit = { has_country_flag = AOR_union_focus_2_won }
+				add_to_variable = { AOR_union_focus_wins = 1 }
+			}
+			if = {
+				limit = { has_country_flag = AOR_union_focus_3_won }
+				add_to_variable = { AOR_union_focus_wins = 1 }
+			}
+			set_country_flag = AOR_union_congress_settled
+			if = {
+				limit = { check_variable = { AOR_union_focus_wins > 2 } }
+				country_event = { id = AOR_GER_weimar_congress.9 }
+			}
+			else_if = {
+				limit = { check_variable = { AOR_union_focus_wins > 0 } }
+				country_event = { id = AOR_GER_weimar_congress.10 }
+			}
+			else = {
+				country_event = { id = AOR_GER_weimar_congress.11 }
+			}
+		}
+	}
+}
+
+# ------------------------------------------------------------ 结果：左派 米勒
+country_event = {
+	id = AOR_GER_weimar_congress.9
+	title = AOR_GER_weimar_congress.9.t
+	desc = AOR_GER_weimar_congress.9.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_union_leader_mueller
+			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				add_to_variable = { GER_SPD_unity = 8 }
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.9.a
+		add_political_power = 25
+		add_stability = 0.02
+	}
+}
+
+# ------------------------------------------------------------ 结果：中派 迪斯曼
+country_event = {
+	id = AOR_GER_weimar_congress.10
+	title = AOR_GER_weimar_congress.10.t
+	desc = AOR_GER_weimar_congress.10.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_union_leader_diesmann
+			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				add_to_variable = { GER_SPD_unity = 5 }
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.10.a
+		add_political_power = 15
+		add_stability = 0.01
+	}
+}
+
+# ------------------------------------------------------------ 结果：右派 莱帕特
+country_event = {
+	id = AOR_GER_weimar_congress.11
+	title = AOR_GER_weimar_congress.11.t
+	desc = AOR_GER_weimar_congress.11.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_union_leader_lepart
+			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				add_to_variable = { GER_SPD_unity = 3 }
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.11.a
+		add_political_power = 10
+		add_stability = 0.03
+	}
+}
+
+# ------------------------------------------------------------ 1920.01.13 抓紧时间
+country_event = {
+	id = AOR_GER_weimar_congress.12
+	title = AOR_GER_weimar_congress.12.t
+	desc = AOR_GER_weimar_congress.12.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_ger_party_reform_started
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.12.a
+	}
+}
+
+# ------------------------------------------------------------ 1920.07.28 波鸿代表大会
+country_event = {
+	id = AOR_GER_weimar_congress.13
+	title = AOR_GER_weimar_congress.13.t
+	desc = AOR_GER_weimar_congress.13.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_bochum_congress_open
+		}
+	}
+
+	option = {
+		name = AOR_GER_weimar_congress.13.a
+		add_political_power = 20
+	}
+}
