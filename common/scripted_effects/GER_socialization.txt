@@ -86,7 +86,7 @@ GER_socialization_organization_borrow_level = {
 
 GER_socialization_organization_advance_level = {
     if = {
-        limit = { check_variable = { GER_socialization_organization = 100 } check_variable = { GER_socialization_organization_level < 4 } }
+        limit = { check_variable = { GER_socialization_organization > 99 } check_variable = { GER_socialization_organization_level < 4 } }
         subtract_from_variable = { GER_socialization_organization = 100 }
         add_to_variable = { GER_socialization_organization_level = 1 }
     }

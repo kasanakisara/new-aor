@@ -704,8 +704,10 @@ country_event = {
     fire_only_once = yes
     immediate = {
         clr_country_flag = GER_SPD_union_reform_open
-        remove_decision = GER_SPD_union_mobilize
-        remove_decision = GER_SPD_union_coordinate
+        hidden_effect = {
+            remove_decision = GER_SPD_union_mobilize
+            remove_decision = GER_SPD_union_coordinate
+        }
         set_country_flag = GER_SPD_union_congress_started
         add_to_variable = { GER_SPD_gui_revision = 1 }
         set_variable = { GER_union_focus_victories = 0 }
