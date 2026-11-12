@@ -1,10 +1,6 @@
 ####################################################################
 # 德国 · 魏玛代表大会事件链的日期驱动（骨架）
 #   1919.09.08  事件① 开幕            -> AOR_GER_weimar_congress.1
-#   1919.09.22  列金去世（链外衔接）   -> .5
-#   1919.11.30  工会法兰克福代表大会   -> .7
-#   1920.01.13  抓紧时间               -> .12
-#   1920.07.28  波鸿代表大会           -> .13
 # 事件②③、抢先行动、剑拔弩张与三派结果由事件自身按天数排期。
 ####################################################################
 on_actions = {
@@ -17,47 +13,6 @@ on_actions = {
 					NOT = { has_country_flag = AOR_weimar_congress_started }
 				}
 				country_event = { id = AOR_GER_weimar_congress.1 }
-			}
-
-			# ---------- 1919.09.22 列金去世 ----------
-			if = {
-				limit = {
-					has_country_flag = AOR_weimar_congress_started
-					date > 1919.9.21
-					NOT = { has_country_flag = AOR_weimar_legien_dead }
-				}
-				country_event = { id = AOR_GER_weimar_congress.5 }
-			}
-
-			# ---------- 1919.11.30 工会法兰克福代表大会 ----------
-			if = {
-				limit = {
-					has_country_flag = AOR_union_congress_open
-					date > 1919.11.29
-					NOT = { has_country_flag = AOR_union_frankfurt_congress }
-				}
-				set_country_flag = AOR_union_frankfurt_congress
-				country_event = { id = AOR_GER_weimar_congress.7 }
-			}
-
-			# ---------- 1920.01.13 抓紧时间 ----------
-			if = {
-				limit = {
-					has_country_flag = AOR_union_congress_settled
-					date > 1920.1.12
-					NOT = { has_country_flag = AOR_ger_party_reform_started }
-				}
-				country_event = { id = AOR_GER_weimar_congress.12 }
-			}
-
-			# ---------- 1920.07.28 波鸿代表大会 ----------
-			if = {
-				limit = {
-					has_country_flag = AOR_ger_party_reform_started
-					date > 1920.7.27
-					NOT = { has_country_flag = AOR_bochum_congress_open }
-				}
-				country_event = { id = AOR_GER_weimar_congress.13 }
 			}
 		}
 	}
