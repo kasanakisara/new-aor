@@ -1,0 +1,13 @@
+on_actions = {
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = {
+					date > 1919.8.14
+					NOT = { has_country_flag = AOR_GER_legien_dead }
+				}
+				country_event = { id = AOR_GER_union_competition.1 }
+			}
+		}
+	}
+}
