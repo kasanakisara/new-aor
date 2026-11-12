@@ -31,18 +31,25 @@ scripted_gui = {
 			}
 			GER_SPD_unity_decay_1_visible = { check_variable = { GER_SPD_unity < 30 } }
 			GER_SPD_headline_visible = {
+				NOT = { has_country_flag = AOR_GER_legien_dead }
 				check_variable = { GER_SPD_left_support < 61 }
 				check_variable = { GER_SPD_center_support < 61 }
 				check_variable = { GER_SPD_right_support < 61 }
 			}
 			GER_SPD_headline_left_visible = {
+				NOT = { has_country_flag = AOR_GER_legien_dead }
 				check_variable = { GER_SPD_left_support > 60 }
 			}
 			GER_SPD_headline_center_visible = {
+				NOT = { has_country_flag = AOR_GER_legien_dead }
 				check_variable = { GER_SPD_center_support > 60 }
 			}
 			GER_SPD_headline_right_visible = {
+				NOT = { has_country_flag = AOR_GER_legien_dead }
 				check_variable = { GER_SPD_right_support > 60 }
+			}
+			GER_SPD_headline_legien_visible = {
+				has_country_flag = AOR_GER_legien_dead
 			}
 			GER_SPD_row_001_left_visible = {
 				check_variable = { GER_SPD_left_support > 0 }

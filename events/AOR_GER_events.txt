@@ -1,11 +1,19 @@
-# 德国事件统一入口；按 namespace 分段，保留所有事件编号。
-
-# ===== AOR_GER_1919_test.txt =====
 add_namespace = AOR_GER_1919_test
+add_namespace = AOR_GER_bernstein
+add_namespace = AOR_GER_flavor
+add_namespace = AOR_GER_focus_1919
+add_namespace = AOR_GER_economy_1920
+add_namespace = AOR_GER_Second_International
+add_namespace = AOR_GER_MyLife
+add_namespace = AOR_GER_versailles
+add_namespace = AOR_GER_mueller_growth
+add_namespace = AOR_GER_union_competition
 
-# Placeholder narrative events. Gameplay rewards are applied by the focuses.
-# Console: event AOR_GER_1919_test.1 GER (IDs 1-6).
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1919 年测试事件
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
+# 青春战胜一切
 country_event = {
 	id = AOR_GER_1919_test.1
 	title = AOR_GER_1919_test.1.t
@@ -14,6 +22,7 @@ country_event = {
 	option = { name = AOR_GER_1919_test.confirm }
 }
 
+# 取得政权的道路
 country_event = {
 	id = AOR_GER_1919_test.2
 	title = AOR_GER_1919_test.2.t
@@ -23,14 +32,11 @@ country_event = {
 }
 
 
-# ===== AOR_GER_bernstein_event.txt =====
-add_namespace = AOR_GER_bernstein
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 塔罗牌
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-# 社会主义的第三条道路？
-# 触发方式：common/on_actions/AOR_GER_bernstein_on_actions.txt 检测到
-# GER_01_04_Eduard_Bernstein 被聘为政治顾问（is_hired_as_advisor）后触发。
-# 选项效果：解锁塔罗牌「X 命运之轮 - 伯恩施坦」（AOR_tarot_card_11_enable），
-# 使其可以进入抽牌池（清除 blocked 标记并置 unlocked）。
+# 社会主义的第三条道路？-伯恩施坦
 country_event = {
 	id = AOR_GER_bernstein.1
 	title = AOR_GER_bernstein.1.t
@@ -49,10 +55,11 @@ country_event = {
 }
 
 
-# ===== AOR_GER_events.txt =====
-add_namespace = AOR_GER_flavor
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 德国趣闻
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-# 德国趣闻_1：真是酷毙了
+# 真是酷毙了
 country_event = {
 	id = AOR_GER_flavor.1
 	title = AOR_GER_flavor.1.t
@@ -66,9 +73,12 @@ country_event = {
 	}
 }
 
-add_namespace = AOR_GER_focus_1919
 
-# 从王室到万家：埃森警察局报告节录
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 第一阶段国策树
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 从王室到万家-埃森警察局报告节录
 country_event = {
 	id = AOR_GER_focus_1919.1
 	title = AOR_GER_focus_1919.1.t
@@ -81,7 +91,7 @@ country_event = {
 	}
 }
 
-# 人民的慰藉：诊疗报告
+# 人民的慰藉-诊疗报告
 country_event = {
 	id = AOR_GER_focus_1919.2
 	title = AOR_GER_focus_1919.2.t
@@ -94,7 +104,7 @@ country_event = {
 	}
 }
 
-# 让面包回到餐桌：果腹
+# 让面包回到餐桌-生于1907
 country_event = {
 	id = AOR_GER_focus_1919.3
 	title = AOR_GER_focus_1919.3.t
@@ -107,7 +117,7 @@ country_event = {
 	}
 }
 
-# 从战壕到故乡：哑钟
+# 从战壕到故乡-哑钟
 country_event = {
 	id = AOR_GER_focus_1919.4
 	title = AOR_GER_focus_1919.4.t
@@ -120,7 +130,7 @@ country_event = {
 	}
 }
 
-# 让街道重归平静：蛛网
+# 让街道重归平静-蛛网
 country_event = {
 	id = AOR_GER_focus_1919.5
 	title = AOR_GER_focus_1919.5.t
@@ -133,7 +143,7 @@ country_event = {
 	}
 }
 
-# 铁路的轰鸣：无汽之笛
+# 铁路的轰鸣-无汽之笛
 country_event = {
 	id = AOR_GER_focus_1919.6
 	title = AOR_GER_focus_1919.6.t
@@ -146,7 +156,7 @@ country_event = {
 	}
 }
 
-# 让双手找到工作，
+# 让双手找到工作-瞧！终生护民
 country_event = {
 	id = AOR_GER_focus_1919.7
 	title = AOR_GER_focus_1919.7.t
@@ -159,11 +169,11 @@ country_event = {
 	}
 }
 
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1920 年经济国策测试
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-add_namespace = AOR_GER_economy_1920
-
-# Console: event AOR_GER_economy_1920.1 GER
-# Test-only event: unlock the hidden economy branch and load its tree if necessary.
+# 解锁隐藏经济国策（测试事件）
 country_event = {
 	id = AOR_GER_economy_1920.1
 	hidden = yes
@@ -184,9 +194,11 @@ country_event = {
 }
 
 
-# ===== AOR_GER_International.txt =====
-add_namespace = AOR_GER_Second_International
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 第二国际
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
+# 柏林会议
 country_event = {
 	id = AOR_GER_Second_International.1
 	title = AOR_GER_Second_International.1.t
@@ -210,9 +222,11 @@ country_event = {
 }
 
 
-# ===== AOR_GER_MyLife.txt =====
-add_namespace = AOR_GER_MyLife
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 《我的一生》第四卷
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
+# 《我的一生》第四卷正式出版
 country_event = {
     id = AOR_GER_MyLife.1
     title = AOR_GER_MyLife.1.t
@@ -226,10 +240,12 @@ country_event = {
     }
 }
 
-# ===== AOR_GER_versailles.txt =====
-add_namespace = AOR_GER_versailles
 
-#-------------------------------------------------- 事件1：葡萄酒与香烟 *1919.12.10
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 凡尔赛
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 葡萄酒与香烟
 country_event = {
 	id = AOR_GER_versailles.1
 	title = AOR_GER_versailles.1.t
@@ -242,7 +258,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = AOR_GER_versailles_journey_visible
 			mark_focus_tree_layout_dirty = yes
-			# 21 天后（1919.12.31）触发事件2
 			country_event = { id = AOR_GER_versailles.2 days = 21 }
 		}
 	}
@@ -260,7 +275,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 事件2：新年快乐 *1919.12.31
+# 新年快乐
 country_event = {
 	id = AOR_GER_versailles.2
 	title = AOR_GER_versailles.2.t
@@ -276,7 +291,6 @@ country_event = {
 			clr_country_flag = AOR_GER_versailles_journey_in_progress
 			set_country_flag = AOR_GER_versailles_rotten_hand_visible
 			mark_focus_tree_layout_dirty = yes
-			# 12月31日至1月2日相隔2天；从事件出现时计时，不受选项点击影响。
 			country_event = { id = AOR_GER_versailles.3 days = 2 }
 		}
 	}
@@ -291,7 +305,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 事件3：拒绝与命运的二十四小时 *1920.1.2
+# 拒绝与命运的二十四小时
 country_event = {
 	id = AOR_GER_versailles.3
 	title = AOR_GER_versailles.3.t
@@ -306,7 +320,8 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 事件4：屈辱条约（触发方式待定）
+
+# 屈辱条约
 country_event = {
 	id = AOR_GER_versailles.4
 	title = AOR_GER_versailles.4.t
@@ -324,10 +339,6 @@ country_event = {
 			set_global_flag = AOR_GER_versailles_signed
 			mark_focus_tree_layout_dirty = yes
 			complete_national_focus = GER_1919_versailles_backbone_breaks
-
-			# 分地线（石勒苏益格）已改为由 on_actions 按日期驱动，不再在这里排期：
-			#   1920.8.1 通知 → 8.11 移交国际委员会 → 9.1 北区公投 → 10.4 中区公投 → 10.14 / 1921.1.5 结算
-			# 见 common/on_actions/AOR_GER_versailles_on_actions.txt
 		}
 	}
 
@@ -336,28 +347,12 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 新闻：德国签署凡尔赛条约 *1920.1.18
 
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 石勒苏益格公投与移交
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-####################################################################
-# 石勒苏益格线（2026-10：确定性，无随机）
-#
-#   1920.8.1   .6  通知：国际委员会将于十天后接管（无实际效果）
-#   1920.8.11  .7  移交：北区 839 + 中石勒苏益格 1043 + 弗伦斯堡市 1125 → 国际委员会（NSH）
-#   1920.9.1   .8  北区公投（选区 839）：全部投向丹麦（本阶段不移交）
-#   1920.10.4  .9  中区公投（选区 1043 中石勒苏益格 + 1125 弗伦斯堡市）：全部留在德国
-#   1921.1.5   .10 结算：839 → 丹麦王国；1043 + 1125 → 德意志共和国
-#
-# 区划对应 OTL：
-#   Zone 1 北区          = 州 839
-#   Zone 2 中区          = 州 1043（中石勒苏益格：省 317、11366）+ 州 1125（弗伦斯堡市：省 13265）
-#   Zone 3 南石勒苏益格  = 州 58（胡苏姆/腓特烈施塔特一带），不投票、不交出
-#
-# 公投分三个选区依次揭晓，归属统一在 1921.1.5 结算移交。
-# 注意：release = NSH 会放出所有带 NSH 核心的州（839、1043、1125），
-#   因此州 58 已移除 NSH 核心（改为 GER + SHL 核心），否则南石勒苏益格会被一并交出去。
-# 日期判定见 common/on_actions/AOR_GER_versailles_on_actions.txt。
-####################################################################
+# 国际委员会
 country_event = {
 	id = AOR_GER_versailles.6
 	title = AOR_GER_versailles.6.t
@@ -371,7 +366,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.8.11 移交国际委员会
+# 移交国际委员会
 country_event = {
 	id = AOR_GER_versailles.7
 	title = AOR_GER_versailles.7.t
@@ -420,7 +415,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.9.1 北区公投（全部归丹麦）
+# 北石勒苏益格的公投
 country_event = {
 	id = AOR_GER_versailles.8
 	title = AOR_GER_versailles.8.t
@@ -438,7 +433,7 @@ country_event = {
 	}
 }
 
-#-------------------------------------------------- 1920.10.4 中区公投（1043 + 1125，全部归德国）
+# 中石勒苏益格与弗伦斯堡的公投
 country_event = {
 	id = AOR_GER_versailles.9
 	title = AOR_GER_versailles.9.t
@@ -458,8 +453,7 @@ country_event = {
 	}
 }
 
-
-#-------------------------------------------------- 1921.1.5 最终结算
+# 石勒苏益格的最终边界
 country_event = {
 	id = AOR_GER_versailles.10
 	title = AOR_GER_versailles.10.t
@@ -497,46 +491,99 @@ country_event = {
 }
 
 
-# ===== GER_Richard_Mueller_growth.txt =====
-add_namespace = AOR_GER_mueller_growth
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 成长型内阁
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-# Update the tooltip at expiry, without waiting for the player's response.
+# 里夏德·米勒成长（隐藏事件）
 country_event = {
- id = AOR_GER_mueller_growth.1
- hidden = yes
- is_triggered_only = yes
- trigger = {
-  always = no # unavailable AOR object: has_idea GER_Richard_Mueller_growth_cabinet_1
-
-  NOT = { has_country_flag = GER_Richard_Mueller_growth_ready }
-  NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
- }
- immediate = {
-  set_country_flag = GER_Richard_Mueller_growth_ready
-  GER_Richard_Mueller_refresh_growth_tooltip = yes
-  country_event = { id = AOR_GER_mueller_growth.2 }
- }
+	id = AOR_GER_mueller_growth.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		country_event = { id = AOR_GER_mueller_growth.2 }
+	}
 }
 
+# 走出柏林
 country_event = {
- id = AOR_GER_mueller_growth.2
- title = AOR_GER_mueller_growth.2.t
- desc = AOR_GER_mueller_growth.2.desc
- is_triggered_only = yes
- trigger = {
-  has_country_flag = GER_Richard_Mueller_growth_ready
-  NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
- }
- option = {
-  name = AOR_GER_mueller_growth.2.a
-  custom_effect_tooltip = AOR_GER_mueller_growth.2.effect_tt
-  hidden_effect = {
-   if = {
-    limit = { NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred } }
-    set_country_flag = GER_Richard_Mueller_growth_transferred
-    retire_character = GER_Richard_Mueller_growth_cabinet_1
-    recruit_character = GER_Richard_Mueller_regular_cabinet
-   }
-  }
- }
+	id = AOR_GER_mueller_growth.2
+	title = AOR_GER_mueller_growth.2.t
+	desc = AOR_GER_mueller_growth.2.desc
+	is_triggered_only = yes
+	trigger = {
+		has_character = GER_Richard_Mueller_growth_cabinet_1
+		NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
+	}
+	immediate = {
+		set_country_flag = GER_Richard_Mueller_growth_transferred
+		hidden_effect = {
+			retire_character = GER_Richard_Mueller_growth_cabinet_1
+			if = {
+				limit = { NOT = { has_character = GER_Richard_Mueller_regular_cabinet } }
+				recruit_character = GER_Richard_Mueller_regular_cabinet
+			}
+		}
+	}
+	option = {
+		name = AOR_GER_mueller_growth.2.a
+		custom_effect_tooltip = AOR_GER_mueller_growth.2.effect_tt
+	}
+}
+
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 工会竞争
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 列金去世
+country_event = {
+	id = AOR_GER_union_competition.1
+	title = AOR_GER_union_competition.1.t
+	desc = AOR_GER_union_competition.1.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+		NOT = { has_country_flag = AOR_GER_legien_dead }
+	}
+	immediate = {
+		set_country_flag = AOR_GER_legien_dead
+		add_to_variable = { GER_SPD_gui_revision = 1 }
+		hidden_effect = {
+			if = {
+				limit = {
+					has_character = GER_02_01_Karl_Legien
+					GER_02_01_Karl_Legien = { is_hired_as_advisor = yes }
+				}
+				deactivate_advisor = GER_02_01_Karl_Legien
+			}
+			if = {
+				limit = {
+					has_character = GER_02_02_Robert_Dittmann
+					GER_02_02_Robert_Dittmann = { is_hired_as_advisor = yes }
+				}
+				deactivate_advisor = GER_02_02_Robert_Dittmann
+			}
+			if = {
+				limit = {
+					has_character = GER_02_03_Theodor_Leipart
+					GER_02_03_Theodor_Leipart = { is_hired_as_advisor = yes }
+				}
+				deactivate_advisor = GER_02_03_Theodor_Leipart
+			}
+			if = {
+				limit = {
+					has_character = GER_Richard_Mueller_regular_cabinet
+					GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes }
+				}
+				deactivate_advisor = GER_Richard_Mueller_regular_cabinet
+			}
+		}
+	}
+	option = {
+		name = AOR_GER_union_competition.1.a
+		custom_effect_tooltip = AOR_GER_union_competition.1.effect_tt
+		hidden_effect = { news_event = { id = AOR_news_europe.60 } }
+	}
 }
