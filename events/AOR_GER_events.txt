@@ -22,6 +22,86 @@ add_namespace = AOR_GER_versailles
 add_namespace = AOR_GER_mueller_growth
 add_namespace = AOR_GER_union_competition
 add_namespace = AOR_GER_weimar_congress
+add_namespace = AOR_the_second_soviet_congress
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 第二届苏维埃代表大会
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+country_event = {
+	id = AOR_the_second_soviet_congress.1
+	title = AOR_the_second_soviet_congress.1.t
+	desc = AOR_the_second_soviet_congress.1.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_the_second_soviet_congress_started
+			country_event = { id = AOR_the_second_soviet_congress.2 days = 1 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.1.a
+		custom_effect_tooltip = AOR_the_second_soviet_congress.1.effect_tt
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.2
+	title = AOR_the_second_soviet_congress.2.t
+	desc = AOR_the_second_soviet_congress.2.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_the_second_soviet_congress.3 days = 1 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.2.a
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.3
+	title = AOR_the_second_soviet_congress.3.t
+	desc = AOR_the_second_soviet_congress.3.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_the_second_soviet_congress.4 days = 2 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.3.a
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.4
+	title = AOR_the_second_soviet_congress.4.t
+	desc = AOR_the_second_soviet_congress.4.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.4.a
+	}
+}
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 魏玛代表大会

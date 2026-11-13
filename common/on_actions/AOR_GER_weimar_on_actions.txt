@@ -16,4 +16,17 @@ on_actions = {
 			}
 		}
 	}
+
+	on_daily_GER = {
+		effect = {
+			# ---------- 1919.08.27 第二届苏维埃代表大会开幕 ----------
+			if = {
+				limit = {
+					date > 1919.8.26
+					NOT = { has_country_flag = AOR_the_second_soviet_congress_started }
+				}
+				country_event = { id = AOR_the_second_soviet_congress.1 }
+			}
+		}
+	}
 }
