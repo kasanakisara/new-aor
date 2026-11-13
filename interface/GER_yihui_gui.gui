@@ -43,227 +43,131 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "GER_yihui_gui"
-		position = { x = 50 y = 0 }
+		position = { x = 0 y = 0 }
 		Orientation = center
 		Origo = center
-		size = { width = 1600 height = 720 }
+		size = { width = 1460 height = 820 }
 		moveable = yes
 
 		background = {
 			name = "GER_yihui_bg"
-			spriteType = "GFX_tiled_plain_bg"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+		background = {
+			name = "GER_yihui_lined_overlay_bg"
+			quadTextureSprite = "GFX_tiled_plain_bg_lined"
+			position = { x = 0 y = 0 }
+			size = { width = 1459 height = 819 }
+		}
+
+		containerWindowType = {
+			name = "GER_yihui_seat_panel"
+			position = { x = 870 y = 50 }
+			size = { width = 570 height = 315 }
+			background = { name = "GER_yihui_seat_panel_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" }
 		}
 
 		gridboxtype = {
 			name = "GER_Reichstag_seat_grid"
-			position = { x = 424 y = 125 }
-			size = { width = 643 height = 330 }
+			position = { x = 880 y = 65 }
+			size = { width = 550 height = 285 }
 			format = "UPPER_LEFT"
 			slotsize = { width = 100%% height = 0 }
 			max_slots_horizontal = 1
 			add_horizontal = no
 		}
 
-		iconType = {
-			name = "GER_yihui_hammer_color"
-			spriteType = "GFX_yihui_hammer_clr"
-			position = { x = 695 y = 535 }
-		}
-
-		iconType = {
-			name = "GER_yihui_hammer_bw"
-			spriteType = "GFX_yihui_hammer_b_w"
-			position = { x = 695 y = 535 }
-		}
-
-		containerWindowType = {
-			name = "GER_yihui_inertia_box"
-			position = { x = 655 y = 490 }
-			size = { width = 180 height = 36 }
-
-			background = {
-				name = "GER_yihui_inertia_box_bg"
-				spriteType = "GFX_tiled_plain_bg"
-			}
-
-			instantTextboxType = {
-				name = "GER_yihui_inertia_text"
-				position = { x = 0 y = 4 }
-				font = "hoi_18b"
-				text = "GER_yihui_inertia_text"
-				format = center
-				maxWidth = 180
-				maxHeight = 30
-			}
-		}
+		# 协商惯性和锤子已移到右下角
 
 		containerWindowType = {
 			name = "GER_yihui_party_panel"
-			position = { x = 0 y = 50 }
-			size = { width = 370 height = 520 }
+			position = { x = 20 y = 50 }
+			size = { width = 850 height = 720 }
 
 			background = {
 				name = "GER_yihui_party_panel_bg"
-				spriteType = "GFX_tiled_plain_bg"
+				quadTextureSprite = "GFX_tiled_plain_bg_lined"
 			}
-
-			instantTextboxType = {
-				name = "GER_yihui_seats_summary"
-				position = { x = 0 y = 4 }
-				font = "hoi_18b"
-				text = "GER_yihui_seats_summary"
-				format = center
-				maxWidth = 370
-				maxHeight = 36
-			}
-
 			containerWindowType = {
 				name = "GER_yihui_party_box_spd_left"
-				position = { x = 10 y = 50 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_spd_left_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_spd_left" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_spd_left_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_spd_left_tt" }
+				position = { x = 25 y = 60 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_spd_left_button" quadTextureSprite = "GFX_GER_yihui_party_SPD_L" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_spd_left_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_spd_center_left"
-				position = { x = 130 y = 50 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_spd_center_left_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_spd_center_left" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_spd_center_left_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_spd_center_left_tt" }
+				position = { x = 223 y = 60 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_spd_center_left_button" quadTextureSprite = "GFX_GER_yihui_party_SPD_C" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_spd_center_left_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_spd_right"
-				position = { x = 250 y = 50 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_spd_right_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_spd_right" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_spd_right_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_spd_right_tt" }
+				position = { x = 421 y = 60 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_spd_right_button" quadTextureSprite = "GFX_GER_yihui_party_SPD_R" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_spd_right_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_dzp"
-				position = { x = 10 y = 160 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_dzp_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_dzp" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_dzp_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_dzp_tt" }
+				position = { x = 619 y = 60 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_dzp_button" quadTextureSprite = "GFX_GER_yihui_party_Z" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_dzp_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_ddp"
-				position = { x = 130 y = 160 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_ddp_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_ddp" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_ddp_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_ddp_tt" }
+				position = { x = 25 y = 350 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_ddp_button" quadTextureSprite = "GFX_GER_yihui_party_DDP" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_ddp_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_dvp"
-				position = { x = 250 y = 160 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_dvp_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_dvp" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_dvp_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_dvp_tt" }
+				position = { x = 223 y = 350 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_dvp_button" quadTextureSprite = "GFX_GER_yihui_party_DVP" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_dvp_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_dnvp"
-				position = { x = 10 y = 270 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_dnvp_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_dnvp" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_dnvp_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_dnvp_tt" }
+				position = { x = 421 y = 350 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_dnvp_button" quadTextureSprite = "GFX_GER_yihui_party_DNVP" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_dnvp_tt" clicksound = click_default }
 			}
 			containerWindowType = {
 				name = "GER_yihui_party_box_other"
-				position = { x = 130 y = 270 }
-				size = { width = 110 height = 100 }
-				background = { name = "GER_yihui_party_box_other_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_Reichstag_other" position = { x = 0 y = 8 } font = "hoi_18b" text = "GER_Reichstag_other_text" format = center maxWidth = 110 maxHeight = 84 pdx_tooltip = "GER_Reichstag_other_tt" }
-			}
-
-			containerWindowType = {
-				name = "GER_yihui_government_box"
-				position = { x = 10 y = 390 }
-				size = { width = 170 height = 120 }
-				background = { name = "GER_yihui_government_box_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_yihui_government_box_title" position = { x = 0 y = 8 } font = "hoi_20b" text = "GER_yihui_government_box_title" format = center maxWidth = 170 maxHeight = 28 }
-				instantTextboxType = { name = "GER_yihui_government_box_content" position = { x = 0 y = 55 } font = "hoi_18b" text = "GER_yihui_government_box_content" format = center maxWidth = 170 maxHeight = 50 }
-			}
-			containerWindowType = {
-				name = "GER_yihui_opposition_box"
-				position = { x = 190 y = 390 }
-				size = { width = 170 height = 120 }
-				background = { name = "GER_yihui_opposition_box_bg" spriteType = "GFX_tiled_plain_bg" }
-				instantTextboxType = { name = "GER_yihui_opposition_box_title" position = { x = 0 y = 8 } font = "hoi_20b" text = "GER_yihui_opposition_box_title" format = center maxWidth = 170 maxHeight = 28 }
+				position = { x = 619 y = 350 }
+				size = { width = 208 height = 300 }
+				buttonType = { name = "GER_yihui_party_other_button" quadTextureSprite = "GFX_GER_yihui_party_BBB" position = { x = 2 y = 0 } scale = 0.25 pdx_tooltip = "GER_Reichstag_other_tt" clicksound = click_default }
 			}
 		}
 
-		# 右侧法案栏
 		containerWindowType = {
 			name = "GER_yihui_bill_panel"
-			position = { x = 1120 y = 50 }
-			size = { width = 440 height = 640 }
-
-			background = {
-				name = "GER_yihui_bill_panel_bg"
-				spriteType = "GFX_tiled_plain_bg"
-			}
-
-			instantTextboxType = {
-				name = "GER_yihui_bill_panel_title"
-				position = { x = 0 y = 8 }
-				font = "hoi_24header"
-				text = "GER_yihui_bill_panel_title"
-				format = center
-				maxWidth = 440
-				maxHeight = 30
-			}
-
-			# 法案滚动列表（占 3/4，法案数据接入后再填充）
+			position = { x = 870 y = 375 }
+			size = { width = 570 height = 395 }
+			background = { name = "GER_yihui_bill_panel_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" }
+			instantTextboxType = { name = "GER_yihui_bill_panel_title" position = { x = 10 y = 8 } font = "hoi_24header" text = "GER_yihui_bill_panel_title" format = center maxWidth = 550 maxHeight = 30 }
 			containerWindowType = {
 				name = "GER_yihui_bill_list_container"
 				position = { x = 10 y = 45 }
-				size = { width = 420 height = 440 }
-				background = {
-					name = "GER_yihui_bill_list_bg"
-					spriteType = "GFX_tiled_plain_bg"
-				}
+				size = { width = 305 height = 310 }
+				background = { name = "GER_yihui_bill_list_bg" spriteType = "GFX_tiled_plain_bg" }
 			}
-
-			# 议会行政容量按钮（占 1/4）
 			containerWindowType = {
 				name = "GER_yihui_capacity_area"
-				position = { x = 10 y = 495 }
-				size = { width = 420 height = 135 }
-
-				background = {
-					name = "GER_yihui_capacity_bg"
-					spriteType = "GFX_tiled_plain_bg"
-				}
-
-				buttonType = {
-					name = "GER_yihui_capacity_button"
-					position = { x = 0 y = 0 }
-					size = { x = 420 y = 135 }
-					quadTextureSprite = "GFX_tiled_plain_bg"
-					pdx_tooltip = "GER_yihui_capacity_button_tt"
-					clicksound = click_default
-				}
-
-				instantTextboxType = {
-					name = "GER_yihui_capacity_title"
-					position = { x = 0 y = 15 }
-					font = "hoi_20b"
-					text = "GER_yihui_capacity_title"
-					format = center
-					maxWidth = 420
-					maxHeight = 30
-					alwaystransparent = yes
-				}
-				instantTextboxType = {
-					name = "GER_yihui_capacity_value"
-					position = { x = 0 y = 50 }
-					font = "hoi_36header"
-					text = "GER_yihui_capacity_value"
-					format = center
-					maxWidth = 420
-					maxHeight = 60
-					alwaystransparent = yes
-				}
+				position = { x = 330 y = 45 }
+				size = { width = 230 height = 135 }
+				background = { name = "GER_yihui_capacity_bg" spriteType = "GFX_tiled_plain_bg" }
+				buttonType = { name = "GER_yihui_capacity_button" position = { x = 0 y = 0 } size = { x = 230 y = 135 } quadTextureSprite = "GFX_tiled_plain_bg" pdx_tooltip = "GER_yihui_capacity_button_tt" clicksound = click_default }
+				instantTextboxType = { name = "GER_yihui_capacity_title" position = { x = 0 y = 15 } font = "hoi_20b" text = "GER_yihui_capacity_title" format = center maxWidth = 230 maxHeight = 30 alwaystransparent = yes }
+				instantTextboxType = { name = "GER_yihui_capacity_value" position = { x = 0 y = 50 } font = "hoi_36header" text = "GER_yihui_capacity_value" format = center maxWidth = 230 maxHeight = 60 alwaystransparent = yes }
 			}
+			containerWindowType = {
+				name = "GER_yihui_inertia_box"
+				position = { x = 355 y = 195 }
+				size = { width = 180 height = 36 }
+				background = { name = "GER_yihui_inertia_box_bg" spriteType = "GFX_tiled_plain_bg" }
+				instantTextboxType = { name = "GER_yihui_inertia_text" position = { x = 0 y = 4 } font = "hoi_18b" text = "GER_yihui_inertia_text" format = center maxWidth = 180 maxHeight = 30 }
+			}
+			iconType = { name = "GER_yihui_hammer_color" spriteType = "GFX_yihui_hammer_clr" position = { x = 395 y = 245 } }
+			iconType = { name = "GER_yihui_hammer_bw" spriteType = "GFX_yihui_hammer_b_w" position = { x = 395 y = 245 } }
 		}
 
 		buttonType = {
@@ -279,10 +183,11 @@ guiTypes = {
 	containerWindowType = {
 		name = "GER_Reichstag_seat_entry"
 		position = { x = 0 y = 0 }
-		size = { width = 18 height = 18 }
+		size = { width = 16 height = 16 }
 		iconType = {
 			name = "GER_Reichstag_seat_icon"
 			quadTextureSprite = "GFX_GER_reichstag_seat_icon"
+			scale = 0.85
 			pdx_tooltip = "GER_Reichstag_seat_tt"
 		}
 	}
