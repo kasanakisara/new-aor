@@ -1,0 +1,140 @@
+scripted_gui = {
+    # 右下角入口按钮：打开 / 关闭地区博弈界面
+    GER_region_game_button = {
+        context_type = player_context
+        window_name = "GER_region_game_entry_bg"
+        visible = { original_tag = GER }
+        effects = {
+            GER_region_game_button_click = {
+                if = {
+                    limit = { has_country_flag = GER_region_game_open }
+                    clr_country_flag = GER_region_game_open
+                }
+                else = {
+                    set_country_flag = GER_region_game_open
+                }
+            }
+        }
+    }
+
+    # 地区博弈主界面
+    # 接口（全部存在本国变量里，没设过 = 开局状态）：
+    #   GER_region_Rxx_open  = 1      区块已开放（显示精灵 + 点击条）
+    #   GER_region_Rxx_state = 1..7   逻辑状态：1 斜线 2 中立 3 左 4 右 5 摇摆 6 特殊 7 备用
+    #   GER_region_Rxx_frame          实际显示帧，由 GER_region_game_sync_frames 从 state 算出（摇摆暂显示帧 2）
+    #   GER_region_OV_<id>_shown = 1  显示对应割让盖板
+    #   GER_region_selected = 1..16   最后点击的区块（右上名称框显示它的名字）
+    # 区块点击效果 / 选中（点击条帧 3）/ 悬浮文字：待定，之后再接
+    GER_region_game_gui = {
+        context_type = player_context
+        window_name = "GER_region_game_window"
+        visible = {
+            original_tag = GER
+            has_country_flag = GER_region_game_open
+        }
+        properties = {
+            # >>> GENERATED: properties (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+            GER_region_R01_WeserEms_fill = { frame = var:GER_region_R01_frame }
+            GER_region_R02_Hannover_fill = { frame = var:GER_region_R02_frame }
+            GER_region_R03_HamburgSH_fill = { frame = var:GER_region_R03_frame }
+            GER_region_R04_Mecklenburg_fill = { frame = var:GER_region_R04_frame }
+            GER_region_R05_Pomerania_fill = { frame = var:GER_region_R05_frame }
+            GER_region_R06_Brandenburg_fill = { frame = var:GER_region_R06_frame }
+            GER_region_R07_Silesia_fill = { frame = var:GER_region_R07_frame }
+            GER_region_R08_ThuringiaSaxony_fill = { frame = var:GER_region_R08_frame }
+            GER_region_R09_Bavaria_fill = { frame = var:GER_region_R09_frame }
+            GER_region_R10_BadenWuerttemberg_fill = { frame = var:GER_region_R10_frame }
+            GER_region_R11_Hesse_fill = { frame = var:GER_region_R11_frame }
+            GER_region_R12_Rhineland_fill = { frame = var:GER_region_R12_frame }
+            GER_region_R13_EastPrussia_fill = { frame = var:GER_region_R13_frame }
+            GER_region_R14_Ruhr_fill = { frame = var:GER_region_R14_frame }
+            GER_region_R15_Westphalia_fill = { frame = var:GER_region_R15_frame }
+            GER_region_R16_GreatBerlin_fill = { frame = var:GER_region_R16_frame }
+            # <<< GENERATED: properties
+        }
+        triggers = {
+            # >>> GENERATED: triggers (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+            # 区块：显示 = 已开放（GER_region_Rxx_open = 1）；隐藏时不画、不挡鼠标
+            GER_region_R01_WeserEms_fill_visible = { check_variable = { GER_region_R01_open = 1 } }
+            GER_region_R01_WeserEms_button_visible = { check_variable = { GER_region_R01_open = 1 } }
+            GER_region_R02_Hannover_fill_visible = { check_variable = { GER_region_R02_open = 1 } }
+            GER_region_R02_Hannover_button_visible = { check_variable = { GER_region_R02_open = 1 } }
+            GER_region_R03_HamburgSH_fill_visible = { check_variable = { GER_region_R03_open = 1 } }
+            GER_region_R03_HamburgSH_button_visible = { check_variable = { GER_region_R03_open = 1 } }
+            GER_region_R04_Mecklenburg_fill_visible = { check_variable = { GER_region_R04_open = 1 } }
+            GER_region_R04_Mecklenburg_button_visible = { check_variable = { GER_region_R04_open = 1 } }
+            GER_region_R05_Pomerania_fill_visible = { check_variable = { GER_region_R05_open = 1 } }
+            GER_region_R05_Pomerania_button_visible = { check_variable = { GER_region_R05_open = 1 } }
+            GER_region_R06_Brandenburg_fill_visible = { check_variable = { GER_region_R06_open = 1 } }
+            GER_region_R06_Brandenburg_button_visible = { check_variable = { GER_region_R06_open = 1 } }
+            GER_region_R07_Silesia_fill_visible = { check_variable = { GER_region_R07_open = 1 } }
+            GER_region_R07_Silesia_button_visible = { check_variable = { GER_region_R07_open = 1 } }
+            GER_region_R08_ThuringiaSaxony_fill_visible = { check_variable = { GER_region_R08_open = 1 } }
+            GER_region_R08_ThuringiaSaxony_button_visible = { check_variable = { GER_region_R08_open = 1 } }
+            GER_region_R09_Bavaria_fill_visible = { check_variable = { GER_region_R09_open = 1 } }
+            GER_region_R09_Bavaria_button_visible = { check_variable = { GER_region_R09_open = 1 } }
+            GER_region_R10_BadenWuerttemberg_fill_visible = { check_variable = { GER_region_R10_open = 1 } }
+            GER_region_R10_BadenWuerttemberg_button_visible = { check_variable = { GER_region_R10_open = 1 } }
+            GER_region_R11_Hesse_fill_visible = { check_variable = { GER_region_R11_open = 1 } }
+            GER_region_R11_Hesse_button_visible = { check_variable = { GER_region_R11_open = 1 } }
+            GER_region_R12_Rhineland_fill_visible = { check_variable = { GER_region_R12_open = 1 } }
+            GER_region_R12_Rhineland_button_visible = { check_variable = { GER_region_R12_open = 1 } }
+            GER_region_R13_EastPrussia_fill_visible = { check_variable = { GER_region_R13_open = 1 } }
+            GER_region_R13_EastPrussia_button_visible = { check_variable = { GER_region_R13_open = 1 } }
+            GER_region_R14_Ruhr_fill_visible = { check_variable = { GER_region_R14_open = 1 } }
+            GER_region_R14_Ruhr_button_visible = { check_variable = { GER_region_R14_open = 1 } }
+            GER_region_R15_Westphalia_fill_visible = { check_variable = { GER_region_R15_open = 1 } }
+            GER_region_R15_Westphalia_button_visible = { check_variable = { GER_region_R15_open = 1 } }
+            GER_region_R16_GreatBerlin_fill_visible = { check_variable = { GER_region_R16_open = 1 } }
+            GER_region_R16_GreatBerlin_button_visible = { check_variable = { GER_region_R16_open = 1 } }
+            # 割让盖板：显示 = GER_region_OV_xxx_shown = 1；盖板点击图只出提示，不写 click 效果
+            GER_region_OV_SHL_trust_all_visible = { check_variable = { GER_region_OV_SHL_trust_all_shown = 1 } }
+            GER_region_OV_SHL_trust_all_button_visible = { check_variable = { GER_region_OV_SHL_trust_all_shown = 1 } }
+            GER_region_OV_SHL_north_Denmark_visible = { check_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 } }
+            GER_region_OV_SHL_north_Denmark_button_visible = { check_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 } }
+            GER_region_OV_SIL_Katowice_all_visible = { check_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 } }
+            GER_region_OV_SIL_Katowice_all_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 } }
+            GER_region_OV_SIL_Katowice_lobe_A_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 } }
+            GER_region_OV_SIL_Katowice_lobe_A_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 } }
+            GER_region_OV_SIL_Katowice_lobe_B_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 } }
+            GER_region_OV_SIL_Katowice_lobe_B_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 } }
+            GER_region_OV_EP_southwest_visible = { check_variable = { GER_region_OV_EP_southwest_shown = 1 } }
+            GER_region_OV_EP_southwest_button_visible = { check_variable = { GER_region_OV_EP_southwest_shown = 1 } }
+            GER_region_OV_MEMEL_visible = { check_variable = { GER_region_OV_MEMEL_shown = 1 } }
+            GER_region_OV_MEMEL_button_visible = { check_variable = { GER_region_OV_MEMEL_shown = 1 } }
+            GER_region_OV_EUPEN_MALMEDY_visible = { check_variable = { GER_region_OV_EUPEN_MALMEDY_shown = 1 } }
+            GER_region_OV_EUPEN_MALMEDY_button_visible = { check_variable = { GER_region_OV_EUPEN_MALMEDY_shown = 1 } }
+            GER_region_OV_POSEN_WPRUSSIA_visible = { check_variable = { GER_region_OV_POSEN_WPRUSSIA_shown = 1 } }
+            GER_region_OV_POSEN_WPRUSSIA_button_visible = { check_variable = { GER_region_OV_POSEN_WPRUSSIA_shown = 1 } }
+            GER_region_OV_SAAR_bump_A_visible = { check_variable = { GER_region_OV_SAAR_bump_A_shown = 1 } }
+            GER_region_OV_SAAR_bump_A_button_visible = { check_variable = { GER_region_OV_SAAR_bump_A_shown = 1 } }
+            GER_region_OV_SAAR_bump_B_visible = { check_variable = { GER_region_OV_SAAR_bump_B_shown = 1 } }
+            GER_region_OV_SAAR_bump_B_button_visible = { check_variable = { GER_region_OV_SAAR_bump_B_shown = 1 } }
+            # <<< GENERATED: triggers
+        }
+        effects = {
+            close_button_click = {
+                clr_country_flag = GER_region_game_open
+            }
+            # >>> GENERATED: effects (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+            # 点击区块：记下选中的区块，右上名称框随之显示该区块名
+            GER_region_R01_WeserEms_button_click = { set_variable = { GER_region_selected = 1 } }
+            GER_region_R02_Hannover_button_click = { set_variable = { GER_region_selected = 2 } }
+            GER_region_R03_HamburgSH_button_click = { set_variable = { GER_region_selected = 3 } }
+            GER_region_R04_Mecklenburg_button_click = { set_variable = { GER_region_selected = 4 } }
+            GER_region_R05_Pomerania_button_click = { set_variable = { GER_region_selected = 5 } }
+            GER_region_R06_Brandenburg_button_click = { set_variable = { GER_region_selected = 6 } }
+            GER_region_R07_Silesia_button_click = { set_variable = { GER_region_selected = 7 } }
+            GER_region_R08_ThuringiaSaxony_button_click = { set_variable = { GER_region_selected = 8 } }
+            GER_region_R09_Bavaria_button_click = { set_variable = { GER_region_selected = 9 } }
+            GER_region_R10_BadenWuerttemberg_button_click = { set_variable = { GER_region_selected = 10 } }
+            GER_region_R11_Hesse_button_click = { set_variable = { GER_region_selected = 11 } }
+            GER_region_R12_Rhineland_button_click = { set_variable = { GER_region_selected = 12 } }
+            GER_region_R13_EastPrussia_button_click = { set_variable = { GER_region_selected = 13 } }
+            GER_region_R14_Ruhr_button_click = { set_variable = { GER_region_selected = 14 } }
+            GER_region_R15_Westphalia_button_click = { set_variable = { GER_region_selected = 15 } }
+            GER_region_R16_GreatBerlin_button_click = { set_variable = { GER_region_selected = 16 } }
+            # <<< GENERATED: effects
+        }
+    }
+}

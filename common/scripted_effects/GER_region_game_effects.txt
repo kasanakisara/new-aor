@@ -1,0 +1,107 @@
+# 由 tools/GER_region_game/gen_region_game.py 生成，不要手改。
+
+# 把每个区块的逻辑状态 state 换算成显示帧 frame。
+# 摇摆（state 5）暂时显示成帧 2；以后启用黄色（帧 5）时，改脚本里的 SWING_DISPLAY_FRAME 再重跑。
+GER_region_game_sync_frames = {
+    if = { limit = { check_variable = { GER_region_R01_state = 5 } } set_variable = { GER_region_R01_frame = 2 } }
+    else = { set_variable = { GER_region_R01_frame = GER_region_R01_state } }
+    if = { limit = { check_variable = { GER_region_R02_state = 5 } } set_variable = { GER_region_R02_frame = 2 } }
+    else = { set_variable = { GER_region_R02_frame = GER_region_R02_state } }
+    if = { limit = { check_variable = { GER_region_R03_state = 5 } } set_variable = { GER_region_R03_frame = 2 } }
+    else = { set_variable = { GER_region_R03_frame = GER_region_R03_state } }
+    if = { limit = { check_variable = { GER_region_R04_state = 5 } } set_variable = { GER_region_R04_frame = 2 } }
+    else = { set_variable = { GER_region_R04_frame = GER_region_R04_state } }
+    if = { limit = { check_variable = { GER_region_R05_state = 5 } } set_variable = { GER_region_R05_frame = 2 } }
+    else = { set_variable = { GER_region_R05_frame = GER_region_R05_state } }
+    if = { limit = { check_variable = { GER_region_R06_state = 5 } } set_variable = { GER_region_R06_frame = 2 } }
+    else = { set_variable = { GER_region_R06_frame = GER_region_R06_state } }
+    if = { limit = { check_variable = { GER_region_R07_state = 5 } } set_variable = { GER_region_R07_frame = 2 } }
+    else = { set_variable = { GER_region_R07_frame = GER_region_R07_state } }
+    if = { limit = { check_variable = { GER_region_R08_state = 5 } } set_variable = { GER_region_R08_frame = 2 } }
+    else = { set_variable = { GER_region_R08_frame = GER_region_R08_state } }
+    if = { limit = { check_variable = { GER_region_R09_state = 5 } } set_variable = { GER_region_R09_frame = 2 } }
+    else = { set_variable = { GER_region_R09_frame = GER_region_R09_state } }
+    if = { limit = { check_variable = { GER_region_R10_state = 5 } } set_variable = { GER_region_R10_frame = 2 } }
+    else = { set_variable = { GER_region_R10_frame = GER_region_R10_state } }
+    if = { limit = { check_variable = { GER_region_R11_state = 5 } } set_variable = { GER_region_R11_frame = 2 } }
+    else = { set_variable = { GER_region_R11_frame = GER_region_R11_state } }
+    if = { limit = { check_variable = { GER_region_R12_state = 5 } } set_variable = { GER_region_R12_frame = 2 } }
+    else = { set_variable = { GER_region_R12_frame = GER_region_R12_state } }
+    if = { limit = { check_variable = { GER_region_R13_state = 5 } } set_variable = { GER_region_R13_frame = 2 } }
+    else = { set_variable = { GER_region_R13_frame = GER_region_R13_state } }
+    if = { limit = { check_variable = { GER_region_R14_state = 5 } } set_variable = { GER_region_R14_frame = 2 } }
+    else = { set_variable = { GER_region_R14_frame = GER_region_R14_state } }
+    if = { limit = { check_variable = { GER_region_R15_state = 5 } } set_variable = { GER_region_R15_frame = 2 } }
+    else = { set_variable = { GER_region_R15_frame = GER_region_R15_state } }
+    if = { limit = { check_variable = { GER_region_R16_state = 5 } } set_variable = { GER_region_R16_frame = 2 } }
+    else = { set_variable = { GER_region_R16_frame = GER_region_R16_state } }
+}
+
+# 隐藏全部割让盖板
+GER_region_game_hide_all_overlays = {
+    clear_variable = GER_region_OV_SHL_trust_all_shown
+    clear_variable = GER_region_OV_SHL_north_Denmark_shown
+    clear_variable = GER_region_OV_SIL_Katowice_all_shown
+    clear_variable = GER_region_OV_SIL_Katowice_lobe_A_shown
+    clear_variable = GER_region_OV_SIL_Katowice_lobe_B_shown
+    clear_variable = GER_region_OV_EP_southwest_shown
+    clear_variable = GER_region_OV_MEMEL_shown
+    clear_variable = GER_region_OV_EUPEN_MALMEDY_shown
+    clear_variable = GER_region_OV_POSEN_WPRUSSIA_shown
+    clear_variable = GER_region_OV_SAAR_bump_A_shown
+    clear_variable = GER_region_OV_SAAR_bump_B_shown
+}
+
+# 回到开局画面：全部区块隐藏、全部盖板隐藏
+GER_region_game_reset_to_opening = {
+    clear_variable = GER_region_R01_open
+    clear_variable = GER_region_R01_state
+    clear_variable = GER_region_R01_frame
+    clear_variable = GER_region_R02_open
+    clear_variable = GER_region_R02_state
+    clear_variable = GER_region_R02_frame
+    clear_variable = GER_region_R03_open
+    clear_variable = GER_region_R03_state
+    clear_variable = GER_region_R03_frame
+    clear_variable = GER_region_R04_open
+    clear_variable = GER_region_R04_state
+    clear_variable = GER_region_R04_frame
+    clear_variable = GER_region_R05_open
+    clear_variable = GER_region_R05_state
+    clear_variable = GER_region_R05_frame
+    clear_variable = GER_region_R06_open
+    clear_variable = GER_region_R06_state
+    clear_variable = GER_region_R06_frame
+    clear_variable = GER_region_R07_open
+    clear_variable = GER_region_R07_state
+    clear_variable = GER_region_R07_frame
+    clear_variable = GER_region_R08_open
+    clear_variable = GER_region_R08_state
+    clear_variable = GER_region_R08_frame
+    clear_variable = GER_region_R09_open
+    clear_variable = GER_region_R09_state
+    clear_variable = GER_region_R09_frame
+    clear_variable = GER_region_R10_open
+    clear_variable = GER_region_R10_state
+    clear_variable = GER_region_R10_frame
+    clear_variable = GER_region_R11_open
+    clear_variable = GER_region_R11_state
+    clear_variable = GER_region_R11_frame
+    clear_variable = GER_region_R12_open
+    clear_variable = GER_region_R12_state
+    clear_variable = GER_region_R12_frame
+    clear_variable = GER_region_R13_open
+    clear_variable = GER_region_R13_state
+    clear_variable = GER_region_R13_frame
+    clear_variable = GER_region_R14_open
+    clear_variable = GER_region_R14_state
+    clear_variable = GER_region_R14_frame
+    clear_variable = GER_region_R15_open
+    clear_variable = GER_region_R15_state
+    clear_variable = GER_region_R15_frame
+    clear_variable = GER_region_R16_open
+    clear_variable = GER_region_R16_state
+    clear_variable = GER_region_R16_frame
+    clear_variable = GER_region_selected
+    GER_region_game_hide_all_overlays = yes
+}

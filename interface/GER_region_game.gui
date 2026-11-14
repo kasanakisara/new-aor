@@ -1,0 +1,663 @@
+guiTypes = {
+    # 入口按钮：右下角，议会按钮（GER_yihui_entry_bg，y = -360，100x100）正上方
+    containerWindowType = {
+        name = "GER_region_game_entry_bg"
+        position = { x = 0 y = -470 }
+        Orientation = LOWER_RIGHT
+        Origo = LOWER_RIGHT
+        size = { width = 148 height = 34 }
+        buttonType = {
+            name = "GER_region_game_button"
+            quadTextureSprite = "GFX_button_148x34"
+            position = { x = 0 y = 0 }
+            buttonText = "GER_region_game_entry_text"
+            buttonFont = "hoi_18mbs"
+            pdx_tooltip = "GER_region_game_entry_tt"
+            clicksound = click_default
+        }
+    }
+
+    containerWindowType = {
+        name = "GER_region_game_window"
+        position = { x = 0 y = 0 }
+        Orientation = center
+        Origo = center
+        size = { width = 1616 height = 893 }
+        moveable = yes
+
+        background = {
+            name = "GER_region_game_bg"
+            quadTextureSprite = "GFX_tiled_plain_bg"
+        }
+        # 内缩 1 像素的 lined 层；alwaystransparent 让鼠标穿透到窗口本身，拖动照常
+        buttonType = {
+            name = "GER_region_game_lined_overlay"
+            position = { x = 1 y = 1 }
+            size = { x = 1614 y = 891 }
+            quadTextureSprite = "GFX_tiled_plain_bg_lined"
+            alwaystransparent = yes
+        }
+
+        # 顶部引言框
+        containerWindowType = {
+            name = "GER_region_game_quote_box"
+            position = { x = 16 y = 12 }
+            size = { width = 1248 height = 44 }
+            background = { name = "GER_region_game_quote_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_quote_text"
+                position = { x = 10 y = 12 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_quote"
+                maxWidth = 1228
+                maxHeight = 22
+                format = centre
+            }
+        }
+
+        # 地图画布 1248 x 813：所有图层位置都相对画布左上角，取自素材清单
+        containerWindowType = {
+            name = "GER_region_game_map"
+            position = { x = 16 y = 64 }
+            size = { width = 1248 height = 813 }
+            # >>> GENERATED: map_layers (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+            # 层 1：最底层 羊皮纸 / 海 / 水纹（一直显示）
+            iconType = {
+                name = "GER_region_base"
+                spriteType = "GFX_GER_region_base"
+                position = { x = 0 y = 0 }
+                alwaystransparent = yes
+            }
+            # 层 2：阿尔萨斯-洛林、巴伐利亚缺角斜线块（一直显示）
+            iconType = {
+                name = "GER_region_alsace_lorraine"
+                spriteType = "GFX_GER_region_alsace_lorraine_fill"
+                position = { x = 114 y = 574 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_bav_corner"
+                spriteType = "GFX_GER_region_bav_corner_fill"
+                position = { x = 514 y = 665 }
+                alwaystransparent = yes
+            }
+            # 层 3：整块斜线层（一直显示，永不隐藏）
+            iconType = {
+                name = "GER_region_locked_all"
+                spriteType = "GFX_GER_region_locked_all"
+                position = { x = 0 y = 0 }
+                alwaystransparent = yes
+            }
+            # 层 4：16 个区块精灵（7 帧）。默认隐藏；帧号 = var:GER_region_Rxx_frame
+            iconType = {
+                name = "GER_region_R01_WeserEms_fill"
+                spriteType = "GFX_GER_region_R01_WeserEms_fill"
+                position = { x = 169 y = 211 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R02_Hannover_fill"
+                spriteType = "GFX_GER_region_R02_Hannover_fill"
+                position = { x = 285 y = 199 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R03_HamburgSH_fill"
+                spriteType = "GFX_GER_region_R03_HamburgSH_fill"
+                position = { x = 296 y = 62 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R04_Mecklenburg_fill"
+                spriteType = "GFX_GER_region_R04_Mecklenburg_fill"
+                position = { x = 423 y = 164 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R05_Pomerania_fill"
+                spriteType = "GFX_GER_region_R05_Pomerania_fill"
+                position = { x = 526 y = 105 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R06_Brandenburg_fill"
+                spriteType = "GFX_GER_region_R06_Brandenburg_fill"
+                position = { x = 432 y = 227 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R07_Silesia_fill"
+                spriteType = "GFX_GER_region_R07_Silesia_fill"
+                position = { x = 657 y = 300 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R08_ThuringiaSaxony_fill"
+                spriteType = "GFX_GER_region_R08_ThuringiaSaxony_fill"
+                position = { x = 373 y = 326 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R09_Bavaria_fill"
+                spriteType = "GFX_GER_region_R09_Bavaria_fill"
+                position = { x = 312 y = 488 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R10_BadenWuerttemberg_fill"
+                spriteType = "GFX_GER_region_R10_BadenWuerttemberg_fill"
+                position = { x = 203 y = 554 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R11_Hesse_fill"
+                spriteType = "GFX_GER_region_R11_Hesse_fill"
+                position = { x = 223 y = 394 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R12_Rhineland_fill"
+                spriteType = "GFX_GER_region_R12_Rhineland_fill"
+                position = { x = 108 y = 367 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R13_EastPrussia_fill"
+                spriteType = "GFX_GER_region_R13_EastPrussia_fill"
+                position = { x = 743 y = 35 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R14_Ruhr_fill"
+                spriteType = "GFX_GER_region_R14_Ruhr_fill"
+                position = { x = 151 y = 391 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R15_Westphalia_fill"
+                spriteType = "GFX_GER_region_R15_Westphalia_fill"
+                position = { x = 153 y = 323 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_R16_GreatBerlin_fill"
+                spriteType = "GFX_GER_region_R16_GreatBerlin_fill"
+                position = { x = 575 y = 310 }
+                frame = 2
+                alwaystransparent = yes
+            }
+            # 层 5：割让盖板（默认全部隐藏）
+            iconType = {
+                name = "GER_region_OV_SHL_trust_all"
+                spriteType = "GFX_GER_region_OV_SHL_trust_all"
+                position = { x = 302 y = 66 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SHL_north_Denmark"
+                spriteType = "GFX_GER_region_OV_SHL_north_Denmark"
+                position = { x = 302 y = 66 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SIL_Katowice_all"
+                spriteType = "GFX_GER_region_OV_SIL_Katowice_all"
+                position = { x = 885 y = 441 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SIL_Katowice_lobe_A"
+                spriteType = "GFX_GER_region_OV_SIL_Katowice_lobe_A"
+                position = { x = 902 y = 441 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SIL_Katowice_lobe_B"
+                spriteType = "GFX_GER_region_OV_SIL_Katowice_lobe_B"
+                position = { x = 885 y = 478 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_EP_southwest"
+                spriteType = "GFX_GER_region_OV_EP_southwest"
+                position = { x = 911 y = 158 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_MEMEL"
+                spriteType = "GFX_GER_region_OV_MEMEL"
+                position = { x = 1044 y = 37 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_EUPEN_MALMEDY"
+                spriteType = "GFX_GER_region_OV_EUPEN_MALMEDY"
+                position = { x = 126 y = 491 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_POSEN_WPRUSSIA"
+                spriteType = "GFX_GER_region_OV_POSEN_WPRUSSIA"
+                position = { x = 735 y = 126 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SAAR_bump_A"
+                spriteType = "GFX_GER_region_OV_SAAR_bump_A"
+                position = { x = 168 y = 594 }
+                alwaystransparent = yes
+            }
+            iconType = {
+                name = "GER_region_OV_SAAR_bump_B"
+                spriteType = "GFX_GER_region_OV_SAAR_bump_B"
+                position = { x = 197 y = 599 }
+                alwaystransparent = yes
+            }
+            # 层 6：德国外轮廓线（透明底，不接收鼠标）
+            iconType = {
+                name = "GER_region_outline"
+                spriteType = "GFX_GER_region_outline"
+                position = { x = 0 y = 0 }
+                alwaystransparent = yes
+            }
+            # 层 7：点击层。后写的先接收鼠标：整块德国 -> 区块 -> 盖板 -> 阿洛 / 巴伐利亚缺角
+            buttonType = {
+                name = "GER_region_locked_all_button"
+                quadTextureSprite = "GFX_GER_region_locked_all_hit"
+                position = { x = 113 y = 40 }
+                pdx_tooltip = "GER_region_locked_all_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R01_WeserEms_button"
+                quadTextureSprite = "GFX_GER_region_R01_WeserEms_hit"
+                position = { x = 169 y = 211 }
+                pdx_tooltip = "GER_region_R01_WeserEms_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R02_Hannover_button"
+                quadTextureSprite = "GFX_GER_region_R02_Hannover_hit"
+                position = { x = 285 y = 199 }
+                pdx_tooltip = "GER_region_R02_Hannover_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R03_HamburgSH_button"
+                quadTextureSprite = "GFX_GER_region_R03_HamburgSH_hit"
+                position = { x = 296 y = 62 }
+                pdx_tooltip = "GER_region_R03_HamburgSH_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R04_Mecklenburg_button"
+                quadTextureSprite = "GFX_GER_region_R04_Mecklenburg_hit"
+                position = { x = 423 y = 164 }
+                pdx_tooltip = "GER_region_R04_Mecklenburg_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R05_Pomerania_button"
+                quadTextureSprite = "GFX_GER_region_R05_Pomerania_hit"
+                position = { x = 526 y = 105 }
+                pdx_tooltip = "GER_region_R05_Pomerania_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R06_Brandenburg_button"
+                quadTextureSprite = "GFX_GER_region_R06_Brandenburg_hit"
+                position = { x = 432 y = 227 }
+                pdx_tooltip = "GER_region_R06_Brandenburg_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R07_Silesia_button"
+                quadTextureSprite = "GFX_GER_region_R07_Silesia_hit"
+                position = { x = 657 y = 300 }
+                pdx_tooltip = "GER_region_R07_Silesia_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R08_ThuringiaSaxony_button"
+                quadTextureSprite = "GFX_GER_region_R08_ThuringiaSaxony_hit"
+                position = { x = 373 y = 326 }
+                pdx_tooltip = "GER_region_R08_ThuringiaSaxony_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R09_Bavaria_button"
+                quadTextureSprite = "GFX_GER_region_R09_Bavaria_hit"
+                position = { x = 312 y = 488 }
+                pdx_tooltip = "GER_region_R09_Bavaria_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R10_BadenWuerttemberg_button"
+                quadTextureSprite = "GFX_GER_region_R10_BadenWuerttemberg_hit"
+                position = { x = 203 y = 554 }
+                pdx_tooltip = "GER_region_R10_BadenWuerttemberg_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R11_Hesse_button"
+                quadTextureSprite = "GFX_GER_region_R11_Hesse_hit"
+                position = { x = 223 y = 394 }
+                pdx_tooltip = "GER_region_R11_Hesse_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R12_Rhineland_button"
+                quadTextureSprite = "GFX_GER_region_R12_Rhineland_hit"
+                position = { x = 108 y = 367 }
+                pdx_tooltip = "GER_region_R12_Rhineland_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R13_EastPrussia_button"
+                quadTextureSprite = "GFX_GER_region_R13_EastPrussia_hit"
+                position = { x = 743 y = 35 }
+                pdx_tooltip = "GER_region_R13_EastPrussia_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R14_Ruhr_button"
+                quadTextureSprite = "GFX_GER_region_R14_Ruhr_hit"
+                position = { x = 151 y = 391 }
+                pdx_tooltip = "GER_region_R14_Ruhr_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R15_Westphalia_button"
+                quadTextureSprite = "GFX_GER_region_R15_Westphalia_hit"
+                position = { x = 153 y = 323 }
+                pdx_tooltip = "GER_region_R15_Westphalia_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_R16_GreatBerlin_button"
+                quadTextureSprite = "GFX_GER_region_R16_GreatBerlin_hit"
+                position = { x = 575 y = 310 }
+                pdx_tooltip = "GER_region_R16_GreatBerlin_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SHL_trust_all_button"
+                quadTextureSprite = "GFX_GER_region_OV_SHL_trust_all_hit"
+                position = { x = 302 y = 66 }
+                pdx_tooltip = "GER_region_OV_SHL_trust_all_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SHL_north_Denmark_button"
+                quadTextureSprite = "GFX_GER_region_OV_SHL_north_Denmark_hit"
+                position = { x = 302 y = 66 }
+                pdx_tooltip = "GER_region_OV_SHL_north_Denmark_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SIL_Katowice_all_button"
+                quadTextureSprite = "GFX_GER_region_OV_SIL_Katowice_all_hit"
+                position = { x = 885 y = 441 }
+                pdx_tooltip = "GER_region_OV_SIL_Katowice_all_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SIL_Katowice_lobe_A_button"
+                quadTextureSprite = "GFX_GER_region_OV_SIL_Katowice_lobe_A_hit"
+                position = { x = 902 y = 441 }
+                pdx_tooltip = "GER_region_OV_SIL_Katowice_lobe_A_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SIL_Katowice_lobe_B_button"
+                quadTextureSprite = "GFX_GER_region_OV_SIL_Katowice_lobe_B_hit"
+                position = { x = 885 y = 478 }
+                pdx_tooltip = "GER_region_OV_SIL_Katowice_lobe_B_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_EP_southwest_button"
+                quadTextureSprite = "GFX_GER_region_OV_EP_southwest_hit"
+                position = { x = 911 y = 158 }
+                pdx_tooltip = "GER_region_OV_EP_southwest_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_MEMEL_button"
+                quadTextureSprite = "GFX_GER_region_OV_MEMEL_hit"
+                position = { x = 1044 y = 37 }
+                pdx_tooltip = "GER_region_OV_MEMEL_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_EUPEN_MALMEDY_button"
+                quadTextureSprite = "GFX_GER_region_OV_EUPEN_MALMEDY_hit"
+                position = { x = 126 y = 491 }
+                pdx_tooltip = "GER_region_OV_EUPEN_MALMEDY_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_POSEN_WPRUSSIA_button"
+                quadTextureSprite = "GFX_GER_region_OV_POSEN_WPRUSSIA_hit"
+                position = { x = 735 y = 126 }
+                pdx_tooltip = "GER_region_OV_POSEN_WPRUSSIA_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SAAR_bump_A_button"
+                quadTextureSprite = "GFX_GER_region_OV_SAAR_bump_A_hit"
+                position = { x = 168 y = 594 }
+                pdx_tooltip = "GER_region_OV_SAAR_bump_A_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_OV_SAAR_bump_B_button"
+                quadTextureSprite = "GFX_GER_region_OV_SAAR_bump_B_hit"
+                position = { x = 197 y = 599 }
+                pdx_tooltip = "GER_region_OV_SAAR_bump_B_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_alsace_lorraine_button"
+                quadTextureSprite = "GFX_GER_region_alsace_lorraine_hit"
+                position = { x = 114 y = 576 }
+                pdx_tooltip = "GER_region_alsace_lorraine_tt"
+                clicksound = click_default
+            }
+            buttonType = {
+                name = "GER_region_bav_corner_button"
+                quadTextureSprite = "GFX_GER_region_bav_corner_hit"
+                position = { x = 516 y = 667 }
+                pdx_tooltip = "GER_region_bav_corner_tt"
+                clicksound = click_default
+            }
+            # <<< GENERATED: map_layers
+        }
+
+        # ---- 右侧面板：只是框架占位，美术之后替换（此段只在首次生成时写出，之后可以随便手改）----
+        containerWindowType = {
+            name = "GER_region_game_name_box"
+            position = { x = 1280 y = 12 }
+            size = { width = 284 height = 30 }
+            background = { name = "GER_region_game_name_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_name_box_text"
+                position = { x = 4 y = 5 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_selected_name"
+                maxWidth = 276
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_photo_box"
+            position = { x = 1280 y = 52 }
+            size = { width = 320 height = 96 }
+            background = { name = "GER_region_game_photo_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_photo_box_text"
+                position = { x = 4 y = 38 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_photo_label"
+                maxWidth = 312
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_leader_box"
+            position = { x = 1280 y = 164 }
+            size = { width = 118 height = 28 }
+            background = { name = "GER_region_game_leader_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_leader_box_text"
+                position = { x = 4 y = 4 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_leader_label"
+                maxWidth = 110
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_portrait_box"
+            position = { x = 1280 y = 200 }
+            size = { width = 118 height = 168 }
+            background = { name = "GER_region_game_portrait_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_portrait_box_text"
+                position = { x = 4 y = 74 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_portrait_label"
+                maxWidth = 110
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_logo_box"
+            position = { x = 1424 y = 164 }
+            size = { width = 168 height = 168 }
+            background = { name = "GER_region_game_logo_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_logo_box_text"
+                position = { x = 4 y = 74 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_logo_label"
+                maxWidth = 160
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_support_box"
+            position = { x = 1413 y = 344 }
+            size = { width = 93 height = 30 }
+            background = { name = "GER_region_game_support_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_support_box_text"
+                position = { x = 4 y = 5 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_support_label"
+                maxWidth = 85
+                maxHeight = 22
+                format = centre
+            }
+        }
+        containerWindowType = {
+            name = "GER_region_game_control_box"
+            position = { x = 1506 y = 344 }
+            size = { width = 94 height = 30 }
+            background = { name = "GER_region_game_control_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_control_box_text"
+                position = { x = 4 y = 5 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_control_label"
+                maxWidth = 86
+                maxHeight = 22
+                format = centre
+            }
+        }
+        # 支持度 / 控制度竖条（之后可换成 vertical progressbar）
+        containerWindowType = {
+            name = "GER_region_game_support_bar"
+            position = { x = 1441 y = 386 }
+            size = { width = 36 height = 490 }
+            background = { name = "GER_region_game_support_bar_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+        }
+        containerWindowType = {
+            name = "GER_region_game_control_bar"
+            position = { x = 1535 y = 386 }
+            size = { width = 36 height = 490 }
+            background = { name = "GER_region_game_control_bar_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+        }
+        containerWindowType = {
+            name = "GER_region_game_policy_box"
+            position = { x = 1280 y = 386 }
+            size = { width = 118 height = 110 }
+            background = { name = "GER_region_game_policy_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+            instantTextboxType = {
+                name = "GER_region_game_policy_box_text"
+                position = { x = 4 y = 45 }
+                font = "hoi_16mbs"
+                text = "GER_region_game_policy_label"
+                maxWidth = 110
+                maxHeight = 22
+                format = centre
+            }
+        }
+        buttonType = {
+            name = "GER_region_game_policy_1_button"
+            position = { x = 1280 y = 516 }
+            size = { x = 118 y = 28 }
+            quadTextureSprite = "GFX_GER_region_game_frame"
+            buttonText = "GER_region_game_policy_1"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+        buttonType = {
+            name = "GER_region_game_policy_2_button"
+            position = { x = 1280 y = 556 }
+            size = { x = 118 y = 28 }
+            quadTextureSprite = "GFX_GER_region_game_frame"
+            buttonText = "GER_region_game_policy_2"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+        buttonType = {
+            name = "GER_region_game_policy_3_button"
+            position = { x = 1280 y = 596 }
+            size = { x = 118 y = 28 }
+            quadTextureSprite = "GFX_GER_region_game_frame"
+            buttonText = "GER_region_game_policy_3"
+            buttonFont = "hoi_16mbs"
+            clicksound = click_default
+        }
+
+        buttonType = {
+            name = "close_button"
+            position = { x = -40 y = 8 }
+            quadTextureSprite = "GFX_profile_button_close"
+            shortcut = "ESCAPE"
+            Orientation = "UPPER_RIGHT"
+            pdx_tooltip = "CLOSE"
+        }
+    }
+}

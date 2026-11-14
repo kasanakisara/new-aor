@@ -1,0 +1,339 @@
+spriteTypes = {
+    # 右侧面板占位框：tiled_plain_bg_lined 的金线贴着贴图外缘，
+    # 小框用 8px 的 borderSize，避免默认 64px 边角在 30px 高的框里叠在一起。
+    corneredTileSpriteType = {
+        name = "GFX_GER_region_game_frame"
+        size = { x = 190 y = 190 }
+        textureFile = "gfx/interface/tiles/tiled_plain_bg_lined.dds"
+        borderSize = { x = 8 y = 8 }
+        tilingCenter = yes
+        effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+    }
+
+    # 地图素材：像素对齐，GUI 里一律 scale = 1，不要缩放。
+    # >>> GENERATED: sprites (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+    spriteType = {
+        name = "GFX_GER_region_base"
+        texturefile = "gfx/interface/GER_region_game/base_parchment_sea.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_outline"
+        texturefile = "gfx/interface/GER_region_game/germany_outline.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_locked_all"
+        texturefile = "gfx/interface/GER_region_game/locked_all.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_locked_all_hit"
+        texturefile = "gfx/interface/GER_region_game/locked_all_hit.png"
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_alsace_lorraine_fill"
+        texturefile = "gfx/interface/GER_region_game/alsace_lorraine_fill.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_alsace_lorraine_hit"
+        texturefile = "gfx/interface/GER_region_game/alsace_lorraine_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_bav_corner_fill"
+        texturefile = "gfx/interface/GER_region_game/bav_corner_fill.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_bav_corner_hit"
+        texturefile = "gfx/interface/GER_region_game/bav_corner_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R01_WeserEms_fill"
+        texturefile = "gfx/interface/GER_region_game/R01_WeserEms_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R01_WeserEms_hit"
+        texturefile = "gfx/interface/GER_region_game/R01_WeserEms_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R02_Hannover_fill"
+        texturefile = "gfx/interface/GER_region_game/R02_Hannover_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R02_Hannover_hit"
+        texturefile = "gfx/interface/GER_region_game/R02_Hannover_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R03_HamburgSH_fill"
+        texturefile = "gfx/interface/GER_region_game/R03_HamburgSH_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R03_HamburgSH_hit"
+        texturefile = "gfx/interface/GER_region_game/R03_HamburgSH_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R04_Mecklenburg_fill"
+        texturefile = "gfx/interface/GER_region_game/R04_Mecklenburg_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R04_Mecklenburg_hit"
+        texturefile = "gfx/interface/GER_region_game/R04_Mecklenburg_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R05_Pomerania_fill"
+        texturefile = "gfx/interface/GER_region_game/R05_Pomerania_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R05_Pomerania_hit"
+        texturefile = "gfx/interface/GER_region_game/R05_Pomerania_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R06_Brandenburg_fill"
+        texturefile = "gfx/interface/GER_region_game/R06_Brandenburg_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R06_Brandenburg_hit"
+        texturefile = "gfx/interface/GER_region_game/R06_Brandenburg_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R07_Silesia_fill"
+        texturefile = "gfx/interface/GER_region_game/R07_Silesia_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R07_Silesia_hit"
+        texturefile = "gfx/interface/GER_region_game/R07_Silesia_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R08_ThuringiaSaxony_fill"
+        texturefile = "gfx/interface/GER_region_game/R08_ThuringiaSaxony_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R08_ThuringiaSaxony_hit"
+        texturefile = "gfx/interface/GER_region_game/R08_ThuringiaSaxony_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R09_Bavaria_fill"
+        texturefile = "gfx/interface/GER_region_game/R09_Bavaria_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R09_Bavaria_hit"
+        texturefile = "gfx/interface/GER_region_game/R09_Bavaria_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R10_BadenWuerttemberg_fill"
+        texturefile = "gfx/interface/GER_region_game/R10_BadenWuerttemberg_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R10_BadenWuerttemberg_hit"
+        texturefile = "gfx/interface/GER_region_game/R10_BadenWuerttemberg_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R11_Hesse_fill"
+        texturefile = "gfx/interface/GER_region_game/R11_Hesse_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R11_Hesse_hit"
+        texturefile = "gfx/interface/GER_region_game/R11_Hesse_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R12_Rhineland_fill"
+        texturefile = "gfx/interface/GER_region_game/R12_Rhineland_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R12_Rhineland_hit"
+        texturefile = "gfx/interface/GER_region_game/R12_Rhineland_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R13_EastPrussia_fill"
+        texturefile = "gfx/interface/GER_region_game/R13_EastPrussia_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R13_EastPrussia_hit"
+        texturefile = "gfx/interface/GER_region_game/R13_EastPrussia_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R14_Ruhr_fill"
+        texturefile = "gfx/interface/GER_region_game/R14_Ruhr_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R14_Ruhr_hit"
+        texturefile = "gfx/interface/GER_region_game/R14_Ruhr_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R15_Westphalia_fill"
+        texturefile = "gfx/interface/GER_region_game/R15_Westphalia_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R15_Westphalia_hit"
+        texturefile = "gfx/interface/GER_region_game/R15_Westphalia_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_R16_GreatBerlin_fill"
+        texturefile = "gfx/interface/GER_region_game/R16_GreatBerlin_fill.png"
+        noOfFrames = 7
+    }
+    spriteType = {
+        name = "GFX_GER_region_R16_GreatBerlin_hit"
+        texturefile = "gfx/interface/GER_region_game/R16_GreatBerlin_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SHL_trust_all"
+        texturefile = "gfx/interface/GER_region_game/OV_SHL_trust_all.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SHL_trust_all_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SHL_trust_all_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SHL_north_Denmark"
+        texturefile = "gfx/interface/GER_region_game/OV_SHL_north_Denmark.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SHL_north_Denmark_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SHL_north_Denmark_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_all"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_all.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_all_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_all_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_lobe_A"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_lobe_A.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_lobe_A_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_lobe_A_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_lobe_B"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_lobe_B.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SIL_Katowice_lobe_B_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SIL_Katowice_lobe_B_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_EP_southwest"
+        texturefile = "gfx/interface/GER_region_game/OV_EP_southwest.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_EP_southwest_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_EP_southwest_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_MEMEL"
+        texturefile = "gfx/interface/GER_region_game/OV_MEMEL.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_MEMEL_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_MEMEL_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_EUPEN_MALMEDY"
+        texturefile = "gfx/interface/GER_region_game/OV_EUPEN_MALMEDY.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_EUPEN_MALMEDY_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_EUPEN_MALMEDY_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_POSEN_WPRUSSIA"
+        texturefile = "gfx/interface/GER_region_game/OV_POSEN_WPRUSSIA.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_POSEN_WPRUSSIA_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_POSEN_WPRUSSIA_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SAAR_bump_A"
+        texturefile = "gfx/interface/GER_region_game/OV_SAAR_bump_A.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SAAR_bump_A_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SAAR_bump_A_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SAAR_bump_B"
+        texturefile = "gfx/interface/GER_region_game/OV_SAAR_bump_B.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_OV_SAAR_bump_B_hit"
+        texturefile = "gfx/interface/GER_region_game/OV_SAAR_bump_B_hit.png"
+        noOfFrames = 3
+        transparencecheck = yes
+    }
+    # <<< GENERATED: sprites
+}

@@ -1,0 +1,403 @@
+# 由 tools/GER_region_game/gen_region_game.py 生成，不要手改。地区博弈地图的测试决议，测完整个文件和分类一起删掉即可。
+GER_region_game_test_category = {
+    GER_region_test_reset = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_game_reset_to_opening = yes
+                clear_variable = GER_region_test_color_idx
+                clear_variable = GER_region_test_next
+                clear_variable = GER_region_test_ov_next
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_open_all = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = 2 }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = 2 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 2 }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = 2 }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = 2 }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = 2 }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = 2 }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = 2 }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = 2 }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = 2 }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = 2 }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = 2 }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = 2 }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = 2 }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = 2 }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = 2 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_checker = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = 4 }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = 3 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 4 }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = 6 }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = 3 }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = 4 }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = 3 }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = 6 }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = 3 }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = 6 }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = 4 }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = 3 }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = 6 }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = 4 }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = 6 }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = 3 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_cycle_color = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                add_to_variable = { GER_region_test_color_idx = 1 }
+                if = { limit = { check_variable = { GER_region_test_color_idx > 5 } } set_variable = { GER_region_test_color_idx = 1 } }
+                if = { limit = { check_variable = { GER_region_test_color_idx = 1 } } set_variable = { GER_region_test_color = 1 } }
+                if = { limit = { check_variable = { GER_region_test_color_idx = 2 } } set_variable = { GER_region_test_color = 2 } }
+                if = { limit = { check_variable = { GER_region_test_color_idx = 3 } } set_variable = { GER_region_test_color = 3 } }
+                if = { limit = { check_variable = { GER_region_test_color_idx = 4 } } set_variable = { GER_region_test_color = 4 } }
+                if = { limit = { check_variable = { GER_region_test_color_idx = 5 } } set_variable = { GER_region_test_color = 6 } }
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = GER_region_test_color }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = GER_region_test_color }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = GER_region_test_color }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = GER_region_test_color }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = GER_region_test_color }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = GER_region_test_color }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = GER_region_test_color }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = GER_region_test_color }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = GER_region_test_color }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = GER_region_test_color }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = GER_region_test_color }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = GER_region_test_color }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = GER_region_test_color }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = GER_region_test_color }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = GER_region_test_color }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = GER_region_test_color }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_next_region = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                add_to_variable = { GER_region_test_next = 1 }
+                if = {
+                    limit = { check_variable = { GER_region_test_next > 16 } }
+                    set_variable = { GER_region_test_next = 1 }
+                    GER_region_game_reset_to_opening = yes
+                }
+                if = { limit = { check_variable = { GER_region_test_next = 1 } } set_variable = { GER_region_R01_open = 1 } set_variable = { GER_region_R01_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 2 } } set_variable = { GER_region_R02_open = 1 } set_variable = { GER_region_R02_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 3 } } set_variable = { GER_region_R03_open = 1 } set_variable = { GER_region_R03_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 4 } } set_variable = { GER_region_R04_open = 1 } set_variable = { GER_region_R04_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 5 } } set_variable = { GER_region_R05_open = 1 } set_variable = { GER_region_R05_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 6 } } set_variable = { GER_region_R06_open = 1 } set_variable = { GER_region_R06_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 7 } } set_variable = { GER_region_R07_open = 1 } set_variable = { GER_region_R07_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 8 } } set_variable = { GER_region_R08_open = 1 } set_variable = { GER_region_R08_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 9 } } set_variable = { GER_region_R09_open = 1 } set_variable = { GER_region_R09_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 10 } } set_variable = { GER_region_R10_open = 1 } set_variable = { GER_region_R10_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 11 } } set_variable = { GER_region_R11_open = 1 } set_variable = { GER_region_R11_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 12 } } set_variable = { GER_region_R12_open = 1 } set_variable = { GER_region_R12_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 13 } } set_variable = { GER_region_R13_open = 1 } set_variable = { GER_region_R13_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 14 } } set_variable = { GER_region_R14_open = 1 } set_variable = { GER_region_R14_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 15 } } set_variable = { GER_region_R15_open = 1 } set_variable = { GER_region_R15_state = 3 } }
+                if = { limit = { check_variable = { GER_region_test_next = 16 } } set_variable = { GER_region_R16_open = 1 } set_variable = { GER_region_R16_state = 3 } }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_swing = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = 5 }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = 5 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 5 }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = 5 }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = 5 }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = 5 }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = 5 }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = 5 }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = 5 }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = 5 }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = 5 }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = 5 }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = 5 }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = 5 }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = 5 }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = 5 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_silesia_lost = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = 2 }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = 2 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 2 }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = 2 }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = 2 }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = 2 }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = 2 }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = 2 }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = 2 }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = 2 }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = 2 }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = 2 }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = 2 }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = 2 }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = 2 }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = 2 }
+                set_variable = { GER_region_R07_state = 1 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_all_overlays = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_R01_open = 1 }
+                set_variable = { GER_region_R01_state = 2 }
+                set_variable = { GER_region_R02_open = 1 }
+                set_variable = { GER_region_R02_state = 2 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 2 }
+                set_variable = { GER_region_R04_open = 1 }
+                set_variable = { GER_region_R04_state = 2 }
+                set_variable = { GER_region_R05_open = 1 }
+                set_variable = { GER_region_R05_state = 2 }
+                set_variable = { GER_region_R06_open = 1 }
+                set_variable = { GER_region_R06_state = 2 }
+                set_variable = { GER_region_R07_open = 1 }
+                set_variable = { GER_region_R07_state = 2 }
+                set_variable = { GER_region_R08_open = 1 }
+                set_variable = { GER_region_R08_state = 2 }
+                set_variable = { GER_region_R09_open = 1 }
+                set_variable = { GER_region_R09_state = 2 }
+                set_variable = { GER_region_R10_open = 1 }
+                set_variable = { GER_region_R10_state = 2 }
+                set_variable = { GER_region_R11_open = 1 }
+                set_variable = { GER_region_R11_state = 2 }
+                set_variable = { GER_region_R12_open = 1 }
+                set_variable = { GER_region_R12_state = 2 }
+                set_variable = { GER_region_R13_open = 1 }
+                set_variable = { GER_region_R13_state = 2 }
+                set_variable = { GER_region_R14_open = 1 }
+                set_variable = { GER_region_R14_state = 2 }
+                set_variable = { GER_region_R15_open = 1 }
+                set_variable = { GER_region_R15_state = 2 }
+                set_variable = { GER_region_R16_open = 1 }
+                set_variable = { GER_region_R16_state = 2 }
+                set_variable = { GER_region_OV_SHL_trust_all_shown = 1 }
+                set_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 }
+                set_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 }
+                set_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 }
+                set_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 }
+                set_variable = { GER_region_OV_EP_southwest_shown = 1 }
+                set_variable = { GER_region_OV_MEMEL_shown = 1 }
+                set_variable = { GER_region_OV_EUPEN_MALMEDY_shown = 1 }
+                set_variable = { GER_region_OV_POSEN_WPRUSSIA_shown = 1 }
+                set_variable = { GER_region_OV_SAAR_bump_A_shown = 1 }
+                set_variable = { GER_region_OV_SAAR_bump_B_shown = 1 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_denmark_1 = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_game_hide_all_overlays = yes
+                set_variable = { GER_region_OV_SHL_trust_all_shown = 1 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_denmark_2 = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_game_hide_all_overlays = yes
+                set_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 }
+                set_variable = { GER_region_R03_open = 1 }
+                set_variable = { GER_region_R03_state = 2 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_next_overlay = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                add_to_variable = { GER_region_test_ov_next = 1 }
+                if = { limit = { check_variable = { GER_region_test_ov_next > 11 } } set_variable = { GER_region_test_ov_next = 1 } }
+                GER_region_game_hide_all_overlays = yes
+                if = { limit = { check_variable = { GER_region_test_ov_next = 1 } } set_variable = { GER_region_OV_SHL_trust_all_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 2 } } set_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 3 } } set_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 4 } } set_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 5 } } set_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 6 } } set_variable = { GER_region_OV_EP_southwest_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 7 } } set_variable = { GER_region_OV_MEMEL_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 8 } } set_variable = { GER_region_OV_EUPEN_MALMEDY_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 9 } } set_variable = { GER_region_OV_POSEN_WPRUSSIA_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 10 } } set_variable = { GER_region_OV_SAAR_bump_A_shown = 1 } }
+                if = { limit = { check_variable = { GER_region_test_ov_next = 11 } } set_variable = { GER_region_OV_SAAR_bump_B_shown = 1 } }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+}
