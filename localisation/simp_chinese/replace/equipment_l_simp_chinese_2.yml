@@ -1,4 +1,17 @@
 ﻿l_simp_chinese:
+
+ # ===== 主要国家枪械型号（装备名覆盖：TAG_<装备id> 与 _short）=====
+ # 对应 common/technologies/infantry.txt 的 9 个装备：
+ #   1900 infantry_equipment_0 / 1919 aor_bolt_equipment_1919 / 1921 infantry_equipment_1
+ #   1924 infantry_equipment_2 / 1927 aor_bolt_equipment_1927 / 1930 aor_bolt_equipment_1930
+ #   1919–1930 自装填 aor_self_loading_equipment_1/2/3
+ # 命名规则：
+ #   1) 1919 年及以前的槽位一律用史实型号；
+ #   2) 1919 年以后优先史实型号（AOR 世界线把定型年提前的，注释标“AOR 提前”）；
+ #   3) 史实没有对应型号的槽位，按该国命名习惯沿 AOR 世界线推演：
+ #      德国 Kar/Gewehr+年份、法国 Mle/MAS+年份、英国 Mk/No.+谱系、
+ #      中国 民国年式、日本 年式、苏联 обр.+年份。注释标“推演”。
+
  machine_equipment0:0 "水冷式机枪"
  GER_infantry_equipment_0:"毛瑟Gewehr98步枪"
  GER_machine_equipment_1:0 "马克沁MG08机枪"
@@ -7,31 +20,205 @@
 
  GER_infantry_equipment_0_short:"Gewehr98"
  # ---- 德国步枪型号：对应 common/technologies/infantry.txt 的 r01–r07 / s01–s03 ----
- # 1900  Gewehr 98            （已有上面的 GER_infantry_equipment_0）
- # 1919  Karabiner 98a   → r02
- # 1921  Karabiner 98b   → r03（史实 1923 定型）
- # 1924  Standardmodell  → r04
- # 1927  标准型短步枪      → r06（史实无同名型号，作为 98k 之前的一步）
- # 1930  Karabiner 98k   → r07（史实 1935 定型，本模组提前到 1930 节点）
- # 1919  Selbstlader M1916 → s01
- # 1924  自装填试验型      → s02（史实德国 1920 年代无制式半自动，取试验型口径）
- # 1930  Walther 自装填    → s03（同上，为 1941 年 G41 之前的推演）
+ # 1900 史实：见上方 GER_infantry_equipment_0（毛瑟Gewehr98）；其余见文件顶部规则。
+ # aor_bolt_equipment_1919：1919 史实（1908 定型，在役）
  GER_aor_bolt_equipment_1919:0 "毛瑟Kar98a卡宾枪"
  GER_aor_bolt_equipment_1919_short:0 "Kar98a"
- GER_infantry_equipment_1:0 "毛瑟Kar98b卡宾枪"
- GER_infantry_equipment_1_short:0 "Kar98b"
- GER_infantry_equipment_2:0 "毛瑟标准型步枪1924"
- GER_infantry_equipment_2_short:0 "毛瑟标准型1924"
- GER_aor_bolt_equipment_1927:0 "毛瑟标准型短步枪1927"
- GER_aor_bolt_equipment_1927_short:0 "毛瑟标准型短1927"
- GER_aor_bolt_equipment_1930:0 "毛瑟Kar98k卡宾枪"
- GER_aor_bolt_equipment_1930_short:0 "Kar98k"
- GER_aor_self_loading_equipment_1:0 "毛瑟M1916自装填步枪"
- GER_aor_self_loading_equipment_1_short:0 "M1916自装填"
- GER_aor_self_loading_equipment_2:0 "毛瑟自装填试验型1924"
- GER_aor_self_loading_equipment_2_short:0 "毛瑟自装填试验型1924"
- GER_aor_self_loading_equipment_3:0 "瓦尔特1930自装填步枪"
- GER_aor_self_loading_equipment_3_short:0 "瓦尔特1930自装填步枪"
+ # infantry_equipment_1：1921 同年式：Kar98b 史实 1923，AOR 按年份制称 21 年式
+ GER_infantry_equipment_1:0 "毛瑟Karabiner 21卡宾枪"
+ GER_infantry_equipment_1_short:0 "Kar21"
+ # infantry_equipment_2：1924 史实
+ GER_infantry_equipment_2:0 "毛瑟Standardmodell 24步枪"
+ GER_infantry_equipment_2_short:0 "Std.Mod 24"
+ # aor_bolt_equipment_1927：1927 同年式：AOR 里继续毛瑟短步枪线
+ GER_aor_bolt_equipment_1927:0 "毛瑟Karabiner 27短步枪"
+ GER_aor_bolt_equipment_1927_short:0 "Kar27"
+ # aor_bolt_equipment_1930：1930 同年式：Kar98k 史实 1935，AOR 按 30 年式定型
+ GER_aor_bolt_equipment_1930:0 "毛瑟Karabiner 30卡宾枪"
+ GER_aor_bolt_equipment_1930_short:0 "Kar30"
+ # aor_self_loading_equipment_1：1919 史实
+ GER_aor_self_loading_equipment_1:0 "毛瑟Selbstlader M1916自动步枪"
+ GER_aor_self_loading_equipment_1_short:0 "SL M1916"
+ # aor_self_loading_equipment_2：1924 推演：自装填线在内战后继续推进
+ GER_aor_self_loading_equipment_2:0 "毛瑟Selbstlader 24自动步枪"
+ GER_aor_self_loading_equipment_2_short:0 "SL 24"
+ # aor_self_loading_equipment_3：1930 推演：瓦尔特接手定型
+ GER_aor_self_loading_equipment_3:0 "瓦尔特Selbstlader 30自动步枪"
+ GER_aor_self_loading_equipment_3_short:0 "SL 30"
+
+ # ---- FRA ----
+ # infantry_equipment_0：1900 史实
+ FRA_infantry_equipment_0:0 "勒贝尔Mle 1886 M93步枪"
+ FRA_infantry_equipment_0_short:0 "1886 M93"
+ # aor_bolt_equipment_1919：1919 史实
+ FRA_aor_bolt_equipment_1919:0 "贝蒂埃Mle 1907/15步枪"
+ FRA_aor_bolt_equipment_1919_short:0 "Mle 1907/15"
+ # infantry_equipment_1：1921 史实
+ FRA_infantry_equipment_1:0 "贝蒂埃Mle 1916卡宾枪"
+ FRA_infantry_equipment_1_short:0 "Mle 1916"
+ # infantry_equipment_2：1924 推演：战后的法兰西在废墟上重整军备，国营兵工厂按年份制命名
+ FRA_infantry_equipment_2:0 "MAS 24步枪"
+ FRA_infantry_equipment_2_short:0 "MAS 24"
+ # aor_bolt_equipment_1927：1927 推演：同上，1927 年式
+ FRA_aor_bolt_equipment_1927:0 "MAS 27步枪"
+ FRA_aor_bolt_equipment_1927_short:0 "MAS 27"
+ # aor_bolt_equipment_1930：1930 推演：AOR 世界线里 MAS 提前完成换装（史实的 MAS 36 被提早到 1930）
+ FRA_aor_bolt_equipment_1930:0 "MAS 30步枪"
+ FRA_aor_bolt_equipment_1930_short:0 "MAS 30"
+ # aor_self_loading_equipment_1：1919 史实
+ FRA_aor_self_loading_equipment_1:0 "RSC Mle 1917自动步枪"
+ FRA_aor_self_loading_equipment_1_short:0 "RSC 1917"
+ # aor_self_loading_equipment_2：1924 推演：RSC 之后的自装填定型，按 Mle+年份
+ FRA_aor_self_loading_equipment_2:0 "Mle 1924自动步枪"
+ FRA_aor_self_loading_equipment_2_short:0 "F.A. 1924"
+ # aor_self_loading_equipment_3：1930 推演：自动步枪线继续沿年份制
+ FRA_aor_self_loading_equipment_3:0 "Mle 1930自动步枪"
+ FRA_aor_self_loading_equipment_3_short:0 "F.A. 1930"
+
+ # ---- ENG ----
+ # infantry_equipment_0：1900 史实
+ ENG_infantry_equipment_0:0 "李-恩菲尔德Mk I步枪"
+ ENG_infantry_equipment_0_short:0 "Lee-Enfield Mk I"
+ # aor_bolt_equipment_1919：1919 史实
+ ENG_aor_bolt_equipment_1919:0 "李-恩菲尔德Mk III*步枪"
+ ENG_aor_bolt_equipment_1919_short:0 "SMLE Mk III*"
+ # infantry_equipment_1：1921 史实
+ ENG_infantry_equipment_1:0 "P14恩菲尔德步枪"
+ ENG_infantry_equipment_1_short:0 "P14"
+ # infantry_equipment_2：1924 史实试验型
+ ENG_infantry_equipment_2:0 "SMLE Mk V步枪"
+ ENG_infantry_equipment_2_short:0 "SMLE Mk V"
+ # aor_bolt_equipment_1927：1927 史实试验型
+ ENG_aor_bolt_equipment_1927:0 "No.1 Mk VI步枪"
+ ENG_aor_bolt_equipment_1927_short:0 "No.1 Mk VI"
+ # aor_bolt_equipment_1930：1930 史实（1931 试产），AOR 提前
+ ENG_aor_bolt_equipment_1930:0 "李-恩菲尔德No.4步枪"
+ ENG_aor_bolt_equipment_1930_short:0 "No.4 Mk I"
+ # aor_self_loading_equipment_1：1919 史实
+ ENG_aor_self_loading_equipment_1:0 "法夸尔-希尔自动步枪"
+ ENG_aor_self_loading_equipment_1_short:0 "Farquhar-Hill"
+ # aor_self_loading_equipment_2：1924 推演：英军在 AOR 里没有放弃法夸尔-希尔这条线
+ ENG_aor_self_loading_equipment_2:0 "法夸尔-希尔Mk II自动步枪"
+ ENG_aor_self_loading_equipment_2_short:0 "F-H Mk II"
+ # aor_self_loading_equipment_3：1930 推演：同一谱系的定型型
+ ENG_aor_self_loading_equipment_3:0 "法夸尔-希尔Mk III自动步枪"
+ ENG_aor_self_loading_equipment_3_short:0 "F-H Mk III"
+
+ # ---- CHI ----
+ # infantry_equipment_0：1900 史实
+ CHI_infantry_equipment_0:0 "汉阳造八八式步枪"
+ CHI_infantry_equipment_0_short:0 "汉阳造"
+ # aor_bolt_equipment_1919：1919 史实（民国元年式）
+ CHI_aor_bolt_equipment_1919:0 "元年式步枪"
+ CHI_aor_bolt_equipment_1919_short:0 "元年式"
+ # infantry_equipment_1：1921 推演：民国十年式
+ CHI_infantry_equipment_1:0 "十年式步枪"
+ CHI_infantry_equipment_1_short:0 "十年式"
+ # infantry_equipment_2：1924 史实（民国十三年式）
+ CHI_infantry_equipment_2:0 "辽十三式步枪"
+ CHI_infantry_equipment_2_short:0 "辽十三式"
+ # aor_bolt_equipment_1927：1927 推演：民国十六年式
+ CHI_aor_bolt_equipment_1927:0 "十六年式步枪"
+ CHI_aor_bolt_equipment_1927_short:0 "十六年式"
+ # aor_bolt_equipment_1930：1930 推演：民国十九年式（史实二四式＝民国 24 年，1935）
+ CHI_aor_bolt_equipment_1930:0 "十九年式步枪"
+ CHI_aor_bolt_equipment_1930_short:0 "十九年式"
+ # aor_self_loading_equipment_1：1919 史实（1914–18）
+ CHI_aor_self_loading_equipment_1:0 "刘庆恩自装填步枪"
+ CHI_aor_self_loading_equipment_1_short:0 "刘庆恩"
+ # aor_self_loading_equipment_2：1924 推演：民国十四年式的自装填型
+ CHI_aor_self_loading_equipment_2:0 "十四年式自动步枪"
+ CHI_aor_self_loading_equipment_2_short:0 "十四年式自动"
+ # aor_self_loading_equipment_3：1930 推演：民国十九年式自装填
+ CHI_aor_self_loading_equipment_3:0 "十九年式自动步枪"
+ CHI_aor_self_loading_equipment_3_short:0 "十九年式自动"
+
+ # ---- JAP ----
+ # infantry_equipment_0：1900 史实（明治三十年式）
+ JAP_infantry_equipment_0:0 "三十年式步枪"
+ JAP_infantry_equipment_0_short:0 "三十年式"
+ # aor_bolt_equipment_1919：1919 史实
+ JAP_aor_bolt_equipment_1919:0 "三八式步枪"
+ JAP_aor_bolt_equipment_1919_short:0 "三八式"
+ # infantry_equipment_1：1921 史实
+ JAP_infantry_equipment_1:0 "三八式骑枪"
+ JAP_infantry_equipment_1_short:0 "三八骑枪"
+ # infantry_equipment_2：1924 史实（明治四十四年式）
+ JAP_infantry_equipment_2:0 "四四式骑枪"
+ JAP_infantry_equipment_2_short:0 "四四式"
+ # aor_bolt_equipment_1927：1927 同年式：皇纪二五八七年式
+ JAP_aor_bolt_equipment_1927:0 "八七式步枪"
+ JAP_aor_bolt_equipment_1927_short:0 "八七式"
+ # aor_bolt_equipment_1930：1930 同年式：皇纪二五九〇年式（史实九九式＝1939）
+ JAP_aor_bolt_equipment_1930:0 "九〇式步枪"
+ JAP_aor_bolt_equipment_1930_short:0 "九〇式"
+ # aor_self_loading_equipment_1：1919 推演：陆军技术本部自装填试验甲案
+ JAP_aor_self_loading_equipment_1:0 "试制甲号自动步枪"
+ JAP_aor_self_loading_equipment_1_short:0 "甲号自动"
+ # aor_self_loading_equipment_2：1924 推演：乙案
+ JAP_aor_self_loading_equipment_2:0 "试制乙号自动步枪"
+ JAP_aor_self_loading_equipment_2_short:0 "乙号自动"
+ # aor_self_loading_equipment_3：1930 推演：丙案（日本无 1930 年式半自动）
+ JAP_aor_self_loading_equipment_3:0 "试制丙号自动步枪"
+ JAP_aor_self_loading_equipment_3_short:0 "丙号自动"
+
+ # ---- SOV ----
+ # infantry_equipment_0：1900 史实
+ SOV_infantry_equipment_0:0 "莫辛-纳甘M1891步枪"
+ SOV_infantry_equipment_0_short:0 "M1891"
+ # aor_bolt_equipment_1919：1919 史实（1910 龙骑兵型，在役）
+ SOV_aor_bolt_equipment_1919:0 "莫辛-纳甘龙骑兵步枪"
+ SOV_aor_bolt_equipment_1919_short:0 "M1891龙骑兵"
+ # infantry_equipment_1：1921 推演：内战结束后按 обр.+年份 定型
+ SOV_infantry_equipment_1:0 "莫辛-纳甘M1921步枪"
+ SOV_infantry_equipment_1_short:0 "M1921"
+ # infantry_equipment_2：1924 推演：同上，1924 年式
+ SOV_infantry_equipment_2:0 "莫辛-纳甘M1924步枪"
+ SOV_infantry_equipment_2_short:0 "M1924"
+ # aor_bolt_equipment_1927：1927 推演：同上，1927 年式
+ SOV_aor_bolt_equipment_1927:0 "莫辛-纳甘M1927步枪"
+ SOV_aor_bolt_equipment_1927_short:0 "M1927"
+ # aor_bolt_equipment_1930：1930 史实（正好 1930 年式）
+ SOV_aor_bolt_equipment_1930:0 "莫辛-纳甘M1891/30步枪"
+ SOV_aor_bolt_equipment_1930_short:0 "M1891/30"
+ # aor_self_loading_equipment_1：1919 史实
+ SOV_aor_self_loading_equipment_1:0 "费德洛夫M1916自动步枪"
+ SOV_aor_self_loading_equipment_1_short:0 "费德洛夫"
+ # aor_self_loading_equipment_2：1924 推演：费德洛夫线没被砍掉
+ SOV_aor_self_loading_equipment_2:0 "费德洛夫M1924自动步枪"
+ SOV_aor_self_loading_equipment_2_short:0 "费德洛夫M1924"
+ # aor_self_loading_equipment_3：1930 推演：史实 AVS-36 的 1930 年式
+ SOV_aor_self_loading_equipment_3:0 "西蒙诺夫AVS-30自动步枪"
+ SOV_aor_self_loading_equipment_3_short:0 "AVS-30"
+
+ # ---- RUS ----（俄罗斯：与苏俄同源，枪械一致）
+ # infantry_equipment_0：1900 史实
+ RUS_infantry_equipment_0:0 "莫辛-纳甘M1891步枪"
+ RUS_infantry_equipment_0_short:0 "M1891"
+ # aor_bolt_equipment_1919：1919 史实（1910 龙骑兵型，在役）
+ RUS_aor_bolt_equipment_1919:0 "莫辛-纳甘龙骑兵步枪"
+ RUS_aor_bolt_equipment_1919_short:0 "M1891龙骑兵"
+ # infantry_equipment_1：1921 推演：内战结束后按 обр.+年份 定型
+ RUS_infantry_equipment_1:0 "莫辛-纳甘M1921步枪"
+ RUS_infantry_equipment_1_short:0 "M1921"
+ # infantry_equipment_2：1924 推演：同上，1924 年式
+ RUS_infantry_equipment_2:0 "莫辛-纳甘M1924步枪"
+ RUS_infantry_equipment_2_short:0 "M1924"
+ # aor_bolt_equipment_1927：1927 推演：同上，1927 年式
+ RUS_aor_bolt_equipment_1927:0 "莫辛-纳甘M1927步枪"
+ RUS_aor_bolt_equipment_1927_short:0 "M1927"
+ # aor_bolt_equipment_1930：1930 史实（正好 1930 年式）
+ RUS_aor_bolt_equipment_1930:0 "莫辛-纳甘M1891/30步枪"
+ RUS_aor_bolt_equipment_1930_short:0 "M1891/30"
+ # aor_self_loading_equipment_1：1919 史实
+ RUS_aor_self_loading_equipment_1:0 "费德洛夫M1916自动步枪"
+ RUS_aor_self_loading_equipment_1_short:0 "费德洛夫"
+ # aor_self_loading_equipment_2：1924 推演：费德洛夫线没被砍掉
+ RUS_aor_self_loading_equipment_2:0 "费德洛夫M1924自动步枪"
+ RUS_aor_self_loading_equipment_2_short:0 "费德洛夫M1924"
+ # aor_self_loading_equipment_3：1930 推演：史实 AVS-36 的 1930 年式
+ RUS_aor_self_loading_equipment_3:0 "西蒙诺夫AVS-30自动步枪"
+ RUS_aor_self_loading_equipment_3_short:0 "AVS-30"
 
  ####den#####
  DEN_infantry_equipment_0:1 "M1889步枪"
@@ -49,5 +236,4 @@
  DEN_machine_equipment_1_short:0 "麦德森机枪"
  DEN_machine_equipment_2:0 "MG15机枪"
  DEN_machine_equipment_3:0 "MG30通用机枪"
-
 
