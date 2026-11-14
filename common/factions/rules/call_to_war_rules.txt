@@ -9,7 +9,7 @@ call_to_war_rule_faction_leader_only = {
 			add = 2
 			is_faction_leader = yes
 			NOT = { always = no # unavailable AOR object: has_government democratic
- }
+}
 		}
 	}
 	modifier = {
@@ -34,6 +34,33 @@ call_to_war_rule_major_only = {
 	}
 }
 
+call_to_war_rule_Entente = {
+	type = call_to_war_rules
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = call_to_war_rule_Entente_tt
+			always = no
+		}
+		
+    }
+
+	available = {
+		always = yes
+	}
+
+	visible = {
+		always = yes
+	}
+
+    can_remove = {
+        always = no
+    }
+
+	modifier = {
+		political_power_factor = -0.025
+	}
+}
+
 call_to_war_rule_independent_only = {
 	type = call_to_war_rules
 	trigger = {
@@ -43,41 +70,41 @@ call_to_war_rule_independent_only = {
 
 # World Tension
 
-guarantee_threat_reduction_15 = {
-	type = call_to_war_rules
-	ai_will_do = {
-		base = 0
-		modifier = { 
-			add = 1
-			always = no # unavailable AOR object: has_government democratic
+#guarantee_threat_reduction_15 = {
+#	type = call_to_war_rules
+#	ai_will_do = {
+#		base = 0
+#		modifier = { 
+#			add = 1
+#			always = no # unavailable AOR object: has_government democratic
+#
+#			is_historical_focus_on = no  
+#		}
+#		modifier = { 
+#			add = 0.5
+#			always = no # unavailable AOR object: has_government democratic
+#
+#			is_historical_focus_on = yes   
+#		}
+#	}
+#	modifier = {
+#		guarantee_tension = -0.15
+#		stability_factor = -0.05
+#	}
+#	effect = {
+#	}
+#	
+#}
 
-			is_historical_focus_on = no  
-		}
-		modifier = { 
-			add = 0.5
-			always = no # unavailable AOR object: has_government democratic
-
-			is_historical_focus_on = yes   
-		}
-	}
-	modifier = {
-		guarantee_tension = -0.15
-		stability_factor = -0.05
-	}
-	effect = {
-	}
-	
-}
-
-guarantee_threat_reduction_40 = {
-	type = call_to_war_rules
-	ai_will_do = {
-		base = 0
-	}
-	modifier = {
-		guarantee_tension = -0.4
-		stability_factor = -0.1
-	}
-	effect = {
-	}
-}
+#guarantee_threat_reduction_40 = {
+#	type = call_to_war_rules
+#	ai_will_do = {
+#		base = 0
+#	}
+#	modifier = {
+#		guarantee_tension = -0.4
+#		stability_factor = -0.1
+#	}
+#	effect = {
+#	}
+#}

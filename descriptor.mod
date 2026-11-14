@@ -20,8 +20,7 @@ replace_path="common/technologies"
 replace_path="common/technology_sharing"
 replace_path="common/technology_tags"
 replace_path="history/units"
-supported_version="1.19.*"
-remote_file_id="3832161332"
+
 replace_path="common/special_projects/projects"
 
 replace_path="common/ai_strategy"
@@ -41,3 +40,6 @@ replace_path="common/scripted_triggers"
 replace_path="common/decisions/categories"
 
 replace_path="gfx/interface/equipmentdesigner/graphic_db"
+
+supported_version="1.19.*"
+remote_file_id="3832161332"
