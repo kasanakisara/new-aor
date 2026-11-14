@@ -1,0 +1,41 @@
+#召唤盟友
+DIPLOMACY_CALL_ALLY_ENABLE_TRIGGER = {
+    if = {
+        limit = {
+            has_idea = AOR_Entente_no_war
+        }
+        custom_trigger_tooltip = {
+            tooltip = AOR_Enchante_cannot_call_ally
+            always = no
+        }
+    }
+}
+
+#加入战争
+DIPLOMACY_JOIN_ALLY_ENABLE_TRIGGER = {
+    if = {
+        limit = {
+            has_idea = AOR_Entente_no_war
+        }
+        custom_trigger_tooltip = {
+            tooltip = AOR_Enchante_cannot_call_ally
+            always = no
+        }
+    }
+}
+
+#离开阵营
+DIPLOMACY_LEAVE_FACTION_ENABLE_TRIGGER = {
+    custom_trigger_tooltip = {
+        tooltip = AOR_noway
+        always = no
+    }
+}
+
+#禁运
+DIPLOMACY_EMBARGO_ENABLE_TRIGGER = {
+    custom_trigger_tooltip = {
+        tooltip = AOR_noway
+        always = no
+    }
+}
