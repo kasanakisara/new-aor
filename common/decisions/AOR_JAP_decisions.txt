@@ -1,0 +1,31 @@
+AOR_JAP_Imperial_Army_Navy = { #帝国陆海军
+    AOR_JAP_Lobby_the_military = {
+        available = { hidden_trigger = {always = yes } }
+        visible = { hidden_trigger = {always = yes } }
+        days_remove = 70
+        cost = 20
+        ai_will_do = {
+            add = 1000
+        }
+        complete_effect = {
+            set_temp_variable = { JAP_military_willing_add = 0.05 }
+            add_to_variable = { JAP_military_willing = var:JAP_military_willing_add }
+            custom_effect_tooltip = AOR_JAP_military_willing_add_tt
+        }
+    }
+
+    AOR_JAP_Smoothing_the_conflict_of_military = {
+        available = { hidden_trigger = {always = yes } }
+        visible = { hidden_trigger = {always = yes } }
+        days_remove = 70
+        cost = 20
+        ai_will_do = {
+            add = 1000
+        }
+        complete_effect = {
+            set_temp_variable = { JAP_military_satisfaction_add = 0.05 }
+            add_to_variable = { JAP_military_satisfaction = var:JAP_military_satisfaction_add }
+            custom_effect_tooltip = AOR_JAP_military_satisfaction_add_tt
+        }
+    }
+}

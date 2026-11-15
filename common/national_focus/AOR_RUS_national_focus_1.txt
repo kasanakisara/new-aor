@@ -430,7 +430,7 @@ focus_tree = {
             }
 		}
         completion_reward = {
-            add_political_power = 50
+            add_political_power = 25
 			add_command_power = 50
 			
 			if = {
@@ -483,8 +483,27 @@ focus_tree = {
         prerequisite = { # 前置组 14
             focus = AOR_SOV_Civil_war_3
         }
+        bypass = {
+			NOT = {
+                country_exists = RIG
+            }
+		}
         completion_reward = {
-            log = "[GetDateText]: [Root.GetName]: Focus AOR_SOV_Civil_war_7"
+            add_political_power = 25
+			add_command_power = 50
+
+            swap_ideas = {
+                remove_idea = AOR_RUS_Defense_Peterburg
+                add_idea = AOR_RUS_Marching_Baltic
+            }
+
+            custom_effect_tooltip = AOR_RUS_Civil_war_longer_II_tt
+            hidden_effect = {
+			    modify_timed_idea = {
+				    idea = AOR_RUS_Civil_war
+				    days = 45
+				}
+		  	}
         }
     }
 
