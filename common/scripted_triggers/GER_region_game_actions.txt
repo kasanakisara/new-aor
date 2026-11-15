@@ -1,63 +1,58 @@
-# 地区博弈 · 行动方针（决议）能否点击的额外条件。手写文件：tools/GER_region_game/gen_region_game.py 只在文件不存在时生成一次。
-# 界面已经自带的条件：选中了地区、该地区这条不在生效中、政治点数够；驻区方针（9-12）还要支持度、控制度双满。
-# 这里返回假时按钮不可点（状态字变灰）。冷却、解锁国策、每个地区限点几次等写在这里，目标地区 = GER_region_selected。
+# 地区博弈 · 行动方针（决议）的条件（手写；tools/GER_region_game/gen_region_game.py 只在末尾补缺的定义，不改已有内容）
+#
+# 界面已经自带的条件（不用在这里写）：选中了地区、该地区这条不在生效中、政治点数够、该地区执行次数没满；
+# 驻区方针还要「左派核心区，或支持度、控制度双满」。只在某个地区出现的（region）也由界面处理。
+# 读选中地区用镜像变量：GER_region_sel_frame（类型帧号）/ _support / _control / _leader / _policy，
+# 选中区块编号 GER_region_selected。
+#   GER_region_action_N_allowed  返回假时按钮不可点（状态字变灰）。冷却、解锁国策等写在这里
+#   GER_region_action_N_visible  返回假时这条不出现在列表里（列表在选地区、点决议、每天时刷新）
+# 悬停介绍里的勾叉是 gen_region_game.py 的 CHECKS（生成到 scripted_localisation），改了条件记得同步。
 
-# 1 扩大宣传投入（日常决议，15pp，生效 7 天）
-GER_region_action_1_allowed = {
-    always = yes
+# 党改革国策完成：国策做好后在完成效果里 set_country_flag = GER_SPD_party_reform_done
+GER_region_party_reform_done = {
+    has_country_flag = GER_SPD_party_reform_done
+}
+# 造船业社会化完成（GER_socialization 的完成奖励旗标）
+GER_region_shipbuilding_socialized = {
+    has_country_flag = GER_socialization_reward_shipbuilding
 }
 
-# 2 扩张防卫组织（日常决议，15pp，生效 7 天）
-GER_region_action_2_allowed = {
-    always = yes
+# ---- 能否点击
+GER_region_action_1_allowed = { always = yes }   # 扩大宣传投入
+GER_region_action_2_allowed = { always = yes }   # 扩张防卫组织
+GER_region_action_3_allowed = { always = yes }   # 组织网络的扩展
+GER_region_action_4_allowed = { always = yes }   # 推动公共事业
+GER_region_action_5_allowed = {                  # 组织重心向工厂转移：党改革后（每个地区 2 次由界面限制）
+    GER_region_party_reform_done = yes
 }
+GER_region_action_6_allowed = { always = yes }   # 发起罢工：冷却 120 天由界面处理（ACTIONS 的 cooldown）
+GER_region_action_7_allowed = { always = yes }   # 工厂委员会的扩张
+GER_region_action_8_allowed = {                  # 影子苏维埃：摇摆区，支持度 >= 50，控制度 >= 80
+    check_variable = { GER_region_sel_frame = 2 }
+    check_variable = { GER_region_sel_support > 49.99 }
+    check_variable = { GER_region_sel_control > 79.99 }
+}
+GER_region_action_9_allowed = { always = yes }   # 扩充安全部队
+GER_region_action_10_allowed = { always = yes }  # 总结政权经验
+GER_region_action_11_allowed = { always = yes }  # 培训根据地干部
+GER_region_action_12_allowed = { always = yes }  # 支援邻近地区
+GER_region_action_13_allowed = {                 # 红色海军网络：造船业社会化后
+    GER_region_shipbuilding_socialized = yes
+}
+GER_region_action_14_allowed = { always = yes }  # 与基督教社会主义者交好
 
-# 3 组织网络的扩展（日常决议，25pp，生效 168 天）
-GER_region_action_3_allowed = {
-    always = yes
-}
-
-# 4 推动公共事业（日常决议，30pp，生效 168 天）
-GER_region_action_4_allowed = {
-    always = yes
-}
-
-# 5 组织重心向工厂转移（日常决议，20pp，生效 14 天）
-GER_region_action_5_allowed = {
-    always = yes
-}
-
-# 6 发起罢工（日常决议，100pp，生效 14 天）
-GER_region_action_6_allowed = {
-    always = yes
-}
-
-# 7 工厂委员会的扩张（日常决议，20pp，生效 7 天）
-GER_region_action_7_allowed = {
-    always = yes
-}
-
-# 8 影子苏维埃（日常决议，65pp，立即生效）
-GER_region_action_8_allowed = {
-    always = yes
-}
-
-# 9 扩充安全部队（驻区方针，切换 25pp，一直生效到切换为止）
-GER_region_action_9_allowed = {
-    always = yes
-}
-
-# 10 总结政权经验（驻区方针，切换 25pp，一直生效到切换为止）
-GER_region_action_10_allowed = {
-    always = yes
-}
-
-# 11 培训根据地干部（驻区方针，切换 25pp，一直生效到切换为止）
-GER_region_action_11_allowed = {
-    always = yes
-}
-
-# 12 支援邻近地区（驻区方针，切换 25pp，一直生效到切换为止）
-GER_region_action_12_allowed = {
-    always = yes
-}
+# ---- 是否出现在列表里（只在某地区出现的由 ACTIONS 的 region 处理，这里不用写）
+GER_region_action_1_visible = { always = yes }
+GER_region_action_2_visible = { always = yes }
+GER_region_action_3_visible = { always = yes }
+GER_region_action_4_visible = { always = yes }
+GER_region_action_5_visible = { always = yes }
+GER_region_action_6_visible = { always = yes }
+GER_region_action_7_visible = { always = yes }
+GER_region_action_8_visible = { always = yes }
+GER_region_action_9_visible = { always = yes }
+GER_region_action_10_visible = { always = yes }
+GER_region_action_11_visible = { always = yes }
+GER_region_action_12_visible = { always = yes }
+GER_region_action_13_visible = { always = yes }
+GER_region_action_14_visible = { always = yes }

@@ -45,16 +45,18 @@ MAP_X, MAP_Y = 16, 64
 #   1 斜线  2 中立/摇摆  3 左派核心  4 右派核心  5 魏玛联盟核心  6 特殊(绿)  7 备用(紫)
 #   8 左派控制  9 右派控制  10 魏玛联盟控制  11 特殊控制(绿)  12 备用控制(紫)
 REGION_FRAMES = 12
-CORE_FRAMES = {3: "left", 4: "right", 5: "weimar"}        # 面板上显示核心区方块的帧
-TYPE_NAMES = {2: "摇摆区", 3: "左派核心区", 4: "右派核心区", 5: "魏玛联盟核心区",
-              8: "左派控制区", 9: "右派控制区", 10: "魏玛联盟控制区"}   # 名称框右侧的地区类型（修改说明第 3、12 节）
+CORE_FRAMES = {3: "left", 4: "right", 5: "weimar", 6: "green"}        # 面板上显示核心区方块的帧
+TYPE_NAMES = {2: "摇摆区", 3: "左派核心区", 4: "右派核心区", 5: "魏玛联盟核心区", 6: "特殊区",
+              8: "左派控制区", 9: "右派控制区", 10: "魏玛联盟控制区", 11: "特殊控制区"}   # 名称框右侧的地区类型（修改说明第 3、12 节）
 
 # 右侧面板素材（修改说明_右侧面板.md）
 PANEL_SRC = "右侧面板素材"
 REGION12_SRC = "区块_12帧"
 PANEL_DIR_REL = GFX_DIR_REL + "/panel"
 PANEL_DIR = os.path.join(MOD, *PANEL_DIR_REL.split("/"))
-PHOTO_DIR_REL = GFX_DIR_REL + "/photos"     # 用户交的地区照片：photos/<区块id>.png，425x157
+PHOTO_DIR_REL = GFX_DIR_REL + "/photos"     # 用户交的地区照片：photos/<区块id>.png，425x157（放中文地区名如 大柏林.png 也行，运行时自动改成区块id名）
+PHOTO_IDLE = "idle"                         # 待机照片 photos/idle.png（放 待机.png 也行，自动改名）：没选中地区时显示
+PHOTO_IDLE_CN = "待机"
 PHOTO_BG = (25, 27, 25, 255)                # 没交照片的地区：与照片框内底同色的深色占位
 
 # 领导人（策划案第 8 页）。portrait = 模组里现成的 156x210 头像，没有就写 None（只显示名字）。
@@ -65,24 +67,109 @@ LEADERS = [
     ("dissmann", "罗伯特·迪斯曼", "gfx/leaders/GER/Robert_Dissmann.png"),
     ("henke", "阿尔弗雷德·亨克", None),
     ("koenen", "威廉·科嫩", "gfx/leaders/GER/Wilhelm_Koenen.png"),
-    ("lipinski", "利平斯基", None),
+    ("lipinski", "罗伯特·利平斯基", None),
     ("committee_nine", "九人委员会", None),
     ("paul_dittmann", "保罗·迪特曼", None),
     ("otto_braun", "奥托·布劳恩", "gfx/leaders/GER/Otto_Braun.png"),
     ("paul_hirsch", "保罗·希尔施", None),
     ("weimar_coalition", "魏玛联盟", None),
     ("bitta", "约瑟夫·比塔", None),
+    ("bebel", "奥古斯特·倍倍尔", "gfx/leaders/GER/August_Bebel.png"),   # 待机（没选中地区）时显示
 ]
-# 行动方针（策划案第 5、6 页）。日常决议：(名称, 政治点数花费, 生效天数)，按地区各自计时，可同时生效多条。
-#   生效天数 = 点击后保持选中（暗黄）的天数：「耗时 N 天」的写 N（结束时给效果），「持续 24 周」的写 168（期间每两周给效果）；
-#   0 = 点了立刻生效，不进入生效中状态。
-DAILY_ROWS = [("扩大宣传投入", 15, 7), ("扩张防卫组织", 15, 7), ("组织网络的扩展", 25, 168),
-              ("推动公共事业", 30, 168), ("组织重心向工厂转移", 20, 14), ("发起罢工", 100, 14),
-              ("工厂委员会的扩张", 20, 7), ("影子苏维埃", 65, 0)]
-# 驻区方针：每个地区同时只有一条生效，点另一条 = 切换（花 25pp），一直生效到切换为止
-GARRISON_ROWS = ["扩充安全部队", "总结政权经验", "培训根据地干部", "支援邻近地区"]
-GARRISON_COST = 25
+IDLE_LEADER = "bebel"
+# 领导人效果（用户给的清单；「武装力量」一律改成控制度）。只在该领导人所在的区块已开放时生效。
+# 地区本地的（该地区控制度 / 支持度、该地区的州修正）按地区各算一份；
+# 全国的（SPD 派别支持度、稳定度、党内团结度、议会协商惯性、全国修正）每位领导人只算一份，带几个地区都一样。
+#   local_bw  [(control/support, 值)]      每两周（全国统一的两周结算日）
+#   state     [(州修正, 值, 名字)]          该地区里归德国所有的州
+#   country   [(国家修正, 值, 名字)]
+#   daily     [(种类, 值)]  left/center/right/all = SPD 派别党内支持度；stability = 稳定度（0.0005 = 0.05%）
+#   bw        [(种类, 值)]  unity = 党内团结度（%）；inertia = 议会协商惯性
+#   soc       社会化点数每日获取（社会化还没有每日点数：只把系数写进 GER_region_soc_points_factor，接入时读它）
+#   cond_daily [(国家旗标, 种类, 值)]  有旗标时才生效
+# 威廉·科嫩、奥托·布劳恩是以后替换用的领导人：效果写好了，换上去就生效（set_variable = { GER_region_Rxx_leader = 序号 }）。
+LEADER_FX = {
+    "daeumig": dict(country=[("political_power_factor", 0.05, "政治点数获取")], state=[("local_manpower", 0.20, "当地人力")],
+                    local_bw=[("control", 0.05)], daily=[("left", 1)]),
+    "dissmann": dict(local_bw=[("control", 0.05)], daily=[("center", 1)]),
+    "henke": dict(local_bw=[("support", 0.05)], daily=[("center", 1)]),
+    "lipinski": dict(daily=[("stability", 0.0005), ("center", 1)]),
+    "koenen": dict(soc=0.10, daily=[("left", 1)]),
+    "committee_nine": dict(bw=[("unity", 3)], state=[("local_resources_factor", 0.20, "当地资源获取")]),
+    "paul_dittmann": dict(local_bw=[("control", 0.1)], state=[("local_manpower", 0.10, "当地人力")]),
+    "otto_braun": dict(local_bw=[("control", 0.1)], daily=[("right", 1)],
+                       country=[("drift_defence_factor", 0.20, "意识形态抵制力度")]),
+    "paul_hirsch": dict(local_bw=[("control", -0.2)], daily=[("all", -1)], bw=[("unity", -5)]),
+    "weimar_coalition": dict(daily=[("right", 1), ("stability", 0.0002)]),
+    "bitta": dict(bw=[("inertia", 5)], cond_daily=[("GER_silesia_autonomy", "stability", 0.0005)]),
+}
+SPD_FACTION = {"left": ("GER_SPD_left_support", "左派支持度"), "center": ("GER_SPD_center_support", "中派支持度"),
+               "right": ("GER_SPD_right_support", "右派支持度")}
+# 州修正图标（先用原版的；AOR 地区界面的「地区修正」格子 40x47、左下对齐，原版 32x30 的图标放得下）
+TIER_ICONS = {100: "GFX_modifiers_ETH_state_development", 75: "GFX_modifiers_ETH_state_development",
+              50: "GFX_modifiers_ETH_state_development", 0: "GFX_modifiers_generic_resistance"}
+LEADER_STATE_ICON = "GFX_modifiers_SOV_factory_worker_militias"
+LEADER_COUNTRY_ICON = "GFX_modifiers_generic_military_plans"
+# 行动方针（决议）。右侧面板里是一个可滚动的列表，列表内容每次刷新时按下面的数据 + 手写的 _visible 条件生成，
+# 加一条新决议 = 在 ACTIONS 里加一行（n 用新号）、放进 ACTION_ORDER，重跑脚本；
+# 脚本会在手写文件里补上它的效果钩子和条件（占位），再去手写文件里填。
+#   n      固定编号：变量、钩子、本地化键都用它。只往后加，不要改旧号。
+#   kind   "daily" 日常决议：每条按地区各自计时，可以同时生效好几条
+#          "garrison" 驻区方针：每个地区同时只有一条生效，点另一条 = 切换，一直生效到切换为止
+#   days   日常决议点击后保持选中（暗黄）的天数：耗时 N 天写 N（结束时给效果），持续 24 周写 168（期间每两周给效果）；
+#          0 = 点了立刻生效，不进入生效中状态
+#   max    每个地区最多执行几次（0 = 不限）；界面自动加条件、悬停提示里写「已执行次数」
+#   region 只在这个区块出现（区块 key，如 "R03"）；None = 所有地区
+ACTIONS = [
+    dict(n=1, cname="扩大宣传投入", kind="daily", cost=10, days=7),
+    dict(n=2, cname="扩张防卫组织", kind="daily", cost=10, days=7),
+    dict(n=3, cname="组织网络的扩展", kind="daily", cost=20, days=168),
+    dict(n=4, cname="推动公共事业", kind="daily", cost=25, days=168),
+    dict(n=5, cname="组织重心向工厂转移", kind="daily", cost=15, days=14, max=2),
+    dict(n=6, cname="发起罢工", kind="daily", cost=70, days=14, cooldown=120),   # 长冷却：从点击起 120 天
+    dict(n=7, cname="工厂委员会的扩张", kind="daily", cost=15, days=7),
+    dict(n=8, cname="影子苏维埃", kind="daily", cost=60, days=0),
+    dict(n=9, cname="扩充安全部队", kind="garrison", cost=25),
+    dict(n=10, cname="总结政权经验", kind="garrison", cost=25),
+    dict(n=11, cname="培训根据地干部", kind="garrison", cost=25),
+    dict(n=12, cname="支援邻近地区", kind="garrison", cost=25),
+    dict(n=13, cname="红色海军网络", kind="garrison", cost=25, region="R03"),
+    dict(n=14, cname="与基督教社会主义者交好", kind="garrison", cost=25, region="R14"),
+]
+ACTION_ORDER = [1, 2, 7, 3, 4, 5, 6, 8,      # 行动方针（显示顺序）
+                9, 10, 11, 12, 13, 14]       # 驻区方针
 BIWEEKLY = 14   # 「每两周」效果的间隔天数
+#   cooldown 每个地区点击后多少天内不能再点（含生效期间；0 = 没有冷却）
+
+# ---- 地区效益（用户图「我修改过后的版本」）：控制度 / 支持度到档后给该地区的州加修正
+# 档位看控制度：100 / 75 / 50 / 25 / 0。75、50 档还要支持度 >= 控制度的一半；100 档只要支持度 >= 25（控制度的四分之一）；
+# 支持度不够就落到 25 档（无效果）。修正只加在该地区里、目前归德国所有的州上（割让出去的州自动去掉）。
+TIER_MODS = {
+    100: [("local_resources_factor", 0.15, "当地资源获取"), ("state_production_speed_buildings_factor", 0.20, "地区建造速度"),
+          ("local_manpower", 0.30, "当地人力")],
+    75: [("state_production_speed_buildings_factor", 0.10, "地区建造速度"), ("local_manpower", 0.20, "当地人力")],
+    50: [("local_manpower", 0.10, "当地人力")],
+    25: [],
+    0: [("local_resources_factor", -0.10, "当地资源获取"), ("state_production_speed_buildings_factor", -0.20, "地区建造速度"),
+        ("local_manpower", -0.30, "当地人力")],
+}
+TIERS = [100, 75, 50, 25, 0]
+# 不显示数值的地区（核心区方块盖住数值框）背地里的 (支持度, 控制度)，开局时设，用来触发地区效益
+HIDDEN_VALUES = {3: (100, 100), 4: (0, 0), 5: (25, 25), 6: (25, 25)}
+# 摇摆区：左派核心区 / 左派控制区里支持度 < 50 且控制度 < 60 时变成摇摆区；回升后再维持 35 天，随后恢复原类型
+SWING_SUPPORT, SWING_CONTROL, SWING_DAYS = 50, 60, 35
+SWING_FROM = (3, 8)
+# 支持度、控制度不会增长的地区（只能靠国策与焦点博弈：那边先 set_temp_variable = { GER_region_force = 1 } 再调用小工具）
+FROZEN = ["R07"]
+# 地区 -> 州（格尔利茨归萨克森、右岸莱茵兰和科隆归鲁尔是用户指定；其余用各州在地图上的位置经美术素材的配准落到区块里求得；但泽 / 波森 / 西普鲁士只在割让盖板下，不属于任何地区）
+REGION_STATES = {
+    "R01": [56, 853, 866], "R02": [59, 1108, 1112, 1116, 1117, 1132],
+    "R03": [58, 838, 839, 855, 862, 1043, 1113, 1125], "R04": [61, 1110], "R05": [62, 63], "R06": [64, 68],
+    "R07": [66, 67, 762, 1134], "R08": [60, 65, 842, 870, 871, 1111, 1114, 1129, 1130],
+    "R09": [52, 53, 54, 857, 861, 863], "R10": [50, 837, 841, 860], "R11": [55, 856, 858, 1109, 1121, 1131],
+    "R12": [42, 836, 850, 1101, 1118, 1119], "R13": [5, 188, 763, 849, 864, 865], "R14": [57, 51, 859],
+    "R15": [854, 1115], "R16": [840],
+}
 
 GEN_TAG = "tools/GER_region_game/gen_region_game.py"
 
@@ -333,6 +420,7 @@ PANEL_FILES = {   # 文件名 -> (宽, 高)；宽是整条（多帧时 = 每帧�
     "support_bar_full.png": (158, 22), "support_bar_empty.png": (158, 22),
     "control_bar_full.png": (158, 22), "control_bar_empty.png": (158, 22),
     "core_left.png": (312, 84), "core_right.png": (312, 84), "core_weimar.png": (312, 84),
+    "core_green.png": (312, 84),
     "decision_row_3f.png": (292 * 3, 42),
     "region_photo_frame.png": tuple(PJ["region_photo"]["sprite_size"]),
     "leader_photo_frame.png": tuple(PJ["leader_photo"]["sprite_size"]),
@@ -355,43 +443,101 @@ def build_photo_strip():
     from PIL import Image
     strip = Image.new("RGBA", (PHOTO_W * len(regions), PHOTO_H), PHOTO_BG)
     have, adjusted = [], []
+    photo_dir = os.path.join(MOD, *PHOTO_DIR_REL.split("/"))
+    rename_photos(photo_dir)
     for r in regions:
-        src = None
-        for ext in (".png", ".jpg", ".jpeg"):
-            p = os.path.join(MOD, *PHOTO_DIR_REL.split("/"), r["id"] + ext)
-            if os.path.exists(p):
-                src = p
-                break
+        src = find_photo(photo_dir, r["id"])
         if not src:
             continue
-        im = Image.open(src).convert("RGBA")
-        w, h = im.size
-        if (w, h) != (PHOTO_W, PHOTO_H):
-            # 只做居中裁切到 425:157；裁完尺寸仍不对时等比缩放（不拉伸），并报告
-            if w * PHOTO_H > h * PHOTO_W:
-                nw = round(h * PHOTO_W / PHOTO_H)
-                im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
-            else:
-                nh = round(w * PHOTO_H / PHOTO_W)
-                im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
-            note = "%s %dx%d -> 居中裁切 %dx%d" % (os.path.basename(src), w, h, im.size[0], im.size[1])
-            if im.size != (PHOTO_W, PHOTO_H):
-                im = im.resize((PHOTO_W, PHOTO_H), Image.LANCZOS)
-                note += " -> 等比缩放到 %dx%d" % (PHOTO_W, PHOTO_H)
+        im, note = fit_photo(src)
+        if note:
             adjusted.append(note)
         strip.paste(im, ((r["idx"] - 1) * PHOTO_W, 0))
         have.append(r["id"])
     save_png_if_changed(strip, os.path.join(PANEL_DIR, PHOTO_STRIP))
     print("地区照片：已交 %d 张 %s，其余用深色占位" % (len(have), have))
+    idle = find_photo(photo_dir, PHOTO_IDLE)
+    if idle:
+        im, note = fit_photo(idle)
+        if note:
+            adjusted.append(note)
+        print("待机照片：", os.path.basename(idle))
+    else:
+        im = Image.new("RGBA", (PHOTO_W, PHOTO_H), PHOTO_BG)
+        print("待机照片：没交（photos/%s.png），用深色占位" % PHOTO_IDLE)
+    save_png_if_changed(im, os.path.join(PANEL_DIR, PHOTO_IDLE_FILE))
     for n in adjusted:
         print("  照片尺寸不对，已处理：", n)
+
+
+PHOTO_EXTS = (".png", ".jpg", ".jpeg")
+PHOTO_IDLE_FILE = "region_photo_idle.png"
+
+
+def find_photo(photo_dir, stem):
+    for ext in PHOTO_EXTS:
+        p = os.path.join(photo_dir, stem + ext)
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def _norm(s):
+    return re.sub(r"[\s\-—–－‐·・_]", "", s)
+
+
+def rename_photos(photo_dir):
+    """中文名的照片改成区块id名（大柏林.png -> R16_GreatBerlin.png，待机.png -> idle.png）。
+    比对时去掉连字符、破折号、空格；文件名是某个地区名的一部分（符腾堡 -> 巴登-符腾堡）且只对上一个地区也算。
+    对不上 / 对上多个 / 英文名已存在的，不动，只报告。"""
+    targets = [(r["id"], r["name"]) for r in regions] + [(PHOTO_IDLE, PHOTO_IDLE_CN)]
+    ids = {i for i, _ in targets}
+    for f in sorted(os.listdir(photo_dir)):
+        stem, ext = os.path.splitext(f)
+        if ext.lower() not in PHOTO_EXTS or stem in ids:
+            continue
+        s = _norm(stem)
+        hits = [i for i, n in targets if s and _norm(n) == s] or [i for i, n in targets if s and s in _norm(n)]
+        if len(hits) != 1:
+            print("  照片没改名：%s 对不上地区名%s" % (f, "（可能是 %s）" % "/".join(hits) if hits else ""))
+            continue
+        if find_photo(photo_dir, hits[0]):
+            print("  照片没改名：%s 和 %s 都在，请删掉一个" % (f, os.path.basename(find_photo(photo_dir, hits[0]))))
+            continue
+        os.rename(os.path.join(photo_dir, f), os.path.join(photo_dir, hits[0] + ext.lower()))
+        print("  照片改名：%s -> %s%s" % (f, hits[0], ext.lower()))
+
+
+def fit_photo(src):
+    """读入照片，不是 425x157 就居中裁切到 425:157，还不对再等比缩放（不拉伸）；返回 (图, 说明或 None)"""
+    from PIL import Image
+    im = Image.open(src).convert("RGBA")
+    w, h = im.size
+    note = None
+    if (w, h) != (PHOTO_W, PHOTO_H):
+        # 只做居中裁切到 425:157；裁完尺寸仍不对时等比缩放（不拉伸），并报告
+        if w * PHOTO_H > h * PHOTO_W:
+            nw = round(h * PHOTO_W / PHOTO_H)
+            im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+        else:
+            nh = round(w * PHOTO_H / PHOTO_W)
+            im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+        note = "%s %dx%d -> 居中裁切 %dx%d" % (os.path.basename(src), w, h, im.size[0], im.size[1])
+        if im.size != (PHOTO_W, PHOTO_H):
+            im = im.resize((PHOTO_W, PHOTO_H), Image.LANCZOS)
+            note += " -> 等比缩放到 %dx%d" % (PHOTO_W, PHOTO_H)
+    return im, note
 
 
 for i, r in enumerate(regions, 1):
     r["idx"] = i                                      # GER_region_selected 的取值（也是照片帧号）
 build_photo_strip()
 
-panel_sprites = [("GFX_GER_region_panel_photos", PANEL_DIR_REL + "/" + PHOTO_STRIP, len(regions), False)]
+panel_sprites = [("GFX_GER_region_panel_photos", PANEL_DIR_REL + "/" + PHOTO_STRIP, len(regions), False),
+                 ("GFX_GER_region_panel_photo_idle", PANEL_DIR_REL + "/" + PHOTO_IDLE_FILE, 1, False)]
+# 核心区 / 特殊区方块（按 CORE_FRAMES 生成；手写区只在 .gfx 不存在时写一次，所以放在生成块里）
+panel_sprites += [("GFX_GER_region_panel_core_%s" % side, PANEL_DIR_REL + "/core_%s.png" % side, 1, False)
+                  for _f, side in sorted(CORE_FRAMES.items())]
 leaders = []
 for i, (key, cname, portrait) in enumerate(LEADERS, 1):
     ld = {"idx": i, "key": key, "cname": cname, "portrait": portrait,
@@ -403,6 +549,8 @@ for i, (key, cname, portrait) in enumerate(LEADERS, 1):
         ld["el"] = "GER_region_panel_leader_%s" % key
         panel_sprites.append((ld["sp"], portrait, 1, False))
     leaders.append(ld)
+
+LD_BY_KEY0 = {ld["key"]: ld for ld in leaders}
 
 # ---------------------------------------------------------------- 命名约定
 for r in regions:
@@ -421,48 +569,56 @@ for r in regions:
     r["name_key"] = "GER_region_%s_name" % r["id"]
     r["caption_key"] = "GER_region_%s_photo_caption" % r["id"]
 
-GARRISON_OPEN = "check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 }"
-# 行动方针 = 决议。效果和额外条件是手写文件，只在不存在时生成一次，之后脚本不再碰
+# 驻区方针能不能点：左派核心区，或支持度、控制度双满
+GARRISON_OPEN = ("OR = { check_variable = { GER_region_sel_frame = 3 } AND = { check_variable = { GER_region_sel_support > 99.99 }"
+                 " check_variable = { GER_region_sel_control > 99.99 } } }")
+# 行动方针 = 决议。效果、条件、悬停介绍是手写文件；脚本只在里面补缺的钩子（占位），已有内容一律不碰
 ACTIONS_EFFECTS = "common/scripted_effects/GER_region_game_actions.txt"
 ACTIONS_TRIGGERS = "common/scripted_triggers/GER_region_game_actions.txt"
-# 策划案第 5、6 页的原话，只写进上面两个文件的注释里，方便以后写效果
-ACTION_NOTES = [
-    "15pp 支持度+3（耗时7天）",
-    "15pp 控制度+3（耗时7天）",
-    "25pp 每两周控制度增长+0.4（持续时间24周）",
-    "30pp 每两周支持度+0.4（持续时间24周），spd随机一个派别政党支持度+0.5",
-    "20pp 该地区永久每两周控制度增长+0.02（党改革国策解锁，每个地区可以点两次）（耗时14天）",
-    "100pp 控制度+5，支持度+5（耗时14天，持续时间内建造速度-80%）（效果好，长cd）",
-    "20pp（耗时7天）控制度+5",
-    "65pp（支持度50大于等于控制度大于等于80）点了之后该地区转换为控制区，控制度不再能够下降到百分之八十以下",
-    "每两周+0.2武装力量",
-    "每两周+2%的无产阶级组织度",
-    "每日+0.3pp",
-    "相邻地区每两周控制度+1",
-]
 
-ROWS = []   # 12 条行动方针：1-8 日常决议，9-12 驻区方针
-for i, (nm, cost, days) in enumerate(DAILY_ROWS, 1):
-    ROWS.append({"n": i, "cname": nm, "cost": cost, "days": days, "garrison": False})
-for j, nm in enumerate(GARRISON_ROWS, len(DAILY_ROWS) + 1):
-    ROWS.append({"n": j, "cname": nm, "cost": GARRISON_COST, "days": 0, "garrison": True})
+_by_n = {a["n"]: a for a in ACTIONS}
+assert len(_by_n) == len(ACTIONS) and sorted(ACTION_ORDER) == sorted(_by_n), "ACTIONS 编号重复或 ACTION_ORDER 不全"
+ROWS = []
+for n in ACTION_ORDER:
+    row = dict(dict(days=0, max=0, region=None, cooldown=0), **_by_n[n])
+    row["garrison"] = row["kind"] == "garrison"
+    assert row["kind"] in ("daily", "garrison") and not (row["garrison"] and row["days"])
+    ROWS.append(row)
 for row in ROWS:
     n = row["n"]
-    row["el"] = "GER_region_panel_row_%d" % n
-    row["el_sel"] = "GER_region_panel_row_%d_selected" % n   # 生效中时盖上的帧 3
     row["name"] = "GER_region_panel_row_%d_name" % n
     row["tt"] = "GER_region_panel_row_%d_tt" % n
     row["sel_days"] = "GER_region_sel_row_%d_days" % n         # 选中地区这条还剩几天（面板读）
-    row["sel_weeks"] = "GER_region_sel_row_%d_weeks" % n
+    row["sel_count"] = "GER_region_sel_row_%d_count" % n       # 选中地区这条已执行几次（有 max 的才有）
+    row["sel_cd"] = "GER_region_sel_row_%d_cd" % n             # 选中地区这条冷却还剩几天（有 cooldown 的才有）
     row["pp_ok"] = "has_political_power > %s" % (row["cost"] - 0.01)
     # 「生效中」：日常决议 = 选中地区剩余天数 > 0；驻区方针 = 选中地区当前方针是这一条
     row["active"] = ("check_variable = { GER_region_sel_policy = %d }" % n if row["garrison"]
                      else "check_variable = { %s > 0 }" % row["sel_days"])
+    # 钩子：点击时 / 结束时 / 每两周 / 每天（都在手写的效果文件里）
+    row["hooks"] = [""]
+    if not row["garrison"] and row["days"]:
+        row["hooks"].append("_complete")
+    if row["garrison"] or row["days"] >= BIWEEKLY:
+        row["hooks"].append("_biweekly")
+    if row["garrison"]:
+        row["hooks"].append("_daily")
 TIMED_ROWS = [row for row in ROWS if not row["garrison"] and row["days"] > 0]
 GARRISON = [row for row in ROWS if row["garrison"]]
+COUNTED = [row for row in ROWS if row["max"]]
+COOLED = [row for row in ROWS if row["cooldown"]]
+DAILY_LIST = [row for row in ROWS if not row["garrison"]]
 for r in regions:
-    r["v_policy"] = "GER_region_%s_policy" % r["key"]            # 当前驻区方针 9-12，0 = 无
+    r["v_policy"] = "GER_region_%s_policy" % r["key"]            # 当前驻区方针编号，0 = 无
     r["v_policy_days"] = "GER_region_%s_policy_days" % r["key"]  # 当前方针已生效天数
+    r["v_count"] = {row["n"]: "GER_region_%s_count_%d" % (r["key"], row["n"]) for row in COUNTED}  # 已执行次数
+    r["v_growth"] = "GER_region_%s_control_growth" % r["key"]    # 永久每两周控制度增长
+    r["v_floor"] = "GER_region_%s_control_floor" % r["key"]      # 控制度下限（影子苏维埃后 80）
+    r["v_cd"] = {row["n"]: "GER_region_%s_cd_%d" % (r["key"], row["n"]) for row in COOLED}  # 冷却剩余天数
+    r["v_tier"] = "GER_region_%s_tier" % r["key"]                # 地区效益档位 100/75/50/25/0
+    r["v_swing_return"] = "GER_region_%s_swing_return" % r["key"]  # 掉成摇摆区之前的类型（0 = 不是临时摇摆区）
+    r["v_swing_days"] = "GER_region_%s_swing_days" % r["key"]    # 回升后还要维持摇摆区几天
+    assert r["key"] in REGION_STATES
     r["v_act"] = {row["n"]: "GER_region_%s_act_%d" % (r["key"], row["n"]) for row in TIMED_ROWS}  # 剩余天数
 
 # 盖板互斥：键的盖板在值的盖板显示时不画（A 方案范围包含 B 方案）
@@ -529,18 +685,6 @@ GFX_TEMPLATE = """spriteTypes = {
         noOfFrames = 3
     }
     spriteType = {
-        name = "GFX_GER_region_panel_core_left"
-        texturefile = "gfx/interface/GER_region_game/panel/core_left.png"
-    }
-    spriteType = {
-        name = "GFX_GER_region_panel_core_right"
-        texturefile = "gfx/interface/GER_region_game/panel/core_right.png"
-    }
-    spriteType = {
-        name = "GFX_GER_region_panel_core_weimar"
-        texturefile = "gfx/interface/GER_region_game/panel/core_weimar.png"
-    }
-    spriteType = {
         name = "GFX_GER_region_panel_region_photo_frame"
         texturefile = "gfx/interface/GER_region_game/panel/region_photo_frame.png"
     }
@@ -584,14 +728,17 @@ def icon(name, sprite, x, y, frame=None, transparent=True, extra=()):
     return s
 
 
-def button(name, sprite, x, y, tt=None):
+SILENT_CLICK = "GER_region_silent_click"   # sound/GER_region_game.asset：click_default 的音量 0 版本
+
+
+def button(name, sprite, x, y, tt=None, sound=True):
     s = ["buttonType = {",
          '    name = "%s"' % name,
          '    quadTextureSprite = "%s"' % sprite,
          "    position = { x = %d y = %d }" % (x, y)]
     if tt:
         s.append('    pdx_tooltip = "%s"' % tt)
-    s.append("    clicksound = click_default")
+    s.append("    clicksound = %s" % ("click_default" if sound else SILENT_CLICK))
     s.append("}")
     return s
 
@@ -618,15 +765,15 @@ L.append("# 层 6：德国外轮廓线（透明底，不接收鼠标）")
 L += icon("GER_region_outline", SP_OUTLINE, 0, 0)
 L.append("# 层 7：点击层。后写的先接收鼠标：整块德国 -> 区块 -> 盖板 -> 阿洛 / 巴伐利亚缺角")
 L += button("GER_region_locked_all_button", "GFX_GER_region_locked_all_hit", LK_H["x"], LK_H["y"],
-            "GER_region_locked_all_tt")
+            "GER_region_locked_all_tt", sound=False)     # 斜线 / 割让盖板 / 阿洛 / 缺角：只有悬停黄线和提示，没有点击音
 for r in regions:
     L += button(r["el_btn"], r["sp_hit"], r["x"], r["y"], r["tooltip"])   # 第一行「地区名：类型」+ 手写介绍
 for o in overlays:
-    L += button(o["el_btn"], o["sp_hit"], o["x"], o["y"], o["tt"])
+    L += button(o["el_btn"], o["sp_hit"], o["x"], o["y"], o["tt"], sound=False)
 L += button("GER_region_alsace_lorraine_button", "GFX_GER_region_alsace_lorraine_hit", AL_H["x"], AL_H["y"],
-            "GER_region_alsace_lorraine_tt")
+            "GER_region_alsace_lorraine_tt", sound=False)
 L += button("GER_region_bav_corner_button", "GFX_GER_region_bav_corner_hit", BC_H["x"], BC_H["y"],
-            "GER_region_bav_corner_tt")
+            "GER_region_bav_corner_tt", sound=False)
 GUI_MAP = "\n".join(L)
 
 
@@ -662,21 +809,35 @@ P += icon("GER_region_panel_map_shade", "GFX_GER_region_panel_map_corner_shade",
 P.append("# 2-5 地区照片：框（带阴影，框内是深色底）→ 照片（%d 帧，帧号 = GER_region_selected）→ 暗角 → 说明" % len(regions))
 P += icon("GER_region_panel_photo_frame", "GFX_GER_region_panel_region_photo_frame", *RPH["sprite_pos_window"])
 P += icon("GER_region_panel_photo", "GFX_GER_region_panel_photos", *RPH["photo_pos_window"])
-P += icon("GER_region_panel_photo_vignette", "GFX_GER_region_panel_region_photo_vignette", *RPH["photo_pos_window"])
+P += icon("GER_region_panel_photo_idle", "GFX_GER_region_panel_photo_idle", *RPH["photo_pos_window"])
+# 暗角接收鼠标：悬停提示 = 选中地区在地图上的提示，没选中时 = 待机提示
+P += icon("GER_region_panel_photo_vignette", "GFX_GER_region_panel_region_photo_vignette", *RPH["photo_pos_window"],
+          transparent=False, extra=['pdx_tooltip = "GER_region_panel_photo_tooltip"'])
 _cx, _cy, _cw, _ch = RPH["caption_rect_window"]
-P += tbox("GER_region_panel_photo_name", _cx + 4, _cy, "GER_region_game_selected_name", 220, _ch)
-P += tbox("GER_region_panel_photo_caption", _cx + _cw - 4 - 200, _cy, "GER_region_panel_photo_caption", 200, _ch,
-          fmt="right")
+CAPTION_DY = 3     # 说明条文字比条顶下移几像素（用户看图要求「稍微降一点」）
+_NAME_W = 160      # 左：地区名；右：地区类型 / 待机时的一句话（右边更长，给宽一些）
+P += tbox("GER_region_panel_photo_name", _cx + 4, _cy + CAPTION_DY, "GER_region_panel_photo_name", _NAME_W, _ch)
+P += tbox("GER_region_panel_photo_status", _cx + 4 + _NAME_W, _cy + CAPTION_DY, "GER_region_panel_photo_status",
+          _cw - 8 - _NAME_W, _ch, fmt="right")
 P.append("# 6-9 领导人：框（带阴影）→ 头像（每人一个，scale %s，按 GER_region_sel_leader 切换）→ 暗角（带悬停提示）→ 名字"
          % PJ["leader_portrait_scale"])
-P += icon("GER_region_panel_leader_frame", "GFX_GER_region_panel_leader_photo_frame", *LPH["sprite_pos_window"])
+# 领导人整组右移，让领导人框的右边与地区照片框的右边对齐（两框都按 frame_pos + frame_size 算）
+LEADER_DX = (RPH["frame_pos_window"][0] + RPH["frame_size"][0]) - (LPH["frame_pos_window"][0] + LPH["frame_size"][0])
+
+
+def _ld(pos):
+    return pos[0] + LEADER_DX, pos[1]
+
+
+P += icon("GER_region_panel_leader_frame", "GFX_GER_region_panel_leader_photo_frame", *_ld(LPH["sprite_pos_window"]))
 for ld in leaders:
     if ld.get("sp"):
-        P += icon(ld["el"], ld["sp"], *LPH["photo_pos_window"], extra=["scale = %s" % PJ["leader_portrait_scale"]])
-P += icon("GER_region_panel_leader_vignette", "GFX_GER_region_panel_leader_photo_vignette", *LPH["photo_pos_window"],
+        P += icon(ld["el"], ld["sp"], *_ld(LPH["photo_pos_window"]), extra=["scale = %s" % PJ["leader_portrait_scale"]])
+P += icon("GER_region_panel_leader_vignette", "GFX_GER_region_panel_leader_photo_vignette", *_ld(LPH["photo_pos_window"]),
           transparent=False, extra=['pdx_tooltip = "GER_region_panel_leader_tt"'])
 _lx, _ly, _lw, _lh = LPH["caption_rect_window"]
-P += tbox("GER_region_panel_leader_name", _lx, _ly, "GER_region_panel_leader_name", _lw, _lh, fmt="centre")
+P += tbox("GER_region_panel_leader_name", _lx + LEADER_DX, _ly + CAPTION_DY, "GER_region_panel_leader_name", _lw, _lh,
+          fmt="centre")
 
 P.append("# 10 名称框：区名居中（地区类型写在地图悬停提示的第一行）")
 P += box("GER_region_game_name_box", 1281, 13, 282, 42, [
@@ -704,33 +865,55 @@ for f, side in sorted(CORE_FRAMES.items()):
 P += tbox("GER_region_panel_core_title", 1285, 61 + 84 // 2 - 9, "GER_region_panel_core_title", 312, 26,
           "hoi_18mbs", "centre")
 
-P.append("# 18-22 决议总框：行动方针 8 条 + 驻区方针 4 条。条：帧1 普通 / 帧2 悬停 / 帧3 生效中")
-_act = []
+P.append("# 18-22 决议总框：标题「行动方针」+ 可滚动列表。列表每条 = 一个 GER_region_panel_entry（见 GUI_ENTRY），")
+P.append("# 内容来自数组 GER_region_panel_list（GER_region_game_sync_selected 按 ACTION_ORDER 和各条 _visible 条件重建）")
 _AX, _AY = 1281, 150
-_act += tbox("GER_region_panel_actions_title", 1297 - _AX, 166 - _AY, "GER_region_game_policy_label", 200, 26, "hoi_18mbs")
-
-
-def row_els(row, y):
-    # 实测：scripted_gui 用 properties 给按钮设 frame 后，引擎不再自动切悬停帧 2。
-    # 所以按钮本身不设 frame（帧1 普通 / 帧2 悬停 交给引擎），生效中时在上面盖一张帧 3 的图标（不挡鼠标）。
-    rx = 1295 - _AX
-    return (button(row["el"], "GFX_GER_region_panel_decision_row", rx, y, row["tt"])
-            + icon(row["el_sel"], "GFX_GER_region_panel_decision_row", rx, y, frame=3)
-            + tbox(row["el"] + "_name", rx + 14, y + 11, "GER_region_panel_row_%d_label" % row["n"], 180, 22)
-            + tbox(row["el"] + "_status", rx + 292 - 14 - 120, y + 11, "GER_region_panel_row_%d_status" % row["n"],
-                   120, 22, fmt="right"))
-
-
-for k, row in enumerate(r for r in ROWS if not r["garrison"]):
-    _act += row_els(row, 200 + 48 * k - _AY)
-_act += tbox("GER_region_panel_garrison_label", 1299 - _AX, 593 - _AY, "GER_region_panel_garrison_label", 100, 22,
-             tt="GER_region_panel_garrison_tt")
-for k, row in enumerate(r for r in ROWS if r["garrison"]):
-    _act += row_els(row, 622 + 48 * k - _AY)
+ROW_W, ROW_H = 292, 48
+LIST_X, LIST_Y = 1295 - _AX, 200 - _AY          # 第一条的位置（与原来固定排布相同）
+TITLE_X, TITLE_Y = 1297 - _AX, 166 - _AY        # 「行动方针」标题
+_act = tbox("GER_region_panel_actions_title", TITLE_X, TITLE_Y, "GER_region_game_policy_label", 200, 26, "hoi_18mbs")
+_act += ["containerWindowType = {",
+         '    name = "GER_region_panel_list_area"',
+         "    position = { x = %d y = %d }" % (LIST_X, LIST_Y),
+         "    size = { width = %d height = %d }" % (320 - LIST_X, 731 - LIST_Y - 8),
+         '    verticalScrollbar = "right_vertical_slider"',
+         "    scroll_wheel_factor = %d" % ROW_H,
+         "    smooth_scrolling = yes",
+         "    gridboxType = {",
+         '        name = "GER_region_panel_list"',
+         "        position = { x = 0 y = 0 }",
+         "        size = { width = %d height = 100%%%% }" % ROW_W,
+         "        slotsize = { width = %d height = %d }" % (ROW_W, ROW_H),
+         '        format = "UPPER_LEFT"',
+         "        max_slots_horizontal = 1",
+         "    }",
+         "}"]
 P += box("GER_region_panel_actions", _AX, _AY, 320, 731, _act)
+
+# 列表的一条（v = 决议编号；v = 0 是「驻区方针」小标题）。
+# 实测：scripted_gui 用 properties 给按钮设 frame 后，引擎不再自动切悬停帧 2。
+# 所以按钮本身不设 frame（帧1 普通 / 帧2 悬停 交给引擎），生效中时在上面盖一张帧 3 的图标（不挡鼠标）。
+# 小标题与下一条的距离 = 「行动方针」标题与第一条的距离（LIST_Y - TITLE_Y），字体相同。
+_E = ["containerWindowType = {",
+      '    name = "GER_region_panel_entry"',
+      "    position = { x = 0 y = 0 }",
+      "    size = { width = %d height = %d }" % (ROW_W, ROW_H)]
+_E += ["    " + s for s in button("GER_region_panel_entry_button", "GFX_GER_region_panel_decision_row", 0, 0,
+                                  "GER_region_panel_entry_tooltip")]
+_E += ["    " + s for s in icon("GER_region_panel_entry_selected", "GFX_GER_region_panel_decision_row", 0, 0, frame=3)]
+_E += ["    " + s for s in tbox("GER_region_panel_entry_name", 14, 11, "GER_region_panel_entry_name", 180, 22)]
+_E += ["    " + s for s in tbox("GER_region_panel_entry_status", ROW_W - 14 - 120, 11, "GER_region_panel_entry_status",
+                                120, 22, fmt="right")]
+_E += ["    " + s for s in tbox("GER_region_panel_entry_header", TITLE_X - LIST_X, ROW_H - (LIST_Y - TITLE_Y),
+                                "GER_region_panel_garrison_label", 200, 26, "hoi_18mbs", tt="GER_region_panel_garrison_tt")]
+_E.append("}")
+GUI_ENTRY = "\n".join(_E)
 GUI_PANEL = "\n".join(P)
 
 GUI_TEMPLATE = """guiTypes = {
+    # 决议列表的一条（scripted_gui 的 dynamic_lists 用）
+    {{GEN:list_entries}}
+
     # 入口按钮：右下角，议会按钮（GER_yihui_entry_bg，y = -360，100x100）正上方
     containerWindowType = {
         name = "GER_region_game_entry_bg"
@@ -751,11 +934,17 @@ GUI_TEMPLATE = """guiTypes = {
 
     containerWindowType = {
         name = "GER_region_game_window"
-        position = { x = 0 y = 0 }
+        position = { x = 0 y = -1100 }
         Orientation = center
         Origo = center
         size = { width = %(W)d height = %(H)d }
         moveable = yes
+        # 打开时从屏幕上方慢慢滑下来（写法同 AOR_supernews.gui）
+        show_position = { x = 0 y = 0 }
+        hide_position = { x = 0 y = -1100 }
+        animation_time = 500
+        show_animation_type = decelerated
+        hide_animation_type = accelerated
 
         background = {
             name = "GER_region_game_bg"
@@ -778,7 +967,7 @@ GUI_TEMPLATE = """guiTypes = {
             background = { name = "GER_region_game_quote_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
             instantTextboxType = {
                 name = "GER_region_game_quote_text"
-                position = { x = 10 y = 12 }
+                position = { x = 10 y = 14 }
                 font = "hoi_16mbs"
                 text = "GER_region_game_quote"
                 maxWidth = %(CW10)d
@@ -834,9 +1023,9 @@ props += ["GER_region_panel_photo = { frame = var:GER_region_selected }",
           "GER_region_panel_control_bar = { frame = var:GER_region_sel_control }"]
 SEL ="check_variable = { GER_region_selected > 0 }"
 CORE_ANY = " ".join("check_variable = { GER_region_sel_frame = %d }" % f for f in sorted(CORE_FRAMES))
-trig.append("# 右侧面板：照片、照片说明只在选中地区后显示")
-for el in ("GER_region_panel_photo", "GER_region_panel_photo_name", "GER_region_panel_photo_caption"):
-    trig.append("%s_visible = { %s }" % (el, SEL))
+trig.append("# 右侧面板：照片、照片说明只在选中地区后显示；没选中（含整块斜线时）显示待机照片")
+trig.append("GER_region_panel_photo_visible = { %s }" % SEL)
+trig.append("GER_region_panel_photo_idle_visible = { NOT = { %s } }" % SEL)
 trig.append("# 领导人头像：按选中地区的领导人序号（GER_region_sel_leader）切换；没头像的领导人只显示名字")
 for ld in leaders:
     if ld.get("sp"):
@@ -848,16 +1037,37 @@ trig.append("GER_region_panel_values_visible = { NOT = { %s } }" % CORE_ANY)
 for f, side in sorted(CORE_FRAMES.items()):
     trig.append("GER_region_panel_core_%s_visible = { check_variable = { GER_region_sel_frame = %d } }" % (side, f))
 trig.append("GER_region_panel_core_title_visible = { OR = { %s } }" % CORE_ANY)
-trig.append("# 行动方针条：选中地区里生效中的条盖上帧 3（每条各自计时，可以同时好几条）")
+trig.append("# 决议列表（dynamic_lists）：每条的 v = 决议编号；v = 0 是「驻区方针」小标题")
+trig.append("GER_region_panel_entry_header_visible = { check_variable = { v = 0 } }")
+for _el in ("GER_region_panel_entry_button", "GER_region_panel_entry_name", "GER_region_panel_entry_status"):
+    trig.append("%s_visible = { check_variable = { v > 0 } }" % _el)
+trig.append("# 生效中的条盖上帧 3（每条各自计时，可以同时好几条）")
+trig.append("GER_region_panel_entry_selected_visible = {\n    OR = {")
 for row in ROWS:
-    trig.append("%s_visible = { %s }" % (row["el_sel"], row["active"]))
-trig.append("# 决议能否点击：选中了地区、不在生效中、政治点数够；驻区方针还要支持度、控制度双满；")
+    trig.append("        AND = { check_variable = { v = %d } %s }" % (row["n"], row["active"]))
+trig.append("    }\n}")
+trig.append("# 能否点击：选中了地区、不在生效中、政治点数够、该地区次数没满；驻区方针还要左派核心区或双满；")
 trig.append("# 再加上 %s 里的 GER_region_action_N_allowed（冷却、解锁条件等）" % ACTIONS_TRIGGERS)
+trig.append("GER_region_panel_entry_button_click_enabled = {\n    check_variable = { GER_region_selected > 0 }\n    OR = {")
 for row in ROWS:
-    cond = "check_variable = { GER_region_selected > 0 } NOT = { %s } %s" % (row["active"], row["pp_ok"])
+    c = "check_variable = { v = %d } NOT = { %s } %s" % (row["n"], row["active"], row["pp_ok"])
+    if row["max"]:
+        c += " check_variable = { %s < %d }" % (row["sel_count"], row["max"])
+    if row["cooldown"]:
+        c += " NOT = { check_variable = { %s > 0 } }" % row["sel_cd"]
     if row["garrison"]:
-        cond += " " + GARRISON_OPEN
-    trig.append("%s_click_enabled = { %s GER_region_action_%d_allowed = yes }" % (row["el"], cond, row["n"]))
+        c += " " + GARRISON_OPEN
+    trig.append("        AND = { %s GER_region_action_%d_allowed = yes }" % (c, row["n"]))
+trig.append("    }\n}")
+DYN_LISTS = """dynamic_lists = {
+    GER_region_panel_list = {
+        array = GER_region_panel_list
+        entry_container = GER_region_panel_entry
+        index = i
+        value = v
+        change_scope = no   # 不加的话引擎把 v 当作国家 / 省份去切换作用域，点击效果会在错误的作用域里执行
+    }
+}"""
 
 SGUI_TEMPLATE = """scripted_gui = {
     # 右下角入口按钮：打开 / 关闭地区博弈界面
@@ -899,6 +1109,7 @@ SGUI_TEMPLATE = """scripted_gui = {
             original_tag = GER
             has_country_flag = GER_region_game_open
         }
+        {{GEN:dynamic_lists}}
         properties = {
             {{GEN:properties}}
         }
@@ -919,10 +1130,38 @@ clicks = ["# 点击区块：记下选中的区块，右侧面板随之显示该�
 for r in regions:
     clicks.append("%s_click = { set_variable = { GER_region_selected = %d } GER_region_game_sync_selected = yes }"
                   % (r["el_btn"], r["idx"]))
+clicks.append("# 斜线 / 割让盖板 / 阿洛 / 缺角：只悬停（黄线 + 提示）。点击什么都不做、没有声音，也不落到下面的区块")
+NOOP = "set_temp_variable = { GER_region_noop = 1 }"
+for el in ["GER_region_locked_all_button", "GER_region_alsace_lorraine_button", "GER_region_bav_corner_button"] + \
+          [o["el_btn"] for o in overlays]:
+    clicks.append("%s_click = { %s }" % (el, NOOP))
 clicks.append("# 行动方针条 = 决议：点击扣政治点数、开始计时、执行 GER_region_action_N（效果写在 %s）。" % ACTIONS_EFFECTS)
 clicks.append("# 能不能点见 triggers 里的 _click_enabled。")
+clicks.append("GER_region_panel_entry_button_click = {")
 for row in ROWS:
-    clicks.append("%s_click = { GER_region_game_take_action_%d = yes }" % (row["el"], row["n"]))
+    clicks.append("    if = { limit = { check_variable = { v = %d } } GER_region_game_take_action_%d = yes }" % (row["n"], row["n"]))
+clicks.append("}")
+
+
+# 条件勾叉：名字 -> 触发器（选中地区的镜像变量 GER_region_sel_*）
+CHECKS = {
+    "GER_region_check_garrison_open": GARRISON_OPEN,
+    "GER_region_check_party_reform": "GER_region_party_reform_done = yes",
+    "GER_region_check_shipbuilding": "GER_region_shipbuilding_socialized = yes",
+    "GER_region_check_swing": "check_variable = { GER_region_sel_frame = 2 }",
+    "GER_region_check_support_50": "check_variable = { GER_region_sel_support > 49.99 }",
+    "GER_region_check_control_80": "check_variable = { GER_region_sel_control > 79.99 }",
+}
+CHECKS["GER_region_check_left_core"] = "check_variable = { GER_region_sel_frame = 3 }"
+CHECKS["GER_region_check_support_100"] = "check_variable = { GER_region_sel_support > 99.99 }"
+CHECKS["GER_region_check_control_100"] = "check_variable = { GER_region_sel_control > 99.99 }"
+CHECKS["GER_region_check_double_full"] = ("check_variable = { GER_region_sel_support > 99.99 } "
+                                          "check_variable = { GER_region_sel_control > 99.99 }")
+for _row in ROWS:
+    if _row["cooldown"]:
+        CHECKS["GER_region_check_cd_%d" % _row["n"]] = "NOT = { check_variable = { %s > 0 } }" % _row["sel_cd"]
+for _row in COUNTED:
+    CHECKS["GER_region_check_count_%d" % _row["n"]] = "check_variable = { %s < %d }" % (_row["sel_count"], _row["max"])
 
 
 def defined_text(name, cases, default):
@@ -959,9 +1198,14 @@ sl.append("# 核心区方块的说明")
 sl += defined_text("GER_region_sel_core_desc",
                    [("check_variable = { GER_region_sel_frame = %d }" % f, "GER_region_panel_core_%d_desc" % f)
                     for f in sorted(CORE_FRAMES)], "GER_region_panel_empty")
-sl.append("# 照片右下角小字（拍摄地 / 年份）")
-sl += defined_text("GER_region_sel_photo_caption", [(is_sel(r["idx"]), r["caption_key"]) for r in regions],
-                   "GER_region_panel_empty")
+sl.append("# 照片说明条：选中地区时 = 地区名 / 地区类型；待机时 = 手写的两句（GER_region_panel_idle_name / _status）")
+sl += defined_text("GER_region_panel_photo_name_text", [(is_sel(r["idx"]), r["name_key"]) for r in regions],
+                   "GER_region_panel_idle_name")
+sl += defined_text("GER_region_panel_photo_status_text", [(SEL, "GER_region_panel_photo_type")],
+                   "GER_region_panel_idle_status")
+sl.append("# 地区照片的悬停提示：与地图上该区块的提示相同；没选中时用待机提示（手写）")
+sl += defined_text("GER_region_panel_photo_tt", [(is_sel(r["idx"]), r["tooltip"]) for r in regions],
+                   "GER_region_panel_idle_tt")
 sl.append("# 领导人名字 / 悬停提示")
 sl += defined_text("GER_region_sel_leader_name",
                    [("check_variable = { GER_region_sel_leader = %d }" % ld["idx"], ld["name_key"]) for ld in leaders],
@@ -981,13 +1225,94 @@ for row in ROWS:
         cases.append((row["active"], "GER_region_panel_status_policy_on"))
         cases.append(("NOT = { AND = { %s } }" % GARRISON_OPEN, "GER_region_panel_row_%d_status_grey" % n))
     elif row["days"]:
-        cases.append(("check_variable = { %s > %d }" % (row["sel_days"], BIWEEKLY - 1),
-                      "GER_region_panel_row_%d_status_weeks" % n))
         cases.append((row["active"], "GER_region_panel_row_%d_status_days" % n))
+    if row["cooldown"]:
+        cases.append(("check_variable = { %s > 0 }" % row["sel_cd"], "GER_region_panel_row_%d_status_cd" % n))
+    if row["max"]:
+        cases.append(("check_variable = { %s > %d }" % (row["sel_count"], row["max"] - 1),
+                      "GER_region_panel_row_%d_status_grey" % n))
     cases.append(("NOT = { %s }" % allowed, "GER_region_panel_row_%d_status_grey" % n))
     cases.append(("NOT = { %s }" % row["pp_ok"], "GER_region_panel_row_%d_status_red" % n))
     sl += defined_text("GER_region_row_%d_status" % n, cases, "GER_region_panel_row_%d_status_gold" % n)
+sl.append("# 决议列表条目（v = 决议编号）：名字、右侧状态、悬停提示（手写 GER_region_panel_row_N_tt）")
+sl += defined_text("GER_region_entry_name", [("check_variable = { v = %d }" % row["n"],
+                                             "GER_region_panel_row_%d_label" % row["n"]) for row in ROWS],
+                   "GER_region_panel_empty")
+sl += defined_text("GER_region_entry_status", [("check_variable = { v = %d }" % row["n"],
+                                               "GER_region_panel_row_%d_status" % row["n"]) for row in ROWS],
+                   "GER_region_panel_empty")
+sl += defined_text("GER_region_entry_tt", [("check_variable = { v = %d }" % row["n"], row["tt"]) for row in ROWS],
+                   "GER_region_panel_empty")
+sl.append("# 决议悬停提示里的条件勾叉（仿原版：£trigger_yes / £trigger_no）。手写提示里用 [名字] 引用")
+for _name, _trg in sorted(CHECKS.items()):
+    sl += defined_text(_name, [(_trg, "GER_region_check_yes")], "GER_region_check_no")
 SCRIPTED_LOC = "\n".join(sl) + "\n"
+_SL2_PENDING = True
+
+# ---------------------------------------------------------------- 开局设定（用户给定：地图全开后的 GUI 开局）
+# 左翼核心：汉堡-石荷、图林根-萨克森、鲁尔；右翼核心：巴伐利亚、东普鲁士、波美拉尼亚、汉诺威；
+# 特殊区：莱茵兰；共和（魏玛联盟）核心：巴登-符腾堡；其余 7 个是摇摆区。
+OPENING_TYPES = {"R03": 3, "R08": 3, "R14": 3, "R09": 4, "R13": 4, "R05": 4, "R02": 4, "R12": 6, "R10": 5,
+                 "R16": 2, "R15": 2, "R01": 2, "R07": 2, "R06": 2, "R04": 2, "R11": 2}
+OPENING_VALUES = {"R06": (51, 30), "R11": (46, 35), "R15": (39, 35), "R04": (45, 20), "R07": (15, 5),
+                  "R01": (43, 60), "R16": (60, 75)}     # 摇摆区 (支持度, 控制度)
+# 开局领导人（用户给定；巴伐利亚、东普鲁士、莱茵兰暂无）。没有头像的只显示名字。
+OPENING_LEADERS = {"R16": "daeumig", "R11": "dissmann",
+                   "R06": "paul_hirsch", "R05": "paul_hirsch", "R04": "paul_hirsch",
+                   "R10": "weimar_coalition", "R03": "paul_dittmann", "R14": "committee_nine",
+                   "R08": "lipinski", "R02": "lipinski", "R15": "lipinski",
+                   "R01": "henke", "R07": "bitta"}
+# 地图全开时一并显示的割让盖板：萨尔（两小块）、欧本-马尔梅迪、波森-西普鲁士-但泽走廊、梅梅尔
+OPENING_OVERLAYS = ["SAAR_bump_A", "SAAR_bump_B", "EUPEN_MALMEDY", "POSEN_WPRUSSIA", "MEMEL"]
+assert sorted(OPENING_TYPES) == sorted(r["key"] for r in regions)
+assert all(OPENING_TYPES[k] == 2 for k in OPENING_VALUES) and sum(v == 2 for v in OPENING_TYPES.values()) == len(OPENING_VALUES)
+
+R_BY_KEY0 = {r["key"]: r for r in regions}
+OV_BY_ID0 = {o["id"]: o for o in overlays}
+assert all(k in R_BY_KEY0 for k in OPENING_LEADERS) and all(v in LD_BY_KEY0 for v in OPENING_LEADERS.values())
+assert all(o in OV_BY_ID0 for o in OPENING_OVERLAYS)
+
+ADJ = {  # 由区块精灵的不透明像素外扩 2px 求得的相邻关系（只用于「相邻不同色」测试）
+    "R01": ["R02", "R15"], "R02": ["R01", "R03", "R04", "R06", "R08", "R11", "R15"],
+    "R03": ["R02", "R04"], "R04": ["R02", "R03", "R05", "R06"], "R05": ["R04", "R06", "R13"],
+    "R06": ["R02", "R04", "R05", "R07", "R08", "R13", "R16"], "R07": ["R06", "R08"],
+    "R08": ["R02", "R06", "R07", "R09", "R11"], "R09": ["R08", "R10", "R11"],
+    "R10": ["R09", "R11", "R12"], "R11": ["R02", "R08", "R09", "R10", "R12", "R15"],
+    "R12": ["R10", "R11", "R14", "R15"], "R13": ["R05", "R06"], "R14": ["R12", "R15"],
+    "R15": ["R01", "R02", "R11", "R12", "R14"], "R16": ["R06"],
+}
+for _k, _ns in ADJ.items():
+    assert all(_k in ADJ[_n] for _n in _ns), "ADJ 不对称：" + _k
+
+# 每两周变化的来源（悬停提示里逐条列出）：(键, support/control, 数值或变量, 条件（选中地区）, 名字)
+_R = R_BY_KEY0
+BW_SOURCES = [
+    ("bw3", "control", "0.4", "check_variable = { GER_region_sel_row_3_days > 0 }", "组织网络的扩展"),
+    ("bw4", "support", "0.4", "check_variable = { GER_region_sel_row_4_days > 0 }", "推动公共事业"),
+    ("bw9", "control", "0.2", "check_variable = { GER_region_sel_policy = 9 }", "扩充安全部队"),
+    ("bw13a", "control", "0.1", "check_variable = { GER_region_sel_policy = 13 }", "红色海军网络"),
+    ("bw13b", "control", "0.9", "%s check_variable = { GER_region_R03_policy = 13 }" % is_sel(_R["R01"]["idx"]),
+     "红色海军网络（§Y汉堡-石荷§!）"),
+    ("bw14s", "support", "0.5", "%s check_variable = { GER_region_R14_policy = 14 }" % is_sel(_R["R15"]["idx"]),
+     "与基督教社会主义者交好（§Y鲁尔§!）"),
+    ("bw14c", "control", "0.5", "%s check_variable = { GER_region_R14_policy = 14 }" % is_sel(_R["R15"]["idx"]),
+     "与基督教社会主义者交好（§Y鲁尔§!）"),
+    ("bw12", "control", "GER_region_sel_nb12", "check_variable = { GER_region_sel_nb12 > 0 }", "§Y相邻地区§!的支援邻近地区"),
+    ("bwg", "control", "GER_region_sel_growth", "check_variable = { GER_region_sel_growth > 0 }", "组织重心向工厂转移（永久）"),
+]
+for _ld in leaders:
+    for _what, _v in LEADER_FX.get(_ld["key"], {}).get("local_bw", []):
+        BW_SOURCES.append(("ld_%s_%s" % (_ld["key"], _what), _what, "%g" % _v,
+                           "check_variable = { GER_region_sel_leader = %d }" % _ld["idx"], "领导人：§Y%s§!" % _ld["cname"]))
+FROZEN_SEL = "OR = { %s }" % " ".join(is_sel(_R[k]["idx"]) for k in FROZEN)
+
+
+def _is_num(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 # ---------------------------------------------------------------- scripted_effects
 eff = ["# 由 %s 生成，不要手改。" % GEN_TAG, ""]
@@ -996,15 +1321,26 @@ eff.append("# 改了任何 GER_region_* 变量后都跑一次。")
 eff.append("GER_region_game_sync_frames = {")
 for r in regions:
     eff.append("    set_variable = { %s = %s }" % (r["v_frame"], r["v_state"]))
+eff.append("    GER_region_game_update_tiers = yes")
 eff.append("    GER_region_game_sync_selected = yes")
 eff.append("}")
 eff.append("")
 eff.append("# 把选中区块（GER_region_selected）的帧号、支持度、控制度、领导人、决议计时、驻区方针拷到 GER_region_sel_*，右侧面板读这些")
 eff.append("GER_region_game_sync_selected = {")
+eff.append("    # 选中的区块没开放（例如整块斜线时）就当没选，面板显示待机")
+for r in regions:
+    eff.append("    if = { limit = { %s NOT = { check_variable = { %s = 1 } } } set_variable = { GER_region_selected = 0 } }"
+               % (is_sel(r["idx"]), r["v_open"]))
 for v in ("frame", "support", "control", "leader", "policy"):
     eff.append("    set_variable = { GER_region_sel_%s = 0 }" % v)
 for row in TIMED_ROWS:
     eff.append("    set_variable = { %s = 0 }" % row["sel_days"])
+for row in COUNTED:
+    eff.append("    set_variable = { %s = 0 }" % row["sel_count"])
+for row in COOLED:
+    eff.append("    set_variable = { %s = 0 }" % row["sel_cd"])
+for v in ("tier", "swing_days", "growth", "nb12"):
+    eff.append("    set_variable = { GER_region_sel_%s = 0 }" % v)
 for i, r in enumerate(regions):
     eff.append("    %s = {" % ("if" if i == 0 else "else_if"))
     eff.append("        limit = { %s }" % is_sel(r["idx"]))
@@ -1015,35 +1351,103 @@ for i, r in enumerate(regions):
     eff.append("        set_variable = { GER_region_sel_policy = %s }" % r["v_policy"])
     for row in TIMED_ROWS:
         eff.append("        set_variable = { %s = %s }" % (row["sel_days"], r["v_act"][row["n"]]))
+    for row in COUNTED:
+        eff.append("        set_variable = { %s = %s }" % (row["sel_count"], r["v_count"][row["n"]]))
+    for row in COOLED:
+        eff.append("        set_variable = { %s = %s }" % (row["sel_cd"], r["v_cd"][row["n"]]))
+    eff.append("        set_variable = { GER_region_sel_tier = %s }" % r["v_tier"])
+    eff.append("        set_variable = { GER_region_sel_swing_days = %s }" % r["v_swing_days"])
+    eff.append("        set_variable = { GER_region_sel_growth = %s }" % r["v_growth"])
+    for k in ADJ[r["key"]]:
+        eff.append("        if = { limit = { check_variable = { GER_region_%s_policy = 12 } } add_to_variable = { GER_region_sel_nb12 = 1 } }" % k)
     eff.append("    }")
+eff.append("    else = { set_variable = { GER_region_sel_leader = %d } }   # 待机：%s"
+           % (LD_BY_KEY0[IDLE_LEADER]["idx"], LD_BY_KEY0[IDLE_LEADER]["cname"]))
 eff.append("    clamp_variable = { var = GER_region_sel_support min = 0 max = 100 }")
 eff.append("    clamp_variable = { var = GER_region_sel_control min = 0 max = 100 }")
-for row in TIMED_ROWS:
-    eff.append("    set_variable = { %s = %s }" % (row["sel_weeks"], row["sel_days"]))
-    eff.append("    divide_variable = { %s = 7 }" % row["sel_weeks"])
+eff.append("    # 每两周变化合计（悬停提示用；来源见 gen_region_game.py 的 BW_SOURCES，要和手写效果一致）")
+eff.append("    set_variable = { GER_region_sel_bw_support = 0 }")
+eff.append("    set_variable = { GER_region_sel_bw_control = 0 }")
+for _k, _what, _amt, _cond, _label in BW_SOURCES:
+    eff.append("    if = { limit = { %s } add_to_variable = { GER_region_sel_bw_%s = %s } }   # %s" % (_cond, _what, _amt, _label))
+eff.append("    if = { limit = { %s } set_variable = { GER_region_sel_bw_support = 0 } set_variable = { GER_region_sel_bw_control = 0 } }"
+           % FROZEN_SEL)
+eff.append("    # 重建决议列表：行动方针 → 0（「驻区方针」小标题）→ 驻区方针；每条按 region 和手写的 _visible 决定是否出现")
+eff.append("    clear_array = GER_region_panel_list")
+for row in ROWS:
+    if row is GARRISON[0]:
+        eff.append("    add_to_array = { array = GER_region_panel_list value = 0 }")
+    cond = "GER_region_action_%d_visible = yes" % row["n"]
+    if row["region"]:
+        cond = is_sel(R_BY_KEY0[row["region"]]["idx"]) + " " + cond
+    eff.append("    if = { limit = { %s } add_to_array = { array = GER_region_panel_list value = %d } }   # %s"
+               % (cond, row["n"], row["cname"]))
 eff.append("}")
 eff.append("")
 
 
 def on_target(stmts):
-    """对 GER_region_target 指向的区块执行 stmts（{support} {control} 等指代该区块的变量）"""
+    """对 GER_region_target 指向的区块执行 stmts（{key} {support} {control} {state} {floor} {growth} 指代该区块）"""
     out = []
     for i, r in enumerate(regions):
-        body = " ".join(s.format(support=r["v_support"], control=r["v_control"]) for s in stmts)
-        out.append("    %s = { limit = { check_variable = { GER_region_target = %d } } %s }"
+        body = " ".join(s.format(key=r["key"], support=r["v_support"], control=r["v_control"], state=r["v_state"],
+                                 floor=r["v_floor"], growth=r["v_growth"]) for s in stmts)
+        out.append("    %s = {{ limit = {{ check_variable = {{ GER_region_target = %d }} }} %s }}".replace("{{", "{").replace("}}", "}")
                    % ("if" if i == 0 else "else_if", r["idx"], body))
     return out
 
 
-eff.append("# ---- 给手写决议效果用的小工具：先 set_temp_variable = { GER_region_delta = 3 }，再调用。")
-eff.append("# 作用于 GER_region_target 指向的地区（决议效果执行时已经设好），结果夹在 0-100。")
+eff.append("# ---- 给手写决议效果用的小工具。先 set_temp_variable = { GER_region_delta = 3 }（或 GER_region_value），再调用。")
+eff.append("# 支持度、控制度结果夹在 0-100；控制度不低于该地区的下限（影子苏维埃后为 80）。")
+eff.append("# 指定地区：GER_region_Rxx_add_support / _add_control（Rxx 见区块 key）")
+eff.append("# %s：支持度、控制度不会增长（GER_region_delta > 0 时不加），国策 / 焦点博弈先设 GER_region_force = 1 再调用"
+           % "、".join(R_BY_KEY0[k]["name"] for k in FROZEN))
+for r in regions:
+    lim = ("    if = { limit = { OR = { check_variable = { GER_region_delta < 0.0001 } check_variable = { GER_region_force = 1 } } }"
+           if r["key"] in FROZEN else None)
+    for what, var in (("support", r["v_support"]), ("control", r["v_control"])):
+        body = ["add_to_variable = { %s = GER_region_delta }" % var, "clamp_variable = { var = %s min = 0 max = 100 }" % var]
+        if what == "control":
+            body.append("if = { limit = { check_variable = { %s < %s } } set_variable = { %s = %s } }"
+                        % (r["v_control"], r["v_floor"], r["v_control"], r["v_floor"]))
+        eff.append("GER_region_%s_add_%s = {   # %s" % (r["key"], what, r["name"]))
+        if lim:
+            eff.append(lim)
+            eff += ["        " + s for s in body]
+            eff.append("    }")
+        else:
+            eff += ["    " + s for s in body]
+        eff.append("}")
+eff.append("# 作用于 GER_region_target 指向的地区（决议效果执行时已经设好）")
 eff.append("GER_region_target_add_support = {")
-eff += on_target(["add_to_variable = {{ {support} = GER_region_delta }}",
-                  "clamp_variable = {{ var = {support} min = 0 max = 100 }}"])
+eff += on_target(["GER_region_{key}_add_support = yes"])
 eff.append("}")
 eff.append("GER_region_target_add_control = {")
-eff += on_target(["add_to_variable = {{ {control} = GER_region_delta }}",
-                  "clamp_variable = {{ var = {control} min = 0 max = 100 }}"])
+eff += on_target(["GER_region_{key}_add_control = yes"])
+eff.append("}")
+eff.append("# 目标地区的相邻地区控制度 + GER_region_delta（相邻关系见 gen_region_game.py 的 ADJ）")
+eff.append("GER_region_target_neighbors_add_control = {")
+for i, r in enumerate(regions):
+    calls = " ".join("GER_region_%s_add_control = yes" % k for k in ADJ[r["key"]])
+    eff.append("    %s = { limit = { check_variable = { GER_region_target = %d } } %s }   # %s"
+               % ("if" if i == 0 else "else_if", r["idx"], calls, r["name"]))
+eff.append("}")
+eff.append("# 目标地区类型 = GER_region_value（帧号：2 摇摆 3 左核 8 左控 ……）")
+eff.append("GER_region_target_set_state = {")
+eff += on_target(["set_variable = {{ {state} = GER_region_value }}"])
+eff.append("}")
+eff.append("# 目标地区控制度下限 = GER_region_value（之后控制度不会低于它）")
+eff.append("GER_region_target_set_control_floor = {")
+eff += on_target(["set_variable = {{ {floor} = GER_region_value }}",
+                  "if = {{ limit = {{ check_variable = {{ {control} < {floor} }} }} set_variable = {{ {control} = {floor} }} }}"])
+eff.append("}")
+eff.append("# 目标地区永久「每两周控制度」+ GER_region_delta（全国统一每 %d 天结算一次）" % BIWEEKLY)
+eff.append("# 目标地区领导人 = GER_region_value（领导人序号，见 gen_region_game.py 的 LEADERS；0 = 无）。换完跑 GER_region_game_sync_frames")
+eff.append("GER_region_target_set_leader = {")
+eff += on_target(["set_variable = {{ %s = GER_region_value }}" % "GER_region_{key}_leader"])
+eff.append("}")
+eff.append("GER_region_target_add_control_growth = {")
+eff += on_target(["add_to_variable = {{ {growth} = GER_region_delta }}"])
 eff.append("}")
 eff.append("")
 eff.append("# ---- 点击行动方针：扣政治点数 → 记下目标地区 → 开始计时 / 切换方针 → 执行手写效果 → 刷新")
@@ -1053,20 +1457,29 @@ for row in ROWS:
     eff.append("    add_political_power = -%d" % row["cost"])
     eff.append("    set_variable = { GER_region_target = GER_region_selected }")
     for i, r in enumerate(regions):
+        body = []
         if row["garrison"]:
-            body = "set_variable = { %s = %d } set_variable = { %s = 0 }" % (r["v_policy"], n, r["v_policy_days"])
+            body.append("set_variable = { %s = %d } set_variable = { %s = 0 }" % (r["v_policy"], n, r["v_policy_days"]))
         elif row["days"]:
-            body = "set_variable = { %s = %d }" % (r["v_act"][n], row["days"])
-        else:
+            body.append("set_variable = { %s = %d }" % (r["v_act"][n], row["days"]))
+        if row["max"]:
+            body.append("add_to_variable = { %s = 1 }" % r["v_count"][n])
+        if row["cooldown"]:
+            body.append("set_variable = { %s = %d }" % (r["v_cd"][n], row["cooldown"]))
+        if not body:
             break
-        eff.append("    %s = { limit = { %s } %s }" % ("if" if i == 0 else "else_if", is_sel(r["idx"]), body))
+        eff.append("    %s = { limit = { %s } %s }" % ("if" if i == 0 else "else_if", is_sel(r["idx"]), " ".join(body)))
     eff.append("    GER_region_action_%d = yes" % n)
     eff.append("    GER_region_game_sync_frames = yes")
     eff.append("}")
 eff.append("")
 eff.append("# ---- 每天（on_daily_GER）：日常决议倒计时，每满 %d 天调用 _biweekly，到 0 调用 _complete；" % BIWEEKLY)
 eff.append("# 驻区方针累计天数，每满 %d 天调用当前方针的 _biweekly。" % BIWEEKLY)
+eff.append("# 另外：驻区方针每天调用 _daily；全国每满 %d 天结算各地区的永久每两周控制度；控制度不低于下限。" % BIWEEKLY)
 eff.append("GER_region_game_daily_tick = {")
+eff.append("    add_to_variable = { GER_region_day = 1 }")
+eff.append("    set_temp_variable = { GER_region_day_mod = GER_region_day }")
+eff.append("    modulo_temp_variable = { GER_region_day_mod = %d }" % BIWEEKLY)
 for r in regions:
     eff.append("    # %s" % r["name"])
     for row in TIMED_ROWS:
@@ -1085,17 +1498,167 @@ for r in regions:
     eff.append("    if = {")
     eff.append("        limit = { check_variable = { %s > 0 } }" % r["v_policy"])
     eff.append("        add_to_variable = { %s = 1 }" % r["v_policy_days"])
+    eff.append("        set_variable = { GER_region_target = %d }" % r["idx"])
+    for row in GARRISON:
+        eff.append("        if = { limit = { check_variable = { %s = %d } } GER_region_action_%d_daily = yes }"
+                   % (r["v_policy"], row["n"], row["n"]))
     eff.append("        set_temp_variable = { GER_region_elapsed = %s }" % r["v_policy_days"])
     eff.append("        modulo_temp_variable = { GER_region_elapsed = %d }" % BIWEEKLY)
     eff.append("        if = {")
     eff.append("            limit = { check_variable = { GER_region_elapsed = 0 } }")
-    eff.append("            set_variable = { GER_region_target = %d }" % r["idx"])
     for row in GARRISON:
         eff.append("            if = { limit = { check_variable = { %s = %d } } GER_region_action_%d_biweekly = yes }"
                    % (r["v_policy"], row["n"], row["n"]))
     eff.append("        }")
     eff.append("    }")
+    eff.append("    if = { limit = { check_variable = { GER_region_day_mod = 0 } check_variable = { %s > 0 } } "
+               "set_temp_variable = { GER_region_delta = %s } GER_region_%s_add_control = yes }"
+               % (r["v_growth"], r["v_growth"], r["key"]))
+    eff.append("    if = { limit = { check_variable = { %s < %s } } set_variable = { %s = %s } }"
+               % (r["v_control"], r["v_floor"], r["v_control"], r["v_floor"]))
+    for row in COOLED:
+        v = r["v_cd"][row["n"]]
+        eff.append("    if = { limit = { check_variable = { %s > 0 } } subtract_from_variable = { %s = 1 } }" % (v, v))
+    for ld in leaders:
+        for what, v in LEADER_FX.get(ld["key"], {}).get("local_bw", []):
+            eff.append("    if = { limit = { check_variable = { GER_region_day_mod = 0 } check_variable = { %s = 1 } check_variable = { %s = %d } } "
+                       "set_temp_variable = { GER_region_delta = %g } GER_region_%s_add_%s = yes }   # 领导人 %s"
+                       % (r["v_open"], r["v_leader"], ld["idx"], v, r["key"], what, ld["cname"]))
+    # 摇摆区规则
+    low = "check_variable = { %s < %d } check_variable = { %s < %d }" % (r["v_support"], SWING_SUPPORT, r["v_control"], SWING_CONTROL)
+    eff.append("    if = { limit = { check_variable = { %s > 0 } NOT = { check_variable = { %s = 2 } } } "
+               "set_variable = { %s = 0 } set_variable = { %s = 0 } }   # 临时摇摆区被别的效果改了类型：不再恢复"
+               % (r["v_swing_return"], r["v_state"], r["v_swing_return"], r["v_swing_days"]))
+    eff.append("    if = { limit = { check_variable = { %s = 1 } OR = { %s } %s } set_variable = { %s = %s } set_variable = { %s = 2 } }"
+               % (r["v_open"], " ".join("check_variable = { %s = %d }" % (r["v_state"], f) for f in SWING_FROM), low,
+                  r["v_swing_return"], r["v_state"], r["v_state"]))
+    eff.append("    if = {")
+    eff.append("        limit = { check_variable = { %s > 0 } }" % r["v_swing_return"])
+    eff.append("        if = { limit = { %s } set_variable = { %s = %d } }" % (low, r["v_swing_days"], SWING_DAYS))
+    eff.append("        else = {")
+    eff.append("            subtract_from_variable = { %s = 1 }" % r["v_swing_days"])
+    eff.append("            if = { limit = { check_variable = { %s < 1 } } set_variable = { %s = %s } set_variable = { %s = 0 } set_variable = { %s = 0 } }"
+               % (r["v_swing_days"], r["v_state"], r["v_swing_return"], r["v_swing_return"], r["v_swing_days"]))
+    eff.append("        }")
+    eff.append("    }")
+eff.append("    # ---- 领导人（全国）：每位领导人只算一份，所在区块开放时生效")
+eff.append("    set_temp_variable = { GER_region_spd_changed = 0 }")
+eff.append("    set_variable = { GER_region_soc_points_factor = 0 }")
+for ld in leaders:
+    fx = LEADER_FX.get(ld["key"])
+    if not fx:
+        continue
+    anyr = "OR = { %s }" % " ".join("AND = { check_variable = { %s = 1 } check_variable = { %s = %d } }"
+                                    % (r["v_open"], r["v_leader"], ld["idx"]) for r in regions)
+    body = []
+    for kind, v in fx.get("daily", []):
+        if kind == "stability":
+            body.append("add_stability = %g" % v)
+        else:
+            for k in (["left", "center", "right"] if kind == "all" else [kind]):
+                body.append("add_to_variable = { %s = %g }" % (SPD_FACTION[k][0], v))
+            body.append("set_temp_variable = { GER_region_spd_changed = 1 }")
+    if fx.get("soc"):
+        body.append("add_to_variable = { GER_region_soc_points_factor = %g }" % fx["soc"])
+    for flag, kind, v in fx.get("cond_daily", []):
+        body.append("if = { limit = { has_country_flag = %s } add_stability = %g }" % (flag, v))
+    bw = []
+    for kind, v in fx.get("bw", []):
+        if kind == "unity":
+            bw.append("add_to_variable = { GER_region_unity_acc = %g }" % v)
+        elif kind == "inertia":
+            bw.append("add_to_variable = { GER_yihui_inertia = %g }" % v)
+    if bw:
+        body.append("if = { limit = { check_variable = { GER_region_day_mod = 0 } } %s }" % " ".join(bw))
+    eff.append("    # %s" % ld["cname"])
+    if body:
+        eff.append("    if = { limit = { %s } %s }" % (anyr, " ".join(body)))
+    if fx.get("country"):
+        m = "GER_region_leader_%s_country" % ld["key"]
+        eff.append("    if = { limit = { %s NOT = { has_dynamic_modifier = { modifier = %s } } } add_dynamic_modifier = { modifier = %s } }"
+                   % (anyr, m, m))
+        eff.append("    if = { limit = { NOT = { %s } has_dynamic_modifier = { modifier = %s } } remove_dynamic_modifier = { modifier = %s } }"
+                   % (anyr, m, m))
+eff.append("    if = { limit = { check_variable = { GER_region_spd_changed = 1 } } GER_SPD_refresh_support_effect = yes }")
+eff.append("    # 党内团结度会被取整：零头先攒在 GER_region_unity_acc，满 1 点再加进去")
+eff.append("    set_temp_variable = { GER_region_unity_changed = 0 }")
+for _i in range(8):
+    eff.append("    if = { limit = { check_variable = { GER_region_unity_acc > 0.999 } } add_to_variable = { GER_SPD_unity = 1 } "
+               "subtract_from_variable = { GER_region_unity_acc = 1 } set_temp_variable = { GER_region_unity_changed = 1 } }")
+    eff.append("    if = { limit = { check_variable = { GER_region_unity_acc < -0.999 } } add_to_variable = { GER_SPD_unity = -1 } "
+               "add_to_variable = { GER_region_unity_acc = 1 } set_temp_variable = { GER_region_unity_changed = 1 } }")
+eff.append("    if = { limit = { check_variable = { GER_region_unity_changed = 1 } } GER_SPD_refresh_unity_effect = yes }")
 eff.append("    GER_region_game_sync_frames = yes")
+eff.append("}")
+eff.append("")
+eff.append("# 地图全开后的开局：16 个区块全部开放，按 OPENING_TYPES 设类型、按 OPENING_VALUES 设摇摆区支持度/控制度，")
+eff.append("# 清掉选中（面板显示待机）。地图全开的那一刻（事件 / 决议 / 国策里）调用 GER_region_game_open_map = yes。")
+eff.append("GER_region_game_open_map = {")
+for r in regions:
+    s, c = OPENING_VALUES.get(r["key"], HIDDEN_VALUES.get(OPENING_TYPES[r["key"]], (0, 0)))
+    eff.append("    set_variable = { %s = 1 } set_variable = { %s = %d } set_variable = { %s = %d } set_variable = { %s = %d }   # %s %s"
+               % (r["v_open"], r["v_state"], OPENING_TYPES[r["key"]], r["v_support"], s, r["v_control"], c,
+                  r["name"], TYPE_NAMES[OPENING_TYPES[r["key"]]]))
+for k, lk in sorted(OPENING_LEADERS.items()):
+    eff.append("    set_variable = { %s = %d }   # %s" % (R_BY_KEY0[k]["v_leader"], LD_BY_KEY0[lk]["idx"], LD_BY_KEY0[lk]["cname"]))
+for oid in OPENING_OVERLAYS:
+    eff.append("    set_variable = { %s = 1 }   # 割让：%s" % (OV_BY_ID0[oid]["v_shown"], OV_BY_ID0[oid]["name"]))
+eff.append("    set_variable = { GER_region_selected = 0 }")
+eff.append("    GER_region_game_sync_frames = yes")
+eff.append("}")
+eff.append("")
+eff.append("# ---- 地区效益：按支持度 / 控制度算各地区档位（未开放 = 25 无效果），再给该地区里归德国所有的州加对应修正")
+eff.append("GER_region_game_update_tiers = {")
+for r in regions:
+    s, c, tv = r["v_support"], r["v_control"], r["v_tier"]
+    eff.append("    # %s" % r["name"])
+    eff.append("    if = { limit = { NOT = { check_variable = { %s = 1 } } } set_variable = { %s = 25 } }" % (r["v_open"], tv))
+    eff.append("    else_if = { limit = { check_variable = { %s > 99.99 } check_variable = { %s > 24.99 } } set_variable = { %s = 100 } }" % (c, s, tv))
+    eff.append("    else = {")
+    eff.append("        set_temp_variable = { GER_region_half = %s }" % s)
+    eff.append("        multiply_temp_variable = { GER_region_half = 2 }")
+    eff.append("        subtract_from_temp_variable = { GER_region_half = %s }   # 2 x 支持度 - 控制度 >= 0 即支持度够一半" % c)
+    eff.append("        if = { limit = { check_variable = { %s > 74.99 } check_variable = { GER_region_half > -0.001 } } set_variable = { %s = 75 } }" % (c, tv))
+    eff.append("        else_if = { limit = { check_variable = { %s > 49.99 } check_variable = { GER_region_half > -0.001 } } set_variable = { %s = 50 } }" % (c, tv))
+    eff.append("        else_if = { limit = { check_variable = { %s > 24.99 } } set_variable = { %s = 25 } }" % (c, tv))
+    eff.append("        else = { set_variable = { %s = 0 } }" % tv)
+    eff.append("    }")
+    for sid in REGION_STATES[r["key"]]:
+        eff.append("    %d = { set_temp_variable = { GER_region_tier_now = GER.%s } "
+                   "if = { limit = { NOT = { is_owned_by = GER } } set_temp_variable = { GER_region_tier_now = 25 } } "
+                   "GER_region_state_set_tier = yes "
+                   "set_temp_variable = { GER_region_leader_now = GER.%s } "
+                   "if = { limit = { OR = { NOT = { is_owned_by = GER } NOT = { check_variable = { GER.%s = 1 } } } } "
+                   "set_temp_variable = { GER_region_leader_now = 0 } } "
+                   "GER_region_state_set_leader = yes }" % (sid, tv, r["v_leader"], r["v_open"]))
+eff.append("}")
+eff.append("# 州作用域：只保留 GER_region_tier_now 对应的那个修正（25 = 全部去掉）")
+eff.append("GER_region_state_clear_tiers = {")
+for tt in TIERS:
+    if TIER_MODS[tt]:
+        eff.append("    if = { limit = { has_dynamic_modifier = { modifier = GER_region_tier_%d } } remove_dynamic_modifier = { modifier = GER_region_tier_%d } }" % (tt, tt))
+eff.append("}")
+eff.append("GER_region_state_set_tier = {")
+for tt in TIERS:
+    if TIER_MODS[tt]:
+        eff.append("    if = { limit = { check_variable = { GER_region_tier_now = %d } NOT = { has_dynamic_modifier = { modifier = GER_region_tier_%d } } } "
+                   "GER_region_state_clear_tiers = yes add_dynamic_modifier = { modifier = GER_region_tier_%d } }" % (tt, tt, tt))
+eff.append("    if = { limit = { check_variable = { GER_region_tier_now = 25 } } GER_region_state_clear_tiers = yes }")
+eff.append("}")
+_LSTATE = [ld for ld in leaders if LEADER_FX.get(ld["key"], {}).get("state")]
+eff.append("# 州作用域：只保留 GER_region_leader_now（领导人序号）对应的领导人州修正")
+eff.append("GER_region_state_clear_leader_mods = {")
+for ld in _LSTATE:
+    m = "GER_region_leader_%s_state" % ld["key"]
+    eff.append("    if = { limit = { has_dynamic_modifier = { modifier = %s } } remove_dynamic_modifier = { modifier = %s } }" % (m, m))
+eff.append("}")
+eff.append("GER_region_state_set_leader = {")
+for ld in _LSTATE:
+    m = "GER_region_leader_%s_state" % ld["key"]
+    eff.append("    if = { limit = { check_variable = { GER_region_leader_now = %d } NOT = { has_dynamic_modifier = { modifier = %s } } } "
+               "GER_region_state_clear_leader_mods = yes add_dynamic_modifier = { modifier = %s } }" % (ld["idx"], m, m))
+eff.append("    if = { limit = { NOT = { %s } } GER_region_state_clear_leader_mods = yes }"
+           % " ".join("check_variable = { GER_region_leader_now = %d }" % ld["idx"] for ld in _LSTATE))
 eff.append("}")
 eff.append("")
 eff.append("# 隐藏全部割让盖板")
@@ -1109,23 +1672,63 @@ eff.append("GER_region_game_reset_to_opening = {")
 for r in regions:
     for v in ("v_open", "v_state", "v_frame", "v_support", "v_control", "v_leader", "v_policy", "v_policy_days"):
         eff.append("    clear_variable = %s" % r[v])
-    for v in r["v_act"].values():
+    for v in (list(r["v_act"].values()) + list(r["v_count"].values()) + list(r["v_cd"].values())
+              + [r["v_growth"], r["v_floor"], r["v_tier"], r["v_swing_return"], r["v_swing_days"]]):
         eff.append("    clear_variable = %s" % v)
 eff.append("    clear_variable = GER_region_selected")
+eff.append("    GER_region_actions_on_reset = yes   # 手写：决议自己的全国状态（例如罢工的建造减速）")
 eff.append("    GER_region_game_hide_all_overlays = yes")
 eff.append("}")
 EFFECTS = "\n".join(eff) + "\n"
 
+# 悬停提示里的动态行（要用 BW_SOURCES，所以放在这里补进 SCRIPTED_LOC）
+_sl2 = ["", "# 支持度 / 控制度悬停：每两周变化来源（选中地区）、合计、地区效益、摇摆区、冻结地区说明"]
+for _k, _what, _amt, _cond, _label in BW_SOURCES:
+    _sl2 += defined_text("GER_region_src_%s" % _k, [("%s NOT = { %s }" % (_cond, FROZEN_SEL), "GER_region_src_%s_line" % _k)],
+                         "GER_region_panel_empty")
+for _what in ("support", "control"):
+    _sl2 += defined_text("GER_region_bw_%s_sum" % _what, [("check_variable = { GER_region_sel_bw_%s > 0 }" % _what,
+                                                          "GER_region_bw_%s_pos" % _what),
+                                                         ("check_variable = { GER_region_sel_bw_%s < 0 }" % _what,
+                                                          "GER_region_bw_%s_neg" % _what)], "GER_region_bw_zero")
+_sl2 += defined_text("GER_region_tier_text", [("NOT = { %s }" % SEL, "GER_region_panel_empty")] +   # 没选中地区：不显示
+                     [("check_variable = { GER_region_sel_tier = %d }" % tt, "GER_region_tier_text_%d" % tt) for tt in TIERS],
+                     "GER_region_tier_text_25")
+_sl2 += defined_text("GER_region_swing_note",
+                     [("check_variable = { GER_region_sel_frame = 2 } check_variable = { GER_region_sel_swing_days > 0 }",
+                       "GER_region_swing_note_lock"),
+                      ("check_variable = { GER_region_sel_frame = 2 }", "GER_region_swing_note_on")], "GER_region_panel_empty")
+_sl2 += defined_text("GER_region_frozen_note", [(FROZEN_SEL, "GER_region_frozen_note_text")], "GER_region_panel_empty")
+for _row in COOLED:   # 决议悬停提示：冷却中时显示「（还剩X日）」
+    _sl2 += defined_text("GER_region_cd_%d_left" % _row["n"], [("check_variable = { %s > 0 } " % _row["sel_cd"],
+                                                              "GER_region_cd_%d_left_text" % _row["n"])], "GER_region_panel_empty")
+SCRIPTED_LOC += "\n".join(_sl2) + "\n"
+
+# 地区效益的州修正（生成）
+_dm = ["# 由 %s 生成，不要手改。地区效益（州修正），见 TIER_MODS" % GEN_TAG]
+for tt in TIERS:
+    if TIER_MODS[tt]:
+        _dm.append("GER_region_tier_%d = {" % tt)
+        _dm.append("    icon = %s" % TIER_ICONS[tt])
+        _dm += ["    %s = %.2f" % (m, v) for m, v, _n in TIER_MODS[tt]]
+        _dm.append("}")
+_dm.append("# 领导人：州修正（该地区里归德国所有的州）、全国修正")
+for _ld in leaders:
+    _fx = LEADER_FX.get(_ld["key"], {})
+    for _kind, _icon in (("state", LEADER_STATE_ICON), ("country", None)):   # 全国修正不写 icon：不显示成民族精神
+        if _fx.get(_kind):
+            _dm.append("GER_region_leader_%s_%s = {" % (_ld["key"], _kind))
+            if _icon:
+                _dm.append("    icon = %s" % _icon)
+            _dm += ["    %s = %.2f" % (m, v) for m, v, _n in _fx[_kind]]
+            _dm.append("}")
+DYN_MODIFIERS = "\n".join(_dm) + "\n"
+_sl2 = ["", "# 约瑟夫·比塔：西里西亚自治后多一条（旗标 GER_silesia_autonomy）"]
+_sl2 += defined_text("GER_region_bitta_autonomy_line", [("has_country_flag = GER_silesia_autonomy", "GER_region_bitta_autonomy_text")],
+                     "GER_region_panel_empty")
+SCRIPTED_LOC += "\n".join(_sl2) + "\n"
+
 # ---------------------------------------------------------------- 测试决议
-ADJ = {  # 由区块精灵的不透明像素外扩 2px 求得的相邻关系（只用于「相邻不同色」测试）
-    "R01": ["R02", "R15"], "R02": ["R01", "R03", "R04", "R06", "R08", "R11", "R15"],
-    "R03": ["R02", "R04"], "R04": ["R02", "R03", "R05", "R06"], "R05": ["R04", "R06", "R13"],
-    "R06": ["R02", "R04", "R05", "R07", "R08", "R13", "R16"], "R07": ["R06", "R08"],
-    "R08": ["R02", "R06", "R07", "R09", "R11"], "R09": ["R08", "R10", "R11"],
-    "R10": ["R09", "R11", "R12"], "R11": ["R02", "R08", "R09", "R10", "R12", "R15"],
-    "R12": ["R10", "R11", "R14", "R15"], "R13": ["R05", "R06"], "R14": ["R12", "R15"],
-    "R15": ["R01", "R02", "R11", "R12", "R14"], "R16": ["R06"],
-}
 CHECKER_COLORS = [3, 4, 6, 2]   # 红、蓝、绿、中立
 checker = {}
 for k in sorted(ADJ, key=lambda k: -len(ADJ[k])):
@@ -1164,6 +1767,7 @@ TEST_VARS = ["GER_region_test_color", "GER_region_test_next", "GER_region_test_o
              "GER_region_test_leader"]
 D += dec("GER_region_test_reset", ["GER_region_game_reset_to_opening = yes"]
          + ["clear_variable = %s" % v for v in TEST_VARS])
+D += dec("GER_region_test_opening", ["GER_region_game_hide_all_overlays = yes", "GER_region_game_open_map = yes"])
 D += dec("GER_region_test_open_all", open_all(2))
 D += dec("GER_region_test_checker", sum((["set_variable = { %s = 1 }" % r["v_open"],
                                           "set_variable = { %s = %d }" % (r["v_state"], checker[r["key"]])]
@@ -1315,7 +1919,7 @@ loc = ["l_simp_chinese:",
        " # 由 %s 生成，不要手改" % GEN_TAG,
        ' GER_region_game_entry_text: "地区博弈"',
        ' GER_region_game_entry_tt: "打开/关闭§Y地区博弈§!"',
-       ' GER_region_game_quote: "“我的故事并不让人愉快。它不像虚构的故事那般甜美和谐。它有荒诞和迷惘的味道，疯狂和梦境的味道。它的味道，就像那些不再想自我欺骗之人的生活的味道。”"',
+       ' GER_region_game_quote: "“我的故事并不让人愉快。它不像虚构的故事那般甜美和谐。它有荒诞和迷惘的味道，疯狂和梦境的味道。它的味道，就像那些不再想自我欺骗之人的生活的味道。” ——赫尔曼·黑塞"',
        ' GER_region_game_selected_name: "[GER_region_selected_name]"',
        ' GER_region_game_selected_none: "（选中地区名称）"',
        ' GER_region_game_support_label: "支持度"',
@@ -1323,16 +1927,26 @@ loc = ["l_simp_chinese:",
        ' GER_region_game_policy_label: "行动方针"',
        ' GER_region_panel_garrison_label: "驻区方针"',
        ' GER_region_panel_empty: ""',
-       ' GER_region_panel_support_value: "[?GER_region_sel_support|0]%"',
-       ' GER_region_panel_control_value: "[?GER_region_sel_control|0]%"',
-       ' GER_region_panel_support_tooltip: "§Y支持度§!：[?GER_region_sel_support|0]%\\n\\n[GER_region_panel_support_body]"',
-       ' GER_region_panel_control_tooltip: "§Y控制度§!：[?GER_region_sel_control|0]%\\n\\n[GER_region_panel_control_body]"',
-       ' GER_region_panel_photo_caption: "§Y[GER_region_sel_photo_caption]§!"',
+       ' GER_region_panel_support_value: "[?GER_region_sel_support|1]%"',
+       ' GER_region_panel_control_value: "[?GER_region_sel_control|1]%"',
+       ' GER_region_panel_support_tooltip: "§Y支持度§!：§Y[?GER_region_sel_support|1]%%§!\\n§Y每两周§!变化：[GER_region_bw_support_sum]%s\\n\\n[GER_region_frozen_note][GER_region_panel_support_body]\\n\\n[GER_region_tier_text][GER_region_swing_note]"'
+       % "".join("[GER_region_src_%s]" % s[0] for s in BW_SOURCES if s[1] == "support"),
+       ' GER_region_panel_control_tooltip: "§Y控制度§!：§Y[?GER_region_sel_control|1]%%§!\\n§Y每两周§!变化：[GER_region_bw_control_sum]%s\\n\\n[GER_region_frozen_note][GER_region_panel_control_body]\\n\\n[GER_region_tier_text][GER_region_swing_note]"'
+       % "".join("[GER_region_src_%s]" % s[0] for s in BW_SOURCES if s[1] == "control"),
+       ' GER_region_panel_photo_name: "[GER_region_panel_photo_name_text]"',
+       ' GER_region_panel_photo_status: "[GER_region_panel_photo_status_text]"',
+       ' GER_region_panel_photo_type: "[GER_region_sel_type]"',
+       ' GER_region_panel_photo_tooltip: "[GER_region_panel_photo_tt]"',
        ' GER_region_panel_leader_name: "[GER_region_sel_leader_name]"',
        ' GER_region_panel_leader_tt: "[GER_region_sel_leader_tt]"',
        ' GER_region_panel_core_title: "[GER_region_sel_type]"',
-       ' GER_region_panel_core_tooltip: "§Y[GER_region_sel_type]§!\\n\\n[GER_region_sel_core_desc]"',
-       ' GER_region_panel_status_policy_on: "§G生效中§!"',
+       ' GER_region_panel_core_tooltip: "§Y[GER_region_sel_type]§!\\n\\n[GER_region_sel_core_desc]\\n\\n[GER_region_tier_text]"',
+       ' GER_region_panel_status_policy_on: ""',
+       ' GER_region_panel_entry_name: "[GER_region_entry_name]"',
+       ' GER_region_panel_entry_status: "[GER_region_entry_status]"',
+       ' GER_region_panel_entry_tooltip: "[GER_region_entry_tt]"',
+       ' GER_region_check_yes: "£trigger_yes"',
+       ' GER_region_check_no: "£trigger_no"',
        ]
 loc += [' GER_region_type_%d: "%s"' % (f, n) for f, n in sorted(TYPE_NAMES.items())]
 loc.append(" # 地图悬停提示：第一行「地区名：类型」，下面接手写介绍（%s）" % HAND_TT_LOC)
@@ -1341,7 +1955,7 @@ for r in regions:
     loc.append(' %s_none: "§Y%s§!"' % (r["head"], r["name"]))
     for f, tn in sorted(TYPE_NAMES.items()):
         loc.append(' %s_%d: "§Y%s：%s§!"' % (r["head"], f, r["name"], tn))
-loc.append(" # 行动方针条：名字、悬停提示写在 %s；花费、天数在 gen_region_game.py 的 DAILY_ROWS" % HAND_PANEL_LOC)
+loc.append(" # 行动方针条：名字、悬停提示写在 %s；花费、天数在 gen_region_game.py 的 ACTIONS" % HAND_PANEL_LOC)
 for row in ROWS:
     n = row["n"]
     if row["garrison"]:
@@ -1353,8 +1967,9 @@ for row in ROWS:
     for col, c in (("gold", "Y"), ("red", "R"), ("grey", "g")):
         loc.append(' GER_region_panel_row_%d_status_%s: "§%s%dpp§!"' % (n, col, c, row["cost"]))
     if row["days"]:
-        loc.append(' GER_region_panel_row_%d_status_days: "§G生效中 [?%s|0]天§!"' % (n, row["sel_days"]))
-        loc.append(' GER_region_panel_row_%d_status_weeks: "§G生效中 [?%s|0]周§!"' % (n, row["sel_weeks"]))
+        loc.append(' GER_region_panel_row_%d_status_days: "§G[?%s|0]天§!"' % (n, row["sel_days"]))
+    if row["cooldown"]:
+        loc.append(' GER_region_panel_row_%d_status_cd: "§g冷却[?%s|0]天§!"' % (n, row["sel_cd"]))
 loc += [' %s: "%s"' % (r["name_key"], r["name"]) for r in regions]
 HAND = hand_written_keys()
 tt_all = [("GER_region_locked_all_tt", "整个德国"),
@@ -1375,16 +1990,51 @@ for f in sorted(CORE_FRAMES):
     panel_entries.append(("GER_region_panel_core_%d_desc" % f, "【待定】%s说明" % TYPE_NAMES[f]))
 for ld in leaders:
     panel_entries.append((ld["name_key"], ld["cname"]))
-    panel_entries.append((ld["tt"], "【待定】" + ld["cname"]))
-for r in regions:
-    panel_entries.append((r["caption_key"], ""))
+    panel_entries.append((ld["tt"], ld["cname"] if ld["key"] == IDLE_LEADER else "【待定】" + ld["cname"]))
+panel_entries.append(("GER_region_panel_idle_tt", "【待定】待机说明"))
+panel_entries.append(("GER_region_panel_idle_name", "德意志共和国"))
+panel_entries.append(("GER_region_panel_idle_status", "我们暂时无暇顾及“国中之国”......"))
 append_missing(HAND_PANEL_LOC, panel_entries, header=[
     "地区博弈 · 右侧面板文字（手写，脚本只在末尾补缺的键，不改已有行）",
-    "行动方针名称取自策划案第 5、6 页；花费和天数在 gen_region_game.py 的 DAILY_ROWS 里，颜色由界面加。",
+    "行动方针：GER_region_panel_row_N_name = 名字，_tt = 悬停介绍（N 见 gen_region_game.py 的 ACTIONS）；花费和天数在 ACTIONS 里。",
     "GER_region_panel_support_tt / _control_tt = 支持度、控制度的悬停说明（上面会自动加一行当前数值）。",
     "GER_region_panel_core_N_desc = 核心区方块的悬停说明。",
-    "GER_region_<区块id>_photo_caption = 照片右下角小字（拍摄地 / 年份），留空就不显示。",
+    "GER_region_panel_idle_tt = 没选中地区时，鼠标放在待机照片上的说明。",
+    "GER_region_panel_idle_name / _status = 没选中地区时，照片下面左边 / 右边的字。",
     "领导人序号见 tools/GER_region_game/gen_region_game.py 的 LEADERS。"])
+loc.append(" # 支持度 / 控制度悬停：每两周变化来源、地区效益、摇摆区、西里西亚说明")
+loc.append(' GER_region_bw_zero: "0.00"')
+for _what in ("support", "control"):
+    loc.append(' GER_region_bw_%s_pos: "§G+[?GER_region_sel_bw_%s|2]§!"' % (_what, _what))
+    loc.append(' GER_region_bw_%s_neg: "§R[?GER_region_sel_bw_%s|2]§!"' % (_what, _what))
+for _k, _what, _amt, _cond, _label in BW_SOURCES:
+    if _is_num(_amt):
+        _val = ("§G+%.2f§!" if float(_amt) > 0 else "§R%.2f§!") % float(_amt)
+    else:
+        _val = "§G+[?%s|2]§!" % _amt
+    loc.append(' GER_region_src_%s_line: "\\n  %s：%s"' % (_k, _label, _val))
+# 悬停提示里 $键$ 不会被替换，规则说明直接写进每一条
+_TIER_RULE = ("地区效益按§Y控制度§!分档（100%、75%、50%、25%、0%），且§Y支持度§!需不低于§Y控制度§!的一半才能生效"
+              "（§Y控制度§!达到100%时，§Y支持度§!为其四分之一即可）；不满足时按25%（无效果）计。"
+              "效果只作用于该地区目前在德国境内的州。")
+_SWING_RULE = ("当社民党在一个地区的§Y支持度§!低于§Y{0}%§!、§Y控制度§!低于§Y{1}%§!时，该地区将会被视为§Y摇摆区§!；"
+               "即使之后数值回升，该地区也将在§Y{2}§!日内被视为§Y摇摆区§!，随后恢复正常。").format(SWING_SUPPORT, SWING_CONTROL, SWING_DAYS)
+for tt in TIERS:
+    lines = ["§Y地区效益：%d%%§!" % tt]
+    lines += ["%s：%s%+.2f%%§!" % (nm, "§G" if v > 0 else "§R", v * 100) for _m, v, nm in TIER_MODS[tt]] or ["无效果"]
+    loc.append(' GER_region_tier_text_%d: "%s"' % (tt, "\\n".join(lines)))
+    loc.append(' GER_region_tier_%d: "地区效益：%d%%"' % (tt, tt))
+loc.append(' GER_region_swing_note_on: ""')
+loc.append(' GER_region_swing_note_lock: "\\n\\n该地区还将维持§Y摇摆区§!§Y[?GER_region_sel_swing_days|0]§!日。"')
+for _row in COOLED:
+    loc.append(' GER_region_cd_%d_left_text: "（还剩§Y[?%s|0]§!日）"' % (_row["n"], _row["sel_cd"]))
+loc.append(' GER_region_bitta_autonomy_text: "\\n§Y西里西亚自治后§!：\\n每日§Y稳定度§!：§G+0.05%§!"')
+for _ld in leaders:
+    for _kind in ("state", "country"):
+        if LEADER_FX.get(_ld["key"], {}).get(_kind):
+            loc.append(' GER_region_leader_%s_%s: "领导人：%s"' % (_ld["key"], _kind, _ld["cname"]))
+loc.append(' GER_region_frozen_note_text: "受限于社会民主党对§Y西里西亚§!的影响之孱弱，此地的§Y支持度§!和§Y控制度§!不会有任何增长。'
+           '我们只有通过§Y国策§!与§Y焦点博弈§!对此展开行动。\\n\\n"')
 LOC_GUI = "\n".join(loc) + "\n"
 
 dl = ["l_simp_chinese:",
@@ -1393,6 +2043,8 @@ dl = ["l_simp_chinese:",
       ' GER_region_game_test_category_desc: "地区博弈地图的素材和接口测试。每个决议执行后会自动打开地区博弈界面。"',
       ' GER_region_test_reset: "重置为开局画面"',
       ' GER_region_test_reset_desc: "隐藏全部区块和割让盖板，只剩无缝整块斜线 + 阿尔萨斯-洛林、巴伐利亚缺角两块。"',
+      ' GER_region_test_opening: "地图全开开局"',
+      ' GER_region_test_opening_desc: "调用 GER_region_game_open_map（同时显示萨尔、欧本-马尔梅迪、波森-西普鲁士-但泽走廊、梅梅尔的割让，并填好各地区领导人）：左翼核心 汉堡-石荷、图林根-萨克森、鲁尔；右翼核心 巴伐利亚、东普鲁士、波美拉尼亚、汉诺威；特殊区 莱茵兰；共和核心 巴登-符腾堡；摇摆区 大柏林 60/75、威斯特法伦 39/35、威悉-埃姆斯 43/60、西里西亚 15/5、勃兰登堡 51/30、梅克伦堡 45/20、黑森 46/35。不选中任何地区，右下角显示待机照片和倍倍尔。"',
       ' GER_region_test_open_all: "开放全部区块（中立）"',
       ' GER_region_test_open_all_desc: "16 个区块全部显示为帧 2（中立）。"',
       ' GER_region_test_checker: "区块划分：相邻不同色"',
@@ -1433,57 +2085,43 @@ dl = ["l_simp_chinese:",
       ' GER_region_test_next_overlay_desc: "每次只显示一张盖板，顺序：%s。当前第 [?GER_region_test_ov_next] 张。"' % ov_order]
 LOC_DEC = "\n".join(dl) + "\n"
 
-# ---------------------------------------------------------------- 行动方针（决议）的手写文件：只在不存在时生成
-def write_if_missing(path_rel, text):
-    if os.path.exists(os.path.join(MOD, *path_rel.split("/"))):
-        return
-    write(path_rel, text)
+# ---------------------------------------------------------------- 行动方针（决议）的手写文件：只补缺的定义
+def append_missing_defs(path_rel, header, defs):
+    """手写脚本文件：缺哪个顶层定义（name = {）就在末尾补一段占位；已有的一律不碰"""
+    path = os.path.join(MOD, *path_rel.split("/"))
+    text = open(path, encoding="utf-8-sig").read() if os.path.exists(path) else "\n".join(header) + "\n"
+    have = set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{", text, re.M))
+    add = [block for name, block in defs if name not in have]
+    if add:
+        write(path_rel, text.rstrip("\n") + "\n\n" + "\n\n".join(add) + "\n")
+        print("%s 补了 %d 段占位" % (path_rel, len(add)))
 
 
-_reg_list = "，".join("%d=%s(%s)" % (r["idx"], r["name"], r["key"]) for r in regions)
-ae = ["# 地区博弈 · 行动方针（决议）的效果。手写文件：%s 只在文件不存在时生成一次，之后不会覆盖。" % GEN_TAG,
-      "#",
-      "# 已由界面自动处理（不用在这里写）：扣政治点数、按天计时、生效中显示暗黄、驻区方针切换。",
-      "# 花费和天数在 gen_region_game.py 的 DAILY_ROWS / GARRISON_COST 里改。",
-      "#",
-      "# 每条决议有这几个钩子，都在本国（GER）作用域执行：",
-      "#   GER_region_action_N           点击时（政治点数已扣）",
-      "#   GER_region_action_N_biweekly  生效期间每满 %d 天一次（生效 >= %d 天的日常决议、驻区方针才有）" % (BIWEEKLY, BIWEEKLY),
-      "#   GER_region_action_N_complete  计时结束那天（有生效天数的日常决议才有）",
-      "# 被操作的地区 = 变量 GER_region_target：%s。" % _reg_list,
-      "# 地区变量：GER_region_Rxx_support / _control（0-100）、_state（类型=帧号）、_leader。",
-      "# 改支持度 / 控制度可以用现成的小工具（自动夹在 0-100）：",
-      "#   set_temp_variable = { GER_region_delta = 3 }  GER_region_target_add_support = yes",
-      "#   set_temp_variable = { GER_region_delta = -2 } GER_region_target_add_control = yes",
-      "# 注意：scripted_effect 不能是空的（实测空的引擎不认，点击会整段失效），每个钩子里至少留一句。",
-      ""]
 NOOP = "    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删"
-at = ["# 地区博弈 · 行动方针（决议）能否点击的额外条件。手写文件：%s 只在文件不存在时生成一次。" % GEN_TAG,
-      "# 界面已经自带的条件：选中了地区、该地区这条不在生效中、政治点数够；驻区方针（9-12）还要支持度、控制度双满。",
-      "# 这里返回假时按钮不可点（状态字变灰）。冷却、解锁国策、每个地区限点几次等写在这里，目标地区 = GER_region_selected。",
-      ""]
+HOOK_DESC = {"": "点击时（政治点数已扣）", "_complete": "计时结束那天", "_biweekly": "生效期间每满 %d 天" % BIWEEKLY,
+             "_daily": "生效期间每天"}
+_ae, _at = [], []
 for row in ROWS:
     n = row["n"]
-    if row["garrison"]:
-        kind = "驻区方针，切换 %dpp，一直生效到切换为止" % row["cost"]
-    elif row["days"]:
-        kind = "日常决议，%dpp，生效 %d 天" % (row["cost"], row["days"])
-    else:
-        kind = "日常决议，%dpp，立即生效" % row["cost"]
-    ae += ["# ======== %d %s（%s）" % (n, row["cname"], kind),
-           "# 策划案：%s" % ACTION_NOTES[n - 1],
-           "GER_region_action_%d = {" % n, NOOP, "}"]
-    if row["garrison"] or row["days"] >= BIWEEKLY:
-        ae += ["GER_region_action_%d_biweekly = {" % n, NOOP, "}"]
-    if not row["garrison"] and row["days"]:
-        ae += ["GER_region_action_%d_complete = {" % n, NOOP, "}"]
-    ae.append("")
-    at += ["# %d %s（%s）" % (n, row["cname"], kind),
-           "GER_region_action_%d_allowed = {" % n,
-           "    always = yes",
-           "}", ""]
-write_if_missing(ACTIONS_EFFECTS, "\n".join(ae))
-write_if_missing(ACTIONS_TRIGGERS, "\n".join(at))
+    for h in row["hooks"]:
+        _ae.append(("GER_region_action_%d%s" % (n, h),
+                    "# %d %s：%s\nGER_region_action_%d%s = {\n%s\n}" % (n, row["cname"], HOOK_DESC[h], n, h, NOOP)))
+    _at.append(("GER_region_action_%d_allowed" % n,
+                "# %d %s：能否点击的额外条件\nGER_region_action_%d_allowed = {\n    always = yes\n}" % (n, row["cname"], n)))
+    _at.append(("GER_region_action_%d_visible" % n,
+                "# %d %s：是否出现在列表里\nGER_region_action_%d_visible = {\n    always = yes\n}" % (n, row["cname"], n)))
+_ae.append(("GER_region_actions_on_reset", "# 测试决议「重置」时调用：清掉决议自己的全国状态\n"
+            "GER_region_actions_on_reset = {\n%s\n}" % NOOP))
+_at.append(("GER_region_party_reform_done", "# 党改革国策完成\nGER_region_party_reform_done = {\n    always = no\n}"))
+_at.append(("GER_region_shipbuilding_socialized", "# 造船业社会化完成\nGER_region_shipbuilding_socialized = {\n"
+            "    has_country_flag = GER_socialization_reward_shipbuilding\n}"))
+append_missing_defs(ACTIONS_EFFECTS, ["# 地区博弈 · 行动方针（决议）的效果（手写；脚本只在末尾补缺的钩子）"], _ae)
+append_missing_defs(ACTIONS_TRIGGERS, ["# 地区博弈 · 行动方针（决议）的条件（手写；脚本只在末尾补缺的定义）"], _at)
+write("sound/GER_region_game.asset",
+      "# 由 %s 生成，不要手改。\n"
+      "# 地区博弈里只悬停、不该有点击音的点击条（斜线、割让盖板）用这个：原版点击音，音量 0\n"
+      "soundeffect = {\n\tname = %s\n\tvolume = 0\n\tsounds = {\n\t\tsound = click_default\n\t}\n}\n"
+      % (GEN_TAG, SILENT_CLICK))
 write("common/on_actions/GER_region_game_on_actions.txt",
       "# 由 %s 生成，不要手改。地区博弈：行动方针每日计时\non_actions = {\n    on_daily_GER = {\n"
       "        effect = { GER_region_game_daily_tick = yes }\n    }\n}\n" % GEN_TAG)
@@ -1491,10 +2129,13 @@ write("common/on_actions/GER_region_game_on_actions.txt",
 # ---------------------------------------------------------------- 写文件
 splice("interface/GER_region_game.gfx", GFX_TEMPLATE,
        {"panel_sprites": "\n".join(sprite_lines(panel_sprites)), "sprites": "\n".join(gfx_lines)})
-splice("interface/GER_region_game.gui", GUI_TEMPLATE, {"map_layers": GUI_MAP, "right_panel": GUI_PANEL})
+splice("interface/GER_region_game.gui", GUI_TEMPLATE,
+       {"map_layers": GUI_MAP, "right_panel": GUI_PANEL, "list_entries": GUI_ENTRY})
 splice("common/scripted_guis/GER_region_game.txt", SGUI_TEMPLATE,
-       {"properties": "\n".join(props), "triggers": "\n".join(trig), "effects": "\n".join(clicks)})
+       {"properties": "\n".join(props), "triggers": "\n".join(trig), "effects": "\n".join(clicks),
+        "dynamic_lists": DYN_LISTS})
 write("common/scripted_localisation/GER_region_game.txt", SCRIPTED_LOC)
+write("common/dynamic_modifiers/GER_region_game_tiers.txt", DYN_MODIFIERS)
 write("common/scripted_effects/GER_region_game_effects.txt", EFFECTS)
 write("common/decisions/GER_region_game_test.txt", DECISIONS)
 write("common/decisions/categories/GER_region_game_test.txt", CATEGORY)
@@ -1506,7 +2147,7 @@ for _f in sorted(os.listdir(GFX_DIR)):
     if _f.lower().endswith(".png") and _f not in _used:
         os.remove(os.path.join(GFX_DIR, _f))
         print("删除不再使用的素材", _f)
-_panel_used = set(PANEL_FILES) | {PHOTO_STRIP}
+_panel_used = set(PANEL_FILES) | {PHOTO_STRIP, PHOTO_IDLE_FILE}
 for _f in sorted(os.listdir(PANEL_DIR)):
     if _f.lower().endswith(".png") and _f not in _panel_used:
         os.remove(os.path.join(PANEL_DIR, _f))

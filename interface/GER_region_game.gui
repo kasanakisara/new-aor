@@ -1,4 +1,57 @@
 guiTypes = {
+    # 决议列表的一条（scripted_gui 的 dynamic_lists 用）
+    # >>> GENERATED: list_entries (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+    containerWindowType = {
+        name = "GER_region_panel_entry"
+        position = { x = 0 y = 0 }
+        size = { width = 292 height = 48 }
+        buttonType = {
+            name = "GER_region_panel_entry_button"
+            quadTextureSprite = "GFX_GER_region_panel_decision_row"
+            position = { x = 0 y = 0 }
+            pdx_tooltip = "GER_region_panel_entry_tooltip"
+            clicksound = click_default
+        }
+        iconType = {
+            name = "GER_region_panel_entry_selected"
+            spriteType = "GFX_GER_region_panel_decision_row"
+            position = { x = 0 y = 0 }
+            frame = 3
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_region_panel_entry_name"
+            position = { x = 14 y = 11 }
+            font = "hoi_16mbs"
+            text = "GER_region_panel_entry_name"
+            maxWidth = 180
+            maxHeight = 22
+            format = left
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_region_panel_entry_status"
+            position = { x = 158 y = 11 }
+            font = "hoi_16mbs"
+            text = "GER_region_panel_entry_status"
+            maxWidth = 120
+            maxHeight = 22
+            format = right
+            alwaystransparent = yes
+        }
+        instantTextboxType = {
+            name = "GER_region_panel_entry_header"
+            position = { x = 2 y = 14 }
+            font = "hoi_18mbs"
+            text = "GER_region_panel_garrison_label"
+            maxWidth = 200
+            maxHeight = 26
+            format = left
+            pdx_tooltip = "GER_region_panel_garrison_tt"
+        }
+    }
+    # <<< GENERATED: list_entries
+
     # 入口按钮：右下角，议会按钮（GER_yihui_entry_bg，y = -360，100x100）正上方
     containerWindowType = {
         name = "GER_region_game_entry_bg"
@@ -19,11 +72,17 @@ guiTypes = {
 
     containerWindowType = {
         name = "GER_region_game_window"
-        position = { x = 0 y = 0 }
+        position = { x = 0 y = -1100 }
         Orientation = center
         Origo = center
         size = { width = 1616 height = 893 }
         moveable = yes
+        # 打开时从屏幕上方慢慢滑下来（写法同 AOR_supernews.gui）
+        show_position = { x = 0 y = 0 }
+        hide_position = { x = 0 y = -1100 }
+        animation_time = 500
+        show_animation_type = decelerated
+        hide_animation_type = accelerated
 
         background = {
             name = "GER_region_game_bg"
@@ -46,7 +105,7 @@ guiTypes = {
             background = { name = "GER_region_game_quote_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
             instantTextboxType = {
                 name = "GER_region_game_quote_text"
-                position = { x = 10 y = 12 }
+                position = { x = 10 y = 14 }
                 font = "hoi_16mbs"
                 text = "GER_region_game_quote"
                 maxWidth = 1228
@@ -275,7 +334,7 @@ guiTypes = {
                 quadTextureSprite = "GFX_GER_region_locked_all_hit"
                 position = { x = 113 y = 40 }
                 pdx_tooltip = "GER_region_locked_all_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_R01_WeserEms_button"
@@ -394,84 +453,84 @@ guiTypes = {
                 quadTextureSprite = "GFX_GER_region_OV_SIL_planA_1134_762_hit"
                 position = { x = 877 y = 441 }
                 pdx_tooltip = "GER_region_OV_SIL_planA_1134_762_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_SIL_planB_762_button"
                 quadTextureSprite = "GFX_GER_region_OV_SIL_planB_762_hit"
                 position = { x = 885 y = 441 }
                 pdx_tooltip = "GER_region_OV_SIL_planB_762_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_SHL_trust_all_button"
                 quadTextureSprite = "GFX_GER_region_OV_SHL_trust_all_hit"
                 position = { x = 302 y = 66 }
                 pdx_tooltip = "GER_region_OV_SHL_trust_all_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_SHL_north_Denmark_button"
                 quadTextureSprite = "GFX_GER_region_OV_SHL_north_Denmark_hit"
                 position = { x = 302 y = 66 }
                 pdx_tooltip = "GER_region_OV_SHL_north_Denmark_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_EP_southwest_button"
                 quadTextureSprite = "GFX_GER_region_OV_EP_southwest_hit"
                 position = { x = 911 y = 158 }
                 pdx_tooltip = "GER_region_OV_EP_southwest_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_MEMEL_button"
                 quadTextureSprite = "GFX_GER_region_OV_MEMEL_hit"
                 position = { x = 1044 y = 37 }
                 pdx_tooltip = "GER_region_OV_MEMEL_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_EUPEN_MALMEDY_button"
                 quadTextureSprite = "GFX_GER_region_OV_EUPEN_MALMEDY_hit"
                 position = { x = 126 y = 491 }
                 pdx_tooltip = "GER_region_OV_EUPEN_MALMEDY_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_POSEN_WPRUSSIA_button"
                 quadTextureSprite = "GFX_GER_region_OV_POSEN_WPRUSSIA_hit"
                 position = { x = 735 y = 126 }
                 pdx_tooltip = "GER_region_OV_POSEN_WPRUSSIA_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_SAAR_bump_A_button"
                 quadTextureSprite = "GFX_GER_region_OV_SAAR_bump_A_hit"
                 position = { x = 168 y = 594 }
                 pdx_tooltip = "GER_region_OV_SAAR_bump_A_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_OV_SAAR_bump_B_button"
                 quadTextureSprite = "GFX_GER_region_OV_SAAR_bump_B_hit"
                 position = { x = 197 y = 599 }
                 pdx_tooltip = "GER_region_OV_SAAR_bump_B_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_alsace_lorraine_button"
                 quadTextureSprite = "GFX_GER_region_alsace_lorraine_hit"
                 position = { x = 114 y = 576 }
                 pdx_tooltip = "GER_region_alsace_lorraine_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             buttonType = {
                 name = "GER_region_bav_corner_button"
                 quadTextureSprite = "GFX_GER_region_bav_corner_hit"
                 position = { x = 516 y = 667 }
                 pdx_tooltip = "GER_region_bav_corner_tt"
-                clicksound = click_default
+                clicksound = GER_region_silent_click
             }
             # <<< GENERATED: map_layers
         }
@@ -499,27 +558,33 @@ guiTypes = {
             alwaystransparent = yes
         }
         iconType = {
-            name = "GER_region_panel_photo_vignette"
-            spriteType = "GFX_GER_region_panel_region_photo_vignette"
+            name = "GER_region_panel_photo_idle"
+            spriteType = "GFX_GER_region_panel_photo_idle"
             position = { x = 829 y = 680 }
             alwaystransparent = yes
         }
+        iconType = {
+            name = "GER_region_panel_photo_vignette"
+            spriteType = "GFX_GER_region_panel_region_photo_vignette"
+            position = { x = 829 y = 680 }
+            pdx_tooltip = "GER_region_panel_photo_tooltip"
+        }
         instantTextboxType = {
             name = "GER_region_panel_photo_name"
-            position = { x = 833 y = 842 }
+            position = { x = 833 y = 845 }
             font = "hoi_16mbs"
-            text = "GER_region_game_selected_name"
-            maxWidth = 220
+            text = "GER_region_panel_photo_name"
+            maxWidth = 160
             maxHeight = 24
             format = left
             alwaystransparent = yes
         }
         instantTextboxType = {
-            name = "GER_region_panel_photo_caption"
-            position = { x = 1050 y = 842 }
+            name = "GER_region_panel_photo_status"
+            position = { x = 993 y = 845 }
             font = "hoi_16mbs"
-            text = "GER_region_panel_photo_caption"
-            maxWidth = 200
+            text = "GER_region_panel_photo_status"
+            maxWidth = 257
             maxHeight = 24
             format = right
             alwaystransparent = yes
@@ -528,46 +593,53 @@ guiTypes = {
         iconType = {
             name = "GER_region_panel_leader_frame"
             spriteType = "GFX_GER_region_panel_leader_photo_frame"
-            position = { x = 1091 y = 442 }
+            position = { x = 1103 y = 442 }
             alwaystransparent = yes
         }
         iconType = {
             name = "GER_region_panel_leader_daeumig"
             spriteType = "GFX_GER_region_leader_daeumig"
-            position = { x = 1122 y = 467 }
+            position = { x = 1134 y = 467 }
             scale = 0.77
             alwaystransparent = yes
         }
         iconType = {
             name = "GER_region_panel_leader_dissmann"
             spriteType = "GFX_GER_region_leader_dissmann"
-            position = { x = 1122 y = 467 }
+            position = { x = 1134 y = 467 }
             scale = 0.77
             alwaystransparent = yes
         }
         iconType = {
             name = "GER_region_panel_leader_koenen"
             spriteType = "GFX_GER_region_leader_koenen"
-            position = { x = 1122 y = 467 }
+            position = { x = 1134 y = 467 }
             scale = 0.77
             alwaystransparent = yes
         }
         iconType = {
             name = "GER_region_panel_leader_otto_braun"
             spriteType = "GFX_GER_region_leader_otto_braun"
-            position = { x = 1122 y = 467 }
+            position = { x = 1134 y = 467 }
+            scale = 0.77
+            alwaystransparent = yes
+        }
+        iconType = {
+            name = "GER_region_panel_leader_bebel"
+            spriteType = "GFX_GER_region_leader_bebel"
+            position = { x = 1134 y = 467 }
             scale = 0.77
             alwaystransparent = yes
         }
         iconType = {
             name = "GER_region_panel_leader_vignette"
             spriteType = "GFX_GER_region_panel_leader_photo_vignette"
-            position = { x = 1122 y = 467 }
+            position = { x = 1134 y = 467 }
             pdx_tooltip = "GER_region_panel_leader_tt"
         }
         instantTextboxType = {
             name = "GER_region_panel_leader_name"
-            position = { x = 1122 y = 634 }
+            position = { x = 1134 y = 637 }
             font = "hoi_16mbs"
             text = "GER_region_panel_leader_name"
             maxWidth = 120
@@ -670,6 +742,12 @@ guiTypes = {
             position = { x = 1285 y = 61 }
             pdx_tooltip = "GER_region_panel_core_tooltip"
         }
+        iconType = {
+            name = "GER_region_panel_core_green"
+            spriteType = "GFX_GER_region_panel_core_green"
+            position = { x = 1285 y = 61 }
+            pdx_tooltip = "GER_region_panel_core_tooltip"
+        }
         instantTextboxType = {
             name = "GER_region_panel_core_title"
             position = { x = 1285 y = 94 }
@@ -680,7 +758,8 @@ guiTypes = {
             format = centre
             alwaystransparent = yes
         }
-        # 18-22 决议总框：行动方针 8 条 + 驻区方针 4 条。条：帧1 普通 / 帧2 悬停 / 帧3 生效中
+        # 18-22 决议总框：标题「行动方针」+ 可滚动列表。列表每条 = 一个 GER_region_panel_entry（见 GUI_ENTRY），
+        # 内容来自数组 GER_region_panel_list（GER_region_game_sync_selected 按 ACTION_ORDER 和各条 _visible 条件重建）
         containerWindowType = {
             name = "GER_region_panel_actions"
             position = { x = 1281 y = 150 }
@@ -696,423 +775,21 @@ guiTypes = {
                 format = left
                 alwaystransparent = yes
             }
-            buttonType = {
-                name = "GER_region_panel_row_1"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
+            containerWindowType = {
+                name = "GER_region_panel_list_area"
                 position = { x = 14 y = 50 }
-                pdx_tooltip = "GER_region_panel_row_1_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_1_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 50 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_1_name"
-                position = { x = 28 y = 61 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_1_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_1_status"
-                position = { x = 172 y = 61 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_1_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_2"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 98 }
-                pdx_tooltip = "GER_region_panel_row_2_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_2_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 98 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_2_name"
-                position = { x = 28 y = 109 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_2_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_2_status"
-                position = { x = 172 y = 109 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_2_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_3"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 146 }
-                pdx_tooltip = "GER_region_panel_row_3_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_3_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 146 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_3_name"
-                position = { x = 28 y = 157 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_3_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_3_status"
-                position = { x = 172 y = 157 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_3_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_4"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 194 }
-                pdx_tooltip = "GER_region_panel_row_4_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_4_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 194 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_4_name"
-                position = { x = 28 y = 205 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_4_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_4_status"
-                position = { x = 172 y = 205 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_4_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_5"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 242 }
-                pdx_tooltip = "GER_region_panel_row_5_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_5_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 242 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_5_name"
-                position = { x = 28 y = 253 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_5_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_5_status"
-                position = { x = 172 y = 253 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_5_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_6"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 290 }
-                pdx_tooltip = "GER_region_panel_row_6_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_6_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 290 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_6_name"
-                position = { x = 28 y = 301 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_6_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_6_status"
-                position = { x = 172 y = 301 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_6_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_7"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 338 }
-                pdx_tooltip = "GER_region_panel_row_7_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_7_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 338 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_7_name"
-                position = { x = 28 y = 349 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_7_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_7_status"
-                position = { x = 172 y = 349 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_7_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_8"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 386 }
-                pdx_tooltip = "GER_region_panel_row_8_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_8_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 386 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_8_name"
-                position = { x = 28 y = 397 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_8_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_8_status"
-                position = { x = 172 y = 397 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_8_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_garrison_label"
-                position = { x = 18 y = 443 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_garrison_label"
-                maxWidth = 100
-                maxHeight = 22
-                format = left
-                pdx_tooltip = "GER_region_panel_garrison_tt"
-            }
-            buttonType = {
-                name = "GER_region_panel_row_9"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 472 }
-                pdx_tooltip = "GER_region_panel_row_9_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_9_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 472 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_9_name"
-                position = { x = 28 y = 483 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_9_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_9_status"
-                position = { x = 172 y = 483 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_9_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_10"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 520 }
-                pdx_tooltip = "GER_region_panel_row_10_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_10_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 520 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_10_name"
-                position = { x = 28 y = 531 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_10_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_10_status"
-                position = { x = 172 y = 531 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_10_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_11"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 568 }
-                pdx_tooltip = "GER_region_panel_row_11_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_11_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 568 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_11_name"
-                position = { x = 28 y = 579 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_11_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_11_status"
-                position = { x = 172 y = 579 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_11_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
-            }
-            buttonType = {
-                name = "GER_region_panel_row_12"
-                quadTextureSprite = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 616 }
-                pdx_tooltip = "GER_region_panel_row_12_tt"
-                clicksound = click_default
-            }
-            iconType = {
-                name = "GER_region_panel_row_12_selected"
-                spriteType = "GFX_GER_region_panel_decision_row"
-                position = { x = 14 y = 616 }
-                frame = 3
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_12_name"
-                position = { x = 28 y = 627 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_12_label"
-                maxWidth = 180
-                maxHeight = 22
-                format = left
-                alwaystransparent = yes
-            }
-            instantTextboxType = {
-                name = "GER_region_panel_row_12_status"
-                position = { x = 172 y = 627 }
-                font = "hoi_16mbs"
-                text = "GER_region_panel_row_12_status"
-                maxWidth = 120
-                maxHeight = 22
-                format = right
-                alwaystransparent = yes
+                size = { width = 306 height = 673 }
+                verticalScrollbar = "right_vertical_slider"
+                scroll_wheel_factor = 48
+                smooth_scrolling = yes
+                gridboxType = {
+                    name = "GER_region_panel_list"
+                    position = { x = 0 y = 0 }
+                    size = { width = 292 height = 100%% }
+                    slotsize = { width = 292 height = 48 }
+                    format = "UPPER_LEFT"
+                    max_slots_horizontal = 1
+                }
             }
         }
         # <<< GENERATED: right_panel
