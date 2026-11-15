@@ -39,23 +39,83 @@ CANVAS_W, CANVAS_H = 1248, 813
 WIN_W, WIN_H = 1616, 893
 MAP_X, MAP_Y = 16, 64
 
-# 摇摆（state 5）暂时显示成帧 2；以后启用黄色时把这里改成 None
-SWING_STATE, SWING_DISPLAY_FRAME = 5, 2
-USED_FRAMES = [1, 2, 3, 4, 6]          # 当前使用的 5 种颜色（帧 5、7 保留在素材里）
+# 区块帧号（12 帧，见 区块_12帧/region_fill_frames.json）。state 就是帧号，sync 原样拷贝。
+#   1 斜线  2 中立/摇摆  3 左派核心  4 右派核心  5 魏玛联盟核心  6 特殊(绿)  7 备用(紫)
+#   8 左派控制  9 右派控制  10 魏玛联盟控制  11 特殊控制(绿)  12 备用控制(紫)
+REGION_FRAMES = 12
+CORE_FRAMES = {3: "left", 4: "right", 5: "weimar"}        # 面板上显示核心区方块的帧
+TYPE_NAMES = {2: "摇摆区", 3: "左派核心区", 4: "右派核心区", 5: "魏玛联盟核心区",
+              8: "左派控制区", 9: "右派控制区", 10: "魏玛联盟控制区"}   # 名称框右侧的地区类型（修改说明第 3、12 节）
+
+# 右侧面板素材（修改说明_右侧面板.md）
+PANEL_SRC = "右侧面板素材"
+REGION12_SRC = "区块_12帧"
+PANEL_DIR_REL = GFX_DIR_REL + "/panel"
+PANEL_DIR = os.path.join(MOD, *PANEL_DIR_REL.split("/"))
+PHOTO_DIR_REL = GFX_DIR_REL + "/photos"     # 用户交的地区照片：photos/<区块id>.png，425x157
+PHOTO_BG = (25, 27, 25, 255)                # 没交照片的地区：与照片框内底同色的深色占位
+
+# 领导人（策划案第 8 页）。portrait = 模组里现成的 156x210 头像，没有就写 None（只显示名字）。
+# 名字和悬停介绍写在 HAND_PANEL_LOC 里，这里的中文名只用来第一次补占位。
+# 顺序 = GER_region_Rxx_leader 的取值（1 起），以后只往后加，不要插队。
+LEADERS = [
+    ("daeumig", "恩斯特·多伊米希", "gfx/leaders/GER/Ernst_Daeumig.png"),
+    ("dissmann", "罗伯特·迪斯曼", "gfx/leaders/GER/Robert_Dissmann.png"),
+    ("henke", "阿尔弗雷德·亨克", None),
+    ("koenen", "威廉·科嫩", "gfx/leaders/GER/Wilhelm_Koenen.png"),
+    ("lipinski", "利平斯基", None),
+    ("committee_nine", "九人委员会", None),
+    ("paul_dittmann", "保罗·迪特曼", None),
+    ("otto_braun", "奥托·布劳恩", "gfx/leaders/GER/Otto_Braun.png"),
+    ("paul_hirsch", "保罗·希尔施", None),
+    ("weimar_coalition", "魏玛联盟", None),
+    ("bitta", "约瑟夫·比塔", None),
+]
+# 行动方针（策划案第 5、6 页）：前 8 条日常决议 (名称, 花费)，后 4 条驻区方针（切换 25pp）
+DAILY_ROWS = [("扩大宣传投入", "15pp"), ("扩张防卫组织", "15pp"), ("组织网络的扩展", "25pp"),
+              ("推动公共事业", "30pp"), ("组织重心向工厂转移", "20pp"), ("发起罢工", "100pp"),
+              ("工厂委员会的扩张", "20pp"), ("影子苏维埃", "65pp")]
+GARRISON_ROWS = ["扩充安全部队", "总结政权经验", "培训根据地干部", "支援邻近地区"]
+GARRISON_COST = "25pp"
 
 GEN_TAG = "tools/GER_region_game/gen_region_game.py"
 
 # 正式悬浮介绍直接手写在这个本地化文件里，脚本只读不写；
 # 这里已有的键，生成的本地化文件就不再输出【待定】占位，避免重复键。
 HAND_TT_LOC = "localisation/simp_chinese/gui/GER_region_game_tt_l_simp_chinese.yml"
+# 右侧面板上要用户定的文字（决议名/花费/提示、核心区说明、领导人名字/提示、照片说明），同样只补缺不改
+HAND_PANEL_LOC = "localisation/simp_chinese/gui/GER_region_game_panel_l_simp_chinese.yml"
 
 
-def hand_written_keys():
-    path = os.path.join(MOD, *HAND_TT_LOC.split("/"))
+def hand_written_keys(rel=HAND_TT_LOC):
+    path = os.path.join(MOD, *rel.split("/"))
     if not os.path.exists(path):
         return set()
     with open(path, encoding="utf-8-sig") as f:
         return set(re.findall(r"^\s*([A-Za-z0-9_.]+):\d*\s*\"", f.read(), flags=re.M))
+
+
+def append_missing(rel, entries, header=None):
+    """手写本地化文件里缺哪个键就在末尾补一行；已有的行一律不碰。entries = [(键, 值)]"""
+    have = hand_written_keys(rel)
+    missing = [(k, v) for k, v in entries if k not in have]
+    if not missing:
+        return 0
+    p = os.path.join(MOD, *rel.split("/"))
+    if not os.path.exists(p):
+        with open(p, "w", encoding="utf-8-sig", newline="") as f:
+            f.write("l_simp_chinese:\r\n")
+            for h in header or []:
+                f.write(" # %s\r\n" % h)
+    with open(p, "rb") as f:
+        ends_nl = f.read().endswith(b"\n")
+    with open(p, "a", encoding="utf-8", newline="") as f:
+        if not ends_nl:
+            f.write("\r\n")       # 最后一行没换行时先补换行，免得接到手写行末尾
+        for k, v in missing:
+            f.write(' %s: "%s"\r\n' % (k, v))
+    print("%s 补了 %d 条占位" % (rel, len(missing)))
+    return len(missing)
 
 
 # ---------------------------------------------------------------- 工具函数
@@ -154,21 +214,30 @@ with open(os.path.join(SRC, "14_素材清单.json"), encoding="utf-8") as f:
 with open(os.path.join(SRC, "16_区块素材清单.json"), encoding="utf-8") as f:
     M16 = json.load(f)
 assert M16["frame_index_base"] == 1
+with open(os.path.join(SRC, REGION12_SRC, "region_fill_frames.json"), encoding="utf-8") as f:
+    M12 = json.load(f)
+assert M12["frame_index_base"] == 1 and len(M12["frames"]) == REGION_FRAMES
+M12_by_id = {r["id"]: r for r in M12["regions"]}
+with open(os.path.join(SRC, PANEL_SRC, "素材清单.json"), encoding="utf-8") as f:
+    PJ = json.load(f)
 
 regions = []    # 16 个区块
 by_id = {r["id"]: r for r in M16["regions"]}
 for r in M16["regions"]:
-    if r["frames"] != 7:
+    if r["frames"] != 7:          # 16 号清单里的填充条（7 帧）；点击条另有 _hit 条目
         continue
     hit = by_id[r["id"] + "_hit"]
     assert (hit["x"], hit["y"], hit["w"], hit["h"]) == (r["x"], r["y"], r["w"], r["h"])
+    r12 = M12_by_id[r["id"]]      # 填充条改用 区块_12帧 里的同名文件，位置尺寸必须一致
+    assert (r12["x"], r12["y"], r12["w"], r12["h"], r12["frames"]) == (r["x"], r["y"], r["w"], r["h"], REGION_FRAMES), r["id"]
     regions.append({
         "id": r["id"],                       # R01_WeserEms
         "key": r["id"].split("_")[0],        # R01  （变量用）
         "name": r["name"],
         "x": r["x"], "y": r["y"], "w": r["w"], "h": r["h"],
-        "file": "区块/" + r["file"], "hit_file": "区块/" + hit["file"],
+        "file": REGION12_SRC + "/" + r12["file"], "hit_file": "区块/" + hit["file"],
     })
+assert len(regions) == 16 and len(M12["regions"]) == 16
 overlays = []   # 11 张割让盖板
 for o in M16["overlays"]:
     overlays.append({
@@ -211,7 +280,8 @@ for sid, (fname, sp) in STATIC.items():
 
 for r in regions:
     r["sp_fill"] = add_sprite("GFX_GER_region_%s_fill" % r["id"],
-                              copy_asset(r["file"], "%s_fill.png" % r["id"], r["w"] * 7, r["h"]), 7)
+                              copy_asset(r["file"], "%s_fill.png" % r["id"], r["w"] * REGION_FRAMES, r["h"]),
+                              REGION_FRAMES)
     r["sp_hit"] = add_sprite("GFX_GER_region_%s_hit" % r["id"],
                              copy_asset(r["hit_file"], "%s_hit.png" % r["id"], r["w"] * 3, r["h"]), 3, True)
 for o in overlays:
@@ -220,17 +290,114 @@ for o in overlays:
     o["sp_hit"] = add_sprite("GFX_GER_region_OV_%s_hit" % o["id"],
                              copy_hit2_as_3(o["hit_file"], "OV_%s_hit.png" % o["id"], o["w"], o["h"]), 3, True)
 
+# ---------------------------------------------------------------- 右侧面板素材
+# 静态素材逐字节复制到 panel/；它们的 spriteType 是 .gfx 里手写的（GENERATED 标记外）。
+os.makedirs(PANEL_DIR, exist_ok=True)
+PANEL_FILES = {   # 文件名 -> (宽, 高)；宽是整条（多帧时 = 每帧宽 x 帧数）
+    "support_bar_full.png": (158, 22), "support_bar_empty.png": (158, 22),
+    "control_bar_full.png": (158, 22), "control_bar_empty.png": (158, 22),
+    "core_left.png": (312, 84), "core_right.png": (312, 84), "core_weimar.png": (312, 84),
+    "decision_row_3f.png": (292 * 3, 42),
+    "region_photo_frame.png": tuple(PJ["region_photo"]["sprite_size"]),
+    "leader_photo_frame.png": tuple(PJ["leader_photo"]["sprite_size"]),
+    "region_photo_vignette.png": tuple(PJ["region_photo"]["photo_size"]),
+    "leader_photo_vignette.png": tuple(PJ["leader_photo"]["photo_size"]),
+    "map_corner_shade.png": tuple(PJ["map_corner_shade"]["size"]),
+}
+for _f, (_w, _h) in PANEL_FILES.items():
+    _src = os.path.join(SRC, PANEL_SRC, _f)
+    if png_size(_src) != (_w, _h):
+        raise ValueError("尺寸不符 %s：实际 %dx%d，应为 %dx%d" % ((_f,) + png_size(_src) + (_w, _h)))
+    shutil.copyfile(_src, os.path.join(PANEL_DIR, _f))
+
+# 地区照片：16 帧条带，帧号 = GER_region_selected（区块序号）。没交照片的地区用深色占位。
+PHOTO_W, PHOTO_H = PJ["region_photo"]["photo_size"]
+PHOTO_STRIP = "region_photos_16f.png"
+
+
+def build_photo_strip():
+    from PIL import Image
+    strip = Image.new("RGBA", (PHOTO_W * len(regions), PHOTO_H), PHOTO_BG)
+    have, adjusted = [], []
+    for r in regions:
+        src = None
+        for ext in (".png", ".jpg", ".jpeg"):
+            p = os.path.join(MOD, *PHOTO_DIR_REL.split("/"), r["id"] + ext)
+            if os.path.exists(p):
+                src = p
+                break
+        if not src:
+            continue
+        im = Image.open(src).convert("RGBA")
+        w, h = im.size
+        if (w, h) != (PHOTO_W, PHOTO_H):
+            # 只做居中裁切到 425:157；裁完尺寸仍不对时等比缩放（不拉伸），并报告
+            if w * PHOTO_H > h * PHOTO_W:
+                nw = round(h * PHOTO_W / PHOTO_H)
+                im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+            else:
+                nh = round(w * PHOTO_H / PHOTO_W)
+                im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
+            note = "%s %dx%d -> 居中裁切 %dx%d" % (os.path.basename(src), w, h, im.size[0], im.size[1])
+            if im.size != (PHOTO_W, PHOTO_H):
+                im = im.resize((PHOTO_W, PHOTO_H), Image.LANCZOS)
+                note += " -> 等比缩放到 %dx%d" % (PHOTO_W, PHOTO_H)
+            adjusted.append(note)
+        strip.paste(im, ((r["idx"] - 1) * PHOTO_W, 0))
+        have.append(r["id"])
+    strip.save(os.path.join(PANEL_DIR, PHOTO_STRIP), "PNG")
+    print("地区照片：已交 %d 张 %s，其余用深色占位" % (len(have), have))
+    for n in adjusted:
+        print("  照片尺寸不对，已处理：", n)
+
+
+for i, r in enumerate(regions, 1):
+    r["idx"] = i                                      # GER_region_selected 的取值（也是照片帧号）
+build_photo_strip()
+
+panel_sprites = [("GFX_GER_region_panel_photos", PANEL_DIR_REL + "/" + PHOTO_STRIP, len(regions), False)]
+leaders = []
+for i, (key, cname, portrait) in enumerate(LEADERS, 1):
+    ld = {"idx": i, "key": key, "cname": cname, "portrait": portrait,
+          "name_key": "GER_region_leader_%s_name" % key, "tt": "GER_region_leader_%s_tt" % key}
+    if portrait:
+        if png_size(os.path.join(MOD, *portrait.split("/"))) != (156, 210):
+            raise ValueError("头像不是 156x210：" + portrait)
+        ld["sp"] = "GFX_GER_region_leader_%s" % key
+        ld["el"] = "GER_region_panel_leader_%s" % key
+        panel_sprites.append((ld["sp"], portrait, 1, False))
+    leaders.append(ld)
+
 # ---------------------------------------------------------------- 命名约定
 for r in regions:
     r["el_fill"] = "GER_region_%s_fill" % r["id"]
     r["el_btn"] = "GER_region_%s_button" % r["id"]
     r["v_open"] = "GER_region_%s_open" % r["key"]      # =1 显示（已开放）
-    r["v_state"] = "GER_region_%s_state" % r["key"]    # 1-7 逻辑状态（5=摇摆）
-    r["v_frame"] = "GER_region_%s_frame" % r["key"]    # 1-7 实际显示帧（由 sync 计算）
+    r["v_state"] = "GER_region_%s_state" % r["key"]    # 1-12 地区类型 = 帧号（见 REGION_FRAMES 注释）
+    r["v_frame"] = "GER_region_%s_frame" % r["key"]    # 1-12 实际显示帧（sync 时从 state 拷贝）
+    r["v_support"] = "GER_region_%s_support" % r["key"]  # 0-100 支持度
+    r["v_control"] = "GER_region_%s_control" % r["key"]  # 0-100 控制度
+    r["v_leader"] = "GER_region_%s_leader" % r["key"]    # 领导人序号（LEADERS，1 起；0 = 无）
     r["tt"] = "GER_region_%s_tt" % r["id"]
     r["name_key"] = "GER_region_%s_name" % r["id"]
-for i, r in enumerate(regions, 1):
-    r["idx"] = i                                      # GER_region_selected 的取值
+    r["caption_key"] = "GER_region_%s_photo_caption" % r["id"]
+
+ROWS = []   # 12 条行动方针：1-8 日常决议，9-12 驻区方针
+for i, (nm, cost) in enumerate(DAILY_ROWS, 1):
+    ROWS.append({"n": i, "cname": nm, "cost": cost, "garrison": False})
+for j, nm in enumerate(GARRISON_ROWS, len(DAILY_ROWS) + 1):
+    ROWS.append({"n": j, "cname": nm, "cost": GARRISON_COST, "garrison": True})
+for row in ROWS:
+    row["el"] = "GER_region_panel_row_%d" % row["n"]
+    row["v_frame"] = "GER_region_row_%d_frame" % row["n"]   # 1 普通 / 3 选中
+    row["name"] = "GER_region_panel_row_%d_name" % row["n"]
+    row["tt"] = "GER_region_panel_row_%d_tt" % row["n"]
+
+# 盖板互斥：键的盖板在值的盖板显示时不画（A 方案范围包含 B 方案）
+OVERLAY_HIDDEN_BY = {"SIL_planB_762": "SIL_planA_1134_762"}
+for _b, _a in OVERLAY_HIDDEN_BY.items():
+    assert _b in {o["id"] for o in overlays} and _a in {o["id"] for o in overlays}, "清单里缺西里西亚盖板"
+
 for o in overlays:
     o["el_fill"] = "GER_region_OV_%s" % o["id"]
     o["el_btn"] = "GER_region_OV_%s_button" % o["id"]
@@ -238,19 +405,24 @@ for o in overlays:
     o["tt"] = "GER_region_OV_%s_tt" % o["id"]
 
 # ---------------------------------------------------------------- .gfx
-gfx_lines = []
-for name, path, frames, tcheck in sprites:
-    gfx_lines.append("spriteType = {")
-    gfx_lines.append('    name = "%s"' % name)
-    gfx_lines.append('    texturefile = "%s"' % path)
-    if frames > 1:
-        gfx_lines.append("    noOfFrames = %d" % frames)
-    if tcheck:
-        gfx_lines.append("    transparencecheck = yes")
-    gfx_lines.append("}")
+def sprite_lines(lst):
+    out = []
+    for name, path, frames, tcheck in lst:
+        out.append("spriteType = {")
+        out.append('    name = "%s"' % name)
+        out.append('    texturefile = "%s"' % path)
+        if frames > 1:
+            out.append("    noOfFrames = %d" % frames)
+        if tcheck:
+            out.append("    transparencecheck = yes")
+        out.append("}")
+    return out
+
+
+gfx_lines = sprite_lines(sprites)
 GFX_TEMPLATE = """spriteTypes = {
-    # 右侧面板占位框：tiled_plain_bg_lined 的金线贴着贴图外缘，
-    # 小框用 8px 的 borderSize，避免默认 64px 边角在 30px 高的框里叠在一起。
+    # 名称框、数值框、决议总框：tiled_plain_bg_lined，金线在框边界往里 4px，
+    # 小框用 8px 的 borderSize，避免默认 64px 边角在矮框里叠在一起。
     corneredTileSpriteType = {
         name = "GFX_GER_region_game_frame"
         size = { x = 190 y = 190 }
@@ -260,19 +432,80 @@ GFX_TEMPLATE = """spriteTypes = {
         effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
     }
 
+    # ---- 右侧面板素材（gfx/interface/GER_region_game/panel/，1:1 显示，不要缩放）----
+    # 进度条：写法同 GER_socialization 的组织度条；frame = 0-100
+    progressbartype = {
+        name = "GFX_GER_region_panel_support_bar"
+        textureFile1 = "gfx/interface/GER_region_game/panel/support_bar_full.png"
+        textureFile2 = "gfx/interface/GER_region_game/panel/support_bar_empty.png"
+        size = { x = 158 y = 22 }
+        effectFile = "gfx/FX/progress.lua"
+        horizontal = yes
+    }
+    progressbartype = {
+        name = "GFX_GER_region_panel_control_bar"
+        textureFile1 = "gfx/interface/GER_region_game/panel/control_bar_full.png"
+        textureFile2 = "gfx/interface/GER_region_game/panel/control_bar_empty.png"
+        size = { x = 158 y = 22 }
+        effectFile = "gfx/FX/progress.lua"
+        horizontal = yes
+    }
+    # 决议条底板：帧1 普通、帧2 悬停、帧3 选中（暗黄）
+    spriteType = {
+        name = "GFX_GER_region_panel_decision_row"
+        texturefile = "gfx/interface/GER_region_game/panel/decision_row_3f.png"
+        noOfFrames = 3
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_left"
+        texturefile = "gfx/interface/GER_region_game/panel/core_left.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_right"
+        texturefile = "gfx/interface/GER_region_game/panel/core_right.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_weimar"
+        texturefile = "gfx/interface/GER_region_game/panel/core_weimar.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_region_photo_frame"
+        texturefile = "gfx/interface/GER_region_game/panel/region_photo_frame.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_leader_photo_frame"
+        texturefile = "gfx/interface/GER_region_game/panel/leader_photo_frame.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_region_photo_vignette"
+        texturefile = "gfx/interface/GER_region_game/panel/region_photo_vignette.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_leader_photo_vignette"
+        texturefile = "gfx/interface/GER_region_game/panel/leader_photo_vignette.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_map_corner_shade"
+        texturefile = "gfx/interface/GER_region_game/panel/map_corner_shade.png"
+    }
+
+    # 地区照片条带（16 帧，脚本拼）、领导人头像（引用模组现成的 156x210 头像）
+    {{GEN:panel_sprites}}
+
     # 地图素材：像素对齐，GUI 里一律 scale = 1，不要缩放。
     {{GEN:sprites}}
 }
 """
 
 # ---------------------------------------------------------------- .gui 地图层
-def icon(name, sprite, x, y, frame=None, transparent=True):
+def icon(name, sprite, x, y, frame=None, transparent=True, extra=()):
     s = ["iconType = {",
          '    name = "%s"' % name,
          '    spriteType = "%s"' % sprite,
          "    position = { x = %d y = %d }" % (x, y)]
     if frame:
         s.append("    frame = %d" % frame)
+    s += ["    " + e for e in extra]
     if transparent:
         s.append("    alwaystransparent = yes")
     s.append("}")
@@ -303,7 +536,7 @@ L += icon("GER_region_alsace_lorraine", "GFX_GER_region_alsace_lorraine_fill", A
 L += icon("GER_region_bav_corner", "GFX_GER_region_bav_corner_fill", BC["x"], BC["y"])
 L.append("# 层 3：整块斜线层（一直显示，永不隐藏）")
 L += icon("GER_region_locked_all", "GFX_GER_region_locked_all", LK["x"], LK["y"])
-L.append("# 层 4：16 个区块精灵（7 帧）。默认隐藏；帧号 = var:GER_region_Rxx_frame")
+L.append("# 层 4：16 个区块精灵（%d 帧）。默认隐藏；帧号 = var:GER_region_Rxx_frame" % REGION_FRAMES)
 for r in regions:
     L += icon(r["el_fill"], r["sp_fill"], r["x"], r["y"], frame=2)
 L.append("# 层 5：割让盖板（默认全部隐藏）")
@@ -325,58 +558,95 @@ L += button("GER_region_bav_corner_button", "GFX_GER_region_bav_corner_hit", BC_
 GUI_MAP = "\n".join(L)
 
 
-def frame_box(name, x, y, w, h, text=None, font="hoi_16mbs"):
-    s = ["containerWindowType = {",
-         '    name = "%s"' % name,
-         "    position = { x = %d y = %d }" % (x, y),
-         "    size = { width = %d height = %d }" % (w, h),
-         '    background = { name = "%s_bg" quadTextureSprite = "GFX_GER_region_game_frame" }' % name]
-    if text:
-        s += ["    instantTextboxType = {",
-              '        name = "%s_text"' % name,
-              "        position = { x = 4 y = %d }" % max(2, (h - 20) // 2),
-              '        font = "%s"' % font,
-              '        text = "%s"' % text,
-              "        maxWidth = %d" % (w - 8),
-              "        maxHeight = %d" % min(h - 4, 22),
-              "        format = centre",
-              "    }"]
-    s.append("}")
-    return "\n".join(s)
+def tbox(name, x, y, text, w, h=24, font="hoi_16mbs", fmt="left"):
+    return ["instantTextboxType = {",
+            '    name = "%s"' % name,
+            "    position = { x = %d y = %d }" % (x, y),
+            '    font = "%s"' % font,
+            '    text = "%s"' % text,
+            "    maxWidth = %d" % w,
+            "    maxHeight = %d" % h,
+            "    format = %s" % fmt,
+            "}"]
 
 
-def text_button(name, x, y, w, h, text):
-    return "\n".join([
-        "buttonType = {",
-        '    name = "%s"' % name,
-        "    position = { x = %d y = %d }" % (x, y),
-        "    size = { x = %d y = %d }" % (w, h),
-        '    quadTextureSprite = "GFX_GER_region_game_frame"',
-        '    buttonText = "%s"' % text,
-        '    buttonFont = "hoi_16mbs"',
-        "    clicksound = click_default",
-        "}"])
+def box(name, x, y, w, h, children):
+    return (["containerWindowType = {",
+             '    name = "%s"' % name,
+             "    position = { x = %d y = %d }" % (x, y),
+             "    size = { width = %d height = %d }" % (w, h),
+             '    background = { name = "%s_bg" quadTextureSprite = "GFX_GER_region_game_frame" }' % name]
+            + ["    " + c for c in children] + ["}"])
 
 
-RX = MAP_X + CANVAS_W + 16       # 右侧面板左边 1280
-RX2 = RX + 133                   # 右列 1413
-RIGHT_PANEL = "\n".join([
-    "# ---- 右侧面板：只是框架占位，美术之后替换（此段只在首次生成时写出，之后可以随便手改）----",
-    frame_box("GER_region_game_name_box", RX, 12, 284, 30, "GER_region_game_selected_name"),
-    frame_box("GER_region_game_photo_box", RX, 52, 320, 96, "GER_region_game_photo_label"),
-    frame_box("GER_region_game_leader_box", RX, 164, 118, 28, "GER_region_game_leader_label"),
-    frame_box("GER_region_game_portrait_box", RX, 200, 118, 168, "GER_region_game_portrait_label"),
-    frame_box("GER_region_game_logo_box", RX2 + 11, 164, 168, 168, "GER_region_game_logo_label"),
-    frame_box("GER_region_game_support_box", RX2, 344, 93, 30, "GER_region_game_support_label"),
-    frame_box("GER_region_game_control_box", RX2 + 93, 344, 94, 30, "GER_region_game_control_label"),
-    "# 支持度 / 控制度竖条（之后可换成 vertical progressbar）",
-    frame_box("GER_region_game_support_bar", RX2 + 28, 386, 36, 490),
-    frame_box("GER_region_game_control_bar", RX2 + 122, 386, 36, 490),
-    frame_box("GER_region_game_policy_box", RX, 386, 118, 110, "GER_region_game_policy_label"),
-    text_button("GER_region_game_policy_1_button", RX, 516, 118, 28, "GER_region_game_policy_1"),
-    text_button("GER_region_game_policy_2_button", RX, 556, 118, 28, "GER_region_game_policy_2"),
-    text_button("GER_region_game_policy_3_button", RX, 596, 118, 28, "GER_region_game_policy_3"),
+# 右侧面板（窗口坐标，修改说明_右侧面板.md 第 3 节；照片/头像/压暗坐标取自 右侧面板素材/素材清单.json）
+# 绘制顺序 = 写的顺序，后写的盖在上面。装饰层都 alwaystransparent，不挡地图点击。
+RPH, LPH = PJ["region_photo"], PJ["leader_photo"]
+P = []
+P.append("# 1 地图右下角轻微压暗（装饰）")
+P += icon("GER_region_panel_map_shade", "GFX_GER_region_panel_map_corner_shade", *PJ["map_corner_shade"]["pos"])
+P.append("# 2-5 地区照片：框（带阴影，框内是深色底）→ 照片（%d 帧，帧号 = GER_region_selected）→ 暗角 → 说明" % len(regions))
+P += icon("GER_region_panel_photo_frame", "GFX_GER_region_panel_region_photo_frame", *RPH["sprite_pos_window"])
+P += icon("GER_region_panel_photo", "GFX_GER_region_panel_photos", *RPH["photo_pos_window"])
+P += icon("GER_region_panel_photo_vignette", "GFX_GER_region_panel_region_photo_vignette", *RPH["photo_pos_window"])
+_cx, _cy, _cw, _ch = RPH["caption_rect_window"]
+P += tbox("GER_region_panel_photo_name", _cx + 4, _cy, "GER_region_game_selected_name", 220, _ch)
+P += tbox("GER_region_panel_photo_caption", _cx + _cw - 4 - 200, _cy, "GER_region_panel_photo_caption", 200, _ch,
+          fmt="right")
+P.append("# 6-9 领导人：框（带阴影）→ 头像（每人一个，scale %s，按 GER_region_sel_leader 切换）→ 暗角（带悬停提示）→ 名字"
+         % PJ["leader_portrait_scale"])
+P += icon("GER_region_panel_leader_frame", "GFX_GER_region_panel_leader_photo_frame", *LPH["sprite_pos_window"])
+for ld in leaders:
+    if ld.get("sp"):
+        P += icon(ld["el"], ld["sp"], *LPH["photo_pos_window"], extra=["scale = %s" % PJ["leader_portrait_scale"]])
+P += icon("GER_region_panel_leader_vignette", "GFX_GER_region_panel_leader_photo_vignette", *LPH["photo_pos_window"],
+          transparent=False, extra=['pdx_tooltip = "GER_region_panel_leader_tt"'])
+_lx, _ly, _lw, _lh = LPH["caption_rect_window"]
+P += tbox("GER_region_panel_leader_name", _lx, _ly, "GER_region_panel_leader_name", _lw, _lh, fmt="centre")
+
+P.append("# 10 名称框：区名居中，右侧金色小字 = 地区类型（右对齐到 x=1553）")
+P += box("GER_region_game_name_box", 1281, 13, 282, 42, [
+    *tbox("GER_region_game_name_box_text", 0, 9, "GER_region_game_selected_name", 282, 26, "hoi_18mbs", "centre"),
+    *tbox("GER_region_panel_type_text", 1553 - 1281 - 100, 12, "GER_region_panel_type", 100, 22, fmt="right"),
 ])
+P.append("# 11-15 数值框：支持度 / 控制度（只在非核心区显示）")
+P += box("GER_region_panel_values", 1281, 57, 320, 92, [
+    *tbox("GER_region_panel_support_label", 1297 - 1281, 75 - 57, "GER_region_game_support_label", 70),
+    *icon("GER_region_panel_support_bar", "GFX_GER_region_panel_support_bar", 1371 - 1281, 74 - 57),
+    *tbox("GER_region_panel_support_value", 1585 - 1281 - 60, 75 - 57, "GER_region_panel_support_value", 60, fmt="right"),
+    *tbox("GER_region_panel_control_label", 1297 - 1281, 107 - 57, "GER_region_game_control_label", 70),
+    *icon("GER_region_panel_control_bar", "GFX_GER_region_panel_control_bar", 1371 - 1281, 106 - 57),
+    *tbox("GER_region_panel_control_value", 1585 - 1281 - 60, 107 - 57, "GER_region_panel_control_value", 60, fmt="right"),
+])
+P.append("# 16-17 核心区方块（只在左派 / 右派 / 魏玛联盟核心区显示，和数值框互换）")
+for f, side in sorted(CORE_FRAMES.items()):
+    P += icon("GER_region_panel_core_%s" % side, "GFX_GER_region_panel_core_%s" % side, 1285, 61)
+P += tbox("GER_region_panel_core_title", 1285, 81, "GER_region_panel_core_title", 312, 26, "hoi_18mbs", "centre")
+P += tbox("GER_region_panel_core_desc", 1285, 109, "GER_region_panel_core_desc", 312, 24, fmt="centre")
+
+P.append("# 18-22 决议总框：行动方针 8 条 + 驻区方针 4 条。条：帧1 普通 / 帧2 悬停 / 帧3 选中")
+_act = []
+_AX, _AY = 1281, 150
+_act += tbox("GER_region_panel_actions_title", 1297 - _AX, 166 - _AY, "GER_region_game_policy_label", 200, 26, "hoi_18mbs")
+
+
+def row_els(row, y):
+    rx = 1295 - _AX
+    return (button(row["el"], "GFX_GER_region_panel_decision_row", rx, y, row["tt"])
+            + tbox(row["el"] + "_name", rx + 14, y + 11, "GER_region_panel_row_%d_label" % row["n"], 180, 22)
+            + tbox(row["el"] + "_status", rx + 292 - 14 - 120, y + 11, "GER_region_panel_row_%d_status" % row["n"],
+                   120, 22, fmt="right"))
+
+
+for k, row in enumerate(r for r in ROWS if not r["garrison"]):
+    _act += row_els(row, 200 + 48 * k - _AY)
+_act += tbox("GER_region_panel_garrison_label", 1299 - _AX, 593 - _AY, "GER_region_panel_garrison_label", 100, 22)
+_act += tbox("GER_region_panel_garrison_req", 1589 - _AX - 200, 593 - _AY, "GER_region_panel_garrison_req", 200, 22,
+             fmt="right")
+for k, row in enumerate(r for r in ROWS if r["garrison"]):
+    _act += row_els(row, 622 + 48 * k - _AY)
+P += box("GER_region_panel_actions", _AX, _AY, 320, 731, _act)
+GUI_PANEL = "\n".join(P)
 
 GUI_TEMPLATE = """guiTypes = {
     # 入口按钮：右下角，议会按钮（GER_yihui_entry_bg，y = -360，100x100）正上方
@@ -443,7 +713,8 @@ GUI_TEMPLATE = """guiTypes = {
             {{GEN:map_layers}}
         }
 
-        %(RIGHT)s
+        # 右侧面板 + 盖在地图右下角的照片、领导人（坐标是窗口坐标）
+        {{GEN:right_panel}}
 
         buttonType = {
             name = "close_button"
@@ -456,8 +727,7 @@ GUI_TEMPLATE = """guiTypes = {
     }
 }
 """ % {"W": WIN_W, "H": WIN_H, "W2": WIN_W - 2, "H2": WIN_H - 2, "MX": MAP_X, "MY": MAP_Y,
-       "CW": CANVAS_W, "CH": CANVAS_H, "CW10": CANVAS_W - 20,
-       "RIGHT": indent(RIGHT_PANEL, 8).lstrip()}
+       "CW": CANVAS_W, "CH": CANVAS_H, "CW10": CANVAS_W - 20}
 
 # ---------------------------------------------------------------- scripted_gui
 props = ["%s = { frame = var:%s }" % (r["el_fill"], r["v_frame"]) for r in regions]
@@ -466,9 +736,15 @@ for r in regions:
     trig.append("%s_visible = { check_variable = { %s = 1 } }" % (r["el_fill"], r["v_open"]))
     trig.append("%s_visible = { check_variable = { %s = 1 } }" % (r["el_btn"], r["v_open"]))
 trig.append("# 割让盖板：显示 = GER_region_OV_xxx_shown = 1；盖板点击图只出提示，不写 click 效果")
+trig.append("# 互斥：西里西亚 A 方案（1134+762）包含 B 方案（762），A 显示时 B 一律不画")
+ov_by_id = {o["id"]: o for o in overlays}
 for o in overlays:
-    trig.append("%s_visible = { check_variable = { %s = 1 } }" % (o["el_fill"], o["v_shown"]))
-    trig.append("%s_visible = { check_variable = { %s = 1 } }" % (o["el_btn"], o["v_shown"]))
+    cond = "check_variable = { %s = 1 }" % o["v_shown"]
+    hider = OVERLAY_HIDDEN_BY.get(o["id"])
+    if hider:
+        cond += " NOT = { check_variable = { %s = 1 } }" % ov_by_id[hider]["v_shown"]
+    trig.append("%s_visible = { %s }" % (o["el_fill"], cond))
+    trig.append("%s_visible = { %s }" % (o["el_btn"], cond))
 
 SGUI_TEMPLATE = """scripted_gui = {
     # 右下角入口按钮：打开 / 关闭地区博弈界面
@@ -635,7 +911,11 @@ for i, r in enumerate(regions, 1):
                % (i, r["v_open"], r["v_state"]))
 D += dec("GER_region_test_next_region", nxt)
 D += dec("GER_region_test_swing", open_all(SWING_STATE))
-D += dec("GER_region_test_silesia_lost", open_all(2) + ["set_variable = { GER_region_R07_state = 1 }"])
+D += dec("GER_region_test_silesia_A", open_all(2) + ["GER_region_game_hide_all_overlays = yes",
+                                                     "set_variable = { GER_region_OV_SIL_planA_1134_762_shown = 1 }",
+                                                     "set_variable = { GER_region_OV_SIL_planB_762_shown = 1 }"])
+D += dec("GER_region_test_silesia_B", open_all(2) + ["GER_region_game_hide_all_overlays = yes",
+                                                     "set_variable = { GER_region_OV_SIL_planB_762_shown = 1 }"])
 D += dec("GER_region_test_all_overlays", open_all(2) + ["set_variable = { %s = 1 }" % o["v_shown"] for o in overlays])
 D += dec("GER_region_test_denmark_1", ["GER_region_game_hide_all_overlays = yes",
                                        "set_variable = { GER_region_OV_SHL_trust_all_shown = 1 }"])
@@ -724,10 +1004,12 @@ dl = ["l_simp_chinese:",
       ' GER_region_test_next_region_desc: "每点一次多开放一个区块（帧 3），顺序：%s。已开放到第 [?GER_region_test_next] 个，16 个之后重来。"' % reg_order,
       ' GER_region_test_swing: "全部区块设为摇摆"',
       ' GER_region_test_swing_desc: "state = 5（摇摆）。目前应显示成帧 2 的中立色，而不是黄色。"',
-      ' GER_region_test_silesia_lost: "西里西亚整块割走（帧 1）"',
-      ' GER_region_test_silesia_lost_desc: "全部区块中立，只有西里西亚切到帧 1 斜线。"',
+      ' GER_region_test_silesia_A: "西里西亚 A 方案（1134+762）"',
+      ' GER_region_test_silesia_A_desc: "全部区块中立；A、B 两个盖板变量都设为 1，应只显示 A 的一整块斜线（互斥：A 显示时 B 不画）。"',
+      ' GER_region_test_silesia_B: "西里西亚 B 方案（762）"',
+      ' GER_region_test_silesia_B_desc: "全部区块中立；只显示 B 盖板，应是 A 范围里靠东南的那一块。"',
       ' GER_region_test_all_overlays: "显示全部区块和全部割让盖板"',
-      ' GER_region_test_all_overlays_desc: "16 个区块 + 11 张盖板全部打开，检查叠放和性能。"',
+      ' GER_region_test_all_overlays_desc: "16 个区块 + %d 张盖板全部打开，检查叠放和性能（西里西亚 A、B 互斥，只会看到 A）。"' % len(overlays),
       ' GER_region_test_denmark_1: "丹麦阶段一：石勒苏益格托管"',
       ' GER_region_test_denmark_1_desc: "只显示 SHL_trust_all 盖板。"',
       ' GER_region_test_denmark_2: "丹麦阶段二：北石勒苏益格归丹麦"',
@@ -747,5 +1029,11 @@ write("common/decisions/GER_region_game_test.txt", DECISIONS)
 write("common/decisions/categories/GER_region_game_test.txt", CATEGORY)
 write("localisation/simp_chinese/gui/GER_region_game_l_simp_chinese.yml", LOC_GUI, bom=True, crlf=True)
 write("localisation/simp_chinese/decision/GER_region_game_test_l_simp_chinese.yml", LOC_DEC, bom=True, crlf=True)
+# 清理：素材目录里不再被清单引用的旧图（例如删掉的盖板）
+_used = {os.path.basename(path) for _, path, _, _ in sprites}
+for _f in sorted(os.listdir(GFX_DIR)):
+    if _f.lower().endswith(".png") and _f not in _used:
+        os.remove(os.path.join(GFX_DIR, _f))
+        print("删除不再使用的素材", _f)
 print("素材 %d 张 -> %s" % (len(sprites), GFX_DIR_REL))
 print("相邻不同色配色：", checker)

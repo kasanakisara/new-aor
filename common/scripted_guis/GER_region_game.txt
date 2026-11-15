@@ -88,16 +88,15 @@ scripted_gui = {
             GER_region_R16_GreatBerlin_fill_visible = { check_variable = { GER_region_R16_open = 1 } }
             GER_region_R16_GreatBerlin_button_visible = { check_variable = { GER_region_R16_open = 1 } }
             # 割让盖板：显示 = GER_region_OV_xxx_shown = 1；盖板点击图只出提示，不写 click 效果
+            # 互斥：西里西亚 A 方案（1134+762）包含 B 方案（762），A 显示时 B 一律不画
+            GER_region_OV_SIL_planA_1134_762_visible = { check_variable = { GER_region_OV_SIL_planA_1134_762_shown = 1 } }
+            GER_region_OV_SIL_planA_1134_762_button_visible = { check_variable = { GER_region_OV_SIL_planA_1134_762_shown = 1 } }
+            GER_region_OV_SIL_planB_762_visible = { check_variable = { GER_region_OV_SIL_planB_762_shown = 1 } NOT = { check_variable = { GER_region_OV_SIL_planA_1134_762_shown = 1 } } }
+            GER_region_OV_SIL_planB_762_button_visible = { check_variable = { GER_region_OV_SIL_planB_762_shown = 1 } NOT = { check_variable = { GER_region_OV_SIL_planA_1134_762_shown = 1 } } }
             GER_region_OV_SHL_trust_all_visible = { check_variable = { GER_region_OV_SHL_trust_all_shown = 1 } }
             GER_region_OV_SHL_trust_all_button_visible = { check_variable = { GER_region_OV_SHL_trust_all_shown = 1 } }
             GER_region_OV_SHL_north_Denmark_visible = { check_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 } }
             GER_region_OV_SHL_north_Denmark_button_visible = { check_variable = { GER_region_OV_SHL_north_Denmark_shown = 1 } }
-            GER_region_OV_SIL_Katowice_all_visible = { check_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 } }
-            GER_region_OV_SIL_Katowice_all_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_all_shown = 1 } }
-            GER_region_OV_SIL_Katowice_lobe_A_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 } }
-            GER_region_OV_SIL_Katowice_lobe_A_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_A_shown = 1 } }
-            GER_region_OV_SIL_Katowice_lobe_B_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 } }
-            GER_region_OV_SIL_Katowice_lobe_B_button_visible = { check_variable = { GER_region_OV_SIL_Katowice_lobe_B_shown = 1 } }
             GER_region_OV_EP_southwest_visible = { check_variable = { GER_region_OV_EP_southwest_shown = 1 } }
             GER_region_OV_EP_southwest_button_visible = { check_variable = { GER_region_OV_EP_southwest_shown = 1 } }
             GER_region_OV_MEMEL_visible = { check_variable = { GER_region_OV_MEMEL_shown = 1 } }
