@@ -1,5 +1,6 @@
 # 由 tools/GER_region_game/gen_region_game.py 生成，不要手改。
-# 右上名称框：按 GER_region_selected 显示区块名，没选时显示占位。
+
+# 名称框 / 照片说明：选中区块名，没选时显示占位
 defined_text = {
     name = GER_region_selected_name
     text = { trigger = { check_variable = { GER_region_selected = 1 } } localization_key = GER_region_R01_WeserEms_name }
@@ -19,4 +20,442 @@ defined_text = {
     text = { trigger = { check_variable = { GER_region_selected = 15 } } localization_key = GER_region_R15_Westphalia_name }
     text = { trigger = { check_variable = { GER_region_selected = 16 } } localization_key = GER_region_R16_GreatBerlin_name }
     text = { localization_key = GER_region_game_selected_none }
+}
+# 地图悬停提示第一行：「地区名：类型」（按该区块自己的帧号；没有类型名的帧只写地区名）
+defined_text = {
+    name = GER_region_R01_WeserEms_head
+    text = { trigger = { check_variable = { GER_region_R01_frame = 2 } } localization_key = GER_region_R01_WeserEms_head_2 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 3 } } localization_key = GER_region_R01_WeserEms_head_3 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 4 } } localization_key = GER_region_R01_WeserEms_head_4 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 5 } } localization_key = GER_region_R01_WeserEms_head_5 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 8 } } localization_key = GER_region_R01_WeserEms_head_8 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 9 } } localization_key = GER_region_R01_WeserEms_head_9 }
+    text = { trigger = { check_variable = { GER_region_R01_frame = 10 } } localization_key = GER_region_R01_WeserEms_head_10 }
+    text = { localization_key = GER_region_R01_WeserEms_head_none }
+}
+defined_text = {
+    name = GER_region_R02_Hannover_head
+    text = { trigger = { check_variable = { GER_region_R02_frame = 2 } } localization_key = GER_region_R02_Hannover_head_2 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 3 } } localization_key = GER_region_R02_Hannover_head_3 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 4 } } localization_key = GER_region_R02_Hannover_head_4 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 5 } } localization_key = GER_region_R02_Hannover_head_5 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 8 } } localization_key = GER_region_R02_Hannover_head_8 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 9 } } localization_key = GER_region_R02_Hannover_head_9 }
+    text = { trigger = { check_variable = { GER_region_R02_frame = 10 } } localization_key = GER_region_R02_Hannover_head_10 }
+    text = { localization_key = GER_region_R02_Hannover_head_none }
+}
+defined_text = {
+    name = GER_region_R03_HamburgSH_head
+    text = { trigger = { check_variable = { GER_region_R03_frame = 2 } } localization_key = GER_region_R03_HamburgSH_head_2 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 3 } } localization_key = GER_region_R03_HamburgSH_head_3 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 4 } } localization_key = GER_region_R03_HamburgSH_head_4 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 5 } } localization_key = GER_region_R03_HamburgSH_head_5 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 8 } } localization_key = GER_region_R03_HamburgSH_head_8 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 9 } } localization_key = GER_region_R03_HamburgSH_head_9 }
+    text = { trigger = { check_variable = { GER_region_R03_frame = 10 } } localization_key = GER_region_R03_HamburgSH_head_10 }
+    text = { localization_key = GER_region_R03_HamburgSH_head_none }
+}
+defined_text = {
+    name = GER_region_R04_Mecklenburg_head
+    text = { trigger = { check_variable = { GER_region_R04_frame = 2 } } localization_key = GER_region_R04_Mecklenburg_head_2 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 3 } } localization_key = GER_region_R04_Mecklenburg_head_3 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 4 } } localization_key = GER_region_R04_Mecklenburg_head_4 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 5 } } localization_key = GER_region_R04_Mecklenburg_head_5 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 8 } } localization_key = GER_region_R04_Mecklenburg_head_8 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 9 } } localization_key = GER_region_R04_Mecklenburg_head_9 }
+    text = { trigger = { check_variable = { GER_region_R04_frame = 10 } } localization_key = GER_region_R04_Mecklenburg_head_10 }
+    text = { localization_key = GER_region_R04_Mecklenburg_head_none }
+}
+defined_text = {
+    name = GER_region_R05_Pomerania_head
+    text = { trigger = { check_variable = { GER_region_R05_frame = 2 } } localization_key = GER_region_R05_Pomerania_head_2 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 3 } } localization_key = GER_region_R05_Pomerania_head_3 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 4 } } localization_key = GER_region_R05_Pomerania_head_4 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 5 } } localization_key = GER_region_R05_Pomerania_head_5 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 8 } } localization_key = GER_region_R05_Pomerania_head_8 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 9 } } localization_key = GER_region_R05_Pomerania_head_9 }
+    text = { trigger = { check_variable = { GER_region_R05_frame = 10 } } localization_key = GER_region_R05_Pomerania_head_10 }
+    text = { localization_key = GER_region_R05_Pomerania_head_none }
+}
+defined_text = {
+    name = GER_region_R06_Brandenburg_head
+    text = { trigger = { check_variable = { GER_region_R06_frame = 2 } } localization_key = GER_region_R06_Brandenburg_head_2 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 3 } } localization_key = GER_region_R06_Brandenburg_head_3 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 4 } } localization_key = GER_region_R06_Brandenburg_head_4 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 5 } } localization_key = GER_region_R06_Brandenburg_head_5 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 8 } } localization_key = GER_region_R06_Brandenburg_head_8 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 9 } } localization_key = GER_region_R06_Brandenburg_head_9 }
+    text = { trigger = { check_variable = { GER_region_R06_frame = 10 } } localization_key = GER_region_R06_Brandenburg_head_10 }
+    text = { localization_key = GER_region_R06_Brandenburg_head_none }
+}
+defined_text = {
+    name = GER_region_R07_Silesia_head
+    text = { trigger = { check_variable = { GER_region_R07_frame = 2 } } localization_key = GER_region_R07_Silesia_head_2 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 3 } } localization_key = GER_region_R07_Silesia_head_3 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 4 } } localization_key = GER_region_R07_Silesia_head_4 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 5 } } localization_key = GER_region_R07_Silesia_head_5 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 8 } } localization_key = GER_region_R07_Silesia_head_8 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 9 } } localization_key = GER_region_R07_Silesia_head_9 }
+    text = { trigger = { check_variable = { GER_region_R07_frame = 10 } } localization_key = GER_region_R07_Silesia_head_10 }
+    text = { localization_key = GER_region_R07_Silesia_head_none }
+}
+defined_text = {
+    name = GER_region_R08_ThuringiaSaxony_head
+    text = { trigger = { check_variable = { GER_region_R08_frame = 2 } } localization_key = GER_region_R08_ThuringiaSaxony_head_2 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 3 } } localization_key = GER_region_R08_ThuringiaSaxony_head_3 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 4 } } localization_key = GER_region_R08_ThuringiaSaxony_head_4 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 5 } } localization_key = GER_region_R08_ThuringiaSaxony_head_5 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 8 } } localization_key = GER_region_R08_ThuringiaSaxony_head_8 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 9 } } localization_key = GER_region_R08_ThuringiaSaxony_head_9 }
+    text = { trigger = { check_variable = { GER_region_R08_frame = 10 } } localization_key = GER_region_R08_ThuringiaSaxony_head_10 }
+    text = { localization_key = GER_region_R08_ThuringiaSaxony_head_none }
+}
+defined_text = {
+    name = GER_region_R09_Bavaria_head
+    text = { trigger = { check_variable = { GER_region_R09_frame = 2 } } localization_key = GER_region_R09_Bavaria_head_2 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 3 } } localization_key = GER_region_R09_Bavaria_head_3 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 4 } } localization_key = GER_region_R09_Bavaria_head_4 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 5 } } localization_key = GER_region_R09_Bavaria_head_5 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 8 } } localization_key = GER_region_R09_Bavaria_head_8 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 9 } } localization_key = GER_region_R09_Bavaria_head_9 }
+    text = { trigger = { check_variable = { GER_region_R09_frame = 10 } } localization_key = GER_region_R09_Bavaria_head_10 }
+    text = { localization_key = GER_region_R09_Bavaria_head_none }
+}
+defined_text = {
+    name = GER_region_R10_BadenWuerttemberg_head
+    text = { trigger = { check_variable = { GER_region_R10_frame = 2 } } localization_key = GER_region_R10_BadenWuerttemberg_head_2 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 3 } } localization_key = GER_region_R10_BadenWuerttemberg_head_3 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 4 } } localization_key = GER_region_R10_BadenWuerttemberg_head_4 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 5 } } localization_key = GER_region_R10_BadenWuerttemberg_head_5 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 8 } } localization_key = GER_region_R10_BadenWuerttemberg_head_8 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 9 } } localization_key = GER_region_R10_BadenWuerttemberg_head_9 }
+    text = { trigger = { check_variable = { GER_region_R10_frame = 10 } } localization_key = GER_region_R10_BadenWuerttemberg_head_10 }
+    text = { localization_key = GER_region_R10_BadenWuerttemberg_head_none }
+}
+defined_text = {
+    name = GER_region_R11_Hesse_head
+    text = { trigger = { check_variable = { GER_region_R11_frame = 2 } } localization_key = GER_region_R11_Hesse_head_2 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 3 } } localization_key = GER_region_R11_Hesse_head_3 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 4 } } localization_key = GER_region_R11_Hesse_head_4 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 5 } } localization_key = GER_region_R11_Hesse_head_5 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 8 } } localization_key = GER_region_R11_Hesse_head_8 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 9 } } localization_key = GER_region_R11_Hesse_head_9 }
+    text = { trigger = { check_variable = { GER_region_R11_frame = 10 } } localization_key = GER_region_R11_Hesse_head_10 }
+    text = { localization_key = GER_region_R11_Hesse_head_none }
+}
+defined_text = {
+    name = GER_region_R12_Rhineland_head
+    text = { trigger = { check_variable = { GER_region_R12_frame = 2 } } localization_key = GER_region_R12_Rhineland_head_2 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 3 } } localization_key = GER_region_R12_Rhineland_head_3 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 4 } } localization_key = GER_region_R12_Rhineland_head_4 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 5 } } localization_key = GER_region_R12_Rhineland_head_5 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 8 } } localization_key = GER_region_R12_Rhineland_head_8 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 9 } } localization_key = GER_region_R12_Rhineland_head_9 }
+    text = { trigger = { check_variable = { GER_region_R12_frame = 10 } } localization_key = GER_region_R12_Rhineland_head_10 }
+    text = { localization_key = GER_region_R12_Rhineland_head_none }
+}
+defined_text = {
+    name = GER_region_R13_EastPrussia_head
+    text = { trigger = { check_variable = { GER_region_R13_frame = 2 } } localization_key = GER_region_R13_EastPrussia_head_2 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 3 } } localization_key = GER_region_R13_EastPrussia_head_3 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 4 } } localization_key = GER_region_R13_EastPrussia_head_4 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 5 } } localization_key = GER_region_R13_EastPrussia_head_5 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 8 } } localization_key = GER_region_R13_EastPrussia_head_8 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 9 } } localization_key = GER_region_R13_EastPrussia_head_9 }
+    text = { trigger = { check_variable = { GER_region_R13_frame = 10 } } localization_key = GER_region_R13_EastPrussia_head_10 }
+    text = { localization_key = GER_region_R13_EastPrussia_head_none }
+}
+defined_text = {
+    name = GER_region_R14_Ruhr_head
+    text = { trigger = { check_variable = { GER_region_R14_frame = 2 } } localization_key = GER_region_R14_Ruhr_head_2 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 3 } } localization_key = GER_region_R14_Ruhr_head_3 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 4 } } localization_key = GER_region_R14_Ruhr_head_4 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 5 } } localization_key = GER_region_R14_Ruhr_head_5 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 8 } } localization_key = GER_region_R14_Ruhr_head_8 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 9 } } localization_key = GER_region_R14_Ruhr_head_9 }
+    text = { trigger = { check_variable = { GER_region_R14_frame = 10 } } localization_key = GER_region_R14_Ruhr_head_10 }
+    text = { localization_key = GER_region_R14_Ruhr_head_none }
+}
+defined_text = {
+    name = GER_region_R15_Westphalia_head
+    text = { trigger = { check_variable = { GER_region_R15_frame = 2 } } localization_key = GER_region_R15_Westphalia_head_2 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 3 } } localization_key = GER_region_R15_Westphalia_head_3 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 4 } } localization_key = GER_region_R15_Westphalia_head_4 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 5 } } localization_key = GER_region_R15_Westphalia_head_5 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 8 } } localization_key = GER_region_R15_Westphalia_head_8 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 9 } } localization_key = GER_region_R15_Westphalia_head_9 }
+    text = { trigger = { check_variable = { GER_region_R15_frame = 10 } } localization_key = GER_region_R15_Westphalia_head_10 }
+    text = { localization_key = GER_region_R15_Westphalia_head_none }
+}
+defined_text = {
+    name = GER_region_R16_GreatBerlin_head
+    text = { trigger = { check_variable = { GER_region_R16_frame = 2 } } localization_key = GER_region_R16_GreatBerlin_head_2 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 3 } } localization_key = GER_region_R16_GreatBerlin_head_3 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 4 } } localization_key = GER_region_R16_GreatBerlin_head_4 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 5 } } localization_key = GER_region_R16_GreatBerlin_head_5 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 8 } } localization_key = GER_region_R16_GreatBerlin_head_8 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 9 } } localization_key = GER_region_R16_GreatBerlin_head_9 }
+    text = { trigger = { check_variable = { GER_region_R16_frame = 10 } } localization_key = GER_region_R16_GreatBerlin_head_10 }
+    text = { localization_key = GER_region_R16_GreatBerlin_head_none }
+}
+# 悬停提示里引用手写文字用的别名（悬停提示不认 $键$，只认 [scripted loc]）
+defined_text = {
+    name = GER_region_R01_WeserEms_body
+    text = { localization_key = GER_region_R01_WeserEms_tt }
+}
+defined_text = {
+    name = GER_region_R02_Hannover_body
+    text = { localization_key = GER_region_R02_Hannover_tt }
+}
+defined_text = {
+    name = GER_region_R03_HamburgSH_body
+    text = { localization_key = GER_region_R03_HamburgSH_tt }
+}
+defined_text = {
+    name = GER_region_R04_Mecklenburg_body
+    text = { localization_key = GER_region_R04_Mecklenburg_tt }
+}
+defined_text = {
+    name = GER_region_R05_Pomerania_body
+    text = { localization_key = GER_region_R05_Pomerania_tt }
+}
+defined_text = {
+    name = GER_region_R06_Brandenburg_body
+    text = { localization_key = GER_region_R06_Brandenburg_tt }
+}
+defined_text = {
+    name = GER_region_R07_Silesia_body
+    text = { localization_key = GER_region_R07_Silesia_tt }
+}
+defined_text = {
+    name = GER_region_R08_ThuringiaSaxony_body
+    text = { localization_key = GER_region_R08_ThuringiaSaxony_tt }
+}
+defined_text = {
+    name = GER_region_R09_Bavaria_body
+    text = { localization_key = GER_region_R09_Bavaria_tt }
+}
+defined_text = {
+    name = GER_region_R10_BadenWuerttemberg_body
+    text = { localization_key = GER_region_R10_BadenWuerttemberg_tt }
+}
+defined_text = {
+    name = GER_region_R11_Hesse_body
+    text = { localization_key = GER_region_R11_Hesse_tt }
+}
+defined_text = {
+    name = GER_region_R12_Rhineland_body
+    text = { localization_key = GER_region_R12_Rhineland_tt }
+}
+defined_text = {
+    name = GER_region_R13_EastPrussia_body
+    text = { localization_key = GER_region_R13_EastPrussia_tt }
+}
+defined_text = {
+    name = GER_region_R14_Ruhr_body
+    text = { localization_key = GER_region_R14_Ruhr_tt }
+}
+defined_text = {
+    name = GER_region_R15_Westphalia_body
+    text = { localization_key = GER_region_R15_Westphalia_tt }
+}
+defined_text = {
+    name = GER_region_R16_GreatBerlin_body
+    text = { localization_key = GER_region_R16_GreatBerlin_tt }
+}
+defined_text = {
+    name = GER_region_panel_support_body
+    text = { localization_key = GER_region_panel_support_tt }
+}
+defined_text = {
+    name = GER_region_panel_control_body
+    text = { localization_key = GER_region_panel_control_tt }
+}
+# 核心区方块的标题：地区类型（按选中区块的帧号）
+defined_text = {
+    name = GER_region_sel_type
+    text = { trigger = { check_variable = { GER_region_sel_frame = 2 } } localization_key = GER_region_type_2 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 3 } } localization_key = GER_region_type_3 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 4 } } localization_key = GER_region_type_4 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 5 } } localization_key = GER_region_type_5 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 8 } } localization_key = GER_region_type_8 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 9 } } localization_key = GER_region_type_9 }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 10 } } localization_key = GER_region_type_10 }
+    text = { localization_key = GER_region_panel_empty }
+}
+# 核心区方块的说明
+defined_text = {
+    name = GER_region_sel_core_desc
+    text = { trigger = { check_variable = { GER_region_sel_frame = 3 } } localization_key = GER_region_panel_core_3_desc }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 4 } } localization_key = GER_region_panel_core_4_desc }
+    text = { trigger = { check_variable = { GER_region_sel_frame = 5 } } localization_key = GER_region_panel_core_5_desc }
+    text = { localization_key = GER_region_panel_empty }
+}
+# 照片右下角小字（拍摄地 / 年份）
+defined_text = {
+    name = GER_region_sel_photo_caption
+    text = { trigger = { check_variable = { GER_region_selected = 1 } } localization_key = GER_region_R01_WeserEms_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 2 } } localization_key = GER_region_R02_Hannover_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 3 } } localization_key = GER_region_R03_HamburgSH_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 4 } } localization_key = GER_region_R04_Mecklenburg_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 5 } } localization_key = GER_region_R05_Pomerania_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 6 } } localization_key = GER_region_R06_Brandenburg_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 7 } } localization_key = GER_region_R07_Silesia_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 8 } } localization_key = GER_region_R08_ThuringiaSaxony_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 9 } } localization_key = GER_region_R09_Bavaria_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 10 } } localization_key = GER_region_R10_BadenWuerttemberg_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 11 } } localization_key = GER_region_R11_Hesse_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 12 } } localization_key = GER_region_R12_Rhineland_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 13 } } localization_key = GER_region_R13_EastPrussia_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 14 } } localization_key = GER_region_R14_Ruhr_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 15 } } localization_key = GER_region_R15_Westphalia_photo_caption }
+    text = { trigger = { check_variable = { GER_region_selected = 16 } } localization_key = GER_region_R16_GreatBerlin_photo_caption }
+    text = { localization_key = GER_region_panel_empty }
+}
+# 领导人名字 / 悬停提示
+defined_text = {
+    name = GER_region_sel_leader_name
+    text = { trigger = { check_variable = { GER_region_sel_leader = 1 } } localization_key = GER_region_leader_daeumig_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 2 } } localization_key = GER_region_leader_dissmann_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 3 } } localization_key = GER_region_leader_henke_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 4 } } localization_key = GER_region_leader_koenen_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 5 } } localization_key = GER_region_leader_lipinski_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 6 } } localization_key = GER_region_leader_committee_nine_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 7 } } localization_key = GER_region_leader_paul_dittmann_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 8 } } localization_key = GER_region_leader_otto_braun_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 9 } } localization_key = GER_region_leader_paul_hirsch_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 10 } } localization_key = GER_region_leader_weimar_coalition_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 11 } } localization_key = GER_region_leader_bitta_name }
+    text = { localization_key = GER_region_panel_empty }
+}
+defined_text = {
+    name = GER_region_sel_leader_tt
+    text = { trigger = { check_variable = { GER_region_sel_leader = 1 } } localization_key = GER_region_leader_daeumig_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 2 } } localization_key = GER_region_leader_dissmann_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 3 } } localization_key = GER_region_leader_henke_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 4 } } localization_key = GER_region_leader_koenen_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 5 } } localization_key = GER_region_leader_lipinski_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 6 } } localization_key = GER_region_leader_committee_nine_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 7 } } localization_key = GER_region_leader_paul_dittmann_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 8 } } localization_key = GER_region_leader_otto_braun_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 9 } } localization_key = GER_region_leader_paul_hirsch_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 10 } } localization_key = GER_region_leader_weimar_coalition_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 11 } } localization_key = GER_region_leader_bitta_tt }
+    text = { localization_key = GER_region_panel_empty }
+}
+# 行动方针条：名字（驻区方针双满之前灰色）和右侧状态
+# 状态优先级：生效中(绿) > 未满足双满(灰) > 条件不满足(灰) > 政治点数不够(红) > 可点(金)
+defined_text = {
+    name = GER_region_row_1_status
+    text = { trigger = { check_variable = { GER_region_sel_row_1_days > 13 } } localization_key = GER_region_panel_row_1_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_1_days > 0 } } localization_key = GER_region_panel_row_1_status_days }
+    text = { trigger = { NOT = { GER_region_action_1_allowed = yes } } localization_key = GER_region_panel_row_1_status_grey }
+    text = { trigger = { NOT = { has_political_power > 14.99 } } localization_key = GER_region_panel_row_1_status_red }
+    text = { localization_key = GER_region_panel_row_1_status_gold }
+}
+defined_text = {
+    name = GER_region_row_2_status
+    text = { trigger = { check_variable = { GER_region_sel_row_2_days > 13 } } localization_key = GER_region_panel_row_2_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_2_days > 0 } } localization_key = GER_region_panel_row_2_status_days }
+    text = { trigger = { NOT = { GER_region_action_2_allowed = yes } } localization_key = GER_region_panel_row_2_status_grey }
+    text = { trigger = { NOT = { has_political_power > 14.99 } } localization_key = GER_region_panel_row_2_status_red }
+    text = { localization_key = GER_region_panel_row_2_status_gold }
+}
+defined_text = {
+    name = GER_region_row_3_status
+    text = { trigger = { check_variable = { GER_region_sel_row_3_days > 13 } } localization_key = GER_region_panel_row_3_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_3_days > 0 } } localization_key = GER_region_panel_row_3_status_days }
+    text = { trigger = { NOT = { GER_region_action_3_allowed = yes } } localization_key = GER_region_panel_row_3_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_3_status_red }
+    text = { localization_key = GER_region_panel_row_3_status_gold }
+}
+defined_text = {
+    name = GER_region_row_4_status
+    text = { trigger = { check_variable = { GER_region_sel_row_4_days > 13 } } localization_key = GER_region_panel_row_4_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_4_days > 0 } } localization_key = GER_region_panel_row_4_status_days }
+    text = { trigger = { NOT = { GER_region_action_4_allowed = yes } } localization_key = GER_region_panel_row_4_status_grey }
+    text = { trigger = { NOT = { has_political_power > 29.99 } } localization_key = GER_region_panel_row_4_status_red }
+    text = { localization_key = GER_region_panel_row_4_status_gold }
+}
+defined_text = {
+    name = GER_region_row_5_status
+    text = { trigger = { check_variable = { GER_region_sel_row_5_days > 13 } } localization_key = GER_region_panel_row_5_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_5_days > 0 } } localization_key = GER_region_panel_row_5_status_days }
+    text = { trigger = { NOT = { GER_region_action_5_allowed = yes } } localization_key = GER_region_panel_row_5_status_grey }
+    text = { trigger = { NOT = { has_political_power > 19.99 } } localization_key = GER_region_panel_row_5_status_red }
+    text = { localization_key = GER_region_panel_row_5_status_gold }
+}
+defined_text = {
+    name = GER_region_row_6_status
+    text = { trigger = { check_variable = { GER_region_sel_row_6_days > 13 } } localization_key = GER_region_panel_row_6_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_6_days > 0 } } localization_key = GER_region_panel_row_6_status_days }
+    text = { trigger = { NOT = { GER_region_action_6_allowed = yes } } localization_key = GER_region_panel_row_6_status_grey }
+    text = { trigger = { NOT = { has_political_power > 99.99 } } localization_key = GER_region_panel_row_6_status_red }
+    text = { localization_key = GER_region_panel_row_6_status_gold }
+}
+defined_text = {
+    name = GER_region_row_7_status
+    text = { trigger = { check_variable = { GER_region_sel_row_7_days > 13 } } localization_key = GER_region_panel_row_7_status_weeks }
+    text = { trigger = { check_variable = { GER_region_sel_row_7_days > 0 } } localization_key = GER_region_panel_row_7_status_days }
+    text = { trigger = { NOT = { GER_region_action_7_allowed = yes } } localization_key = GER_region_panel_row_7_status_grey }
+    text = { trigger = { NOT = { has_political_power > 19.99 } } localization_key = GER_region_panel_row_7_status_red }
+    text = { localization_key = GER_region_panel_row_7_status_gold }
+}
+defined_text = {
+    name = GER_region_row_8_status
+    text = { trigger = { NOT = { GER_region_action_8_allowed = yes } } localization_key = GER_region_panel_row_8_status_grey }
+    text = { trigger = { NOT = { has_political_power > 64.99 } } localization_key = GER_region_panel_row_8_status_red }
+    text = { localization_key = GER_region_panel_row_8_status_gold }
+}
+defined_text = {
+    name = GER_region_row_9_label
+    text = { trigger = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } localization_key = GER_region_panel_row_9_name }
+    text = { localization_key = GER_region_panel_row_9_name_locked }
+}
+defined_text = {
+    name = GER_region_row_9_status
+    text = { trigger = { check_variable = { GER_region_sel_policy = 9 } } localization_key = GER_region_panel_status_policy_on }
+    text = { trigger = { NOT = { AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } } localization_key = GER_region_panel_row_9_status_grey }
+    text = { trigger = { NOT = { GER_region_action_9_allowed = yes } } localization_key = GER_region_panel_row_9_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_9_status_red }
+    text = { localization_key = GER_region_panel_row_9_status_gold }
+}
+defined_text = {
+    name = GER_region_row_10_label
+    text = { trigger = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } localization_key = GER_region_panel_row_10_name }
+    text = { localization_key = GER_region_panel_row_10_name_locked }
+}
+defined_text = {
+    name = GER_region_row_10_status
+    text = { trigger = { check_variable = { GER_region_sel_policy = 10 } } localization_key = GER_region_panel_status_policy_on }
+    text = { trigger = { NOT = { AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } } localization_key = GER_region_panel_row_10_status_grey }
+    text = { trigger = { NOT = { GER_region_action_10_allowed = yes } } localization_key = GER_region_panel_row_10_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_10_status_red }
+    text = { localization_key = GER_region_panel_row_10_status_gold }
+}
+defined_text = {
+    name = GER_region_row_11_label
+    text = { trigger = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } localization_key = GER_region_panel_row_11_name }
+    text = { localization_key = GER_region_panel_row_11_name_locked }
+}
+defined_text = {
+    name = GER_region_row_11_status
+    text = { trigger = { check_variable = { GER_region_sel_policy = 11 } } localization_key = GER_region_panel_status_policy_on }
+    text = { trigger = { NOT = { AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } } localization_key = GER_region_panel_row_11_status_grey }
+    text = { trigger = { NOT = { GER_region_action_11_allowed = yes } } localization_key = GER_region_panel_row_11_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_11_status_red }
+    text = { localization_key = GER_region_panel_row_11_status_gold }
+}
+defined_text = {
+    name = GER_region_row_12_label
+    text = { trigger = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } localization_key = GER_region_panel_row_12_name }
+    text = { localization_key = GER_region_panel_row_12_name_locked }
+}
+defined_text = {
+    name = GER_region_row_12_status
+    text = { trigger = { check_variable = { GER_region_sel_policy = 12 } } localization_key = GER_region_panel_status_policy_on }
+    text = { trigger = { NOT = { AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } } localization_key = GER_region_panel_row_12_status_grey }
+    text = { trigger = { NOT = { GER_region_action_12_allowed = yes } } localization_key = GER_region_panel_row_12_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_12_status_red }
+    text = { localization_key = GER_region_panel_row_12_status_gold }
 }

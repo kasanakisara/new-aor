@@ -12,6 +12,7 @@ scripted_gui = {
                 }
                 else = {
                     set_country_flag = GER_region_game_open
+                    GER_region_game_sync_selected = yes
                 }
             }
         }
@@ -19,12 +20,16 @@ scripted_gui = {
 
     # 地区博弈主界面
     # 接口（全部存在本国变量里，没设过 = 开局状态）：
-    #   GER_region_Rxx_open  = 1      区块已开放（显示精灵 + 点击条）
-    #   GER_region_Rxx_state = 1..7   逻辑状态：1 斜线 2 中立 3 左 4 右 5 摇摆 6 特殊 7 备用
-    #   GER_region_Rxx_frame          实际显示帧，由 GER_region_game_sync_frames 从 state 算出（摇摆暂显示帧 2）
-    #   GER_region_OV_<id>_shown = 1  显示对应割让盖板
-    #   GER_region_selected = 1..16   最后点击的区块（右上名称框显示它的名字）
-    # 区块点击效果 / 选中（点击条帧 3）/ 悬浮文字：待定，之后再接
+    #   GER_region_Rxx_open    = 1      区块已开放（显示精灵 + 点击条）
+    #   GER_region_Rxx_state   = 1..12  地区类型 = 帧号：1 斜线 2 摇摆 3 左核 4 右核 5 魏玛核 6 特殊 7 备用
+    #                                   8 左控 9 右控 10 魏玛控 11 特殊控 12 备用控
+    #   GER_region_Rxx_frame            实际显示帧，GER_region_game_sync_frames 从 state 拷贝
+    #   GER_region_Rxx_support / _control = 0..100   支持度 / 控制度
+    #   GER_region_Rxx_leader  = 1..N   领导人序号（见 gen_region_game.py 的 LEADERS），0 = 无
+    #   GER_region_OV_<id>_shown = 1    显示对应割让盖板
+    #   GER_region_selected = 1..16     最后点击的区块；右侧面板显示它
+    #   GER_region_row_selected = 1..12 选中的行动方针条（盖上帧 3）
+    # 改了上面任何变量后跑一次 GER_region_game_sync_frames = yes，地图和右侧面板才会刷新。
     GER_region_game_gui = {
         context_type = player_context
         window_name = "GER_region_game_window"
@@ -50,6 +55,9 @@ scripted_gui = {
             GER_region_R14_Ruhr_fill = { frame = var:GER_region_R14_frame }
             GER_region_R15_Westphalia_fill = { frame = var:GER_region_R15_frame }
             GER_region_R16_GreatBerlin_fill = { frame = var:GER_region_R16_frame }
+            GER_region_panel_photo = { frame = var:GER_region_selected }
+            GER_region_panel_support_bar = { frame = var:GER_region_sel_support }
+            GER_region_panel_control_bar = { frame = var:GER_region_sel_control }
             # <<< GENERATED: properties
         }
         triggers = {
@@ -109,6 +117,49 @@ scripted_gui = {
             GER_region_OV_SAAR_bump_A_button_visible = { check_variable = { GER_region_OV_SAAR_bump_A_shown = 1 } }
             GER_region_OV_SAAR_bump_B_visible = { check_variable = { GER_region_OV_SAAR_bump_B_shown = 1 } }
             GER_region_OV_SAAR_bump_B_button_visible = { check_variable = { GER_region_OV_SAAR_bump_B_shown = 1 } }
+            # 右侧面板：照片、照片说明只在选中地区后显示
+            GER_region_panel_photo_visible = { check_variable = { GER_region_selected > 0 } }
+            GER_region_panel_photo_name_visible = { check_variable = { GER_region_selected > 0 } }
+            GER_region_panel_photo_caption_visible = { check_variable = { GER_region_selected > 0 } }
+            # 领导人头像：按选中地区的领导人序号（GER_region_sel_leader）切换；没头像的领导人只显示名字
+            GER_region_panel_leader_daeumig_visible = { check_variable = { GER_region_sel_leader = 1 } }
+            GER_region_panel_leader_dissmann_visible = { check_variable = { GER_region_sel_leader = 2 } }
+            GER_region_panel_leader_koenen_visible = { check_variable = { GER_region_sel_leader = 4 } }
+            GER_region_panel_leader_otto_braun_visible = { check_variable = { GER_region_sel_leader = 8 } }
+            GER_region_panel_leader_vignette_visible = { check_variable = { GER_region_sel_leader > 0 } }
+            # 数值框 <-> 核心区方块：帧 3/4/5 = 核心区，显示方块；其余显示支持度 / 控制度
+            GER_region_panel_values_visible = { NOT = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } } }
+            GER_region_panel_core_left_visible = { check_variable = { GER_region_sel_frame = 3 } }
+            GER_region_panel_core_right_visible = { check_variable = { GER_region_sel_frame = 4 } }
+            GER_region_panel_core_weimar_visible = { check_variable = { GER_region_sel_frame = 5 } }
+            GER_region_panel_core_title_visible = { OR = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } } }
+            # 行动方针条：选中地区里生效中的条盖上帧 3（每条各自计时，可以同时好几条）
+            GER_region_panel_row_1_selected_visible = { check_variable = { GER_region_sel_row_1_days > 0 } }
+            GER_region_panel_row_2_selected_visible = { check_variable = { GER_region_sel_row_2_days > 0 } }
+            GER_region_panel_row_3_selected_visible = { check_variable = { GER_region_sel_row_3_days > 0 } }
+            GER_region_panel_row_4_selected_visible = { check_variable = { GER_region_sel_row_4_days > 0 } }
+            GER_region_panel_row_5_selected_visible = { check_variable = { GER_region_sel_row_5_days > 0 } }
+            GER_region_panel_row_6_selected_visible = { check_variable = { GER_region_sel_row_6_days > 0 } }
+            GER_region_panel_row_7_selected_visible = { check_variable = { GER_region_sel_row_7_days > 0 } }
+            GER_region_panel_row_8_selected_visible = { check_variable = { GER_region_sel_row_8_days > 0 } }
+            GER_region_panel_row_9_selected_visible = { check_variable = { GER_region_sel_policy = 9 } }
+            GER_region_panel_row_10_selected_visible = { check_variable = { GER_region_sel_policy = 10 } }
+            GER_region_panel_row_11_selected_visible = { check_variable = { GER_region_sel_policy = 11 } }
+            GER_region_panel_row_12_selected_visible = { check_variable = { GER_region_sel_policy = 12 } }
+            # 决议能否点击：选中了地区、不在生效中、政治点数够；驻区方针还要支持度、控制度双满；
+            # 再加上 common/scripted_triggers/GER_region_game_actions.txt 里的 GER_region_action_N_allowed（冷却、解锁条件等）
+            GER_region_panel_row_1_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_1_days > 0 } } has_political_power > 14.99 GER_region_action_1_allowed = yes }
+            GER_region_panel_row_2_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_2_days > 0 } } has_political_power > 14.99 GER_region_action_2_allowed = yes }
+            GER_region_panel_row_3_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_3_days > 0 } } has_political_power > 24.99 GER_region_action_3_allowed = yes }
+            GER_region_panel_row_4_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_4_days > 0 } } has_political_power > 29.99 GER_region_action_4_allowed = yes }
+            GER_region_panel_row_5_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_5_days > 0 } } has_political_power > 19.99 GER_region_action_5_allowed = yes }
+            GER_region_panel_row_6_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_6_days > 0 } } has_political_power > 99.99 GER_region_action_6_allowed = yes }
+            GER_region_panel_row_7_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_7_days > 0 } } has_political_power > 19.99 GER_region_action_7_allowed = yes }
+            GER_region_panel_row_8_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_row_8_days > 0 } } has_political_power > 64.99 GER_region_action_8_allowed = yes }
+            GER_region_panel_row_9_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_policy = 9 } } has_political_power > 24.99 check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } GER_region_action_9_allowed = yes }
+            GER_region_panel_row_10_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_policy = 10 } } has_political_power > 24.99 check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } GER_region_action_10_allowed = yes }
+            GER_region_panel_row_11_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_policy = 11 } } has_political_power > 24.99 check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } GER_region_action_11_allowed = yes }
+            GER_region_panel_row_12_click_enabled = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_policy = 12 } } has_political_power > 24.99 check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } GER_region_action_12_allowed = yes }
             # <<< GENERATED: triggers
         }
         effects = {
@@ -116,23 +167,37 @@ scripted_gui = {
                 clr_country_flag = GER_region_game_open
             }
             # >>> GENERATED: effects (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
-            # 点击区块：记下选中的区块，右上名称框随之显示该区块名
-            GER_region_R01_WeserEms_button_click = { set_variable = { GER_region_selected = 1 } }
-            GER_region_R02_Hannover_button_click = { set_variable = { GER_region_selected = 2 } }
-            GER_region_R03_HamburgSH_button_click = { set_variable = { GER_region_selected = 3 } }
-            GER_region_R04_Mecklenburg_button_click = { set_variable = { GER_region_selected = 4 } }
-            GER_region_R05_Pomerania_button_click = { set_variable = { GER_region_selected = 5 } }
-            GER_region_R06_Brandenburg_button_click = { set_variable = { GER_region_selected = 6 } }
-            GER_region_R07_Silesia_button_click = { set_variable = { GER_region_selected = 7 } }
-            GER_region_R08_ThuringiaSaxony_button_click = { set_variable = { GER_region_selected = 8 } }
-            GER_region_R09_Bavaria_button_click = { set_variable = { GER_region_selected = 9 } }
-            GER_region_R10_BadenWuerttemberg_button_click = { set_variable = { GER_region_selected = 10 } }
-            GER_region_R11_Hesse_button_click = { set_variable = { GER_region_selected = 11 } }
-            GER_region_R12_Rhineland_button_click = { set_variable = { GER_region_selected = 12 } }
-            GER_region_R13_EastPrussia_button_click = { set_variable = { GER_region_selected = 13 } }
-            GER_region_R14_Ruhr_button_click = { set_variable = { GER_region_selected = 14 } }
-            GER_region_R15_Westphalia_button_click = { set_variable = { GER_region_selected = 15 } }
-            GER_region_R16_GreatBerlin_button_click = { set_variable = { GER_region_selected = 16 } }
+            # 点击区块：记下选中的区块，右侧面板随之显示该区块
+            GER_region_R01_WeserEms_button_click = { set_variable = { GER_region_selected = 1 } GER_region_game_sync_selected = yes }
+            GER_region_R02_Hannover_button_click = { set_variable = { GER_region_selected = 2 } GER_region_game_sync_selected = yes }
+            GER_region_R03_HamburgSH_button_click = { set_variable = { GER_region_selected = 3 } GER_region_game_sync_selected = yes }
+            GER_region_R04_Mecklenburg_button_click = { set_variable = { GER_region_selected = 4 } GER_region_game_sync_selected = yes }
+            GER_region_R05_Pomerania_button_click = { set_variable = { GER_region_selected = 5 } GER_region_game_sync_selected = yes }
+            GER_region_R06_Brandenburg_button_click = { set_variable = { GER_region_selected = 6 } GER_region_game_sync_selected = yes }
+            GER_region_R07_Silesia_button_click = { set_variable = { GER_region_selected = 7 } GER_region_game_sync_selected = yes }
+            GER_region_R08_ThuringiaSaxony_button_click = { set_variable = { GER_region_selected = 8 } GER_region_game_sync_selected = yes }
+            GER_region_R09_Bavaria_button_click = { set_variable = { GER_region_selected = 9 } GER_region_game_sync_selected = yes }
+            GER_region_R10_BadenWuerttemberg_button_click = { set_variable = { GER_region_selected = 10 } GER_region_game_sync_selected = yes }
+            GER_region_R11_Hesse_button_click = { set_variable = { GER_region_selected = 11 } GER_region_game_sync_selected = yes }
+            GER_region_R12_Rhineland_button_click = { set_variable = { GER_region_selected = 12 } GER_region_game_sync_selected = yes }
+            GER_region_R13_EastPrussia_button_click = { set_variable = { GER_region_selected = 13 } GER_region_game_sync_selected = yes }
+            GER_region_R14_Ruhr_button_click = { set_variable = { GER_region_selected = 14 } GER_region_game_sync_selected = yes }
+            GER_region_R15_Westphalia_button_click = { set_variable = { GER_region_selected = 15 } GER_region_game_sync_selected = yes }
+            GER_region_R16_GreatBerlin_button_click = { set_variable = { GER_region_selected = 16 } GER_region_game_sync_selected = yes }
+            # 行动方针条 = 决议：点击扣政治点数、开始计时、执行 GER_region_action_N（效果写在 common/scripted_effects/GER_region_game_actions.txt）。
+            # 能不能点见 triggers 里的 _click_enabled。
+            GER_region_panel_row_1_click = { GER_region_game_take_action_1 = yes }
+            GER_region_panel_row_2_click = { GER_region_game_take_action_2 = yes }
+            GER_region_panel_row_3_click = { GER_region_game_take_action_3 = yes }
+            GER_region_panel_row_4_click = { GER_region_game_take_action_4 = yes }
+            GER_region_panel_row_5_click = { GER_region_game_take_action_5 = yes }
+            GER_region_panel_row_6_click = { GER_region_game_take_action_6 = yes }
+            GER_region_panel_row_7_click = { GER_region_game_take_action_7 = yes }
+            GER_region_panel_row_8_click = { GER_region_game_take_action_8 = yes }
+            GER_region_panel_row_9_click = { GER_region_game_take_action_9 = yes }
+            GER_region_panel_row_10_click = { GER_region_game_take_action_10 = yes }
+            GER_region_panel_row_11_click = { GER_region_game_take_action_11 = yes }
+            GER_region_panel_row_12_click = { GER_region_game_take_action_12 = yes }
             # <<< GENERATED: effects
         }
     }

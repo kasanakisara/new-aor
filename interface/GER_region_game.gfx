@@ -1,6 +1,6 @@
 spriteTypes = {
-    # 右侧面板占位框：tiled_plain_bg_lined 的金线贴着贴图外缘，
-    # 小框用 8px 的 borderSize，避免默认 64px 边角在 30px 高的框里叠在一起。
+    # 名称框、数值框、决议总框：tiled_plain_bg_lined，金线在框边界往里 4px，
+    # 小框用 8px 的 borderSize，避免默认 64px 边角在矮框里叠在一起。
     corneredTileSpriteType = {
         name = "GFX_GER_region_game_frame"
         size = { x = 190 y = 190 }
@@ -9,6 +9,88 @@ spriteTypes = {
         tilingCenter = yes
         effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
     }
+
+    # ---- 右侧面板素材（gfx/interface/GER_region_game/panel/，1:1 显示，不要缩放）----
+    # 进度条：写法同 GER_socialization 的组织度条；frame = 0-100
+    progressbartype = {
+        name = "GFX_GER_region_panel_support_bar"
+        textureFile1 = "gfx/interface/GER_region_game/panel/support_bar_full.png"
+        textureFile2 = "gfx/interface/GER_region_game/panel/support_bar_empty.png"
+        size = { x = 158 y = 22 }
+        effectFile = "gfx/FX/progress.lua"
+        horizontal = yes
+    }
+    progressbartype = {
+        name = "GFX_GER_region_panel_control_bar"
+        textureFile1 = "gfx/interface/GER_region_game/panel/control_bar_full.png"
+        textureFile2 = "gfx/interface/GER_region_game/panel/control_bar_empty.png"
+        size = { x = 158 y = 22 }
+        effectFile = "gfx/FX/progress.lua"
+        horizontal = yes
+    }
+    # 决议条底板：帧1 普通、帧2 悬停、帧3 选中（暗黄）
+    spriteType = {
+        name = "GFX_GER_region_panel_decision_row"
+        texturefile = "gfx/interface/GER_region_game/panel/decision_row_3f.png"
+        noOfFrames = 3
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_left"
+        texturefile = "gfx/interface/GER_region_game/panel/core_left.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_right"
+        texturefile = "gfx/interface/GER_region_game/panel/core_right.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_core_weimar"
+        texturefile = "gfx/interface/GER_region_game/panel/core_weimar.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_region_photo_frame"
+        texturefile = "gfx/interface/GER_region_game/panel/region_photo_frame.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_leader_photo_frame"
+        texturefile = "gfx/interface/GER_region_game/panel/leader_photo_frame.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_region_photo_vignette"
+        texturefile = "gfx/interface/GER_region_game/panel/region_photo_vignette.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_leader_photo_vignette"
+        texturefile = "gfx/interface/GER_region_game/panel/leader_photo_vignette.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_panel_map_corner_shade"
+        texturefile = "gfx/interface/GER_region_game/panel/map_corner_shade.png"
+    }
+
+    # 地区照片条带（16 帧，脚本拼）、领导人头像（引用模组现成的 156x210 头像）
+    # >>> GENERATED: panel_sprites (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
+    spriteType = {
+        name = "GFX_GER_region_panel_photos"
+        texturefile = "gfx/interface/GER_region_game/panel/region_photos_16f.png"
+        noOfFrames = 16
+    }
+    spriteType = {
+        name = "GFX_GER_region_leader_daeumig"
+        texturefile = "gfx/leaders/GER/Ernst_Daeumig.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_leader_dissmann"
+        texturefile = "gfx/leaders/GER/Robert_Dissmann.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_leader_koenen"
+        texturefile = "gfx/leaders/GER/Wilhelm_Koenen.png"
+    }
+    spriteType = {
+        name = "GFX_GER_region_leader_otto_braun"
+        texturefile = "gfx/leaders/GER/Otto_Braun.png"
+    }
+    # <<< GENERATED: panel_sprites
 
     # 地图素材：像素对齐，GUI 里一律 scale = 1，不要缩放。
     # >>> GENERATED: sprites (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
@@ -52,7 +134,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R01_WeserEms_fill"
         texturefile = "gfx/interface/GER_region_game/R01_WeserEms_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R01_WeserEms_hit"
@@ -63,7 +145,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R02_Hannover_fill"
         texturefile = "gfx/interface/GER_region_game/R02_Hannover_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R02_Hannover_hit"
@@ -74,7 +156,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R03_HamburgSH_fill"
         texturefile = "gfx/interface/GER_region_game/R03_HamburgSH_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R03_HamburgSH_hit"
@@ -85,7 +167,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R04_Mecklenburg_fill"
         texturefile = "gfx/interface/GER_region_game/R04_Mecklenburg_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R04_Mecklenburg_hit"
@@ -96,7 +178,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R05_Pomerania_fill"
         texturefile = "gfx/interface/GER_region_game/R05_Pomerania_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R05_Pomerania_hit"
@@ -107,7 +189,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R06_Brandenburg_fill"
         texturefile = "gfx/interface/GER_region_game/R06_Brandenburg_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R06_Brandenburg_hit"
@@ -118,7 +200,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R07_Silesia_fill"
         texturefile = "gfx/interface/GER_region_game/R07_Silesia_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R07_Silesia_hit"
@@ -129,7 +211,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R08_ThuringiaSaxony_fill"
         texturefile = "gfx/interface/GER_region_game/R08_ThuringiaSaxony_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R08_ThuringiaSaxony_hit"
@@ -140,7 +222,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R09_Bavaria_fill"
         texturefile = "gfx/interface/GER_region_game/R09_Bavaria_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R09_Bavaria_hit"
@@ -151,7 +233,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R10_BadenWuerttemberg_fill"
         texturefile = "gfx/interface/GER_region_game/R10_BadenWuerttemberg_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R10_BadenWuerttemberg_hit"
@@ -162,7 +244,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R11_Hesse_fill"
         texturefile = "gfx/interface/GER_region_game/R11_Hesse_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R11_Hesse_hit"
@@ -173,7 +255,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R12_Rhineland_fill"
         texturefile = "gfx/interface/GER_region_game/R12_Rhineland_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R12_Rhineland_hit"
@@ -184,7 +266,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R13_EastPrussia_fill"
         texturefile = "gfx/interface/GER_region_game/R13_EastPrussia_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R13_EastPrussia_hit"
@@ -195,7 +277,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R14_Ruhr_fill"
         texturefile = "gfx/interface/GER_region_game/R14_Ruhr_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R14_Ruhr_hit"
@@ -206,7 +288,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R15_Westphalia_fill"
         texturefile = "gfx/interface/GER_region_game/R15_Westphalia_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R15_Westphalia_hit"
@@ -217,7 +299,7 @@ spriteTypes = {
     spriteType = {
         name = "GFX_GER_region_R16_GreatBerlin_fill"
         texturefile = "gfx/interface/GER_region_game/R16_GreatBerlin_fill.png"
-        noOfFrames = 7
+        noOfFrames = 12
     }
     spriteType = {
         name = "GFX_GER_region_R16_GreatBerlin_hit"

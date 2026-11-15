@@ -1,0 +1,63 @@
+# 地区博弈 · 行动方针（决议）能否点击的额外条件。手写文件：tools/GER_region_game/gen_region_game.py 只在文件不存在时生成一次。
+# 界面已经自带的条件：选中了地区、该地区这条不在生效中、政治点数够；驻区方针（9-12）还要支持度、控制度双满。
+# 这里返回假时按钮不可点（状态字变灰）。冷却、解锁国策、每个地区限点几次等写在这里，目标地区 = GER_region_selected。
+
+# 1 扩大宣传投入（日常决议，15pp，生效 7 天）
+GER_region_action_1_allowed = {
+    always = yes
+}
+
+# 2 扩张防卫组织（日常决议，15pp，生效 7 天）
+GER_region_action_2_allowed = {
+    always = yes
+}
+
+# 3 组织网络的扩展（日常决议，25pp，生效 168 天）
+GER_region_action_3_allowed = {
+    always = yes
+}
+
+# 4 推动公共事业（日常决议，30pp，生效 168 天）
+GER_region_action_4_allowed = {
+    always = yes
+}
+
+# 5 组织重心向工厂转移（日常决议，20pp，生效 14 天）
+GER_region_action_5_allowed = {
+    always = yes
+}
+
+# 6 发起罢工（日常决议，100pp，生效 14 天）
+GER_region_action_6_allowed = {
+    always = yes
+}
+
+# 7 工厂委员会的扩张（日常决议，20pp，生效 7 天）
+GER_region_action_7_allowed = {
+    always = yes
+}
+
+# 8 影子苏维埃（日常决议，65pp，立即生效）
+GER_region_action_8_allowed = {
+    always = yes
+}
+
+# 9 扩充安全部队（驻区方针，切换 25pp，一直生效到切换为止）
+GER_region_action_9_allowed = {
+    always = yes
+}
+
+# 10 总结政权经验（驻区方针，切换 25pp，一直生效到切换为止）
+GER_region_action_10_allowed = {
+    always = yes
+}
+
+# 11 培训根据地干部（驻区方针，切换 25pp，一直生效到切换为止）
+GER_region_action_11_allowed = {
+    always = yes
+}
+
+# 12 支援邻近地区（驻区方针，切换 25pp，一直生效到切换为止）
+GER_region_action_12_allowed = {
+    always = yes
+}

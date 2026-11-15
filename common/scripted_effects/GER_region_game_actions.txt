@@ -1,0 +1,132 @@
+# 地区博弈 · 行动方针（决议）的效果。手写文件：tools/GER_region_game/gen_region_game.py 只在文件不存在时生成一次，之后不会覆盖。
+#
+# 已由界面自动处理（不用在这里写）：扣政治点数、按天计时、生效中显示暗黄、驻区方针切换。
+# 花费和天数在 gen_region_game.py 的 DAILY_ROWS / GARRISON_COST 里改。
+#
+# 每条决议有这几个钩子，都在本国（GER）作用域执行：
+#   GER_region_action_N           点击时（政治点数已扣）
+#   GER_region_action_N_biweekly  生效期间每满 14 天一次（生效 >= 14 天的日常决议、驻区方针才有）
+#   GER_region_action_N_complete  计时结束那天（有生效天数的日常决议才有）
+# 被操作的地区 = 变量 GER_region_target：1=威悉-埃姆斯(R01)，2=汉诺威(R02)，3=汉堡-石荷(R03)，4=梅克伦堡(R04)，5=波美拉尼亚(R05)，6=勃兰登堡(R06)，7=西里西亚(R07)，8=图林根-萨克森(R08)，9=巴伐利亚(R09)，10=巴登-符腾堡(R10)，11=黑森(R11)，12=莱茵兰(R12)，13=东普鲁士(R13)，14=鲁尔(R14)，15=威斯特法伦(R15)，16=大柏林(R16)。
+# 地区变量：GER_region_Rxx_support / _control（0-100）、_state（类型=帧号）、_leader。
+# 改支持度 / 控制度可以用现成的小工具（自动夹在 0-100）：
+#   set_temp_variable = { GER_region_delta = 3 }  GER_region_target_add_support = yes
+#   set_temp_variable = { GER_region_delta = -2 } GER_region_target_add_control = yes
+# 注意：scripted_effect 不能是空的（实测空的引擎不认，点击会整段失效），每个钩子里至少留一句。
+
+# ======== 1 扩大宣传投入（日常决议，15pp，生效 7 天）
+# 策划案：15pp 支持度+3（耗时7天）
+GER_region_action_1 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_1_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 2 扩张防卫组织（日常决议，15pp，生效 7 天）
+# 策划案：15pp 控制度+3（耗时7天）
+GER_region_action_2 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_2_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 3 组织网络的扩展（日常决议，25pp，生效 168 天）
+# 策划案：25pp 每两周控制度增长+0.4（持续时间24周）
+GER_region_action_3 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_3_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_3_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 4 推动公共事业（日常决议，30pp，生效 168 天）
+# 策划案：30pp 每两周支持度+0.4（持续时间24周），spd随机一个派别政党支持度+0.5
+GER_region_action_4 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_4_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_4_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 5 组织重心向工厂转移（日常决议，20pp，生效 14 天）
+# 策划案：20pp 该地区永久每两周控制度增长+0.02（党改革国策解锁，每个地区可以点两次）（耗时14天）
+GER_region_action_5 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_5_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_5_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 6 发起罢工（日常决议，100pp，生效 14 天）
+# 策划案：100pp 控制度+5，支持度+5（耗时14天，持续时间内建造速度-80%）（效果好，长cd）
+GER_region_action_6 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_6_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_6_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 7 工厂委员会的扩张（日常决议，20pp，生效 7 天）
+# 策划案：20pp（耗时7天）控制度+5
+GER_region_action_7 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_7_complete = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 8 影子苏维埃（日常决议，65pp，立即生效）
+# 策划案：65pp（支持度50大于等于控制度大于等于80）点了之后该地区转换为控制区，控制度不再能够下降到百分之八十以下
+GER_region_action_8 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 9 扩充安全部队（驻区方针，切换 25pp，一直生效到切换为止）
+# 策划案：每两周+0.2武装力量
+GER_region_action_9 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_9_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 10 总结政权经验（驻区方针，切换 25pp，一直生效到切换为止）
+# 策划案：每两周+2%的无产阶级组织度
+GER_region_action_10 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_10_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 11 培训根据地干部（驻区方针，切换 25pp，一直生效到切换为止）
+# 策划案：每日+0.3pp
+GER_region_action_11 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_11_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+
+# ======== 12 支援邻近地区（驻区方针，切换 25pp，一直生效到切换为止）
+# 策划案：相邻地区每两周控制度+1
+GER_region_action_12 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}
+GER_region_action_12_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 占位（空的 scripted_effect 引擎不认），写了效果后可删
+}

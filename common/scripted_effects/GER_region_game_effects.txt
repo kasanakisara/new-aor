@@ -1,40 +1,1760 @@
 # 由 tools/GER_region_game/gen_region_game.py 生成，不要手改。
 
-# 把每个区块的逻辑状态 state 换算成显示帧 frame。
-# 摇摆（state 5）暂时显示成帧 2；以后启用黄色（帧 5）时，改脚本里的 SWING_DISPLAY_FRAME 再重跑。
+# 刷新地图和右侧面板：state（= 帧号 1-12）拷到 frame，再刷新选中地区和行动方针条。
+# 改了任何 GER_region_* 变量后都跑一次。
 GER_region_game_sync_frames = {
-    if = { limit = { check_variable = { GER_region_R01_state = 5 } } set_variable = { GER_region_R01_frame = 2 } }
-    else = { set_variable = { GER_region_R01_frame = GER_region_R01_state } }
-    if = { limit = { check_variable = { GER_region_R02_state = 5 } } set_variable = { GER_region_R02_frame = 2 } }
-    else = { set_variable = { GER_region_R02_frame = GER_region_R02_state } }
-    if = { limit = { check_variable = { GER_region_R03_state = 5 } } set_variable = { GER_region_R03_frame = 2 } }
-    else = { set_variable = { GER_region_R03_frame = GER_region_R03_state } }
-    if = { limit = { check_variable = { GER_region_R04_state = 5 } } set_variable = { GER_region_R04_frame = 2 } }
-    else = { set_variable = { GER_region_R04_frame = GER_region_R04_state } }
-    if = { limit = { check_variable = { GER_region_R05_state = 5 } } set_variable = { GER_region_R05_frame = 2 } }
-    else = { set_variable = { GER_region_R05_frame = GER_region_R05_state } }
-    if = { limit = { check_variable = { GER_region_R06_state = 5 } } set_variable = { GER_region_R06_frame = 2 } }
-    else = { set_variable = { GER_region_R06_frame = GER_region_R06_state } }
-    if = { limit = { check_variable = { GER_region_R07_state = 5 } } set_variable = { GER_region_R07_frame = 2 } }
-    else = { set_variable = { GER_region_R07_frame = GER_region_R07_state } }
-    if = { limit = { check_variable = { GER_region_R08_state = 5 } } set_variable = { GER_region_R08_frame = 2 } }
-    else = { set_variable = { GER_region_R08_frame = GER_region_R08_state } }
-    if = { limit = { check_variable = { GER_region_R09_state = 5 } } set_variable = { GER_region_R09_frame = 2 } }
-    else = { set_variable = { GER_region_R09_frame = GER_region_R09_state } }
-    if = { limit = { check_variable = { GER_region_R10_state = 5 } } set_variable = { GER_region_R10_frame = 2 } }
-    else = { set_variable = { GER_region_R10_frame = GER_region_R10_state } }
-    if = { limit = { check_variable = { GER_region_R11_state = 5 } } set_variable = { GER_region_R11_frame = 2 } }
-    else = { set_variable = { GER_region_R11_frame = GER_region_R11_state } }
-    if = { limit = { check_variable = { GER_region_R12_state = 5 } } set_variable = { GER_region_R12_frame = 2 } }
-    else = { set_variable = { GER_region_R12_frame = GER_region_R12_state } }
-    if = { limit = { check_variable = { GER_region_R13_state = 5 } } set_variable = { GER_region_R13_frame = 2 } }
-    else = { set_variable = { GER_region_R13_frame = GER_region_R13_state } }
-    if = { limit = { check_variable = { GER_region_R14_state = 5 } } set_variable = { GER_region_R14_frame = 2 } }
-    else = { set_variable = { GER_region_R14_frame = GER_region_R14_state } }
-    if = { limit = { check_variable = { GER_region_R15_state = 5 } } set_variable = { GER_region_R15_frame = 2 } }
-    else = { set_variable = { GER_region_R15_frame = GER_region_R15_state } }
-    if = { limit = { check_variable = { GER_region_R16_state = 5 } } set_variable = { GER_region_R16_frame = 2 } }
-    else = { set_variable = { GER_region_R16_frame = GER_region_R16_state } }
+    set_variable = { GER_region_R01_frame = GER_region_R01_state }
+    set_variable = { GER_region_R02_frame = GER_region_R02_state }
+    set_variable = { GER_region_R03_frame = GER_region_R03_state }
+    set_variable = { GER_region_R04_frame = GER_region_R04_state }
+    set_variable = { GER_region_R05_frame = GER_region_R05_state }
+    set_variable = { GER_region_R06_frame = GER_region_R06_state }
+    set_variable = { GER_region_R07_frame = GER_region_R07_state }
+    set_variable = { GER_region_R08_frame = GER_region_R08_state }
+    set_variable = { GER_region_R09_frame = GER_region_R09_state }
+    set_variable = { GER_region_R10_frame = GER_region_R10_state }
+    set_variable = { GER_region_R11_frame = GER_region_R11_state }
+    set_variable = { GER_region_R12_frame = GER_region_R12_state }
+    set_variable = { GER_region_R13_frame = GER_region_R13_state }
+    set_variable = { GER_region_R14_frame = GER_region_R14_state }
+    set_variable = { GER_region_R15_frame = GER_region_R15_state }
+    set_variable = { GER_region_R16_frame = GER_region_R16_state }
+    GER_region_game_sync_selected = yes
+}
+
+# 把选中区块（GER_region_selected）的帧号、支持度、控制度、领导人、决议计时、驻区方针拷到 GER_region_sel_*，右侧面板读这些
+GER_region_game_sync_selected = {
+    set_variable = { GER_region_sel_frame = 0 }
+    set_variable = { GER_region_sel_support = 0 }
+    set_variable = { GER_region_sel_control = 0 }
+    set_variable = { GER_region_sel_leader = 0 }
+    set_variable = { GER_region_sel_policy = 0 }
+    set_variable = { GER_region_sel_row_1_days = 0 }
+    set_variable = { GER_region_sel_row_2_days = 0 }
+    set_variable = { GER_region_sel_row_3_days = 0 }
+    set_variable = { GER_region_sel_row_4_days = 0 }
+    set_variable = { GER_region_sel_row_5_days = 0 }
+    set_variable = { GER_region_sel_row_6_days = 0 }
+    set_variable = { GER_region_sel_row_7_days = 0 }
+    if = {
+        limit = { check_variable = { GER_region_selected = 1 } }
+        set_variable = { GER_region_sel_frame = GER_region_R01_frame }
+        set_variable = { GER_region_sel_support = GER_region_R01_support }
+        set_variable = { GER_region_sel_control = GER_region_R01_control }
+        set_variable = { GER_region_sel_leader = GER_region_R01_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R01_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R01_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R01_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R01_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R01_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R01_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R01_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R01_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 2 } }
+        set_variable = { GER_region_sel_frame = GER_region_R02_frame }
+        set_variable = { GER_region_sel_support = GER_region_R02_support }
+        set_variable = { GER_region_sel_control = GER_region_R02_control }
+        set_variable = { GER_region_sel_leader = GER_region_R02_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R02_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R02_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R02_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R02_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R02_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R02_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R02_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R02_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 3 } }
+        set_variable = { GER_region_sel_frame = GER_region_R03_frame }
+        set_variable = { GER_region_sel_support = GER_region_R03_support }
+        set_variable = { GER_region_sel_control = GER_region_R03_control }
+        set_variable = { GER_region_sel_leader = GER_region_R03_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R03_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R03_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R03_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R03_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R03_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R03_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R03_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R03_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 4 } }
+        set_variable = { GER_region_sel_frame = GER_region_R04_frame }
+        set_variable = { GER_region_sel_support = GER_region_R04_support }
+        set_variable = { GER_region_sel_control = GER_region_R04_control }
+        set_variable = { GER_region_sel_leader = GER_region_R04_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R04_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R04_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R04_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R04_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R04_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R04_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R04_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R04_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 5 } }
+        set_variable = { GER_region_sel_frame = GER_region_R05_frame }
+        set_variable = { GER_region_sel_support = GER_region_R05_support }
+        set_variable = { GER_region_sel_control = GER_region_R05_control }
+        set_variable = { GER_region_sel_leader = GER_region_R05_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R05_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R05_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R05_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R05_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R05_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R05_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R05_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R05_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 6 } }
+        set_variable = { GER_region_sel_frame = GER_region_R06_frame }
+        set_variable = { GER_region_sel_support = GER_region_R06_support }
+        set_variable = { GER_region_sel_control = GER_region_R06_control }
+        set_variable = { GER_region_sel_leader = GER_region_R06_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R06_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R06_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R06_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R06_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R06_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R06_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R06_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R06_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 7 } }
+        set_variable = { GER_region_sel_frame = GER_region_R07_frame }
+        set_variable = { GER_region_sel_support = GER_region_R07_support }
+        set_variable = { GER_region_sel_control = GER_region_R07_control }
+        set_variable = { GER_region_sel_leader = GER_region_R07_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R07_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R07_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R07_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R07_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R07_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R07_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R07_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R07_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 8 } }
+        set_variable = { GER_region_sel_frame = GER_region_R08_frame }
+        set_variable = { GER_region_sel_support = GER_region_R08_support }
+        set_variable = { GER_region_sel_control = GER_region_R08_control }
+        set_variable = { GER_region_sel_leader = GER_region_R08_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R08_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R08_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R08_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R08_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R08_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R08_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R08_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R08_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 9 } }
+        set_variable = { GER_region_sel_frame = GER_region_R09_frame }
+        set_variable = { GER_region_sel_support = GER_region_R09_support }
+        set_variable = { GER_region_sel_control = GER_region_R09_control }
+        set_variable = { GER_region_sel_leader = GER_region_R09_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R09_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R09_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R09_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R09_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R09_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R09_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R09_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R09_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 10 } }
+        set_variable = { GER_region_sel_frame = GER_region_R10_frame }
+        set_variable = { GER_region_sel_support = GER_region_R10_support }
+        set_variable = { GER_region_sel_control = GER_region_R10_control }
+        set_variable = { GER_region_sel_leader = GER_region_R10_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R10_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R10_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R10_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R10_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R10_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R10_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R10_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R10_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 11 } }
+        set_variable = { GER_region_sel_frame = GER_region_R11_frame }
+        set_variable = { GER_region_sel_support = GER_region_R11_support }
+        set_variable = { GER_region_sel_control = GER_region_R11_control }
+        set_variable = { GER_region_sel_leader = GER_region_R11_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R11_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R11_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R11_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R11_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R11_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R11_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R11_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R11_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 12 } }
+        set_variable = { GER_region_sel_frame = GER_region_R12_frame }
+        set_variable = { GER_region_sel_support = GER_region_R12_support }
+        set_variable = { GER_region_sel_control = GER_region_R12_control }
+        set_variable = { GER_region_sel_leader = GER_region_R12_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R12_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R12_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R12_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R12_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R12_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R12_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R12_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R12_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 13 } }
+        set_variable = { GER_region_sel_frame = GER_region_R13_frame }
+        set_variable = { GER_region_sel_support = GER_region_R13_support }
+        set_variable = { GER_region_sel_control = GER_region_R13_control }
+        set_variable = { GER_region_sel_leader = GER_region_R13_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R13_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R13_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R13_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R13_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R13_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R13_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R13_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R13_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 14 } }
+        set_variable = { GER_region_sel_frame = GER_region_R14_frame }
+        set_variable = { GER_region_sel_support = GER_region_R14_support }
+        set_variable = { GER_region_sel_control = GER_region_R14_control }
+        set_variable = { GER_region_sel_leader = GER_region_R14_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R14_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R14_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R14_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R14_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R14_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R14_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R14_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R14_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 15 } }
+        set_variable = { GER_region_sel_frame = GER_region_R15_frame }
+        set_variable = { GER_region_sel_support = GER_region_R15_support }
+        set_variable = { GER_region_sel_control = GER_region_R15_control }
+        set_variable = { GER_region_sel_leader = GER_region_R15_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R15_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R15_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R15_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R15_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R15_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R15_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R15_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R15_act_7 }
+    }
+    else_if = {
+        limit = { check_variable = { GER_region_selected = 16 } }
+        set_variable = { GER_region_sel_frame = GER_region_R16_frame }
+        set_variable = { GER_region_sel_support = GER_region_R16_support }
+        set_variable = { GER_region_sel_control = GER_region_R16_control }
+        set_variable = { GER_region_sel_leader = GER_region_R16_leader }
+        set_variable = { GER_region_sel_policy = GER_region_R16_policy }
+        set_variable = { GER_region_sel_row_1_days = GER_region_R16_act_1 }
+        set_variable = { GER_region_sel_row_2_days = GER_region_R16_act_2 }
+        set_variable = { GER_region_sel_row_3_days = GER_region_R16_act_3 }
+        set_variable = { GER_region_sel_row_4_days = GER_region_R16_act_4 }
+        set_variable = { GER_region_sel_row_5_days = GER_region_R16_act_5 }
+        set_variable = { GER_region_sel_row_6_days = GER_region_R16_act_6 }
+        set_variable = { GER_region_sel_row_7_days = GER_region_R16_act_7 }
+    }
+    clamp_variable = { var = GER_region_sel_support min = 0 max = 100 }
+    clamp_variable = { var = GER_region_sel_control min = 0 max = 100 }
+    set_variable = { GER_region_sel_row_1_weeks = GER_region_sel_row_1_days }
+    divide_variable = { GER_region_sel_row_1_weeks = 7 }
+    set_variable = { GER_region_sel_row_2_weeks = GER_region_sel_row_2_days }
+    divide_variable = { GER_region_sel_row_2_weeks = 7 }
+    set_variable = { GER_region_sel_row_3_weeks = GER_region_sel_row_3_days }
+    divide_variable = { GER_region_sel_row_3_weeks = 7 }
+    set_variable = { GER_region_sel_row_4_weeks = GER_region_sel_row_4_days }
+    divide_variable = { GER_region_sel_row_4_weeks = 7 }
+    set_variable = { GER_region_sel_row_5_weeks = GER_region_sel_row_5_days }
+    divide_variable = { GER_region_sel_row_5_weeks = 7 }
+    set_variable = { GER_region_sel_row_6_weeks = GER_region_sel_row_6_days }
+    divide_variable = { GER_region_sel_row_6_weeks = 7 }
+    set_variable = { GER_region_sel_row_7_weeks = GER_region_sel_row_7_days }
+    divide_variable = { GER_region_sel_row_7_weeks = 7 }
+}
+
+# ---- 给手写决议效果用的小工具：先 set_temp_variable = { GER_region_delta = 3 }，再调用。
+# 作用于 GER_region_target 指向的地区（决议效果执行时已经设好），结果夹在 0-100。
+GER_region_target_add_support = {
+    if = { limit = { check_variable = { GER_region_target = 1 } } add_to_variable = { GER_region_R01_support = GER_region_delta } clamp_variable = { var = GER_region_R01_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 2 } } add_to_variable = { GER_region_R02_support = GER_region_delta } clamp_variable = { var = GER_region_R02_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 3 } } add_to_variable = { GER_region_R03_support = GER_region_delta } clamp_variable = { var = GER_region_R03_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 4 } } add_to_variable = { GER_region_R04_support = GER_region_delta } clamp_variable = { var = GER_region_R04_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 5 } } add_to_variable = { GER_region_R05_support = GER_region_delta } clamp_variable = { var = GER_region_R05_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 6 } } add_to_variable = { GER_region_R06_support = GER_region_delta } clamp_variable = { var = GER_region_R06_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 7 } } add_to_variable = { GER_region_R07_support = GER_region_delta } clamp_variable = { var = GER_region_R07_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 8 } } add_to_variable = { GER_region_R08_support = GER_region_delta } clamp_variable = { var = GER_region_R08_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 9 } } add_to_variable = { GER_region_R09_support = GER_region_delta } clamp_variable = { var = GER_region_R09_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 10 } } add_to_variable = { GER_region_R10_support = GER_region_delta } clamp_variable = { var = GER_region_R10_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 11 } } add_to_variable = { GER_region_R11_support = GER_region_delta } clamp_variable = { var = GER_region_R11_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 12 } } add_to_variable = { GER_region_R12_support = GER_region_delta } clamp_variable = { var = GER_region_R12_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 13 } } add_to_variable = { GER_region_R13_support = GER_region_delta } clamp_variable = { var = GER_region_R13_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 14 } } add_to_variable = { GER_region_R14_support = GER_region_delta } clamp_variable = { var = GER_region_R14_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 15 } } add_to_variable = { GER_region_R15_support = GER_region_delta } clamp_variable = { var = GER_region_R15_support min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 16 } } add_to_variable = { GER_region_R16_support = GER_region_delta } clamp_variable = { var = GER_region_R16_support min = 0 max = 100 } }
+}
+GER_region_target_add_control = {
+    if = { limit = { check_variable = { GER_region_target = 1 } } add_to_variable = { GER_region_R01_control = GER_region_delta } clamp_variable = { var = GER_region_R01_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 2 } } add_to_variable = { GER_region_R02_control = GER_region_delta } clamp_variable = { var = GER_region_R02_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 3 } } add_to_variable = { GER_region_R03_control = GER_region_delta } clamp_variable = { var = GER_region_R03_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 4 } } add_to_variable = { GER_region_R04_control = GER_region_delta } clamp_variable = { var = GER_region_R04_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 5 } } add_to_variable = { GER_region_R05_control = GER_region_delta } clamp_variable = { var = GER_region_R05_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 6 } } add_to_variable = { GER_region_R06_control = GER_region_delta } clamp_variable = { var = GER_region_R06_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 7 } } add_to_variable = { GER_region_R07_control = GER_region_delta } clamp_variable = { var = GER_region_R07_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 8 } } add_to_variable = { GER_region_R08_control = GER_region_delta } clamp_variable = { var = GER_region_R08_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 9 } } add_to_variable = { GER_region_R09_control = GER_region_delta } clamp_variable = { var = GER_region_R09_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 10 } } add_to_variable = { GER_region_R10_control = GER_region_delta } clamp_variable = { var = GER_region_R10_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 11 } } add_to_variable = { GER_region_R11_control = GER_region_delta } clamp_variable = { var = GER_region_R11_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 12 } } add_to_variable = { GER_region_R12_control = GER_region_delta } clamp_variable = { var = GER_region_R12_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 13 } } add_to_variable = { GER_region_R13_control = GER_region_delta } clamp_variable = { var = GER_region_R13_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 14 } } add_to_variable = { GER_region_R14_control = GER_region_delta } clamp_variable = { var = GER_region_R14_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 15 } } add_to_variable = { GER_region_R15_control = GER_region_delta } clamp_variable = { var = GER_region_R15_control min = 0 max = 100 } }
+    else_if = { limit = { check_variable = { GER_region_target = 16 } } add_to_variable = { GER_region_R16_control = GER_region_delta } clamp_variable = { var = GER_region_R16_control min = 0 max = 100 } }
+}
+
+# ---- 点击行动方针：扣政治点数 → 记下目标地区 → 开始计时 / 切换方针 → 执行手写效果 → 刷新
+GER_region_game_take_action_1 = {
+    add_political_power = -15
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_1 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_1 = 7 } }
+    GER_region_action_1 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_2 = {
+    add_political_power = -15
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_2 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_2 = 7 } }
+    GER_region_action_2 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_3 = {
+    add_political_power = -25
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_3 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_3 = 168 } }
+    GER_region_action_3 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_4 = {
+    add_political_power = -30
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_4 = 168 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_4 = 168 } }
+    GER_region_action_4 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_5 = {
+    add_political_power = -20
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_5 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_5 = 14 } }
+    GER_region_action_5 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_6 = {
+    add_political_power = -100
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_6 = 14 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_6 = 14 } }
+    GER_region_action_6 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_7 = {
+    add_political_power = -20
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_act_7 = 7 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_act_7 = 7 } }
+    GER_region_action_7 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_8 = {
+    add_political_power = -65
+    set_variable = { GER_region_target = GER_region_selected }
+    GER_region_action_8 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_9 = {
+    add_political_power = -25
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_policy = 9 } set_variable = { GER_region_R01_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_policy = 9 } set_variable = { GER_region_R02_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_policy = 9 } set_variable = { GER_region_R03_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_policy = 9 } set_variable = { GER_region_R04_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_policy = 9 } set_variable = { GER_region_R05_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_policy = 9 } set_variable = { GER_region_R06_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_policy = 9 } set_variable = { GER_region_R07_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_policy = 9 } set_variable = { GER_region_R08_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_policy = 9 } set_variable = { GER_region_R09_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_policy = 9 } set_variable = { GER_region_R10_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_policy = 9 } set_variable = { GER_region_R11_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_policy = 9 } set_variable = { GER_region_R12_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_policy = 9 } set_variable = { GER_region_R13_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_policy = 9 } set_variable = { GER_region_R14_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_policy = 9 } set_variable = { GER_region_R15_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_policy = 9 } set_variable = { GER_region_R16_policy_days = 0 } }
+    GER_region_action_9 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_10 = {
+    add_political_power = -25
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_policy = 10 } set_variable = { GER_region_R01_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_policy = 10 } set_variable = { GER_region_R02_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_policy = 10 } set_variable = { GER_region_R03_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_policy = 10 } set_variable = { GER_region_R04_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_policy = 10 } set_variable = { GER_region_R05_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_policy = 10 } set_variable = { GER_region_R06_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_policy = 10 } set_variable = { GER_region_R07_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_policy = 10 } set_variable = { GER_region_R08_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_policy = 10 } set_variable = { GER_region_R09_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_policy = 10 } set_variable = { GER_region_R10_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_policy = 10 } set_variable = { GER_region_R11_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_policy = 10 } set_variable = { GER_region_R12_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_policy = 10 } set_variable = { GER_region_R13_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_policy = 10 } set_variable = { GER_region_R14_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_policy = 10 } set_variable = { GER_region_R15_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_policy = 10 } set_variable = { GER_region_R16_policy_days = 0 } }
+    GER_region_action_10 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_11 = {
+    add_political_power = -25
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_policy = 11 } set_variable = { GER_region_R01_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_policy = 11 } set_variable = { GER_region_R02_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_policy = 11 } set_variable = { GER_region_R03_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_policy = 11 } set_variable = { GER_region_R04_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_policy = 11 } set_variable = { GER_region_R05_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_policy = 11 } set_variable = { GER_region_R06_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_policy = 11 } set_variable = { GER_region_R07_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_policy = 11 } set_variable = { GER_region_R08_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_policy = 11 } set_variable = { GER_region_R09_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_policy = 11 } set_variable = { GER_region_R10_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_policy = 11 } set_variable = { GER_region_R11_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_policy = 11 } set_variable = { GER_region_R12_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_policy = 11 } set_variable = { GER_region_R13_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_policy = 11 } set_variable = { GER_region_R14_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_policy = 11 } set_variable = { GER_region_R15_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_policy = 11 } set_variable = { GER_region_R16_policy_days = 0 } }
+    GER_region_action_11 = yes
+    GER_region_game_sync_frames = yes
+}
+GER_region_game_take_action_12 = {
+    add_political_power = -25
+    set_variable = { GER_region_target = GER_region_selected }
+    if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_policy = 12 } set_variable = { GER_region_R01_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_policy = 12 } set_variable = { GER_region_R02_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_policy = 12 } set_variable = { GER_region_R03_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 4 } } set_variable = { GER_region_R04_policy = 12 } set_variable = { GER_region_R04_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 5 } } set_variable = { GER_region_R05_policy = 12 } set_variable = { GER_region_R05_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 6 } } set_variable = { GER_region_R06_policy = 12 } set_variable = { GER_region_R06_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 7 } } set_variable = { GER_region_R07_policy = 12 } set_variable = { GER_region_R07_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 8 } } set_variable = { GER_region_R08_policy = 12 } set_variable = { GER_region_R08_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 9 } } set_variable = { GER_region_R09_policy = 12 } set_variable = { GER_region_R09_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 10 } } set_variable = { GER_region_R10_policy = 12 } set_variable = { GER_region_R10_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 11 } } set_variable = { GER_region_R11_policy = 12 } set_variable = { GER_region_R11_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 12 } } set_variable = { GER_region_R12_policy = 12 } set_variable = { GER_region_R12_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 13 } } set_variable = { GER_region_R13_policy = 12 } set_variable = { GER_region_R13_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 14 } } set_variable = { GER_region_R14_policy = 12 } set_variable = { GER_region_R14_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 15 } } set_variable = { GER_region_R15_policy = 12 } set_variable = { GER_region_R15_policy_days = 0 } }
+    else_if = { limit = { check_variable = { GER_region_selected = 16 } } set_variable = { GER_region_R16_policy = 12 } set_variable = { GER_region_R16_policy_days = 0 } }
+    GER_region_action_12 = yes
+    GER_region_game_sync_frames = yes
+}
+
+# ---- 每天（on_daily_GER）：日常决议倒计时，每满 14 天调用 _biweekly，到 0 调用 _complete；
+# 驻区方针累计天数，每满 14 天调用当前方针的 _biweekly。
+GER_region_game_daily_tick = {
+    # 威悉-埃姆斯
+    if = {
+        limit = { check_variable = { GER_region_R01_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_1 = 1 }
+        set_variable = { GER_region_target = 1 }
+        if = { limit = { check_variable = { GER_region_R01_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_2 = 1 }
+        set_variable = { GER_region_target = 1 }
+        if = { limit = { check_variable = { GER_region_R01_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_3 = 1 }
+        set_variable = { GER_region_target = 1 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R01_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R01_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_4 = 1 }
+        set_variable = { GER_region_target = 1 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R01_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R01_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_5 = 1 }
+        set_variable = { GER_region_target = 1 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R01_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R01_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_6 = 1 }
+        set_variable = { GER_region_target = 1 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R01_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R01_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R01_act_7 = 1 }
+        set_variable = { GER_region_target = 1 }
+        if = { limit = { check_variable = { GER_region_R01_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R01_policy > 0 } }
+        add_to_variable = { GER_region_R01_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R01_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 1 }
+            if = { limit = { check_variable = { GER_region_R01_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R01_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R01_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R01_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 汉诺威
+    if = {
+        limit = { check_variable = { GER_region_R02_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_1 = 1 }
+        set_variable = { GER_region_target = 2 }
+        if = { limit = { check_variable = { GER_region_R02_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_2 = 1 }
+        set_variable = { GER_region_target = 2 }
+        if = { limit = { check_variable = { GER_region_R02_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_3 = 1 }
+        set_variable = { GER_region_target = 2 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R02_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R02_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_4 = 1 }
+        set_variable = { GER_region_target = 2 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R02_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R02_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_5 = 1 }
+        set_variable = { GER_region_target = 2 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R02_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R02_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_6 = 1 }
+        set_variable = { GER_region_target = 2 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R02_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R02_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R02_act_7 = 1 }
+        set_variable = { GER_region_target = 2 }
+        if = { limit = { check_variable = { GER_region_R02_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R02_policy > 0 } }
+        add_to_variable = { GER_region_R02_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R02_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 2 }
+            if = { limit = { check_variable = { GER_region_R02_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R02_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R02_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R02_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 汉堡-石荷
+    if = {
+        limit = { check_variable = { GER_region_R03_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_1 = 1 }
+        set_variable = { GER_region_target = 3 }
+        if = { limit = { check_variable = { GER_region_R03_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_2 = 1 }
+        set_variable = { GER_region_target = 3 }
+        if = { limit = { check_variable = { GER_region_R03_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_3 = 1 }
+        set_variable = { GER_region_target = 3 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R03_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R03_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_4 = 1 }
+        set_variable = { GER_region_target = 3 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R03_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R03_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_5 = 1 }
+        set_variable = { GER_region_target = 3 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R03_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R03_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_6 = 1 }
+        set_variable = { GER_region_target = 3 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R03_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R03_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R03_act_7 = 1 }
+        set_variable = { GER_region_target = 3 }
+        if = { limit = { check_variable = { GER_region_R03_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R03_policy > 0 } }
+        add_to_variable = { GER_region_R03_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R03_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 3 }
+            if = { limit = { check_variable = { GER_region_R03_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R03_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R03_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R03_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 梅克伦堡
+    if = {
+        limit = { check_variable = { GER_region_R04_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_1 = 1 }
+        set_variable = { GER_region_target = 4 }
+        if = { limit = { check_variable = { GER_region_R04_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_2 = 1 }
+        set_variable = { GER_region_target = 4 }
+        if = { limit = { check_variable = { GER_region_R04_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_3 = 1 }
+        set_variable = { GER_region_target = 4 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R04_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R04_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_4 = 1 }
+        set_variable = { GER_region_target = 4 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R04_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R04_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_5 = 1 }
+        set_variable = { GER_region_target = 4 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R04_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R04_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_6 = 1 }
+        set_variable = { GER_region_target = 4 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R04_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R04_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R04_act_7 = 1 }
+        set_variable = { GER_region_target = 4 }
+        if = { limit = { check_variable = { GER_region_R04_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R04_policy > 0 } }
+        add_to_variable = { GER_region_R04_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R04_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 4 }
+            if = { limit = { check_variable = { GER_region_R04_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R04_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R04_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R04_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 波美拉尼亚
+    if = {
+        limit = { check_variable = { GER_region_R05_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_1 = 1 }
+        set_variable = { GER_region_target = 5 }
+        if = { limit = { check_variable = { GER_region_R05_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_2 = 1 }
+        set_variable = { GER_region_target = 5 }
+        if = { limit = { check_variable = { GER_region_R05_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_3 = 1 }
+        set_variable = { GER_region_target = 5 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R05_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R05_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_4 = 1 }
+        set_variable = { GER_region_target = 5 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R05_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R05_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_5 = 1 }
+        set_variable = { GER_region_target = 5 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R05_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R05_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_6 = 1 }
+        set_variable = { GER_region_target = 5 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R05_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R05_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R05_act_7 = 1 }
+        set_variable = { GER_region_target = 5 }
+        if = { limit = { check_variable = { GER_region_R05_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R05_policy > 0 } }
+        add_to_variable = { GER_region_R05_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R05_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 5 }
+            if = { limit = { check_variable = { GER_region_R05_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R05_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R05_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R05_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 勃兰登堡
+    if = {
+        limit = { check_variable = { GER_region_R06_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_1 = 1 }
+        set_variable = { GER_region_target = 6 }
+        if = { limit = { check_variable = { GER_region_R06_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_2 = 1 }
+        set_variable = { GER_region_target = 6 }
+        if = { limit = { check_variable = { GER_region_R06_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_3 = 1 }
+        set_variable = { GER_region_target = 6 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R06_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R06_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_4 = 1 }
+        set_variable = { GER_region_target = 6 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R06_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R06_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_5 = 1 }
+        set_variable = { GER_region_target = 6 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R06_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R06_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_6 = 1 }
+        set_variable = { GER_region_target = 6 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R06_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R06_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R06_act_7 = 1 }
+        set_variable = { GER_region_target = 6 }
+        if = { limit = { check_variable = { GER_region_R06_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R06_policy > 0 } }
+        add_to_variable = { GER_region_R06_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R06_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 6 }
+            if = { limit = { check_variable = { GER_region_R06_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R06_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R06_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R06_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 西里西亚
+    if = {
+        limit = { check_variable = { GER_region_R07_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_1 = 1 }
+        set_variable = { GER_region_target = 7 }
+        if = { limit = { check_variable = { GER_region_R07_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_2 = 1 }
+        set_variable = { GER_region_target = 7 }
+        if = { limit = { check_variable = { GER_region_R07_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_3 = 1 }
+        set_variable = { GER_region_target = 7 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R07_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R07_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_4 = 1 }
+        set_variable = { GER_region_target = 7 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R07_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R07_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_5 = 1 }
+        set_variable = { GER_region_target = 7 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R07_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R07_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_6 = 1 }
+        set_variable = { GER_region_target = 7 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R07_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R07_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R07_act_7 = 1 }
+        set_variable = { GER_region_target = 7 }
+        if = { limit = { check_variable = { GER_region_R07_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R07_policy > 0 } }
+        add_to_variable = { GER_region_R07_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R07_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 7 }
+            if = { limit = { check_variable = { GER_region_R07_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R07_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R07_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R07_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 图林根-萨克森
+    if = {
+        limit = { check_variable = { GER_region_R08_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_1 = 1 }
+        set_variable = { GER_region_target = 8 }
+        if = { limit = { check_variable = { GER_region_R08_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_2 = 1 }
+        set_variable = { GER_region_target = 8 }
+        if = { limit = { check_variable = { GER_region_R08_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_3 = 1 }
+        set_variable = { GER_region_target = 8 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R08_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R08_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_4 = 1 }
+        set_variable = { GER_region_target = 8 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R08_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R08_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_5 = 1 }
+        set_variable = { GER_region_target = 8 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R08_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R08_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_6 = 1 }
+        set_variable = { GER_region_target = 8 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R08_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R08_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R08_act_7 = 1 }
+        set_variable = { GER_region_target = 8 }
+        if = { limit = { check_variable = { GER_region_R08_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R08_policy > 0 } }
+        add_to_variable = { GER_region_R08_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R08_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 8 }
+            if = { limit = { check_variable = { GER_region_R08_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R08_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R08_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R08_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 巴伐利亚
+    if = {
+        limit = { check_variable = { GER_region_R09_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_1 = 1 }
+        set_variable = { GER_region_target = 9 }
+        if = { limit = { check_variable = { GER_region_R09_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_2 = 1 }
+        set_variable = { GER_region_target = 9 }
+        if = { limit = { check_variable = { GER_region_R09_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_3 = 1 }
+        set_variable = { GER_region_target = 9 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R09_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R09_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_4 = 1 }
+        set_variable = { GER_region_target = 9 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R09_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R09_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_5 = 1 }
+        set_variable = { GER_region_target = 9 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R09_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R09_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_6 = 1 }
+        set_variable = { GER_region_target = 9 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R09_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R09_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R09_act_7 = 1 }
+        set_variable = { GER_region_target = 9 }
+        if = { limit = { check_variable = { GER_region_R09_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R09_policy > 0 } }
+        add_to_variable = { GER_region_R09_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R09_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 9 }
+            if = { limit = { check_variable = { GER_region_R09_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R09_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R09_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R09_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 巴登-符腾堡
+    if = {
+        limit = { check_variable = { GER_region_R10_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_1 = 1 }
+        set_variable = { GER_region_target = 10 }
+        if = { limit = { check_variable = { GER_region_R10_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_2 = 1 }
+        set_variable = { GER_region_target = 10 }
+        if = { limit = { check_variable = { GER_region_R10_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_3 = 1 }
+        set_variable = { GER_region_target = 10 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R10_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R10_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_4 = 1 }
+        set_variable = { GER_region_target = 10 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R10_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R10_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_5 = 1 }
+        set_variable = { GER_region_target = 10 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R10_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R10_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_6 = 1 }
+        set_variable = { GER_region_target = 10 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R10_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R10_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R10_act_7 = 1 }
+        set_variable = { GER_region_target = 10 }
+        if = { limit = { check_variable = { GER_region_R10_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R10_policy > 0 } }
+        add_to_variable = { GER_region_R10_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R10_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 10 }
+            if = { limit = { check_variable = { GER_region_R10_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R10_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R10_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R10_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 黑森
+    if = {
+        limit = { check_variable = { GER_region_R11_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_1 = 1 }
+        set_variable = { GER_region_target = 11 }
+        if = { limit = { check_variable = { GER_region_R11_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_2 = 1 }
+        set_variable = { GER_region_target = 11 }
+        if = { limit = { check_variable = { GER_region_R11_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_3 = 1 }
+        set_variable = { GER_region_target = 11 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R11_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R11_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_4 = 1 }
+        set_variable = { GER_region_target = 11 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R11_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R11_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_5 = 1 }
+        set_variable = { GER_region_target = 11 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R11_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R11_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_6 = 1 }
+        set_variable = { GER_region_target = 11 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R11_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R11_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R11_act_7 = 1 }
+        set_variable = { GER_region_target = 11 }
+        if = { limit = { check_variable = { GER_region_R11_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R11_policy > 0 } }
+        add_to_variable = { GER_region_R11_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R11_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 11 }
+            if = { limit = { check_variable = { GER_region_R11_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R11_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R11_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R11_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 莱茵兰
+    if = {
+        limit = { check_variable = { GER_region_R12_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_1 = 1 }
+        set_variable = { GER_region_target = 12 }
+        if = { limit = { check_variable = { GER_region_R12_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_2 = 1 }
+        set_variable = { GER_region_target = 12 }
+        if = { limit = { check_variable = { GER_region_R12_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_3 = 1 }
+        set_variable = { GER_region_target = 12 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R12_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R12_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_4 = 1 }
+        set_variable = { GER_region_target = 12 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R12_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R12_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_5 = 1 }
+        set_variable = { GER_region_target = 12 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R12_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R12_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_6 = 1 }
+        set_variable = { GER_region_target = 12 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R12_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R12_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R12_act_7 = 1 }
+        set_variable = { GER_region_target = 12 }
+        if = { limit = { check_variable = { GER_region_R12_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R12_policy > 0 } }
+        add_to_variable = { GER_region_R12_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R12_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 12 }
+            if = { limit = { check_variable = { GER_region_R12_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R12_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R12_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R12_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 东普鲁士
+    if = {
+        limit = { check_variable = { GER_region_R13_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_1 = 1 }
+        set_variable = { GER_region_target = 13 }
+        if = { limit = { check_variable = { GER_region_R13_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_2 = 1 }
+        set_variable = { GER_region_target = 13 }
+        if = { limit = { check_variable = { GER_region_R13_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_3 = 1 }
+        set_variable = { GER_region_target = 13 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R13_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R13_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_4 = 1 }
+        set_variable = { GER_region_target = 13 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R13_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R13_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_5 = 1 }
+        set_variable = { GER_region_target = 13 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R13_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R13_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_6 = 1 }
+        set_variable = { GER_region_target = 13 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R13_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R13_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R13_act_7 = 1 }
+        set_variable = { GER_region_target = 13 }
+        if = { limit = { check_variable = { GER_region_R13_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R13_policy > 0 } }
+        add_to_variable = { GER_region_R13_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R13_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 13 }
+            if = { limit = { check_variable = { GER_region_R13_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R13_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R13_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R13_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 鲁尔
+    if = {
+        limit = { check_variable = { GER_region_R14_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_1 = 1 }
+        set_variable = { GER_region_target = 14 }
+        if = { limit = { check_variable = { GER_region_R14_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_2 = 1 }
+        set_variable = { GER_region_target = 14 }
+        if = { limit = { check_variable = { GER_region_R14_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_3 = 1 }
+        set_variable = { GER_region_target = 14 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R14_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R14_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_4 = 1 }
+        set_variable = { GER_region_target = 14 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R14_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R14_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_5 = 1 }
+        set_variable = { GER_region_target = 14 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R14_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R14_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_6 = 1 }
+        set_variable = { GER_region_target = 14 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R14_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R14_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R14_act_7 = 1 }
+        set_variable = { GER_region_target = 14 }
+        if = { limit = { check_variable = { GER_region_R14_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R14_policy > 0 } }
+        add_to_variable = { GER_region_R14_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R14_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 14 }
+            if = { limit = { check_variable = { GER_region_R14_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R14_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R14_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R14_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 威斯特法伦
+    if = {
+        limit = { check_variable = { GER_region_R15_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_1 = 1 }
+        set_variable = { GER_region_target = 15 }
+        if = { limit = { check_variable = { GER_region_R15_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_2 = 1 }
+        set_variable = { GER_region_target = 15 }
+        if = { limit = { check_variable = { GER_region_R15_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_3 = 1 }
+        set_variable = { GER_region_target = 15 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R15_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R15_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_4 = 1 }
+        set_variable = { GER_region_target = 15 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R15_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R15_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_5 = 1 }
+        set_variable = { GER_region_target = 15 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R15_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R15_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_6 = 1 }
+        set_variable = { GER_region_target = 15 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R15_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R15_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R15_act_7 = 1 }
+        set_variable = { GER_region_target = 15 }
+        if = { limit = { check_variable = { GER_region_R15_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R15_policy > 0 } }
+        add_to_variable = { GER_region_R15_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R15_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 15 }
+            if = { limit = { check_variable = { GER_region_R15_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R15_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R15_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R15_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    # 大柏林
+    if = {
+        limit = { check_variable = { GER_region_R16_act_1 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_1 = 1 }
+        set_variable = { GER_region_target = 16 }
+        if = { limit = { check_variable = { GER_region_R16_act_1 = 0 } } GER_region_action_1_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_2 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_2 = 1 }
+        set_variable = { GER_region_target = 16 }
+        if = { limit = { check_variable = { GER_region_R16_act_2 = 0 } } GER_region_action_2_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_3 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_3 = 1 }
+        set_variable = { GER_region_target = 16 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R16_act_3 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_3_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R16_act_3 = 0 } } GER_region_action_3_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_4 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_4 = 1 }
+        set_variable = { GER_region_target = 16 }
+        set_temp_variable = { GER_region_elapsed = 168 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R16_act_4 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_4_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R16_act_4 = 0 } } GER_region_action_4_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_5 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_5 = 1 }
+        set_variable = { GER_region_target = 16 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R16_act_5 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_5_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R16_act_5 = 0 } } GER_region_action_5_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_6 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_6 = 1 }
+        set_variable = { GER_region_target = 16 }
+        set_temp_variable = { GER_region_elapsed = 14 }
+        subtract_from_temp_variable = { GER_region_elapsed = GER_region_R16_act_6 }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = { limit = { check_variable = { GER_region_elapsed = 0 } } GER_region_action_6_biweekly = yes }
+        if = { limit = { check_variable = { GER_region_R16_act_6 = 0 } } GER_region_action_6_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_act_7 > 0 } }
+        subtract_from_variable = { GER_region_R16_act_7 = 1 }
+        set_variable = { GER_region_target = 16 }
+        if = { limit = { check_variable = { GER_region_R16_act_7 = 0 } } GER_region_action_7_complete = yes }
+    }
+    if = {
+        limit = { check_variable = { GER_region_R16_policy > 0 } }
+        add_to_variable = { GER_region_R16_policy_days = 1 }
+        set_temp_variable = { GER_region_elapsed = GER_region_R16_policy_days }
+        modulo_temp_variable = { GER_region_elapsed = 14 }
+        if = {
+            limit = { check_variable = { GER_region_elapsed = 0 } }
+            set_variable = { GER_region_target = 16 }
+            if = { limit = { check_variable = { GER_region_R16_policy = 9 } } GER_region_action_9_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R16_policy = 10 } } GER_region_action_10_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R16_policy = 11 } } GER_region_action_11_biweekly = yes }
+            if = { limit = { check_variable = { GER_region_R16_policy = 12 } } GER_region_action_12_biweekly = yes }
+        }
+    }
+    GER_region_game_sync_frames = yes
 }
 
 # 隐藏全部割让盖板
@@ -51,56 +1771,248 @@ GER_region_game_hide_all_overlays = {
     clear_variable = GER_region_OV_SAAR_bump_B_shown
 }
 
-# 回到开局画面：全部区块隐藏、全部盖板隐藏
+# 回到开局画面：全部区块隐藏、全部盖板隐藏、面板数据清空
 GER_region_game_reset_to_opening = {
     clear_variable = GER_region_R01_open
     clear_variable = GER_region_R01_state
     clear_variable = GER_region_R01_frame
+    clear_variable = GER_region_R01_support
+    clear_variable = GER_region_R01_control
+    clear_variable = GER_region_R01_leader
+    clear_variable = GER_region_R01_policy
+    clear_variable = GER_region_R01_policy_days
+    clear_variable = GER_region_R01_act_1
+    clear_variable = GER_region_R01_act_2
+    clear_variable = GER_region_R01_act_3
+    clear_variable = GER_region_R01_act_4
+    clear_variable = GER_region_R01_act_5
+    clear_variable = GER_region_R01_act_6
+    clear_variable = GER_region_R01_act_7
     clear_variable = GER_region_R02_open
     clear_variable = GER_region_R02_state
     clear_variable = GER_region_R02_frame
+    clear_variable = GER_region_R02_support
+    clear_variable = GER_region_R02_control
+    clear_variable = GER_region_R02_leader
+    clear_variable = GER_region_R02_policy
+    clear_variable = GER_region_R02_policy_days
+    clear_variable = GER_region_R02_act_1
+    clear_variable = GER_region_R02_act_2
+    clear_variable = GER_region_R02_act_3
+    clear_variable = GER_region_R02_act_4
+    clear_variable = GER_region_R02_act_5
+    clear_variable = GER_region_R02_act_6
+    clear_variable = GER_region_R02_act_7
     clear_variable = GER_region_R03_open
     clear_variable = GER_region_R03_state
     clear_variable = GER_region_R03_frame
+    clear_variable = GER_region_R03_support
+    clear_variable = GER_region_R03_control
+    clear_variable = GER_region_R03_leader
+    clear_variable = GER_region_R03_policy
+    clear_variable = GER_region_R03_policy_days
+    clear_variable = GER_region_R03_act_1
+    clear_variable = GER_region_R03_act_2
+    clear_variable = GER_region_R03_act_3
+    clear_variable = GER_region_R03_act_4
+    clear_variable = GER_region_R03_act_5
+    clear_variable = GER_region_R03_act_6
+    clear_variable = GER_region_R03_act_7
     clear_variable = GER_region_R04_open
     clear_variable = GER_region_R04_state
     clear_variable = GER_region_R04_frame
+    clear_variable = GER_region_R04_support
+    clear_variable = GER_region_R04_control
+    clear_variable = GER_region_R04_leader
+    clear_variable = GER_region_R04_policy
+    clear_variable = GER_region_R04_policy_days
+    clear_variable = GER_region_R04_act_1
+    clear_variable = GER_region_R04_act_2
+    clear_variable = GER_region_R04_act_3
+    clear_variable = GER_region_R04_act_4
+    clear_variable = GER_region_R04_act_5
+    clear_variable = GER_region_R04_act_6
+    clear_variable = GER_region_R04_act_7
     clear_variable = GER_region_R05_open
     clear_variable = GER_region_R05_state
     clear_variable = GER_region_R05_frame
+    clear_variable = GER_region_R05_support
+    clear_variable = GER_region_R05_control
+    clear_variable = GER_region_R05_leader
+    clear_variable = GER_region_R05_policy
+    clear_variable = GER_region_R05_policy_days
+    clear_variable = GER_region_R05_act_1
+    clear_variable = GER_region_R05_act_2
+    clear_variable = GER_region_R05_act_3
+    clear_variable = GER_region_R05_act_4
+    clear_variable = GER_region_R05_act_5
+    clear_variable = GER_region_R05_act_6
+    clear_variable = GER_region_R05_act_7
     clear_variable = GER_region_R06_open
     clear_variable = GER_region_R06_state
     clear_variable = GER_region_R06_frame
+    clear_variable = GER_region_R06_support
+    clear_variable = GER_region_R06_control
+    clear_variable = GER_region_R06_leader
+    clear_variable = GER_region_R06_policy
+    clear_variable = GER_region_R06_policy_days
+    clear_variable = GER_region_R06_act_1
+    clear_variable = GER_region_R06_act_2
+    clear_variable = GER_region_R06_act_3
+    clear_variable = GER_region_R06_act_4
+    clear_variable = GER_region_R06_act_5
+    clear_variable = GER_region_R06_act_6
+    clear_variable = GER_region_R06_act_7
     clear_variable = GER_region_R07_open
     clear_variable = GER_region_R07_state
     clear_variable = GER_region_R07_frame
+    clear_variable = GER_region_R07_support
+    clear_variable = GER_region_R07_control
+    clear_variable = GER_region_R07_leader
+    clear_variable = GER_region_R07_policy
+    clear_variable = GER_region_R07_policy_days
+    clear_variable = GER_region_R07_act_1
+    clear_variable = GER_region_R07_act_2
+    clear_variable = GER_region_R07_act_3
+    clear_variable = GER_region_R07_act_4
+    clear_variable = GER_region_R07_act_5
+    clear_variable = GER_region_R07_act_6
+    clear_variable = GER_region_R07_act_7
     clear_variable = GER_region_R08_open
     clear_variable = GER_region_R08_state
     clear_variable = GER_region_R08_frame
+    clear_variable = GER_region_R08_support
+    clear_variable = GER_region_R08_control
+    clear_variable = GER_region_R08_leader
+    clear_variable = GER_region_R08_policy
+    clear_variable = GER_region_R08_policy_days
+    clear_variable = GER_region_R08_act_1
+    clear_variable = GER_region_R08_act_2
+    clear_variable = GER_region_R08_act_3
+    clear_variable = GER_region_R08_act_4
+    clear_variable = GER_region_R08_act_5
+    clear_variable = GER_region_R08_act_6
+    clear_variable = GER_region_R08_act_7
     clear_variable = GER_region_R09_open
     clear_variable = GER_region_R09_state
     clear_variable = GER_region_R09_frame
+    clear_variable = GER_region_R09_support
+    clear_variable = GER_region_R09_control
+    clear_variable = GER_region_R09_leader
+    clear_variable = GER_region_R09_policy
+    clear_variable = GER_region_R09_policy_days
+    clear_variable = GER_region_R09_act_1
+    clear_variable = GER_region_R09_act_2
+    clear_variable = GER_region_R09_act_3
+    clear_variable = GER_region_R09_act_4
+    clear_variable = GER_region_R09_act_5
+    clear_variable = GER_region_R09_act_6
+    clear_variable = GER_region_R09_act_7
     clear_variable = GER_region_R10_open
     clear_variable = GER_region_R10_state
     clear_variable = GER_region_R10_frame
+    clear_variable = GER_region_R10_support
+    clear_variable = GER_region_R10_control
+    clear_variable = GER_region_R10_leader
+    clear_variable = GER_region_R10_policy
+    clear_variable = GER_region_R10_policy_days
+    clear_variable = GER_region_R10_act_1
+    clear_variable = GER_region_R10_act_2
+    clear_variable = GER_region_R10_act_3
+    clear_variable = GER_region_R10_act_4
+    clear_variable = GER_region_R10_act_5
+    clear_variable = GER_region_R10_act_6
+    clear_variable = GER_region_R10_act_7
     clear_variable = GER_region_R11_open
     clear_variable = GER_region_R11_state
     clear_variable = GER_region_R11_frame
+    clear_variable = GER_region_R11_support
+    clear_variable = GER_region_R11_control
+    clear_variable = GER_region_R11_leader
+    clear_variable = GER_region_R11_policy
+    clear_variable = GER_region_R11_policy_days
+    clear_variable = GER_region_R11_act_1
+    clear_variable = GER_region_R11_act_2
+    clear_variable = GER_region_R11_act_3
+    clear_variable = GER_region_R11_act_4
+    clear_variable = GER_region_R11_act_5
+    clear_variable = GER_region_R11_act_6
+    clear_variable = GER_region_R11_act_7
     clear_variable = GER_region_R12_open
     clear_variable = GER_region_R12_state
     clear_variable = GER_region_R12_frame
+    clear_variable = GER_region_R12_support
+    clear_variable = GER_region_R12_control
+    clear_variable = GER_region_R12_leader
+    clear_variable = GER_region_R12_policy
+    clear_variable = GER_region_R12_policy_days
+    clear_variable = GER_region_R12_act_1
+    clear_variable = GER_region_R12_act_2
+    clear_variable = GER_region_R12_act_3
+    clear_variable = GER_region_R12_act_4
+    clear_variable = GER_region_R12_act_5
+    clear_variable = GER_region_R12_act_6
+    clear_variable = GER_region_R12_act_7
     clear_variable = GER_region_R13_open
     clear_variable = GER_region_R13_state
     clear_variable = GER_region_R13_frame
+    clear_variable = GER_region_R13_support
+    clear_variable = GER_region_R13_control
+    clear_variable = GER_region_R13_leader
+    clear_variable = GER_region_R13_policy
+    clear_variable = GER_region_R13_policy_days
+    clear_variable = GER_region_R13_act_1
+    clear_variable = GER_region_R13_act_2
+    clear_variable = GER_region_R13_act_3
+    clear_variable = GER_region_R13_act_4
+    clear_variable = GER_region_R13_act_5
+    clear_variable = GER_region_R13_act_6
+    clear_variable = GER_region_R13_act_7
     clear_variable = GER_region_R14_open
     clear_variable = GER_region_R14_state
     clear_variable = GER_region_R14_frame
+    clear_variable = GER_region_R14_support
+    clear_variable = GER_region_R14_control
+    clear_variable = GER_region_R14_leader
+    clear_variable = GER_region_R14_policy
+    clear_variable = GER_region_R14_policy_days
+    clear_variable = GER_region_R14_act_1
+    clear_variable = GER_region_R14_act_2
+    clear_variable = GER_region_R14_act_3
+    clear_variable = GER_region_R14_act_4
+    clear_variable = GER_region_R14_act_5
+    clear_variable = GER_region_R14_act_6
+    clear_variable = GER_region_R14_act_7
     clear_variable = GER_region_R15_open
     clear_variable = GER_region_R15_state
     clear_variable = GER_region_R15_frame
+    clear_variable = GER_region_R15_support
+    clear_variable = GER_region_R15_control
+    clear_variable = GER_region_R15_leader
+    clear_variable = GER_region_R15_policy
+    clear_variable = GER_region_R15_policy_days
+    clear_variable = GER_region_R15_act_1
+    clear_variable = GER_region_R15_act_2
+    clear_variable = GER_region_R15_act_3
+    clear_variable = GER_region_R15_act_4
+    clear_variable = GER_region_R15_act_5
+    clear_variable = GER_region_R15_act_6
+    clear_variable = GER_region_R15_act_7
     clear_variable = GER_region_R16_open
     clear_variable = GER_region_R16_state
     clear_variable = GER_region_R16_frame
+    clear_variable = GER_region_R16_support
+    clear_variable = GER_region_R16_control
+    clear_variable = GER_region_R16_leader
+    clear_variable = GER_region_R16_policy
+    clear_variable = GER_region_R16_policy_days
+    clear_variable = GER_region_R16_act_1
+    clear_variable = GER_region_R16_act_2
+    clear_variable = GER_region_R16_act_3
+    clear_variable = GER_region_R16_act_4
+    clear_variable = GER_region_R16_act_5
+    clear_variable = GER_region_R16_act_6
+    clear_variable = GER_region_R16_act_7
     clear_variable = GER_region_selected
     GER_region_game_hide_all_overlays = yes
 }
