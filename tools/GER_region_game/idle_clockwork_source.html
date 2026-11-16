@@ -1,0 +1,92 @@
+<div id="aor-clockwork" class="viz-dotted-background">
+  <div class="aor-machine"><canvas width="640" height="1462" role="img" aria-label="暗黄铜机械待机动画：齿轮缓慢咬合转动，下方钟摆轻轻摆动，无文字"></canvas></div>
+  <div class="aor-preview-controls"><button type="button" aria-label="暂停动画">暂停</button></div>
+</div>
+<style>
+#aor-clockwork {padding:18px 0;}
+#aor-clockwork .aor-machine {width:min(320px,100%);aspect-ratio:320/731;margin:auto;background:#181c18;box-shadow:0 5px 20px #0003;}
+#aor-clockwork canvas {display:block;width:100%;height:100%;}
+#aor-clockwork .aor-preview-controls {display:flex;justify-content:center;margin-top:14px;}
+#aor-clockwork button {background:light-dark(#efefec,#292c29);color:light-dark(#333,#ddd);border:1px solid light-dark(#aaa,#62675e);border-radius:4px;padding:8px 19px;font:13px system-ui;}
+</style>
+<script>
+(() => {
+const root=document.getElementById('aor-clockwork');
+const canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
+const button=root.querySelector('button');
+const state={playing:!matchMedia('(prefers-reduced-motion: reduce)').matches,speed:1};
+let time=0,last=0;
+const TAU=Math.PI*2;
+function circle(x,y,r,fill,stroke,width=1) {
+ctx.beginPath();ctx.arc(x,y,r,0,TAU);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
+}
+function line(x1,y1,x2,y2,color,width=1) {ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
+function brass(x,y,r,dim=1) {
+const g=ctx.createLinearGradient(x-r,y-r,x+r,y+r);
+g.addColorStop(0,dim===1?'#a58a57':'#5c5136');g.addColorStop(.28,dim===1?'#74613c':'#423b29');g.addColorStop(.52,dim===1?'#b09a67':'#716043');g.addColorStop(.72,dim===1?'#615234':'#373327');g.addColorStop(1,dim===1?'#8b754b':'#5d5037');return g;
+}
+function screw(x,y,r=3) {circle(x+1,y+1,r+1,'#0c100c');circle(x,y,r,'#7e714e','#ac996b',.5);line(x-r*.65,y+r*.3,x+r*.65,y-r*.3,'#29291d',1);}
+function gear(x,y,n,angle,spokes,dim=1) {
+const pitch=n*1.5,outer=pitch+3.2,inner=pitch-3.7;
+ctx.save();ctx.translate(x,y);ctx.rotate(angle);
+ctx.shadowColor='#070907';ctx.shadowBlur=7;ctx.shadowOffsetY=3;
+ctx.beginPath();
+for(let i=0;i<n;i++)for(const [f,r] of [[-.5,inner],[-.32,inner],[-.23,outer],[.23,outer],[.32,inner],[.5,inner]]){
+const a=(i+f)*TAU/n,px=Math.cos(a)*r,py=Math.sin(a)*r;if(i===0&&f===-.5)ctx.moveTo(px,py);else ctx.lineTo(px,py);
+}
+ctx.closePath();ctx.moveTo(pitch-12,0);ctx.arc(0,0,pitch-12,0,TAU,true);
+ctx.fillStyle=brass(0,0,outer,dim);ctx.fill('evenodd');ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.strokeStyle=dim===1?'#b09b6a88':'#82734e55';ctx.lineWidth=.65;ctx.stroke();
+circle(0,0,pitch-7,null,dim===1?'#d2b67a55':'#9b865833',.6);
+circle(0,0,pitch-11,null,'#302c1f',1);
+for(let i=0;i<spokes;i++) {
+ctx.save();ctx.rotate(i*TAU/spokes);const r=pitch-12;
+ctx.beginPath();ctx.moveTo(9,-5);ctx.bezierCurveTo(r*.45,-5,r*.66,-9,r,-6);ctx.lineTo(r,6);ctx.bezierCurveTo(r*.66,2,r*.45,5,9,5);ctx.closePath();ctx.fillStyle=brass(0,0,pitch,dim);ctx.fill();ctx.strokeStyle='#c3aa7044';ctx.lineWidth=.65;ctx.stroke();ctx.restore();
+}
+circle(0,0,15,brass(0,0,15,dim),'#b9a16b66',.8);circle(0,0,9,'#353226','#b69b6366',1);circle(0,0,3,'#b4a178','#353123',1);
+ctx.restore();
+}
+function draw(t) {
+ctx.setTransform(2,0,0,2,0,0);
+ctx.fillStyle='#181c18';ctx.fillRect(0,0,320,731);
+const back=ctx.createRadialGradient(150,315,20,150,315,440);back.addColorStop(0,'#2e3026');back.addColorStop(.7,'#1b201b');back.addColorStop(1,'#141915');ctx.fillStyle=back;ctx.fillRect(4,4,312,723);
+// Fine machined back plate, without text or markings.
+ctx.strokeStyle='#8f7b4d';ctx.lineWidth=2;ctx.strokeRect(1,1,318,729);ctx.strokeStyle='#4c4933';ctx.lineWidth=.65;ctx.strokeRect(7,7,306,717);
+for(const x of [19,301]) {line(x,44,x,687,'#74644533');for(const y of [20,711])screw(x,y,2.4);}
+ctx.save();ctx.beginPath();ctx.rect(9,9,302,713);ctx.clip();
+// Quiet arch geometry behind the moving parts.
+ctx.beginPath();ctx.moveTo(47,474);ctx.lineTo(47,166);ctx.bezierCurveTo(47,50,273,50,273,166);ctx.lineTo(273,474);ctx.strokeStyle='#82704a44';ctx.lineWidth=1;ctx.stroke();
+ctx.beginPath();ctx.moveTo(55,474);ctx.lineTo(55,167);ctx.bezierCurveTo(55,62,265,62,265,167);ctx.lineTo(265,474);ctx.strokeStyle='#82704a22';ctx.stroke();
+// Shadow train.
+gear(249,113,28,-t*.17,5,0);gear(53,460,34,t*.12,5,0);
+// Pendulum behind the wheel train.
+const swing=Math.sin(t*TAU/3.8)*.105;
+ctx.save();ctx.translate(160,397);ctx.rotate(swing);
+line(1,0,1,235,'#090d0a',7);line(0,0,0,235,'#736344',4);line(-1,0,-1,232,'#c6b48177',.8);
+circle(2,235,35,'#0b100c');circle(0,233,35,brass(0,233,36),'#b09a68',.8);circle(0,233,30,null,'#3c3927',1.2);circle(0,233,27,null,'#c0a66c66',.6);circle(0,233,5,'#6a5e3d','#c3ad75',.8);
+ctx.restore();
+// Meshed pitch circles: 90 + 60; 60 + 114.
+gear(100,180,60,t*.075,6);
+gear(235,245,40,-t*.1125+.039,5);
+gear(113,369,76,t*.059210526+.025,6);
+// Static bearing bridges keep the assembly grounded.
+ctx.beginPath();ctx.moveTo(41,135);ctx.lineTo(53,126);ctx.lineTo(165,225);ctx.lineTo(155,236);ctx.closePath();ctx.fillStyle=brass(98,180,95,0);ctx.fill();ctx.strokeStyle='#ad95615c';ctx.lineWidth=.8;ctx.stroke();
+circle(100,180,19,brass(100,180,19),'#b4a06b',.7);circle(100,180,11,'#282a20','#a78e56',1);screw(100,180,4);screw(49,134);screw(159,227);
+ctx.beginPath();ctx.moveTo(87,410);ctx.lineTo(96,329);ctx.quadraticCurveTo(112,316,127,329);ctx.lineTo(138,410);ctx.closePath();ctx.fillStyle=brass(113,370,60,0);ctx.fill();ctx.strokeStyle='#a18d5c66';ctx.stroke();
+circle(113,369,17,brass(113,369,17),'#b7a16b',.7);circle(113,369,8,'#302e20','#9c8758',1);screw(113,369,3.5);screw(100,399);screw(127,399);
+circle(235,245,9,'#63593d','#aa9563',.8);screw(235,245,3);
+// Pendulum pivot and bottom arc.
+circle(160,397,6,'#7f6c46','#b9a16e',.8);screw(160,397,2);
+ctx.beginPath();ctx.arc(160,397,277,Math.PI*.39,Math.PI*.61);ctx.strokeStyle='#8d774b55';ctx.lineWidth=.8;ctx.stroke();
+for(let i=-4;i<=4;i++){const a=Math.PI/2+i*.025;line(160+Math.cos(a)*273,397+Math.sin(a)*273,160+Math.cos(a)*(i%2?277:280),397+Math.sin(a)*(i%2?277:280),'#8d774b66',.7);}
+// Low contrast engraving and edge vignette.
+ctx.globalAlpha=.035;for(let y=12;y<720;y+=3)line(10,y,310,y,'#c9bc91',.4);ctx.globalAlpha=1;
+const shade=ctx.createLinearGradient(0,0,320,0);shade.addColorStop(0,'#111710bb');shade.addColorStop(.17,'#11171000');shade.addColorStop(.8,'#11171000');shade.addColorStop(1,'#111710bb');ctx.fillStyle=shade;ctx.fillRect(9,9,302,713);
+ctx.restore();
+}
+function renderControls(){button.textContent=state.playing?'暂停':'播放';button.setAttribute('aria-label',state.playing?'暂停动画':'播放动画');}
+button.addEventListener('click',()=>{state.playing=!state.playing;renderControls();});
+function frame(now){if(last&&state.playing)time+=Math.min((now-last)/1000,.08)*state.speed;last=now;draw(time);requestAnimationFrame(frame);}
+draw(0);renderControls();requestAnimationFrame(frame);
+if(globalThis.Tweak){const tweak=new Tweak({container:root.querySelector('.aor-machine'),onChange:renderControls});tweak.addSlider(state,'speed',{label:'运转速度',min:.3,max:1.8,step:.1});tweak.addToggle(state,'playing',{label:'播放'});}
+})();
+</script>

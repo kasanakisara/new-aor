@@ -317,6 +317,17 @@ defined_text = {
     text = { trigger = { check_variable = { GER_region_sel_frame = 11 } } localization_key = GER_region_type_11 }
     text = { localization_key = GER_region_panel_empty }
 }
+# 核心区方块上的字 / 悬停提示：待机（没选中地区）时 = 手写的 GER_region_panel_idle_cover / GER_region_panel_idle_tt
+defined_text = {
+    name = GER_region_panel_core_title_text
+    text = { trigger = { NOT = { check_variable = { GER_region_selected > 0 } } } localization_key = GER_region_panel_idle_cover }
+    text = { localization_key = GER_region_panel_core_title_type }
+}
+defined_text = {
+    name = GER_region_panel_core_tt
+    text = { trigger = { NOT = { check_variable = { GER_region_selected > 0 } } } localization_key = GER_region_panel_idle_tt }
+    text = { localization_key = GER_region_panel_core_tooltip_sel }
+}
 # 核心区方块的说明
 defined_text = {
     name = GER_region_sel_core_desc
@@ -388,6 +399,7 @@ defined_text = {
     text = { trigger = { check_variable = { GER_region_sel_leader = 10 } } localization_key = GER_region_leader_weimar_coalition_name }
     text = { trigger = { check_variable = { GER_region_sel_leader = 11 } } localization_key = GER_region_leader_bitta_name }
     text = { trigger = { check_variable = { GER_region_sel_leader = 12 } } localization_key = GER_region_leader_bebel_name }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 13 } } localization_key = GER_region_leader_hoffmann_name }
     text = { localization_key = GER_region_panel_empty }
 }
 defined_text = {
@@ -404,6 +416,7 @@ defined_text = {
     text = { trigger = { check_variable = { GER_region_sel_leader = 10 } } localization_key = GER_region_leader_weimar_coalition_tt }
     text = { trigger = { check_variable = { GER_region_sel_leader = 11 } } localization_key = GER_region_leader_bitta_tt }
     text = { trigger = { check_variable = { GER_region_sel_leader = 12 } } localization_key = GER_region_leader_bebel_tt }
+    text = { trigger = { check_variable = { GER_region_sel_leader = 13 } } localization_key = GER_region_leader_hoffmann_tt }
     text = { localization_key = GER_region_panel_empty }
 }
 # 行动方针条：名字（驻区方针双满之前灰色）和右侧状态
@@ -543,6 +556,63 @@ defined_text = {
     text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_14_status_red }
     text = { localization_key = GER_region_panel_row_14_status_gold }
 }
+defined_text = {
+    name = GER_region_row_15_status
+    text = { trigger = { check_variable = { GER_region_sel_row_15_count > 0 } } localization_key = GER_region_panel_row_15_status_grey }
+    text = { trigger = { NOT = { GER_region_action_15_allowed = yes } } localization_key = GER_region_panel_row_15_status_grey }
+    text = { trigger = { NOT = { has_political_power > 99.99 } } localization_key = GER_region_panel_row_15_status_red }
+    text = { localization_key = GER_region_panel_row_15_status_gold }
+}
+defined_text = {
+    name = GER_region_row_16_status
+    text = { trigger = { check_variable = { GER_region_sel_row_16_count > 0 } } localization_key = GER_region_panel_row_16_status_grey }
+    text = { trigger = { NOT = { GER_region_action_16_allowed = yes } } localization_key = GER_region_panel_row_16_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_16_status_red }
+    text = { localization_key = GER_region_panel_row_16_status_gold }
+}
+defined_text = {
+    name = GER_region_row_17_status
+    text = { trigger = { check_variable = { GER_region_sel_row_17_count > 0 } } localization_key = GER_region_panel_row_17_status_grey }
+    text = { trigger = { NOT = { GER_region_action_17_allowed = yes } } localization_key = GER_region_panel_row_17_status_grey }
+    text = { trigger = { NOT = { has_political_power > 4.99 } } localization_key = GER_region_panel_row_17_status_red }
+    text = { localization_key = GER_region_panel_row_17_status_gold }
+}
+defined_text = {
+    name = GER_region_row_18_status
+    text = { trigger = { check_variable = { GER_region_sel_row_18_count > 0 } } localization_key = GER_region_panel_row_18_status_grey }
+    text = { trigger = { NOT = { GER_region_action_18_allowed = yes } } localization_key = GER_region_panel_row_18_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_18_status_red }
+    text = { localization_key = GER_region_panel_row_18_status_gold }
+}
+defined_text = {
+    name = GER_region_row_19_status
+    text = { trigger = { check_variable = { GER_region_sel_row_19_count > 0 } } localization_key = GER_region_panel_row_19_status_grey }
+    text = { trigger = { NOT = { GER_region_action_19_allowed = yes } } localization_key = GER_region_panel_row_19_status_grey }
+    text = { trigger = { NOT = { has_political_power > 4.99 } } localization_key = GER_region_panel_row_19_status_red }
+    text = { localization_key = GER_region_panel_row_19_status_gold }
+}
+defined_text = {
+    name = GER_region_row_20_status
+    text = { trigger = { check_variable = { GER_region_sel_row_20_days > 0 } } localization_key = GER_region_panel_row_20_status_days }
+    text = { trigger = { check_variable = { GER_region_sel_row_20_count > 0 } } localization_key = GER_region_panel_row_20_status_grey }
+    text = { trigger = { NOT = { GER_region_action_20_allowed = yes } } localization_key = GER_region_panel_row_20_status_grey }
+    text = { trigger = { NOT = { has_political_power > 49.99 } } localization_key = GER_region_panel_row_20_status_red }
+    text = { localization_key = GER_region_panel_row_20_status_gold }
+}
+defined_text = {
+    name = GER_region_row_21_status
+    text = { trigger = { check_variable = { GER_region_sel_row_21_count > 0 } } localization_key = GER_region_panel_row_21_status_grey }
+    text = { trigger = { NOT = { GER_region_action_21_allowed = yes } } localization_key = GER_region_panel_row_21_status_grey }
+    text = { trigger = { NOT = { has_political_power > 4.99 } } localization_key = GER_region_panel_row_21_status_red }
+    text = { localization_key = GER_region_panel_row_21_status_gold }
+}
+defined_text = {
+    name = GER_region_row_22_status
+    text = { trigger = { check_variable = { GER_region_sel_row_22_count > 0 } } localization_key = GER_region_panel_row_22_status_grey }
+    text = { trigger = { NOT = { GER_region_action_22_allowed = yes } } localization_key = GER_region_panel_row_22_status_grey }
+    text = { trigger = { NOT = { has_political_power > 24.99 } } localization_key = GER_region_panel_row_22_status_red }
+    text = { localization_key = GER_region_panel_row_22_status_gold }
+}
 # 决议列表条目（v = 决议编号）：名字、右侧状态、悬停提示（手写 GER_region_panel_row_N_tt）
 defined_text = {
     name = GER_region_entry_name
@@ -560,6 +630,14 @@ defined_text = {
     text = { trigger = { check_variable = { v = 12 } } localization_key = GER_region_panel_row_12_label }
     text = { trigger = { check_variable = { v = 13 } } localization_key = GER_region_panel_row_13_label }
     text = { trigger = { check_variable = { v = 14 } } localization_key = GER_region_panel_row_14_label }
+    text = { trigger = { check_variable = { v = 15 } } localization_key = GER_region_panel_row_15_label }
+    text = { trigger = { check_variable = { v = 16 } } localization_key = GER_region_panel_row_16_label }
+    text = { trigger = { check_variable = { v = 17 } } localization_key = GER_region_panel_row_17_label }
+    text = { trigger = { check_variable = { v = 18 } } localization_key = GER_region_panel_row_18_label }
+    text = { trigger = { check_variable = { v = 19 } } localization_key = GER_region_panel_row_19_label }
+    text = { trigger = { check_variable = { v = 20 } } localization_key = GER_region_panel_row_20_label }
+    text = { trigger = { check_variable = { v = 21 } } localization_key = GER_region_panel_row_21_label }
+    text = { trigger = { check_variable = { v = 22 } } localization_key = GER_region_panel_row_22_label }
     text = { localization_key = GER_region_panel_empty }
 }
 defined_text = {
@@ -578,6 +656,14 @@ defined_text = {
     text = { trigger = { check_variable = { v = 12 } } localization_key = GER_region_panel_row_12_status }
     text = { trigger = { check_variable = { v = 13 } } localization_key = GER_region_panel_row_13_status }
     text = { trigger = { check_variable = { v = 14 } } localization_key = GER_region_panel_row_14_status }
+    text = { trigger = { check_variable = { v = 15 } } localization_key = GER_region_panel_row_15_status }
+    text = { trigger = { check_variable = { v = 16 } } localization_key = GER_region_panel_row_16_status }
+    text = { trigger = { check_variable = { v = 17 } } localization_key = GER_region_panel_row_17_status }
+    text = { trigger = { check_variable = { v = 18 } } localization_key = GER_region_panel_row_18_status }
+    text = { trigger = { check_variable = { v = 19 } } localization_key = GER_region_panel_row_19_status }
+    text = { trigger = { check_variable = { v = 20 } } localization_key = GER_region_panel_row_20_status }
+    text = { trigger = { check_variable = { v = 21 } } localization_key = GER_region_panel_row_21_status }
+    text = { trigger = { check_variable = { v = 22 } } localization_key = GER_region_panel_row_22_status }
     text = { localization_key = GER_region_panel_empty }
 }
 defined_text = {
@@ -596,6 +682,14 @@ defined_text = {
     text = { trigger = { check_variable = { v = 12 } } localization_key = GER_region_panel_row_12_tt }
     text = { trigger = { check_variable = { v = 13 } } localization_key = GER_region_panel_row_13_tt }
     text = { trigger = { check_variable = { v = 14 } } localization_key = GER_region_panel_row_14_tt }
+    text = { trigger = { check_variable = { v = 15 } } localization_key = GER_region_panel_row_15_tt }
+    text = { trigger = { check_variable = { v = 16 } } localization_key = GER_region_panel_row_16_tt }
+    text = { trigger = { check_variable = { v = 17 } } localization_key = GER_region_panel_row_17_tt }
+    text = { trigger = { check_variable = { v = 18 } } localization_key = GER_region_panel_row_18_tt }
+    text = { trigger = { check_variable = { v = 19 } } localization_key = GER_region_panel_row_19_tt }
+    text = { trigger = { check_variable = { v = 20 } } localization_key = GER_region_panel_row_20_tt }
+    text = { trigger = { check_variable = { v = 21 } } localization_key = GER_region_panel_row_21_tt }
+    text = { trigger = { check_variable = { v = 22 } } localization_key = GER_region_panel_row_22_tt }
     text = { localization_key = GER_region_panel_empty }
 }
 # 决议悬停提示里的条件勾叉（仿原版：£trigger_yes / £trigger_no）。手写提示里用 [名字] 引用
@@ -615,8 +709,88 @@ defined_text = {
     text = { localization_key = GER_region_check_no }
 }
 defined_text = {
+    name = GER_region_check_count_15
+    text = { trigger = { check_variable = { GER_region_sel_row_15_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_16
+    text = { trigger = { check_variable = { GER_region_sel_row_16_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_17
+    text = { trigger = { check_variable = { GER_region_sel_row_17_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_18
+    text = { trigger = { check_variable = { GER_region_sel_row_18_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_19
+    text = { trigger = { check_variable = { GER_region_sel_row_19_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_20
+    text = { trigger = { check_variable = { GER_region_sel_row_20_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_21
+    text = { trigger = { check_variable = { GER_region_sel_row_21_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_count_22
+    text = { trigger = { check_variable = { GER_region_sel_row_22_count < 1 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
     name = GER_region_check_count_5
     text = { trigger = { check_variable = { GER_region_sel_row_5_count < 2 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_15
+    text = { trigger = { check_variable = { GER_region_R09_count_15 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_16
+    text = { trigger = { check_variable = { GER_region_R09_count_16 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_17
+    text = { trigger = { check_variable = { GER_region_R09_count_17 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_18
+    text = { trigger = { check_variable = { GER_region_R09_count_18 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_19
+    text = { trigger = { check_variable = { GER_region_R09_count_19 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_20
+    text = { trigger = { check_variable = { GER_region_R09_count_20 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_21
+    text = { trigger = { check_variable = { GER_region_R09_count_21 > 0 } } localization_key = GER_region_check_yes }
+    text = { localization_key = GER_region_check_no }
+}
+defined_text = {
+    name = GER_region_check_did_22
+    text = { trigger = { check_variable = { GER_region_R09_count_22 > 0 } } localization_key = GER_region_check_yes }
     text = { localization_key = GER_region_check_no }
 }
 defined_text = {

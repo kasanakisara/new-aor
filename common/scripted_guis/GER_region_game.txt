@@ -139,12 +139,15 @@ scripted_gui = {
             GER_region_panel_leader_bebel_visible = { check_variable = { GER_region_sel_leader = 12 } }
             GER_region_panel_leader_vignette_visible = { check_variable = { GER_region_sel_leader > 0 } }
             # 数值框 <-> 核心区方块：帧 3/4/5/6 = 核心区，显示方块；其余显示支持度 / 控制度
-            GER_region_panel_values_visible = { NOT = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } check_variable = { GER_region_sel_frame = 6 } } }
+            # 待机（没选中地区）：数值框不显示，用 green 方块罩住，上面写 GER_region_panel_idle_cover
+            GER_region_panel_values_visible = { check_variable = { GER_region_selected > 0 } NOT = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } check_variable = { GER_region_sel_frame = 6 } } }
             GER_region_panel_core_left_visible = { check_variable = { GER_region_sel_frame = 3 } }
             GER_region_panel_core_right_visible = { check_variable = { GER_region_sel_frame = 4 } }
             GER_region_panel_core_weimar_visible = { check_variable = { GER_region_sel_frame = 5 } }
-            GER_region_panel_core_green_visible = { check_variable = { GER_region_sel_frame = 6 } }
-            GER_region_panel_core_title_visible = { OR = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } check_variable = { GER_region_sel_frame = 6 } } }
+            GER_region_panel_core_green_visible = { OR = { check_variable = { GER_region_sel_frame = 6 } NOT = { check_variable = { GER_region_selected > 0 } } } }
+            GER_region_panel_core_title_visible = { OR = { check_variable = { GER_region_sel_frame = 3 } check_variable = { GER_region_sel_frame = 4 } check_variable = { GER_region_sel_frame = 5 } check_variable = { GER_region_sel_frame = 6 } NOT = { check_variable = { GER_region_selected > 0 } } } }
+            # 「行动方针」标题：地图全开之后，或阶段博弈进行中才显示（列表内容同理，见 GER_region_game_sync_selected）
+            GER_region_panel_actions_title_visible = { OR = { has_country_flag = GER_region_map_opened has_country_flag = GER_region_bavaria_phase } }
             # 决议列表（dynamic_lists）：每条的 v = 决议编号；v = 0 是「驻区方针」小标题
             GER_region_panel_entry_header_visible = { check_variable = { v = 0 } }
             GER_region_panel_entry_button_visible = { check_variable = { v > 0 } }
@@ -167,6 +170,14 @@ scripted_gui = {
                     AND = { check_variable = { v = 12 } check_variable = { GER_region_sel_policy = 12 } }
                     AND = { check_variable = { v = 13 } check_variable = { GER_region_sel_policy = 13 } }
                     AND = { check_variable = { v = 14 } check_variable = { GER_region_sel_policy = 14 } }
+                    AND = { check_variable = { v = 15 } check_variable = { GER_region_sel_row_15_days > 0 } }
+                    AND = { check_variable = { v = 16 } check_variable = { GER_region_sel_row_16_days > 0 } }
+                    AND = { check_variable = { v = 17 } check_variable = { GER_region_sel_row_17_days > 0 } }
+                    AND = { check_variable = { v = 18 } check_variable = { GER_region_sel_row_18_days > 0 } }
+                    AND = { check_variable = { v = 19 } check_variable = { GER_region_sel_row_19_days > 0 } }
+                    AND = { check_variable = { v = 20 } check_variable = { GER_region_sel_row_20_days > 0 } }
+                    AND = { check_variable = { v = 21 } check_variable = { GER_region_sel_row_21_days > 0 } }
+                    AND = { check_variable = { v = 22 } check_variable = { GER_region_sel_row_22_days > 0 } }
                 }
             }
             # 能否点击：选中了地区、不在生效中、政治点数够、该地区次数没满；驻区方针还要左派核心区或双满；
@@ -188,9 +199,40 @@ scripted_gui = {
                     AND = { check_variable = { v = 12 } NOT = { check_variable = { GER_region_sel_policy = 12 } } has_political_power > 24.99 OR = { check_variable = { GER_region_sel_frame = 3 } AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } GER_region_action_12_allowed = yes }
                     AND = { check_variable = { v = 13 } NOT = { check_variable = { GER_region_sel_policy = 13 } } has_political_power > 24.99 OR = { check_variable = { GER_region_sel_frame = 3 } AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } GER_region_action_13_allowed = yes }
                     AND = { check_variable = { v = 14 } NOT = { check_variable = { GER_region_sel_policy = 14 } } has_political_power > 24.99 OR = { check_variable = { GER_region_sel_frame = 3 } AND = { check_variable = { GER_region_sel_support > 99.99 } check_variable = { GER_region_sel_control > 99.99 } } } GER_region_action_14_allowed = yes }
+                    AND = { check_variable = { v = 15 } NOT = { check_variable = { GER_region_sel_row_15_days > 0 } } has_political_power > 99.99 check_variable = { GER_region_sel_row_15_count < 1 } GER_region_action_15_allowed = yes }
+                    AND = { check_variable = { v = 16 } NOT = { check_variable = { GER_region_sel_row_16_days > 0 } } has_political_power > 24.99 check_variable = { GER_region_sel_row_16_count < 1 } GER_region_action_16_allowed = yes }
+                    AND = { check_variable = { v = 17 } NOT = { check_variable = { GER_region_sel_row_17_days > 0 } } has_political_power > 4.99 check_variable = { GER_region_sel_row_17_count < 1 } GER_region_action_17_allowed = yes }
+                    AND = { check_variable = { v = 18 } NOT = { check_variable = { GER_region_sel_row_18_days > 0 } } has_political_power > 24.99 check_variable = { GER_region_sel_row_18_count < 1 } GER_region_action_18_allowed = yes }
+                    AND = { check_variable = { v = 19 } NOT = { check_variable = { GER_region_sel_row_19_days > 0 } } has_political_power > 4.99 check_variable = { GER_region_sel_row_19_count < 1 } GER_region_action_19_allowed = yes }
+                    AND = { check_variable = { v = 20 } NOT = { check_variable = { GER_region_sel_row_20_days > 0 } } has_political_power > 49.99 check_variable = { GER_region_sel_row_20_count < 1 } GER_region_action_20_allowed = yes }
+                    AND = { check_variable = { v = 21 } NOT = { check_variable = { GER_region_sel_row_21_days > 0 } } has_political_power > 4.99 check_variable = { GER_region_sel_row_21_count < 1 } GER_region_action_21_allowed = yes }
+                    AND = { check_variable = { v = 22 } NOT = { check_variable = { GER_region_sel_row_22_days > 0 } } has_political_power > 24.99 check_variable = { GER_region_sel_row_22_count < 1 } GER_region_action_22_allowed = yes }
                 }
             }
             # <<< GENERATED: triggers
+            # BEGIN AOR_IDLE_CLOCKWORK
+            # 待机时钟（盖在决议框上）：地图全开之前显示；巴伐利亚危机进行中（右侧是巴伐利亚决议）隐藏，危机结束后重新显示。
+            # 容器和里面的图标各写一条，条件相同。
+            GER_region_idle_clockwork_visible = {
+                NOT = {
+                    OR = {
+                        check_variable = { GER_region_panel_list^num > 0 }
+                        has_country_flag = GER_region_map_opened
+                        has_country_flag = GER_region_bavaria_phase
+                    }
+                }
+            }
+            GER_region_idle_full_scene_visible = {
+                NOT = {
+                    OR = {
+                        check_variable = { GER_region_panel_list^num > 0 }
+                        has_country_flag = GER_region_map_opened
+                        has_country_flag = GER_region_bavaria_phase
+                    }
+                }
+            }
+            # END AOR_IDLE_CLOCKWORK
+
         }
         effects = {
             close_button_click = {
@@ -245,6 +287,14 @@ scripted_gui = {
                 if = { limit = { check_variable = { v = 12 } } GER_region_game_take_action_12 = yes }
                 if = { limit = { check_variable = { v = 13 } } GER_region_game_take_action_13 = yes }
                 if = { limit = { check_variable = { v = 14 } } GER_region_game_take_action_14 = yes }
+                if = { limit = { check_variable = { v = 15 } } GER_region_game_take_action_15 = yes }
+                if = { limit = { check_variable = { v = 16 } } GER_region_game_take_action_16 = yes }
+                if = { limit = { check_variable = { v = 17 } } GER_region_game_take_action_17 = yes }
+                if = { limit = { check_variable = { v = 18 } } GER_region_game_take_action_18 = yes }
+                if = { limit = { check_variable = { v = 19 } } GER_region_game_take_action_19 = yes }
+                if = { limit = { check_variable = { v = 20 } } GER_region_game_take_action_20 = yes }
+                if = { limit = { check_variable = { v = 21 } } GER_region_game_take_action_21 = yes }
+                if = { limit = { check_variable = { v = 22 } } GER_region_game_take_action_22 = yes }
             }
             # <<< GENERATED: effects
         }

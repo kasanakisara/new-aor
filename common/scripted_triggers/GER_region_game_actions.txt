@@ -56,3 +56,39 @@ GER_region_action_11_visible = { always = yes }
 GER_region_action_12_visible = { always = yes }
 GER_region_action_13_visible = { always = yes }
 GER_region_action_14_visible = { always = yes }
+
+# ================================================================ 巴伐利亚危机（阶段博弈）
+# 进度 GER_region_bavaria_stage：0 刚开始 / 1 艾舍里希组织成立后 / 2 协约国第一次抗议后 / 3 6 月 2 日「又一起凶杀案」后 / 4 协约国第二次抗议后
+# 「只在阶段进行中出现」「只在巴伐利亚出现」「每条只能执行一次」由界面处理（ACTIONS 的 phase / region / max）。
+# 执行过没有（阶段结束后仍然可查，下一次阶段开始时清零）
+GER_region_bavaria_did_mediate = { check_variable = { GER_region_R09_count_15 > 0 } }           # 15 调停SPD内部冲突
+GER_region_bavaria_did_pressure = { check_variable = { GER_region_R09_count_16 > 0 } }          # 16 对巴伐利亚施压
+GER_region_bavaria_did_report = { check_variable = { GER_region_R09_count_17 > 0 } }            # 17 向协约国提交巴伐利亚报告
+GER_region_bavaria_did_conservative = { check_variable = { GER_region_R09_count_18 > 0 } }      # 18 采取保守态势
+GER_region_bavaria_did_denounce_terror = { check_variable = { GER_region_R09_count_19 > 0 } }   # 19 宣布抵制恐怖袭击
+GER_region_bavaria_did_withdraw = { check_variable = { GER_region_R09_count_20 > 0 } }          # 20 撤出SPD优秀分子
+GER_region_bavaria_did_ultimatum = { check_variable = { GER_region_R09_count_21 > 0 } }         # 21 向巴伐利亚发动最后通牒
+GER_region_bavaria_did_entente = { check_variable = { GER_region_R09_count_22 > 0 } }           # 22 依靠协约国施压
+
+# ---- 能否点击
+GER_region_action_15_allowed = { always = yes }
+GER_region_action_16_allowed = { always = yes }
+GER_region_action_17_allowed = {                 # 提交巴伐利亚报告：需已执行 调停SPD内部冲突 和 对巴伐利亚施压
+    GER_region_bavaria_did_mediate = yes
+    GER_region_bavaria_did_pressure = yes
+}
+GER_region_action_18_allowed = { always = yes }
+GER_region_action_19_allowed = { always = yes }
+GER_region_action_20_allowed = { always = yes }
+GER_region_action_21_allowed = { always = yes }
+GER_region_action_22_allowed = { always = yes }
+
+# ---- 是否出现在列表里：随危机进度逐步出现
+GER_region_action_15_visible = { check_variable = { GER_region_bavaria_stage > 0 } }
+GER_region_action_16_visible = { check_variable = { GER_region_bavaria_stage > 0 } }
+GER_region_action_17_visible = { check_variable = { GER_region_bavaria_stage > 1 } }
+GER_region_action_18_visible = { check_variable = { GER_region_bavaria_stage > 1 } }
+GER_region_action_19_visible = { check_variable = { GER_region_bavaria_stage > 2 } }
+GER_region_action_20_visible = { check_variable = { GER_region_bavaria_stage > 2 } }
+GER_region_action_21_visible = { check_variable = { GER_region_bavaria_stage > 3 } }
+GER_region_action_22_visible = { check_variable = { GER_region_bavaria_stage > 3 } }

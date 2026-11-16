@@ -75,6 +75,8 @@ LEADERS = [
     ("weimar_coalition", "魏玛联盟", None),
     ("bitta", "约瑟夫·比塔", None),
     ("bebel", "奥古斯特·倍倍尔", "gfx/leaders/GER/August_Bebel.png"),   # 待机（没选中地区）时显示
+    # 巴伐利亚危机阶段的巴伐利亚领导人（无效果）。头像还没做：做好后放到下面的路径（156x210），重跑脚本就会显示
+    ("hoffmann", "约翰内斯·霍夫曼", "gfx/leaders/GER/Johannes_Hoffmann.png"),
 ]
 IDLE_LEADER = "bebel"
 # 领导人效果（用户给的清单；「武装力量」一律改成控制度）。只在该领导人所在的区块已开放时生效。
@@ -135,9 +137,39 @@ ACTIONS = [
     dict(n=12, cname="支援邻近地区", kind="garrison", cost=25),
     dict(n=13, cname="红色海军网络", kind="garrison", cost=25, region="R03"),
     dict(n=14, cname="与基督教社会主义者交好", kind="garrison", cost=25, region="R14"),
+    # 巴伐利亚危机（阶段博弈，见 PHASES）：只在阶段进行中出现，每条只能执行一次；
+    # 随危机进度（GER_region_bavaria_stage）逐步出现，条件写在手写的 _visible / _allowed 里
+    dict(n=15, cname="调停SPD内部冲突", kind="daily", cost=100, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=16, cname="对巴伐利亚施压", kind="daily", cost=25, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=17, cname="向协约国提交巴伐利亚报告", kind="daily", cost=5, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=18, cname="采取保守态势", kind="daily", cost=25, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=19, cname="宣布抵制恐怖袭击", kind="daily", cost=5, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=20, cname="撤出SPD优秀分子", kind="daily", cost=50, days=7, max=1, region="R09", phase="bavaria"),
+    dict(n=21, cname="向巴伐利亚发动最后通牒", kind="daily", cost=5, days=0, max=1, region="R09", phase="bavaria"),
+    dict(n=22, cname="依靠协约国施压", kind="daily", cost=25, days=0, max=1, region="R09", phase="bavaria"),
 ]
 ACTION_ORDER = [1, 2, 7, 3, 4, 5, 6, 8,      # 行动方针（显示顺序）
-                9, 10, 11, 12, 13, 14]       # 驻区方针
+                9, 10, 11, 12, 13, 14,       # 驻区方针
+                15, 16, 17, 18, 19, 20, 21, 22]   # 巴伐利亚危机（阶段决议，放在最后）
+# ---- 阶段博弈：地图全开之前，先只开放一个地区，右侧列表只显示该阶段的特色决议（普通决议全部隐藏），结束后全部关掉。
+# 每个阶段生成（<key> = 下面的键）：
+#   GER_region_game_<key>_start       开始：设旗标、只开放该地区、选中它、进度归 0、清掉该阶段决议的执行记录
+#   GER_region_game_<key>_next_stage  进度 +1（事件里调用；也可以直接 set_variable 进度变量再跑 GER_region_game_sync_selected）
+#   GER_region_game_<key>_end         结束：清旗标，该阶段的决议全部隐藏（决议的执行次数保留，结束后的事件还能查）；
+#                                     keep_open = True 时地块保留显示，否则关闭该地区、面板回到待机
+# 手写钩子（common/scripted_effects/GER_region_game_actions.txt）：GER_region_<key>_on_start / _on_end
+#   flag    阶段进行中的国家旗标；决议的 phase 写这里的键
+#   region  开放的地区；state = 地区类型帧号；values = 背地里的 (支持度, 控制度)，(25, 25) = 地区效益无效果
+#   leader  地区领导人（LEADERS 的键，None = 无）
+#   stage   进度变量：0 = 刚开始（还没有决议），之后由事件推进；stages = 最大进度
+#   keep_open  结束后地块是否保留显示
+# 巴伐利亚危机的事件链在 events/AOR_GER_events.txt（AOR_GER_bavaria_crisis）。正式流程里巴伐利亚要到 1920.4.5 的事件点击后才显示
+# （手写的 GER_region_bavaria_reveal 调用 _start），在那之前界面一直待机，类型 / 领导人只在背地里记着：1.12 魏玛联盟控制区、霍夫曼，
+# 2.21 霍夫曼遇刺后领导人清空，2.23 转换为右派控制区。所以显示出来时是右派控制区、无领导人；下面的 state / leader 是 1.12 的初始值。
+PHASES = {
+    "bavaria": dict(cname="巴伐利亚危机", flag="GER_region_bavaria_phase", region="R09", state=10, values=(25, 25),
+                    leader="hoffmann", stage="GER_region_bavaria_stage", stages=4, keep_open=True),
+}
 BIWEEKLY = 14   # 「每两周」效果的间隔天数
 #   cooldown 每个地区点击后多少天内不能再点（含生效期间；0 = 没有冷却）
 
@@ -542,6 +574,9 @@ leaders = []
 for i, (key, cname, portrait) in enumerate(LEADERS, 1):
     ld = {"idx": i, "key": key, "cname": cname, "portrait": portrait,
           "name_key": "GER_region_leader_%s_name" % key, "tt": "GER_region_leader_%s_tt" % key}
+    if portrait and not os.path.exists(os.path.join(MOD, *portrait.split("/"))):
+        print("  头像还没放进来，先只显示名字：" + portrait)
+        ld["portrait"] = portrait = None
     if portrait:
         if png_size(os.path.join(MOD, *portrait.split("/"))) != (156, 210):
             raise ValueError("头像不是 156x210：" + portrait)
@@ -580,9 +615,11 @@ _by_n = {a["n"]: a for a in ACTIONS}
 assert len(_by_n) == len(ACTIONS) and sorted(ACTION_ORDER) == sorted(_by_n), "ACTIONS 编号重复或 ACTION_ORDER 不全"
 ROWS = []
 for n in ACTION_ORDER:
-    row = dict(dict(days=0, max=0, region=None, cooldown=0), **_by_n[n])
+    row = dict(dict(days=0, max=0, region=None, cooldown=0, phase=None), **_by_n[n])
     row["garrison"] = row["kind"] == "garrison"
     assert row["kind"] in ("daily", "garrison") and not (row["garrison"] and row["days"])
+    if row["phase"]:   # 阶段决议：只在该阶段的地区出现，不能是驻区方针
+        assert not row["garrison"] and row["region"] == PHASES[row["phase"]]["region"], "阶段决议的 region 要等于阶段的地区"
     ROWS.append(row)
 for row in ROWS:
     n = row["n"]
@@ -608,6 +645,13 @@ GARRISON = [row for row in ROWS if row["garrison"]]
 COUNTED = [row for row in ROWS if row["max"]]
 COOLED = [row for row in ROWS if row["cooldown"]]
 DAILY_LIST = [row for row in ROWS if not row["garrison"]]
+# 有任何阶段博弈在进行
+PHASE_ANY = " ".join("has_country_flag = %s" % ph["flag"] for ph in PHASES.values())
+# 地图全开（GER_region_game_open_map）时设的国家旗标：之前普通的行动方针 / 驻区方针整个不显示
+MAP_OPENED_FLAG = "GER_region_map_opened"
+MAP_OPENED = "has_country_flag = %s" % MAP_OPENED_FLAG
+# 待机（没选中地区）时罩住数值框的核心区方块（CORE_FRAMES 的值），上面的字 = 手写的 GER_region_panel_idle_cover
+IDLE_COVER = "green"
 for r in regions:
     r["v_policy"] = "GER_region_%s_policy" % r["key"]            # 当前驻区方针编号，0 = 无
     r["v_policy_days"] = "GER_region_%s_policy_days" % r["key"]  # 当前方针已生效天数
@@ -1033,10 +1077,18 @@ for ld in leaders:
 trig.append("GER_region_panel_leader_vignette_visible = { check_variable = { GER_region_sel_leader > 0 } }")
 trig.append("# 数值框 <-> 核心区方块：帧 %s = 核心区，显示方块；其余显示支持度 / 控制度"
             % "/".join(str(f) for f in sorted(CORE_FRAMES)))
-trig.append("GER_region_panel_values_visible = { NOT = { %s } }" % CORE_ANY)
+trig.append("# 待机（没选中地区）：数值框不显示，用 %s 方块罩住，上面写 GER_region_panel_idle_cover" % IDLE_COVER)
+trig.append("GER_region_panel_values_visible = { %s NOT = { %s } }" % (SEL, CORE_ANY))
+assert IDLE_COVER in CORE_FRAMES.values()
 for f, side in sorted(CORE_FRAMES.items()):
-    trig.append("GER_region_panel_core_%s_visible = { check_variable = { GER_region_sel_frame = %d } }" % (side, f))
-trig.append("GER_region_panel_core_title_visible = { OR = { %s } }" % CORE_ANY)
+    if side == IDLE_COVER:
+        trig.append("GER_region_panel_core_%s_visible = { OR = { check_variable = { GER_region_sel_frame = %d } NOT = { %s } } }"
+                    % (side, f, SEL))
+    else:
+        trig.append("GER_region_panel_core_%s_visible = { check_variable = { GER_region_sel_frame = %d } }" % (side, f))
+trig.append("GER_region_panel_core_title_visible = { OR = { %s NOT = { %s } } }" % (CORE_ANY, SEL))
+trig.append("# 「行动方针」标题：地图全开之后，或阶段博弈进行中才显示（列表内容同理，见 GER_region_game_sync_selected）")
+trig.append("GER_region_panel_actions_title_visible = { OR = { %s %s } }" % (MAP_OPENED, PHASE_ANY))
 trig.append("# 决议列表（dynamic_lists）：每条的 v = 决议编号；v = 0 是「驻区方针」小标题")
 trig.append("GER_region_panel_entry_header_visible = { check_variable = { v = 0 } }")
 for _el in ("GER_region_panel_entry_button", "GER_region_panel_entry_name", "GER_region_panel_entry_status"):
@@ -1162,6 +1214,10 @@ for _row in ROWS:
         CHECKS["GER_region_check_cd_%d" % _row["n"]] = "NOT = { check_variable = { %s > 0 } }" % _row["sel_cd"]
 for _row in COUNTED:
     CHECKS["GER_region_check_count_%d" % _row["n"]] = "check_variable = { %s < %d }" % (_row["sel_count"], _row["max"])
+for _row in ROWS:   # 阶段决议：「已执行过第 N 条」（读该阶段地区自己的执行次数）
+    if _row["phase"]:
+        CHECKS["GER_region_check_did_%d" % _row["n"]] = ("check_variable = { GER_region_%s_count_%d > 0 }"
+                                                         % (_row["region"], _row["n"]))
 
 
 def defined_text(name, cases, default):
@@ -1194,6 +1250,11 @@ sl.append("# 核心区方块的标题：地区类型（按选中区块的帧号�
 sl += defined_text("GER_region_sel_type",
                    [("check_variable = { GER_region_sel_frame = %d }" % f, "GER_region_type_%d" % f)
                     for f in sorted(TYPE_NAMES)], "GER_region_panel_empty")
+sl.append("# 核心区方块上的字 / 悬停提示：待机（没选中地区）时 = 手写的 GER_region_panel_idle_cover / GER_region_panel_idle_tt")
+sl += defined_text("GER_region_panel_core_title_text", [("NOT = { %s }" % SEL, "GER_region_panel_idle_cover")],
+                   "GER_region_panel_core_title_type")
+sl += defined_text("GER_region_panel_core_tt", [("NOT = { %s }" % SEL, "GER_region_panel_idle_tt")],
+                   "GER_region_panel_core_tooltip_sel")
 sl.append("# 核心区方块的说明")
 sl += defined_text("GER_region_sel_core_desc",
                    [("check_variable = { GER_region_sel_frame = %d }" % f, "GER_region_panel_core_%d_desc" % f)
@@ -1373,13 +1434,20 @@ for _k, _what, _amt, _cond, _label in BW_SOURCES:
 eff.append("    if = { limit = { %s } set_variable = { GER_region_sel_bw_support = 0 } set_variable = { GER_region_sel_bw_control = 0 } }"
            % FROZEN_SEL)
 eff.append("    # 重建决议列表：行动方针 → 0（「驻区方针」小标题）→ 驻区方针；每条按 region 和手写的 _visible 决定是否出现")
+eff.append("    # 地图全开（旗标 %s）之前：普通决议和小标题都不出现" % MAP_OPENED_FLAG)
+eff.append("    # 阶段博弈（PHASES）进行中：普通决议和小标题都不出现，只出现该阶段的决议")
 eff.append("    clear_array = GER_region_panel_list")
 for row in ROWS:
     if row is GARRISON[0]:
-        eff.append("    add_to_array = { array = GER_region_panel_list value = 0 }")
+        eff.append("    if = { limit = { %s NOT = { %s } } add_to_array = { array = GER_region_panel_list value = 0 } }"
+                   % (MAP_OPENED, PHASE_ANY))
     cond = "GER_region_action_%d_visible = yes" % row["n"]
     if row["region"]:
         cond = is_sel(R_BY_KEY0[row["region"]]["idx"]) + " " + cond
+    if row["phase"]:
+        cond = "has_country_flag = %s %s" % (PHASES[row["phase"]]["flag"], cond)
+    else:
+        cond = "%s NOT = { %s } %s" % (MAP_OPENED, PHASE_ANY, cond)
     eff.append("    if = { limit = { %s } add_to_array = { array = GER_region_panel_list value = %d } }   # %s"
                % (cond, row["n"], row["cname"]))
 eff.append("}")
@@ -1594,6 +1662,8 @@ eff.append("")
 eff.append("# 地图全开后的开局：16 个区块全部开放，按 OPENING_TYPES 设类型、按 OPENING_VALUES 设摇摆区支持度/控制度，")
 eff.append("# 清掉选中（面板显示待机）。地图全开的那一刻（事件 / 决议 / 国策里）调用 GER_region_game_open_map = yes。")
 eff.append("GER_region_game_open_map = {")
+for _pk in sorted(PHASES):
+    eff.append("    GER_region_game_%s_end = yes   # 阶段博弈还没结束的话先结束（里面自己判断旗标）" % _pk)
 for r in regions:
     s, c = OPENING_VALUES.get(r["key"], HIDDEN_VALUES.get(OPENING_TYPES[r["key"]], (0, 0)))
     eff.append("    set_variable = { %s = 1 } set_variable = { %s = %d } set_variable = { %s = %d } set_variable = { %s = %d }   # %s %s"
@@ -1603,6 +1673,8 @@ for k, lk in sorted(OPENING_LEADERS.items()):
     eff.append("    set_variable = { %s = %d }   # %s" % (R_BY_KEY0[k]["v_leader"], LD_BY_KEY0[lk]["idx"], LD_BY_KEY0[lk]["cname"]))
 for oid in OPENING_OVERLAYS:
     eff.append("    set_variable = { %s = 1 }   # 割让：%s" % (OV_BY_ID0[oid]["v_shown"], OV_BY_ID0[oid]["name"]))
+eff.append("    set_country_flag = %s   # 解锁右侧的行动方针 / 驻区方针" % MAP_OPENED_FLAG)
+eff.append("    GER_region_on_open_map = yes   # 手写钩子：各地区的开局数值设好之后（例如补上巴伐利亚危机结局对周边地区的影响）")
 eff.append("    set_variable = { GER_region_selected = 0 }")
 eff.append("    GER_region_game_sync_frames = yes")
 eff.append("}")
@@ -1676,9 +1748,62 @@ for r in regions:
               + [r["v_growth"], r["v_floor"], r["v_tier"], r["v_swing_return"], r["v_swing_days"]]):
         eff.append("    clear_variable = %s" % v)
 eff.append("    clear_variable = GER_region_selected")
+eff.append("    clr_country_flag = %s" % MAP_OPENED_FLAG)
+for _pk, _ph in sorted(PHASES.items()):
+    eff.append("    clr_country_flag = %s" % _ph["flag"])
+    eff.append("    clear_variable = %s" % _ph["stage"])
 eff.append("    GER_region_actions_on_reset = yes   # 手写：决议自己的全国状态（例如罢工的建造减速）")
 eff.append("    GER_region_game_hide_all_overlays = yes")
 eff.append("}")
+# ---- 阶段博弈（PHASES）
+for _pk, _ph in sorted(PHASES.items()):
+    _r = R_BY_KEY0[_ph["region"]]
+    _prow = [row for row in ROWS if row["phase"] == _pk]
+    _ptimed = [row for row in _prow if row in TIMED_ROWS]
+    eff.append("")
+    eff.append("# ==== 阶段博弈：%s（只开放 %s；右侧列表只显示该阶段的决议 %s）"
+               % (_ph["cname"], _r["name"], "、".join(str(row["n"]) for row in _prow)))
+    eff.append("# 开始。设计上在地图全开（GER_region_game_open_map）之前用；进度从 0 开始，这时列表是空的")
+    eff.append("GER_region_game_%s_start = {" % _pk)
+    eff.append("    set_country_flag = %s" % _ph["flag"])
+    eff.append("    set_variable = { %s = 0 }" % _ph["stage"])
+    eff.append("    set_variable = { %s = 1 } set_variable = { %s = %d } set_variable = { %s = %d } set_variable = { %s = %d }   # %s"
+               % (_r["v_open"], _r["v_state"], _ph["state"], _r["v_support"], _ph["values"][0], _r["v_control"], _ph["values"][1],
+                  TYPE_NAMES[_ph["state"]]))
+    if _ph["leader"]:
+        eff.append("    set_variable = { %s = %d }   # %s" % (_r["v_leader"], LD_BY_KEY0[_ph["leader"]]["idx"],
+                                                          LD_BY_KEY0[_ph["leader"]]["cname"]))
+    for row in _prow:
+        if row["max"]:
+            eff.append("    clear_variable = %s" % _r["v_count"][row["n"]])
+        if row in _ptimed:
+            eff.append("    clear_variable = %s" % _r["v_act"][row["n"]])
+    eff.append("    GER_region_%s_on_start = yes   # 手写钩子" % _pk)
+    eff.append("    set_variable = { GER_region_selected = %d }" % _r["idx"])
+    eff.append("    GER_region_game_sync_frames = yes")
+    eff.append("}")
+    eff.append("# 进度 +1（最大 %d），右侧列表随之刷新" % _ph["stages"])
+    eff.append("GER_region_game_%s_next_stage = {" % _pk)
+    eff.append("    if = { limit = { check_variable = { %s < %d } } add_to_variable = { %s = 1 } }" % (_ph["stage"], _ph["stages"], _ph["stage"]))
+    eff.append("    GER_region_game_sync_selected = yes")
+    eff.append("}")
+    eff.append("# 结束：该阶段的决议全部隐藏%s。阶段没在进行时什么都不做"
+               % ("，%s地块保留显示" % _r["name"] if _ph.get("keep_open") else "，关闭%s" % _r["name"]))
+    eff.append("GER_region_game_%s_end = {" % _pk)
+    eff.append("    if = {")
+    eff.append("        limit = { has_country_flag = %s }" % _ph["flag"])
+    eff.append("        GER_region_%s_on_end = yes   # 手写钩子（例如去掉还在生效的修正）" % _pk)
+    eff.append("        clr_country_flag = %s" % _ph["flag"])
+    if not _ph.get("keep_open"):
+        for v in ("v_open", "v_state", "v_frame", "v_support", "v_control", "v_leader"):
+            eff.append("        clear_variable = %s" % _r[v])
+    for row in _ptimed:
+        eff.append("        clear_variable = %s" % _r["v_act"][row["n"]])
+    if not _ph.get("keep_open"):
+        eff.append("        set_variable = { GER_region_selected = 0 }")
+    eff.append("        GER_region_game_sync_frames = yes")
+    eff.append("    }")
+    eff.append("}")
 EFFECTS = "\n".join(eff) + "\n"
 
 # 悬停提示里的动态行（要用 BW_SOURCES，所以放在这里补进 SCRIPTED_LOC）
@@ -1736,7 +1861,9 @@ for k in sorted(ADJ, key=lambda k: -len(ADJ[k])):
     checker[k] = next(c for c in CHECKER_COLORS if c not in used)
 
 
-def dec(name, body, desc_extra=None):
+def dec(name, body, desc_extra=None, unlock=True):
+    if unlock:   # 测试用：当作地图已经全开，右侧列表才会出现
+        body = list(body) + ["set_country_flag = %s" % MAP_OPENED_FLAG]
     return ["    %s = {" % name,
             "        allowed = { original_tag = GER }",
             "        visible = { original_tag = GER }",
@@ -1766,7 +1893,7 @@ TEST_VARS = ["GER_region_test_color", "GER_region_test_next", "GER_region_test_o
              "GER_region_test_type_idx", "GER_region_test_type", "GER_region_test_bar_idx", "GER_region_test_bar",
              "GER_region_test_leader"]
 D += dec("GER_region_test_reset", ["GER_region_game_reset_to_opening = yes"]
-         + ["clear_variable = %s" % v for v in TEST_VARS])
+         + ["clear_variable = %s" % v for v in TEST_VARS], unlock=False)
 D += dec("GER_region_test_opening", ["GER_region_game_hide_all_overlays = yes", "GER_region_game_open_map = yes"])
 D += dec("GER_region_test_open_all", open_all(2))
 D += dec("GER_region_test_checker", sum((["set_variable = { %s = 1 }" % r["v_open"],
@@ -1900,6 +2027,10 @@ for r in regions:
                 % (r["v_policy"], r["v_policy_days"], BIWEEKLY - 1))
     ff.append("if = { limit = { %s } %s }" % (is_sel(r["idx"]), " ".join(body)))
 D += dec("GER_region_test_panel_fast_forward", ff)
+# 阶段博弈测试：开始 / 推进进度 / 结算并关闭
+D += dec("GER_region_test_bavaria_start", ["GER_region_game_bavaria_start = yes"], unlock=False)
+D += dec("GER_region_test_bavaria_next_stage", ["GER_region_game_bavaria_next_stage = yes"], unlock=False)
+D += dec("GER_region_test_bavaria_settle", ["GER_region_bavaria_settle = yes"], unlock=False)
 D.append("}")
 DECISIONS = "\n".join(D) + "\n"
 
@@ -1939,8 +2070,10 @@ loc = ["l_simp_chinese:",
        ' GER_region_panel_photo_tooltip: "[GER_region_panel_photo_tt]"',
        ' GER_region_panel_leader_name: "[GER_region_sel_leader_name]"',
        ' GER_region_panel_leader_tt: "[GER_region_sel_leader_tt]"',
-       ' GER_region_panel_core_title: "[GER_region_sel_type]"',
-       ' GER_region_panel_core_tooltip: "§Y[GER_region_sel_type]§!\\n\\n[GER_region_sel_core_desc]\\n\\n[GER_region_tier_text]"',
+       ' GER_region_panel_core_title: "[GER_region_panel_core_title_text]"',
+       ' GER_region_panel_core_title_type: "[GER_region_sel_type]"',
+       ' GER_region_panel_core_tooltip: "[GER_region_panel_core_tt]"',
+       ' GER_region_panel_core_tooltip_sel: "§Y[GER_region_sel_type]§!\\n\\n[GER_region_sel_core_desc]\\n\\n[GER_region_tier_text]"',
        ' GER_region_panel_status_policy_on: ""',
        ' GER_region_panel_entry_name: "[GER_region_entry_name]"',
        ' GER_region_panel_entry_status: "[GER_region_entry_status]"',
@@ -1994,6 +2127,7 @@ for ld in leaders:
 panel_entries.append(("GER_region_panel_idle_tt", "【待定】待机说明"))
 panel_entries.append(("GER_region_panel_idle_name", "德意志共和国"))
 panel_entries.append(("GER_region_panel_idle_status", "我们暂时无暇顾及“国中之国”......"))
+panel_entries.append(("GER_region_panel_idle_cover", "我们暂时无暇顾及“国中之国”......"))   # 待机时罩住数值框的方块上的字
 append_missing(HAND_PANEL_LOC, panel_entries, header=[
     "地区博弈 · 右侧面板文字（手写，脚本只在末尾补缺的键，不改已有行）",
     "行动方针：GER_region_panel_row_N_name = 名字，_tt = 悬停介绍（N 见 gen_region_game.py 的 ACTIONS）；花费和天数在 ACTIONS 里。",
@@ -2042,7 +2176,7 @@ dl = ["l_simp_chinese:",
       ' GER_region_game_test_category: "【测试】地区博弈地图"',
       ' GER_region_game_test_category_desc: "地区博弈地图的素材和接口测试。每个决议执行后会自动打开地区博弈界面。"',
       ' GER_region_test_reset: "重置为开局画面"',
-      ' GER_region_test_reset_desc: "隐藏全部区块和割让盖板，只剩无缝整块斜线 + 阿尔萨斯-洛林、巴伐利亚缺角两块。"',
+      ' GER_region_test_reset_desc: "隐藏全部区块和割让盖板，只剩无缝整块斜线 + 阿尔萨斯-洛林、巴伐利亚缺角两块。右侧回到地图全开之前的样子：数值框被绿色方块罩住，行动方针、驻区方针不显示（其余测试决议会顺手解锁列表）。"',
       ' GER_region_test_opening: "地图全开开局"',
       ' GER_region_test_opening_desc: "调用 GER_region_game_open_map（同时显示萨尔、欧本-马尔梅迪、波森-西普鲁士-但泽走廊、梅梅尔的割让，并填好各地区领导人）：左翼核心 汉堡-石荷、图林根-萨克森、鲁尔；右翼核心 巴伐利亚、东普鲁士、波美拉尼亚、汉诺威；特殊区 莱茵兰；共和核心 巴登-符腾堡；摇摆区 大柏林 60/75、威斯特法伦 39/35、威悉-埃姆斯 43/60、西里西亚 15/5、勃兰登堡 51/30、梅克伦堡 45/20、黑森 46/35。不选中任何地区，右下角显示待机照片和倍倍尔。"',
       ' GER_region_test_open_all: "开放全部区块（中立）"',
@@ -2071,6 +2205,12 @@ dl = ["l_simp_chinese:",
       ' GER_region_test_panel_fast_forward: "面板：选中地区的决议快进到剩 1 天"',
       ' GER_region_test_panel_fast_forward_desc: "把选中地区所有生效中的日常决议改成只剩 1 天，再过一天应结束（暗黄消失、可以再点）；驻区方针改成明天触发一次「每两周」效果。"',
       ' GER_region_test_panel_plan_values_desc: "全部区块中立；按策划案第 4 页填支持度/控制度（威悉-埃姆斯(不来梅) 43/60、勃兰登堡 51/30、黑森 46/35、威斯特法伦 39/35、梅克伦堡 45/20、西里西亚 15/5），按第 8 页填领导人。之后逐个点地区看右侧面板。只是测试数据，不是正式开局设定。"',
+      ' GER_region_test_bavaria_start: "巴伐利亚危机：开始（只开放巴伐利亚）"',
+      ' GER_region_test_bavaria_start_desc: "调用 GER_region_game_bavaria_start：只开放巴伐利亚（魏玛联盟控制区、领导人霍夫曼）并选中它，右侧普通决议全部隐藏。进度从 0 开始，这时列表是空的，点「推进进度」后巴伐利亚决议才逐步出现。建议先点「重置为开局画面」再点这个。正式流程由事件链驱动（控制台：event AOR_GER_bavaria_crisis.1），巴伐利亚要到 4 月 5 日的事件点击后才显示，那时已是右派控制区、无领导人。"',
+      ' GER_region_test_bavaria_next_stage: "巴伐利亚危机：推进进度"',
+      ' GER_region_test_bavaria_next_stage_desc: "进度 +1（最大 4）。1 = 艾舍里希组织成立后（调停SPD内部冲突、对巴伐利亚施压）；2 = 协约国第一次抗议后（提交巴伐利亚报告、采取保守态势）；3 = 6 月 2 日「又一起凶杀案」后（宣布抵制恐怖袭击、撤出SPD优秀分子）；4 = 协约国第二次抗议后（最后通牒、依靠协约国施压）。当前进度：[?GER_region_bavaria_stage|0]。"',
+      ' GER_region_test_bavaria_settle: "巴伐利亚危机：结算"',
+      ' GER_region_test_bavaria_settle_desc: "调用 GER_region_bavaria_settle：按已执行的决议算出结局（1 完美 2 冲突和平落幕 3 苦涩的和平 4 全面溃败）并弹出对应的结局事件；巴伐利亚决议全部隐藏，巴伐利亚地块保留显示。只结算一次，要再测先点「巴伐利亚危机：开始」。上次结局：[?GER_region_bavaria_result|0]。"',
       ' GER_region_test_silesia_A: "西里西亚 A 方案（1134+762）"',
       ' GER_region_test_silesia_A_desc: "全部区块中立；A、B 两个盖板变量都设为 1，应只显示 A 的一整块斜线（互斥：A 显示时 B 不画）。"',
       ' GER_region_test_silesia_B: "西里西亚 B 方案（762）"',
@@ -2110,6 +2250,12 @@ for row in ROWS:
                 "# %d %s：能否点击的额外条件\nGER_region_action_%d_allowed = {\n    always = yes\n}" % (n, row["cname"], n)))
     _at.append(("GER_region_action_%d_visible" % n,
                 "# %d %s：是否出现在列表里\nGER_region_action_%d_visible = {\n    always = yes\n}" % (n, row["cname"], n)))
+for _pk, _ph in sorted(PHASES.items()):
+    for _h, _d in (("on_start", "开始时"), ("on_end", "结束时（关闭地区之前）")):
+        _ae.append(("GER_region_%s_%s" % (_pk, _h), "# 阶段博弈 %s：%s\nGER_region_%s_%s = {\n%s\n}"
+                    % (_ph["cname"], _d, _pk, _h, NOOP)))
+_ae.append(("GER_region_on_open_map", "# 地图全开（GER_region_game_open_map）时，各地区开局数值设好之后调用\n"
+            "GER_region_on_open_map = {\n%s\n}" % NOOP))
 _ae.append(("GER_region_actions_on_reset", "# 测试决议「重置」时调用：清掉决议自己的全国状态\n"
             "GER_region_actions_on_reset = {\n%s\n}" % NOOP))
 _at.append(("GER_region_party_reform_done", "# 党改革国策完成\nGER_region_party_reform_done = {\n    always = no\n}"))
