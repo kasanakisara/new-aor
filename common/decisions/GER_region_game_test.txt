@@ -858,4 +858,46 @@ GER_region_game_test_category = {
             }
         }
     }
+    GER_region_test_silesia_crisis_start = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_game_silesia_start = yes
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_silesia_crisis_next_stage = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_game_silesia_next_stage = yes
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_silesia_crisis_settle = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                GER_region_silesia_settle = yes
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
 }

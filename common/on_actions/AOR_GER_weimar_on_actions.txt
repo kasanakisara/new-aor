@@ -2,6 +2,7 @@
 # 德国 · 魏玛代表大会事件链的日期驱动（骨架）
 #   1919.09.08  事件① 开幕            -> AOR_GER_weimar_congress.1
 # 事件②③、抢先行动、剑拔弩张与三派结果由事件自身按天数排期。
+#   1919.08.18  西里西亚危机事件链启动   -> AOR_GER_silesia_crisis.2（之后各事件自己按天数排期）
 #   1920.01.12  巴伐利亚危机事件链启动   -> AOR_GER_bavaria_crisis.1（之后各事件自己按天数排期）
 ####################################################################
 on_actions = {
@@ -27,6 +28,20 @@ on_actions = {
 					NOT = { has_country_flag = AOR_the_second_soviet_congress_started }
 				}
 				country_event = { id = AOR_the_second_soviet_congress.1 }
+			}
+		}
+	}
+
+	on_daily_GER = {
+		effect = {
+			# ---------- 1919.08.18 西里西亚危机：波兰武装力量入侵西里西亚 ----------
+			if = {
+				limit = {
+					date > 1919.8.17
+					NOT = { has_country_flag = AOR_GER_silesia_crisis_started }
+				}
+				set_country_flag = AOR_GER_silesia_crisis_started
+				country_event = { id = AOR_GER_silesia_crisis.2 }
 			}
 		}
 	}

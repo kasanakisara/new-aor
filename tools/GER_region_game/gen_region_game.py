@@ -122,6 +122,7 @@ LEADER_COUNTRY_ICON = "GFX_modifiers_generic_military_plans"
 #          0 = 点了立刻生效，不进入生效中状态
 #   max    每个地区最多执行几次（0 = 不限）；界面自动加条件、悬停提示里写「已执行次数」
 #   region 只在这个区块出现（区块 key，如 "R03"）；None = 所有地区
+#   cp     花费指挥点数而不是政治点数（cost 写 0）：界面照样扣，状态字显示 Ncp，悬停介绍里写 £command_power
 ACTIONS = [
     dict(n=1, cname="扩大宣传投入", kind="daily", cost=10, days=7),
     dict(n=2, cname="扩张防卫组织", kind="daily", cost=10, days=7),
@@ -147,10 +148,17 @@ ACTIONS = [
     dict(n=20, cname="撤出SPD优秀分子", kind="daily", cost=50, days=7, max=1, region="R09", phase="bavaria"),
     dict(n=21, cname="向巴伐利亚发动最后通牒", kind="daily", cost=5, days=0, max=1, region="R09", phase="bavaria"),
     dict(n=22, cname="依靠协约国施压", kind="daily", cost=25, days=0, max=1, region="R09", phase="bavaria"),
+    # 西里西亚危机（阶段博弈，见 PHASES）：同上，进度变量 GER_region_silesia_stage
+    # 23 花费的是指挥点数（cp）不是政治点数：cost 留 0，cp 写 5，钩子里扣 add_command_power
+    # 26、27 号原本是「支持他们 / 局势混乱」两条决议，已改成 9.10 游行事件的两个选项，编号留空不要再用
+    dict(n=23, cname="派遣正规军", kind="daily", cost=0, cp=5, days=0, max=1, region="R07", phase="silesia"),
+    dict(n=24, cname="向协约国控诉", kind="daily", cost=5, days=0, max=1, region="R07", phase="silesia"),
+    dict(n=25, cname="加强对激进派的控制", kind="daily", cost=50, days=0, max=1, region="R07", phase="silesia"),
 ]
 ACTION_ORDER = [1, 2, 7, 3, 4, 5, 6, 8,      # 行动方针（显示顺序）
                 9, 10, 11, 12, 13, 14,       # 驻区方针
-                15, 16, 17, 18, 19, 20, 21, 22]   # 巴伐利亚危机（阶段决议，放在最后）
+                15, 16, 17, 18, 19, 20, 21, 22,   # 巴伐利亚危机（阶段决议，放在最后）
+                23, 24, 25]                       # 西里西亚危机（阶段决议；26、27 留空）
 # ---- 阶段博弈：地图全开之前，先只开放一个地区，右侧列表只显示该阶段的特色决议（普通决议全部隐藏），结束后全部关掉。
 # 每个阶段生成（<key> = 下面的键）：
 #   GER_region_game_<key>_start       开始：设旗标、只开放该地区、选中它、进度归 0、清掉该阶段决议的执行记录
@@ -169,6 +177,13 @@ ACTION_ORDER = [1, 2, 7, 3, 4, 5, 6, 8,      # 行动方针（显示顺序）
 PHASES = {
     "bavaria": dict(cname="巴伐利亚危机", flag="GER_region_bavaria_phase", region="R09", state=10, values=(25, 25),
                     leader="hoffmann", stage="GER_region_bavaria_stage", stages=4, keep_open=True),
+    # 西里西亚危机的事件链在 events/AOR_GER_events.txt（AOR_GER_silesia_crisis）。1919.8.18 事件点击后立刻开始，
+    # 这时西里西亚是摇摆区（支持度 15、控制度 5，与地图全开时的开局值一致）、领导人比塔。
+    # 进度 1：23 派遣正规军、24 向协约国控诉、25 加强对激进派的控制
+    # 「支持他们，展现我们的立场 / 局势混乱，还是小心为上」是 9.10 游行事件的选项，不是决议
+    # 10.8 协约国调停结算后阶段结束，地块保留显示（结局会把西里西亚改成右派控制区）
+    "silesia": dict(cname="西里西亚危机", flag="GER_region_silesia_phase", region="R07", state=2, values=(15, 5),
+                    leader="bitta", stage="GER_region_silesia_stage", stages=1, keep_open=True),
 }
 BIWEEKLY = 14   # 「每两周」效果的间隔天数
 #   cooldown 每个地区点击后多少天内不能再点（含生效期间；0 = 没有冷却）
@@ -615,7 +630,7 @@ _by_n = {a["n"]: a for a in ACTIONS}
 assert len(_by_n) == len(ACTIONS) and sorted(ACTION_ORDER) == sorted(_by_n), "ACTIONS 编号重复或 ACTION_ORDER 不全"
 ROWS = []
 for n in ACTION_ORDER:
-    row = dict(dict(days=0, max=0, region=None, cooldown=0, phase=None), **_by_n[n])
+    row = dict(dict(days=0, max=0, region=None, cooldown=0, phase=None, cp=0), **_by_n[n])
     row["garrison"] = row["kind"] == "garrison"
     assert row["kind"] in ("daily", "garrison") and not (row["garrison"] and row["days"])
     if row["phase"]:   # 阶段决议：只在该阶段的地区出现，不能是驻区方针
@@ -628,7 +643,9 @@ for row in ROWS:
     row["sel_days"] = "GER_region_sel_row_%d_days" % n         # 选中地区这条还剩几天（面板读）
     row["sel_count"] = "GER_region_sel_row_%d_count" % n       # 选中地区这条已执行几次（有 max 的才有）
     row["sel_cd"] = "GER_region_sel_row_%d_cd" % n             # 选中地区这条冷却还剩几天（有 cooldown 的才有）
-    row["pp_ok"] = "has_political_power > %s" % (row["cost"] - 0.01)
+    row["pp_ok"] = " ".join(["has_political_power > %s" % (row["cost"] - 0.01) if row["cost"] else "",
+                            "command_power > %s" % (row["cp"] - 0.01) if row["cp"] else ""]).strip() or "always = yes"
+    row["cost_text"] = "%dcp" % row["cp"] if row["cp"] else "%dpp" % row["cost"]
     # 「生效中」：日常决议 = 选中地区剩余天数 > 0；驻区方针 = 选中地区当前方针是这一条
     row["active"] = ("check_variable = { GER_region_sel_policy = %d }" % n if row["garrison"]
                      else "check_variable = { %s > 0 }" % row["sel_days"])
@@ -1522,7 +1539,10 @@ eff.append("# ---- 点击行动方针：扣政治点数 → 记下目标地区 �
 for row in ROWS:
     n = row["n"]
     eff.append("GER_region_game_take_action_%d = {" % n)
-    eff.append("    add_political_power = -%d" % row["cost"])
+    if row["cost"]:
+        eff.append("    add_political_power = -%d" % row["cost"])
+    if row["cp"]:
+        eff.append("    add_command_power = -%d" % row["cp"])
     eff.append("    set_variable = { GER_region_target = GER_region_selected }")
     for i, r in enumerate(regions):
         body = []
@@ -2031,6 +2051,9 @@ D += dec("GER_region_test_panel_fast_forward", ff)
 D += dec("GER_region_test_bavaria_start", ["GER_region_game_bavaria_start = yes"], unlock=False)
 D += dec("GER_region_test_bavaria_next_stage", ["GER_region_game_bavaria_next_stage = yes"], unlock=False)
 D += dec("GER_region_test_bavaria_settle", ["GER_region_bavaria_settle = yes"], unlock=False)
+D += dec("GER_region_test_silesia_start", ["GER_region_game_silesia_start = yes"], unlock=False)
+D += dec("GER_region_test_silesia_next_stage", ["GER_region_game_silesia_next_stage = yes"], unlock=False)
+D += dec("GER_region_test_silesia_settle", ["GER_region_silesia_settle = yes"], unlock=False)
 D.append("}")
 DECISIONS = "\n".join(D) + "\n"
 
@@ -2098,7 +2121,7 @@ for row in ROWS:
         loc.append(' GER_region_panel_row_%d_label: "$%s$"' % (n, row["name"]))
     loc.append(' GER_region_panel_row_%d_status: "[GER_region_row_%d_status]"' % (n, n))
     for col, c in (("gold", "Y"), ("red", "R"), ("grey", "g")):
-        loc.append(' GER_region_panel_row_%d_status_%s: "§%s%dpp§!"' % (n, col, c, row["cost"]))
+        loc.append(' GER_region_panel_row_%d_status_%s: "§%s%s§!"' % (n, col, c, row["cost_text"]))
     if row["days"]:
         loc.append(' GER_region_panel_row_%d_status_days: "§G[?%s|0]天§!"' % (n, row["sel_days"]))
     if row["cooldown"]:
@@ -2211,6 +2234,12 @@ dl = ["l_simp_chinese:",
       ' GER_region_test_bavaria_next_stage_desc: "进度 +1（最大 4）。1 = 艾舍里希组织成立后（调停SPD内部冲突、对巴伐利亚施压）；2 = 协约国第一次抗议后（提交巴伐利亚报告、采取保守态势）；3 = 6 月 2 日「又一起凶杀案」后（宣布抵制恐怖袭击、撤出SPD优秀分子）；4 = 协约国第二次抗议后（最后通牒、依靠协约国施压）。当前进度：[?GER_region_bavaria_stage|0]。"',
       ' GER_region_test_bavaria_settle: "巴伐利亚危机：结算"',
       ' GER_region_test_bavaria_settle_desc: "调用 GER_region_bavaria_settle：按已执行的决议算出结局（1 完美 2 冲突和平落幕 3 苦涩的和平 4 全面溃败）并弹出对应的结局事件；巴伐利亚决议全部隐藏，巴伐利亚地块保留显示。只结算一次，要再测先点「巴伐利亚危机：开始」。上次结局：[?GER_region_bavaria_result|0]。"',
+      ' GER_region_test_silesia_crisis_start: "西里西亚危机：开始（只开放西里西亚）"',
+      ' GER_region_test_silesia_crisis_start_desc: "调用 GER_region_game_silesia_start：只开放西里西亚（摇摆区、支持度 15、控制度 5、领导人比塔）并选中它，右侧普通决议全部隐藏。进度从 0 开始，这时列表是空的，点「推进进度」后西里西亚决议才逐步出现。建议先点「重置为开局画面」再点这个。正式流程由事件链驱动（控制台：event AOR_GER_silesia_crisis.2）。"',
+      ' GER_region_test_silesia_crisis_next_stage: "西里西亚危机：推进进度"',
+      ' GER_region_test_silesia_crisis_next_stage_desc: "进度 +1（最大 2）。1 = 波兰武装入侵后（派遣正规军、向协约国控诉、加强对激进派的控制）；2 = 上西里西亚自治组织游行后（支持他们，展现我们的立场 / 局势混乱，还是小心为上）。当前进度：[?GER_region_silesia_stage|0]。"',
+      ' GER_region_test_silesia_crisis_settle: "西里西亚危机：结算"',
+      ' GER_region_test_silesia_crisis_settle_desc: "调用 GER_region_silesia_settle：五条决议里执行过任意一条算成功（1 协约国调停，公投继续），一条都没执行算失败（2 无能的政府？），并弹出对应的结局事件；西里西亚决议全部隐藏，地块保留显示。只结算一次，要再测先点「西里西亚危机：开始」。上次结局：[?GER_region_silesia_result|0]。"',
       ' GER_region_test_silesia_A: "西里西亚 A 方案（1134+762）"',
       ' GER_region_test_silesia_A_desc: "全部区块中立；A、B 两个盖板变量都设为 1，应只显示 A 的一整块斜线（互斥：A 显示时 B 不画）。"',
       ' GER_region_test_silesia_B: "西里西亚 B 方案（762）"',

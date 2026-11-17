@@ -24,6 +24,7 @@ add_namespace = AOR_GER_union_competition
 add_namespace = AOR_GER_weimar_congress
 add_namespace = AOR_the_second_soviet_congress
 add_namespace = AOR_GER_bavaria_crisis
+add_namespace = AOR_GER_silesia_crisis
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 第二届苏维埃代表大会
@@ -1290,6 +1291,201 @@ country_event = {
 				limit = { check_variable = { GER_yihui_inertia < 0 } }
 				set_variable = { GER_yihui_inertia = 0 }
 			}
+		}
+	}
+}
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 西里西亚危机
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1919.8.18 由 common/on_actions/AOR_GER_weimar_on_actions.txt 启动，之后各事件自己按天数排期（钢四没有闰年）。
+# 国中之国（地区博弈）一侧的效果：显示西里西亚、决议进度、结算，见 common/scripted_effects/GER_region_game_actions.txt。
+# 8.18 波兰武装力量入侵的按钮点下去之后，西里西亚才显示在国中之国界面里，进度 1（23 派遣正规军、24 向协约国控诉、25 加强对激进派的控制）；
+# 9.10 游行示威是「支持他们，展现我们的立场 / 局势混乱，还是小心为上」两个选项（原来的 26、27 号决议），不推进进度；10.8 协约国调停结算。
+# 图上的「协约国调停」标的是 1919.10.1，但流程排在 10.5 的「社会民主党的嫌疑？」之后，这里按流程排在 10.8。
+# 结算规则（图注「如果玩家选了一个决议便判定成功」）：三条决议 + 游行时选了「支持他们」，这四项里任意一项 = 成功。
+# 配图：gfx/event_pictures/GER/AOR_GER_silesia_crisis_<事件编号>.png（210x176），在 interface/AOR_GER_events.gfx 注册。
+
+# 1919.8.18 波兰武装力量入侵西里西亚（唯一的弹窗；点按钮直接触发西里西亚危机：西里西亚显示在国中之国界面里，解锁 3 条决议）
+# 危机本身的介绍写进国中之国的面板（还没做），这里不再单独弹一个介绍事件
+country_event = {
+	id = AOR_GER_silesia_crisis.2
+	title = AOR_GER_silesia_crisis.2.t
+	desc = AOR_GER_silesia_crisis.2.desc
+	picture = GFX_AOR_GER_silesia_crisis_2
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_silesia_crisis.3 days = 2 } # 1919.8.20
+		}
+	}
+
+	option = {
+		name = AOR_GER_silesia_crisis.2.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.2.tt
+		custom_effect_tooltip = AOR_GER_silesia_crisis.2.unlock_tt
+		hidden_effect = {
+			set_temp_variable = { GER_region_sil_stage = 1 }
+			GER_region_silesia_raise_stage = yes # 西里西亚从这一刻起显示
+		}
+	}
+}
+
+# 1919.8.20（隐藏事件）75% 当地自发组建民兵队伍
+country_event = {
+	id = AOR_GER_silesia_crisis.3
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			75 = { country_event = { id = AOR_GER_silesia_crisis.4 } }
+			25 = { }
+		}
+		country_event = { id = AOR_GER_silesia_crisis.5 days = 21 } # 1919.9.10
+	}
+}
+
+# 1919.8.20 当地自发组建民兵队伍
+country_event = {
+	id = AOR_GER_silesia_crisis.4
+	title = AOR_GER_silesia_crisis.4.t
+	desc = AOR_GER_silesia_crisis.4.desc
+	picture = GFX_AOR_GER_silesia_crisis_4
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.4.a
+	}
+}
+
+# 1919.9.10 上西里西亚自治组织游行（两个选项：支持他们，展现我们的立场 / 局势混乱，还是小心为上；效果同原来的 26、27 号决议）
+country_event = {
+	id = AOR_GER_silesia_crisis.5
+	title = AOR_GER_silesia_crisis.5.t
+	desc = AOR_GER_silesia_crisis.5.desc
+	picture = GFX_AOR_GER_silesia_crisis_5
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { GER_region_silesia_did_complain = yes }
+				country_event = { id = AOR_GER_silesia_crisis.6 days = 22 } # 1919.10.2（需要完成 向协约国控诉）
+			}
+			country_event = { id = AOR_GER_silesia_crisis.7 days = 25 } # 1919.10.5
+		}
+	}
+
+	option = {
+		name = AOR_GER_silesia_crisis.5.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.5.a.tt
+		hidden_effect = {
+			GER_region_silesia_support_bdo = yes
+		}
+	}
+	option = {
+		name = AOR_GER_silesia_crisis.5.b
+	}
+}
+
+# 1919.10.2 英国对我们的主张表示支持
+country_event = {
+	id = AOR_GER_silesia_crisis.6
+	title = AOR_GER_silesia_crisis.6.t
+	desc = AOR_GER_silesia_crisis.6.desc
+	picture = GFX_AOR_GER_silesia_crisis_6
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.6.a
+	}
+}
+
+# 1919.10.5（隐藏事件）10% 社会民主党的嫌疑？（已完成 加强对激进派的控制 则不判定），三天后结算
+country_event = {
+	id = AOR_GER_silesia_crisis.7
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = AOR_GER_silesia_crisis.9 days = 3 } # 1919.10.8 结算
+		if = {
+			limit = { NOT = { GER_region_silesia_did_suppress = yes } }
+			random_list = {
+				10 = { country_event = { id = AOR_GER_silesia_crisis.8 } }
+				90 = { }
+			}
+		}
+	}
+}
+
+# 社会民主党的嫌疑？：议会协商惯性 -20，极大加强右翼反对
+country_event = {
+	id = AOR_GER_silesia_crisis.8
+	title = AOR_GER_silesia_crisis.8.t
+	desc = AOR_GER_silesia_crisis.8.desc
+	picture = GFX_AOR_GER_silesia_crisis_8
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.8.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.8.tt
+		hidden_effect = {
+			subtract_from_variable = { GER_yihui_inertia = 20 }
+			if = {
+				limit = { check_variable = { GER_yihui_inertia < 0 } }
+				set_variable = { GER_yihui_inertia = 0 }
+			}
+		}
+	}
+}
+
+# 1919.10.8（隐藏事件）结算：三条决议（派遣正规军 / 向协约国控诉 / 加强对激进派的控制）＋ 游行时选了「支持他们」，
+# 这四项里执行过任意一项 = 成功，弹出两个结局之一
+country_event = {
+	id = AOR_GER_silesia_crisis.9
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		GER_region_silesia_settle = yes
+	}
+}
+
+# 结局 1：协约国调停，公投继续（西里西亚控制度 -5，上西里西亚自治获协约国支持）
+country_event = {
+	id = AOR_GER_silesia_crisis.10
+	title = AOR_GER_silesia_crisis.10.t
+	desc = AOR_GER_silesia_crisis.10.desc
+	picture = GFX_AOR_GER_silesia_crisis_10
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.10.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.10.tt
+		hidden_effect = {
+			GER_region_silesia_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+			set_country_flag = GER_silesia_autonomy
+		}
+	}
+}
+
+# 结局 2：无能的政府？（西里西亚转换为右派控制区）
+country_event = {
+	id = AOR_GER_silesia_crisis.11
+	title = AOR_GER_silesia_crisis.11.t
+	desc = AOR_GER_silesia_crisis.11.desc
+	picture = GFX_AOR_GER_silesia_crisis_11
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.11.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.11.tt
+		hidden_effect = {
+			GER_region_silesia_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
 		}
 	}
 }

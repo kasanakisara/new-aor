@@ -92,3 +92,25 @@ GER_region_action_19_visible = { check_variable = { GER_region_bavaria_stage > 2
 GER_region_action_20_visible = { check_variable = { GER_region_bavaria_stage > 2 } }
 GER_region_action_21_visible = { check_variable = { GER_region_bavaria_stage > 3 } }
 GER_region_action_22_visible = { check_variable = { GER_region_bavaria_stage > 3 } }
+
+
+# ================================================================ 西里西亚危机（阶段博弈）
+# 进度 GER_region_silesia_stage：0 刚开始 / 1 入侵后（3 条决议）。9.10 的游行是事件选项，不再是决议
+# 「只在阶段进行中出现」「只在西里西亚出现」「每条只能执行一次」由界面处理（ACTIONS 的 phase / region / max）。
+# 执行过没有（阶段结束后仍然可查，下一次阶段开始时清零）
+GER_region_silesia_did_army = { check_variable = { GER_region_R07_count_23 > 0 } }        # 23 派遣正规军
+GER_region_silesia_did_complain = { check_variable = { GER_region_R07_count_24 > 0 } }    # 24 向协约国控诉
+GER_region_silesia_did_suppress = { check_variable = { GER_region_R07_count_25 > 0 } }    # 25 加强对激进派的控制
+GER_region_silesia_did_bdo = { has_country_flag = GER_silesia_backed_bdo }                # 9.10 游行选了「支持他们，展现我们的立场」
+
+# ---- 能否点击
+GER_region_action_23_allowed = {                  # 派遣正规军：花 5 指挥点数
+    command_power > 4.99
+}
+GER_region_action_24_allowed = { always = yes }
+GER_region_action_25_allowed = { always = yes }
+
+# ---- 是否出现在列表里：随危机进度逐步出现
+GER_region_action_23_visible = { check_variable = { GER_region_silesia_stage > 0 } }
+GER_region_action_24_visible = { check_variable = { GER_region_silesia_stage > 0 } }
+GER_region_action_25_visible = { check_variable = { GER_region_silesia_stage > 0 } }
