@@ -466,6 +466,7 @@ GER_region_bavaria_apply_result = {
 # 地图全开（GER_region_game_open_map）时，各地区开局数值设好之后调用
 GER_region_on_open_map = {
     GER_region_bavaria_apply_result = yes
+    GER_region_silesia_apply_result = yes
 }
 
 # 测试决议「重置」时调用：清掉决议自己的全国状态
@@ -481,4 +482,152 @@ GER_region_actions_on_reset = {
     }
     clr_country_flag = GER_bavaria_crisis_settled
     clr_country_flag = GER_region_bavaria_result_applied
+    clr_country_flag = GER_silesia_crisis_settled
+    clr_country_flag = GER_region_silesia_result_applied
+    clear_variable = GER_region_silesia_result
+}
+
+
+# ================================================================ 西里西亚危机（阶段博弈，gen_region_game.py 的 PHASES）
+# 事件链在 events/AOR_GER_events.txt（namespace AOR_GER_silesia_crisis），由它调用下面这些（都在 GER 作用域）：
+#   1919.8.18  .1   波兰武装力量入侵西里西亚！
+#   1919.8.18  .2   触发危机：西里西亚遭入侵     按钮点下去 GER_region_silesia_reveal：西里西亚显示出来并选中（摇摆区、领导人比塔），
+#                                              进度 1：23 派遣正规军、24 向协约国控诉、25 加强对激进派的控制
+#   1919.8.20  .3   （隐藏）75% → .4 当地自发组建民兵队伍
+#   1919.9.10  .5   上西里西亚自治组织游行        进度 2：26 支持他们，展现我们的立场、27 局势混乱，还是小心为上
+#   1919.10.2  .6   英国对我们的主张表示支持      （需已执行 24 向协约国控诉，否则这一天不弹事件）
+#   1919.10.5  .7   （隐藏）10% → .8 社会民主党的嫌疑？（已执行 25 加强对激进派的控制 则不判定）
+#   1919.10.8  .9   （隐藏）GER_region_silesia_settle：算出结局 GER_region_silesia_result，弹出结局事件 .10 / .11
+# 图上的「协约国调停」标的是 1919.10.1，但流程排在 10.5 的「社会民主党的嫌疑？」之后，这里按流程排在 10.8。
+# 结算规则（图注「如果玩家选了一个决议便判定成功」）：五条决议里执行过任意一条 = 成功（结局 1），一条都没执行 = 失败（结局 2）。
+# 进度：set_temp_variable = { GER_region_sil_stage = N } 再 GER_region_silesia_raise_stage = yes（只升不降；各条决议在第几档出现见
+# scripted_triggers 里的 _visible）。
+# 每条决议只能执行一次；执行过没有用 scripted_triggers 里的 GER_region_silesia_did_xxx 查（结束后仍然可查）。
+# 西里西亚是冻结地区（gen_region_game.py 的 FROZEN）：要加支持度 / 控制度得先 set_temp_variable = { GER_region_force = 1 }。
+# 结局：成功后西里西亚控制度 -5（促进自治，旗标 GER_silesia_autonomy）；失败后西里西亚转换为右派控制区（帧 9）。
+# 地图还没全开时结局也直接生效；之后地图全开会把西里西亚改回开局值，所以 GER_region_on_open_map 里再补一次（幂等）。
+
+# ======== 23 派遣正规军（5cp，立即，一次）：该地区控制度 +3（西里西亚是冻结地区，先打开 force）
+GER_region_action_23 = {
+    set_temp_variable = { GER_region_force = 1 }
+    set_temp_variable = { GER_region_delta = 3 }
+    GER_region_R07_add_control = yes
+    set_temp_variable = { GER_region_force = 0 }
+}
+
+# ======== 24 向协约国控诉（5pp，立即，一次）：只影响 10.2 的「英国对我们的主张表示支持」与结局
+GER_region_action_24 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 25 加强对激进派的控制（50pp，立即，一次）：只影响 10.5 的「社会民主党的嫌疑？」（执行过就不判定）
+GER_region_action_25 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 26 支持他们，展现我们的立场（25pp，立即，一次）：支持度 +5（打开 force）、控制度 -5、开始自治（旗标 GER_silesia_autonomy）
+GER_region_action_26 = {
+    set_temp_variable = { GER_region_force = 1 }
+    set_temp_variable = { GER_region_delta = 5 }
+    GER_region_R07_add_support = yes
+    set_temp_variable = { GER_region_force = 0 }
+    set_temp_variable = { GER_region_delta = -5 }
+    GER_region_R07_add_control = yes
+    set_country_flag = GER_silesia_autonomy
+}
+
+# ======== 27 局势混乱，还是小心为上（5pp，立即，一次）：不做任何事，只影响结局
+GER_region_action_27 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# 阶段开始时：清掉上一次的结局和事件旗标（重复测试用）
+GER_region_silesia_on_start = {
+    clear_variable = GER_region_silesia_result
+    clr_country_flag = GER_silesia_crisis_settled
+    clr_country_flag = GER_region_silesia_result_applied
+}
+# 阶段结束：没有还在生效的修正要撤，留一句占位（scripted_effect 不能是空的）
+GER_region_silesia_on_end = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# 8.18「触发危机」的按钮点下去：西里西亚显示出来并选中，右侧只显示西里西亚的决议。
+# 已经显示、或者已经结算过，什么都不做。
+GER_region_silesia_reveal = {
+    if = {
+        limit = {
+            NOT = { has_country_flag = GER_region_silesia_phase }
+            NOT = { has_country_flag = GER_silesia_crisis_settled }
+        }
+        if = {
+            limit = { NOT = { has_country_flag = GER_region_map_opened } }
+            GER_region_game_silesia_start = yes   # 生成的：开放西里西亚、设阶段旗标、选中它
+        }
+        else = {
+            # 地图已经全开了：西里西亚本来就在界面上，别再按开局值重设一遍，只补阶段旗标、清掉执行记录
+            set_country_flag = GER_region_silesia_phase
+            set_variable = { GER_region_silesia_stage = 0 }
+            clear_variable = GER_region_R07_count_23
+            clear_variable = GER_region_R07_count_24
+            clear_variable = GER_region_R07_count_25
+            clear_variable = GER_region_R07_count_26
+            clear_variable = GER_region_R07_count_27
+            GER_region_silesia_on_start = yes
+            set_variable = { GER_region_selected = 7 }
+        }
+    }
+}
+# 进度升到 GER_region_sil_stage（temp，1-2；只升不降），右侧列表随之刷新。西里西亚还没显示的话先显示出来
+GER_region_silesia_raise_stage = {
+    GER_region_silesia_reveal = yes
+    if = {
+        limit = { check_variable = { GER_region_silesia_stage < GER_region_sil_stage } }
+        set_variable = { GER_region_silesia_stage = GER_region_sil_stage }
+    }
+    GER_region_game_sync_selected = yes
+}
+
+# 结算（10.8）：五条决议里执行过任意一条 = 成功（1），一条都没执行 = 失败（2）。只结算一次。
+GER_region_silesia_settle = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_silesia_crisis_settled } }
+        set_country_flag = GER_silesia_crisis_settled
+        set_temp_variable = { GER_region_sil_done = 0 }
+        if = { limit = { GER_region_silesia_did_army = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_complain = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_suppress = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_bdo = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_caution = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = {
+            limit = { check_variable = { GER_region_sil_done > 0 } }
+            set_variable = { GER_region_silesia_result = 1 }
+        }
+        else = {
+            set_variable = { GER_region_silesia_result = 2 }
+        }
+        GER_region_game_silesia_end = yes   # 西里西亚决议全部隐藏，地块保留
+        if = { limit = { check_variable = { GER_region_silesia_result = 1 } } country_event = { id = AOR_GER_silesia_crisis.10 } }
+        else = { country_event = { id = AOR_GER_silesia_crisis.11 } }
+    }
+}
+
+# 结局对西里西亚的影响（结局事件的按钮里调用，调用后要跑 GER_region_game_sync_frames）。幂等：
+#   1 协约国调停，公投继续  控制度 -5（负值不需要 force），旗标 GER_silesia_autonomy
+#   2 无能的政府？          西里西亚转换为右派控制区（帧 9）
+GER_region_silesia_apply_result = {
+    if = {
+        limit = { has_country_flag = GER_silesia_crisis_settled }
+        set_country_flag = GER_region_silesia_result_applied
+        if = {
+            limit = { check_variable = { GER_region_silesia_result = 1 } }
+            set_temp_variable = { GER_region_delta = -5 }
+            GER_region_R07_add_control = yes
+            set_country_flag = GER_silesia_autonomy
+        }
+        if = {
+            limit = { check_variable = { GER_region_silesia_result = 2 } }
+            set_variable = { GER_region_R07_state = 9 }
+        }
+    }
 }
