@@ -1,0 +1,10 @@
+# 地区博弈 · 行动方针用的全国修正（手写）
+# 发起罢工：任一地区罢工进行中时生效（GER_region_strikes_active > 0），最后一个罢工结束时移除
+GER_region_strike_modifier = {
+    icon = GFX_idea_FRA_factory_strikes
+    production_speed_buildings_factor = -0.8
+}
+# 巴伐利亚危机 · 撤出SPD优秀分子：生效的 7 天里每日政治点数 -0.25（不写 icon：不显示成民族精神）
+GER_region_bavaria_withdraw_modifier = {
+    political_power_gain = -0.25
+}

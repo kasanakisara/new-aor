@@ -1,0 +1,627 @@
+# 地区博弈 · 行动方针（决议）的效果（手写；tools/GER_region_game/gen_region_game.py 只在末尾补缺的钩子，不改已有内容）
+#
+# 已由界面自动处理（不用在这里写）：扣政治点数、按天计时、生效中显示暗黄、驻区方针切换、每个地区的执行次数上限。
+# 编号、名字、花费、天数、次数上限、只在哪个地区出现：gen_region_game.py 的 ACTIONS。
+#
+# 钩子（都在本国 GER 作用域执行；被操作的地区 = 变量 GER_region_target）：
+#   GER_region_action_N            点击时（政治点数已扣）
+#   GER_region_action_N_complete   计时结束那天（有生效天数的日常决议）
+#   GER_region_action_N_biweekly   生效期间每满 14 天（生效 >= 14 天的日常决议、驻区方针）
+#   GER_region_action_N_daily      生效期间每天（驻区方针）
+# 小工具（先 set_temp_variable = { GER_region_delta = X } 或 { GER_region_value = X }，再调用；见 GER_region_game_effects.txt）：
+#   GER_region_target_add_support / _add_control          目标地区支持度 / 控制度 + delta（夹在 0-100，控制度不低于下限）
+#   GER_region_Rxx_add_support / _add_control             指定地区（R01 威悉-埃姆斯 …… R16 大柏林）
+#   GER_region_target_neighbors_add_control               目标地区的相邻地区控制度 + delta
+#   GER_region_target_add_control_growth                  目标地区永久「每两周控制度」+ delta
+#   GER_region_target_set_state                           目标地区类型 = value（帧号：2 摇摆 3 左核 8 左控 ……）
+#   GER_region_target_set_control_floor                   目标地区控制度下限 = value
+# 注意：scripted_effect 不能是空的（实测空的引擎不认，点击会整段失效），每个钩子里至少留一句。
+# 悬停介绍写在 localisation/simp_chinese/gui/GER_region_game_panel_l_simp_chinese.yml 的 GER_region_panel_row_N_tt，改了效果记得同步。
+
+# ======== 1 扩大宣传投入（10pp，耗时 7 天）：支持度 +3
+GER_region_action_1 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 点击时没有效果
+}
+GER_region_action_1_complete = {
+    set_temp_variable = { GER_region_delta = 3 }
+    GER_region_target_add_support = yes
+}
+
+# ======== 2 扩张防卫组织（10pp，耗时 7 天）：控制度 +3
+GER_region_action_2 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_2_complete = {
+    set_temp_variable = { GER_region_delta = 3 }
+    GER_region_target_add_control = yes
+}
+
+# ======== 7 工厂委员会的扩张（15pp，耗时 7 天）：控制度 +5
+GER_region_action_7 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_7_complete = {
+    set_temp_variable = { GER_region_delta = 5 }
+    GER_region_target_add_control = yes
+}
+
+# ======== 3 组织网络的扩展（20pp，持续 168 天 = 24 周）：每两周控制度 +0.4
+GER_region_action_3 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_3_biweekly = {
+    set_temp_variable = { GER_region_delta = 0.4 }
+    GER_region_target_add_control = yes
+}
+GER_region_action_3_complete = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 4 推动公共事业（25pp，持续 168 天）：每两周支持度 +0.4；点击时 SPD 随机一个派别党内支持度 +5
+GER_region_action_4 = {
+    random_list = {
+        1 = { add_to_variable = { GER_SPD_left_support = 5 } }
+        1 = { add_to_variable = { GER_SPD_center_support = 5 } }
+        1 = { add_to_variable = { GER_SPD_right_support = 5 } }
+    }
+    GER_SPD_refresh_support_effect = yes
+}
+GER_region_action_4_biweekly = {
+    set_temp_variable = { GER_region_delta = 0.4 }
+    GER_region_target_add_support = yes
+}
+GER_region_action_4_complete = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 5 组织重心向工厂转移（15pp，耗时 14 天，党改革后解锁，每个地区最多 2 次）：完成后该地区永久每两周控制度 +0.02
+GER_region_action_5 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_5_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }   # 14 天整好在结束当天触发一次，效果放在 _complete
+}
+GER_region_action_5_complete = {
+    set_temp_variable = { GER_region_delta = 0.02 }
+    GER_region_target_add_control_growth = yes
+}
+
+# ======== 6 发起罢工（70pp，耗时 14 天）：期间建造速度 -80%（全国，见 GER_region_strike_modifier）；结束时控制度 +5、支持度 +5
+# 长冷却：每个地区从点击起 120 天（界面自动处理，天数在 gen_region_game.py 的 ACTIONS 里改）
+GER_region_action_6 = {
+    add_to_variable = { GER_region_strikes_active = 1 }
+    if = {
+        limit = { NOT = { has_dynamic_modifier = { modifier = GER_region_strike_modifier } } }
+        add_dynamic_modifier = { modifier = GER_region_strike_modifier }
+    }
+}
+GER_region_action_6_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_6_complete = {
+    set_temp_variable = { GER_region_delta = 5 }
+    GER_region_target_add_control = yes
+    GER_region_target_add_support = yes
+    subtract_from_variable = { GER_region_strikes_active = 1 }
+    if = {
+        limit = { check_variable = { GER_region_strikes_active < 1 } }
+        set_variable = { GER_region_strikes_active = 0 }
+        remove_dynamic_modifier = { modifier = GER_region_strike_modifier }
+    }
+}
+
+# ======== 8 影子苏维埃（60pp，立即）：摇摆区、支持度 >= 50、控制度 >= 80 时可用；该地区转为左派控制区，控制度不再低于 80
+GER_region_action_8 = {
+    set_temp_variable = { GER_region_value = 8 }
+    GER_region_target_set_state = yes
+    set_temp_variable = { GER_region_value = 80 }
+    GER_region_target_set_control_floor = yes
+}
+
+# ======== 9 扩充安全部队（驻区方针）：每两周控制度 +0.2
+GER_region_action_9 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_9_biweekly = {
+    set_temp_variable = { GER_region_delta = 0.2 }
+    GER_region_target_add_control = yes
+}
+GER_region_action_9_daily = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 10 总结政权经验（驻区方针）：每两周无产阶级组织度 +2%（社会化）
+GER_region_action_10 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_10_biweekly = {
+    add_to_variable = { GER_socialization_organization = 2 }
+    GER_socialization_refresh_bars = yes
+}
+GER_region_action_10_daily = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 11 培训根据地干部（驻区方针）：每日政治点数 +0.3
+GER_region_action_11 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_11_biweekly = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_11_daily = {
+    add_political_power = 0.3
+}
+
+# ======== 12 支援邻近地区（驻区方针）：相邻地区每两周控制度 +1
+GER_region_action_12 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_12_biweekly = {
+    set_temp_variable = { GER_region_delta = 1 }
+    GER_region_target_neighbors_add_control = yes
+}
+GER_region_action_12_daily = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 13 红色海军网络（驻区方针，只在汉堡-石荷，造船业社会化后可用）：
+# 威悉-埃姆斯每两周控制度 +0.8；当地以及威悉-埃姆斯每两周控制度 +0.1（原为武装力量，改成控制度）
+GER_region_action_13 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_13_biweekly = {
+    set_temp_variable = { GER_region_delta = 0.8 }
+    GER_region_R01_add_control = yes
+    set_temp_variable = { GER_region_delta = 0.1 }
+    GER_region_R01_add_control = yes
+    GER_region_R03_add_control = yes
+}
+GER_region_action_13_daily = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 14 与基督教社会主义者交好（驻区方针，只在鲁尔）：威斯特法伦每两周控制度 +0.5、支持度 +0.5
+GER_region_action_14 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+GER_region_action_14_biweekly = {
+    set_temp_variable = { GER_region_delta = 0.5 }
+    GER_region_R15_add_control = yes
+    GER_region_R15_add_support = yes
+}
+GER_region_action_14_daily = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ================================================================ 巴伐利亚危机（阶段博弈，gen_region_game.py 的 PHASES）
+# 事件链在 events/AOR_GER_events.txt（namespace AOR_GER_bavaria_crisis），由它调用下面这些（都在 GER 作用域）：
+# 巴伐利亚要到 4.5 的事件点击后才显示在界面里：在那之前界面一直是待机状态，类型 / 领导人只在背地里记着（GER_region_R09_state / _leader）。
+#   1920.1.12  .1   在巴伐利亚的失败          GER_region_bavaria_prepare：背地里记下 魏玛联盟控制区、领导人霍夫曼（不显示）
+#   1920.1.19  .2   巴伐利亚人民党脱离中央党
+#   1920.2.14  .3   古斯塔夫·冯·卡尔
+#   1920.2.21  .4   霍夫曼遇刺                GER_region_bavaria_leader_killed：背地里领导人清空
+#   1920.2.23  .5   冯·卡尔加强管制           GER_region_bavaria_turn_right：背地里转换为右派控制区
+#   1920.4.5   .6   “艾舍里希组织”成立        点击按钮后 GER_region_bavaria_reveal：巴伐利亚显示出来（这时是右派控制区、无领导人）、选中它，
+#                                             右侧只显示巴伐利亚决议；进度 1：15 调停SPD内部冲突、16 对巴伐利亚施压
+#   1920.5.13  .8   协约国发表警告            进度 2：17 向协约国提交巴伐利亚报告、18 采取保守态势
+#   1920.6.2   .9   又一起凶杀案              进度 3：19 宣布抵制恐怖袭击、20 撤出SPD优秀分子
+#   1920.6.8   .10  （隐藏）20% → .11 巴伐利亚-巴黎通信；50% → .12 奥地利的阴影；30% 无事发生
+#   1920.6.10  .13  协约国再度警告            进度 4：21 向巴伐利亚发动最后通牒、22 依靠协约国施压
+#   1920.6.25  .15  （隐藏）80% → .16 革命的敲门声（7.3 结算时直接最坏结局）；六项条件满足两项则不触发
+#   1920.7.3   .17  （隐藏）GER_region_bavaria_settle：算出结局 GER_region_bavaria_result（1-4），弹出结局事件 .18 / .19 / .20 / .21
+#   决议 16 对巴伐利亚施压 → .7 柏林威严何在？      决议 21 向巴伐利亚发动最后通牒 → 三天后 .14 “巴伐利亚散播妥协信号”
+# 进度：set_temp_variable = { GER_region_bav_stage = N } 再 GER_region_bavaria_raise_stage = yes（只升不降；各条决议在第几档出现见
+# scripted_triggers 里的 _visible）。
+# 每条决议只能执行一次；执行过没有用 scripted_triggers 里的 GER_region_bavaria_did_xxx 查（结束后仍然可查）。
+# 结算后：巴伐利亚决议全部隐藏，巴伐利亚地块保留显示（PHASES 的 keep_open）；四个结局都会把巴伐利亚转换为右派核心区
+# （结局事件的按钮里调用 GER_region_bavaria_turn_core）。
+# 事件给结算用的旗标（事件触发时 set_country_flag）：
+#   GER_bavaria_paris_letter      「巴伐利亚-巴黎通信」事件
+#   GER_bavaria_austria_shadow    「奥地利的阴影」事件
+#   GER_bavaria_revolution_knock  「革命的敲门声」事件（7.3 结算时直接最坏结局）
+#   GER_bavaria_crisis_settled    已经结算过（只结算一次）
+# 改了决议效果记得同步悬停介绍（GER_region_panel_row_N_tt）。
+
+# ======== 15 调停SPD内部冲突（100pp，立即，一次）
+GER_region_action_15 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 只影响结局
+}
+
+# ======== 16 对巴伐利亚施压（25pp，立即，一次）：触发事件「柏林威严何在？」
+GER_region_action_16 = {
+    country_event = { id = AOR_GER_bavaria_crisis.7 }
+}
+
+# ======== 17 向协约国提交巴伐利亚报告（5pp，立即，一次；需已执行 15 和 16）
+GER_region_action_17 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 只影响结局
+}
+
+# ======== 18 采取保守态势（25pp，立即，一次）：党内团结度 -10%，议会协商惯性 +10
+GER_region_action_18 = {
+    subtract_from_variable = { GER_SPD_unity = 10 }
+    GER_SPD_refresh_unity_effect = yes
+    add_to_variable = { GER_yihui_inertia = 10 }
+}
+
+# ======== 19 宣布抵制恐怖袭击（5pp，立即，一次）
+GER_region_action_19 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 只影响结局
+}
+
+# ======== 20 撤出SPD优秀分子（50pp，持续 7 天，一次）：期间每日政治点数 -0.25（GER_region_bavaria_withdraw_modifier）
+GER_region_action_20 = {
+    if = {
+        limit = { NOT = { has_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier } } }
+        add_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier }
+    }
+}
+GER_region_action_20_complete = {
+    if = {
+        limit = { has_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier } }
+        remove_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier }
+    }
+}
+
+# ======== 21 向巴伐利亚发动最后通牒（5pp，立即，一次）：三天后触发事件「“巴伐利亚散播妥协信号”」
+GER_region_action_21 = {
+    country_event = { id = AOR_GER_bavaria_crisis.14 days = 3 }
+}
+
+# ======== 22 依靠协约国施压（25pp，立即，一次）
+GER_region_action_22 = {
+    set_temp_variable = { GER_region_noop = 1 }   # 只影响结局
+}
+
+# 阶段开始时：清掉上一次的结局和事件旗标（重复测试用）
+GER_region_bavaria_on_start = {
+    clear_variable = GER_region_bavaria_result
+    clr_country_flag = GER_bavaria_paris_letter
+    clr_country_flag = GER_bavaria_austria_shadow
+    clr_country_flag = GER_bavaria_revolution_knock
+    clr_country_flag = GER_bavaria_crisis_settled
+    clr_country_flag = GER_region_bavaria_result_applied
+}
+# 阶段结束时：「撤出SPD优秀分子」还没到期的话一并结束
+GER_region_bavaria_on_end = {
+    if = {
+        limit = { has_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier } }
+        remove_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier }
+    }
+}
+
+# ---- 4.5 之前：巴伐利亚不显示（GER_region_R09_open 不设），界面保持待机；下面三个只在背地里记类型 / 领导人，显示时沿用
+# 1.12 在巴伐利亚的失败：魏玛联盟控制区（帧 10）、领导人霍夫曼（LEADERS 第 13 位）
+GER_region_bavaria_prepare = {
+    if = {
+        limit = { NOT = { check_variable = { GER_region_R09_open = 1 } } }
+        set_variable = { GER_region_R09_state = 10 }
+        set_variable = { GER_region_R09_leader = 13 }
+    }
+}
+# 2.21 霍夫曼遇刺：领导人清空
+GER_region_bavaria_leader_killed = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_region_map_opened } }
+        set_variable = { GER_region_R09_leader = 0 }
+        if = { limit = { check_variable = { GER_region_R09_open = 1 } } GER_region_game_sync_frames = yes }
+    }
+}
+# 2.23 冯·卡尔加强管制：转换为右派控制区（帧 9）
+GER_region_bavaria_turn_right = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_region_map_opened } }
+        set_variable = { GER_region_R09_state = 9 }
+        if = { limit = { check_variable = { GER_region_R09_open = 1 } } GER_region_game_sync_frames = yes }
+    }
+}
+# 4.5 “艾舍里希组织”成立点击后：巴伐利亚显示出来并选中，右侧只显示巴伐利亚决议。
+# 类型 / 领导人沿用背地里记的；没记过（例如控制台单独触发后面的事件）或地图已经全开，就按 2.23 之后的样子：右派控制区、无领导人。
+# 已经显示、或者已经结算过，什么都不做。
+GER_region_bavaria_reveal = {
+    if = {
+        limit = {
+            NOT = { has_country_flag = GER_region_bavaria_phase }
+            NOT = { has_country_flag = GER_bavaria_crisis_settled }
+        }
+        set_temp_variable = { GER_region_bav_state = 9 }
+        set_temp_variable = { GER_region_bav_leader = 0 }
+        if = {
+            limit = {
+                check_variable = { GER_region_R09_state > 0 }
+                NOT = { has_country_flag = GER_region_map_opened }
+            }
+            set_temp_variable = { GER_region_bav_state = GER_region_R09_state }
+            set_temp_variable = { GER_region_bav_leader = GER_region_R09_leader }
+        }
+        GER_region_game_bavaria_start = yes   # 生成的：开放巴伐利亚、设阶段旗标、选中它（类型 / 领导人会被设成 PHASES 的初始值，下面改回来）
+        set_variable = { GER_region_R09_state = GER_region_bav_state }
+        set_variable = { GER_region_R09_leader = GER_region_bav_leader }
+        GER_region_game_sync_frames = yes
+    }
+}
+# 进度升到 GER_region_bav_stage（temp，1-4；只升不降），右侧列表随之刷新。巴伐利亚还没显示的话先显示出来
+GER_region_bavaria_raise_stage = {
+    GER_region_bavaria_reveal = yes
+    if = {
+        limit = { check_variable = { GER_region_bavaria_stage < GER_region_bav_stage } }
+        set_variable = { GER_region_bavaria_stage = GER_region_bav_stage }
+    }
+    GER_region_game_sync_selected = yes
+}
+
+# 结算（7 月 3 日）：结局写进 GER_region_bavaria_result，隐藏巴伐利亚决议，弹出结局事件。只结算一次。
+#   1 社会民主党的再一次胜利  执行了 调停、抵制恐怖袭击、撤出优秀分子、最后通牒、依靠协约国施压，且触发过「巴伐利亚-巴黎通信」
+#   2 冲突和平落幕            抵制恐怖袭击 / 撤出优秀分子 / 最后通牒 / 保守态势 里至少两条；且执行了 依靠协约国施压 和 调停；
+#                             且（执行了最后通牒，或触发过「巴伐利亚-巴黎通信」，或触发过「奥地利的阴影」）
+#   3 苦涩的和平              任意两条决议；或执行了依靠协约国施压；或触发过上面两个事件之一
+#   4 在巴伐利亚的全面溃败    以上都不满足，或触发过「革命的敲门声」
+# 结局的效果写在结局事件（AOR_GER_bavaria_crisis.18-.21）的按钮里；巴伐利亚自己见 GER_region_bavaria_turn_core，
+# 对周边地区的影响见 GER_region_bavaria_apply_result。
+GER_region_bavaria_settle = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_bavaria_crisis_settled } }
+        set_country_flag = GER_bavaria_crisis_settled
+        set_temp_variable = { GER_region_bav_done = 0 }   # 一共执行了几条
+        set_temp_variable = { GER_region_bav_four = 0 }   # 结局 2 的那四条里执行了几条
+        if = { limit = { GER_region_bavaria_did_mediate = yes } add_to_temp_variable = { GER_region_bav_done = 1 } }
+        if = { limit = { GER_region_bavaria_did_pressure = yes } add_to_temp_variable = { GER_region_bav_done = 1 } }
+        if = { limit = { GER_region_bavaria_did_report = yes } add_to_temp_variable = { GER_region_bav_done = 1 } }
+        if = { limit = { GER_region_bavaria_did_conservative = yes } add_to_temp_variable = { GER_region_bav_done = 1 } add_to_temp_variable = { GER_region_bav_four = 1 } }
+        if = { limit = { GER_region_bavaria_did_denounce_terror = yes } add_to_temp_variable = { GER_region_bav_done = 1 } add_to_temp_variable = { GER_region_bav_four = 1 } }
+        if = { limit = { GER_region_bavaria_did_withdraw = yes } add_to_temp_variable = { GER_region_bav_done = 1 } add_to_temp_variable = { GER_region_bav_four = 1 } }
+        if = { limit = { GER_region_bavaria_did_ultimatum = yes } add_to_temp_variable = { GER_region_bav_done = 1 } add_to_temp_variable = { GER_region_bav_four = 1 } }
+        if = { limit = { GER_region_bavaria_did_entente = yes } add_to_temp_variable = { GER_region_bav_done = 1 } }
+        if = {
+            limit = { has_country_flag = GER_bavaria_revolution_knock }
+            set_variable = { GER_region_bavaria_result = 4 }
+        }
+        else_if = {
+            limit = {
+                GER_region_bavaria_did_mediate = yes
+                GER_region_bavaria_did_denounce_terror = yes
+                GER_region_bavaria_did_withdraw = yes
+                GER_region_bavaria_did_ultimatum = yes
+                GER_region_bavaria_did_entente = yes
+                has_country_flag = GER_bavaria_paris_letter
+            }
+            set_variable = { GER_region_bavaria_result = 1 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { GER_region_bav_four > 1 }
+                GER_region_bavaria_did_entente = yes
+                GER_region_bavaria_did_mediate = yes
+                OR = {
+                    GER_region_bavaria_did_ultimatum = yes
+                    has_country_flag = GER_bavaria_paris_letter
+                    has_country_flag = GER_bavaria_austria_shadow
+                }
+            }
+            set_variable = { GER_region_bavaria_result = 2 }
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    check_variable = { GER_region_bav_done > 1 }
+                    GER_region_bavaria_did_entente = yes
+                    has_country_flag = GER_bavaria_paris_letter
+                    has_country_flag = GER_bavaria_austria_shadow
+                }
+            }
+            set_variable = { GER_region_bavaria_result = 3 }
+        }
+        else = {
+            set_variable = { GER_region_bavaria_result = 4 }
+        }
+        GER_region_game_bavaria_end = yes   # 巴伐利亚决议全部隐藏，地块保留
+        if = { limit = { check_variable = { GER_region_bavaria_result = 1 } } country_event = { id = AOR_GER_bavaria_crisis.18 } }
+        else_if = { limit = { check_variable = { GER_region_bavaria_result = 2 } } country_event = { id = AOR_GER_bavaria_crisis.19 } }
+        else_if = { limit = { check_variable = { GER_region_bavaria_result = 3 } } country_event = { id = AOR_GER_bavaria_crisis.20 } }
+        else = { country_event = { id = AOR_GER_bavaria_crisis.21 } }
+    }
+}
+
+# 四个结局共同的效果（结局事件的按钮里调用，调用后要跑 GER_region_game_sync_frames）：巴伐利亚转换为右派核心区（帧 4）。
+# 核心区不显示数值；背地里的支持度 / 控制度和地图全开时的右派核心区一样设成 0 / 0（gen_region_game.py 的 HIDDEN_VALUES）。
+GER_region_bavaria_turn_core = {
+    set_variable = { GER_region_R09_state = 4 }
+    set_variable = { GER_region_R09_support = 0 }
+    set_variable = { GER_region_R09_control = 0 }
+}
+
+# 结局对周边地区的影响（结局事件的按钮里调用，调用后要跑 GER_region_game_sync_frames）。只做一次。
+# 地图还没全开时周边地区还没开放：先不做，等 GER_region_game_open_map 设好各地区的开局数值后由 GER_region_on_open_map 补做。
+#   2 冲突和平落幕  巴伐利亚周边地区（相邻关系见 gen_region_game.py 的 ADJ：图林根-萨克森 R08、巴登-符腾堡 R10、黑森 R11）支持度、控制度 -10
+#   3 苦涩的和平    同上，-50
+#   4 全面溃败      黑森（R11）转换为右派控制区（帧 9）
+GER_region_bavaria_apply_result = {
+    if = {
+        limit = {
+            has_country_flag = GER_region_map_opened
+            has_country_flag = GER_bavaria_crisis_settled
+            NOT = { has_country_flag = GER_region_bavaria_result_applied }
+        }
+        set_country_flag = GER_region_bavaria_result_applied
+        set_temp_variable = { GER_region_delta = 0 }
+        if = { limit = { check_variable = { GER_region_bavaria_result = 2 } } set_temp_variable = { GER_region_delta = -10 } }
+        if = { limit = { check_variable = { GER_region_bavaria_result = 3 } } set_temp_variable = { GER_region_delta = -50 } }
+        if = {
+            limit = { check_variable = { GER_region_delta < 0 } }
+            GER_region_R08_add_support = yes
+            GER_region_R08_add_control = yes
+            GER_region_R10_add_support = yes
+            GER_region_R10_add_control = yes
+            GER_region_R11_add_support = yes
+            GER_region_R11_add_control = yes
+        }
+        if = {
+            limit = { check_variable = { GER_region_bavaria_result = 4 } }
+            set_variable = { GER_region_R11_state = 9 }
+        }
+    }
+}
+
+# 地图全开（GER_region_game_open_map）时，各地区开局数值设好之后调用
+GER_region_on_open_map = {
+    GER_region_bavaria_apply_result = yes
+    GER_region_silesia_apply_result = yes
+}
+
+# 测试决议「重置」时调用：清掉决议自己的全国状态
+GER_region_actions_on_reset = {
+    set_variable = { GER_region_strikes_active = 0 }
+    if = {
+        limit = { has_dynamic_modifier = { modifier = GER_region_strike_modifier } }
+        remove_dynamic_modifier = { modifier = GER_region_strike_modifier }
+    }
+    if = {
+        limit = { has_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier } }
+        remove_dynamic_modifier = { modifier = GER_region_bavaria_withdraw_modifier }
+    }
+    clr_country_flag = GER_bavaria_crisis_settled
+    clr_country_flag = GER_region_bavaria_result_applied
+    clr_country_flag = GER_silesia_crisis_settled
+    clr_country_flag = GER_region_silesia_result_applied
+    clear_variable = GER_region_silesia_result
+}
+
+
+# ================================================================ 西里西亚危机（阶段博弈，gen_region_game.py 的 PHASES）
+# 事件链在 events/AOR_GER_events.txt（namespace AOR_GER_silesia_crisis），由它调用下面这些（都在 GER 作用域）：
+#   1919.8.18  .2   波兰武装力量入侵西里西亚！   按钮点下去 GER_region_silesia_reveal：西里西亚显示出来并选中（摇摆区、领导人比塔），
+#                                              进度 1：23 派遣正规军、24 向协约国控诉、25 加强对激进派的控制
+#   1919.8.20  .3   （隐藏）75% → .4 当地自发组建民兵队伍
+#   1919.9.10  .5   上西里西亚自治组织游行        两个选项：支持他们，展现我们的立场（原地 26 号决议）/ 局势混乱，还是小心为上
+#   1919.10.2  .6   英国对我们的主张表示支持      （需已执行 24 向协约国控诉，否则这一天不弹事件）
+#   1919.10.5  .7   （隐藏）10% → .8 社会民主党的嫌疑？（已执行 25 加强对激进派的控制 则不判定）
+#   1919.10.8  .9   （隐藏）GER_region_silesia_settle：算出结局 GER_region_silesia_result，弹出结局事件 .10 / .11
+# 图上的「协约国调停」标的是 1919.10.1，但流程排在 10.5 的「社会民主党的嫌疑？」之后，这里按流程排在 10.8。
+# 结算规则（图注「如果玩家选了一个决议便判定成功」）：三条决议 + 游行时选了「支持他们」，这四项里任意一项 = 成功（结局 1），都没有 = 失败（结局 2）。
+# 进度：set_temp_variable = { GER_region_sil_stage = 1 } 再 GER_region_silesia_raise_stage = yes（进度只有 1 档；决议在第几档出现见
+# scripted_triggers 里的 _visible）。
+# 每条决议只能执行一次；执行过没有用 scripted_triggers 里的 GER_region_silesia_did_xxx 查（结束后仍然可查）。
+# 西里西亚是冻结地区（gen_region_game.py 的 FROZEN）：要加支持度 / 控制度得先 set_temp_variable = { GER_region_force = 1 }。
+# 结局：成功后西里西亚控制度 -5（促进自治，旗标 GER_silesia_autonomy）；失败后西里西亚转换为右派控制区（帧 9）。
+# 地图还没全开时结局也直接生效；之后地图全开会把西里西亚改回开局值，所以 GER_region_on_open_map 里再补一次（幂等）。
+
+# ======== 23 派遣正规军（5cp，立即，一次）：该地区控制度 +3（西里西亚是冻结地区，先打开 force）
+GER_region_action_23 = {
+    set_temp_variable = { GER_region_force = 1 }
+    set_temp_variable = { GER_region_delta = 3 }
+    GER_region_R07_add_control = yes
+    set_temp_variable = { GER_region_force = 0 }
+}
+
+# ======== 24 向协约国控诉（5pp，立即，一次）：只影响 10.2 的「英国对我们的主张表示支持」与结局
+GER_region_action_24 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 25 加强对激进派的控制（50pp，立即，一次）：只影响 10.5 的「社会民主党的嫌疑？」（执行过就不判定）
+GER_region_action_25 = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# ======== 9.10「上西里西亚自治组织游行」的选项 A「支持他们，展现我们的立场」（原 26 号决议，效果不变）：
+# 支持度 +5（打开 force）、控制度 -5、开始自治（旗标 GER_silesia_autonomy），并记进结算的成功条件
+GER_region_silesia_support_bdo = {
+    set_temp_variable = { GER_region_force = 1 }
+    set_temp_variable = { GER_region_delta = 5 }
+    GER_region_R07_add_support = yes
+    set_temp_variable = { GER_region_force = 0 }
+    set_temp_variable = { GER_region_delta = -5 }
+    GER_region_R07_add_control = yes
+    set_country_flag = GER_silesia_autonomy
+    set_country_flag = GER_silesia_backed_bdo
+}
+
+# 阶段开始时：清掉上一次的结局和事件旗标（重复测试用）
+GER_region_silesia_on_start = {
+    clear_variable = GER_region_silesia_result
+    clr_country_flag = GER_silesia_backed_bdo
+    clr_country_flag = GER_silesia_crisis_settled
+    clr_country_flag = GER_region_silesia_result_applied
+}
+# 阶段结束：没有还在生效的修正要撤，留一句占位（scripted_effect 不能是空的）
+GER_region_silesia_on_end = {
+    set_temp_variable = { GER_region_noop = 1 }
+}
+
+# 8.18 波兰武装力量入侵的按钮点下去：西里西亚显示出来并选中，右侧只显示西里西亚的决议。
+# 已经显示、或者已经结算过，什么都不做。
+GER_region_silesia_reveal = {
+    if = {
+        limit = {
+            NOT = { has_country_flag = GER_region_silesia_phase }
+            NOT = { has_country_flag = GER_silesia_crisis_settled }
+        }
+        if = {
+            limit = { NOT = { has_country_flag = GER_region_map_opened } }
+            GER_region_game_silesia_start = yes   # 生成的：开放西里西亚、设阶段旗标、选中它
+        }
+        else = {
+            # 地图已经全开了：西里西亚本来就在界面上，别再按开局值重设一遍，只补阶段旗标、清掉执行记录
+            set_country_flag = GER_region_silesia_phase
+            set_variable = { GER_region_silesia_stage = 0 }
+            clear_variable = GER_region_R07_count_23
+            clear_variable = GER_region_R07_count_24
+            clear_variable = GER_region_R07_count_25
+            GER_region_silesia_on_start = yes
+            set_variable = { GER_region_selected = 7 }
+        }
+    }
+}
+# 进度升到 GER_region_sil_stage（temp，1-2；只升不降），右侧列表随之刷新。西里西亚还没显示的话先显示出来
+GER_region_silesia_raise_stage = {
+    GER_region_silesia_reveal = yes
+    if = {
+        limit = { check_variable = { GER_region_silesia_stage < GER_region_sil_stage } }
+        set_variable = { GER_region_silesia_stage = GER_region_sil_stage }
+    }
+    GER_region_game_sync_selected = yes
+}
+
+# 结算（10.8）：三条决议（23/24/25）＋ 9.10 游行时选了「支持他们」，这四项里任意一项 = 成功（1），都没有 = 失败（2）。只结算一次。
+GER_region_silesia_settle = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_silesia_crisis_settled } }
+        set_country_flag = GER_silesia_crisis_settled
+        set_temp_variable = { GER_region_sil_done = 0 }
+        if = { limit = { GER_region_silesia_did_army = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_complain = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_suppress = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = { limit = { GER_region_silesia_did_bdo = yes } add_to_temp_variable = { GER_region_sil_done = 1 } }
+        if = {
+            limit = { check_variable = { GER_region_sil_done > 0 } }
+            set_variable = { GER_region_silesia_result = 1 }
+        }
+        else = {
+            set_variable = { GER_region_silesia_result = 2 }
+        }
+        GER_region_game_silesia_end = yes   # 西里西亚决议全部隐藏，地块保留
+        if = { limit = { check_variable = { GER_region_silesia_result = 1 } } country_event = { id = AOR_GER_silesia_crisis.10 } }
+        else = { country_event = { id = AOR_GER_silesia_crisis.11 } }
+    }
+}
+
+# 结局对西里西亚的影响（结局事件的按钮里调用，调用后要跑 GER_region_game_sync_frames）。幂等：
+#   1 协约国调停，公投继续  控制度 -5（负值不需要 force），旗标 GER_silesia_autonomy
+#   2 无能的政府？          西里西亚转换为右派控制区（帧 9）
+GER_region_silesia_apply_result = {
+    if = {
+        limit = { has_country_flag = GER_silesia_crisis_settled }
+        set_country_flag = GER_region_silesia_result_applied
+        if = {
+            limit = { check_variable = { GER_region_silesia_result = 1 } }
+            set_temp_variable = { GER_region_delta = -5 }
+            GER_region_R07_add_control = yes
+            set_country_flag = GER_silesia_autonomy
+        }
+        if = {
+            limit = { check_variable = { GER_region_silesia_result = 2 } }
+            set_variable = { GER_region_R07_state = 9 }
+        }
+    }
+}

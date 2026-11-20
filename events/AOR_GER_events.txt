@@ -22,6 +22,88 @@ add_namespace = AOR_GER_versailles
 add_namespace = AOR_GER_mueller_growth
 add_namespace = AOR_GER_union_competition
 add_namespace = AOR_GER_weimar_congress
+add_namespace = AOR_the_second_soviet_congress
+add_namespace = AOR_GER_bavaria_crisis
+add_namespace = AOR_GER_silesia_crisis
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 第二届苏维埃代表大会
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+country_event = {
+	id = AOR_the_second_soviet_congress.1
+	title = AOR_the_second_soviet_congress.1.t
+	desc = AOR_the_second_soviet_congress.1.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_the_second_soviet_congress_started
+			country_event = { id = AOR_the_second_soviet_congress.2 days = 1 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.1.a
+		custom_effect_tooltip = AOR_the_second_soviet_congress.1.effect_tt
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.2
+	title = AOR_the_second_soviet_congress.2.t
+	desc = AOR_the_second_soviet_congress.2.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_the_second_soviet_congress.3 days = 1 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.2.a
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.3
+	title = AOR_the_second_soviet_congress.3.t
+	desc = AOR_the_second_soviet_congress.3.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_the_second_soviet_congress.4 days = 2 }
+		}
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.3.a
+	}
+}
+
+country_event = {
+	id = AOR_the_second_soviet_congress.4
+	title = AOR_the_second_soviet_congress.4.t
+	desc = AOR_the_second_soviet_congress.4.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = AOR_the_second_soviet_congress.4.a
+	}
+}
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 魏玛代表大会
@@ -774,4 +856,636 @@ country_event = {
         custom_effect_tooltip = AOR_GER_union_competition.8.result_tt
         GER_union_apply_rewards = yes
     }
+}
+
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 巴伐利亚危机
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1920.1.12 由 common/on_actions/AOR_GER_weimar_on_actions.txt 启动，之后各事件自己按天数排期（钢四没有闰年）。
+# 国中之国（地区博弈）一侧的效果：显示巴伐利亚、决议进度、结算，见 common/scripted_effects/GER_region_game_actions.txt。
+# 巴伐利亚要到 1920.4.5 的事件点击后才显示在国中之国界面里；在那之前界面一直是待机状态，类型和领导人只在背地里记着。
+# 配图：gfx/event_pictures/GER/AOR_GER_bavaria_crisis_<事件编号>.png（210x176），在 interface/AOR_GER_events.gfx 注册。
+
+# 1920.1.12 在巴伐利亚的失败（背地里：巴伐利亚 = 魏玛联盟控制区、领导人霍夫曼，不显示）
+country_event = {
+	id = AOR_GER_bavaria_crisis.1
+	title = AOR_GER_bavaria_crisis.1.t
+	desc = AOR_GER_bavaria_crisis.1.desc
+	picture = GFX_AOR_GER_bavaria_crisis_1
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			GER_region_bavaria_prepare = yes
+			country_event = { id = AOR_GER_bavaria_crisis.2 days = 7 } # 1920.1.19
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.1.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.1.tt
+	}
+}
+
+# 1920.1.19 巴伐利亚人民党脱离中央党
+country_event = {
+	id = AOR_GER_bavaria_crisis.2
+	title = AOR_GER_bavaria_crisis.2.t
+	desc = AOR_GER_bavaria_crisis.2.desc
+	picture = GFX_AOR_GER_bavaria_crisis_2
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_bavaria_crisis.3 days = 26 } # 1920.2.14
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.2.a
+	}
+}
+
+# 1920.2.14 古斯塔夫·冯·卡尔
+country_event = {
+	id = AOR_GER_bavaria_crisis.3
+	title = AOR_GER_bavaria_crisis.3.t
+	desc = AOR_GER_bavaria_crisis.3.desc
+	picture = GFX_AOR_GER_bavaria_crisis_3
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_bavaria_crisis.4 days = 7 } # 1920.2.21
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.3.a
+	}
+}
+
+# 1920.2.21 霍夫曼遇刺（背地里：巴伐利亚的领导人清空）
+country_event = {
+	id = AOR_GER_bavaria_crisis.4
+	title = AOR_GER_bavaria_crisis.4.t
+	desc = AOR_GER_bavaria_crisis.4.desc
+	picture = GFX_AOR_GER_bavaria_crisis_4
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			GER_region_bavaria_leader_killed = yes
+			country_event = { id = AOR_GER_bavaria_crisis.5 days = 2 } # 1920.2.23
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.4.a
+	}
+}
+
+# 1920.2.23 冯·卡尔加强管制（背地里：巴伐利亚转换为右派控制区）。标题、正文、按钮待定
+country_event = {
+	id = AOR_GER_bavaria_crisis.5
+	title = AOR_GER_bavaria_crisis.5.t
+	desc = AOR_GER_bavaria_crisis.5.desc
+	picture = GFX_AOR_GER_bavaria_crisis_5
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			GER_region_bavaria_turn_right = yes
+			country_event = { id = AOR_GER_bavaria_crisis.6 days = 41 } # 1920.4.5
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.5.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.5.tt
+	}
+}
+
+# 1920.4.5 “艾舍里希组织”成立：点击按钮后巴伐利亚才显示在国中之国界面里，巴伐利亚危机开始，解锁 调停SPD内部冲突、对巴伐利亚施压
+country_event = {
+	id = AOR_GER_bavaria_crisis.6
+	title = AOR_GER_bavaria_crisis.6.t
+	desc = AOR_GER_bavaria_crisis.6.desc
+	picture = GFX_AOR_GER_bavaria_crisis_6
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_bavaria_crisis.8 days = 38 } # 1920.5.13
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.6.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.6.tt
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.6.unlock_tt
+		hidden_effect = {
+			set_temp_variable = { GER_region_bav_stage = 1 }
+			GER_region_bavaria_raise_stage = yes # 巴伐利亚从这一刻起显示
+		}
+	}
+}
+
+# 决议「对巴伐利亚施压」触发：柏林威严何在？
+country_event = {
+	id = AOR_GER_bavaria_crisis.7
+	title = AOR_GER_bavaria_crisis.7.t
+	desc = AOR_GER_bavaria_crisis.7.desc
+	picture = GFX_AOR_GER_bavaria_crisis_7
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.7.a
+	}
+}
+
+# 1920.5.13 协约国发表警告：-25pp，解锁 向协约国提交巴伐利亚报告、采取保守态势
+country_event = {
+	id = AOR_GER_bavaria_crisis.8
+	title = AOR_GER_bavaria_crisis.8.t
+	desc = AOR_GER_bavaria_crisis.8.desc
+	picture = GFX_AOR_GER_bavaria_crisis_8
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = { GER_region_bav_stage = 2 }
+			GER_region_bavaria_raise_stage = yes
+			country_event = { id = AOR_GER_bavaria_crisis.9 days = 20 } # 1920.6.2
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.8.a
+		add_political_power = -25
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.8.unlock_tt
+	}
+}
+
+# 1920.6.2 又一起凶杀案：-15pp，解锁 宣布抵制恐怖袭击、撤出SPD优秀分子
+country_event = {
+	id = AOR_GER_bavaria_crisis.9
+	title = AOR_GER_bavaria_crisis.9.t
+	desc = AOR_GER_bavaria_crisis.9.desc
+	picture = GFX_AOR_GER_bavaria_crisis_9
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = { GER_region_bav_stage = 3 }
+			GER_region_bavaria_raise_stage = yes
+			country_event = { id = AOR_GER_bavaria_crisis.10 days = 6 } # 1920.6.8
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.9.a
+		add_political_power = -15
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.9.unlock_tt
+	}
+}
+
+# 1920.6.8（隐藏事件）20% 巴伐利亚-巴黎通信 / 50% 奥地利的阴影 / 30% 无事发生
+country_event = {
+	id = AOR_GER_bavaria_crisis.10
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			20 = { country_event = { id = AOR_GER_bavaria_crisis.11 } }
+			50 = { country_event = { id = AOR_GER_bavaria_crisis.12 } }
+			30 = { }
+		}
+		country_event = { id = AOR_GER_bavaria_crisis.13 days = 2 } # 1920.6.10
+	}
+}
+
+# 巴伐利亚-巴黎通信（结算用旗标 GER_bavaria_paris_letter）
+country_event = {
+	id = AOR_GER_bavaria_crisis.11
+	title = AOR_GER_bavaria_crisis.11.t
+	desc = AOR_GER_bavaria_crisis.11.desc
+	picture = GFX_AOR_GER_bavaria_crisis_11
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_bavaria_paris_letter
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.11.a
+	}
+}
+
+# 奥地利的阴影：+5pp（结算用旗标 GER_bavaria_austria_shadow）
+country_event = {
+	id = AOR_GER_bavaria_crisis.12
+	title = AOR_GER_bavaria_crisis.12.t
+	desc = AOR_GER_bavaria_crisis.12.desc
+	picture = GFX_AOR_GER_bavaria_crisis_12
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_bavaria_austria_shadow
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.12.a
+		add_political_power = 5
+	}
+}
+
+# 1920.6.10 协约国再度警告：-25pp，解锁 向巴伐利亚发动最后通牒、依靠协约国施压
+country_event = {
+	id = AOR_GER_bavaria_crisis.13
+	title = AOR_GER_bavaria_crisis.13.t
+	desc = AOR_GER_bavaria_crisis.13.desc
+	picture = GFX_AOR_GER_bavaria_crisis_13
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = { GER_region_bav_stage = 4 }
+			GER_region_bavaria_raise_stage = yes
+			country_event = { id = AOR_GER_bavaria_crisis.15 days = 15 } # 1920.6.25
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.13.a
+		add_political_power = -25
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.13.unlock_tt
+	}
+}
+
+# 决议「向巴伐利亚发动最后通牒」三天后触发：“巴伐利亚散播妥协信号”
+country_event = {
+	id = AOR_GER_bavaria_crisis.14
+	title = AOR_GER_bavaria_crisis.14.t
+	desc = AOR_GER_bavaria_crisis.14.desc
+	picture = GFX_AOR_GER_bavaria_crisis_14
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.14.a
+	}
+}
+
+# 1920.6.25（隐藏事件）80% 触发「革命的敲门声」（7.3 结算时直接最坏结局）；下面六项里满足两项则不触发：
+# 完成 调停SPD内部冲突 / 完成 采取保守态势 / 完成 宣布抵制恐怖袭击 / 未完成 撤出SPD优秀分子 / 触发过 奥地利的阴影 / 触发过 巴伐利亚-巴黎通信
+country_event = {
+	id = AOR_GER_bavaria_crisis.15
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = AOR_GER_bavaria_crisis.17 days = 8 } # 1920.7.3 结算
+		set_temp_variable = { GER_region_bav_safe = 0 }
+		if = { limit = { GER_region_bavaria_did_mediate = yes } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = { limit = { GER_region_bavaria_did_conservative = yes } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = { limit = { GER_region_bavaria_did_denounce_terror = yes } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = { limit = { NOT = { GER_region_bavaria_did_withdraw = yes } } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = { limit = { has_country_flag = GER_bavaria_austria_shadow } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = { limit = { has_country_flag = GER_bavaria_paris_letter } add_to_temp_variable = { GER_region_bav_safe = 1 } }
+		if = {
+			limit = {
+				check_variable = { GER_region_bav_safe < 2 }
+				NOT = { has_country_flag = GER_bavaria_crisis_settled }
+			}
+			random_list = {
+				80 = { country_event = { id = AOR_GER_bavaria_crisis.16 } }
+				20 = { }
+			}
+		}
+	}
+}
+
+# 革命的敲门声：7.3 结算时直接最坏结局（结算用旗标 GER_bavaria_revolution_knock）
+country_event = {
+	id = AOR_GER_bavaria_crisis.16
+	title = AOR_GER_bavaria_crisis.16.t
+	desc = AOR_GER_bavaria_crisis.16.desc
+	picture = GFX_AOR_GER_bavaria_crisis_16
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_bavaria_revolution_knock
+		}
+	}
+
+	option = {
+		name = AOR_GER_bavaria_crisis.16.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.16.a.tt
+	}
+}
+
+# 1920.7.3（隐藏事件）结算：按决议和事件旗标弹出四个结局之一（触发过「革命的敲门声」= 结局 D）
+country_event = {
+	id = AOR_GER_bavaria_crisis.17
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		GER_region_bavaria_settle = yes
+	}
+}
+
+# 结局 A：社会民主党的再一次胜利（巴伐利亚转换为右派核心区，议会协商惯性 +20%，党内团结度 +20%）
+country_event = {
+	id = AOR_GER_bavaria_crisis.18
+	title = AOR_GER_bavaria_crisis.18.t
+	desc = AOR_GER_bavaria_crisis.18.desc
+	picture = GFX_AOR_GER_bavaria_crisis_18
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.18.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.18.tt
+		hidden_effect = {
+			GER_region_bavaria_turn_core = yes
+			GER_region_game_sync_frames = yes
+			add_to_variable = { GER_yihui_inertia = 20 }
+			add_to_variable = { GER_SPD_unity = 20 }
+			GER_SPD_refresh_unity_effect = yes
+		}
+	}
+}
+
+# 结局 B：冲突和平落幕（巴伐利亚转换为右派核心区，周边地区支持度、控制度 -10%）
+country_event = {
+	id = AOR_GER_bavaria_crisis.19
+	title = AOR_GER_bavaria_crisis.19.t
+	desc = AOR_GER_bavaria_crisis.19.desc
+	picture = GFX_AOR_GER_bavaria_crisis_19
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.19.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.19.tt
+		hidden_effect = {
+			GER_region_bavaria_turn_core = yes
+			GER_region_bavaria_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+		}
+	}
+}
+
+# 结局 C：苦涩的和平（巴伐利亚转换为右派核心区，周边地区支持度、控制度 -50%，党内团结度 -10%，议会协商惯性 -10%）
+country_event = {
+	id = AOR_GER_bavaria_crisis.20
+	title = AOR_GER_bavaria_crisis.20.t
+	desc = AOR_GER_bavaria_crisis.20.desc
+	picture = GFX_AOR_GER_bavaria_crisis_20
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.20.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.20.tt
+		hidden_effect = {
+			GER_region_bavaria_turn_core = yes
+			GER_region_bavaria_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+			subtract_from_variable = { GER_SPD_unity = 10 }
+			GER_SPD_refresh_unity_effect = yes
+			subtract_from_variable = { GER_yihui_inertia = 10 }
+			if = {
+				limit = { check_variable = { GER_yihui_inertia < 0 } }
+				set_variable = { GER_yihui_inertia = 0 }
+			}
+		}
+	}
+}
+
+# 结局 D：在巴伐利亚的全面溃败（巴伐利亚转换为右派核心区，黑森转换为右派控制区，议会协商惯性 -30%，党内团结度 -30%，-100pp）
+country_event = {
+	id = AOR_GER_bavaria_crisis.21
+	title = AOR_GER_bavaria_crisis.21.t
+	desc = AOR_GER_bavaria_crisis.21.desc
+	picture = GFX_AOR_GER_bavaria_crisis_21
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_bavaria_crisis.21.a
+		custom_effect_tooltip = AOR_GER_bavaria_crisis.21.tt
+		add_political_power = -100
+		hidden_effect = {
+			GER_region_bavaria_turn_core = yes
+			GER_region_bavaria_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+			subtract_from_variable = { GER_SPD_unity = 30 }
+			GER_SPD_refresh_unity_effect = yes
+			subtract_from_variable = { GER_yihui_inertia = 30 }
+			if = {
+				limit = { check_variable = { GER_yihui_inertia < 0 } }
+				set_variable = { GER_yihui_inertia = 0 }
+			}
+		}
+	}
+}
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 西里西亚危机
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1919.8.18 由 common/on_actions/AOR_GER_weimar_on_actions.txt 启动，之后各事件自己按天数排期（钢四没有闰年）。
+# 国中之国（地区博弈）一侧的效果：显示西里西亚、决议进度、结算，见 common/scripted_effects/GER_region_game_actions.txt。
+# 8.18 波兰武装力量入侵的按钮点下去之后，西里西亚才显示在国中之国界面里，进度 1（23 派遣正规军、24 向协约国控诉、25 加强对激进派的控制）；
+# 9.10 游行示威是「支持他们，展现我们的立场 / 局势混乱，还是小心为上」两个选项（原来的 26、27 号决议），不推进进度；10.8 协约国调停结算。
+# 图上的「协约国调停」标的是 1919.10.1，但流程排在 10.5 的「社会民主党的嫌疑？」之后，这里按流程排在 10.8。
+# 结算规则（图注「如果玩家选了一个决议便判定成功」）：三条决议 + 游行时选了「支持他们」，这四项里任意一项 = 成功。
+# 配图：gfx/event_pictures/GER/AOR_GER_silesia_crisis_<事件编号>.png（210x176），在 interface/AOR_GER_events.gfx 注册。
+
+# 1919.8.18 波兰武装力量入侵西里西亚（唯一的弹窗；点按钮直接触发西里西亚危机：西里西亚显示在国中之国界面里，解锁 3 条决议）
+# 危机本身的介绍写进国中之国的面板（还没做），这里不再单独弹一个介绍事件
+country_event = {
+	id = AOR_GER_silesia_crisis.2
+	title = AOR_GER_silesia_crisis.2.t
+	desc = AOR_GER_silesia_crisis.2.desc
+	picture = GFX_AOR_GER_silesia_crisis_2
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = { id = AOR_GER_silesia_crisis.3 days = 2 } # 1919.8.20
+		}
+	}
+
+	option = {
+		name = AOR_GER_silesia_crisis.2.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.2.tt
+		custom_effect_tooltip = AOR_GER_silesia_crisis.2.unlock_tt
+		hidden_effect = {
+			set_temp_variable = { GER_region_sil_stage = 1 }
+			GER_region_silesia_raise_stage = yes # 西里西亚从这一刻起显示
+		}
+	}
+}
+
+# 1919.8.20（隐藏事件）75% 当地自发组建民兵队伍
+country_event = {
+	id = AOR_GER_silesia_crisis.3
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			75 = { country_event = { id = AOR_GER_silesia_crisis.4 } }
+			25 = { }
+		}
+		country_event = { id = AOR_GER_silesia_crisis.5 days = 21 } # 1919.9.10
+	}
+}
+
+# 1919.8.20 当地自发组建民兵队伍
+country_event = {
+	id = AOR_GER_silesia_crisis.4
+	title = AOR_GER_silesia_crisis.4.t
+	desc = AOR_GER_silesia_crisis.4.desc
+	picture = GFX_AOR_GER_silesia_crisis_4
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.4.a
+	}
+}
+
+# 1919.9.10 上西里西亚自治组织游行（两个选项：支持他们，展现我们的立场 / 局势混乱，还是小心为上；效果同原来的 26、27 号决议）
+country_event = {
+	id = AOR_GER_silesia_crisis.5
+	title = AOR_GER_silesia_crisis.5.t
+	desc = AOR_GER_silesia_crisis.5.desc
+	picture = GFX_AOR_GER_silesia_crisis_5
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { GER_region_silesia_did_complain = yes }
+				country_event = { id = AOR_GER_silesia_crisis.6 days = 22 } # 1919.10.2（需要完成 向协约国控诉）
+			}
+			country_event = { id = AOR_GER_silesia_crisis.7 days = 25 } # 1919.10.5
+		}
+	}
+
+	option = {
+		name = AOR_GER_silesia_crisis.5.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.5.a.tt
+		hidden_effect = {
+			GER_region_silesia_support_bdo = yes
+		}
+	}
+	option = {
+		name = AOR_GER_silesia_crisis.5.b
+	}
+}
+
+# 1919.10.2 英国对我们的主张表示支持
+country_event = {
+	id = AOR_GER_silesia_crisis.6
+	title = AOR_GER_silesia_crisis.6.t
+	desc = AOR_GER_silesia_crisis.6.desc
+	picture = GFX_AOR_GER_silesia_crisis_6
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.6.a
+	}
+}
+
+# 1919.10.5（隐藏事件）10% 社会民主党的嫌疑？（已完成 加强对激进派的控制 则不判定），三天后结算
+country_event = {
+	id = AOR_GER_silesia_crisis.7
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = AOR_GER_silesia_crisis.9 days = 3 } # 1919.10.8 结算
+		if = {
+			limit = { NOT = { GER_region_silesia_did_suppress = yes } }
+			random_list = {
+				10 = { country_event = { id = AOR_GER_silesia_crisis.8 } }
+				90 = { }
+			}
+		}
+	}
+}
+
+# 社会民主党的嫌疑？：议会协商惯性 -20，极大加强右翼反对
+country_event = {
+	id = AOR_GER_silesia_crisis.8
+	title = AOR_GER_silesia_crisis.8.t
+	desc = AOR_GER_silesia_crisis.8.desc
+	picture = GFX_AOR_GER_silesia_crisis_8
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.8.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.8.tt
+		hidden_effect = {
+			subtract_from_variable = { GER_yihui_inertia = 20 }
+			if = {
+				limit = { check_variable = { GER_yihui_inertia < 0 } }
+				set_variable = { GER_yihui_inertia = 0 }
+			}
+		}
+	}
+}
+
+# 1919.10.8（隐藏事件）结算：三条决议（派遣正规军 / 向协约国控诉 / 加强对激进派的控制）＋ 游行时选了「支持他们」，
+# 这四项里执行过任意一项 = 成功，弹出两个结局之一
+country_event = {
+	id = AOR_GER_silesia_crisis.9
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		GER_region_silesia_settle = yes
+	}
+}
+
+# 结局 1：协约国调停，公投继续（西里西亚控制度 -5，上西里西亚自治获协约国支持）
+country_event = {
+	id = AOR_GER_silesia_crisis.10
+	title = AOR_GER_silesia_crisis.10.t
+	desc = AOR_GER_silesia_crisis.10.desc
+	picture = GFX_AOR_GER_silesia_crisis_10
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.10.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.10.tt
+		hidden_effect = {
+			GER_region_silesia_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+			set_country_flag = GER_silesia_autonomy
+		}
+	}
+}
+
+# 结局 2：无能的政府？（西里西亚转换为右派控制区）
+country_event = {
+	id = AOR_GER_silesia_crisis.11
+	title = AOR_GER_silesia_crisis.11.t
+	desc = AOR_GER_silesia_crisis.11.desc
+	picture = GFX_AOR_GER_silesia_crisis_11
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_silesia_crisis.11.a
+		custom_effect_tooltip = AOR_GER_silesia_crisis.11.tt
+		hidden_effect = {
+			GER_region_silesia_apply_result = yes # 地图还没全开时先记着，全开时补做
+			GER_region_game_sync_frames = yes
+		}
+	}
 }
