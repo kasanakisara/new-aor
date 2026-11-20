@@ -25,6 +25,7 @@ add_namespace = AOR_GER_weimar_congress
 add_namespace = AOR_the_second_soviet_congress
 add_namespace = AOR_GER_bavaria_crisis
 add_namespace = AOR_GER_silesia_crisis
+add_namespace = AOR_GER_defense_law
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 第二届苏维埃代表大会
@@ -1486,6 +1487,424 @@ country_event = {
 		hidden_effect = {
 			GER_region_silesia_apply_result = yes # 地图还没全开时先记着，全开时补做
 			GER_region_game_sync_frames = yes
+		}
+	}
+}
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 国防法危机
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1920.7.1 由 common/on_actions/AOR_GER_weimar_on_actions.txt 启动，之后各事件自己按天数排期。
+# 7.1 的分支按巴伐利亚危机结局（GER_region_bavaria_result）挑：1 完美 / 2 较好 / 3 较坏 / 4 最坏。
+# 9.25、10.18、11.1 的事件会解锁决议（common/decisions/AOR_GER_SPD_decisions.txt 里的 国防法 组）。
+# 11.27 结算：按 制定草案 / 压制骚乱 / 修订国防法 / 宣布军队中立 / 工人军官团占比 和巴伐利亚结局挑四个结局。
+# 配图：gfx/event_pictures/GER/AOR_GER_defense_law_<事件编号>.png（210x176），在 interface/AOR_GER_events.gfx 注册。
+
+# 国防军骚动事件
+country_event = {
+	id = AOR_GER_defense_law.1
+	title = AOR_GER_defense_law.1.t
+	desc = AOR_GER_defense_law.1.desc
+	picture = GFX_AOR_GER_defense_law_1
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.1.a
+		hidden_effect = {
+			if = { limit = { check_variable = { GER_region_bavaria_result = 1 } } country_event = { id = AOR_GER_defense_law.2 } }
+			else_if = { limit = { check_variable = { GER_region_bavaria_result = 2 } } country_event = { id = AOR_GER_defense_law.3 } }
+			else_if = { limit = { check_variable = { GER_region_bavaria_result = 3 } } country_event = { id = AOR_GER_defense_law.4 } }
+			else = { country_event = { id = AOR_GER_defense_law.5 } }
+		}
+	}
+}
+# 谈判取得成功，骚乱暂定
+country_event = {
+	id = AOR_GER_defense_law.2
+	title = AOR_GER_defense_law.2.t
+	desc = AOR_GER_defense_law.2.desc
+	picture = GFX_AOR_GER_defense_law_2
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.2.a
+		add_political_power = 50
+		hidden_effect = {
+			set_country_flag = GER_dl_negotiated
+			country_event = { id = AOR_GER_defense_law.6 days = 33 } # 1920.8.3
+		}
+	}
+}
+# 中央迅速动员，骚乱暂定
+country_event = {
+	id = AOR_GER_defense_law.3
+	title = AOR_GER_defense_law.3.t
+	desc = AOR_GER_defense_law.3.desc
+	picture = GFX_AOR_GER_defense_law_3
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.3.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.6 days = 33 } # 1920.8.3
+		}
+	}
+}
+# 中央无力干预，骚乱仍在
+country_event = {
+	id = AOR_GER_defense_law.4
+	title = AOR_GER_defense_law.4.t
+	desc = AOR_GER_defense_law.4.desc
+	picture = GFX_AOR_GER_defense_law_4
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.4.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.6 days = 33 } # 1920.8.3
+		}
+	}
+}
+# 中央武力干预，局势日渐极端化
+country_event = {
+	id = AOR_GER_defense_law.5
+	title = AOR_GER_defense_law.5.t
+	desc = AOR_GER_defense_law.5.desc
+	picture = GFX_AOR_GER_defense_law_5
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.5.a
+		hidden_effect = {
+			set_country_flag = GER_dl_force_intervention
+			if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } } } add_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } }
+			country_event = { id = AOR_GER_defense_law.6 days = 33 } # 1920.8.3
+		}
+	}
+}
+# 墓园般的死寂
+country_event = {
+	id = AOR_GER_defense_law.6
+	title = AOR_GER_defense_law.6.t
+	desc = AOR_GER_defense_law.6.desc
+	picture = GFX_AOR_GER_defense_law_6
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		    set_variable = { GER_region_R05_state = 9 }   # 波美拉尼亚：右派控制区
+		    GER_region_game_sync_frames = yes
+		    country_event = { id = AOR_GER_defense_law.7 days = 45 } # 1920.9.17
+		}
+	}
+
+	option = {
+		name = AOR_GER_defense_law.6.a
+	}
+}
+# 未遂的政变
+country_event = {
+	id = AOR_GER_defense_law.7
+	title = AOR_GER_defense_law.7.t
+	desc = AOR_GER_defense_law.7.desc
+	picture = GFX_AOR_GER_defense_law_7
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.7.a
+		custom_effect_tooltip = AOR_GER_defense_law.7.tt
+		hidden_effect = {
+			set_country_flag = GER_dl_crisis_open
+			country_event = { id = AOR_GER_defense_law.8 days = 3 } # 1920.9.20
+		}
+	}
+}
+# 退伍士兵游行抗议判决
+country_event = {
+	id = AOR_GER_defense_law.8
+	title = AOR_GER_defense_law.8.t
+	desc = AOR_GER_defense_law.8.desc
+	picture = GFX_AOR_GER_defense_law_8
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.8.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.9 days = 5 } # 1920.9.25
+		}
+	}
+}
+# 国防法正式提上日程
+country_event = {
+	id = AOR_GER_defense_law.9
+	title = AOR_GER_defense_law.9.t
+	desc = AOR_GER_defense_law.9.desc
+	picture = GFX_AOR_GER_defense_law_9
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.9.a
+		custom_effect_tooltip = AOR_GER_defense_law.9.tt
+		add_political_power = 50
+		hidden_effect = {
+			set_country_flag = GER_dl_can_act
+			country_event = { id = AOR_GER_defense_law.10 days = 8 } # 1920.10.3
+		}
+	}
+}
+# 党内调解失败，激进派独走
+country_event = {
+	id = AOR_GER_defense_law.10
+	title = AOR_GER_defense_law.10.t
+	desc = AOR_GER_defense_law.10.desc
+	picture = GFX_AOR_GER_defense_law_10
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.10.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.11 days = 15 } # 1920.10.18
+		}
+	}
+}
+# 军队高层介入局势
+country_event = {
+	id = AOR_GER_defense_law.11
+	title = AOR_GER_defense_law.11.t
+	desc = AOR_GER_defense_law.11.desc
+	picture = GFX_AOR_GER_defense_law_11
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.11.a
+		custom_effect_tooltip = AOR_GER_defense_law.11.tt
+		subtract_from_variable = { GER_yihui_inertia = 10 }
+		if = { limit = { check_variable = { GER_yihui_inertia < 0 } } set_variable = { GER_yihui_inertia = 0 } }
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.12 days = 6 } # 1920.10.24
+		}
+	}
+}
+# (隐藏事件)
+country_event = {
+	id = AOR_GER_defense_law.12
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+		    10 = { country_event = { id = AOR_GER_defense_law.13 } }
+		    45 = { country_event = { id = AOR_GER_defense_law.14 } }
+		    45 = { country_event = { id = AOR_GER_defense_law.15 } }
+		}
+		country_event = { id = AOR_GER_defense_law.16 days = 8 } # 1920.11.1
+	}
+}
+# 柏林械斗落幕，社民党调停促成停火
+country_event = {
+	id = AOR_GER_defense_law.13
+	title = AOR_GER_defense_law.13.t
+	desc = AOR_GER_defense_law.13.desc
+	picture = GFX_AOR_GER_defense_law_13
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.13.a
+		add_stability = 0.05
+	}
+}
+# 柏林械斗落幕，右翼退伍军人胜利
+country_event = {
+	id = AOR_GER_defense_law.14
+	title = AOR_GER_defense_law.14.t
+	desc = AOR_GER_defense_law.14.desc
+	picture = GFX_AOR_GER_defense_law_14
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.14.a
+		add_political_power = 5
+	}
+}
+# 柏林械斗落幕，野猫工人武装取得胜利
+country_event = {
+	id = AOR_GER_defense_law.15
+	title = AOR_GER_defense_law.15.t
+	desc = AOR_GER_defense_law.15.desc
+	picture = GFX_AOR_GER_defense_law_15
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.15.a
+		add_political_power = 150
+		hidden_effect = {
+			set_country_flag = GER_dl_workers_win
+		}
+	}
+}
+# 协约国再度抗议，要求立刻裁军
+country_event = {
+	id = AOR_GER_defense_law.16
+	title = AOR_GER_defense_law.16.t
+	desc = AOR_GER_defense_law.16.desc
+	picture = GFX_AOR_GER_defense_law_16
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.16.a
+		custom_effect_tooltip = AOR_GER_defense_law.16.tt
+		hidden_effect = {
+			set_country_flag = GER_dl_can_amend
+			country_event = { id = AOR_GER_defense_law.17 days = 24 } # 1920.11.25
+		}
+	}
+}
+# 埃舍里希组织遭受强制取缔
+country_event = {
+	id = AOR_GER_defense_law.17
+	title = AOR_GER_defense_law.17.t
+	desc = AOR_GER_defense_law.17.desc
+	picture = GFX_AOR_GER_defense_law_17
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.17.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_defense_law.18 days = 2 } # 1920.11.27
+		}
+	}
+}
+# 1920.11.27（隐藏事件）结算：挑四个结局之一
+country_event = {
+	id = AOR_GER_defense_law.18
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = GER_dl_settled } }
+			set_country_flag = GER_dl_settled
+			if = {
+				limit = {
+					has_country_flag = GER_dl_draft
+					has_country_flag = GER_dl_suppress
+					has_country_flag = GER_dl_amend
+					has_country_flag = GER_dl_workers_officers
+					NOT = { has_country_flag = GER_dl_neutral }
+					OR = { check_variable = { GER_region_bavaria_result = 1 } check_variable = { GER_region_bavaria_result = 2 } }
+				}
+				country_event = { id = AOR_GER_defense_law.19 }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = GER_dl_draft
+					has_country_flag = GER_dl_suppress
+					has_country_flag = GER_dl_amend
+					has_country_flag = GER_dl_neutral
+				}
+				country_event = { id = AOR_GER_defense_law.20 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						AND = { has_country_flag = GER_dl_amend has_country_flag = GER_dl_neutral }
+						OR = { check_variable = { GER_region_bavaria_result = 1 } check_variable = { GER_region_bavaria_result = 2 } }
+					}
+				}
+				country_event = { id = AOR_GER_defense_law.21 }
+			}
+			else = { country_event = { id = AOR_GER_defense_law.22 } }
+		}
+	}
+}
+# 《国防法》修订，军队使命将重新定义
+country_event = {
+	id = AOR_GER_defense_law.19
+	title = AOR_GER_defense_law.19.t
+	desc = AOR_GER_defense_law.19.desc
+	picture = GFX_AOR_GER_defense_law_19
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.19.a
+		add_political_power = 20
+		subtract_from_variable = { GER_yihui_inertia = 10 }
+		if = { limit = { check_variable = { GER_yihui_inertia < 0 } } set_variable = { GER_yihui_inertia = 0 } }
+		hidden_effect = {
+			set_temp_variable = { GER_region_delta = -5 }
+			GER_region_R06_add_control = yes
+			GER_region_R16_add_control = yes
+			GER_region_game_sync_frames = yes
+			set_country_flag = GER_dl_workers_army
+			if = { limit = { has_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } } remove_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } }
+			clr_country_flag = GER_dl_crisis_open
+clr_country_flag = GER_dl_can_act
+clr_country_flag = GER_dl_can_officers
+			clr_country_flag = GER_dl_can_amend
+		}
+	}
+}
+# 《国防法》修正案通过
+country_event = {
+	id = AOR_GER_defense_law.20
+	title = AOR_GER_defense_law.20.t
+	desc = AOR_GER_defense_law.20.desc
+	picture = GFX_AOR_GER_defense_law_20
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.20.a
+		hidden_effect = {
+			if = { limit = { has_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } } remove_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } }
+			clr_country_flag = GER_dl_crisis_open
+clr_country_flag = GER_dl_can_act
+clr_country_flag = GER_dl_can_officers
+			clr_country_flag = GER_dl_can_amend
+		}
+	}
+}
+# 《国防法》通过，引发普遍不满
+country_event = {
+	id = AOR_GER_defense_law.21
+	title = AOR_GER_defense_law.21.t
+	desc = AOR_GER_defense_law.21.desc
+	picture = GFX_AOR_GER_defense_law_21
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.21.a
+		subtract_from_variable = { GER_yihui_inertia = 5 }
+		if = { limit = { check_variable = { GER_yihui_inertia < 0 } } set_variable = { GER_yihui_inertia = 0 } }
+		hidden_effect = {
+			if = { limit = { has_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } } remove_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } }
+			clr_country_flag = GER_dl_crisis_open
+clr_country_flag = GER_dl_can_act
+clr_country_flag = GER_dl_can_officers
+			clr_country_flag = GER_dl_can_amend
+		}
+	}
+}
+# 柏林孤岛
+country_event = {
+	id = AOR_GER_defense_law.22
+	title = AOR_GER_defense_law.22.t
+	desc = AOR_GER_defense_law.22.desc
+	picture = GFX_AOR_GER_defense_law_22
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_defense_law.22.a
+		custom_effect_tooltip = AOR_GER_defense_law.22.tt
+		hidden_effect = {
+			set_temp_variable = { GER_region_delta = -20 }
+			GER_region_R06_add_control = yes
+			GER_region_R16_add_control = yes
+			GER_region_game_sync_frames = yes
+			if = { limit = { has_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } } remove_dynamic_modifier = { modifier = GER_defense_law_crisis_modifier } }
+			clr_country_flag = GER_dl_crisis_open
+clr_country_flag = GER_dl_can_act
+clr_country_flag = GER_dl_can_officers
+			clr_country_flag = GER_dl_can_amend
 		}
 	}
 }
