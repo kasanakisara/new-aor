@@ -21,7 +21,8 @@ scripted_gui = {
 #//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      //
 #//        佛祖保佑             永无BUG              永不修改      //
 #////////////////////////////////////////////////////////////////////
-GER_yihui_button = {
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_yihui_gui.py 生成；改议程 / 党派请改脚本后重跑
+	GER_yihui_button = {
 		context_type = player_context
 		window_name = "GER_yihui_entry_bg"
 		visible = {
@@ -33,40 +34,25 @@ GER_yihui_button = {
 				clr_country_flag = gui_alert_visible
 				GER_Reichstag_initialize = yes
 				if = {
-					limit = {
-						NOT = {
-							has_country_flag = GER_main_GUI_open 
-						}
-					}
-					set_country_flag = GER_main_GUI_open 
+					limit = { NOT = { has_country_flag = GER_main_GUI_open } }
+					set_country_flag = GER_main_GUI_open
 				}
-				else_if = {
-					limit = {
-						has_country_flag = GER_main_GUI_open 
-					}
-					clr_country_flag = GER_main_GUI_open 
+				else = {
+					clr_country_flag = GER_main_GUI_open
+					clr_country_flag = GER_yihui_laws_open
 				}
 			}
 		}
 		triggers = {
-			gui_alert_visible = {
-				has_country_flag = gui_alert_visible
-			}
+			gui_alert_visible = { has_country_flag = gui_alert_visible }
 		}
-	}	
+	}
 	GER_yihui_gui = {
-		context_type =  player_context
+		context_type = player_context
 		window_name = GER_yihui_gui
 		visible = {
 			original_tag = GER
 			has_country_flag = GER_main_GUI_open
-		}
-		properties = {
-			GER_Reichstag_seat_icon = {
-				x = GER_Reichstag_seat_x^seat_idx
-				y = GER_Reichstag_seat_y^seat_idx
-				frame = GER_Reichstag_seat_frame^seat_idx
-			}
 		}
 		dynamic_lists = {
 			GER_Reichstag_seat_grid = {
@@ -75,28 +61,169 @@ GER_yihui_button = {
 				entry_container = GER_Reichstag_seat_entry
 				index = seat_idx
 			}
+			# 下面两个都必须 change_scope = no，否则点击效果会在错误的作用域里执行
+			GER_yihui_agenda_list = {
+				array = GER_yihui_agenda_list
+				entry_container = GER_yihui_agenda_entry
+				index = i
+				value = v
+				change_scope = no
+			}
+			GER_yihui_party_list = {
+				array = GER_yihui_party_list
+				entry_container = GER_yihui_party_entry
+				index = i
+				value = v
+				change_scope = no
+			}
+		}
+		properties = {
+			GER_Reichstag_seat_icon = {
+				x = GER_Reichstag_seat_x^seat_idx
+				y = GER_Reichstag_seat_y^seat_idx
+				frame = GER_Reichstag_seat_frame^seat_idx
+			}
+			# 议程条：进度（按议程编号下标，由 GER_yihui_sync 重建）
+			GER_yihui_agenda_entry_prog = { frame = GER_yihui_agenda_prog^v }
+			# 党派色点：帧 = 党派编号
+			GER_yihui_party_entry_dot = { frame = GER_yihui_party_list^i }
 		}
 		triggers = {
-			GER_yihui_hammer_color_visible = {
-				has_country_flag = GER_yihui_hammer_active
+			# 议程条（v = 议程编号）
+			GER_yihui_agenda_entry_selected_visible = { check_variable = { GER_yihui_selected_agenda = v } }
+			GER_yihui_agenda_entry_locked_visible = {
+				OR = {
+					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 0 } }
+					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 0 } }
+					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 0 } }
+					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 0 } }
+					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 0 } }
+				}
 			}
-			GER_yihui_hammer_bw_visible = {
-				NOT = { has_country_flag = GER_yihui_hammer_active }
+			GER_yihui_agenda_entry_button_click_enabled = {
+				OR = {
+					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state > 0 } }
+					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state > 0 } }
+					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state > 0 } }
+					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state > 0 } }
+					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state > 0 } }
+				}
 			}
+			GER_yihui_agenda_entry_prog_visible = {
+				OR = {
+					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 2 } }
+					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 2 } }
+					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 2 } }
+					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 2 } }
+					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 2 } }
+				}
+			}
+			# 党派方块（v = 党派编号）：选中 = 在 GER_yihui_view_picks 里；只有选中「可处理」的议程时能点
+			GER_yihui_party_entry_selected_visible = { is_in_array = { array = GER_yihui_view_picks value = v } }
+			GER_yihui_party_entry_locked_visible = {
+				OR = {
+					check_variable = { v = 7 }
+				}
+			}
+			GER_yihui_party_entry_button_click_enabled = {
+				check_variable = { GER_yihui_sel_state = 1 }
+				NOT = { check_variable = { v = 7 } }
+			}
+			# 交付区（GER_yihui_sel_state：-1 没选 / 1 可处理 / 2 处理中）
+			GER_yihui_send_cap1_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_cap2_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_cap3_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_val1_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_val2_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_val3_visible = { check_variable = { GER_yihui_sel_state > 0 } }
+			GER_yihui_send_button_visible = { check_variable = { GER_yihui_sel_state = 1 } }
+			GER_yihui_send_button_click_enabled = {
+				check_variable = { GER_yihui_preview_n > 0 }
+				check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
+			}
+			# 已通过法案侧栏：打开 / 收起按钮二选一
+			GER_yihui_laws_open_visible = { NOT = { has_country_flag = GER_yihui_laws_open } }
+			GER_yihui_laws_close_visible = { has_country_flag = GER_yihui_laws_open }
+			GER_yihui_capacity_plus_click_enabled = { check_variable = { GER_yihui_inertia > 29.99 } }
 		}
 		effects = {
-			close_button_click = {
-				clr_country_flag = GER_main_GUI_open
+			# 已通过法案侧栏
+			GER_yihui_laws_open_click = { set_country_flag = GER_yihui_laws_open }
+			GER_yihui_laws_close_click = { clr_country_flag = GER_yihui_laws_open }
+			# 点议程：换了议程就清空已勾的党派
+			GER_yihui_agenda_entry_button_click = {
+				if = {
+					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
+					set_variable = { GER_yihui_selected_agenda = v }
+					GER_yihui_clear_picks = yes
+				}
+				GER_yihui_sync = yes
 			}
-			GER_yihui_party_spd_left_button_click = { set_variable = { GER_yihui_selected_party = 1 } }
-			GER_yihui_party_spd_center_left_button_click = { set_variable = { GER_yihui_selected_party = 2 } }
-			GER_yihui_party_spd_right_button_click = { set_variable = { GER_yihui_selected_party = 3 } }
-			GER_yihui_party_dzp_button_click = { set_variable = { GER_yihui_selected_party = 4 } }
-			GER_yihui_party_ddp_button_click = { set_variable = { GER_yihui_selected_party = 5 } }
-			GER_yihui_party_dvp_button_click = { set_variable = { GER_yihui_selected_party = 6 } }
-			GER_yihui_party_dnvp_button_click = { set_variable = { GER_yihui_selected_party = 7 } }
-			GER_yihui_party_other_button_click = { set_variable = { GER_yihui_selected_party = 8 } }
+			# 点党派：勾 / 取消
+			GER_yihui_party_entry_button_click = {
+				if = {
+					limit = { check_variable = { v = 1 } }
+					if = { limit = { check_variable = { GER_yihui_pick_1 = 1 } } set_variable = { GER_yihui_pick_1 = 0 } }
+					else = { set_variable = { GER_yihui_pick_1 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 2 } }
+					if = { limit = { check_variable = { GER_yihui_pick_2 = 1 } } set_variable = { GER_yihui_pick_2 = 0 } }
+					else = { set_variable = { GER_yihui_pick_2 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 3 } }
+					if = { limit = { check_variable = { GER_yihui_pick_3 = 1 } } set_variable = { GER_yihui_pick_3 = 0 } }
+					else = { set_variable = { GER_yihui_pick_3 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 4 } }
+					if = { limit = { check_variable = { GER_yihui_pick_4 = 1 } } set_variable = { GER_yihui_pick_4 = 0 } }
+					else = { set_variable = { GER_yihui_pick_4 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 5 } }
+					if = { limit = { check_variable = { GER_yihui_pick_5 = 1 } } set_variable = { GER_yihui_pick_5 = 0 } }
+					else = { set_variable = { GER_yihui_pick_5 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 6 } }
+					if = { limit = { check_variable = { GER_yihui_pick_6 = 1 } } set_variable = { GER_yihui_pick_6 = 0 } }
+					else = { set_variable = { GER_yihui_pick_6 = 1 } }
+				}
+				if = {
+					limit = { check_variable = { v = 8 } }
+					if = { limit = { check_variable = { GER_yihui_pick_8 = 1 } } set_variable = { GER_yihui_pick_8 = 0 } }
+					else = { set_variable = { GER_yihui_pick_8 = 1 } }
+				}
+				GER_yihui_sync = yes
+			}
+			GER_yihui_send_button_click = {
+				GER_yihui_dispatch = yes
+			}
+			GER_yihui_capacity_plus_click = {
+				GER_yihui_expand_capacity = yes
+				GER_yihui_sync = yes
+			}
+		}
+	}
+	# 已通过法案侧栏：独立窗口，GER_yihui_laws_open 打开时从左侧滑出
+	GER_yihui_laws_gui = {
+		context_type = player_context
+		window_name = GER_yihui_laws_gui
+		visible = {
+			original_tag = GER
+			has_country_flag = GER_main_GUI_open
+			has_country_flag = GER_yihui_laws_open
+		}
+		dynamic_lists = {
+			GER_yihui_laws_list = {
+				array = GER_yihui_passed_list
+				entry_container = GER_yihui_law_entry
+				index = i
+				value = v
+				change_scope = no
+			}
 		}
 	}
 }
-

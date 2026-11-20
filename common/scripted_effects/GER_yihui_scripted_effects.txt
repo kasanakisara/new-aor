@@ -979,7 +979,7 @@ GER_Reichstag_refresh = {
 	resize_array = { array = GER_Reichstag_seat_frame value = 7 size = dnvp_end }
 	resize_array = { array = GER_Reichstag_seat_frame value = 8 size = other_end }
 
-	# 席位统计：总席位 / 执政联盟(SPD三派+中央党+DDP) / 反对派(DVP+DNVP+其他+BVP)
+	# 席位统计：总席位 / 执政联盟(SPD三派+中央党) / 反对派(DDP+DVP+DNVP+其他+BVP)
 	set_variable = { GER_yihui_total_seats = 0 }
 	add_to_variable = { GER_yihui_total_seats = GER_reichstag_spd_left_seats }
 	add_to_variable = { GER_yihui_total_seats = GER_reichstag_spd_center_left_seats }
@@ -994,11 +994,19 @@ GER_Reichstag_refresh = {
 	add_to_variable = { GER_yihui_government_seats = GER_reichstag_spd_center_left_seats }
 	add_to_variable = { GER_yihui_government_seats = GER_reichstag_spd_right_seats }
 	add_to_variable = { GER_yihui_government_seats = GER_reichstag_dzp_seats }
-	add_to_variable = { GER_yihui_government_seats = GER_reichstag_ddp_seats }
-	set_variable = { GER_yihui_opposition_seats = GER_reichstag_dvp_seats }
+	set_variable = { GER_yihui_opposition_seats = GER_reichstag_ddp_seats }
+	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_dvp_seats }
 	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_dnvp_seats }
 	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_other_seats }
 	add_to_variable = { GER_yihui_opposition_seats = GER_reichstag_bvp_seats }
+	# 执政席位占比（议会界面「执政席位」条，帧 0-100）
+	set_variable = { GER_yihui_gov_pct = 0 }
+	if = {
+		limit = { check_variable = { GER_yihui_total_seats > 0 } }
+		set_variable = { GER_yihui_gov_pct = GER_yihui_government_seats }
+		multiply_variable = { GER_yihui_gov_pct = 100 }
+		divide_variable = { GER_yihui_gov_pct = GER_yihui_total_seats }
+	}
 }
 
 GER_Reichstag_initialize = {
@@ -1021,4 +1029,10 @@ GER_Reichstag_initialize = {
 		GER_Reichstag_refresh = yes
 	}
 	set_country_flag = GER_Reichstag_initialized
+	# 议程 / 委派系统（common/scripted_effects/GER_yihui_agenda_effects.txt）
+	if = {
+		limit = { NOT = { has_country_flag = GER_yihui_agenda_initialized } }
+		GER_yihui_agenda_init = yes
+	}
+	GER_yihui_sync = yes
 }
