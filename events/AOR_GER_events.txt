@@ -701,6 +701,7 @@ country_event = {
 	id = AOR_GER_union_competition.1
 	title = AOR_GER_union_competition.1.t
 	desc = AOR_GER_union_competition.1.desc
+	picture = GFX_AOR_GER_union_competition_1
 	is_triggered_only = yes
 	fire_only_once = yes
 	trigger = {
@@ -778,10 +779,13 @@ country_event = {
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 法兰克福代表大会与工会选举
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 魔笛手：倒计时结束触发。完成焦点数 3 → 米勒（.8），1~2 → 迪斯曼（.7），0 → 莱帕特（.6）。三个选项只显示一个。
+# 配图：gfx/event_pictures/GER/AOR_GER_union_competition_<事件编号>.png（210x176），在 interface/AOR_GER_events.gfx 注册。
 country_event = {
     id = AOR_GER_union_competition.5
     title = AOR_GER_union_competition.5.t
     desc = AOR_GER_union_competition.5.desc
+    picture = GFX_AOR_GER_union_competition_5
     is_triggered_only = yes
     fire_only_once = yes
     immediate = {
@@ -800,24 +804,39 @@ country_event = {
             add_to_variable = { GER_union_focus_victories = 1 }
         }
     }
+    # 莱帕特：0 个
     option = {
         name = AOR_GER_union_competition.5.a
-        hidden_effect = {
-            if = { limit = { check_variable = { GER_union_focus_victories > 2 } } country_event = { id = AOR_GER_union_competition.8 } }
-            else_if = { limit = { check_variable = { GER_union_focus_victories > 0 } } country_event = { id = AOR_GER_union_competition.7 } }
-            else = { country_event = { id = AOR_GER_union_competition.6 } }
+        trigger = { check_variable = { GER_union_focus_victories < 1 } }
+        country_event = { id = AOR_GER_union_competition.6 }
+    }
+    # 迪斯曼：1~2 个
+    option = {
+        name = AOR_GER_union_competition.5.b
+        trigger = {
+            check_variable = { GER_union_focus_victories > 0 }
+            check_variable = { GER_union_focus_victories < 3 }
         }
+        country_event = { id = AOR_GER_union_competition.7 }
+    }
+    # 米勒：3 个
+    option = {
+        name = AOR_GER_union_competition.5.c
+        trigger = { check_variable = { GER_union_focus_victories > 2 } }
+        country_event = { id = AOR_GER_union_competition.8 }
     }
 }
 country_event = {
     id = AOR_GER_union_competition.6
     title = AOR_GER_union_competition.6.t
     desc = AOR_GER_union_competition.6.desc
+    picture = GFX_AOR_GER_union_competition_6
     is_triggered_only = yes
     fire_only_once = yes
     immediate = {
         set_country_flag = { flag = AOR_GER_union_leader_elected value = 2 }
         GER_union_prepare_rewards = yes
+        GER_union_leipart_rewards = yes
     }
     option = {
         name = AOR_GER_union_competition.6.a
@@ -829,6 +848,7 @@ country_event = {
     id = AOR_GER_union_competition.7
     title = AOR_GER_union_competition.7.t
     desc = AOR_GER_union_competition.7.desc
+    picture = GFX_AOR_GER_union_competition_7
     is_triggered_only = yes
     fire_only_once = yes
     immediate = {
@@ -845,6 +865,7 @@ country_event = {
     id = AOR_GER_union_competition.8
     title = AOR_GER_union_competition.8.t
     desc = AOR_GER_union_competition.8.desc
+    picture = GFX_AOR_GER_union_competition_8
     is_triggered_only = yes
     fire_only_once = yes
     immediate = {
