@@ -7,6 +7,7 @@ GER_union_prepare_rewards = {
     set_variable = { GER_union_left_biweekly = 0 }
     set_variable = { GER_union_center_biweekly = 0 }
     set_variable = { GER_union_points_biweekly = 0 }
+    set_variable = { GER_union_right_biweekly = 0 }
     set_variable = { GER_union_mass_strike_discount = 0 }
     set_variable = { GER_union_legislative_launch_discount = 0 }
     if = {
@@ -45,6 +46,12 @@ GER_union_prepare_rewards = {
     # TODO: Connect the future strike-upgrade decision cost to GER_union_legislative_launch_discount.
     # Tooltip only until that decision is implemented; the socialization strike discount above is live.
 }
+# 莱帕特路线（一个焦点都没完成）的保底加成：在 AOR_GER_union_competition.6 里接在 prepare 之后调用。
+GER_union_leipart_rewards = {
+    add_to_variable = { GER_union_pp_factor = 0.1 }
+    add_to_variable = { GER_union_retention = 0.15 }
+    add_to_variable = { GER_union_right_biweekly = 5 }
+}
 GER_union_apply_rewards = {
     add_dynamic_modifier = { modifier = GER_SPD_ADGB_modifier }
     hidden_effect = {
@@ -62,4 +69,30 @@ GER_union_biweekly_rewards = {
     GER_SPD_refresh_support_effect = yes
     add_to_variable = { GER_socialization_points_pool = GER_union_points_biweekly }
     GER_socialization_refresh_bars = yes
+    GER_union_right_gain = yes
+}
+# 每两周（随 GER_union_biweekly_rewards）：右派 +GER_union_right_biweekly，按左、中现有比例从两派扣除。
+GER_union_right_gain = {
+    if = {
+        limit = { check_variable = { GER_union_right_biweekly > 0 } }
+        set_temp_variable = { GER_union_lc_total = GER_SPD_left_support }
+        add_to_temp_variable = { GER_union_lc_total = GER_SPD_center_support }
+        if = {
+            limit = { check_variable = { GER_union_lc_total > 0 } }
+            set_temp_variable = { GER_union_take = GER_union_right_biweekly }
+            if = {
+                limit = { check_variable = { GER_union_take > GER_union_lc_total } }
+                set_temp_variable = { GER_union_take = GER_union_lc_total }
+            }
+            set_temp_variable = { GER_union_take_left = GER_union_take }
+            multiply_temp_variable = { GER_union_take_left = GER_SPD_left_support }
+            divide_temp_variable = { GER_union_take_left = GER_union_lc_total }
+            set_temp_variable = { GER_union_take_center = GER_union_take }
+            subtract_from_temp_variable = { GER_union_take_center = GER_union_take_left }
+            add_to_variable = { GER_SPD_right_support = GER_union_take }
+            subtract_from_variable = { GER_SPD_left_support = GER_union_take_left }
+            subtract_from_variable = { GER_SPD_center_support = GER_union_take_center }
+            GER_SPD_refresh_support_effect = yes
+        }
+    }
 }

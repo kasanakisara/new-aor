@@ -1,27 +1,93 @@
 spriteTypes = {
-    spriteType = {
-        name = "GFX_GER_reichstag_seat_icon"
-        texturefile = "gfx/interface/GER_parliament/GER_reichstag_seat_icon.png"
-        noOfFrames = 8
-    }
-    spriteType = {
-        name = "GFX_GER_Reichstag_button"
-        texturefile = "gfx/GER_Reichstag/GER_Reichstag_button.png"
-    }
-    spriteType = {
-        name = "GFX_yihui_hammer_clr"
-        texturefile = "gfx/GER_Reichstag/yihui_hammer_clr.dds"
-    }
-    spriteType = {
-        name = "GFX_yihui_hammer_b_w"
-        texturefile = "gfx/GER_Reichstag/yihui_hammer_b_w.dds"
-    }
-    spriteType = { name = "GFX_GER_yihui_party_SPD_L" texturefile = "gfx/interface/GER_parliament/PARTY/SPD_L.png" }
-    spriteType = { name = "GFX_GER_yihui_party_SPD_C" texturefile = "gfx/interface/GER_parliament/PARTY/SPD_C.png" }
-    spriteType = { name = "GFX_GER_yihui_party_SPD_R" texturefile = "gfx/interface/GER_parliament/PARTY/SPD_R.png" }
-    spriteType = { name = "GFX_GER_yihui_party_Z" texturefile = "gfx/interface/GER_parliament/PARTY/Z.png" }
-    spriteType = { name = "GFX_GER_yihui_party_DDP" texturefile = "gfx/interface/GER_parliament/PARTY/DDP.png" }
-    spriteType = { name = "GFX_GER_yihui_party_DVP" texturefile = "gfx/interface/GER_parliament/PARTY/DVP.png" }
-    spriteType = { name = "GFX_GER_yihui_party_DNVP" texturefile = "gfx/interface/GER_parliament/PARTY/DNVP.png" }
-    spriteType = { name = "GFX_GER_yihui_party_BBB" texturefile = "gfx/interface/GER_parliament/PARTY/BBB.png" }
+	# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_yihui_gui.py 生成；改议程 / 党派请改脚本后重跑
+	# 议席点（游戏里原有的，帧 1-8 = 党派编号）
+	spriteType = {
+		name = "GFX_GER_reichstag_seat_icon"
+		texturefile = "gfx/interface/GER_parliament/GER_reichstag_seat_icon.png"
+		noOfFrames = 8
+	}
+	# 右下角入口按钮（原有）
+	spriteType = {
+		name = "GFX_GER_Reichstag_button"
+		texturefile = "gfx/GER_Reichstag/GER_Reichstag_button.png"
+	}
+	# ---- 新界面：全部 1:1 显示，不要缩放 ----
+	spriteType = {
+		name = "GFX_GER_yihui_help"
+		texturefile = "gfx/interface/GER_parliament/ui/help_icon.png"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_capacity_plus"
+		texturefile = "gfx/interface/GER_parliament/ui/capacity_plus_3f.png"
+		noOfFrames = 3
+	}
+	# 议程条底板复用地区博弈的 GFX_GER_region_panel_decision_row；这里是未解锁盖板和左侧小记号（帧：1 进行中 / 2 可处理 / 3 未解锁 / 4 关键法案）
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_locked"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_row_locked.png"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_mark"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_mark_4f.png"
+		noOfFrames = 4
+	}
+	progressbartype = {
+		name = "GFX_GER_yihui_agenda_progress"
+		textureFile1 = "gfx/interface/GER_parliament/ui/agenda_progress_full.png"
+		textureFile2 = "gfx/interface/GER_parliament/ui/agenda_progress_empty.png"
+		size = { x = 284 y = 3 }
+		effectFile = "gfx/FX/progress.lua"
+		horizontal = yes
+	}
+	# 党派方块：按钮 3 帧（普通 / 悬停 / 按下），第 3 帧也当「已选中」盖板；不可委派的党派盖斜线板
+	spriteType = {
+		name = "GFX_GER_yihui_party_tile"
+		texturefile = "gfx/interface/GER_parliament/ui/party_tile_3f.png"
+		noOfFrames = 3
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_party_tile_locked"
+		texturefile = "gfx/interface/GER_parliament/ui/party_tile_locked.png"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_party_dot"
+		texturefile = "gfx/interface/GER_parliament/ui/party_dot_8f.png"
+		noOfFrames = 8
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_laws_open"
+		texturefile = "gfx/interface/GER_parliament/ui/laws_toggle_open_3f.png"
+		noOfFrames = 3
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_laws_close"
+		texturefile = "gfx/interface/GER_parliament/ui/laws_toggle_close_3f.png"
+		noOfFrames = 3
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_sep_h_agenda"
+		texturefile = "gfx/interface/GER_parliament/ui/sep_h_302.png"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_sep_h_laws"
+		texturefile = "gfx/interface/GER_parliament/ui/sep_h_228.png"
+	}
+	# 议事槌：平时暗色静图；关键法案辩论时（国家旗标 GER_yihui_hammer_active）换成循环敲击动画
+	spriteType = {
+		name = "GFX_GER_yihui_gavel_idle"
+		texturefile = "gfx/interface/GER_parliament/ui/gavel_idle.png"
+	}
+	frameAnimatedSpriteType = {
+		name = "GFX_GER_yihui_gavel_strike"
+		texturefile = "gfx/interface/GER_parliament/ui/gavel_strike_10f.png"
+		noOfFrames = 10
+		animation_rate_fps = 10
+		looping = yes
+		play_on_show = yes
+		pause_on_loop = 1.2
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_law_seal"
+		texturefile = "gfx/interface/GER_parliament/ui/law_seal.png"
+	}
 }

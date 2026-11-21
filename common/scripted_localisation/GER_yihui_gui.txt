@@ -1,0 +1,146 @@
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_yihui_gui.py 生成；改议程 / 党派请改脚本后重跑
+
+
+defined_text = {
+	name = GER_yihui_agenda_name
+	text = { trigger = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 0 } } localization_key = GER_yihui_agenda_1_name_grey }
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_agenda_1_name }
+	text = { trigger = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 0 } } localization_key = GER_yihui_agenda_2_name_grey }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_agenda_2_name }
+	text = { trigger = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 0 } } localization_key = GER_yihui_agenda_3_name_grey }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_agenda_3_name }
+	text = { trigger = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 0 } } localization_key = GER_yihui_agenda_4_name_grey }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_agenda_4_name }
+	text = { trigger = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 0 } } localization_key = GER_yihui_agenda_5_name_grey }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_agenda_5_name }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_agenda_status
+	text = { trigger = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 2 } } localization_key = GER_yihui_agenda_1_left }
+	text = { trigger = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 0 } } localization_key = GER_yihui_agenda_status_locked }
+	text = { trigger = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 2 } } localization_key = GER_yihui_agenda_2_left }
+	text = { trigger = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 0 } } localization_key = GER_yihui_agenda_status_locked }
+	text = { trigger = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 2 } } localization_key = GER_yihui_agenda_3_left }
+	text = { trigger = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 0 } } localization_key = GER_yihui_agenda_status_locked }
+	text = { trigger = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 2 } } localization_key = GER_yihui_agenda_4_left }
+	text = { trigger = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 0 } } localization_key = GER_yihui_agenda_status_locked }
+	text = { trigger = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 2 } } localization_key = GER_yihui_agenda_5_left }
+	text = { trigger = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 0 } } localization_key = GER_yihui_agenda_status_locked }
+	text = { localization_key = GER_yihui_agenda_status_idle }
+}
+
+defined_text = {
+	name = GER_yihui_agenda_tt
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_agenda_1_tt }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_agenda_2_tt }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_agenda_3_tt }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_agenda_4_tt }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_agenda_5_tt }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_law_name
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_agenda_1_name }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_agenda_2_name }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_agenda_3_name }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_agenda_4_name }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_agenda_5_name }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_law_tt
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_agenda_1_law_tt }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_agenda_2_law_tt }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_agenda_3_law_tt }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_agenda_4_law_tt }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_agenda_5_law_tt }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_party_desc
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_Reichstag_spd_left_tt }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_Reichstag_spd_center_left_tt }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_Reichstag_spd_right_tt }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_desc }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_Reichstag_ddp_tt }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_Reichstag_dvp_tt }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_Reichstag_dnvp_tt }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_Reichstag_other_tt }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_party_name
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_party_1_name }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_party_2_name }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_party_3_name }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_name }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_party_5_name }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_yihui_party_6_name }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_yihui_party_7_name }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_yihui_party_8_name }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_party_seats
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_party_1_seats }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_party_2_seats }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_party_3_seats }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_seats }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_party_5_seats }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_yihui_party_6_seats }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_yihui_party_7_seats }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_yihui_party_8_seats }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_party_bonus
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_party_1_bonus }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_party_2_bonus }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_party_3_bonus }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_bonus }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_party_5_bonus }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_yihui_party_6_bonus }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_yihui_party_7_bonus }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_yihui_party_8_bonus }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_party_tt
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_party_1_tt }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_party_2_tt }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_party_3_tt }
+	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_tt }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_party_5_tt }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_yihui_party_6_tt }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_yihui_party_7_tt }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_yihui_party_8_tt }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_yihui_send_cap1_text
+	text = { trigger = { check_variable = { GER_yihui_sel_state = 2 } } localization_key = GER_yihui_send_cap1_left }
+	text = { localization_key = GER_yihui_send_cap1_days }
+}
+
+defined_text = {
+	name = GER_yihui_send_val1_text
+	text = { trigger = { check_variable = { GER_yihui_sel_state = 1 } check_variable = { GER_yihui_preview_n < 1 } } localization_key = GER_yihui_send_val1_dash }
+	text = { localization_key = GER_yihui_send_val1_days }
+}
+
+defined_text = {
+	name = GER_yihui_send_tt_text
+	text = { trigger = { check_variable = { GER_yihui_preview_n < 1 } } localization_key = GER_yihui_send_tt_nopick }
+	text = { trigger = { NOT = { check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity } } } localization_key = GER_yihui_send_tt_full }
+	text = { localization_key = GER_yihui_send_tt_ok }
+}
