@@ -17,6 +17,17 @@ call_to_war_rule_faction_leader_only = {
 	}
 }
 
+call_to_war_rule_no_limit = {
+	type = call_to_war_rules
+	trigger = {
+		always = yes
+	}
+	can_be_remove = { always = no }
+	modifier = {
+		political_power_factor = -0.05
+	}
+}
+
 call_to_war_rule_major_only = {
 	type = call_to_war_rules
 	trigger = {

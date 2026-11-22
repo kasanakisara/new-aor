@@ -35,3 +35,38 @@ faction_manifest_defense_security_world = {
 		}
 	}
 }
+
+faction_manifest_russian_revolution = {
+	name = russian_revolution_goal_name
+	description = russian_revolution_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = {
+			input = collection:european_states
+		}
+
+		completed_amount_collection = {
+			input = collection:european_states
+			operators = {
+				limit = {
+					is_controlled_by_ROOT_or_ally = yes
+				}
+			}
+		}
+	}
+		
+	scale = {
+		war_stability_factor = 0.10
+	}
+	
+	progress_sections = {
+		manifest_fulfilled = {
+			min = @manifest_fulfilled_value
+
+			modifier = {
+				can_guarantee_other_ideologies = 1
+				generate_wargoal_tension = -0.15
+			}			
+		}
+	}
+}
