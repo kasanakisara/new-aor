@@ -39,7 +39,7 @@ create_equipment_variant = {
 	}
 }
 
-capital = 111
+capital = 147
 oob = "AOR_EU_FIN"
 
 set_research_slots = 3
@@ -96,24 +96,27 @@ add_equipment_to_stockpile = { type = convoy amount = 5 }
 
 
 set_politics = {
-	ruling_party = AUT_democratic
+	ruling_party = Absolutism
 	last_election = "1919.7.1"
 	election_frequency = 36
 	elections_allowed = no
 }
 set_popularities = {
-	Absolutism = 15
+	Absolutism = 85
 	Fascism = 0
-	Marxism = 15
-	AUT_democratic = 70
+	Marxism = 0
+	AUT_democratic = 15
 }
 
+SWE = {
+	country_event = { id = Finland.5  days = 5 }
+}
 
+set_country_flag = FIN_civilwar
 
 add_ideas = {
 	sisu
 	Great_War_Zone
-	An_unstable_republic
 }
 
 # AOR historical class definitions required by naval OOB
