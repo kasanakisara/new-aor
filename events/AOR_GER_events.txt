@@ -1530,6 +1530,37 @@ country_event = {
 	picture = GFX_AOR_GER_defense_law_1
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {
+			# 7.1 国防法危机开始：解锁东北五区（已开放的不重设）
+			if = {
+				limit = { NOT = { check_variable = { GER_region_R04_open = 1 } } }
+				set_variable = { GER_region_R04_open = 1 } set_variable = { GER_region_R04_state = 2 } set_variable = { GER_region_R04_support = 45 } set_variable = { GER_region_R04_control = 20 }   # 梅克伦堡 摇摆区
+				set_variable = { GER_region_R04_leader = 9 }
+			}
+			if = {
+				limit = { NOT = { check_variable = { GER_region_R05_open = 1 } } }
+				set_variable = { GER_region_R05_open = 1 } set_variable = { GER_region_R05_state = 2 } set_variable = { GER_region_R05_support = 45 } set_variable = { GER_region_R05_control = 20 }   # 波美拉尼亚 摇摆区（8.3 墓园事件后才变右派核心区）
+				set_variable = { GER_region_R05_leader = 9 }
+			}
+			if = {
+				limit = { NOT = { check_variable = { GER_region_R06_open = 1 } } }
+				set_variable = { GER_region_R06_open = 1 } set_variable = { GER_region_R06_state = 2 } set_variable = { GER_region_R06_support = 51 } set_variable = { GER_region_R06_control = 30 }   # 勃兰登堡 摇摆区
+				set_variable = { GER_region_R06_leader = 9 }
+			}
+			if = {
+				limit = { NOT = { check_variable = { GER_region_R13_open = 1 } } }
+				set_variable = { GER_region_R13_open = 1 } set_variable = { GER_region_R13_state = 4 } set_variable = { GER_region_R13_support = 0 } set_variable = { GER_region_R13_control = 0 }   # 东普鲁士 右派核心区
+			}
+			if = {
+				limit = { NOT = { check_variable = { GER_region_R16_open = 1 } } }
+				set_variable = { GER_region_R16_open = 1 } set_variable = { GER_region_R16_state = 2 } set_variable = { GER_region_R16_support = 60 } set_variable = { GER_region_R16_control = 75 }   # 大柏林 摇摆区
+				set_variable = { GER_region_R16_leader = 1 }
+			}
+			GER_region_game_sync_frames = yes
+		}
+	}
+
 	option = {
 		name = AOR_GER_defense_law.1.a
 		hidden_effect = {
