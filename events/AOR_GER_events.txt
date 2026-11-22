@@ -1614,7 +1614,8 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-		    set_variable = { GER_region_R05_state = 9 }   # 波美拉尼亚：右派控制区
+		    # 波美拉尼亚：墓园事件之后正式成为右派核心区（类型 4；支持度/控制度保持原样）
+		    set_variable = { GER_region_R05_state = 4 }
 		    GER_region_game_sync_frames = yes
 		    country_event = { id = AOR_GER_defense_law.7 days = 45 } # 1920.9.17
 		}

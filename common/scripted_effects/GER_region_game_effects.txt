@@ -676,6 +676,12 @@ GER_region_game_sync_selected = {
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } GER_region_action_5_visible = yes } add_to_array = { array = GER_region_panel_list value = 5 } }   # 组织重心向工厂转移
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } GER_region_action_6_visible = yes } add_to_array = { array = GER_region_panel_list value = 6 } }   # 发起罢工
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } GER_region_action_8_visible = yes } add_to_array = { array = GER_region_panel_list value = 8 } }   # 影子苏维埃
+    # 国防法危机：五条决议挂在同一个列表尾部（值 101-105，见 GER_region_entry_name/status/tt）
+    if = { limit = { has_country_flag = GER_dl_crisis_open has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } OR = { check_variable = { GER_region_selected = 4 } check_variable = { GER_region_selected = 5 } check_variable = { GER_region_selected = 6 } check_variable = { GER_region_selected = 13 } check_variable = { GER_region_selected = 16 } } } add_to_array = { array = GER_region_panel_list value = 101 } }   # 制定国防法草案
+    if = { limit = { has_country_flag = GER_dl_crisis_open has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } OR = { check_variable = { GER_region_selected = 4 } check_variable = { GER_region_selected = 5 } check_variable = { GER_region_selected = 6 } check_variable = { GER_region_selected = 13 } check_variable = { GER_region_selected = 16 } } } add_to_array = { array = GER_region_panel_list value = 102 } }   # 压制国防军骚乱
+    if = { limit = { has_country_flag = GER_dl_crisis_open has_country_flag = GER_dl_can_officers NOT = { has_country_flag = GER_dl_workers_officers } OR = { check_variable = { GER_region_selected = 4 } check_variable = { GER_region_selected = 5 } check_variable = { GER_region_selected = 6 } check_variable = { GER_region_selected = 13 } check_variable = { GER_region_selected = 16 } } } add_to_array = { array = GER_region_panel_list value = 103 } }   # 工人军官团占比
+    if = { limit = { has_country_flag = GER_dl_crisis_open has_country_flag = GER_dl_can_amend NOT = { has_country_flag = GER_dl_amend } OR = { check_variable = { GER_region_selected = 4 } check_variable = { GER_region_selected = 5 } check_variable = { GER_region_selected = 6 } check_variable = { GER_region_selected = 13 } check_variable = { GER_region_selected = 16 } } } add_to_array = { array = GER_region_panel_list value = 104 } }   # 修订国防法
+    if = { limit = { has_country_flag = GER_dl_crisis_open has_country_flag = GER_dl_can_amend NOT = { has_country_flag = GER_dl_neutral } OR = { check_variable = { GER_region_selected = 4 } check_variable = { GER_region_selected = 5 } check_variable = { GER_region_selected = 6 } check_variable = { GER_region_selected = 13 } check_variable = { GER_region_selected = 16 } } } add_to_array = { array = GER_region_panel_list value = 105 } }   # 宣布军队中立
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } } add_to_array = { array = GER_region_panel_list value = 0 } }
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } GER_region_action_9_visible = yes } add_to_array = { array = GER_region_panel_list value = 9 } }   # 扩充安全部队
     if = { limit = { has_country_flag = GER_region_map_opened NOT = { has_country_flag = GER_region_bavaria_phase has_country_flag = GER_region_silesia_phase } GER_region_action_10_visible = yes } add_to_array = { array = GER_region_panel_list value = 10 } }   # 总结政权经验
@@ -4245,5 +4251,62 @@ GER_region_game_silesia_end = {
         GER_region_silesia_on_end = yes   # 手写钩子（例如去掉还在生效的修正）
         clr_country_flag = GER_region_silesia_phase
         GER_region_game_sync_frames = yes
+    }
+}
+
+# 国防法危机：五条决议各 90 天，逐日递减，归零时记旗标（在 on_daily_GER 里调用）
+GER_defense_law_tick = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_dl_settled } }
+        if = {
+            limit = { check_variable = { GER_dl_days_draft > 0 } }
+            subtract_from_variable = { GER_dl_days_draft = 1 }
+            if = {
+                limit = { check_variable = { GER_dl_days_draft < 1 } }
+                set_variable = { GER_dl_days_draft = 0 }
+                set_country_flag = GER_dl_draft
+                GER_region_game_sync_frames = yes
+            }
+        }
+        if = {
+            limit = { check_variable = { GER_dl_days_suppress > 0 } }
+            subtract_from_variable = { GER_dl_days_suppress = 1 }
+            if = {
+                limit = { check_variable = { GER_dl_days_suppress < 1 } }
+                set_variable = { GER_dl_days_suppress = 0 }
+                set_country_flag = GER_dl_suppress
+                GER_region_game_sync_frames = yes
+            }
+        }
+        if = {
+            limit = { check_variable = { GER_dl_days_officers > 0 } }
+            subtract_from_variable = { GER_dl_days_officers = 1 }
+            if = {
+                limit = { check_variable = { GER_dl_days_officers < 1 } }
+                set_variable = { GER_dl_days_officers = 0 }
+                set_country_flag = GER_dl_workers_officers
+                GER_region_game_sync_frames = yes
+            }
+        }
+        if = {
+            limit = { check_variable = { GER_dl_days_amend > 0 } }
+            subtract_from_variable = { GER_dl_days_amend = 1 }
+            if = {
+                limit = { check_variable = { GER_dl_days_amend < 1 } }
+                set_variable = { GER_dl_days_amend = 0 }
+                set_country_flag = GER_dl_amend
+                GER_region_game_sync_frames = yes
+            }
+        }
+        if = {
+            limit = { check_variable = { GER_dl_days_neutral > 0 } }
+            subtract_from_variable = { GER_dl_days_neutral = 1 }
+            if = {
+                limit = { check_variable = { GER_dl_days_neutral < 1 } }
+                set_variable = { GER_dl_days_neutral = 0 }
+                set_country_flag = GER_dl_neutral
+                GER_region_game_sync_frames = yes
+            }
+        }
     }
 }

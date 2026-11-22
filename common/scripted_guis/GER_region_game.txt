@@ -69,37 +69,9 @@ scripted_gui = {
             GER_region_panel_photo = { frame = var:GER_region_selected }
             GER_region_panel_support_bar = { frame = var:GER_region_sel_support }
             GER_region_panel_control_bar = { frame = var:GER_region_sel_control }
-            # 国防法危机左侧面板（手写）
             # <<< GENERATED: properties
         }
         triggers = {
-            GER_defense_law_panel_visible = { has_country_flag = GER_dl_crisis_open }
-            GER_defense_law_row_draft_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_draft_button_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_suppress_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_suppress_button_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_officers_visible = { has_country_flag = GER_dl_can_officers has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_workers_officers } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_officers_button_visible = { has_country_flag = GER_dl_can_officers has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_workers_officers } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_amend_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_amend } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_amend_button_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_amend } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_neutral_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_neutral } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_neutral_button_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_neutral } NOT = { has_country_flag = GER_dl_settled } }
-            # 叶子元素（文字）也要单独写条件，容器不受 _visible 管
-            GER_defense_law_row_draft_bg_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_suppress_bg_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_officers_bg_visible = { has_country_flag = GER_dl_can_officers has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_workers_officers } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_amend_bg_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_amend } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_neutral_bg_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_neutral } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_draft_name_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_draft_status_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_draft } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_suppress_name_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_suppress_status_visible = { has_country_flag = GER_dl_can_act NOT = { has_country_flag = GER_dl_suppress } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_officers_name_visible = { has_country_flag = GER_dl_can_officers has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_workers_officers } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_officers_status_visible = { has_country_flag = GER_dl_can_officers has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_workers_officers } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_amend_name_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_amend } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_amend_status_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_amend } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_neutral_name_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_neutral } NOT = { has_country_flag = GER_dl_settled } }
-            GER_defense_law_row_neutral_status_visible = { has_country_flag = GER_dl_can_amend has_country_flag = GER_dl_draft NOT = { has_country_flag = GER_dl_neutral } NOT = { has_country_flag = GER_dl_settled } }
             # >>> GENERATED: triggers (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
             # 区块：显示 = 已开放（GER_region_Rxx_open = 1）；隐藏时不画、不挡鼠标
             GER_region_R01_WeserEms_fill_visible = { check_variable = { GER_region_R01_open = 1 } }
@@ -213,6 +185,11 @@ scripted_gui = {
             GER_region_panel_entry_button_click_enabled = {
                 check_variable = { GER_region_selected > 0 }
                 OR = {
+                    AND = { check_variable = { v = 101 } has_political_power > 4.99 NOT = { has_country_flag = GER_dl_draft } NOT = { check_variable = { GER_dl_days_draft > 0 } } }
+                    AND = { check_variable = { v = 102 } has_political_power > 4.99 NOT = { has_country_flag = GER_dl_suppress } NOT = { check_variable = { GER_dl_days_suppress > 0 } } }
+                    AND = { check_variable = { v = 103 } has_political_power > 4.99 NOT = { has_country_flag = GER_dl_workers_officers } NOT = { check_variable = { GER_dl_days_officers > 0 } } }
+                    AND = { check_variable = { v = 104 } has_political_power > 4.99 NOT = { has_country_flag = GER_dl_amend } NOT = { check_variable = { GER_dl_days_amend > 0 } } }
+                    AND = { check_variable = { v = 105 } has_political_power > 24.99 NOT = { has_country_flag = GER_dl_neutral } NOT = { check_variable = { GER_dl_days_neutral > 0 } } }
                     AND = { check_variable = { v = 1 } NOT = { check_variable = { GER_region_sel_row_1_days > 0 } } has_political_power > 9.99 GER_region_action_1_allowed = yes }
                     AND = { check_variable = { v = 2 } NOT = { check_variable = { GER_region_sel_row_2_days > 0 } } has_political_power > 9.99 GER_region_action_2_allowed = yes }
                     AND = { check_variable = { v = 7 } NOT = { check_variable = { GER_region_sel_row_7_days > 0 } } has_political_power > 14.99 GER_region_action_7_allowed = yes }
@@ -304,6 +281,11 @@ scripted_gui = {
             # 行动方针条 = 决议：点击扣政治点数、开始计时、执行 GER_region_action_N（效果写在 common/scripted_effects/GER_region_game_actions.txt）。
             # 能不能点见 triggers 里的 _click_enabled。
             GER_region_panel_entry_button_click = {
+                if = { limit = { check_variable = { v = 101 } } add_political_power = -5 set_variable = { GER_dl_days_draft = 90 } }
+                if = { limit = { check_variable = { v = 102 } } add_political_power = -5 set_variable = { GER_dl_days_suppress = 90 } }
+                if = { limit = { check_variable = { v = 103 } } add_political_power = -5 set_variable = { GER_dl_days_officers = 90 } }
+                if = { limit = { check_variable = { v = 104 } } add_political_power = -5 set_variable = { GER_dl_days_amend = 90 } }
+                if = { limit = { check_variable = { v = 105 } } add_political_power = -25 set_variable = { GER_dl_days_neutral = 90 } }
                 if = { limit = { check_variable = { v = 1 } } GER_region_game_take_action_1 = yes }
                 if = { limit = { check_variable = { v = 2 } } GER_region_game_take_action_2 = yes }
                 if = { limit = { check_variable = { v = 7 } } GER_region_game_take_action_7 = yes }
@@ -329,42 +311,8 @@ scripted_gui = {
                 if = { limit = { check_variable = { v = 23 } } GER_region_game_take_action_23 = yes }
                 if = { limit = { check_variable = { v = 24 } } GER_region_game_take_action_24 = yes }
                 if = { limit = { check_variable = { v = 25 } } GER_region_game_take_action_25 = yes }
-            }
-            # 国防法危机左侧面板的点击（手写；花费在这里手动扣）
-            GER_defense_law_row_draft_button_click = {
-                if = {
-                    limit = { has_political_power > 4.99 NOT = { has_country_flag = GER_dl_draft } }
-                    add_political_power = -5
-                    set_country_flag = GER_dl_draft
-                }
-            }
-            GER_defense_law_row_suppress_button_click = {
-                if = {
-                    limit = { has_political_power > 4.99 NOT = { has_country_flag = GER_dl_suppress } }
-                    add_political_power = -5
-                    set_country_flag = GER_dl_suppress
-                }
-            }
-            GER_defense_law_row_officers_button_click = {
-                if = {
-                    limit = { has_political_power > 4.99 NOT = { has_country_flag = GER_dl_workers_officers } }
-                    add_political_power = -5
-                    set_country_flag = GER_dl_workers_officers
-                }
-            }
-            GER_defense_law_row_amend_button_click = {
-                if = {
-                    limit = { has_political_power > 4.99 NOT = { has_country_flag = GER_dl_amend } }
-                    add_political_power = -5
-                    set_country_flag = GER_dl_amend
-                }
-            }
-            GER_defense_law_row_neutral_button_click = {
-                if = {
-                    limit = { has_political_power > 24.99 NOT = { has_country_flag = GER_dl_neutral } }
-                    add_political_power = -25
-                    set_country_flag = GER_dl_neutral
-                }
+                # 101-105（国防法）点完要重建列表，行才会消失
+                GER_region_game_sync_frames = yes
             }
             # <<< GENERATED: effects
         }

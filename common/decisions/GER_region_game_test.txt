@@ -900,4 +900,59 @@ GER_region_game_test_category = {
             }
         }
     }
+    GER_region_test_defense_law_crisis_start = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_country_flag = AOR_GER_defense_law_started
+                set_country_flag = GER_dl_crisis_open
+                country_event = { id = AOR_GER_defense_law.1 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_defense_law_crisis_next_stage = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                # 依次解锁下一阶段的决议（9.25 → 10.18 → 11.1）
+                set_country_flag = GER_dl_crisis_open
+                if = {
+                    limit = { NOT = { has_country_flag = GER_dl_can_act } }
+                    set_country_flag = GER_dl_can_act
+                }
+                else_if = {
+                    limit = { NOT = { has_country_flag = GER_dl_can_officers } }
+                    set_country_flag = GER_dl_can_officers
+                }
+                else = { set_country_flag = GER_dl_can_amend }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
+    GER_region_test_defense_law_crisis_settle = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                clr_country_flag = GER_dl_settled   # 方便反复测试
+                country_event = { id = AOR_GER_defense_law.18 }
+                GER_region_game_sync_frames = yes
+            }
+        }
+    }
 }
