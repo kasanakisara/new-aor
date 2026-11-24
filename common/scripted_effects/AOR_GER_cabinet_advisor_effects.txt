@@ -1,0 +1,445 @@
+# AOR 政治顾问内阁效果：每日结算
+# 静态修正放在顾问的个人特质里；本文件只处理条件型、计时型与每周结算型效果。
+
+GER_adv_stop_counter_action = {
+	if = { limit = { has_active_mission = GER_soc_auto_counter_withdraw_assets } remove_mission = GER_soc_auto_counter_withdraw_assets }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_sabotage_assets } remove_mission = GER_soc_auto_counter_sabotage_assets }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_manipulate_local_offices } remove_mission = GER_soc_auto_counter_manipulate_local_offices }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_divide_workers } remove_mission = GER_soc_auto_counter_divide_workers }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_soviet_failure_rumors } remove_mission = GER_soc_auto_counter_soviet_failure_rumors }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_recruit_thugs } remove_mission = GER_soc_auto_counter_recruit_thugs }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_promote_private_property } remove_mission = GER_soc_auto_counter_promote_private_property }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_inflation_agitation } remove_mission = GER_soc_auto_counter_inflation_agitation }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_assassinate_organizers } remove_mission = GER_soc_auto_counter_assassinate_organizers }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_far_right_groups } remove_mission = GER_soc_auto_counter_far_right_groups }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_foreign_contacts } remove_mission = GER_soc_auto_counter_foreign_contacts }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_fund_party_right } remove_mission = GER_soc_auto_counter_fund_party_right }
+	else_if = { limit = { has_active_mission = GER_soc_auto_counter_domestic_capital } remove_mission = GER_soc_auto_counter_domestic_capital }
+}
+
+GER_adv_cabinet_count = {
+	set_variable = { var = GER_cab_total value = 0 }
+	set_variable = { var = GER_cab_spd_right value = 0 }
+	set_variable = { var = GER_cab_spd_center value = 0 }
+	set_variable = { var = GER_cab_spd_left value = 0 }
+
+	if = {
+		limit = { GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_01_02_Franz_Mehring = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_left value = 1 }
+	}
+	if = {
+		limit = { GER_01_03_Karl_Kautsky = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_center value = 1 }
+	}
+	if = {
+		limit = { GER_01_04_Eduard_Bernstein = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_02_01_Karl_Legien = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_02_02_Robert_Dittmann = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_center value = 1 }
+	}
+	if = {
+		limit = { GER_02_03_Theodor_Leipart = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_01_Rudolf_Wissell = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_02_Hugo_Haase = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_center value = 1 }
+	}
+	if = {
+		limit = { GER_03_03_Philipp_Scheidemann = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_04_Ulrich_von_Brockdorff_Rantzau = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_03_05_Gustav_Noske = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_06_Gustav_Bauer = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_07_Eduard_David = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_03_08_Hugo_Preuss = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_04_01_Carl_Ballod = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_04_02_Emil_Lederer = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_04_03_Robert_Wilbrandt = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_07_01_Clara_Zetkin = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_left value = 1 }
+	}
+	if = {
+		limit = { GER_08_01_Georg_Ledebour = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_center value = 1 }
+	}
+	if = {
+		limit = { GER_09_01_Otto_Wels = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_09_02_Otto_Braun = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_09_04_Hermann_Mueller = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_09_05_Carl_Severing = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_right value = 1 }
+	}
+	if = {
+		limit = { GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+
+	set_variable = { var = GER_cab_diff_center value = GER_cab_total }
+	subtract_from_variable = { var = GER_cab_diff_center value = GER_cab_spd_center }
+	set_variable = { var = GER_cab_center_left value = GER_cab_spd_center }
+	add_to_variable = { var = GER_cab_center_left value = GER_cab_spd_left }
+	set_variable = { var = GER_cab_diff_center_left value = GER_cab_total }
+	subtract_from_variable = { var = GER_cab_diff_center_left value = GER_cab_center_left }
+	set_variable = { var = GER_cab_halfright value = GER_cab_spd_right }
+	multiply_variable = { var = GER_cab_halfright value = 2 }
+	subtract_from_variable = { var = GER_cab_halfright value = GER_cab_total }
+	set_variable = { var = GER_cab_halfleft value = GER_cab_spd_left }
+	multiply_variable = { var = GER_cab_halfleft value = 2 }
+	subtract_from_variable = { var = GER_cab_halfleft value = GER_cab_total }
+	set_variable = { var = GER_cab_diff_right value = GER_cab_total }
+	subtract_from_variable = { var = GER_cab_diff_right value = GER_cab_spd_right }
+}
+
+GER_adv_cabinet_conditions = {
+	# 哈泽：内阁仅有社民党中派
+	if = {
+		limit = {
+			GER_03_02_Hugo_Haase = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_total value = 0 compare = more_than }
+			check_variable = { var = GER_cab_diff_center value = 0 }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_haase_center } } } add_dynamic_modifier = { modifier = GER_adv_haase_center } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_haase_center } } remove_dynamic_modifier = { modifier = GER_adv_haase_center } }
+	}
+
+	# 谢德曼：稳定度 70% 以上
+	if = {
+		limit = { GER_03_03_Philipp_Scheidemann = { is_hired_as_advisor = yes } has_stability > 0.70 }
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_scheidemann_high_stab } } } add_dynamic_modifier = { modifier = GER_adv_scheidemann_high_stab } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_scheidemann_high_stab } } remove_dynamic_modifier = { modifier = GER_adv_scheidemann_high_stab } }
+	}
+
+	# 巴洛德：银行业社会化已完成（行业序号 3 已完成即 active_industry >= 4）
+	if = {
+		limit = {
+			GER_04_01_Carl_Ballod = { is_hired_as_advisor = yes }
+			has_variable = GER_socialization_active_industry
+			check_variable = { var = GER_socialization_active_industry value = 4 compare = more_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_ballod_banking } } } add_dynamic_modifier = { modifier = GER_adv_ballod_banking } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_ballod_banking } } remove_dynamic_modifier = { modifier = GER_adv_ballod_banking } }
+	}
+
+	# 沙赫特：内阁半数顾问为社民党右派
+	if = {
+		limit = {
+			GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_halfright value = 0 compare = more_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_schacht_halfright } } } add_dynamic_modifier = { modifier = GER_adv_schacht_halfright } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_schacht_halfright } } remove_dynamic_modifier = { modifier = GER_adv_schacht_halfright } }
+	}
+
+	# 雷德布尔：内阁没有中派与左派以外的顾问
+	if = {
+		limit = {
+			GER_08_01_Georg_Ledebour = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_total value = 0 compare = more_than }
+			check_variable = { var = GER_cab_diff_center_left value = 0 }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_ledebour_pure } } } add_dynamic_modifier = { modifier = GER_adv_ledebour_pure } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_ledebour_pure } } remove_dynamic_modifier = { modifier = GER_adv_ledebour_pure } }
+	}
+
+	# 威尔斯：内阁一半成员为社民党右派
+	if = {
+		limit = {
+			GER_09_01_Otto_Wels = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_halfright value = 0 compare = more_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_wels_halfright } } } add_dynamic_modifier = { modifier = GER_adv_wels_halfright } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_wels_halfright } } remove_dynamic_modifier = { modifier = GER_adv_wels_halfright } }
+	}
+
+	# 布劳恩：稳定度 70% 以上且社会化项目已完成两项
+	if = {
+		limit = {
+			GER_09_02_Otto_Braun = { is_hired_as_advisor = yes }
+			has_stability > 0.70
+			has_variable = GER_socialization_active_industry
+			check_variable = { var = GER_socialization_active_industry value = 2 compare = more_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_braun_ready } } } add_dynamic_modifier = { modifier = GER_adv_braun_ready } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_braun_ready } } remove_dynamic_modifier = { modifier = GER_adv_braun_ready } }
+	}
+
+	# 艾伯特：内阁均为社民党右派
+	if = {
+		limit = {
+			GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_total value = 0 compare = more_than }
+			check_variable = { var = GER_cab_diff_right value = 0 }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_ebert_allright } } } add_dynamic_modifier = { modifier = GER_adv_ebert_allright } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_ebert_allright } } remove_dynamic_modifier = { modifier = GER_adv_ebert_allright } }
+	}
+
+	# 伯恩施坦：内阁没有社民党左派与中派成员
+	if = {
+		limit = {
+			GER_01_04_Eduard_Bernstein = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_spd_left value = 0 }
+			check_variable = { var = GER_cab_spd_center value = 0 }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_bernstein_cost } } } add_dynamic_modifier = { modifier = GER_adv_bernstein_cost } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_bernstein_cost } } remove_dynamic_modifier = { modifier = GER_adv_bernstein_cost } }
+	}
+
+	# 施特雷泽曼：「监视极右组织」完成后
+	if = {
+		limit = { GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes } has_completed_focus = GER_watch_far_right }
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_stresemann_watch } } } add_dynamic_modifier = { modifier = GER_adv_stresemann_watch } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_stresemann_watch } } remove_dynamic_modifier = { modifier = GER_adv_stresemann_watch } }
+	}
+}
+
+GER_adv_cabinet_weekly_social = {
+	if = { limit = { NOT = { has_variable = GER_adv_soc_week } } set_variable = { var = GER_adv_soc_week value = 0 } }
+	if = {
+		limit = {
+			has_country_flag = GER_socialization_started
+			has_variable = GER_socialization_active_industry
+			check_variable = { var = GER_socialization_active_industry value = 11 compare = less_than }
+		}
+		set_variable = { var = GER_adv_soc_weekly value = 0 }
+		# 多伊米希：无列金且启用考茨基
+		if = {
+			limit = {
+				GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes }
+				NOT = { GER_02_01_Karl_Legien = { is_hired_as_advisor = yes } }
+				GER_01_03_Karl_Kautsky = { is_hired_as_advisor = yes }
+			}
+			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
+		}
+		# 考茨基：无社民党左派
+		if = {
+			limit = { GER_01_03_Karl_Kautsky = { is_hired_as_advisor = yes } check_variable = { var = GER_cab_spd_left value = 0 } }
+			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
+		}
+		# 列金：无多伊米希
+		if = {
+			limit = { GER_02_01_Karl_Legien = { is_hired_as_advisor = yes } NOT = { GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes } } }
+			add_to_variable = { var = GER_adv_soc_weekly value = 1 }
+		}
+		# 梅林：120 天里程碑（解职后保留）
+		if = {
+			limit = { has_country_flag = GER_adv_mehring_soc_unlocked }
+			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
+		}
+		add_to_variable = { var = GER_adv_soc_week value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_soc_week value = 7 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_soc_week value = 7 }
+			if = {
+				limit = { check_variable = { var = GER_adv_soc_weekly value = 0 compare = more_than } }
+				add_to_variable = { var = GER_socialization_points_pool value = GER_adv_soc_weekly }
+			}
+		}
+	}
+}
+
+GER_adv_mehring_term = {
+	if = { limit = { NOT = { has_variable = GER_adv_mehring_days } } set_variable = { var = GER_adv_mehring_days value = 0 } }
+	if = {
+		limit = { GER_01_02_Franz_Mehring = { is_hired_as_advisor = yes } }
+		if = {
+			limit = { NOT = { has_country_flag = GER_adv_mehring_hired } }
+			set_country_flag = GER_adv_mehring_hired
+			set_variable = { var = GER_adv_mehring_days value = 0 }
+		}
+		add_to_variable = { var = GER_adv_mehring_days value = 1 }
+		# 100 天：政治点数 +5%
+		if = {
+			limit = {
+				check_variable = { var = GER_adv_mehring_days value = 100 compare = more_than_or_equals }
+				NOT = { has_country_flag = GER_adv_mehring_pp_unlocked }
+			}
+			set_country_flag = GER_adv_mehring_pp_unlocked
+			add_dynamic_modifier = { modifier = GER_adv_mehring_pp }
+		}
+		# 120 天：社会化 +2/周，随后自动解职
+		if = {
+			limit = { check_variable = { var = GER_adv_mehring_days value = 120 compare = more_than_or_equals } }
+			set_country_flag = GER_adv_mehring_soc_unlocked
+			deactivate_advisor = GER_01_02_Franz_Mehring
+			clr_country_flag = GER_adv_mehring_hired
+			set_variable = { var = GER_adv_mehring_days value = 0 }
+		}
+	}
+	else = {
+		if = {
+			limit = { has_country_flag = GER_adv_mehring_hired }
+			clr_country_flag = GER_adv_mehring_hired
+			set_variable = { var = GER_adv_mehring_days value = 0 }
+		}
+	}
+}
+
+GER_adv_zetkin_term = {
+	if = { limit = { NOT = { has_variable = GER_adv_zetkin_days } } set_variable = { var = GER_adv_zetkin_days value = 0 } }
+	if = {
+		limit = {
+			GER_07_01_Clara_Zetkin = { is_hired_as_advisor = yes }
+			GER_01_02_Franz_Mehring = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_halfleft value = 0 compare = more_than_or_equals }
+		}
+		add_to_variable = { var = GER_adv_zetkin_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_zetkin_days value = 100 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_zetkin_days value = 100 }
+			GER_adv_stop_counter_action = yes
+		}
+	}
+	else = {
+		set_variable = { var = GER_adv_zetkin_days value = 0 }
+	}
+}
+
+GER_adv_stresemann_term = {
+	if = { limit = { NOT = { has_variable = GER_adv_stresemann_days } } set_variable = { var = GER_adv_stresemann_days value = 0 } }
+	if = {
+		limit = { GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_adv_stresemann_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_stresemann_days value = 120 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_stresemann_days value = 120 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				subtract_from_variable = { var = GER_socialization_counterrevolution value = 12 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+			}
+		}
+	}
+	else = {
+		set_variable = { var = GER_adv_stresemann_days value = 0 }
+	}
+}
+
+GER_adv_cabinet_daily_effects = {
+	GER_adv_cabinet_count = yes
+	GER_adv_cabinet_conditions = yes
+	GER_adv_cabinet_weekly_social = yes
+	GER_adv_mehring_term = yes
+	GER_adv_zetkin_term = yes
+	GER_adv_stresemann_term = yes
+}

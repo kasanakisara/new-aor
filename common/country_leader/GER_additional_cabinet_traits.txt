@@ -1,16 +1,41 @@
 leader_traits = {
     AOR_GER_economist = { random = no }
-    AOR_GER_planned_economy = { random = no }
+    AOR_GER_planned_economy = {
+        random = no
+        production_speed_buildings_factor = 0.05
+        industrial_capacity_factory = 0.05
+        industrial_capacity_dockyard = 0.10
+        custom_modifier_tooltip = GER_adv_ballod_tt
+    }
     AOR_GER_industrialist = { random = no }
     AOR_GER_bayer = { random = no }
     AOR_GER_siemens_schuckert = { random = no }
-    AOR_GER_economic_sociology = { random = no }
+    AOR_GER_economic_sociology = {
+        random = no
+        consumer_goods_factor = -0.05
+        line_change_production_efficiency_factor = 0.10
+        production_factory_efficiency_gain_factor = 0.05
+    }
     AOR_GER_ddp = { random = no }
     AOR_GER_dvp = { random = no }
     AOR_GER_banker = { random = no }
-    AOR_GER_monetary_policy = { random = no }
-    AOR_GER_interior_minister = { random = no }
+    AOR_GER_monetary_policy = {
+        random = no
+        stability_factor = -0.05
+        consumer_goods_factor = -0.10
+        custom_modifier_tooltip = GER_adv_schacht_tt
+    }
+    AOR_GER_interior_minister = {
+        random = no
+        stability_factor = 0.05
+        local_resources_factor = 0.075
+        industrial_concern_cost_factor = -0.10
+    }
     AOR_GER_zentrum = { random = no }
     AOR_GER_ghh = { random = no }
-    AOR_GER_social_economics = { random = no }
+    AOR_GER_social_economics = {
+        random = no
+        production_speed_infrastructure_factor = 0.10
+        production_speed_industrial_complex_factor = 0.15
+    }
 }

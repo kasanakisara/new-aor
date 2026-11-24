@@ -70,4 +70,84 @@ leader_traits = {
 		trait_type = personality_trait
 		# Comintern affiliation; no numeric effect was specified.
 	}
+
+	# 久战之将：数十年如一日的军旅生涯
+	GER_AF_veteran_of_many_wars = {
+		type = land
+		trait_type = personality_trait
+		attack_skill = 1
+		defense_skill = 1
+	}
+	# 军中权威：作战安排容易得到上级认可
+	GER_AF_army_authority = {
+		type = land
+		trait_type = personality_trait
+		planning_speed = 0.15
+		logistics_skill = 1
+	}
+	# 帝国之盾：极度痛恨左翼，惯于报复性作战
+	GER_AF_shield_of_the_empire = {
+		type = land
+		trait_type = personality_trait
+		attack_skill = 2
+		army_org_regain = -0.10
+	}
+	# 赴外经验：在异国他乡与敌人作战
+	GER_AF_foreign_experience = {
+		type = land
+		trait_type = personality_trait
+		max_dig_in_factor = 0.15
+		terrain_penalty_reduction = 0.25
+	}
+	# 普鲁士军国色彩：祖国高于任何主义
+	GER_AF_prussian_militarism = {
+		type = land
+		trait_type = personality_trait
+		army_core_attack_factor = 0.05
+		army_core_defence_factor = 0.05
+	}
+	# 警察背景：娴熟于城市作战与巷战
+	GER_AF_police_background = {
+		type = land
+		trait_type = personality_trait
+		urban = {
+			movement = 0.15
+			attack = 0.30
+			defence = 0.20
+		}
+	}
+	# 指挥无力：部下成为他的士兵无异于向死神招手
+	GER_AF_poor_commander = {
+		type = land
+		trait_type = personality_trait
+		org_loss_when_moving = -0.15
+		out_of_supply_factor = 0.15
+		army_org_regain = -0.20
+	}
+	# 炮兵将领
+	GER_AF_artillery_commander = {
+		type = land
+		trait_type = personality_trait
+		army_artillery_attack_factor = 0.10
+		army_artillery_defence_factor = 0.05
+	}
+	# 炮兵专家
+	GER_AF_artillery_expert = {
+		type = land
+		trait_type = personality_trait
+		army_artillery_attack_factor = 0.05
+		army_artillery_defence_factor = 0.05
+	}
+	# 凌厉的攻击者（陆军师级可用版，原版同名特质仅限元帅）
+	GER_AF_fierce_attacker = {
+		type = land
+		trait_type = personality_trait
+		breakthrough_factor = 0.10
+	}
+	# 后勤奇才（陆军师级可用版，原版同名特质仅限元帅）
+	GER_AF_logistics_genius = {
+		type = land
+		trait_type = personality_trait
+		supply_consumption_factor = -0.15
+	}
 }
