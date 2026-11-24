@@ -8,5 +8,54 @@ ideas = {
                 custom_modifier_tooltip = AOR_Entente_no_war_tt
             }
         }
+
+        # ===== 凡尔赛赔款：协约国分得的德国赔款 =====
+        # 1920.1 屈辱条约签署后，由德国国策「脊梁断裂」的完成奖励给予：
+        #   英法各得「大战赔款」+ 民用/军用工厂份额各 5%；美国单独一档；其余协约国成员得「大战赔款」。
+
+        AOR_GER_versailles_reparations_entente = { #大战赔款（除美国外的协约国成员）
+            picture = Unequal_trade
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = -0.10
+                production_speed_buildings_factor = 0.05
+                research_speed_factor = 0.03
+                industrial_capacity_factory = 0.05
+            }
+        }
+
+        AOR_GER_versailles_reparations_usa = { #大战赔款（美国）
+            picture = Unequal_trade
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                production_speed_buildings_factor = 0.10
+                research_speed_factor = 0.05
+                industrial_capacity_factory = 0.10
+            }
+        }
+
+        AOR_GER_versailles_reparations_civilian = { #赔款份额：民用工厂（英法各 5%）
+            picture = Semi_colonial_economy
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                production_speed_industrial_complex_factor = 0.05
+            }
+        }
+
+        AOR_GER_versailles_reparations_military = { #赔款份额：军用工厂（英法各 5%）
+            picture = Semi_colonial_economy
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                production_speed_arms_factory_factor = 0.05
+            }
+        }
     }
 }

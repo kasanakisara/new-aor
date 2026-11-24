@@ -293,6 +293,42 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			# 屈辱条约签署：国家精神换血
+			remove_ideas = GER_stab_in_the_back
+			add_ideas = GER_Versailles_reparations_shackles
+			add_ideas = GER_bound_eagle
+			# 战败国法案：经济与贸易由协约国把持，不可更换
+			add_ideas = GER_shattered_economy
+			add_ideas = GER_entente_dominated_market
+			# 协约国分赃：英法各得大战赔款 + 民用/军用工厂份额，美国单独一档
+			ENG = {
+				add_ideas = AOR_GER_versailles_reparations_entente
+				add_ideas = AOR_GER_versailles_reparations_civilian
+				add_ideas = AOR_GER_versailles_reparations_military
+			}
+			FRA = {
+				add_ideas = AOR_GER_versailles_reparations_entente
+				add_ideas = AOR_GER_versailles_reparations_civilian
+				add_ideas = AOR_GER_versailles_reparations_military
+			}
+			USA = {
+				add_ideas = AOR_GER_versailles_reparations_usa
+			}
+			# 其余协约国成员：与英法同阵营者，同样分得大战赔款
+			every_other_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = ENG
+						is_in_faction_with = FRA
+					}
+					NOT = { tag = ENG }
+					NOT = { tag = FRA }
+					NOT = { tag = USA }
+				}
+				add_ideas = AOR_GER_versailles_reparations_entente
+			}
+			# TODO 暂不接「解锁可执行社会化决议」：GER_socialization_initialize 目前在 on_actions 开局初始化；
+			#      将来改为由本格解锁时，在此处调用 GER_socialization_initialize = yes 并撤掉 on_actions 的兜底。
 		}
 	}
 

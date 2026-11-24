@@ -252,6 +252,69 @@ ideas = {
 			}
 		}
 
+		# ===== 凡尔赛赔款线（1920.1 屈辱条约签署后）=====
+		# 由国策「脊梁断裂」的完成奖励给予：移除「背后捅刀」，替换为下面两个精神。
+		# 图标为占位美术，见 interface/AOR_GER_versailles.gfx
+
+		#凡尔赛赔款的束缚：赔款、领土交割与军备限制构成的长期枷锁
+		GER_Versailles_reparations_shackles = {
+			picture = GER_Versailles_reparations_shackles
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.20
+				stability_factor = -0.25
+				offensive_war_stability_factor = -0.25
+				defensive_war_stability_factor = -0.25
+				war_support_factor = -0.10
+				consumer_goods_factor = 0.45
+				conscription_factor = -0.25
+				monthly_population = -0.25
+				production_speed_buildings_factor = -0.35
+				research_speed_factor = -0.35
+				industrial_capacity_factory = -0.25
+				production_factory_max_efficiency_factor = -0.30
+				line_change_production_efficiency_factor = -0.25
+				production_factory_efficiency_gain_factor = -0.25
+				resistance_target = 0.15
+				min_export = 0.75
+				trade_opinion_factor = -0.80
+				drift_defence_factor = -0.25
+			}
+		}
+
+		#受缚之鹰：军备被条约钉死，军队与军工的成长全面受限
+		GER_bound_eagle = {
+			picture = GER_bound_eagle
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				high_command_cost_factor = 0.50
+				theorist_cost_factor = 0.50
+				xp_gain_factor = -0.50
+				max_command_power = -50
+				military_leader_cost_factor = 0.50
+				production_speed_arms_factory_factor = -0.80
+				production_speed_bunker_factor = -1.00
+				production_speed_coastal_bunker_factor = -1.00
+				conversion_cost_civ_to_mil_factor = 0.80
+				industrial_capacity_dockyard = -0.90
+				production_speed_dockyard_factor = -0.80
+				refit_ic_cost = 0.90
+				refit_speed = -0.90
+				tank_manufacturer_cost_factor_MIO = 0.90
+				naval_manufacturer_cost_factor_MIO = 0.90
+				aircraft_manufacturer_cost_factor_MIO = 0.90
+			}
+			equipment_bonus = {
+				armor = { build_cost_ic = 0.70 }
+				artillery = { build_cost_ic = 0.50 }
+				infantry_equipment = { build_cost_ic = 0.50 }
+			}
+		}
+
 		#国民议会紧急会议（凡尔赛最后通牒期间获得，为期两天）
 		GER_reichstag_emergency_session = {
 			picture = GER_reichstag_emergency_session
