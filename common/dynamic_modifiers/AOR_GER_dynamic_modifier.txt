@@ -52,8 +52,8 @@ GER_1920_ambitious_plan = {
 }
 
 # 新增：1920 经济线 —— 地区精神「经济重整」（国家财税管理体系）
-# 州级动态修正：所有基建等级 <5 的地区获得；基建升到满级（5）后由 remove_trigger 自动移除
-# 挂载：国策 completion_reward 的 every_owned_state 循环 + on_daily_GER 给新到手地区补挂
+# 州级动态修正：国策完成时，所有核心地区里基建等级 <5 的地区获得；基建升到满级（5）后由 remove_trigger 自动移除
+# 只挂国策完成那一刻的核心地，一次性；此后新扩张所得的领土不再补挂
 GER_1920_poor_state = {
 	enable = { always = yes }
 	icon = GFX_modifiers_BRA_neglected_state
