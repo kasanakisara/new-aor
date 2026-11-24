@@ -70,6 +70,26 @@ scripted_gui = {
             GER_region_panel_support_bar = { frame = var:GER_region_sel_support }
             GER_region_panel_control_bar = { frame = var:GER_region_sel_control }
             # <<< GENERATED: properties
+            # BEGIN AOR_COUNTERREV
+            GER_region_cr_bar = { frame = var:GER_region_sel_cr_pct }
+            GER_region_cr_pips = { frame = var:GER_region_cr_pips }
+            GER_region_cr_marker_R01 = { frame = var:GER_region_R01_cr_mark }
+            GER_region_cr_marker_R02 = { frame = var:GER_region_R02_cr_mark }
+            GER_region_cr_marker_R03 = { frame = var:GER_region_R03_cr_mark }
+            GER_region_cr_marker_R04 = { frame = var:GER_region_R04_cr_mark }
+            GER_region_cr_marker_R05 = { frame = var:GER_region_R05_cr_mark }
+            GER_region_cr_marker_R06 = { frame = var:GER_region_R06_cr_mark }
+            GER_region_cr_marker_R07 = { frame = var:GER_region_R07_cr_mark }
+            GER_region_cr_marker_R08 = { frame = var:GER_region_R08_cr_mark }
+            GER_region_cr_marker_R09 = { frame = var:GER_region_R09_cr_mark }
+            GER_region_cr_marker_R10 = { frame = var:GER_region_R10_cr_mark }
+            GER_region_cr_marker_R11 = { frame = var:GER_region_R11_cr_mark }
+            GER_region_cr_marker_R12 = { frame = var:GER_region_R12_cr_mark }
+            GER_region_cr_marker_R13 = { frame = var:GER_region_R13_cr_mark }
+            GER_region_cr_marker_R14 = { frame = var:GER_region_R14_cr_mark }
+            GER_region_cr_marker_R15 = { frame = var:GER_region_R15_cr_mark }
+            GER_region_cr_marker_R16 = { frame = var:GER_region_R16_cr_mark }
+            # END AOR_COUNTERREV
         }
         triggers = {
             # >>> GENERATED: triggers (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本
@@ -240,6 +260,40 @@ scripted_gui = {
                 }
             }
             # END AOR_IDLE_CLOCKWORK
+            # BEGIN AOR_COUNTERREV
+            # 反革命倒计时：选中地区有行动时显示；≤7 日叠红光。地图标记：该区有行动时显示
+            GER_region_cr_shadow_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_strip_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_bar_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_pips_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_title_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_days_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_day_unit_visible = { check_variable = { GER_region_sel_cr_days > 0 } }
+            GER_region_cr_urgent_visible = { check_variable = { GER_region_sel_cr_days > 0 } check_variable = { GER_region_sel_cr_days < 8 } }
+            GER_region_cr_strip_click_enabled = {
+                check_variable = { GER_region_sel_cr_days > 0 }
+                OR = {
+                    AND = { check_variable = { GER_region_sel_frame = 2 } has_political_power > 14.99 }
+                    AND = { NOT = { check_variable = { GER_region_sel_frame = 2 } } has_political_power > 9.99 }
+                }
+            }
+            GER_region_cr_marker_R01_visible = { check_variable = { GER_region_R01_cr_days > 0 } }
+            GER_region_cr_marker_R02_visible = { check_variable = { GER_region_R02_cr_days > 0 } }
+            GER_region_cr_marker_R03_visible = { check_variable = { GER_region_R03_cr_days > 0 } }
+            GER_region_cr_marker_R04_visible = { check_variable = { GER_region_R04_cr_days > 0 } }
+            GER_region_cr_marker_R05_visible = { check_variable = { GER_region_R05_cr_days > 0 } }
+            GER_region_cr_marker_R06_visible = { check_variable = { GER_region_R06_cr_days > 0 } }
+            GER_region_cr_marker_R07_visible = { check_variable = { GER_region_R07_cr_days > 0 } }
+            GER_region_cr_marker_R08_visible = { check_variable = { GER_region_R08_cr_days > 0 } }
+            GER_region_cr_marker_R09_visible = { check_variable = { GER_region_R09_cr_days > 0 } }
+            GER_region_cr_marker_R10_visible = { check_variable = { GER_region_R10_cr_days > 0 } }
+            GER_region_cr_marker_R11_visible = { check_variable = { GER_region_R11_cr_days > 0 } }
+            GER_region_cr_marker_R12_visible = { check_variable = { GER_region_R12_cr_days > 0 } }
+            GER_region_cr_marker_R13_visible = { check_variable = { GER_region_R13_cr_days > 0 } }
+            GER_region_cr_marker_R14_visible = { check_variable = { GER_region_R14_cr_days > 0 } }
+            GER_region_cr_marker_R15_visible = { check_variable = { GER_region_R15_cr_days > 0 } }
+            GER_region_cr_marker_R16_visible = { check_variable = { GER_region_R16_cr_days > 0 } }
+            # END AOR_COUNTERREV
 
         }
         effects = {
@@ -455,6 +509,9 @@ scripted_gui = {
                 GER_region_game_sync_frames = yes
             }
             # <<< GENERATED: effects
+            # BEGIN AOR_COUNTERREV
+            GER_region_cr_strip_click = { GER_region_cr_stop_selected = yes }
+            # END AOR_COUNTERREV
         }
     }
 }

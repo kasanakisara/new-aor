@@ -700,6 +700,9 @@ GER_region_game_sync_selected = {
     if = { limit = { has_country_flag = GER_region_silesia_phase check_variable = { GER_region_selected = 7 } GER_region_action_23_visible = yes } add_to_array = { array = GER_region_panel_list value = 23 } }   # 派遣正规军
     if = { limit = { has_country_flag = GER_region_silesia_phase check_variable = { GER_region_selected = 7 } GER_region_action_24_visible = yes } add_to_array = { array = GER_region_panel_list value = 24 } }   # 向协约国控诉
     if = { limit = { has_country_flag = GER_region_silesia_phase check_variable = { GER_region_selected = 7 } GER_region_action_25_visible = yes } add_to_array = { array = GER_region_panel_list value = 25 } }   # 加强对激进派的控制
+    # BEGIN AOR_COUNTERREV
+    GER_region_cr_sync_selected = yes
+    # END AOR_COUNTERREV
 }
 
 # ---- 给手写决议效果用的小工具。先 set_temp_variable = { GER_region_delta = 3 }（或 GER_region_value），再调用。

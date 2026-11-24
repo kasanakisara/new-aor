@@ -1,0 +1,57 @@
+# 地区博弈 · 反革命行动测试决议（install_countdown.py 生成；放在【测试】地区博弈地图分类里，执行后自动打开地区博弈界面）
+GER_region_game_test_category = {
+    GER_region_cr_debug_start = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        available = { check_variable = { GER_region_selected > 0 } }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_target = GER_region_selected }
+                GER_region_cr_start_target = yes
+            }
+        }
+    }
+    GER_region_cr_debug_urgent = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        available = { check_variable = { GER_region_selected > 0 } }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = {
+                set_variable = { GER_region_target = GER_region_selected }
+                set_variable = { GER_region_cr_duration = 5 }
+                GER_region_cr_start_target = yes
+                set_variable = { GER_region_cr_duration = 14 }
+            }
+        }
+    }
+    GER_region_cr_debug_spawn = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = { GER_region_cr_spawn = yes }
+        }
+    }
+    GER_region_cr_debug_clear = {
+        allowed = { original_tag = GER }
+        visible = { original_tag = GER }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = GER_region_game_open
+            hidden_effect = { GER_region_cr_clear_all = yes }
+        }
+    }
+}
