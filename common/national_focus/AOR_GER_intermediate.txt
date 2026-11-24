@@ -504,9 +504,7 @@ focus_tree = {
 					}
 				}
 			}
-			# 革命工人自行行动冷却 -2 天
-			# TODO：GER_soc_auto_worker_* 的冷却由各自 *_cooldown 变量控制，需在 GER_soc_auto_daily_tick 里
-			#   按此旗标每天额外扣 1 点，等价于冷却缩短 2 天。
+			# 革命工人自行行动冷却 -2 天（GER_soc_auto_daily_tick 按此旗标每天额外扣 1 点）
 			custom_effect_tooltip = GER_1920_worker_cooldown_minus_2_tt
 			set_country_flag = GER_1920_worker_cooldown_minus_2
 			# 反革命运动时间 +3 天（复用社会化系统的倒计时延长）
@@ -552,8 +550,7 @@ focus_tree = {
 			add_to_variable = { GER_econ_rec_building_slots = 0.10 }
 			add_to_variable = { GER_econ_rec_max_efficiency = 0.05 }
 			add_to_variable = { GER_econ_rec_efficiency_keep = 0.05 }
-			# 玩家将可以选择延缓反革命力量的行动（与「经济统计与计划编制工作」共用入口）
-			# TODO(决议)：加一条可重复决议，消耗政治点数 → GER_soc_auto_extend_counter_3。
+			# 玩家将可以选择延缓反革命力量的行动（决议 GER_1920_delay_counter_actions，25 PP，所有 counter 倒计时 +10 天）
 			custom_effect_tooltip = GER_1920_can_delay_counter_actions_tt
 			set_country_flag = GER_1920_can_delay_counter_actions
 		}
@@ -615,8 +612,7 @@ focus_tree = {
 				add_stability = 0.05
 				add_political_power = 25
 			}
-			# 玩家可花费高于「革命工人自行行动」的政治点数来阻止反革命力量的行动
-			# TODO(决议)：在「整合合作社网络」解锁的延缓入口之上，增加更高政治点数成本的"阻止"选项。
+			# 玩家可花费高于「革命工人自行行动」的政治点数来阻止反革命力量的行动（决议 GER_1920_stop_counter_actions，60 PP）
 			custom_effect_tooltip = GER_1920_can_stop_counter_actions_tt
 			set_country_flag = GER_1920_can_stop_counter_actions
 		}

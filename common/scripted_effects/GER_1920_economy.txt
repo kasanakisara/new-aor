@@ -68,3 +68,75 @@ GER_1920_start_emergency_tax_mission = {
 	clr_country_flag = GER_1920_agenda_emergency_tax_pending
 	activate_mission = GER_1920_mission_emergency_property_tax
 }
+
+# 「经济部门标准化」结算：随机削弱两项反革命行动
+# 两轮 random_list：第一轮在 13 条 counter 行动里抽 1 条，第二轮抽另 1 条（已削弱过的、或第一轮抽中的权重归 0），
+# 保证两项互不相同；被抽中的行动置 GER_1920_cr_<id>_weakened，由 decisions/GER_socialization_automatic.txt 的 timeout_effect 读取。
+GER_1920_cr_weaken_two_random = {
+	set_variable = { GER_1920_cr_pick_1 = 0 }
+	random_list = {
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_withdraw_assets_weakened } } set_variable = { GER_1920_cr_pick_1 = 1 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_sabotage_assets_weakened } } set_variable = { GER_1920_cr_pick_1 = 2 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_manipulate_local_offices_weakened } } set_variable = { GER_1920_cr_pick_1 = 3 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_divide_workers_weakened } } set_variable = { GER_1920_cr_pick_1 = 4 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_soviet_failure_rumors_weakened } } set_variable = { GER_1920_cr_pick_1 = 5 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_recruit_thugs_weakened } } set_variable = { GER_1920_cr_pick_1 = 6 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_promote_private_property_weakened } } set_variable = { GER_1920_cr_pick_1 = 7 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_inflation_agitation_weakened } } set_variable = { GER_1920_cr_pick_1 = 8 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_assassinate_organizers_weakened } } set_variable = { GER_1920_cr_pick_1 = 9 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_far_right_groups_weakened } } set_variable = { GER_1920_cr_pick_1 = 10 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_foreign_contacts_weakened } } set_variable = { GER_1920_cr_pick_1 = 11 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_fund_party_right_weakened } } set_variable = { GER_1920_cr_pick_1 = 12 } }
+		100 = { limit = { NOT = { has_country_flag = GER_1920_cr_domestic_capital_weakened } } set_variable = { GER_1920_cr_pick_1 = 13 } }
+	}
+	GER_1920_cr_apply_pick_1 = yes
+	set_variable = { GER_1920_cr_pick_2 = 0 }
+	random_list = {
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 1 } } NOT = { has_country_flag = GER_1920_cr_withdraw_assets_weakened } } set_variable = { GER_1920_cr_pick_2 = 1 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 2 } } NOT = { has_country_flag = GER_1920_cr_sabotage_assets_weakened } } set_variable = { GER_1920_cr_pick_2 = 2 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 3 } } NOT = { has_country_flag = GER_1920_cr_manipulate_local_offices_weakened } } set_variable = { GER_1920_cr_pick_2 = 3 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 4 } } NOT = { has_country_flag = GER_1920_cr_divide_workers_weakened } } set_variable = { GER_1920_cr_pick_2 = 4 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 5 } } NOT = { has_country_flag = GER_1920_cr_soviet_failure_rumors_weakened } } set_variable = { GER_1920_cr_pick_2 = 5 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 6 } } NOT = { has_country_flag = GER_1920_cr_recruit_thugs_weakened } } set_variable = { GER_1920_cr_pick_2 = 6 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 7 } } NOT = { has_country_flag = GER_1920_cr_promote_private_property_weakened } } set_variable = { GER_1920_cr_pick_2 = 7 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 8 } } NOT = { has_country_flag = GER_1920_cr_inflation_agitation_weakened } } set_variable = { GER_1920_cr_pick_2 = 8 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 9 } } NOT = { has_country_flag = GER_1920_cr_assassinate_organizers_weakened } } set_variable = { GER_1920_cr_pick_2 = 9 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 10 } } NOT = { has_country_flag = GER_1920_cr_far_right_groups_weakened } } set_variable = { GER_1920_cr_pick_2 = 10 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 11 } } NOT = { has_country_flag = GER_1920_cr_foreign_contacts_weakened } } set_variable = { GER_1920_cr_pick_2 = 11 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 12 } } NOT = { has_country_flag = GER_1920_cr_fund_party_right_weakened } } set_variable = { GER_1920_cr_pick_2 = 12 } }
+		100 = { limit = { NOT = { check_variable = { GER_1920_cr_pick_1 = 13 } } NOT = { has_country_flag = GER_1920_cr_domestic_capital_weakened } } set_variable = { GER_1920_cr_pick_2 = 13 } }
+	}
+	GER_1920_cr_apply_pick_2 = yes
+}
+
+GER_1920_cr_apply_pick_1 = {
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 1 } } set_country_flag = GER_1920_cr_withdraw_assets_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 2 } } set_country_flag = GER_1920_cr_sabotage_assets_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 3 } } set_country_flag = GER_1920_cr_manipulate_local_offices_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 4 } } set_country_flag = GER_1920_cr_divide_workers_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 5 } } set_country_flag = GER_1920_cr_soviet_failure_rumors_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 6 } } set_country_flag = GER_1920_cr_recruit_thugs_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 7 } } set_country_flag = GER_1920_cr_promote_private_property_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 8 } } set_country_flag = GER_1920_cr_inflation_agitation_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 9 } } set_country_flag = GER_1920_cr_assassinate_organizers_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 10 } } set_country_flag = GER_1920_cr_far_right_groups_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 11 } } set_country_flag = GER_1920_cr_foreign_contacts_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 12 } } set_country_flag = GER_1920_cr_fund_party_right_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_1 = 13 } } set_country_flag = GER_1920_cr_domestic_capital_weakened }
+}
+
+GER_1920_cr_apply_pick_2 = {
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 1 } } set_country_flag = GER_1920_cr_withdraw_assets_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 2 } } set_country_flag = GER_1920_cr_sabotage_assets_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 3 } } set_country_flag = GER_1920_cr_manipulate_local_offices_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 4 } } set_country_flag = GER_1920_cr_divide_workers_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 5 } } set_country_flag = GER_1920_cr_soviet_failure_rumors_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 6 } } set_country_flag = GER_1920_cr_recruit_thugs_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 7 } } set_country_flag = GER_1920_cr_promote_private_property_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 8 } } set_country_flag = GER_1920_cr_inflation_agitation_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 9 } } set_country_flag = GER_1920_cr_assassinate_organizers_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 10 } } set_country_flag = GER_1920_cr_far_right_groups_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 11 } } set_country_flag = GER_1920_cr_foreign_contacts_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 12 } } set_country_flag = GER_1920_cr_fund_party_right_weakened }
+	if = { limit = { check_variable = { GER_1920_cr_pick_2 = 13 } } set_country_flag = GER_1920_cr_domestic_capital_weakened }
+}

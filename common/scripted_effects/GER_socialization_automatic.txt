@@ -416,6 +416,17 @@ GER_soc_auto_daily_tick = {
         if = { limit = { check_variable = { GER_soc_manual_lock_days > 0 } } subtract_from_variable = { GER_soc_manual_lock_days = 1 } }
         if = { limit = { check_variable = { GER_soc_auto_worker_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_cooldown = 1 } }
         if = { limit = { check_variable = { GER_soc_auto_counter_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_counter_cooldown = 1 } }
+        # 1920 经济线「整理经济工作」后续：革命工人自行行动冷却 -2 天（全局批次冷却 + 9 条行动各自冷却，每天额外 -1）
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_occupy_factories_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_soviet_newspaper_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_purge_scabs_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_purge_scabs_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_street_campaign_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_street_campaign_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_soviet_elections_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_soviet_elections_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_workers_patrol_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_workers_patrol_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_party_worker_links_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_party_worker_links_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_expose_plot_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_expose_plot_cooldown = 1 } }
+        if = { limit = { has_country_flag = GER_1920_worker_cooldown_minus_2 check_variable = { GER_soc_auto_worker_workers_accounting_cooldown > 1 } } subtract_from_variable = { GER_soc_auto_worker_workers_accounting_cooldown = 1 } }
         set_variable = { GER_soc_auto_active_count = 0 }
         if = { limit = { has_active_mission = GER_soc_auto_worker_occupy_factories } add_to_variable = { GER_soc_auto_active_count = 1 } }
         if = { limit = { check_variable = { GER_soc_auto_worker_occupy_factories_cooldown > 0 } } subtract_from_variable = { GER_soc_auto_worker_occupy_factories_cooldown = 1 } }

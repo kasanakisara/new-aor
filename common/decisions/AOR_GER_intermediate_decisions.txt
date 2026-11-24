@@ -410,9 +410,8 @@ GER_1920_economy_missions = {
 				add_to_variable = { GER_econ_rec_research = 0.05 }
 				add_to_variable = { GER_econ_rec_build_speed = 0.05 }
 				add_to_variable = { GER_econ_rec_factory_output = 0.05 }
-				# TODO(随机削弱两项反革命行动)：在 GER_soc_auto 十三项 counter 行动里随机抽两项，
-				#   复用 GER_1920_cr_*_weakened 的削弱写法；现在先只置旗标。
-				set_country_flag = GER_1920_cr_two_actions_weakened
+				# 随机削弱两项反革命行动：两条 random_list 各抽一条（互不相同、不含已削弱的），置 GER_1920_cr_<id>_weakened
+				GER_1920_cr_weaken_two_random = yes
 			}
 		}
 	}
