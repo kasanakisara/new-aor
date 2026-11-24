@@ -341,7 +341,7 @@ GER_adv_cabinet_weekly_social = {
 			limit = { GER_02_01_Karl_Legien = { is_hired_as_advisor = yes } NOT = { GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes } } }
 			add_to_variable = { var = GER_adv_soc_weekly value = 1 }
 		}
-		# 梅林：120 天里程碑（解职后保留）
+		# 梅林：120 天里程碑（仅在任时生效）
 		if = {
 			limit = { has_country_flag = GER_adv_mehring_soc_unlocked }
 			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
@@ -377,13 +377,13 @@ GER_adv_mehring_term = {
 			set_country_flag = GER_adv_mehring_pp_unlocked
 			add_dynamic_modifier = { modifier = GER_adv_mehring_pp }
 		}
-		# 120 天：社会化 +2/周，随后自动解职
+		# 120 天：社会化 +2/周（里程碑，不自动解职；解职后重新聘用，天数从 0 重新计算）
 		if = {
-			limit = { check_variable = { var = GER_adv_mehring_days value = 120 compare = more_than_or_equals } }
+			limit = {
+				check_variable = { var = GER_adv_mehring_days value = 120 compare = more_than_or_equals }
+				NOT = { has_country_flag = GER_adv_mehring_soc_unlocked }
+			}
 			set_country_flag = GER_adv_mehring_soc_unlocked
-			deactivate_advisor = GER_01_02_Franz_Mehring
-			clr_country_flag = GER_adv_mehring_hired
-			set_variable = { var = GER_adv_mehring_days value = 0 }
 		}
 	}
 	else = {
@@ -391,6 +391,16 @@ GER_adv_mehring_term = {
 			limit = { has_country_flag = GER_adv_mehring_hired }
 			clr_country_flag = GER_adv_mehring_hired
 			set_variable = { var = GER_adv_mehring_days value = 0 }
+		}
+		# 解职后里程碑效果失效；重新聘用从 0 天重新计时
+		if = {
+			limit = { has_country_flag = GER_adv_mehring_pp_unlocked }
+			clr_country_flag = GER_adv_mehring_pp_unlocked
+			remove_dynamic_modifier = { modifier = GER_adv_mehring_pp }
+		}
+		if = {
+			limit = { has_country_flag = GER_adv_mehring_soc_unlocked }
+			clr_country_flag = GER_adv_mehring_soc_unlocked
 		}
 	}
 }
