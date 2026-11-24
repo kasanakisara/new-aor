@@ -940,6 +940,8 @@ _act += ["containerWindowType = {",
          '    verticalScrollbar = "right_vertical_slider"',
          "    scroll_wheel_factor = %d" % ROW_H,
          "    smooth_scrolling = yes",
+         # 透明底：不显示，但让整片区域都能接滚轮
+         '    background = { name = "GER_region_panel_list_bg" quadTextureSprite = "GFX_absolute_nothing_border" }',
          "    gridboxType = {",
          '        name = "GER_region_panel_list"',
          "        position = { x = 0 y = 0 }",

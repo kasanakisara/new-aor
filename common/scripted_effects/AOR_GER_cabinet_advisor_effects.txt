@@ -322,12 +322,11 @@ GER_adv_cabinet_weekly_social = {
 			check_variable = { var = GER_socialization_active_industry value = 11 compare = less_than }
 		}
 		set_variable = { var = GER_adv_soc_weekly value = 0 }
-		# 多伊米希：无列金且启用考茨基
+		# 多伊米希：里夏德·米勒以工会负责人身份在任（该角色仅在列金死后可雇佣）
 		if = {
 			limit = {
 				GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes }
-				NOT = { GER_02_01_Karl_Legien = { is_hired_as_advisor = yes } }
-				GER_01_03_Karl_Kautsky = { is_hired_as_advisor = yes }
+				GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes }
 			}
 			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
 		}
