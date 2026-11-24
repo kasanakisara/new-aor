@@ -19,6 +19,17 @@ on_actions = {
 				set_country_flag = AOR_GER_post_victory_layout_refreshed
 				mark_focus_tree_layout_dirty = yes
 			}
+			# 地区精神「经济重整」：给新到手（或刚降到 5 级以下）的地区补挂；基建升满由 remove_trigger 自动摘除
+			if = {
+				limit = { has_country_flag = GER_1920_poor_state_active }
+				every_owned_state = {
+					limit = {
+						infrastructure < 5
+						NOT = { has_dynamic_modifier = { modifier = GER_1920_poor_state } }
+					}
+					add_dynamic_modifier = { modifier = GER_1920_poor_state }
+				}
+			}
 		}
 	}
 }

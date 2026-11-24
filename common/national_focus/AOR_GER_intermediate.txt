@@ -419,8 +419,17 @@ focus_tree = {
 			custom_effect_tooltip = GER_1920_cr_fund_party_right_weakened_tt
 			set_country_flag = GER_1920_cr_fund_party_right_weakened
 			GER_socialization_refresh_bars = yes
-			# TODO(地区精神「经济重整」)：所有基建等级 <5 的地区 —— 当地最大工厂数 -1、适役人口 -10%、
-			#   当地基础设施建造速度 +35%，基建升满后消失。需要 state 级动态修正 + on_daily 检查基建等级，待实现。
+			# 地区精神「经济重整」（州级动态修正 GER_1920_poor_state）：所有基建等级 <5 的地区 ——
+			#   当地最大工厂数 -1、当地人力 -10%、当地建设速度 +35%；基建升到满级后由 remove_trigger 自动移除，
+			#   此后新到手的地区由 on_daily_GER 持续补挂
+			custom_effect_tooltip = GER_1920_poor_state_tt
+			set_country_flag = GER_1920_poor_state_active
+			hidden_effect = {
+				every_owned_state = {
+					limit = { infrastructure < 5 }
+					add_dynamic_modifier = { modifier = GER_1920_poor_state }
+				}
+			}
 		}
 	}
 

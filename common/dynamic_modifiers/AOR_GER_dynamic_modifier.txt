@@ -50,3 +50,15 @@ GER_1920_ambitious_plan = {
 	production_factory_efficiency_gain_factor = GER_1920_ap_eff_gain
 	industrial_capacity_factory = GER_1920_ap_output
 }
+
+# 新增：1920 经济线 —— 地区精神「经济重整」（国家财税管理体系）
+# 州级动态修正：所有基建等级 <5 的地区获得；基建升到满级（5）后由 remove_trigger 自动移除
+# 挂载：国策 completion_reward 的 every_owned_state 循环 + on_daily_GER 给新到手地区补挂
+GER_1920_poor_state = {
+	enable = { always = yes }
+	icon = GFX_modifiers_BRA_neglected_state
+	remove_trigger = { infrastructure >= 5 }
+	local_building_slots = -1 #当地最大工厂数 -1
+	local_manpower = -0.10 #当地人力 -10%（设计图「适役人口 -10%」）
+	state_production_speed_buildings_factor = 0.35 #当地建设速度 +35%
+}
