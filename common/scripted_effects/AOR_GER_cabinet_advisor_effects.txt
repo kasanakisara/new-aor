@@ -428,7 +428,10 @@ GER_adv_zetkin_term = {
 GER_adv_stresemann_term = {
 	if = { limit = { NOT = { has_variable = GER_adv_stresemann_days } } set_variable = { var = GER_adv_stresemann_days value = 0 } }
 	if = {
-		limit = { GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes } }
+		limit = {
+			GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes }
+			has_completed_focus = GER_watch_far_right
+		}
 		add_to_variable = { var = GER_adv_stresemann_days value = 1 }
 		if = {
 			limit = { check_variable = { var = GER_adv_stresemann_days value = 120 compare = more_than_or_equals } }
