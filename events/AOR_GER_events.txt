@@ -418,6 +418,7 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
+			# 显示「凡尔赛之行」节点（国策树中位于重建第二国际右侧）
 			set_country_flag = AOR_GER_versailles_journey_visible
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = AOR_GER_versailles.2 days = 21 }
@@ -426,13 +427,10 @@ country_event = {
 
 	option = {
 		name = AOR_GER_versailles.1.a
+		# 点击选项：完成国策「凡尔赛之行」
+		complete_national_focus = GER_1919_versailles_journey
 		hidden_effect = {
 			set_country_flag = AOR_GER_versailles_journey_departed
-			if = {
-				limit = { NOT = { has_completed_focus = GER_1919_versailles_journey } }
-				set_country_flag = AOR_GER_versailles_journey_in_progress
-				activate_shine_on_focus = GER_1919_versailles_journey
-			}
 		}
 	}
 }
@@ -448,9 +446,7 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			deactivate_shine_on_focus = GER_1919_versailles_journey
-			complete_national_focus = GER_1919_versailles_journey
-			clr_country_flag = AOR_GER_versailles_journey_in_progress
+			# 显示「烂手！」节点
 			set_country_flag = AOR_GER_versailles_rotten_hand_visible
 			mark_focus_tree_layout_dirty = yes
 			country_event = { id = AOR_GER_versailles.3 days = 2 }
@@ -460,9 +456,10 @@ country_event = {
 	option = {
 		name = AOR_GER_versailles.2.a
 		custom_effect_tooltip = AOR_GER_versailles.2.tt
+		# 点击选项：完成国策「烂手！」
+		complete_national_focus = GER_1919_versailles_rotten_hand
 		hidden_effect = {
 			set_country_flag = AOR_GER_versailles_treaty_read
-			complete_national_focus = GER_1919_versailles_rotten_hand
 		}
 	}
 }
@@ -475,6 +472,13 @@ country_event = {
 	picture = GFX_AOR_GER_versailles_twenty_four_hours
 	is_triggered_only = yes
 	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			# 24 小时紧急投票之后 → 屈辱条约
+			country_event = { id = AOR_GER_versailles.4 days = 1 }
+		}
+	}
 
 	option = {
 		name = AOR_GER_versailles.3.a

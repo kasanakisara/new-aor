@@ -239,16 +239,15 @@ focus_tree = {
 
 	# =====================================================
 	# 1919.12 - 1920.1：凡尔赛条约（剧情里程碑）
-	# 事件1出现后替换奥得河畔之风波的位置；后续节点按事件逐步显示。
+	# 独立支线：位于「重建第二国际」右侧两格，自上而下 凡尔赛之行 → 烂手！ → 脊梁断裂。
+	# 三个节点均由事件 AOR_GER_versailles.1 / .2 / .4 完成，allow_branch 逐个显示，不可手动选择。
 	# =====================================================
 	focus = {
 		id = GER_1919_versailles_journey #凡尔赛之行
-		relative_position_id = GER_1919_government_work
-		x = 0
-		y = 3
+		relative_position_id = GER_rebuild_second_international
+		x = 2
+		y = 0
 		cost = 3
-		prerequisite = { focus = GER_1919_aid_the_wounded }
-		prerequisite = { focus = GER_1919_restore_transport }
 		allow_branch = { has_country_flag = AOR_GER_versailles_journey_visible }
 		available = {
 			custom_trigger_tooltip = {
