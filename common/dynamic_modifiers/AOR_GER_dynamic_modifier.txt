@@ -18,3 +18,35 @@ GER_post_victory_chaos = {
 	army_org_factor = GER_org_chaos
 	political_advisor_cost_factor = GER_advisor_cost_chaos
 }
+
+# 新增：1920 经济线 —— 「当经济死去追加效果」的累加容器
+# 由 GER_1920_econ_recovery_add 首次挂载并归零，之后各经济国策用 add_to_variable 累加
+GER_economy_recovery = {
+	enable = { always = yes }
+	#icon =
+	consumer_goods_factor = GER_econ_rec_consumer_goods
+	political_power_gain = GER_econ_rec_pp_gain
+	monthly_population = GER_econ_rec_monthly_pop
+	conscription_factor = GER_econ_rec_manpower #可征募人口系数（设计图「适役人口系数」）
+	global_building_slots_factor = GER_econ_rec_building_slots #地区最大工厂数
+	production_factory_max_efficiency_factor = GER_econ_rec_max_efficiency
+	line_change_production_efficiency_factor = GER_econ_rec_efficiency_keep
+	research_speed_factor = GER_econ_rec_research
+	production_speed_buildings_factor = GER_econ_rec_build_speed
+	industrial_capacity_factory = GER_econ_rec_factory_output
+	production_factory_efficiency_gain_factor = GER_econ_rec_efficiency_gain
+	conversion_cost_civ_to_mil_factor = GER_econ_rec_civ_to_mil
+	conversion_cost_mil_to_civ_factor = GER_econ_rec_mil_to_civ
+}
+
+# 新增：1920 经济线 —— 「雄心勃勃的经济计划」（埃尔茨贝格改革，200 天限时任务的期间效果）
+# 「税收征管权上收」可在计划进行中追加 GER_1920_ap_output
+GER_1920_ambitious_plan = {
+	enable = { always = yes }
+	#icon =
+	political_power_factor = GER_1920_ap_pp
+	consumer_goods_factor = GER_1920_ap_cg
+	production_factory_max_efficiency_factor = GER_1920_ap_max_eff
+	production_factory_efficiency_gain_factor = GER_1920_ap_eff_gain
+	industrial_capacity_factory = GER_1920_ap_output
+}

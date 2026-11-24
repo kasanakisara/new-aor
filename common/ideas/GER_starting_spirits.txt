@@ -264,5 +264,117 @@ ideas = {
 			}
 		}
 
+		# ===================== 1920 经济国策 =====================
+		# 图标暂复用「当经济死去」，待经济线美术到位后替换
+
+		#整理经济工作：250 天限时精神；失效后「经济重建成效」追加 生活消费品 -15%
+		GER_1920_reshape_german_economy = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			on_remove = {
+				GER_1920_econ_recovery_add = yes
+				add_to_variable = { GER_econ_rec_consumer_goods = -0.15 }
+			}
+			modifier = {
+				stability_factor = -0.10
+				consumer_goods_factor = -0.15
+				industrial_capacity_factory = 0.15
+				research_speed_factor = 0.10
+				production_speed_buildings_factor = 0.10
+			}
+		}
+
+		#埃尔茨贝格改革限时任务结束后获得
+		GER_1920_economic_rigidity = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.10
+			}
+		}
+
+		#「税收征管权上收」在计划收束后追加 工厂产出 +5%
+		GER_1920_economic_rigidity_plus = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.10
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		#全国统一税制：每日政治点数 -0.06；生活消费品 -5%、期望工厂数 -5%
+		GER_1920_tax_unification = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.06
+				consumer_goods_factor = -0.05
+				consumer_goods_expected_value = -0.05
+			}
+		}
+
+		#全国统一税制（已完成「税收征管权上收」）：追加 生产效率保持 +5%
+		GER_1920_tax_unification_plus = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.06
+				consumer_goods_factor = -0.05
+				consumer_goods_expected_value = -0.05
+				line_change_production_efficiency_factor = 0.05
+			}
+		}
+
+		#社会化委员会的工作：160 天限时任务「减缓阵痛的努力」的期间效果（稳定 +5%、建设速度 +5%、民用工厂占用 10）
+		GER_1920_soc_commission_work_idea = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				civilian_factory_use = 10
+			}
+		}
+
+		#议会焦点「经济部门'标准化'」：100 天限时精神「筛选工作」的期间效果
+		GER_1920_econ_dept_standardization_idea = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.10
+			}
+		}
+
+		#议会焦点「紧急财产税」：70 天限时精神「紧急收税策略」的期间效果
+		GER_1920_emergency_tax_policy = {
+			picture = GER_when_economy_dies
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.15
+				consumer_goods_factor = -0.20
+				monthly_population = 0.70
+				mobilization_speed = 0.65
+				industrial_capacity_factory = 0.05
+			}
+		}
+
 	}
 }

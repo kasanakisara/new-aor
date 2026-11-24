@@ -1,0 +1,70 @@
+# =====================================================
+# 1920.4 - 1920.12 经济国策（GER_intermediate）配套脚本效果
+# 「当经济死去追加效果」统一累加进动态修正 GER_economy_recovery（经济重建成效）；
+# 「雄心勃勃的经济计划」是带倒计时的动态修正 GER_1920_ambitious_plan，
+# 倒计时由决议 GER_1920_mission_ambitious_plan 承担，结束时收束为国家精神「经济刚性」。
+# =====================================================
+
+# 确保「经济重建成效」容器存在；首次挂载时把各项归零，便于 tooltip 逐项显示
+GER_1920_econ_recovery_add = {
+	if = {
+		limit = { NOT = { has_dynamic_modifier = { modifier = GER_economy_recovery } } }
+		set_variable = { GER_econ_rec_consumer_goods = 0 }
+		set_variable = { GER_econ_rec_pp_gain = 0 }
+		set_variable = { GER_econ_rec_monthly_pop = 0 }
+		set_variable = { GER_econ_rec_manpower = 0 }
+		set_variable = { GER_econ_rec_building_slots = 0 }
+		set_variable = { GER_econ_rec_max_efficiency = 0 }
+		set_variable = { GER_econ_rec_efficiency_keep = 0 }
+		set_variable = { GER_econ_rec_research = 0 }
+		set_variable = { GER_econ_rec_build_speed = 0 }
+		set_variable = { GER_econ_rec_factory_output = 0 }
+		set_variable = { GER_econ_rec_efficiency_gain = 0 }
+		set_variable = { GER_econ_rec_civ_to_mil = 0 }
+		set_variable = { GER_econ_rec_mil_to_civ = 0 }
+		add_dynamic_modifier = { modifier = GER_economy_recovery }
+	}
+}
+
+# 埃尔茨贝格改革：启动 200 天限时任务「雄心勃勃的经济计划」
+GER_1920_start_ambitious_plan = {
+	set_variable = { GER_1920_ap_pp = 0.15 }
+	set_variable = { GER_1920_ap_cg = -0.10 }
+	set_variable = { GER_1920_ap_max_eff = 0.05 }
+	set_variable = { GER_1920_ap_eff_gain = 0.05 }
+	set_variable = { GER_1920_ap_output = 0 }
+	add_dynamic_modifier = { modifier = GER_1920_ambitious_plan }
+	activate_mission = GER_1920_mission_ambitious_plan
+}
+
+# 限时任务结束：计划收束为国家精神「经济刚性」
+GER_1920_finish_ambitious_plan = {
+	remove_dynamic_modifier = { modifier = GER_1920_ambitious_plan }
+	add_ideas = GER_1920_economic_rigidity
+	# 「税收征管权上收」若在计划尚未收束时排队追加，这里补上 工厂产出 +5%
+	if = {
+		limit = { has_country_flag = GER_1920_rigidity_output_bonus_pending }
+		clr_country_flag = GER_1920_rigidity_output_bonus_pending
+		swap_ideas = { remove_idea = GER_1920_economic_rigidity add_idea = GER_1920_economic_rigidity_plus }
+	}
+}
+
+# 社会化委员会的工作：启动 160 天限时任务「减缓阵痛的努力」，期间效果（稳定 +5%、建设 +5%、民用工厂占用 10）由限时精神承担
+GER_1920_start_slow_counterrev_mission = {
+	add_timed_idea = { idea = GER_1920_soc_commission_work_idea days = 160 }
+	activate_mission = GER_1920_mission_slow_counterrev
+}
+
+# 议会焦点「经济部门'标准化'」通过时调用（待议程系统扩展后接线）
+GER_1920_start_econ_dept_mission = {
+	add_timed_idea = { idea = GER_1920_econ_dept_standardization_idea days = 100 }
+	clr_country_flag = GER_1920_agenda_econ_dept_pending
+	activate_mission = GER_1920_mission_econ_dept_standardization
+}
+
+# 议会焦点「紧急财产税」通过时调用（待议程系统扩展后接线）
+GER_1920_start_emergency_tax_mission = {
+	add_timed_idea = { idea = GER_1920_emergency_tax_policy days = 70 }
+	clr_country_flag = GER_1920_agenda_emergency_tax_pending
+	activate_mission = GER_1920_mission_emergency_property_tax
+}

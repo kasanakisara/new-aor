@@ -340,3 +340,95 @@ GER_rural_governance_decisions = {
 	}
 
 }
+
+# =====================================================
+# 1920 经济线 · 计时任务栏
+# 「整理经济工作」所在的 GER_intermediate 经济支线用到的限时任务都在这里。
+# 只在 1920 经济支线可见时出现；条目本身全部由国策 / 议会焦点 activate_mission 触发，
+# 「社会化委员会的工作」额外置旗 GER_1920_mission_bar_unlocked 表示常驻解锁。
+# 期间效果由 GER_starting_spirits.txt 里的同名限时国家精神承担，倒计时结束走 timeout_effect。
+# =====================================================
+GER_1920_economy_missions = {
+	allowed = { tag = GER }
+	visible = {
+		OR = {
+			AOR_GER_1920_economy_visible = yes
+			has_active_mission = GER_1920_mission_ambitious_plan
+			has_active_mission = GER_1920_mission_slow_counterrev
+			has_active_mission = GER_1920_mission_econ_dept_standardization
+			has_active_mission = GER_1920_mission_emergency_property_tax
+		}
+	}
+
+	# === 埃尔茨贝格改革：雄心勃勃的经济计划（200 天）===
+	GER_1920_mission_ambitious_plan = {
+		icon = generic_operation
+		activation = { always = no }
+		available = { always = no }
+		is_good = yes
+		days_mission_timeout = 200
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		timeout_effect = {
+			GER_1920_finish_ambitious_plan = yes
+		}
+	}
+
+	# === 社会化委员会的工作：减缓持续的反革命力量（160 天）===
+	GER_1920_mission_slow_counterrev = {
+		icon = generic_operation
+		activation = { always = no }
+		available = { always = no }
+		is_good = yes
+		days_mission_timeout = 160
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		timeout_effect = {
+			custom_effect_tooltip = GER_1920_econ_recovery_slow_counterrev_tt
+			hidden_effect = {
+				GER_1920_econ_recovery_add = yes
+				add_to_variable = { GER_econ_rec_pp_gain = 0.05 }
+				add_to_variable = { GER_econ_rec_monthly_pop = 0.03 }
+				add_to_variable = { GER_econ_rec_manpower = 0.05 }
+			}
+		}
+	}
+
+	# === 议会焦点「经济部门'标准化'」：100 天（待议程系统扩展后由 GER_1920_start_econ_dept_mission 启动）===
+	GER_1920_mission_econ_dept_standardization = {
+		icon = generic_operation
+		activation = { always = no }
+		available = { always = no }
+		is_good = yes
+		days_mission_timeout = 100
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		timeout_effect = {
+			custom_effect_tooltip = GER_1920_econ_recovery_econ_dept_tt
+			hidden_effect = {
+				GER_1920_econ_recovery_add = yes
+				add_to_variable = { GER_econ_rec_research = 0.05 }
+				add_to_variable = { GER_econ_rec_build_speed = 0.05 }
+				add_to_variable = { GER_econ_rec_factory_output = 0.05 }
+				# TODO(随机削弱两项反革命行动)：在 GER_soc_auto 十三项 counter 行动里随机抽两项，
+				#   复用 GER_1920_cr_*_weakened 的削弱写法；现在先只置旗标。
+				set_country_flag = GER_1920_cr_two_actions_weakened
+			}
+		}
+	}
+
+	# === 议会焦点「紧急财产税」：70 天限时精神「紧急收税策略」（待议程系统扩展后由 GER_1920_start_emergency_tax_mission 启动）===
+	GER_1920_mission_emergency_property_tax = {
+		icon = generic_operation
+		activation = { always = no }
+		available = { always = no }
+		is_good = yes
+		days_mission_timeout = 70
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		timeout_effect = {
+			# 设计图只给了期间效果（GER_1920_emergency_tax_policy），到期自然消失，无后续奖励
+		}
+	}
+
+}

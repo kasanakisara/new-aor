@@ -299,136 +299,282 @@ focus_tree = {
 	# =====================================================
 	# 1920.4 - 1920.12：经济工作（思维导图分支）
 	# 默认隐藏；由 AOR_GER_1920_economy_unlocked 显式解锁。
-	# 独立放在原有树右侧；11 个国策合计 245 天，奖励暂留空。
+	# 独立支线：放在 1919 主树正下方（第 7-10 行），根节点与主树同列（x=8）。
+	# 11 个国策各 25 天（cost 3.5），合计 275 天。
+	# 效果按设计图三 / 图四接线：
+	#   · 所有「当经济死去追加效果」累加进动态修正 GER_economy_recovery（经济重建成效）
+	#   · 「雄心勃勃的经济计划」= 动态修正 + 200 天限时任务，结束后收束为「经济刚性」
+	#   · 依赖「议会焦点」的两条限时任务（经济部门标准化 / 紧急财产税）暂以旗标挂钩，待议程系统扩展后接通
+	# 配套：scripted_effects/GER_1920_economy.txt、decisions/AOR_GER_intermediate_decisions.txt（计时任务栏）
 	# =====================================================
 	focus = {
-		id = GER_1920_organize_economic_work
+		id = GER_1920_organize_economic_work #整理经济工作
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
-		x = 22
-		y = 0
-		cost = 3
+		x = 8
+		y = 7
+		cost = 3.5
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_political_power = 25
+			# 限时国家精神「重塑德国经济」250 天：稳定 -10%、消费品 -15%、产出 +15%、科研 +10%、建造 +10%
+			# 失效后「经济重建成效」追加 生活消费品 -15%
+			add_timed_idea = { idea = GER_1920_reshape_german_economy days = 250 }
+		}
 	}
 
 	focus = {
-		id = GER_1920_erzberger_reform
+		id = GER_1920_erzberger_reform #埃尔茨贝格改革
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
 		relative_position_id = GER_1920_organize_economic_work
 		x = -1
 		y = 1
-		cost = 4
+		cost = 3.5
 		prerequisite = { focus = GER_1920_organize_economic_work }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 200 天限时任务「雄心勃勃的经济计划」：期间 政治点数 +15%、消费品 -10%、效率上限 +5%、效率增长 +5%；结束后获得「经济刚性」
+			custom_effect_tooltip = GER_1920_ambitious_plan_tt
+			GER_1920_start_ambitious_plan = yes
+			custom_effect_tooltip = GER_1920_soc_points_15_tt
+			add_to_variable = { GER_socialization_points_pool = 15 }
+			# 反革命行动「联合本国资本」将被削弱（decisions/GER_socialization_automatic.txt 内按旗标减半）
+			custom_effect_tooltip = GER_1920_cr_domestic_capital_weakened_tt
+			set_country_flag = GER_1920_cr_domestic_capital_weakened
+			GER_socialization_refresh_bars = yes
+		}
 	}
 
 	focus = {
-		id = GER_1920_socialization_commission
+		id = GER_1920_socialization_commission #社会化委员会的工作
 		icon = GFX_GER_1920_socialization_commission
 		relative_position_id = GER_1920_organize_economic_work
 		x = 1
 		y = 1
-		cost = 4
+		cost = 3.5
 		prerequisite = { focus = GER_1920_organize_economic_work }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 解锁计时任务栏
+			custom_effect_tooltip = GER_1920_mission_bar_unlocked_tt
+			set_country_flag = GER_1920_mission_bar_unlocked
+			# 160 天限时任务「减缓阵痛的努力」：期间 稳定 +5%、建设速度 +5%、民用工厂占用 10（由限时精神 GER_1920_soc_commission_work_idea 承担）
+			# 结束后「经济重建成效」追加 每日政治点数 +0.05、每月人口 +3%、适役人口系数 +5%
+			custom_effect_tooltip = GER_1920_slow_counterrev_tt
+			GER_1920_start_slow_counterrev_mission = yes
+		}
 	}
 
 	focus = {
-		id = GER_1920_national_tax_administration
+		id = GER_1920_national_tax_administration #国家财税管理体系
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
 		relative_position_id = GER_1920_erzberger_reform
 		x = -2
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_erzberger_reform }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			custom_effect_tooltip = GER_1920_soc_points_20_tt
+			add_to_variable = { GER_socialization_points_pool = 20 }
+			# 设计图写「资产阶级力量 -1%」，现有系统里对应反革命力量（-12/1200 = -1%）
+			custom_effect_tooltip = GER_1920_counterrev_minus_1_tt
+			subtract_from_variable = { GER_socialization_counterrevolution = 12 }
+			# 反革命行动「资助党内右派」将被削弱
+			custom_effect_tooltip = GER_1920_cr_fund_party_right_weakened_tt
+			set_country_flag = GER_1920_cr_fund_party_right_weakened
+			GER_socialization_refresh_bars = yes
+			# TODO(地区精神「经济重整」)：所有基建等级 <5 的地区 —— 当地最大工厂数 -1、适役人口 -10%、
+			#   当地基础设施建造速度 +35%，基建升满后消失。需要 state 级动态修正 + on_daily 检查基建等级，待实现。
+		}
 	}
 
 	focus = {
-		id = GER_1920_unified_tax_system
+		id = GER_1920_unified_tax_system #全国统一税制
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
 		relative_position_id = GER_1920_erzberger_reform
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_erzberger_reform }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 获得国家精神「税收统一化」：每日政治点数 -0.06、生活消费品 +5%
+			add_ideas = GER_1920_tax_unification
+			custom_effect_tooltip = GER_1920_soc_points_10_tt
+			add_to_variable = { GER_socialization_points_pool = 10 }
+			# 「资产阶级力量 -0.5%」→ 反革命力量 -6/1200
+			custom_effect_tooltip = GER_1920_counterrev_minus_05_tt
+			subtract_from_variable = { GER_socialization_counterrevolution = 6 }
+			GER_socialization_refresh_bars = yes
+			# 若已完成「税收征管权上收」：税收统一化追加 生产效率保持 +5%
+			if = {
+				limit = { has_completed_focus = GER_1920_centralize_tax_collection }
+				custom_effect_tooltip = GER_1920_tax_unification_append_tt
+				swap_ideas = { remove_idea = GER_1920_tax_unification add_idea = GER_1920_tax_unification_plus }
+			}
+		}
 	}
 
 	focus = {
-		id = GER_1920_centralize_tax_collection
+		id = GER_1920_centralize_tax_collection #税收征管权上收
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
 		relative_position_id = GER_1920_national_tax_administration
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_national_tax_administration }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+			custom_effect_tooltip = GER_1920_soc_points_20_tt
+			add_to_variable = { GER_socialization_points_pool = 20 }
+			GER_socialization_refresh_bars = yes
+			# 若已完成「全国统一税制」：追加 生产效率增长 +5%
+			if = {
+				limit = { has_completed_focus = GER_1920_unified_tax_system }
+				custom_effect_tooltip = GER_1920_econ_recovery_eff_gain_5_tt
+				GER_1920_econ_recovery_add = yes
+				add_to_variable = { GER_econ_rec_efficiency_gain = 0.05 }
+			}
+			# 「雄心勃勃的经济计划」仍在进行：计划追加 消费品 -10%、工厂产出 +10%（随计划一并结束）
+			if = {
+				limit = { has_dynamic_modifier = { modifier = GER_1920_ambitious_plan } }
+				custom_effect_tooltip = GER_1920_plan_append_tt
+				add_to_variable = { GER_1920_ap_cg = -0.10 }
+				add_to_variable = { GER_1920_ap_output = 0.10 }
+			}
+			# 否则：「经济刚性」追加 工厂产出 +5%
+			else = {
+				custom_effect_tooltip = GER_1920_rigidity_append_tt
+				if = {
+					limit = { has_idea = GER_1920_economic_rigidity }
+					swap_ideas = { remove_idea = GER_1920_economic_rigidity add_idea = GER_1920_economic_rigidity_plus }
+				}
+				else = {
+					if = {
+						limit = { NOT = { has_idea = GER_1920_economic_rigidity_plus } }
+						# 计划尚未收束时排队，GER_1920_finish_ambitious_plan 结算时补上
+						set_country_flag = GER_1920_rigidity_output_bonus_pending
+					}
+				}
+			}
+			# 革命工人自行行动冷却 -2 天
+			# TODO：GER_soc_auto_worker_* 的冷却由各自 *_cooldown 变量控制，需在 GER_soc_auto_daily_tick 里
+			#   按此旗标每天额外扣 1 点，等价于冷却缩短 2 天。
+			custom_effect_tooltip = GER_1920_worker_cooldown_minus_2_tt
+			set_country_flag = GER_1920_worker_cooldown_minus_2
+			# 反革命运动时间 +3 天（复用社会化系统的倒计时延长）
+			custom_effect_tooltip = GER_1920_counter_extend_3_tt
+			GER_soc_auto_extend_counter_3 = yes
+		}
 	}
 
 	focus = {
-		id = GER_1920_one_off_property_tax
+		id = GER_1920_one_off_property_tax #一次性紧急财产摊税
 		# TODO: icon pending matching artwork in gfx/interface/goals/GER.
 		relative_position_id = GER_1920_unified_tax_system
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_unified_tax_system }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 解锁议会焦点「紧急财产税」：焦点通过后启动 70 天限时任务
+			#   期间（紧急收税策略）：稳定 -10%、战争支持 -15%、消费品 -20%、每月人口 +70%、动员速度 +65%、产出 +5%
+			# TODO(议会焦点)：议程 GUI 目前固定 5 槽（4「司法部隐蔽阻碍」、5「小农补贴」已占），扩展议程槽位后
+			#   在该议程的完成效果里调用 GER_1920_start_emergency_tax_mission = yes。
+			custom_effect_tooltip = GER_1920_agenda_emergency_tax_tt
+			set_country_flag = GER_1920_agenda_emergency_tax_pending
+		}
 	}
 
 	focus = {
-		id = GER_1920_integrate_cooperatives
+		id = GER_1920_integrate_cooperatives #整合合作社网络
 		icon = GFX_GER_1920_integrate_cooperatives
 		relative_position_id = GER_1920_socialization_commission
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_socialization_commission }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			add_stability = 0.03
+			add_political_power = 100
+			# 「经济重建成效」追加：地区最大工厂数 +10%、生产效率上限 +5%、生产效率保持 +5%
+			custom_effect_tooltip = GER_1920_econ_recovery_coop_tt
+			GER_1920_econ_recovery_add = yes
+			add_to_variable = { GER_econ_rec_building_slots = 0.10 }
+			add_to_variable = { GER_econ_rec_max_efficiency = 0.05 }
+			add_to_variable = { GER_econ_rec_efficiency_keep = 0.05 }
+			# 玩家将可以选择延缓反革命力量的行动（与「经济统计与计划编制工作」共用入口）
+			# TODO(决议)：加一条可重复决议，消耗政治点数 → GER_soc_auto_extend_counter_3。
+			custom_effect_tooltip = GER_1920_can_delay_counter_actions_tt
+			set_country_flag = GER_1920_can_delay_counter_actions
+		}
 	}
 
 	focus = {
-		id = GER_1920_state_enterprise_management
+		id = GER_1920_state_enterprise_management #学习国营企业管理
 		icon = GFX_GER_1920_state_enterprise_management
 		relative_position_id = GER_1920_socialization_commission
 		x = 2
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_socialization_commission }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 设计图未列单独效果，作为「经济统计与计划编制工作」的前置
+		}
 	}
 
 	focus = {
-		id = GER_1920_infiltrate_economic_administration
+		id = GER_1920_infiltrate_economic_administration #渗透经济管理部门
 		icon = GFX_GER_1920_infiltrate_economic_administration
 		relative_position_id = GER_1920_integrate_cooperatives
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_integrate_cooperatives }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 解锁议会焦点「经济部门'标准化'」：焦点通过后启动 100 天限时任务
+			#   期间（筛选工作）：生活消费品 +10%
+			#   结束后「经济重建成效」追加：科研 +5%、建造 +5%、工厂产出 +5%；随机两项反革命行动被削弱
+			# TODO(议会焦点)：同「紧急财产税」，议程扩展后在完成效果里调用 GER_1920_start_econ_dept_mission = yes。
+			custom_effect_tooltip = GER_1920_agenda_econ_dept_tt
+			set_country_flag = GER_1920_agenda_econ_dept_pending
+		}
 	}
 
 	focus = {
-		id = GER_1920_economic_statistics_and_planning
+		id = GER_1920_economic_statistics_and_planning #经济统计与计划编制工作
 		icon = GFX_GER_1920_economic_statistics_and_planning
 		relative_position_id = GER_1920_state_enterprise_management
 		x = 0
 		y = 1
-		cost = 3
+		cost = 3.5
 		prerequisite = { focus = GER_1920_state_enterprise_management }
 		allow_branch = { AOR_GER_1920_economy_visible = yes }
-		completion_reward = { }
+		completion_reward = {
+			# 「经济重建成效」追加：生产效率增长 +5%、民用→军工转换花费 -20%、军工→民用转换花费 -20%
+			custom_effect_tooltip = GER_1920_econ_recovery_stats_tt
+			GER_1920_econ_recovery_add = yes
+			add_to_variable = { GER_econ_rec_efficiency_gain = 0.05 }
+			add_to_variable = { GER_econ_rec_civ_to_mil = -0.20 }
+			add_to_variable = { GER_econ_rec_mil_to_civ = -0.20 }
+			# 若已完成「埃尔茨贝格改革」：基础稳定度 +5%、政治点数 +25
+			if = {
+				limit = { has_completed_focus = GER_1920_erzberger_reform }
+				custom_effect_tooltip = GER_1920_stats_erzberger_bonus_tt
+				add_stability = 0.05
+				add_political_power = 25
+			}
+			# 玩家可花费高于「革命工人自行行动」的政治点数来阻止反革命力量的行动
+			# TODO(决议)：在「整合合作社网络」解锁的延缓入口之上，增加更高政治点数成本的"阻止"选项。
+			custom_effect_tooltip = GER_1920_can_stop_counter_actions_tt
+			set_country_flag = GER_1920_can_stop_counter_actions
+		}
 	}
 
 	# =====================================================
