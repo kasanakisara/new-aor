@@ -4,7 +4,8 @@ GER_socialization_category = {
     picture = GFX_decision_GER_Social
     priority = 121
     allowed = { original_tag = GER }
-    visible = { tag = GER }
+    # 《社会化法案》通过后才显示（事件 AOR_GER_socialization_law.3）
+    visible = { tag = GER has_country_flag = GER_socialization_law_passed }
     visible_when_empty = yes
     scripted_gui = GER_socialization_gui
 }

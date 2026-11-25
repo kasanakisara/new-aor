@@ -484,6 +484,91 @@ add_equipment_to_stockpile = {
     producer = GER
 }
 
+# 开局生产线：战时生产线转入复员，步枪与火炮效率最高，新装备线较低
+add_equipment_production = {	# 步枪
+	equipment = {
+		type = aor_bolt_equipment_1919
+		creator = GER
+	}
+	requested_factories = 10
+	progress = 0.4
+	efficiency = 60
+}
+add_equipment_production = {	# 野战炮
+	equipment = {
+		type = artillery_equipment_1
+		creator = GER
+	}
+	requested_factories = 4
+	progress = 0.3
+	efficiency = 50
+}
+add_equipment_production = {	# 榴弹炮
+	equipment = {
+		type = howitzer_equipment_1
+		creator = GER
+	}
+	requested_factories = 3
+	progress = 0.2
+	efficiency = 50
+}
+add_equipment_production = {	# 支援装备
+	equipment = {
+		type = support_equipment_1
+		creator = GER
+	}
+	requested_factories = 2
+	progress = 0.3
+	efficiency = 45
+}
+add_equipment_production = {	# 火车
+	equipment = {
+		type = train_equipment_1
+		creator = GER
+	}
+	requested_factories = 1
+	progress = 0.5
+	efficiency = 40
+}
+add_equipment_production = {	# 卡车
+	equipment = {
+		type = aor_supply_truck_equipment_1
+		creator = GER
+	}
+	requested_factories = 2
+	progress = 0.2
+	efficiency = 35
+}
+add_equipment_production = {	# 战斗机
+	equipment = {
+		type = small_plane_airframe_1919
+		creator = GER
+		version_name = "标准小型机体 1919"
+	}
+	requested_factories = 2
+	progress = 0.3
+	efficiency = 35
+}
+add_equipment_production = {	# 运输机
+	equipment = {
+		type = transport_plane_equipment_1919
+		creator = GER
+		version_name = "标准运输机体 1919"
+	}
+	requested_factories = 1
+	progress = 0.2
+	efficiency = 30
+}
+add_equipment_production = {	# 运输船（船坞）
+	equipment = {
+		type = convoy_1
+		creator = GER
+	}
+	requested_factories = 3
+	progress = 0.4
+	efficiency = 40
+}
+
 
 # Complete inherited prototype before recruiting the selectable scientist roster.
 complete_special_project = { project = sp:sp_aor_tank_prototype }

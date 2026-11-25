@@ -26,6 +26,8 @@ add_namespace = AOR_the_second_soviet_congress
 add_namespace = AOR_GER_bavaria_crisis
 add_namespace = AOR_GER_silesia_crisis
 add_namespace = AOR_GER_defense_law
+add_namespace = AOR_GER_factory_council
+add_namespace = AOR_GER_socialization_law
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 第二届苏维埃代表大会
@@ -181,7 +183,7 @@ country_event = {
 	desc = AOR_GER_1919_test.1.desc
 	picture = GFX_AOR_GER_fatigue_toxin
 	is_triggered_only = yes
-	option = { name = AOR_GER_1919_test.confirm }
+	option = { name = AOR_GER_1919_test.1.a }
 }
 
 # 取得政权的道路
@@ -335,7 +337,7 @@ country_event = {
 # 1920 年经济国策测试
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-# 解锁隐藏经济国策（测试事件）
+# 解锁隐藏经济国策（1920.2.7《社会化法案》通过时由 AOR_GER_socialization_law.3 调用）
 country_event = {
 	id = AOR_GER_economy_1920.1
 	hidden = yes
@@ -428,8 +430,8 @@ country_event = {
 	option = {
 		name = AOR_GER_versailles.1.a
 		# 点击选项：完成国策「凡尔赛之行」
-		complete_national_focus = GER_1919_versailles_journey
 		hidden_effect = {
+			complete_national_focus = GER_1919_versailles_journey
 			set_country_flag = AOR_GER_versailles_journey_departed
 		}
 	}
@@ -457,8 +459,8 @@ country_event = {
 		name = AOR_GER_versailles.2.a
 		custom_effect_tooltip = AOR_GER_versailles.2.tt
 		# 点击选项：完成国策「烂手！」
-		complete_national_focus = GER_1919_versailles_rotten_hand
 		hidden_effect = {
+			complete_national_focus = GER_1919_versailles_rotten_hand
 			set_country_flag = AOR_GER_versailles_treaty_read
 		}
 	}
@@ -473,18 +475,14 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	immediate = {
-		hidden_effect = {
-			# 24 小时紧急投票之后 → 屈辱条约
-			country_event = { id = AOR_GER_versailles.4 days = 1 }
-		}
-	}
-
 	option = {
 		name = AOR_GER_versailles.3.a
 		custom_effect_tooltip = AOR_GER_versailles.3.tt
-		# 国民议会紧急表决：打开重大立法弹窗（票数固定，通过）
-		hidden_effect = { GER_yihui_bill_versailles = yes }
+		# 国民议会紧急表决：打开重大立法弹窗（票数固定，通过），待计票动画播完后再弹出屈辱条约
+		hidden_effect = {
+			GER_yihui_bill_versailles = yes
+			country_event = { id = AOR_GER_versailles.4 days = 3 }
+		}
 	}
 }
 
@@ -913,7 +911,6 @@ country_event = {
 
 	option = {
 		name = AOR_GER_bavaria_crisis.1.a
-		custom_effect_tooltip = AOR_GER_bavaria_crisis.1.tt
 	}
 }
 
@@ -1017,6 +1014,9 @@ country_event = {
 		hidden_effect = {
 			set_temp_variable = { GER_region_bav_stage = 1 }
 			GER_region_bavaria_raise_stage = yes # 巴伐利亚从这一刻起显示
+			# 替玩家打开地区博弈界面（同右下角入口按钮的打开分支）
+			set_country_flag = GER_region_game_open
+			GER_region_game_sync_selected = yes
 		}
 	}
 }
@@ -1356,6 +1356,9 @@ country_event = {
 		hidden_effect = {
 			set_temp_variable = { GER_region_sil_stage = 1 }
 			GER_region_silesia_raise_stage = yes # 西里西亚从这一刻起显示
+			# 替玩家打开地区博弈界面（同右下角入口按钮的打开分支）
+			set_country_flag = GER_region_game_open
+			GER_region_game_sync_selected = yes
 		}
 	}
 }
@@ -1415,6 +1418,7 @@ country_event = {
 	}
 	option = {
 		name = AOR_GER_silesia_crisis.5.b
+		custom_effect_tooltip = AOR_GER_silesia_crisis.5.b.tt
 	}
 }
 
@@ -1753,10 +1757,16 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		random_list = {
-		    10 = { country_event = { id = AOR_GER_defense_law.13 } }
-		    45 = { country_event = { id = AOR_GER_defense_law.14 } }
-		    45 = { country_event = { id = AOR_GER_defense_law.15 } }
+		if = {
+			limit = { GER_09_05_Carl_Severing = { is_hired_as_advisor = yes } }
+			country_event = { id = AOR_GER_defense_law.13 }
+		}
+		else = {
+			random_list = {
+				10 = { country_event = { id = AOR_GER_defense_law.13 } }
+				45 = { country_event = { id = AOR_GER_defense_law.14 } }
+				45 = { country_event = { id = AOR_GER_defense_law.15 } }
+			}
 		}
 		country_event = { id = AOR_GER_defense_law.16 days = 8 } # 1920.11.1
 	}
@@ -1966,6 +1976,782 @@ country_event = {
 			clr_country_flag = GER_dl_can_act
 			clr_country_flag = GER_dl_can_officers
 			clr_country_flag = GER_dl_can_amend
+		}
+	}
+}
+
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 工厂委员会法立法（1919.9.16 → 1919.12.6，早于凡尔赛；社会运动兜底 42 天至 1920.1.17）
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 1919.9.16 国家与工厂的主人
+country_event = {
+	id = AOR_GER_factory_council.1
+	title = AOR_GER_factory_council.1.t
+	desc = AOR_GER_factory_council.1.desc
+	picture = GFX_AOR_GER_factory_council_1
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AOR_GER_factory_council_started
+		}
+	}
+
+	option = {
+		name = AOR_GER_factory_council.1.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_factory_council.2 days = 7 }
+		}
+	}
+}
+
+# 1919.9.23 提出（开启议会重大立法审议：法案 #3，74 天至 12.6，初始成果保留率 60%）
+country_event = {
+	id = AOR_GER_factory_council.2
+	title = AOR_GER_factory_council.2.t
+	desc = AOR_GER_factory_council.2.desc
+	picture = GFX_AOR_GER_factory_council_2
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.2.a
+		custom_effect_tooltip = AOR_GER_factory_council.2.a_tt
+		hidden_effect = {
+			set_temp_variable = { yh_bill = 3 }
+			set_temp_variable = { yh_delib_days = 74 }
+			set_temp_variable = { yh_integrity = 60 }
+			GER_yihui_bill_start_deliberation = yes
+			# 替玩家打开议会，直接停在重大立法界面
+			GER_yihui_bill_open = yes
+			add_to_variable = { GER_yihui_bill_dirty = 1 }
+			country_event = { id = AOR_GER_factory_council.3 days = 7 }
+		}
+	}
+}
+
+# 1919.9.30 隐藏：开局定调判定（SPD 党内左派支持度 > 40% → 坚决抵制，否则 → 普遍不满）
+country_event = {
+	id = AOR_GER_factory_council.3
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { check_variable = { GER_SPD_left_support > 40 } }
+			country_event = { id = AOR_GER_factory_council.4 }
+		}
+		else = {
+			country_event = { id = AOR_GER_factory_council.5 }
+		}
+	}
+}
+
+# 1919.9.30 坚决抵制（SPD 左派 > 40%）
+country_event = {
+	id = AOR_GER_factory_council.4
+	title = AOR_GER_factory_council.4.t
+	desc = AOR_GER_factory_council.4.desc
+	picture = GFX_AOR_GER_factory_council_4
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.4.a
+		custom_effect_tooltip = AOR_GER_factory_council.4.a_tt
+		hidden_effect = {
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -10 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -12 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -15 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.6 days = 10 }
+		}
+	}
+}
+
+# 1919.9.30 普遍不满（SPD 左派 <= 40%）
+country_event = {
+	id = AOR_GER_factory_council.5
+	title = AOR_GER_factory_council.5.t
+	desc = AOR_GER_factory_council.5.desc
+	picture = GFX_AOR_GER_factory_council_5
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.5.a
+		custom_effect_tooltip = AOR_GER_factory_council.5.a_tt
+		hidden_effect = {
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -4 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 0 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 4 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.6 days = 10 }
+		}
+	}
+}
+
+# 1919.10.10 反提案
+country_event = {
+	id = AOR_GER_factory_council.6
+	title = AOR_GER_factory_council.6.t
+	desc = AOR_GER_factory_council.6.desc
+	picture = GFX_AOR_GER_factory_council_6
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.6.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_factory_council.7 days = 15 }
+		}
+	}
+}
+
+# 1919.10.25 讨论的泥潭（三选一，10 天后 11.4 结算）
+country_event = {
+	id = AOR_GER_factory_council.7
+	title = AOR_GER_factory_council.7.t
+	desc = AOR_GER_factory_council.7.desc
+	picture = GFX_AOR_GER_factory_council_7
+	is_triggered_only = yes
+
+	# 选项一：加大游行与集会的力度（45% 知难而退 / 55% 决不妥协）
+	option = {
+		name = AOR_GER_factory_council.7.a
+		add_political_power = -50
+		hidden_effect = {
+			random_list = {
+				45 = { country_event = { id = AOR_GER_factory_council.8 days = 10 } }
+				55 = { country_event = { id = AOR_GER_factory_council.9 days = 10 } }
+			}
+		}
+	}
+
+	# 选项二：继续辩论（25% 唇枪舌战 / 75% 无用之举）
+	option = {
+		name = AOR_GER_factory_council.7.b
+		add_political_power = -20
+		hidden_effect = {
+			random_list = {
+				25 = { country_event = { id = AOR_GER_factory_council.10 days = 10 } }
+				75 = { country_event = { id = AOR_GER_factory_council.11 days = 10 } }
+			}
+		}
+	}
+
+	# 选项三：作出部分让步（必触发 妥协的结果）
+	option = {
+		name = AOR_GER_factory_council.7.c
+		add_political_power = -10
+		hidden_effect = {
+			country_event = { id = AOR_GER_factory_council.12 days = 10 }
+		}
+	}
+}
+
+# 1919.11.4 知难而退
+country_event = {
+	id = AOR_GER_factory_council.8
+	title = AOR_GER_factory_council.8.t
+	desc = AOR_GER_factory_council.8.desc
+	picture = GFX_AOR_GER_factory_council_8
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.8.a
+		custom_effect_tooltip = AOR_GER_factory_council.8.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 1 }
+			add_to_variable = { GER_SPD_center_support = 2 }
+			GER_SPD_refresh_support_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = 7 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 10 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 12 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.13 days = 10 }
+		}
+	}
+}
+
+# 1919.11.4 决不妥协
+country_event = {
+	id = AOR_GER_factory_council.9
+	title = AOR_GER_factory_council.9.t
+	desc = AOR_GER_factory_council.9.desc
+	picture = GFX_AOR_GER_factory_council_9
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.9.a
+		add_political_power = -20
+		add_stability = -0.05
+		custom_effect_tooltip = AOR_GER_factory_council.9.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 2 }
+			add_to_variable = { GER_SPD_right_support = 2 }
+			GER_SPD_refresh_support_effect = yes
+			subtract_from_variable = { GER_SPD_unity = 10 }
+			GER_SPD_refresh_unity_effect = yes
+			set_temp_variable = { yh_fc_rad = 10 }
+			GER_fc_add_radicalism = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -5 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -8 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -10 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.13 days = 10 }
+		}
+	}
+}
+
+# 1919.11.4 唇枪舌战
+country_event = {
+	id = AOR_GER_factory_council.10
+	title = AOR_GER_factory_council.10.t
+	desc = AOR_GER_factory_council.10.desc
+	picture = GFX_AOR_GER_factory_council_10
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.10.a
+		custom_effect_tooltip = AOR_GER_factory_council.10.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_center_support = 1 }
+			add_to_variable = { GER_SPD_right_support = 3 }
+			GER_SPD_refresh_support_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = 3 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 5 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 8 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.13 days = 10 }
+		}
+	}
+}
+
+# 1919.11.4 无用之举
+country_event = {
+	id = AOR_GER_factory_council.11
+	title = AOR_GER_factory_council.11.t
+	desc = AOR_GER_factory_council.11.desc
+	picture = GFX_AOR_GER_factory_council_11
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.11.a
+		custom_effect_tooltip = AOR_GER_factory_council.11.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 2 }
+			add_to_variable = { GER_SPD_right_support = 2 }
+			GER_SPD_refresh_support_effect = yes
+			subtract_from_variable = { GER_SPD_unity = 5 }
+			GER_SPD_refresh_unity_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -3 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -5 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -8 } GER_fc_shift_center_right_odds = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.13 days = 10 }
+		}
+	}
+}
+
+# 1919.11.4 妥协的结果
+country_event = {
+	id = AOR_GER_factory_council.12
+	title = AOR_GER_factory_council.12.t
+	desc = AOR_GER_factory_council.12.desc
+	picture = GFX_AOR_GER_factory_council_12
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.12.a
+		custom_effect_tooltip = AOR_GER_factory_council.12.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 3 }
+			GER_SPD_refresh_support_effect = yes
+			subtract_from_variable = { GER_SPD_unity = 10 }
+			GER_SPD_refresh_unity_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = 10 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 15 } GER_fc_shift_center_right_odds = yes }
+			}
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_di = -10 } GER_fc_shift_integrity = yes }
+				1 = { set_temp_variable = { yh_fc_di = -15 } GER_fc_shift_integrity = yes }
+				1 = { set_temp_variable = { yh_fc_di = -20 } GER_fc_shift_integrity = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.13 days = 10 }
+		}
+	}
+}
+
+# 1919.11.14 隐藏：党内抗议 50/50 分流
+country_event = {
+	id = AOR_GER_factory_council.13
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			50 = { country_event = { id = AOR_GER_factory_council.14 } }
+			50 = { country_event = { id = AOR_GER_factory_council.15 } }
+		}
+	}
+}
+
+# 1919.11.14 来自左边的抗议
+country_event = {
+	id = AOR_GER_factory_council.14
+	title = AOR_GER_factory_council.14.t
+	desc = AOR_GER_factory_council.14.desc
+	picture = GFX_AOR_GER_factory_council_14
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.14.a
+		add_political_power = -30
+		custom_effect_tooltip = AOR_GER_factory_council.14.a_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_unity = 12 }
+			GER_SPD_refresh_unity_effect = yes
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_factory_council.14.b
+		custom_effect_tooltip = AOR_GER_factory_council.14.b_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 3 }
+			GER_SPD_refresh_support_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -5 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -10 } GER_fc_shift_center_right_odds = yes }
+			}
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_di = 5 } GER_fc_shift_integrity = yes }
+				1 = { set_temp_variable = { yh_fc_di = 10 } GER_fc_shift_integrity = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_factory_council.14.c
+		trigger = {
+			check_variable = { GER_SPD_center_support > 60 }
+		}
+		custom_effect_tooltip = AOR_GER_factory_council.14.c_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_center_support = 5 }
+			GER_SPD_refresh_support_effect = yes
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+}
+
+# 1919.11.14 来自右边的抗议
+country_event = {
+	id = AOR_GER_factory_council.15
+	title = AOR_GER_factory_council.15.t
+	desc = AOR_GER_factory_council.15.desc
+	picture = GFX_AOR_GER_factory_council_15
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.15.a
+		add_political_power = -30
+		custom_effect_tooltip = AOR_GER_factory_council.15.a_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_unity = 12 }
+			GER_SPD_refresh_unity_effect = yes
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_factory_council.15.b
+		custom_effect_tooltip = AOR_GER_factory_council.15.b_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_right_support = 3 }
+			GER_SPD_refresh_support_effect = yes
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = 5 } GER_fc_shift_center_right_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 10 } GER_fc_shift_center_right_odds = yes }
+			}
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_di = -5 } GER_fc_shift_integrity = yes }
+				1 = { set_temp_variable = { yh_fc_di = -10 } GER_fc_shift_integrity = yes }
+				1 = { set_temp_variable = { yh_fc_di = -15 } GER_fc_shift_integrity = yes }
+			}
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+
+	option = {
+		name = AOR_GER_factory_council.15.c
+		trigger = {
+			check_variable = { GER_SPD_center_support > 60 }
+		}
+		custom_effect_tooltip = AOR_GER_factory_council.15.c_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_center_support = 5 }
+			GER_SPD_refresh_support_effect = yes
+			country_event = { id = AOR_GER_factory_council.16 days = 10 }
+		}
+	}
+}
+
+# 1919.11.24 中央党的态度
+country_event = {
+	id = AOR_GER_factory_council.16
+	title = AOR_GER_factory_council.16.t
+	desc = AOR_GER_factory_council.16.desc
+	picture = GFX_AOR_GER_factory_council_16
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.16.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_factory_council.17 days = 7 }
+		}
+	}
+}
+
+# 1919.12.1 隐藏：中央党立场判定（按联盟凝聚力 >75 必忠实，<35 必叛徒，中间 (凝聚-35)*0.5+40%）
+country_event = {
+	id = AOR_GER_factory_council.17
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { check_variable = { GER_yihui_cohesion > 75 } }
+			country_event = { id = AOR_GER_factory_council.18 }
+		}
+		else_if = {
+			limit = { check_variable = { GER_yihui_cohesion < 35 } }
+			country_event = { id = AOR_GER_factory_council.19 }
+		}
+		else = {
+			set_temp_variable = { yh_loyal_p = GER_yihui_cohesion }
+			subtract_from_temp_variable = { yh_loyal_p = 35 }
+			multiply_temp_variable = { yh_loyal_p = 0.5 }
+			add_to_temp_variable = { yh_loyal_p = 40 }
+			set_temp_variable = { yh_roll = random }
+			multiply_temp_variable = { yh_roll = 100 }
+			if = {
+				limit = { check_variable = { yh_roll < yh_loyal_p } }
+				country_event = { id = AOR_GER_factory_council.18 }
+			}
+			else = {
+				country_event = { id = AOR_GER_factory_council.19 }
+			}
+		}
+	}
+}
+
+# 1919.12.1 忠实的盟友（定向大幅提升中央党团赞成率）
+country_event = {
+	id = AOR_GER_factory_council.18
+	title = AOR_GER_factory_council.18.t
+	desc = AOR_GER_factory_council.18.desc
+	picture = GFX_AOR_GER_factory_council_18
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.18.a
+		add_political_power = 10
+		custom_effect_tooltip = AOR_GER_factory_council.18.a_tt
+		hidden_effect = {
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = 25 } GER_fc_shift_dzp_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 32 } GER_fc_shift_dzp_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = 40 } GER_fc_shift_dzp_odds = yes }
+			}
+			add_to_variable = { GER_yihui_cohesion = 10 }
+			clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+			GER_yihui_bill_calc_action_previews = yes
+			country_event = { id = AOR_GER_factory_council.20 days = 5 }
+		}
+	}
+}
+
+# 1919.12.1 可耻的叛徒（定向压低中央党团赞成率，联盟凝聚力下降）
+country_event = {
+	id = AOR_GER_factory_council.19
+	title = AOR_GER_factory_council.19.t
+	desc = AOR_GER_factory_council.19.desc
+	picture = GFX_AOR_GER_factory_council_19
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.19.a
+		add_political_power = -20
+		custom_effect_tooltip = AOR_GER_factory_council.19.a_tt
+		hidden_effect = {
+			random_list = {
+				1 = { set_temp_variable = { yh_fc_dy = -25 } GER_fc_shift_dzp_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -30 } GER_fc_shift_dzp_odds = yes }
+				1 = { set_temp_variable = { yh_fc_dy = -35 } GER_fc_shift_dzp_odds = yes }
+			}
+			random_list = {
+				1 = { subtract_from_variable = { GER_yihui_cohesion = 15 } }
+				1 = { subtract_from_variable = { GER_yihui_cohesion = 20 } }
+				1 = { subtract_from_variable = { GER_yihui_cohesion = 25 } }
+			}
+			clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+			GER_yihui_bill_calc_action_previews = yes
+			country_event = { id = AOR_GER_factory_council.20 days = 5 }
+		}
+	}
+}
+
+# 1919.12.6 隐藏：触发统一《汇报》事件（点击按钮后再开始计票与胜负分流）
+country_event = {
+	id = AOR_GER_factory_council.20
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = AOR_GER_factory_council.21 }
+	}
+}
+
+# 1919.12.6 汇报（无论成败均先触发此事件，点击按钮后开始计票，再弹出成功事件或失败二选一事件）
+country_event = {
+	id = AOR_GER_factory_council.21
+	title = AOR_GER_factory_council.21.t
+	desc = AOR_GER_factory_council.21.desc
+	picture = GFX_AOR_GER_factory_council_21
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.21.a
+		custom_effect_tooltip = AOR_GER_factory_council.21.a_tt
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { GER_yihui_bill_stage = 1 } }
+				GER_yihui_bill_finalize_vote = yes
+			}
+			if = {
+				limit = {
+					check_variable = { GER_yihui_vote_passed = 1 }
+					NOT = { check_variable = { GER_yihui_bill_integrity < 50 } }
+				}
+				country_event = { id = AOR_GER_factory_council.23 days = 2 }
+			}
+			else = {
+				country_event = { id = AOR_GER_factory_council.22 days = 2 }
+			}
+		}
+	}
+}
+
+# 表决失利（计票未过半或成果保留率 < 50% 时的二选一事件）
+country_event = {
+	id = AOR_GER_factory_council.22
+	title = AOR_GER_factory_council.22.t
+	desc = AOR_GER_factory_council.22.desc
+	picture = GFX_AOR_GER_factory_council_22
+	is_triggered_only = yes
+
+	# 选项一：接受失败
+	option = {
+		name = AOR_GER_factory_council.22.a
+		hidden_effect = {
+			country_event = { id = AOR_GER_factory_council.24 days = 1 }
+		}
+	}
+
+	# 选项二：终止谈判，启动 42 天大规模社会运动（至 1920.1.17，早于 1920.2.1 社会化法案）
+	option = {
+		name = AOR_GER_factory_council.22.b
+		custom_effect_tooltip = AOR_GER_factory_council.22.b_tt
+		hidden_effect = {
+			GER_fc_movement_start = yes
+		}
+	}
+}
+
+# 结局①：《工厂委员会法》通过（议会胜利）
+country_event = {
+	id = AOR_GER_factory_council.23
+	title = AOR_GER_factory_council.23.t
+	desc = AOR_GER_factory_council.23.desc
+	picture = GFX_AOR_GER_factory_council_23
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.23.a
+		add_political_power = 100
+		custom_effect_tooltip = AOR_GER_factory_council.23.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_center_support = 10 }
+			GER_SPD_refresh_support_effect = yes
+			add_to_variable = { GER_SPD_unity = 15 }
+			GER_SPD_refresh_unity_effect = yes
+			set_temp_variable = { yh_fc_rad = 30 }
+			GER_fc_add_radicalism = yes
+			set_country_flag = GER_factory_council_law_passed
+			clr_country_flag = GER_factory_council_law_failed
+			set_variable = { GER_fc_soc_cost_mult = 0.90 }
+			GER_socialization_refresh_bars = yes
+			news_event = { id = AOR_news_europe.61 }
+		}
+	}
+}
+
+# 结局②：《工厂委员会法的失败》（未进入社会运动）
+country_event = {
+	id = AOR_GER_factory_council.24
+	title = AOR_GER_factory_council.24.t
+	desc = AOR_GER_factory_council.24.desc
+	picture = GFX_AOR_GER_factory_council_24
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.24.a
+		add_political_power = -50
+		custom_effect_tooltip = AOR_GER_factory_council.24.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 5 }
+			subtract_from_variable = { GER_SPD_center_support = 4 }
+			subtract_from_variable = { GER_SPD_right_support = 5 }
+			GER_SPD_refresh_support_effect = yes
+			subtract_from_variable = { GER_SPD_unity = 10 }
+			GER_SPD_refresh_unity_effect = yes
+			set_country_flag = GER_factory_council_law_failed
+			clr_country_flag = GER_factory_council_law_passed
+			set_variable = { GER_fc_soc_cost_mult = 1.10 }
+			GER_socialization_refresh_bars = yes
+			news_event = { id = AOR_news_europe.62 }
+		}
+	}
+}
+
+# 结局③：凯旋（社会运动成功）
+country_event = {
+	id = AOR_GER_factory_council.25
+	title = AOR_GER_factory_council.25.t
+	desc = AOR_GER_factory_council.25.desc
+	picture = GFX_AOR_GER_factory_council_25
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.25.a
+		add_political_power = 100
+		custom_effect_tooltip = AOR_GER_factory_council.25.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 15 }
+			subtract_from_variable = { GER_SPD_center_support = 3 }
+			subtract_from_variable = { GER_SPD_right_support = 10 }
+			GER_SPD_refresh_support_effect = yes
+			add_to_variable = { GER_SPD_unity = 15 }
+			GER_SPD_refresh_unity_effect = yes
+			set_temp_variable = { yh_fc_rad = 40 }
+			GER_fc_add_radicalism = yes
+			set_country_flag = GER_factory_council_law_passed
+			clr_country_flag = GER_factory_council_law_failed
+			set_variable = { GER_fc_soc_cost_mult = 0.80 }
+			GER_socialization_refresh_bars = yes
+			news_event = { id = AOR_news_europe.63 }
+		}
+	}
+}
+
+# 结局④：油尽灯枯（社会运动失败）
+country_event = {
+	id = AOR_GER_factory_council.26
+	title = AOR_GER_factory_council.26.t
+	desc = AOR_GER_factory_council.26.desc
+	picture = GFX_AOR_GER_factory_council_26
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_factory_council.26.a
+		add_political_power = -100
+		custom_effect_tooltip = AOR_GER_factory_council.26.a_tt
+		hidden_effect = {
+			add_to_variable = { GER_SPD_left_support = 5 }
+			subtract_from_variable = { GER_SPD_center_support = 6 }
+			subtract_from_variable = { GER_SPD_right_support = 2 }
+			GER_SPD_refresh_support_effect = yes
+			subtract_from_variable = { GER_SPD_unity = 15 }
+			GER_SPD_refresh_unity_effect = yes
+			set_country_flag = GER_factory_council_law_failed
+			clr_country_flag = GER_factory_council_law_passed
+			set_variable = { GER_fc_soc_cost_mult = 1.20 }
+			GER_socialization_refresh_bars = yes
+			news_event = { id = AOR_news_europe.64 }
+		}
+	}
+}
+
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 社会化法案立法（1920.2.1 → 1920.2.8；法案 #4，审议 7 天，成果保留率 100%，必定通过）
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 1920.2.1 国有化？社会化？（开启议会重大立法审议：法案 #4）
+country_event = {
+	id = AOR_GER_socialization_law.1
+	title = AOR_GER_socialization_law.1.t
+	desc = AOR_GER_socialization_law.1.desc
+	picture = GFX_AOR_GER_socialization_law_1
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOR_GER_socialization_law.1.a
+		custom_effect_tooltip = AOR_GER_socialization_law.1.a_tt
+		hidden_effect = {
+			# 开启审议并替玩家打开议会，停在重大立法界面
+			GER_yihui_bill_socialization_start = yes
+			country_event = { id = AOR_GER_socialization_law.2 days = 3 }
+		}
+	}
+}
+
+# 1920.2.4 趋势
+country_event = {
+	id = AOR_GER_socialization_law.2
+	title = AOR_GER_socialization_law.2.t
+	desc = AOR_GER_socialization_law.2.desc
+	picture = GFX_AOR_GER_socialization_law_2
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_socialization_law.2.a
+		custom_effect_tooltip = AOR_GER_socialization_law.2.a_tt
+		hidden_effect = {
+			country_event = { id = AOR_GER_socialization_law.3 days = 3 }
+		}
+	}
+}
+
+# 1920.2.7 有惊无险（点击后开始计票：票数按固定规则随机打散，必定通过；随后启用社会化机制）
+country_event = {
+	id = AOR_GER_socialization_law.3
+	title = AOR_GER_socialization_law.3.t
+	desc = AOR_GER_socialization_law.3.desc
+	picture = GFX_AOR_GER_socialization_law_3
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_socialization_law.3.a
+		add_political_power = 30
+		custom_effect_tooltip = AOR_GER_socialization_law.3.a_tt
+		hidden_effect = {
+			GER_yihui_bill_socialization_vote = yes
+			set_country_flag = GER_socialization_law_passed
+			GER_socialization_initialize = yes
+			# 同时解锁 1920 经济国策分支（整理经济工作）
+			country_event = { id = AOR_GER_economy_1920.1 }
 		}
 	}
 }

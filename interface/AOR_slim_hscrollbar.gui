@@ -1,0 +1,21 @@
+guiTypes = {
+	# 横向细滚动条：GER_yihui_slim_scrollbar 的横向版，用于民族精神栏
+	extendedScrollbarType = {
+		name = "AOR_slim_hscrollbar"
+		position = { x = 0 y = -6 }
+		size = { width = 18 height = 18 }
+		maxValue = 1
+		minValue = 0
+		stepSize = 0.01
+		startValue = 0
+		horizontal = yes
+		orientation = lower_left
+		origo = lower_left
+		smooth_scrolling = 0.25
+		background = { name = "Background" quadTextureSprite = "GFX_AOR_slim_hscroll_track" }
+		slider = { name = "Slider" quadTextureSprite = "GFX_AOR_slim_hscroll_thumb" position = { x = 0 y = 0 } }
+		track = { name = "Track" quadTextureSprite = "GFX_tiled_window_transparent" position = { x = 0 y = 3 } alwaystransparent = yes }
+		decreaseButton = { name = "Decrease" quadTextureSprite = "GFX_AOR_slim_hscroll_cap" position = { x = 0 y = 1 } }
+		increaseButton = { name = "Increase" quadTextureSprite = "GFX_AOR_slim_hscroll_cap" position = { x = -4 y = -17 } }
+	}
+}

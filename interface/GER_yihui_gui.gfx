@@ -90,4 +90,59 @@ spriteTypes = {
 		name = "GFX_GER_yihui_law_seal"
 		texturefile = "gfx/interface/GER_parliament/ui/law_seal.png"
 	}
+	# 行政焦点图片按钮（3 帧：普通 / 悬停 / 按下，一项一张）+ 选中 / 未解锁盖板
+	# 配图统一铺老照片滤镜（gfx/FX/GER_yihui_oldphoto.shader，由 oldphoto_art.py 生成；金框不受影响）
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_tile_1"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_tile_1_3f.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/GER_yihui_oldphoto.shader"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_tile_2"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_tile_2_3f.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/GER_yihui_oldphoto.shader"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_tile_3"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_tile_3_3f.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/GER_yihui_oldphoto.shader"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_tile_4"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_tile_4_3f.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/GER_yihui_oldphoto.shader"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_agenda_tile_5"
+		texturefile = "gfx/interface/GER_parliament/ui/agenda_tile_5_3f.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/GER_yihui_oldphoto.shader"
+	}
+	# 细滚动条（GER_yihui_slim_scrollbar）：轨道可拉伸，滑块悬停变亮、按下不变暗，箭头按钮透明
+	corneredTileSpriteType = {
+		name = "GFX_GER_yihui_scroll_track"
+		size = { x = 18 y = 32 }
+		textureFile = "gfx/interface/GER_parliament/ui/scroll_track.png"
+		borderSize = { x = 0 y = 5 }
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_scroll_thumb"
+		texturefile = "gfx/interface/GER_parliament/ui/scroll_thumb.png"
+		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+	}
+	spriteType = {
+		name = "GFX_GER_yihui_scroll_cap"
+		texturefile = "gfx/interface/GER_parliament/ui/scroll_cap.png"
+	}
+	# 已完成焦点侧栏渐显底板（着色器淡入）
+	spriteType = {
+		name = "GFX_GER_yihui_laws_fade"
+		texturefile = "gfx/interface/GER_parliament/ui/laws_fade.png"
+		effectFile = "gfx/FX/GER_yihui_laws_fade.shader"
+		transparencecheck = yes
+	}
 }

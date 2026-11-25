@@ -3,6 +3,8 @@ GER_union_prepare_rewards = {
     set_variable = { GER_union_pp_factor = 0 }
     set_variable = { GER_union_efficiency = 0 }
     set_variable = { GER_union_retention = 0 }
+    set_variable = { GER_union_factory_output = 0 }
+    set_variable = { GER_union_consumer_goods = 0 }
     set_variable = { GER_union_organization_bonus = 0 }
     set_variable = { GER_union_left_biweekly = 0 }
     set_variable = { GER_union_center_biweekly = 0 }
@@ -48,8 +50,9 @@ GER_union_prepare_rewards = {
 }
 # 莱帕特路线（一个焦点都没完成）的保底加成：在 AOR_GER_union_competition.6 里接在 prepare 之后调用。
 GER_union_leipart_rewards = {
-    add_to_variable = { GER_union_pp_factor = 0.1 }
-    add_to_variable = { GER_union_retention = 0.15 }
+    add_to_variable = { GER_union_pp_factor = 0.15 }
+    add_to_variable = { GER_union_factory_output = 0.05 }
+    add_to_variable = { GER_union_consumer_goods = -0.1 }
     add_to_variable = { GER_union_right_biweekly = 5 }
 }
 GER_union_apply_rewards = {

@@ -1,5 +1,64 @@
-# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成。重大立法表决弹窗的测试决议，测完整个文件和分类一起删掉即可。
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成（该脚本已停用，勿重跑）。重大立法表决弹窗的测试决议，测完整个文件和分类一起删掉即可。
 GER_yihui_bill_test_category = {
+	GER_yihui_test_factory_council_start = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				clr_country_flag = AOR_GER_factory_council_started
+				country_event = { id = AOR_GER_factory_council.1 }
+			}
+		}
+	}
+	GER_yihui_test_bill_deliberation = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = { yh_bill = 2 }
+				set_temp_variable = { yh_delib_days = 75 }
+				set_temp_variable = { yh_integrity = 60 }
+				GER_yihui_bill_start_deliberation = yes
+			}
+		}
+	}
+	GER_yihui_test_bill_dzp_yes = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { check_variable = { GER_yihui_bill_stage = 1 } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = { yh_p = 4 }
+				set_temp_variable = { yh_py = 100 }
+				set_temp_variable = { yh_pn = 0 }
+				GER_yihui_bill_set_party_odds = yes
+			}
+		}
+	}
+	GER_yihui_test_bill_finalize = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { check_variable = { GER_yihui_bill_stage = 1 } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				GER_yihui_bill_finalize_vote = yes
+			}
+		}
+	}
 	GER_yihui_test_bill_versailles = {
 		allowed = { original_tag = GER }
 		visible = { original_tag = GER }
@@ -10,38 +69,6 @@ GER_yihui_bill_test_category = {
 		complete_effect = {
 			hidden_effect = {
 				GER_yihui_bill_versailles = yes
-			}
-		}
-	}
-	GER_yihui_test_bill_inertia = {
-		allowed = { original_tag = GER }
-		visible = { original_tag = GER }
-		available = { always = yes }
-		cost = 0
-		fire_only_once = no
-		ai_will_do = { factor = 0 }
-		complete_effect = {
-			hidden_effect = {
-				if = { limit = { check_variable = { GER_yihui_inertia < 40 } } set_variable = { GER_yihui_inertia = 40 } }
-				set_temp_variable = { yh_bill = 2 }
-				set_temp_variable = { yh_cost = 20 }
-				GER_yihui_bill_vote = yes
-			}
-		}
-	}
-	GER_yihui_test_bill_no_inertia = {
-		allowed = { original_tag = GER }
-		visible = { original_tag = GER }
-		available = { always = yes }
-		cost = 0
-		fire_only_once = no
-		ai_will_do = { factor = 0 }
-		complete_effect = {
-			hidden_effect = {
-				set_variable = { GER_yihui_inertia = 10 }
-				set_temp_variable = { yh_bill = 2 }
-				set_temp_variable = { yh_cost = 20 }
-				GER_yihui_bill_vote = yes
 			}
 		}
 	}
@@ -69,6 +96,21 @@ GER_yihui_bill_test_category = {
 			hidden_effect = {
 				add_to_variable = { GER_yihui_inertia = 30 }
 				clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
+			}
+		}
+	}
+	GER_yihui_test_cohesion_add = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				add_to_variable = { GER_yihui_cohesion = 20 }
+				clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+				if = { limit = { check_variable = { GER_yihui_bill_stage = 1 } } GER_yihui_bill_calc_action_previews = yes }
 			}
 		}
 	}

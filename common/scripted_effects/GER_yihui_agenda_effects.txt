@@ -339,6 +339,8 @@ GER_yihui_recount_busy = {
 	if = { limit = { check_variable = { GER_yihui_busy_5 > 0 } } set_variable = { GER_yihui_bonus_efficiency = 0.15 } }
 	set_variable = { GER_yihui_bonus_building = 0 }
 	if = { limit = { check_variable = { GER_yihui_busy_6 > 0 } } set_variable = { GER_yihui_bonus_building = 0.15 } }
+	set_variable = { GER_yihui_bonus_local = 0 }
+	if = { limit = { check_variable = { GER_yihui_busy_8 > 0 } } set_variable = { GER_yihui_bonus_local = 0.03 } }
 	# 党团协作只在有议程处理时挂着
 	if = {
 		limit = { check_variable = { GER_yihui_running_count > 0 } }
@@ -349,6 +351,9 @@ GER_yihui_recount_busy = {
 		limit = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } }
 		remove_dynamic_modifier = { modifier = GER_yihui_party_cooperation }
 	}
+	# YIHUI_DEBUG 临时排查，确认后删除
+	if = { limit = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } } log = "YIHUI_DEBUG [GetDateText] recount running=[?GER_yihui_running_count] coop=ON factory=[?GER_yihui_bonus_factory] stab=[?GER_yihui_bonus_stability]" }
+	else = { log = "YIHUI_DEBUG [GetDateText] recount running=[?GER_yihui_running_count] coop=OFF" }
 }
 
 # 每日计时：处理中的议程天数 -1，到期的先记进 GER_yihui_done_queue，循环结束后再结算（结算会改议程表）
@@ -359,6 +364,12 @@ GER_yihui_daily_tick = {
 			check_variable = { GER_yihui_running_count > 0 }
 		}
 		clear_array = GER_yihui_done_queue
+		# 有议程在处理却没挂党团协作（热重载 / 旧存档）时补挂
+		if = {
+			limit = { NOT = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } } }
+			log = "YIHUI_DEBUG [GetDateText] daily: coop missing, recount"
+			GER_yihui_recount_busy = yes
+		}
 		for_each_loop = {
 			array = GER_yihui_agenda_list
 			value = yh_id

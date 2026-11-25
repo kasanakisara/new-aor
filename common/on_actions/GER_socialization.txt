@@ -1,6 +1,6 @@
 on_actions = {
-    # The category is currently available from game start. A future focus can
-    # call GER_socialization_initialize when it unlocks the category instead.
+    # 数据仍在开局初始化（1919 年的国策、工会、地区行动等会提前改动组织度 / 激进度，需要有底数）；
+    # 社会化分类与每日结算要等《社会化法案》通过（事件 AOR_GER_socialization_law.3 设 GER_socialization_law_passed）才开启。
     on_startup = {
         effect = {
             GER = { GER_socialization_initialize = yes }
@@ -14,7 +14,10 @@ on_actions = {
                     limit = { NOT = { has_country_flag = GER_socialization_started } }
                     GER_socialization_initialize = yes
                 }
-                else = { GER_socialization_daily_tick = yes }
+                else_if = {
+                    limit = { has_country_flag = GER_socialization_law_passed }
+                    GER_socialization_daily_tick = yes
+                }
             }
         }
     }

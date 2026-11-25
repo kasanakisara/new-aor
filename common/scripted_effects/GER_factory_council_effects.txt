@@ -1,0 +1,208 @@
+# 《工厂委员会法》立法事件链与 42 天大规模社会运动辅助脚本效果
+
+# 调整中右党团（中央党 4、民主党 5、人民党 6、其他 8）对当前法案的赞成率并重算立法成功率
+# 输入 temp: yh_fc_dy
+GER_fc_shift_center_right_odds = {
+	set_temp_variable = { yh_fc_dn = 0 }
+	subtract_from_temp_variable = { yh_fc_dn = yh_fc_dy }
+	set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = yh_fc_dy } set_temp_variable = { yh_dn = yh_fc_dn } GER_yihui_bill_shift_party = yes
+	set_temp_variable = { yh_p = 5 } set_temp_variable = { yh_dy = yh_fc_dy } set_temp_variable = { yh_dn = yh_fc_dn } GER_yihui_bill_shift_party = yes
+	set_temp_variable = { yh_p = 6 } set_temp_variable = { yh_dy = yh_fc_dy } set_temp_variable = { yh_dn = yh_fc_dn } GER_yihui_bill_shift_party = yes
+	set_temp_variable = { yh_p = 8 } set_temp_variable = { yh_dy = yh_fc_dy } set_temp_variable = { yh_dn = yh_fc_dn } GER_yihui_bill_shift_party = yes
+	GER_yihui_bill_recalc_est = yes
+}
+
+# 定向调整中央党团（党团 4）对当前法案的赞成率并重算立法成功率
+# 输入 temp: yh_fc_dy
+GER_fc_shift_dzp_odds = {
+	set_temp_variable = { yh_fc_dn = 0 }
+	subtract_from_temp_variable = { yh_fc_dn = yh_fc_dy }
+	set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = yh_fc_dy } set_temp_variable = { yh_dn = yh_fc_dn } GER_yihui_bill_shift_party = yes
+	GER_yihui_bill_recalc_est = yes
+}
+
+# 调整当前法案成果保留率
+# 输入 temp: yh_fc_di
+GER_fc_shift_integrity = {
+	add_to_variable = { GER_yihui_bill_integrity = yh_fc_di }
+	clamp_variable = { var = GER_yihui_bill_integrity min = 0 max = 100 }
+}
+
+# 隐藏累计反革命激进度（社会化启动前先记在 GER_socialization_radicalism_base 中）
+# 输入 temp: yh_fc_rad
+GER_fc_add_radicalism = {
+	if = {
+		limit = { NOT = { has_variable = GER_socialization_radicalism_base } }
+		set_variable = { GER_socialization_radicalism_base = 50 }
+	}
+	add_to_variable = { GER_socialization_radicalism_base = yh_fc_rad }
+	if = {
+		limit = { has_country_flag = GER_socialization_started }
+		GER_socialization_refresh_bars = yes
+	}
+}
+
+# 按工会改革成果重算社会运动罢工三档 PP 花费
+GER_fc_movement_recalc_strike_costs = {
+	set_variable = { GER_fc_strike_1_cost = 30 }
+	set_variable = { GER_fc_strike_2_cost = 60 }
+	set_variable = { GER_fc_strike_3_cost = 250 }
+	if = {
+		limit = { has_country_flag = GER_union_rewards_active }
+		set_temp_variable = { fc_disc = GER_union_mass_strike_discount }
+		subtract_from_variable = { GER_fc_strike_3_cost = fc_disc }
+		divide_temp_variable = { fc_disc = 3 }
+		round_temp_variable = fc_disc
+		subtract_from_variable = { GER_fc_strike_2_cost = fc_disc }
+		divide_temp_variable = { fc_disc = 2 }
+		round_temp_variable = fc_disc
+		subtract_from_variable = { GER_fc_strike_1_cost = fc_disc }
+	}
+	else_if = {
+		limit = { has_country_flag = GER_socialization_union_reform_success }
+		set_variable = { GER_fc_strike_1_cost = 20 }
+		set_variable = { GER_fc_strike_2_cost = 40 }
+		set_variable = { GER_fc_strike_3_cost = 180 }
+	}
+	clamp_variable = { var = GER_fc_strike_1_cost min = 10 max = 30 }
+	clamp_variable = { var = GER_fc_strike_2_cost min = 25 max = 60 }
+	clamp_variable = { var = GER_fc_strike_3_cost min = 120 max = 250 }
+}
+
+# 启动 42 天大规模社会运动（1919.12.6 → 1920.1.17，严格早于 1920.2.1 社会化法案）
+GER_fc_movement_start = {
+	set_country_flag = GER_fc_movement_active
+	clr_country_flag = GER_fc_mov_bebel_used
+	set_variable = { GER_fc_mov_days = 42 }
+	set_variable = { GER_fc_mov_elapsed = 0 }
+	set_variable = { GER_fc_mov_progress = 0 }
+	set_variable = { GER_fc_mov_enthusiasm = 50 }
+	set_variable = { GER_fc_mov_strike_tier = 0 }
+	set_variable = { GER_fc_mov_week_tick = 0 }
+	set_variable = { GER_fc_mov_sab_cd = 3 }
+	remove_ideas = {
+		GER_fc_strike_tier_1
+		GER_fc_strike_tier_2
+		GER_fc_strike_tier_3
+	}
+	GER_fc_movement_recalc_strike_costs = yes
+}
+
+# 结束并清理社会运动状态与罢工减益
+GER_fc_movement_cleanup = {
+	clr_country_flag = GER_fc_movement_active
+	set_variable = { GER_fc_mov_days = 0 }
+	set_variable = { GER_fc_mov_strike_tier = 0 }
+	remove_ideas = {
+		GER_fc_strike_tier_1
+		GER_fc_strike_tier_2
+		GER_fc_strike_tier_3
+	}
+}
+
+# 胜负结算判定：热情归 0 立即败；进度达 100% 立即胜；42 天到期 >=75% 且热情 >0 胜，否则败
+GER_fc_movement_check_end = {
+	if = {
+		limit = { has_country_flag = GER_fc_movement_active }
+		clamp_variable = { var = GER_fc_mov_progress min = 0 max = 100 }
+		clamp_variable = { var = GER_fc_mov_enthusiasm min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { GER_fc_mov_enthusiasm < 1 } }
+			GER_fc_movement_cleanup = yes
+			country_event = { id = AOR_GER_factory_council.26 }
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { GER_fc_mov_progress < 100 } } }
+			GER_fc_movement_cleanup = yes
+			country_event = { id = AOR_GER_factory_council.25 }
+		}
+		else_if = {
+			limit = { check_variable = { GER_fc_mov_days < 1 } }
+			if = {
+				limit = {
+					NOT = { check_variable = { GER_fc_mov_progress < 75 } }
+					check_variable = { GER_fc_mov_enthusiasm > 0 }
+				}
+				GER_fc_movement_cleanup = yes
+				country_event = { id = AOR_GER_factory_council.25 }
+			}
+			else = {
+				GER_fc_movement_cleanup = yes
+				country_event = { id = AOR_GER_factory_council.26 }
+			}
+		}
+	}
+}
+
+# 社会运动每日计时（由 AOR_GER_weimar_on_actions.txt 的 on_daily_GER 调用）
+GER_fc_movement_daily_tick = {
+	if = {
+		limit = { has_country_flag = GER_fc_movement_active }
+		GER_fc_movement_recalc_strike_costs = yes
+		subtract_from_variable = { GER_fc_mov_days = 1 }
+		add_to_variable = { GER_fc_mov_elapsed = 1 }
+		add_to_variable = { GER_fc_mov_week_tick = 1 }
+
+		# 每满 7 天结算一次群众热情衰减与罢工进度收益
+		if = {
+			limit = { NOT = { check_variable = { GER_fc_mov_week_tick < 7 } } }
+			set_variable = { GER_fc_mov_week_tick = 0 }
+			# 1~2 周 -10%，3~4 周 -15%，5~6 周 -20%
+			if = {
+				limit = { NOT = { check_variable = { GER_fc_mov_elapsed > 14 } } }
+				subtract_from_variable = { GER_fc_mov_enthusiasm = 10 }
+			}
+			else_if = {
+				limit = { NOT = { check_variable = { GER_fc_mov_elapsed > 28 } } }
+				subtract_from_variable = { GER_fc_mov_enthusiasm = 15 }
+			}
+			else = {
+				subtract_from_variable = { GER_fc_mov_enthusiasm = 20 }
+			}
+			# 罢工档位每周推进进度
+			if = {
+				limit = { check_variable = { GER_fc_mov_strike_tier = 1 } }
+				add_to_variable = { GER_fc_mov_progress = 8 }
+			}
+			else_if = {
+				limit = { check_variable = { GER_fc_mov_strike_tier = 2 } }
+				add_to_variable = { GER_fc_mov_progress = 14 }
+				set_temp_variable = { yh_fc_rad = 5 }
+				GER_fc_add_radicalism = yes
+			}
+			else_if = {
+				limit = { check_variable = { GER_fc_mov_strike_tier = 3 } }
+				add_to_variable = { GER_fc_mov_progress = 22 }
+				set_temp_variable = { yh_fc_rad = 5 }
+				GER_fc_add_radicalism = yes
+			}
+		}
+
+		# 每 7 天刷新 1 项反革命自动破坏任务（场上最多同时存在 1 项）
+		if = {
+			limit = { check_variable = { GER_fc_mov_sab_cd > 0 } }
+			subtract_from_variable = { GER_fc_mov_sab_cd = 1 }
+		}
+		if = {
+			limit = {
+				check_variable = { GER_fc_mov_sab_cd < 1 }
+				check_variable = { GER_fc_mov_days > 2 }
+				NOT = { has_active_mission = GER_fc_mov_sabotage_1 }
+				NOT = { has_active_mission = GER_fc_mov_sabotage_2 }
+				NOT = { has_active_mission = GER_fc_mov_sabotage_3 }
+				NOT = { has_active_mission = GER_fc_mov_sabotage_4 }
+				NOT = { has_active_mission = GER_fc_mov_sabotage_5 }
+			}
+			set_variable = { GER_fc_mov_sab_cd = 7 }
+			random_list = {
+				1 = { activate_mission = GER_fc_mov_sabotage_1 }
+				1 = { activate_mission = GER_fc_mov_sabotage_2 }
+				1 = { activate_mission = GER_fc_mov_sabotage_3 }
+				1 = { activate_mission = GER_fc_mov_sabotage_4 }
+				1 = { activate_mission = GER_fc_mov_sabotage_5 }
+			}
+		}
+
+		GER_fc_movement_check_end = yes
+	}
+}

@@ -1,0 +1,126 @@
+scripted_gui = {
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成；该脚本已停用（与本文件不一致），请直接改本文件，勿重跑
+	GER_yihui_bill_gui = {
+		context_type = player_context
+		window_name = GER_yihui_bill_gui
+		dirty = GER_yihui_bill_dirty
+		visible = {
+			original_tag = GER
+			has_country_flag = GER_main_GUI_open
+			has_country_flag = GER_yihui_bill_open
+		}
+		effects = {
+			GER_yihui_bill_close_btn_click = { GER_yihui_bill_toggle = yes }
+		}
+		dynamic_lists = {
+			GER_yihui_bill_seats = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_yihui_bill_seat_entry
+				index = i
+			}
+			GER_yihui_bill_va = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_yihui_bill_va_entry
+				index = i
+			}
+			GER_yihui_bill_vb = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_yihui_bill_vb_entry
+				index = i
+			}
+		}
+		properties = {
+			GER_yihui_bill_seat_icon = {
+				x = GER_Reichstag_seat_x^i
+				y = GER_Reichstag_seat_y^i
+				frame = GER_Reichstag_seat_frame^i
+			}
+			GER_yihui_bill_va_btn = {
+				x = GER_Reichstag_seat_x^i
+				y = GER_Reichstag_seat_y^i
+				frame = GER_yihui_seat_code^i
+			}
+			GER_yihui_bill_bar_a = { frame = GER_yihui_bill_bar_frame }
+			GER_yihui_bill_yes_a = { frame = GER_yihui_bill_yes_frame }
+			GER_yihui_bill_no_a = { frame = GER_yihui_bill_no_frame }
+			GER_yihui_bill_vb_btn = {
+				x = GER_Reichstag_seat_x^i
+				y = GER_Reichstag_seat_y^i
+				frame = GER_yihui_seat_code^i
+			}
+			GER_yihui_bill_bar_b = { frame = GER_yihui_bill_bar_frame }
+			GER_yihui_bill_yes_b = { frame = GER_yihui_bill_yes_frame }
+			GER_yihui_bill_no_b = { frame = GER_yihui_bill_no_frame }
+		}
+		triggers = {
+			GER_yihui_bill_pic_GER_yihui_bill_factory_council_a_visible = { OR = { check_variable = { GER_yihui_bill_id = 3 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_factory_council_a_click_enabled = { check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_pic_GER_yihui_bill_factory_council_b_visible = { OR = { check_variable = { GER_yihui_bill_id = 3 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_factory_council_b_click_enabled = { check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_pic_GER_yihui_bill_socialization_a_visible = { OR = { check_variable = { GER_yihui_bill_id = 4 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_socialization_a_click_enabled = { check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_pic_GER_yihui_bill_socialization_b_visible = { OR = { check_variable = { GER_yihui_bill_id = 4 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_socialization_b_click_enabled = { check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_pic_GER_yihui_bill_versailles_a_visible = { OR = { check_variable = { GER_yihui_bill_id = 1 } check_variable = { GER_yihui_bill_id = 2 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_versailles_a_click_enabled = { check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_pic_GER_yihui_bill_versailles_b_visible = { OR = { check_variable = { GER_yihui_bill_id = 1 } check_variable = { GER_yihui_bill_id = 2 } } }
+			GER_yihui_bill_pic_GER_yihui_bill_versailles_b_click_enabled = { check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_va_btn_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_bar_a_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_yes_a_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_no_a_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 0 } }
+			GER_yihui_bill_vb_btn_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_bar_b_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_yes_b_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 1 } }
+			GER_yihui_bill_no_b_click_enabled = { check_variable = { GER_yihui_bill_id > 0 } check_variable = { GER_yihui_bill_stage = 2 } check_variable = { GER_yihui_bill_set = 1 } }
+		}
+	}
+	GER_yihui_bill_side_gui = {
+		context_type = player_context
+		window_name = GER_yihui_bill_side_gui
+		visible = {
+			original_tag = GER
+			has_country_flag = GER_main_GUI_open
+			has_country_flag = GER_yihui_bill_open
+		}
+		triggers = {
+			GER_yihui_bill_act_lobby_btn_click_enabled = {
+				check_variable = { GER_yihui_bill_stage = 1 }
+				NOT = { check_variable = { GER_yihui_bill_id = 4 } }
+				check_variable = { GER_yihui_bill_act_cd < 1 }
+				has_political_power > 29.99
+				check_variable = { GER_yihui_inertia > 14.99 }
+			}
+			GER_yihui_bill_act_soften_btn_click_enabled = {
+				check_variable = { GER_yihui_bill_stage = 1 }
+				NOT = { check_variable = { GER_yihui_bill_id = 4 } }
+				check_variable = { GER_yihui_bill_act_cd < 1 }
+				has_political_power > 19.99
+				check_variable = { GER_yihui_bill_integrity > 14.99 }
+			}
+			GER_yihui_bill_act_harden_btn_click_enabled = {
+				check_variable = { GER_yihui_bill_stage = 1 }
+				NOT = { check_variable = { GER_yihui_bill_id = 4 } }
+				check_variable = { GER_yihui_bill_act_cd < 1 }
+				has_political_power > 29.99
+				check_variable = { GER_yihui_bill_integrity < 100 }
+			}
+			GER_yihui_bill_act_mobilize_btn_click_enabled = {
+				check_variable = { GER_yihui_bill_stage = 1 }
+				NOT = { check_variable = { GER_yihui_bill_id = 4 } }
+				check_variable = { GER_yihui_bill_act_cd < 1 }
+				has_political_power > 49.99
+				check_variable = { GER_yihui_inertia > 9.99 }
+			}
+		}
+		effects = {
+			GER_yihui_bill_act_lobby_btn_click = { GER_yihui_bill_act_lobby = yes }
+			GER_yihui_bill_act_soften_btn_click = { GER_yihui_bill_act_soften = yes }
+			GER_yihui_bill_act_harden_btn_click = { GER_yihui_bill_act_harden = yes }
+			GER_yihui_bill_act_mobilize_btn_click = { GER_yihui_bill_act_mobilize = yes }
+		}
+	}
+}

@@ -1,0 +1,37 @@
+ideas = {
+	country = {
+		# 工厂委员会法社会运动 · 一级罢工
+		GER_fc_strike_tier_1 = {
+			picture = generic_production_bonus
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.10
+				production_speed_buildings_factor = -0.10
+			}
+		}
+		# 工厂委员会法社会运动 · 二级罢工升级
+		GER_fc_strike_tier_2 = {
+			picture = ger_rebuild_the_nation
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.25
+				production_speed_buildings_factor = -0.20
+				stability_weekly = -0.005
+			}
+		}
+		# 工厂委员会法社会运动 · 总罢工
+		GER_fc_strike_tier_3 = {
+			picture = ger_rebuild_the_nation
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.50
+				production_speed_buildings_factor = -0.50
+				stability_factor = -0.25
+				political_power_gain = -0.50
+			}
+		}
+	}
+}

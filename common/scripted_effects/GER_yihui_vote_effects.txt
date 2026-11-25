@@ -141,3 +141,410 @@ GER_yihui_vote_versailles = {
 		GER_yihui_vote_count = yes
 	}
 }
+
+# 社会化法案表决：每个议席按党团赞成 / 反对率各自掷骰（同审议期显示的 GER_yihui_bill_py / pn），必定通过且赞成不少于 270 票
+# 党团概率在 GER_yihui_bill_socialization_set_odds；按 1920 年议席，掷骰期望赞成约 285 票、上下浮动约 ±6
+# 保底：掷完赞成不足 270 时，从执政联盟（党团 1~4）的反对 / 弃权票里按打散顺序改投赞成，直到 270
+GER_yihui_vote_socialization = {
+	GER_yihui_bill_socialization_set_odds = yes
+	GER_yihui_vote_roll_live = yes
+	set_temp_variable = { yh_n = GER_yihui_vote^num }
+	set_temp_variable = { yh_off = random }
+	multiply_temp_variable = { yh_off = yh_n }
+	round_temp_variable = yh_off
+	for_each_loop = {
+		array = GER_Reichstag_seat_frame
+		value = yh_party
+		index = yh_i
+		if = {
+			limit = { check_variable = { GER_yihui_vote_yes < 270 } }
+			set_temp_variable = { yh_j = yh_i }
+			multiply_temp_variable = { yh_j = 37 }
+			add_to_temp_variable = { yh_j = yh_off }
+			modulo_temp_variable = { yh_j = yh_n }
+			if = {
+				limit = {
+					NOT = { check_variable = { GER_yihui_vote^yh_j = 1 } }
+					check_variable = { GER_Reichstag_seat_frame^yh_j < 5 }
+				}
+				if = { limit = { check_variable = { GER_yihui_vote^yh_j = 2 } } subtract_from_variable = { GER_yihui_vote_no = 1 } }
+				else = { subtract_from_variable = { GER_yihui_vote_abst = 1 } }
+				set_variable = { GER_yihui_vote^yh_j = 1 }
+				add_to_variable = { GER_yihui_vote_yes = 1 }
+			}
+		}
+	}
+	GER_yihui_vote_check_passed = yes
+}
+
+# ==== 审议期：8 个党团实时赞成率 / 预计票数 / 实盘表决 ====
+# 党团编号 1..8（下标 0 占位，数组长度 9）
+#   GER_yihui_bill_py^p        赞成率 (0..100)
+#   GER_yihui_bill_pn^p        反对率 (0..100，保证 py + pn <= 100)
+#   GER_yihui_bill_party_est^p 该党团预计（或表决后实际）赞成席位
+
+GER_yihui_bill_ensure_party_arrays = {
+	if = {
+		limit = { NOT = { check_variable = { GER_yihui_bill_party_list^num = 8 } } }
+		clear_array = GER_yihui_bill_party_list
+		add_to_array = { GER_yihui_bill_party_list = 1 }
+		add_to_array = { GER_yihui_bill_party_list = 2 }
+		add_to_array = { GER_yihui_bill_party_list = 3 }
+		add_to_array = { GER_yihui_bill_party_list = 4 }
+		add_to_array = { GER_yihui_bill_party_list = 5 }
+		add_to_array = { GER_yihui_bill_party_list = 6 }
+		add_to_array = { GER_yihui_bill_party_list = 7 }
+		add_to_array = { GER_yihui_bill_party_list = 8 }
+	}
+	if = {
+		limit = { check_variable = { GER_yihui_bill_py^num < 9 } }
+		resize_array = { array = GER_yihui_bill_py value = 0 size = 9 }
+	}
+	if = {
+		limit = { check_variable = { GER_yihui_bill_pn^num < 9 } }
+		resize_array = { array = GER_yihui_bill_pn value = 0 size = 9 }
+	}
+	if = {
+		limit = { check_variable = { GER_yihui_bill_party_est^num < 9 } }
+		resize_array = { array = GER_yihui_bill_party_est value = 0 size = 9 }
+	}
+}
+
+# 输入 temp: yh_p (1..8)，把 py/pn 规范到 0..100 且 py+pn<=100
+GER_yihui_bill_clamp_party_odds = {
+	set_temp_variable = { yh_cy = GER_yihui_bill_py^yh_p }
+	set_temp_variable = { yh_cn = GER_yihui_bill_pn^yh_p }
+	if = { limit = { check_variable = { yh_cy < 0 } } set_temp_variable = { yh_cy = 0 } }
+	if = { limit = { check_variable = { yh_cy > 100 } } set_temp_variable = { yh_cy = 100 } }
+	if = { limit = { check_variable = { yh_cn < 0 } } set_temp_variable = { yh_cn = 0 } }
+	if = { limit = { check_variable = { yh_cn > 100 } } set_temp_variable = { yh_cn = 100 } }
+	set_temp_variable = { yh_max_n = 100 }
+	subtract_from_temp_variable = { yh_max_n = yh_cy }
+	if = { limit = { check_variable = { yh_cn > yh_max_n } } set_temp_variable = { yh_cn = yh_max_n } }
+	round_temp_variable = yh_cy
+	round_temp_variable = yh_cn
+	set_variable = { GER_yihui_bill_py^yh_p = yh_cy }
+	set_variable = { GER_yihui_bill_pn^yh_p = yh_cn }
+}
+
+# 输入 temp: yh_p (1..8), yh_dy (赞成率变化), yh_dn (反对率变化)
+GER_yihui_bill_shift_party = {
+	set_temp_variable = { yh_ny = GER_yihui_bill_py^yh_p }
+	add_to_temp_variable = { yh_ny = yh_dy }
+	set_variable = { GER_yihui_bill_py^yh_p = yh_ny }
+	set_temp_variable = { yh_nn = GER_yihui_bill_pn^yh_p }
+	add_to_temp_variable = { yh_nn = yh_dn }
+	set_variable = { GER_yihui_bill_pn^yh_p = yh_nn }
+	GER_yihui_bill_clamp_party_odds = yes
+}
+
+# 事件专用接口：直接指定某党团的赞成率/反对率（例如中央党全员赞成：yh_p=4, yh_py=100, yh_pn=0）
+GER_yihui_bill_set_party_odds = {
+	GER_yihui_bill_ensure_party_arrays = yes
+	set_variable = { GER_yihui_bill_py^yh_p = yh_py }
+	set_variable = { GER_yihui_bill_pn^yh_p = yh_pn }
+	GER_yihui_bill_clamp_party_odds = yes
+	GER_yihui_bill_recalc_est = yes
+}
+
+# 事件专用接口：按差值调整某党团赞成率/反对率并立即重算预计票数
+GER_yihui_bill_shift_party_and_recalc = {
+	GER_yihui_bill_ensure_party_arrays = yes
+	GER_yihui_bill_shift_party = yes
+	GER_yihui_bill_recalc_est = yes
+}
+
+# 按基础投票倾向初始化 8 个党团的赞成/反对率 (0..100)
+GER_yihui_bill_init_party_odds = {
+	GER_yihui_bill_ensure_party_arrays = yes
+	for_each_loop = {
+		array = GER_yihui_bill_party_list
+		value = yh_party
+		index = yh_idx
+		GER_yihui_vote_party_odds = yes
+		multiply_temp_variable = { yh_py = 100 }
+		multiply_temp_variable = { yh_pn = 100 }
+		round_temp_variable = yh_py
+		round_temp_variable = yh_pn
+		set_variable = { GER_yihui_bill_py^yh_party = yh_py }
+		set_variable = { GER_yihui_bill_pn^yh_party = yh_pn }
+	}
+	GER_yihui_bill_recalc_est = yes
+}
+
+# 按当前各党团席位 × 实时赞成/反对率，重算预计赞成 / 反对席位
+GER_yihui_bill_recalc_est = {
+	GER_yihui_bill_ensure_party_arrays = yes
+	set_variable = { GER_yihui_bill_est_yes = 0 }
+	set_variable = { GER_yihui_bill_est_no = 0 }
+	for_each_loop = {
+		array = GER_yihui_bill_party_list
+		value = yh_party
+		index = yh_idx
+		if = { limit = { check_variable = { yh_party = 1 } } set_temp_variable = { yh_s = GER_reichstag_spd_left_seats } }
+		else_if = { limit = { check_variable = { yh_party = 2 } } set_temp_variable = { yh_s = GER_reichstag_spd_center_left_seats } }
+		else_if = { limit = { check_variable = { yh_party = 3 } } set_temp_variable = { yh_s = GER_reichstag_spd_right_seats } }
+		else_if = {
+			limit = { check_variable = { yh_party = 4 } }
+			set_temp_variable = { yh_s = GER_reichstag_dzp_seats }
+			add_to_temp_variable = { yh_s = GER_reichstag_bvp_seats }
+		}
+		else_if = { limit = { check_variable = { yh_party = 5 } } set_temp_variable = { yh_s = GER_reichstag_ddp_seats } }
+		else_if = { limit = { check_variable = { yh_party = 6 } } set_temp_variable = { yh_s = GER_reichstag_dvp_seats } }
+		else_if = { limit = { check_variable = { yh_party = 7 } } set_temp_variable = { yh_s = GER_reichstag_dnvp_seats } }
+		else = { set_temp_variable = { yh_s = GER_reichstag_other_seats } }
+		set_temp_variable = { yh_ey = yh_s }
+		multiply_temp_variable = { yh_ey = GER_yihui_bill_py^yh_party }
+		divide_temp_variable = { yh_ey = 100 }
+		round_temp_variable = yh_ey
+		set_variable = { GER_yihui_bill_party_est^yh_party = yh_ey }
+		add_to_variable = { GER_yihui_bill_est_yes = yh_ey }
+		set_temp_variable = { yh_en = yh_s }
+		multiply_temp_variable = { yh_en = GER_yihui_bill_pn^yh_party }
+		divide_temp_variable = { yh_en = 100 }
+		round_temp_variable = yh_en
+		add_to_variable = { GER_yihui_bill_est_no = yh_en }
+	}
+	set_variable = { GER_yihui_bill_est_abst = GER_yihui_total_seats }
+	subtract_from_variable = { GER_yihui_bill_est_abst = GER_yihui_bill_est_yes }
+	subtract_from_variable = { GER_yihui_bill_est_abst = GER_yihui_bill_est_no }
+	if = { limit = { check_variable = { GER_yihui_bill_est_abst < 0 } } set_variable = { GER_yihui_bill_est_abst = 0 } }
+	set_variable = { GER_yihui_bill_majority = GER_yihui_total_seats }
+	divide_variable = { GER_yihui_bill_majority = 2 }
+	round_variable = GER_yihui_bill_majority
+	set_temp_variable = { yh_chk = GER_yihui_bill_majority }
+	multiply_temp_variable = { yh_chk = 2 }
+	if = {
+		limit = { NOT = { check_variable = { yh_chk > GER_yihui_total_seats } } }
+		add_to_variable = { GER_yihui_bill_majority = 1 }
+	}
+	# 立法成功率（0..100%）：以过半线为 50%，每偏离 1 席变化 2%
+	set_variable = { GER_yihui_bill_pass_rate = GER_yihui_bill_est_yes }
+	subtract_from_variable = { GER_yihui_bill_pass_rate = GER_yihui_bill_majority }
+	multiply_variable = { GER_yihui_bill_pass_rate = 2 }
+	add_to_variable = { GER_yihui_bill_pass_rate = 50 }
+	clamp_variable = { var = GER_yihui_bill_pass_rate min = 0 max = 100 }
+	round_variable = GER_yihui_bill_pass_rate
+	GER_yihui_bill_calc_action_previews = yes
+}
+
+# 辅助：模拟单个党团赞成率变动 yh_dy 后，预计赞成席位的净变化（累计进 yh_sim_yes）
+# 输入 temp: yh_p (1..8), yh_dy (赞成率变化), yh_sim_yes (累加器)
+GER_yihui_bill_sim_party_delta = {
+	if = { limit = { check_variable = { yh_p = 1 } } set_temp_variable = { yh_s = GER_reichstag_spd_left_seats } }
+	else_if = { limit = { check_variable = { yh_p = 2 } } set_temp_variable = { yh_s = GER_reichstag_spd_center_left_seats } }
+	else_if = { limit = { check_variable = { yh_p = 3 } } set_temp_variable = { yh_s = GER_reichstag_spd_right_seats } }
+	else_if = {
+		limit = { check_variable = { yh_p = 4 } }
+		set_temp_variable = { yh_s = GER_reichstag_dzp_seats }
+		add_to_temp_variable = { yh_s = GER_reichstag_bvp_seats }
+	}
+	else_if = { limit = { check_variable = { yh_p = 5 } } set_temp_variable = { yh_s = GER_reichstag_ddp_seats } }
+	else_if = { limit = { check_variable = { yh_p = 6 } } set_temp_variable = { yh_s = GER_reichstag_dvp_seats } }
+	else_if = { limit = { check_variable = { yh_p = 7 } } set_temp_variable = { yh_s = GER_reichstag_dnvp_seats } }
+	else = { set_temp_variable = { yh_s = GER_reichstag_other_seats } }
+	set_temp_variable = { yh_old_py = GER_yihui_bill_py^yh_p }
+	set_temp_variable = { yh_new_py = yh_old_py }
+	add_to_temp_variable = { yh_new_py = yh_dy }
+	if = { limit = { check_variable = { yh_new_py < 0 } } set_temp_variable = { yh_new_py = 0 } }
+	if = { limit = { check_variable = { yh_new_py > 100 } } set_temp_variable = { yh_new_py = 100 } }
+	round_temp_variable = yh_new_py
+	set_temp_variable = { yh_old_ey = yh_s }
+	multiply_temp_variable = { yh_old_ey = yh_old_py }
+	divide_temp_variable = { yh_old_ey = 100 }
+	round_temp_variable = yh_old_ey
+	set_temp_variable = { yh_new_ey = yh_s }
+	multiply_temp_variable = { yh_new_ey = yh_new_py }
+	divide_temp_variable = { yh_new_ey = 100 }
+	round_temp_variable = yh_new_ey
+	subtract_from_temp_variable = { yh_new_ey = yh_old_ey }
+	add_to_temp_variable = { yh_sim_yes = yh_new_ey }
+}
+
+# 辅助：由模拟总赞成席位 yh_sim_yes 算出相对当前 GER_yihui_bill_pass_rate 的变化值 yh_sim_delta
+GER_yihui_bill_sim_to_delta = {
+	set_temp_variable = { yh_sim_rate = yh_sim_yes }
+	subtract_from_temp_variable = { yh_sim_rate = GER_yihui_bill_majority }
+	multiply_temp_variable = { yh_sim_rate = 2 }
+	add_to_temp_variable = { yh_sim_rate = 50 }
+	if = { limit = { check_variable = { yh_sim_rate < 0 } } set_temp_variable = { yh_sim_rate = 0 } }
+	if = { limit = { check_variable = { yh_sim_rate > 100 } } set_temp_variable = { yh_sim_rate = 100 } }
+	round_temp_variable = yh_sim_rate
+	set_temp_variable = { yh_sim_delta = yh_sim_rate }
+	subtract_from_temp_variable = { yh_sim_delta = GER_yihui_bill_pass_rate }
+}
+
+# 实时预计算 4 个全局行动的预计立法成功率变化（数字与 GER_yihui_bill_act_* 严格一致）
+GER_yihui_bill_calc_action_previews = {
+	if = {
+		limit = { check_variable = { GER_yihui_bill_stage = 1 } }
+		# 1) 议会斡旋：中央党 +2（凝聚力>=60 额外 +1）、民主党 +3、人民党 +1、其他 +2
+		set_temp_variable = { yh_sim_yes = GER_yihui_bill_est_yes }
+		set_temp_variable = { yh_dzp_dy = 2 }
+		if = { limit = { NOT = { check_variable = { GER_yihui_cohesion < 60 } } } add_to_temp_variable = { yh_dzp_dy = 1 } }
+		set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = yh_dzp_dy } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 5 } set_temp_variable = { yh_dy = 3 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 6 } set_temp_variable = { yh_dy = 1 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 8 } set_temp_variable = { yh_dy = 2 } GER_yihui_bill_sim_party_delta = yes
+		GER_yihui_bill_sim_to_delta = yes
+		set_variable = { GER_yihui_bill_prev_lobby = yh_sim_delta }
+
+		# 2) 软化条款：中央党 +3、民主党 +4、人民党 +2、其他 +2、SPD左翼 -4
+		set_temp_variable = { yh_sim_yes = GER_yihui_bill_est_yes }
+		set_temp_variable = { yh_p = 1 } set_temp_variable = { yh_dy = -4 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = 3 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 5 } set_temp_variable = { yh_dy = 4 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 6 } set_temp_variable = { yh_dy = 2 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 8 } set_temp_variable = { yh_dy = 2 } GER_yihui_bill_sim_party_delta = yes
+		GER_yihui_bill_sim_to_delta = yes
+		set_variable = { GER_yihui_bill_prev_soften = yh_sim_delta }
+
+		# 3) 重申原则：SPD左翼 +8、SPD中派 +3、中央党 -5、民主党 -6、人民党 -5
+		set_temp_variable = { yh_sim_yes = GER_yihui_bill_est_yes }
+		set_temp_variable = { yh_p = 1 } set_temp_variable = { yh_dy = 8 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 2 } set_temp_variable = { yh_dy = 3 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = -5 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 5 } set_temp_variable = { yh_dy = -6 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 6 } set_temp_variable = { yh_dy = -5 } GER_yihui_bill_sim_party_delta = yes
+		GER_yihui_bill_sim_to_delta = yes
+		set_variable = { GER_yihui_bill_prev_harden = yh_sim_delta }
+
+		# 4) 场外动员：SPD左翼 +3、SPD中派 +1、中央党 +1、民主党 +2、其他 +2
+		set_temp_variable = { yh_sim_yes = GER_yihui_bill_est_yes }
+		set_temp_variable = { yh_p = 1 } set_temp_variable = { yh_dy = 3 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 2 } set_temp_variable = { yh_dy = 1 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 4 } set_temp_variable = { yh_dy = 1 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 5 } set_temp_variable = { yh_dy = 2 } GER_yihui_bill_sim_party_delta = yes
+		set_temp_variable = { yh_p = 8 } set_temp_variable = { yh_dy = 2 } GER_yihui_bill_sim_party_delta = yes
+		GER_yihui_bill_sim_to_delta = yes
+		set_variable = { GER_yihui_bill_prev_mobilize = yh_sim_delta }
+	}
+	else = {
+		set_variable = { GER_yihui_bill_prev_lobby = 0 }
+		set_variable = { GER_yihui_bill_prev_soften = 0 }
+		set_variable = { GER_yihui_bill_prev_harden = 0 }
+		set_variable = { GER_yihui_bill_prev_mobilize = 0 }
+	}
+}
+
+# 按当前审议结果（GER_yihui_bill_py / pn）逐席表决
+GER_yihui_vote_roll_live = {
+	GER_yihui_vote_clear = yes
+	for_each_loop = {
+		array = GER_Reichstag_seat_frame
+		value = yh_party
+		index = yh_seat
+		set_temp_variable = { yh_py = GER_yihui_bill_py^yh_party }
+		divide_temp_variable = { yh_py = 100 }
+		set_temp_variable = { yh_pn = GER_yihui_bill_pn^yh_party }
+		divide_temp_variable = { yh_pn = 100 }
+		add_to_temp_variable = { yh_pn = yh_py }
+		set_temp_variable = { yh_r = random }
+		set_temp_variable = { yh_v = 3 }
+		if = { limit = { check_variable = { yh_r < yh_py } } set_temp_variable = { yh_v = 1 } }
+		else_if = { limit = { check_variable = { yh_r < yh_pn } } set_temp_variable = { yh_v = 2 } }
+		add_to_array = { array = GER_yihui_vote value = yh_v }
+		GER_yihui_vote_count = yes
+	}
+	GER_yihui_vote_check_passed = yes
+}
+
+# 表决完成后：把实际各党团得票率回写到 GER_yihui_bill_py / pn / party_est，供右栏展示真实开票构成
+GER_yihui_bill_sync_actual_party_rates = {
+	GER_yihui_bill_ensure_party_arrays = yes
+	set_temp_variable = { yh_t1 = 0 } set_temp_variable = { yh_y1 = 0 } set_temp_variable = { yh_n1 = 0 }
+	set_temp_variable = { yh_t2 = 0 } set_temp_variable = { yh_y2 = 0 } set_temp_variable = { yh_n2 = 0 }
+	set_temp_variable = { yh_t3 = 0 } set_temp_variable = { yh_y3 = 0 } set_temp_variable = { yh_n3 = 0 }
+	set_temp_variable = { yh_t4 = 0 } set_temp_variable = { yh_y4 = 0 } set_temp_variable = { yh_n4 = 0 }
+	set_temp_variable = { yh_t5 = 0 } set_temp_variable = { yh_y5 = 0 } set_temp_variable = { yh_n5 = 0 }
+	set_temp_variable = { yh_t6 = 0 } set_temp_variable = { yh_y6 = 0 } set_temp_variable = { yh_n6 = 0 }
+	set_temp_variable = { yh_t7 = 0 } set_temp_variable = { yh_y7 = 0 } set_temp_variable = { yh_n7 = 0 }
+	set_temp_variable = { yh_t8 = 0 } set_temp_variable = { yh_y8 = 0 } set_temp_variable = { yh_n8 = 0 }
+	for_each_loop = {
+		array = GER_yihui_vote
+		value = yh_v
+		index = yh_seat
+		set_temp_variable = { yh_p = GER_Reichstag_seat_frame^yh_seat }
+		if = {
+			limit = { check_variable = { yh_p = 1 } }
+			add_to_temp_variable = { yh_t1 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y1 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n1 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 2 } }
+			add_to_temp_variable = { yh_t2 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y2 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n2 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 3 } }
+			add_to_temp_variable = { yh_t3 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y3 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n3 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 4 } }
+			add_to_temp_variable = { yh_t4 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y4 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n4 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 5 } }
+			add_to_temp_variable = { yh_t5 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y5 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n5 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 6 } }
+			add_to_temp_variable = { yh_t6 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y6 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n6 = 1 } }
+		}
+		else_if = {
+			limit = { check_variable = { yh_p = 7 } }
+			add_to_temp_variable = { yh_t7 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y7 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n7 = 1 } }
+		}
+		else = {
+			add_to_temp_variable = { yh_t8 = 1 }
+			if = { limit = { check_variable = { yh_v = 1 } } add_to_temp_variable = { yh_y8 = 1 } }
+			else_if = { limit = { check_variable = { yh_v = 2 } } add_to_temp_variable = { yh_n8 = 1 } }
+		}
+	}
+	for_each_loop = {
+		array = GER_yihui_bill_party_list
+		value = yh_p
+		index = yh_idx
+		if = { limit = { check_variable = { yh_p = 1 } } set_temp_variable = { yh_pt = yh_t1 } set_temp_variable = { yh_py_cnt = yh_y1 } set_temp_variable = { yh_pn_cnt = yh_n1 } }
+		else_if = { limit = { check_variable = { yh_p = 2 } } set_temp_variable = { yh_pt = yh_t2 } set_temp_variable = { yh_py_cnt = yh_y2 } set_temp_variable = { yh_pn_cnt = yh_n2 } }
+		else_if = { limit = { check_variable = { yh_p = 3 } } set_temp_variable = { yh_pt = yh_t3 } set_temp_variable = { yh_py_cnt = yh_y3 } set_temp_variable = { yh_pn_cnt = yh_n3 } }
+		else_if = { limit = { check_variable = { yh_p = 4 } } set_temp_variable = { yh_pt = yh_t4 } set_temp_variable = { yh_py_cnt = yh_y4 } set_temp_variable = { yh_pn_cnt = yh_n4 } }
+		else_if = { limit = { check_variable = { yh_p = 5 } } set_temp_variable = { yh_pt = yh_t5 } set_temp_variable = { yh_py_cnt = yh_y5 } set_temp_variable = { yh_pn_cnt = yh_n5 } }
+		else_if = { limit = { check_variable = { yh_p = 6 } } set_temp_variable = { yh_pt = yh_t6 } set_temp_variable = { yh_py_cnt = yh_y6 } set_temp_variable = { yh_pn_cnt = yh_n6 } }
+		else_if = { limit = { check_variable = { yh_p = 7 } } set_temp_variable = { yh_pt = yh_t7 } set_temp_variable = { yh_py_cnt = yh_y7 } set_temp_variable = { yh_pn_cnt = yh_n7 } }
+		else = { set_temp_variable = { yh_pt = yh_t8 } set_temp_variable = { yh_py_cnt = yh_y8 } set_temp_variable = { yh_pn_cnt = yh_n8 } }
+		set_variable = { GER_yihui_bill_party_est^yh_p = yh_py_cnt }
+		if = {
+			limit = { check_variable = { yh_pt > 0 } }
+			set_temp_variable = { yh_ry = yh_py_cnt }
+			multiply_temp_variable = { yh_ry = 100 }
+			divide_temp_variable = { yh_ry = yh_pt }
+			round_temp_variable = yh_ry
+			set_variable = { GER_yihui_bill_py^yh_p = yh_ry }
+			set_temp_variable = { yh_rn = yh_pn_cnt }
+			multiply_temp_variable = { yh_rn = 100 }
+			divide_temp_variable = { yh_rn = yh_pt }
+			round_temp_variable = yh_rn
+			set_variable = { GER_yihui_bill_pn^yh_p = yh_rn }
+		}
+		else = {
+			set_variable = { GER_yihui_bill_py^yh_p = 0 }
+			set_variable = { GER_yihui_bill_pn^yh_p = 0 }
+		}
+	}
+	set_variable = { GER_yihui_bill_est_yes = GER_yihui_vote_yes }
+	set_variable = { GER_yihui_bill_est_no = GER_yihui_vote_no }
+	set_variable = { GER_yihui_bill_est_abst = GER_yihui_vote_abst }
+}

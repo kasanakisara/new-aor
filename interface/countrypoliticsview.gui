@@ -132,10 +132,11 @@ guiTypes = {
 				vertical_alignment = center
 			}
 
+			# 阵营按钮：放在饼图右侧（饼图外框 x 268-331），缩到 0.7 倍，竖直居中于饼图（中心 y≈336）
 			containerWindowType = {
 				name = "faction"
-				position = { x = 108 y = -49}
-				size = { width = 175 height = 20 }
+				position = { x = 259 y = 11 }
+				size = { width = 175 height = 40 }
 				clipping = no
 
 				containerWindowType = {
@@ -144,8 +145,8 @@ guiTypes = {
 
 					buttonType = {
 						name = "new_faction_button"
-						quadTextureSprite = "GFX_factions_button"
-						position = { x = -8 y = -12 }
+						quadTextureSprite = "GFX_AOR_factions_button_small"
+						position = { x = 0 y = 0 }
 						buttonFont = "hoi_16mbs"
 						buttonText = ""
 						frame = 2
@@ -153,11 +154,11 @@ guiTypes = {
 
 					instantTextboxType = {
 						name = "view_factions_text"
-						position = { x = 45 y = 5 }
-						font = "hoi_18mbs"
+						position = { x = 36 y = 12 }
+						font = "hoi_16mbs"
 						text = "CREATE_FACTION"
-						maxWidth = 143
-						maxHeight = 20
+						maxWidth = 92
+						maxHeight = 18
 						fixedsize = yes
 						format = left
 						alwaystransparent = yes
@@ -166,7 +167,8 @@ guiTypes = {
 					iconType = {
 						name = "create_faction_icon"
 						spriteType = "GFX_tension_war_list_major"
-						position = { x = 4 y = -1}
+						position = { x = 8 y = 8 }
+						scale = 0.75
 						alwaystransparent = yes
 					}
 				}
@@ -174,14 +176,14 @@ guiTypes = {
 				buttonType = {
 					name = "view_factions_button"
 					quadTextureSprite = "GFX_icon_button_32x32"
-					position = { x = 180 y = -1}
+					position = { x = 138 y = 4 }
 					pdx_tooltip = "VIEW_FACTION"
 				}
 
 				iconType = {
 					name = "view_faction_icon"
 					spriteType = "GFX_relation_faction"
-					position = { x = 181 y = 1}
+					position = { x = 139 y = 6 }
 					alwaystransparent = yes
 				}
 
@@ -192,11 +194,11 @@ guiTypes = {
 					instantTextboxType = {
 						name = "faction_name"
 						#position = { x = 105 y = -45 }
-						position = { x = 2 y = 5 }
-						font = "hoi_18mbs"
+						position = { x = 8 y = 11 }
+						font = "hoi_16mbs"
 						text = "faction"
-						maxWidth = 167
-						maxHeight = 20
+						maxWidth = 126
+						maxHeight = 18
 						multiline = no
 						format = left
 					}
@@ -204,7 +206,7 @@ guiTypes = {
 					buttonType = {
 						name = "dismantle_faction"
 						#position = { x = 302 y = -50 }
-						position = { x = 180 y = 0 }
+						position = { x = 138 y = 5 }
 						quadTextureSprite = "GFX_dismantle_faction_button"
 						#buttonFont = "hoi_16mbs"
 						#buttonText = "DIPLOMACY_DISMANTLE_FACTION_TITLE"
@@ -217,8 +219,8 @@ guiTypes = {
 
 					buttonType = {
 						name = "open_faction_button"
-						quadTextureSprite = "GFX_factions_button"
-						position = { x = -9 y = -13 }
+						quadTextureSprite = "GFX_AOR_factions_button_small"
+						position = { x = 0 y = 0 }
 						buttonFont = "hoi_16mbs"
 						Orientation = "UPPER_LEFT"
 						frame = 1
@@ -227,21 +229,22 @@ guiTypes = {
 					iconType = {
 						name = "faction_icon"
 						spriteType = "GFX_faction_logo_generic_democratic"
-						position = { x = 3 y = -1}
+						position = { x = 8 y = 8 }
+						scale = 0.7
 						alwaystransparent = yes
 					}
 
 					positionType = {
 						name = "faction_name_position" #position y will be - half the height to keep it centered
-						position = { x = 40 y = 14  }
+						position = { x = 36 y = 20 }
 					}
 
 					instantTextboxType = {
 						name = "faction_name"
-						font = "hoi_18mbs"
+						font = "hoi_16mbs"
 						text = ""
-						maxWidth = 138
-						maxHeight = 40
+						maxWidth = 92
+						maxHeight = 36
 						fixedsize = yes
 						format = left
 						alwaystransparent = yes
@@ -447,7 +450,7 @@ guiTypes = {
 				name = "national_spirit_container"
 				position = { x = 99 y = 16 }
 				size = { width = 354 height = 92 }
-				horizontalScrollbar = "bottom_horizontal_slider"
+				horizontalScrollbar = "AOR_slim_hscrollbar"
 				scroll_wheel_factor = 70
 				clipping = yes
 

@@ -10,10 +10,20 @@ leader_traits = {
     AORCabinetOttoWelsLabelspdright = { random = no }
     AORCabinetGeorgLedebourLabelspdcenter = { random = no }
     AORCabinetClaraZetkinLabelspdleft = { random = no }
-    AORCabinetEduardDavidLabelparliamentarian = { random = no }
+    AORCabinetEduardDavidLabelparliamentarian = {
+        random = no
+        political_advisor_cost_factor = -0.10
+        global_building_slots_factor = 0.20
+        supply_consumption_factor = -0.10
+        custom_modifier_tooltip = GER_adv_david_tt
+    }
     AORCabinetHugoPreussLabelfatherofconstitution = { random = no }
     AORCabinetHermannMuellerLabelpartyveteran = { random = no }
-    AORCabinetCarlSeveringLabelorderkeeper = { random = no }
+    AORCabinetCarlSeveringLabelorderkeeper = {
+        random = no
+        stability_factor = 0.15
+        custom_modifier_tooltip = GER_adv_severing_tt
+    }
     AORCabinetKarlJosephWirthLabelstaunchrepublican = { random = no }
     AORCabinetMatthiasErzbergerLabelfinancereformer = { random = no }
     AORCabinetErichKochWeserLabeladminreformer = { random = no }
@@ -67,8 +77,8 @@ leader_traits = {
     }
     AORCabinetFriedrichEbertLabelsilentworkhorse = {
         random = no
-        stability_factor = 0.05
-        war_support_factor = 0.05
+        political_power_factor = 0.10
+        stability_factor = 0.10
         custom_modifier_tooltip = GER_adv_ebert_tt
     }
 }

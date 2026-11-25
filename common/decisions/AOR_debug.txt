@@ -191,4 +191,26 @@ Hackers_debug = {
         }
     }
 
+    # 德国：跳过《社会化法案》事件链，直接开启社会化分类与每日结算（正常流程在 1920.2.7 AOR_GER_socialization_law.3）
+    GER_debug_enable_socialization = {
+        available = {
+            is_debug = yes
+            tag = GER
+        }
+        visible = {
+            is_debug = yes
+            tag = GER
+            NOT = { has_country_flag = GER_socialization_law_passed }
+        }
+        cost = 0
+        ai_will_do = {
+            factor = 0
+        }
+        complete_effect = {
+            set_country_flag = GER_socialization_law_passed
+            GER_socialization_initialize = yes
+            GER_socialization_refresh_bars = yes
+        }
+    }
+
 }

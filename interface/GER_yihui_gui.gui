@@ -22,6 +22,22 @@
 #////////////////////////////////////////////////////////////////////
 # 由 桌面\AOR资料\AOR_议会GUI美术草案\install_yihui_gui.py 生成；改议程 / 党派请改脚本后重跑
 guiTypes = {
+	# 细滚动条：贴容器右沿，只有 4px 宽平头金色滑块；没有箭头（两个按钮是透明占位，引擎要有）
+	extendedScrollbarType = {
+		name = "GER_yihui_slim_scrollbar"
+		position = { x = 5 y = 0 }
+		size = { width = 18 height = 18 }
+		startValue = 0
+		orientation = upper_right
+		origo = upper_right
+		smooth_scrolling = 0.25
+		background = { name = "Background" quadTextureSprite = "GFX_GER_yihui_scroll_track" }
+		slider = { name = "Slider" quadTextureSprite = "GFX_GER_yihui_scroll_thumb" position = { x = 0 y = 0 } }
+		track = { name = "Track" quadTextureSprite = "GFX_tiled_window_transparent" position = { x = 3 y = 0 } alwaystransparent = yes }
+		decreaseButton = { name = "Decrease" quadTextureSprite = "GFX_GER_yihui_scroll_cap" position = { x = 1 y = 0 } }
+		increaseButton = { name = "Increase" quadTextureSprite = "GFX_GER_yihui_scroll_cap" position = { x = -17 y = -4 } }
+	}
+
 	containerWindowType = {
 		name = "GER_yihui_entry_bg"
 		position = { x = 0 y = -360 }
@@ -66,12 +82,6 @@ guiTypes = {
 			name = "GER_yihui_seat_panel"
 			position = { x = 16 y = 60 }
 			size = { width = 610 height = 351 }
-			instantTextboxType = { name = "GER_yihui_pol_seats_cap" position = { x = 20 y = 20 } font = "hoi_16mbs" text = "GER_yihui_pol_seats_cap" maxWidth = 76 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_seats_tt" }
-			instantTextboxType = { name = "GER_yihui_pol_seats_val" position = { x = 100 y = 20 } font = "hoi_16mbs" text = "GER_yihui_pol_seats_val" maxWidth = 64 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_seats_tt" }
-			instantTextboxType = { name = "GER_yihui_pol_cohesion_cap" position = { x = 20 y = 44 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_cap" maxWidth = 76 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
-			instantTextboxType = { name = "GER_yihui_pol_cohesion_val" position = { x = 100 y = 44 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_val" maxWidth = 40 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
-			instantTextboxType = { name = "GER_yihui_pol_inertia_cap" position = { x = 20 y = 68 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_cap" maxWidth = 76 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_inertia_tt" }
-			instantTextboxType = { name = "GER_yihui_pol_inertia_val" position = { x = 100 y = 68 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_val" maxWidth = 40 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_inertia_tt" }
 		}
 		gridboxtype = {
 			name = "GER_Reichstag_seat_grid"
@@ -82,8 +92,10 @@ guiTypes = {
 			max_slots_horizontal = 1
 			add_horizontal = no
 		}
-		# 左栏右上角：重大立法弹窗的开关（离框边 18px，和左上角政局三行对称；弹窗里同一位置也有一个）
-		buttonType = { name = "GER_yihui_bill_entry" quadTextureSprite = "GFX_GER_yihui_bill_entry" position = { x = 584 y = 78 } pdx_tooltip = "GER_yihui_bill_entry_tt" clicksound = click_default }
+		# 左栏左上角：重大立法弹窗的开关（离框边 18px；弹窗里同一位置也有一个）
+		buttonType = { name = "GER_yihui_bill_entry" quadTextureSprite = "GFX_GER_yihui_bill_entry" position = { x = 34 y = 78 } pdx_tooltip = "GER_yihui_bill_entry_tt" clicksound = click_default }
+		# ESC 关闭议会：全透明按钮，只用来接快捷键，放在左上角留边里
+		buttonType = { name = "GER_yihui_esc_close" quadTextureSprite = "GFX_GER_yihui_scroll_cap" position = { x = 0 y = 0 } shortcut = "ESCAPE" clicksound = click_default }
 
 		# 左列 2：委派党团 + 交付
 		containerWindowType = {
@@ -98,6 +110,7 @@ guiTypes = {
 				verticalScrollbar = "right_vertical_slider"
 				scroll_wheel_factor = 72
 				smooth_scrolling = yes
+				background = { name = "GER_yihui_party_list_area_bg" quadTextureSprite = "GFX_tiled_window_transparent" }
 				gridboxType = {
 					name = "GER_yihui_party_list"
 					position = { x = 0 y = 0 }
@@ -105,7 +118,6 @@ guiTypes = {
 					slotsize = { width = 72 height = 172 }
 					format = "UPPER_LEFT"
 					max_slots_horizontal = 8
-					add_horizontal = yes
 				}
 			}
 			# 交付区：选中可处理的议程时显示预计耗时和交付按钮；选中处理中的议程时显示剩余时间（不再画进度条）
@@ -118,65 +130,77 @@ guiTypes = {
 			buttonType = { name = "GER_yihui_send_button" quadTextureSprite = "GFX_button_148x34" position = { x = 442 y = 216 } buttonText = "GER_yihui_send_text" buttonFont = "hoi_18mbs" pdx_tooltip = "GER_yihui_send_tt" clicksound = click_default }
 		}
 
-		# 右列：议会议程
+		# 右列上：议会概况（独立金框，无标题）；重大立法右栏的概况框在同一位置
+		containerWindowType = {
+			name = "GER_yihui_overview_box"
+			position = { x = 626 y = 60 }
+			size = { width = 328 height = 128 }
+			background = { name = "GER_yihui_overview_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+			instantTextboxType = { name = "GER_yihui_pol_seats_cap" position = { x = 20 y = 19 } font = "hoi_16mbs" text = "GER_yihui_pol_seats_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_seats_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_seats_val" position = { x = 120 y = 19 } font = "hoi_16mbs" text = "GER_yihui_pol_seats_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_seats_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_opp_cap" position = { x = 20 y = 43 } font = "hoi_16mbs" text = "GER_yihui_pol_opp_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_opp_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_opp_val" position = { x = 120 y = 43 } font = "hoi_16mbs" text = "GER_yihui_pol_opp_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_opp_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_cohesion_cap" position = { x = 20 y = 67 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_cohesion_val" position = { x = 120 y = 67 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_inertia_cap" position = { x = 20 y = 91 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_inertia_tt" }
+			instantTextboxType = { name = "GER_yihui_pol_inertia_val" position = { x = 120 y = 91 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_inertia_tt" }
+		}
+		# 右列下：行政焦点
 		containerWindowType = {
 			name = "GER_yihui_agenda_box"
-			position = { x = 626 y = 60 }
-			size = { width = 328 height = 619 }
+			position = { x = 626 y = 196 }
+			size = { width = 328 height = 483 }
 			background = { name = "GER_yihui_agenda_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
-			instantTextboxType = { name = "GER_yihui_agenda_title" position = { x = 20 y = 20 } font = "hoi_18mbs" text = "GER_yihui_agenda_title" maxWidth = 150 maxHeight = 26 format = left alwaystransparent = yes }
-			instantTextboxType = { name = "GER_yihui_capacity_text" position = { x = 92 y = 22 } font = "hoi_16mbs" text = "GER_yihui_capacity_text" maxWidth = 190 maxHeight = 24 format = right pdx_tooltip = "GER_yihui_capacity_tt" }
-			buttonType = { name = "GER_yihui_capacity_plus" quadTextureSprite = "GFX_GER_yihui_capacity_plus" position = { x = 286 y = 16 } pdx_tooltip = "GER_yihui_capacity_plus_tt" clicksound = click_default }
-			# 议程列表：每条 = GER_yihui_agenda_entry，内容来自数组 GER_yihui_agenda_list（议程编号）
+			# 行政焦点：每张 = GER_yihui_agenda_entry，内容来自数组 GER_yihui_agenda_list（议程编号）；超出用细滚动条
 			containerWindowType = {
 				name = "GER_yihui_agenda_list_area"
-				position = { x = 18 y = 54 }
-				size = { width = 312 height = 501 }
-				verticalScrollbar = "right_vertical_slider"
-				scroll_wheel_factor = 48
+				position = { x = 18 y = 18 }
+				size = { width = 302 height = 408 }
+				verticalScrollbar = "GER_yihui_slim_scrollbar"
+				scroll_wheel_factor = 102
 				smooth_scrolling = yes
+				background = { name = "GER_yihui_agenda_list_area_bg" quadTextureSprite = "GFX_tiled_window_transparent" }
 				gridboxType = {
 					name = "GER_yihui_agenda_list"
 					position = { x = 0 y = 0 }
 					size = { width = 292 height = 100%% }
-					slotsize = { width = 292 height = 48 }
+					slotsize = { width = 292 height = 102 }
 					format = "UPPER_LEFT"
 					max_slots_horizontal = 1
-					add_horizontal = yes
 				}
 			}
-			# 右下角：打开 / 收起右边侧栏的小按钮
-			buttonType = { name = "GER_yihui_laws_open" quadTextureSprite = "GFX_GER_yihui_laws_open" position = { x = 286 y = 577 } pdx_tooltip = "GER_yihui_laws_open_tt" clicksound = click_default }
-			buttonType = { name = "GER_yihui_laws_close" quadTextureSprite = "GFX_GER_yihui_laws_close" position = { x = 286 y = 577 } pdx_tooltip = "GER_yihui_laws_close_tt" clicksound = click_default }
+			# 底边一行：左 = 扩充行政容量按钮 + 处理中 / 容量；右 = 打开 / 收起已完成焦点侧栏
+			buttonType = { name = "GER_yihui_capacity_plus" quadTextureSprite = "GFX_GER_yihui_capacity_plus" position = { x = 18 y = 441 } pdx_tooltip = "GER_yihui_capacity_plus_tt" clicksound = click_default }
+			instantTextboxType = { name = "GER_yihui_capacity_text" position = { x = 50 y = 443 } font = "hoi_16mbs" text = "GER_yihui_capacity_text" maxWidth = 150 maxHeight = 24 format = left pdx_tooltip = "GER_yihui_capacity_tt" }
+			buttonType = { name = "GER_yihui_laws_open" quadTextureSprite = "GFX_GER_yihui_laws_open" position = { x = 286 y = 441 } pdx_tooltip = "GER_yihui_laws_open_tt" clicksound = click_default }
+			buttonType = { name = "GER_yihui_laws_close" quadTextureSprite = "GFX_GER_yihui_laws_close" position = { x = 286 y = 441 } pdx_tooltip = "GER_yihui_laws_close_tt" clicksound = click_default }
 		}
 	}
 
 	containerWindowType = {
 		name = "GER_yihui_laws_gui"
-		# 主窗口 970x695 居中；侧栏贴在它右边 2px 处。显示时从左边（议程框底下）滑出来
-		position = { x = 353 y = 22 }
+		# 主窗口 970x695 居中；侧栏贴在它右边 2px 处，原地出现：窗口底板渐显，文字直接出现（不再滑出）
+		position = { x = 621 y = 22 }
 		Orientation = center
 		Origo = center
 		size = { width = 268 height = 620 }
 		moveable = no
-		show_position = { x = 621 y = 22 }
-		hide_position = { x = 353 y = 22 }
-		animation_time = 300
-		show_animation_type = decelerated
-		hide_animation_type = accelerated
-		background = { name = "GER_yihui_laws_bg" quadTextureSprite = "GFX_tiled_plain_bg" }
-		background = { name = "GER_yihui_laws_lined_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" position = { x = 0 y = 0 } }
+		# 透明底只用来接住鼠标；真正的底板（底色 + 金线）是下面两个渐显按钮
+		background = { name = "GER_yihui_laws_bg" quadTextureSprite = "GFX_tiled_window_transparent" }
+		# 渐显底板：着色器让它在打开后 0.35 秒内从透明变不透明（TNO 美国大选地图的做法：
+		# 按钮从禁用切到可用时引擎重置 AnimationTime）。a / b 两块，每次打开切换哪块可用，保证每次都重播；必须在文字前面（画在下层）
+		buttonType = { name = "GER_yihui_laws_fade_a" spriteType = "GFX_GER_yihui_laws_fade" position = { x = 0 y = 0 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_laws_fade_b" spriteType = "GFX_GER_yihui_laws_fade" position = { x = 0 y = 0 } alwaystransparent = yes }
 		instantTextboxType = { name = "GER_yihui_laws_title" position = { x = 20 y = 20 } font = "hoi_18mbs" text = "GER_yihui_laws_title" maxWidth = 150 maxHeight = 26 format = left alwaystransparent = yes }
-		instantTextboxType = { name = "GER_yihui_laws_count" position = { x = 98 y = 22 } font = "hoi_16mbs" text = "GER_yihui_laws_count" maxWidth = 150 maxHeight = 24 format = right alwaystransparent = yes }
-		iconType = { name = "GER_yihui_laws_sep" spriteType = "GFX_GER_yihui_sep_h_laws" position = { x = 20 y = 52 } alwaystransparent = yes }
 		# 每条 = GER_yihui_law_entry，内容来自数组 GER_yihui_passed_list
 		containerWindowType = {
 			name = "GER_yihui_laws_list_area"
-			position = { x = 20 y = 66 }
-			size = { width = 240 height = 534 }
-			verticalScrollbar = "right_vertical_slider"
+			position = { x = 20 y = 54 }
+			size = { width = 240 height = 546 }
+			verticalScrollbar = "GER_yihui_slim_scrollbar"
 			scroll_wheel_factor = 32
 			smooth_scrolling = yes
+			background = { name = "GER_yihui_laws_list_area_bg" quadTextureSprite = "GFX_tiled_window_transparent" }
 			gridboxType = {
 				name = "GER_yihui_laws_list"
 				position = { x = 0 y = 0 }
@@ -184,7 +208,6 @@ guiTypes = {
 				slotsize = { width = 228 height = 32 }
 				format = "UPPER_LEFT"
 				max_slots_horizontal = 1
-				add_horizontal = yes
 			}
 		}
 	}
@@ -193,14 +216,21 @@ guiTypes = {
 	containerWindowType = {
 		name = "GER_yihui_agenda_entry"
 		position = { x = 0 y = 0 }
-		size = { width = 292 height = 48 }
-		buttonType = { name = "GER_yihui_agenda_entry_button" quadTextureSprite = "GFX_GER_region_panel_decision_row" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
-		# 选中：盖决议条第 3 帧（暗黄）；未解锁：盖斜线板。两者都不挡鼠标
-		iconType = { name = "GER_yihui_agenda_entry_selected" spriteType = "GFX_GER_region_panel_decision_row" position = { x = 0 y = 0 } frame = 3 alwaystransparent = yes }
-		iconType = { name = "GER_yihui_agenda_entry_locked" spriteType = "GFX_GER_yihui_agenda_locked" position = { x = 0 y = 0 } alwaystransparent = yes }
-		instantTextboxType = { name = "GER_yihui_agenda_entry_name" position = { x = 14 y = 12 } font = "hoi_16mbs" text = "GER_yihui_agenda_entry_name" maxWidth = 150 maxHeight = 24 format = left alwaystransparent = yes }
-		instantTextboxType = { name = "GER_yihui_agenda_entry_status" position = { x = 130 y = 12 } font = "hoi_16mbs" text = "GER_yihui_agenda_entry_status" maxWidth = 148 maxHeight = 24 format = right alwaystransparent = yes }
-		iconType = { name = "GER_yihui_agenda_entry_prog" spriteType = "GFX_GER_yihui_agenda_progress" position = { x = 4 y = 35 } alwaystransparent = yes }
+		size = { width = 292 height = 92 }
+		# 纯图片按钮，一项一张（只显示 v 对应的那张），名称 / 说明 / 剩余天数都在悬停提示里
+		buttonType = { name = "GER_yihui_agenda_entry_button_1" quadTextureSprite = "GFX_GER_yihui_agenda_tile_1" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_agenda_entry_button_2" quadTextureSprite = "GFX_GER_yihui_agenda_tile_2" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_agenda_entry_button_3" quadTextureSprite = "GFX_GER_yihui_agenda_tile_3" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_agenda_entry_button_4" quadTextureSprite = "GFX_GER_yihui_agenda_tile_4" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_agenda_entry_button_5" quadTextureSprite = "GFX_GER_yihui_agenda_tile_5" position = { x = 0 y = 0 } pdx_tooltip = "GER_yihui_agenda_entry_tt" clicksound = click_default }
+		# 选中：盖同一张图的第 2 帧（= 悬停的样子），同党派方块的做法；按钮本身设 frame 会丢掉悬停，所以用盖板
+		iconType = { name = "GER_yihui_agenda_entry_selected_1" spriteType = "GFX_GER_yihui_agenda_tile_1" position = { x = 0 y = 0 } frame = 2 alwaystransparent = yes }
+		iconType = { name = "GER_yihui_agenda_entry_selected_2" spriteType = "GFX_GER_yihui_agenda_tile_2" position = { x = 0 y = 0 } frame = 2 alwaystransparent = yes }
+		iconType = { name = "GER_yihui_agenda_entry_selected_3" spriteType = "GFX_GER_yihui_agenda_tile_3" position = { x = 0 y = 0 } frame = 2 alwaystransparent = yes }
+		iconType = { name = "GER_yihui_agenda_entry_selected_4" spriteType = "GFX_GER_yihui_agenda_tile_4" position = { x = 0 y = 0 } frame = 2 alwaystransparent = yes }
+		iconType = { name = "GER_yihui_agenda_entry_selected_5" spriteType = "GFX_GER_yihui_agenda_tile_5" position = { x = 0 y = 0 } frame = 2 alwaystransparent = yes }
+		# 处理中：画面底边一条进度；未解锁：按钮禁用，着色器让整张半透明。都不挡鼠标
+		iconType = { name = "GER_yihui_agenda_entry_prog" spriteType = "GFX_GER_yihui_agenda_progress" position = { x = 4 y = 84 } alwaystransparent = yes }
 	}
 	containerWindowType = {
 		name = "GER_yihui_party_entry"
@@ -224,6 +254,6 @@ guiTypes = {
 		name = "GER_Reichstag_seat_entry"
 		position = { x = 0 y = 0 }
 		size = { width = 16 height = 16 }
-		iconType = { name = "GER_Reichstag_seat_icon" quadTextureSprite = "GFX_GER_reichstag_seat_icon" scale = 0.85 pdx_tooltip = "GER_Reichstag_seat_tt" }
+		iconType = { name = "GER_Reichstag_seat_icon" quadTextureSprite = "GFX_GER_reichstag_seat_icon" scale = 0.85 pdx_tooltip = "GER_Reichstag_seat_tt" pdx_tooltip_delayed = "GER_Reichstag_seat_tt_delayed" }
 	}
 }

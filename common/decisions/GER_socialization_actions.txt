@@ -16,7 +16,7 @@ GER_socialization_category = {
                 check_variable = { GER_soc_guard_c_days < 1 }
             }
         }
-        cost = 15
+        cost = GER_soc_cost_guard
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -36,7 +36,7 @@ GER_socialization_category = {
         icon = generic_political_actions
         visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_oppose_effect_idea } }
         available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_oppose_days } check_variable = { GER_soc_oppose_days < 1 } } }
-        cost = 15
+        cost = GER_soc_cost_oppose
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -56,7 +56,7 @@ GER_socialization_category = {
         icon = generic_political_actions
         visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_staff_effect_idea } }
         available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_staff_days } check_variable = { GER_soc_staff_days < 1 } } }
-        cost = 10
+        cost = GER_soc_cost_staff
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -84,7 +84,7 @@ GER_socialization_category = {
             OR = { NOT = { has_variable = GER_soc_resist_cooldown } check_variable = { GER_soc_resist_cooldown < 1 } }
         }
         available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_resist_cooldown } check_variable = { GER_soc_resist_cooldown < 1 } } }
-        cost = 20
+        cost = GER_soc_cost_resist
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -100,9 +100,24 @@ GER_socialization_category = {
     }
     GER_socialization_supervise_central_agency = {
         icon = generic_political_actions
-        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_supervise_effect_idea } }
-        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_supervise_days } check_variable = { GER_soc_supervise_days < 1 } } }
-        cost = 40
+        visible = {
+            tag = GER
+            has_country_flag = GER_socialization_started
+            check_variable = { GER_socialization_active_industry < 11 }
+            NOT = { has_idea = GER_soc_supervise_effect_idea }
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_socialization_factory_council_passed_tt
+                has_country_flag = GER_factory_council_law_passed
+            }
+            hidden_trigger = {
+                check_variable = { GER_soc_manual_lock_days < 1 }
+                check_variable = { GER_socialization_active_industry < 11 }
+                OR = { NOT = { has_variable = GER_soc_supervise_days } check_variable = { GER_soc_supervise_days < 1 } }
+            }
+        }
+        cost = GER_soc_cost_supervise
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -121,9 +136,25 @@ GER_socialization_category = {
     }
     GER_socialization_build_trust_soviets = {
         icon = generic_political_actions
-        visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } NOT = { has_idea = GER_soc_trust_effect_idea } }
-        available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } OR = { NOT = { has_variable = GER_soc_trust_days } check_variable = { GER_soc_trust_days < 1 } } }
-        cost = 40
+        visible = {
+            tag = GER
+            has_country_flag = GER_socialization_started
+            check_variable = { GER_socialization_active_industry < 11 }
+            NOT = { has_idea = GER_soc_trust_effect_idea }
+        }
+        available = {
+            custom_trigger_tooltip = {
+                tooltip = GER_socialization_factory_council_passed_tt
+                has_country_flag = GER_factory_council_law_passed
+            }
+            has_completed_focus = GER_combine_the_companies
+            hidden_trigger = {
+                check_variable = { GER_soc_manual_lock_days < 1 }
+                check_variable = { GER_socialization_active_industry < 11 }
+                OR = { NOT = { has_variable = GER_soc_trust_days } check_variable = { GER_soc_trust_days < 1 } }
+            }
+        }
+        cost = GER_soc_cost_trust
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }
@@ -151,7 +182,7 @@ GER_socialization_category = {
                 hidden_trigger = { NOT = { has_country_flag = GER_soc_workers_school } }
             }
         }
-        cost = 50
+        cost = GER_soc_cost_school
         days_remove = 0
         fire_only_once = yes
         ai_will_do = { factor = 0 }
@@ -209,7 +240,7 @@ GER_socialization_category = {
         icon = generic_political_actions
         visible = { tag = GER has_country_flag = GER_socialization_started check_variable = { GER_socialization_active_industry < 11 } }
         available = { check_variable = { GER_soc_manual_lock_days < 1 } check_variable = { GER_socialization_active_industry < 11 } }
-        cost = 100
+        cost = GER_soc_cost_extend
         days_remove = 0
         fire_only_once = no
         ai_will_do = { factor = 0 }

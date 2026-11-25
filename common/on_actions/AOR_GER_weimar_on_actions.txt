@@ -4,6 +4,7 @@
 # 事件②③、抢先行动、剑拔弩张与三派结果由事件自身按天数排期。
 #   1919.08.18  西里西亚危机事件链启动   -> AOR_GER_silesia_crisis.2（之后各事件自己按天数排期）
 #   1920.01.12  巴伐利亚危机事件链启动   -> AOR_GER_bavaria_crisis.1（之后各事件自己按天数排期）
+#   1920.02.01  社会化法案立法启动       -> AOR_GER_socialization_law.1（之后各事件自己按天数排期）
 ####################################################################
 on_actions = {
 	on_daily_GER = {
@@ -72,6 +73,26 @@ on_actions = {
 			}
 			# 国防法决议的 90 天计时
 			GER_defense_law_tick = yes
+			# ---------- 1919.09.16 工厂委员会法立法启动 ----------
+			if = {
+				limit = {
+					date > 1919.9.15
+					NOT = { has_country_flag = AOR_GER_factory_council_started }
+				}
+				set_country_flag = AOR_GER_factory_council_started
+				country_event = { id = AOR_GER_factory_council.1 }
+			}
+			# 工厂委员会法 42 天大规模社会运动每日计时
+			GER_fc_movement_daily_tick = yes
+			# ---------- 1920.02.01 社会化法案立法启动 ----------
+			if = {
+				limit = {
+					date > 1920.1.31
+					NOT = { has_country_flag = AOR_GER_socialization_law_started }
+				}
+				set_country_flag = AOR_GER_socialization_law_started
+				country_event = { id = AOR_GER_socialization_law.1 }
+			}
 		}
 	}
 }

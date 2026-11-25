@@ -198,17 +198,7 @@ focus_tree = {
 		cost = 3
 		prerequisite = { focus = GER_1919_aid_the_wounded }
 		prerequisite = { focus = GER_1919_restore_transport }
-		allow_branch = {
-			AOR_GER_1919_opening_visible = yes
-			NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = AOR_GER_before_versailles_event_tt
-				NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
-			}
-		}
-		cancel_if_invalid = yes
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
 		completion_reward = {
 			custom_effect_tooltip = GER_1919_consolidate_silesia_effect_tt
 		}
@@ -222,9 +212,13 @@ focus_tree = {
 		y = 1
 		cost = 5
 		prerequisite = { focus = GER_1919_consolidate_silesia }
-		allow_branch = {
-			AOR_GER_1919_opening_visible = yes
-			NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
+		allow_branch = { AOR_GER_1919_opening_visible = yes }
+		# 凡尔赛事件链开始（AOR_GER_versailles.1）后不可再选
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AOR_GER_before_the_dawn_peaceful_tt
+				NOT = { has_country_flag = AOR_GER_versailles_journey_visible }
+			}
 		}
 		completion_reward = {
 			if = {
@@ -327,8 +321,8 @@ focus_tree = {
 				}
 				add_ideas = AOR_GER_versailles_reparations_entente
 			}
-			# TODO 暂不接「解锁可执行社会化决议」：GER_socialization_initialize 目前在 on_actions 开局初始化；
-			#      将来改为由本格解锁时，在此处调用 GER_socialization_initialize = yes 并撤掉 on_actions 的兜底。
+			# 「解锁可执行社会化决议」不在本格：社会化分类与每日结算由 1920.2.7《社会化法案》通过时开启
+			#      （事件 AOR_GER_socialization_law.3，旗标 GER_socialization_law_passed）。
 		}
 	}
 

@@ -34,6 +34,13 @@ defined_text = {
 }
 
 defined_text = {
+	name = GER_yihui_agenda_tt_state
+	text = { trigger = { check_variable = { GER_yihui_ag_state^v = 2 } } localization_key = GER_yihui_agenda_tt_left }
+	text = { trigger = { check_variable = { GER_yihui_ag_state^v = 0 } } localization_key = GER_yihui_agenda_tt_locked }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
 	name = GER_yihui_law_name
 	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_agenda_1_name }
 	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_agenda_2_name }
@@ -55,14 +62,27 @@ defined_text = {
 
 defined_text = {
 	name = GER_yihui_party_desc
-	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_Reichstag_spd_left_tt }
-	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_Reichstag_spd_center_left_tt }
-	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_Reichstag_spd_right_tt }
+	text = { trigger = { check_variable = { v = 1 } } localization_key = GER_yihui_party_1_desc }
+	text = { trigger = { check_variable = { v = 2 } } localization_key = GER_yihui_party_2_desc }
+	text = { trigger = { check_variable = { v = 3 } } localization_key = GER_yihui_party_3_desc }
 	text = { trigger = { check_variable = { v = 4 } } localization_key = GER_yihui_party_4_desc }
-	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_Reichstag_ddp_tt }
-	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_Reichstag_dvp_tt }
-	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_Reichstag_dnvp_tt }
-	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_Reichstag_other_tt }
+	text = { trigger = { check_variable = { v = 5 } } localization_key = GER_yihui_party_5_desc }
+	text = { trigger = { check_variable = { v = 6 } } localization_key = GER_yihui_party_6_desc }
+	text = { trigger = { check_variable = { v = 7 } } localization_key = GER_yihui_party_7_desc }
+	text = { trigger = { check_variable = { v = 8 } } localization_key = GER_yihui_party_8_desc }
+	text = { localization_key = GER_yihui_empty }
+}
+
+defined_text = {
+	name = GER_Reichstag_seat_party_desc
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 1 } } localization_key = GER_yihui_party_1_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 2 } } localization_key = GER_yihui_party_2_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 3 } } localization_key = GER_yihui_party_3_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 4 } } localization_key = GER_yihui_party_4_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 5 } } localization_key = GER_yihui_party_5_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 6 } } localization_key = GER_yihui_party_6_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 7 } } localization_key = GER_yihui_party_7_desc }
+	text = { trigger = { check_variable = { GER_Reichstag_seat_frame^seat_idx = 8 } } localization_key = GER_yihui_party_8_desc }
 	text = { localization_key = GER_yihui_empty }
 }
 

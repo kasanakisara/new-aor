@@ -1,0 +1,108 @@
+guiTypes = {
+	# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成；该脚本已停用（与本文件不一致），请直接改本文件，勿重跑
+	containerWindowType = {
+		name = "GER_yihui_bill_gui"
+		position = { x = -164 y = 22 }
+		Orientation = center
+		Origo = center
+		size = { width = 610 height = 619 }
+		moveable = no
+		background = { name = "GER_yihui_bill_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+		instantTextboxType = { name = "GER_yihui_bill_title" position = { x = 0 y = 12 } font = "hoi_24header" text = "GER_yihui_bill_title" maxWidth = 610 maxHeight = 28 format = centre pdx_tooltip = "GER_yihui_bill_tt" }
+		containerWindowType = { name = "GER_yihui_bill_pic_frame" position = { x = 21 y = 399 } size = { width = 568 height = 208 } background = { name = "GER_yihui_bill_pic_frame_bg" quadTextureSprite = "GFX_GER_region_game_frame" } }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_factory_council_a" spriteType = "GFX_GER_yihui_bill_factory_council" position = { x = 29 y = 407 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_factory_council_b" spriteType = "GFX_GER_yihui_bill_factory_council" position = { x = 29 y = 407 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_socialization_a" spriteType = "GFX_GER_yihui_bill_socialization" position = { x = 29 y = 407 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_socialization_b" spriteType = "GFX_GER_yihui_bill_socialization" position = { x = 29 y = 407 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_versailles_a" spriteType = "GFX_GER_yihui_bill_versailles" position = { x = 29 y = 407 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_pic_GER_yihui_bill_versailles_b" spriteType = "GFX_GER_yihui_bill_versailles" position = { x = 29 y = 407 } alwaystransparent = yes }
+		gridboxtype = {
+			name = "GER_yihui_bill_seats"
+			position = { x = 32 y = 51 }
+			size = { width = 560 height = 290 }
+			format = "UPPER_LEFT"
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		iconType = { name = "GER_yihui_bill_slot" spriteType = "GFX_GER_yihui_bill_slot" position = { x = 95 y = 360 } alwaystransparent = yes }
+		gridboxtype = {
+			name = "GER_yihui_bill_va"
+			position = { x = 28 y = 47 }
+			size = { width = 570 height = 300 }
+			format = "UPPER_LEFT"
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		buttonType = { name = "GER_yihui_bill_bar_a" spriteType = "GFX_GER_yihui_bill_barfx" position = { x = 100 y = 365 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_yes_a" spriteType = "GFX_GER_yihui_bill_numfx" position = { x = 54 y = 357 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_no_a" spriteType = "GFX_GER_yihui_bill_numfx" position = { x = 523 y = 357 } alwaystransparent = yes }
+		gridboxtype = {
+			name = "GER_yihui_bill_vb"
+			position = { x = 28 y = 47 }
+			size = { width = 570 height = 300 }
+			format = "UPPER_LEFT"
+			slotsize = { width = 100%% height = 0 }
+			max_slots_horizontal = 1
+			add_horizontal = no
+		}
+		buttonType = { name = "GER_yihui_bill_bar_b" spriteType = "GFX_GER_yihui_bill_barfx" position = { x = 100 y = 365 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_yes_b" spriteType = "GFX_GER_yihui_bill_numfx" position = { x = 54 y = 357 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_no_b" spriteType = "GFX_GER_yihui_bill_numfx" position = { x = 523 y = 357 } alwaystransparent = yes }
+		iconType = { name = "GER_yihui_bill_mid" spriteType = "GFX_GER_yihui_bill_mid" position = { x = 304 y = 356 } alwaystransparent = yes }
+		buttonType = { name = "GER_yihui_bill_close_btn" quadTextureSprite = "GFX_GER_yihui_bill_entry" position = { x = 18 y = 18 } pdx_tooltip = "GER_yihui_bill_entry_tt" clicksound = click_default }
+	}
+
+	containerWindowType = {
+		name = "GER_yihui_bill_side_gui"
+		position = { x = 305 y = 22 }
+		Orientation = center
+		Origo = center
+		size = { width = 328 height = 619 }
+		moveable = no
+		containerWindowType = {
+			name = "GER_yihui_bill_overview_box"
+			position = { x = 0 y = 0 }
+			size = { width = 328 height = 128 }
+			background = { name = "GER_yihui_bill_overview_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+			instantTextboxType = { name = "GER_yihui_bill_pass_cap" position = { x = 20 y = 19 } font = "hoi_16mbs" text = "GER_yihui_bill_pass_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_bill_pass_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_pass_val" position = { x = 120 y = 19 } font = "hoi_16mbs" text = "GER_yihui_bill_pass_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_bill_pass_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_int_cap" position = { x = 20 y = 43 } font = "hoi_16mbs" text = "GER_yihui_bill_int_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_bill_integrity_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_int_val" position = { x = 120 y = 43 } font = "hoi_16mbs" text = "GER_yihui_bill_int_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_bill_integrity_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_cohesion_cap" position = { x = 20 y = 67 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_cohesion_val" position = { x = 120 y = 67 } font = "hoi_16mbs" text = "GER_yihui_pol_cohesion_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_cohesion_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_inertia_cap" position = { x = 20 y = 91 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_cap" maxWidth = 100 maxHeight = 20 format = left pdx_tooltip = "GER_yihui_pol_inertia_tt" }
+			instantTextboxType = { name = "GER_yihui_bill_inertia_val" position = { x = 120 y = 91 } font = "hoi_16mbs" text = "GER_yihui_pol_inertia_val" maxWidth = 188 maxHeight = 20 format = right pdx_tooltip = "GER_yihui_pol_inertia_tt" }
+		}
+		containerWindowType = {
+			name = "GER_yihui_bill_act_box"
+			position = { x = 0 y = 136 }
+			size = { width = 328 height = 483 }
+			background = { name = "GER_yihui_bill_act_box_bg" quadTextureSprite = "GFX_GER_region_game_frame" }
+		}
+		buttonType = { name = "GER_yihui_bill_act_lobby_btn" quadTextureSprite = "GFX_GER_yihui_bill_act_lobby" position = { x = 18 y = 154 } pdx_tooltip = "GER_yihui_bill_act_lobby_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_bill_act_soften_btn" quadTextureSprite = "GFX_GER_yihui_bill_act_soften" position = { x = 18 y = 256 } pdx_tooltip = "GER_yihui_bill_act_soften_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_bill_act_harden_btn" quadTextureSprite = "GFX_GER_yihui_bill_act_harden" position = { x = 18 y = 358 } pdx_tooltip = "GER_yihui_bill_act_harden_tt" clicksound = click_default }
+		buttonType = { name = "GER_yihui_bill_act_mobilize_btn" quadTextureSprite = "GFX_GER_yihui_bill_act_mobilize" position = { x = 18 y = 460 } pdx_tooltip = "GER_yihui_bill_act_mobilize_tt" clicksound = click_default }
+	}
+
+	containerWindowType = {
+		name = "GER_yihui_bill_seat_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 15 height = 15 }
+		iconType = { name = "GER_yihui_bill_seat_icon" spriteType = "GFX_GER_yihui_bill_seat_dim" position = { x = 0 y = 0 } alwaystransparent = yes }
+	}
+	containerWindowType = {
+		name = "GER_yihui_bill_va_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 23 height = 23 }
+		buttonType = { name = "GER_yihui_bill_va_btn" spriteType = "GFX_GER_yihui_bill_seatfx" position = { x = 0 y = 0 } alwaystransparent = yes }
+	}
+	containerWindowType = {
+		name = "GER_yihui_bill_vb_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 23 height = 23 }
+		buttonType = { name = "GER_yihui_bill_vb_btn" spriteType = "GFX_GER_yihui_bill_seatfx" position = { x = 0 y = 0 } alwaystransparent = yes }
+	}
+}

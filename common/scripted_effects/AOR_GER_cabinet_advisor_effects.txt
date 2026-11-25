@@ -251,18 +251,6 @@ GER_adv_cabinet_conditions = {
 		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_ledebour_pure } } remove_dynamic_modifier = { modifier = GER_adv_ledebour_pure } }
 	}
 
-	# 威尔斯：内阁一半成员为社民党右派
-	if = {
-		limit = {
-			GER_09_01_Otto_Wels = { is_hired_as_advisor = yes }
-			check_variable = { var = GER_cab_halfright value = 0 compare = more_than_or_equals }
-		}
-		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_wels_halfright } } } add_dynamic_modifier = { modifier = GER_adv_wels_halfright } }
-	}
-	else = {
-		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_wels_halfright } } remove_dynamic_modifier = { modifier = GER_adv_wels_halfright } }
-	}
-
 	# 布劳恩：稳定度 70% 以上且社会化项目已完成两项
 	if = {
 		limit = {
@@ -275,6 +263,42 @@ GER_adv_cabinet_conditions = {
 	}
 	else = {
 		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_braun_ready } } remove_dynamic_modifier = { modifier = GER_adv_braun_ready } }
+	}
+
+	# 布劳恩：卡尔·赛弗林在任
+	if = {
+		limit = {
+			GER_09_02_Otto_Braun = { is_hired_as_advisor = yes }
+			GER_09_05_Carl_Severing = { is_hired_as_advisor = yes }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_braun_severing } } } add_dynamic_modifier = { modifier = GER_adv_braun_severing } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_braun_severing } } remove_dynamic_modifier = { modifier = GER_adv_braun_severing } }
+	}
+
+	# 大卫：伯恩施坦在任
+	if = {
+		limit = {
+			GER_03_07_Eduard_David = { is_hired_as_advisor = yes }
+			GER_01_04_Eduard_Bernstein = { is_hired_as_advisor = yes }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_david_bernstein } } } add_dynamic_modifier = { modifier = GER_adv_david_bernstein } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_david_bernstein } } remove_dynamic_modifier = { modifier = GER_adv_david_bernstein } }
+	}
+
+	# 赛弗林：稳定度 70% 以上
+	if = {
+		limit = {
+			GER_09_05_Carl_Severing = { is_hired_as_advisor = yes }
+			has_stability > 0.70
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_severing_high_stab } } } add_dynamic_modifier = { modifier = GER_adv_severing_high_stab } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_severing_high_stab } } remove_dynamic_modifier = { modifier = GER_adv_severing_high_stab } }
 	}
 
 	# 艾伯特：内阁均为社民党右派
@@ -345,6 +369,16 @@ GER_adv_cabinet_weekly_social = {
 			limit = { has_country_flag = GER_adv_mehring_soc_unlocked }
 			add_to_variable = { var = GER_adv_soc_weekly value = 2 }
 		}
+		# 谢德曼：稳定度 70% 以上时每周社会化点数 -1
+		if = {
+			limit = { GER_03_03_Philipp_Scheidemann = { is_hired_as_advisor = yes } has_stability > 0.70 }
+			subtract_from_variable = { var = GER_adv_soc_weekly value = 1 }
+		}
+		# 艾伯特：每周社会化点数 -1
+		if = {
+			limit = { GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes } }
+			subtract_from_variable = { var = GER_adv_soc_weekly value = 1 }
+		}
 		add_to_variable = { var = GER_adv_soc_week value = 1 }
 		if = {
 			limit = { check_variable = { var = GER_adv_soc_week value = 7 compare = more_than_or_equals } }
@@ -352,6 +386,22 @@ GER_adv_cabinet_weekly_social = {
 			if = {
 				limit = { check_variable = { var = GER_adv_soc_weekly value = 0 compare = more_than } }
 				add_to_variable = { var = GER_socialization_points_pool value = GER_adv_soc_weekly }
+			}
+			else_if = {
+				limit = { check_variable = { var = GER_adv_soc_weekly value = 0 compare = less_than } }
+				set_variable = { var = GER_soc_auto_points_loss value = 0 }
+				subtract_from_variable = { var = GER_soc_auto_points_loss value = GER_adv_soc_weekly }
+				GER_soc_auto_remove_points = yes
+			}
+			# 艾伯特：内阁成员全为社民党右派时，每周无产阶级组织度 -1%
+			if = {
+				limit = {
+					GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes }
+					check_variable = { var = GER_cab_total value = 0 compare = more_than }
+					check_variable = { var = GER_cab_diff_right value = 0 }
+				}
+				subtract_from_variable = { var = GER_socialization_organization value = 1 }
+				GER_socialization_refresh_bars = yes
 			}
 		}
 	}

@@ -1,0 +1,357 @@
+# 《工厂委员会法》42 天大规模社会运动决议组（9 项玩家决议 + 5 项反革命自动破坏任务）
+GER_factory_council_movement_category = {
+
+	# 1. 赶走工厂里的暴君！
+	GER_fc_mov_expel_tyrants = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = { has_country_flag = GER_fc_movement_active }
+		available = { has_country_flag = GER_fc_movement_active }
+		cost = 15
+		days_re_enable = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = GER_fc_mov_expel_tyrants_tt
+			hidden_effect = {
+				add_to_variable = { GER_fc_mov_progress = 6 }
+				add_to_variable = { GER_fc_mov_enthusiasm = 5 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 2. 倍倍尔的巡回演讲（限 1 次）
+	GER_fc_mov_bebel_tour = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = {
+			has_country_flag = GER_fc_movement_active
+			NOT = { has_country_flag = GER_fc_mov_bebel_used }
+		}
+		available = { has_country_flag = GER_fc_movement_active }
+		cost = 25
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = GER_fc_mov_bebel_tour_tt
+			hidden_effect = {
+				set_country_flag = GER_fc_mov_bebel_used
+				add_to_variable = { GER_fc_mov_progress = 6 }
+				add_to_variable = { GER_fc_mov_enthusiasm = 12 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 3. 组织集会宣讲
+	GER_fc_mov_rallies = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = { has_country_flag = GER_fc_movement_active }
+		available = { has_country_flag = GER_fc_movement_active }
+		cost = 15
+		days_re_enable = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = GER_fc_mov_rallies_tt
+			hidden_effect = {
+				add_to_variable = { GER_fc_mov_progress = 2 }
+				add_to_variable = { GER_fc_mov_enthusiasm = 8 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 4. 到街头去！
+	GER_fc_mov_streets = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = { has_country_flag = GER_fc_movement_active }
+		available = { has_country_flag = GER_fc_movement_active }
+		cost = 20
+		days_re_enable = 10
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = GER_fc_mov_streets_tt
+			hidden_effect = {
+				add_to_variable = { GER_fc_mov_progress = 8 }
+				add_to_variable = { GER_fc_mov_enthusiasm = 5 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 5. 应对右翼挑衅
+	GER_fc_mov_counter_provocation = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = { has_country_flag = GER_fc_movement_active }
+		available = { has_country_flag = GER_fc_movement_active }
+		cost = 15
+		days_re_enable = 10
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_stability = 0.02
+			custom_effect_tooltip = GER_fc_mov_counter_provocation_tt
+			hidden_effect = {
+				add_to_variable = { GER_fc_mov_progress = 4 }
+				add_to_variable = { GER_fc_mov_enthusiasm = 5 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 6. 发起罢工（一级罢工）
+	GER_fc_mov_strike_1 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 0 }
+		}
+		available = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 0 }
+		}
+		cost = GER_fc_strike_1_cost
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_ideas = GER_fc_strike_tier_1
+			custom_effect_tooltip = GER_fc_mov_strike_1_tt
+			hidden_effect = {
+				set_variable = { GER_fc_mov_strike_tier = 1 }
+				add_to_variable = { GER_fc_mov_progress = 5 }
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 7. 罢工升级（二级罢工）
+	GER_fc_mov_strike_2 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 1 }
+		}
+		available = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 1 }
+		}
+		cost = GER_fc_strike_2_cost
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GER_fc_strike_tier_1
+				add_idea = GER_fc_strike_tier_2
+			}
+			custom_effect_tooltip = GER_fc_mov_strike_2_tt
+			hidden_effect = {
+				set_variable = { GER_fc_mov_strike_tier = 2 }
+				set_temp_variable = { yh_fc_rad = 5 }
+				GER_fc_add_radicalism = yes
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 8. 总罢工！（三级总罢工）
+	GER_fc_mov_strike_3 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 2 }
+		}
+		available = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier = 2 }
+		}
+		cost = GER_fc_strike_3_cost
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GER_fc_strike_tier_2
+				add_idea = GER_fc_strike_tier_3
+			}
+			custom_effect_tooltip = GER_fc_mov_strike_3_tt
+			hidden_effect = {
+				set_variable = { GER_fc_mov_strike_tier = 3 }
+				set_temp_variable = { yh_fc_rad = 10 }
+				GER_fc_add_radicalism = yes
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	# 9. 暂停罢工
+	GER_fc_mov_stop_strike = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		visible = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier > 0 }
+		}
+		available = {
+			has_country_flag = GER_fc_movement_active
+			check_variable = { GER_fc_mov_strike_tier > 0 }
+		}
+		cost = 10
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			remove_ideas = {
+				GER_fc_strike_tier_1
+				GER_fc_strike_tier_2
+				GER_fc_strike_tier_3
+			}
+			hidden_effect = {
+				set_variable = { GER_fc_mov_strike_tier = 0 }
+			}
+		}
+	}
+
+	# ==================== 反革命 5 项自动破坏（15 PP 阻止，否则超时进度 -3%~8%） ====================
+
+	GER_fc_mov_sabotage_1 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		activation = { always = no }
+		available = { has_country_flag = GER_fc_movement_active }
+		cancel_trigger = { NOT = { has_country_flag = GER_fc_movement_active } }
+		selectable_mission = yes
+		is_good = no
+		cost = 15
+		days_mission_timeout = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GER_fc_mov_sabotage_fail_tt
+			hidden_effect = {
+				random_list = {
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 3 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 5 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 8 } }
+				}
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	GER_fc_mov_sabotage_2 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		activation = { always = no }
+		available = { has_country_flag = GER_fc_movement_active }
+		cancel_trigger = { NOT = { has_country_flag = GER_fc_movement_active } }
+		selectable_mission = yes
+		is_good = no
+		cost = 15
+		days_mission_timeout = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GER_fc_mov_sabotage_fail_tt
+			hidden_effect = {
+				random_list = {
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 3 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 5 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 8 } }
+				}
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	GER_fc_mov_sabotage_3 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		activation = { always = no }
+		available = { has_country_flag = GER_fc_movement_active }
+		cancel_trigger = { NOT = { has_country_flag = GER_fc_movement_active } }
+		selectable_mission = yes
+		is_good = no
+		cost = 15
+		days_mission_timeout = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GER_fc_mov_sabotage_fail_tt
+			hidden_effect = {
+				random_list = {
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 3 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 5 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 8 } }
+				}
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	GER_fc_mov_sabotage_4 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		activation = { always = no }
+		available = { has_country_flag = GER_fc_movement_active }
+		cancel_trigger = { NOT = { has_country_flag = GER_fc_movement_active } }
+		selectable_mission = yes
+		is_good = no
+		cost = 15
+		days_mission_timeout = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GER_fc_mov_sabotage_fail_tt
+			hidden_effect = {
+				random_list = {
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 3 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 5 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 8 } }
+				}
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+
+	GER_fc_mov_sabotage_5 = {
+		icon = generic_political_actions
+		allowed = { tag = GER }
+		activation = { always = no }
+		available = { has_country_flag = GER_fc_movement_active }
+		cancel_trigger = { NOT = { has_country_flag = GER_fc_movement_active } }
+		selectable_mission = yes
+		is_good = no
+		cost = 15
+		days_mission_timeout = 7
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GER_fc_mov_sabotage_fail_tt
+			hidden_effect = {
+				random_list = {
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 3 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 5 } }
+					1 = { subtract_from_variable = { GER_fc_mov_progress = 8 } }
+				}
+				GER_fc_movement_check_end = yes
+			}
+		}
+	}
+}

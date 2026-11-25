@@ -2,13 +2,43 @@
 
 GER_socialization_refresh_bars = {
     GER_socialization_refresh_targets = yes
+    if = {
+        limit = { NOT = { check_variable = { GER_fc_soc_cost_mult > 0 } } }
+        set_variable = { GER_fc_soc_cost_mult = 1 }
+    }
+    set_variable = { GER_soc_cost_guard = 15 }
+    multiply_variable = { GER_soc_cost_guard = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_guard
+    set_variable = { GER_soc_cost_oppose = 15 }
+    multiply_variable = { GER_soc_cost_oppose = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_oppose
+    set_variable = { GER_soc_cost_staff = 10 }
+    multiply_variable = { GER_soc_cost_staff = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_staff
+    set_variable = { GER_soc_cost_resist = 20 }
+    multiply_variable = { GER_soc_cost_resist = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_resist
+    set_variable = { GER_soc_cost_supervise = 40 }
+    multiply_variable = { GER_soc_cost_supervise = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_supervise
+    set_variable = { GER_soc_cost_trust = 40 }
+    multiply_variable = { GER_soc_cost_trust = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_trust
+    set_variable = { GER_soc_cost_school = 50 }
+    multiply_variable = { GER_soc_cost_school = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_school
+    set_variable = { GER_soc_cost_extend = 100 }
+    multiply_variable = { GER_soc_cost_extend = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_cost_extend
     set_variable = { GER_soc_mass_strike_cost = 350 }
     if = {
         limit = { has_country_flag = GER_union_rewards_active }
         subtract_from_variable = { GER_soc_mass_strike_cost = GER_union_mass_strike_discount }
     }
     else_if = { limit = { has_country_flag = GER_socialization_union_reform_success } set_variable = { GER_soc_mass_strike_cost = 250 } }
-    clamp_variable = { var = GER_soc_mass_strike_cost min = 0 max = 350 }
+    multiply_variable = { GER_soc_mass_strike_cost = GER_fc_soc_cost_mult }
+    round_variable = GER_soc_mass_strike_cost
+    clamp_variable = { var = GER_soc_mass_strike_cost min = 0 max = 420 }
     if = {
         limit = { NOT = { has_variable = GER_socialization_radicalism_base } }
         set_variable = { GER_socialization_radicalism_base = GER_socialization_radicalism }
