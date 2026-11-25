@@ -99,7 +99,8 @@ GER_yihui_vote_ensure_pass = {
 	}
 }
 
-# 凡尔赛和约表决：票数固定（赞成 264 / 反对 168 / 弃权 27），每个党团里谁投什么也固定但打散
+# 凡尔赛和约表决：票数固定（赞成 256 / 反对 177 / 弃权 26），每个党团里谁投什么也固定但打散
+# 草案 gen_major_bill_draft.py 的 VERSAILLES 表要一起改
 # 党团内第 k 席取 (k × 37) mod 党团席位数，小于赞成数投赞成，再小于赞成+反对数投反对，其余弃权
 GER_yihui_vote_versailles = {
 	GER_yihui_vote_clear = yes
@@ -115,7 +116,7 @@ GER_yihui_vote_versailles = {
 			set_temp_variable = { yh_start = yh_seat }
 		}
 		# 党团席位数 yh_n，固定票数 yh_ny（赞成）、yh_nn（反对）
-		if = { limit = { check_variable = { yh_party = 1 } } set_temp_variable = { yh_n = GER_reichstag_spd_left_seats } set_temp_variable = { yh_ny = 28 } set_temp_variable = { yh_nn = 4 } }
+		if = { limit = { check_variable = { yh_party = 1 } } set_temp_variable = { yh_n = GER_reichstag_spd_left_seats } set_temp_variable = { yh_ny = 20 } set_temp_variable = { yh_nn = 12 } }
 		else_if = { limit = { check_variable = { yh_party = 2 } } set_temp_variable = { yh_n = GER_reichstag_spd_center_left_seats } set_temp_variable = { yh_ny = 84 } set_temp_variable = { yh_nn = 1 } }
 		else_if = { limit = { check_variable = { yh_party = 3 } } set_temp_variable = { yh_n = GER_reichstag_spd_right_seats } set_temp_variable = { yh_ny = 76 } set_temp_variable = { yh_nn = 3 } }
 		else_if = {
@@ -126,7 +127,7 @@ GER_yihui_vote_versailles = {
 		}
 		else_if = { limit = { check_variable = { yh_party = 5 } } set_temp_variable = { yh_n = GER_reichstag_ddp_seats } set_temp_variable = { yh_ny = 6 } set_temp_variable = { yh_nn = 12 } }
 		else_if = { limit = { check_variable = { yh_party = 6 } } set_temp_variable = { yh_n = GER_reichstag_dvp_seats } set_temp_variable = { yh_ny = 0 } set_temp_variable = { yh_nn = 54 } }
-		else_if = { limit = { check_variable = { yh_party = 7 } } set_temp_variable = { yh_n = GER_reichstag_dnvp_seats } set_temp_variable = { yh_ny = 0 } set_temp_variable = { yh_nn = 66 } }
+		else_if = { limit = { check_variable = { yh_party = 7 } } set_temp_variable = { yh_n = GER_reichstag_dnvp_seats } set_temp_variable = { yh_ny = 0 } set_temp_variable = { yh_nn = 67 } }
 		else = { set_temp_variable = { yh_n = GER_reichstag_other_seats } set_temp_variable = { yh_ny = 6 } set_temp_variable = { yh_nn = 7 } }
 		set_temp_variable = { yh_j = yh_seat }
 		subtract_from_temp_variable = { yh_j = yh_start }

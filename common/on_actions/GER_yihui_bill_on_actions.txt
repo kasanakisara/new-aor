@@ -3,8 +3,7 @@ on_actions = {
 	on_daily_GER = {
 		effect = { GER_yihui_bill_daily = yes }
 	}
-	# 进游戏（开局 / 读档）时动画素材是新的，下一场表决可以再播动画
 	on_startup = {
-		effect = { GER = { clr_country_flag = GER_yihui_bill_anim_used } }
+		effect = { GER = { GER_yihui_bill_ensure_arrays = yes GER_yihui_bill_refresh = yes } }
 	}
 }

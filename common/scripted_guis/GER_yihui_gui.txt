@@ -42,6 +42,8 @@ scripted_gui = {
 					clr_country_flag = GER_yihui_laws_open
 					clr_country_flag = GER_yihui_bill_open
 				}
+				# 重大立法弹窗只在 dirty 变化时刷新，主界面开关也要通知它
+				add_to_variable = { GER_yihui_bill_dirty = 1 }
 			}
 		}
 		triggers = {
