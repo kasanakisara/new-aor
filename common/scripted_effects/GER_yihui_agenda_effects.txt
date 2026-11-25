@@ -2,12 +2,26 @@
 
 # 议程系统初始化（GER_Reichstag_initialize 里调用，只跑一次）
 GER_yihui_agenda_init = {
-	set_country_flag = GER_yihui_agenda_initialized
-	set_variable = { GER_yihui_ag_1_state = 1 }
-	set_variable = { GER_yihui_ag_2_state = 1 }
-	set_variable = { GER_yihui_ag_3_state = 1 }
-	set_variable = { GER_yihui_ag_4_state = 0 }
-	set_variable = { GER_yihui_ag_5_state = 0 }
+	set_country_flag = GER_yihui_agenda_v2
+	clear_array = GER_yihui_agenda_list
+	clear_array = GER_yihui_passed_list
+	clear_array = GER_yihui_done_queue
+	clear_array = GER_yihui_ag_state
+	clear_array = GER_yihui_ag_days
+	clear_array = GER_yihui_ag_total
+	clear_array = GER_yihui_agenda_prog
+	clear_array = GER_yihui_ag_gain_i
+	clear_array = GER_yihui_ag_gain_c
+	clear_array = GER_yihui_ag_p1
+	clear_array = GER_yihui_ag_p2
+	clear_array = GER_yihui_ag_p3
+	clear_array = GER_yihui_ag_p4
+	clear_array = GER_yihui_ag_p5
+	clear_array = GER_yihui_ag_p6
+	clear_array = GER_yihui_ag_p7
+	clear_array = GER_yihui_ag_p8
+	set_temp_variable = { yh_add_id = 5 }  # 数组先开到目录里最大的编号
+	GER_yihui_ensure_size = yes
 	if = { limit = { NOT = { check_variable = { GER_yihui_cohesion > 0 } } } set_variable = { GER_yihui_cohesion = 65 } }
 	set_variable = { GER_yihui_running_count = 0 }
 	set_variable = { GER_yihui_selected_agenda = 0 }
@@ -20,11 +34,118 @@ GER_yihui_agenda_init = {
 	add_to_array = { GER_yihui_party_list = 6 }
 	add_to_array = { GER_yihui_party_list = 7 }
 	add_to_array = { GER_yihui_party_list = 8 }
-	clear_array = GER_yihui_passed_list
 	GER_yihui_clear_picks = yes
-	if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } } } add_dynamic_modifier = { modifier = GER_yihui_party_cooperation } }
+	# 开局议程表
+	set_temp_variable = { yh_agenda = 1 }  # 改善农业雇工待遇
+	GER_yihui_add_agenda = yes
+	set_temp_variable = { yh_agenda = 2 }  # 统一军人抚恤
+	GER_yihui_add_agenda = yes
+	set_temp_variable = { yh_agenda = 3 }  # 统筹煤炭生产
+	GER_yihui_add_agenda = yes
+	set_temp_variable = { yh_agenda = 4 }  # 推动农村定居
+	GER_yihui_add_locked_agenda = yes
+	set_temp_variable = { yh_agenda = 5 }  # 征收紧急献金
+	GER_yihui_add_locked_agenda = yes
 	GER_yihui_recount_busy = yes
 	GER_yihui_sync = yes
+}
+
+# ==== 对外接口（作用域 GER）====
+# HOI4 的脚本效果不能带参数：先 set_temp_variable = { yh_agenda = 编号 }，再调用
+# 加入议程表，可处理；已在表上但未解锁的会被解锁；已通过的不会再加
+GER_yihui_add_agenda = {
+	set_temp_variable = { yh_add_id = yh_agenda }
+	set_temp_variable = { yh_add_st = 1 }
+	GER_yihui_put_agenda = yes
+}
+
+# 加入议程表，显示为未解锁
+GER_yihui_add_locked_agenda = {
+	set_temp_variable = { yh_add_id = yh_agenda }
+	set_temp_variable = { yh_add_st = 0 }
+	GER_yihui_put_agenda = yes
+}
+
+# 解锁（不在表上的会直接加入为可处理）
+GER_yihui_unlock_agenda = {
+	set_temp_variable = { yh_add_id = yh_agenda }
+	set_temp_variable = { yh_add_st = 1 }
+	GER_yihui_put_agenda = yes
+}
+
+# 撤下议程：处理中的会中止，不给完成效果
+GER_yihui_remove_agenda = {
+	set_temp_variable = { yh_add_id = yh_agenda }
+	if = {
+		limit = { check_variable = { GER_yihui_ag_state^num > yh_add_id } }
+		if = {
+			limit = {
+				check_variable = { GER_yihui_ag_state^yh_add_id > -1 }
+				check_variable = { GER_yihui_ag_state^yh_add_id < 3 }
+			}
+			set_variable = { GER_yihui_ag_state^yh_add_id = -1 }
+			set_variable = { GER_yihui_ag_days^yh_add_id = 0 }
+			set_variable = { GER_yihui_agenda_prog^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p1^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p2^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p3^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p4^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p5^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p6^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p7^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_p8^yh_add_id = 0 }
+			remove_from_array = { array = GER_yihui_agenda_list value = yh_add_id }
+			GER_yihui_recount_busy = yes
+			GER_yihui_sync = yes
+		}
+	}
+}
+
+# 数组长度不够放 yh_add_id 这个编号时补长
+GER_yihui_ensure_size = {
+	set_temp_variable = { yh_need = yh_add_id }
+	add_to_temp_variable = { yh_need = 1 }
+	if = {
+		limit = { check_variable = { GER_yihui_ag_state^num < yh_need } }
+		resize_array = { array = GER_yihui_ag_state value = -1 size = yh_need }
+		resize_array = { array = GER_yihui_ag_days value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_total value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_agenda_prog value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_gain_i value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_gain_c value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p1 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p2 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p3 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p4 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p5 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p6 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p7 value = 0 size = yh_need }
+		resize_array = { array = GER_yihui_ag_p8 value = 0 size = yh_need }
+	}
+}
+
+# 把 yh_add_id 放进议程表，状态 yh_add_st（0 未解锁 / 1 可处理）
+GER_yihui_put_agenda = {
+	if = {
+		limit = { check_variable = { yh_add_id > 0 } }
+		GER_yihui_ensure_size = yes
+		if = {
+			limit = { check_variable = { GER_yihui_ag_state^yh_add_id = -1 } }
+			set_variable = { GER_yihui_ag_state^yh_add_id = yh_add_st }
+			set_variable = { GER_yihui_ag_days^yh_add_id = 0 }
+			set_variable = { GER_yihui_ag_total^yh_add_id = 0 }
+			set_variable = { GER_yihui_agenda_prog^yh_add_id = 0 }
+			add_to_array = { array = GER_yihui_agenda_list value = yh_add_id }
+		}
+		else_if = {
+			limit = {
+				check_variable = { GER_yihui_ag_state^yh_add_id = 0 }
+				check_variable = { yh_add_st = 1 }
+			}
+			set_variable = { GER_yihui_ag_state^yh_add_id = 1 }
+		}
+		GER_yihui_sync = yes
+	}
 }
 
 GER_yihui_clear_picks = {
@@ -55,11 +176,13 @@ GER_yihui_recalc_preview = {
 	if = { limit = { OR = { check_variable = { GER_yihui_pick_5 = 1 } } } add_to_temp_variable = { yh_g = 1 } }  # ddp
 	if = { limit = { OR = { check_variable = { GER_yihui_pick_6 = 1 } } } add_to_temp_variable = { yh_g = 1 } }  # dvp
 	if = { limit = { OR = { check_variable = { GER_yihui_pick_8 = 1 } } } add_to_temp_variable = { yh_g = 1 } }  # other
-	set_temp_variable = { yh_c = 0 }
+	set_temp_variable = { yh_c = 0 }  # 执政联盟党团数
 	add_to_temp_variable = { yh_c = GER_yihui_pick_1 }
 	add_to_temp_variable = { yh_c = GER_yihui_pick_2 }
 	add_to_temp_variable = { yh_c = GER_yihui_pick_3 }
 	add_to_temp_variable = { yh_c = GER_yihui_pick_4 }
+	set_temp_variable = { yh_o = yh_n }  # 反对党团数
+	subtract_from_temp_variable = { yh_o = yh_c }
 	set_variable = { GER_yihui_preview_n = yh_n }
 	if = {
 		limit = { check_variable = { yh_n > 0 } }
@@ -73,10 +196,17 @@ GER_yihui_recalc_preview = {
 		set_variable = { GER_yihui_preview_days = 25 }
 		add_to_variable = { GER_yihui_preview_days = yh_same }
 		add_to_variable = { GER_yihui_preview_days = yh_cross }
-		# 协商惯性 +（派数 - 1）；联盟凝聚力 +（执政联盟派数）
+		# 协商惯性 +（派数 - 1）+ 反对党团数 × 1：拉的人越多、越跨阵营，议会越习惯协商
 		set_variable = { GER_yihui_preview_inertia = yh_n }
 		subtract_from_variable = { GER_yihui_preview_inertia = 1 }
+		set_temp_variable = { yh_x = yh_o }
+		multiply_temp_variable = { yh_x = 1 }
+		add_to_variable = { GER_yihui_preview_inertia = yh_x }
+		# 联盟凝聚力 + 执政联盟党团数 - 反对党团数 × 2：把事交给反对党，联盟伙伴会不满
 		set_variable = { GER_yihui_preview_cohesion = yh_c }
+		set_temp_variable = { yh_x = yh_o }
+		multiply_temp_variable = { yh_x = 2 }
+		subtract_from_variable = { GER_yihui_preview_cohesion = yh_x }
 	}
 	else = {
 		set_variable = { GER_yihui_preview_days = 0 }
@@ -85,52 +215,25 @@ GER_yihui_recalc_preview = {
 	}
 }
 
-# 重建界面用的数组和显示变量（打开界面、点击、每日计时后都会调用）
+# 刷新界面用的显示变量（打开界面、点击、每日计时后都会调用）
 GER_yihui_sync = {
-	clear_array = GER_yihui_agenda_list
-	clear_array = GER_yihui_agenda_mark
-	clear_array = GER_yihui_agenda_prog
-	add_to_array = { GER_yihui_agenda_mark = 0 }  # 下标 0 不用
-	add_to_array = { GER_yihui_agenda_prog = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state < 3 } } add_to_array = { GER_yihui_agenda_list = 1 } }
-	set_temp_variable = { yh_mark = 2 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } set_temp_variable = { yh_mark = 1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 0 } } set_temp_variable = { yh_mark = 3 } }
-	add_to_array = { array = GER_yihui_agenda_mark value = yh_mark }
-	add_to_array = { array = GER_yihui_agenda_prog value = GER_yihui_ag_1_prog }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state < 3 } } add_to_array = { GER_yihui_agenda_list = 2 } }
-	set_temp_variable = { yh_mark = 2 }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } set_temp_variable = { yh_mark = 1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 0 } } set_temp_variable = { yh_mark = 3 } }
-	add_to_array = { array = GER_yihui_agenda_mark value = yh_mark }
-	add_to_array = { array = GER_yihui_agenda_prog value = GER_yihui_ag_2_prog }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state < 3 } } add_to_array = { GER_yihui_agenda_list = 3 } }
-	set_temp_variable = { yh_mark = 2 }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } set_temp_variable = { yh_mark = 1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 0 } } set_temp_variable = { yh_mark = 3 } }
-	add_to_array = { array = GER_yihui_agenda_mark value = yh_mark }
-	add_to_array = { array = GER_yihui_agenda_prog value = GER_yihui_ag_3_prog }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state < 3 } } add_to_array = { GER_yihui_agenda_list = 4 } }
-	set_temp_variable = { yh_mark = 2 }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } set_temp_variable = { yh_mark = 1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 0 } } set_temp_variable = { yh_mark = 3 } }
-	add_to_array = { array = GER_yihui_agenda_mark value = yh_mark }
-	add_to_array = { array = GER_yihui_agenda_prog value = GER_yihui_ag_4_prog }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state < 3 } } add_to_array = { GER_yihui_agenda_list = 5 } }
-	set_temp_variable = { yh_mark = 2 }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } set_temp_variable = { yh_mark = 1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 0 } } set_temp_variable = { yh_mark = 3 } }
-	add_to_array = { array = GER_yihui_agenda_mark value = yh_mark }
-	add_to_array = { array = GER_yihui_agenda_prog value = GER_yihui_ag_5_prog }
 	set_variable = { GER_yihui_sel_state = -1 }
-	if = { limit = { check_variable = { GER_yihui_selected_agenda = 1 } } set_variable = { GER_yihui_sel_state = GER_yihui_ag_1_state } }
-	if = { limit = { check_variable = { GER_yihui_selected_agenda = 2 } } set_variable = { GER_yihui_sel_state = GER_yihui_ag_2_state } }
-	if = { limit = { check_variable = { GER_yihui_selected_agenda = 3 } } set_variable = { GER_yihui_sel_state = GER_yihui_ag_3_state } }
-	if = { limit = { check_variable = { GER_yihui_selected_agenda = 4 } } set_variable = { GER_yihui_sel_state = GER_yihui_ag_4_state } }
-	if = { limit = { check_variable = { GER_yihui_selected_agenda = 5 } } set_variable = { GER_yihui_sel_state = GER_yihui_ag_5_state } }
+	set_temp_variable = { yh_sid = GER_yihui_selected_agenda }
 	if = {
-		limit = { OR = { check_variable = { GER_yihui_sel_state = 0 } check_variable = { GER_yihui_sel_state = 3 } } }
-		if = { limit = { check_variable = { GER_yihui_sel_state = 3 } } set_variable = { GER_yihui_selected_agenda = 0 } }
+		limit = {
+			check_variable = { yh_sid > 0 }
+			check_variable = { GER_yihui_ag_state^num > yh_sid }
+		}
+		set_variable = { GER_yihui_sel_state = GER_yihui_ag_state^yh_sid }
+	}
+	# 只有可处理 / 处理中的议程能保持选中；已通过、被撤下的取消选中
+	if = {
+		limit = { NOT = { OR = { check_variable = { GER_yihui_sel_state = 1 } check_variable = { GER_yihui_sel_state = 2 } } } }
+		if = {
+			limit = { NOT = { check_variable = { GER_yihui_selected_agenda = 0 } } }
+			set_variable = { GER_yihui_selected_agenda = 0 }
+			GER_yihui_clear_picks = yes
+		}
 		set_variable = { GER_yihui_sel_state = -1 }
 	}
 	clear_array = GER_yihui_view_picks
@@ -150,254 +253,81 @@ GER_yihui_sync = {
 		set_variable = { GER_yihui_sel_cohesion = GER_yihui_preview_cohesion }
 	}
 	if = {
-		limit = { check_variable = { GER_yihui_sel_state = 2 } check_variable = { GER_yihui_selected_agenda = 1 } }
-		set_variable = { GER_yihui_sel_days = GER_yihui_ag_1_days }
-		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_1_gain_i }
-		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_1_gain_c }
-		set_variable = { GER_yihui_sel_prog = GER_yihui_ag_1_prog }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p1 = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p2 = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p3 = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p4 = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p5 = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p6 = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p7 = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
-		if = { limit = { check_variable = { GER_yihui_ag_1_p8 = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
-	}
-	if = {
-		limit = { check_variable = { GER_yihui_sel_state = 2 } check_variable = { GER_yihui_selected_agenda = 2 } }
-		set_variable = { GER_yihui_sel_days = GER_yihui_ag_2_days }
-		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_2_gain_i }
-		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_2_gain_c }
-		set_variable = { GER_yihui_sel_prog = GER_yihui_ag_2_prog }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p1 = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p2 = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p3 = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p4 = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p5 = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p6 = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p7 = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
-		if = { limit = { check_variable = { GER_yihui_ag_2_p8 = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
-	}
-	if = {
-		limit = { check_variable = { GER_yihui_sel_state = 2 } check_variable = { GER_yihui_selected_agenda = 3 } }
-		set_variable = { GER_yihui_sel_days = GER_yihui_ag_3_days }
-		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_3_gain_i }
-		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_3_gain_c }
-		set_variable = { GER_yihui_sel_prog = GER_yihui_ag_3_prog }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p1 = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p2 = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p3 = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p4 = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p5 = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p6 = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p7 = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
-		if = { limit = { check_variable = { GER_yihui_ag_3_p8 = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
-	}
-	if = {
-		limit = { check_variable = { GER_yihui_sel_state = 2 } check_variable = { GER_yihui_selected_agenda = 4 } }
-		set_variable = { GER_yihui_sel_days = GER_yihui_ag_4_days }
-		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_4_gain_i }
-		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_4_gain_c }
-		set_variable = { GER_yihui_sel_prog = GER_yihui_ag_4_prog }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p1 = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p2 = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p3 = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p4 = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p5 = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p6 = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p7 = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
-		if = { limit = { check_variable = { GER_yihui_ag_4_p8 = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
-	}
-	if = {
-		limit = { check_variable = { GER_yihui_sel_state = 2 } check_variable = { GER_yihui_selected_agenda = 5 } }
-		set_variable = { GER_yihui_sel_days = GER_yihui_ag_5_days }
-		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_5_gain_i }
-		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_5_gain_c }
-		set_variable = { GER_yihui_sel_prog = GER_yihui_ag_5_prog }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p1 = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p2 = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p3 = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p4 = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p5 = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p6 = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p7 = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
-		if = { limit = { check_variable = { GER_yihui_ag_5_p8 = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
+		limit = { check_variable = { GER_yihui_sel_state = 2 } }
+		set_variable = { GER_yihui_sel_days = GER_yihui_ag_days^yh_sid }
+		set_variable = { GER_yihui_sel_inertia = GER_yihui_ag_gain_i^yh_sid }
+		set_variable = { GER_yihui_sel_cohesion = GER_yihui_ag_gain_c^yh_sid }
+		set_variable = { GER_yihui_sel_prog = GER_yihui_agenda_prog^yh_sid }
+		if = { limit = { check_variable = { GER_yihui_ag_p1^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 1 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p2^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 2 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p3^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 3 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p4^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 4 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p5^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 5 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p6^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 6 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p7^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 7 } }
+		if = { limit = { check_variable = { GER_yihui_ag_p8^yh_sid = 1 } } add_to_array = { GER_yihui_view_picks = 8 } }
 	}
 }
 
-# 交付处理：把勾选的党派记到这条议程上，开始计时
+# 交付处理：把勾选的党派记到选中的议程上，开始计时
 GER_yihui_dispatch = {
 	GER_yihui_recalc_preview = yes
+	set_temp_variable = { yh_id = GER_yihui_selected_agenda }
 	if = {
 		limit = {
-			check_variable = { GER_yihui_selected_agenda = 1 }
-			check_variable = { GER_yihui_ag_1_state = 1 }
+			check_variable = { yh_id > 0 }
+			check_variable = { GER_yihui_ag_state^yh_id = 1 }
 			check_variable = { GER_yihui_preview_n > 0 }
 			check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
 		}
-		set_variable = { GER_yihui_ag_1_state = 2 }
-		set_variable = { GER_yihui_ag_1_days = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_1_total = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_1_prog = 0 }
-		set_variable = { GER_yihui_ag_1_gain_i = GER_yihui_preview_inertia }
-		set_variable = { GER_yihui_ag_1_gain_c = GER_yihui_preview_cohesion }
-		set_variable = { GER_yihui_ag_1_p1 = GER_yihui_pick_1 }
-		set_variable = { GER_yihui_ag_1_p2 = GER_yihui_pick_2 }
-		set_variable = { GER_yihui_ag_1_p3 = GER_yihui_pick_3 }
-		set_variable = { GER_yihui_ag_1_p4 = GER_yihui_pick_4 }
-		set_variable = { GER_yihui_ag_1_p5 = GER_yihui_pick_5 }
-		set_variable = { GER_yihui_ag_1_p6 = GER_yihui_pick_6 }
-		set_variable = { GER_yihui_ag_1_p7 = GER_yihui_pick_7 }
-		set_variable = { GER_yihui_ag_1_p8 = GER_yihui_pick_8 }
-		add_to_variable = { GER_yihui_running_count = 1 }
-	}
-	if = {
-		limit = {
-			check_variable = { GER_yihui_selected_agenda = 2 }
-			check_variable = { GER_yihui_ag_2_state = 1 }
-			check_variable = { GER_yihui_preview_n > 0 }
-			check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
-		}
-		set_variable = { GER_yihui_ag_2_state = 2 }
-		set_variable = { GER_yihui_ag_2_days = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_2_total = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_2_prog = 0 }
-		set_variable = { GER_yihui_ag_2_gain_i = GER_yihui_preview_inertia }
-		set_variable = { GER_yihui_ag_2_gain_c = GER_yihui_preview_cohesion }
-		set_variable = { GER_yihui_ag_2_p1 = GER_yihui_pick_1 }
-		set_variable = { GER_yihui_ag_2_p2 = GER_yihui_pick_2 }
-		set_variable = { GER_yihui_ag_2_p3 = GER_yihui_pick_3 }
-		set_variable = { GER_yihui_ag_2_p4 = GER_yihui_pick_4 }
-		set_variable = { GER_yihui_ag_2_p5 = GER_yihui_pick_5 }
-		set_variable = { GER_yihui_ag_2_p6 = GER_yihui_pick_6 }
-		set_variable = { GER_yihui_ag_2_p7 = GER_yihui_pick_7 }
-		set_variable = { GER_yihui_ag_2_p8 = GER_yihui_pick_8 }
-		add_to_variable = { GER_yihui_running_count = 1 }
-	}
-	if = {
-		limit = {
-			check_variable = { GER_yihui_selected_agenda = 3 }
-			check_variable = { GER_yihui_ag_3_state = 1 }
-			check_variable = { GER_yihui_preview_n > 0 }
-			check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
-		}
-		set_variable = { GER_yihui_ag_3_state = 2 }
-		set_variable = { GER_yihui_ag_3_days = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_3_total = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_3_prog = 0 }
-		set_variable = { GER_yihui_ag_3_gain_i = GER_yihui_preview_inertia }
-		set_variable = { GER_yihui_ag_3_gain_c = GER_yihui_preview_cohesion }
-		set_variable = { GER_yihui_ag_3_p1 = GER_yihui_pick_1 }
-		set_variable = { GER_yihui_ag_3_p2 = GER_yihui_pick_2 }
-		set_variable = { GER_yihui_ag_3_p3 = GER_yihui_pick_3 }
-		set_variable = { GER_yihui_ag_3_p4 = GER_yihui_pick_4 }
-		set_variable = { GER_yihui_ag_3_p5 = GER_yihui_pick_5 }
-		set_variable = { GER_yihui_ag_3_p6 = GER_yihui_pick_6 }
-		set_variable = { GER_yihui_ag_3_p7 = GER_yihui_pick_7 }
-		set_variable = { GER_yihui_ag_3_p8 = GER_yihui_pick_8 }
-		add_to_variable = { GER_yihui_running_count = 1 }
-	}
-	if = {
-		limit = {
-			check_variable = { GER_yihui_selected_agenda = 4 }
-			check_variable = { GER_yihui_ag_4_state = 1 }
-			check_variable = { GER_yihui_preview_n > 0 }
-			check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
-		}
-		set_variable = { GER_yihui_ag_4_state = 2 }
-		set_variable = { GER_yihui_ag_4_days = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_4_total = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_4_prog = 0 }
-		set_variable = { GER_yihui_ag_4_gain_i = GER_yihui_preview_inertia }
-		set_variable = { GER_yihui_ag_4_gain_c = GER_yihui_preview_cohesion }
-		set_variable = { GER_yihui_ag_4_p1 = GER_yihui_pick_1 }
-		set_variable = { GER_yihui_ag_4_p2 = GER_yihui_pick_2 }
-		set_variable = { GER_yihui_ag_4_p3 = GER_yihui_pick_3 }
-		set_variable = { GER_yihui_ag_4_p4 = GER_yihui_pick_4 }
-		set_variable = { GER_yihui_ag_4_p5 = GER_yihui_pick_5 }
-		set_variable = { GER_yihui_ag_4_p6 = GER_yihui_pick_6 }
-		set_variable = { GER_yihui_ag_4_p7 = GER_yihui_pick_7 }
-		set_variable = { GER_yihui_ag_4_p8 = GER_yihui_pick_8 }
-		add_to_variable = { GER_yihui_running_count = 1 }
-	}
-	if = {
-		limit = {
-			check_variable = { GER_yihui_selected_agenda = 5 }
-			check_variable = { GER_yihui_ag_5_state = 1 }
-			check_variable = { GER_yihui_preview_n > 0 }
-			check_variable = { GER_yihui_running_count < GER_yihui_focus_capacity }
-		}
-		set_variable = { GER_yihui_ag_5_state = 2 }
-		set_variable = { GER_yihui_ag_5_days = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_5_total = GER_yihui_preview_days }
-		set_variable = { GER_yihui_ag_5_prog = 0 }
-		set_variable = { GER_yihui_ag_5_gain_i = GER_yihui_preview_inertia }
-		set_variable = { GER_yihui_ag_5_gain_c = GER_yihui_preview_cohesion }
-		set_variable = { GER_yihui_ag_5_p1 = GER_yihui_pick_1 }
-		set_variable = { GER_yihui_ag_5_p2 = GER_yihui_pick_2 }
-		set_variable = { GER_yihui_ag_5_p3 = GER_yihui_pick_3 }
-		set_variable = { GER_yihui_ag_5_p4 = GER_yihui_pick_4 }
-		set_variable = { GER_yihui_ag_5_p5 = GER_yihui_pick_5 }
-		set_variable = { GER_yihui_ag_5_p6 = GER_yihui_pick_6 }
-		set_variable = { GER_yihui_ag_5_p7 = GER_yihui_pick_7 }
-		set_variable = { GER_yihui_ag_5_p8 = GER_yihui_pick_8 }
-		add_to_variable = { GER_yihui_running_count = 1 }
+		set_variable = { GER_yihui_ag_state^yh_id = 2 }
+		set_variable = { GER_yihui_ag_days^yh_id = GER_yihui_preview_days }
+		set_variable = { GER_yihui_ag_total^yh_id = GER_yihui_preview_days }
+		set_variable = { GER_yihui_agenda_prog^yh_id = 0 }
+		set_variable = { GER_yihui_ag_gain_i^yh_id = GER_yihui_preview_inertia }
+		set_variable = { GER_yihui_ag_gain_c^yh_id = GER_yihui_preview_cohesion }
+		set_variable = { GER_yihui_ag_p1^yh_id = GER_yihui_pick_1 }
+		set_variable = { GER_yihui_ag_p2^yh_id = GER_yihui_pick_2 }
+		set_variable = { GER_yihui_ag_p3^yh_id = GER_yihui_pick_3 }
+		set_variable = { GER_yihui_ag_p4^yh_id = GER_yihui_pick_4 }
+		set_variable = { GER_yihui_ag_p5^yh_id = GER_yihui_pick_5 }
+		set_variable = { GER_yihui_ag_p6^yh_id = GER_yihui_pick_6 }
+		set_variable = { GER_yihui_ag_p7^yh_id = GER_yihui_pick_7 }
+		set_variable = { GER_yihui_ag_p8^yh_id = GER_yihui_pick_8 }
 	}
 	GER_yihui_clear_picks = yes
 	GER_yihui_recount_busy = yes
 	GER_yihui_sync = yes
 }
 
+# 重算处理中的议程数和各党团是否在忙
 GER_yihui_recount_busy = {
+	set_variable = { GER_yihui_running_count = 0 }
 	set_variable = { GER_yihui_busy_1 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_1 = GER_yihui_ag_1_p1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_1 = GER_yihui_ag_2_p1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_1 = GER_yihui_ag_3_p1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_1 = GER_yihui_ag_4_p1 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_1 = GER_yihui_ag_5_p1 } }
 	set_variable = { GER_yihui_busy_2 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_2 = GER_yihui_ag_1_p2 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_2 = GER_yihui_ag_2_p2 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_2 = GER_yihui_ag_3_p2 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_2 = GER_yihui_ag_4_p2 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_2 = GER_yihui_ag_5_p2 } }
 	set_variable = { GER_yihui_busy_3 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_3 = GER_yihui_ag_1_p3 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_3 = GER_yihui_ag_2_p3 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_3 = GER_yihui_ag_3_p3 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_3 = GER_yihui_ag_4_p3 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_3 = GER_yihui_ag_5_p3 } }
 	set_variable = { GER_yihui_busy_4 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_4 = GER_yihui_ag_1_p4 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_4 = GER_yihui_ag_2_p4 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_4 = GER_yihui_ag_3_p4 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_4 = GER_yihui_ag_4_p4 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_4 = GER_yihui_ag_5_p4 } }
 	set_variable = { GER_yihui_busy_5 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_5 = GER_yihui_ag_1_p5 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_5 = GER_yihui_ag_2_p5 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_5 = GER_yihui_ag_3_p5 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_5 = GER_yihui_ag_4_p5 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_5 = GER_yihui_ag_5_p5 } }
 	set_variable = { GER_yihui_busy_6 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_6 = GER_yihui_ag_1_p6 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_6 = GER_yihui_ag_2_p6 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_6 = GER_yihui_ag_3_p6 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_6 = GER_yihui_ag_4_p6 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_6 = GER_yihui_ag_5_p6 } }
 	set_variable = { GER_yihui_busy_7 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_7 = GER_yihui_ag_1_p7 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_7 = GER_yihui_ag_2_p7 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_7 = GER_yihui_ag_3_p7 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_7 = GER_yihui_ag_4_p7 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_7 = GER_yihui_ag_5_p7 } }
 	set_variable = { GER_yihui_busy_8 = 0 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_state = 2 } } add_to_variable = { GER_yihui_busy_8 = GER_yihui_ag_1_p8 } }
-	if = { limit = { check_variable = { GER_yihui_ag_2_state = 2 } } add_to_variable = { GER_yihui_busy_8 = GER_yihui_ag_2_p8 } }
-	if = { limit = { check_variable = { GER_yihui_ag_3_state = 2 } } add_to_variable = { GER_yihui_busy_8 = GER_yihui_ag_3_p8 } }
-	if = { limit = { check_variable = { GER_yihui_ag_4_state = 2 } } add_to_variable = { GER_yihui_busy_8 = GER_yihui_ag_4_p8 } }
-	if = { limit = { check_variable = { GER_yihui_ag_5_state = 2 } } add_to_variable = { GER_yihui_busy_8 = GER_yihui_ag_5_p8 } }
+	for_each_loop = {
+		array = GER_yihui_agenda_list
+		value = yh_id
+		index = yh_idx
+		if = {
+			limit = { check_variable = { GER_yihui_ag_state^yh_id = 2 } }
+			add_to_variable = { GER_yihui_running_count = 1 }
+			if = { limit = { check_variable = { GER_yihui_ag_p1^yh_id = 1 } } set_variable = { GER_yihui_busy_1 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p2^yh_id = 1 } } set_variable = { GER_yihui_busy_2 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p3^yh_id = 1 } } set_variable = { GER_yihui_busy_3 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p4^yh_id = 1 } } set_variable = { GER_yihui_busy_4 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p5^yh_id = 1 } } set_variable = { GER_yihui_busy_5 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p6^yh_id = 1 } } set_variable = { GER_yihui_busy_6 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p7^yh_id = 1 } } set_variable = { GER_yihui_busy_7 = 1 } }
+			if = { limit = { check_variable = { GER_yihui_ag_p8^yh_id = 1 } } set_variable = { GER_yihui_busy_8 = 1 } }
+		}
+	}
 	# 党团在处理议程期间提供的加成（同一党派同时处理几项也只算一次）
 	set_variable = { GER_yihui_bonus_factory = 0 }
 	if = { limit = { check_variable = { GER_yihui_busy_1 > 0 } } set_variable = { GER_yihui_bonus_factory = 0.2 } }
@@ -409,238 +339,91 @@ GER_yihui_recount_busy = {
 	if = { limit = { check_variable = { GER_yihui_busy_5 > 0 } } set_variable = { GER_yihui_bonus_efficiency = 0.15 } }
 	set_variable = { GER_yihui_bonus_building = 0 }
 	if = { limit = { check_variable = { GER_yihui_busy_6 > 0 } } set_variable = { GER_yihui_bonus_building = 0.15 } }
-	force_update_dynamic_modifier = yes
+	# 党团协作只在有议程处理时挂着
+	if = {
+		limit = { check_variable = { GER_yihui_running_count > 0 } }
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } } } add_dynamic_modifier = { modifier = GER_yihui_party_cooperation } }
+		force_update_dynamic_modifier = yes
+	}
+	else_if = {
+		limit = { has_dynamic_modifier = { modifier = GER_yihui_party_cooperation } }
+		remove_dynamic_modifier = { modifier = GER_yihui_party_cooperation }
+	}
 }
 
+# 每日计时：处理中的议程天数 -1，到期的先记进 GER_yihui_done_queue，循环结束后再结算（结算会改议程表）
 GER_yihui_daily_tick = {
 	if = {
 		limit = {
-			has_country_flag = GER_yihui_agenda_initialized
+			has_country_flag = GER_yihui_agenda_v2
 			check_variable = { GER_yihui_running_count > 0 }
 		}
-		if = {
-			limit = { check_variable = { GER_yihui_ag_1_state = 2 } }
-			subtract_from_variable = { GER_yihui_ag_1_days = 1 }
+		clear_array = GER_yihui_done_queue
+		for_each_loop = {
+			array = GER_yihui_agenda_list
+			value = yh_id
+			index = yh_idx
 			if = {
-				limit = { check_variable = { GER_yihui_ag_1_total > 0 } }
-				set_variable = { GER_yihui_ag_1_prog = GER_yihui_ag_1_total }
-				subtract_from_variable = { GER_yihui_ag_1_prog = GER_yihui_ag_1_days }
-				multiply_variable = { GER_yihui_ag_1_prog = 100 }
-				divide_variable = { GER_yihui_ag_1_prog = GER_yihui_ag_1_total }
+				limit = { check_variable = { GER_yihui_ag_state^yh_id = 2 } }
+				set_temp_variable = { yh_d = GER_yihui_ag_days^yh_id }
+				subtract_from_temp_variable = { yh_d = 1 }
+				set_variable = { GER_yihui_ag_days^yh_id = yh_d }
+				set_temp_variable = { yh_t = GER_yihui_ag_total^yh_id }
+				if = {
+					limit = { check_variable = { yh_t > 0 } }
+					set_temp_variable = { yh_p = yh_t }
+					subtract_from_temp_variable = { yh_p = yh_d }
+					multiply_temp_variable = { yh_p = 100 }
+					divide_temp_variable = { yh_p = yh_t }
+					set_variable = { GER_yihui_agenda_prog^yh_id = yh_p }
+				}
+				if = {
+					limit = { check_variable = { yh_d < 1 } }
+					add_to_array = { array = GER_yihui_done_queue value = yh_id }
+				}
 			}
-			if = { limit = { check_variable = { GER_yihui_ag_1_days < 1 } } GER_yihui_complete_1 = yes }
 		}
 		if = {
-			limit = { check_variable = { GER_yihui_ag_2_state = 2 } }
-			subtract_from_variable = { GER_yihui_ag_2_days = 1 }
-			if = {
-				limit = { check_variable = { GER_yihui_ag_2_total > 0 } }
-				set_variable = { GER_yihui_ag_2_prog = GER_yihui_ag_2_total }
-				subtract_from_variable = { GER_yihui_ag_2_prog = GER_yihui_ag_2_days }
-				multiply_variable = { GER_yihui_ag_2_prog = 100 }
-				divide_variable = { GER_yihui_ag_2_prog = GER_yihui_ag_2_total }
+			limit = { check_variable = { GER_yihui_done_queue^num > 0 } }
+			for_each_loop = {
+				array = GER_yihui_done_queue
+				value = yh_id
+				index = yh_idx
+				GER_yihui_complete_agenda = yes
 			}
-			if = { limit = { check_variable = { GER_yihui_ag_2_days < 1 } } GER_yihui_complete_2 = yes }
-		}
-		if = {
-			limit = { check_variable = { GER_yihui_ag_3_state = 2 } }
-			subtract_from_variable = { GER_yihui_ag_3_days = 1 }
-			if = {
-				limit = { check_variable = { GER_yihui_ag_3_total > 0 } }
-				set_variable = { GER_yihui_ag_3_prog = GER_yihui_ag_3_total }
-				subtract_from_variable = { GER_yihui_ag_3_prog = GER_yihui_ag_3_days }
-				multiply_variable = { GER_yihui_ag_3_prog = 100 }
-				divide_variable = { GER_yihui_ag_3_prog = GER_yihui_ag_3_total }
-			}
-			if = { limit = { check_variable = { GER_yihui_ag_3_days < 1 } } GER_yihui_complete_3 = yes }
-		}
-		if = {
-			limit = { check_variable = { GER_yihui_ag_4_state = 2 } }
-			subtract_from_variable = { GER_yihui_ag_4_days = 1 }
-			if = {
-				limit = { check_variable = { GER_yihui_ag_4_total > 0 } }
-				set_variable = { GER_yihui_ag_4_prog = GER_yihui_ag_4_total }
-				subtract_from_variable = { GER_yihui_ag_4_prog = GER_yihui_ag_4_days }
-				multiply_variable = { GER_yihui_ag_4_prog = 100 }
-				divide_variable = { GER_yihui_ag_4_prog = GER_yihui_ag_4_total }
-			}
-			if = { limit = { check_variable = { GER_yihui_ag_4_days < 1 } } GER_yihui_complete_4 = yes }
-		}
-		if = {
-			limit = { check_variable = { GER_yihui_ag_5_state = 2 } }
-			subtract_from_variable = { GER_yihui_ag_5_days = 1 }
-			if = {
-				limit = { check_variable = { GER_yihui_ag_5_total > 0 } }
-				set_variable = { GER_yihui_ag_5_prog = GER_yihui_ag_5_total }
-				subtract_from_variable = { GER_yihui_ag_5_prog = GER_yihui_ag_5_days }
-				multiply_variable = { GER_yihui_ag_5_prog = 100 }
-				divide_variable = { GER_yihui_ag_5_prog = GER_yihui_ag_5_total }
-			}
-			if = { limit = { check_variable = { GER_yihui_ag_5_days < 1 } } GER_yihui_complete_5 = yes }
+			clear_array = GER_yihui_done_queue
+			GER_yihui_recount_busy = yes
 		}
 		GER_yihui_sync = yes
 	}
 }
 
-# 乡村调查 完成
-GER_yihui_complete_1 = {
-	set_variable = { GER_yihui_ag_1_state = 3 }
-	set_variable = { GER_yihui_ag_1_days = 0 }
-	set_variable = { GER_yihui_ag_1_prog = 100 }
-	add_to_variable = { GER_yihui_inertia = GER_yihui_ag_1_gain_i }
+# 结算议程 yh_id（每日计时里调用）
+GER_yihui_complete_agenda = {
+	set_variable = { GER_yihui_ag_state^yh_id = 3 }
+	set_variable = { GER_yihui_ag_days^yh_id = 0 }
+	set_variable = { GER_yihui_agenda_prog^yh_id = 100 }
+	set_temp_variable = { yh_x = GER_yihui_ag_gain_i^yh_id }
+	add_to_variable = { GER_yihui_inertia = yh_x }
 	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
-	add_to_variable = { GER_yihui_cohesion = GER_yihui_ag_1_gain_c }
+	set_temp_variable = { yh_x = GER_yihui_ag_gain_c^yh_id }
+	add_to_variable = { GER_yihui_cohesion = yh_x }
 	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
-	if = { limit = { check_variable = { GER_yihui_ag_1_p2 = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
-	set_variable = { GER_yihui_ag_1_p1 = 0 }
-	set_variable = { GER_yihui_ag_1_p2 = 0 }
-	set_variable = { GER_yihui_ag_1_p3 = 0 }
-	set_variable = { GER_yihui_ag_1_p4 = 0 }
-	set_variable = { GER_yihui_ag_1_p5 = 0 }
-	set_variable = { GER_yihui_ag_1_p6 = 0 }
-	set_variable = { GER_yihui_ag_1_p7 = 0 }
-	set_variable = { GER_yihui_ag_1_p8 = 0 }
-	subtract_from_variable = { GER_yihui_running_count = 1 }
-	add_to_array = { GER_yihui_passed_list = 1 }
-	GER_yihui_agenda_1_result = yes
-	GER_yihui_recount_busy = yes
-}
-
-# 乡村调查 的完成效果（待策划填写）
-GER_yihui_agenda_1_result = {
-	set_country_flag = GER_yihui_agenda_1_done
-}
-
-# 监督不忠乡镇官员 完成
-GER_yihui_complete_2 = {
-	set_variable = { GER_yihui_ag_2_state = 3 }
-	set_variable = { GER_yihui_ag_2_days = 0 }
-	set_variable = { GER_yihui_ag_2_prog = 100 }
-	add_to_variable = { GER_yihui_inertia = GER_yihui_ag_2_gain_i }
-	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
-	add_to_variable = { GER_yihui_cohesion = GER_yihui_ag_2_gain_c }
-	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
-	if = { limit = { check_variable = { GER_yihui_ag_2_p2 = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
-	set_variable = { GER_yihui_ag_2_p1 = 0 }
-	set_variable = { GER_yihui_ag_2_p2 = 0 }
-	set_variable = { GER_yihui_ag_2_p3 = 0 }
-	set_variable = { GER_yihui_ag_2_p4 = 0 }
-	set_variable = { GER_yihui_ag_2_p5 = 0 }
-	set_variable = { GER_yihui_ag_2_p6 = 0 }
-	set_variable = { GER_yihui_ag_2_p7 = 0 }
-	set_variable = { GER_yihui_ag_2_p8 = 0 }
-	subtract_from_variable = { GER_yihui_running_count = 1 }
-	add_to_array = { GER_yihui_passed_list = 2 }
-	GER_yihui_agenda_2_result = yes
-	GER_yihui_recount_busy = yes
-}
-
-# 监督不忠乡镇官员 的完成效果（待策划填写）
-GER_yihui_agenda_2_result = {
-	set_country_flag = GER_yihui_agenda_2_done
-}
-
-# 限制极右组织 完成
-GER_yihui_complete_3 = {
-	set_variable = { GER_yihui_ag_3_state = 3 }
-	set_variable = { GER_yihui_ag_3_days = 0 }
-	set_variable = { GER_yihui_ag_3_prog = 100 }
-	add_to_variable = { GER_yihui_inertia = GER_yihui_ag_3_gain_i }
-	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
-	add_to_variable = { GER_yihui_cohesion = GER_yihui_ag_3_gain_c }
-	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
-	if = { limit = { check_variable = { GER_yihui_ag_3_p2 = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
-	set_variable = { GER_yihui_ag_3_p1 = 0 }
-	set_variable = { GER_yihui_ag_3_p2 = 0 }
-	set_variable = { GER_yihui_ag_3_p3 = 0 }
-	set_variable = { GER_yihui_ag_3_p4 = 0 }
-	set_variable = { GER_yihui_ag_3_p5 = 0 }
-	set_variable = { GER_yihui_ag_3_p6 = 0 }
-	set_variable = { GER_yihui_ag_3_p7 = 0 }
-	set_variable = { GER_yihui_ag_3_p8 = 0 }
-	subtract_from_variable = { GER_yihui_running_count = 1 }
-	add_to_array = { GER_yihui_passed_list = 3 }
-	GER_yihui_agenda_3_result = yes
-	GER_yihui_recount_busy = yes
-}
-
-# 限制极右组织 的完成效果（待策划填写）
-GER_yihui_agenda_3_result = {
-	set_country_flag = GER_yihui_agenda_3_done
-}
-
-# 司法部隐蔽阻碍 完成
-GER_yihui_complete_4 = {
-	set_variable = { GER_yihui_ag_4_state = 3 }
-	set_variable = { GER_yihui_ag_4_days = 0 }
-	set_variable = { GER_yihui_ag_4_prog = 100 }
-	add_to_variable = { GER_yihui_inertia = GER_yihui_ag_4_gain_i }
-	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
-	add_to_variable = { GER_yihui_cohesion = GER_yihui_ag_4_gain_c }
-	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
-	if = { limit = { check_variable = { GER_yihui_ag_4_p2 = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
-	set_variable = { GER_yihui_ag_4_p1 = 0 }
-	set_variable = { GER_yihui_ag_4_p2 = 0 }
-	set_variable = { GER_yihui_ag_4_p3 = 0 }
-	set_variable = { GER_yihui_ag_4_p4 = 0 }
-	set_variable = { GER_yihui_ag_4_p5 = 0 }
-	set_variable = { GER_yihui_ag_4_p6 = 0 }
-	set_variable = { GER_yihui_ag_4_p7 = 0 }
-	set_variable = { GER_yihui_ag_4_p8 = 0 }
-	subtract_from_variable = { GER_yihui_running_count = 1 }
-	add_to_array = { GER_yihui_passed_list = 4 }
-	GER_yihui_agenda_4_result = yes
-	GER_yihui_recount_busy = yes
-}
-
-# 司法部隐蔽阻碍 的完成效果（待策划填写）
-GER_yihui_agenda_4_result = {
-	set_country_flag = GER_yihui_agenda_4_done
-}
-
-# 政府出资小农补贴 完成
-GER_yihui_complete_5 = {
-	set_variable = { GER_yihui_ag_5_state = 3 }
-	set_variable = { GER_yihui_ag_5_days = 0 }
-	set_variable = { GER_yihui_ag_5_prog = 100 }
-	add_to_variable = { GER_yihui_inertia = GER_yihui_ag_5_gain_i }
-	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
-	add_to_variable = { GER_yihui_cohesion = GER_yihui_ag_5_gain_c }
-	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
-	if = { limit = { check_variable = { GER_yihui_ag_5_p2 = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
-	set_variable = { GER_yihui_ag_5_p1 = 0 }
-	set_variable = { GER_yihui_ag_5_p2 = 0 }
-	set_variable = { GER_yihui_ag_5_p3 = 0 }
-	set_variable = { GER_yihui_ag_5_p4 = 0 }
-	set_variable = { GER_yihui_ag_5_p5 = 0 }
-	set_variable = { GER_yihui_ag_5_p6 = 0 }
-	set_variable = { GER_yihui_ag_5_p7 = 0 }
-	set_variable = { GER_yihui_ag_5_p8 = 0 }
-	subtract_from_variable = { GER_yihui_running_count = 1 }
-	add_to_array = { GER_yihui_passed_list = 5 }
-	GER_yihui_agenda_5_result = yes
-	GER_yihui_recount_busy = yes
-}
-
-# 政府出资小农补贴 的完成效果（待策划填写）
-GER_yihui_agenda_5_result = {
-	set_country_flag = GER_yihui_agenda_5_done
-}
-
-# 解锁「司法部隐蔽阻碍」：国策 / 事件里调用
-GER_yihui_unlock_agenda_4 = {
-	if = {
-		limit = { check_variable = { GER_yihui_ag_4_state = 0 } }
-		set_variable = { GER_yihui_ag_4_state = 1 }
-		GER_yihui_sync = yes
-	}
-}
-
-# 解锁「政府出资小农补贴」：国策 / 事件里调用
-GER_yihui_unlock_agenda_5 = {
-	if = {
-		limit = { check_variable = { GER_yihui_ag_5_state = 0 } }
-		set_variable = { GER_yihui_ag_5_state = 1 }
-		GER_yihui_sync = yes
+	if = { limit = { check_variable = { GER_yihui_ag_p2^yh_id = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
+	set_variable = { GER_yihui_ag_p1^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p2^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p3^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p4^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p5^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p6^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p7^yh_id = 0 }
+	set_variable = { GER_yihui_ag_p8^yh_id = 0 }
+	remove_from_array = { array = GER_yihui_agenda_list value = yh_id }
+	add_to_array = { array = GER_yihui_passed_list value = yh_id }
+	# 各议程自己的完成效果在 GER_yihui_agenda_results.txt：GER_yihui_agenda_<编号>_result
+	set_variable = { GER_yihui_last_passed = yh_id }
+	meta_effect = {
+		text = { GER_yihui_agenda_[ID]_result = yes }
+		ID = "[?GER_yihui_last_passed]"
 	}
 }

@@ -1,0 +1,43 @@
+# 行政焦点的完成效果（手写，install_yihui_gui.py 不覆盖；新增议程重跑后会在末尾补空壳）
+# 作用域 GER；变量 GER_yihui_last_passed = 刚通过的议程编号
+# 悬停里的效果文字在 install_yihui_gui.py 的 AGENDAS 第五项，改这里要一起改
+
+# 改善农业雇工待遇
+GER_yihui_agenda_1_result = {
+	set_country_flag = GER_yihui_agenda_1_done
+	add_stability = 0.02
+	set_temp_variable = { yh_agenda = 4 }
+	GER_yihui_add_agenda = yes
+}
+
+# 统一军人抚恤
+GER_yihui_agenda_2_result = {
+	set_country_flag = GER_yihui_agenda_2_done
+	add_stability = 0.02
+	add_war_support = 0.03
+	set_temp_variable = { yh_agenda = 5 }
+	GER_yihui_add_agenda = yes
+}
+
+# 统筹煤炭生产
+GER_yihui_agenda_3_result = {
+	set_country_flag = GER_yihui_agenda_3_done
+	random_owned_controlled_state = {
+		limit = { is_core_of = ROOT }
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+	}
+}
+
+# 推动农村定居
+GER_yihui_agenda_4_result = {
+	set_country_flag = GER_yihui_agenda_4_done
+	add_stability = 0.03
+}
+
+# 征收紧急献金
+GER_yihui_agenda_5_result = {
+	set_country_flag = GER_yihui_agenda_5_done
+	add_political_power = 100
+	add_stability = -0.02
+}

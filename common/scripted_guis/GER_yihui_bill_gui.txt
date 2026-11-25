@@ -1,0 +1,966 @@
+scripted_gui = {
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成；要改请改脚本后重跑
+	GER_yihui_bill_gui = {
+		context_type = player_context
+		window_name = GER_yihui_bill_gui
+		visible = {
+			original_tag = GER
+			has_country_flag = GER_main_GUI_open
+			has_country_flag = GER_yihui_bill_open
+		}
+		effects = {
+			GER_yihui_bill_close_btn_click = { GER_yihui_bill_toggle = yes }
+		}
+		dynamic_lists = {
+			GER_yihui_bill_seats = {
+				array = GER_Reichstag_seat_x
+				change_scope = no
+				entry_container = GER_yihui_bill_seat_entry
+				index = i
+			}
+			GER_yihui_bill_st_seats = {
+				array = GER_yihui_st_x
+				change_scope = no
+				entry_container = GER_yihui_bill_st_seat_entry
+				index = i
+			}
+			GER_yihui_bill_st_slices = {
+				array = GER_yihui_sts_x
+				change_scope = no
+				entry_container = GER_yihui_bill_st_slice_entry
+				index = i
+			}
+			GER_yihui_bill_a_v1_1 = {
+				array = GER_yihui_av1_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v1_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v1_2 = {
+				array = GER_yihui_av1_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v1_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v1_3 = {
+				array = GER_yihui_av1_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v1_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b1_1 = {
+				array = GER_yihui_ab1_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b1_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b1_2 = {
+				array = GER_yihui_ab1_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b1_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v2_1 = {
+				array = GER_yihui_av2_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v2_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v2_2 = {
+				array = GER_yihui_av2_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v2_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v2_3 = {
+				array = GER_yihui_av2_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v2_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b2_1 = {
+				array = GER_yihui_ab2_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b2_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b2_2 = {
+				array = GER_yihui_ab2_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b2_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v3_1 = {
+				array = GER_yihui_av3_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v3_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v3_2 = {
+				array = GER_yihui_av3_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v3_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v3_3 = {
+				array = GER_yihui_av3_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v3_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b3_1 = {
+				array = GER_yihui_ab3_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b3_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b3_2 = {
+				array = GER_yihui_ab3_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b3_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v4_1 = {
+				array = GER_yihui_av4_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v4_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v4_2 = {
+				array = GER_yihui_av4_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v4_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v4_3 = {
+				array = GER_yihui_av4_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v4_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b4_1 = {
+				array = GER_yihui_ab4_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b4_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b4_2 = {
+				array = GER_yihui_ab4_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b4_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v5_1 = {
+				array = GER_yihui_av5_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v5_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v5_2 = {
+				array = GER_yihui_av5_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v5_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v5_3 = {
+				array = GER_yihui_av5_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v5_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b5_1 = {
+				array = GER_yihui_ab5_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b5_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b5_2 = {
+				array = GER_yihui_ab5_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b5_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v6_1 = {
+				array = GER_yihui_av6_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v6_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v6_2 = {
+				array = GER_yihui_av6_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v6_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v6_3 = {
+				array = GER_yihui_av6_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v6_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b6_1 = {
+				array = GER_yihui_ab6_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b6_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b6_2 = {
+				array = GER_yihui_ab6_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b6_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v7_1 = {
+				array = GER_yihui_av7_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v7_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v7_2 = {
+				array = GER_yihui_av7_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v7_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v7_3 = {
+				array = GER_yihui_av7_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v7_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b7_1 = {
+				array = GER_yihui_ab7_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b7_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b7_2 = {
+				array = GER_yihui_ab7_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b7_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v8_1 = {
+				array = GER_yihui_av8_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v8_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v8_2 = {
+				array = GER_yihui_av8_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v8_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v8_3 = {
+				array = GER_yihui_av8_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v8_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b8_1 = {
+				array = GER_yihui_ab8_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b8_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b8_2 = {
+				array = GER_yihui_ab8_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b8_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v9_1 = {
+				array = GER_yihui_av9_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v9_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v9_2 = {
+				array = GER_yihui_av9_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v9_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v9_3 = {
+				array = GER_yihui_av9_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v9_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b9_1 = {
+				array = GER_yihui_ab9_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b9_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b9_2 = {
+				array = GER_yihui_ab9_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b9_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v10_1 = {
+				array = GER_yihui_av10_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v10_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v10_2 = {
+				array = GER_yihui_av10_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v10_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v10_3 = {
+				array = GER_yihui_av10_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v10_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b10_1 = {
+				array = GER_yihui_ab10_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b10_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b10_2 = {
+				array = GER_yihui_ab10_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b10_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v11_1 = {
+				array = GER_yihui_av11_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v11_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v11_2 = {
+				array = GER_yihui_av11_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v11_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v11_3 = {
+				array = GER_yihui_av11_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v11_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b11_1 = {
+				array = GER_yihui_ab11_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b11_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b11_2 = {
+				array = GER_yihui_ab11_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b11_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v12_1 = {
+				array = GER_yihui_av12_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v12_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v12_2 = {
+				array = GER_yihui_av12_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v12_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v12_3 = {
+				array = GER_yihui_av12_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v12_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b12_1 = {
+				array = GER_yihui_ab12_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b12_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b12_2 = {
+				array = GER_yihui_ab12_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b12_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v13_1 = {
+				array = GER_yihui_av13_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v13_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v13_2 = {
+				array = GER_yihui_av13_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v13_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v13_3 = {
+				array = GER_yihui_av13_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v13_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b13_1 = {
+				array = GER_yihui_ab13_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b13_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b13_2 = {
+				array = GER_yihui_ab13_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b13_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v14_1 = {
+				array = GER_yihui_av14_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v14_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v14_2 = {
+				array = GER_yihui_av14_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v14_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v14_3 = {
+				array = GER_yihui_av14_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v14_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b14_1 = {
+				array = GER_yihui_ab14_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b14_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b14_2 = {
+				array = GER_yihui_ab14_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b14_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v15_1 = {
+				array = GER_yihui_av15_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v15_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v15_2 = {
+				array = GER_yihui_av15_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v15_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v15_3 = {
+				array = GER_yihui_av15_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v15_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b15_1 = {
+				array = GER_yihui_ab15_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b15_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b15_2 = {
+				array = GER_yihui_ab15_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b15_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v16_1 = {
+				array = GER_yihui_av16_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v16_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v16_2 = {
+				array = GER_yihui_av16_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v16_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v16_3 = {
+				array = GER_yihui_av16_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v16_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b16_1 = {
+				array = GER_yihui_ab16_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b16_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b16_2 = {
+				array = GER_yihui_ab16_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b16_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v17_1 = {
+				array = GER_yihui_av17_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v17_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v17_2 = {
+				array = GER_yihui_av17_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v17_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v17_3 = {
+				array = GER_yihui_av17_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v17_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b17_1 = {
+				array = GER_yihui_ab17_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b17_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b17_2 = {
+				array = GER_yihui_ab17_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b17_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v18_1 = {
+				array = GER_yihui_av18_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v18_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v18_2 = {
+				array = GER_yihui_av18_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v18_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v18_3 = {
+				array = GER_yihui_av18_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v18_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b18_1 = {
+				array = GER_yihui_ab18_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b18_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b18_2 = {
+				array = GER_yihui_ab18_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b18_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v19_1 = {
+				array = GER_yihui_av19_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v19_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v19_2 = {
+				array = GER_yihui_av19_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v19_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v19_3 = {
+				array = GER_yihui_av19_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v19_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b19_1 = {
+				array = GER_yihui_ab19_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b19_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b19_2 = {
+				array = GER_yihui_ab19_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b19_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v20_1 = {
+				array = GER_yihui_av20_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v20_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v20_2 = {
+				array = GER_yihui_av20_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v20_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v20_3 = {
+				array = GER_yihui_av20_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v20_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b20_1 = {
+				array = GER_yihui_ab20_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b20_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b20_2 = {
+				array = GER_yihui_ab20_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b20_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v21_1 = {
+				array = GER_yihui_av21_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v21_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v21_2 = {
+				array = GER_yihui_av21_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v21_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v21_3 = {
+				array = GER_yihui_av21_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v21_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b21_1 = {
+				array = GER_yihui_ab21_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b21_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b21_2 = {
+				array = GER_yihui_ab21_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b21_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v22_1 = {
+				array = GER_yihui_av22_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v22_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v22_2 = {
+				array = GER_yihui_av22_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v22_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v22_3 = {
+				array = GER_yihui_av22_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v22_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b22_1 = {
+				array = GER_yihui_ab22_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b22_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b22_2 = {
+				array = GER_yihui_ab22_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b22_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v23_1 = {
+				array = GER_yihui_av23_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v23_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v23_2 = {
+				array = GER_yihui_av23_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v23_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v23_3 = {
+				array = GER_yihui_av23_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v23_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b23_1 = {
+				array = GER_yihui_ab23_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b23_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b23_2 = {
+				array = GER_yihui_ab23_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b23_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v24_1 = {
+				array = GER_yihui_av24_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v24_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v24_2 = {
+				array = GER_yihui_av24_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v24_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v24_3 = {
+				array = GER_yihui_av24_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v24_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b24_1 = {
+				array = GER_yihui_ab24_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b24_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b24_2 = {
+				array = GER_yihui_ab24_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b24_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v25_1 = {
+				array = GER_yihui_av25_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v25_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v25_2 = {
+				array = GER_yihui_av25_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v25_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v25_3 = {
+				array = GER_yihui_av25_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v25_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b25_1 = {
+				array = GER_yihui_ab25_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b25_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b25_2 = {
+				array = GER_yihui_ab25_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b25_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v26_1 = {
+				array = GER_yihui_av26_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v26_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_v26_2 = {
+				array = GER_yihui_av26_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v26_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_v26_3 = {
+				array = GER_yihui_av26_3_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_v26_3_entry
+				index = i
+			}
+			GER_yihui_bill_a_b26_1 = {
+				array = GER_yihui_ab26_1_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b26_1_entry
+				index = i
+			}
+			GER_yihui_bill_a_b26_2 = {
+				array = GER_yihui_ab26_2_x
+				change_scope = no
+				entry_container = GER_yihui_bill_a_b26_2_entry
+				index = i
+			}
+			GER_yihui_bill_a_cover = {
+				array = GER_yihui_acover
+				change_scope = no
+				entry_container = GER_yihui_bill_a_cover_entry
+				index = i
+			}
+		}
+		properties = {
+			GER_yihui_bill_seat_icon = {
+				x = GER_Reichstag_seat_x^i
+				y = GER_Reichstag_seat_y^i
+				frame = GER_Reichstag_seat_frame^i
+			}
+			GER_yihui_bill_st_seat_icon = { x = GER_yihui_st_x^i y = GER_yihui_st_y^i frame = GER_yihui_st_v^i }
+			GER_yihui_bill_st_slice_icon = { x = GER_yihui_sts_x^i frame = GER_yihui_sts_c^i }
+			GER_yihui_bill_a_v1_1_icon = { x = GER_yihui_av1_1_x^i y = GER_yihui_av1_1_y^i }
+			GER_yihui_bill_a_v1_2_icon = { x = GER_yihui_av1_2_x^i y = GER_yihui_av1_2_y^i }
+			GER_yihui_bill_a_v1_3_icon = { x = GER_yihui_av1_3_x^i y = GER_yihui_av1_3_y^i }
+			GER_yihui_bill_a_b1_1_icon = { x = GER_yihui_ab1_1_x^i }
+			GER_yihui_bill_a_b1_2_icon = { x = GER_yihui_ab1_2_x^i }
+			GER_yihui_bill_a_v2_1_icon = { x = GER_yihui_av2_1_x^i y = GER_yihui_av2_1_y^i }
+			GER_yihui_bill_a_v2_2_icon = { x = GER_yihui_av2_2_x^i y = GER_yihui_av2_2_y^i }
+			GER_yihui_bill_a_v2_3_icon = { x = GER_yihui_av2_3_x^i y = GER_yihui_av2_3_y^i }
+			GER_yihui_bill_a_b2_1_icon = { x = GER_yihui_ab2_1_x^i }
+			GER_yihui_bill_a_b2_2_icon = { x = GER_yihui_ab2_2_x^i }
+			GER_yihui_bill_a_v3_1_icon = { x = GER_yihui_av3_1_x^i y = GER_yihui_av3_1_y^i }
+			GER_yihui_bill_a_v3_2_icon = { x = GER_yihui_av3_2_x^i y = GER_yihui_av3_2_y^i }
+			GER_yihui_bill_a_v3_3_icon = { x = GER_yihui_av3_3_x^i y = GER_yihui_av3_3_y^i }
+			GER_yihui_bill_a_b3_1_icon = { x = GER_yihui_ab3_1_x^i }
+			GER_yihui_bill_a_b3_2_icon = { x = GER_yihui_ab3_2_x^i }
+			GER_yihui_bill_a_v4_1_icon = { x = GER_yihui_av4_1_x^i y = GER_yihui_av4_1_y^i }
+			GER_yihui_bill_a_v4_2_icon = { x = GER_yihui_av4_2_x^i y = GER_yihui_av4_2_y^i }
+			GER_yihui_bill_a_v4_3_icon = { x = GER_yihui_av4_3_x^i y = GER_yihui_av4_3_y^i }
+			GER_yihui_bill_a_b4_1_icon = { x = GER_yihui_ab4_1_x^i }
+			GER_yihui_bill_a_b4_2_icon = { x = GER_yihui_ab4_2_x^i }
+			GER_yihui_bill_a_v5_1_icon = { x = GER_yihui_av5_1_x^i y = GER_yihui_av5_1_y^i }
+			GER_yihui_bill_a_v5_2_icon = { x = GER_yihui_av5_2_x^i y = GER_yihui_av5_2_y^i }
+			GER_yihui_bill_a_v5_3_icon = { x = GER_yihui_av5_3_x^i y = GER_yihui_av5_3_y^i }
+			GER_yihui_bill_a_b5_1_icon = { x = GER_yihui_ab5_1_x^i }
+			GER_yihui_bill_a_b5_2_icon = { x = GER_yihui_ab5_2_x^i }
+			GER_yihui_bill_a_v6_1_icon = { x = GER_yihui_av6_1_x^i y = GER_yihui_av6_1_y^i }
+			GER_yihui_bill_a_v6_2_icon = { x = GER_yihui_av6_2_x^i y = GER_yihui_av6_2_y^i }
+			GER_yihui_bill_a_v6_3_icon = { x = GER_yihui_av6_3_x^i y = GER_yihui_av6_3_y^i }
+			GER_yihui_bill_a_b6_1_icon = { x = GER_yihui_ab6_1_x^i }
+			GER_yihui_bill_a_b6_2_icon = { x = GER_yihui_ab6_2_x^i }
+			GER_yihui_bill_a_v7_1_icon = { x = GER_yihui_av7_1_x^i y = GER_yihui_av7_1_y^i }
+			GER_yihui_bill_a_v7_2_icon = { x = GER_yihui_av7_2_x^i y = GER_yihui_av7_2_y^i }
+			GER_yihui_bill_a_v7_3_icon = { x = GER_yihui_av7_3_x^i y = GER_yihui_av7_3_y^i }
+			GER_yihui_bill_a_b7_1_icon = { x = GER_yihui_ab7_1_x^i }
+			GER_yihui_bill_a_b7_2_icon = { x = GER_yihui_ab7_2_x^i }
+			GER_yihui_bill_a_v8_1_icon = { x = GER_yihui_av8_1_x^i y = GER_yihui_av8_1_y^i }
+			GER_yihui_bill_a_v8_2_icon = { x = GER_yihui_av8_2_x^i y = GER_yihui_av8_2_y^i }
+			GER_yihui_bill_a_v8_3_icon = { x = GER_yihui_av8_3_x^i y = GER_yihui_av8_3_y^i }
+			GER_yihui_bill_a_b8_1_icon = { x = GER_yihui_ab8_1_x^i }
+			GER_yihui_bill_a_b8_2_icon = { x = GER_yihui_ab8_2_x^i }
+			GER_yihui_bill_a_v9_1_icon = { x = GER_yihui_av9_1_x^i y = GER_yihui_av9_1_y^i }
+			GER_yihui_bill_a_v9_2_icon = { x = GER_yihui_av9_2_x^i y = GER_yihui_av9_2_y^i }
+			GER_yihui_bill_a_v9_3_icon = { x = GER_yihui_av9_3_x^i y = GER_yihui_av9_3_y^i }
+			GER_yihui_bill_a_b9_1_icon = { x = GER_yihui_ab9_1_x^i }
+			GER_yihui_bill_a_b9_2_icon = { x = GER_yihui_ab9_2_x^i }
+			GER_yihui_bill_a_v10_1_icon = { x = GER_yihui_av10_1_x^i y = GER_yihui_av10_1_y^i }
+			GER_yihui_bill_a_v10_2_icon = { x = GER_yihui_av10_2_x^i y = GER_yihui_av10_2_y^i }
+			GER_yihui_bill_a_v10_3_icon = { x = GER_yihui_av10_3_x^i y = GER_yihui_av10_3_y^i }
+			GER_yihui_bill_a_b10_1_icon = { x = GER_yihui_ab10_1_x^i }
+			GER_yihui_bill_a_b10_2_icon = { x = GER_yihui_ab10_2_x^i }
+			GER_yihui_bill_a_v11_1_icon = { x = GER_yihui_av11_1_x^i y = GER_yihui_av11_1_y^i }
+			GER_yihui_bill_a_v11_2_icon = { x = GER_yihui_av11_2_x^i y = GER_yihui_av11_2_y^i }
+			GER_yihui_bill_a_v11_3_icon = { x = GER_yihui_av11_3_x^i y = GER_yihui_av11_3_y^i }
+			GER_yihui_bill_a_b11_1_icon = { x = GER_yihui_ab11_1_x^i }
+			GER_yihui_bill_a_b11_2_icon = { x = GER_yihui_ab11_2_x^i }
+			GER_yihui_bill_a_v12_1_icon = { x = GER_yihui_av12_1_x^i y = GER_yihui_av12_1_y^i }
+			GER_yihui_bill_a_v12_2_icon = { x = GER_yihui_av12_2_x^i y = GER_yihui_av12_2_y^i }
+			GER_yihui_bill_a_v12_3_icon = { x = GER_yihui_av12_3_x^i y = GER_yihui_av12_3_y^i }
+			GER_yihui_bill_a_b12_1_icon = { x = GER_yihui_ab12_1_x^i }
+			GER_yihui_bill_a_b12_2_icon = { x = GER_yihui_ab12_2_x^i }
+			GER_yihui_bill_a_v13_1_icon = { x = GER_yihui_av13_1_x^i y = GER_yihui_av13_1_y^i }
+			GER_yihui_bill_a_v13_2_icon = { x = GER_yihui_av13_2_x^i y = GER_yihui_av13_2_y^i }
+			GER_yihui_bill_a_v13_3_icon = { x = GER_yihui_av13_3_x^i y = GER_yihui_av13_3_y^i }
+			GER_yihui_bill_a_b13_1_icon = { x = GER_yihui_ab13_1_x^i }
+			GER_yihui_bill_a_b13_2_icon = { x = GER_yihui_ab13_2_x^i }
+			GER_yihui_bill_a_v14_1_icon = { x = GER_yihui_av14_1_x^i y = GER_yihui_av14_1_y^i }
+			GER_yihui_bill_a_v14_2_icon = { x = GER_yihui_av14_2_x^i y = GER_yihui_av14_2_y^i }
+			GER_yihui_bill_a_v14_3_icon = { x = GER_yihui_av14_3_x^i y = GER_yihui_av14_3_y^i }
+			GER_yihui_bill_a_b14_1_icon = { x = GER_yihui_ab14_1_x^i }
+			GER_yihui_bill_a_b14_2_icon = { x = GER_yihui_ab14_2_x^i }
+			GER_yihui_bill_a_v15_1_icon = { x = GER_yihui_av15_1_x^i y = GER_yihui_av15_1_y^i }
+			GER_yihui_bill_a_v15_2_icon = { x = GER_yihui_av15_2_x^i y = GER_yihui_av15_2_y^i }
+			GER_yihui_bill_a_v15_3_icon = { x = GER_yihui_av15_3_x^i y = GER_yihui_av15_3_y^i }
+			GER_yihui_bill_a_b15_1_icon = { x = GER_yihui_ab15_1_x^i }
+			GER_yihui_bill_a_b15_2_icon = { x = GER_yihui_ab15_2_x^i }
+			GER_yihui_bill_a_v16_1_icon = { x = GER_yihui_av16_1_x^i y = GER_yihui_av16_1_y^i }
+			GER_yihui_bill_a_v16_2_icon = { x = GER_yihui_av16_2_x^i y = GER_yihui_av16_2_y^i }
+			GER_yihui_bill_a_v16_3_icon = { x = GER_yihui_av16_3_x^i y = GER_yihui_av16_3_y^i }
+			GER_yihui_bill_a_b16_1_icon = { x = GER_yihui_ab16_1_x^i }
+			GER_yihui_bill_a_b16_2_icon = { x = GER_yihui_ab16_2_x^i }
+			GER_yihui_bill_a_v17_1_icon = { x = GER_yihui_av17_1_x^i y = GER_yihui_av17_1_y^i }
+			GER_yihui_bill_a_v17_2_icon = { x = GER_yihui_av17_2_x^i y = GER_yihui_av17_2_y^i }
+			GER_yihui_bill_a_v17_3_icon = { x = GER_yihui_av17_3_x^i y = GER_yihui_av17_3_y^i }
+			GER_yihui_bill_a_b17_1_icon = { x = GER_yihui_ab17_1_x^i }
+			GER_yihui_bill_a_b17_2_icon = { x = GER_yihui_ab17_2_x^i }
+			GER_yihui_bill_a_v18_1_icon = { x = GER_yihui_av18_1_x^i y = GER_yihui_av18_1_y^i }
+			GER_yihui_bill_a_v18_2_icon = { x = GER_yihui_av18_2_x^i y = GER_yihui_av18_2_y^i }
+			GER_yihui_bill_a_v18_3_icon = { x = GER_yihui_av18_3_x^i y = GER_yihui_av18_3_y^i }
+			GER_yihui_bill_a_b18_1_icon = { x = GER_yihui_ab18_1_x^i }
+			GER_yihui_bill_a_b18_2_icon = { x = GER_yihui_ab18_2_x^i }
+			GER_yihui_bill_a_v19_1_icon = { x = GER_yihui_av19_1_x^i y = GER_yihui_av19_1_y^i }
+			GER_yihui_bill_a_v19_2_icon = { x = GER_yihui_av19_2_x^i y = GER_yihui_av19_2_y^i }
+			GER_yihui_bill_a_v19_3_icon = { x = GER_yihui_av19_3_x^i y = GER_yihui_av19_3_y^i }
+			GER_yihui_bill_a_b19_1_icon = { x = GER_yihui_ab19_1_x^i }
+			GER_yihui_bill_a_b19_2_icon = { x = GER_yihui_ab19_2_x^i }
+			GER_yihui_bill_a_v20_1_icon = { x = GER_yihui_av20_1_x^i y = GER_yihui_av20_1_y^i }
+			GER_yihui_bill_a_v20_2_icon = { x = GER_yihui_av20_2_x^i y = GER_yihui_av20_2_y^i }
+			GER_yihui_bill_a_v20_3_icon = { x = GER_yihui_av20_3_x^i y = GER_yihui_av20_3_y^i }
+			GER_yihui_bill_a_b20_1_icon = { x = GER_yihui_ab20_1_x^i }
+			GER_yihui_bill_a_b20_2_icon = { x = GER_yihui_ab20_2_x^i }
+			GER_yihui_bill_a_v21_1_icon = { x = GER_yihui_av21_1_x^i y = GER_yihui_av21_1_y^i }
+			GER_yihui_bill_a_v21_2_icon = { x = GER_yihui_av21_2_x^i y = GER_yihui_av21_2_y^i }
+			GER_yihui_bill_a_v21_3_icon = { x = GER_yihui_av21_3_x^i y = GER_yihui_av21_3_y^i }
+			GER_yihui_bill_a_b21_1_icon = { x = GER_yihui_ab21_1_x^i }
+			GER_yihui_bill_a_b21_2_icon = { x = GER_yihui_ab21_2_x^i }
+			GER_yihui_bill_a_v22_1_icon = { x = GER_yihui_av22_1_x^i y = GER_yihui_av22_1_y^i }
+			GER_yihui_bill_a_v22_2_icon = { x = GER_yihui_av22_2_x^i y = GER_yihui_av22_2_y^i }
+			GER_yihui_bill_a_v22_3_icon = { x = GER_yihui_av22_3_x^i y = GER_yihui_av22_3_y^i }
+			GER_yihui_bill_a_b22_1_icon = { x = GER_yihui_ab22_1_x^i }
+			GER_yihui_bill_a_b22_2_icon = { x = GER_yihui_ab22_2_x^i }
+			GER_yihui_bill_a_v23_1_icon = { x = GER_yihui_av23_1_x^i y = GER_yihui_av23_1_y^i }
+			GER_yihui_bill_a_v23_2_icon = { x = GER_yihui_av23_2_x^i y = GER_yihui_av23_2_y^i }
+			GER_yihui_bill_a_v23_3_icon = { x = GER_yihui_av23_3_x^i y = GER_yihui_av23_3_y^i }
+			GER_yihui_bill_a_b23_1_icon = { x = GER_yihui_ab23_1_x^i }
+			GER_yihui_bill_a_b23_2_icon = { x = GER_yihui_ab23_2_x^i }
+			GER_yihui_bill_a_v24_1_icon = { x = GER_yihui_av24_1_x^i y = GER_yihui_av24_1_y^i }
+			GER_yihui_bill_a_v24_2_icon = { x = GER_yihui_av24_2_x^i y = GER_yihui_av24_2_y^i }
+			GER_yihui_bill_a_v24_3_icon = { x = GER_yihui_av24_3_x^i y = GER_yihui_av24_3_y^i }
+			GER_yihui_bill_a_b24_1_icon = { x = GER_yihui_ab24_1_x^i }
+			GER_yihui_bill_a_b24_2_icon = { x = GER_yihui_ab24_2_x^i }
+			GER_yihui_bill_a_v25_1_icon = { x = GER_yihui_av25_1_x^i y = GER_yihui_av25_1_y^i }
+			GER_yihui_bill_a_v25_2_icon = { x = GER_yihui_av25_2_x^i y = GER_yihui_av25_2_y^i }
+			GER_yihui_bill_a_v25_3_icon = { x = GER_yihui_av25_3_x^i y = GER_yihui_av25_3_y^i }
+			GER_yihui_bill_a_b25_1_icon = { x = GER_yihui_ab25_1_x^i }
+			GER_yihui_bill_a_b25_2_icon = { x = GER_yihui_ab25_2_x^i }
+			GER_yihui_bill_a_v26_1_icon = { x = GER_yihui_av26_1_x^i y = GER_yihui_av26_1_y^i }
+			GER_yihui_bill_a_v26_2_icon = { x = GER_yihui_av26_2_x^i y = GER_yihui_av26_2_y^i }
+			GER_yihui_bill_a_v26_3_icon = { x = GER_yihui_av26_3_x^i y = GER_yihui_av26_3_y^i }
+			GER_yihui_bill_a_b26_1_icon = { x = GER_yihui_ab26_1_x^i }
+			GER_yihui_bill_a_b26_2_icon = { x = GER_yihui_ab26_2_x^i }
+		}
+		triggers = {
+			# 没有表决时：暗座位 + 空计票条，没有标题、图片、数字
+			GER_yihui_bill_pic_GER_yihui_bill_versailles_visible = { OR = { check_variable = { GER_yihui_bill_id = 1 } check_variable = { GER_yihui_bill_id = 2 } } }
+			GER_yihui_bill_yes_visible = { check_variable = { GER_yihui_bill_id > 0 } }
+			GER_yihui_bill_no_visible = { check_variable = { GER_yihui_bill_id > 0 } }
+		}
+	}
+}

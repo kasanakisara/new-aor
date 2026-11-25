@@ -1,0 +1,75 @@
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成。重大立法表决弹窗的测试决议，测完整个文件和分类一起删掉即可。
+GER_yihui_bill_test_category = {
+	GER_yihui_test_bill_versailles = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { NOT = { check_variable = { GER_yihui_bill_id > 0 } } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				GER_yihui_bill_versailles = yes
+			}
+		}
+	}
+	GER_yihui_test_bill_inertia = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { NOT = { check_variable = { GER_yihui_bill_id > 0 } } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				if = { limit = { check_variable = { GER_yihui_inertia < 40 } } set_variable = { GER_yihui_inertia = 40 } }
+				set_temp_variable = { yh_bill = 2 }
+				set_temp_variable = { yh_cost = 20 }
+				GER_yihui_bill_vote = yes
+			}
+		}
+	}
+	GER_yihui_test_bill_no_inertia = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { NOT = { check_variable = { GER_yihui_bill_id > 0 } } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				set_variable = { GER_yihui_inertia = 10 }
+				set_temp_variable = { yh_bill = 2 }
+				set_temp_variable = { yh_cost = 20 }
+				GER_yihui_bill_vote = yes
+			}
+		}
+	}
+	GER_yihui_test_bill_clear = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { check_variable = { GER_yihui_bill_id > 0 } }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				GER_yihui_bill_clear = yes
+			}
+		}
+	}
+	GER_yihui_test_inertia_add = {
+		allowed = { original_tag = GER }
+		visible = { original_tag = GER }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			hidden_effect = {
+				add_to_variable = { GER_yihui_inertia = 30 }
+				clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
+			}
+		}
+	}
+}

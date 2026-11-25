@@ -40,6 +40,7 @@ scripted_gui = {
 				else = {
 					clr_country_flag = GER_main_GUI_open
 					clr_country_flag = GER_yihui_laws_open
+					clr_country_flag = GER_yihui_bill_open
 				}
 			}
 		}
@@ -83,7 +84,7 @@ scripted_gui = {
 				y = GER_Reichstag_seat_y^seat_idx
 				frame = GER_Reichstag_seat_frame^seat_idx
 			}
-			# 议程条：进度（按议程编号下标，由 GER_yihui_sync 重建）
+			# 议程条：进度（按议程编号下标，每日计时更新）
 			GER_yihui_agenda_entry_prog = { frame = GER_yihui_agenda_prog^v }
 			# 党派色点：帧 = 党派编号
 			GER_yihui_party_entry_dot = { frame = GER_yihui_party_list^i }
@@ -91,33 +92,10 @@ scripted_gui = {
 		triggers = {
 			# 议程条（v = 议程编号）
 			GER_yihui_agenda_entry_selected_visible = { check_variable = { GER_yihui_selected_agenda = v } }
-			GER_yihui_agenda_entry_locked_visible = {
-				OR = {
-					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 0 } }
-					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 0 } }
-					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 0 } }
-					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 0 } }
-					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 0 } }
-				}
-			}
-			GER_yihui_agenda_entry_button_click_enabled = {
-				OR = {
-					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state > 0 } }
-					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state > 0 } }
-					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state > 0 } }
-					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state > 0 } }
-					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state > 0 } }
-				}
-			}
-			GER_yihui_agenda_entry_prog_visible = {
-				OR = {
-					AND = { check_variable = { v = 1 } check_variable = { GER_yihui_ag_1_state = 2 } }
-					AND = { check_variable = { v = 2 } check_variable = { GER_yihui_ag_2_state = 2 } }
-					AND = { check_variable = { v = 3 } check_variable = { GER_yihui_ag_3_state = 2 } }
-					AND = { check_variable = { v = 4 } check_variable = { GER_yihui_ag_4_state = 2 } }
-					AND = { check_variable = { v = 5 } check_variable = { GER_yihui_ag_5_state = 2 } }
-				}
-			}
+			# 议程状态数组 GER_yihui_ag_state 按议程编号下标：0 未解锁 / 1 可处理 / 2 处理中
+			GER_yihui_agenda_entry_locked_visible = { check_variable = { GER_yihui_ag_state^v = 0 } }
+			GER_yihui_agenda_entry_button_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
+			GER_yihui_agenda_entry_prog_visible = { check_variable = { GER_yihui_ag_state^v = 2 } }
 			# 党派方块（v = 党派编号）：选中 = 在 GER_yihui_view_picks 里；只有选中「可处理」的议程时能点
 			GER_yihui_party_entry_selected_visible = { is_in_array = { array = GER_yihui_view_picks value = v } }
 			GER_yihui_party_entry_locked_visible = {
@@ -149,6 +127,8 @@ scripted_gui = {
 		effects = {
 			# 已通过法案侧栏
 			GER_yihui_laws_open_click = { set_country_flag = GER_yihui_laws_open }
+			# 左下角：重大立法弹窗开关
+			GER_yihui_bill_entry_click = { GER_yihui_bill_toggle = yes }
 			GER_yihui_laws_close_click = { clr_country_flag = GER_yihui_laws_open }
 			# 点议程：换了议程就清空已勾的党派
 			GER_yihui_agenda_entry_button_click = {

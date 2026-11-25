@@ -41,7 +41,7 @@ guiTypes = {
 		# 不能拖动：已通过法案侧栏是另一个窗口，按屏幕中心对齐贴在右边，拖动会分开
 		moveable = no
 		background = { name = "GER_yihui_bg" quadTextureSprite = "GFX_tiled_plain_bg" }
-		background = { name = "GER_yihui_lined_overlay_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" position = { x = 0 y = 0 } size = { width = 969 height = 694 } }
+		background = { name = "GER_yihui_lined_overlay_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" position = { x = 0 y = 0 } }
 
 		# 四周留 16 边。框体素材的金线内缩 4px，所以相邻两框之间看起来隔 8px
 		# 顶部：名言 + 问号（只悬停），同一条中线；问号右沿对齐议程框金线
@@ -82,6 +82,8 @@ guiTypes = {
 			max_slots_horizontal = 1
 			add_horizontal = no
 		}
+		# 左栏右上角：重大立法弹窗的开关（离框边 18px，和左上角政局三行对称；弹窗里同一位置也有一个）
+		buttonType = { name = "GER_yihui_bill_entry" quadTextureSprite = "GFX_GER_yihui_bill_entry" position = { x = 584 y = 78 } pdx_tooltip = "GER_yihui_bill_entry_tt" clicksound = click_default }
 
 		# 左列 2：委派党团 + 交付
 		containerWindowType = {
@@ -163,7 +165,7 @@ guiTypes = {
 		show_animation_type = decelerated
 		hide_animation_type = accelerated
 		background = { name = "GER_yihui_laws_bg" quadTextureSprite = "GFX_tiled_plain_bg" }
-		background = { name = "GER_yihui_laws_lined_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" position = { x = 0 y = 0 } size = { width = 267 height = 619 } }
+		background = { name = "GER_yihui_laws_lined_bg" quadTextureSprite = "GFX_tiled_plain_bg_lined" position = { x = 0 y = 0 } }
 		instantTextboxType = { name = "GER_yihui_laws_title" position = { x = 20 y = 20 } font = "hoi_18mbs" text = "GER_yihui_laws_title" maxWidth = 150 maxHeight = 26 format = left alwaystransparent = yes }
 		instantTextboxType = { name = "GER_yihui_laws_count" position = { x = 98 y = 22 } font = "hoi_16mbs" text = "GER_yihui_laws_count" maxWidth = 150 maxHeight = 24 format = right alwaystransparent = yes }
 		iconType = { name = "GER_yihui_laws_sep" spriteType = "GFX_GER_yihui_sep_h_laws" position = { x = 20 y = 52 } alwaystransparent = yes }

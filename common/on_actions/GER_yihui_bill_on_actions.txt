@@ -1,0 +1,10 @@
+# 由 桌面\AOR资料\AOR_议会GUI美术草案\install_bill_gui.py 生成；要改请改脚本后重跑
+on_actions = {
+	on_daily_GER = {
+		effect = { GER_yihui_bill_daily = yes }
+	}
+	# 进游戏（开局 / 读档）时动画素材是新的，下一场表决可以再播动画
+	on_startup = {
+		effect = { GER = { clr_country_flag = GER_yihui_bill_anim_used } }
+	}
+}

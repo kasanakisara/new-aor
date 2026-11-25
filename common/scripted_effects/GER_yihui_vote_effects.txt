@@ -1,0 +1,142 @@
+# 议会表决：给每个议席定一张票，存在数组 GER_yihui_vote（下标同 GER_Reichstag_seat_frame）
+#   1 赞成 / 2 反对 / 3 弃权；计票在 GER_yihui_vote_yes / GER_yihui_vote_no / GER_yihui_vote_abst
+# 党团编号同 GER_Reichstag_seat_frame：1 SPD左翼 2 SPD中派 3 SPD右翼 4 中央党 5 DDP 6 DVP 7 DNVP 8 其他
+# 重大立法弹窗用（表决动画按这个数组给议席上色）；草案见 桌面\AOR资料\AOR_议会GUI美术草案\gen_major_bill_draft.py，两边规则要一致
+
+GER_yihui_vote_clear = {
+	clear_array = GER_yihui_vote
+	set_variable = { GER_yihui_vote_yes = 0 }
+	set_variable = { GER_yihui_vote_no = 0 }
+	set_variable = { GER_yihui_vote_abst = 0 }
+}
+
+# 输入 yh_v，计一票
+GER_yihui_vote_count = {
+	if = { limit = { check_variable = { yh_v = 1 } } add_to_variable = { GER_yihui_vote_yes = 1 } }
+	else_if = { limit = { check_variable = { yh_v = 2 } } add_to_variable = { GER_yihui_vote_no = 1 } }
+	else = { add_to_variable = { GER_yihui_vote_abst = 1 } }
+}
+
+# 重大立法的基础投票倾向：输入 yh_party，输出 yh_py（赞成概率）、yh_pn（反对概率），其余弃权
+# 期望赞成约 230 席，刚好在过半线上：不花协商惯性时大约一半概率通过
+# 一个党团全体同票的概率很低（DNVP 全反对约 3%）
+# 行政焦点不投票，只有重大立法用这里
+GER_yihui_vote_party_odds = {
+	if = { limit = { check_variable = { yh_party = 1 } } set_temp_variable = { yh_py = 0.72 } set_temp_variable = { yh_pn = 0.12 } }		# SPD左翼
+	else_if = { limit = { check_variable = { yh_party = 2 } } set_temp_variable = { yh_py = 0.90 } set_temp_variable = { yh_pn = 0.03 } }	# SPD中派
+	else_if = { limit = { check_variable = { yh_party = 3 } } set_temp_variable = { yh_py = 0.82 } set_temp_variable = { yh_pn = 0.06 } }	# SPD右翼
+	else_if = { limit = { check_variable = { yh_party = 4 } } set_temp_variable = { yh_py = 0.45 } set_temp_variable = { yh_pn = 0.35 } }	# 中央党
+	else_if = { limit = { check_variable = { yh_party = 5 } } set_temp_variable = { yh_py = 0.30 } set_temp_variable = { yh_pn = 0.50 } }	# DDP
+	else_if = { limit = { check_variable = { yh_party = 6 } } set_temp_variable = { yh_py = 0.08 } set_temp_variable = { yh_pn = 0.80 } }	# DVP
+	else_if = { limit = { check_variable = { yh_party = 7 } } set_temp_variable = { yh_py = 0.02 } set_temp_variable = { yh_pn = 0.95 } }	# DNVP
+	else = { set_temp_variable = { yh_py = 0.25 } set_temp_variable = { yh_pn = 0.45 } }	# 其他
+}
+
+# 重大立法表决：每个议席按所属党团的概率随机投票；过不过半看结果（终案没过再投修正案）
+GER_yihui_vote_roll = {
+	GER_yihui_vote_clear = yes
+	for_each_loop = {
+		array = GER_Reichstag_seat_frame
+		value = yh_party
+		index = yh_seat
+		GER_yihui_vote_party_odds = yes
+		add_to_temp_variable = { yh_pn = yh_py }	# 累积：小于 py 赞成，小于 py+pn 反对
+		set_temp_variable = { yh_r = random }
+		set_temp_variable = { yh_v = 3 }
+		if = { limit = { check_variable = { yh_r < yh_py } } set_temp_variable = { yh_v = 1 } }
+		else_if = { limit = { check_variable = { yh_r < yh_pn } } set_temp_variable = { yh_v = 2 } }
+		add_to_array = { array = GER_yihui_vote value = yh_v }
+		GER_yihui_vote_count = yes
+	}
+}
+
+# 重大立法表决：先 set_temp_variable = { yh_cost = 20 }，再 GER_yihui_vote_major = yes（HOI4 脚本效果不能带参数）
+# 协商惯性够 yh_cost：扣掉，并让执政联盟多出一些赞成票，稳稳过半（过半线以上至少 10 票）
+# 不够：不扣，按基础倾向投，可能不过（没过之后怎么办由调用方决定，比如触发事件、再投修正案）
+# 结果：GER_yihui_vote_passed = 1 通过 / 0 未通过
+GER_yihui_vote_major = {
+	set_temp_variable = { yh_vote_cost = yh_cost }
+	GER_yihui_vote_roll = yes
+	if = {
+		limit = { NOT = { check_variable = { GER_yihui_inertia < yh_vote_cost } } }
+		subtract_from_variable = { GER_yihui_inertia = yh_vote_cost }
+		set_temp_variable = { yh_margin = 10 }
+		GER_yihui_vote_ensure_pass = yes
+	}
+	GER_yihui_vote_check_passed = yes
+}
+
+GER_yihui_vote_check_passed = {
+	set_temp_variable = { yh_half = GER_yihui_vote^num }
+	divide_temp_variable = { yh_half = 2 }
+	set_variable = { GER_yihui_vote_passed = 0 }
+	if = { limit = { check_variable = { GER_yihui_vote_yes > yh_half } } set_variable = { GER_yihui_vote_passed = 1 } }
+}
+
+# 让赞成票过半（再多 yh_margin 票，没设就是 0）：先 GER_yihui_vote_roll，再调这个
+# 从执政联盟（SPD 三派、中央党）的反对 / 弃权票里随机改投赞成
+GER_yihui_vote_ensure_pass = {
+	set_temp_variable = { yh_half = GER_yihui_vote^num }
+	divide_temp_variable = { yh_half = 2 }
+	add_to_temp_variable = { yh_half = yh_margin }
+	set_temp_variable = { yh_last = GER_yihui_vote^num }
+	subtract_from_temp_variable = { yh_last = 1 }
+	while_loop_effect = {
+		limit = { NOT = { check_variable = { GER_yihui_vote_yes > yh_half } } }
+		set_temp_variable = { yh_i = random }
+		multiply_temp_variable = { yh_i = yh_last }
+		round_temp_variable = yh_i
+		if = {
+			limit = {
+				NOT = { check_variable = { GER_yihui_vote^yh_i = 1 } }
+				check_variable = { GER_Reichstag_seat_frame^yh_i < 5 }
+			}
+			if = { limit = { check_variable = { GER_yihui_vote^yh_i = 2 } } subtract_from_variable = { GER_yihui_vote_no = 1 } }
+			else = { subtract_from_variable = { GER_yihui_vote_abst = 1 } }
+			set_variable = { GER_yihui_vote^yh_i = 1 }
+			add_to_variable = { GER_yihui_vote_yes = 1 }
+		}
+	}
+}
+
+# 凡尔赛和约表决：票数固定（赞成 264 / 反对 168 / 弃权 27），每个党团里谁投什么也固定但打散
+# 党团内第 k 席取 (k × 37) mod 党团席位数，小于赞成数投赞成，再小于赞成+反对数投反对，其余弃权
+GER_yihui_vote_versailles = {
+	GER_yihui_vote_clear = yes
+	set_temp_variable = { yh_prev = -1 }
+	set_temp_variable = { yh_start = 0 }
+	for_each_loop = {
+		array = GER_Reichstag_seat_frame
+		value = yh_party
+		index = yh_seat
+		if = {
+			limit = { NOT = { check_variable = { yh_party = yh_prev } } }
+			set_temp_variable = { yh_prev = yh_party }
+			set_temp_variable = { yh_start = yh_seat }
+		}
+		# 党团席位数 yh_n，固定票数 yh_ny（赞成）、yh_nn（反对）
+		if = { limit = { check_variable = { yh_party = 1 } } set_temp_variable = { yh_n = GER_reichstag_spd_left_seats } set_temp_variable = { yh_ny = 28 } set_temp_variable = { yh_nn = 4 } }
+		else_if = { limit = { check_variable = { yh_party = 2 } } set_temp_variable = { yh_n = GER_reichstag_spd_center_left_seats } set_temp_variable = { yh_ny = 84 } set_temp_variable = { yh_nn = 1 } }
+		else_if = { limit = { check_variable = { yh_party = 3 } } set_temp_variable = { yh_n = GER_reichstag_spd_right_seats } set_temp_variable = { yh_ny = 76 } set_temp_variable = { yh_nn = 3 } }
+		else_if = {
+			limit = { check_variable = { yh_party = 4 } }
+			set_temp_variable = { yh_n = GER_reichstag_dzp_seats }
+			add_to_temp_variable = { yh_n = GER_reichstag_bvp_seats }
+			set_temp_variable = { yh_ny = 64 } set_temp_variable = { yh_nn = 21 }
+		}
+		else_if = { limit = { check_variable = { yh_party = 5 } } set_temp_variable = { yh_n = GER_reichstag_ddp_seats } set_temp_variable = { yh_ny = 6 } set_temp_variable = { yh_nn = 12 } }
+		else_if = { limit = { check_variable = { yh_party = 6 } } set_temp_variable = { yh_n = GER_reichstag_dvp_seats } set_temp_variable = { yh_ny = 0 } set_temp_variable = { yh_nn = 54 } }
+		else_if = { limit = { check_variable = { yh_party = 7 } } set_temp_variable = { yh_n = GER_reichstag_dnvp_seats } set_temp_variable = { yh_ny = 0 } set_temp_variable = { yh_nn = 66 } }
+		else = { set_temp_variable = { yh_n = GER_reichstag_other_seats } set_temp_variable = { yh_ny = 6 } set_temp_variable = { yh_nn = 7 } }
+		set_temp_variable = { yh_j = yh_seat }
+		subtract_from_temp_variable = { yh_j = yh_start }
+		multiply_temp_variable = { yh_j = 37 }
+		modulo_temp_variable = { yh_j = yh_n }
+		add_to_temp_variable = { yh_nn = yh_ny }
+		set_temp_variable = { yh_v = 3 }
+		if = { limit = { check_variable = { yh_j < yh_ny } } set_temp_variable = { yh_v = 1 } }
+		else_if = { limit = { check_variable = { yh_j < yh_nn } } set_temp_variable = { yh_v = 2 } }
+		add_to_array = { array = GER_yihui_vote value = yh_v }
+		GER_yihui_vote_count = yes
+	}
+}
