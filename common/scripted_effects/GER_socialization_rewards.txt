@@ -179,11 +179,16 @@ GER_socialization_refresh_industry_rewards = {
     set_variable = { GER_soc_reward_construction_speed = 0 }
     set_variable = { GER_soc_reward_consumer_goods = 0 }
     set_variable = { GER_soc_reward_dockyard_output = 0 }
+    set_variable = { GER_soc_reward_research_speed = 0 }
+    set_variable = { GER_soc_reward_monthly_population = 0 }
+    set_variable = { GER_soc_reward_building_slots = 0 }
     if = { limit = { has_country_flag = GER_socialization_reward_power } set_variable = { GER_soc_reward_stability_weekly = 0.0035 } }
-    if = { limit = { has_country_flag = GER_socialization_reward_armaments } set_variable = { GER_soc_reward_factory_output = 0.10 } set_variable = { GER_soc_reward_factory_efficiency = 0.10 } }
-    if = { limit = { has_country_flag = GER_socialization_reward_metalworking } set_variable = { GER_soc_reward_construction_speed = 0.10 } }
+    if = { limit = { has_country_flag = GER_socialization_reward_armaments } add_to_variable = { GER_soc_reward_factory_output = 0.10 } set_variable = { GER_soc_reward_factory_efficiency = 0.10 } }
+    if = { limit = { has_country_flag = GER_socialization_reward_metalworking } add_to_variable = { GER_soc_reward_construction_speed = 0.10 } add_to_variable = { GER_soc_reward_factory_output = 0.10 } add_to_variable = { GER_soc_reward_dockyard_output = 0.10 } }
+    if = { limit = { has_country_flag = GER_socialization_reward_chemicals } set_variable = { GER_soc_reward_research_speed = 0.05 } set_variable = { GER_soc_reward_monthly_population = 0.10 } }
+    if = { limit = { has_country_flag = GER_socialization_reward_electrical } add_to_variable = { GER_soc_reward_construction_speed = 0.08 } set_variable = { GER_soc_reward_building_slots = 0.10 } }
     if = { limit = { has_country_flag = GER_socialization_reward_light_industry } set_variable = { GER_soc_reward_consumer_goods = -0.10 } }
-    if = { limit = { has_country_flag = GER_socialization_reward_shipbuilding } set_variable = { GER_soc_reward_dockyard_output = 0.10 } }
+    if = { limit = { has_country_flag = GER_socialization_reward_shipbuilding } add_to_variable = { GER_soc_reward_dockyard_output = 0.10 } }
     if = {
         limit = {
             OR = {
@@ -221,5 +226,43 @@ GER_socialization_refresh_industry_rewards = {
             NOT = { has_idea = GER_socialization_industry_rewards_idea }
         }
         add_ideas = GER_socialization_industry_rewards_idea
+    }
+    GER_socialization_sync_enterprises = yes
+}
+
+# 实业家对应行业社会化完成后（无论是否已在内阁任命），直接退场消失，其成果并入「社会化行业成果」民族精神
+GER_socialization_sync_enterprises = {
+    if = {
+        limit = { has_country_flag = GER_socialization_reward_chemicals }
+        if = {
+            limit = { has_character = GER_05_01_Carl_Duisberg }
+            if = {
+                limit = { GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes } }
+                deactivate_advisor = GER_05_01_Carl_Duisberg
+            }
+            retire_character = GER_05_01_Carl_Duisberg
+        }
+    }
+    if = {
+        limit = { has_country_flag = GER_socialization_reward_electrical }
+        if = {
+            limit = { has_character = GER_05_02_Carl_Koettgen }
+            if = {
+                limit = { GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes } }
+                deactivate_advisor = GER_05_02_Carl_Koettgen
+            }
+            retire_character = GER_05_02_Carl_Koettgen
+        }
+    }
+    if = {
+        limit = { has_country_flag = GER_socialization_reward_metalworking }
+        if = {
+            limit = { has_character = GER_05_03_Paul_Reusch }
+            if = {
+                limit = { GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes } }
+                deactivate_advisor = GER_05_03_Paul_Reusch
+            }
+            retire_character = GER_05_03_Paul_Reusch
+        }
     }
 }

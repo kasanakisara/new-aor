@@ -22,6 +22,7 @@ GER_adv_cabinet_count = {
 	set_variable = { var = GER_cab_spd_right value = 0 }
 	set_variable = { var = GER_cab_spd_center value = 0 }
 	set_variable = { var = GER_cab_spd_left value = 0 }
+	set_variable = { var = GER_cab_industrialist value = 0 }
 
 	if = {
 		limit = { GER_01_01_Ernst_Daeumig = { is_hired_as_advisor = yes } }
@@ -107,16 +108,19 @@ GER_adv_cabinet_count = {
 		add_to_variable = { var = GER_cab_total value = 1 }
 	}
 	if = {
-		limit = { GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes } }
+		limit = { has_character = GER_05_01_Carl_Duisberg GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes } }
 		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_industrialist value = 1 }
 	}
 	if = {
-		limit = { GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes } }
+		limit = { has_character = GER_05_02_Carl_Koettgen GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes } }
 		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_industrialist value = 1 }
 	}
 	if = {
-		limit = { GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes } }
+		limit = { has_character = GER_05_03_Paul_Reusch GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes } }
 		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_industrialist value = 1 }
 	}
 	if = {
 		limit = { GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes } }
@@ -172,6 +176,31 @@ GER_adv_cabinet_count = {
 	if = {
 		limit = { GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes } }
 		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	if = {
+		limit = { has_character = GER_Richard_Mueller_regular_cabinet GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_cab_total value = 1 }
+	}
+	# 马尔库塞、台尔曼走政治家道路完成成长后转入的正式内阁（社民党左派）
+	if = {
+		limit = {
+			OR = {
+				AND = { has_character = GER_Herbert_Marcuse_regular_cabinet_a GER_Herbert_Marcuse_regular_cabinet_a = { is_hired_as_advisor = yes } }
+				AND = { has_character = GER_Herbert_Marcuse_regular_cabinet_b GER_Herbert_Marcuse_regular_cabinet_b = { is_hired_as_advisor = yes } }
+			}
+		}
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_left value = 1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				AND = { has_character = GER_Ernst_Thaelmann_regular_cabinet_a GER_Ernst_Thaelmann_regular_cabinet_a = { is_hired_as_advisor = yes } }
+				AND = { has_character = GER_Ernst_Thaelmann_regular_cabinet_b GER_Ernst_Thaelmann_regular_cabinet_b = { is_hired_as_advisor = yes } }
+			}
+		}
+		add_to_variable = { var = GER_cab_total value = 1 }
+		add_to_variable = { var = GER_cab_spd_left value = 1 }
 	}
 
 	set_variable = { var = GER_cab_diff_center value = GER_cab_total }
@@ -335,6 +364,141 @@ GER_adv_cabinet_conditions = {
 	else = {
 		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_stresemann_watch } } remove_dynamic_modifier = { modifier = GER_adv_stresemann_watch } }
 	}
+
+	# 迪特曼：党内左派与右派支持度差值不超过 15%
+	set_temp_variable = { GER_adv_lr_diff = GER_SPD_left_support }
+	subtract_from_temp_variable = { GER_adv_lr_diff = GER_SPD_right_support }
+	if = {
+		limit = { check_variable = { GER_adv_lr_diff < 0 } }
+		multiply_temp_variable = { GER_adv_lr_diff = -1 }
+	}
+	if = {
+		limit = {
+			GER_02_02_Robert_Dittmann = { is_hired_as_advisor = yes }
+			has_variable = GER_SPD_left_support
+			has_variable = GER_SPD_right_support
+			check_variable = { var = GER_adv_lr_diff value = 15 compare = less_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_dittmann_balance } } } add_dynamic_modifier = { modifier = GER_adv_dittmann_balance } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_dittmann_balance } } remove_dynamic_modifier = { modifier = GER_adv_dittmann_balance } }
+	}
+
+	# 莱帕特：内阁中存在实业家
+	if = {
+		limit = {
+			GER_02_03_Theodor_Leipart = { is_hired_as_advisor = yes }
+			check_variable = { var = GER_cab_industrialist value = 0 compare = more_than }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_leipart_industry } } } add_dynamic_modifier = { modifier = GER_adv_leipart_industry } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_leipart_industry } } remove_dynamic_modifier = { modifier = GER_adv_leipart_industry } }
+	}
+
+	# 杜伊斯贝格：化学工业尚未完成社会化前
+	if = {
+		limit = {
+			has_character = GER_05_01_Carl_Duisberg
+			GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_socialization_reward_chemicals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_duisberg_pre } } } add_dynamic_modifier = { modifier = GER_adv_duisberg_pre } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_duisberg_pre } } remove_dynamic_modifier = { modifier = GER_adv_duisberg_pre } }
+	}
+
+	# 克特根：卡尔·巴洛德或鲁道夫·维塞尔在任
+	if = {
+		limit = {
+			has_character = GER_05_02_Carl_Koettgen
+			GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes }
+			OR = {
+				GER_04_01_Carl_Ballod = { is_hired_as_advisor = yes }
+				GER_03_01_Rudolf_Wissell = { is_hired_as_advisor = yes }
+			}
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_koettgen_synergy } } } add_dynamic_modifier = { modifier = GER_adv_koettgen_synergy } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_koettgen_synergy } } remove_dynamic_modifier = { modifier = GER_adv_koettgen_synergy } }
+	}
+
+	# 罗伊施：反革命激进度不超过 Lv.1 且威斯特法伦不是左派控制区
+	if = {
+		limit = {
+			has_character = GER_05_03_Paul_Reusch
+			GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes }
+			NOT = { check_variable = { GER_socialization_radicalism_level > 1 } }
+			NOT = { check_variable = { GER_region_R15_state = 8 } }
+			NOT = { check_variable = { GER_region_R15_state = 3 } }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_reusch_ruhr } } } add_dynamic_modifier = { modifier = GER_adv_reusch_ruhr } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_reusch_ruhr } } remove_dynamic_modifier = { modifier = GER_adv_reusch_ruhr } }
+	}
+
+	# 赫尔曼·米勒：议会联盟凝聚力不低于 60%
+	if = {
+		limit = {
+			GER_09_04_Hermann_Mueller = { is_hired_as_advisor = yes }
+			has_variable = GER_yihui_cohesion
+			check_variable = { var = GER_yihui_cohesion value = 60 compare = more_than_or_equals }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_hmueller_coalition } } } add_dynamic_modifier = { modifier = GER_adv_hmueller_coalition } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_hmueller_coalition } } remove_dynamic_modifier = { modifier = GER_adv_hmueller_coalition } }
+	}
+
+	# 维尔特：马蒂亚斯·埃茨贝格尔在任
+	if = {
+		limit = {
+			GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes }
+			GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_wirth_erzberger } } } add_dynamic_modifier = { modifier = GER_adv_wirth_erzberger } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_wirth_erzberger } } remove_dynamic_modifier = { modifier = GER_adv_wirth_erzberger } }
+	}
+
+	# 科赫-韦泽：雨果·普罗伊斯在任
+	if = {
+		limit = {
+			GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes }
+			GER_03_08_Hugo_Preuss = { is_hired_as_advisor = yes }
+		}
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_koch_preuss } } } add_dynamic_modifier = { modifier = GER_adv_koch_preuss } }
+	}
+	else = {
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_koch_preuss } } remove_dynamic_modifier = { modifier = GER_adv_koch_preuss } }
+	}
+
+	# 科赫-韦泽：在任期间议会行政容量 +1（卸任收回）
+	if = {
+		limit = {
+			has_country_flag = GER_yihui_agenda_v2
+			GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_adv_koch_weser_cap_applied }
+		}
+		set_country_flag = GER_adv_koch_weser_cap_applied
+		add_to_variable = { GER_yihui_focus_capacity = 1 }
+		GER_yihui_sync = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = GER_adv_koch_weser_cap_applied
+			NOT = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } }
+		}
+		clr_country_flag = GER_adv_koch_weser_cap_applied
+		subtract_from_variable = { GER_yihui_focus_capacity = 1 }
+		clamp_variable = { var = GER_yihui_focus_capacity min = 1 max = 20 }
+		GER_yihui_sync = yes
+	}
 }
 
 GER_adv_cabinet_weekly_social = {
@@ -379,6 +543,18 @@ GER_adv_cabinet_weekly_social = {
 			limit = { GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes } }
 			subtract_from_variable = { var = GER_adv_soc_weekly value = 1 }
 		}
+		# 里夏德·米勒：军事工业（4）或金属加工（5）社会化进行中，每周社会化进度 +4
+		if = {
+			limit = {
+				has_character = GER_Richard_Mueller_regular_cabinet
+				GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes }
+				OR = {
+					check_variable = { GER_socialization_active_industry = 4 }
+					check_variable = { GER_socialization_active_industry = 5 }
+				}
+			}
+			add_to_variable = { var = GER_adv_soc_weekly value = 4 }
+		}
 		add_to_variable = { var = GER_adv_soc_week value = 1 }
 		if = {
 			limit = { check_variable = { var = GER_adv_soc_week value = 7 compare = more_than_or_equals } }
@@ -399,6 +575,15 @@ GER_adv_cabinet_weekly_social = {
 					GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes }
 					check_variable = { var = GER_cab_total value = 0 compare = more_than }
 					check_variable = { var = GER_cab_diff_right value = 0 }
+				}
+				subtract_from_variable = { var = GER_socialization_organization value = 1 }
+				GER_socialization_refresh_bars = yes
+			}
+			# 莱帕特：内阁存在实业家时，每周无产阶级组织度 -1%
+			if = {
+				limit = {
+					GER_02_03_Theodor_Leipart = { is_hired_as_advisor = yes }
+					check_variable = { var = GER_cab_industrialist value = 0 compare = more_than }
 				}
 				subtract_from_variable = { var = GER_socialization_organization value = 1 }
 				GER_socialization_refresh_bars = yes
@@ -497,11 +682,223 @@ GER_adv_stresemann_term = {
 	}
 }
 
+GER_adv_cabinet_periodic_effects = {
+	# 迪特曼：每两周党内团结度 +1%
+	if = { limit = { NOT = { has_variable = GER_adv_dittmann_days } } set_variable = { var = GER_adv_dittmann_days value = 0 } }
+	if = {
+		limit = { GER_02_02_Robert_Dittmann = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_adv_dittmann_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_dittmann_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_dittmann_days value = 14 }
+			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				add_to_variable = { var = GER_SPD_unity value = 1 }
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_dittmann_days value = 0 } }
+
+	# 莱帕特：每 30 天反革命力量 -1%
+	if = { limit = { NOT = { has_variable = GER_adv_leipart_days } } set_variable = { var = GER_adv_leipart_days value = 0 } }
+	if = {
+		limit = { GER_02_03_Theodor_Leipart = { is_hired_as_advisor = yes } has_country_flag = GER_socialization_started }
+		add_to_variable = { var = GER_adv_leipart_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_leipart_days value = 30 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_leipart_days value = 30 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				subtract_from_variable = { var = GER_socialization_counterrevolution value = 12 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+				GER_socialization_refresh_bars = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_leipart_days value = 0 } }
+
+	# 里夏德·米勒（常规内阁）：每两周无产阶级组织度 +2%，大柏林与勃兰登堡控制度 +0.5
+	if = { limit = { NOT = { has_variable = GER_adv_rmueller_days } } set_variable = { var = GER_adv_rmueller_days value = 0 } }
+	if = {
+		limit = { has_character = GER_Richard_Mueller_regular_cabinet GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_adv_rmueller_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_rmueller_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_rmueller_days value = 14 }
+			if = {
+				limit = { has_country_flag = GER_socialization_started }
+				add_to_variable = { var = GER_socialization_organization value = 2 }
+				GER_socialization_refresh_bars = yes
+			}
+			if = {
+				limit = { has_country_flag = GER_region_map_opened }
+				set_temp_variable = { GER_region_delta = 0.5 }
+				GER_region_R06_add_control = yes
+				GER_region_R16_add_control = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_rmueller_days value = 0 } }
+
+	# 三大实业家（社会化完成前）：每两周增加反革命力量
+	if = { limit = { NOT = { has_variable = GER_adv_duisberg_days } } set_variable = { var = GER_adv_duisberg_days value = 0 } }
+	if = {
+		limit = {
+			has_character = GER_05_01_Carl_Duisberg
+			GER_05_01_Carl_Duisberg = { is_hired_as_advisor = yes }
+			has_country_flag = GER_socialization_started
+			NOT = { has_country_flag = GER_socialization_reward_chemicals }
+		}
+		add_to_variable = { var = GER_adv_duisberg_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_duisberg_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_duisberg_days value = 14 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				add_to_variable = { var = GER_socialization_counterrevolution value = 12 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+				GER_socialization_refresh_bars = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_duisberg_days value = 0 } }
+
+	if = { limit = { NOT = { has_variable = GER_adv_koettgen_days } } set_variable = { var = GER_adv_koettgen_days value = 0 } }
+	if = {
+		limit = {
+			has_character = GER_05_02_Carl_Koettgen
+			GER_05_02_Carl_Koettgen = { is_hired_as_advisor = yes }
+			has_country_flag = GER_socialization_started
+			NOT = { has_country_flag = GER_socialization_reward_electrical }
+		}
+		add_to_variable = { var = GER_adv_koettgen_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_koettgen_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_koettgen_days value = 14 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				add_to_variable = { var = GER_socialization_counterrevolution value = 12 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+				GER_socialization_refresh_bars = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_koettgen_days value = 0 } }
+
+	if = { limit = { NOT = { has_variable = GER_adv_reusch_days } } set_variable = { var = GER_adv_reusch_days value = 0 } }
+	if = {
+		limit = {
+			has_character = GER_05_03_Paul_Reusch
+			GER_05_03_Paul_Reusch = { is_hired_as_advisor = yes }
+			has_country_flag = GER_socialization_started
+			NOT = { has_country_flag = GER_socialization_reward_metalworking }
+		}
+		add_to_variable = { var = GER_adv_reusch_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_reusch_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_reusch_days value = 14 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				add_to_variable = { var = GER_socialization_counterrevolution value = 18 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+				GER_socialization_refresh_bars = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_reusch_days value = 0 } }
+
+	# 赫尔曼·米勒：每两周党内团结度 +2%（低于 50% 再 +2%）
+	if = { limit = { NOT = { has_variable = GER_adv_hmueller_days } } set_variable = { var = GER_adv_hmueller_days value = 0 } }
+	if = {
+		limit = { GER_09_04_Hermann_Mueller = { is_hired_as_advisor = yes } }
+		add_to_variable = { var = GER_adv_hmueller_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_hmueller_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_hmueller_days value = 14 }
+			if = {
+				limit = { has_country_flag = GER_SPD_unity_initialized }
+				if = {
+					limit = { check_variable = { GER_SPD_unity < 50 } }
+					add_to_variable = { var = GER_SPD_unity value = 4 }
+				}
+				else = {
+					add_to_variable = { var = GER_SPD_unity value = 2 }
+				}
+				GER_SPD_refresh_unity_effect = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_hmueller_days value = 0 } }
+
+	# 维尔特：每 90 天反革命力量 -2%
+	if = { limit = { NOT = { has_variable = GER_adv_wirth_days } } set_variable = { var = GER_adv_wirth_days value = 0 } }
+	if = {
+		limit = { GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } has_country_flag = GER_socialization_started }
+		add_to_variable = { var = GER_adv_wirth_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_wirth_days value = 90 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_wirth_days value = 90 }
+			if = {
+				limit = { has_variable = GER_socialization_counterrevolution }
+				subtract_from_variable = { var = GER_socialization_counterrevolution value = 24 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+				GER_socialization_refresh_bars = yes
+			}
+		}
+	}
+	else = { set_variable = { var = GER_adv_wirth_days value = 0 } }
+
+	# 维尔特 + 埃茨贝格尔：每两周议会联盟凝聚力 +1%
+	if = { limit = { NOT = { has_variable = GER_adv_wirth_cohesion_days } } set_variable = { var = GER_adv_wirth_cohesion_days value = 0 } }
+	if = {
+		limit = {
+			GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes }
+			GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes }
+			has_country_flag = GER_yihui_agenda_v2
+		}
+		add_to_variable = { var = GER_adv_wirth_cohesion_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_wirth_cohesion_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_wirth_cohesion_days value = 14 }
+			add_to_variable = { GER_yihui_cohesion = 1 }
+			clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+			GER_yihui_sync = yes
+		}
+	}
+	else = { set_variable = { var = GER_adv_wirth_cohesion_days value = 0 } }
+
+	# 埃茨贝格尔：每两周反革命激进度 +0.5%
+	if = { limit = { NOT = { has_variable = GER_adv_erzberger_days } } set_variable = { var = GER_adv_erzberger_days value = 0 } }
+	if = {
+		limit = { GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes } has_country_flag = GER_socialization_started }
+		add_to_variable = { var = GER_adv_erzberger_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_erzberger_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_erzberger_days value = 14 }
+			add_to_variable = { var = GER_socialization_radicalism value = 0.5 }
+			GER_socialization_refresh_bars = yes
+		}
+	}
+	else = { set_variable = { var = GER_adv_erzberger_days value = 0 } }
+}
+
 GER_adv_cabinet_daily_effects = {
+	GER_socialization_sync_enterprises = yes
+	if = {
+		limit = {
+			OR = {
+				AND = { has_country_flag = GER_socialization_reward_chemicals NOT = { check_variable = { GER_soc_reward_research_speed > 0 } } }
+				AND = { has_country_flag = GER_socialization_reward_electrical NOT = { check_variable = { GER_soc_reward_building_slots > 0 } } }
+			}
+		}
+		GER_socialization_refresh_industry_rewards = yes
+	}
 	GER_adv_cabinet_count = yes
 	GER_adv_cabinet_conditions = yes
 	GER_adv_cabinet_weekly_social = yes
 	GER_adv_mehring_term = yes
 	GER_adv_zetkin_term = yes
 	GER_adv_stresemann_term = yes
+	GER_adv_cabinet_periodic_effects = yes
 }

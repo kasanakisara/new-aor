@@ -8,8 +8,20 @@ leader_traits = {
         custom_modifier_tooltip = GER_adv_ballod_tt
     }
     AOR_GER_industrialist = { random = no }
-    AOR_GER_bayer = { random = no }
-    AOR_GER_siemens_schuckert = { random = no }
+    AOR_GER_bayer = {
+        random = no
+        production_speed_synthetic_refinery_factor = 0.15
+        research_speed_factor = 0.03
+        local_resources_factor = 0.05
+        custom_modifier_tooltip = GER_adv_duisberg_tt
+    }
+    AOR_GER_siemens_schuckert = {
+        random = no
+        production_factory_efficiency_gain_factor = 0.08
+        production_speed_infrastructure_factor = 0.10
+        research_speed_factor = 0.03
+        custom_modifier_tooltip = GER_adv_koettgen_tt
+    }
     AOR_GER_economic_sociology = {
         random = no
         consumer_goods_factor = -0.05
@@ -25,15 +37,16 @@ leader_traits = {
         consumer_goods_factor = -0.10
         custom_modifier_tooltip = GER_adv_schacht_tt
     }
-    AOR_GER_interior_minister = {
-        random = no
-        stability_factor = 0.05
-        political_power_factor = 0.05
-        local_resources_factor = 0.075
-        industrial_concern_cost_factor = -0.10
-    }
+    AOR_GER_interior_minister = { random = no }
     AOR_GER_zentrum = { random = no }
-    AOR_GER_ghh = { random = no }
+    AOR_GER_ghh = {
+        random = no
+        production_speed_arms_factory_factor = 0.10
+        production_speed_dockyard_factor = 0.10
+        local_resources_factor = 0.10
+        stability_factor = -0.03
+        custom_modifier_tooltip = GER_adv_reusch_tt
+    }
     AOR_GER_social_economics = {
         random = no
         production_speed_infrastructure_factor = 0.10

@@ -458,10 +458,17 @@ GER_region_cr_daily_tick = {
     else = { GER_region_cr_sync_selected = yes }
 }
 
-# 点倒计时条：花政治点数阻止选中地区的行动（摇摆区 15，其他 10），该地区 7 日内不再成为目标
+# 点倒计时条：花政治点数阻止选中地区的行动（摇摆区 15，其他 10；维尔特在任减免 30%：摇摆区 10，其他 7），该地区 7 日内不再成为目标
 GER_region_cr_stop_selected = {
-    if = { limit = { check_variable = { GER_region_sel_frame = 2 } } add_political_power = -15 }
-    else = { add_political_power = -10 }
+    if = {
+        limit = { GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } }
+        if = { limit = { check_variable = { GER_region_sel_frame = 2 } } add_political_power = -10 }
+        else = { add_political_power = -7 }
+    }
+    else = {
+        if = { limit = { check_variable = { GER_region_sel_frame = 2 } } add_political_power = -15 }
+        else = { add_political_power = -10 }
+    }
     if = { limit = { check_variable = { GER_region_selected = 1 } } set_variable = { GER_region_R01_cr_days = 0 } set_variable = { GER_region_R01_cr_block = 7 } set_variable = { GER_region_R01_cr_mark = 0 } }
     else_if = { limit = { check_variable = { GER_region_selected = 2 } } set_variable = { GER_region_R02_cr_days = 0 } set_variable = { GER_region_R02_cr_block = 7 } set_variable = { GER_region_R02_cr_mark = 0 } }
     else_if = { limit = { check_variable = { GER_region_selected = 3 } } set_variable = { GER_region_R03_cr_days = 0 } set_variable = { GER_region_R03_cr_block = 7 } set_variable = { GER_region_R03_cr_mark = 0 } }
@@ -511,6 +518,11 @@ GER_region_cr_sync_selected = {
     }
     set_variable = { GER_region_sel_cr_cost = 10 }
     if = { limit = { check_variable = { GER_region_sel_frame = 2 } } set_variable = { GER_region_sel_cr_cost = 15 } }
+    if = {
+        limit = { GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } }
+        set_variable = { GER_region_sel_cr_cost = 7 }
+        if = { limit = { check_variable = { GER_region_sel_frame = 2 } } set_variable = { GER_region_sel_cr_cost = 10 } }
+    }
     # 激进度菱形：帧 1-4 = 0-3 颗
     set_variable = { GER_region_cr_pips = GER_socialization_radicalism_level }
     add_to_variable = { GER_region_cr_pips = 1 }

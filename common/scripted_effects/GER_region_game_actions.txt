@@ -20,7 +20,8 @@
 
 # ======== 1 扩大宣传投入（10pp，耗时 7 天）：支持度 +3
 GER_region_action_1 = {
-    set_temp_variable = { GER_region_noop = 1 }   # 点击时没有效果
+    set_temp_variable = { GER_region_noop = 1 }
+    if = { limit = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } } add_political_power = 2.5 }
 }
 GER_region_action_1_complete = {
     set_temp_variable = { GER_region_delta = 3 }
@@ -30,6 +31,7 @@ GER_region_action_1_complete = {
 # ======== 2 扩张防卫组织（10pp，耗时 7 天）：控制度 +3
 GER_region_action_2 = {
     set_temp_variable = { GER_region_noop = 1 }
+    if = { limit = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } } add_political_power = 2.5 }
 }
 GER_region_action_2_complete = {
     set_temp_variable = { GER_region_delta = 3 }
@@ -59,6 +61,7 @@ GER_region_action_3_complete = {
 
 # ======== 4 推动公共事业（25pp，持续 168 天）：每两周支持度 +0.4；点击时 SPD 随机一个派别党内支持度 +5
 GER_region_action_4 = {
+    if = { limit = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } } add_political_power = 6.25 }
     random_list = {
         1 = { add_to_variable = { GER_SPD_left_support = 5 } }
         1 = { add_to_variable = { GER_SPD_center_support = 5 } }

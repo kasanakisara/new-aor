@@ -420,6 +420,7 @@ GER_yihui_complete_agenda = {
 	set_temp_variable = { yh_x = GER_yihui_ag_gain_c^yh_id }
 	add_to_variable = { GER_yihui_cohesion = yh_x }
 	clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+	if = { limit = { GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes } } add_political_power = 15 }
 	if = { limit = { check_variable = { GER_yihui_ag_p2^yh_id = 1 } } add_political_power = 50 }  # SPD 中派：政治点数 +50
 	set_variable = { GER_yihui_ag_p1^yh_id = 0 }
 	set_variable = { GER_yihui_ag_p2^yh_id = 0 }

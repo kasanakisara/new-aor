@@ -1050,13 +1050,20 @@ GUI_TEMPLATE = """guiTypes = {
         # 右侧面板 + 盖在地图右下角的照片、领导人（坐标是窗口坐标）
         {{GEN:right_panel}}
 
+        # 右上角问号（只悬停，写法同议会 GUI；右沿对齐右侧面板金线 1597，与名称框同中线 y=34）
+        iconType = {
+            name = "GER_region_game_help"
+            spriteType = "GFX_GER_yihui_help"
+            position = { x = 1565 y = 18 }
+            pdx_tooltip = "GER_region_game_help_tt"
+        }
+        # ESC 关闭地区博弈：全透明按钮，只用来接快捷键，放在左上角留边里（写法同议会 GUI）
         buttonType = {
-            name = "close_button"
-            position = { x = -40 y = 8 }
-            quadTextureSprite = "GFX_profile_button_close"
+            name = "GER_region_game_esc_close"
+            quadTextureSprite = "GFX_GER_yihui_scroll_cap"
+            position = { x = 0 y = 0 }
             shortcut = "ESCAPE"
-            Orientation = "UPPER_RIGHT"
-            pdx_tooltip = "CLOSE"
+            clicksound = click_default
         }
     }
 }
@@ -1188,7 +1195,8 @@ SGUI_TEMPLATE = """scripted_gui = {
             {{GEN:triggers}}
         }
         effects = {
-            close_button_click = {
+            # ESC 关闭地区博弈：同议会 GUI
+            GER_region_game_esc_close_click = {
                 clr_country_flag = GER_region_game_open
             }
             {{GEN:effects}}

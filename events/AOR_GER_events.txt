@@ -37,7 +37,7 @@ country_event = {
 	id = AOR_the_second_soviet_congress.1
 	title = AOR_the_second_soviet_congress.1.t
 	desc = AOR_the_second_soviet_congress.1.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_GER_factory_council_1
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -58,7 +58,7 @@ country_event = {
 	id = AOR_the_second_soviet_congress.2
 	title = AOR_the_second_soviet_congress.2.t
 	desc = AOR_the_second_soviet_congress.2.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_the_second_soviet_congress_2
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -77,7 +77,7 @@ country_event = {
 	id = AOR_the_second_soviet_congress.3
 	title = AOR_the_second_soviet_congress.3.t
 	desc = AOR_the_second_soviet_congress.3.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_the_second_soviet_congress_3
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -96,7 +96,7 @@ country_event = {
 	id = AOR_the_second_soviet_congress.4
 	title = AOR_the_second_soviet_congress.4.t
 	desc = AOR_the_second_soviet_congress.4.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_GER_union_competition_5
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -116,7 +116,7 @@ country_event = {
 	id = AOR_GER_weimar_congress.1
 	title = AOR_GER_weimar_congress.1.t
 	desc = AOR_GER_weimar_congress.1.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_GER_weimar_congress_1
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -137,7 +137,7 @@ country_event = {
 	id = AOR_GER_weimar_congress.2
 	title = AOR_GER_weimar_congress.2.t
 	desc = AOR_GER_weimar_congress.2.d
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_GER_weimar_congress_2
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -157,7 +157,7 @@ country_event = {
 	id = AOR_GER_weimar_congress.3
 	title = AOR_GER_weimar_congress.3.t
 	desc = AOR_GER_weimar_congress.3.d
-	picture = GFX_news_event_generic_read_write
+	picture = GFX_AOR_GER_weimar_congress_3
 	is_triggered_only = yes
 	fire_only_once = yes
 
@@ -171,30 +171,6 @@ country_event = {
 		name = AOR_GER_weimar_congress.3.a
 	}
 }
-
-# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
-# 1919 年测试事件
-# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
-
-# 疲劳毒素
-country_event = {
-	id = AOR_GER_1919_test.1
-	title = AOR_GER_1919_test.1.t
-	desc = AOR_GER_1919_test.1.desc
-	picture = GFX_AOR_GER_fatigue_toxin
-	is_triggered_only = yes
-	option = { name = AOR_GER_1919_test.1.a }
-}
-
-# 取得政权的道路
-country_event = {
-	id = AOR_GER_1919_test.2
-	title = AOR_GER_1919_test.2.t
-	desc = AOR_GER_1919_test.2.desc
-	is_triggered_only = yes
-	option = { name = AOR_GER_1919_test.confirm }
-}
-
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 塔罗牌
@@ -333,6 +309,31 @@ country_event = {
 	}
 }
 
+# 一九一九，“奥古斯特”-疲劳毒素
+country_event = {
+	id = AOR_GER_focus_1919.8
+	title = AOR_GER_focus_1919.8.t
+	desc = AOR_GER_focus_1919.8.desc
+	picture = GFX_AOR_GER_focus_1919_8
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_focus_1919.8.a
+	}
+}
+
+# 取得政权的道路
+country_event = {
+	id = AOR_GER_focus_1919.9
+	title = AOR_GER_focus_1919.9.t
+	desc = AOR_GER_focus_1919.9.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_focus_1919.9.a
+	}
+}
+
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 1920 年经济国策测试
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
@@ -367,7 +368,7 @@ country_event = {
 	id = AOR_GER_Second_International.1
 	title = AOR_GER_Second_International.1.t
 	desc = AOR_GER_Second_International.1.desc
-	picture = GFX_report_event_german_speech
+	picture = GFX_AOR_GER_Second_International_1
 	is_triggered_only = yes
 	fire_only_once = yes
 	immediate = {
@@ -546,6 +547,10 @@ country_event = {
 		set_global_flag = AOR_GER_schleswig_handover
 
 		# 北区 839 与弗伦斯堡 1043 移交国际委员会
+		# 开局已去掉 NSH 核心，先补核心再释放
+		839 = { add_core_of = NSH }
+		1043 = { add_core_of = NSH }
+		1125 = { add_core_of = NSH }
 		release = NSH
 		if = {
 			limit = { NOT = { NSH = { owns_state = 839 } } }
@@ -558,11 +563,6 @@ country_event = {
 		if = {
 			limit = { NOT = { NSH = { owns_state = 1125 } } }
 			NSH = { transfer_state = 1125 }
-		}
-		NSH = {
-			add_state_core = 839
-			add_state_core = 1043
-			add_state_core = 1125
 		}
 
 		# 国际委员会的担保方
@@ -676,6 +676,7 @@ country_event = {
 	id = AOR_GER_mueller_growth.2
 	title = AOR_GER_mueller_growth.2.t
 	desc = AOR_GER_mueller_growth.2.desc
+	picture = GFX_AOR_GER_union_competition_8
 	is_triggered_only = yes
 	trigger = {
 		has_character = GER_Richard_Mueller_growth_cabinet_1
@@ -762,6 +763,7 @@ country_event = {
  id = AOR_GER_union_competition.2
  title = AOR_GER_union_competition.2.t
  desc = AOR_GER_union_competition.2.desc
+ picture = GFX_AOR_GER_union_competition_2
  is_triggered_only = yes
  fire_only_once = yes
  option = { name = AOR_GER_union_competition.2.a }
@@ -770,6 +772,7 @@ country_event = {
  id = AOR_GER_union_competition.3
  title = AOR_GER_union_competition.3.t
  desc = AOR_GER_union_competition.3.desc
+ picture = GFX_AOR_GER_union_competition_5
  is_triggered_only = yes
  fire_only_once = yes
  option = { name = AOR_GER_union_competition.3.a }
@@ -778,6 +781,7 @@ country_event = {
  id = AOR_GER_union_competition.4
  title = AOR_GER_union_competition.4.t
  desc = AOR_GER_union_competition.4.desc
+ picture = GFX_AOR_GER_union_competition_4
  is_triggered_only = yes
  fire_only_once = yes
  option = { name = AOR_GER_union_competition.4.a }
@@ -2347,7 +2351,8 @@ country_event = {
 		}
 		custom_effect_tooltip = AOR_GER_factory_council.14.c_tt
 		hidden_effect = {
-			subtract_from_variable = { GER_SPD_center_support = 5 }
+			subtract_from_variable = { GER_SPD_left_support = 15 }
+			subtract_from_variable = { GER_SPD_center_support = 10 }
 			GER_SPD_refresh_support_effect = yes
 			country_event = { id = AOR_GER_factory_council.16 days = 10 }
 		}

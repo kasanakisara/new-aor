@@ -137,7 +137,15 @@ scripted_gui = {
 			# 已通过法案侧栏：打开 / 收起按钮二选一
 			GER_yihui_laws_open_visible = { NOT = { has_country_flag = GER_yihui_laws_open } }
 			GER_yihui_laws_close_visible = { has_country_flag = GER_yihui_laws_open }
-			GER_yihui_capacity_plus_click_enabled = { check_variable = { GER_yihui_inertia > 29.99 } }
+			GER_yihui_capacity_plus_click_enabled = {
+				OR = {
+					check_variable = { GER_yihui_inertia > 29.99 }
+					AND = {
+						GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes }
+						check_variable = { GER_yihui_inertia > 19.99 }
+					}
+				}
+			}
 		}
 		effects = {
 			# 已通过法案侧栏

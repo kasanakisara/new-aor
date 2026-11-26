@@ -1,0 +1,188 @@
+# 由 Desktop/AOR资料/growth_cabinet_generals/gen_growth_generals.py 生成
+# 每日计时：雇佣中的成长型内阁将领满周期后，对其将领本体触发 unit_leader_event（事件窗口显示将领头像）
+GER_growth_cabinet_generals_tick = {
+	# Erwin_Rommel：4阶段，每阶段90天
+	if = {
+		limit = {
+			has_character = GER_Erwin_Rommel_growth_cabinet_1
+			has_character = GER_AF_Erwin_Rommel
+			GER_Erwin_Rommel_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Erwin_Rommel_pending }
+		}
+		add_to_variable = { var = GER_gc_Erwin_Rommel_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Erwin_Rommel_days value = 90 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Erwin_Rommel_pending
+			if = { limit = { check_variable = { var = GER_gc_Erwin_Rommel_step value = 0 } } GER_AF_Erwin_Rommel = { unit_leader_event = { id = AOR_GER_growth_general.11 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Erwin_Rommel_step value = 1 } } GER_AF_Erwin_Rommel = { unit_leader_event = { id = AOR_GER_growth_general.12 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Erwin_Rommel_step value = 2 } } GER_AF_Erwin_Rommel = { unit_leader_event = { id = AOR_GER_growth_general.13 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Erwin_Rommel_step value = 3 } } GER_AF_Erwin_Rommel = { unit_leader_event = { id = AOR_GER_growth_general.19 } } }
+		}
+	}
+	# Hans_Kahle：4阶段，每阶段75天
+	if = {
+		limit = {
+			has_character = GER_Hans_Kahle_growth_cabinet_1
+			has_character = GER_AF_Hans_Kahle
+			GER_Hans_Kahle_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Hans_Kahle_pending }
+		}
+		add_to_variable = { var = GER_gc_Hans_Kahle_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Hans_Kahle_days value = 75 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Hans_Kahle_pending
+			if = { limit = { check_variable = { var = GER_gc_Hans_Kahle_step value = 0 } } GER_AF_Hans_Kahle = { unit_leader_event = { id = AOR_GER_growth_general.21 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Hans_Kahle_step value = 1 } } GER_AF_Hans_Kahle = { unit_leader_event = { id = AOR_GER_growth_general.22 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Hans_Kahle_step value = 2 } } GER_AF_Hans_Kahle = { unit_leader_event = { id = AOR_GER_growth_general.23 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Hans_Kahle_step value = 3 } } GER_AF_Hans_Kahle = { unit_leader_event = { id = AOR_GER_growth_general.29 } } }
+		}
+	}
+	# Ernst_Schneller：3阶段，每阶段120天
+	if = {
+		limit = {
+			has_character = GER_Ernst_Schneller_growth_cabinet_1
+			has_character = GER_AF_Ernst_Schneller
+			GER_Ernst_Schneller_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Ernst_Schneller_pending }
+		}
+		add_to_variable = { var = GER_gc_Ernst_Schneller_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Ernst_Schneller_days value = 120 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Ernst_Schneller_pending
+			if = { limit = { check_variable = { var = GER_gc_Ernst_Schneller_step value = 0 } } GER_AF_Ernst_Schneller = { unit_leader_event = { id = AOR_GER_growth_general.31 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Schneller_step value = 1 } } GER_AF_Ernst_Schneller = { unit_leader_event = { id = AOR_GER_growth_general.32 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Schneller_step value = 2 } } GER_AF_Ernst_Schneller = { unit_leader_event = { id = AOR_GER_growth_general.39 } } }
+		}
+	}
+	# Rudolf_Egelhofer：3阶段，每阶段60天
+	if = {
+		limit = {
+			has_character = GER_Rudolf_Egelhofer_growth_cabinet_1
+			has_character = GER_AF_Rudolf_Egelhofer
+			GER_Rudolf_Egelhofer_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Rudolf_Egelhofer_pending }
+		}
+		add_to_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 60 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Rudolf_Egelhofer_pending
+			if = { limit = { check_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 0 } } GER_AF_Rudolf_Egelhofer = { unit_leader_event = { id = AOR_GER_growth_general.41 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 } } GER_AF_Rudolf_Egelhofer = { unit_leader_event = { id = AOR_GER_growth_general.42 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 2 } } GER_AF_Rudolf_Egelhofer = { unit_leader_event = { id = AOR_GER_growth_general.49 } } }
+		}
+	}
+	# Hans_Marchwitza：3阶段，每阶段90天
+	if = {
+		limit = {
+			has_character = GER_Hans_Marchwitza_growth_cabinet_1
+			has_character = GER_AF_Hans_Marchwitza
+			GER_Hans_Marchwitza_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Hans_Marchwitza_pending }
+		}
+		add_to_variable = { var = GER_gc_Hans_Marchwitza_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Hans_Marchwitza_days value = 90 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Hans_Marchwitza_pending
+			if = { limit = { check_variable = { var = GER_gc_Hans_Marchwitza_step value = 0 } } GER_AF_Hans_Marchwitza = { unit_leader_event = { id = AOR_GER_growth_general.51 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 } } GER_AF_Hans_Marchwitza = { unit_leader_event = { id = AOR_GER_growth_general.52 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Hans_Marchwitza_step value = 2 } } GER_AF_Hans_Marchwitza = { unit_leader_event = { id = AOR_GER_growth_general.59 } } }
+		}
+	}
+	# Li_De：5阶段，每阶段80天
+	if = {
+		limit = {
+			has_character = GER_Li_De_growth_cabinet_1
+			has_character = GER_AF_Li_De
+			GER_Li_De_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Li_De_pending }
+		}
+		add_to_variable = { var = GER_gc_Li_De_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Li_De_days value = 80 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Li_De_pending
+			if = { limit = { check_variable = { var = GER_gc_Li_De_step value = 0 } } GER_AF_Li_De = { unit_leader_event = { id = AOR_GER_growth_general.61 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Li_De_step value = 1 } } GER_AF_Li_De = { unit_leader_event = { id = AOR_GER_growth_general.62 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Li_De_step value = 2 } } GER_AF_Li_De = { unit_leader_event = { id = AOR_GER_growth_general.63 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Li_De_step value = 3 } } GER_AF_Li_De = { unit_leader_event = { id = AOR_GER_growth_general.64 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Li_De_step value = 4 } } GER_AF_Li_De = { unit_leader_event = { id = AOR_GER_growth_general.69 } } }
+		}
+	}
+	# Max_Reichpietsch：4阶段，每阶段75天
+	if = {
+		limit = {
+			has_character = GER_Max_Reichpietsch_growth_cabinet_1
+			has_character = GER_AF_Max_Reichpietsch
+			GER_Max_Reichpietsch_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Max_Reichpietsch_pending }
+		}
+		add_to_variable = { var = GER_gc_Max_Reichpietsch_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Max_Reichpietsch_days value = 75 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Max_Reichpietsch_pending
+			if = { limit = { check_variable = { var = GER_gc_Max_Reichpietsch_step value = 0 } } GER_AF_Max_Reichpietsch = { unit_leader_event = { id = AOR_GER_growth_general.91 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 } } GER_AF_Max_Reichpietsch = { unit_leader_event = { id = AOR_GER_growth_general.92 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Max_Reichpietsch_step value = 2 } } GER_AF_Max_Reichpietsch = { unit_leader_event = { id = AOR_GER_growth_general.93 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Max_Reichpietsch_step value = 3 } } GER_AF_Max_Reichpietsch = { unit_leader_event = { id = AOR_GER_growth_general.99 } } }
+		}
+	}
+	# Albin_Koebis：4阶段，每阶段75天
+	if = {
+		limit = {
+			has_character = GER_Albin_Koebis_growth_cabinet_1
+			has_character = GER_AF_Albin_Koebis
+			GER_Albin_Koebis_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Albin_Koebis_pending }
+		}
+		add_to_variable = { var = GER_gc_Albin_Koebis_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Albin_Koebis_days value = 75 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Albin_Koebis_pending
+			if = { limit = { check_variable = { var = GER_gc_Albin_Koebis_step value = 0 } } GER_AF_Albin_Koebis = { unit_leader_event = { id = AOR_GER_growth_general.101 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Albin_Koebis_step value = 1 } } GER_AF_Albin_Koebis = { unit_leader_event = { id = AOR_GER_growth_general.102 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Albin_Koebis_step value = 2 } } GER_AF_Albin_Koebis = { unit_leader_event = { id = AOR_GER_growth_general.103 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Albin_Koebis_step value = 3 } } GER_AF_Albin_Koebis = { unit_leader_event = { id = AOR_GER_growth_general.109 } } }
+		}
+	}
+	# Herbert_Marcuse：3阶段，每阶段90天，三条道路
+	if = {
+		limit = {
+			has_character = GER_Herbert_Marcuse_growth_cabinet_1
+			has_character = GER_AF_Herbert_Marcuse
+			GER_Herbert_Marcuse_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Herbert_Marcuse_pending }
+		}
+		add_to_variable = { var = GER_gc_Herbert_Marcuse_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Herbert_Marcuse_days value = 90 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Herbert_Marcuse_pending
+			if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 0 } } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.71 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 } has_country_flag = GER_gc_Herbert_Marcuse_t0_a } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.72 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 } has_country_flag = GER_gc_Herbert_Marcuse_t0_b } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.73 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 } has_country_flag = GER_gc_Herbert_Marcuse_t0_c } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.74 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 2 } has_country_flag = GER_gc_Herbert_Marcuse_t0_a } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.77 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 2 } has_country_flag = GER_gc_Herbert_Marcuse_t0_b } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.78 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Herbert_Marcuse_step value = 2 } has_country_flag = GER_gc_Herbert_Marcuse_t0_c } GER_AF_Herbert_Marcuse = { unit_leader_event = { id = AOR_GER_growth_general.79 } } }
+		}
+	}
+	# Ernst_Thaelmann：3阶段，每阶段100天，三条道路
+	if = {
+		limit = {
+			has_character = GER_Ernst_Thaelmann_growth_cabinet_1
+			has_character = GER_AF_Ernst_Thaelmann
+			GER_Ernst_Thaelmann_growth_cabinet_1 = { is_hired_as_advisor = yes }
+			NOT = { has_country_flag = GER_gc_Ernst_Thaelmann_pending }
+		}
+		add_to_variable = { var = GER_gc_Ernst_Thaelmann_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_days value = 100 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Ernst_Thaelmann_pending
+			if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 0 } } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.81 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_a } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.82 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_b } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.83 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_c } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.84 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 2 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_a } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.87 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 2 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_b } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.88 } } }
+			else_if = { limit = { check_variable = { var = GER_gc_Ernst_Thaelmann_step value = 2 } has_country_flag = GER_gc_Ernst_Thaelmann_t0_c } GER_AF_Ernst_Thaelmann = { unit_leader_event = { id = AOR_GER_growth_general.89 } } }
+		}
+	}
+}

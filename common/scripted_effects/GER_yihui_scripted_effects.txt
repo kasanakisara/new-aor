@@ -19,7 +19,15 @@ GER_Reichstag_set_default_seats = {#共459席
 GER_yihui_expand_capacity = {
 	if = {
 		limit = {
-			check_variable = { GER_yihui_inertia > 29 }
+			GER_10_02_Matthias_Erzberger = { is_hired_as_advisor = yes }
+			check_variable = { GER_yihui_inertia > 19.99 }
+		}
+		subtract_from_variable = { GER_yihui_inertia = 20 }
+		add_to_variable = { GER_yihui_focus_capacity = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { GER_yihui_inertia > 29.99 }
 		}
 		subtract_from_variable = { GER_yihui_inertia = 30 }
 		add_to_variable = { GER_yihui_focus_capacity = 1 }

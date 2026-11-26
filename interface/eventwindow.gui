@@ -4,7 +4,9 @@
 ### its children repositioned, so that the custom 1400x750 newspaper artwork
 ### (gfx/interface/event_news_bg.dds) lines up. Every element name is unchanged
 ### (Title / Description / event_picture / event_picture_overlay / options_grid /
-### btn_minimize are looked up by name in code). Re-sync this file with vanilla
+### btn_minimize are looked up by name in code).
+### EventWindow_leader's bottom_window_end uses GFX_AOR_event_report_bottom_win_end
+### (bottom 59px of the AOR bottom artwork) instead of the vanilla parchment. Re-sync this file with vanilla
 ### after a game update and re-apply these AOR layout changes.
 guiTypes = {
 
@@ -439,7 +441,7 @@ guiTypes = {
 			Orientation = UPPER_LEFT
 
 			background = {
-				name = "Background"	
+				name = "Background"
 				spriteType ="GFX_event_report_tileable_bottom_section"
 			}
 
@@ -461,14 +463,14 @@ guiTypes = {
 			Orientation = UPPER_LEFT
 
 			background = {
-				name = "Background"	
-				spriteType ="GFX_event_report_bottom_win_end"
+				name = "Background"
+				spriteType ="GFX_AOR_event_report_bottom_win_end"
 			}
 		}
 	}
 
 
-#  # ### #   #  ##     ### #   # ### #  # ###  ## 
+#  # ### #   #  ##     ### #   # ### #  # ###  ##
 ## # #   #   # #       #   #   # #   ## #  #  #   
 # ## ##  # # #  #      ##   # #  ##  # ##  #   #  
 #  # #   # # #   #     #    # #  #   #  #  #    # 

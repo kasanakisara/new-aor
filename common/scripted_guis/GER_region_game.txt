@@ -210,11 +210,11 @@ scripted_gui = {
                     AND = { check_variable = { v = 103 } has_political_power > 4.99 OR = { AND = { check_variable = { GER_region_selected = 4 } NOT = { check_variable = { GER_dl_R04_officers = 1 } } NOT = { check_variable = { GER_dl_R04_days_officers > 0 } } } AND = { check_variable = { GER_region_selected = 5 } NOT = { check_variable = { GER_dl_R05_officers = 1 } } NOT = { check_variable = { GER_dl_R05_days_officers > 0 } } } AND = { check_variable = { GER_region_selected = 6 } NOT = { check_variable = { GER_dl_R06_officers = 1 } } NOT = { check_variable = { GER_dl_R06_days_officers > 0 } } } AND = { check_variable = { GER_region_selected = 13 } NOT = { check_variable = { GER_dl_R13_officers = 1 } } NOT = { check_variable = { GER_dl_R13_days_officers > 0 } } } AND = { check_variable = { GER_region_selected = 16 } NOT = { check_variable = { GER_dl_R16_officers = 1 } } NOT = { check_variable = { GER_dl_R16_days_officers > 0 } } } } }
                     AND = { check_variable = { v = 104 } has_political_power > 4.99 OR = { AND = { check_variable = { GER_region_selected = 4 } NOT = { check_variable = { GER_dl_R04_amend = 1 } } NOT = { check_variable = { GER_dl_R04_days_amend > 0 } } } AND = { check_variable = { GER_region_selected = 5 } NOT = { check_variable = { GER_dl_R05_amend = 1 } } NOT = { check_variable = { GER_dl_R05_days_amend > 0 } } } AND = { check_variable = { GER_region_selected = 6 } NOT = { check_variable = { GER_dl_R06_amend = 1 } } NOT = { check_variable = { GER_dl_R06_days_amend > 0 } } } AND = { check_variable = { GER_region_selected = 13 } NOT = { check_variable = { GER_dl_R13_amend = 1 } } NOT = { check_variable = { GER_dl_R13_days_amend > 0 } } } AND = { check_variable = { GER_region_selected = 16 } NOT = { check_variable = { GER_dl_R16_amend = 1 } } NOT = { check_variable = { GER_dl_R16_days_amend > 0 } } } } }
                     AND = { check_variable = { v = 105 } has_political_power > 24.99 OR = { AND = { check_variable = { GER_region_selected = 4 } NOT = { check_variable = { GER_dl_R04_neutral = 1 } } NOT = { check_variable = { GER_dl_R04_days_neutral > 0 } } } AND = { check_variable = { GER_region_selected = 5 } NOT = { check_variable = { GER_dl_R05_neutral = 1 } } NOT = { check_variable = { GER_dl_R05_days_neutral > 0 } } } AND = { check_variable = { GER_region_selected = 6 } NOT = { check_variable = { GER_dl_R06_neutral = 1 } } NOT = { check_variable = { GER_dl_R06_days_neutral > 0 } } } AND = { check_variable = { GER_region_selected = 13 } NOT = { check_variable = { GER_dl_R13_neutral = 1 } } NOT = { check_variable = { GER_dl_R13_days_neutral > 0 } } } AND = { check_variable = { GER_region_selected = 16 } NOT = { check_variable = { GER_dl_R16_neutral = 1 } } NOT = { check_variable = { GER_dl_R16_days_neutral > 0 } } } } }
-                    AND = { check_variable = { v = 1 } NOT = { check_variable = { GER_region_sel_row_1_days > 0 } } has_political_power > 9.99 GER_region_action_1_allowed = yes }
-                    AND = { check_variable = { v = 2 } NOT = { check_variable = { GER_region_sel_row_2_days > 0 } } has_political_power > 9.99 GER_region_action_2_allowed = yes }
+                    AND = { check_variable = { v = 1 } NOT = { check_variable = { GER_region_sel_row_1_days > 0 } } OR = { has_political_power > 9.99 AND = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } has_political_power > 7.49 } } GER_region_action_1_allowed = yes }
+                    AND = { check_variable = { v = 2 } NOT = { check_variable = { GER_region_sel_row_2_days > 0 } } OR = { has_political_power > 9.99 AND = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } has_political_power > 7.49 } } GER_region_action_2_allowed = yes }
                     AND = { check_variable = { v = 7 } NOT = { check_variable = { GER_region_sel_row_7_days > 0 } } has_political_power > 14.99 GER_region_action_7_allowed = yes }
                     AND = { check_variable = { v = 3 } NOT = { check_variable = { GER_region_sel_row_3_days > 0 } } has_political_power > 19.99 GER_region_action_3_allowed = yes }
-                    AND = { check_variable = { v = 4 } NOT = { check_variable = { GER_region_sel_row_4_days > 0 } } has_political_power > 24.99 GER_region_action_4_allowed = yes }
+                    AND = { check_variable = { v = 4 } NOT = { check_variable = { GER_region_sel_row_4_days > 0 } } OR = { has_political_power > 24.99 AND = { GER_11_01_Erich_Koch_Weser = { is_hired_as_advisor = yes } has_political_power > 18.74 } } GER_region_action_4_allowed = yes }
                     AND = { check_variable = { v = 5 } NOT = { check_variable = { GER_region_sel_row_5_days > 0 } } has_political_power > 14.99 check_variable = { GER_region_sel_row_5_count < 2 } GER_region_action_5_allowed = yes }
                     AND = { check_variable = { v = 6 } NOT = { check_variable = { GER_region_sel_row_6_days > 0 } } has_political_power > 69.99 NOT = { check_variable = { GER_region_sel_row_6_cd > 0 } } GER_region_action_6_allowed = yes }
                     AND = { check_variable = { v = 8 } NOT = { check_variable = { GER_region_sel_row_8_days > 0 } } has_political_power > 59.99 GER_region_action_8_allowed = yes }
@@ -274,7 +274,9 @@ scripted_gui = {
                 check_variable = { GER_region_sel_cr_days > 0 }
                 OR = {
                     AND = { check_variable = { GER_region_sel_frame = 2 } has_political_power > 14.99 }
+                    AND = { check_variable = { GER_region_sel_frame = 2 } GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } has_political_power > 9.99 }
                     AND = { NOT = { check_variable = { GER_region_sel_frame = 2 } } has_political_power > 9.99 }
+                    AND = { NOT = { check_variable = { GER_region_sel_frame = 2 } } GER_10_01_Karl_Joseph_Wirth = { is_hired_as_advisor = yes } has_political_power > 6.99 }
                 }
             }
             GER_region_cr_marker_R01_visible = { check_variable = { GER_region_R01_cr_days > 0 } }
@@ -297,7 +299,8 @@ scripted_gui = {
 
         }
         effects = {
-            close_button_click = {
+            # ESC 关闭地区博弈：同议会 GUI
+            GER_region_game_esc_close_click = {
                 clr_country_flag = GER_region_game_open
             }
             # >>> GENERATED: effects (tools/GER_region_game/gen_region_game.py) 不要手改，重跑脚本

@@ -17,17 +17,52 @@ leader_traits = {
         supply_consumption_factor = -0.10
         custom_modifier_tooltip = GER_adv_david_tt
     }
-    AORCabinetHugoPreussLabelfatherofconstitution = { random = no }
-    AORCabinetHermannMuellerLabelpartyveteran = { random = no }
+    AORCabinetHugoPreussLabelfatherofconstitution = {
+        random = no
+        stability_factor = 0.05
+        political_power_factor = 0.05
+        local_resources_factor = 0.075
+        industrial_concern_cost_factor = -0.10
+    }
+    AORCabinetHermannMuellerLabelpartyveteran = {
+        random = no
+        political_power_factor = 0.10
+        political_advisor_cost_factor = -0.15
+        drift_defence_factor = 0.15
+        custom_modifier_tooltip = GER_adv_hmueller_tt
+    }
     AORCabinetCarlSeveringLabelorderkeeper = {
         random = no
         stability_factor = 0.15
         custom_modifier_tooltip = GER_adv_severing_tt
     }
-    AORCabinetKarlJosephWirthLabelstaunchrepublican = { random = no }
-    AORCabinetMatthiasErzbergerLabelfinancereformer = { random = no }
-    AORCabinetErichKochWeserLabeladminreformer = { random = no }
-    AORCabinetGustavBauerLabelunionbureaucrat = { random = no }
+    AORCabinetKarlJosephWirthLabelstaunchrepublican = {
+        random = no
+        stability_factor = 0.08
+        war_support_factor = 0.05
+        drift_defence_factor = 0.20
+        custom_modifier_tooltip = GER_adv_wirth_tt
+    }
+    AORCabinetMatthiasErzbergerLabelfinancereformer = {
+        random = no
+        consumer_goods_factor = -0.10
+        production_speed_industrial_complex_factor = 0.05
+        economy_cost_factor = -0.25
+        custom_modifier_tooltip = GER_adv_erzberger_tt
+    }
+    AORCabinetErichKochWeserLabeladminreformer = {
+        random = no
+        political_power_factor = 0.10
+        political_power_cost = -0.05
+        production_speed_infrastructure_factor = 0.05
+        custom_modifier_tooltip = GER_adv_koch_weser_tt
+    }
+    AORCabinetGustavBauerLabelunionbureaucrat = {
+        random = no
+        local_resources_factor = 0.05
+        consumer_goods_factor = -0.15
+        production_factory_max_efficiency_factor = 0.05
+    }
     AORCabinetPaulReuschLabelindustrialist = { random = no }
     AORCabinetCarlKoettgenLabelindustrialist = { random = no }
     AORCabinetCarlDuisbergLabelindustrialist = { random = no }

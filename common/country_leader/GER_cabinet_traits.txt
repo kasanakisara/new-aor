@@ -52,8 +52,19 @@ leader_traits = {
 		production_speed_buildings_factor = 0.03
 		custom_modifier_tooltip = GER_adv_legien_tt
 	}
-	AOR_GER_dittmann_personal = { random = no }
-	AOR_GER_leipart_personal = { random = no }
+	AOR_GER_dittmann_personal = {
+		random = no
+		stability_factor = 0.05
+		line_change_production_efficiency_factor = 0.10
+		custom_modifier_tooltip = GER_adv_dittmann_tt
+	}
+	AOR_GER_leipart_personal = {
+		random = no
+		production_factory_max_efficiency_factor = 0.05
+		production_speed_buildings_factor = 0.05
+		consumer_goods_factor = -0.05
+		custom_modifier_tooltip = GER_adv_leipart_tt
+	}
 	AOR_GER_economic_minister = { random = no }
 	AOR_GER_chancellor = { random = no }
 	AOR_GER_vice_chancellor = { random = no }
@@ -67,11 +78,6 @@ leader_traits = {
 		army_core_attack_factor = 0.03
 		army_core_defence_factor = 0.03
 	}
-	AOR_GER_labor_minister = {
-		random = no
-		local_resources_factor = 0.05
-		consumer_goods_factor = -0.15
-		production_factory_max_efficiency_factor = 0.05
-	}
+	AOR_GER_labor_minister = { random = no }
 	AOR_GER_minister_without_portfolio = { random = no }
 }

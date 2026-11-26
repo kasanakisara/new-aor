@@ -1,0 +1,55 @@
+# 由 Desktop/AOR资料/growth_cabinet_generals/gen_growth_generals.py 生成
+# 仅测试用。控制台：effect GER GER_gc_debug_hire_<Name> / effect GER GER_gc_debug_next
+# 直接把 Albin_Koebis 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Albin_Koebis = {
+	if = { limit = { has_character = GER_Albin_Koebis_growth_cabinet_1 } activate_advisor = GER_Albin_Koebis_growth_cabinet_1 }
+}
+# 直接把 Ernst_Schneller 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Ernst_Schneller = {
+	if = { limit = { has_character = GER_Ernst_Schneller_growth_cabinet_1 } activate_advisor = GER_Ernst_Schneller_growth_cabinet_1 }
+}
+# 直接把 Ernst_Thaelmann 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Ernst_Thaelmann = {
+	if = { limit = { has_character = GER_Ernst_Thaelmann_growth_cabinet_1 } activate_advisor = GER_Ernst_Thaelmann_growth_cabinet_1 }
+}
+# 直接把 Erwin_Rommel 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Erwin_Rommel = {
+	if = { limit = { has_character = GER_Erwin_Rommel_growth_cabinet_1 } activate_advisor = GER_Erwin_Rommel_growth_cabinet_1 }
+}
+# 直接把 Hans_Kahle 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Hans_Kahle = {
+	if = { limit = { has_character = GER_Hans_Kahle_growth_cabinet_1 } activate_advisor = GER_Hans_Kahle_growth_cabinet_1 }
+}
+# 直接把 Hans_Marchwitza 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Hans_Marchwitza = {
+	if = { limit = { has_character = GER_Hans_Marchwitza_growth_cabinet_1 } activate_advisor = GER_Hans_Marchwitza_growth_cabinet_1 }
+}
+# 直接把 Herbert_Marcuse 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Herbert_Marcuse = {
+	if = { limit = { has_character = GER_Herbert_Marcuse_growth_cabinet_1 } activate_advisor = GER_Herbert_Marcuse_growth_cabinet_1 }
+}
+# 直接把 Li_De 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Li_De = {
+	if = { limit = { has_character = GER_Li_De_growth_cabinet_1 } activate_advisor = GER_Li_De_growth_cabinet_1 }
+}
+# 直接把 Max_Reichpietsch 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Max_Reichpietsch = {
+	if = { limit = { has_character = GER_Max_Reichpietsch_growth_cabinet_1 } activate_advisor = GER_Max_Reichpietsch_growth_cabinet_1 }
+}
+# 直接把 Rudolf_Egelhofer 放进成长型内阁（不花政治点数）
+GER_gc_debug_hire_Rudolf_Egelhofer = {
+	if = { limit = { has_character = GER_Rudolf_Egelhofer_growth_cabinet_1 } activate_advisor = GER_Rudolf_Egelhofer_growth_cabinet_1 }
+}
+# 正在成长的将领：计时拨到满周期前一天，游戏再走一天即弹出下一个事件
+GER_gc_debug_next = {
+	if = { limit = { has_character = GER_Erwin_Rommel_growth_cabinet_1 GER_Erwin_Rommel_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Erwin_Rommel_days value = 89 } }
+	if = { limit = { has_character = GER_Hans_Kahle_growth_cabinet_1 GER_Hans_Kahle_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Hans_Kahle_days value = 74 } }
+	if = { limit = { has_character = GER_Ernst_Schneller_growth_cabinet_1 GER_Ernst_Schneller_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Ernst_Schneller_days value = 119 } }
+	if = { limit = { has_character = GER_Rudolf_Egelhofer_growth_cabinet_1 GER_Rudolf_Egelhofer_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 59 } }
+	if = { limit = { has_character = GER_Hans_Marchwitza_growth_cabinet_1 GER_Hans_Marchwitza_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Hans_Marchwitza_days value = 89 } }
+	if = { limit = { has_character = GER_Li_De_growth_cabinet_1 GER_Li_De_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Li_De_days value = 79 } }
+	if = { limit = { has_character = GER_Max_Reichpietsch_growth_cabinet_1 GER_Max_Reichpietsch_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Max_Reichpietsch_days value = 74 } }
+	if = { limit = { has_character = GER_Albin_Koebis_growth_cabinet_1 GER_Albin_Koebis_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Albin_Koebis_days value = 74 } }
+	if = { limit = { has_character = GER_Herbert_Marcuse_growth_cabinet_1 GER_Herbert_Marcuse_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Herbert_Marcuse_days value = 89 } }
+	if = { limit = { has_character = GER_Ernst_Thaelmann_growth_cabinet_1 GER_Ernst_Thaelmann_growth_cabinet_1 = { is_hired_as_advisor = yes } } set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 99 } }
+}

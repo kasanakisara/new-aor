@@ -50,15 +50,10 @@ DIPLOMACY_GENERATE_WARGOAL_ENABLE_TRIGGER = {
 	}
 }
 
+# 解放国家一律禁止（占领地区界面的“归还领土”按钮在 interface/countryoccupationview.gui 中移出屏幕）
 DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
-	if = {
-		limit = {
-			FROM = SWE
-            ROOT = NOR
-		}
-		custom_trigger_tooltip = {
-            tooltip = AOR_Sweden_Union_cannot_break
-            always = no
-        }
+	custom_trigger_tooltip = {
+		tooltip = AOR_Republic_cannot_break
+		always = no
 	}
 }
