@@ -73,67 +73,6 @@ ideas = {
 
 
 	# TECHNOLOGY
-	tank_manufacturer = { 
-		
-		designer = yes
-		
-		porsche = {
-
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			research_bonus = {
-				armor = 0.15
-			}
-			
-			traits = { heavy_tank_manufacturer }
-
-			ai_will_do = {
-				factor = 10
-			}
-
-		}
-		
-		henschel = {
-
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			research_bonus = {
-				armor = 0.15
-			}
-			
-			traits = { fast_tank_manufacturer }
-			
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		
-		GER_MAN = {
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			research_bonus = {
-				armor = 0.15
-			}
-			
-			traits = { medium_tank_manufacturer }
-
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	
 	naval_manufacturer = { 
 		
 		designer = yes
@@ -181,27 +120,6 @@ ideas = {
 			
 		designer = yes
 		
-		messerschmitt = {
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			research_bonus = {
-				air_equipment = 0.15
-			}
-			
-			traits = { light_aircraft_manufacturer }
-			
-			equipment_bonus = {
-				
-			}
-			
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		
 		junkers = { 
 			allowed = {
 				original_tag = GER
@@ -221,45 +139,6 @@ ideas = {
 				factor = 1
 			}
 		}	
-		
-
-		focke_wulf = { 
-
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-						
-			research_bonus = {
-				air_equipment = 0.15
-			}
-			
-			traits = { medium_aircraft_manufacturer }
-			
-			ai_will_do = {
-				factor = 1
-			}
-		}
-		
-		heinkel = {
-
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			
-			research_bonus = {
-				air_equipment = 0.15
-			}
-			
-			traits = { heavy_aircraft_manufacturer }
-			
-			ai_will_do = {
-				factor = 1
-			}
-		}
 		
 		dornier = {
 
@@ -284,7 +163,9 @@ ideas = {
 	
 	industrial_concern = {
 		
-		ig_faben = {
+		GER_bayer = {
+			
+			picture = GER_bayer
 			
 			allowed = {
 				original_tag = GER
@@ -293,9 +174,129 @@ ideas = {
 			research_bonus = {
 				industry = 0.05
 				synth_resources = 0.15
+				aor_chemical_tech = 0.15
 			}
 			
 			traits = { refinery_concern }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GER_rwe = {
+			
+			picture = GER_rwe
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				construction_tech = 0.15
+				industry = 0.05
+			}
+			
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				production_speed_industrial_complex_factor = 0.05
+			}
+			
+			traits = { AOR_GER_power_concern }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GER_ghh = {
+			
+			picture = GER_ghh
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				industry = 0.10
+				excavation_tech = 0.15
+				construction_tech = 0.10
+			}
+			
+			traits = { industrial_concern }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GER_deutsche_bank = {
+			
+			picture = GER_deutsche_bank
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				industry = 0.05
+			}
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				trade_opinion_factor = 0.15
+			}
+			
+			traits = { AOR_GER_banking_concern }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GER_oetker = {
+			
+			picture = GER_oetker
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				industry = 0.05
+			}
+			
+			modifier = {
+				consumer_goods_factor = -0.03
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+			
+			traits = { AOR_GER_light_industry_concern }
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
+		GER_gbag = {
+			
+			picture = GER_gbag
+			
+			allowed = {
+				original_tag = GER
+			}
+			
+			research_bonus = {
+				excavation_tech = 0.15
+				industry = 0.05
+			}
+			
+			modifier = {
+				local_resources_factor = 0.10
+			}
+			
+			traits = { AOR_GER_mining_concern }
 			
 			ai_will_do = {
 				factor = 1
@@ -330,7 +331,7 @@ ideas = {
 			}
 			
 			traits = { electronics_concern }
-		}		
+		}
 	}
 	
 	materiel_manufacturer = {
@@ -371,25 +372,28 @@ ideas = {
 				factor = 2
 			}
 		}
-		
-		
-
-		
-		opel = {
-			
-			allowed = {
-				original_tag = GER
-			}
-			
-			research_bonus = {
-				motorized_equipment = 0.15
-			}
-			
-			traits = { motorized_equipment_manufacturer }
-		}
 	}
 	
 	hidden_ideas = {
+
+		GER_RW_lutz_armor_hidden = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				army_armor_attack_factor = 0.10
+				army_armor_defence_factor = 0.10
+			}
+
+		}
 
 		fascism_drift_ARG = {
 

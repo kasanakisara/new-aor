@@ -92,7 +92,13 @@ scripted_gui = {
 				NOT = { check_variable = { GER_yihui_bill_id = 4 } }
 				check_variable = { GER_yihui_bill_act_cd < 1 }
 				has_political_power > 29.99
-				check_variable = { GER_yihui_inertia > 14.99 }
+				OR = {
+					check_variable = { GER_yihui_inertia > 14.99 }
+					AND = {
+						GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes }
+						check_variable = { GER_yihui_inertia > 9.99 }
+					}
+				}
 			}
 			GER_yihui_bill_act_soften_btn_click_enabled = {
 				check_variable = { GER_yihui_bill_stage = 1 }

@@ -11,10 +11,9 @@
 NOR_thunes_mekaniske_verksted_organization = {
     include = generic_infantry_tank_organization
     icon = GFX_idea_NOR_thunes_mekaniske_vaerksted
-    allowed = { 
-        tag = NOR
-        has_dlc = "Arms Against Tyranny"
-    }
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
+	}
 
     equipment_type = {  
         armor
@@ -150,9 +149,7 @@ NOR_akers_mekaniske_verksted_organization = {
 
         available = {
             FROM = {
-                NOR_johan_ludwig_mowinckel = {
-                    is_political_advisor = yes 
-                }
+                always = no # AOR: unavailable character NOR_johan_ludwig_mowinckel
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿#####################
+#####################
 
 ###  ##  #  # # #  ## 
  #  #  # ## # # # #   
@@ -11,9 +11,8 @@
 JAP_osaka_army_arsenal_organization = {
 	include = generic_tank_organization
 	icon = GFX_idea_osaka_army_arsenal
-	allowed = {	
-		original_tag = JAP
-		has_dlc = "Arms Against Tyranny"
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	add_trait = {
@@ -100,9 +99,8 @@ JAP_osaka_army_arsenal_organization = {
 JAP_sagami_army_arsenal_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_JAP_sagami_arsenal
-	allowed = {	
-		original_tag = JAP
-		has_dlc = "Arms Against Tyranny"
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	add_trait = {
@@ -189,14 +187,8 @@ JAP_sagami_army_arsenal_organization = {
 JAP_mitsubishi_heavy_industries_organization = {
 	include = generic_infantry_tank_organization
 	icon = GFX_idea_JAP_mitsubishi_tanks
-	allowed = {	
-		OR ={
-			AND = {
-					original_tag = JAP
-					has_dlc = "Arms Against Tyranny"
-			}
-			PHI_SEA = yes
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -3189,9 +3181,8 @@ JAP_hitachi_arms_department_organization = {
 	include = generic_assault_guns_organization
 	icon = GFX_idea_JAP_hitachi_arms
 	
-	allowed = {	
-		original_tag = JAP
-		has_dlc = "Arms Against Tyranny"
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	
 	available = {

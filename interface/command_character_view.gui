@@ -40,10 +40,19 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "ideas"
-			position = { x = 0 y = 42 }
-			size = { width=500 height=542 }
+			# 原为 y=42 height=542；下移让出上方分类条，底边不变（584）
+			# 外框上金线 y 99~100，与分类条下金线重合
+			position = { x = 0 y = 91 }
+			size = { width=500 height=493 }
 			clipping = yes
-			
+
+			# 列表边框挂在不滚动的 ideas 上
+			background = {
+				name = "Background"
+				quadTextureSprite ="GFX_tiled_window2_1b_border"
+				position = { x = -1 y = 3 }
+			}
+
 			containerWindowType = {
 				name = "grid"
 				position = { x = 0 y = 0 }
@@ -53,11 +62,11 @@ guiTypes = {
 				scroll_wheel_factor = 37
 				smooth_scrolling = yes
 				margin = { top = 15 bottom = 12 }
-				
+
+				# 滚动容器必须有 background，否则引擎不画滚动条
 				background = {
 					name = "Background"
-					quadTextureSprite ="GFX_tiled_window2_1b_border"
-					position = { x = -1 y = 3 }
+					spriteType = "GFX_tiled_window_transparent"
 				}
 
 				# Hide the cabinet's ornamental overlay; keep the list border.
@@ -74,21 +83,62 @@ guiTypes = {
 			}
 		}
 
-		# Keep the game's filter-grid binding without showing the old header strip.
+		# 分类条底板：独立装饰容器，引擎不认识它。
+		# 金线位置（窗口坐标）：红条不透明到 y=50；lined 上金线在框内第 5~6 行，
+		# 下金线在框底往上第 4~5 行；列表外框上金线在 ideas.y+8~9。
+		# 框 y=46 高 58：上金线 51~52 紧贴红条，下金线 99~100 与列表外框上金线重合；
+		# 两线之间 53~98 共 46px，放得下 42px 高的分类按钮。
+		containerWindowType = {
+			name = "AOR_cabinet_header_bar"
+			# 左右：lined 金线在图内第 4~5 列 / 倒数 6~5 列；列表框底图（x=-1）金线在
+			# 第 3~4 列 / 倒数 6~5 列 → 框 x=-2 宽 501，两侧金线都落在 2~3 / 493~494
+			position = { x = -2 y = 46 }
+			size = { width=501 height=58 }
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_AOR_command_character_header_bg"
+			}
+		}
+
+		# 引擎绑定的分类器（原版结构）：引擎按人物特质的 sprite 编号生成按钮并筛选，
+		# 编号 N 的名字是 ADVISOR_CATEGORY_N。与分类条重叠，底图由上面的装饰容器画。
+		# 只有出现分类按钮的窗口（政治顾问、军事），引擎会把下面的列表 grid 往下推，
+		# 推的距离实测 = header 高度 - 44（高 52 推 7~8，高 58 推 14，高 45 推 1）；成长型内阁不推。
+		# 所以 header 只给 44 高，让政治顾问的人物卡和成长型内阁对齐；
+		# 分类条外观仍是上面 58 高的装饰容器，按钮在屏幕上的位置不变。
 		containerWindowType = {
 			name = "header"
-			position = { x = -2000 y = 43 }
-			size = { width=500 height=50 }
+			position = { x = -2 y = 54 }
+			size = { width=501 height=44 }
+			clipping = no
+
+			# 引擎生成分类按钮时要取这里的 background #0，缺了会报错并且不生成按钮；
+			# 用透明底图，分类条的外观由上面的 AOR_cabinet_header_bar 画
+			containerWindowType = {
+				name = "header_background"
+				position = { x = 0 y = 0 }
+				size = { width=100% height=100% }
+
+				background = {
+					name = "Background"
+					spriteType = "GFX_tiled_window_transparent"
+				}
+			}
+
 			containerWindowType = {
 				name = "filters"
 				position = { x = 0 y = 0 }
-				size = { width=48% height=100% }
+				size = { width=100% height=100% }
+
+				# 政治顾问现为 5 类（最多可排 12 类）：按钮缩到 0.9（38x38，在格内 y=3），格宽 40，12 格共 480，
+				# 从窗口 x=8 排到 486（两侧金线内沿 6 / 490）；格 y=0（header 在窗口 y=54）
+				# → 按钮落在窗口 y 57~95，在上下金线（51~52 / 99~100）之间居中
 				gridBoxType = {
 					name = "filter_grid"
-					position = { x = 10 y = 10 }
+					position = { x = 10 y = 0 }
 					size = { width = 100% height = 100% }
-					slotsize = { width = 70 height = 50 }
-					max_slots_horizontal = 6
+					slotsize = { width = 40 height = 44 }
+					max_slots_horizontal = 12
 					add_horizontal = yes
 					format = "UPPER_LEFT"
 				}
@@ -282,6 +332,42 @@ guiTypes = {
 			maxHeight = 10
 			format = center
 			alwaystransparent = yes
+		}
+	}
+
+	# 分类按钮模板（原版 1.20 结构）；图标改用 33 格的 GFX_AOR_advisor_category_strip，
+	# 1~18 同原版（军事分类），19~33 为内阁分类。
+	# 整体缩到 0.9 才能在分类条里排下 12 个：按钮 42→38，内层图标中心按比例换算
+	# （原版相对按钮左上角 (21,21)/(20,19) → (19,19)/(18,17)，再加按钮的 y=3）
+	containerWindowType = {
+		name = "command_character_view_filter_button"
+		size = { width = 40 height = 44 }
+
+		buttonType = {
+			name = "button"
+			position = { x = 0 y = 3 }
+			spriteType = "GFX_FOCUS_FILTER_ICON_BG"
+			scale = 0.9
+			clicksound = click_checkbox
+		}
+
+		iconType = {
+			name = "background"
+			position = { x = 19 y = 22 }
+			spriteType = "GFX_advisor_category_filter_button"
+			frame = 2
+			centerposition = yes
+			alwaystransparent = yes
+			scale = 0.9
+		}
+
+		iconType = {
+			name = "icon"
+			position = { x = 18 y = 20 }
+			spriteType = "GFX_AOR_advisor_category_strip"
+			centerposition = yes
+			alwaystransparent = yes
+			scale = 0.9
 		}
 	}
 }

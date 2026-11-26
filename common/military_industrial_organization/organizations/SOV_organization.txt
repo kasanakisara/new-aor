@@ -77,26 +77,8 @@ SOV_morozov_design_bureau_organization = {
 	include = generic_mobile_tank_organization
 	icon = GFX_idea_morozov_design_bureau
 	
-	allowed = {	
-		OR = {
-			tag = SOV
-			AND = {
-				tag = MEX 
-				has_dlc = "Man the Guns"
-			}
-			AND = {
-				OR = {
-					is_literally_china = yes
-					tag = MAN
-				} 
-				has_dlc = "Waking the Tiger"
-			}
-			NOR_AAT = yes
-			AND = {
-				original_tag = PHI 
-				has_dlc = "No Compromise, No Surrender"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -348,13 +330,7 @@ SOV_astrov_design_bureau_organization = {
 	icon = GFX_idea_astrov_design_bureau
 	
 	allowed = {
-		OR = {
-			original_tag = SOV
-			AND = {
-				original_tag = CHI
-				has_dlc = "No Compromise, No Surrender"
-			}
-		}	
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		IF = {
@@ -511,18 +487,8 @@ SOV_okmo_organization = {
 	include = generic_infantry_tank_organization
 	icon = GFX_idea_okmo
 	
-	allowed = {	
-		OR = {
-			tag = SOV 
-			AND = {
-				tag = BUL
-				has_dlc = "Battle for the Bosporus"
-			}
-			AND = {
-				FROM = { original_tag = CHI }
-				has_dlc = "No Compromise, No Surrender"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -704,21 +670,15 @@ SOV_mytishchy_machine_building_plant_organization = {
 	include = generic_tank_refurbishment_plant_organization
 	icon = GFX_idea_SOV_mytishchy_machine_building_plant
 	
-	allowed = {	
-		OR = {
-			tag = SOV
-			AND = {
-				tag = ETH 
-				has_dlc = "By Blood Alone"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	visible = {
 		IF = { 
 			limit = { FROM = { original_tag = ETH } } 
-			FROM = { always = no # AOR: unavailable has_completed_focus ETH_mytishchi
--ababa_plant }
+			FROM = { always = no # AOR: unavailable has_completed_focus ETH_mytishchi-ababa_plant
+			}
 		}
 	}
 
@@ -851,18 +811,8 @@ SOV_kirov_organization = {
 	include = generic_heavy_tank_organization
 	icon = GFX_idea_SOV_kirov
 	
-	allowed = {	
-		OR = {
-			original_tag = SOV
-			AND = {
-				tag = BEL
-				has_dlc = "Gotterdammerung"
-			}
-			AND = {
-			    tag = AST
-			    has_dlc = "Thunder at Our Gates"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {

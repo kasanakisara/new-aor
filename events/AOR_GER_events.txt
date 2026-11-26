@@ -661,16 +661,6 @@ country_event = {
 # 成长型内阁
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
-# 里夏德·米勒成长（隐藏事件）
-country_event = {
-	id = AOR_GER_mueller_growth.1
-	hidden = yes
-	is_triggered_only = yes
-	immediate = {
-		country_event = { id = AOR_GER_mueller_growth.2 }
-	}
-}
-
 # 走出柏林
 country_event = {
 	id = AOR_GER_mueller_growth.2
@@ -679,13 +669,13 @@ country_event = {
 	picture = GFX_AOR_GER_union_competition_8
 	is_triggered_only = yes
 	trigger = {
-		has_character = GER_Richard_Mueller_growth_cabinet_1
+		has_character = GER_GC_01_01_Richard_Mueller
 		NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
 	}
 	immediate = {
 		set_country_flag = GER_Richard_Mueller_growth_transferred
 		hidden_effect = {
-			retire_character = GER_Richard_Mueller_growth_cabinet_1
+			retire_character = GER_GC_01_01_Richard_Mueller
 			if = {
 				limit = { NOT = { has_character = GER_Richard_Mueller_regular_cabinet } }
 				recruit_character = GER_Richard_Mueller_regular_cabinet

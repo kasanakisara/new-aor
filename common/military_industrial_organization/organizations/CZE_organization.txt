@@ -12,15 +12,8 @@ CZE_ckd_organization = {
 	include = generic_mobile_tank_organization
 	icon = GFX_idea_CZE_ckd
 	
-	allowed = {	
-		OR = {
-			tag = CZE
-			tag = RKH
-			AND = {
-				tag = ETH 
-				has_dlc = "By Blood Alone"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	visible = {
@@ -128,11 +121,7 @@ CZE_tatra_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_CZE_tatra
 	allowed = {
-		OR = {
-			tag = CZE
-			tag = RKH
-			tag = POL
-		}
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -199,24 +188,8 @@ CZE_skoda_armor_organization = {
 	include = generic_tank_organization
 	icon = GFX_idea_CZE_skoda_armor
 	
-	allowed = {	
-		OR = {
-			tag = CZE
-			tag = SLO
-			AND = {
-				tag = ETH 
-				has_dlc = "By Blood Alone"
-			}
-			AND = {
-				tag = HUN 
-				has_dlc = "Gotterdammerung"
-			}
-			AND = {
-				tag = PER
-				has_dlc = "Graveyard of Empires"
-				has_dlc = "Arms Against Tyranny"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	
 	visible = {
@@ -341,13 +314,7 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 	icon = GFX_idea_CZE_skoda_plzen
 
 	allowed = {
-		OR = {
-			tag = CZE
-			tag = AUS
-			tag = SLO
-			tag = POL
-		}
-		has_dlc = "Peace For Our Time"
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -412,7 +379,7 @@ CZE_skoda_works_german_organization = {
 	icon = GFX_idea_CZE_skoda_artillery
 
 	allowed = {
-		original_tag = GER	
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -462,7 +429,7 @@ CZE_bohmische_mahrische_maschinenfabrik_ag_german_organization = {
 	icon = GFX_idea_CZE_ckd #New signage is expensive
 
 	allowed = {
-		original_tag = GER
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -2795,10 +2762,13 @@ CZE_automatic_weapons_equipment_organization = { #Based on CZ Uhersky Brod
 
 # TANK Destroyer GUNS DESIGNER / MANUFACTURER - based on generic_assault_guns_organization tree
 CZE_tank_destroyer_organization = { #Based on Skoda Armor - Plezn 
+	visible = {
+		always = no # AOR: disabled tank/armor MIO
+	}
 	icon = GFX_idea_generic_tank_manufacturer_3
 
 	allowed = {
-		always = no # Archetype only - countries using it have their own verisons
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	equipment_type = { light_tank_destroyer_chassis medium_tank_destroyer_chassis heavy_tank_destroyer_chassis }

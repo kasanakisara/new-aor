@@ -30,14 +30,15 @@ leader_traits = {
     }
     AOR_GER_ddp = { random = no }
     AOR_GER_dvp = { random = no }
-    AOR_GER_banker = { random = no }
+    AOR_GER_banker = { random = no sprite = 22 }
     AOR_GER_monetary_policy = {
         random = no
-        stability_factor = -0.05
         consumer_goods_factor = -0.10
+        production_speed_industrial_complex_factor = 0.10
+        trade_opinion_factor = 0.15
         custom_modifier_tooltip = GER_adv_schacht_tt
     }
-    AOR_GER_interior_minister = { random = no }
+    AOR_GER_interior_minister = { random = no sprite = 21 }
     AOR_GER_zentrum = { random = no }
     AOR_GER_ghh = {
         random = no
@@ -51,5 +52,21 @@ leader_traits = {
         random = no
         production_speed_infrastructure_factor = 0.10
         production_speed_industrial_complex_factor = 0.15
+    }
+    AOR_GER_mining_concern = {
+        random = no
+        ai_will_do = { factor = 1 }
+    }
+    AOR_GER_power_concern = {
+        random = no
+        ai_will_do = { factor = 1 }
+    }
+    AOR_GER_banking_concern = {
+        random = no
+        ai_will_do = { factor = 1 }
+    }
+    AOR_GER_light_industry_concern = {
+        random = no
+        ai_will_do = { factor = 1 }
     }
 }

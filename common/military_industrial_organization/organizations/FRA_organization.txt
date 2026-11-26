@@ -12,18 +12,8 @@
 FRA_renault_organization = {
 	include = generic_infantry_tank_organization
 	icon = GFX_idea_renault
-	allowed = {	
-		OR = {
-			tag = FRA 
-			AND = {
-				tag = ETH 
-				has_dlc = "By Blood Alone"
-			}
-			AND = {
-				tag = BRA
-				has_dlc = "Trial of Allegiance"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	visible = {
@@ -114,9 +104,8 @@ FRA_renault_organization = {
 FRA_hotchkiss_organization = {
 	include = generic_mobile_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_3
-	allowed = {	
-		tag = FRA 
-		has_dlc = "Arms Against Tyranny"
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	add_trait = { 
 		token = FRA_mio_trait_l_35
@@ -140,17 +129,16 @@ FRA_hotchkiss_organization = {
 FRA_apx_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_FRA_atelier_puteaux
-	allowed = {	
-		tag = FRA 
-		has_dlc = "Arms Against Tyranny"
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 }
 
 FRA_amx_organization = { 
 	include = generic_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_2
-	allowed = {	
-		tag = FRA 
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		IF = {

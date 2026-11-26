@@ -12,23 +12,8 @@
 CHI_sino_german_technical_mission_organization = {
 	include = generic_heavy_tank_organization
 	icon = GFX_idea_porsche
-	allowed = {	
-		OR = {
-			is_literally_china = yes
-			tag = MAN
-		}
-		OR = {
-			NOT = { has_dlc = "No Compromise, No Surrender" }
-			AND = {
-				has_dlc = "No Compromise, No Surrender"
-				NOT = {
-					OR = {
-						tag = CHI
-						tag = PRC
-					}
-				}
-			}
-		} 
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		owner = {
@@ -270,9 +255,8 @@ CHI_shanghai_arsenal = {
 CHI_ncns_sino_german_technical_mission_organization = {
 	include = generic_heavy_tank_organization
 	icon = GFX_idea_porsche
-	allowed = {	
-		has_dlc = "No Compromise, No Surrender"
-		original_tag = CHI
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	visible = {
 		owner = {

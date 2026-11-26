@@ -655,11 +655,23 @@ GER_yihui_bill_act_lobby = {
 			check_variable = { GER_yihui_bill_stage = 1 }
 			NOT = { check_variable = { GER_yihui_bill_id = 4 } }
 			check_variable = { GER_yihui_bill_act_cd < 1 }
-			check_variable = { GER_yihui_inertia > 14.99 }
+			OR = {
+				check_variable = { GER_yihui_inertia > 14.99 }
+				AND = {
+					GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes }
+					check_variable = { GER_yihui_inertia > 9.99 }
+				}
+			}
 			has_political_power > 29.99
 		}
 		add_political_power = -30
-		subtract_from_variable = { GER_yihui_inertia = 15 }
+		if = {
+			limit = { GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes } }
+			subtract_from_variable = { GER_yihui_inertia = 10 }
+		}
+		else = {
+			subtract_from_variable = { GER_yihui_inertia = 15 }
+		}
 		clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
 		set_temp_variable = { yh_dzp_dy = 2 }
 		set_temp_variable = { yh_dzp_dn = -2 }

@@ -207,6 +207,22 @@ GER_yihui_recalc_preview = {
 		set_temp_variable = { yh_x = yh_o }
 		multiply_temp_variable = { yh_x = 2 }
 		subtract_from_variable = { GER_yihui_preview_cohesion = yh_x }
+		# 雨果·普罗伊斯：委派德意志民主党（5）时免除联盟凝聚力惩罚
+		if = {
+			limit = {
+				check_variable = { GER_yihui_pick_5 = 1 }
+				GER_03_08_Hugo_Preuss = { is_hired_as_advisor = yes }
+			}
+			add_to_variable = { GER_yihui_preview_cohesion = 2 }
+		}
+		# 古斯塔夫·施特雷泽曼：委派德意志人民党（6）时免除联盟凝聚力惩罚
+		if = {
+			limit = {
+				check_variable = { GER_yihui_pick_6 = 1 }
+				GER_12_01_Gustav_Stresemann = { is_hired_as_advisor = yes }
+			}
+			add_to_variable = { GER_yihui_preview_cohesion = 2 }
+		}
 	}
 	else = {
 		set_variable = { GER_yihui_preview_days = 0 }

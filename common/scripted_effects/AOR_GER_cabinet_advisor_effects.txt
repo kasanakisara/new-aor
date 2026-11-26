@@ -181,12 +181,14 @@ GER_adv_cabinet_count = {
 		limit = { has_character = GER_Richard_Mueller_regular_cabinet GER_Richard_Mueller_regular_cabinet = { is_hired_as_advisor = yes } }
 		add_to_variable = { var = GER_cab_total value = 1 }
 	}
-	# 马尔库塞、台尔曼走政治家道路完成成长后转入的正式内阁（社民党左派）
+	# 马尔库塞（社民党左派，政治家 / 思想家道路）、台尔曼（社民党左派，政治家道路）完成成长后转入的正式内阁
 	if = {
 		limit = {
 			OR = {
 				AND = { has_character = GER_Herbert_Marcuse_regular_cabinet_a GER_Herbert_Marcuse_regular_cabinet_a = { is_hired_as_advisor = yes } }
 				AND = { has_character = GER_Herbert_Marcuse_regular_cabinet_b GER_Herbert_Marcuse_regular_cabinet_b = { is_hired_as_advisor = yes } }
+				AND = { has_character = GER_Herbert_Marcuse_regular_theorist_a GER_Herbert_Marcuse_regular_theorist_a = { is_hired_as_advisor = yes } }
+				AND = { has_character = GER_Herbert_Marcuse_regular_theorist_b GER_Herbert_Marcuse_regular_theorist_b = { is_hired_as_advisor = yes } }
 			}
 		}
 		add_to_variable = { var = GER_cab_total value = 1 }
@@ -255,16 +257,16 @@ GER_adv_cabinet_conditions = {
 		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_ballod_banking } } remove_dynamic_modifier = { modifier = GER_adv_ballod_banking } }
 	}
 
-	# 沙赫特：内阁半数顾问为社民党右派
+	# 沙赫特：银行业社会化尚未完成前
 	if = {
 		limit = {
 			GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes }
-			check_variable = { var = GER_cab_halfright value = 0 compare = more_than_or_equals }
+			NOT = { has_country_flag = GER_socialization_reward_banking }
 		}
-		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_schacht_halfright } } } add_dynamic_modifier = { modifier = GER_adv_schacht_halfright } }
+		if = { limit = { NOT = { has_dynamic_modifier = { modifier = GER_adv_schacht_pre_banking } } } add_dynamic_modifier = { modifier = GER_adv_schacht_pre_banking } }
 	}
 	else = {
-		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_schacht_halfright } } remove_dynamic_modifier = { modifier = GER_adv_schacht_halfright } }
+		if = { limit = { has_dynamic_modifier = { modifier = GER_adv_schacht_pre_banking } } remove_dynamic_modifier = { modifier = GER_adv_schacht_pre_banking } }
 	}
 
 	# 雷德布尔：内阁没有中派与左派以外的顾问
@@ -881,6 +883,28 @@ GER_adv_cabinet_periodic_effects = {
 		}
 	}
 	else = { set_variable = { var = GER_adv_erzberger_days value = 0 } }
+
+	# 沙赫特：每两周反革命激进度 -0.5%；银行业社会化完成前每两周反革命力量 +1%（12 点）
+	if = { limit = { NOT = { has_variable = GER_adv_schacht_days } } set_variable = { var = GER_adv_schacht_days value = 0 } }
+	if = {
+		limit = { GER_06_01_Hjalmar_Schacht = { is_hired_as_advisor = yes } has_country_flag = GER_socialization_started }
+		add_to_variable = { var = GER_adv_schacht_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_adv_schacht_days value = 14 compare = more_than_or_equals } }
+			subtract_from_variable = { var = GER_adv_schacht_days value = 14 }
+			subtract_from_variable = { var = GER_socialization_radicalism value = 0.5 }
+			if = {
+				limit = {
+					NOT = { has_country_flag = GER_socialization_reward_banking }
+					has_variable = GER_socialization_counterrevolution
+				}
+				add_to_variable = { var = GER_socialization_counterrevolution value = 12 }
+				clamp_variable = { var = GER_socialization_counterrevolution min = 0 max = 1200 }
+			}
+			GER_socialization_refresh_bars = yes
+		}
+	}
+	else = { set_variable = { var = GER_adv_schacht_days value = 0 } }
 }
 
 GER_adv_cabinet_daily_effects = {

@@ -12,14 +12,8 @@
 USA_marmon_herrington_organization = {
 	include = generic_mobile_tank_organization
 	icon = GFX_idea_marmon_herrington
-	allowed = {	
-		OR = {
-			tag = USA
-			AND = {
-				tag = BRA
-				has_dlc = "Trial of Allegiance"
-			}
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		IF = {
@@ -46,16 +40,8 @@ USA_chrysler_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_chrysler
 	
-	allowed = {	
-		OR = {
-			tag = USA 
-			AND = {
-				tag = MEX 
-				has_dlc = "Man the Guns"
-			}
-			NOR_AAT = yes 
-			PHI_SEA = yes
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	available = {
@@ -208,9 +194,7 @@ USA_chrysler_organization = {
 
 		available = {
 			FROM = {
-				PHI_vicente_lava = {
-					is_hired_as_advisor = yes
-				}
+				always = no # AOR: unavailable character PHI_vicente_lava
 			}
 		}
 
@@ -266,8 +250,8 @@ USA_army_ordnance_department_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_army_ordnance_department
 	
-	allowed = {	
-		tag = USA
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 	add_trait = { 
@@ -307,11 +291,8 @@ USA_detroit_arsenal_organization = {
 	name = detroit_arsenal
 	include = generic_tank_organization
 	icon = GFX_idea_generic_industrial_concern_1
-	allowed = {	
-		OR = {
-			tag = USA
-			PHI_SEA = yes
-		}
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		IF = {
@@ -440,9 +421,7 @@ USA_detroit_arsenal_organization = {
 
 		available = {
 			FROM = {
-				PHI_vicente_lava = {
-					is_hired_as_advisor = yes
-				}
+				always = no # AOR: unavailable character PHI_vicente_lava
 			}
 		}
 
@@ -499,8 +478,8 @@ USA_tank_destroyer_board_organization = {
 	name = tank_destroyer_board
 	include = generic_mobile_tank_organization
 	icon = GFX_idea_usa_tank_destroyer_board
-	allowed = {	
-		tag = USA 
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 	available = {
 		FROM = { always = no # AOR: unavailable has_completed_focus USA_tank_destroyer_doctrine
@@ -711,9 +690,7 @@ USA_electric_boat_company_organization = {
 
 		available = {
 			FROM = {
-				PHI_vicente_lava = {
-					is_hired_as_advisor = yes
-				}
+				always = no # AOR: unavailable character PHI_vicente_lava
 			}
 		}
 
@@ -1557,9 +1534,7 @@ USA_ford_motor_company_organization = {
 
 		available = {
 			FROM = {
-				PHI_vicente_lava = {
-					is_hired_as_advisor = yes
-				}
+				always = no # AOR: unavailable character PHI_vicente_lava
 			}
 		}
 

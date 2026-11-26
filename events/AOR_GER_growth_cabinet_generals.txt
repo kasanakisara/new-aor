@@ -1,7 +1,9 @@
 # 由 Desktop/AOR资料/growth_cabinet_generals/gen_growth_generals.py 生成
+# unit_leader_event 的 immediate / option 作用域是将领本人（实测：变量写到了将领身上），
+# 所以旗标、变量、退休、招募等国家效果都放在 hidden_effect = { GER = { ... } } 里
 add_namespace = AOR_GER_growth_general
 
-# Erwin_Rommel 第1次升级
+# Erwin_Rommel 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.11
 	title = AOR_GER_growth_general.11.t
@@ -10,44 +12,33 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.11.a
-		hidden_effect = {
-			remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_1 }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_unit_leader_trait = infantry_leader
-			add_unit_leader_trait = hill_fighter
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Erwin_Rommel_t0_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_marshal }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Erwin_Rommel_t0_marshal
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.11.b
-		hidden_effect = {
-			remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_1 }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_unit_leader_trait = cavalry_leader
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Erwin_Rommel_t0_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_hc }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Erwin_Rommel_t0_hc
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 }
 
-# Erwin_Rommel 第2次升级
+# Erwin_Rommel marshal 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.12
 	title = AOR_GER_growth_general.12.t
@@ -56,92 +47,121 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.12.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_a } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_b } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_b } }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_marshal_a }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_attack = 1
+			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Erwin_Rommel_t1_a
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.12.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_a } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_b } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_b } }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_marshal_b }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_planning = 1
+			add_unit_leader_trait = cavalry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Erwin_Rommel_t1_b
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 }
 
-# Erwin_Rommel 第3次升级
+# Erwin_Rommel hc 专长
 unit_leader_event = {
-	id = AOR_GER_growth_general.13
-	title = AOR_GER_growth_general.13.t
-	desc = AOR_GER_growth_general.13.desc
+	id = AOR_GER_growth_general.14
+	title = AOR_GER_growth_general.14.t
+	desc = AOR_GER_growth_general.14.desc
 	is_triggered_only = yes
 
 	option = {
-		name = AOR_GER_growth_general.13.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_b } }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_4_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_attack = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Erwin_Rommel_t2_a
+		name = AOR_GER_growth_general.14.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Erwin_Rommel_t1_a
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 	option = {
-		name = AOR_GER_growth_general.13.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } remove_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_b } }
-		}
-		add_trait = { character = GER_Erwin_Rommel_growth_cabinet_1 slot = growth_cabinet trait = GER_Erwin_Rommel_growth_4_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Erwin_Rommel = {
-			add_skill_level = 1
-			add_defense = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Erwin_Rommel_t2_b
+		name = AOR_GER_growth_general.14.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_01_Erwin_Rommel slot = growth_cabinet trait = GER_Erwin_Rommel_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Erwin_Rommel_t1_b
 			set_variable = { var = GER_gc_Erwin_Rommel_days value = 0 }
 			add_to_variable = { var = GER_gc_Erwin_Rommel_step value = 1 }
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-		}
+		} }
 	}
 }
 
-# Erwin_Rommel 成长完成
+# Erwin_Rommel marshal 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.17
+	title = AOR_GER_growth_general.17.t
+	desc = AOR_GER_growth_general.17.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Erwin_Rommel_done
+			clr_country_flag = GER_gc_Erwin_Rommel_pending
+			retire_character = GER_GC_03_01_Erwin_Rommel
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.17.a
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } }
+			GER_AF_Erwin_Rommel = {
+				promote_leader = yes
+				add_unit_leader_trait = infantry_expert
+				add_attack = 1
+			}
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } }
+			GER_AF_Erwin_Rommel = {
+				promote_leader = yes
+				add_unit_leader_trait = cavalry_expert
+				add_attack = 1
+			}
+		}
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } }
+				GER_AF_Erwin_Rommel = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Erwin_Rommel.png" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } }
+				GER_AF_Erwin_Rommel = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Erwin_Rommel.png" } } }
+			}
+		} }
+	}
+}
+
+# Erwin_Rommel hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.19
 	title = AOR_GER_growth_general.19.t
@@ -149,86 +169,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Erwin_Rommel_done
 			clr_country_flag = GER_gc_Erwin_Rommel_pending
-			retire_character = GER_Erwin_Rommel_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_01_Erwin_Rommel
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.19.a
-		GER_AF_Erwin_Rommel = {
-			promote_leader = yes
-			add_unit_leader_trait = desert_fox
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_a }
-			GER_AF_Erwin_Rommel = {
-				add_unit_leader_trait = infantry_expert
-			}
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_b }
-			GER_AF_Erwin_Rommel = {
-				add_unit_leader_trait = cavalry_expert
-			}
-		}
-		hidden_effect = {
-			GER_AF_Erwin_Rommel = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Erwin_Rommel.png" small = "gfx/interface/ideas/GER/advisors/Erwin_Rommel.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Erwin_Rommel_t2_a }
-				add_advisor_role = {
-					character = GER_AF_Erwin_Rommel
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Erwin_Rommel_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_offensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } }
+				GER_AF_Erwin_Rommel = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Erwin_Rommel.png" small = "GFX_GER_GC_Erwin_Rommel_helmet" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Erwin_Rommel_t2_b }
-				add_advisor_role = {
-					character = GER_AF_Erwin_Rommel
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Erwin_Rommel_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_defensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } }
+				GER_AF_Erwin_Rommel = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Erwin_Rommel.png" small = "GFX_GER_GC_Erwin_Rommel_cavalry" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_a }
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Erwin_Rommel
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Erwin_Rommel_high_command
-						allowed = { original_tag = GER }
-						traits = { army_infantry_2 }
+						cost = 100
+						traits = { AOR_GER_gc_nonpartisan army_infantry_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Erwin_Rommel_t0_b }
+				limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Erwin_Rommel
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Erwin_Rommel_high_command
-						allowed = { original_tag = GER }
-						traits = { army_cavalry_2 }
+						cost = 100
+						traits = { AOR_GER_gc_nonpartisan army_cavalry_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.19.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.19.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Erwin_Rommel_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.19.b_tt
+		}
 	}
 }
 
-# Hans_Kahle 第1次升级
+# Hans_Kahle 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.21
 	title = AOR_GER_growth_general.21.t
@@ -237,43 +231,46 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.21.a
-		hidden_effect = {
-			remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_1 }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_unit_leader_trait = infantry_leader
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Kahle_t0_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_marshal }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t0_marshal
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.21.b
-		hidden_effect = {
-			remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_1 }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_unit_leader_trait = GER_AF_artillery_commander
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Kahle_t0_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_chief }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t0_chief
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-		}
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.21.c
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_hc }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t0_hc
+			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
+			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
+			clr_country_flag = GER_gc_Hans_Kahle_pending
+		} }
 	}
 }
 
-# Hans_Kahle 第2次升级
+# Hans_Kahle marshal 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.22
 	title = AOR_GER_growth_general.22.t
@@ -282,45 +279,41 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.22.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t0_a } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t0_b } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_b } }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_marshal_a }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_attack = 1
+			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Kahle_t1_a
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.22.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t0_a } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t0_b } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_b } }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_marshal_b }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_defense = 1
+			add_unit_leader_trait = GER_AF_artillery_commander
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Kahle_t1_b
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-		}
+		} }
 	}
 }
 
-# Hans_Kahle 第3次升级
+# Hans_Kahle chief 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.23
 	title = AOR_GER_growth_general.23.t
@@ -329,45 +322,170 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.23.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t1_a } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t1_b } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_b } }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_4_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_planning = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Kahle_t2_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_chief_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t1_a
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.23.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t1_a } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Kahle_t1_b } remove_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_b } }
-		}
-		add_trait = { character = GER_Hans_Kahle_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Kahle_growth_4_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Kahle = {
-			add_skill_level = 1
-			add_logistics = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Kahle_t2_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_chief_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t1_b
 			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Kahle_pending
+		} }
+	}
+}
+
+# Hans_Kahle hc 专长
+unit_leader_event = {
+	id = AOR_GER_growth_general.24
+	title = AOR_GER_growth_general.24.t
+	desc = AOR_GER_growth_general.24.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.24.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t1_a
+			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
+			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
+			clr_country_flag = GER_gc_Hans_Kahle_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.24.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_02_Hans_Kahle slot = growth_cabinet trait = GER_Hans_Kahle_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_t1_b
+			set_variable = { var = GER_gc_Hans_Kahle_days value = 0 }
+			add_to_variable = { var = GER_gc_Hans_Kahle_step value = 1 }
+			clr_country_flag = GER_gc_Hans_Kahle_pending
+		} }
+	}
+}
+
+# Hans_Kahle marshal 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.27
+	title = AOR_GER_growth_general.27.t
+	desc = AOR_GER_growth_general.27.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_done
+			clr_country_flag = GER_gc_Hans_Kahle_pending
+			retire_character = GER_GC_03_02_Hans_Kahle
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.27.a
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+			GER_AF_Hans_Kahle = {
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+			GER_AF_Hans_Kahle = {
+				promote_leader = yes
+			}
+		}
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" } } }
+			}
+		} }
+	}
+}
+
+# Hans_Kahle chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.28
+	title = AOR_GER_growth_general.28.t
+	desc = AOR_GER_growth_general.28.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Kahle_done
+			clr_country_flag = GER_gc_Hans_Kahle_pending
+			retire_character = GER_GC_03_02_Hans_Kahle
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.28.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" small = "GFX_GER_GC_Hans_Kahle_helmet" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" small = "GFX_GER_GC_Hans_Kahle_helmet" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Hans_Kahle
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Hans_Kahle_army_chief
+						cost = 100
+						traits = { AOR_GER_gc_nonpartisan army_chief_planning_2 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Hans_Kahle
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Hans_Kahle_army_chief
+						cost = 100
+						traits = { AOR_GER_gc_nonpartisan army_chief_organizational_2 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.28.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.28.b_tt
 		}
 	}
 }
 
-# Hans_Kahle 成长完成
+# Hans_Kahle hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.29
 	title = AOR_GER_growth_general.29.t
@@ -375,85 +493,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Kahle_done
 			clr_country_flag = GER_gc_Hans_Kahle_pending
-			retire_character = GER_Hans_Kahle_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_02_Hans_Kahle
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.29.a
-		GER_AF_Hans_Kahle = {
-			promote_leader = yes
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Hans_Kahle_t0_a }
-			GER_AF_Hans_Kahle = {
-				add_unit_leader_trait = infantry_expert
-			}
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Hans_Kahle_t0_b }
-			GER_AF_Hans_Kahle = {
-				add_unit_leader_trait = GER_AF_artillery_expert
-			}
-		}
-		hidden_effect = {
-			GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" small = "gfx/interface/ideas/GER/advisors/Hans_Kahle.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Hans_Kahle_t2_a }
-				add_advisor_role = {
-					character = GER_AF_Hans_Kahle
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Hans_Kahle_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_planning_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" small = "GFX_GER_GC_Hans_Kahle_helmet" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Hans_Kahle_t2_b }
-				add_advisor_role = {
-					character = GER_AF_Hans_Kahle
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Hans_Kahle_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_organizational_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+				GER_AF_Hans_Kahle = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Kahle.png" small = "GFX_GER_GC_Hans_Kahle_artillery" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Hans_Kahle_t0_a }
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Hans_Kahle
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Hans_Kahle_high_command
-						allowed = { original_tag = GER }
-						traits = { army_infantry_2 }
+						cost = 50
+						traits = { AOR_GER_gc_nonpartisan army_infantry_1 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Hans_Kahle_t0_b }
+				limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Hans_Kahle
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Hans_Kahle_high_command
-						allowed = { original_tag = GER }
-						traits = { army_artillery_2 }
+						cost = 50
+						traits = { AOR_GER_gc_nonpartisan army_artillery_1 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.29.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.29.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Kahle_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.29.b_tt
+		}
 	}
 }
 
-# Ernst_Schneller 第1次升级
+# Ernst_Schneller 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.31
 	title = AOR_GER_growth_general.31.t
@@ -462,92 +555,172 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.31.a
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_1 }
-		}
-		add_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_chief }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Ernst_Schneller = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = GER_AF_basic_military_training
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Schneller_t0_a
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Schneller_t0_chief
 			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Schneller_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.31.b
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_1 }
-		}
-		add_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_hc }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Ernst_Schneller = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = skilled_staffer
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Schneller_t0_b
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Schneller_t0_hc
 			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Schneller_pending
-		}
+		} }
 	}
 }
 
-# Ernst_Schneller 第2次升级
+# Ernst_Schneller chief 专长
 unit_leader_event = {
-	id = AOR_GER_growth_general.32
-	title = AOR_GER_growth_general.32.t
-	desc = AOR_GER_growth_general.32.desc
+	id = AOR_GER_growth_general.33
+	title = AOR_GER_growth_general.33.t
+	desc = AOR_GER_growth_general.33.desc
 	is_triggered_only = yes
 
 	option = {
-		name = AOR_GER_growth_general.32.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_a } remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_b } remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_b } }
-		}
-		add_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Ernst_Schneller = {
-			add_skill_level = 1
-			add_planning = 1
-		}
-		hidden_effect = {
+		name = AOR_GER_growth_general.33.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_chief_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Schneller_t1_a
 			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Schneller_pending
-		}
+		} }
 	}
 	option = {
-		name = AOR_GER_growth_general.32.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_a } remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_b } remove_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_b } }
-		}
-		add_trait = { character = GER_Ernst_Schneller_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Ernst_Schneller = {
-			add_skill_level = 1
-			add_defense = 1
-		}
-		hidden_effect = {
+		name = AOR_GER_growth_general.33.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_chief_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Schneller_t1_b
 			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Schneller_pending
+		} }
+	}
+}
+
+# Ernst_Schneller hc 专长
+unit_leader_event = {
+	id = AOR_GER_growth_general.34
+	title = AOR_GER_growth_general.34.t
+	desc = AOR_GER_growth_general.34.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.34.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Schneller_t1_a
+			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
+			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
+			clr_country_flag = GER_gc_Ernst_Schneller_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.34.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_03_Ernst_Schneller slot = growth_cabinet trait = GER_Ernst_Schneller_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Schneller_t1_b
+			set_variable = { var = GER_gc_Ernst_Schneller_days value = 0 }
+			add_to_variable = { var = GER_gc_Ernst_Schneller_step value = 1 }
+			clr_country_flag = GER_gc_Ernst_Schneller_pending
+		} }
+	}
+}
+
+# Ernst_Schneller chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.38
+	title = AOR_GER_growth_general.38.t
+	desc = AOR_GER_growth_general.38.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Schneller_done
+			clr_country_flag = GER_gc_Ernst_Schneller_pending
+			retire_character = GER_GC_03_03_Ernst_Schneller
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.38.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
+				GER_AF_Ernst_Schneller = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Schneller.png" small = "GFX_GER_GC_Ernst_Schneller_helmet" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
+				GER_AF_Ernst_Schneller = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Schneller.png" small = "GFX_GER_GC_Ernst_Schneller_helmet" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Ernst_Schneller
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Ernst_Schneller_army_chief
+						cost = 200
+						traits = { army_chief_drill_3 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Ernst_Schneller
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Ernst_Schneller_army_chief
+						cost = 200
+						traits = { army_chief_planning_3 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.38.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.38.b_tt
 		}
 	}
 }
 
-# Ernst_Schneller 成长完成
+# Ernst_Schneller hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.39
 	title = AOR_GER_growth_general.39.t
@@ -555,73 +728,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Schneller_done
 			clr_country_flag = GER_gc_Ernst_Schneller_pending
-			retire_character = GER_Ernst_Schneller_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_03_Ernst_Schneller
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.39.a
-		GER_AF_Ernst_Schneller = {
-			promote_leader = yes
-		}
-		hidden_effect = {
-			GER_AF_Ernst_Schneller = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Schneller.png" small = "gfx/interface/ideas/GER/advisors/Ernst_Schneller.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_a }
-				add_advisor_role = {
-					character = GER_AF_Ernst_Schneller
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Ernst_Schneller_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_drill_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
+				GER_AF_Ernst_Schneller = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Schneller.png" small = "GFX_GER_GC_Ernst_Schneller_helmet" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Ernst_Schneller_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Ernst_Schneller
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Ernst_Schneller_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_planning_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
+				GER_AF_Ernst_Schneller = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Schneller.png" small = "GFX_GER_GC_Ernst_Schneller_shield" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Ernst_Schneller_t1_a }
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Ernst_Schneller
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Ernst_Schneller_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_regrouping_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Ernst_Schneller_t1_b }
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Ernst_Schneller
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Ernst_Schneller_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_entrenchment_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.39.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.39.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Schneller_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.39.b_tt
+		}
 	}
 }
 
-# Rudolf_Egelhofer 第1次升级
+# Rudolf_Egelhofer 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.41
 	title = AOR_GER_growth_general.41.t
@@ -630,43 +790,33 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.41.a
-		hidden_effect = {
-			remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_1 }
-		}
-		add_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Rudolf_Egelhofer = {
-			add_skill_level = 1
-			add_unit_leader_trait = infantry_leader
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Rudolf_Egelhofer_t0_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_marshal }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Rudolf_Egelhofer_t0_marshal
 			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
 			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
 			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.41.b
-		hidden_effect = {
-			remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_1 }
-		}
-		add_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Rudolf_Egelhofer = {
-			add_skill_level = 1
-			add_unit_leader_trait = cavalry_leader
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Rudolf_Egelhofer_t0_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_chief }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Rudolf_Egelhofer_t0_chief
 			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
 			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
 			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
-		}
+		} }
 	}
 }
 
-# Rudolf_Egelhofer 第2次升级
+# Rudolf_Egelhofer marshal 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.42
 	title = AOR_GER_growth_general.42.t
@@ -675,131 +825,178 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.42.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_a } remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_b } remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_b } }
-		}
-		add_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_marshal_a }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Rudolf_Egelhofer = {
-			add_skill_level = 1
-			add_attack = 1
+			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Rudolf_Egelhofer_t1_a
 			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
 			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
 			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.42.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_a } remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_b } remove_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_b } }
-		}
-		add_trait = { character = GER_Rudolf_Egelhofer_growth_cabinet_1 slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_marshal_b }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Rudolf_Egelhofer = {
-			add_skill_level = 1
-			add_defense = 1
+			add_unit_leader_trait = cavalry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Rudolf_Egelhofer_t1_b
 			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
 			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
 			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
-		}
+		} }
 	}
 }
 
-# Rudolf_Egelhofer 成长完成
+# Rudolf_Egelhofer chief 专长
 unit_leader_event = {
-	id = AOR_GER_growth_general.49
-	title = AOR_GER_growth_general.49.t
-	desc = AOR_GER_growth_general.49.desc
+	id = AOR_GER_growth_general.43
+	title = AOR_GER_growth_general.43.t
+	desc = AOR_GER_growth_general.43.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.43.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_chief_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Rudolf_Egelhofer_t1_a
+			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
+			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
+			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.43.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_04_Rudolf_Egelhofer slot = growth_cabinet trait = GER_Rudolf_Egelhofer_growth_3_chief_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Rudolf_Egelhofer_t1_b
+			set_variable = { var = GER_gc_Rudolf_Egelhofer_days value = 0 }
+			add_to_variable = { var = GER_gc_Rudolf_Egelhofer_step value = 1 }
+			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
+		} }
+	}
+}
+
+# Rudolf_Egelhofer marshal 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.47
+	title = AOR_GER_growth_general.47.t
+	desc = AOR_GER_growth_general.47.desc
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Rudolf_Egelhofer_done
 			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
-			retire_character = GER_Rudolf_Egelhofer_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_04_Rudolf_Egelhofer
+		} }
 	}
 	option = {
-		name = AOR_GER_growth_general.49.a
-		GER_AF_Rudolf_Egelhofer = {
-			promote_leader = yes
-		}
+		name = AOR_GER_growth_general.47.a
 		if = {
-			limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_a }
+			limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a } }
 			GER_AF_Rudolf_Egelhofer = {
-				add_unit_leader_trait = infantry_expert
+				promote_leader = yes
 			}
 		}
-		if = {
-			limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_b }
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b } }
 			GER_AF_Rudolf_Egelhofer = {
-				add_unit_leader_trait = cavalry_expert
+				promote_leader = yes
 			}
 		}
-		hidden_effect = {
-			GER_AF_Rudolf_Egelhofer = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Rudolf_Egelhofer.png" small = "gfx/interface/ideas/GER/advisors/Rudolf_Egelhofer.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a }
-				add_advisor_role = {
-					character = GER_AF_Rudolf_Egelhofer
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Rudolf_Egelhofer_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_offensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a } }
+				GER_AF_Rudolf_Egelhofer = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Rudolf_Egelhofer.png" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b }
-				add_advisor_role = {
-					character = GER_AF_Rudolf_Egelhofer
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Rudolf_Egelhofer_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_defensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b } }
+				GER_AF_Rudolf_Egelhofer = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Rudolf_Egelhofer.png" } } }
 			}
-			if = {
-				limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_a }
-				add_advisor_role = {
-					character = GER_AF_Rudolf_Egelhofer
-					advisor = {
-						slot = high_command ledger = army
-						idea_token = GER_AF_Rudolf_Egelhofer_high_command
-						allowed = { original_tag = GER }
-						traits = { army_infantry_2 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Rudolf_Egelhofer_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Rudolf_Egelhofer
-					advisor = {
-						slot = high_command ledger = army
-						idea_token = GER_AF_Rudolf_Egelhofer_high_command
-						allowed = { original_tag = GER }
-						traits = { army_cavalry_2 }
-					}
-				}
-			}
-		}
-		custom_effect_tooltip = AOR_GER_growth_general.49.effect_tt
+		} }
 	}
 }
 
-# Hans_Marchwitza 第1次升级
+# Rudolf_Egelhofer chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.48
+	title = AOR_GER_growth_general.48.t
+	desc = AOR_GER_growth_general.48.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Rudolf_Egelhofer_done
+			clr_country_flag = GER_gc_Rudolf_Egelhofer_pending
+			retire_character = GER_GC_03_04_Rudolf_Egelhofer
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.48.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a } }
+				GER_AF_Rudolf_Egelhofer = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Rudolf_Egelhofer.png" small = "GFX_GER_GC_Rudolf_Egelhofer_sword" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b } }
+				GER_AF_Rudolf_Egelhofer = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Rudolf_Egelhofer.png" small = "GFX_GER_GC_Rudolf_Egelhofer_shield" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Rudolf_Egelhofer
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Rudolf_Egelhofer_army_chief
+						cost = 50
+						traits = { army_chief_offensive_1 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Rudolf_Egelhofer
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Rudolf_Egelhofer_army_chief
+						cost = 50
+						traits = { army_chief_defensive_1 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.48.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Rudolf_Egelhofer_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.48.b_tt
+		}
+	}
+}
+
+# Hans_Marchwitza 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.51
 	title = AOR_GER_growth_general.51.t
@@ -808,92 +1005,172 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.51.a
-		hidden_effect = {
-			remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_1 }
-		}
-		add_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_chief }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Hans_Marchwitza = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Marchwitza_t0_a
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Marchwitza_t0_chief
 			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Marchwitza_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.51.b
-		hidden_effect = {
-			remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_1 }
-		}
-		add_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_hc }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Hans_Marchwitza = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = trait_engineer
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Hans_Marchwitza_t0_b
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Marchwitza_t0_hc
 			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Marchwitza_pending
-		}
+		} }
 	}
 }
 
-# Hans_Marchwitza 第2次升级
+# Hans_Marchwitza chief 专长
 unit_leader_event = {
-	id = AOR_GER_growth_general.52
-	title = AOR_GER_growth_general.52.t
-	desc = AOR_GER_growth_general.52.desc
+	id = AOR_GER_growth_general.53
+	title = AOR_GER_growth_general.53.t
+	desc = AOR_GER_growth_general.53.desc
 	is_triggered_only = yes
 
 	option = {
-		name = AOR_GER_growth_general.52.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_a } remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_b } remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_b } }
-		}
-		add_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Marchwitza = {
-			add_skill_level = 1
-			add_defense = 1
-		}
-		hidden_effect = {
+		name = AOR_GER_growth_general.53.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_chief_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Marchwitza_t1_a
 			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Marchwitza_pending
-		}
+		} }
 	}
 	option = {
-		name = AOR_GER_growth_general.52.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_a } remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_b } remove_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_b } }
-		}
-		add_trait = { character = GER_Hans_Marchwitza_growth_cabinet_1 slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Hans_Marchwitza = {
-			add_skill_level = 1
-			add_logistics = 1
-		}
-		hidden_effect = {
+		name = AOR_GER_growth_general.53.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_chief_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Marchwitza_t1_b
 			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
 			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
 			clr_country_flag = GER_gc_Hans_Marchwitza_pending
+		} }
+	}
+}
+
+# Hans_Marchwitza hc 专长
+unit_leader_event = {
+	id = AOR_GER_growth_general.54
+	title = AOR_GER_growth_general.54.t
+	desc = AOR_GER_growth_general.54.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.54.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Marchwitza_t1_a
+			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
+			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
+			clr_country_flag = GER_gc_Hans_Marchwitza_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.54.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_05_Hans_Marchwitza slot = growth_cabinet trait = GER_Hans_Marchwitza_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Marchwitza_t1_b
+			set_variable = { var = GER_gc_Hans_Marchwitza_days value = 0 }
+			add_to_variable = { var = GER_gc_Hans_Marchwitza_step value = 1 }
+			clr_country_flag = GER_gc_Hans_Marchwitza_pending
+		} }
+	}
+}
+
+# Hans_Marchwitza chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.58
+	title = AOR_GER_growth_general.58.t
+	desc = AOR_GER_growth_general.58.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Hans_Marchwitza_done
+			clr_country_flag = GER_gc_Hans_Marchwitza_pending
+			retire_character = GER_GC_03_05_Hans_Marchwitza
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.58.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
+				GER_AF_Hans_Marchwitza = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Marchwitza.png" small = "GFX_GER_GC_Hans_Marchwitza_shield" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
+				GER_AF_Hans_Marchwitza = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Marchwitza.png" small = "GFX_GER_GC_Hans_Marchwitza_helmet" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Hans_Marchwitza
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Hans_Marchwitza_army_chief
+						cost = 100
+						traits = { army_chief_defensive_2 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Hans_Marchwitza
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Hans_Marchwitza_army_chief
+						cost = 75
+						traits = { army_chief_entrenchment_2 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.58.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.58.b_tt
 		}
 	}
 }
 
-# Hans_Marchwitza 成长完成
+# Hans_Marchwitza hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.59
 	title = AOR_GER_growth_general.59.t
@@ -901,91 +1178,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Hans_Marchwitza_done
 			clr_country_flag = GER_gc_Hans_Marchwitza_pending
-			retire_character = GER_Hans_Marchwitza_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_05_Hans_Marchwitza
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.59.a
-		GER_AF_Hans_Marchwitza = {
-			promote_leader = yes
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_a }
-			GER_AF_Hans_Marchwitza = {
-				add_unit_leader_trait = infantry_expert
-			}
-		}
-		hidden_effect = {
-			GER_AF_Hans_Marchwitza = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Marchwitza.png" small = "gfx/interface/ideas/GER/advisors/Hans_Marchwitza.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_a }
-				add_advisor_role = {
-					character = GER_AF_Hans_Marchwitza
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Hans_Marchwitza_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_defensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
+				GER_AF_Hans_Marchwitza = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Marchwitza.png" small = "GFX_GER_GC_Hans_Marchwitza_shield" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Hans_Marchwitza_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Hans_Marchwitza
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Hans_Marchwitza_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_entrenchment_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
+				GER_AF_Hans_Marchwitza = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_Marchwitza.png" small = "GFX_GER_GC_Hans_Marchwitza_logistics" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a has_country_flag = GER_gc_Hans_Marchwitza_t0_a }
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Hans_Marchwitza
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Hans_Marchwitza_high_command
-						allowed = { original_tag = GER }
-						traits = { army_infantry_2 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a has_country_flag = GER_gc_Hans_Marchwitza_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Hans_Marchwitza
-					advisor = {
-						slot = high_command ledger = army
-						idea_token = GER_AF_Hans_Marchwitza_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_entrenchment_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b }
+				limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Hans_Marchwitza
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Hans_Marchwitza_high_command
-						allowed = { original_tag = GER }
+						cost = 150
 						traits = { army_logistics_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.59.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.59.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Hans_Marchwitza_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.59.b_tt
+		}
 	}
 }
 
-# Li_De 第1次升级
+# Li_De 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.61
 	title = AOR_GER_growth_general.61.t
@@ -994,45 +1240,58 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.61.a
-		hidden_effect = {
-			remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_1 }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_marshal }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Li_De = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t0_a
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t0_marshal
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.61.b
-		hidden_effect = {
-			remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_1 }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_chief }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Li_De = {
-			add_skill_level = 1
 			remove_unit_leader_trait = GER_AF_inexperienced
-			add_unit_leader_trait = GER_AF_artillery_commander
 		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t0_b
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t0_chief
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.61.c
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_1 }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_hc }
+		custom_effect_tooltip = newline_tt
+		GER_AF_Li_De = {
+			remove_unit_leader_trait = GER_AF_inexperienced
 		}
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t0_hc
+			set_variable = { var = GER_gc_Li_De_days value = 0 }
+			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
+			clr_country_flag = GER_gc_Li_De_pending
+		} }
 	}
 }
 
-# Li_De 第2次升级
+# Li_De marshal 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.62
 	title = AOR_GER_growth_general.62.t
@@ -1041,45 +1300,41 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.62.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t0_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t0_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_marshal_a }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Li_De = {
-			add_skill_level = 1
-			add_attack = 1
+			add_unit_leader_trait = infantry_leader
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Li_De_t1_a
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.62.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t0_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t0_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_2_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_marshal }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_marshal_b }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Li_De = {
-			add_skill_level = 1
-			add_defense = 1
+			add_unit_leader_trait = GER_AF_artillery_commander
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Li_De_t1_b
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 }
 
-# Li_De 第3次升级
+# Li_De chief 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.63
 	title = AOR_GER_growth_general.63.t
@@ -1088,45 +1343,33 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.63.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t1_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t1_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Li_De = {
-			add_skill_level = 1
-			add_planning = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t2_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_chief_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t1_a
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.63.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t1_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t1_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_3_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Li_De = {
-			add_skill_level = 1
-			add_logistics = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t2_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_chief_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t1_b
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 }
 
-# Li_De 第4次升级
+# Li_De hc 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.64
 	title = AOR_GER_growth_general.64.t
@@ -1135,43 +1378,137 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.64.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t2_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t2_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_5_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Li_De = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t3_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t1_a
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.64.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Li_De_t2_a } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Li_De_t2_b } remove_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_4_b } }
-		}
-		add_trait = { character = GER_Li_De_growth_cabinet_1 slot = growth_cabinet trait = GER_Li_De_growth_5_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Li_De = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Li_De_t3_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_03_06_Li_De slot = growth_cabinet trait = GER_Li_De_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_t1_b
 			set_variable = { var = GER_gc_Li_De_days value = 0 }
 			add_to_variable = { var = GER_gc_Li_De_step value = 1 }
 			clr_country_flag = GER_gc_Li_De_pending
+		} }
+	}
+}
+
+# Li_De marshal 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.67
+	title = AOR_GER_growth_general.67.t
+	desc = AOR_GER_growth_general.67.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_done
+			clr_country_flag = GER_gc_Li_De_pending
+			retire_character = GER_GC_03_06_Li_De
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.67.a
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+			GER_AF_Li_De = {
+				promote_leader = yes
+				add_unit_leader_trait = infantry_expert
+			}
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+			GER_AF_Li_De = {
+				promote_leader = yes
+				add_unit_leader_trait = GER_AF_artillery_expert
+			}
+		}
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" } } }
+			}
+		} }
+	}
+}
+
+# Li_De chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.68
+	title = AOR_GER_growth_general.68.t
+	desc = AOR_GER_growth_general.68.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Li_De_done
+			clr_country_flag = GER_gc_Li_De_pending
+			retire_character = GER_GC_03_06_Li_De
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.68.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" small = "GFX_GER_GC_Li_De_sword" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" small = "GFX_GER_GC_Li_De_shield" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Li_De
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Li_De_army_chief
+						cost = 200
+						traits = { army_chief_offensive_3 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Li_De
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Li_De_army_chief
+						cost = 200
+						traits = { army_chief_defensive_3 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.68.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.68.b_tt
 		}
 	}
 }
 
-# Li_De 成长完成
+# Li_De hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.69
 	title = AOR_GER_growth_general.69.t
@@ -1179,133 +1516,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Li_De_done
 			clr_country_flag = GER_gc_Li_De_pending
-			retire_character = GER_Li_De_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_06_Li_De
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.69.a
-		GER_AF_Li_De = {
-			promote_leader = yes
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Li_De_t0_a }
-			GER_AF_Li_De = {
-				add_unit_leader_trait = infantry_expert
-			}
-		}
-		if = {
-			limit = { has_country_flag = GER_gc_Li_De_t0_b }
-			GER_AF_Li_De = {
-				add_unit_leader_trait = GER_AF_artillery_expert
-			}
-		}
-		hidden_effect = {
-			GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" small = "gfx/interface/ideas/GER/advisors/Li_De.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Li_De_t1_a has_country_flag = GER_gc_Li_De_t3_b }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Li_De_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_offensive_3 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" small = "GFX_GER_GC_Li_De_helmet" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t1_a has_country_flag = GER_gc_Li_De_t3_a }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Li_De_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_offensive_2 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t1_b has_country_flag = GER_gc_Li_De_t3_b }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Li_De_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_defensive_3 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t1_b has_country_flag = GER_gc_Li_De_t3_a }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = army_chief
-						idea_token = GER_AF_Li_De_army_chief
-						allowed = { original_tag = GER }
-						traits = { army_chief_defensive_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+				GER_AF_Li_De = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Li_De.png" small = "GFX_GER_GC_Li_De_artillery" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Li_De_t0_a has_country_flag = GER_gc_Li_De_t3_a }
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Li_De
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Li_De_high_command
-						allowed = { original_tag = GER }
-						traits = { army_infantry_3 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t0_a has_country_flag = GER_gc_Li_De_t3_b }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = high_command ledger = army
-						idea_token = GER_AF_Li_De_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_infantry_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t0_b has_country_flag = GER_gc_Li_De_t3_a }
+				limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Li_De
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Li_De_high_command
-						allowed = { original_tag = GER }
-						traits = { army_artillery_3 }
-					}
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = GER_gc_Li_De_t0_b has_country_flag = GER_gc_Li_De_t3_b }
-				add_advisor_role = {
-					character = GER_AF_Li_De
-					advisor = {
-						slot = high_command ledger = army
-						idea_token = GER_AF_Li_De_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_artillery_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.69.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.69.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Li_De_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.69.b_tt
+		}
 	}
 }
 
-# Max_Reichpietsch 第1次升级
+# Max_Reichpietsch 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.91
 	title = AOR_GER_growth_general.91.t
@@ -1314,43 +1578,46 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.91.a
-		hidden_effect = {
-			remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_1 }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Max_Reichpietsch = {
-			add_skill_level = 1
-			add_unit_leader_trait = ironside
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Max_Reichpietsch_t0_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_1 }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_fleet }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t0_fleet
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.91.b
-		hidden_effect = {
-			remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_1 }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Max_Reichpietsch = {
-			add_skill_level = 1
-			add_unit_leader_trait = seawolf
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Max_Reichpietsch_t0_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_1 }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_chief }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t0_chief
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-		}
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.91.c
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_1 }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_hc }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t0_hc
+			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
+			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
+			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+		} }
 	}
 }
 
-# Max_Reichpietsch 第2次升级
+# Max_Reichpietsch fleet 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.92
 	title = AOR_GER_growth_general.92.t
@@ -1359,43 +1626,41 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.92.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_a } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_b } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_b } }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_a }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_fleet }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_fleet_a }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Max_Reichpietsch = {
-			add_attack = 1
+			add_unit_leader_trait = ironside
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Max_Reichpietsch_t1_a
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.92.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_a } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_b } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_b } }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_b }
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_fleet }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_fleet_b }
 		custom_effect_tooltip = newline_tt
 		GER_AF_Max_Reichpietsch = {
-			add_maneuver = 1
+			add_unit_leader_trait = seawolf
 		}
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Max_Reichpietsch_t1_b
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-		}
+		} }
 	}
 }
 
-# Max_Reichpietsch 第3次升级
+# Max_Reichpietsch chief 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.93
 	title = AOR_GER_growth_general.93.t
@@ -1404,43 +1669,170 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.93.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_b } }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_4_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Max_Reichpietsch = {
-			add_defense = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Max_Reichpietsch_t2_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_chief_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t1_a
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.93.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } remove_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_b } }
-		}
-		add_trait = { character = GER_Max_Reichpietsch_growth_cabinet_1 slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_4_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Max_Reichpietsch = {
-			add_coordination = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Max_Reichpietsch_t2_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_chief_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t1_b
 			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
 			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+		} }
+	}
+}
+
+# Max_Reichpietsch hc 专长
+unit_leader_event = {
+	id = AOR_GER_growth_general.94
+	title = AOR_GER_growth_general.94.t
+	desc = AOR_GER_growth_general.94.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.94.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t1_a
+			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
+			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
+			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.94.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_04_01_Max_Reichpietsch slot = growth_cabinet trait = GER_Max_Reichpietsch_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_t1_b
+			set_variable = { var = GER_gc_Max_Reichpietsch_days value = 0 }
+			add_to_variable = { var = GER_gc_Max_Reichpietsch_step value = 1 }
+			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+		} }
+	}
+}
+
+# Max_Reichpietsch fleet 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.97
+	title = AOR_GER_growth_general.97.t
+	desc = AOR_GER_growth_general.97.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_done
+			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+			retire_character = GER_GC_04_01_Max_Reichpietsch
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.97.a
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+			GER_AF_Max_Reichpietsch = {
+				add_skill_level = 1
+			}
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+			GER_AF_Max_Reichpietsch = {
+				add_skill_level = 1
+			}
+		}
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" } } }
+			}
+		} }
+	}
+}
+
+# Max_Reichpietsch chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.98
+	title = AOR_GER_growth_general.98.t
+	desc = AOR_GER_growth_general.98.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Max_Reichpietsch_done
+			clr_country_flag = GER_gc_Max_Reichpietsch_pending
+			retire_character = GER_GC_04_01_Max_Reichpietsch
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.98.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" small = "GFX_GER_GC_Max_Reichpietsch_anchor" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" small = "GFX_GER_GC_Max_Reichpietsch_anchor" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Max_Reichpietsch
+					advisor = {
+						slot = navy_chief
+						idea_token = GER_AF_Max_Reichpietsch_navy_chief
+						cost = 100
+						traits = { navy_chief_decisive_battle_2 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Max_Reichpietsch
+					advisor = {
+						slot = navy_chief
+						idea_token = GER_AF_Max_Reichpietsch_navy_chief
+						cost = 100
+						traits = { navy_chief_commerce_raiding_2 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.98.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.98.b_tt
 		}
 	}
 }
 
-# Max_Reichpietsch 成长完成
+# Max_Reichpietsch hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.99
 	title = AOR_GER_growth_general.99.t
@@ -1448,73 +1840,60 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Max_Reichpietsch_done
 			clr_country_flag = GER_gc_Max_Reichpietsch_pending
-			retire_character = GER_Max_Reichpietsch_growth_cabinet_1
-		}
+			retire_character = GER_GC_04_01_Max_Reichpietsch
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.99.a
-		GER_AF_Max_Reichpietsch = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
-			GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" small = "gfx/interface/ideas/GER/advisors/Max_Reichpietsch.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_a }
-				add_advisor_role = {
-					character = GER_AF_Max_Reichpietsch
-					advisor = {
-						slot = navy_chief
-						idea_token = GER_AF_Max_Reichpietsch_navy_chief
-						allowed = { original_tag = GER }
-						traits = { navy_chief_decisive_battle_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" small = "GFX_GER_GC_Max_Reichpietsch_anchor" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Max_Reichpietsch
-					advisor = {
-						slot = navy_chief
-						idea_token = GER_AF_Max_Reichpietsch_navy_chief
-						allowed = { original_tag = GER }
-						traits = { navy_chief_commerce_raiding_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+				GER_AF_Max_Reichpietsch = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Max_Reichpietsch.png" small = "GFX_GER_GC_Max_Reichpietsch_submarine" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_a }
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Max_Reichpietsch
 					advisor = {
 						slot = high_command ledger = navy
 						idea_token = GER_AF_Max_Reichpietsch_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { navy_capital_ship_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Max_Reichpietsch_t0_b }
+				limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Max_Reichpietsch
 					advisor = {
 						slot = high_command ledger = navy
 						idea_token = GER_AF_Max_Reichpietsch_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { navy_submarine_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.99.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.99.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Max_Reichpietsch_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.99.b_tt
+		}
 	}
 }
 
-# Albin_Koebis 第1次升级
+# Albin_Koebis 培养方向
 unit_leader_event = {
 	id = AOR_GER_growth_general.101
 	title = AOR_GER_growth_general.101.t
@@ -1523,88 +1902,33 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.101.a
-		hidden_effect = {
-			remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_1 }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_skill_level = 1
-			add_unit_leader_trait = fleet_protector
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t0_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_1 }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_chief }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t0_chief
 			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
 			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
 			clr_country_flag = GER_gc_Albin_Koebis_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.101.b
-		hidden_effect = {
-			remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_1 }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_skill_level = 1
-			add_unit_leader_trait = blockade_runner
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t0_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_1 }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_hc }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t0_hc
 			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
 			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
 			clr_country_flag = GER_gc_Albin_Koebis_pending
-		}
+		} }
 	}
 }
 
-# Albin_Koebis 第2次升级
-unit_leader_event = {
-	id = AOR_GER_growth_general.102
-	title = AOR_GER_growth_general.102.t
-	desc = AOR_GER_growth_general.102.desc
-	is_triggered_only = yes
-
-	option = {
-		name = AOR_GER_growth_general.102.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t0_a } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t0_b } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_b } }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_attack = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t1_a
-			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
-			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
-			clr_country_flag = GER_gc_Albin_Koebis_pending
-		}
-	}
-	option = {
-		name = AOR_GER_growth_general.102.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t0_a } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t0_b } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_b } }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_defense = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t1_b
-			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
-			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
-			clr_country_flag = GER_gc_Albin_Koebis_pending
-		}
-	}
-}
-
-# Albin_Koebis 第3次升级
+# Albin_Koebis chief 专长
 unit_leader_event = {
 	id = AOR_GER_growth_general.103
 	title = AOR_GER_growth_general.103.t
@@ -1613,43 +1937,129 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.103.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t1_a } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t1_b } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_b } }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_4_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_maneuver = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t2_a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_chief_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t1_a
 			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
 			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
 			clr_country_flag = GER_gc_Albin_Koebis_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.103.b
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t1_a } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_a } }
-			else_if = { limit = { has_country_flag = GER_gc_Albin_Koebis_t1_b } remove_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_b } }
-		}
-		add_trait = { character = GER_Albin_Koebis_growth_cabinet_1 slot = growth_cabinet trait = GER_Albin_Koebis_growth_4_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Albin_Koebis = {
-			add_coordination = 1
-		}
-		hidden_effect = {
-			set_country_flag = GER_gc_Albin_Koebis_t2_b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_chief }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_chief_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t1_b
 			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
 			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
 			clr_country_flag = GER_gc_Albin_Koebis_pending
+		} }
+	}
+}
+
+# Albin_Koebis hc 专长
+unit_leader_event = {
+	id = AOR_GER_growth_general.104
+	title = AOR_GER_growth_general.104.t
+	desc = AOR_GER_growth_general.104.desc
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_growth_general.104.a
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_hc_a }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t1_a
+			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
+			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
+			clr_country_flag = GER_gc_Albin_Koebis_pending
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.104.b
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_2_hc }
+		} }
+		add_trait = { character = GER_GC_04_02_Albin_Koebis slot = growth_cabinet trait = GER_Albin_Koebis_growth_3_hc_b }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_t1_b
+			set_variable = { var = GER_gc_Albin_Koebis_days value = 0 }
+			add_to_variable = { var = GER_gc_Albin_Koebis_step value = 1 }
+			clr_country_flag = GER_gc_Albin_Koebis_pending
+		} }
+	}
+}
+
+# Albin_Koebis chief 成长完成
+unit_leader_event = {
+	id = AOR_GER_growth_general.108
+	title = AOR_GER_growth_general.108.t
+	desc = AOR_GER_growth_general.108.desc
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Albin_Koebis_done
+			clr_country_flag = GER_gc_Albin_Koebis_pending
+			retire_character = GER_GC_04_02_Albin_Koebis
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.108.a
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
+				GER_AF_Albin_Koebis = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Albin_Koebis.png" small = "GFX_GER_GC_Albin_Koebis_anchor" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
+				GER_AF_Albin_Koebis = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Albin_Koebis.png" small = "GFX_GER_GC_Albin_Koebis_anchor" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Albin_Koebis
+					advisor = {
+						slot = navy_chief
+						idea_token = GER_AF_Albin_Koebis_navy_chief
+						cost = 50
+						traits = { navy_chief_maneuver_1 }
+					}
+				}
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Albin_Koebis
+					advisor = {
+						slot = navy_chief
+						idea_token = GER_AF_Albin_Koebis_navy_chief
+						cost = 50
+						traits = { navy_chief_commerce_raiding_1 }
+					}
+				}
+			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.108.a_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.108.b_tt
 		}
 	}
 }
 
-# Albin_Koebis 成长完成
+# Albin_Koebis hc 成长完成
 unit_leader_event = {
 	id = AOR_GER_growth_general.109
 	title = AOR_GER_growth_general.109.t
@@ -1657,69 +2067,56 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Albin_Koebis_done
 			clr_country_flag = GER_gc_Albin_Koebis_pending
-			retire_character = GER_Albin_Koebis_growth_cabinet_1
-		}
+			retire_character = GER_GC_04_02_Albin_Koebis
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.109.a
-		GER_AF_Albin_Koebis = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
-			GER_AF_Albin_Koebis = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Albin_Koebis.png" small = "gfx/interface/ideas/GER/advisors/Albin_Koebis.png" } } }
+		hidden_effect = { GER = {
 			if = {
-				limit = { has_country_flag = GER_gc_Albin_Koebis_t0_a }
-				add_advisor_role = {
-					character = GER_AF_Albin_Koebis
-					advisor = {
-						slot = navy_chief
-						idea_token = GER_AF_Albin_Koebis_navy_chief
-						allowed = { original_tag = GER }
-						traits = { navy_chief_maneuver_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
+				GER_AF_Albin_Koebis = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Albin_Koebis.png" small = "GFX_GER_GC_Albin_Koebis_submarine" } } }
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Albin_Koebis_t0_b }
-				add_advisor_role = {
-					character = GER_AF_Albin_Koebis
-					advisor = {
-						slot = navy_chief
-						idea_token = GER_AF_Albin_Koebis_navy_chief
-						allowed = { original_tag = GER }
-						traits = { navy_chief_commerce_raiding_2 }
-					}
-				}
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
+				GER_AF_Albin_Koebis = { set_portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Albin_Koebis.png" small = "GFX_GER_GC_Albin_Koebis_anchor" } } }
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Albin_Koebis_t0_a }
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
 				add_advisor_role = {
 					character = GER_AF_Albin_Koebis
 					advisor = {
 						slot = high_command ledger = navy
 						idea_token = GER_AF_Albin_Koebis_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { navy_anti_submarine_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Albin_Koebis_t0_b }
+				limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Albin_Koebis
 					advisor = {
 						slot = high_command ledger = navy
 						idea_token = GER_AF_Albin_Koebis_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { navy_screen_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.109.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.109.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Albin_Koebis_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.109.b_tt
+		}
 	}
 }
 
@@ -1732,46 +2129,54 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.71.a
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Herbert_Marcuse = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t0_a
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.71.b
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_theorist }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t0_b
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.71.c
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_1 }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_gc_label_politician }
+			add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = AOR_GER_spd_left }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t0_c
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 }
 
@@ -1784,39 +2189,42 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.72.a
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_general_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Herbert_Marcuse = {
-			add_skill_level = 1
-			add_attack = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_general_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_a
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.72.b
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_general_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Herbert_Marcuse = {
-			add_skill_level = 1
-			add_defense = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_general_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_b
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
+	}
+	option = {
+		name = AOR_GER_growth_general.72.c
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_general_c }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Herbert_Marcuse_t1_c
+			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
+			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
+			clr_country_flag = GER_gc_Herbert_Marcuse_pending
+		} }
 	}
 }
 
@@ -1829,29 +2237,29 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.73.a
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_thinker_a }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_thinker_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_a
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.73.b
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_thinker_b }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_thinker }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_thinker_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_b
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 }
 
@@ -1864,29 +2272,29 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.74.a
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_politician_a }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_politician_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_a
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.74.b
-		hidden_effect = {
-			remove_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
-		}
-		add_trait = { character = GER_Herbert_Marcuse_growth_cabinet_1 slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_politician_b }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_2_politician }
+		} }
+		add_trait = { character = GER_GC_03_07_Herbert_Marcuse slot = growth_cabinet trait = GER_Herbert_Marcuse_growth_3_politician_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_t1_b
 			set_variable = { var = GER_gc_Herbert_Marcuse_days value = 0 }
 			add_to_variable = { var = GER_gc_Herbert_Marcuse_step value = 1 }
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-		}
+		} }
 	}
 }
 
@@ -1898,54 +2306,76 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_done
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-			retire_character = GER_Herbert_Marcuse_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_07_Herbert_Marcuse
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.77.a
-		GER_AF_Herbert_Marcuse = {
-			promote_leader = yes
-		}
-		hidden_effect = {
-			GER_AF_Herbert_Marcuse = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Herbert_Marcuse.png" small = "gfx/interface/ideas/GER/advisors/Herbert_Marcuse.png" } } }
-			add_advisor_role = {
-				character = GER_AF_Herbert_Marcuse
-				advisor = {
-					slot = army_chief
-					idea_token = GER_AF_Herbert_Marcuse_army_chief
-					allowed = { original_tag = GER }
-					traits = { army_chief_morale_2 }
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a } }
+				GER_AF_Herbert_Marcuse = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Herbert_Marcuse.png" small = "GFX_GER_GC_Herbert_Marcuse_helmet" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_b } }
+				GER_AF_Herbert_Marcuse = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Herbert_Marcuse.png" small = "GFX_GER_GC_Herbert_Marcuse_cavalry" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_c } }
+				GER_AF_Herbert_Marcuse = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Herbert_Marcuse.png" small = "GFX_GER_GC_Herbert_Marcuse_shield" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a } }
+				add_advisor_role = {
+					character = GER_AF_Herbert_Marcuse
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Herbert_Marcuse_army_chief
+						cost = 100
+						traits = { army_chief_morale_2 }
+					}
 				}
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a }
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_b } }
 				add_advisor_role = {
 					character = GER_AF_Herbert_Marcuse
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Herbert_Marcuse_high_command
-						allowed = { original_tag = GER }
-						traits = { army_CombinedArms_2 }
+						cost = 50
+						traits = { army_cavalry_1 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Herbert_Marcuse_t1_b }
+				limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_c } }
 				add_advisor_role = {
 					character = GER_AF_Herbert_Marcuse
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Herbert_Marcuse_high_command
-						allowed = { original_tag = GER }
-						traits = { army_entrenchment_2 }
+						cost = 50
+						traits = { army_entrenchment_1 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a } }
+			custom_effect_tooltip = AOR_GER_growth_general.77.a_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.77.effect_tt
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.77.b_tt
+		}
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Herbert_Marcuse_t1_c } }
+			custom_effect_tooltip = AOR_GER_growth_general.77.c_tt
+		}
 	}
 }
 
@@ -1957,18 +2387,18 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_done
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-			retire_character = GER_Herbert_Marcuse_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_07_Herbert_Marcuse
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.78.a
-		hidden_effect = {
+		hidden_effect = { GER = {
 			if = { limit = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a } recruit_character = GER_Herbert_Marcuse_regular_theorist_a }
 			else = { recruit_character = GER_Herbert_Marcuse_regular_theorist_b }
-		}
+		} }
 		custom_effect_tooltip = AOR_GER_growth_general.78.effect_tt
 	}
 }
@@ -1981,18 +2411,18 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Herbert_Marcuse_done
 			clr_country_flag = GER_gc_Herbert_Marcuse_pending
-			retire_character = GER_Herbert_Marcuse_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_07_Herbert_Marcuse
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.79.a
-		hidden_effect = {
+		hidden_effect = { GER = {
 			if = { limit = { has_country_flag = GER_gc_Herbert_Marcuse_t1_a } recruit_character = GER_Herbert_Marcuse_regular_cabinet_a }
 			else = { recruit_character = GER_Herbert_Marcuse_regular_cabinet_b }
-		}
+		} }
 		custom_effect_tooltip = AOR_GER_growth_general.79.effect_tt
 	}
 }
@@ -2006,46 +2436,37 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.81.a
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_1 }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Ernst_Thaelmann = {
-			add_skill_level = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_spd_left }
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_1 }
+			add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_spd_left }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t0_a
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.81.b
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_1 }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_thinker }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_gc_label_army }
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_spd_left }
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_1 }
+			add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_gc_label_politician }
+			add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = AOR_GER_spd_left }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t0_b
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
-	}
-	option = {
-		name = AOR_GER_growth_general.81.c
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_1 }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Thaelmann_t0_c
-			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
-			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
-			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 }
 
@@ -2058,74 +2479,55 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.82.a
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_a }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Ernst_Thaelmann = {
-			add_skill_level = 1
-			add_attack = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t1_a
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.82.b
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_b }
-		custom_effect_tooltip = newline_tt
-		GER_AF_Ernst_Thaelmann = {
-			add_skill_level = 1
-			add_logistics = 1
-		}
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t1_b
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
-}
-
-# Ernst_Thaelmann thinker 第2次升级
-unit_leader_event = {
-	id = AOR_GER_growth_general.83
-	title = AOR_GER_growth_general.83.t
-	desc = AOR_GER_growth_general.83.desc
-	is_triggered_only = yes
-
 	option = {
-		name = AOR_GER_growth_general.83.a
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_thinker }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_thinker_a }
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Thaelmann_t1_a
+		name = AOR_GER_growth_general.82.c
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_c }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Thaelmann_t1_c
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 	option = {
-		name = AOR_GER_growth_general.83.b
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_thinker }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_thinker_b }
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Thaelmann_t1_b
+		name = AOR_GER_growth_general.82.d
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_general }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_general_d }
+		hidden_effect = { GER = {
+			set_country_flag = GER_gc_Ernst_Thaelmann_t1_d
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 }
 
@@ -2138,29 +2540,29 @@ unit_leader_event = {
 
 	option = {
 		name = AOR_GER_growth_general.84.a
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_politician_a }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_politician_a }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t1_a
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.84.b
-		hidden_effect = {
-			remove_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
-		}
-		add_trait = { character = GER_Ernst_Thaelmann_growth_cabinet_1 slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_politician_b }
-		hidden_effect = {
+		hidden_effect = { GER = {
+			remove_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_2_politician }
+		} }
+		add_trait = { character = GER_GC_03_08_Ernst_Thaelmann slot = growth_cabinet trait = GER_Ernst_Thaelmann_growth_3_politician_b }
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_t1_b
 			set_variable = { var = GER_gc_Ernst_Thaelmann_days value = 0 }
 			add_to_variable = { var = GER_gc_Ernst_Thaelmann_step value = 1 }
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-		}
+		} }
 	}
 }
 
@@ -2172,78 +2574,86 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_done
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-			retire_character = GER_Ernst_Thaelmann_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_08_Ernst_Thaelmann
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.87.a
-		GER_AF_Ernst_Thaelmann = {
-			promote_leader = yes
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_a } }
+			GER_AF_Ernst_Thaelmann = {
+				promote_leader = yes
+			}
 		}
-		hidden_effect = {
-			GER_AF_Ernst_Thaelmann = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Thaelmann.png" small = "gfx/interface/ideas/GER/advisors/Ernst_Thaelmann.png" } } }
-			add_advisor_role = {
-				character = GER_AF_Ernst_Thaelmann
-				advisor = {
-					slot = army_chief
-					idea_token = GER_AF_Ernst_Thaelmann_army_chief
-					allowed = { original_tag = GER }
-					traits = { army_chief_organizational_2 }
+		hidden_effect = { GER = {
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_a } }
+				GER_AF_Ernst_Thaelmann = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Thaelmann.png" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_b } }
+				GER_AF_Ernst_Thaelmann = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Thaelmann.png" small = "GFX_GER_GC_Ernst_Thaelmann_helmet" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_c } }
+				GER_AF_Ernst_Thaelmann = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Thaelmann.png" small = "GFX_GER_GC_Ernst_Thaelmann_helmet" } } }
+			}
+			else_if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_d } }
+				GER_AF_Ernst_Thaelmann = { set_portraits = { army = { large = "gfx/leaders/GER/armed_forces/Ernst_Thaelmann.png" small = "GFX_GER_GC_Ernst_Thaelmann_logistics" } } }
+			}
+			if = {
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_b } }
+				add_advisor_role = {
+					character = GER_AF_Ernst_Thaelmann
+					advisor = {
+						slot = army_chief
+						idea_token = GER_AF_Ernst_Thaelmann_army_chief
+						cost = 100
+						traits = { army_chief_organizational_2 }
+					}
 				}
 			}
 			if = {
-				limit = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_a }
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_c } }
 				add_advisor_role = {
 					character = GER_AF_Ernst_Thaelmann
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Ernst_Thaelmann_high_command
-						allowed = { original_tag = GER }
+						cost = 100
 						traits = { army_infantry_2 }
 					}
 				}
 			}
 			else_if = {
-				limit = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_b }
+				limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_d } }
 				add_advisor_role = {
 					character = GER_AF_Ernst_Thaelmann
 					advisor = {
 						slot = high_command ledger = army
 						idea_token = GER_AF_Ernst_Thaelmann_high_command
-						allowed = { original_tag = GER }
+						cost = 150
 						traits = { army_logistics_2 }
 					}
 				}
 			}
+		} }
+		if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_b } }
+			custom_effect_tooltip = AOR_GER_growth_general.87.b_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.87.effect_tt
-	}
-}
-
-# Ernst_Thaelmann thinker 成长完成
-unit_leader_event = {
-	id = AOR_GER_growth_general.88
-	title = AOR_GER_growth_general.88.t
-	desc = AOR_GER_growth_general.88.desc
-	is_triggered_only = yes
-
-	immediate = {
-		hidden_effect = {
-			set_country_flag = GER_gc_Ernst_Thaelmann_done
-			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-			retire_character = GER_Ernst_Thaelmann_growth_cabinet_1
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_c } }
+			custom_effect_tooltip = AOR_GER_growth_general.87.c_tt
 		}
-	}
-	option = {
-		name = AOR_GER_growth_general.88.a
-		hidden_effect = {
-			if = { limit = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_a } recruit_character = GER_Ernst_Thaelmann_regular_theorist_a }
-			else = { recruit_character = GER_Ernst_Thaelmann_regular_theorist_b }
+		else_if = {
+			limit = { GER = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_d } }
+			custom_effect_tooltip = AOR_GER_growth_general.87.d_tt
 		}
-		custom_effect_tooltip = AOR_GER_growth_general.88.effect_tt
 	}
 }
 
@@ -2255,18 +2665,18 @@ unit_leader_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
+		hidden_effect = { GER = {
 			set_country_flag = GER_gc_Ernst_Thaelmann_done
 			clr_country_flag = GER_gc_Ernst_Thaelmann_pending
-			retire_character = GER_Ernst_Thaelmann_growth_cabinet_1
-		}
+			retire_character = GER_GC_03_08_Ernst_Thaelmann
+		} }
 	}
 	option = {
 		name = AOR_GER_growth_general.89.a
-		hidden_effect = {
+		hidden_effect = { GER = {
 			if = { limit = { has_country_flag = GER_gc_Ernst_Thaelmann_t1_a } recruit_character = GER_Ernst_Thaelmann_regular_cabinet_a }
 			else = { recruit_character = GER_Ernst_Thaelmann_regular_cabinet_b }
-		}
+		} }
 		custom_effect_tooltip = AOR_GER_growth_general.89.effect_tt
 	}
 }

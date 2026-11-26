@@ -549,21 +549,56 @@ characters = {
 	# GER_AF_Hans_von_Seeckt
 	GER_AF_Hans_von_Seeckt = {
 		name = GER_AF_Hans_von_Seeckt
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Hans_von_Seeckt.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Hans_von_Seeckt.png"
+				small = "gfx/interface/ideas/GER/advisors/Hans_von_Seeckt.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Hans_von_Seeckt.png"
+			}
+		}
 		field_marshal = {
 			traits = { GER_AF_prussian_militarism GER_AF_veteran_of_many_wars GER_AF_army_authority }
-			skill = 4
+			skill = 5
 			attack_skill = 4
 			defense_skill = 4
 			planning_skill = 6
 			logistics_skill = 5
 			legacy_id = -1
 		}
+		advisor = {
+			slot = army_chief
+			idea_token = GER_AF_Hans_von_Seeckt_army_chief
+			cost = 200
+			allowed = { original_tag = GER }
+			available = { not_already_hired_except_as = army_chief }
+			traits = { GER_RW_seeckt_army_chief }
+			ai_will_do = { factor = 3 }
+		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Hans_von_Seeckt_high_command
+			cost = 200
+			allowed = { original_tag = GER }
+			available = { not_already_hired_except_as = high_command }
+			traits = { GER_RW_seeckt_high_command }
+			ai_will_do = { factor = 3 }
+		}
 	}
 	# GER_AF_Wilhelm_Heye
 	GER_AF_Wilhelm_Heye = {
 		name = GER_AF_Wilhelm_Heye
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Wilhelm_Heye.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Wilhelm_Heye.png"
+				small = "gfx/interface/ideas/GER/advisors/Wilhelm_Heye.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Wilhelm_Heye.png"
+			}
+		}
 		field_marshal = {
 			traits = { GER_AF_prussian_militarism GER_AF_veteran_of_many_wars }
 			skill = 4
@@ -573,11 +608,27 @@ characters = {
 			logistics_skill = 3
 			legacy_id = -1
 		}
+		advisor = {
+			slot = army_chief
+			idea_token = GER_AF_Wilhelm_Heye_army_chief
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_heye_army_chief }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Fritz_von_Lossberg
 	GER_AF_Fritz_von_Lossberg = {
 		name = GER_AF_Fritz_von_Lossberg
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Fritz_von_Lossberg.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Fritz_von_Lossberg.png"
+				small = "gfx/interface/ideas/GER/advisors/Fritz_von_Lossberg.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Fritz_von_Lossberg.png"
+			}
+		}
 		field_marshal = {
 			traits = { defensive_doctrine GER_AF_veteran_of_many_wars }
 			skill = 3
@@ -587,11 +638,38 @@ characters = {
 			logistics_skill = 5
 			legacy_id = -1
 		}
+		advisor = {
+			slot = army_chief
+			idea_token = GER_AF_Fritz_von_Lossberg_army_chief
+			cost = 200
+			allowed = { original_tag = GER }
+			available = { not_already_hired_except_as = army_chief }
+			traits = { GER_RW_lossberg_army_chief }
+			ai_will_do = { factor = 2 }
+		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Fritz_von_Lossberg_high_command
+			cost = 200
+			allowed = { original_tag = GER }
+			available = { not_already_hired_except_as = high_command }
+			traits = { GER_RW_lossberg_high_command }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Otto_Hasse
 	GER_AF_Otto_Hasse = {
 		name = GER_AF_Otto_Hasse
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Otto_Hasse.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Otto_Hasse.png"
+				small = "gfx/interface/ideas/GER/advisors/Otto_Hasse.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Otto_Hasse.png"
+			}
+		}
 		corps_commander = {
 			traits = { organizer trait_engineer }
 			skill = 3
@@ -601,11 +679,28 @@ characters = {
 			logistics_skill = 5
 			legacy_id = -1
 		}
+		advisor = {
+			slot = theorist
+			ledger = army
+			idea_token = GER_AF_Otto_Hasse_theorist
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_hasse_theorist }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Georg_Wetzell
 	GER_AF_Georg_Wetzell = {
 		name = GER_AF_Georg_Wetzell
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Georg_Wetzell.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Georg_Wetzell.png"
+				small = "gfx/interface/ideas/GER/advisors/Georg_Wetzell.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Georg_Wetzell.png"
+			}
+		}
 		corps_commander = {
 			traits = { organizer trickster }
 			skill = 3
@@ -614,6 +709,15 @@ characters = {
 			planning_skill = 5
 			logistics_skill = 4
 			legacy_id = -1
+		}
+		advisor = {
+			slot = theorist
+			ledger = army
+			idea_token = GER_AF_Georg_Wetzell_theorist
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_wetzell_theorist }
+			ai_will_do = { factor = 2 }
 		}
 	}
 	# GER_AF_Friedrich_Kress_von_Kressenstein
@@ -661,7 +765,15 @@ characters = {
 	# GER_AF_Richard_von_Berendt
 	GER_AF_Richard_von_Berendt = {
 		name = GER_AF_Richard_von_Berendt
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Richard_von_Berendt.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Richard_von_Berendt.png"
+				small = "gfx/interface/ideas/GER/advisors/Richard_von_Berendt.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Richard_von_Berendt.png"
+			}
+		}
 		corps_commander = {
 			traits = { GER_AF_artillery_commander GER_AF_artillery_expert GER_AF_veteran_of_many_wars }
 			skill = 3
@@ -670,6 +782,15 @@ characters = {
 			planning_skill = 5
 			logistics_skill = 5
 			legacy_id = -1
+		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Richard_von_Berendt_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_berendt_high_command }
+			ai_will_do = { factor = 2 }
 		}
 	}
 	# GER_AF_Walther_von_Jagow
@@ -717,15 +838,32 @@ characters = {
 	# GER_AF_Paul_von_Lettow_Vorbeck
 	GER_AF_Paul_von_Lettow_Vorbeck = {
 		name = GER_AF_Paul_von_Lettow_Vorbeck
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Paul_von_Lettow_Vorbeck.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Paul_von_Lettow_Vorbeck.png"
+				small = "gfx/interface/ideas/GER/advisors/Paul_von_Lettow_Vorbeck.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Paul_von_Lettow_Vorbeck.png"
+			}
+		}
 		field_marshal = {
 			traits = { GER_AF_prussian_militarism GER_AF_shield_of_the_empire GER_AF_veteran_of_many_wars GER_AF_foreign_experience }
-			skill = 5
+			skill = 4
 			attack_skill = 2
 			defense_skill = 5
 			planning_skill = 4
 			logistics_skill = 4
 			legacy_id = -1
+		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Paul_von_Lettow_Vorbeck_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_lettow_high_command }
+			ai_will_do = { factor = 2 }
 		}
 	}
 	# GER_AF_Kurt_von_Hammerstein_Equord
@@ -773,7 +911,15 @@ characters = {
 	# GER_AF_Oswald_Lutz
 	GER_AF_Oswald_Lutz = {
 		name = GER_AF_Oswald_Lutz
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Oswald_Lutz.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Oswald_Lutz.png"
+				small = "gfx/interface/ideas/GER/advisors/Oswald_Lutz.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Oswald_Lutz.png"
+			}
+		}
 		corps_commander = {
 			traits = { trait_engineer GER_AF_logistics_genius }
 			skill = 3
@@ -783,11 +929,38 @@ characters = {
 			logistics_skill = 4
 			legacy_id = -1
 		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Oswald_Lutz_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_lutz_high_command }
+			on_add = {
+				hidden_effect = {
+					add_ideas = GER_RW_lutz_armor_hidden
+				}
+			}
+			on_remove = {
+				hidden_effect = {
+					remove_ideas = GER_RW_lutz_armor_hidden
+				}
+			}
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Gerd_von_Rundstedt
 	GER_AF_Gerd_von_Rundstedt = {
 		name = GER_AF_Gerd_von_Rundstedt
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Gerd_von_Rundstedt.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Gerd_von_Rundstedt.png"
+				small = "gfx/interface/ideas/GER/advisors/Gerd_von_Rundstedt.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Gerd_von_Rundstedt.png"
+			}
+		}
 		corps_commander = {
 			traits = { GER_AF_prussian_militarism GER_AF_shield_of_the_empire GER_AF_veteran_of_many_wars }
 			skill = 3
@@ -796,6 +969,15 @@ characters = {
 			planning_skill = 5
 			logistics_skill = 5
 			legacy_id = -1
+		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Gerd_von_Rundstedt_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_rundstedt_high_command }
+			ai_will_do = { factor = 2 }
 		}
 	}
 	# GER_AF_Heinz_Guderian
@@ -815,7 +997,15 @@ characters = {
 	# GER_AF_Fedor_von_Bock
 	GER_AF_Fedor_von_Bock = {
 		name = GER_AF_Fedor_von_Bock
-		portraits = { army = { large = "gfx/leaders/GER/armed_forces/Fedor_von_Bock.png" } }
+		portraits = {
+			army = {
+				large = "gfx/leaders/GER/armed_forces/Fedor_von_Bock.png"
+				small = "gfx/interface/ideas/GER/advisors/Fedor_von_Bock.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Fedor_von_Bock.png"
+			}
+		}
 		corps_commander = {
 			traits = { organizer GER_AF_shield_of_the_empire }
 			skill = 2
@@ -825,11 +1015,28 @@ characters = {
 			logistics_skill = 2
 			legacy_id = -1
 		}
+		advisor = {
+			slot = high_command
+			ledger = army
+			idea_token = GER_AF_Fedor_von_Bock_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_bock_high_command }
+			ai_will_do = { factor = 3 }
+		}
 	}
 	# GER_AF_Paul_Behncke
 	GER_AF_Paul_Behncke = {
 		name = GER_AF_Paul_Behncke
-		portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Paul_Behncke.png" } }
+		portraits = {
+			navy = {
+				large = "gfx/leaders/GER/armed_forces/Paul_Behncke.png"
+				small = "gfx/interface/ideas/GER/advisors/Paul_Behncke.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Paul_Behncke.png"
+			}
+		}
 		navy_leader = {
 			traits = { navy_career_officer old_guard_navy }
 			skill = 4
@@ -839,11 +1046,27 @@ characters = {
 			coordination_skill = 4
 			legacy_id = -1
 		}
+		advisor = {
+			slot = navy_chief
+			idea_token = GER_AF_Paul_Behncke_navy_chief
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_behncke_navy_chief }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Hans_Zenker
 	GER_AF_Hans_Zenker = {
 		name = GER_AF_Hans_Zenker
-		portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Hans_Zenker.png" } }
+		portraits = {
+			navy = {
+				large = "gfx/leaders/GER/armed_forces/Hans_Zenker.png"
+				small = "gfx/interface/ideas/GER/advisors/Hans_Zenker.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Hans_Zenker.png"
+			}
+		}
 		navy_leader = {
 			traits = { navy_career_officer battleship_adherent }
 			skill = 4
@@ -853,11 +1076,28 @@ characters = {
 			coordination_skill = 4
 			legacy_id = -1
 		}
+		advisor = {
+			slot = high_command
+			ledger = navy
+			idea_token = GER_AF_Hans_Zenker_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_zenker_high_command }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Erich_Raeder
 	GER_AF_Erich_Raeder = {
 		name = GER_AF_Erich_Raeder
-		portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Erich_Raeder.png" } }
+		portraits = {
+			navy = {
+				large = "gfx/leaders/GER/armed_forces/Erich_Raeder.png"
+				small = "gfx/interface/ideas/GER/advisors/Erich_Raeder.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Erich_Raeder.png"
+			}
+		}
 		navy_leader = {
 			traits = { navy_career_officer battleship_adherent }
 			skill = 3
@@ -867,11 +1107,28 @@ characters = {
 			coordination_skill = 3
 			legacy_id = -1
 		}
+		advisor = {
+			slot = theorist
+			ledger = navy
+			idea_token = GER_AF_Erich_Raeder_theorist
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_raeder_theorist }
+			ai_will_do = { factor = 1 }
+		}
 	}
 	# GER_AF_Konrad_Mommsen
 	GER_AF_Konrad_Mommsen = {
 		name = GER_AF_Konrad_Mommsen
-		portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Konrad_Mommsen.png" } }
+		portraits = {
+			navy = {
+				large = "gfx/leaders/GER/armed_forces/Konrad_Mommsen.png"
+				small = "gfx/interface/ideas/GER/advisors/Konrad_Mommsen.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Konrad_Mommsen.png"
+			}
+		}
 		navy_leader = {
 			traits = { navy_career_officer old_guard_navy }
 			skill = 3
@@ -881,11 +1138,28 @@ characters = {
 			coordination_skill = 3
 			legacy_id = -1
 		}
+		advisor = {
+			slot = high_command
+			ledger = navy
+			idea_token = GER_AF_Konrad_Mommsen_high_command
+			cost = 100
+			allowed = { original_tag = GER }
+			traits = { GER_RW_mommsen_high_command }
+			ai_will_do = { factor = 2 }
+		}
 	}
 	# GER_AF_Adolf_von_Trotha
 	GER_AF_Adolf_von_Trotha = {
 		name = GER_AF_Adolf_von_Trotha
-		portraits = { navy = { large = "gfx/leaders/GER/armed_forces/Adolf_von_Trotha.png" } }
+		portraits = {
+			navy = {
+				large = "gfx/leaders/GER/armed_forces/Adolf_von_Trotha.png"
+				small = "gfx/interface/ideas/GER/advisors/Adolf_von_Trotha.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Adolf_von_Trotha.png"
+			}
+		}
 		navy_leader = {
 			traits = { navy_career_officer old_guard_navy }
 			skill = 3
@@ -894,6 +1168,47 @@ characters = {
 			maneuvering_skill = 2
 			coordination_skill = 3
 			legacy_id = -1
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = GER_AF_Adolf_von_Trotha_navy_chief
+			cost = 100
+			allowed = { original_tag = GER }
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = GER_RW_trotha_not_hired_other_tt
+					GER_AF_Adolf_von_Trotha_theorist_char = { is_hired_as_advisor = no }
+				}
+			}
+			traits = { GER_RW_trotha_navy_chief }
+			ai_will_do = { factor = 2 }
+		}
+	}
+	# GER_AF_Adolf_von_Trotha (理论家双齿轮独立小头像槽位，与海军部长互斥)
+	GER_AF_Adolf_von_Trotha_theorist_char = {
+		name = GER_AF_Adolf_von_Trotha
+		portraits = {
+			navy = {
+				small = "gfx/interface/ideas/GER/advisors/Adolf_von_Trotha_theorist.png"
+			}
+			civilian = {
+				small = "gfx/interface/ideas/GER/advisors/Adolf_von_Trotha_theorist.png"
+			}
+		}
+		advisor = {
+			slot = theorist
+			ledger = navy
+			idea_token = GER_AF_Adolf_von_Trotha_theorist
+			cost = 100
+			allowed = { original_tag = GER }
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = GER_RW_trotha_not_hired_other_tt
+					GER_AF_Adolf_von_Trotha = { is_hired_as_advisor = no }
+				}
+			}
+			traits = { GER_RW_trotha_theorist }
+			ai_will_do = { factor = 1 }
 		}
 	}
 	# GER_AF_Walther_Reinhardt

@@ -1,10 +1,17 @@
-GER_Richard_Mueller_start_growth = {
+# 每日计时（与成长型内阁将领同一写法）：米勒在成长型内阁雇佣满 15 天后（history 预置 7 天）弹出“走出柏林”，转入正式内阁
+GER_Richard_Mueller_growth_tick = {
 	if = {
 		limit = {
-			date > 1919.8.9
-			has_character = GER_Richard_Mueller_growth_cabinet_1
+			has_character = GER_GC_01_01_Richard_Mueller
+			GER_GC_01_01_Richard_Mueller = { is_hired_as_advisor = yes }
 			NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred }
+			NOT = { has_country_flag = GER_gc_Richard_Mueller_pending }
 		}
-		country_event = { id = AOR_GER_mueller_growth.1 }
+		add_to_variable = { var = GER_gc_Richard_Mueller_days value = 1 }
+		if = {
+			limit = { check_variable = { var = GER_gc_Richard_Mueller_days value = 15 compare = greater_than_or_equals } }
+			set_country_flag = GER_gc_Richard_Mueller_pending
+			country_event = { id = AOR_GER_mueller_growth.2 }
+		}
 	}
 }

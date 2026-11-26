@@ -354,12 +354,7 @@ RAJ_vickers_armstrong_organization = {
 	include = generic_medium_tank_organization
 	icon = GFX_idea_vickers_armstrong_can
 	allowed = {
-		OR = {
-			ROOT = { original_tag = BAN }
-			ROOT = { original_tag = PAK }
-			ROOT = { original_tag = RAJ }
-		}
-		#has_dlc = "Together for Victory"
+		always = no # AOR: disabled tank/armor MIO
 	}
 }
 
@@ -379,9 +374,8 @@ RAJ_vauxhall_organization = {
 	include = generic_infantry_tank_organization
 	icon = GFX_idea_vauxhall
 
-	allowed = {	
-		has_dlc = "Graveyard of Empires"
-		original_tag = RAJ
+	allowed = {
+		always = no # AOR: disabled tank/armor MIO
 	}
 
 
