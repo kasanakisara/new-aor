@@ -1,5 +1,97 @@
 # AOR: dependency-audited scripted functions.
 
+AOR_tarot_refresh_draw_state = {
+    if = {
+        limit = { NOT = { has_variable = AOR_tarot_next_draw_discount } }
+        set_variable = { AOR_tarot_next_draw_discount = 0 }
+    }
+    clamp_variable = { var = AOR_tarot_next_draw_discount min = 0 max = 50 }
+    set_variable = { AOR_tarot_draw_cost = 50 }
+    subtract_from_variable = { AOR_tarot_draw_cost = AOR_tarot_next_draw_discount }
+    clamp_variable = { var = AOR_tarot_draw_cost min = 0 max = 50 }
+    if = {
+        limit = { NOT = { has_variable = AOR_tarot_next_cd_discount } }
+        set_variable = { AOR_tarot_next_cd_discount = 0 }
+    }
+    clamp_variable = { var = AOR_tarot_next_cd_discount min = 0 max = 20 }
+    set_variable = { AOR_tarot_next_cd_days = 30 }
+    subtract_from_variable = { AOR_tarot_next_cd_days = AOR_tarot_next_cd_discount }
+    clamp_variable = { var = AOR_tarot_next_cd_days min = 10 max = 30 }
+    if = {
+        limit = { NOT = { has_variable = AOR_tarot_draw_cooldown } }
+        set_variable = { AOR_tarot_draw_cooldown = 0 }
+    }
+    clamp_variable = { var = AOR_tarot_draw_cooldown min = 0 max = 30 }
+}
+
+# 抽牌只扣政治点数；冷却改为确认生效时才开始（AOR_tarot_start_cooldown）
+AOR_tarot_pay_draw_cost = {
+    AOR_tarot_refresh_draw_state = yes
+    if = { limit = { check_variable = { AOR_tarot_draw_cost > 49 } } add_political_power = -50 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 44 } } add_political_power = -45 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 39 } } add_political_power = -40 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 34 } } add_political_power = -35 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 29 } } add_political_power = -30 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 24 } } add_political_power = -25 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 19 } } add_political_power = -20 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 14 } } add_political_power = -15 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 9 } } add_political_power = -10 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 4 } } add_political_power = -5 }
+    set_variable = { AOR_tarot_next_draw_discount = 0 }
+    AOR_tarot_refresh_draw_state = yes
+}
+
+AOR_tarot_start_cooldown = {
+    AOR_tarot_refresh_draw_state = yes
+    set_variable = { AOR_tarot_draw_cooldown = AOR_tarot_next_cd_days }
+    set_variable = { AOR_tarot_next_cd_discount = 0 }
+    AOR_tarot_refresh_draw_state = yes
+}
+
+# 旧写法（抽牌即进冷却），界面已不再调用，保留以免旧引用报错
+AOR_tarot_pay_draw_cost_and_cd = {
+    AOR_tarot_refresh_draw_state = yes
+    if = { limit = { check_variable = { AOR_tarot_draw_cost > 49 } } add_political_power = -50 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 44 } } add_political_power = -45 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 39 } } add_political_power = -40 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 34 } } add_political_power = -35 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 29 } } add_political_power = -30 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 24 } } add_political_power = -25 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 19 } } add_political_power = -20 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 14 } } add_political_power = -15 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 9 } } add_political_power = -10 }
+    else_if = { limit = { check_variable = { AOR_tarot_draw_cost > 4 } } add_political_power = -5 }
+    set_variable = { AOR_tarot_draw_cooldown = AOR_tarot_next_cd_days }
+    set_variable = { AOR_tarot_next_draw_discount = 0 }
+    set_variable = { AOR_tarot_next_cd_discount = 0 }
+    AOR_tarot_refresh_draw_state = yes
+}
+
+AOR_tarot_daily_tick = {
+    if = {
+        limit = { NOT = { has_variable = AOR_tarot_draw_cost } }
+        AOR_tarot_refresh_draw_state = yes
+    }
+    if = {
+        limit = { check_variable = { AOR_tarot_draw_cooldown > 0 } }
+        subtract_from_variable = { AOR_tarot_draw_cooldown = 1 }
+        if = {
+            limit = { check_variable = { AOR_tarot_draw_cooldown < 0 } }
+            set_variable = { AOR_tarot_draw_cooldown = 0 }
+        }
+    }
+    # 已确认的牌摆到冷却结束，然后四张一起翻回牌背；未确认的牌一直留在桌上
+    if = {
+        limit = {
+            has_country_flag = AOR_tarot_flight_confirmed
+            AOR_tarot_not_on_cooldown = yes
+        }
+        clr_country_flag = AOR_tarot_flight_played
+        clr_country_flag = AOR_tarot_flight_confirmed
+        set_variable = { AOR_tarot_flight_selected = 0 }
+    }
+}
+
 AOR_tarot_flight_draw_four = {
     clr_country_flag = AOR_tarot_flight_confirmed
     set_variable = { AOR_tarot_flight_selected = 0 }
@@ -140,6 +232,8 @@ AOR_tarot_flight_use_selected = {
             AOR_tarot_card_22_use = yes
         }
         set_country_flag = AOR_tarot_flight_confirmed
+        # 冷却从确认生效这天开始算
+        AOR_tarot_start_cooldown = yes
         # Keep the confirmed card independently of subsequent draws and closing.
     }
 }

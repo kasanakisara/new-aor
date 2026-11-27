@@ -510,5 +510,89 @@ ideas = {
 		}
 	}
 
+	# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+	# 塔罗牌衍生国家精神
+	# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+	# 伯恩施坦议会焦点：经济民主化试点（120日）
+	GER_tarot_bernstein_pilot = {
+		picture = generic_goods_red_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			consumer_goods_factor = -0.10
+			production_factory_max_efficiency_factor = 0.05
+		}
+	}
+
+	# 多伊米希：纯粹委员会动员（45日）
+	GER_tarot_daeumig_council = {
+		picture = generic_production_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			custom_modifier_tooltip = GER_tarot_daeumig_council_tt
+		}
+	}
+
+	# 里夏德·米勒：革命工长罢工网（45日）
+	GER_tarot_rmueller_strike_net = {
+		picture = generic_production_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			custom_modifier_tooltip = GER_tarot_rmueller_strike_net_tt
+		}
+	}
+
+	# 奥托·布劳恩：共和公共工程（60日）
+	GER_tarot_braun_public_affairs = {
+		picture = ITA_battaglie_per_la_nascite
+		allowed = { original_tag = GER }
+		modifier = {
+			consumer_goods_factor = 0.05
+			production_speed_buildings_factor = 0.10
+		}
+	}
+
+	# 小李卜克内西：工人赤卫动员（60日）
+	GER_tarot_liebknecht_red_guard = {
+		picture = citizen_militia_1
+		allowed = { original_tag = GER }
+		modifier = {
+			conscription_factor = 0.08
+			mobilization_speed = 0.15
+			army_core_attack_factor = 0.06
+		}
+	}
+
+	# 赫尔曼·米勒议会焦点：对外商约红利（180日）
+	GER_tarot_hmueller_treaty_bonus = {
+		picture = generic_foreign_capital
+		allowed = { original_tag = GER }
+		modifier = {
+			consumer_goods_factor = -0.08
+			trade_opinion_factor = 0.20
+			local_resources_factor = 0.08
+		}
+	}
+
+	# 宝剑：防务联合演训（30日）
+	GER_tarot_suit_swords_drill = {
+		picture = citizen_militia_1
+		allowed = { original_tag = GER }
+		modifier = {
+			army_morale_factor = 0.06
+			navy_org_factor = 0.04
+		}
+	}
+
+	# 星币：车间统筹调度（30日）
+	GER_tarot_suit_pentacles_workshop = {
+		picture = generic_production_bonus
+		allowed = { original_tag = GER }
+		modifier = {
+			production_speed_buildings_factor = 0.06
+			industrial_capacity_factory = 0.04
+		}
+	}
+
 }
 }

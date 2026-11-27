@@ -92,6 +92,10 @@ GER_region_action_5_complete = {
 # ======== 6 发起罢工（70pp，耗时 14 天）：期间建造速度 -80%（全国，见 GER_region_strike_modifier）；结束时控制度 +5、支持度 +5
 # 长冷却：每个地区从点击起 120 天（界面自动处理，天数在 gen_region_game.py 的 ACTIONS 里改）
 GER_region_action_6 = {
+    if = {
+        limit = { has_idea = GER_tarot_rmueller_strike_net }
+        add_political_power = 70
+    }
     add_to_variable = { GER_region_strikes_active = 1 }
     if = {
         limit = { NOT = { has_dynamic_modifier = { modifier = GER_region_strike_modifier } } }
@@ -154,6 +158,10 @@ GER_region_action_11_biweekly = {
 }
 GER_region_action_11_daily = {
     add_political_power = 0.3
+    if = {
+        limit = { has_country_flag = GER_tarot_koenen_cadre_boost }
+        add_political_power = 0.1
+    }
 }
 
 # ======== 12 支援邻近地区（驻区方针）：相邻地区每两周控制度 +1

@@ -1,22 +1,24 @@
 # AOR: dependency-audited scripted functions.
 
+# 历史先贤（01 马克思、02 恩格斯、04 老李卜克内西、07 拉萨尔）不可抽取、不可使用，仅在牌册保留纪念展示。
 AOR_tarot_card_01_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_01_blocked }
-    has_country_flag = AOR_tarot_card_01_unlocked
+    always = no
 }
 
 AOR_tarot_card_02_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_02_blocked }
-    has_country_flag = AOR_tarot_card_02_unlocked
+    always = no
 }
 
 AOR_tarot_card_03_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_03_blocked }
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_03_uses }
+        check_variable = { AOR_tarot_card_03_uses < 3 }
+    }
 }
 
 AOR_tarot_card_04_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_04_blocked }
-    has_country_flag = AOR_tarot_card_04_unlocked
+    always = no
 }
 
 AOR_tarot_card_05_drawable = {
@@ -32,16 +34,19 @@ AOR_tarot_card_06_drawable = {
 }
 
 AOR_tarot_card_07_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_07_blocked }
-    has_country_flag = AOR_tarot_card_07_unlocked
+    always = no
 }
 
 AOR_tarot_card_08_drawable = {
-    NOT = { has_country_flag = AOR_tarot_card_08_blocked } 
+    NOT = { has_country_flag = AOR_tarot_card_08_blocked }
 }
 
 AOR_tarot_card_09_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_09_blocked }
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_09_uses }
+        check_variable = { AOR_tarot_card_09_uses < 3 }
+    }
 }
 
 AOR_tarot_card_10_drawable = {
@@ -50,6 +55,11 @@ AOR_tarot_card_10_drawable = {
 
 AOR_tarot_card_11_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_11_blocked }
+    has_country_flag = AOR_tarot_card_11_unlocked
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_11_uses }
+        check_variable = { AOR_tarot_card_11_uses < 3 }
+    }
 }
 
 AOR_tarot_card_12_drawable = {
@@ -78,6 +88,10 @@ AOR_tarot_card_17_drawable = {
 
 AOR_tarot_card_18_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_18_blocked }
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_18_uses }
+        check_variable = { AOR_tarot_card_18_uses < 3 }
+    }
 }
 
 AOR_tarot_card_19_drawable = {
@@ -90,8 +104,36 @@ AOR_tarot_card_20_drawable = {
 
 AOR_tarot_card_21_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_21_blocked }
+    OR = {
+        NOT = { has_variable = AOR_tarot_card_21_uses }
+        check_variable = { AOR_tarot_card_21_uses < 3 }
+    }
 }
 
 AOR_tarot_card_22_drawable = {
     NOT = { has_country_flag = AOR_tarot_card_22_blocked }
+}
+
+# 抽牌先决条件：冷却与政治点数花费（50 基础花费，按 5 点步长兼容减费）
+AOR_tarot_not_on_cooldown = {
+    OR = {
+        NOT = { has_variable = AOR_tarot_draw_cooldown }
+        check_variable = { AOR_tarot_draw_cooldown < 1 }
+    }
+}
+
+AOR_tarot_has_enough_pp = {
+    OR = {
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 1 } }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 6 } has_political_power > 4.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 11 } has_political_power > 9.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 16 } has_political_power > 14.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 21 } has_political_power > 19.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 26 } has_political_power > 24.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 31 } has_political_power > 29.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 36 } has_political_power > 34.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 41 } has_political_power > 39.99 }
+        AND = { has_variable = AOR_tarot_draw_cost check_variable = { AOR_tarot_draw_cost < 46 } has_political_power > 44.99 }
+        has_political_power > 49.99
+    }
 }

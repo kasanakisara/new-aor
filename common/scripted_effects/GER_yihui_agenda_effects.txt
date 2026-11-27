@@ -447,7 +447,10 @@ GER_yihui_complete_agenda = {
 	set_variable = { GER_yihui_ag_p7^yh_id = 0 }
 	set_variable = { GER_yihui_ag_p8^yh_id = 0 }
 	remove_from_array = { array = GER_yihui_agenda_list value = yh_id }
-	add_to_array = { array = GER_yihui_passed_list value = yh_id }
+	if = {
+		limit = { NOT = { is_in_array = { GER_yihui_passed_list = yh_id } } }
+		add_to_array = { array = GER_yihui_passed_list value = yh_id }
+	}
 	# 各议程自己的完成效果在 GER_yihui_agenda_results.txt：GER_yihui_agenda_<编号>_result
 	set_variable = { GER_yihui_last_passed = yh_id }
 	meta_effect = {

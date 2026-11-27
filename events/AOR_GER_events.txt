@@ -28,6 +28,7 @@ add_namespace = AOR_GER_silesia_crisis
 add_namespace = AOR_GER_defense_law
 add_namespace = AOR_GER_factory_council
 add_namespace = AOR_GER_socialization_law
+add_namespace = AOR_GER_tarot_liebknecht
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 第二届苏维埃代表大会
@@ -2747,6 +2748,150 @@ country_event = {
 			GER_socialization_initialize = yes
 			# 同时解锁 1920 经济国策分支（整理经济工作）
 			country_event = { id = AOR_GER_economy_1920.1 }
+		}
+	}
+}
+
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 塔罗牌：小李卜克内西三幕事件链
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 第1幕：重提战争拨款的罪行
+country_event = {
+	id = AOR_GER_tarot_liebknecht.1
+	title = AOR_GER_tarot_liebknecht.1.t
+	desc = AOR_GER_tarot_liebknecht.1.desc
+	picture = GFX_AOR_GER_weimar_congress_1
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.1.a
+		add_political_power = -15
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.1.a_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_prep_3
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.1.b
+		add_political_power = -5
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.1.b_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_prep_2
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.1.c
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.1.c_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_prep_1
+		}
+	}
+}
+
+# 第2幕：街头反军国主义演讲
+country_event = {
+	id = AOR_GER_tarot_liebknecht.2
+	title = AOR_GER_tarot_liebknecht.2.t
+	desc = AOR_GER_tarot_liebknecht.2.desc
+	picture = GFX_AOR_GER_weimar_congress_2
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.2.a
+		trigger = { has_country_flag = GER_tarot_liebknecht_prep_3 }
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.2.a_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_speech_high
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.2.b
+		trigger = {
+			OR = {
+				has_country_flag = GER_tarot_liebknecht_prep_3
+				has_country_flag = GER_tarot_liebknecht_prep_2
+			}
+		}
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.2.b_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_speech_mid
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.2.c
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.2.c_tt
+		hidden_effect = {
+			set_country_flag = GER_tarot_liebknecht_speech_low
+		}
+	}
+}
+
+# 第3幕：呼吁群众直接行动
+country_event = {
+	id = AOR_GER_tarot_liebknecht.3
+	title = AOR_GER_tarot_liebknecht.3.t
+	desc = AOR_GER_tarot_liebknecht.3.desc
+	picture = GFX_AOR_GER_weimar_congress_3
+	is_triggered_only = yes
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.3.a
+		trigger = { has_country_flag = GER_tarot_liebknecht_speech_high }
+		add_stability = -0.05
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.3.a_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_unity = 5 }
+			GER_SPD_refresh_unity_effect = yes
+			add_to_variable = { GER_SPD_left_support = 5 }
+			subtract_from_variable = { GER_SPD_right_support = 5 }
+			GER_SPD_refresh_support_effect = yes
+			if = {
+				limit = { check_variable = { GER_reichstag_dnvp_seats > 4 } }
+				subtract_from_variable = { GER_reichstag_dnvp_seats = 5 }
+				add_to_variable = { GER_reichstag_spd_left_seats = 5 }
+				GER_Reichstag_refresh = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.3.b
+		trigger = {
+			OR = {
+				has_country_flag = GER_tarot_liebknecht_speech_high
+				has_country_flag = GER_tarot_liebknecht_speech_mid
+			}
+		}
+		add_stability = -0.025
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.3.b_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_unity = 3 }
+			GER_SPD_refresh_unity_effect = yes
+			add_to_variable = { GER_SPD_left_support = 3 }
+			subtract_from_variable = { GER_SPD_right_support = 3 }
+			GER_SPD_refresh_support_effect = yes
+			if = {
+				limit = { check_variable = { GER_reichstag_dnvp_seats > 1 } }
+				subtract_from_variable = { GER_reichstag_dnvp_seats = 2 }
+				add_to_variable = { GER_reichstag_spd_left_seats = 2 }
+				GER_Reichstag_refresh = yes
+			}
+		}
+	}
+
+	option = {
+		name = AOR_GER_tarot_liebknecht.3.c
+		add_stability = -0.01
+		custom_effect_tooltip = AOR_GER_tarot_liebknecht.3.c_tt
+		hidden_effect = {
+			subtract_from_variable = { GER_SPD_unity = 1 }
+			GER_SPD_refresh_unity_effect = yes
 		}
 	}
 }

@@ -42,3 +42,41 @@ GER_yihui_agenda_5_result = {
 	add_political_power = 100
 	add_stability = -0.02
 }
+
+# 经济民主化听证（塔罗牌：爱德华·伯恩施坦解锁）
+GER_yihui_agenda_6_result = {
+	set_country_flag = GER_yihui_agenda_6_done
+	add_to_variable = { GER_yihui_inertia = 6 }
+	clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
+	add_timed_idea = { idea = GER_tarot_bernstein_pilot days = 120 }
+}
+
+# 共和国市政救济计划（塔罗牌：菲利普·谢德曼解锁）
+GER_yihui_agenda_7_result = {
+	set_country_flag = GER_yihui_agenda_7_done
+	add_stability = 0.03
+	random_owned_controlled_state = {
+		limit = { is_core_of = ROOT free_building_slots = { building = infrastructure size > 0 } }
+		add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+	}
+	set_temp_variable = { GER_region_delta = 2 }
+	AOR_tarot_add_open_regions_support = yes
+}
+
+# 对外商约与关税协定（塔罗牌：赫尔曼·米勒解锁）
+GER_yihui_agenda_8_result = {
+	set_country_flag = GER_yihui_agenda_8_done
+	add_stability = 0.03
+	add_timed_idea = { idea = GER_tarot_hmueller_treaty_bonus days = 180 }
+}
+
+# 清算旧军国主义残余（塔罗牌：卡尔·李卜克内西解锁）
+GER_yihui_agenda_9_result = {
+	set_country_flag = GER_yihui_agenda_9_done
+	AOR_tarot_ensure_socialization_defaults = yes
+	subtract_from_variable = { GER_socialization_counterrevolution = 36 }
+	GER_socialization_refresh_bars = yes
+	set_temp_variable = { GER_region_delta = 2 }
+	AOR_tarot_add_open_regions_control = yes
+	add_political_power = 30
+}

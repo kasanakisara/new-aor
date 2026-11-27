@@ -6,13 +6,16 @@
  # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 
  AOR_tarot_flight_open_decision:0 "打开塔罗牌界面"
- AOR_tarot_flight_open_decision_desc:0 "四张塔罗牌按两行两列排列。点击「抽牌」，从22张塔罗牌中随机抽取四张不同的牌，在原位翻面。选择并确认后，右侧展示使用的塔罗牌。"
+ AOR_tarot_flight_open_decision_desc:0 "点击「抽牌」，从可用牌池中随机抽取四张大阿尔卡纳牌在原位翻面；选中其中一张或下方的一张备选牌后使用。"
  AOR_tarot_flight_title:0 "§Y党的征召§!"
- AOR_tarot_flight_help_tt:0 "§Y塔罗牌§!\n点击「抽牌」随机抽取四张牌，在原位翻面。也可选择右下方始终正面显示的宝剑、权杖、圣杯或星币作为替代。\n八张牌同时只能选中一张，选中牌变为黑白；再次点击该牌取消后，才能选择其他牌。\n点击「确认」后，右上方展示启用牌及其名称，本轮卡牌与确认按钮锁定。关闭重开也不会解锁；再次抽牌后才能重新选择和确认。\n悬浮卡牌可查看说明。按住左侧主面板空白处可拖动整体。"
+ AOR_tarot_flight_help_tt:0 "§H党的征召：塔罗牌§!\n点击「抽牌」消耗政治点数，从当前可用牌池中随机抽取§Y4§!张大阿尔卡纳牌；也可改选下方金框中的§Y宝剑§!、§Y权杖§!、§Y圣杯§!或§Y星币§!。\n八张牌同时只能选中一张，选中牌变为黑白；再次点击该牌可取消。\n抽出的牌在确认前会一直保留。点击「使用」后立即结算该牌效果并开始冷却，八张牌锁定、选中牌保持黑白；冷却结束时四张牌翻回背面，方可再次抽牌。\n部分角色存在使用次数上限或需特定条件解锁，部分纪念牌仅作牌册展示，不可抽取。左上角打开牌册。"
  AOR_tarot_flight_draw:0 "抽牌"
- AOR_tarot_flight_draw_tt:0 "§Y抽牌§!\n点击随机抽取四张不同的牌并原位翻面，再次点击重新抽取。"
- AOR_tarot_flight_confirm:0 "确认"
- AOR_tarot_flight_confirm_tt:0 "抽牌后，可选中一张随机牌或右下方的固定牌并确认。\n确认后保留所有牌面，选中牌保持黑白，右上方展示本次启用的牌。\n每次抽牌只能确认一次；再次抽牌后才能更换。"
+ AOR_tarot_check_yes:0 "£trigger_yes"
+ AOR_tarot_check_no:0 "£trigger_no"
+ AOR_tarot_cooldown_left_text:0 "（剩余§H[?AOR_tarot_draw_cooldown|0]§!日）"
+ AOR_tarot_flight_draw_tt:0 "§H抽牌§!\n\n§H先决条件：§!\n[AOR_tarot_check_table] 上一次抽出的塔罗牌已被使用\n[AOR_tarot_check_cooldown] 不在抽取冷却期内[AOR_tarot_cooldown_left]\n\n执行此行动需要£pol_power §Y[?AOR_tarot_draw_cost|0]§!"
+ AOR_tarot_flight_confirm:0 "使用"
+ AOR_tarot_flight_confirm_tt:0 "§H使用§!\n\n§H先决条件：§!\n[AOR_tarot_check_selected] 已选中一张牌[AOR_tarot_use_effect]\n\n冷却时间：£clock_texticon §H[?AOR_tarot_next_cd_days|0]§!日"
 
  # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
  # 塔罗牌册界面

@@ -3,11 +3,13 @@ on_actions = {
 		effect = {
 			GER = { GER_SPD_initialize_support_effect = yes }
 			GER = { GER_SPD_initialize_unity_effect = yes }
+			GER = { AOR_tarot_refresh_draw_state = yes }
 		}
 	}
 	# Backfill old saves; also catch direct variable changes that omitted the refresh effect.
 	on_daily_GER = {
 		effect = {
+			AOR_tarot_daily_tick = yes
 			if = {
 				limit = { has_country_flag = GER_SPD_unity_initialized }
 				GER_SPD_sync_bebel_unity_bonus_effect = yes

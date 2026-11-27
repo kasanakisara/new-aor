@@ -108,3 +108,24 @@ defined_text = {
     text = { trigger = { NOT = { AOR_tarot_card_22_drawable = yes } } localization_key = GFX_AOR_tarot_blocked_22 }
     text = { trigger = { always = yes } localization_key = GFX_AOR_tarot_face_22 }
 }
+defined_text = {
+    name = AOR_tarot_check_cooldown
+    text = { trigger = { AOR_tarot_not_on_cooldown = yes } localization_key = AOR_tarot_check_yes }
+    text = { trigger = { always = yes } localization_key = AOR_tarot_check_no }
+}
+defined_text = {
+    name = AOR_tarot_cooldown_left
+    text = { trigger = { check_variable = { AOR_tarot_draw_cooldown > 0 } } localization_key = AOR_tarot_cooldown_left_text }
+    text = { trigger = { always = yes } localization_key = AOR_tarot_empty_tt }
+}
+defined_text = {
+    name = AOR_tarot_check_pp
+    text = { trigger = { AOR_tarot_has_enough_pp = yes } localization_key = AOR_tarot_check_yes }
+    text = { trigger = { always = yes } localization_key = AOR_tarot_check_no }
+}
+defined_text = {
+    name = AOR_tarot_card_21_stage_effect
+    text = { trigger = { check_variable = { AOR_tarot_card_21_uses > 1 } } localization_key = AOR_tarot_card_21_effect_stage3 }
+    text = { trigger = { check_variable = { AOR_tarot_card_21_uses = 1 } } localization_key = AOR_tarot_card_21_effect_stage2 }
+    text = { trigger = { always = yes } localization_key = AOR_tarot_card_21_effect_stage1 }
+}

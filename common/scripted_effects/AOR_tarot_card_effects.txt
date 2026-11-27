@@ -1,22 +1,242 @@
 # AOR: dependency-audited scripted functions.
 
-AOR_tarot_card_23_use = { }
+# ============================================================
+# 通用辅助效果
+# ============================================================
 
-AOR_tarot_card_24_use = { }
+AOR_tarot_add_yihui_inertia = {
+    add_to_variable = { GER_yihui_inertia = tarot_delta }
+    clamp_variable = { var = GER_yihui_inertia min = 0 max = 100 }
+    if = {
+        limit = { has_country_flag = GER_yihui_agenda_v2 }
+        GER_yihui_sync = yes
+    }
+}
 
-AOR_tarot_card_25_use = { }
+AOR_tarot_add_yihui_cohesion = {
+    if = {
+        limit = { NOT = { has_variable = GER_yihui_cohesion } }
+        set_variable = { GER_yihui_cohesion = 65 }
+    }
+    add_to_variable = { GER_yihui_cohesion = tarot_delta }
+    clamp_variable = { var = GER_yihui_cohesion min = 0 max = 100 }
+    if = {
+        limit = { has_country_flag = GER_yihui_agenda_v2 }
+        GER_yihui_sync = yes
+    }
+}
 
-AOR_tarot_card_26_use = { }
+AOR_tarot_grant_repeatable_agenda = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_yihui_agenda_v2 } }
+        GER_yihui_agenda_init = yes
+    }
+    set_temp_variable = { yh_add_id = yh_agenda }
+    GER_yihui_ensure_size = yes
+    if = {
+        limit = {
+            OR = {
+                check_variable = { GER_yihui_ag_state^yh_add_id = -1 }
+                check_variable = { GER_yihui_ag_state^yh_add_id = 3 }
+            }
+        }
+        set_variable = { GER_yihui_ag_state^yh_add_id = 1 }
+        set_variable = { GER_yihui_ag_days^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_total^yh_add_id = 0 }
+        set_variable = { GER_yihui_agenda_prog^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p1^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p2^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p3^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p4^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p5^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p6^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p7^yh_add_id = 0 }
+        set_variable = { GER_yihui_ag_p8^yh_add_id = 0 }
+        if = {
+            limit = { NOT = { is_in_array = { GER_yihui_agenda_list = yh_add_id } } }
+            add_to_array = { array = GER_yihui_agenda_list value = yh_add_id }
+        }
+        GER_yihui_sync = yes
+    }
+    else_if = {
+        limit = { check_variable = { GER_yihui_ag_state^yh_add_id = 0 } }
+        set_variable = { GER_yihui_ag_state^yh_add_id = 1 }
+        GER_yihui_sync = yes
+    }
+}
 
-AOR_tarot_card_01_use = { }
+AOR_tarot_ensure_socialization_defaults = {
+    if = {
+        limit = { NOT = { has_country_flag = GER_socialization_started } }
+        if = { limit = { NOT = { has_variable = GER_socialization_counterrevolution } } set_variable = { GER_socialization_counterrevolution = 1000 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_organization_level } } set_variable = { GER_socialization_organization_level = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_organization } } set_variable = { GER_socialization_organization = 50 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism_level } } set_variable = { GER_socialization_radicalism_level = 0 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism_base } } set_variable = { GER_socialization_radicalism_base = 50 } }
+        if = { limit = { NOT = { has_variable = GER_socialization_radicalism } } set_variable = { GER_socialization_radicalism = 50 } }
+    }
+}
 
-AOR_tarot_card_02_use = { }
+AOR_tarot_add_open_regions_support = {
+    if = { limit = { check_variable = { GER_region_R01_open = 1 } } GER_region_R01_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R02_open = 1 } } GER_region_R02_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R03_open = 1 } } GER_region_R03_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R04_open = 1 } } GER_region_R04_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R05_open = 1 } } GER_region_R05_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R06_open = 1 } } GER_region_R06_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R07_open = 1 } } GER_region_R07_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R08_open = 1 } } GER_region_R08_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R09_open = 1 } } GER_region_R09_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R10_open = 1 } } GER_region_R10_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R11_open = 1 } } GER_region_R11_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R12_open = 1 } } GER_region_R12_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R13_open = 1 } } GER_region_R13_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R14_open = 1 } } GER_region_R14_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R15_open = 1 } } GER_region_R15_add_support = yes }
+    if = { limit = { check_variable = { GER_region_R16_open = 1 } } GER_region_R16_add_support = yes }
+    GER_region_game_sync_frames = yes
+}
 
-AOR_tarot_card_03_use = { }
+AOR_tarot_add_open_regions_control = {
+    if = { limit = { check_variable = { GER_region_R01_open = 1 } } GER_region_R01_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R02_open = 1 } } GER_region_R02_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R03_open = 1 } } GER_region_R03_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R04_open = 1 } } GER_region_R04_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R05_open = 1 } } GER_region_R05_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R06_open = 1 } } GER_region_R06_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R07_open = 1 } } GER_region_R07_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R08_open = 1 } } GER_region_R08_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R09_open = 1 } } GER_region_R09_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R10_open = 1 } } GER_region_R10_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R11_open = 1 } } GER_region_R11_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R12_open = 1 } } GER_region_R12_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R13_open = 1 } } GER_region_R13_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R14_open = 1 } } GER_region_R14_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R15_open = 1 } } GER_region_R15_add_control = yes }
+    if = { limit = { check_variable = { GER_region_R16_open = 1 } } GER_region_R16_add_control = yes }
+    GER_region_game_sync_frames = yes
+}
 
-AOR_tarot_card_04_use = { }
+AOR_tarot_stop_one_region_cr = {
+    if = { limit = { check_variable = { GER_region_R01_cr_days > 0 } } set_variable = { GER_region_R01_cr_days = 0 } set_variable = { GER_region_R01_cr_block = 7 } set_variable = { GER_region_R01_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R02_cr_days > 0 } } set_variable = { GER_region_R02_cr_days = 0 } set_variable = { GER_region_R02_cr_block = 7 } set_variable = { GER_region_R02_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R03_cr_days > 0 } } set_variable = { GER_region_R03_cr_days = 0 } set_variable = { GER_region_R03_cr_block = 7 } set_variable = { GER_region_R03_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R04_cr_days > 0 } } set_variable = { GER_region_R04_cr_days = 0 } set_variable = { GER_region_R04_cr_block = 7 } set_variable = { GER_region_R04_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R05_cr_days > 0 } } set_variable = { GER_region_R05_cr_days = 0 } set_variable = { GER_region_R05_cr_block = 7 } set_variable = { GER_region_R05_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R06_cr_days > 0 } } set_variable = { GER_region_R06_cr_days = 0 } set_variable = { GER_region_R06_cr_block = 7 } set_variable = { GER_region_R06_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R07_cr_days > 0 } } set_variable = { GER_region_R07_cr_days = 0 } set_variable = { GER_region_R07_cr_block = 7 } set_variable = { GER_region_R07_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R08_cr_days > 0 } } set_variable = { GER_region_R08_cr_days = 0 } set_variable = { GER_region_R08_cr_block = 7 } set_variable = { GER_region_R08_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R09_cr_days > 0 } } set_variable = { GER_region_R09_cr_days = 0 } set_variable = { GER_region_R09_cr_block = 7 } set_variable = { GER_region_R09_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R10_cr_days > 0 } } set_variable = { GER_region_R10_cr_days = 0 } set_variable = { GER_region_R10_cr_block = 7 } set_variable = { GER_region_R10_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R11_cr_days > 0 } } set_variable = { GER_region_R11_cr_days = 0 } set_variable = { GER_region_R11_cr_block = 7 } set_variable = { GER_region_R11_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R12_cr_days > 0 } } set_variable = { GER_region_R12_cr_days = 0 } set_variable = { GER_region_R12_cr_block = 7 } set_variable = { GER_region_R12_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R13_cr_days > 0 } } set_variable = { GER_region_R13_cr_days = 0 } set_variable = { GER_region_R13_cr_block = 7 } set_variable = { GER_region_R13_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R14_cr_days > 0 } } set_variable = { GER_region_R14_cr_days = 0 } set_variable = { GER_region_R14_cr_block = 7 } set_variable = { GER_region_R14_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R15_cr_days > 0 } } set_variable = { GER_region_R15_cr_days = 0 } set_variable = { GER_region_R15_cr_block = 7 } set_variable = { GER_region_R15_cr_mark = 0 } }
+    else_if = { limit = { check_variable = { GER_region_R16_cr_days > 0 } } set_variable = { GER_region_R16_cr_days = 0 } set_variable = { GER_region_R16_cr_block = 7 } set_variable = { GER_region_R16_cr_mark = 0 } }
+    GER_region_cr_sync_selected = yes
+}
 
-AOR_tarot_card_05_use = { # IV The Emperor / August Bebel
+AOR_tarot_clear_all_region_cr_14d = {
+    set_variable = { GER_region_R01_cr_days = 0 } set_variable = { GER_region_R01_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R01_cr_block < 14 } } set_variable = { GER_region_R01_cr_block = 14 } }
+    set_variable = { GER_region_R02_cr_days = 0 } set_variable = { GER_region_R02_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R02_cr_block < 14 } } set_variable = { GER_region_R02_cr_block = 14 } }
+    set_variable = { GER_region_R03_cr_days = 0 } set_variable = { GER_region_R03_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R03_cr_block < 14 } } set_variable = { GER_region_R03_cr_block = 14 } }
+    set_variable = { GER_region_R04_cr_days = 0 } set_variable = { GER_region_R04_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R04_cr_block < 14 } } set_variable = { GER_region_R04_cr_block = 14 } }
+    set_variable = { GER_region_R05_cr_days = 0 } set_variable = { GER_region_R05_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R05_cr_block < 14 } } set_variable = { GER_region_R05_cr_block = 14 } }
+    set_variable = { GER_region_R06_cr_days = 0 } set_variable = { GER_region_R06_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R06_cr_block < 14 } } set_variable = { GER_region_R06_cr_block = 14 } }
+    set_variable = { GER_region_R07_cr_days = 0 } set_variable = { GER_region_R07_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R07_cr_block < 14 } } set_variable = { GER_region_R07_cr_block = 14 } }
+    set_variable = { GER_region_R08_cr_days = 0 } set_variable = { GER_region_R08_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R08_cr_block < 14 } } set_variable = { GER_region_R08_cr_block = 14 } }
+    set_variable = { GER_region_R09_cr_days = 0 } set_variable = { GER_region_R09_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R09_cr_block < 14 } } set_variable = { GER_region_R09_cr_block = 14 } }
+    set_variable = { GER_region_R10_cr_days = 0 } set_variable = { GER_region_R10_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R10_cr_block < 14 } } set_variable = { GER_region_R10_cr_block = 14 } }
+    set_variable = { GER_region_R11_cr_days = 0 } set_variable = { GER_region_R11_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R11_cr_block < 14 } } set_variable = { GER_region_R11_cr_block = 14 } }
+    set_variable = { GER_region_R12_cr_days = 0 } set_variable = { GER_region_R12_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R12_cr_block < 14 } } set_variable = { GER_region_R12_cr_block = 14 } }
+    set_variable = { GER_region_R13_cr_days = 0 } set_variable = { GER_region_R13_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R13_cr_block < 14 } } set_variable = { GER_region_R13_cr_block = 14 } }
+    set_variable = { GER_region_R14_cr_days = 0 } set_variable = { GER_region_R14_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R14_cr_block < 14 } } set_variable = { GER_region_R14_cr_block = 14 } }
+    set_variable = { GER_region_R15_cr_days = 0 } set_variable = { GER_region_R15_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R15_cr_block < 14 } } set_variable = { GER_region_R15_cr_block = 14 } }
+    set_variable = { GER_region_R16_cr_days = 0 } set_variable = { GER_region_R16_cr_mark = 0 } if = { limit = { check_variable = { GER_region_R16_cr_block < 14 } } set_variable = { GER_region_R16_cr_block = 14 } }
+    set_variable = { GER_region_cr_clock = 0 }
+    GER_region_cr_sync_selected = yes
+}
+
+AOR_tarot_boost_growth_cabinet = {
+    if = { limit = { has_character = GER_GC_01_01_Richard_Mueller GER_GC_01_01_Richard_Mueller = { is_hired_as_advisor = yes } NOT = { has_country_flag = GER_Richard_Mueller_growth_transferred } } add_to_variable = { GER_gc_Richard_Mueller_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_01_Erwin_Rommel GER_GC_03_01_Erwin_Rommel = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Erwin_Rommel_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_02_Hans_Kahle GER_GC_03_02_Hans_Kahle = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Hans_Kahle_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_03_Ernst_Schneller GER_GC_03_03_Ernst_Schneller = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Ernst_Schneller_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_04_Rudolf_Egelhofer GER_GC_03_04_Rudolf_Egelhofer = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Rudolf_Egelhofer_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_05_Hans_Marchwitza GER_GC_03_05_Hans_Marchwitza = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Hans_Marchwitza_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_06_Li_De GER_GC_03_06_Li_De = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Li_De_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_04_01_Max_Reichpietsch GER_GC_04_01_Max_Reichpietsch = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Max_Reichpietsch_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_04_02_Albin_Koebis GER_GC_04_02_Albin_Koebis = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Albin_Koebis_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_07_Herbert_Marcuse GER_GC_03_07_Herbert_Marcuse = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Herbert_Marcuse_days = tarot_gc_days } }
+    if = { limit = { has_character = GER_GC_03_08_Ernst_Thaelmann GER_GC_03_08_Ernst_Thaelmann = { is_hired_as_advisor = yes } } add_to_variable = { GER_gc_Ernst_Thaelmann_days = tarot_gc_days } }
+}
+
+# ============================================================
+# 四张固定小阿尔卡纳备选牌（23-26）
+# ============================================================
+
+AOR_tarot_card_23_use = { # 宝剑（陆海防务）
+    add_command_power = 10
+    army_experience = 8
+    navy_experience = 6
+    add_timed_idea = { idea = GER_tarot_suit_swords_drill days = 30 }
+}
+
+AOR_tarot_card_24_use = { # 权杖（党务运转）
+    add_to_variable = { GER_SPD_unity = 3 }
+    GER_SPD_refresh_unity_effect = yes
+    add_political_power = 20
+    add_to_variable = { AOR_tarot_next_draw_discount = 15 }
+    AOR_tarot_refresh_draw_state = yes
+}
+
+AOR_tarot_card_25_use = { # 圣杯（议会与民意）
+    set_temp_variable = { tarot_delta = 3 }
+    AOR_tarot_add_yihui_inertia = yes
+    set_temp_variable = { tarot_delta = 2 }
+    AOR_tarot_add_yihui_cohesion = yes
+    set_temp_variable = { GER_region_delta = 1 }
+    AOR_tarot_add_open_regions_support = yes
+}
+
+AOR_tarot_card_26_use = { # 星币（社会化与生产）
+    AOR_tarot_ensure_socialization_defaults = yes
+    add_to_variable = { GER_socialization_points_pool = 15 }
+    add_to_variable = { GER_socialization_organization = 5 }
+    GER_socialization_refresh_bars = yes
+    add_timed_idea = { idea = GER_tarot_suit_pentacles_workshop days = 30 }
+}
+
+# ============================================================
+# 大阿尔卡纳（01-22）
+# ============================================================
+
+AOR_tarot_card_01_use = { } # 0 愚者 / 马克思（不可抽取）
+
+AOR_tarot_card_02_use = { } # I 魔术师 / 恩格斯（不可抽取）
+
+AOR_tarot_card_03_use = { # II 女祭司 / 蔡特金（限用 3 次，专注党内团结）
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_03_uses }
+                check_variable = { AOR_tarot_card_03_uses < 3 }
+            }
+        }
+        add_to_variable = { AOR_tarot_card_03_uses = 1 }
+        add_to_variable = { GER_SPD_unity = 8 }
+        if = {
+            limit = { GER_07_01_Clara_Zetkin = { is_hired_as_advisor = yes } }
+            add_to_variable = { GER_SPD_unity = 4 }
+        }
+        GER_SPD_refresh_unity_effect = yes
+    }
+}
+
+AOR_tarot_card_04_use = { } # III 皇后 / 老李卜克内西（不可抽取）
+
+AOR_tarot_card_05_use = { # IV 皇帝 / 奥古斯特·倍倍尔（限用 2 次，全场最强）
     if = {
         limit = {
             OR = {
@@ -25,44 +245,320 @@ AOR_tarot_card_05_use = { # IV The Emperor / August Bebel
             }
         }
         add_to_variable = { AOR_tarot_card_05_uses = 1 }
+        add_political_power = 100
         add_to_variable = { GER_SPD_unity = 15 }
         GER_SPD_refresh_unity_effect = yes
+        AOR_tarot_ensure_socialization_defaults = yes
         subtract_from_variable = { GER_socialization_radicalism_base = 20 }
+        add_to_variable = { GER_socialization_organization = 15 }
         GER_socialization_refresh_bars = yes
-        add_political_power = 100 
+        set_temp_variable = { tarot_delta = 10 }
+        AOR_tarot_add_yihui_inertia = yes
+        set_temp_variable = { tarot_delta = 10 }
+        AOR_tarot_add_yihui_cohesion = yes
+        set_temp_variable = { GER_region_delta = 10 }
+        GER_region_R01_add_support = yes
+        GER_region_R02_add_support = yes
+        GER_region_R03_add_support = yes
+        GER_region_R04_add_support = yes
+        GER_region_R05_add_support = yes
+        GER_region_R06_add_support = yes
+        GER_region_R07_add_support = yes
+        GER_region_R08_add_support = yes
+        GER_region_R09_add_support = yes
+        GER_region_R10_add_support = yes
+        GER_region_R11_add_support = yes
+        GER_region_R12_add_support = yes
+        GER_region_R13_add_support = yes
+        GER_region_R14_add_support = yes
+        GER_region_R15_add_support = yes
+        GER_region_R16_add_support = yes
+        set_temp_variable = { GER_region_delta = 5 }
+        GER_region_R01_add_control = yes
+        GER_region_R02_add_control = yes
+        GER_region_R03_add_control = yes
+        GER_region_R04_add_control = yes
+        GER_region_R05_add_control = yes
+        GER_region_R06_add_control = yes
+        GER_region_R07_add_control = yes
+        GER_region_R08_add_control = yes
+        GER_region_R09_add_control = yes
+        GER_region_R10_add_control = yes
+        GER_region_R11_add_control = yes
+        GER_region_R12_add_control = yes
+        GER_region_R13_add_control = yes
+        GER_region_R14_add_control = yes
+        GER_region_R15_add_control = yes
+        GER_region_R16_add_control = yes
+        GER_region_game_sync_frames = yes
     }
 }
 
-AOR_tarot_card_06_use = { }
+AOR_tarot_card_06_use = { # V 教皇 / 考茨基（无限次）
+    AOR_tarot_ensure_socialization_defaults = yes
+    add_to_variable = { GER_socialization_organization = 8 }
+    subtract_from_variable = { GER_socialization_radicalism_base = 4 }
+    GER_socialization_refresh_bars = yes
+    add_to_variable = { GER_SPD_center_support = 8 }
+    subtract_from_variable = { GER_SPD_left_support = 5 }
+    subtract_from_variable = { GER_SPD_right_support = 5 }
+    GER_SPD_refresh_support_effect = yes
+}
 
-AOR_tarot_card_07_use = { }
+AOR_tarot_card_07_use = { } # VI 恋人 / 拉萨尔（不可抽取）
 
-AOR_tarot_card_08_use = { }
+AOR_tarot_card_08_use = { # VII 战车 / 艾伯特（无限次）
+    set_temp_variable = { tarot_delta = 5 }
+    AOR_tarot_add_yihui_cohesion = yes
+    set_temp_variable = { tarot_delta = 4 }
+    AOR_tarot_add_yihui_inertia = yes
+    add_to_variable = { GER_SPD_right_support = 5 }
+    subtract_from_variable = { GER_SPD_left_support = 5 }
+    GER_SPD_refresh_support_effect = yes
+    if = {
+        limit = { GER_09_03_Friedrich_Ebert = { is_hired_as_advisor = yes } }
+        subtract_from_variable = { GER_SPD_unity = 4 }
+    }
+    else = {
+        subtract_from_variable = { GER_SPD_unity = 8 }
+    }
+    GER_SPD_refresh_unity_effect = yes
+    if = {
+        limit = { NOT = { has_country_flag = AOR_tarot_card_08_first_used } }
+        set_country_flag = AOR_tarot_card_08_first_used
+        add_to_variable = { GER_yihui_focus_capacity = 1 }
+        if = {
+            limit = { has_country_flag = GER_yihui_agenda_v2 }
+            GER_yihui_sync = yes
+        }
+    }
+    else = {
+        add_political_power = 25
+    }
+}
 
-AOR_tarot_card_09_use = { }
+AOR_tarot_card_09_use = { # VIII 力量 / 雷德布尔（限用 3 次）
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_09_uses }
+                check_variable = { AOR_tarot_card_09_uses < 3 }
+            }
+        }
+        add_to_variable = { AOR_tarot_card_09_uses = 1 }
+        AOR_tarot_ensure_socialization_defaults = yes
+        add_to_variable = { GER_socialization_points_pool = 30 }
+        if = {
+            limit = { has_country_flag = GER_socialization_started }
+            GER_soc_auto_extend_counter_5 = yes
+        }
+        GER_socialization_refresh_bars = yes
+        set_temp_variable = { tarot_gc_days = 25 }
+        AOR_tarot_boost_growth_cabinet = yes
+    }
+}
 
-AOR_tarot_card_10_use = { }
+AOR_tarot_card_10_use = { # IX 隐者 / 克里斯平（无限次，塔罗节奏加速）
+    add_to_variable = { AOR_tarot_next_draw_discount = 25 }
+    add_to_variable = { AOR_tarot_next_cd_discount = 15 }
+    AOR_tarot_refresh_draw_state = yes
+    add_political_power = 20
+}
 
-AOR_tarot_card_11_use = { }
+AOR_tarot_card_11_use = { # X 命运之轮 / 伯恩施坦（雇佣入阁解锁，限用 3 次，可重复焦点）
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_11_uses }
+                check_variable = { AOR_tarot_card_11_uses < 3 }
+            }
+        }
+        add_to_variable = { AOR_tarot_card_11_uses = 1 }
+        set_temp_variable = { tarot_delta = 6 }
+        AOR_tarot_add_yihui_cohesion = yes
+        set_temp_variable = { tarot_delta = 4 }
+        AOR_tarot_add_yihui_inertia = yes
+        set_temp_variable = { yh_agenda = 6 }
+        AOR_tarot_grant_repeatable_agenda = yes
+    }
+}
 
-AOR_tarot_card_12_use = { }
+AOR_tarot_card_12_use = { # XI 正义 / 哈泽（无限次，纯粹议会机制）
+    set_temp_variable = { tarot_delta = 5 }
+    if = {
+        limit = { GER_03_02_Hugo_Haase = { is_hired_as_advisor = yes } }
+        add_to_temp_variable = { tarot_delta = 2 }
+    }
+    AOR_tarot_add_yihui_inertia = yes
+    set_temp_variable = { tarot_delta = 4 }
+    AOR_tarot_add_yihui_cohesion = yes
+    if = {
+        limit = { check_variable = { GER_yihui_bill_id > 0 } }
+        add_to_variable = { GER_yihui_bill_integrity = 5 }
+        clamp_variable = { var = GER_yihui_bill_integrity min = 0 max = 100 }
+    }
+}
 
-AOR_tarot_card_13_use = { }
+AOR_tarot_card_13_use = { # XII 倒吊人 / 多伊米希（无限次，社会化 + 全国支持度）
+    AOR_tarot_ensure_socialization_defaults = yes
+    subtract_from_variable = { GER_socialization_counterrevolution = 24 }
+    add_timed_idea = { idea = GER_tarot_daeumig_council days = 45 }
+    GER_socialization_refresh_bars = yes
+    set_temp_variable = { GER_region_delta = 2 }
+    AOR_tarot_add_open_regions_support = yes
+    AOR_tarot_stop_one_region_cr = yes
+}
 
-AOR_tarot_card_14_use = { }
+AOR_tarot_card_14_use = { # XIII 死神 / 里夏德·米勒（无限次，社会化进度 + 全国控制度）
+    AOR_tarot_ensure_socialization_defaults = yes
+    add_to_variable = { GER_socialization_points_pool = 25 }
+    GER_socialization_refresh_bars = yes
+    set_temp_variable = { GER_region_delta = 2 }
+    AOR_tarot_add_open_regions_control = yes
+    add_timed_idea = { idea = GER_tarot_rmueller_strike_net days = 45 }
+}
 
-AOR_tarot_card_15_use = { }
+AOR_tarot_card_15_use = { # XIV 节制 / 菲利普·谢德曼（无限次，可重复焦点）
+    set_temp_variable = { tarot_delta = 4 }
+    AOR_tarot_add_yihui_cohesion = yes
+    set_temp_variable = { tarot_delta = 3 }
+    AOR_tarot_add_yihui_inertia = yes
+    add_stability = 0.02
+    set_temp_variable = { yh_agenda = 7 }
+    AOR_tarot_grant_repeatable_agenda = yes
+}
 
-AOR_tarot_card_16_use = { }
+AOR_tarot_card_16_use = { # XV 恶魔 / 诺斯克（无限次）
+    add_command_power = 20
+    army_experience = 15
+    AOR_tarot_clear_all_region_cr_14d = yes
+    set_temp_variable = { GER_region_delta = 2 }
+    AOR_tarot_add_open_regions_control = yes
+    set_temp_variable = { GER_region_delta = -2 }
+    AOR_tarot_add_open_regions_support = yes
+    subtract_from_variable = { GER_SPD_unity = 5 }
+    GER_SPD_refresh_unity_effect = yes
+}
 
-AOR_tarot_card_17_use = { }
+AOR_tarot_card_17_use = { # XVI 塔 / 奥托·布劳恩（无限次，每次建设 + 民族精神）
+    random_owned_controlled_state = {
+        limit = { is_core_of = ROOT }
+        add_extra_state_shared_building_slots = 1
+        add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+        add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+    }
+    add_timed_idea = { idea = GER_tarot_braun_public_affairs days = 60 }
+}
 
-AOR_tarot_card_18_use = { }
+AOR_tarot_card_18_use = { # XVII 星星 / 卢森堡（限用 3 次，无社会化进度）
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_18_uses }
+                check_variable = { AOR_tarot_card_18_uses < 3 }
+            }
+        }
+        add_to_variable = { AOR_tarot_card_18_uses = 1 }
+        AOR_tarot_ensure_socialization_defaults = yes
+        add_to_variable = { GER_socialization_organization = 15 }
+        subtract_from_variable = { GER_socialization_counterrevolution = 48 }
+        add_to_variable = { GER_socialization_radicalism_base = 6 }
+        GER_socialization_refresh_bars = yes
+        add_to_variable = { GER_SPD_left_support = 6 }
+        subtract_from_variable = { GER_SPD_right_support = 6 }
+        GER_SPD_refresh_support_effect = yes
+    }
+}
 
-AOR_tarot_card_19_use = { }
+AOR_tarot_card_19_use = { # XVIII 月亮 / 罗伯特·迪斯曼（无限次，按是否为工会领导人分支）
+    add_political_power = 20
+    AOR_tarot_ensure_socialization_defaults = yes
+    if = {
+        limit = { has_country_flag = { flag = AOR_GER_union_leader_elected value = 1 } }
+        add_to_variable = { GER_socialization_points_pool = 25 }
+        add_to_variable = { GER_socialization_organization = 8 }
+    }
+    else = {
+        add_to_variable = { GER_SPD_center_support = 4 }
+        subtract_from_variable = { GER_SPD_right_support = 4 }
+        GER_SPD_refresh_support_effect = yes
+        add_to_variable = { GER_socialization_organization = 6 }
+    }
+    GER_socialization_refresh_bars = yes
+}
 
-AOR_tarot_card_20_use = { }
+AOR_tarot_card_20_use = { # XIX 太阳 / 威廉·科嫩（无限次，纯粹国中之国全国双加）
+    set_temp_variable = { GER_region_delta = 2 }
+    AOR_tarot_add_open_regions_support = yes
+    AOR_tarot_add_open_regions_control = yes
+    if = {
+        limit = { NOT = { has_country_flag = GER_tarot_koenen_cadre_boost } }
+        set_country_flag = GER_tarot_koenen_cadre_boost
+    }
+    else = {
+        add_political_power = 25
+    }
+}
 
-AOR_tarot_card_21_use = { }
+AOR_tarot_card_21_use = { # XX 审判 / 小李卜克内西（限用 3 次，三幕事件链 + 可重复议会焦点）
+    if = {
+        limit = {
+            OR = {
+                NOT = { has_variable = AOR_tarot_card_21_uses }
+                check_variable = { AOR_tarot_card_21_uses < 1 }
+            }
+        }
+        set_variable = { AOR_tarot_card_21_uses = 1 }
+        set_temp_variable = { yh_agenda = 9 }
+        AOR_tarot_grant_repeatable_agenda = yes
+        AOR_tarot_ensure_socialization_defaults = yes
+        subtract_from_variable = { GER_socialization_counterrevolution = 36 }
+        GER_socialization_refresh_bars = yes
+        add_to_variable = { GER_SPD_left_support = 5 }
+        GER_SPD_refresh_support_effect = yes
+        subtract_from_variable = { GER_SPD_unity = 5 }
+        GER_SPD_refresh_unity_effect = yes
+        country_event = { id = AOR_GER_tarot_liebknecht.1 }
+    }
+    else_if = {
+        limit = { check_variable = { AOR_tarot_card_21_uses = 1 } }
+        set_variable = { AOR_tarot_card_21_uses = 2 }
+        set_temp_variable = { yh_agenda = 9 }
+        AOR_tarot_grant_repeatable_agenda = yes
+        set_temp_variable = { GER_region_delta = 5 }
+        GER_region_R16_add_support = yes
+        GER_region_R14_add_support = yes
+        GER_region_game_sync_frames = yes
+        add_timed_idea = { idea = GER_tarot_liebknecht_red_guard days = 60 }
+        country_event = { id = AOR_GER_tarot_liebknecht.2 }
+    }
+    else_if = {
+        limit = { check_variable = { AOR_tarot_card_21_uses = 2 } }
+        set_variable = { AOR_tarot_card_21_uses = 3 }
+        set_temp_variable = { yh_agenda = 9 }
+        AOR_tarot_grant_repeatable_agenda = yes
+        add_command_power = 20
+        AOR_tarot_ensure_socialization_defaults = yes
+        subtract_from_variable = { GER_socialization_counterrevolution = 60 }
+        add_to_variable = { GER_socialization_organization = 8 }
+        GER_socialization_refresh_bars = yes
+        country_event = { id = AOR_GER_tarot_liebknecht.3 }
+    }
+}
 
-AOR_tarot_card_22_use = { }
+AOR_tarot_card_22_use = { # XXI 世界 / 赫尔曼·米勒（无限次，限时外交评价 + 可重复焦点）
+    if = { limit = { country_exists = ENG } ENG = { add_opinion_modifier = { target = ROOT modifier = GER_tarot_entente_recognition } } }
+    if = { limit = { country_exists = FRA } FRA = { add_opinion_modifier = { target = ROOT modifier = GER_tarot_entente_recognition } } }
+    if = { limit = { country_exists = USA } USA = { add_opinion_modifier = { target = ROOT modifier = GER_tarot_entente_recognition } } }
+    if = { limit = { country_exists = ITA } ITA = { add_opinion_modifier = { target = ROOT modifier = GER_tarot_entente_recognition } } }
+    set_temp_variable = { tarot_delta = 4 }
+    if = {
+        limit = { GER_09_04_Hermann_Mueller = { is_hired_as_advisor = yes } }
+        add_to_temp_variable = { tarot_delta = 2 }
+    }
+    AOR_tarot_add_yihui_cohesion = yes
+    set_temp_variable = { tarot_delta = 3 }
+    AOR_tarot_add_yihui_inertia = yes
+    set_temp_variable = { yh_agenda = 8 }
+    AOR_tarot_grant_repeatable_agenda = yes
+}

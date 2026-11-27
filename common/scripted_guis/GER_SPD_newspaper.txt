@@ -9,11 +9,17 @@ scripted_gui = {
 		effects = {
 			GER_SPD_tarot_button_click = {
 				clr_country_flag = AOR_tarot_test_open
+				AOR_tarot_refresh_draw_state = yes
 				if = {
 					limit = { has_country_flag = AOR_tarot_flight_open }
 					clr_country_flag = AOR_tarot_flight_open
 				}
-				else = { set_country_flag = AOR_tarot_flight_open }
+				else = {
+					set_country_flag = AOR_tarot_flight_open
+					# 每次打开塔罗界面：回到牌桌，备选牌抽屉收起
+					clr_country_flag = AOR_tarot_album_open
+					clr_country_flag = AOR_tarot_suits_open
+				}
 			}
 			GER_SPD_history_button_click = {
 				if = {
