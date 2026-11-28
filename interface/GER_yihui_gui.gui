@@ -40,6 +40,8 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "GER_yihui_entry_bg"
+		# 挂到 top_bar：绘制顺序在新闻/事件弹窗之下，否则会盖住弹窗
+		parent_window_token = top_bar
 		position = { x = 0 y = -360 }
 		Orientation = LOWER_RIGHT
 		Origo = LOWER_RIGHT
@@ -50,6 +52,8 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "GER_yihui_gui"
+		# 挂到 top_bar：绘制顺序在新闻/事件弹窗之下，否则会盖住弹窗
+		parent_window_token = top_bar
 		position = { x = 0 y = 0 }
 		Orientation = center
 		Origo = center
@@ -179,6 +183,8 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "GER_yihui_laws_gui"
+		# 挂到 top_bar：绘制顺序在新闻/事件弹窗之下，否则会盖住弹窗
+		parent_window_token = top_bar
 		# 主窗口 970x695 居中；侧栏贴在它右边 2px 处，打开时直接出现（无动画）
 		position = { x = 621 y = 22 }
 		Orientation = center
