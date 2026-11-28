@@ -1,0 +1,16 @@
+# 地区博弈 · 危机介绍框（interface/GER_region_game.gui 的 AOR_CRISIS_INTRO）的标题和正文。手写。
+# 顺序同显示条件：巴伐利亚危机 > 西里西亚危机 > 国防法危机。
+
+defined_text = {
+    name = GER_region_crisis_intro_title_text
+    text = { trigger = { has_country_flag = GER_region_bavaria_phase } localization_key = GER_region_crisis_intro_bavaria_t }
+    text = { trigger = { has_country_flag = GER_region_silesia_phase } localization_key = GER_region_crisis_intro_silesia_t }
+    text = { localization_key = GER_region_crisis_intro_defense_law_t }
+}
+
+defined_text = {
+    name = GER_region_crisis_intro_desc_text
+    text = { trigger = { has_country_flag = GER_region_bavaria_phase } localization_key = GER_region_crisis_intro_bavaria_d }
+    text = { trigger = { has_country_flag = GER_region_silesia_phase } localization_key = GER_region_crisis_intro_silesia_d }
+    text = { localization_key = GER_region_crisis_intro_defense_law_d }
+}

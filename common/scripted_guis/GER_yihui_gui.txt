@@ -98,6 +98,10 @@ scripted_gui = {
 			GER_yihui_agenda_entry_selected_3_visible = { check_variable = { v = 3 } check_variable = { GER_yihui_selected_agenda = v } }
 			GER_yihui_agenda_entry_selected_4_visible = { check_variable = { v = 4 } check_variable = { GER_yihui_selected_agenda = v } }
 			GER_yihui_agenda_entry_selected_5_visible = { check_variable = { v = 5 } check_variable = { GER_yihui_selected_agenda = v } }
+			GER_yihui_agenda_entry_selected_6_visible = { check_variable = { v = 6 } check_variable = { GER_yihui_selected_agenda = v } }
+			GER_yihui_agenda_entry_selected_7_visible = { check_variable = { v = 7 } check_variable = { GER_yihui_selected_agenda = v } }
+			GER_yihui_agenda_entry_selected_8_visible = { check_variable = { v = 8 } check_variable = { GER_yihui_selected_agenda = v } }
+			GER_yihui_agenda_entry_selected_9_visible = { check_variable = { v = 9 } check_variable = { GER_yihui_selected_agenda = v } }
 			# 议程状态数组 GER_yihui_ag_state 按议程编号下标：0 未解锁 / 1 可处理 / 2 处理中
 			# 图片按钮一项一张：只显示 v 对应的那张；未解锁的不能点（也没有悬停）
 			GER_yihui_agenda_entry_button_1_visible = { check_variable = { v = 1 } }
@@ -110,6 +114,14 @@ scripted_gui = {
 			GER_yihui_agenda_entry_button_4_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
 			GER_yihui_agenda_entry_button_5_visible = { check_variable = { v = 5 } }
 			GER_yihui_agenda_entry_button_5_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
+			GER_yihui_agenda_entry_button_6_visible = { check_variable = { v = 6 } }
+			GER_yihui_agenda_entry_button_6_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
+			GER_yihui_agenda_entry_button_7_visible = { check_variable = { v = 7 } }
+			GER_yihui_agenda_entry_button_7_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
+			GER_yihui_agenda_entry_button_8_visible = { check_variable = { v = 8 } }
+			GER_yihui_agenda_entry_button_8_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
+			GER_yihui_agenda_entry_button_9_visible = { check_variable = { v = 9 } }
+			GER_yihui_agenda_entry_button_9_click_enabled = { check_variable = { GER_yihui_ag_state^v > 0 } }
 			GER_yihui_agenda_entry_prog_visible = { check_variable = { GER_yihui_ag_state^v = 2 } }
 			# 党派方块（v = 党派编号）：选中 = 在 GER_yihui_view_picks 里；只有选中「可处理」的议程时能点
 			GER_yihui_party_entry_selected_visible = { is_in_array = { array = GER_yihui_view_picks value = v } }
@@ -151,9 +163,6 @@ scripted_gui = {
 			# 已通过法案侧栏
 			GER_yihui_laws_open_click = {
 				set_country_flag = GER_yihui_laws_open
-				# 切换渐显盖板 a / b，让动画每次打开都重播
-				if = { limit = { check_variable = { GER_yihui_laws_fade_set = 1 } } set_variable = { GER_yihui_laws_fade_set = 0 } }
-				else = { set_variable = { GER_yihui_laws_fade_set = 1 } }
 			}
 			# 左下角：重大立法弹窗开关
 			GER_yihui_bill_entry_click = { GER_yihui_bill_toggle = yes }
@@ -197,6 +206,38 @@ scripted_gui = {
 				GER_yihui_sync = yes
 			}
 			GER_yihui_agenda_entry_button_5_click = {
+				if = {
+					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
+					set_variable = { GER_yihui_selected_agenda = v }
+					GER_yihui_clear_picks = yes
+				}
+				GER_yihui_sync = yes
+			}
+			GER_yihui_agenda_entry_button_6_click = {
+				if = {
+					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
+					set_variable = { GER_yihui_selected_agenda = v }
+					GER_yihui_clear_picks = yes
+				}
+				GER_yihui_sync = yes
+			}
+			GER_yihui_agenda_entry_button_7_click = {
+				if = {
+					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
+					set_variable = { GER_yihui_selected_agenda = v }
+					GER_yihui_clear_picks = yes
+				}
+				GER_yihui_sync = yes
+			}
+			GER_yihui_agenda_entry_button_8_click = {
+				if = {
+					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
+					set_variable = { GER_yihui_selected_agenda = v }
+					GER_yihui_clear_picks = yes
+				}
+				GER_yihui_sync = yes
+			}
+			GER_yihui_agenda_entry_button_9_click = {
 				if = {
 					limit = { NOT = { check_variable = { GER_yihui_selected_agenda = v } } }
 					set_variable = { GER_yihui_selected_agenda = v }
@@ -252,7 +293,7 @@ scripted_gui = {
 			}
 		}
 	}
-	# 已完成焦点侧栏：独立窗口，GER_yihui_laws_open 打开时原地出现、内容渐显
+	# 已完成焦点侧栏：独立窗口，GER_yihui_laws_open 打开时原地直接出现
 	GER_yihui_laws_gui = {
 		context_type = player_context
 		window_name = GER_yihui_laws_gui
@@ -260,10 +301,6 @@ scripted_gui = {
 			original_tag = GER
 			has_country_flag = GER_main_GUI_open
 			has_country_flag = GER_yihui_laws_open
-		}
-		triggers = {
-			GER_yihui_laws_fade_a_click_enabled = { NOT = { check_variable = { GER_yihui_laws_fade_set = 1 } } }
-			GER_yihui_laws_fade_b_click_enabled = { check_variable = { GER_yihui_laws_fade_set = 1 } }
 		}
 		dynamic_lists = {
 			GER_yihui_laws_list = {

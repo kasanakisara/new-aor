@@ -238,28 +238,17 @@ scripted_gui = {
                 }
             }
             # <<< GENERATED: triggers
-            # BEGIN AOR_IDLE_CLOCKWORK
-            # 待机时钟（盖在决议框上）：地图全开之前显示；巴伐利亚危机进行中（右侧是巴伐利亚决议）隐藏，危机结束后重新显示。
-            # 容器和里面的图标各写一条，条件相同。
-            GER_region_idle_clockwork_visible = {
-                NOT = {
-                    OR = {
-                        check_variable = { GER_region_panel_list^num > 0 }
-                        has_country_flag = GER_region_map_opened
-                        has_country_flag = GER_region_bavaria_phase
-                    }
-                }
-            }
-            GER_region_idle_full_scene_visible = {
-                NOT = {
-                    OR = {
-                        check_variable = { GER_region_panel_list^num > 0 }
-                        has_country_flag = GER_region_map_opened
-                        has_country_flag = GER_region_bavaria_phase
-                    }
-                }
-            }
-            # END AOR_IDLE_CLOCKWORK
+            # BEGIN AOR_CRISIS_INTRO（手写）
+            # 危机介绍框：只在选中了危机所在地区时显示，待机（没选地区）时不显示任何东西。
+            #   巴伐利亚危机：选中巴伐利亚(9)；西里西亚危机：选中西里西亚(7)；
+            #   国防法危机：决议已解锁（GER_dl_can_act），选中梅克伦堡/波美拉尼亚/勃兰登堡/东普鲁士/大柏林(4/5/6/13/16)。
+            # 国防法危机不屏蔽常规决议，地图全开后列表会超出，所以那时不显示。
+            # 容器、金边、标题、正文各写一条（容器那条在开局待机时没生效过），条件都在 GER_region_crisis_intro_shown。
+            GER_region_crisis_intro_visible = { GER_region_crisis_intro_shown = yes }
+            GER_region_crisis_intro_frame_visible = { GER_region_crisis_intro_shown = yes }
+            GER_region_crisis_intro_title_visible = { GER_region_crisis_intro_shown = yes }
+            GER_region_crisis_intro_desc_visible = { GER_region_crisis_intro_shown = yes }
+            # END AOR_CRISIS_INTRO
             # BEGIN AOR_COUNTERREV
             # 反革命倒计时：选中地区有行动时显示；≤7 日叠红光。地图标记：该区有行动时显示
             GER_region_cr_shadow_visible = { check_variable = { GER_region_sel_cr_days > 0 } }

@@ -478,6 +478,7 @@ GER_region_bavaria_apply_result = {
 GER_region_on_open_map = {
     GER_region_bavaria_apply_result = yes
     GER_region_silesia_apply_result = yes
+    AOR_tarot_apply_pending_region_bonuses = yes
 }
 
 # 测试决议「重置」时调用：清掉决议自己的全国状态
@@ -496,6 +497,10 @@ GER_region_actions_on_reset = {
     clr_country_flag = GER_silesia_crisis_settled
     clr_country_flag = GER_region_silesia_result_applied
     clear_variable = GER_region_silesia_result
+    clear_variable = AOR_tarot_pending_all_support
+    clear_variable = AOR_tarot_pending_all_control
+    clear_variable = AOR_tarot_pending_R16_support
+    clear_variable = AOR_tarot_pending_R14_support
 }
 
 

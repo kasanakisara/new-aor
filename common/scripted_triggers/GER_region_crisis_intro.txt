@@ -1,0 +1,29 @@
+# 地区博弈 · 危机介绍框（interface/GER_region_game.gui 的 AOR_CRISIS_INTRO）是否显示。手写。
+# 只在选中了危机所在地区时显示，待机（没选地区）时不显示任何东西。
+#   巴伐利亚危机：选中巴伐利亚(9)；西里西亚危机：选中西里西亚(7)；
+#   国防法危机：决议已解锁（GER_dl_can_act），选中梅克伦堡/波美拉尼亚/勃兰登堡/东普鲁士/大柏林(4/5/6/13/16)。
+# 国防法危机不屏蔽常规决议，地图全开后列表会超出，所以那时不显示。
+GER_region_crisis_intro_shown = {
+    check_variable = { GER_region_selected > 0 }
+    OR = {
+        AND = {
+            has_country_flag = GER_region_bavaria_phase
+            check_variable = { GER_region_selected = 9 }
+        }
+        AND = {
+            has_country_flag = GER_region_silesia_phase
+            check_variable = { GER_region_selected = 7 }
+        }
+        AND = {
+            has_country_flag = GER_dl_can_act
+            NOT = { has_country_flag = GER_region_map_opened }
+            OR = {
+                check_variable = { GER_region_selected = 4 }
+                check_variable = { GER_region_selected = 5 }
+                check_variable = { GER_region_selected = 6 }
+                check_variable = { GER_region_selected = 13 }
+                check_variable = { GER_region_selected = 16 }
+            }
+        }
+    }
+}

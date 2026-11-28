@@ -117,6 +117,76 @@ AOR_tarot_add_open_regions_control = {
     GER_region_game_sync_frames = yes
 }
 
+AOR_tarot_apply_pending_region_bonuses = {
+    if = {
+        limit = {
+            has_country_flag = GER_region_map_opened
+            OR = {
+                check_variable = { AOR_tarot_pending_all_support > 0 }
+                check_variable = { AOR_tarot_pending_all_control > 0 }
+                check_variable = { AOR_tarot_pending_R16_support > 0 }
+                check_variable = { AOR_tarot_pending_R14_support > 0 }
+            }
+        }
+        set_temp_variable = { GER_region_force = 1 }
+        if = {
+            limit = { check_variable = { AOR_tarot_pending_all_support > 0 } }
+            set_temp_variable = { GER_region_delta = AOR_tarot_pending_all_support }
+            GER_region_R01_add_support = yes
+            GER_region_R02_add_support = yes
+            GER_region_R03_add_support = yes
+            GER_region_R04_add_support = yes
+            GER_region_R05_add_support = yes
+            GER_region_R06_add_support = yes
+            GER_region_R07_add_support = yes
+            GER_region_R08_add_support = yes
+            GER_region_R09_add_support = yes
+            GER_region_R10_add_support = yes
+            GER_region_R11_add_support = yes
+            GER_region_R12_add_support = yes
+            GER_region_R13_add_support = yes
+            GER_region_R14_add_support = yes
+            GER_region_R15_add_support = yes
+            GER_region_R16_add_support = yes
+            set_variable = { AOR_tarot_pending_all_support = 0 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_pending_all_control > 0 } }
+            set_temp_variable = { GER_region_delta = AOR_tarot_pending_all_control }
+            GER_region_R01_add_control = yes
+            GER_region_R02_add_control = yes
+            GER_region_R03_add_control = yes
+            GER_region_R04_add_control = yes
+            GER_region_R05_add_control = yes
+            GER_region_R06_add_control = yes
+            GER_region_R07_add_control = yes
+            GER_region_R08_add_control = yes
+            GER_region_R09_add_control = yes
+            GER_region_R10_add_control = yes
+            GER_region_R11_add_control = yes
+            GER_region_R12_add_control = yes
+            GER_region_R13_add_control = yes
+            GER_region_R14_add_control = yes
+            GER_region_R15_add_control = yes
+            GER_region_R16_add_control = yes
+            set_variable = { AOR_tarot_pending_all_control = 0 }
+        }
+        set_temp_variable = { GER_region_force = 0 }
+        if = {
+            limit = { check_variable = { AOR_tarot_pending_R16_support > 0 } }
+            set_temp_variable = { GER_region_delta = AOR_tarot_pending_R16_support }
+            GER_region_R16_add_support = yes
+            set_variable = { AOR_tarot_pending_R16_support = 0 }
+        }
+        if = {
+            limit = { check_variable = { AOR_tarot_pending_R14_support > 0 } }
+            set_temp_variable = { GER_region_delta = AOR_tarot_pending_R14_support }
+            GER_region_R14_add_support = yes
+            set_variable = { AOR_tarot_pending_R14_support = 0 }
+        }
+    }
+}
+
 AOR_tarot_stop_one_region_cr = {
     if = { limit = { check_variable = { GER_region_R01_cr_days > 0 } } set_variable = { GER_region_R01_cr_days = 0 } set_variable = { GER_region_R01_cr_block = 7 } set_variable = { GER_region_R01_cr_mark = 0 } }
     else_if = { limit = { check_variable = { GER_region_R02_cr_days > 0 } } set_variable = { GER_region_R02_cr_days = 0 } set_variable = { GER_region_R02_cr_block = 7 } set_variable = { GER_region_R02_cr_mark = 0 } }
@@ -256,41 +326,50 @@ AOR_tarot_card_05_use = { # IV 皇帝 / 奥古斯特·倍倍尔（限用 2 次�
         AOR_tarot_add_yihui_inertia = yes
         set_temp_variable = { tarot_delta = 10 }
         AOR_tarot_add_yihui_cohesion = yes
-        set_temp_variable = { GER_region_delta = 10 }
-        GER_region_R01_add_support = yes
-        GER_region_R02_add_support = yes
-        GER_region_R03_add_support = yes
-        GER_region_R04_add_support = yes
-        GER_region_R05_add_support = yes
-        GER_region_R06_add_support = yes
-        GER_region_R07_add_support = yes
-        GER_region_R08_add_support = yes
-        GER_region_R09_add_support = yes
-        GER_region_R10_add_support = yes
-        GER_region_R11_add_support = yes
-        GER_region_R12_add_support = yes
-        GER_region_R13_add_support = yes
-        GER_region_R14_add_support = yes
-        GER_region_R15_add_support = yes
-        GER_region_R16_add_support = yes
-        set_temp_variable = { GER_region_delta = 5 }
-        GER_region_R01_add_control = yes
-        GER_region_R02_add_control = yes
-        GER_region_R03_add_control = yes
-        GER_region_R04_add_control = yes
-        GER_region_R05_add_control = yes
-        GER_region_R06_add_control = yes
-        GER_region_R07_add_control = yes
-        GER_region_R08_add_control = yes
-        GER_region_R09_add_control = yes
-        GER_region_R10_add_control = yes
-        GER_region_R11_add_control = yes
-        GER_region_R12_add_control = yes
-        GER_region_R13_add_control = yes
-        GER_region_R14_add_control = yes
-        GER_region_R15_add_control = yes
-        GER_region_R16_add_control = yes
-        GER_region_game_sync_frames = yes
+        if = {
+            limit = { has_country_flag = GER_region_map_opened }
+            set_temp_variable = { GER_region_force = 1 }
+            set_temp_variable = { GER_region_delta = 10 }
+            GER_region_R01_add_support = yes
+            GER_region_R02_add_support = yes
+            GER_region_R03_add_support = yes
+            GER_region_R04_add_support = yes
+            GER_region_R05_add_support = yes
+            GER_region_R06_add_support = yes
+            GER_region_R07_add_support = yes
+            GER_region_R08_add_support = yes
+            GER_region_R09_add_support = yes
+            GER_region_R10_add_support = yes
+            GER_region_R11_add_support = yes
+            GER_region_R12_add_support = yes
+            GER_region_R13_add_support = yes
+            GER_region_R14_add_support = yes
+            GER_region_R15_add_support = yes
+            GER_region_R16_add_support = yes
+            set_temp_variable = { GER_region_delta = 5 }
+            GER_region_R01_add_control = yes
+            GER_region_R02_add_control = yes
+            GER_region_R03_add_control = yes
+            GER_region_R04_add_control = yes
+            GER_region_R05_add_control = yes
+            GER_region_R06_add_control = yes
+            GER_region_R07_add_control = yes
+            GER_region_R08_add_control = yes
+            GER_region_R09_add_control = yes
+            GER_region_R10_add_control = yes
+            GER_region_R11_add_control = yes
+            GER_region_R12_add_control = yes
+            GER_region_R13_add_control = yes
+            GER_region_R14_add_control = yes
+            GER_region_R15_add_control = yes
+            GER_region_R16_add_control = yes
+            set_temp_variable = { GER_region_force = 0 }
+            GER_region_game_sync_frames = yes
+        }
+        else = {
+            add_to_variable = { AOR_tarot_pending_all_support = 10 }
+            add_to_variable = { AOR_tarot_pending_all_control = 5 }
+        }
     }
 }
 
@@ -393,9 +472,13 @@ AOR_tarot_card_12_use = { # XI 正义 / 哈泽（无限次，纯粹议会机制�
     set_temp_variable = { tarot_delta = 4 }
     AOR_tarot_add_yihui_cohesion = yes
     if = {
-        limit = { check_variable = { GER_yihui_bill_id > 0 } }
+        limit = {
+            check_variable = { GER_yihui_bill_id > 0 }
+            check_variable = { GER_yihui_bill_stage = 1 }
+        }
         add_to_variable = { GER_yihui_bill_integrity = 5 }
         clamp_variable = { var = GER_yihui_bill_integrity min = 0 max = 100 }
+        GER_yihui_bill_refresh = yes
     }
 }
 
@@ -441,11 +524,30 @@ AOR_tarot_card_16_use = { # XV 恶魔 / 诺斯克（无限次）
 }
 
 AOR_tarot_card_17_use = { # XVI 塔 / 奥托·布劳恩（无限次，每次建设 + 民族精神）
-    random_owned_controlled_state = {
-        limit = { is_core_of = ROOT }
-        add_extra_state_shared_building_slots = 1
-        add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
-        add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+    if = {
+        limit = {
+            any_owned_state = {
+                is_controlled_by = ROOT
+                is_core_of = ROOT
+                free_building_slots = { building = infrastructure size > 0 }
+            }
+        }
+        random_owned_controlled_state = {
+            limit = {
+                is_core_of = ROOT
+                free_building_slots = { building = infrastructure size > 0 }
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+            add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+        }
+    }
+    else = {
+        random_owned_controlled_state = {
+            limit = { is_core_of = ROOT }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+        }
     }
     add_timed_idea = { idea = GER_tarot_braun_public_affairs days = 60 }
 }
@@ -525,10 +627,17 @@ AOR_tarot_card_21_use = { # XX 审判 / 小李卜克内西（限用 3 次，三�
         set_variable = { AOR_tarot_card_21_uses = 2 }
         set_temp_variable = { yh_agenda = 9 }
         AOR_tarot_grant_repeatable_agenda = yes
-        set_temp_variable = { GER_region_delta = 5 }
-        GER_region_R16_add_support = yes
-        GER_region_R14_add_support = yes
-        GER_region_game_sync_frames = yes
+        if = {
+            limit = { has_country_flag = GER_region_map_opened }
+            set_temp_variable = { GER_region_delta = 5 }
+            GER_region_R16_add_support = yes
+            GER_region_R14_add_support = yes
+            GER_region_game_sync_frames = yes
+        }
+        else = {
+            add_to_variable = { AOR_tarot_pending_R16_support = 5 }
+            add_to_variable = { AOR_tarot_pending_R14_support = 5 }
+        }
         add_timed_idea = { idea = GER_tarot_liebknecht_red_guard days = 60 }
         country_event = { id = AOR_GER_tarot_liebknecht.2 }
     }

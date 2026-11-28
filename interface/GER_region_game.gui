@@ -794,20 +794,47 @@ guiTypes = {
             }
         }
         # <<< GENERATED: right_panel
-            # BEGIN AOR_IDLE_CLOCKWORK (single complete frame animation)
+        # BEGIN AOR_CRISIS_INTRO（手写）
+        # 危机介绍框：巴伐利亚 / 西里西亚 / 国防法危机进行中，放在右侧决议列表下方。
+        # 决议总框在 (1281,150) 320x731；本框和它左、右、下边对齐（同一张金边贴图，边线重合成一条），高 280，占框内 y=451-731。
+        # 列表最多 8 条（巴伐利亚），底边到框内 y=428。
+        # 文字由 GER_region_crisis_intro_title_text / _desc_text（common/scripted_localisation/GER_region_crisis_intro.txt）按危机切换。
+        # 开局待机时容器自己的 _visible 没生效（框照样显示），所以金边不用 background，改成一个铺满的按钮（原版 countryarmyview 的写法），
+        # 和标题、正文各挂一条同样的显示条件。
         containerWindowType = {
-            name = "GER_region_idle_clockwork"
-            position = { x = 1281 y = 150 }
-            size = { width = 320 height = 731 }
-            iconType = {
-                name = "GER_region_idle_full_scene"
-                spriteType = "GFX_GER_region_idle_full_scene"
+            name = "GER_region_crisis_intro"
+            position = { x = 1281 y = 601 }
+            size = { width = 320 height = 280 }
+            buttonType = {
+                name = "GER_region_crisis_intro_frame"
                 position = { x = 0 y = 0 }
-                scale = 1.25
+                size = { x = 320 y = 280 }
+                quadTextureSprite = "GFX_GER_region_game_frame"
+                alwaystransparent = yes
+            }
+            instantTextboxType = {
+                name = "GER_region_crisis_intro_title"
+                position = { x = 16 y = 18 }
+                font = "hoi_18mbs"
+                text = "GER_region_crisis_intro_title"
+                maxWidth = 288
+                maxHeight = 22
+                format = left
+                alwaystransparent = yes
+            }
+            instantTextboxType = {
+                name = "GER_region_crisis_intro_desc"
+                position = { x = 16 y = 48 }
+                font = "hoi_16mbs"
+                text = "GER_region_crisis_intro_desc"
+                maxWidth = 288
+                maxHeight = 220
+                format = left
+                fixedsize = yes
                 alwaystransparent = yes
             }
         }
-        # END AOR_IDLE_CLOCKWORK
+        # END AOR_CRISIS_INTRO
         # BEGIN AOR_COUNTERREV（install_countdown.py 生成，重跑脚本会整块替换）
         # 反革命行动：地图上的标记（每区一个，alwaystransparent，不挡区块点击）
         iconType = {
