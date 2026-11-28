@@ -137,7 +137,7 @@ GER_socialization_radicalism_borrow_level = {
 
 GER_socialization_radicalism_advance_level = {
     if = {
-        limit = { check_variable = { GER_socialization_radicalism = 100 } check_variable = { GER_socialization_radicalism_level < 3 } }
+        limit = { NOT = { check_variable = { GER_socialization_radicalism < 100 } } check_variable = { GER_socialization_radicalism_level < 3 } }
         subtract_from_variable = { GER_socialization_radicalism_base = 100 }
         add_to_variable = { GER_socialization_radicalism_level = 1 }
         GER_socialization_refresh_radicalism_effect = yes
