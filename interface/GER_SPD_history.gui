@@ -250,6 +250,39 @@ guiTypes = {
 					maxHeight = 148
 				}
 			}
+			# 1920 波鸿纲领：党改革结算后显示，正文由 scripted_localisation 七槽位拼接
+			# TODO(art)：出图后在此加 iconType（建议 GFX_GER_SPD_history_1920），正文 y 与高度随之调整
+			containerWindowType = {
+				name = "GER_SPD_history_entry_1920"
+				position = { x = 2 y = 2040 }
+				size = { width = 505 height = 332 }
+				instantTextboxType = {
+					name = "title"
+					position = { x = 0 y = 6 }
+					font = "hoi_18mbs"
+					text = "GER_SPD_history_1920_title"
+					maxWidth = 505
+					maxHeight = 25
+					format = center
+				}
+				instantTextboxType = {
+					name = "quote"
+					position = { x = 0 y = 36 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1920_quote"
+					maxWidth = 505
+					maxHeight = 36
+					format = center
+				}
+				instantTextboxType = {
+					name = "body"
+					position = { x = 0 y = 80 }
+					font = "hoi_16mbs"
+					text = "GER_SPD_history_1920_body"
+					maxWidth = 505
+					maxHeight = 248
+				}
+			}
 			# Add future milestones as another independent entry below this one.
 			containerWindowType = {
 				name = "GER_SPD_history_entry_1917"

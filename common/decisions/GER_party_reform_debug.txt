@@ -1,0 +1,167 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会 · 调试决议（仅 is_debug 可见）
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 仿 GER_socialization_debug.txt：visible = { tag = GER is_debug = yes }、cost = 0、
+# fire_only_once = no、ai_will_do = { factor = 0 }。
+
+GER_party_reform_debug_category = {
+	# ① 开启党改革运动
+	GER_prf_dbg_start = {
+		icon = generic_political_discourse
+		priority = 100
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			GER_party_reform_start = yes
+		}
+	}
+	# ② 改革点数 +10
+	GER_prf_dbg_points_10 = {
+		icon = generic_political_discourse
+		priority = 99
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_to_variable = { GER_party_reform_points = 10 }
+		}
+	}
+	# ② 改革点数 +50
+	GER_prf_dbg_points_50 = {
+		icon = generic_political_discourse
+		priority = 98
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_to_variable = { GER_party_reform_points = 50 }
+		}
+	}
+	# ③ 切换工会改革结果：左派（米勒）胜利
+	GER_prf_dbg_union_left = {
+		icon = generic_political_discourse
+		priority = 97
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			set_variable = { GER_union_focus_victories = 3 }
+		}
+	}
+	# ③ 切换工会改革结果：中派（迪斯曼）胜利
+	GER_prf_dbg_union_center = {
+		icon = generic_political_discourse
+		priority = 96
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			set_variable = { GER_union_focus_victories = 1 }
+		}
+	}
+	# ③ 切换工会改革结果：右派（莱帕特）胜利
+	GER_prf_dbg_union_right = {
+		icon = generic_political_discourse
+		priority = 95
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			set_variable = { GER_union_focus_victories = 0 }
+		}
+	}
+	# ④ 立即结算一次双周点数
+	GER_prf_dbg_tick = {
+		icon = generic_political_discourse
+		priority = 94
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			GER_party_reform_tick = yes
+		}
+	}
+	# ⑤ 立即触发 8.26 截止提示事件
+	GER_prf_dbg_deadline = {
+		icon = generic_political_discourse
+		priority = 93
+		visible = { tag = GER is_debug = yes }
+		available = {
+			tag = GER
+			NOT = { has_country_flag = GER_party_reform_locked }
+		}
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			country_event = { id = AOR_GER_bochum_congress.2 hours = 1 }
+		}
+	}
+	# ⑥ 立即触发波鸿代表大会事件链
+	GER_prf_dbg_congress = {
+		icon = generic_political_discourse
+		priority = 92
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			country_event = { id = AOR_GER_bochum_congress.3 hours = 1 }
+		}
+	}
+	# ⑦ 预设结局条件：彻底成功
+	GER_prf_dbg_preset_full = {
+		icon = generic_political_discourse
+		priority = 91
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			GER_party_reform_debug_preset_full = yes
+		}
+	}
+	# ⑦ 预设结局条件：部分胜利
+	GER_prf_dbg_preset_partial = {
+		icon = generic_political_discourse
+		priority = 90
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			GER_party_reform_debug_preset_partial = yes
+		}
+	}
+	# ⑦ 预设结局条件：失败
+	GER_prf_dbg_preset_fail = {
+		icon = generic_political_discourse
+		priority = 89
+		visible = { tag = GER is_debug = yes }
+		available = { tag = GER }
+		cost = 0
+		fire_only_once = no
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			GER_party_reform_debug_preset_fail = yes
+		}
+	}
+}

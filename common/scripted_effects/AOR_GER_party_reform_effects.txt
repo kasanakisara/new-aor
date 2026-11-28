@@ -1,0 +1,365 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会 · 共用效果
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 变量
+#   GER_party_reform_points              改革点数池（浮点）
+#   GER_party_reform_completed_count     已完成的手动国策数（0—16）
+#   GER_party_reform_day_counter         距上次结算的天数（0—13）
+#   GER_party_reform_bonus_per_tick      决议附加的每周期点数
+# 旗标
+#   GER_party_reform_started / _active / _open / _locked
+#   GER_party_reform_key_proactive       主动策略（关键国策）
+#   GER_party_reform_key_reorg           党的组织重新定向（关键国策）
+#   GER_party_reform_key_dictatorship    重申无产阶级专政（关键国策）
+#   GER_party_reform_grp1_central        采用集中制（分歧一·高）
+#   GER_party_reform_grp2_core           党是革命的核心（分歧二·高）
+#   GER_party_reform_grp3_timid          不能畏畏缩缩（分歧三·高）
+
+# 开启党改革运动（1920.2.13）
+GER_party_reform_start = {
+	set_country_flag = GER_party_reform_started
+	set_country_flag = GER_party_reform_active
+	set_country_flag = GER_party_reform_open
+	clr_country_flag = GER_party_reform_locked
+	set_variable = { GER_party_reform_points = 0 }
+	set_variable = { GER_party_reform_completed_count = 0 }
+	set_variable = { GER_party_reform_day_counter = 0 }
+	set_variable = { GER_party_reform_bonus_per_tick = 0 }
+	# 工会胜负决定每周期基数，缺省按右派胜利
+	if = {
+		limit = { NOT = { has_variable = GER_union_focus_victories } }
+		set_variable = { GER_union_focus_victories = 0 }
+	}
+	# 起始国策《波鸿代表大会》自动完成（0 点）
+	complete_national_focus = GER_Bochum_General_Assembly
+}
+
+# 双周结算：工会三档基数 + 决议附加
+GER_party_reform_tick = {
+	if = {
+		limit = { check_variable = { GER_union_focus_victories > 2 } }
+		add_to_variable = { GER_party_reform_points = 2.0 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { GER_union_focus_victories > 0 }
+			check_variable = { GER_union_focus_victories < 3 }
+		}
+		add_to_variable = { GER_party_reform_points = 1.5 }
+	}
+	else = {
+		add_to_variable = { GER_party_reform_points = 1.0 }
+	}
+	add_to_variable = { GER_party_reform_points = GER_party_reform_bonus_per_tick }
+}
+
+# 截止锁定（1920.8.26）
+GER_party_reform_lock = {
+	clr_country_flag = GER_party_reform_active
+	clr_country_flag = GER_party_reform_open
+	set_country_flag = GER_party_reform_locked
+}
+
+# 三档结局判定：彻底成功 → 部分胜利 → 失败
+GER_party_reform_settle = {
+	# 大会③投票后才置位：历史面板的 1920 波鸿纲领一页以此为准显示
+	set_country_flag = GER_party_reform_congress_done
+	if = {
+		limit = { check_variable = { GER_party_reform_completed_count > 15 } }
+		set_country_flag = GER_party_reform_result_full
+		GER_party_reform_grant_spirit = yes
+		country_event = { id = AOR_GER_bochum_congress.6 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { GER_party_reform_completed_count > 11 }
+			has_country_flag = GER_party_reform_key_proactive
+			has_country_flag = GER_party_reform_key_reorg
+			has_country_flag = GER_party_reform_key_dictatorship
+		}
+		set_country_flag = GER_party_reform_result_partial
+		GER_party_reform_grant_spirit = yes
+		country_event = { id = AOR_GER_bochum_congress.7 }
+	}
+	else = {
+		set_country_flag = GER_party_reform_result_fail
+		GER_party_reform_grant_spirit = yes
+		country_event = { id = AOR_GER_bochum_congress.8 }
+	}
+}
+
+# 发放独立动态民族精神：三档基础 + 已点国策的数值叠加
+GER_party_reform_grant_spirit = {
+	set_variable = { GER_prf_pp_factor = 0 }
+	set_variable = { GER_prf_pp_gain = 0 }
+	set_variable = { GER_prf_stability_weekly = 0 }
+	set_variable = { GER_prf_unity_weekly = 0 }
+	set_variable = { GER_prf_organization_weekly = 0 }
+	# 完全胜利基础
+	if = {
+		limit = { has_country_flag = GER_party_reform_result_full }
+		set_variable = { GER_prf_pp_factor = 0.10 }
+		set_variable = { GER_prf_stability_weekly = 0.002 }
+		set_variable = { GER_prf_unity_weekly = 1 }
+		set_variable = { GER_prf_organization_weekly = 0.4 }
+	}
+	# 部分胜利基础
+	else_if = {
+		limit = { has_country_flag = GER_party_reform_result_partial }
+		set_variable = { GER_prf_pp_factor = 0.05 }
+		set_variable = { GER_prf_unity_weekly = 0.5 }
+		set_variable = { GER_prf_organization_weekly = 0.2 }
+	}
+	# 失败：无基础效果，仅保留已点国策影响
+	# 已点国策：完善党的中央机构 / 党是革命的核心 各 +5% 政治点数获得
+	if = {
+		limit = { has_country_flag = GER_prf_done_F02 }
+		add_to_variable = { GER_prf_pp_factor = 0.05 }
+	}
+	if = {
+		limit = { has_country_flag = GER_prf_done_F09 }
+		add_to_variable = { GER_prf_pp_factor = 0.05 }
+	}
+	# 已点国策：重申无产阶级专政的目标 → 政治点数获得 +0.5
+	if = {
+		limit = { has_country_flag = GER_prf_done_F18 }
+		set_variable = { GER_prf_pp_gain = 0.5 }
+	}
+	# ── 已点国策的周期速率（每两周） ──
+	set_variable = { GER_prf_left_bi = 0 }
+	set_variable = { GER_prf_center_bi = 0 }
+	set_variable = { GER_prf_right_bi = 0 }
+	# 主动策略（关键国策）：右派影响力每两周 -0.2
+	if = {
+		limit = { has_country_flag = GER_prf_done_F07 }
+		set_variable = { GER_prf_right_bi = -0.2 }
+	}
+	# 建立社会主义的斗争需要小心维持：中派影响力每两周 +0.3
+	if = {
+		limit = { has_country_flag = GER_prf_done_F10 }
+		add_to_variable = { GER_prf_center_bi = 0.3 }
+	}
+	# 党的组织重新定向（关键国策）：一次性 +50 政治点数
+	if = {
+		limit = { has_country_flag = GER_prf_done_F16 }
+		add_political_power = 50
+	}
+	set_variable = { GER_prf_max_bi = 0 }
+	set_variable = { GER_prf_min_bi = 0 }
+	set_variable = { GER_prf_second_bi = 0 }
+	set_variable = { GER_prf_soc_bi = 0 }
+	# 鼓励基层参与
+	if = {
+		limit = { has_country_flag = GER_prf_done_F03 }
+		add_to_variable = { GER_prf_left_bi = 0.2 }
+		add_to_variable = { GER_prf_center_bi = 0.1 }
+	}
+	# 鼓励青年组织
+	if = {
+		limit = { has_country_flag = GER_prf_done_F13 }
+		add_to_variable = { GER_prf_left_bi = 0.1 }
+	}
+	# 采用集中制：当前最大派系
+	if = {
+		limit = { has_country_flag = GER_prf_done_F05 }
+		set_variable = { GER_prf_max_bi = 0.2 }
+	}
+	# 采用联邦制：当前最小 + 次小派系
+	if = {
+		limit = { has_country_flag = GER_prf_done_F06 }
+		set_variable = { GER_prf_min_bi = 0.2 }
+		set_variable = { GER_prf_second_bi = 0.1 }
+	}
+	# 脑体力劳动者的联盟：社会化进度每两周 +1
+	if = {
+		limit = { has_country_flag = GER_prf_done_F19 }
+		set_variable = { GER_prf_soc_bi = 1 }
+	}
+	# ── 已点国策的一次性效果 ──
+	# 脑体力劳动者的联盟：无产阶级组织度 +10、团结中低层职员政治点数花费 -3
+	if = {
+		limit = { has_country_flag = GER_prf_done_F19 }
+		add_to_variable = { GER_socialization_organization = 10 }
+		GER_socialization_refresh_bars = yes
+		if = {
+			limit = { check_variable = { GER_soc_cost_staff > 3 } }
+			subtract_from_variable = { GER_soc_cost_staff = 3 }
+		}
+		else = { set_variable = { GER_soc_cost_staff = 0 } }
+	}
+	# 共同作为社会主义运动的台柱：工会/苏维埃/协会/地区行动效果 +5%
+	if = {
+		limit = { has_country_flag = GER_prf_done_F08 }
+		add_to_variable = { GER_region_soc_points_factor = 0.05 }
+	}
+	# ── 按作者 2026-11-28 指示改写的三项 ──
+	# 反对沙文主义、军国主义：左/中派影响力微量自然增长 + 一次性政治点数
+	if = {
+		limit = { has_country_flag = GER_prf_done_F12 }
+		add_to_variable = { GER_prf_left_bi = 0.05 }
+		add_to_variable = { GER_prf_center_bi = 0.05 }
+		add_political_power = 20
+	}
+	# 吸引非社会主义工人：同上
+	if = {
+		limit = { has_country_flag = GER_prf_done_F14 }
+		add_to_variable = { GER_prf_left_bi = 0.05 }
+		add_to_variable = { GER_prf_center_bi = 0.05 }
+		add_political_power = 20
+	}
+	# 支持妇女组织：同上
+	if = {
+		limit = { has_country_flag = GER_prf_done_F15 }
+		add_to_variable = { GER_prf_left_bi = 0.05 }
+		add_to_variable = { GER_prf_center_bi = 0.05 }
+		add_political_power = 20
+	}
+	# 团结失业者：党内团结度小量自然增长（原「极右翼/纳粹支持度」改为本项）
+	if = {
+		limit = { has_country_flag = GER_prf_done_F17 }
+		add_to_variable = { GER_prf_unity_weekly = 0.2 }
+	}
+	# 强调纪律：议会焦点 -3 天，改由 on_daily_GER 的守卫块在每次激活时施加（见 on_actions）
+	add_dynamic_modifier = { modifier = GER_party_reform_spirit }
+	set_country_flag = GER_party_reform_spirit_granted
+}
+
+# 每两周：按已点国策把点数累加进对应派系/社会化系统
+GER_party_reform_apply_biweekly = {
+	# 左派 / 中派影响力
+	if = {
+		limit = { check_variable = { GER_prf_left_bi > 0 } }
+		add_to_variable = { GER_SPD_left_support = GER_prf_left_bi }
+	}
+	if = {
+		limit = { check_variable = { GER_prf_center_bi > 0 } }
+		add_to_variable = { GER_SPD_center_support = GER_prf_center_bi }
+	}
+	# 右派影响力（主动策略：每两周 -0.2，不足则归零）
+	if = {
+		limit = { check_variable = { GER_prf_right_bi < 0 } }
+		set_variable = { GER_prf_tmp = GER_prf_right_bi }
+		multiply_variable = { GER_prf_tmp = -1 }
+		if = {
+			limit = { check_variable = { GER_SPD_right_support > GER_prf_tmp } }
+			subtract_from_variable = { GER_SPD_right_support = GER_prf_tmp }
+		}
+		else = { set_variable = { GER_SPD_right_support = 0 } }
+	}
+	# 社会化进度
+	if = {
+		limit = { check_variable = { GER_prf_soc_bi > 0 } }
+		add_to_variable = { GER_socialization_points_pool = GER_prf_soc_bi }
+		GER_socialization_refresh_bars = yes
+	}
+	# 当前最大派系影响力
+	if = {
+		limit = { check_variable = { GER_prf_max_bi > 0 } }
+		set_variable = { GER_prf_tmp = GER_SPD_left_support }
+		if = {
+			limit = { check_variable = { GER_SPD_center_support > GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_center_support }
+		}
+		if = {
+			limit = { check_variable = { GER_SPD_right_support > GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_right_support }
+		}
+		if = {
+			limit = { check_variable = { GER_SPD_left_support = GER_prf_tmp } }
+			add_to_variable = { GER_SPD_left_support = GER_prf_max_bi }
+		}
+		else_if = {
+			limit = { check_variable = { GER_SPD_center_support = GER_prf_tmp } }
+			add_to_variable = { GER_SPD_center_support = GER_prf_max_bi }
+		}
+		else = {
+			add_to_variable = { GER_SPD_right_support = GER_prf_max_bi }
+		}
+	}
+	# 当前最小 / 次小派系影响力（次小 = 总和 − 最大 − 最小）
+	if = {
+		limit = { check_variable = { GER_prf_min_bi > 0 } }
+		# 最小
+		set_variable = { GER_prf_tmp = GER_SPD_left_support }
+		if = {
+			limit = { check_variable = { GER_SPD_center_support < GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_center_support }
+		}
+		if = {
+			limit = { check_variable = { GER_SPD_right_support < GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_right_support }
+		}
+		set_variable = { GER_prf_min = GER_prf_tmp }
+		# 最大
+		set_variable = { GER_prf_tmp = GER_SPD_left_support }
+		if = {
+			limit = { check_variable = { GER_SPD_center_support > GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_center_support }
+		}
+		if = {
+			limit = { check_variable = { GER_SPD_right_support > GER_prf_tmp } }
+			set_variable = { GER_prf_tmp = GER_SPD_right_support }
+		}
+		set_variable = { GER_prf_max = GER_prf_tmp }
+		# 总和与次小
+		set_variable = { GER_prf_sum = GER_SPD_left_support }
+		add_to_variable = { GER_prf_sum = GER_SPD_center_support }
+		add_to_variable = { GER_prf_sum = GER_SPD_right_support }
+		subtract_from_variable = { GER_prf_sum = GER_prf_max }
+		subtract_from_variable = { GER_prf_sum = GER_prf_min }
+		set_variable = { GER_prf_second = GER_prf_sum }
+		# 加到最小
+		if = {
+			limit = { check_variable = { GER_SPD_left_support = GER_prf_min } }
+			add_to_variable = { GER_SPD_left_support = GER_prf_min_bi }
+		}
+		else_if = {
+			limit = { check_variable = { GER_SPD_center_support = GER_prf_min } }
+			add_to_variable = { GER_SPD_center_support = GER_prf_min_bi }
+		}
+		else = {
+			add_to_variable = { GER_SPD_right_support = GER_prf_min_bi }
+		}
+		# 加到次小
+		if = {
+			limit = { check_variable = { GER_prf_second_bi > 0 } }
+			if = {
+				limit = { check_variable = { GER_SPD_left_support = GER_prf_second } }
+				add_to_variable = { GER_SPD_left_support = GER_prf_second_bi }
+			}
+			else_if = {
+				limit = { check_variable = { GER_SPD_center_support = GER_prf_second } }
+				add_to_variable = { GER_SPD_center_support = GER_prf_second_bi }
+			}
+			else = {
+				add_to_variable = { GER_SPD_right_support = GER_prf_second_bi }
+			}
+		}
+	}
+	GER_SPD_refresh_support_effect = yes
+}
+
+# ── Debug 用：直接写入结局条件 ──
+# 彻底成功：16 个手动国策 + 三组全选高消耗
+GER_party_reform_debug_preset_full = {
+	set_variable = { GER_party_reform_completed_count = 16 }
+	set_country_flag = GER_party_reform_key_proactive
+	set_country_flag = GER_party_reform_key_reorg
+	set_country_flag = GER_party_reform_key_dictatorship
+	set_country_flag = GER_party_reform_grp1_central
+	set_country_flag = GER_party_reform_grp2_core
+	set_country_flag = GER_party_reform_grp3_timid
+}
+
+# 部分胜利：13 个手动国策 + 三个关键国策
+GER_party_reform_debug_preset_partial = {
+	set_variable = { GER_party_reform_completed_count = 13 }
+	set_country_flag = GER_party_reform_key_proactive
+	set_country_flag = GER_party_reform_key_reorg
+	set_country_flag = GER_party_reform_key_dictatorship
+}
+
+# 失败：5 个手动国策且缺关键国策
+GER_party_reform_debug_preset_fail = {
+	set_variable = { GER_party_reform_completed_count = 5 }
+}

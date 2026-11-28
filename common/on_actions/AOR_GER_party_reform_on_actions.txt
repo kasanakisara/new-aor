@@ -1,0 +1,64 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会 · 每日门控与双周结算
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# date 门控沿用 AOR_GER_union_competition_on_actions.txt 的写法。
+# on_daily_GER 为原版支持的按 TAG 每日钩子（见原版 00_on_actions.txt）。
+
+on_actions = {
+	on_daily_GER = {
+		effect = {
+			# 1920.2.13 开启：触发《抓紧时间》
+			if = {
+				limit = {
+					date > 1920.2.12
+					date < 1920.2.14
+					NOT = { has_country_flag = GER_party_reform_started }
+				}
+				country_event = { id = AOR_GER_bochum_congress.1 }
+			}
+			# 1920.8.26 截止：当日必触发结束提示并锁定
+			if = {
+				limit = {
+					date > 1920.8.25
+					has_country_flag = GER_party_reform_active
+				}
+				country_event = { id = AOR_GER_bochum_congress.2 }
+			}
+			# 每 14 天结算一次改革点数
+			if = {
+				limit = { has_country_flag = GER_party_reform_active }
+				add_to_variable = { GER_party_reform_day_counter = 1 }
+				if = {
+					limit = { check_variable = { GER_party_reform_day_counter > 13 } }
+					set_variable = { GER_party_reform_day_counter = 0 }
+					GER_party_reform_tick = yes
+				}
+			}
+		}
+	}
+
+	# 结算后：动态民族精神的每周累积（团结度 / 无产阶级组织度）
+	on_weekly_GER = {
+		effect = {
+			if = {
+				limit = { has_country_flag = GER_party_reform_spirit_granted }
+				add_to_variable = { GER_SPD_unity = GER_prf_unity_weekly }
+				GER_SPD_refresh_unity_effect = yes
+				add_to_variable = { GER_socialization_organization = GER_prf_organization_weekly }
+				GER_socialization_refresh_bars = yes
+				# 着手建立与农民的联盟：农业社会化进度每周 +3
+				if = {
+					limit = { has_country_flag = GER_prf_done_F20 }
+					add_to_variable = { GER_agri_union_progress_var = 3 }
+				}
+				# 每两周执行一次国策速率结算
+				add_to_variable = { GER_prf_biweek = 1 }
+				if = {
+					limit = { check_variable = { GER_prf_biweek > 1 } }
+					set_variable = { GER_prf_biweek = 0 }
+					GER_party_reform_apply_biweekly = yes
+				}
+			}
+		}
+	}
+}

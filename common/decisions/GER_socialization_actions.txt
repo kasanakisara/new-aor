@@ -219,6 +219,13 @@ GER_socialization_category = {
                 add_to_variable = { GER_socialization_points_pool = 150 }
                 subtract_from_variable = { GER_socialization_counterrevolution = 240 }
                 add_to_variable = { GER_socialization_radicalism_base = 10 }
+                # 党改革国策《不能畏畏缩缩》：大规模罢工效果 +10%
+                if = {
+                    limit = { has_country_flag = GER_prf_done_F11 }
+                    add_to_variable = { GER_socialization_points_pool = 15 }
+                    subtract_from_variable = { GER_socialization_counterrevolution = 24 }
+                    add_to_variable = { GER_socialization_radicalism_base = 1 }
+                }
                 remove_ideas = GER_socialization_mass_strike_disruption
                 add_timed_idea = { idea = GER_socialization_mass_strike_disruption days = 90 }
                 GER_socialization_refresh_bars = yes

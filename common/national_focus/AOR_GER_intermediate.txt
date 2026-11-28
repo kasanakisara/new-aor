@@ -1080,4 +1080,556 @@ focus_tree = {
 			load_focus_tree = GER_civil_war
 		}
 	}
+
+	# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+	# 党改革与波鸿代表大会（20 节点 · 3 组互斥 · 手动上限 16 项 · 满配 49 点）
+	# model：cost = 0 点数直兑；available 校验改革点数；select_effect 扣点并记账
+	# 效果全部在 1920.9.4 结算时并入独立党改革动态民族精神，故 completion_reward 只触发事件
+	# 分歧一：集中制 / 联邦制　分歧二：革命的核心 / 运动台柱　分歧三：小心维持 / 不能畏畏缩缩
+	# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+	# 1. 波鸿代表大会（自动完成 · 0 点）
+	focus = {
+		id = GER_Bochum_General_Assembly
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		x = 16
+		y = 12
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F01
+		}
+	}
+
+	# 2. 完善党的中央机构（3 点）
+	focus = {
+		id = GER_Improve_the_Partys_central_organizations
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 0
+		y = 1
+		prerequisite = { focus = GER_Bochum_General_Assembly }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 3
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 3 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F02
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F02
+		}
+	}
+
+	# 3. 鼓励基层参与（3 点）
+	focus = {
+		id = GER_Encourage_grassroots_participation
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -3
+		y = 1
+		prerequisite = { focus = GER_Bochum_General_Assembly }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 3
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 3 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F03
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F03
+			country_event = { id = AOR_GER_bochum_congress.9 }
+		}
+	}
+
+	# 4. 强调纪律（2 点）
+	focus = {
+		id = GER_Emphasize_discipline
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 0
+		y = 3
+		prerequisite = { focus = GER_Improve_the_Partys_central_organizations }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F04
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F04
+			country_event = { id = AOR_GER_bochum_congress.10 }
+		}
+	}
+
+	# 5. 采用集中制（分歧一·高 · 4 点）
+	focus = {
+		id = GER_adopt_a_centralized_system
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -1
+		y = 2
+		prerequisite = { focus = GER_Improve_the_Partys_central_organizations }
+		mutually_exclusive = { focus = GER_adopt_a_federal_system }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 4 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F05
+			set_country_flag = GER_party_reform_grp1_central
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F05
+		}
+	}
+
+	# 6. 采用联邦制（分歧一·低 · 2 点）
+	focus = {
+		id = GER_adopt_a_federal_system
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 1
+		y = 2
+		prerequisite = { focus = GER_Improve_the_Partys_central_organizations }
+		mutually_exclusive = { focus = GER_adopt_a_centralized_system }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F06
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F06
+		}
+	}
+
+	# 7. 主动策略【关键国策】（5 点）
+	focus = {
+		id = GER_Proactive_strategy
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 3
+		y = 1
+		prerequisite = { focus = GER_Bochum_General_Assembly }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 5 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F07
+			set_country_flag = GER_party_reform_key_proactive
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F07
+			country_event = { id = AOR_GER_bochum_congress.11 }
+		}
+	}
+
+	# 8. 共同作为社会主义运动的台柱（分歧二·低 · 2 点）
+	focus = {
+		id = GER_Together_as_the_pillars_of_the_socialist_movement
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 1
+		y = 4
+		prerequisite = { focus = GER_Emphasize_discipline }
+		mutually_exclusive = { focus = GER_The_Party_is_the_core_of_the_revolution }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F08
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F08
+		}
+	}
+
+	# 9. 党是革命的核心【分歧二·高 · 4 点】
+	focus = {
+		id = GER_The_Party_is_the_core_of_the_revolution
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -1
+		y = 4
+		prerequisite = { focus = GER_Emphasize_discipline }
+		mutually_exclusive = { focus = GER_Together_as_the_pillars_of_the_socialist_movement }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 4 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F09
+			set_country_flag = GER_party_reform_grp2_core
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F09
+		}
+	}
+
+	# 10. 建立社会主义的斗争需要小心维持（分歧三·低 · 2 点）
+	focus = {
+		id = GER_The_struggle_to_build_socialism_needs_to_be_carefully_maintained
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 3
+		y = 2
+		prerequisite = { focus = GER_Proactive_strategy }
+		mutually_exclusive = { focus = GER_The_struggle_to_build_socialism_cant_be_timid }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F10
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F10
+			country_event = { id = AOR_GER_bochum_congress.12 }
+		}
+	}
+
+	# 11. 建立社会主义的斗争不能畏畏缩缩【分歧三·高 · 3 点】
+	focus = {
+		id = GER_The_struggle_to_build_socialism_cant_be_timid
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 5
+		y = 2
+		prerequisite = { focus = GER_Proactive_strategy }
+		mutually_exclusive = { focus = GER_The_struggle_to_build_socialism_needs_to_be_carefully_maintained }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 3
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 3 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F11
+			set_country_flag = GER_party_reform_grp3_timid
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F11
+			country_event = { id = AOR_GER_bochum_congress.13 }
+		}
+	}
+
+	# 12. 反对沙文主义、军国主义（2 点）
+	focus = {
+		id = GER_Oppose_chauvinism_and_militarism
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 3
+		y = 3
+		prerequisite = { focus = GER_Proactive_strategy }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F12
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F12
+		}
+	}
+
+	# 13. 鼓励青年组织（2 点）
+	focus = {
+		id = GER_Encourage_youth_organizations
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -5
+		y = 2
+		prerequisite = { focus = GER_Encourage_grassroots_participation }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F13
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F13
+		}
+	}
+
+	# 14. 吸引非社会主义工人（2 点）
+	focus = {
+		id = GER_Attract_non_socialist_workers
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -3
+		y = 4
+		prerequisite = { focus = GER_The_Alliance_of_Mental_and_Physical_Workers }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F14
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F14
+		}
+	}
+
+	# 15. 支持妇女组织（2 点）
+	focus = {
+		id = GER_Support_women_organizations
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -3
+		y = 2
+		prerequisite = { focus = GER_Encourage_grassroots_participation }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 2
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 2 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F15
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F15
+		}
+	}
+
+	# 16. 党的组织重新定向【关键国策 · 前置：9 或 8 任一完成】（5 点 · 中线收束位）
+	focus = {
+		id = GER_The_partys_organization_is_being_redirected
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 0
+		y = 5
+		prerequisite = { focus = GER_The_Party_is_the_core_of_the_revolution }
+		prerequisite = { focus = GER_Together_as_the_pillars_of_the_socialist_movement }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 5
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 5 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F16
+			set_country_flag = GER_party_reform_key_reorg
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F16
+			country_event = { id = AOR_GER_bochum_congress.14 }
+		}
+	}
+
+	# 17. 团结失业者（1 点）
+	focus = {
+		id = GER_Unite_the_unemployed
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -5
+		y = 4
+		prerequisite = { focus = GER_The_Alliance_of_Mental_and_Physical_Workers }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 1 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F17
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F17
+		}
+	}
+
+	# 18. 重申无产阶级专政的目标【关键国策】（4 点）
+	focus = {
+		id = GER_Reaffirm_the_goal_of_the_dictatorship_of_the_proletariat
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 5
+		y = 4
+		prerequisite = { focus = GER_Oppose_chauvinism_and_militarism }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 4 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F18
+			set_country_flag = GER_party_reform_key_dictatorship
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F18
+		}
+	}
+
+	# 19. 脑体力劳动者的联盟（3 点）
+	focus = {
+		id = GER_The_Alliance_of_Mental_and_Physical_Workers
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = -3
+		y = 3
+		prerequisite = { focus = GER_Encourage_grassroots_participation }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 3
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 3 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F19
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F19
+		}
+	}
+
+	# 20. 着手建立与农民的联盟（4 点）
+	focus = {
+		id = GER_Establish_an_alliance_with_the_peasants
+		icon = GFX_AOR_Eric_new_002
+		allow_branch = { AOR_GER_party_reform_visible = yes }
+		relative_position_id = GER_Bochum_General_Assembly
+		x = 3
+		y = 4
+		prerequisite = { focus = GER_Oppose_chauvinism_and_militarism }
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = {
+				var = GER_party_reform_points
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		select_effect = {
+			subtract_from_variable = { GER_party_reform_points = 4 }
+			add_to_variable = { GER_party_reform_completed_count = 1 }
+			set_country_flag = GER_prf_done_F20
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_prf_tt_F20
+		}
+	}
+
 }

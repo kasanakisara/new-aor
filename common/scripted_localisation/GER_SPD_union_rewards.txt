@@ -33,3 +33,27 @@ defined_text = {
     text = { trigger = { check_variable = { GER_union_legislative_launch_discount > 0 } } localization_key = GER_union_launch_tt }
     text = { localization_key = GER_union_empty }
 }
+# 党改革期间的「改革点数每两周」词条：仅 1920.2.13 — 8.26 显示，按工会胜负分三档
+defined_text = {
+    name = GER_union_party_reform_text
+    text = {
+        trigger = {
+            has_country_flag = GER_party_reform_active
+            check_variable = { GER_union_focus_victories > 2 }
+        }
+        localization_key = GER_prf_union_tt_left
+    }
+    text = {
+        trigger = {
+            has_country_flag = GER_party_reform_active
+            check_variable = { GER_union_focus_victories > 0 }
+            check_variable = { GER_union_focus_victories < 3 }
+        }
+        localization_key = GER_prf_union_tt_center
+    }
+    text = {
+        trigger = { has_country_flag = GER_party_reform_active }
+        localization_key = GER_prf_union_tt_right
+    }
+    text = { localization_key = GER_union_empty }
+}

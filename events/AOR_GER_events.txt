@@ -29,6 +29,7 @@ add_namespace = AOR_GER_defense_law
 add_namespace = AOR_GER_factory_council
 add_namespace = AOR_GER_socialization_law
 add_namespace = AOR_GER_tarot_liebknecht
+add_namespace = AOR_GER_bochum_congress
 
 # ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 # 第二届苏维埃代表大会
@@ -2897,5 +2898,264 @@ country_event = {
 			subtract_from_variable = { GER_SPD_unity = 1 }
 			GER_SPD_refresh_unity_effect = yes
 		}
+	}
+}
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 1920.2.13 开启 → 195 天党改革（13 次双周结算）→ 1920.8.26 截止锁定
+# → 1920.8.28 大会① → 9.1 大会② → 9.4 大会③ → 三档结局
+# 本期只留标题、按钮与效果，正文待补。
+
+# 《抓紧时间》开启党改革运动
+country_event = {
+	id = AOR_GER_bochum_congress.1
+	title = AOR_GER_bochum_congress.1.t
+	desc = AOR_GER_bochum_congress.1.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		GER_party_reform_start = yes
+	}
+	option = {
+		name = AOR_GER_bochum_congress.1.a
+	}
+}
+
+# 8.26 党改革结束提示：锁定国策与决议
+country_event = {
+	id = AOR_GER_bochum_congress.2
+	title = AOR_GER_bochum_congress.2.t
+	desc = AOR_GER_bochum_congress.2.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		GER_party_reform_lock = yes
+	}
+	option = {
+		name = AOR_GER_bochum_congress.2.a
+		country_event = { id = AOR_GER_bochum_congress.3 days = 2 }
+	}
+}
+
+# 波鸿代表大会①
+country_event = {
+	id = AOR_GER_bochum_congress.3
+	title = AOR_GER_bochum_congress.3.t
+	desc = AOR_GER_bochum_congress.3.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.3.a
+		country_event = { id = AOR_GER_bochum_congress.4 days = 4 }
+	}
+}
+
+# 波鸿代表大会②
+country_event = {
+	id = AOR_GER_bochum_congress.4
+	title = AOR_GER_bochum_congress.4.t
+	desc = AOR_GER_bochum_congress.4.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.4.a
+		country_event = { id = AOR_GER_bochum_congress.5 days = 3 }
+	}
+}
+
+# 波鸿代表大会③：投票后进入结算
+country_event = {
+	id = AOR_GER_bochum_congress.5
+	title = AOR_GER_bochum_congress.5.t
+	desc = AOR_GER_bochum_congress.5.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.5.a
+		GER_party_reform_settle = yes
+	}
+}
+
+# 结局一：拥抱革命的社会民主党（彻底成功）
+country_event = {
+	id = AOR_GER_bochum_congress.6
+	title = AOR_GER_bochum_congress.6.t
+	desc = AOR_GER_bochum_congress.6.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_country_flag = GER_party_reform_result_full
+	}
+	option = {
+		name = AOR_GER_bochum_congress.6.a
+	}
+}
+
+# 结局二：稳步前进的社会民主党（部分胜利）
+country_event = {
+	id = AOR_GER_bochum_congress.7
+	title = AOR_GER_bochum_congress.7.t
+	desc = AOR_GER_bochum_congress.7.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_country_flag = GER_party_reform_result_partial
+	}
+	option = {
+		name = AOR_GER_bochum_congress.7.a
+	}
+}
+
+# 结局三：坚守传统的社会民主党（失败）
+country_event = {
+	id = AOR_GER_bochum_congress.8
+	title = AOR_GER_bochum_congress.8.t
+	desc = AOR_GER_bochum_congress.8.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_country_flag = GER_party_reform_result_fail
+	}
+	option = {
+		name = AOR_GER_bochum_congress.8.a
+	}
+}
+
+# 国策触发事件（预留框架：本期只留标题、按钮与效果，正文待补）
+# 《今天去开会吗？》
+country_event = {
+	id = AOR_GER_bochum_congress.9
+	title = AOR_GER_bochum_congress.9.t
+	desc = AOR_GER_bochum_congress.9.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.9.a
+	}
+}
+
+# 《党的维护者》
+country_event = {
+	id = AOR_GER_bochum_congress.10
+	title = AOR_GER_bochum_congress.10.t
+	desc = AOR_GER_bochum_congress.10.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.10.a
+	}
+}
+
+# 《革命的成熟》
+country_event = {
+	id = AOR_GER_bochum_congress.11
+	title = AOR_GER_bochum_congress.11.t
+	desc = AOR_GER_bochum_congress.11.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.11.a
+	}
+}
+
+# 《稳健策略》
+country_event = {
+	id = AOR_GER_bochum_congress.12
+	title = AOR_GER_bochum_congress.12.t
+	desc = AOR_GER_bochum_congress.12.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.12.a
+	}
+}
+
+# 《革命的旗手》
+country_event = {
+	id = AOR_GER_bochum_congress.13
+	title = AOR_GER_bochum_congress.13.t
+	desc = AOR_GER_bochum_congress.13.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.13.a
+	}
+}
+
+# 《教皇诏令》
+country_event = {
+	id = AOR_GER_bochum_congress.14
+	title = AOR_GER_bochum_congress.14.t
+	desc = AOR_GER_bochum_congress.14.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.14.a
+	}
+}
+
+# 决议触发事件（预留框架：本期只留标题、按钮与效果，正文待补）
+# 《外地来客》
+country_event = {
+	id = AOR_GER_bochum_congress.15
+	title = AOR_GER_bochum_congress.15.t
+	desc = AOR_GER_bochum_congress.15.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		add_to_variable = { GER_party_reform_points = 1 }
+	}
+	option = {
+		name = AOR_GER_bochum_congress.15.a
+	}
+}
+
+# 《团结纽带①》
+country_event = {
+	id = AOR_GER_bochum_congress.16
+	title = AOR_GER_bochum_congress.16.t
+	desc = AOR_GER_bochum_congress.16.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOR_GER_bochum_congress.16.a
+		country_event = { id = AOR_GER_bochum_congress.17 days = 5 }
+	}
+}
+
+# 《团结纽带②》
+country_event = {
+	id = AOR_GER_bochum_congress.17
+	title = AOR_GER_bochum_congress.17.t
+	desc = AOR_GER_bochum_congress.17.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		add_to_variable = { GER_party_reform_points = 2 }
+	}
+	option = {
+		name = AOR_GER_bochum_congress.17.a
+	}
+}
+
+# 《掉转航向》
+country_event = {
+	id = AOR_GER_bochum_congress.18
+	title = AOR_GER_bochum_congress.18.t
+	desc = AOR_GER_bochum_congress.18.desc
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		if = {
+			limit = { check_variable = { GER_SPD_left_support > 0.5 } }
+			subtract_from_variable = { GER_SPD_left_support = 0.5 }
+		}
+		else = { set_variable = { GER_SPD_left_support = 0 } }
+		GER_SPD_refresh_support_effect = yes
+	}
+	option = {
+		name = AOR_GER_bochum_congress.18.a
 	}
 }

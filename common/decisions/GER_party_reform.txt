@@ -1,0 +1,224 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会 · 正式决议（1920.2.13 — 8.26）
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 挂载至党 GUI 的决议分类 GER_SPD_lifelong_tribune_category（面板 = GER_SPD_newspaper_window），
+# 与工会改革决议共用同一分类，各自用独立折叠开关控制。
+# 效果栏只写 custom_effect_tooltip，纯数值由脚本 hidden_effect 执行；不写解释性文字。
+# 冷却用 days_re_enable；一次性用 fire_only_once = yes；倒计时用 days_remove + remove_effect。
+
+GER_SPD_lifelong_tribune_category = {
+	# ── 折叠开关 ──
+	GER_prf_dec_collapse = {
+		icon = generic_political_discourse
+		priority = 90
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		complete_effect = {
+			custom_effect_tooltip = GER_prf_dec_collapse_tt
+			hidden_effect = { set_country_flag = GER_party_reform_collapsed }
+		}
+		ai_will_do = { factor = 0 }
+	}
+	GER_prf_dec_expand = {
+		icon = generic_political_discourse
+		priority = 90
+		visible = {
+			has_country_flag = GER_party_reform_open
+			has_country_flag = GER_party_reform_collapsed
+		}
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 0
+		complete_effect = {
+			custom_effect_tooltip = GER_prf_dec_expand_tt
+			hidden_effect = { clr_country_flag = GER_party_reform_collapsed }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 1. 在地区党代会上辩论（可重复 · 冷却 21 天 · 30pp）
+	GER_prf_dec_debate = {
+		icon = GFX_decision_AOR_union_reform
+		priority = 80
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = { has_country_flag = GER_party_reform_active }
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 21
+		complete_effect = {
+			custom_effect_tooltip = GER_prf_dec_debate_tt
+			hidden_effect = {
+				add_to_variable = { GER_party_reform_points = 2 }
+				add_to_variable = { GER_SPD_left_support = 1 }
+				add_to_variable = { GER_SPD_center_support = 0.5 }
+				if = {
+					limit = { check_variable = { GER_SPD_right_support > 1.5 } }
+					subtract_from_variable = { GER_SPD_right_support = 1.5 }
+				}
+				else = { set_variable = { GER_SPD_right_support = 0 } }
+				GER_SPD_refresh_support_effect = yes
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 2. 组建巡游宣传队（一次性 · 50pp · 倒计时 7 天）
+	GER_prf_dec_tour = {
+		cancel_if_not_visible = no
+		icon = GFX_decision_AOR_union_reform
+		priority = 79
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = {
+			has_country_flag = GER_party_reform_active
+			NOT = { has_country_flag = GER_prf_dec_tour_used }
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			custom_effect_tooltip = GER_prf_dec_tour_done_tt
+			hidden_effect = {
+				set_country_flag = GER_prf_dec_tour_used
+				add_to_variable = { GER_party_reform_bonus_per_tick = 0.25 }
+				country_event = { id = AOR_GER_bochum_congress.15 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 3. 对中派妥协（可重复 · 冷却 35 天 · 30pp）
+	GER_prf_dec_compromise = {
+		icon = GFX_decision_AOR_union_reform
+		priority = 78
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = { has_country_flag = GER_party_reform_active }
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 35
+		complete_effect = {
+			custom_effect_tooltip = GER_prf_dec_compromise_tt
+			hidden_effect = {
+				add_to_variable = { GER_party_reform_points = 4 }
+				add_to_variable = { GER_SPD_center_support = 4 }
+				if = {
+					limit = { check_variable = { GER_SPD_left_support > 2 } }
+					subtract_from_variable = { GER_SPD_left_support = 2 }
+				}
+				else = { set_variable = { GER_SPD_left_support = 0 } }
+				if = {
+					limit = { check_variable = { GER_SPD_right_support > 2 } }
+					subtract_from_variable = { GER_SPD_right_support = 2 }
+				}
+				else = { set_variable = { GER_SPD_right_support = 0 } }
+				GER_SPD_refresh_support_effect = yes
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 4. 组建党改革联盟（一次性 · 30pp · 倒计时 14 天）
+	GER_prf_dec_league = {
+		cancel_if_not_visible = no
+		icon = GFX_decision_AOR_union_reform
+		priority = 77
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = {
+			has_country_flag = GER_party_reform_active
+			NOT = { has_country_flag = GER_prf_dec_league_used }
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			custom_effect_tooltip = GER_prf_dec_league_done_tt
+			hidden_effect = {
+				set_country_flag = GER_prf_dec_league_used
+				add_to_variable = { GER_party_reform_bonus_per_tick = 0.25 }
+				subtract_from_variable = { GER_SPD_unity = 5 }
+				GER_SPD_refresh_unity_effect = yes
+				country_event = { id = AOR_GER_bochum_congress.16 }
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 5. 说服顽固派（可重复 · 冷却 14 天 · 15pp）
+	GER_prf_dec_persuade = {
+		icon = GFX_decision_AOR_union_reform
+		priority = 76
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = { has_country_flag = GER_party_reform_active }
+		cost = 15
+		fire_only_once = no
+		days_re_enable = 14
+		complete_effect = {
+			custom_effect_tooltip = GER_prf_dec_persuade_tt
+			hidden_effect = {
+				add_to_variable = { GER_party_reform_points = 1 }
+				add_to_variable = { GER_SPD_left_support = 1 }
+				if = {
+					limit = { check_variable = { GER_SPD_right_support > 1 } }
+					subtract_from_variable = { GER_SPD_right_support = 1 }
+				}
+				else = { set_variable = { GER_SPD_right_support = 0 } }
+				GER_SPD_refresh_support_effect = yes
+				# 首次点击额外触发《掉转航向》
+				if = {
+					limit = { NOT = { has_country_flag = GER_prf_dec_persuade_first_done } }
+					set_country_flag = GER_prf_dec_persuade_first_done
+					country_event = { id = AOR_GER_bochum_congress.18 }
+				}
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# 6. 动员工会支持改革（仅工会中/左派胜利 · 可重复 · 冷却 42 天 · 15pp · 倒计时 14 天）
+	GER_prf_dec_mobilize_union = {
+		cancel_if_not_visible = no
+		icon = GFX_decision_AOR_union_reform
+		priority = 75
+		visible = {
+			has_country_flag = GER_party_reform_open
+			NOT = { has_country_flag = GER_party_reform_collapsed }
+		}
+		available = {
+			has_country_flag = GER_party_reform_active
+			check_variable = { GER_union_focus_victories > 0 }
+		}
+		cost = 15
+		fire_only_once = no
+		days_re_enable = 42
+		days_remove = 14
+		remove_effect = {
+			custom_effect_tooltip = GER_prf_dec_mobilize_union_done_tt
+			hidden_effect = {
+				add_to_variable = { GER_party_reform_points = 2 }
+				add_political_power = 50
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
+}

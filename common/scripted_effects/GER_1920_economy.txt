@@ -35,6 +35,15 @@ GER_1920_start_ambitious_plan = {
 	set_variable = { GER_1920_ap_output = 0 }
 	add_dynamic_modifier = { modifier = GER_1920_ambitious_plan }
 	activate_mission = GER_1920_mission_ambitious_plan
+	# 党改革国策《强调纪律》：议会焦点 -3 天
+	
+if = {
+	
+	limit = { has_country_flag = GER_prf_done_F04 }
+	
+	add_days_mission_timeout = { mission = GER_1920_mission_ambitious_plan days = -3 }
+	
+}
 }
 
 # 限时任务结束：计划收束为国家精神「经济刚性」
@@ -53,6 +62,15 @@ GER_1920_finish_ambitious_plan = {
 GER_1920_start_slow_counterrev_mission = {
 	add_timed_idea = { idea = GER_1920_soc_commission_work_idea days = 160 }
 	activate_mission = GER_1920_mission_slow_counterrev
+	# 党改革国策《强调纪律》：议会焦点 -3 天
+	
+if = {
+	
+	limit = { has_country_flag = GER_prf_done_F04 }
+	
+	add_days_mission_timeout = { mission = GER_1920_mission_slow_counterrev days = -3 }
+	
+}
 }
 
 # 议会焦点「经济部门'标准化'」通过时调用（待议程系统扩展后接线）
@@ -60,6 +78,15 @@ GER_1920_start_econ_dept_mission = {
 	add_timed_idea = { idea = GER_1920_econ_dept_standardization_idea days = 100 }
 	clr_country_flag = GER_1920_agenda_econ_dept_pending
 	activate_mission = GER_1920_mission_econ_dept_standardization
+	# 党改革国策《强调纪律》：议会焦点 -3 天
+	
+if = {
+	
+	limit = { has_country_flag = GER_prf_done_F04 }
+	
+	add_days_mission_timeout = { mission = GER_1920_mission_econ_dept_standardization days = -3 }
+	
+}
 }
 
 # 议会焦点「紧急财产税」通过时调用（待议程系统扩展后接线）
@@ -67,6 +94,15 @@ GER_1920_start_emergency_tax_mission = {
 	add_timed_idea = { idea = GER_1920_emergency_tax_policy days = 70 }
 	clr_country_flag = GER_1920_agenda_emergency_tax_pending
 	activate_mission = GER_1920_mission_emergency_property_tax
+	# 党改革国策《强调纪律》：议会焦点 -3 天
+	
+if = {
+	
+	limit = { has_country_flag = GER_prf_done_F04 }
+	
+	add_days_mission_timeout = { mission = GER_1920_mission_emergency_property_tax days = -3 }
+	
+}
 }
 
 # 「经济部门标准化」结算：随机削弱两项反革命行动

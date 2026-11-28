@@ -8,6 +8,12 @@ scripted_gui = {
 			tag = GER
 			has_country_flag = GER_SPD_history_open
 		}
+		# 波鸿纲领一页：波鸿代表大会③投票结算后才显示
+		triggers = {
+			GER_SPD_history_entry_1920 = {
+				has_country_flag = GER_party_reform_congress_done
+			}
+		}
 		effects = {
 			GER_SPD_history_close_click = {
 				clr_country_flag = GER_SPD_history_open

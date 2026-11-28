@@ -1,0 +1,117 @@
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 党改革与波鸿代表大会 · 动态文本
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+# 动态民族精神的效果说明：按三档结局切换
+defined_text = {
+	name = Get_PRF_spirit_tier
+	text = {
+		trigger = { has_country_flag = GER_party_reform_result_full }
+		localization_key = GER_prf_spirit_tier_full
+	}
+	text = {
+		trigger = { has_country_flag = GER_party_reform_result_partial }
+		localization_key = GER_prf_spirit_tier_partial
+	}
+	text = {
+		localization_key = GER_prf_spirit_tier_fail
+	}
+}
+
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+# 《波鸿纲领》七槽位拼接
+# 总起 / 主动策略 / 组织重新定向 / 集中还是联邦 / 核心还是台柱 / 斗争方式 / 无产阶级专政
+# 未点出的槽位返回空串
+# ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+defined_text = {
+	name = Get_PRF_platform_open
+	text = {
+		trigger = { has_country_flag = GER_party_reform_result_full }
+		localization_key = GER_prf_platform_open_full
+	}
+	text = {
+		trigger = { has_country_flag = GER_party_reform_result_partial }
+		localization_key = GER_prf_platform_open_partial
+	}
+	text = {
+		localization_key = GER_prf_platform_open_fail
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_strategy
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F07 }
+		localization_key = GER_prf_platform_strategy
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_reorg
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F16 }
+		localization_key = GER_prf_platform_reorg
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_structure
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F05 }
+		localization_key = GER_prf_platform_structure_central
+	}
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F06 }
+		localization_key = GER_prf_platform_structure_federal
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_core
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F09 }
+		localization_key = GER_prf_platform_core_core
+	}
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F08 }
+		localization_key = GER_prf_platform_core_pillar
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_struggle
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F11 }
+		localization_key = GER_prf_platform_struggle_timid
+	}
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F10 }
+		localization_key = GER_prf_platform_struggle_careful
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
+
+defined_text = {
+	name = Get_PRF_platform_dictatorship
+	text = {
+		trigger = { has_country_flag = GER_prf_done_F18 }
+		localization_key = GER_prf_platform_dictatorship
+	}
+	text = {
+		localization_key = GER_prf_platform_empty
+	}
+}
